@@ -1,0 +1,50 @@
+[package]
+name = "hlsr-online"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+
+# Онлайн лаунчера без интерфейса: то, что делают telemetry, online-profile и их соседи в 0.4.7.
+
+[features]
+# Отладочные возможности (QA-подмена API профиля, `http:` на loopback) в сборке выпуска.
+# «production» 0.4.7 (NODE_ENV) — это выпуск без этого признака.
+dev-hooks = ["hlsr-core/dev-hooks", "hlsr-delivery/dev-hooks"]
+
+[dependencies]
+hlsr-core.workspace = true
+hlsr-delivery.workspace = true
+aes.workspace = true
+base64.workspace = true
+chrono.workspace = true
+ed25519-dalek.workspace = true
+getrandom.workspace = true
+icu_normalizer.workspace = true
+png.workspace = true
+regex.workspace = true
+# Markdown новостей и гайда: регулярные выражения JS с просмотром назад (guide-markdown.js).
+regress.workspace = true
+reqwest.workspace = true
+serde_json.workspace = true
+sha1.workspace = true
+sha2.workspace = true
+thiserror.workspace = true
+tokio = { workspace = true, features = ["io-util", "net", "rt", "sync", "time"] }
+url.workspace = true
+zune-jpeg.workspace = true
+
+[target.'cfg(target_os = "linux")'.dependencies]
+zbus.workspace = true
+
+[target.'cfg(windows)'.dependencies]
+windows-sys = { workspace = true, features = ["Wdk_System_SystemServices", "Win32_Foundation", "Win32_Security_Cryptography", "Win32_System_Registry", "Win32_System_SystemInformation"] }
+
+[dev-dependencies]
+tempfile.workspace = true
+tokio = { workspace = true, features = ["rt", "rt-multi-thread", "macros", "net", "io-util", "sync", "test-util", "time"] }
+
+# Поддельные службы ключей в тестах — соединение точка-точка, без шины.
+[target.'cfg(target_os = "linux")'.dev-dependencies]
+num-bigint.workspace = true
+zbus = { workspace = true, features = ["p2p"] }

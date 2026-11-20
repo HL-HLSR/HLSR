@@ -1,0 +1,39 @@
+{
+  "id": "background/tool",
+  "base": "background/_base",
+  "expect": {"ipcLog": {"ru": []}},
+  "state": "tool",
+  "$comment": "Фон LiveSplit: щелчок по пункту LiveSplit колонки (onSelectTool). Шарики качаются (tool-orbit): эталон стоит на t = 0, GPUI идёт по часам — круги шариков закрыты масками.",
+  "themes": [
+    "hlsr",
+    "paper"
+  ],
+  "steps": [
+    {
+      "click": {
+        "css": ".game-rail .rail-item[aria-label=\"LiveSplit\"]",
+        "view": "rail-tool"
+      }
+    }
+  ],
+  "masks": [
+    [
+      1060,
+      136,
+      184,
+      196
+    ],
+    [
+      932,
+      352,
+      184,
+      196
+    ],
+    [
+      1204,
+      352,
+      184,
+      196
+    ]
+  ]
+}

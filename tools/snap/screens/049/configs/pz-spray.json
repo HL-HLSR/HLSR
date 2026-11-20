@@ -1,0 +1,25 @@
+{
+  "id": "configs/pz-spray",
+  "state": "Ghosting: подраздел «Эффекты и спреи» — сцена спрея на стене, размер спрея под кадром (G9)",
+  "base": "configs/_pz",
+  "steps": [
+    {
+      "click": {
+        "css": ".launcher-topbar__tab:nth-child(3)",
+        "view": "topbar-tab-configs"
+      }
+    },
+    {
+      "click": {
+        "css": "#gx-tab-misc",
+        "view": "gx-tab-misc"
+      }
+    },
+    {
+      "move": [
+        800,
+        880
+      ]
+    }
+  ]
+}

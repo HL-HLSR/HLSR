@@ -1,0 +1,31 @@
+{
+  "id": "configs/pz-expanded",
+  "state": "Ghosting: «Оформление HUD», превью развёрнуто во весь лаунчер (G9)",
+  "base": "configs/_pz",
+  "steps": [
+    {
+      "click": {
+        "css": ".launcher-topbar__tab:nth-child(3)",
+        "view": "topbar-tab-configs"
+      }
+    },
+    {
+      "click": {
+        "css": "#gx-tab-hud",
+        "view": "gx-tab-hud"
+      }
+    },
+    {
+      "click": {
+        "css": ".gp__view .gv__bar .gv__btn--icon:last-child",
+        "view": "gv-expand"
+      }
+    },
+    {
+      "move": [
+        800,
+        880
+      ]
+    }
+  ]
+}

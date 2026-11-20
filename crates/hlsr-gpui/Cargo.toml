@@ -1,0 +1,61 @@
+[package]
+name = "hlsr-gpui"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+
+# Вид лаунчера на GPUI (docs/gpui/00-plan.md): тема, масштаб, текст, значки, панели и экраны.
+
+[features]
+# Снимок окна в PNG (HLSR_SMOKE_SNAPSHOT): render_to_image в GPUI есть только под test-support.
+# gpui_linux своего test-support не имеет (только gpui/test-support): на Linux собирается, но
+# render_to_image там не реализован — снимок кончается ошибкой и ненулевым кодом.
+dev-hooks = ["gpui/test-support", "gpui_windows/test-support"]
+
+[dependencies]
+hlsr-core.workspace = true
+# Логика окна: среда Env, сервисы окна (ChannelRouter); стекло колонки (glass.rs): кадр Rgba8Image и его размытие под коробкой (render::rail_glass).
+# Кривые, длительности и кадры движения (hlsr_ui::motion, data/motion.json 0.4.9).
+# Картинки и прокрутка (image.rs, scroll.rs): загрузчик images, safe_svg, шаг колеса Chromium.
+hlsr-ui = { path = "../hlsr-ui" }
+gpui.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+tracing.workspace = true
+# Кусок стекла растягивается на ЦП (imageops) и уходит в GPUI кадром image::Frame.
+# Живые WebP/GIF (image.rs::decode_live) — кадры всех форматов анимации.
+image = { workspace = true, features = ["gif", "webp"] }
+# Мост к фасадам на tokio (bridge.rs).
+tokio = { workspace = true, features = ["rt", "sync"] }
+# Поле ввода (kit/input.rs): шаг каретки по графемам и словам, как у Chromium. Уже в дереве gpui.
+unicode-segmentation = "1.13"
+# Повёрнутый значок (icons.rs::fa_turned): контур глифа Font Awesome в SVG. Уже в дереве (hlsr-ui).
+skrifa.workspace = true
+# Звук (решение владельца 3): прослушивание модов (sound.rs). На Windows — WASAPI на `windows`
+# 0.62 из дерева, на Linux — ALSA.
+cpal = "0.18.2"
+
+[target.'cfg(windows)'.dependencies]
+gpui_windows.workspace = true
+# HWND окна GPUI (win32.rs): та же версия, что у gpui.
+raw-window-handle = "0.6.2"
+# Gdi — ScreenToClient для колеса при захвате клавиши (keys/win32.rs).
+windows-sys = { workspace = true, features = [
+    "Win32_Foundation",
+    "Win32_Graphics_Dwm",
+    "Win32_Graphics_Gdi",
+    "Win32_UI_WindowsAndMessaging",
+] }
+
+[target.'cfg(target_os = "linux")'.dependencies]
+gpui_linux.workspace = true
+
+[build-dependencies]
+# Значок и манифест exe (PerMonitorV2) — те же, что у hlsr-app.
+winresource.workspace = true
+
+[dev-dependencies]
+# #[gpui::test]: тестовые часы и окно (env.rs, bridge.rs, motion/tests.rs), атлас для тестов картинок (image.rs).
+gpui = { workspace = true, features = ["test-support"] }
+tokio = { workspace = true, features = ["rt-multi-thread"] }

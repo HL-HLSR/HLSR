@@ -1,0 +1,82 @@
+{
+  "source": "main/twitch-badges/index.js (Node 24, Electron 44.5.1)",
+  "files": {
+    "broadcaster.png": "a1690b1dc7048c9955fd8bcaacc4ec8ee550f004f7bc3866ebbbe38fe3da826f",
+    "moderator.png": "1333724146450c850ed36a2958c7b1430181744f123a64d608f75591e1c12144",
+    "partner.png": "26411df94adf72b95e2a27defbd37029499e797958e460ce7bf8095397f674d0",
+    "staff.png": "11a1a690e9a98b3f76e260b2d7a71d9af24baf2acb8fddf48f717c966e572359",
+    "subscriber.png": "69212ede745fab9605d3bcef068c7949829b43d2c6ba541b7ceabc6374eae431",
+    "vip.png": "1bc4249fcfda6eb6f9a303b1d526302cd2e671923c7d996698ef8cc81c332e3c",
+    "yt_moderator.png": "abd55d0d7431dfd4c972e2ffe4fbf5fd07d210a1450f5e1cc24e3be39a292dc0",
+    "yt_owner.png": "2519ba0d18751753a02441d3f6f0a05e98353c648374fc9a1ce0aa929f6f7e67",
+    "yt_verified.png": "42e5fce5201dd7c2a76f0e430b5585f3ac165236eef0a23ba485b08ca77a9679"
+  },
+  "scenarios": [
+    {
+      "name": "handleReady: девять значков, второй раз — нет; forget — снова",
+      "steps": [{"op":"ready","settle":{"calls":9}},{"op":"ready","settle":{"quietMs":100}},{"op":"forget"},{"op":"ready","settle":{"calls":9}}],
+      "expected": {
+        "steps": [
+          {
+            "calls": [
+              ["sendBadgeReady","broadcaster",64,64,{"sha256":"537290f6cda7bd79f777e353f27cc3039a5238d267bde70275e86c0d17642c66","bytes":16384}],
+              ["sendBadgeReady","staff",64,64,{"sha256":"c187004d868fdc36d2e7c4c5f69e602a0e282e9265b23c40f39f680d0b7556b2","bytes":16384}],
+              ["sendBadgeReady","moderator",64,64,{"sha256":"404e61f6275482a8486ed2dac99c571d773db08ecaa969cd25c6e4971eb025a0","bytes":16384}],
+              ["sendBadgeReady","vip",64,64,{"sha256":"638dc830b025403e9be03fea40935632d65898d2ff745ba0c4af357fa67e8b17","bytes":16384}],
+              ["sendBadgeReady","partner",64,64,{"sha256":"b842bb2d5302e98ade39645614502e09ff50e0cd716e98915d16048e6395bb9b","bytes":16384}],
+              ["sendBadgeReady","subscriber",64,64,{"sha256":"ca49637109b6f791bfba495d60955c010bd8619326b8392c6905558d79aa9fee","bytes":16384}],
+              ["sendBadgeReady","yt_owner",64,64,{"sha256":"0f4136fc9b37e65b13a043a8e45a26f46caad3f0133c345179c1a3e179a2e025","bytes":16384}],
+              ["sendBadgeReady","yt_moderator",64,64,{"sha256":"bad56523d04dfb2235a5900a09c2761a09c40fb167c535b384ebf6ea4c5fc76e","bytes":16384}],
+              ["sendBadgeReady","yt_verified",64,64,{"sha256":"2464bb4574450dd645e4c07dd054ae36b8b66a6fa66360c2d8fcd5d3cd6a174e","bytes":16384}]
+            ]
+          },
+          {"calls":[]},
+          {"calls":[]},
+          {
+            "calls": [
+              ["sendBadgeReady","broadcaster",64,64,{"sha256":"537290f6cda7bd79f777e353f27cc3039a5238d267bde70275e86c0d17642c66","bytes":16384}],
+              ["sendBadgeReady","staff",64,64,{"sha256":"c187004d868fdc36d2e7c4c5f69e602a0e282e9265b23c40f39f680d0b7556b2","bytes":16384}],
+              ["sendBadgeReady","moderator",64,64,{"sha256":"404e61f6275482a8486ed2dac99c571d773db08ecaa969cd25c6e4971eb025a0","bytes":16384}],
+              ["sendBadgeReady","vip",64,64,{"sha256":"638dc830b025403e9be03fea40935632d65898d2ff745ba0c4af357fa67e8b17","bytes":16384}],
+              ["sendBadgeReady","partner",64,64,{"sha256":"b842bb2d5302e98ade39645614502e09ff50e0cd716e98915d16048e6395bb9b","bytes":16384}],
+              ["sendBadgeReady","subscriber",64,64,{"sha256":"ca49637109b6f791bfba495d60955c010bd8619326b8392c6905558d79aa9fee","bytes":16384}],
+              ["sendBadgeReady","yt_owner",64,64,{"sha256":"0f4136fc9b37e65b13a043a8e45a26f46caad3f0133c345179c1a3e179a2e025","bytes":16384}],
+              ["sendBadgeReady","yt_moderator",64,64,{"sha256":"bad56523d04dfb2235a5900a09c2761a09c40fb167c535b384ebf6ea4c5fc76e","bytes":16384}],
+              ["sendBadgeReady","yt_verified",64,64,{"sha256":"2464bb4574450dd645e4c07dd054ae36b8b66a6fa66360c2d8fcd5d3cd6a174e","bytes":16384}]
+            ]
+          }
+        ],
+        "tail": [],
+        "log": [["info","[twitch-badges] значков отправлено: 9"],["info","[twitch-badges] значков отправлено: 9"]],
+        "journal": []
+      }
+    },
+    {
+      "name": "мост отказывает на части значков",
+      "falseFor": ["vip","staff"],
+      "steps": [{"op":"ready","settle":{"calls":9}}],
+      "expected": {
+        "steps": [
+          {
+            "calls": [
+              ["sendBadgeReady","broadcaster",64,64,{"sha256":"537290f6cda7bd79f777e353f27cc3039a5238d267bde70275e86c0d17642c66","bytes":16384}],
+              ["sendBadgeReady","staff",64,64,{"sha256":"c187004d868fdc36d2e7c4c5f69e602a0e282e9265b23c40f39f680d0b7556b2","bytes":16384}],
+              ["sendBadgeReady","moderator",64,64,{"sha256":"404e61f6275482a8486ed2dac99c571d773db08ecaa969cd25c6e4971eb025a0","bytes":16384}],
+              ["sendBadgeReady","vip",64,64,{"sha256":"638dc830b025403e9be03fea40935632d65898d2ff745ba0c4af357fa67e8b17","bytes":16384}],
+              ["sendBadgeReady","partner",64,64,{"sha256":"b842bb2d5302e98ade39645614502e09ff50e0cd716e98915d16048e6395bb9b","bytes":16384}],
+              ["sendBadgeReady","subscriber",64,64,{"sha256":"ca49637109b6f791bfba495d60955c010bd8619326b8392c6905558d79aa9fee","bytes":16384}],
+              ["sendBadgeReady","yt_owner",64,64,{"sha256":"0f4136fc9b37e65b13a043a8e45a26f46caad3f0133c345179c1a3e179a2e025","bytes":16384}],
+              ["sendBadgeReady","yt_moderator",64,64,{"sha256":"bad56523d04dfb2235a5900a09c2761a09c40fb167c535b384ebf6ea4c5fc76e","bytes":16384}],
+              ["sendBadgeReady","yt_verified",64,64,{"sha256":"2464bb4574450dd645e4c07dd054ae36b8b66a6fa66360c2d8fcd5d3cd6a174e","bytes":16384}]
+            ]
+          }
+        ],
+        "tail": [],
+        "log": [["info","[twitch-badges] значков отправлено: 7"]],
+        "journal": []
+      }
+    },
+    {"name":"мост не подключён: ничего не уходит и повтора нет","noBridge":true,"steps":[{"op":"ready","settle":{"quietMs":100}},{"op":"ready","settle":{"quietMs":50}}],"expected":{"steps":[{"calls":[]},{"calls":[]}],"tail":[],"log":[],"journal":[]}},
+    {"name":"сообщения игры значки не трогают","steps":[{"op":"message","message":{"type":"emote.resolve","session":"0123456789abcdef","name":"x","px":8},"settle":{"quietMs":50}}],"expected":{"steps":[{"calls":[]}],"tail":[],"log":[],"journal":[]}}
+  ]
+}

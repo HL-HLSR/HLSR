@@ -1,0 +1,57 @@
+# Проверка зависимостей: cargo deny check (и в CI, задача linux).
+
+[graph]
+targets = ["x86_64-unknown-linux-gnu", "x86_64-pc-windows-msvc"]
+all-features = true
+
+[advisories]
+ignore = [
+    # ttf-parser больше не поддерживается. Приходит с GPUI (gpui-pre, usvg/fontdb, cosmic-text
+    # на Linux) и resvg превью; разбираются только вшитые шрифты и SVG лаунчера.
+    # Пересмотреть при обновлении gpui-pre.
+    { id = "RUSTSEC-2026-0192", reason = "ttf-parser через GPUI и resvg: только вшитые шрифты и SVG" },
+    # rustybuzz больше не поддерживается (замена — harfrust). Приходит с usvg (GPUI, resvg превью):
+    # раскладка текста только во вшитых SVG лаунчера. Пересмотреть при обновлении gpui-pre/resvg.
+    { id = "RUSTSEC-2026-0206", reason = "rustybuzz через usvg (GPUI, resvg): только вшитые SVG" },
+    # chrono больше не поддерживается, безопасной замены нет. Приходит с gpui-pre и hlsr-core
+    # (даты журнала и уведомлений); уязвимостей нет. Пересмотреть при обновлении gpui-pre.
+    { id = "RUSTSEC-2026-0543", reason = "chrono в gpui-pre и hlsr-core: не поддерживается, уязвимостей нет" },
+    # zbus_names, zvariant и zvariant_derive влиты в zbus 6 и отдельно больше не поддерживаются.
+    # zbus 5 приходит с gpui-pre-linux (ashpd, oo7, accesskit), ksni и связкой ключей онлайна;
+    # уязвимостей нет. Пересмотреть при переходе GPUI/ksni на zbus 6.
+    { id = "RUSTSEC-2026-0370", reason = "zvariant из zbus 5 (GPUI Linux, ksni, связка ключей): влит в zbus 6" },
+    { id = "RUSTSEC-2026-0371", reason = "zbus_names из zbus 5 (GPUI Linux, ksni, связка ключей): влит в zbus 6" },
+    { id = "RUSTSEC-2026-0372", reason = "zvariant_derive из zbus 5 (GPUI Linux, ksni, связка ключей): влит в zbus 6" },
+]
+
+[licenses]
+# Список рассчитан на будущие зависимости: неиспользованная лицензия — не ошибка.
+unused-allowed-license = "allow"
+# Всё, чего нет в списке (GPL, AGPL, LGPL и прочие), — ошибка.
+allow = [
+    "MIT",
+    "Apache-2.0",
+    "BSD-2-Clause",
+    "BSD-3-Clause",
+    "ISC",
+    "Zlib",
+    "Unicode-3.0",
+    "OFL-1.1",
+    "MPL-2.0",
+    "BSL-1.0",
+    "CC0-1.0",
+    # ksni (трей Linux): передача в общественное достояние, без обязательств.
+    "Unlicense",
+    # webpki-roots (доставка, TLS): корневые сертификаты Mozilla — тот же список, что
+    # встроен в Node 0.4.7. Лицензия данных Linux Foundation, разрешительная: только
+    # сохранить текст лицензии при распространении.
+    "CDLA-Permissive-2.0",
+]
+
+[licenses.private]
+# Свои крейты не публикуются (publish = false), лицензия у них — LICENSE проекта.
+ignore = true
+
+[bans]
+
+[sources]

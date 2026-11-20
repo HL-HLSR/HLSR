@@ -1,0 +1,197 @@
+{
+  "$comment": "Окна установщика и апдейтера (S16): hlsr-snap windows (tools/snap/src/windows.rs) и эталон tools/reference/ui/snap-windows.js (HLSR_ELECTRON — копия 0.4.9). installer — состояние installer-state 0.4.9 (язык — из варианта; $games/$desktop — флажки страницы, $intro — сколько раз нажать «Далее»), updater — события updater:init/stage/progress. updaterContent — клиентская область окна 460×280 с рамкой по масштабам (замер Electron 44 на Windows 11 при 100 % системы; 1.25 — --force-device-scale-factor, рамка ОС при этом не масштабируется).",
+  "scales": [1, 1.25],
+  "languages": ["ru", "en"],
+  "updaterContent": { "1": { "width": 444, "height": 241 }, "1.25": { "width": 448, "height": 252 } },
+  "scenes": [
+    {
+      "id": "installer-idle",
+      "window": "installer",
+      "state": { "phase": "idle", "directory": "C:\\HLSR\\Launcher", "version": "0.5.0", "canChooseDirectory": true, "canUninstall": false, "update": false, "installedVersion": null, "cancellable": false, "error": null, "warning": null }
+    },
+    {
+      "id": "installer-update",
+      "window": "installer",
+      "state": { "phase": "idle", "directory": "C:\\HLSR\\Launcher", "version": "0.5.0", "installedVersion": "0.4.7", "update": true, "canChooseDirectory": true, "canUninstall": true, "cancellable": false, "error": null, "warning": null }
+    },
+    {
+      "id": "installer-installing",
+      "window": "installer",
+      "state": { "phase": "installing", "directory": "C:\\HLSR\\Launcher", "version": "0.5.0", "canChooseDirectory": true, "canUninstall": false, "cancellable": true, "progress": 42, "error": null, "warning": null }
+    },
+    {
+      "id": "installer-verifying",
+      "window": "installer",
+      "state": { "phase": "verifying", "directory": "/home/user/.local/opt/hlsr", "version": "0.5.0", "canChooseDirectory": true, "canUninstall": false, "cancellable": true, "progress": null, "error": null, "warning": null }
+    },
+    {
+      "id": "installer-cancelling",
+      "window": "installer",
+      "state": { "phase": "cancelling", "directory": "C:\\HLSR\\Launcher", "version": "0.5.0", "canChooseDirectory": true, "cancellable": false, "progress": 17, "error": null, "warning": null }
+    },
+    {
+      "id": "installer-cancelled",
+      "window": "installer",
+      "state": { "phase": "cancelled", "directory": "C:\\HLSR\\Launcher", "version": "0.5.0", "canChooseDirectory": true, "cancellable": false, "progress": null, "error": null, "warning": null }
+    },
+    {
+      "id": "installer-done",
+      "window": "installer",
+      "state": { "phase": "done", "directory": "C:\\HLSR\\Launcher", "version": "0.5.0", "installedVersion": "0.5.0", "update": false, "canChooseDirectory": true, "canUninstall": false, "cancellable": false, "progress": null, "error": null, "warning": null }
+    },
+    {
+      "id": "installer-done-installed",
+      "window": "installer",
+      "state": { "phase": "done", "directory": "C:\\HLSR\\Launcher", "version": "0.5.0", "installedVersion": "0.5.0", "update": false, "canChooseDirectory": true, "canUninstall": true, "cancellable": false, "error": null, "warning": "Ярлык на рабочем столе не создан: доступ запрещён" }
+    },
+    {
+      "id": "installer-error",
+      "window": "installer",
+      "state": { "phase": "error", "directory": "C:\\HLSR\\Launcher", "version": "0.5.0", "canChooseDirectory": true, "canUninstall": true, "cancellable": false, "error": "HLSR сейчас запущен. Закройте лаунчер и нажмите «Повторить установку».", "warning": null }
+    },
+    {
+      "id": "installer-uninstall-confirm",
+      "window": "installer",
+      "state": { "$title": "HLSR — удаление", "$games": false, "phase": "uninstall-confirm", "directory": "C:\\HLSR\\Launcher", "version": "0.5.0", "canUninstall": true, "canGoBack": true, "cancellable": false, "error": null, "warning": null, "uninstallPlan": { "managed": true, "installRoot": "C:\\HLSR\\Launcher", "installBytes": 241172480, "libraryRoot": "C:\\HLSR", "libraryExists": true, "libraryBytes": 16320875725 } }
+    },
+    {
+      "id": "installer-uninstall-games",
+      "window": "installer",
+      "state": { "$title": "HLSR — удаление", "$games": true, "phase": "uninstall-confirm", "directory": "C:\\HLSR\\Launcher", "version": "0.5.0", "canUninstall": true, "canGoBack": false, "cancellable": false, "error": null, "warning": null, "uninstallPlan": { "managed": true, "installRoot": "C:\\HLSR\\Launcher", "installBytes": 241172480, "libraryRoot": "D:\\Games\\HLSR", "libraryExists": true, "libraryBytes": 734003200 } }
+    },
+    {
+      "id": "installer-uninstalling",
+      "window": "installer",
+      "state": { "$title": "HLSR — удаление", "phase": "uninstalling", "directory": "C:\\HLSR\\Launcher", "version": "0.5.0", "canUninstall": true, "canGoBack": true, "cancellable": false, "error": null, "warning": null }
+    },
+    {
+      "id": "installer-uninstalled",
+      "window": "installer",
+      "state": { "$title": "HLSR — удаление", "phase": "uninstalled", "directory": "C:\\HLSR\\Launcher", "version": "0.5.0", "canUninstall": false, "canGoBack": true, "cancellable": false, "error": null, "warning": null }
+    },
+    {
+      "id": "installer-uninstalled-warning",
+      "window": "installer",
+      "state": { "$title": "HLSR — удаление", "phase": "uninstalled", "directory": "C:\\HLSR\\Launcher", "version": "0.5.0", "canUninstall": false, "canGoBack": false, "cancellable": false, "error": null, "warning": "Не удалось удалить: C:\\HLSR\\Launcher\\resources\\app.asar" }
+    },
+    {
+      "id": "installer-welcome",
+      "window": "installer",
+      "state": { "platform": "win32", "phase": "idle", "directory": "C:\\HLSR\\Launcher", "version": "0.5.0", "canChooseDirectory": true, "canUninstall": false, "update": false, "installedVersion": null, "cancellable": false, "error": null, "warning": null }
+    },
+    {
+      "id": "installer-defender",
+      "window": "installer",
+      "state": { "$intro": 1, "platform": "win32", "phase": "idle", "directory": "C:\\HLSR\\Launcher", "version": "0.5.0", "canChooseDirectory": true, "canUninstall": false, "update": false, "installedVersion": null, "cancellable": false, "error": null, "warning": null }
+    },
+    {
+      "id": "installer-form",
+      "window": "installer",
+      "state": { "$intro": 2, "platform": "win32", "phase": "idle", "directory": "C:\\HLSR\\Launcher", "version": "0.5.0", "canChooseDirectory": true, "canUninstall": false, "update": false, "installedVersion": null, "cancellable": false, "error": null, "warning": null }
+    },
+    {
+      "id": "installer-updating",
+      "window": "installer",
+      "state": { "platform": "win32", "phase": "installing", "directory": "C:\\HLSR\\Launcher", "version": "0.5.0", "installedVersion": "0.4.9", "update": true, "canChooseDirectory": true, "canUninstall": true, "cancellable": true, "progress": null, "error": null, "warning": null }
+    },
+    {
+      "id": "installer-error-nospace",
+      "window": "installer",
+      "state": { "platform": "win32", "phase": "error", "directory": "C:\\HLSR\\Launcher", "version": "0.5.0", "canChooseDirectory": true, "canUninstall": false, "cancellable": false, "error": "ENOSPC: no space left on device, write", "errorCode": "ENOSPC", "warning": null }
+    },
+    {
+      "id": "installer-antivirus",
+      "window": "installer",
+      "state": { "platform": "win32", "phase": "error", "directory": "C:\\HLSR\\Launcher", "version": "0.5.0", "canChooseDirectory": true, "canUninstall": false, "cancellable": false, "error": "EPERM: operation not permitted", "errorCode": "ANTIVIRUS", "errorFile": "C:\\HLSR\\Launcher\\HLSR.exe", "warning": null }
+    },
+    {
+      "id": "installer-uninstall-blocked",
+      "window": "installer",
+      "state": { "$title": "HLSR — удаление", "phase": "uninstall-confirm", "directory": "C:\\HLSR\\Launcher", "version": "0.5.0", "canUninstall": true, "canGoBack": true, "cancellable": false, "error": null, "warning": null, "uninstallPlan": { "managed": false, "installRoot": "C:\\HLSR\\Launcher", "installBytes": 241172480, "libraryRoot": "C:\\HLSR", "libraryExists": false, "libraryBytes": 0, "libraryBlocked": "test" } }
+    },
+    {
+      "id": "installer-uninstall-roots",
+      "window": "installer",
+      "state": { "$title": "HLSR — удаление", "phase": "uninstall-confirm", "directory": "C:\\HLSR\\Launcher", "version": "0.5.0", "canUninstall": true, "canGoBack": true, "cancellable": false, "error": null, "warning": null, "uninstallPlan": { "managed": true, "installRoot": "C:\\HLSR\\Launcher", "installBytes": 241172480, "libraryRoot": "C:\\HLSR", "libraryRoots": ["C:\\HLSR", "D:\\Games\\HLSR\\Library"], "libraryExists": true, "libraryBytes": 16320875725 } }
+    },
+    {
+      "id": "updater-start",
+      "window": "updater",
+      "events": [{ "init": { "targetVersion": "0.5.1" } }]
+    },
+    {
+      "id": "updater-download",
+      "window": "updater",
+      "events": [
+        { "init": { "targetVersion": "0.5.1" } },
+        { "stage": { "stage": "download", "cancellable": true, "done": 0, "total": 104857600, "bytesPerSecond": 0 } },
+        { "progress": { "done": 47710208, "total": 104857600, "bytesPerSecond": 5452595 } }
+      ]
+    },
+    {
+      "id": "updater-verify",
+      "window": "updater",
+      "events": [
+        { "init": { "targetVersion": "0.5.1" } },
+        { "stage": { "stage": "download", "cancellable": true, "done": 0, "total": 104857600, "bytesPerSecond": 0 } },
+        { "progress": { "done": 104857600, "total": 104857600, "bytesPerSecond": 5452595 } },
+        { "stage": { "stage": "verify", "cancellable": false } }
+      ]
+    },
+    {
+      "id": "updater-wait-exit",
+      "window": "updater",
+      "events": [
+        { "init": { "targetVersion": "0.5.1" } },
+        { "stage": { "stage": "wait-exit", "cancellable": false } }
+      ]
+    },
+    {
+      "id": "updater-done",
+      "window": "updater",
+      "events": [
+        { "init": { "targetVersion": "0.5.1" } },
+        { "stage": { "stage": "install", "cancellable": false } },
+        { "stage": { "stage": "relaunch", "cancellable": false } },
+        { "stage": { "stage": "done", "cancellable": false, "version": "0.5.1" } }
+      ]
+    },
+    {
+      "id": "updater-error",
+      "window": "updater",
+      "events": [
+        { "init": { "targetVersion": "0.5.1" } },
+        { "stage": { "stage": "download", "cancellable": true, "done": 0, "total": 104857600, "bytesPerSecond": 0 } },
+        { "progress": { "done": 47710208, "total": 104857600, "bytesPerSecond": 5452595 } },
+        { "stage": { "stage": "error", "cancellable": false, "error": { "code": "UPD_DOWNLOAD_FAILED", "message": "connect ECONNREFUSED 127.0.0.1:443" } } }
+      ]
+    },
+    {
+      "id": "updater-cancelled",
+      "window": "updater",
+      "events": [
+        { "init": { "targetVersion": "0.5.1" } },
+        { "stage": { "stage": "download", "cancellable": true, "done": 0, "total": 104857600, "bytesPerSecond": 0 } },
+        { "stage": { "stage": "cancelled", "cancellable": false } }
+      ]
+    },
+    {
+      "id": "updater-already-running",
+      "window": "updater",
+      "events": [
+        { "init": { "targetVersion": "" } },
+        { "stage": { "stage": "error", "error": { "code": "UPD_ALREADY_RUNNING", "message": "обновление уже выполняется" } } }
+      ]
+    },
+    {
+      "id": "updater-dark",
+      "window": "updater",
+      "dark": true,
+      "events": [
+        { "init": { "targetVersion": "0.5.1" } },
+        { "stage": { "stage": "download", "cancellable": true, "done": 0, "total": 104857600, "bytesPerSecond": 0 } },
+        { "progress": { "done": 47710208, "total": 104857600, "bytesPerSecond": 5452595 } }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,510 @@
+{
+  "electron": "44.5.1",
+  "translate": [
+    [
+      1,
+      "EISDIR",
+      "illegal operation on a directory"
+    ],
+    [
+      2,
+      "ENOENT",
+      "no such file or directory"
+    ],
+    [
+      3,
+      "ENOENT",
+      "no such file or directory"
+    ],
+    [
+      4,
+      "EMFILE",
+      "too many open files"
+    ],
+    [
+      5,
+      "EPERM",
+      "operation not permitted"
+    ],
+    [
+      6,
+      "EBADF",
+      "bad file descriptor"
+    ],
+    [
+      8,
+      "ENOMEM",
+      "not enough memory"
+    ],
+    [
+      13,
+      "EINVAL",
+      "invalid argument"
+    ],
+    [
+      14,
+      "ENOMEM",
+      "not enough memory"
+    ],
+    [
+      15,
+      "ENOENT",
+      "no such file or directory"
+    ],
+    [
+      17,
+      "EXDEV",
+      "cross-device link not permitted"
+    ],
+    [
+      19,
+      "EROFS",
+      "read-only file system"
+    ],
+    [
+      23,
+      "EIO",
+      "i/o error"
+    ],
+    [
+      31,
+      "EIO",
+      "i/o error"
+    ],
+    [
+      32,
+      "EBUSY",
+      "resource busy or locked"
+    ],
+    [
+      33,
+      "EBUSY",
+      "resource busy or locked"
+    ],
+    [
+      39,
+      "ENOSPC",
+      "no space left on device"
+    ],
+    [
+      50,
+      "ENOTSUP",
+      "operation not supported on socket"
+    ],
+    [
+      64,
+      "ECONNRESET",
+      "connection reset by peer"
+    ],
+    [
+      80,
+      "EEXIST",
+      "file already exists"
+    ],
+    [
+      82,
+      "ENOSPC",
+      "no space left on device"
+    ],
+    [
+      87,
+      "EINVAL",
+      "invalid argument"
+    ],
+    [
+      109,
+      "EOF",
+      "end of file"
+    ],
+    [
+      110,
+      "EIO",
+      "i/o error"
+    ],
+    [
+      111,
+      "ENAMETOOLONG",
+      "name too long"
+    ],
+    [
+      112,
+      "ENOSPC",
+      "no space left on device"
+    ],
+    [
+      121,
+      "ETIMEDOUT",
+      "connection timed out"
+    ],
+    [
+      122,
+      "EINVAL",
+      "invalid argument"
+    ],
+    [
+      123,
+      "ENOENT",
+      "no such file or directory"
+    ],
+    [
+      126,
+      "ENOENT",
+      "no such file or directory"
+    ],
+    [
+      145,
+      "ENOTEMPTY",
+      "directory not empty"
+    ],
+    [
+      156,
+      "EIO",
+      "i/o error"
+    ],
+    [
+      161,
+      "ENOENT",
+      "no such file or directory"
+    ],
+    [
+      183,
+      "EEXIST",
+      "file already exists"
+    ],
+    [
+      193,
+      "EFTYPE",
+      "inappropriate file type or format"
+    ],
+    [
+      203,
+      "ENOENT",
+      "no such file or directory"
+    ],
+    [
+      205,
+      "EIO",
+      "i/o error"
+    ],
+    [
+      206,
+      "ENAMETOOLONG",
+      "name too long"
+    ],
+    [
+      208,
+      "E2BIG",
+      "argument list too long"
+    ],
+    [
+      225,
+      "UNKNOWN",
+      "unknown error"
+    ],
+    [
+      230,
+      "EPIPE",
+      "broken pipe"
+    ],
+    [
+      231,
+      "EBUSY",
+      "resource busy or locked"
+    ],
+    [
+      232,
+      "EAGAIN",
+      "resource temporarily unavailable"
+    ],
+    [
+      233,
+      "EPIPE",
+      "broken pipe"
+    ],
+    [
+      267,
+      "ENOENT",
+      "no such file or directory"
+    ],
+    [
+      277,
+      "ENOSPC",
+      "no space left on device"
+    ],
+    [
+      740,
+      "EACCES",
+      "permission denied"
+    ],
+    [
+      995,
+      "ECANCELED",
+      "operation canceled"
+    ],
+    [
+      998,
+      "EFAULT",
+      "bad address in system call argument"
+    ],
+    [
+      1004,
+      "EBADF",
+      "bad file descriptor"
+    ],
+    [
+      1100,
+      "ENOSPC",
+      "no space left on device"
+    ],
+    [
+      1101,
+      "EIO",
+      "i/o error"
+    ],
+    [
+      1102,
+      "EIO",
+      "i/o error"
+    ],
+    [
+      1103,
+      "EIO",
+      "i/o error"
+    ],
+    [
+      1104,
+      "EIO",
+      "i/o error"
+    ],
+    [
+      1106,
+      "EIO",
+      "i/o error"
+    ],
+    [
+      1111,
+      "EIO",
+      "i/o error"
+    ],
+    [
+      1113,
+      "ECHARSET",
+      "invalid Unicode character"
+    ],
+    [
+      1117,
+      "EIO",
+      "i/o error"
+    ],
+    [
+      1129,
+      "EIO",
+      "i/o error"
+    ],
+    [
+      1165,
+      "EIO",
+      "i/o error"
+    ],
+    [
+      1166,
+      "EIO",
+      "i/o error"
+    ],
+    [
+      1225,
+      "ECONNREFUSED",
+      "connection refused"
+    ],
+    [
+      1227,
+      "EADDRINUSE",
+      "address already in use"
+    ],
+    [
+      1231,
+      "ENETUNREACH",
+      "network is unreachable"
+    ],
+    [
+      1232,
+      "EHOSTUNREACH",
+      "host is unreachable"
+    ],
+    [
+      1236,
+      "ECONNABORTED",
+      "software caused connection abort"
+    ],
+    [
+      1314,
+      "EPERM",
+      "operation not permitted"
+    ],
+    [
+      1393,
+      "EIO",
+      "i/o error"
+    ],
+    [
+      1464,
+      "EINVAL",
+      "invalid argument"
+    ],
+    [
+      1920,
+      "EACCES",
+      "permission denied"
+    ],
+    [
+      1921,
+      "ELOOP",
+      "too many symbolic links encountered"
+    ],
+    [
+      2250,
+      "ENOTCONN",
+      "socket is not connected"
+    ],
+    [
+      4392,
+      "ENOENT",
+      "no such file or directory"
+    ],
+    [
+      10004,
+      "ECANCELED",
+      "operation canceled"
+    ],
+    [
+      10013,
+      "EACCES",
+      "permission denied"
+    ],
+    [
+      10014,
+      "EFAULT",
+      "bad address in system call argument"
+    ],
+    [
+      10022,
+      "EINVAL",
+      "invalid argument"
+    ],
+    [
+      10024,
+      "EMFILE",
+      "too many open files"
+    ],
+    [
+      10035,
+      "EAGAIN",
+      "resource temporarily unavailable"
+    ],
+    [
+      10037,
+      "EALREADY",
+      "connection already in progress"
+    ],
+    [
+      10038,
+      "ENOTSOCK",
+      "socket operation on non-socket"
+    ],
+    [
+      10040,
+      "EMSGSIZE",
+      "message too long"
+    ],
+    [
+      10043,
+      "EPROTONOSUPPORT",
+      "protocol not supported"
+    ],
+    [
+      10044,
+      "ESOCKTNOSUPPORT",
+      "socket type not supported"
+    ],
+    [
+      10046,
+      "EINVAL",
+      "invalid argument"
+    ],
+    [
+      10047,
+      "EAFNOSUPPORT",
+      "address family not supported"
+    ],
+    [
+      10048,
+      "EADDRINUSE",
+      "address already in use"
+    ],
+    [
+      10049,
+      "EADDRNOTAVAIL",
+      "address not available"
+    ],
+    [
+      10051,
+      "ENETUNREACH",
+      "network is unreachable"
+    ],
+    [
+      10053,
+      "ECONNABORTED",
+      "software caused connection abort"
+    ],
+    [
+      10054,
+      "ECONNRESET",
+      "connection reset by peer"
+    ],
+    [
+      10055,
+      "ENOBUFS",
+      "no buffer space available"
+    ],
+    [
+      10056,
+      "EISCONN",
+      "socket is already connected"
+    ],
+    [
+      10057,
+      "ENOTCONN",
+      "socket is not connected"
+    ],
+    [
+      10058,
+      "EPIPE",
+      "broken pipe"
+    ],
+    [
+      10060,
+      "ETIMEDOUT",
+      "connection timed out"
+    ],
+    [
+      10061,
+      "ECONNREFUSED",
+      "connection refused"
+    ],
+    [
+      10065,
+      "EHOSTUNREACH",
+      "host is unreachable"
+    ],
+    [
+      11001,
+      "ENOENT",
+      "no such file or directory"
+    ],
+    [
+      11004,
+      "ENOENT",
+      "no such file or directory"
+    ]
+  ]
+}

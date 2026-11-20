@@ -1,0 +1,753 @@
+{
+  "preserve": ["custom/keep","settings.ini"],
+  "manifests": {
+    "full": {
+      "schemaVersion": 1,
+      "gameId": "ghosting-renewed",
+      "version": "1.0.0",
+      "totalFiles": 14,
+      "totalSize": 313,
+      "files": [
+        {"path":"bin/client.dll","size":48,"sha256":"a134e0464b1c41861c866ef23c4571413699c1a2158ce2c56e2ae391c3e3bbea"},
+        {"path":"bin/dxsupport.cfg","size":9,"sha256":"de4e523070f1665a18b3f49e84aebc635153168217cedb853c8ce602dbc1479a"},
+        {"path":"custom/keep/me.txt","size":13,"sha256":"2cf5bf1502c84ab9a97e479a786910e8e0b69ef508d47068425495347fa5e46d"},
+        {"path":"debug.log","size":20,"sha256":"10832130c44c69065a53439a410d4d225620eac605d296f5eaac99a29010cc8d"},
+        {"path":"ghostingmod/SAVE/q.sav","size":21,"sha256":"55e92d0c8e2f587d5eadc9acc9356572f2612b9a86024196de37182b440942f1"},
+        {"path":"ghostingmod/gameinfo.txt","size":31,"sha256":"e3b92ba43d662cdf30b2feb0fef923c24b300a6c93efa2f494f0e57c24367ab1"},
+        {"path":"ghostingmod/maps/map1.bsp","size":64,"sha256":"4ea0055d17d9851a7280db8ad260edde78f01e4a906c5b94b037493e1e1a533b"},
+        {"path":"ghostingmod/scripts/edited-size.cfg","size":19,"sha256":"0e9a40103e1138d4df35c23ea2aaa4b6ee32add9e4eb82b4e238924965368635"},
+        {"path":"ghostingmod/scripts/edited.cfg","size":10,"sha256":"4dd9d459144de616f95a24f69867fa18122763ba903241db15d3ebce2fbdc97d"},
+        {"path":"ghostingmod/scripts/gone.cfg","size":8,"sha256":"1823f66e69e0940b1cdeaaf9d8371f2c82a024581da2b1ac07864035a4a6c314"},
+        {"path":"ghostingmod/scripts/stock.cfg","size":9,"sha256":"ba2e6ac5e4d5ef428e1823c914d9250f171928ee8bd6aa36221aef9d8699b286"},
+        {"path":"hl2.exe","size":10,"sha256":"b5f6eda7e43f0833815cf670d564876a901a91df5a6f3211cfda6550ecc22600"},
+        {"path":"settings.ini","size":14,"sha256":"4d5968c869d7e3071f7f29b1038f4c59b4ede5bdd9732d7d88596d703bb2b973"},
+        {"path":"Документы/прочти меня.txt","size":37,"sha256":"262b850dc01dd387b609c56a2d404c0262fe0cb9a7ae34ad12346ccf0c6801fa"}
+      ]
+    },
+    "many": {
+      "schemaVersion": 1,
+      "gameId": "ghosting-renewed",
+      "version": "1.0.0",
+      "totalFiles": 31,
+      "totalSize": 362,
+      "files": [
+        {"path":"many/f00.txt","size":11,"sha256":"731ec038ae97a19612436e3b4eb7a1d8d2fa839f90e0b11d6db7afaae77b7703"},
+        {"path":"many/f01.txt","size":11,"sha256":"f2e583b66af18142ec7da74e9ef83c341faa4e218a4bd72a3007e9b75c07fd7b"},
+        {"path":"many/f02.txt","size":11,"sha256":"4d6161a1661f3914354eb87f42e16a5653567d0bca401b20c736a5553dfd5f7b"},
+        {"path":"many/f03.txt","size":11,"sha256":"adc5967ab214d26ebc58b15d55e841493ce68ce23566ed108ed0345dfac1f8b5"},
+        {"path":"many/f04.txt","size":11,"sha256":"d87d4ce859e24bd0cfff01744ffd06c351cbd6fe147788e75f84f0ee4667ba34"},
+        {"path":"many/f05.txt","size":11,"sha256":"9e49f228b251847f970be51bb98cc8ef8c4f71ca20e88429a79f73d1f1fa91c1"},
+        {"path":"many/f06.txt","size":11,"sha256":"3113d5843edfc2d30b969bb2f0dcb81aa2f82fce7145c4df50cbc088fda962d8"},
+        {"path":"many/f07.txt","size":11,"sha256":"a626fb9648b8f0a206c1beee27512047eb38b353d96a9aa8a8c46ec6a1e23faa"},
+        {"path":"many/f08.txt","size":11,"sha256":"d9ef7ba7483d211b1f27b9afbe70acd5be058dd44fdd46e2bbc84ab904c19ada"},
+        {"path":"many/f09.txt","size":11,"sha256":"842e47bd37505a22b5a41ded25db3ea6956edf7a9e3c83e31d7e48db01f73e69"},
+        {"path":"many/f10.txt","size":12,"sha256":"724e717e8aea794587e2c410c3ea00ba63ced1679f62e10c3d2a6a526a530a50"},
+        {"path":"many/f11.txt","size":12,"sha256":"b8dd4529205c423f307c6a56ff64b2735e64af0928199c19eb7ab28750c635e8"},
+        {"path":"many/f12.txt","size":12,"sha256":"82e080ba86dacff6b0f86ae677453e0afc0ac222afab3f067e6412af2ed5f18e"},
+        {"path":"many/f13.txt","size":12,"sha256":"1d4ff32daa2dc352acd742358e33b9bb9e229f3a438d11f1408b812a135f721c"},
+        {"path":"many/f14.txt","size":12,"sha256":"b20102dad6744f666fc737858086b903a7e28159de573fa3faed156b66854e7f"},
+        {"path":"many/f15.txt","size":12,"sha256":"e6824a0dfdb28b594b13475d5d3b552a84399c314cf858ee47c53bc8a035ac1c"},
+        {"path":"many/f16.txt","size":12,"sha256":"c41a1d374a9beaa5329fc25872b685e21c82e56d4aac516f5295827c84b99a0a"},
+        {"path":"many/f17.txt","size":12,"sha256":"1647980119429beb0438b5faccc68a2731d35f09c5782d30569aa1cc01fae153"},
+        {"path":"many/f18.txt","size":12,"sha256":"6d35092ec87d890e87ff6baec75bd00ebfd876a69068ac11215e3bfce7e67374"},
+        {"path":"many/f19.txt","size":12,"sha256":"ed7d41da0242ae8b889edf7b6ddc95fb1732e8a2a3cb85808b6cdb876aab98b4"},
+        {"path":"many/f20.txt","size":12,"sha256":"1344a357c1378d16fa46ece1296e9e7951414a5d480f037d407d108c60b8ab6c"},
+        {"path":"many/f21.txt","size":12,"sha256":"631037ed95aa7ea87a81b32c3dd3b8f08599ca7177150398bb372f738b17b985"},
+        {"path":"many/f22.txt","size":12,"sha256":"0783c75a881589e4662d6f0f4601020dd36f471003fbdac7928b961f677e80ae"},
+        {"path":"many/f23.txt","size":12,"sha256":"eb1684758d55740b1cb77f362140dc478621e42ae6948f05a5a295d52a45f9ab"},
+        {"path":"many/f24.txt","size":12,"sha256":"a98de5ed582a9b98c1fc388d392572f5d1608ce347b271380630bcc237504ece"},
+        {"path":"many/f25.txt","size":12,"sha256":"3ecdd939c54281262f4893562a2ef63865b33b2f985a6a8538a9819e13a1e2e5"},
+        {"path":"many/f26.txt","size":12,"sha256":"971662d693256ea796dff8a463b6b7b2ff7d9a1613612c73e51606336faa5c9c"},
+        {"path":"many/f27.txt","size":12,"sha256":"399e404c1a81d8bd960cd9260ee78c0f879adc4d1b8d36fad59a87370ba9c85b"},
+        {"path":"many/f28.txt","size":12,"sha256":"92091679e0a656333aaebc6aefaebb92cd354f5ab02d419ebaf98ab8391e00fb"},
+        {"path":"many/f29.txt","size":12,"sha256":"71a6f46500121750e16f4822f1bf1e8f2ba58a32526bf5b6ddda0488f579aeb9"},
+        {"path":"many/f30.txt","size":12,"sha256":"ade06c9dada3d8ae5988631d8709b0a2b316dd1ff3332b8506d2376d64a1beda"}
+      ]
+    },
+    "empty": {"schemaVersion":1,"gameId":"ghosting-renewed","version":"1.0.0","totalFiles":0,"totalSize":0,"files":[]},
+    "noGame": {"schemaVersion":1,"version":"1.0.0","totalFiles":1,"totalSize":1,"files":[{"path":"a.txt","size":1,"sha256":"ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb"}]},
+    "escape": {"schemaVersion":1,"gameId":"ghosting-renewed","version":"1.0.0","totalFiles":1,"totalSize":1,"files":[{"path":"a.txt","size":1,"sha256":"ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb"},{"path":"../escape.txt","size":1,"sha256":"2d711642b726b04401627ca9fbac32f5c8530fb1903cc4db02258717921a4881"}]},
+    "notArray": {"gameId":"ghosting-renewed","version":"1.0.0","files":{}}
+  },
+  "scenarios": [
+    {
+      "name": "целая сборка: служебные и изменяемые файлы пропускаются",
+      "setup": [
+        {"dir":"lib/.hlsr/state"},
+        {"file":"lib/Games/ghosting-renewed/hl2.exe","utf8":"exe 1.0.0\n"},
+        {"file":"lib/Games/ghosting-renewed/ghostingmod/gameinfo.txt","utf8":"\"GameInfo\" { game \"Ghosting\" }\n"},
+        {"file":"lib/Games/ghosting-renewed/ghostingmod/maps/map1.bsp","hex":"f3c9ebfd2b30f05c70710a2ebd22e0b2ca16810c0b4193639d9a84fe34bc5ca6d20a25c3dc39b36ce79cca8efa471d1707f5ced235ac99676da2f091dba957b8"},
+        {"file":"lib/Games/ghosting-renewed/ghostingmod/scripts/stock.cfg","utf8":"// stock\n"},
+        {"file":"lib/Games/ghosting-renewed/ghostingmod/scripts/edited.cfg","utf8":"// before\n"},
+        {"file":"lib/Games/ghosting-renewed/ghostingmod/scripts/edited-size.cfg","utf8":"// before, shorter\n"},
+        {"file":"lib/Games/ghosting-renewed/ghostingmod/scripts/gone.cfg","utf8":"// gone\n"},
+        {"file":"lib/Games/ghosting-renewed/bin/client.dll","hex":"fca84178498fb8cc23051418532ae006043b6356848892fd29f61fb78a7b9312bd68a9958098d055901e72e47ced948d"},
+        {"file":"lib/Games/ghosting-renewed/bin/dxsupport.cfg","utf8":"dx 1.0.0\n"},
+        {"file":"lib/Games/ghosting-renewed/Документы/прочти меня.txt","utf8":"кириллица и пробелы\n"},
+        {"file":"lib/Games/ghosting-renewed/settings.ini","utf8":"[user]\nfov=90\n"},
+        {"file":"lib/Games/ghosting-renewed/custom/keep/me.txt","utf8":"сборка\n"},
+        {"file":"lib/Games/ghosting-renewed/ghostingmod/SAVE/q.sav","utf8":"сейв сборки"},
+        {"file":"lib/Games/ghosting-renewed/debug.log","utf8":"лог сборки\n"},
+        {"file":"lib/Games/ghosting-renewed/installed.json","utf8":"{\"state\":\"ready\"}\n"},
+        {"file":"lib/Games/ghosting-renewed/installed.json.previous","utf8":"{}\n"},
+        {"file":"lib/Games/ghosting-renewed/.hlsr/note.txt","utf8":"служебный\n"},
+        {"dir":"lib/Games/ghosting-renewed/empty dir"}
+      ],
+      "steps": [{"op":"check","manifest":"full","install":"lib/Games/ghosting-renewed","preserve":true},{"op":"check","manifest":"full","install":"lib/Games/ghosting-renewed","preserve":false}],
+      "results": [
+        {
+          "outcome": {
+            "ok": {
+              "gameId": "ghosting-renewed",
+              "version": "1.0.0",
+              "total": 10,
+              "checked": 10,
+              "valid": ["bin/client.dll","bin/dxsupport.cfg","ghostingmod/gameinfo.txt","ghostingmod/maps/map1.bsp","ghostingmod/scripts/edited-size.cfg","ghostingmod/scripts/edited.cfg","ghostingmod/scripts/gone.cfg","ghostingmod/scripts/stock.cfg","hl2.exe","Документы/прочти меня.txt"],
+              "missing": [],
+              "corrupted": [],
+              "sizeMismatch": [],
+              "extra": [],
+              "skipped": ["custom/keep/me.txt","debug.log","ghostingmod/SAVE/q.sav","settings.ini"],
+              "damaged": 0,
+              "ok": true
+            }
+          },
+          "timeline": [
+            {"ev":"progress","data":{"gameId":"ghosting-renewed","checked":0,"total":10,"phase":"size"}},
+            {"ev":"progress","data":{"gameId":"ghosting-renewed","checked":1,"total":10,"percent":10,"phase":"hash"}},
+            {"ev":"progress","data":{"gameId":"ghosting-renewed","checked":6,"total":10,"percent":60,"phase":"hash"}},
+            {"ev":"progress","data":{"gameId":"ghosting-renewed","checked":10,"total":10,"percent":100,"phase":"hash"}},
+            {"log":"info","message":"[game-delivery] проверка файлов ghosting-renewed: проверено 10, повреждено 0, лишних 0"}
+          ],
+          "busy": false
+        },
+        {
+          "outcome": {
+            "ok": {
+              "gameId": "ghosting-renewed",
+              "version": "1.0.0",
+              "total": 12,
+              "checked": 12,
+              "valid": ["bin/client.dll","bin/dxsupport.cfg","custom/keep/me.txt","ghostingmod/gameinfo.txt","ghostingmod/maps/map1.bsp","ghostingmod/scripts/edited-size.cfg","ghostingmod/scripts/edited.cfg","ghostingmod/scripts/gone.cfg","ghostingmod/scripts/stock.cfg","hl2.exe","settings.ini","Документы/прочти меня.txt"],
+              "missing": [],
+              "corrupted": [],
+              "sizeMismatch": [],
+              "extra": [],
+              "skipped": ["debug.log","ghostingmod/SAVE/q.sav"],
+              "damaged": 0,
+              "ok": true
+            }
+          },
+          "timeline": [
+            {"ev":"progress","data":{"gameId":"ghosting-renewed","checked":0,"total":12,"phase":"size"}},
+            {"ev":"progress","data":{"gameId":"ghosting-renewed","checked":1,"total":12,"percent":8.333333333333332,"phase":"hash"}},
+            {"ev":"progress","data":{"gameId":"ghosting-renewed","checked":6,"total":12,"percent":50,"phase":"hash"}},
+            {"ev":"progress","data":{"gameId":"ghosting-renewed","checked":11,"total":12,"percent":91.66666666666666,"phase":"hash"}},
+            {"ev":"progress","data":{"gameId":"ghosting-renewed","checked":12,"total":12,"percent":100,"phase":"hash"}},
+            {"log":"info","message":"[game-delivery] проверка файлов ghosting-renewed: проверено 12, повреждено 0, лишних 0"}
+          ],
+          "busy": false
+        }
+      ]
+    },
+    {
+      "name": "повреждения: изменённый, короче, пропавший, лишний, cfg игрока, сохраняемые пути",
+      "setup": [
+        {"dir":"lib/.hlsr/state"},
+        {"file":"lib/Games/ghosting-renewed/hl2.exe","utf8":"exe 1.0.0\n"},
+        {"file":"lib/Games/ghosting-renewed/ghostingmod/gameinfo.txt","utf8":"\"GameInfo\" { game \"Ghosting\" }\n"},
+        {"file":"lib/Games/ghosting-renewed/ghostingmod/maps/map1.bsp","hex":"f3c9ebfd2b30f05c70710a2ebd22e0b2ca16810c0b4193639d9a84fe34bc5ca6d20a25c3dc39b36ce79cca8efa471d1707f5ced235ac99676da2f091dba957b8"},
+        {"file":"lib/Games/ghosting-renewed/ghostingmod/scripts/stock.cfg","utf8":"// stock\n"},
+        {"file":"lib/Games/ghosting-renewed/ghostingmod/scripts/edited.cfg","utf8":"// before\n"},
+        {"file":"lib/Games/ghosting-renewed/ghostingmod/scripts/edited-size.cfg","utf8":"// before, shorter\n"},
+        {"file":"lib/Games/ghosting-renewed/ghostingmod/scripts/gone.cfg","utf8":"// gone\n"},
+        {"file":"lib/Games/ghosting-renewed/bin/client.dll","hex":"fca84178498fb8cc23051418532ae006043b6356848892fd29f61fb78a7b9312bd68a9958098d055901e72e47ced948d"},
+        {"file":"lib/Games/ghosting-renewed/bin/dxsupport.cfg","utf8":"dx 1.0.0\n"},
+        {"file":"lib/Games/ghosting-renewed/Документы/прочти меня.txt","utf8":"кириллица и пробелы\n"},
+        {"file":"lib/Games/ghosting-renewed/settings.ini","utf8":"[user]\nfov=90\n"},
+        {"file":"lib/Games/ghosting-renewed/custom/keep/me.txt","utf8":"сборка\n"},
+        {"file":"lib/Games/ghosting-renewed/ghostingmod/SAVE/q.sav","utf8":"сейв сборки"},
+        {"file":"lib/Games/ghosting-renewed/debug.log","utf8":"лог сборки\n"},
+        {"file":"lib/Games/ghosting-renewed/installed.json","utf8":"{\"state\":\"ready\"}\n"},
+        {"file":"lib/Games/ghosting-renewed/installed.json.previous","utf8":"{}\n"},
+        {"file":"lib/Games/ghosting-renewed/.hlsr/note.txt","utf8":"служебный\n"},
+        {"dir":"lib/Games/ghosting-renewed/empty dir"}
+      ],
+      "steps": [
+        {"op":"write","file":"lib/Games/ghosting-renewed/hl2.exe","utf8":"exe 9.9.9\n"},
+        {"op":"write","file":"lib/Games/ghosting-renewed/bin/client.dll","utf8":"короче"},
+        {"op":"remove","file":"lib/Games/ghosting-renewed/ghostingmod/maps/map1.bsp"},
+        {"op":"write","file":"lib/Games/ghosting-renewed/ghostingmod/scripts/stock.cfg","utf8":"// changed\n"},
+        {"op":"write","file":"lib/Games/ghosting-renewed/ghostingmod/scripts/edited.cfg","utf8":"// AFTER!!\n"},
+        {"op":"write","file":"lib/Games/ghosting-renewed/ghostingmod/scripts/edited-size.cfg","utf8":"// мой cfg совсем другой длины\n"},
+        {"op":"remove","file":"lib/Games/ghosting-renewed/ghostingmod/scripts/gone.cfg"},
+        {"op":"remove","file":"lib/Games/ghosting-renewed/Документы/прочти меня.txt"},
+        {"op":"mkdir","dir":"lib/Games/ghosting-renewed/Документы/прочти меня.txt"},
+        {"op":"write","file":"lib/Games/ghosting-renewed/ghostingmod/zzz.txt","utf8":"лишний\n"},
+        {"op":"write","file":"lib/Games/ghosting-renewed/New Dir/файл с пробелом.bin","utf8":"лишний\n"},
+        {"op":"write","file":"lib/Games/ghosting-renewed/a/b/c/deep.txt","utf8":"глубоко\n"},
+        {"op":"write","file":"lib/Games/ghosting-renewed/Zeta.txt","utf8":"лишний\n"},
+        {"op":"write","file":"lib/Games/ghosting-renewed/settings.ini","utf8":"[user]\nfov=120\n"},
+        {"op":"write","file":"lib/Games/ghosting-renewed/custom/keep/new.txt","utf8":"игрок\n"},
+        {"op":"write","file":"lib/Games/ghosting-renewed/ghostingmod/SAVE/new.sav","utf8":"сейв игрока"},
+        {"op":"write","file":"lib/Games/ghosting-renewed/x/y.log","utf8":"лог\n"},
+        {"op":"check","manifest":"full","install":"lib/Games/ghosting-renewed","preserve":true},
+        {"op":"check","manifest":"full","install":"lib/Games/ghosting-renewed","preserve":false,"gameId":"other-game"}
+      ],
+      "results": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        {
+          "outcome": {
+            "ok": {
+              "gameId": "ghosting-renewed",
+              "version": "1.0.0",
+              "total": 10,
+              "checked": 10,
+              "valid": ["bin/dxsupport.cfg","ghostingmod/gameinfo.txt"],
+              "missing": ["ghostingmod/maps/map1.bsp","ghostingmod/scripts/gone.cfg","Документы/прочти меня.txt"],
+              "corrupted": [{"path":"hl2.exe","expected":"b5f6eda7e43f0833815cf670d564876a901a91df5a6f3211cfda6550ecc22600","actual":"8306ca052425e6d94738a55b6f95d03bcdc944ec25da9b14c234de4dfe5a1518"}],
+              "sizeMismatch": [{"path":"bin/client.dll","expected":48,"actual":12}],
+              "extra": ["New Dir/файл с пробелом.bin","Zeta.txt","a/b/c/deep.txt","ghostingmod/zzz.txt"],
+              "skipped": ["custom/keep/me.txt","debug.log","ghostingmod/SAVE/q.sav","settings.ini","ghostingmod/scripts/edited-size.cfg","ghostingmod/scripts/edited.cfg","ghostingmod/scripts/stock.cfg"],
+              "damaged": 5,
+              "ok": false
+            }
+          },
+          "timeline": [
+            {"ev":"progress","data":{"gameId":"ghosting-renewed","checked":0,"total":10,"phase":"size"}},
+            {"ev":"progress","data":{"gameId":"ghosting-renewed","checked":1,"total":10,"percent":10,"phase":"hash"}},
+            {"ev":"progress","data":{"gameId":"ghosting-renewed","checked":6,"total":10,"percent":60,"phase":"hash"}},
+            {"ev":"progress","data":{"gameId":"ghosting-renewed","checked":10,"total":10,"percent":100,"phase":"hash"}},
+            {"log":"info","message":"[game-delivery] проверка файлов ghosting-renewed: проверено 10, повреждено 5, лишних 4"}
+          ],
+          "busy": false
+        },
+        {
+          "outcome": {
+            "ok": {
+              "gameId": "other-game",
+              "version": "1.0.0",
+              "total": 12,
+              "checked": 12,
+              "valid": ["bin/dxsupport.cfg","custom/keep/me.txt","ghostingmod/gameinfo.txt"],
+              "missing": ["ghostingmod/maps/map1.bsp","ghostingmod/scripts/gone.cfg","Документы/прочти меня.txt"],
+              "corrupted": [{"path":"hl2.exe","expected":"b5f6eda7e43f0833815cf670d564876a901a91df5a6f3211cfda6550ecc22600","actual":"8306ca052425e6d94738a55b6f95d03bcdc944ec25da9b14c234de4dfe5a1518"}],
+              "sizeMismatch": [{"path":"bin/client.dll","expected":48,"actual":12},{"path":"settings.ini","expected":14,"actual":15}],
+              "extra": ["New Dir/файл с пробелом.bin","Zeta.txt","a/b/c/deep.txt","custom/keep/new.txt","ghostingmod/zzz.txt"],
+              "skipped": ["debug.log","ghostingmod/SAVE/q.sav","ghostingmod/scripts/edited-size.cfg","ghostingmod/scripts/edited.cfg","ghostingmod/scripts/stock.cfg"],
+              "damaged": 6,
+              "ok": false
+            }
+          },
+          "timeline": [
+            {"ev":"progress","data":{"gameId":"other-game","checked":0,"total":12,"phase":"size"}},
+            {"ev":"progress","data":{"gameId":"other-game","checked":1,"total":12,"percent":8.333333333333332,"phase":"hash"}},
+            {"ev":"progress","data":{"gameId":"other-game","checked":6,"total":12,"percent":50,"phase":"hash"}},
+            {"ev":"progress","data":{"gameId":"other-game","checked":11,"total":12,"percent":91.66666666666666,"phase":"hash"}},
+            {"ev":"progress","data":{"gameId":"other-game","checked":12,"total":12,"percent":100,"phase":"hash"}},
+            {"log":"info","message":"[game-delivery] проверка файлов other-game: проверено 12, повреждено 6, лишних 5"}
+          ],
+          "busy": false
+        }
+      ]
+    },
+    {
+      "name": "регистр имён и ссылки",
+      "setup": [
+        {"dir":"lib/.hlsr/state"},
+        {"file":"lib/Games/ghosting-renewed/hl2.exe","utf8":"exe 1.0.0\n"},
+        {"file":"lib/Games/ghosting-renewed/ghostingmod/gameinfo.txt","utf8":"\"GameInfo\" { game \"Ghosting\" }\n"},
+        {"file":"lib/Games/ghosting-renewed/ghostingmod/maps/map1.bsp","hex":"f3c9ebfd2b30f05c70710a2ebd22e0b2ca16810c0b4193639d9a84fe34bc5ca6d20a25c3dc39b36ce79cca8efa471d1707f5ced235ac99676da2f091dba957b8"},
+        {"file":"lib/Games/ghosting-renewed/ghostingmod/scripts/stock.cfg","utf8":"// stock\n"},
+        {"file":"lib/Games/ghosting-renewed/ghostingmod/scripts/edited.cfg","utf8":"// before\n"},
+        {"file":"lib/Games/ghosting-renewed/ghostingmod/scripts/edited-size.cfg","utf8":"// before, shorter\n"},
+        {"file":"lib/Games/ghosting-renewed/ghostingmod/scripts/gone.cfg","utf8":"// gone\n"},
+        {"file":"lib/Games/ghosting-renewed/bin/client.dll","hex":"fca84178498fb8cc23051418532ae006043b6356848892fd29f61fb78a7b9312bd68a9958098d055901e72e47ced948d"},
+        {"file":"lib/Games/ghosting-renewed/bin/dxsupport.cfg","utf8":"dx 1.0.0\n"},
+        {"file":"lib/Games/ghosting-renewed/Документы/прочти меня.txt","utf8":"кириллица и пробелы\n"},
+        {"file":"lib/Games/ghosting-renewed/settings.ini","utf8":"[user]\nfov=90\n"},
+        {"file":"lib/Games/ghosting-renewed/custom/keep/me.txt","utf8":"сборка\n"},
+        {"file":"lib/Games/ghosting-renewed/ghostingmod/SAVE/q.sav","utf8":"сейв сборки"},
+        {"file":"lib/Games/ghosting-renewed/debug.log","utf8":"лог сборки\n"},
+        {"file":"lib/Games/ghosting-renewed/installed.json","utf8":"{\"state\":\"ready\"}\n"},
+        {"file":"lib/Games/ghosting-renewed/installed.json.previous","utf8":"{}\n"},
+        {"file":"lib/Games/ghosting-renewed/.hlsr/note.txt","utf8":"служебный\n"},
+        {"dir":"lib/Games/ghosting-renewed/empty dir"}
+      ],
+      "steps": [
+        {"op":"remove","file":"lib/Games/ghosting-renewed/bin/dxsupport.cfg"},
+        {"op":"write","file":"lib/Games/ghosting-renewed/BIN/DXsupport.cfg","utf8":"dx другой регистр\n"},
+        {"op":"mkdir","dir":"lib/Games/ghosting-renewed/real dir"},
+        {"op":"symlink","symlink":"lib/Games/ghosting-renewed/link to dir","target":"<root>/lib/Games/ghosting-renewed/real dir"},
+        {"op":"symlink","symlink":"lib/Games/ghosting-renewed/link to file","target":"<root>/lib/Games/ghosting-renewed/hl2.exe"},
+        {"op":"remove","file":"lib/Games/ghosting-renewed/ghostingmod/gameinfo.txt"},
+        {"op":"symlink","symlink":"lib/Games/ghosting-renewed/ghostingmod/gameinfo.txt","target":"<root>/lib/Games/ghosting-renewed/ghostingmod/scripts/stock.cfg"},
+        {"op":"check","manifest":"full","install":"lib/Games/ghosting-renewed","preserve":true}
+      ],
+      "unix": true,
+      "results": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        {
+          "outcome": {
+            "ok": {
+              "gameId": "ghosting-renewed",
+              "version": "1.0.0",
+              "total": 10,
+              "checked": 10,
+              "valid": ["bin/client.dll","ghostingmod/maps/map1.bsp","ghostingmod/scripts/edited-size.cfg","ghostingmod/scripts/edited.cfg","ghostingmod/scripts/gone.cfg","ghostingmod/scripts/stock.cfg","hl2.exe","Документы/прочти меня.txt"],
+              "missing": ["bin/dxsupport.cfg"],
+              "corrupted": [],
+              "sizeMismatch": [{"path":"ghostingmod/gameinfo.txt","expected":31,"actual":9}],
+              "extra": [],
+              "skipped": ["custom/keep/me.txt","debug.log","ghostingmod/SAVE/q.sav","settings.ini"],
+              "damaged": 2,
+              "ok": false
+            }
+          },
+          "timeline": [
+            {"ev":"progress","data":{"gameId":"ghosting-renewed","checked":0,"total":10,"phase":"size"}},
+            {"ev":"progress","data":{"gameId":"ghosting-renewed","checked":1,"total":10,"percent":10,"phase":"hash"}},
+            {"ev":"progress","data":{"gameId":"ghosting-renewed","checked":6,"total":10,"percent":60,"phase":"hash"}},
+            {"ev":"progress","data":{"gameId":"ghosting-renewed","checked":10,"total":10,"percent":100,"phase":"hash"}},
+            {"log":"info","message":"[game-delivery] проверка файлов ghosting-renewed: проверено 10, повреждено 2, лишних 0"}
+          ],
+          "busy": false
+        }
+      ]
+    },
+    {
+      "name": "прогресс: события каждые пять файлов и на последнем",
+      "setup": [
+        {"dir":"lib"},
+        {"file":"lib/Games/ghosting-renewed/many/f00.txt","utf8":"файл 0\n"},
+        {"file":"lib/Games/ghosting-renewed/many/f01.txt","utf8":"файл 1\n"},
+        {"file":"lib/Games/ghosting-renewed/many/f02.txt","utf8":"файл 2\n"},
+        {"file":"lib/Games/ghosting-renewed/many/f03.txt","utf8":"файл 3\n"},
+        {"file":"lib/Games/ghosting-renewed/many/f04.txt","utf8":"файл 4\n"},
+        {"file":"lib/Games/ghosting-renewed/many/f05.txt","utf8":"файл 5\n"},
+        {"file":"lib/Games/ghosting-renewed/many/f06.txt","utf8":"файл 6\n"},
+        {"file":"lib/Games/ghosting-renewed/many/f07.txt","utf8":"файл 7\n"},
+        {"file":"lib/Games/ghosting-renewed/many/f08.txt","utf8":"файл 8\n"},
+        {"file":"lib/Games/ghosting-renewed/many/f09.txt","utf8":"файл 9\n"},
+        {"file":"lib/Games/ghosting-renewed/many/f10.txt","utf8":"файл 10\n"},
+        {"file":"lib/Games/ghosting-renewed/many/f11.txt","utf8":"файл 11\n"},
+        {"file":"lib/Games/ghosting-renewed/many/f12.txt","utf8":"файл 12\n"},
+        {"file":"lib/Games/ghosting-renewed/many/f13.txt","utf8":"файл 13\n"},
+        {"file":"lib/Games/ghosting-renewed/many/f14.txt","utf8":"файл 14\n"},
+        {"file":"lib/Games/ghosting-renewed/many/f15.txt","utf8":"файл 15\n"},
+        {"file":"lib/Games/ghosting-renewed/many/f16.txt","utf8":"файл 16\n"},
+        {"file":"lib/Games/ghosting-renewed/many/f17.txt","utf8":"файл 17\n"},
+        {"file":"lib/Games/ghosting-renewed/many/f18.txt","utf8":"файл 18\n"},
+        {"file":"lib/Games/ghosting-renewed/many/f19.txt","utf8":"файл 19\n"},
+        {"file":"lib/Games/ghosting-renewed/many/f20.txt","utf8":"файл 20\n"},
+        {"file":"lib/Games/ghosting-renewed/many/f21.txt","utf8":"файл 21\n"},
+        {"file":"lib/Games/ghosting-renewed/many/f22.txt","utf8":"файл 22\n"},
+        {"file":"lib/Games/ghosting-renewed/many/f23.txt","utf8":"файл 23\n"},
+        {"file":"lib/Games/ghosting-renewed/many/f24.txt","utf8":"файл 24\n"},
+        {"file":"lib/Games/ghosting-renewed/many/f25.txt","utf8":"файл 25\n"},
+        {"file":"lib/Games/ghosting-renewed/many/f26.txt","utf8":"файл 26\n"},
+        {"file":"lib/Games/ghosting-renewed/many/f27.txt","utf8":"файл 27\n"},
+        {"file":"lib/Games/ghosting-renewed/many/f28.txt","utf8":"файл 28\n"},
+        {"file":"lib/Games/ghosting-renewed/many/f29.txt","utf8":"файл 29\n"},
+        {"file":"lib/Games/ghosting-renewed/many/f30.txt","utf8":"файл 30\n"}
+      ],
+      "steps": [{"op":"check","manifest":"many","install":"lib/Games/ghosting-renewed"},{"op":"remove","file":"lib/Games/ghosting-renewed/many/f03.txt"},{"op":"check","manifest":"many","install":"lib/Games/ghosting-renewed"}],
+      "results": [
+        {
+          "outcome": {
+            "ok": {
+              "gameId": "ghosting-renewed",
+              "version": "1.0.0",
+              "total": 31,
+              "checked": 31,
+              "valid": [
+                "many/f00.txt",
+                "many/f01.txt",
+                "many/f02.txt",
+                "many/f03.txt",
+                "many/f04.txt",
+                "many/f05.txt",
+                "many/f06.txt",
+                "many/f07.txt",
+                "many/f08.txt",
+                "many/f09.txt",
+                "many/f10.txt",
+                "many/f11.txt",
+                "many/f12.txt",
+                "many/f13.txt",
+                "many/f14.txt",
+                "many/f15.txt",
+                "many/f16.txt",
+                "many/f17.txt",
+                "many/f18.txt",
+                "many/f19.txt",
+                "many/f20.txt",
+                "many/f21.txt",
+                "many/f22.txt",
+                "many/f23.txt",
+                "many/f24.txt",
+                "many/f25.txt",
+                "many/f26.txt",
+                "many/f27.txt",
+                "many/f28.txt",
+                "many/f29.txt",
+                "many/f30.txt"
+              ],
+              "missing": [],
+              "corrupted": [],
+              "sizeMismatch": [],
+              "extra": [],
+              "skipped": [],
+              "damaged": 0,
+              "ok": true
+            }
+          },
+          "timeline": [
+            {"ev":"progress","data":{"gameId":"ghosting-renewed","checked":0,"total":31,"phase":"size"}},
+            {"ev":"progress","data":{"gameId":"ghosting-renewed","checked":1,"total":31,"percent":3.225806451612903,"phase":"hash"}},
+            {"ev":"progress","data":{"gameId":"ghosting-renewed","checked":6,"total":31,"percent":19.35483870967742,"phase":"hash"}},
+            {"ev":"progress","data":{"gameId":"ghosting-renewed","checked":11,"total":31,"percent":35.483870967741936,"phase":"hash"}},
+            {"ev":"progress","data":{"gameId":"ghosting-renewed","checked":16,"total":31,"percent":51.61290322580645,"phase":"hash"}},
+            {"ev":"progress","data":{"gameId":"ghosting-renewed","checked":21,"total":31,"percent":67.74193548387096,"phase":"hash"}},
+            {"ev":"progress","data":{"gameId":"ghosting-renewed","checked":26,"total":31,"percent":83.87096774193549,"phase":"hash"}},
+            {"ev":"progress","data":{"gameId":"ghosting-renewed","checked":31,"total":31,"percent":100,"phase":"hash"}},
+            {"log":"info","message":"[game-delivery] проверка файлов ghosting-renewed: проверено 31, повреждено 0, лишних 0"}
+          ],
+          "busy": false
+        },
+        null,
+        {
+          "outcome": {
+            "ok": {
+              "gameId": "ghosting-renewed",
+              "version": "1.0.0",
+              "total": 31,
+              "checked": 31,
+              "valid": [
+                "many/f00.txt",
+                "many/f01.txt",
+                "many/f02.txt",
+                "many/f04.txt",
+                "many/f05.txt",
+                "many/f06.txt",
+                "many/f07.txt",
+                "many/f08.txt",
+                "many/f09.txt",
+                "many/f10.txt",
+                "many/f11.txt",
+                "many/f12.txt",
+                "many/f13.txt",
+                "many/f14.txt",
+                "many/f15.txt",
+                "many/f16.txt",
+                "many/f17.txt",
+                "many/f18.txt",
+                "many/f19.txt",
+                "many/f20.txt",
+                "many/f21.txt",
+                "many/f22.txt",
+                "many/f23.txt",
+                "many/f24.txt",
+                "many/f25.txt",
+                "many/f26.txt",
+                "many/f27.txt",
+                "many/f28.txt",
+                "many/f29.txt",
+                "many/f30.txt"
+              ],
+              "missing": ["many/f03.txt"],
+              "corrupted": [],
+              "sizeMismatch": [],
+              "extra": [],
+              "skipped": [],
+              "damaged": 1,
+              "ok": false
+            }
+          },
+          "timeline": [
+            {"ev":"progress","data":{"gameId":"ghosting-renewed","checked":0,"total":31,"phase":"size"}},
+            {"ev":"progress","data":{"gameId":"ghosting-renewed","checked":1,"total":31,"percent":3.225806451612903,"phase":"hash"}},
+            {"ev":"progress","data":{"gameId":"ghosting-renewed","checked":6,"total":31,"percent":19.35483870967742,"phase":"hash"}},
+            {"ev":"progress","data":{"gameId":"ghosting-renewed","checked":11,"total":31,"percent":35.483870967741936,"phase":"hash"}},
+            {"ev":"progress","data":{"gameId":"ghosting-renewed","checked":16,"total":31,"percent":51.61290322580645,"phase":"hash"}},
+            {"ev":"progress","data":{"gameId":"ghosting-renewed","checked":21,"total":31,"percent":67.74193548387096,"phase":"hash"}},
+            {"ev":"progress","data":{"gameId":"ghosting-renewed","checked":26,"total":31,"percent":83.87096774193549,"phase":"hash"}},
+            {"ev":"progress","data":{"gameId":"ghosting-renewed","checked":31,"total":31,"percent":100,"phase":"hash"}},
+            {"log":"info","message":"[game-delivery] проверка файлов ghosting-renewed: проверено 31, повреждено 1, лишних 0"}
+          ],
+          "busy": false
+        }
+      ]
+    },
+    {
+      "name": "пустой манифест и gameId из манифеста или запроса",
+      "setup": [{"dir":"lib/Games/ghosting-renewed"},{"file":"lib/Games/ghosting-renewed/a.txt","utf8":"a"}],
+      "steps": [{"op":"check","manifest":"empty","install":"lib/Games/ghosting-renewed"},{"op":"check","manifest":"noGame","install":"lib/Games/ghosting-renewed"},{"op":"check","manifest":"noGame","install":"lib/Games/ghosting-renewed","gameId":"from-request"}],
+      "results": [
+        {
+          "outcome": {"ok":{"gameId":"ghosting-renewed","version":"1.0.0","total":0,"checked":0,"valid":[],"missing":[],"corrupted":[],"sizeMismatch":[],"extra":["a.txt"],"skipped":[],"damaged":0,"ok":true}},
+          "timeline": [{"ev":"progress","data":{"gameId":"ghosting-renewed","checked":0,"total":0,"phase":"size"}},{"log":"info","message":"[game-delivery] проверка файлов ghosting-renewed: проверено 0, повреждено 0, лишних 1"}],
+          "busy": false
+        },
+        {
+          "outcome": {"ok":{"version":"1.0.0","total":1,"checked":1,"valid":["a.txt"],"missing":[],"corrupted":[],"sizeMismatch":[],"extra":[],"skipped":[],"damaged":0,"ok":true}},
+          "timeline": [{"ev":"progress","data":{"checked":0,"total":1,"phase":"size"}},{"ev":"progress","data":{"checked":1,"total":1,"percent":100,"phase":"hash"}},{"log":"info","message":"[game-delivery] проверка файлов undefined: проверено 1, повреждено 0, лишних 0"}],
+          "busy": false
+        },
+        {
+          "outcome": {"ok":{"gameId":"from-request","version":"1.0.0","total":1,"checked":1,"valid":["a.txt"],"missing":[],"corrupted":[],"sizeMismatch":[],"extra":[],"skipped":[],"damaged":0,"ok":true}},
+          "timeline": [{"ev":"progress","data":{"gameId":"from-request","checked":0,"total":1,"phase":"size"}},{"ev":"progress","data":{"gameId":"from-request","checked":1,"total":1,"percent":100,"phase":"hash"}},{"log":"info","message":"[game-delivery] проверка файлов from-request: проверено 1, повреждено 0, лишних 0"}],
+          "busy": false
+        }
+      ]
+    },
+    {
+      "name": "отмена: между файлами, потом проверка идёт снова",
+      "setup": [
+        {"dir":"lib"},
+        {"file":"lib/Games/ghosting-renewed/many/f00.txt","utf8":"файл 0\n"},
+        {"file":"lib/Games/ghosting-renewed/many/f01.txt","utf8":"файл 1\n"},
+        {"file":"lib/Games/ghosting-renewed/many/f02.txt","utf8":"файл 2\n"},
+        {"file":"lib/Games/ghosting-renewed/many/f03.txt","utf8":"файл 3\n"},
+        {"file":"lib/Games/ghosting-renewed/many/f04.txt","utf8":"файл 4\n"},
+        {"file":"lib/Games/ghosting-renewed/many/f05.txt","utf8":"файл 5\n"},
+        {"file":"lib/Games/ghosting-renewed/many/f06.txt","utf8":"файл 6\n"},
+        {"file":"lib/Games/ghosting-renewed/many/f07.txt","utf8":"файл 7\n"},
+        {"file":"lib/Games/ghosting-renewed/many/f08.txt","utf8":"файл 8\n"},
+        {"file":"lib/Games/ghosting-renewed/many/f09.txt","utf8":"файл 9\n"},
+        {"file":"lib/Games/ghosting-renewed/many/f10.txt","utf8":"файл 10\n"},
+        {"file":"lib/Games/ghosting-renewed/many/f11.txt","utf8":"файл 11\n"},
+        {"file":"lib/Games/ghosting-renewed/many/f12.txt","utf8":"файл 12\n"},
+        {"file":"lib/Games/ghosting-renewed/many/f13.txt","utf8":"файл 13\n"},
+        {"file":"lib/Games/ghosting-renewed/many/f14.txt","utf8":"файл 14\n"},
+        {"file":"lib/Games/ghosting-renewed/many/f15.txt","utf8":"файл 15\n"},
+        {"file":"lib/Games/ghosting-renewed/many/f16.txt","utf8":"файл 16\n"},
+        {"file":"lib/Games/ghosting-renewed/many/f17.txt","utf8":"файл 17\n"},
+        {"file":"lib/Games/ghosting-renewed/many/f18.txt","utf8":"файл 18\n"},
+        {"file":"lib/Games/ghosting-renewed/many/f19.txt","utf8":"файл 19\n"},
+        {"file":"lib/Games/ghosting-renewed/many/f20.txt","utf8":"файл 20\n"},
+        {"file":"lib/Games/ghosting-renewed/many/f21.txt","utf8":"файл 21\n"},
+        {"file":"lib/Games/ghosting-renewed/many/f22.txt","utf8":"файл 22\n"},
+        {"file":"lib/Games/ghosting-renewed/many/f23.txt","utf8":"файл 23\n"},
+        {"file":"lib/Games/ghosting-renewed/many/f24.txt","utf8":"файл 24\n"},
+        {"file":"lib/Games/ghosting-renewed/many/f25.txt","utf8":"файл 25\n"},
+        {"file":"lib/Games/ghosting-renewed/many/f26.txt","utf8":"файл 26\n"},
+        {"file":"lib/Games/ghosting-renewed/many/f27.txt","utf8":"файл 27\n"},
+        {"file":"lib/Games/ghosting-renewed/many/f28.txt","utf8":"файл 28\n"},
+        {"file":"lib/Games/ghosting-renewed/many/f29.txt","utf8":"файл 29\n"},
+        {"file":"lib/Games/ghosting-renewed/many/f30.txt","utf8":"файл 30\n"}
+      ],
+      "steps": [{"op":"cancelIdle"},{"op":"check","manifest":"many","install":"lib/Games/ghosting-renewed","cancelAfter":7},{"op":"check","manifest":"many","install":"lib/Games/ghosting-renewed"},{"op":"cancelIdle"}],
+      "results": [
+        {"cancelled":false,"busy":false},
+        {
+          "outcome": {"error":{"code":"CANCELLED","message":"Проверка отменена","details":null}},
+          "timeline": [
+            {"ev":"progress","data":{"gameId":"ghosting-renewed","checked":0,"total":31,"phase":"size"}},
+            {"ev":"progress","data":{"gameId":"ghosting-renewed","checked":1,"total":31,"percent":3.225806451612903,"phase":"hash"}},
+            {"ev":"progress","data":{"gameId":"ghosting-renewed","checked":6,"total":31,"percent":19.35483870967742,"phase":"hash"}},
+            {"ev":"progress","data":{"gameId":"ghosting-renewed","checked":11,"total":31,"percent":35.483870967741936,"phase":"hash"}}
+          ],
+          "busy": false
+        },
+        {
+          "outcome": {
+            "ok": {
+              "gameId": "ghosting-renewed",
+              "version": "1.0.0",
+              "total": 31,
+              "checked": 31,
+              "valid": [
+                "many/f00.txt",
+                "many/f01.txt",
+                "many/f02.txt",
+                "many/f03.txt",
+                "many/f04.txt",
+                "many/f05.txt",
+                "many/f06.txt",
+                "many/f07.txt",
+                "many/f08.txt",
+                "many/f09.txt",
+                "many/f10.txt",
+                "many/f11.txt",
+                "many/f12.txt",
+                "many/f13.txt",
+                "many/f14.txt",
+                "many/f15.txt",
+                "many/f16.txt",
+                "many/f17.txt",
+                "many/f18.txt",
+                "many/f19.txt",
+                "many/f20.txt",
+                "many/f21.txt",
+                "many/f22.txt",
+                "many/f23.txt",
+                "many/f24.txt",
+                "many/f25.txt",
+                "many/f26.txt",
+                "many/f27.txt",
+                "many/f28.txt",
+                "many/f29.txt",
+                "many/f30.txt"
+              ],
+              "missing": [],
+              "corrupted": [],
+              "sizeMismatch": [],
+              "extra": [],
+              "skipped": [],
+              "damaged": 0,
+              "ok": true
+            }
+          },
+          "timeline": [
+            {"ev":"progress","data":{"gameId":"ghosting-renewed","checked":0,"total":31,"phase":"size"}},
+            {"ev":"progress","data":{"gameId":"ghosting-renewed","checked":1,"total":31,"percent":3.225806451612903,"phase":"hash"}},
+            {"ev":"progress","data":{"gameId":"ghosting-renewed","checked":6,"total":31,"percent":19.35483870967742,"phase":"hash"}},
+            {"ev":"progress","data":{"gameId":"ghosting-renewed","checked":11,"total":31,"percent":35.483870967741936,"phase":"hash"}},
+            {"ev":"progress","data":{"gameId":"ghosting-renewed","checked":16,"total":31,"percent":51.61290322580645,"phase":"hash"}},
+            {"ev":"progress","data":{"gameId":"ghosting-renewed","checked":21,"total":31,"percent":67.74193548387096,"phase":"hash"}},
+            {"ev":"progress","data":{"gameId":"ghosting-renewed","checked":26,"total":31,"percent":83.87096774193549,"phase":"hash"}},
+            {"ev":"progress","data":{"gameId":"ghosting-renewed","checked":31,"total":31,"percent":100,"phase":"hash"}},
+            {"log":"info","message":"[game-delivery] проверка файлов ghosting-renewed: проверено 31, повреждено 0, лишних 0"}
+          ],
+          "busy": false
+        },
+        {"cancelled":false,"busy":false}
+      ]
+    },
+    {
+      "name": "отказ: манифест, папка игры, путь наружу",
+      "setup": [
+        {"dir":"lib/.hlsr/state"},
+        {"file":"lib/Games/ghosting-renewed/hl2.exe","utf8":"exe 1.0.0\n"},
+        {"file":"lib/Games/ghosting-renewed/ghostingmod/gameinfo.txt","utf8":"\"GameInfo\" { game \"Ghosting\" }\n"},
+        {"file":"lib/Games/ghosting-renewed/ghostingmod/maps/map1.bsp","hex":"f3c9ebfd2b30f05c70710a2ebd22e0b2ca16810c0b4193639d9a84fe34bc5ca6d20a25c3dc39b36ce79cca8efa471d1707f5ced235ac99676da2f091dba957b8"},
+        {"file":"lib/Games/ghosting-renewed/ghostingmod/scripts/stock.cfg","utf8":"// stock\n"},
+        {"file":"lib/Games/ghosting-renewed/ghostingmod/scripts/edited.cfg","utf8":"// before\n"},
+        {"file":"lib/Games/ghosting-renewed/ghostingmod/scripts/edited-size.cfg","utf8":"// before, shorter\n"},
+        {"file":"lib/Games/ghosting-renewed/ghostingmod/scripts/gone.cfg","utf8":"// gone\n"},
+        {"file":"lib/Games/ghosting-renewed/bin/client.dll","hex":"fca84178498fb8cc23051418532ae006043b6356848892fd29f61fb78a7b9312bd68a9958098d055901e72e47ced948d"},
+        {"file":"lib/Games/ghosting-renewed/bin/dxsupport.cfg","utf8":"dx 1.0.0\n"},
+        {"file":"lib/Games/ghosting-renewed/Документы/прочти меня.txt","utf8":"кириллица и пробелы\n"},
+        {"file":"lib/Games/ghosting-renewed/settings.ini","utf8":"[user]\nfov=90\n"},
+        {"file":"lib/Games/ghosting-renewed/custom/keep/me.txt","utf8":"сборка\n"},
+        {"file":"lib/Games/ghosting-renewed/ghostingmod/SAVE/q.sav","utf8":"сейв сборки"},
+        {"file":"lib/Games/ghosting-renewed/debug.log","utf8":"лог сборки\n"},
+        {"file":"lib/Games/ghosting-renewed/installed.json","utf8":"{\"state\":\"ready\"}\n"},
+        {"file":"lib/Games/ghosting-renewed/installed.json.previous","utf8":"{}\n"},
+        {"file":"lib/Games/ghosting-renewed/.hlsr/note.txt","utf8":"служебный\n"},
+        {"dir":"lib/Games/ghosting-renewed/empty dir"}
+      ],
+      "steps": [{"op":"check","manifest":null,"install":"lib/Games/ghosting-renewed"},{"op":"check","manifest":"notArray","install":"lib/Games/ghosting-renewed"},{"op":"check","manifest":"full","install":"lib/Games/missing-game"},{"op":"check","manifest":"escape","install":"lib/Games/ghosting-renewed"},{"op":"check","manifest":"full","install":"lib/Games/ghosting-renewed","preserve":true}],
+      "results": [
+        {"outcome":{"error":{"code":"MANIFEST_INVALID","message":"Нет файлового манифеста для проверки","details":null}},"timeline":[],"busy":false},
+        {"outcome":{"error":{"code":"MANIFEST_INVALID","message":"Нет файлового манифеста для проверки","details":null}},"timeline":[],"busy":false},
+        {"outcome":{"error":{"code":"NOT_INSTALLED","message":"Папка игры не найдена: <root>/lib/Games/missing-game","details":null}},"timeline":[],"busy":false},
+        {"outcome":{"error":{"code":"PATH_INVALID","message":"Файл \"../escape.txt\" выходит за пределы разрешённого каталога: <root>/lib/Games/escape.txt","details":null}},"timeline":[{"ev":"progress","data":{"gameId":"ghosting-renewed","checked":0,"total":2,"phase":"size"}},{"ev":"progress","data":{"gameId":"ghosting-renewed","checked":1,"total":2,"percent":50,"phase":"hash"}}],"busy":false},
+        {
+          "outcome": {
+            "ok": {
+              "gameId": "ghosting-renewed",
+              "version": "1.0.0",
+              "total": 10,
+              "checked": 10,
+              "valid": ["bin/client.dll","bin/dxsupport.cfg","ghostingmod/gameinfo.txt","ghostingmod/maps/map1.bsp","ghostingmod/scripts/edited-size.cfg","ghostingmod/scripts/edited.cfg","ghostingmod/scripts/gone.cfg","ghostingmod/scripts/stock.cfg","hl2.exe","Документы/прочти меня.txt"],
+              "missing": [],
+              "corrupted": [],
+              "sizeMismatch": [],
+              "extra": [],
+              "skipped": ["custom/keep/me.txt","debug.log","ghostingmod/SAVE/q.sav","settings.ini"],
+              "damaged": 0,
+              "ok": true
+            }
+          },
+          "timeline": [
+            {"ev":"progress","data":{"gameId":"ghosting-renewed","checked":0,"total":10,"phase":"size"}},
+            {"ev":"progress","data":{"gameId":"ghosting-renewed","checked":1,"total":10,"percent":10,"phase":"hash"}},
+            {"ev":"progress","data":{"gameId":"ghosting-renewed","checked":6,"total":10,"percent":60,"phase":"hash"}},
+            {"ev":"progress","data":{"gameId":"ghosting-renewed","checked":10,"total":10,"percent":100,"phase":"hash"}},
+            {"log":"info","message":"[game-delivery] проверка файлов ghosting-renewed: проверено 10, повреждено 0, лишних 0"}
+          ],
+          "busy": false
+        }
+      ]
+    },
+    {
+      "name": "одновременно: вторая проверка при идущей первой",
+      "setup": [
+        {"dir":"lib/.hlsr/state"},
+        {"file":"lib/Games/ghosting-renewed/hl2.exe","utf8":"exe 1.0.0\n"},
+        {"file":"lib/Games/ghosting-renewed/ghostingmod/gameinfo.txt","utf8":"\"GameInfo\" { game \"Ghosting\" }\n"},
+        {"file":"lib/Games/ghosting-renewed/ghostingmod/maps/map1.bsp","hex":"f3c9ebfd2b30f05c70710a2ebd22e0b2ca16810c0b4193639d9a84fe34bc5ca6d20a25c3dc39b36ce79cca8efa471d1707f5ced235ac99676da2f091dba957b8"},
+        {"file":"lib/Games/ghosting-renewed/ghostingmod/scripts/stock.cfg","utf8":"// stock\n"},
+        {"file":"lib/Games/ghosting-renewed/ghostingmod/scripts/edited.cfg","utf8":"// before\n"},
+        {"file":"lib/Games/ghosting-renewed/ghostingmod/scripts/edited-size.cfg","utf8":"// before, shorter\n"},
+        {"file":"lib/Games/ghosting-renewed/ghostingmod/scripts/gone.cfg","utf8":"// gone\n"},
+        {"file":"lib/Games/ghosting-renewed/bin/client.dll","hex":"fca84178498fb8cc23051418532ae006043b6356848892fd29f61fb78a7b9312bd68a9958098d055901e72e47ced948d"},
+        {"file":"lib/Games/ghosting-renewed/bin/dxsupport.cfg","utf8":"dx 1.0.0\n"},
+        {"file":"lib/Games/ghosting-renewed/Документы/прочти меня.txt","utf8":"кириллица и пробелы\n"},
+        {"file":"lib/Games/ghosting-renewed/settings.ini","utf8":"[user]\nfov=90\n"},
+        {"file":"lib/Games/ghosting-renewed/custom/keep/me.txt","utf8":"сборка\n"},
+        {"file":"lib/Games/ghosting-renewed/ghostingmod/SAVE/q.sav","utf8":"сейв сборки"},
+        {"file":"lib/Games/ghosting-renewed/debug.log","utf8":"лог сборки\n"},
+        {"file":"lib/Games/ghosting-renewed/installed.json","utf8":"{\"state\":\"ready\"}\n"},
+        {"file":"lib/Games/ghosting-renewed/installed.json.previous","utf8":"{}\n"},
+        {"file":"lib/Games/ghosting-renewed/.hlsr/note.txt","utf8":"служебный\n"},
+        {"dir":"lib/Games/ghosting-renewed/empty dir"}
+      ],
+      "steps": [{"op":"concurrent","first":{"op":"check","manifest":"full","install":"lib/Games/ghosting-renewed"},"second":{"op":"check","manifest":"full","install":"lib/Games/ghosting-renewed"}}],
+      "results": [
+        {
+          "busy": true,
+          "second": {"error":{"code":"ALREADY_RUNNING","message":"Проверка файлов уже выполняется","details":null}},
+          "first": {
+            "ok": {
+              "gameId": "ghosting-renewed",
+              "version": "1.0.0",
+              "total": 12,
+              "checked": 12,
+              "valid": ["bin/client.dll","bin/dxsupport.cfg","custom/keep/me.txt","ghostingmod/gameinfo.txt","ghostingmod/maps/map1.bsp","ghostingmod/scripts/edited-size.cfg","ghostingmod/scripts/edited.cfg","ghostingmod/scripts/gone.cfg","ghostingmod/scripts/stock.cfg","hl2.exe","settings.ini","Документы/прочти меня.txt"],
+              "missing": [],
+              "corrupted": [],
+              "sizeMismatch": [],
+              "extra": [],
+              "skipped": ["debug.log","ghostingmod/SAVE/q.sav"],
+              "damaged": 0,
+              "ok": true
+            }
+          },
+          "timeline": [
+            {"ev":"progress","data":{"gameId":"ghosting-renewed","checked":0,"total":12,"phase":"size"}},
+            {"ev":"progress","data":{"gameId":"ghosting-renewed","checked":1,"total":12,"percent":8.333333333333332,"phase":"hash"}},
+            {"ev":"progress","data":{"gameId":"ghosting-renewed","checked":6,"total":12,"percent":50,"phase":"hash"}},
+            {"ev":"progress","data":{"gameId":"ghosting-renewed","checked":11,"total":12,"percent":91.66666666666666,"phase":"hash"}},
+            {"ev":"progress","data":{"gameId":"ghosting-renewed","checked":12,"total":12,"percent":100,"phase":"hash"}},
+            {"log":"info","message":"[game-delivery] проверка файлов ghosting-renewed: проверено 12, повреждено 0, лишних 0"}
+          ]
+        }
+      ]
+    }
+  ]
+}

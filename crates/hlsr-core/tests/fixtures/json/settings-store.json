@@ -1,0 +1,25 @@
+{
+	"50": 0,
+	"config": {
+		"language": 1,
+		"gpuAcceleration": false,
+		"uiScale": 1.25,
+		"futureField": {
+			"nested": [
+				1,
+				"два",
+				{
+					"70": true
+				}
+			]
+		}
+	},
+	"b": 0,
+	"big": 123456789012345680000,
+	"tiny": 1e-7,
+	"frac": 0.1,
+	"huge": 1e+21,
+	"s": "строка \"кавычки\" \\ \n\t\u0001 😀",
+	"empty": {},
+	"list": []
+}

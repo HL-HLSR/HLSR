@@ -1,0 +1,594 @@
+{
+  "now": 1792152000000,
+  "version": "0.5.0",
+  "device": "Windows",
+  "scenarios": [
+    {
+      "name": "0.4.9: спасибо, 409, привязки, чужой профиль, выход везде",
+      "build": "win32/0.5.0/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "ticket": "plain",
+      "session": {
+        "token": "hlsr_0123456789abcdef_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_abc",
+        "profile": {"steamId64":"76561198000000111","personaName":"Fake runner","registeredAt":"2026-10-05T10:00:00Z","games":{"hl1-won":{"totalPlaySeconds":7200,"launchCount":3,"lastLaunchAt":"2026-10-15T10:00:00Z","lastExitAt":null}},"details":{"status":"привет"},"badges":["verified"],"generationId":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}
+      },
+      "account": {"steamId64":"76561198000000111","personaName":"Local runner"},
+      "setup": [{"file":"support-thanks-seen.json","utf8":"[\"p-old\",5,\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\"p-seen\"]"}],
+      "routes": {
+        "POST /v2/runner/sync": [
+          {
+            "json": {
+              "profile": {
+                "steamId64": "76561198000000111",
+                "personaName": "Fake runner",
+                "registeredAt": "2026-10-05T10:00:00Z",
+                "games": {"hl1-won":{"totalPlaySeconds":7200,"launchCount":3,"lastLaunchAt":"2026-10-15T10:00:00Z","lastExitAt":null}},
+                "details": {"status":"привет"},
+                "badges": ["verified","bughunter","booster","anniversary-2","anniversary-11"],
+                "generationId": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "subscriber": true,
+                "boosterSince": 1760000000,
+                "supporterSince": 1750000000,
+                "stylePreset": 3,
+                "perks": {"styles":true,"subscriber":{"active":true,"until":"2026-12-31T00:00:00Z"}},
+                "telegram": {"linked":true,"username":" kanoyo "},
+                "discordLink": {"linked":true,"username":"kanoyo","boosterSince":1760000000}
+              },
+              "supportThanks": [
+                {"id":"p-seen","kind":"subscription"},
+                {"id":"p-1","kind":"subscription","until":1767225600,"styles":true},
+                {"id":"p-2","kind":"donation","until":0},
+                {"id":"p-3","kind":"gift"},
+                {"id":5,"kind":"donation"},
+                null,
+                {"id":"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx","kind":"donation"},
+                {"id":"p-1","kind":"donation","until":1.5,"styles":"true"},
+                {"id":"yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy","kind":"donation","until":253402300799},
+                "p-9",
+                {"id":"p-10","kind":"donation"},
+                {"id":"p-11","kind":"donation"}
+              ]
+            }
+          },
+          {
+            "json": {
+              "profile": {
+                "steamId64": "76561198000000111",
+                "personaName": "Fake runner",
+                "registeredAt": "2026-10-05T10:00:00Z",
+                "games": {"hl1-won":{"totalPlaySeconds":7200,"launchCount":3,"lastLaunchAt":"2026-10-15T10:00:00Z","lastExitAt":null}},
+                "details": {"status":"привет"},
+                "badges": ["verified","bughunter","booster","anniversary-2","anniversary-11"],
+                "generationId": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "subscriber": true,
+                "boosterSince": 1760000000,
+                "supporterSince": 1750000000,
+                "stylePreset": 3,
+                "perks": {"styles":true,"subscriber":{"active":true,"until":"2026-12-31T00:00:00Z"}},
+                "telegram": {"linked":true,"username":" kanoyo "},
+                "discordLink": {"linked":true,"username":"kanoyo","boosterSince":1760000000}
+              },
+              "supportThanks": [{"id":"p-1","kind":"subscription"},{"id":"p-4","kind":"donation","until":253402300800}]
+            }
+          },
+          {
+            "json": {
+              "profile": {
+                "steamId64": "76561198000000111",
+                "personaName": "Fake runner",
+                "registeredAt": "2026-10-05T10:00:00Z",
+                "games": {"hl1-won":{"totalPlaySeconds":7200,"launchCount":3,"lastLaunchAt":"2026-10-15T10:00:00Z","lastExitAt":null}},
+                "details": {"status":"привет"},
+                "badges": ["verified","bughunter","booster","anniversary-2","anniversary-11"],
+                "generationId": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "subscriber": true,
+                "boosterSince": 1760000000,
+                "supporterSince": 1750000000,
+                "stylePreset": 3,
+                "perks": {"styles":true,"subscriber":{"active":true,"until":"2026-12-31T00:00:00Z"}},
+                "telegram": {"linked":true,"username":" kanoyo "},
+                "discordLink": {"linked":true,"username":"kanoyo","boosterSince":1760000000}
+              },
+              "supportThanks": [{"id":"p-4","kind":"donation"},{"id":"p-5","kind":"subscription","until":1767225600}]
+            }
+          },
+          {"json":{"supportThanks":"p-6"}}
+        ],
+        "POST /v2/runner/customize": [
+          {"status":409,"json":{"error":"PERK_REQUIRED"}},
+          {"status":409,"json":{"error":"PRESET_UNKNOWN"}},
+          {"status":409,"json":{"error":"SPEEDRUN_TAKEN"}},
+          {"status":409,"json":{"error":"OTHER"}},
+          {"status":409,"body":"x"},
+          {"json":{"profile":{"steamId64":"76561198000000111","personaName":"Fake runner","registeredAt":"2026-10-05T10:00:00Z","games":{"hl1-won":{"totalPlaySeconds":7200,"launchCount":3,"lastLaunchAt":"2026-10-15T10:00:00Z","lastExitAt":null}},"details":{"status":"привет"},"badges":["verified"],"generationId":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","stylePreset":2}}}
+        ],
+        "POST /v2/runner/speedrun/link": [{"status":409,"json":{"error":"SPEEDRUN_TAKEN"}}],
+        "POST /v2/runner/telegram/code": [{"json":{"status":"ok","code":"123456","expiresAt":1760000600}}],
+        "POST /v2/runner/telegram/unlink": [{"json":{"profile":{"steamId64":"76561198000000111","personaName":"Fake runner","registeredAt":"2026-10-05T10:00:00Z","games":{"hl1-won":{"totalPlaySeconds":7200,"launchCount":3,"lastLaunchAt":"2026-10-15T10:00:00Z","lastExitAt":null}},"details":{"status":"привет"},"badges":["verified"],"generationId":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","telegram":null}}}],
+        "POST /v2/runner/discord/code": [{"json":{"code":"654321","expiresAt":1760000600}},{"status":500}],
+        "POST /v2/runner/discord/unlink": [{"json":{"profile":{"steamId64":"76561198000000111","personaName":"Fake runner","registeredAt":"2026-10-05T10:00:00Z","games":{"hl1-won":{"totalPlaySeconds":7200,"launchCount":3,"lastLaunchAt":"2026-10-15T10:00:00Z","lastExitAt":null}},"details":{"status":"привет"},"badges":["verified"],"generationId":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","discordLink":{"linked":false}}}}],
+        "POST /v2/runner/profile": [
+          {
+            "json": {
+              "profile": {
+                "steamId64": "76561198000000222",
+                "personaName": "Fake runner",
+                "registeredAt": "2026-10-05T10:00:00Z",
+                "games": {"hl1-won":{"totalPlaySeconds":7200,"launchCount":3,"lastLaunchAt":"2026-10-15T10:00:00Z","lastExitAt":null}},
+                "details": {"secrets":["piano","scout","wake-up"]},
+                "badges": ["verified"],
+                "generationId": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "subscriber": true,
+                "boosterSince": 1760000000,
+                "telegram": {"linked":true,"username":"other"}
+              },
+              "vote": {"value":1,"nextAt":null}
+            }
+          },
+          {"json":{"profile":{"steamId64":"76561198000000111","personaName":"Fake runner","registeredAt":"2026-10-05T10:00:00Z","games":{"hl1-won":{"totalPlaySeconds":7200,"launchCount":3,"lastLaunchAt":"2026-10-15T10:00:00Z","lastExitAt":null}},"details":{"status":"привет"},"badges":["verified"],"generationId":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}}}
+        ],
+        "POST /v2/runner/session/start": [{"json":{}}],
+        "POST /v2/runner/session/end": [{"json":{}}],
+        "POST /v2/runner/logout-all": [{"status":500,"json":{}},{"status":204},{"json":{"ok":true}}]
+      },
+      "steps": [
+        {"op":"construct"},
+        {"op":"snapshot"},
+        {"op":"ipc","channel":"runner-sync"},
+        {"op":"files"},
+        {"op":"snapshot"},
+        {"op":"ipc","channel":"runner-sync"},
+        {"op":"files"},
+        {"op":"stop"},
+        {"op":"construct"},
+        {"op":"ipc","channel":"runner-sync"},
+        {"op":"ipc","channel":"runner-sync"},
+        {"op":"files"},
+        {"op":"ipc","channel":"runner-customize","args":[{"stylePreset":5}]},
+        {"op":"ipc","channel":"runner-customize","args":[{"stylePreset":6}]},
+        {"op":"ipc","channel":"runner-customize","args":[{"stylePreset":7}]},
+        {"op":"ipc","channel":"runner-customize","args":[{"stylePreset":8}]},
+        {"op":"ipc","channel":"runner-customize","args":[{"stylePreset":9}]},
+        {"op":"ipc","channel":"runner-customize","args":[{"stylePreset":2}]},
+        {"op":"ipc","channel":"runner-speedrun-link","args":["key"]},
+        {"op":"ipc","channel":"runner-telegram-code","args":["ignored"]},
+        {"op":"ipc","channel":"runner-telegram-unlink"},
+        {"op":"ipc","channel":"runner-discord-code"},
+        {"op":"ipc","channel":"runner-discord-code"},
+        {"op":"ipc","channel":"runner-discord-unlink"},
+        {"op":"ipc","channel":"runner-profile-view","args":["76561198000000222"]},
+        {"op":"ipc","channel":"runner-profile-view","args":["76561198000000111"]},
+        {"op":"gameStart","gameId":"hl1-won"},
+        {"op":"ipc","channel":"runner-logout-all"},
+        {"op":"snapshot"},
+        {"op":"ipc","channel":"runner-logout-all"},
+        {"op":"snapshot"},
+        {"op":"ipc","channel":"runner-logout-all"},
+        {"op":"authToken"},
+        {"op":"ipc","channel":"runner-logout-all"},
+        {"op":"ipc","channel":"runner-telegram-code"},
+        {"op":"ipc","channel":"runner-discord-unlink"},
+        {"op":"files"}
+      ],
+      "results": [
+        {"result":null,"events":[]},
+        {"result":{"#snapshot":"11f1b504d34045ea","status":"signed-in","error":null,"signedIn":true},"events":[]},
+        {
+          "result": {"#snapshot":"c608d71379926e09","status":"signed-in","error":null,"signedIn":true},
+          "events": [
+            ["ticket",false],
+            ["supportThanks",{"id":"p-1","kind":"subscription","until":1767225600,"styles":true}],
+            ["supportThanks",{"id":"p-2","kind":"donation","until":null,"styles":false}],
+            ["supportThanks",{"id":"p-1","kind":"donation","until":null,"styles":false}],
+            ["supportThanks",{"id":"yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy","kind":"donation","until":253402300799,"styles":false}],
+            ["change",{"#snapshot":"c608d71379926e09","status":"signed-in","error":null,"signedIn":true}]
+          ]
+        },
+        {
+          "result": {
+            "achievement-times.json": "{\"76561198000000111\":{}}",
+            "online-session.json": "{\"version\":1,\"plain\":{\"token\":\"hlsr_0123456789abcdef_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_abc\",\"profile\":{\"steamId64\":\"76561198000000111\",\"personaName\":\"Fake runner\",\"registeredAt\":\"2026-10-05T10:00:00Z\",\"badges\":[\"verified\",\"bughunter\",\"booster\",\"anniversary-2\"],\"customBadges\":[],\"nick\":null,\"subscriber\":true,\"boosterSince\":1760000000,\"supporterSince\":1750000000,\"avatarFrame\":null,\"presence\":{\"online\":false,\"gameId\":null},\"games\":{\"hl1-won\":{\"gameId\":\"hl1-won\",\"totalPlaySeconds\":7200,\"launchCount\":3,\"lastLaunchAt\":\"2026-10-15T10:00:00Z\",\"lastExitAt\":null}},\"details\":{\"status\":\"Ð¿ÑÐ¸Ð²ÐµÑ\",\"pronouns\":\"\",\"country\":\"\",\"discord\":\"\",\"youtube\":\"\",\"twitch\":\"\",\"avatarUrl\":\"\",\"hideFromPlayers\":false,\"hideGame\":false,\"secrets\":[]},\"rating\":{\"score\":0,\"likes\":0,\"dislikes\":0,\"dubious\":false},\"deletionAt\":null,\"generationId\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"perks\":{\"styles\":true,\"subscriber\":{\"active\":true,\"until\":\"2026-12-31T00:00:00Z\"}},\"stylePreset\":3,\"telegram\":{\"linked\":true,\"username\":\"kanoyo\"},\"discordLink\":{\"linked\":true,\"username\":\"kanoyo\",\"boosterSince\":1760000000}}}}",
+            "support-thanks-seen.json": "[\"p-old\",\"p-seen\",\"p-1\",\"p-2\",\"p-1\",\"yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy\"]"
+          },
+          "events": []
+        },
+        {"result":{"#snapshot":"c608d71379926e09","status":"signed-in","error":null,"signedIn":true},"events":[]},
+        {"result":{"#snapshot":"c608d71379926e09","status":"signed-in","error":null,"signedIn":true},"events":[["ticket",false],["supportThanks",{"id":"p-4","kind":"donation","until":null,"styles":false}],["change",{"#snapshot":"c608d71379926e09","status":"signed-in","error":null,"signedIn":true}]]},
+        {
+          "result": {
+            "achievement-times.json": "{\"76561198000000111\":{}}",
+            "online-session.json": "{\"version\":1,\"plain\":{\"token\":\"hlsr_0123456789abcdef_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_abc\",\"profile\":{\"steamId64\":\"76561198000000111\",\"personaName\":\"Fake runner\",\"registeredAt\":\"2026-10-05T10:00:00Z\",\"badges\":[\"verified\",\"bughunter\",\"booster\",\"anniversary-2\"],\"customBadges\":[],\"nick\":null,\"subscriber\":true,\"boosterSince\":1760000000,\"supporterSince\":1750000000,\"avatarFrame\":null,\"presence\":{\"online\":false,\"gameId\":null},\"games\":{\"hl1-won\":{\"gameId\":\"hl1-won\",\"totalPlaySeconds\":7200,\"launchCount\":3,\"lastLaunchAt\":\"2026-10-15T10:00:00Z\",\"lastExitAt\":null}},\"details\":{\"status\":\"Ð¿ÑÐ¸Ð²ÐµÑ\",\"pronouns\":\"\",\"country\":\"\",\"discord\":\"\",\"youtube\":\"\",\"twitch\":\"\",\"avatarUrl\":\"\",\"hideFromPlayers\":false,\"hideGame\":false,\"secrets\":[]},\"rating\":{\"score\":0,\"likes\":0,\"dislikes\":0,\"dubious\":false},\"deletionAt\":null,\"generationId\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"perks\":{\"styles\":true,\"subscriber\":{\"active\":true,\"until\":\"2026-12-31T00:00:00Z\"}},\"stylePreset\":3,\"telegram\":{\"linked\":true,\"username\":\"kanoyo\"},\"discordLink\":{\"linked\":true,\"username\":\"kanoyo\",\"boosterSince\":1760000000}}}}",
+            "support-thanks-seen.json": "[\"p-old\",\"p-seen\",\"p-1\",\"p-2\",\"p-1\",\"yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy\",\"p-4\"]"
+          },
+          "events": []
+        },
+        {"result":null,"events":[]},
+        {"result":null,"events":[]},
+        {"result":{"#snapshot":"c608d71379926e09","status":"signed-in","error":null,"signedIn":true},"events":[["ticket",false],["supportThanks",{"id":"p-5","kind":"subscription","until":1767225600,"styles":false}],["change",{"#snapshot":"c608d71379926e09","status":"signed-in","error":null,"signedIn":true}]]},
+        {"result":{"#snapshot":"c608d71379926e09","status":"signed-in","error":null,"signedIn":true},"events":[["ticket",false]]},
+        {
+          "result": {
+            "achievement-times.json": "{\"76561198000000111\":{}}",
+            "online-session.json": "{\"version\":1,\"plain\":{\"token\":\"hlsr_0123456789abcdef_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_abc\",\"profile\":{\"steamId64\":\"76561198000000111\",\"personaName\":\"Fake runner\",\"registeredAt\":\"2026-10-05T10:00:00Z\",\"badges\":[\"verified\",\"bughunter\",\"booster\",\"anniversary-2\"],\"customBadges\":[],\"nick\":null,\"subscriber\":true,\"boosterSince\":1760000000,\"supporterSince\":1750000000,\"avatarFrame\":null,\"presence\":{\"online\":false,\"gameId\":null},\"games\":{\"hl1-won\":{\"gameId\":\"hl1-won\",\"totalPlaySeconds\":7200,\"launchCount\":3,\"lastLaunchAt\":\"2026-10-15T10:00:00Z\",\"lastExitAt\":null}},\"details\":{\"status\":\"Ð¿ÑÐ¸Ð²ÐµÑ\",\"pronouns\":\"\",\"country\":\"\",\"discord\":\"\",\"youtube\":\"\",\"twitch\":\"\",\"avatarUrl\":\"\",\"hideFromPlayers\":false,\"hideGame\":false,\"secrets\":[]},\"rating\":{\"score\":0,\"likes\":0,\"dislikes\":0,\"dubious\":false},\"deletionAt\":null,\"generationId\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"perks\":{\"styles\":true,\"subscriber\":{\"active\":true,\"until\":\"2026-12-31T00:00:00Z\"}},\"stylePreset\":3,\"telegram\":{\"linked\":true,\"username\":\"kanoyo\"},\"discordLink\":{\"linked\":true,\"username\":\"kanoyo\",\"boosterSince\":1760000000}}}}",
+            "support-thanks-seen.json": "[\"p-old\",\"p-seen\",\"p-1\",\"p-2\",\"p-1\",\"yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy\",\"p-4\",\"p-5\"]"
+          },
+          "events": []
+        },
+        {"result":{"status":"error","code":"RUNNER_PERK_REQUIRED"},"events":[["ticket",false]]},
+        {"result":{"status":"error","code":"RUNNER_PRESET_UNKNOWN"},"events":[["ticket",false]]},
+        {"result":{"status":"error","code":"RUNNER_SPEEDRUN_TAKEN"},"events":[["ticket",false]]},
+        {"result":{"status":"error","code":"RUNNER_HTTP_409"},"events":[["ticket",false]]},
+        {"result":{"status":"error","code":"RUNNER_HTTP_409"},"events":[["ticket",false]]},
+        {
+          "result": {
+            "profile": {"steamId64":"76561198000000111","personaName":"Fake runner","registeredAt":"2026-10-05T10:00:00Z","games":{"hl1-won":{"totalPlaySeconds":7200,"launchCount":3,"lastLaunchAt":"2026-10-15T10:00:00Z","lastExitAt":null}},"details":{"status":"привет"},"badges":["verified"],"generationId":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","stylePreset":2},
+            "snapshot": {"#snapshot":"d1aa2d0629bea24e","status":"signed-in","error":null,"signedIn":true}
+          },
+          "events": [["ticket",false],["change",{"#snapshot":"d1aa2d0629bea24e","status":"signed-in","error":null,"signedIn":true}]]
+        },
+        {"result":{"status":"error","code":"RUNNER_SPEEDRUN_TAKEN"},"events":[["ticket",false]]},
+        {"result":{"status":"ok","code":"123456","expiresAt":1760000600,"snapshot":{"#snapshot":"d1aa2d0629bea24e","status":"signed-in","error":null,"signedIn":true}},"events":[["ticket",false]]},
+        {
+          "result": {
+            "profile": {"steamId64":"76561198000000111","personaName":"Fake runner","registeredAt":"2026-10-05T10:00:00Z","games":{"hl1-won":{"totalPlaySeconds":7200,"launchCount":3,"lastLaunchAt":"2026-10-15T10:00:00Z","lastExitAt":null}},"details":{"status":"привет"},"badges":["verified"],"generationId":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","telegram":null},
+            "snapshot": {"#snapshot":"9ccbfff5b7deed70","status":"signed-in","error":null,"signedIn":true}
+          },
+          "events": [["ticket",false],["change",{"#snapshot":"9ccbfff5b7deed70","status":"signed-in","error":null,"signedIn":true}]]
+        },
+        {"result":{"code":"654321","expiresAt":1760000600,"snapshot":{"#snapshot":"9ccbfff5b7deed70","status":"signed-in","error":null,"signedIn":true}},"events":[["ticket",false]]},
+        {"result":{"status":"error","code":"RUNNER_HTTP_500"},"events":[["ticket",false]]},
+        {
+          "result": {
+            "profile": {"steamId64":"76561198000000111","personaName":"Fake runner","registeredAt":"2026-10-05T10:00:00Z","games":{"hl1-won":{"totalPlaySeconds":7200,"launchCount":3,"lastLaunchAt":"2026-10-15T10:00:00Z","lastExitAt":null}},"details":{"status":"привет"},"badges":["verified"],"generationId":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","discordLink":{"linked":false}},
+            "snapshot": {"#snapshot":"9ccbfff5b7deed70","status":"signed-in","error":null,"signedIn":true}
+          },
+          "events": [["ticket",false],["change",{"#snapshot":"9ccbfff5b7deed70","status":"signed-in","error":null,"signedIn":true}]]
+        },
+        {
+          "result": {
+            "account": {"signedIn":true,"steamId64":"76561198000000222","steamId2":"STEAM_0:0:19867247","personaName":"Fake runner","avatarDataUri":null,"connection":"connected"},
+            "firstRunAt": "2026-10-05T10:00:00Z",
+            "achievements": [
+              {"id":"first-launch","title":"#L_ACH_FIRST_TITLE","description":"#L_ACH_FIRST_DESC","icon":"fas fa-download","tier":null,"unlocked":true,"progress":1,"value":null,"goal":null,"at":"2026-10-05T10:00:00Z"},
+              {"id":"scout","title":"#L_ACH_SCOUT_TITLE","description":"#L_ACH_SCOUT_DESC","icon":"fas fa-binoculars","tier":null,"unlocked":true,"progress":1,"value":null,"goal":null,"at":null},
+              {"id":"secret-2","title":"#L_ACH_SECRET_TITLE","description":"#L_ACH_SEALED_DESC","icon":"fas fa-lock","tier":null,"unlocked":true,"progress":1,"value":null,"goal":null,"at":null,"secret":true,"hidden":true},
+              {"id":"secret-7","title":"#L_ACH_SECRET_TITLE","description":"#L_ACH_SEALED_DESC","icon":"fas fa-lock","tier":null,"unlocked":true,"progress":1,"value":null,"goal":null,"at":null,"secret":true,"hidden":true},
+              {"id":"touch-grass","title":"#L_ACH_GRASS_TITLE","description":"#L_ACH_GRASS_DESC","icon":"fas fa-seedling","tier":null,"unlocked":false,"progress":0.04,"value":2,"goal":50,"gameId":"hl1-won","at":null},
+              {"id":"full-set","title":"#L_ACH_FULLSET_TITLE","description":"#L_ACH_FULLSET_DESC","icon":"fas fa-layer-group","tier":null,"unlocked":false,"progress":0,"value":null,"goal":null,"at":null},
+              {"id":"warmup","title":"#L_ACH_WARMUP_TITLE","description":"#L_ACH_WARMUP_DESC","icon":"fas fa-play","tier":null,"unlocked":false,"progress":0.12,"value":3,"goal":25,"at":null},
+              {"id":"marathon","title":"#L_ACH_MARATHON_TITLE","description":"#L_ACH_MARATHON_DESC","icon":"fas fa-hourglass-half","tier":null,"unlocked":false,"progress":0,"value":null,"goal":null,"at":null},
+              {"id":"week-streak","title":"#L_ACH_WEEK_TITLE","description":"#L_ACH_WEEK_DESC","icon":"fas fa-calendar-check","tier":null,"unlocked":false,"progress":0,"value":null,"goal":null,"at":null},
+              {"id":"own-binds","title":"#L_ACH_BINDS_TITLE","description":"#L_ACH_BINDS_DESC","icon":"fas fa-keyboard","tier":null,"unlocked":false,"progress":0,"value":null,"goal":null,"at":null},
+              {"id":"stopwatch","title":"#L_ACH_STOPWATCH_TITLE","description":"#L_ACH_STOPWATCH_DESC","icon":"fas fa-stopwatch","tier":null,"unlocked":false,"progress":0,"value":null,"goal":null,"at":null},
+              {"id":"own-style","title":"#L_ACH_STYLE_TITLE","description":"#L_ACH_STYLE_DESC","icon":"fas fa-paintbrush","tier":null,"unlocked":false,"progress":0,"value":null,"goal":null,"at":null},
+              {"id":"community-voice","title":"#L_ACH_VOICE_TITLE","description":"#L_ACH_VOICE_DESC","icon":"fas fa-heart","tier":null,"unlocked":false,"progress":0,"value":null,"goal":null,"at":null},
+              {"id":"chronicler","title":"#L_ACH_CHRONICLER_TITLE","description":"#L_ACH_CHRONICLER_DESC","icon":"fas fa-scroll","tier":null,"unlocked":false,"progress":0,"value":null,"goal":null,"at":null},
+              {"id":"double-shift","title":"#L_ACH_DOUBLE_TITLE","description":"#L_ACH_GRASS_DESC","icon":"fas fa-business-time","tier":null,"unlocked":false,"progress":0.02,"value":2,"goal":100,"gameId":"hl1-won","at":null},
+              {"id":"cursed","title":"#L_ACH_CURSED_TITLE","description":"#L_ACH_GRASS_DESC","icon":"fas fa-skull","tier":"purple","unlocked":false,"progress":0.004,"value":2,"goal":500,"gameId":"hl1-won","at":null},
+              {"id":"avid-runner","title":"#L_ACH_AVID_TITLE","description":"#L_ACH_GRASS_DESC","icon":"fas fa-person-running","tier":"gold","unlocked":false,"progress":0.002,"value":2,"goal":1000,"gameId":"hl1-won","at":null},
+              {"id":"mountain-dweller","title":"#L_ACH_MOUNTAIN_TITLE","description":"#L_ACH_WARMUP_DESC","icon":"fas fa-mountain","tier":"purple","unlocked":false,"progress":0.006,"value":3,"goal":500,"at":null},
+              {"id":"shut-it-down","title":"#L_ACH_SHUT_TITLE","description":"#L_ACH_WARMUP_DESC","icon":"fas fa-power-off","tier":"gold","unlocked":false,"progress":0.003,"value":3,"goal":1000,"at":null},
+              {"id":"around-the-clock","title":"#L_ACH_CLOCK_TITLE","description":"#L_ACH_CLOCK_DESC","icon":"fas fa-clock","tier":"purple","unlocked":false,"progress":0,"value":null,"goal":null,"at":null},
+              {"id":"hard-worker","title":"#L_ACH_WORKER_TITLE","description":"#L_ACH_WORKER_DESC","icon":"fas fa-hammer","tier":null,"unlocked":false,"progress":0,"value":null,"goal":null,"at":null},
+              {"id":"day-after-day","title":"#L_ACH_DAYS_TITLE","description":"#L_ACH_DAYS_DESC","icon":"fas fa-calendar-days","tier":"purple","unlocked":false,"progress":0,"value":null,"goal":null,"at":null},
+              {"id":"keep-the-flame","title":"#L_ACH_FLAME_TITLE","description":"#L_ACH_FLAME_DESC","icon":"fas fa-fire-flame-curved","tier":"gold","unlocked":false,"progress":0,"value":null,"goal":null,"at":null},
+              {"id":"frankenstein","title":"#L_ACH_FRANK_TITLE","description":"#L_ACH_FRANK_DESC","icon":"fas fa-bolt","tier":null,"unlocked":false,"progress":0,"value":null,"goal":null,"at":null},
+              {"id":"hoarder","title":"#L_ACH_HOARDER_TITLE","description":"#L_ACH_HOARDER_DESC","icon":"fas fa-box-archive","tier":null,"unlocked":false,"progress":0,"value":null,"goal":null,"at":null},
+              {"id":"video-editor","title":"#L_ACH_EDITOR_TITLE","description":"#L_ACH_EDITOR_DESC","icon":"fas fa-film","tier":null,"unlocked":false,"progress":0,"value":null,"goal":null,"at":null},
+              {"id":"patron","title":"#L_ACH_PATRON_TITLE","description":"#L_ACH_PATRON_DESC","icon":"fas fa-hand-holding-heart","tier":"gold","unlocked":false,"progress":0,"value":null,"goal":null,"at":null},
+              {"id":"particle-accelerator","title":"#L_ACH_BOOSTER_TITLE","description":"#L_ACH_BOOSTER_DESC","icon":"fas fa-atom","tier":"gold","unlocked":false,"progress":0,"value":null,"goal":null,"at":null},
+              {"id":"respected","title":"#L_ACH_RESPECT_TITLE","description":"#L_ACH_RESPECT_DESC","icon":"fas fa-star","tier":null,"unlocked":false,"progress":0,"value":null,"goal":null,"at":null},
+              {"id":"secret-1","title":"#L_ACH_SECRET_TITLE","description":"#L_ACH_SECRET_DESC","icon":"fas fa-question","tier":null,"unlocked":false,"progress":0,"value":null,"goal":null,"at":null,"secret":true,"hidden":true},
+              {"id":"secret-3","title":"#L_ACH_SECRET_TITLE","description":"#L_ACH_SECRET_DESC","icon":"fas fa-question","tier":null,"unlocked":false,"progress":0,"value":null,"goal":null,"at":null,"secret":true,"hidden":true},
+              {"id":"secret-4","title":"#L_ACH_SECRET_TITLE","description":"#L_ACH_SECRET_DESC","icon":"fas fa-question","tier":null,"unlocked":false,"progress":0,"value":null,"goal":null,"at":null,"secret":true,"hidden":true},
+              {"id":"secret-5","title":"#L_ACH_SECRET_TITLE","description":"#L_ACH_SECRET_DESC","icon":"fas fa-question","tier":null,"unlocked":false,"progress":0,"value":null,"goal":null,"at":null,"secret":true,"hidden":true},
+              {"id":"secret-6","title":"#L_ACH_SECRET_TITLE","description":"#L_ACH_SECRET_DESC","icon":"fas fa-question","tier":null,"unlocked":false,"progress":0,"value":null,"goal":null,"at":null,"secret":true,"hidden":true},
+              {"id":"secret-8","title":"#L_ACH_SECRET_TITLE","description":"#L_ACH_SECRET_DESC","icon":"fas fa-question","tier":null,"unlocked":false,"progress":0,"value":null,"goal":null,"at":null,"secret":true,"hidden":true},
+              {"id":"secret-9","title":"#L_ACH_SECRET_TITLE","description":"#L_ACH_SECRET_DESC","icon":"fas fa-question","tier":null,"unlocked":false,"progress":0,"value":null,"goal":null,"at":null,"secret":true,"hidden":true},
+              {"id":"secret-10","title":"#L_ACH_SECRET_TITLE","description":"#L_ACH_SECRET_DESC","icon":"fas fa-question","tier":null,"unlocked":false,"progress":0,"value":null,"goal":null,"at":null,"secret":true,"hidden":true},
+              {"id":"secret-11","title":"#L_ACH_SECRET_TITLE","description":"#L_ACH_SECRET_DESC","icon":"fas fa-question","tier":null,"unlocked":false,"progress":0,"value":null,"goal":null,"at":null,"secret":true,"hidden":true}
+            ],
+            "summary": {"unlocked":4,"total":37,"percent":11},
+            "stats": {"totalSeconds":7200,"gamesPlayed":1,"launches":3,"best":{"gameId":"hl1-won","seconds":7200,"launcherId":"70"}},
+            "badges": ["verified"],
+            "customBadges": [],
+            "nick": null,
+            "subscriber": true,
+            "boosterSince": 1760000000,
+            "supporterSince": null,
+            "avatarFrame": null,
+            "details": {"status":"","pronouns":"","country":"","discord":"","youtube":"","twitch":"","avatarUrl":"","hideFromPlayers":false,"hideGame":false},
+            "deletionAt": null,
+            "games": {"hl1-won":{"gameId":"hl1-won","totalPlaySeconds":7200,"launchCount":3,"lastLaunchAt":"2026-10-15T10:00:00Z","lastExitAt":null}},
+            "rating": {"score":0,"likes":0,"dislikes":0,"dubious":false},
+            "presence": {"online":false,"gameId":null,"launcherId":null},
+            "perks": {"styles":false,"subscriber":null},
+            "stylePreset": null,
+            "telegram": {"linked":true,"username":"other"},
+            "discordLink": {"linked":false,"username":null,"boosterSince":null},
+            "vote": {"value":1,"nextAt":null}
+          },
+          "events": [["ticket",false],["change",{"#snapshot":"872f0139dec9913e","status":"signed-in","error":null,"signedIn":true}],["unlock",{"id":"scout","title":"#L_ACH_SCOUT_TITLE","icon":"fas fa-binoculars"}],["ticket",false]]
+        },
+        {
+          "result": {
+            "account": {"signedIn":true,"steamId64":"76561198000000111","steamId2":"STEAM_0:1:19867191","personaName":"Fake runner","avatarDataUri":null,"connection":"connected"},
+            "firstRunAt": "2026-10-05T10:00:00Z",
+            "achievements": [
+              {"id":"first-launch","title":"#L_ACH_FIRST_TITLE","description":"#L_ACH_FIRST_DESC","icon":"fas fa-download","tier":null,"unlocked":true,"progress":1,"value":null,"goal":null,"at":"2026-10-05T10:00:00Z"},
+              {"id":"touch-grass","title":"#L_ACH_GRASS_TITLE","description":"#L_ACH_GRASS_DESC","icon":"fas fa-seedling","tier":null,"unlocked":false,"progress":0.04,"value":2,"goal":50,"gameId":"hl1-won","at":null},
+              {"id":"full-set","title":"#L_ACH_FULLSET_TITLE","description":"#L_ACH_FULLSET_DESC","icon":"fas fa-layer-group","tier":null,"unlocked":false,"progress":0,"value":null,"goal":null,"at":null},
+              {"id":"warmup","title":"#L_ACH_WARMUP_TITLE","description":"#L_ACH_WARMUP_DESC","icon":"fas fa-play","tier":null,"unlocked":false,"progress":0.12,"value":3,"goal":25,"at":null},
+              {"id":"marathon","title":"#L_ACH_MARATHON_TITLE","description":"#L_ACH_MARATHON_DESC","icon":"fas fa-hourglass-half","tier":null,"unlocked":false,"progress":0,"value":null,"goal":null,"at":null},
+              {"id":"week-streak","title":"#L_ACH_WEEK_TITLE","description":"#L_ACH_WEEK_DESC","icon":"fas fa-calendar-check","tier":null,"unlocked":false,"progress":0,"value":null,"goal":null,"at":null},
+              {"id":"own-binds","title":"#L_ACH_BINDS_TITLE","description":"#L_ACH_BINDS_DESC","icon":"fas fa-keyboard","tier":null,"unlocked":false,"progress":0,"value":null,"goal":null,"at":null},
+              {"id":"stopwatch","title":"#L_ACH_STOPWATCH_TITLE","description":"#L_ACH_STOPWATCH_DESC","icon":"fas fa-stopwatch","tier":null,"unlocked":false,"progress":0,"value":null,"goal":null,"at":null},
+              {"id":"own-style","title":"#L_ACH_STYLE_TITLE","description":"#L_ACH_STYLE_DESC","icon":"fas fa-paintbrush","tier":null,"unlocked":false,"progress":0,"value":null,"goal":null,"at":null},
+              {"id":"community-voice","title":"#L_ACH_VOICE_TITLE","description":"#L_ACH_VOICE_DESC","icon":"fas fa-heart","tier":null,"unlocked":false,"progress":0,"value":null,"goal":null,"at":null},
+              {"id":"scout","title":"#L_ACH_SCOUT_TITLE","description":"#L_ACH_SCOUT_DESC","icon":"fas fa-binoculars","tier":null,"unlocked":false,"progress":0,"value":null,"goal":null,"at":null},
+              {"id":"chronicler","title":"#L_ACH_CHRONICLER_TITLE","description":"#L_ACH_CHRONICLER_DESC","icon":"fas fa-scroll","tier":null,"unlocked":false,"progress":0,"value":null,"goal":null,"at":null},
+              {"id":"double-shift","title":"#L_ACH_DOUBLE_TITLE","description":"#L_ACH_GRASS_DESC","icon":"fas fa-business-time","tier":null,"unlocked":false,"progress":0.02,"value":2,"goal":100,"gameId":"hl1-won","at":null},
+              {"id":"cursed","title":"#L_ACH_CURSED_TITLE","description":"#L_ACH_GRASS_DESC","icon":"fas fa-skull","tier":"purple","unlocked":false,"progress":0.004,"value":2,"goal":500,"gameId":"hl1-won","at":null},
+              {"id":"avid-runner","title":"#L_ACH_AVID_TITLE","description":"#L_ACH_GRASS_DESC","icon":"fas fa-person-running","tier":"gold","unlocked":false,"progress":0.002,"value":2,"goal":1000,"gameId":"hl1-won","at":null},
+              {"id":"mountain-dweller","title":"#L_ACH_MOUNTAIN_TITLE","description":"#L_ACH_WARMUP_DESC","icon":"fas fa-mountain","tier":"purple","unlocked":false,"progress":0.006,"value":3,"goal":500,"at":null},
+              {"id":"shut-it-down","title":"#L_ACH_SHUT_TITLE","description":"#L_ACH_WARMUP_DESC","icon":"fas fa-power-off","tier":"gold","unlocked":false,"progress":0.003,"value":3,"goal":1000,"at":null},
+              {"id":"around-the-clock","title":"#L_ACH_CLOCK_TITLE","description":"#L_ACH_CLOCK_DESC","icon":"fas fa-clock","tier":"purple","unlocked":false,"progress":0,"value":null,"goal":null,"at":null},
+              {"id":"hard-worker","title":"#L_ACH_WORKER_TITLE","description":"#L_ACH_WORKER_DESC","icon":"fas fa-hammer","tier":null,"unlocked":false,"progress":0,"value":null,"goal":null,"at":null},
+              {"id":"day-after-day","title":"#L_ACH_DAYS_TITLE","description":"#L_ACH_DAYS_DESC","icon":"fas fa-calendar-days","tier":"purple","unlocked":false,"progress":0,"value":null,"goal":null,"at":null},
+              {"id":"keep-the-flame","title":"#L_ACH_FLAME_TITLE","description":"#L_ACH_FLAME_DESC","icon":"fas fa-fire-flame-curved","tier":"gold","unlocked":false,"progress":0,"value":null,"goal":null,"at":null},
+              {"id":"frankenstein","title":"#L_ACH_FRANK_TITLE","description":"#L_ACH_FRANK_DESC","icon":"fas fa-bolt","tier":null,"unlocked":false,"progress":0,"value":null,"goal":null,"at":null},
+              {"id":"hoarder","title":"#L_ACH_HOARDER_TITLE","description":"#L_ACH_HOARDER_DESC","icon":"fas fa-box-archive","tier":null,"unlocked":false,"progress":0,"value":null,"goal":null,"at":null},
+              {"id":"video-editor","title":"#L_ACH_EDITOR_TITLE","description":"#L_ACH_EDITOR_DESC","icon":"fas fa-film","tier":null,"unlocked":false,"progress":0,"value":null,"goal":null,"at":null},
+              {"id":"patron","title":"#L_ACH_PATRON_TITLE","description":"#L_ACH_PATRON_DESC","icon":"fas fa-hand-holding-heart","tier":"gold","unlocked":false,"progress":0,"value":null,"goal":null,"at":null},
+              {"id":"particle-accelerator","title":"#L_ACH_BOOSTER_TITLE","description":"#L_ACH_BOOSTER_DESC","icon":"fas fa-atom","tier":"gold","unlocked":false,"progress":0,"value":null,"goal":null,"at":null},
+              {"id":"respected","title":"#L_ACH_RESPECT_TITLE","description":"#L_ACH_RESPECT_DESC","icon":"fas fa-star","tier":null,"unlocked":false,"progress":0,"value":null,"goal":null,"at":null},
+              {"id":"secret-1","title":"#L_ACH_SECRET_TITLE","description":"#L_ACH_SECRET_DESC","icon":"fas fa-question","tier":null,"unlocked":false,"progress":0,"value":null,"goal":null,"at":null,"secret":true,"hidden":true},
+              {"id":"secret-2","title":"#L_ACH_SECRET_TITLE","description":"#L_ACH_SECRET_DESC","icon":"fas fa-question","tier":null,"unlocked":false,"progress":0,"value":null,"goal":null,"at":null,"secret":true,"hidden":true},
+              {"id":"secret-3","title":"#L_ACH_SECRET_TITLE","description":"#L_ACH_SECRET_DESC","icon":"fas fa-question","tier":null,"unlocked":false,"progress":0,"value":null,"goal":null,"at":null,"secret":true,"hidden":true},
+              {"id":"secret-4","title":"#L_ACH_SECRET_TITLE","description":"#L_ACH_SECRET_DESC","icon":"fas fa-question","tier":null,"unlocked":false,"progress":0,"value":null,"goal":null,"at":null,"secret":true,"hidden":true},
+              {"id":"secret-5","title":"#L_ACH_SECRET_TITLE","description":"#L_ACH_SECRET_DESC","icon":"fas fa-question","tier":null,"unlocked":false,"progress":0,"value":null,"goal":null,"at":null,"secret":true,"hidden":true},
+              {"id":"secret-6","title":"#L_ACH_SECRET_TITLE","description":"#L_ACH_SECRET_DESC","icon":"fas fa-question","tier":null,"unlocked":false,"progress":0,"value":null,"goal":null,"at":null,"secret":true,"hidden":true},
+              {"id":"secret-7","title":"#L_ACH_SECRET_TITLE","description":"#L_ACH_SECRET_DESC","icon":"fas fa-question","tier":null,"unlocked":false,"progress":0,"value":null,"goal":null,"at":null,"secret":true,"hidden":true},
+              {"id":"secret-8","title":"#L_ACH_SECRET_TITLE","description":"#L_ACH_SECRET_DESC","icon":"fas fa-question","tier":null,"unlocked":false,"progress":0,"value":null,"goal":null,"at":null,"secret":true,"hidden":true},
+              {"id":"secret-9","title":"#L_ACH_SECRET_TITLE","description":"#L_ACH_SECRET_DESC","icon":"fas fa-question","tier":null,"unlocked":false,"progress":0,"value":null,"goal":null,"at":null,"secret":true,"hidden":true},
+              {"id":"secret-10","title":"#L_ACH_SECRET_TITLE","description":"#L_ACH_SECRET_DESC","icon":"fas fa-question","tier":null,"unlocked":false,"progress":0,"value":null,"goal":null,"at":null,"secret":true,"hidden":true},
+              {"id":"secret-11","title":"#L_ACH_SECRET_TITLE","description":"#L_ACH_SECRET_DESC","icon":"fas fa-question","tier":null,"unlocked":false,"progress":0,"value":null,"goal":null,"at":null,"secret":true,"hidden":true}
+            ],
+            "summary": {"unlocked":1,"total":37,"percent":3},
+            "stats": {"totalSeconds":7200,"gamesPlayed":1,"launches":3,"best":{"gameId":"hl1-won","seconds":7200,"launcherId":"70"}},
+            "badges": ["verified"],
+            "customBadges": [],
+            "nick": null,
+            "subscriber": false,
+            "boosterSince": null,
+            "supporterSince": null,
+            "avatarFrame": null,
+            "details": {"status":"привет","pronouns":"","country":"","discord":"","youtube":"","twitch":"","avatarUrl":"","hideFromPlayers":false,"hideGame":false},
+            "deletionAt": null,
+            "games": {"hl1-won":{"gameId":"hl1-won","totalPlaySeconds":7200,"launchCount":3,"lastLaunchAt":"2026-10-15T10:00:00Z","lastExitAt":null}},
+            "rating": {"score":0,"likes":0,"dislikes":0,"dubious":false},
+            "presence": {"online":false,"gameId":null,"launcherId":null},
+            "perks": {"styles":false,"subscriber":null},
+            "stylePreset": null,
+            "telegram": {"linked":false,"username":null},
+            "discordLink": {"linked":false,"username":null,"boosterSince":null},
+            "vote": {"value":0,"nextAt":null}
+          },
+          "events": [["ticket",false]]
+        },
+        {"result":null,"events":[["change",{"#snapshot":"7f06bf569724ca70","status":"signed-in","error":null,"signedIn":true}],["ticket",false]]},
+        {"result":{"status":"error","code":"RUNNER_HTTP_500"},"events":[["ticket",false],["ticket",false]]},
+        {"result":{"#snapshot":"f52d2474a355ca8e","status":"signed-in","error":null,"signedIn":true},"events":[]},
+        {"result":{"status":"error","code":"RUNNER_NETWORK"},"events":[["ticket",false]]},
+        {"result":{"#snapshot":"f52d2474a355ca8e","status":"signed-in","error":null,"signedIn":true},"events":[]},
+        {"result":{"#snapshot":"6499370113263b17","status":"signed-out","error":null,"signedIn":false},"events":[["ticket",false],["change",{"#snapshot":"6499370113263b17","status":"signed-out","error":null,"signedIn":false}],["consent",false]]},
+        {"result":null,"events":[]},
+        {"result":{"status":"error","code":"RUNNER_AUTH_REQUIRED"},"events":[]},
+        {"result":{"status":"error","code":"RUNNER_AUTH_REQUIRED"},"events":[]},
+        {"result":{"status":"error","code":"RUNNER_AUTH_REQUIRED"},"events":[]},
+        {
+          "result": {
+            "achievement-times.json": "{\"76561198000000111\":{\"scout\":1792152000000}}",
+            "launch-days.json": "{\"last\":\"2026-10-16\",\"streak\":1,\"best\":1}",
+            "secrets.json": "[\"scout\"]",
+            "support-thanks-seen.json": "[\"p-old\",\"p-seen\",\"p-1\",\"p-2\",\"p-1\",\"yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy\",\"p-4\",\"p-5\"]"
+          },
+          "events": []
+        }
+      ],
+      "journal": [
+        {
+          "server": "api",
+          "method": "POST",
+          "path": "/v2/runner/sync",
+          "query": "",
+          "headers": {"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity","authorization":"Bearer hlsr_0123456789abcdef_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_abc","x-hlsr-build":"win32/0.5.0/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","x-hlsr-ticket":"<ticket>","content-type":"application/json","content-length":"56"},
+          "body": "{\"personaName\":\"Local runner\",\"launcherVersion\":\"0.5.0\"}"
+        },
+        {
+          "server": "api",
+          "method": "POST",
+          "path": "/v2/runner/sync",
+          "query": "",
+          "headers": {"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity","authorization":"Bearer hlsr_0123456789abcdef_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_abc","x-hlsr-build":"win32/0.5.0/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","x-hlsr-ticket":"<ticket>","content-type":"application/json","content-length":"56"},
+          "body": "{\"personaName\":\"Local runner\",\"launcherVersion\":\"0.5.0\"}"
+        },
+        {
+          "server": "api",
+          "method": "POST",
+          "path": "/v2/runner/sync",
+          "query": "",
+          "headers": {"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity","authorization":"Bearer hlsr_0123456789abcdef_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_abc","x-hlsr-build":"win32/0.5.0/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","x-hlsr-ticket":"<ticket>","content-type":"application/json","content-length":"56"},
+          "body": "{\"personaName\":\"Local runner\",\"launcherVersion\":\"0.5.0\"}"
+        },
+        {
+          "server": "api",
+          "method": "POST",
+          "path": "/v2/runner/sync",
+          "query": "",
+          "headers": {"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity","authorization":"Bearer hlsr_0123456789abcdef_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_abc","x-hlsr-build":"win32/0.5.0/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","x-hlsr-ticket":"<ticket>","content-type":"application/json","content-length":"56"},
+          "body": "{\"personaName\":\"Local runner\",\"launcherVersion\":\"0.5.0\"}"
+        },
+        {
+          "server": "api",
+          "method": "POST",
+          "path": "/v2/runner/customize",
+          "query": "",
+          "headers": {"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity","authorization":"Bearer hlsr_0123456789abcdef_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_abc","x-hlsr-build":"win32/0.5.0/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","x-hlsr-ticket":"<ticket>","content-type":"application/json","content-length":"17"},
+          "body": "{\"stylePreset\":5}"
+        },
+        {
+          "server": "api",
+          "method": "POST",
+          "path": "/v2/runner/customize",
+          "query": "",
+          "headers": {"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity","authorization":"Bearer hlsr_0123456789abcdef_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_abc","x-hlsr-build":"win32/0.5.0/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","x-hlsr-ticket":"<ticket>","content-type":"application/json","content-length":"17"},
+          "body": "{\"stylePreset\":6}"
+        },
+        {
+          "server": "api",
+          "method": "POST",
+          "path": "/v2/runner/customize",
+          "query": "",
+          "headers": {"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity","authorization":"Bearer hlsr_0123456789abcdef_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_abc","x-hlsr-build":"win32/0.5.0/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","x-hlsr-ticket":"<ticket>","content-type":"application/json","content-length":"17"},
+          "body": "{\"stylePreset\":7}"
+        },
+        {
+          "server": "api",
+          "method": "POST",
+          "path": "/v2/runner/customize",
+          "query": "",
+          "headers": {"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity","authorization":"Bearer hlsr_0123456789abcdef_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_abc","x-hlsr-build":"win32/0.5.0/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","x-hlsr-ticket":"<ticket>","content-type":"application/json","content-length":"17"},
+          "body": "{\"stylePreset\":8}"
+        },
+        {
+          "server": "api",
+          "method": "POST",
+          "path": "/v2/runner/customize",
+          "query": "",
+          "headers": {"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity","authorization":"Bearer hlsr_0123456789abcdef_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_abc","x-hlsr-build":"win32/0.5.0/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","x-hlsr-ticket":"<ticket>","content-type":"application/json","content-length":"17"},
+          "body": "{\"stylePreset\":9}"
+        },
+        {
+          "server": "api",
+          "method": "POST",
+          "path": "/v2/runner/customize",
+          "query": "",
+          "headers": {"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity","authorization":"Bearer hlsr_0123456789abcdef_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_abc","x-hlsr-build":"win32/0.5.0/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","x-hlsr-ticket":"<ticket>","content-type":"application/json","content-length":"17"},
+          "body": "{\"stylePreset\":2}"
+        },
+        {
+          "server": "api",
+          "method": "POST",
+          "path": "/v2/runner/speedrun/link",
+          "query": "",
+          "headers": {"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity","authorization":"Bearer hlsr_0123456789abcdef_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_abc","x-hlsr-build":"win32/0.5.0/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","x-hlsr-ticket":"<ticket>","content-type":"application/json","content-length":"16"},
+          "body": "{\"apiKey\":\"key\"}"
+        },
+        {
+          "server": "api",
+          "method": "POST",
+          "path": "/v2/runner/telegram/code",
+          "query": "",
+          "headers": {"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity","authorization":"Bearer hlsr_0123456789abcdef_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_abc","x-hlsr-build":"win32/0.5.0/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","x-hlsr-ticket":"<ticket>","content-type":"application/json","content-length":"2"},
+          "body": "{}"
+        },
+        {
+          "server": "api",
+          "method": "POST",
+          "path": "/v2/runner/telegram/unlink",
+          "query": "",
+          "headers": {"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity","authorization":"Bearer hlsr_0123456789abcdef_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_abc","x-hlsr-build":"win32/0.5.0/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","x-hlsr-ticket":"<ticket>","content-type":"application/json","content-length":"2"},
+          "body": "{}"
+        },
+        {
+          "server": "api",
+          "method": "POST",
+          "path": "/v2/runner/discord/code",
+          "query": "",
+          "headers": {"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity","authorization":"Bearer hlsr_0123456789abcdef_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_abc","x-hlsr-build":"win32/0.5.0/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","x-hlsr-ticket":"<ticket>","content-type":"application/json","content-length":"2"},
+          "body": "{}"
+        },
+        {
+          "server": "api",
+          "method": "POST",
+          "path": "/v2/runner/discord/code",
+          "query": "",
+          "headers": {"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity","authorization":"Bearer hlsr_0123456789abcdef_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_abc","x-hlsr-build":"win32/0.5.0/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","x-hlsr-ticket":"<ticket>","content-type":"application/json","content-length":"2"},
+          "body": "{}"
+        },
+        {
+          "server": "api",
+          "method": "POST",
+          "path": "/v2/runner/discord/unlink",
+          "query": "",
+          "headers": {"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity","authorization":"Bearer hlsr_0123456789abcdef_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_abc","x-hlsr-build":"win32/0.5.0/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","x-hlsr-ticket":"<ticket>","content-type":"application/json","content-length":"2"},
+          "body": "{}"
+        },
+        {
+          "server": "api",
+          "method": "POST",
+          "path": "/v2/runner/profile",
+          "query": "",
+          "headers": {"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity","authorization":"Bearer hlsr_0123456789abcdef_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_abc","x-hlsr-build":"win32/0.5.0/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","x-hlsr-ticket":"<ticket>","content-type":"application/json","content-length":"33"},
+          "body": "{\"steamId64\":\"76561198000000222\"}"
+        },
+        {
+          "server": "api",
+          "method": "POST",
+          "path": "/v2/runner/secret",
+          "query": "",
+          "headers": {"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity","authorization":"Bearer hlsr_0123456789abcdef_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_abc","x-hlsr-build":"win32/0.5.0/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","x-hlsr-ticket":"<ticket>","content-type":"application/json","content-length":"14"},
+          "body": "{\"id\":\"scout\"}"
+        },
+        {
+          "server": "api",
+          "method": "POST",
+          "path": "/v2/runner/profile",
+          "query": "",
+          "headers": {"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity","authorization":"Bearer hlsr_0123456789abcdef_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_abc","x-hlsr-build":"win32/0.5.0/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","x-hlsr-ticket":"<ticket>","content-type":"application/json","content-length":"33"},
+          "body": "{\"steamId64\":\"76561198000000111\"}"
+        },
+        {
+          "server": "api",
+          "method": "POST",
+          "path": "/v2/runner/session/start",
+          "query": "",
+          "headers": {"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity","authorization":"Bearer hlsr_0123456789abcdef_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_abc","x-hlsr-build":"win32/0.5.0/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","x-hlsr-ticket":"<ticket>","content-type":"application/json","content-length":"102"},
+          "body": "{\"gameId\":\"hl1-won\",\"sessionToken\":\"0101010101010101010101010101010101010101010101010101010101010101\"}"
+        },
+        {
+          "server": "api",
+          "method": "POST",
+          "path": "/v2/runner/session/end",
+          "query": "",
+          "headers": {"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity","authorization":"Bearer hlsr_0123456789abcdef_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_abc","x-hlsr-build":"win32/0.5.0/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","x-hlsr-ticket":"<ticket>","content-type":"application/json","content-length":"96"},
+          "body": "{\"sessionToken\":\"0101010101010101010101010101010101010101010101010101010101010101\",\"sequence\":2}"
+        },
+        {
+          "server": "api",
+          "method": "POST",
+          "path": "/v2/runner/logout-all",
+          "query": "",
+          "headers": {"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity","authorization":"Bearer hlsr_0123456789abcdef_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_abc","x-hlsr-build":"win32/0.5.0/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","x-hlsr-ticket":"<ticket>","content-type":"application/json","content-length":"2"},
+          "body": "{}"
+        },
+        {
+          "server": "api",
+          "method": "POST",
+          "path": "/v2/runner/logout-all",
+          "query": "",
+          "headers": {"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity","authorization":"Bearer hlsr_0123456789abcdef_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_abc","x-hlsr-build":"win32/0.5.0/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","x-hlsr-ticket":"<ticket>","content-type":"application/json","content-length":"2"},
+          "body": "{}"
+        },
+        {
+          "server": "api",
+          "method": "POST",
+          "path": "/v2/runner/logout-all",
+          "query": "",
+          "headers": {"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity","authorization":"Bearer hlsr_0123456789abcdef_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_Tk-_abc","x-hlsr-build":"win32/0.5.0/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","x-hlsr-ticket":"<ticket>","content-type":"application/json","content-length":"2"},
+          "body": "{}"
+        }
+      ]
+    }
+  ]
+}

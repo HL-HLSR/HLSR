@@ -1,0 +1,1542 @@
+[
+  {
+    "name": "register, poll, exit",
+    "scenario": {
+      "name": "register, poll, exit",
+      "ops": [
+        {"op":"alive","pids":[100]},
+        {"op":"register","gameId":"hl1-won","info":{"pid":100,"executablePath":"C:\\HLSR\\Games\\hl1-won\\hl.exe","installPath":"C:\\HLSR\\Games\\hl1-won","startedAt":"2026-10-16T12:00:00.000Z"}},
+        {"op":"query","gameId":"hl1-won"},
+        {"op":"files"},
+        {"op":"poll","gameId":"hl1-won"},
+        {"op":"clock","ms":1792152060000},
+        {"op":"alive","pids":[]},
+        {"op":"poll","gameId":"hl1-won"},
+        {"op":"query","gameId":"hl1-won"},
+        {"op":"files"},
+        {"op":"poll","gameId":"hl1-won"}
+      ]
+    },
+    "results": [
+      {"op":"alive"},
+      {
+        "op": "register",
+        "gameId": "hl1-won",
+        "ok": {"gameId":"hl1-won","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null},
+        "events": [{"name":"state","payload":{"gameId":"hl1-won","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},{"name":"running","payload":{"gameId":"hl1-won","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}}],
+        "logs": [{"level":"info","message":"[game-process] игра hl1-won зарегистрирована: PID 100, C:\\HLSR\\Games\\hl1-won\\hl.exe"}]
+      },
+      {"op":"query","gameId":"hl1-won","ok":{"publicState":{"gameId":"hl1-won","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null},"isRunning":true,"anyRunning":"hl1-won"}},
+      {
+        "op": "files",
+        "ok": {
+          "hl1-won.process.json": "{\n  \"version\": 1,\n  \"gameId\": \"hl1-won\",\n  \"state\": \"running\",\n  \"pid\": 100,\n  \"processKey\": \"f398a73248b27a400f6346b5891974ad\",\n  \"executablePath\": \"C:\\\\HLSR\\\\Games\\\\hl1-won\\\\hl.exe\",\n  \"startedAt\": \"2026-10-16T12:00:00.000Z\",\n  \"since\": \"2026-10-16T12:00:00.000Z\",\n  \"exitCode\": null,\n  \"signal\": null,\n  \"lastExit\": null,\n  \"installPath\": \"C:\\\\HLSR\\\\Games\\\\hl1-won\",\n  \"launcherPid\": 4242,\n  \"registeredAt\": \"2026-10-16T12:00:00.000Z\",\n  \"hostProcess\": false\n}\n"
+        }
+      },
+      {"op":"poll","gameId":"hl1-won","ok":true},
+      {"op":"clock"},
+      {"op":"alive"},
+      {
+        "op": "poll",
+        "gameId": "hl1-won",
+        "ok": true,
+        "events": [
+          {"name":"state","payload":{"gameId":"hl1-won","state":"exited","running":false,"since":"2026-10-16T12:01:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":{"outcome":"exited","exitCode":null,"signal":null,"requested":false,"detected":true,"error":null,"at":"2026-10-16T12:01:00.000Z","pid":100,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"exited","payload":{"gameId":"hl1-won","state":"exited","running":false,"since":"2026-10-16T12:01:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":{"outcome":"exited","exitCode":null,"signal":null,"requested":false,"detected":true,"error":null,"at":"2026-10-16T12:01:00.000Z","pid":100,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"finished","payload":{"gameId":"hl1-won","lastExit":{"outcome":"exited","exitCode":null,"signal":null,"requested":false,"detected":true,"error":null,"at":"2026-10-16T12:01:00.000Z","pid":100,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"state","payload":{"gameId":"hl1-won","state":"not-running","running":false,"since":null,"startedAt":null,"exitCode":null,"lastExit":{"outcome":"exited","exitCode":null,"signal":null,"requested":false,"detected":true,"error":null,"at":"2026-10-16T12:01:00.000Z","pid":100,"startedAt":"2026-10-16T12:00:00.000Z"}}}
+        ],
+        "logs": [{"level":"info","message":"[game-process] игра hl1-won закрыта штатно (код null, PID 100)"}]
+      },
+      {"op":"query","gameId":"hl1-won","ok":{"publicState":{"gameId":"hl1-won","state":"not-running","running":false,"since":null,"startedAt":null,"exitCode":null,"lastExit":{"outcome":"exited","exitCode":null,"signal":null,"requested":false,"detected":true,"error":null,"at":"2026-10-16T12:01:00.000Z","pid":100,"startedAt":"2026-10-16T12:00:00.000Z"}},"isRunning":false,"anyRunning":null}},
+      {"op":"files","ok":{}},
+      {"op":"poll","gameId":"hl1-won","ok":false}
+    ],
+    "files": {}
+  },
+  {
+    "name": "register: defaults, path case, record order",
+    "scenario": {
+      "name": "register: defaults, path case, record order",
+      "ops": [
+        {"op":"register","gameId":"ghosting-renewed","info":{"pid":7,"executablePath":"c:\\hlsr\\games\\GHOSTING-RENEWED\\Hl2.exe","installPath":"C:\\HLSR\\Games\\ghosting-renewed\\"}},
+        {"op":"files"},
+        {"op":"query","gameId":"ghosting-renewed"},
+        {"op":"register","gameId":"hl2-4260","info":{"pid":8,"executablePath":"C:\\HLSR\\Games\\hl2-4260\\bin\\..\\hl2.exe","installPath":"C:\\HLSR\\Games\\hl2-4260","startedAt":"2026-10-16T11:59:59.1234567Z","processKey":"custom-key","hostProcess":true}},
+        {"op":"files"}
+      ]
+    },
+    "results": [
+      {
+        "op": "register",
+        "gameId": "ghosting-renewed",
+        "ok": {"gameId":"ghosting-renewed","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null},
+        "events": [
+          {"name":"state","payload":{"gameId":"ghosting-renewed","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},
+          {"name":"running","payload":{"gameId":"ghosting-renewed","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}}
+        ],
+        "logs": [{"level":"info","message":"[game-process] игра ghosting-renewed зарегистрирована: PID 7, c:\\hlsr\\games\\GHOSTING-RENEWED\\Hl2.exe"}]
+      },
+      {
+        "op": "files",
+        "ok": {
+          "ghosting-renewed.process.json": "{\n  \"version\": 1,\n  \"gameId\": \"ghosting-renewed\",\n  \"state\": \"running\",\n  \"pid\": 7,\n  \"processKey\": \"8830a7d2e02e1336c5f1ec1f9c7730be\",\n  \"executablePath\": \"c:\\\\hlsr\\\\games\\\\GHOSTING-RENEWED\\\\Hl2.exe\",\n  \"startedAt\": \"2026-10-16T12:00:00.000Z\",\n  \"since\": \"2026-10-16T12:00:00.000Z\",\n  \"exitCode\": null,\n  \"signal\": null,\n  \"lastExit\": null,\n  \"installPath\": \"C:\\\\HLSR\\\\Games\\\\ghosting-renewed\",\n  \"launcherPid\": 4242,\n  \"registeredAt\": \"2026-10-16T12:00:00.000Z\",\n  \"hostProcess\": false\n}\n"
+        }
+      },
+      {"op":"query","gameId":"ghosting-renewed","ok":{"publicState":{"gameId":"ghosting-renewed","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null},"isRunning":true,"anyRunning":"ghosting-renewed"}},
+      {
+        "op": "register",
+        "gameId": "hl2-4260",
+        "ok": {"gameId":"hl2-4260","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T11:59:59.1234567Z","exitCode":null,"lastExit":null},
+        "events": [{"name":"state","payload":{"gameId":"hl2-4260","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T11:59:59.1234567Z","exitCode":null,"lastExit":null}},{"name":"running","payload":{"gameId":"hl2-4260","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T11:59:59.1234567Z","exitCode":null,"lastExit":null}}],
+        "logs": [{"level":"info","message":"[game-process] игра hl2-4260 зарегистрирована: PID 8, C:\\HLSR\\Games\\hl2-4260\\hl2.exe"}]
+      },
+      {
+        "op": "files",
+        "ok": {
+          "ghosting-renewed.process.json": "{\n  \"version\": 1,\n  \"gameId\": \"ghosting-renewed\",\n  \"state\": \"running\",\n  \"pid\": 7,\n  \"processKey\": \"8830a7d2e02e1336c5f1ec1f9c7730be\",\n  \"executablePath\": \"c:\\\\hlsr\\\\games\\\\GHOSTING-RENEWED\\\\Hl2.exe\",\n  \"startedAt\": \"2026-10-16T12:00:00.000Z\",\n  \"since\": \"2026-10-16T12:00:00.000Z\",\n  \"exitCode\": null,\n  \"signal\": null,\n  \"lastExit\": null,\n  \"installPath\": \"C:\\\\HLSR\\\\Games\\\\ghosting-renewed\",\n  \"launcherPid\": 4242,\n  \"registeredAt\": \"2026-10-16T12:00:00.000Z\",\n  \"hostProcess\": false\n}\n",
+          "hl2-4260.process.json": "{\n  \"version\": 1,\n  \"gameId\": \"hl2-4260\",\n  \"state\": \"running\",\n  \"pid\": 8,\n  \"processKey\": \"custom-key\",\n  \"executablePath\": \"C:\\\\HLSR\\\\Games\\\\hl2-4260\\\\hl2.exe\",\n  \"startedAt\": \"2026-10-16T11:59:59.1234567Z\",\n  \"since\": \"2026-10-16T12:00:00.000Z\",\n  \"exitCode\": null,\n  \"signal\": null,\n  \"lastExit\": null,\n  \"installPath\": \"C:\\\\HLSR\\\\Games\\\\hl2-4260\",\n  \"launcherPid\": 4242,\n  \"registeredAt\": \"2026-10-16T12:00:00.000Z\",\n  \"hostProcess\": true\n}\n"
+        }
+      }
+    ],
+    "files": {
+      "ghosting-renewed.process.json": "{\n  \"version\": 1,\n  \"gameId\": \"ghosting-renewed\",\n  \"state\": \"running\",\n  \"pid\": 7,\n  \"processKey\": \"8830a7d2e02e1336c5f1ec1f9c7730be\",\n  \"executablePath\": \"c:\\\\hlsr\\\\games\\\\GHOSTING-RENEWED\\\\Hl2.exe\",\n  \"startedAt\": \"2026-10-16T12:00:00.000Z\",\n  \"since\": \"2026-10-16T12:00:00.000Z\",\n  \"exitCode\": null,\n  \"signal\": null,\n  \"lastExit\": null,\n  \"installPath\": \"C:\\\\HLSR\\\\Games\\\\ghosting-renewed\",\n  \"launcherPid\": 4242,\n  \"registeredAt\": \"2026-10-16T12:00:00.000Z\",\n  \"hostProcess\": false\n}\n",
+      "hl2-4260.process.json": "{\n  \"version\": 1,\n  \"gameId\": \"hl2-4260\",\n  \"state\": \"running\",\n  \"pid\": 8,\n  \"processKey\": \"custom-key\",\n  \"executablePath\": \"C:\\\\HLSR\\\\Games\\\\hl2-4260\\\\hl2.exe\",\n  \"startedAt\": \"2026-10-16T11:59:59.1234567Z\",\n  \"since\": \"2026-10-16T12:00:00.000Z\",\n  \"exitCode\": null,\n  \"signal\": null,\n  \"lastExit\": null,\n  \"installPath\": \"C:\\\\HLSR\\\\Games\\\\hl2-4260\",\n  \"launcherPid\": 4242,\n  \"registeredAt\": \"2026-10-16T12:00:00.000Z\",\n  \"hostProcess\": true\n}\n"
+    }
+  },
+  {
+    "name": "register: errors",
+    "scenario": {
+      "name": "register: errors",
+      "ops": [
+        {"op":"register","gameId":"hl1-won","info":{"executablePath":"C:\\HLSR\\Games\\hl1-won\\hl.exe","installPath":"C:\\HLSR\\Games\\hl1-won"}},
+        {"op":"register","gameId":"hl1-won","info":{"pid":0,"executablePath":"C:\\HLSR\\Games\\hl1-won\\hl.exe","installPath":"C:\\HLSR\\Games\\hl1-won"}},
+        {"op":"register","gameId":"hl1-won","info":{"pid":-3,"executablePath":"C:\\HLSR\\Games\\hl1-won\\hl.exe","installPath":"C:\\HLSR\\Games\\hl1-won"}},
+        {"op":"register","gameId":"hl1-won","info":{"pid":5,"installPath":"C:\\HLSR\\Games\\hl1-won"}},
+        {"op":"register","gameId":"hl1-won","info":{"pid":5,"executablePath":"hl.exe","installPath":"C:\\HLSR\\Games\\hl1-won"}},
+        {"op":"register","gameId":"hl1-won","info":{"pid":5,"executablePath":"C:\\HLSR\\Games\\hl1-won\\hl.exe"}},
+        {"op":"register","gameId":"hl1-won","info":{"pid":5,"executablePath":"C:\\Windows\\notepad.exe","installPath":"C:\\HLSR\\Games\\hl1-won"}},
+        {"op":"register","gameId":"hl1-won","info":{"pid":5,"executablePath":"C:\\HLSR\\Games\\hl1-won-evil\\hl.exe","installPath":"C:\\HLSR\\Games\\hl1-won"}},
+        {"op":"files"},
+        {"op":"register","gameId":"hl1-won","info":{"pid":5,"executablePath":"C:\\HLSR\\Games\\hl1-won\\hl.exe","installPath":"C:\\HLSR\\Games\\hl1-won","startedAt":"2026-10-16T12:00:00.000Z"}},
+        {"op":"register","gameId":"hl1-won","info":{"pid":6,"executablePath":"C:\\HLSR\\Games\\hl1-won\\hl.exe","installPath":"C:\\HLSR\\Games\\hl1-won","startedAt":"2026-10-16T12:00:00.000Z"}},
+        {"op":"files"}
+      ]
+    },
+    "results": [
+      {"op":"register","gameId":"hl1-won","error":{"code":"PROCESS_NOT_FOUND","message":"Некорректный PID: undefined","details":null}},
+      {"op":"register","gameId":"hl1-won","error":{"code":"PROCESS_NOT_FOUND","message":"Некорректный PID: 0","details":null}},
+      {"op":"register","gameId":"hl1-won","error":{"code":"PROCESS_NOT_FOUND","message":"Некорректный PID: -3","details":null}},
+      {"op":"register","gameId":"hl1-won","error":{"code":"PROCESS_MISMATCH","message":"Нужен абсолютный путь исполняемого файла игры","details":null}},
+      {"op":"register","gameId":"hl1-won","error":{"code":"PROCESS_MISMATCH","message":"Нужен абсолютный путь исполняемого файла игры","details":null}},
+      {"op":"register","gameId":"hl1-won","error":{"code":"PROCESS_MISMATCH","message":"Не задана папка установленной игры","details":null}},
+      {"op":"register","gameId":"hl1-won","error":{"code":"PATH_INVALID","message":"Исполняемый файл игры выходит за пределы разрешённого каталога: C:\\Windows\\notepad.exe","details":null}},
+      {"op":"register","gameId":"hl1-won","error":{"code":"PATH_INVALID","message":"Исполняемый файл игры выходит за пределы разрешённого каталога: C:\\HLSR\\Games\\hl1-won-evil\\hl.exe","details":null}},
+      {"op":"files","ok":{}},
+      {
+        "op": "register",
+        "gameId": "hl1-won",
+        "ok": {"gameId":"hl1-won","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null},
+        "events": [{"name":"state","payload":{"gameId":"hl1-won","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},{"name":"running","payload":{"gameId":"hl1-won","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}}],
+        "logs": [{"level":"info","message":"[game-process] игра hl1-won зарегистрирована: PID 5, C:\\HLSR\\Games\\hl1-won\\hl.exe"}]
+      },
+      {"op":"register","gameId":"hl1-won","error":{"code":"ALREADY_RUNNING","message":"Игра hl1-won уже отслеживается","details":null}},
+      {
+        "op": "files",
+        "ok": {
+          "hl1-won.process.json": "{\n  \"version\": 1,\n  \"gameId\": \"hl1-won\",\n  \"state\": \"running\",\n  \"pid\": 5,\n  \"processKey\": \"95634875a245fd1df2602726728eb0b9\",\n  \"executablePath\": \"C:\\\\HLSR\\\\Games\\\\hl1-won\\\\hl.exe\",\n  \"startedAt\": \"2026-10-16T12:00:00.000Z\",\n  \"since\": \"2026-10-16T12:00:00.000Z\",\n  \"exitCode\": null,\n  \"signal\": null,\n  \"lastExit\": null,\n  \"installPath\": \"C:\\\\HLSR\\\\Games\\\\hl1-won\",\n  \"launcherPid\": 4242,\n  \"registeredAt\": \"2026-10-16T12:00:00.000Z\",\n  \"hostProcess\": false\n}\n"
+        }
+      }
+    ],
+    "files": {
+      "hl1-won.process.json": "{\n  \"version\": 1,\n  \"gameId\": \"hl1-won\",\n  \"state\": \"running\",\n  \"pid\": 5,\n  \"processKey\": \"95634875a245fd1df2602726728eb0b9\",\n  \"executablePath\": \"C:\\\\HLSR\\\\Games\\\\hl1-won\\\\hl.exe\",\n  \"startedAt\": \"2026-10-16T12:00:00.000Z\",\n  \"since\": \"2026-10-16T12:00:00.000Z\",\n  \"exitCode\": null,\n  \"signal\": null,\n  \"lastExit\": null,\n  \"installPath\": \"C:\\\\HLSR\\\\Games\\\\hl1-won\",\n  \"launcherPid\": 4242,\n  \"registeredAt\": \"2026-10-16T12:00:00.000Z\",\n  \"hostProcess\": false\n}\n"
+    }
+  },
+  {
+    "name": "register: game id that cannot be a file name",
+    "scenario": {"name":"register: game id that cannot be a file name","ops":[{"op":"register","gameId":"Bad_ID","info":{"pid":9,"executablePath":"C:\\HLSR\\Games\\Bad_ID\\hl.exe","installPath":"C:\\HLSR\\Games\\Bad_ID","startedAt":"2026-10-16T12:00:00.000Z"}},{"op":"query","gameId":"Bad_ID"},{"op":"files"}]},
+    "results": [
+      {
+        "op": "register",
+        "gameId": "Bad_ID",
+        "ok": {"gameId":"Bad_ID","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null},
+        "events": [{"name":"state","payload":{"gameId":"Bad_ID","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},{"name":"running","payload":{"gameId":"Bad_ID","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}}],
+        "logs": [{"level":"info","message":"[game-process] игра Bad_ID зарегистрирована: PID 9, C:\\HLSR\\Games\\Bad_ID\\hl.exe"},{"level":"warn","message":"[game-process] состояние не сохранено: Недопустимый gameId: Bad_ID"}]
+      },
+      {"op":"query","gameId":"Bad_ID","ok":{"publicState":{"gameId":"Bad_ID","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null},"isRunning":true,"anyRunning":"Bad_ID"}},
+      {"op":"files","ok":{}}
+    ],
+    "files": {}
+  },
+  {
+    "name": "starting: mark, repeat, cancel, replace",
+    "scenario": {
+      "name": "starting: mark, repeat, cancel, replace",
+      "ops": [
+        {"op":"mark-starting","gameId":"hl1-won"},
+        {"op":"files"},
+        {"op":"mark-starting","gameId":"hl1-won"},
+        {"op":"query","gameId":"hl1-won"},
+        {"op":"cancel-starting","gameId":"hl1-won","reason":"Steam не запущен"},
+        {"op":"files"},
+        {"op":"cancel-starting","gameId":"hl1-won","reason":"ещё раз"},
+        {"op":"mark-starting","gameId":"hl2-4260"},
+        {"op":"cancel-starting","gameId":"hl2-4260"},
+        {"op":"mark-starting","gameId":"hl2-2707"},
+        {"op":"alive","pids":[30]},
+        {"op":"register","gameId":"hl2-2707","info":{"pid":30,"executablePath":"C:\\HLSR\\Games\\hl2-2707\\hl.exe","installPath":"C:\\HLSR\\Games\\hl2-2707","startedAt":"2026-10-16T12:00:00.000Z"}},
+        {"op":"query","gameId":"hl2-2707"},
+        {"op":"mark-starting","gameId":"hl2-2707"},
+        {"op":"cancel-starting","gameId":"hl2-2707","reason":"уже идёт"},
+        {"op":"files"}
+      ]
+    },
+    "results": [
+      {
+        "op": "mark-starting",
+        "gameId": "hl1-won",
+        "ok": {"gameId":"hl1-won","state":"starting","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":null,"exitCode":null,"lastExit":null},
+        "events": [{"name":"state","payload":{"gameId":"hl1-won","state":"starting","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":null,"exitCode":null,"lastExit":null}},{"name":"starting","payload":{"gameId":"hl1-won","state":"starting","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":null,"exitCode":null,"lastExit":null}}]
+      },
+      {"op":"files","ok":{"hl1-won.process.json":"{\n  \"version\": 1,\n  \"gameId\": \"hl1-won\",\n  \"state\": \"starting\",\n  \"pid\": null,\n  \"processKey\": null,\n  \"executablePath\": null,\n  \"startedAt\": null,\n  \"since\": \"2026-10-16T12:00:00.000Z\",\n  \"exitCode\": null,\n  \"signal\": null,\n  \"lastExit\": null\n}\n"}},
+      {"op":"mark-starting","gameId":"hl1-won","ok":{"gameId":"hl1-won","state":"starting","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":null,"exitCode":null,"lastExit":null}},
+      {"op":"query","gameId":"hl1-won","ok":{"publicState":{"gameId":"hl1-won","state":"starting","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":null,"exitCode":null,"lastExit":null},"isRunning":true,"anyRunning":"hl1-won"}},
+      {
+        "op": "cancel-starting",
+        "gameId": "hl1-won",
+        "ok": {"gameId":"hl1-won","state":"not-running","running":false,"since":null,"startedAt":null,"exitCode":null,"lastExit":null},
+        "events": [{"name":"state","payload":{"gameId":"hl1-won","state":"not-running","running":false,"since":null,"startedAt":null,"exitCode":null,"lastExit":null}}],
+        "logs": [{"level":"warn","message":"[game-process] запуск hl1-won не состоялся: Steam не запущен"}]
+      },
+      {"op":"files","ok":{}},
+      {"op":"cancel-starting","gameId":"hl1-won","ok":{"gameId":"hl1-won","state":"not-running","running":false,"since":null,"startedAt":null,"exitCode":null,"lastExit":null}},
+      {
+        "op": "mark-starting",
+        "gameId": "hl2-4260",
+        "ok": {"gameId":"hl2-4260","state":"starting","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":null,"exitCode":null,"lastExit":null},
+        "events": [{"name":"state","payload":{"gameId":"hl2-4260","state":"starting","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":null,"exitCode":null,"lastExit":null}},{"name":"starting","payload":{"gameId":"hl2-4260","state":"starting","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":null,"exitCode":null,"lastExit":null}}]
+      },
+      {
+        "op": "cancel-starting",
+        "gameId": "hl2-4260",
+        "ok": {"gameId":"hl2-4260","state":"not-running","running":false,"since":null,"startedAt":null,"exitCode":null,"lastExit":null},
+        "events": [{"name":"state","payload":{"gameId":"hl2-4260","state":"not-running","running":false,"since":null,"startedAt":null,"exitCode":null,"lastExit":null}}],
+        "logs": [{"level":"warn","message":"[game-process] запуск hl2-4260 не состоялся: нет причины"}]
+      },
+      {
+        "op": "mark-starting",
+        "gameId": "hl2-2707",
+        "ok": {"gameId":"hl2-2707","state":"starting","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":null,"exitCode":null,"lastExit":null},
+        "events": [{"name":"state","payload":{"gameId":"hl2-2707","state":"starting","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":null,"exitCode":null,"lastExit":null}},{"name":"starting","payload":{"gameId":"hl2-2707","state":"starting","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":null,"exitCode":null,"lastExit":null}}]
+      },
+      {"op":"alive"},
+      {
+        "op": "register",
+        "gameId": "hl2-2707",
+        "ok": {"gameId":"hl2-2707","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null},
+        "events": [{"name":"state","payload":{"gameId":"hl2-2707","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},{"name":"running","payload":{"gameId":"hl2-2707","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}}],
+        "logs": [{"level":"info","message":"[game-process] игра hl2-2707 зарегистрирована: PID 30, C:\\HLSR\\Games\\hl2-2707\\hl.exe"}]
+      },
+      {"op":"query","gameId":"hl2-2707","ok":{"publicState":{"gameId":"hl2-2707","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null},"isRunning":true,"anyRunning":"hl2-2707"}},
+      {"op":"mark-starting","gameId":"hl2-2707","ok":{"gameId":"hl2-2707","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},
+      {"op":"cancel-starting","gameId":"hl2-2707","ok":{"gameId":"hl2-2707","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},
+      {
+        "op": "files",
+        "ok": {
+          "hl2-2707.process.json": "{\n  \"version\": 1,\n  \"gameId\": \"hl2-2707\",\n  \"state\": \"running\",\n  \"pid\": 30,\n  \"processKey\": \"4fc50a62c06fca0a2cb1ccd1ad27f583\",\n  \"executablePath\": \"C:\\\\HLSR\\\\Games\\\\hl2-2707\\\\hl.exe\",\n  \"startedAt\": \"2026-10-16T12:00:00.000Z\",\n  \"since\": \"2026-10-16T12:00:00.000Z\",\n  \"exitCode\": null,\n  \"signal\": null,\n  \"lastExit\": null,\n  \"installPath\": \"C:\\\\HLSR\\\\Games\\\\hl2-2707\",\n  \"launcherPid\": 4242,\n  \"registeredAt\": \"2026-10-16T12:00:00.000Z\",\n  \"hostProcess\": false\n}\n"
+        }
+      }
+    ],
+    "files": {
+      "hl2-2707.process.json": "{\n  \"version\": 1,\n  \"gameId\": \"hl2-2707\",\n  \"state\": \"running\",\n  \"pid\": 30,\n  \"processKey\": \"4fc50a62c06fca0a2cb1ccd1ad27f583\",\n  \"executablePath\": \"C:\\\\HLSR\\\\Games\\\\hl2-2707\\\\hl.exe\",\n  \"startedAt\": \"2026-10-16T12:00:00.000Z\",\n  \"since\": \"2026-10-16T12:00:00.000Z\",\n  \"exitCode\": null,\n  \"signal\": null,\n  \"lastExit\": null,\n  \"installPath\": \"C:\\\\HLSR\\\\Games\\\\hl2-2707\",\n  \"launcherPid\": 4242,\n  \"registeredAt\": \"2026-10-16T12:00:00.000Z\",\n  \"hostProcess\": false\n}\n"
+    }
+  },
+  {
+    "name": "stop: graceful, process leaves at once",
+    "scenario": {
+      "name": "stop: graceful, process leaves at once",
+      "ops": [
+        {"op":"alive","pids":[100]},
+        {"op":"inspect","map":{"100":{"pid":100,"executablePath":"C:\\HLSR\\Games\\hl1-won\\hl.exe","name":"hl.exe","startedAt":"2026-10-16T12:00:00.000Z","source":"winapi"}}},
+        {"op":"register","gameId":"hl1-won","info":{"pid":100,"executablePath":"C:\\HLSR\\Games\\hl1-won\\hl.exe","installPath":"C:\\HLSR\\Games\\hl1-won","startedAt":"2026-10-16T12:00:00.000Z"}},
+        {"op":"request-stop","gameId":"hl1-won","pid":100,"killsOnStop":true},
+        {"op":"query","gameId":"hl1-won"},
+        {"op":"files"}
+      ]
+    },
+    "results": [
+      {"op":"alive"},
+      {"op":"inspect"},
+      {
+        "op": "register",
+        "gameId": "hl1-won",
+        "ok": {"gameId":"hl1-won","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null},
+        "events": [{"name":"state","payload":{"gameId":"hl1-won","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},{"name":"running","payload":{"gameId":"hl1-won","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}}],
+        "logs": [{"level":"info","message":"[game-process] игра hl1-won зарегистрирована: PID 100, C:\\HLSR\\Games\\hl1-won\\hl.exe"}]
+      },
+      {
+        "op": "request-stop",
+        "gameId": "hl1-won",
+        "ok": {"status":"stopped"},
+        "stopCalls": ["graceful(100)"],
+        "events": [
+          {"name":"state","payload":{"gameId":"hl1-won","state":"stopping","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},
+          {"name":"stopping","payload":{"gameId":"hl1-won","state":"stopping","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},
+          {"name":"state","payload":{"gameId":"hl1-won","state":"exited","running":false,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":0,"lastExit":{"outcome":"exited","exitCode":0,"signal":null,"requested":true,"detected":true,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":100,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"exited","payload":{"gameId":"hl1-won","state":"exited","running":false,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":0,"lastExit":{"outcome":"exited","exitCode":0,"signal":null,"requested":true,"detected":true,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":100,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"finished","payload":{"gameId":"hl1-won","lastExit":{"outcome":"exited","exitCode":0,"signal":null,"requested":true,"detected":true,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":100,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"state","payload":{"gameId":"hl1-won","state":"not-running","running":false,"since":null,"startedAt":null,"exitCode":null,"lastExit":{"outcome":"exited","exitCode":0,"signal":null,"requested":true,"detected":true,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":100,"startedAt":"2026-10-16T12:00:00.000Z"}}}
+        ],
+        "logs": [{"level":"info","message":"[game-process] игра hl1-won закрыта штатно (код 0, PID 100)"}]
+      },
+      {"op":"query","gameId":"hl1-won","ok":{"publicState":{"gameId":"hl1-won","state":"not-running","running":false,"since":null,"startedAt":null,"exitCode":null,"lastExit":{"outcome":"exited","exitCode":0,"signal":null,"requested":true,"detected":true,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":100,"startedAt":"2026-10-16T12:00:00.000Z"}},"isRunning":false,"anyRunning":null}},
+      {"op":"files","ok":{}}
+    ],
+    "files": {}
+  },
+  {
+    "name": "stop: process leaves after one check",
+    "scenario": {
+      "name": "stop: process leaves after one check",
+      "ops": [
+        {"op":"alive","pids":[100]},
+        {"op":"inspect","map":{"100":{"pid":100,"executablePath":"C:\\HLSR\\Games\\hl1-won\\hl.exe","name":"hl.exe","startedAt":"2026-10-16T12:00:00.000Z","source":"winapi"}}},
+        {"op":"register","gameId":"hl1-won","info":{"pid":100,"executablePath":"C:\\HLSR\\Games\\hl1-won\\hl.exe","installPath":"C:\\HLSR\\Games\\hl1-won","startedAt":"2026-10-16T12:00:00.000Z"}},
+        {"op":"request-stop","gameId":"hl1-won","pid":100,"force":true,"aliveSequence":[true,true,false]},
+        {"op":"query","gameId":"hl1-won"}
+      ]
+    },
+    "results": [
+      {"op":"alive"},
+      {"op":"inspect"},
+      {
+        "op": "register",
+        "gameId": "hl1-won",
+        "ok": {"gameId":"hl1-won","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null},
+        "events": [{"name":"state","payload":{"gameId":"hl1-won","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},{"name":"running","payload":{"gameId":"hl1-won","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}}],
+        "logs": [{"level":"info","message":"[game-process] игра hl1-won зарегистрирована: PID 100, C:\\HLSR\\Games\\hl1-won\\hl.exe"}]
+      },
+      {
+        "op": "request-stop",
+        "gameId": "hl1-won",
+        "ok": {"status":"stopped"},
+        "stopCalls": ["force(100)"],
+        "events": [
+          {"name":"state","payload":{"gameId":"hl1-won","state":"stopping","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},
+          {"name":"stopping","payload":{"gameId":"hl1-won","state":"stopping","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},
+          {"name":"state","payload":{"gameId":"hl1-won","state":"exited","running":false,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":0,"lastExit":{"outcome":"exited","exitCode":0,"signal":null,"requested":true,"detected":true,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":100,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"exited","payload":{"gameId":"hl1-won","state":"exited","running":false,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":0,"lastExit":{"outcome":"exited","exitCode":0,"signal":null,"requested":true,"detected":true,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":100,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"finished","payload":{"gameId":"hl1-won","lastExit":{"outcome":"exited","exitCode":0,"signal":null,"requested":true,"detected":true,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":100,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"state","payload":{"gameId":"hl1-won","state":"not-running","running":false,"since":null,"startedAt":null,"exitCode":null,"lastExit":{"outcome":"exited","exitCode":0,"signal":null,"requested":true,"detected":true,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":100,"startedAt":"2026-10-16T12:00:00.000Z"}}}
+        ],
+        "logs": [{"level":"info","message":"[game-process] игра hl1-won закрыта штатно (код 0, PID 100)"}]
+      },
+      {"op":"query","gameId":"hl1-won","ok":{"publicState":{"gameId":"hl1-won","state":"not-running","running":false,"since":null,"startedAt":null,"exitCode":null,"lastExit":{"outcome":"exited","exitCode":0,"signal":null,"requested":true,"detected":true,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":100,"startedAt":"2026-10-16T12:00:00.000Z"}},"isRunning":false,"anyRunning":null}}
+    ],
+    "files": {}
+  },
+  {
+    "name": "stop: timeout, forced timeout",
+    "scenario": {
+      "name": "stop: timeout, forced timeout",
+      "ops": [
+        {"op":"alive","pids":[100]},
+        {"op":"inspect","map":{"100":{"pid":100,"executablePath":"C:\\HLSR\\Games\\hl1-won\\hl.exe","name":"hl.exe","startedAt":"2026-10-16T12:00:00.000Z","source":"winapi"}}},
+        {"op":"register","gameId":"hl1-won","info":{"pid":100,"executablePath":"C:\\HLSR\\Games\\hl1-won\\hl.exe","installPath":"C:\\HLSR\\Games\\hl1-won","startedAt":"2026-10-16T12:00:00.000Z"}},
+        {"op":"request-stop","gameId":"hl1-won","pid":100,"timeoutMs":0},
+        {"op":"query","gameId":"hl1-won"},
+        {"op":"files"},
+        {"op":"request-stop","gameId":"hl1-won","pid":100,"force":true,"timeoutMs":0,"stopResult":{"ok":false,"code":1,"output":"ERROR: nope"}},
+        {"op":"query","gameId":"hl1-won"},
+        {"op":"files"}
+      ]
+    },
+    "results": [
+      {"op":"alive"},
+      {"op":"inspect"},
+      {
+        "op": "register",
+        "gameId": "hl1-won",
+        "ok": {"gameId":"hl1-won","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null},
+        "events": [{"name":"state","payload":{"gameId":"hl1-won","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},{"name":"running","payload":{"gameId":"hl1-won","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}}],
+        "logs": [{"level":"info","message":"[game-process] игра hl1-won зарегистрирована: PID 100, C:\\HLSR\\Games\\hl1-won\\hl.exe"}]
+      },
+      {
+        "op": "request-stop",
+        "gameId": "hl1-won",
+        "ok": {"status":"timeout","timeoutMs":10000},
+        "stopCalls": ["graceful(100)"],
+        "events": [
+          {"name":"state","payload":{"gameId":"hl1-won","state":"stopping","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},
+          {"name":"stopping","payload":{"gameId":"hl1-won","state":"stopping","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},
+          {"name":"state","payload":{"gameId":"hl1-won","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},
+          {"name":"running","payload":{"gameId":"hl1-won","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}}
+        ]
+      },
+      {"op":"query","gameId":"hl1-won","ok":{"publicState":{"gameId":"hl1-won","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null},"isRunning":true,"anyRunning":"hl1-won"}},
+      {
+        "op": "files",
+        "ok": {
+          "hl1-won.process.json": "{\n  \"version\": 1,\n  \"gameId\": \"hl1-won\",\n  \"state\": \"running\",\n  \"pid\": 100,\n  \"processKey\": \"f398a73248b27a400f6346b5891974ad\",\n  \"executablePath\": \"C:\\\\HLSR\\\\Games\\\\hl1-won\\\\hl.exe\",\n  \"startedAt\": \"2026-10-16T12:00:00.000Z\",\n  \"since\": \"2026-10-16T12:00:00.000Z\",\n  \"exitCode\": null,\n  \"signal\": null,\n  \"lastExit\": null,\n  \"installPath\": \"C:\\\\HLSR\\\\Games\\\\hl1-won\",\n  \"launcherPid\": 4242,\n  \"registeredAt\": \"2026-10-16T12:00:00.000Z\",\n  \"hostProcess\": false\n}\n"
+        }
+      },
+      {
+        "op": "request-stop",
+        "gameId": "hl1-won",
+        "error": {"code":"STOP_FAILED","message":"Процесс не удалось завершить даже принудительно","details":{"gameId":"hl1-won"}},
+        "stopCalls": ["force(100)"],
+        "events": [{"name":"state","payload":{"gameId":"hl1-won","state":"stopping","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},{"name":"stopping","payload":{"gameId":"hl1-won","state":"stopping","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}}]
+      },
+      {"op":"query","gameId":"hl1-won","ok":{"publicState":{"gameId":"hl1-won","state":"stopping","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null},"isRunning":true,"anyRunning":"hl1-won"}},
+      {
+        "op": "files",
+        "ok": {
+          "hl1-won.process.json": "{\n  \"version\": 1,\n  \"gameId\": \"hl1-won\",\n  \"state\": \"stopping\",\n  \"pid\": 100,\n  \"processKey\": \"f398a73248b27a400f6346b5891974ad\",\n  \"executablePath\": \"C:\\\\HLSR\\\\Games\\\\hl1-won\\\\hl.exe\",\n  \"startedAt\": \"2026-10-16T12:00:00.000Z\",\n  \"since\": \"2026-10-16T12:00:00.000Z\",\n  \"exitCode\": null,\n  \"signal\": null,\n  \"lastExit\": null,\n  \"installPath\": \"C:\\\\HLSR\\\\Games\\\\hl1-won\",\n  \"launcherPid\": 4242,\n  \"registeredAt\": \"2026-10-16T12:00:00.000Z\",\n  \"hostProcess\": false\n}\n"
+        }
+      }
+    ],
+    "files": {
+      "hl1-won.process.json": "{\n  \"version\": 1,\n  \"gameId\": \"hl1-won\",\n  \"state\": \"stopping\",\n  \"pid\": 100,\n  \"processKey\": \"f398a73248b27a400f6346b5891974ad\",\n  \"executablePath\": \"C:\\\\HLSR\\\\Games\\\\hl1-won\\\\hl.exe\",\n  \"startedAt\": \"2026-10-16T12:00:00.000Z\",\n  \"since\": \"2026-10-16T12:00:00.000Z\",\n  \"exitCode\": null,\n  \"signal\": null,\n  \"lastExit\": null,\n  \"installPath\": \"C:\\\\HLSR\\\\Games\\\\hl1-won\",\n  \"launcherPid\": 4242,\n  \"registeredAt\": \"2026-10-16T12:00:00.000Z\",\n  \"hostProcess\": false\n}\n"
+    }
+  },
+  {
+    "name": "stop: failure of the request is logged unless forced",
+    "scenario": {
+      "name": "stop: failure of the request is logged unless forced",
+      "ops": [
+        {"op":"alive","pids":[100]},
+        {"op":"inspect","map":{"100":{"pid":100,"executablePath":"C:\\HLSR\\Games\\hl1-won\\hl.exe","name":"hl.exe","startedAt":"2026-10-16T12:00:00.000Z","source":"winapi"}}},
+        {"op":"register","gameId":"hl1-won","info":{"pid":100,"executablePath":"C:\\HLSR\\Games\\hl1-won\\hl.exe","installPath":"C:\\HLSR\\Games\\hl1-won","startedAt":"2026-10-16T12:00:00.000Z"}},
+        {"op":"request-stop","gameId":"hl1-won","pid":100,"timeoutMs":0,"stopResult":{"ok":false,"code":1,"output":"  ERROR: process can only be terminated forcefully \r\n"}},
+        {"op":"request-stop","gameId":"hl1-won","pid":100,"timeoutMs":0,"force":true,"stopResult":{"ok":false,"code":1,"output":"ERROR"}}
+      ]
+    },
+    "results": [
+      {"op":"alive"},
+      {"op":"inspect"},
+      {
+        "op": "register",
+        "gameId": "hl1-won",
+        "ok": {"gameId":"hl1-won","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null},
+        "events": [{"name":"state","payload":{"gameId":"hl1-won","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},{"name":"running","payload":{"gameId":"hl1-won","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}}],
+        "logs": [{"level":"info","message":"[game-process] игра hl1-won зарегистрирована: PID 100, C:\\HLSR\\Games\\hl1-won\\hl.exe"}]
+      },
+      {
+        "op": "request-stop",
+        "gameId": "hl1-won",
+        "ok": {"status":"timeout","timeoutMs":10000},
+        "stopCalls": ["graceful(100)"],
+        "events": [
+          {"name":"state","payload":{"gameId":"hl1-won","state":"stopping","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},
+          {"name":"stopping","payload":{"gameId":"hl1-won","state":"stopping","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},
+          {"name":"state","payload":{"gameId":"hl1-won","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},
+          {"name":"running","payload":{"gameId":"hl1-won","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}}
+        ],
+        "logs": [{"level":"warn","message":"[game-process] запрос на закрытие hl1-won вернул ошибку: ERROR: process can only be terminated forcefully"}]
+      },
+      {
+        "op": "request-stop",
+        "gameId": "hl1-won",
+        "error": {"code":"STOP_FAILED","message":"Процесс не удалось завершить даже принудительно","details":{"gameId":"hl1-won"}},
+        "stopCalls": ["force(100)"],
+        "events": [{"name":"state","payload":{"gameId":"hl1-won","state":"stopping","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},{"name":"stopping","payload":{"gameId":"hl1-won","state":"stopping","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}}]
+      }
+    ],
+    "files": {
+      "hl1-won.process.json": "{\n  \"version\": 1,\n  \"gameId\": \"hl1-won\",\n  \"state\": \"stopping\",\n  \"pid\": 100,\n  \"processKey\": \"f398a73248b27a400f6346b5891974ad\",\n  \"executablePath\": \"C:\\\\HLSR\\\\Games\\\\hl1-won\\\\hl.exe\",\n  \"startedAt\": \"2026-10-16T12:00:00.000Z\",\n  \"since\": \"2026-10-16T12:00:00.000Z\",\n  \"exitCode\": null,\n  \"signal\": null,\n  \"lastExit\": null,\n  \"installPath\": \"C:\\\\HLSR\\\\Games\\\\hl1-won\",\n  \"launcherPid\": 4242,\n  \"registeredAt\": \"2026-10-16T12:00:00.000Z\",\n  \"hostProcess\": false\n}\n"
+    }
+  },
+  {
+    "name": "stop: not running, mismatch",
+    "scenario": {
+      "name": "stop: not running, mismatch",
+      "ops": [
+        {"op":"request-stop","gameId":"hl1-won","pid":100},
+        {"op":"alive","pids":[100]},
+        {"op":"inspect","map":{"100":{"pid":100,"executablePath":"C:\\Other\\hl.exe","name":"hl.exe","startedAt":"2026-10-16T12:00:00.000Z","source":"winapi"}}},
+        {"op":"register","gameId":"hl1-won","info":{"pid":100,"executablePath":"C:\\HLSR\\Games\\hl1-won\\hl.exe","installPath":"C:\\HLSR\\Games\\hl1-won","startedAt":"2026-10-16T12:00:00.000Z"}},
+        {"op":"request-stop","gameId":"hl1-won","pid":100,"timeoutMs":0},
+        {"op":"query","gameId":"hl1-won"},
+        {"op":"inspect","map":{"100":{"pid":100,"executablePath":"C:\\HLSR\\Games\\hl1-won\\hl.exe","name":"hl.exe","startedAt":"2026-10-16T12:01:00.000Z","source":"winapi"}}},
+        {"op":"request-stop","gameId":"hl1-won","pid":100,"timeoutMs":0},
+        {"op":"inspect","map":{"100":{"pid":100,"executablePath":"C:\\HLSR\\Games\\hl1-won\\hl.exe","name":"hl.exe","startedAt":"2026-10-16T12:00:00.000Z","source":"winapi"}}},
+        {"op":"alive","pids":[]},
+        {"op":"request-stop","gameId":"hl1-won","pid":100,"timeoutMs":0},
+        {"op":"inspect","map":{"100":null}},
+        {"op":"alive","pids":[100]},
+        {"op":"request-stop","gameId":"hl1-won","pid":100,"timeoutMs":0}
+      ]
+    },
+    "results": [
+      {"op":"request-stop","gameId":"hl1-won","ok":{"status":"not-running"},"stopCalls":[]},
+      {"op":"alive"},
+      {"op":"inspect"},
+      {
+        "op": "register",
+        "gameId": "hl1-won",
+        "ok": {"gameId":"hl1-won","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null},
+        "events": [{"name":"state","payload":{"gameId":"hl1-won","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},{"name":"running","payload":{"gameId":"hl1-won","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}}],
+        "logs": [{"level":"info","message":"[game-process] игра hl1-won зарегистрирована: PID 100, C:\\HLSR\\Games\\hl1-won\\hl.exe"}]
+      },
+      {"op":"request-stop","gameId":"hl1-won","error":{"code":"PROCESS_MISMATCH","message":"PID больше не принадлежит запущенной игре — завершение отменено","details":{"gameId":"hl1-won"}},"stopCalls":[]},
+      {"op":"query","gameId":"hl1-won","ok":{"publicState":{"gameId":"hl1-won","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null},"isRunning":true,"anyRunning":"hl1-won"}},
+      {"op":"inspect"},
+      {"op":"request-stop","gameId":"hl1-won","error":{"code":"PROCESS_MISMATCH","message":"PID больше не принадлежит запущенной игре — завершение отменено","details":{"gameId":"hl1-won"}},"stopCalls":[]},
+      {"op":"inspect"},
+      {"op":"alive"},
+      {"op":"request-stop","gameId":"hl1-won","error":{"code":"PROCESS_MISMATCH","message":"PID больше не принадлежит запущенной игре — завершение отменено","details":{"gameId":"hl1-won"}},"stopCalls":[]},
+      {"op":"inspect"},
+      {"op":"alive"},
+      {"op":"request-stop","gameId":"hl1-won","error":{"code":"PROCESS_MISMATCH","message":"PID больше не принадлежит запущенной игре — завершение отменено","details":{"gameId":"hl1-won"}},"stopCalls":[]}
+    ],
+    "files": {
+      "hl1-won.process.json": "{\n  \"version\": 1,\n  \"gameId\": \"hl1-won\",\n  \"state\": \"running\",\n  \"pid\": 100,\n  \"processKey\": \"f398a73248b27a400f6346b5891974ad\",\n  \"executablePath\": \"C:\\\\HLSR\\\\Games\\\\hl1-won\\\\hl.exe\",\n  \"startedAt\": \"2026-10-16T12:00:00.000Z\",\n  \"since\": \"2026-10-16T12:00:00.000Z\",\n  \"exitCode\": null,\n  \"signal\": null,\n  \"lastExit\": null,\n  \"installPath\": \"C:\\\\HLSR\\\\Games\\\\hl1-won\",\n  \"launcherPid\": 4242,\n  \"registeredAt\": \"2026-10-16T12:00:00.000Z\",\n  \"hostProcess\": false\n}\n"
+    }
+  },
+  {
+    "name": "stop: host process is stopped by group",
+    "scenario": {
+      "name": "stop: host process is stopped by group",
+      "ops": [
+        {"op":"alive","pids":[5150]},
+        {"op":"register","gameId":"hl2-4260","info":{"pid":5150,"executablePath":"C:\\HLSR\\Games\\hl2-4260\\hl2.exe","installPath":"C:\\HLSR\\Games\\hl2-4260","startedAt":"2026-10-16T12:00:00.000Z","hostProcess":true,"child":true}},
+        {"op":"request-stop","gameId":"hl2-4260","pid":5150,"timeoutMs":0},
+        {"op":"request-stop","gameId":"hl2-4260","pid":5150,"timeoutMs":0,"force":true},
+        {"op":"request-stop","gameId":"hl2-4260","pid":5150,"timeoutMs":5000,"killsOnStop":true},
+        {"op":"query","gameId":"hl2-4260"}
+      ]
+    },
+    "results": [
+      {"op":"alive"},
+      {
+        "op": "register",
+        "gameId": "hl2-4260",
+        "ok": {"gameId":"hl2-4260","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null},
+        "events": [{"name":"state","payload":{"gameId":"hl2-4260","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},{"name":"running","payload":{"gameId":"hl2-4260","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}}],
+        "logs": [{"level":"info","message":"[game-process] игра hl2-4260 зарегистрирована: PID 5150, C:\\HLSR\\Games\\hl2-4260\\hl2.exe"}]
+      },
+      {
+        "op": "request-stop",
+        "gameId": "hl2-4260",
+        "ok": {"status":"timeout","timeoutMs":10000},
+        "stopCalls": ["gracefulGroup(5150)"],
+        "events": [
+          {"name":"state","payload":{"gameId":"hl2-4260","state":"stopping","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},
+          {"name":"stopping","payload":{"gameId":"hl2-4260","state":"stopping","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},
+          {"name":"state","payload":{"gameId":"hl2-4260","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},
+          {"name":"running","payload":{"gameId":"hl2-4260","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}}
+        ]
+      },
+      {
+        "op": "request-stop",
+        "gameId": "hl2-4260",
+        "error": {"code":"STOP_FAILED","message":"Процесс не удалось завершить даже принудительно","details":{"gameId":"hl2-4260"}},
+        "stopCalls": ["forceGroup(5150)"],
+        "events": [{"name":"state","payload":{"gameId":"hl2-4260","state":"stopping","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},{"name":"stopping","payload":{"gameId":"hl2-4260","state":"stopping","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}}]
+      },
+      {
+        "op": "request-stop",
+        "gameId": "hl2-4260",
+        "ok": {"status":"stopped"},
+        "stopCalls": ["gracefulGroup(5150)"],
+        "events": [
+          {"name":"state","payload":{"gameId":"hl2-4260","state":"stopping","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},
+          {"name":"stopping","payload":{"gameId":"hl2-4260","state":"stopping","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},
+          {"name":"state","payload":{"gameId":"hl2-4260","state":"exited","running":false,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":0,"lastExit":{"outcome":"exited","exitCode":0,"signal":null,"requested":true,"detected":true,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":5150,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"exited","payload":{"gameId":"hl2-4260","state":"exited","running":false,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":0,"lastExit":{"outcome":"exited","exitCode":0,"signal":null,"requested":true,"detected":true,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":5150,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"finished","payload":{"gameId":"hl2-4260","lastExit":{"outcome":"exited","exitCode":0,"signal":null,"requested":true,"detected":true,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":5150,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"state","payload":{"gameId":"hl2-4260","state":"not-running","running":false,"since":null,"startedAt":null,"exitCode":null,"lastExit":{"outcome":"exited","exitCode":0,"signal":null,"requested":true,"detected":true,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":5150,"startedAt":"2026-10-16T12:00:00.000Z"}}}
+        ],
+        "logs": [{"level":"info","message":"[game-process] игра hl2-4260 закрыта штатно (код 0, PID 5150)"}]
+      },
+      {"op":"query","gameId":"hl2-4260","ok":{"publicState":{"gameId":"hl2-4260","state":"not-running","running":false,"since":null,"startedAt":null,"exitCode":null,"lastExit":{"outcome":"exited","exitCode":0,"signal":null,"requested":true,"detected":true,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":5150,"startedAt":"2026-10-16T12:00:00.000Z"}},"isRunning":false,"anyRunning":null}}
+    ],
+    "files": {}
+  },
+  {
+    "name": "exit: GoldSrc restarts itself, then really exits",
+    "scenario": {
+      "name": "exit: GoldSrc restarts itself, then really exits",
+      "ops": [
+        {"op":"alive","pids":[100]},
+        {"op":"find","map":{"hl.exe":[{"pid":100,"executablePath":"C:\\HLSR\\Games\\hl1-won\\hl.exe","name":"hl.exe","startedAt":"2026-10-16T12:00:00.000Z","source":"winapi"}]}},
+        {"op":"register","gameId":"hl1-won","info":{"pid":100,"executablePath":"C:\\HLSR\\Games\\hl1-won\\hl.exe","installPath":"C:\\HLSR\\Games\\hl1-won","startedAt":"2026-10-16T12:00:00.000Z"}},
+        {"op":"alive","pids":[200]},
+        {"op":"find","map":{"hl.exe":[{"pid":200,"executablePath":"C:\\HLSR\\Games\\hl1-won\\hl.exe","name":"hl.exe","startedAt":"2026-10-16T12:00:30.000Z","source":"winapi"}]}},
+        {"op":"handle-exit","gameId":"hl1-won","detected":true},
+        {"op":"query","gameId":"hl1-won"},
+        {"op":"files"},
+        {"op":"alive","pids":[]},
+        {"op":"find","map":{"hl.exe":[]}},
+        {"op":"handle-exit","gameId":"hl1-won","detected":true},
+        {"op":"query","gameId":"hl1-won"},
+        {"op":"files"}
+      ]
+    },
+    "results": [
+      {"op":"alive"},
+      {"op":"find"},
+      {
+        "op": "register",
+        "gameId": "hl1-won",
+        "ok": {"gameId":"hl1-won","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null},
+        "events": [{"name":"state","payload":{"gameId":"hl1-won","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},{"name":"running","payload":{"gameId":"hl1-won","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}}],
+        "logs": [{"level":"info","message":"[game-process] игра hl1-won зарегистрирована: PID 100, C:\\HLSR\\Games\\hl1-won\\hl.exe"}]
+      },
+      {"op":"alive"},
+      {"op":"find"},
+      {"op":"handle-exit","gameId":"hl1-won","logs":[{"level":"info","message":"[game-process] игра hl1-won перезапустилась: PID 100 → 200"}]},
+      {"op":"query","gameId":"hl1-won","ok":{"publicState":{"gameId":"hl1-won","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:30.000Z","exitCode":null,"lastExit":null},"isRunning":true,"anyRunning":"hl1-won"}},
+      {
+        "op": "files",
+        "ok": {
+          "hl1-won.process.json": "{\n  \"version\": 1,\n  \"gameId\": \"hl1-won\",\n  \"state\": \"running\",\n  \"pid\": 200,\n  \"processKey\": \"9e7c275600e090067a280573aa1ee339\",\n  \"executablePath\": \"C:\\\\HLSR\\\\Games\\\\hl1-won\\\\hl.exe\",\n  \"startedAt\": \"2026-10-16T12:00:30.000Z\",\n  \"since\": \"2026-10-16T12:00:00.000Z\",\n  \"exitCode\": null,\n  \"signal\": null,\n  \"lastExit\": null,\n  \"installPath\": \"C:\\\\HLSR\\\\Games\\\\hl1-won\",\n  \"launcherPid\": 4242,\n  \"registeredAt\": \"2026-10-16T12:00:00.000Z\",\n  \"hostProcess\": false\n}\n"
+        }
+      },
+      {"op":"alive"},
+      {"op":"find"},
+      {
+        "op": "handle-exit",
+        "gameId": "hl1-won",
+        "events": [
+          {"name":"state","payload":{"gameId":"hl1-won","state":"exited","running":false,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:30.000Z","exitCode":null,"lastExit":{"outcome":"exited","exitCode":null,"signal":null,"requested":false,"detected":true,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":200,"startedAt":"2026-10-16T12:00:30.000Z"}}},
+          {"name":"exited","payload":{"gameId":"hl1-won","state":"exited","running":false,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:30.000Z","exitCode":null,"lastExit":{"outcome":"exited","exitCode":null,"signal":null,"requested":false,"detected":true,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":200,"startedAt":"2026-10-16T12:00:30.000Z"}}},
+          {"name":"finished","payload":{"gameId":"hl1-won","lastExit":{"outcome":"exited","exitCode":null,"signal":null,"requested":false,"detected":true,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":200,"startedAt":"2026-10-16T12:00:30.000Z"}}},
+          {"name":"state","payload":{"gameId":"hl1-won","state":"not-running","running":false,"since":null,"startedAt":null,"exitCode":null,"lastExit":{"outcome":"exited","exitCode":null,"signal":null,"requested":false,"detected":true,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":200,"startedAt":"2026-10-16T12:00:30.000Z"}}}
+        ],
+        "logs": [{"level":"info","message":"[game-process] игра hl1-won закрыта штатно (код null, PID 200)"}]
+      },
+      {"op":"query","gameId":"hl1-won","ok":{"publicState":{"gameId":"hl1-won","state":"not-running","running":false,"since":null,"startedAt":null,"exitCode":null,"lastExit":{"outcome":"exited","exitCode":null,"signal":null,"requested":false,"detected":true,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":200,"startedAt":"2026-10-16T12:00:30.000Z"}},"isRunning":false,"anyRunning":null}},
+      {"op":"files","ok":{}}
+    ],
+    "files": {}
+  },
+  {
+    "name": "exit: successor is not accepted",
+    "scenario": {
+      "name": "exit: successor is not accepted",
+      "ops": [
+        {"op":"alive","pids":[100,200,300,400]},
+        {"op":"register","gameId":"hl1-won","info":{"pid":100,"executablePath":"C:\\HLSR\\Games\\hl1-won\\hl.exe","installPath":"C:\\HLSR\\Games\\hl1-won","startedAt":"2026-10-16T12:00:00.000Z"}},
+        {
+          "op": "find",
+          "map": {
+            "hl.exe": [
+              {"pid":100,"executablePath":"C:\\HLSR\\Games\\hl1-won\\hl.exe","name":"hl.exe","startedAt":"2026-10-16T12:00:00.000Z","source":"winapi"},
+              {"pid":201,"executablePath":"C:\\Elsewhere\\hl.exe","name":"hl.exe","startedAt":"2026-10-16T12:00:00.000Z","source":"winapi"},
+              {"pid":202,"executablePath":"C:\\HLSR\\Games\\hl1-won\\hl.exe","name":"hl.exe","startedAt":"2026-10-16T12:00:00.000Z","source":"winapi"},
+              {"pid":203,"executablePath":null,"name":"hl.exe"}
+            ]
+          }
+        },
+        {"op":"handle-exit","gameId":"hl1-won","detected":true},
+        {"op":"query","gameId":"hl1-won"},
+        {"op":"register","gameId":"hl1-won","info":{"pid":100,"executablePath":"C:\\HLSR\\Games\\hl1-won\\hl.exe","installPath":"C:\\HLSR\\Games\\hl1-won","startedAt":"2026-10-16T12:00:00.000Z"}},
+        {"op":"find","map":{"hl.exe":[{"pid":200,"executablePath":"C:\\HLSR\\Games\\hl1-won\\hl.exe","name":"hl.exe","startedAt":"2026-10-16T12:00:00.000Z","source":"winapi"}]}},
+        {"op":"handle-exit","gameId":"hl1-won","detected":false,"exitCode":1},
+        {"op":"register","gameId":"hl1-won","info":{"pid":100,"executablePath":"C:\\HLSR\\Games\\hl1-won\\hl.exe","installPath":"C:\\HLSR\\Games\\hl1-won","startedAt":"2026-10-16T12:00:00.000Z"}},
+        {"op":"handle-exit","gameId":"hl1-won","detected":true,"error":"spawn failed"},
+        {"op":"register","gameId":"hl1-won","info":{"pid":100,"executablePath":"C:\\HLSR\\Games\\hl1-won\\hl.exe","installPath":"C:\\HLSR\\Games\\hl1-won","startedAt":"2026-10-16T12:00:00.000Z"}},
+        {"op":"inspect","map":{"100":{"pid":100,"executablePath":"C:\\HLSR\\Games\\hl1-won\\hl.exe","name":"hl.exe","startedAt":"2026-10-16T12:00:00.000Z","source":"winapi"}}},
+        {"op":"request-stop","gameId":"hl1-won","pid":100,"timeoutMs":0},
+        {"op":"handle-exit","gameId":"hl1-won","detected":true},
+        {"op":"register","gameId":"hl1-won","info":{"pid":100,"executablePath":"C:\\HLSR\\Games\\hl1-won\\hl.exe","installPath":"C:\\HLSR\\Games\\hl1-won","startedAt":"2026-10-16T12:00:00.000Z","child":true}},
+        {"op":"handle-exit","gameId":"hl1-won","detected":true},
+        {"op":"register","gameId":"hl1-won","info":{"pid":100,"executablePath":"C:\\HLSR\\Games\\hl1-won\\hl.exe","installPath":"C:\\HLSR\\Games\\hl1-won","startedAt":"2026-10-16T12:00:00.000Z"}},
+        {"op":"find","map":{"hl.exe":[{"pid":300,"executablePath":"c:\\hlsr\\GAMES\\hl1-won\\HL.EXE","name":"hl.exe","startedAt":"2026-10-16T12:00:00.000Z","source":"winapi"}]}},
+        {"op":"handle-exit","gameId":"hl1-won","detected":true},
+        {"op":"query","gameId":"hl1-won"},
+        {"op":"files"}
+      ]
+    },
+    "results": [
+      {"op":"alive"},
+      {
+        "op": "register",
+        "gameId": "hl1-won",
+        "ok": {"gameId":"hl1-won","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null},
+        "events": [{"name":"state","payload":{"gameId":"hl1-won","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},{"name":"running","payload":{"gameId":"hl1-won","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}}],
+        "logs": [{"level":"info","message":"[game-process] игра hl1-won зарегистрирована: PID 100, C:\\HLSR\\Games\\hl1-won\\hl.exe"}]
+      },
+      {"op":"find"},
+      {
+        "op": "handle-exit",
+        "gameId": "hl1-won",
+        "events": [
+          {"name":"state","payload":{"gameId":"hl1-won","state":"exited","running":false,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":{"outcome":"exited","exitCode":null,"signal":null,"requested":false,"detected":true,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":100,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"exited","payload":{"gameId":"hl1-won","state":"exited","running":false,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":{"outcome":"exited","exitCode":null,"signal":null,"requested":false,"detected":true,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":100,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"finished","payload":{"gameId":"hl1-won","lastExit":{"outcome":"exited","exitCode":null,"signal":null,"requested":false,"detected":true,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":100,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"state","payload":{"gameId":"hl1-won","state":"not-running","running":false,"since":null,"startedAt":null,"exitCode":null,"lastExit":{"outcome":"exited","exitCode":null,"signal":null,"requested":false,"detected":true,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":100,"startedAt":"2026-10-16T12:00:00.000Z"}}}
+        ],
+        "logs": [{"level":"info","message":"[game-process] игра hl1-won закрыта штатно (код null, PID 100)"}]
+      },
+      {"op":"query","gameId":"hl1-won","ok":{"publicState":{"gameId":"hl1-won","state":"not-running","running":false,"since":null,"startedAt":null,"exitCode":null,"lastExit":{"outcome":"exited","exitCode":null,"signal":null,"requested":false,"detected":true,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":100,"startedAt":"2026-10-16T12:00:00.000Z"}},"isRunning":false,"anyRunning":null}},
+      {
+        "op": "register",
+        "gameId": "hl1-won",
+        "ok": {"gameId":"hl1-won","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null},
+        "events": [{"name":"state","payload":{"gameId":"hl1-won","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},{"name":"running","payload":{"gameId":"hl1-won","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}}],
+        "logs": [{"level":"info","message":"[game-process] игра hl1-won зарегистрирована: PID 100, C:\\HLSR\\Games\\hl1-won\\hl.exe"}]
+      },
+      {"op":"find"},
+      {
+        "op": "handle-exit",
+        "gameId": "hl1-won",
+        "events": [
+          {"name":"state","payload":{"gameId":"hl1-won","state":"crashed","running":false,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":1,"lastExit":{"outcome":"crashed","exitCode":1,"signal":null,"requested":false,"detected":false,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":100,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"crashed","payload":{"gameId":"hl1-won","state":"crashed","running":false,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":1,"lastExit":{"outcome":"crashed","exitCode":1,"signal":null,"requested":false,"detected":false,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":100,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"finished","payload":{"gameId":"hl1-won","lastExit":{"outcome":"crashed","exitCode":1,"signal":null,"requested":false,"detected":false,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":100,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"state","payload":{"gameId":"hl1-won","state":"not-running","running":false,"since":null,"startedAt":null,"exitCode":null,"lastExit":{"outcome":"crashed","exitCode":1,"signal":null,"requested":false,"detected":false,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":100,"startedAt":"2026-10-16T12:00:00.000Z"}}}
+        ],
+        "logs": [{"level":"error","message":"[game-process] игра hl1-won завершилась с ошибкой: код 1, сигнал нет, PID 100"}]
+      },
+      {
+        "op": "register",
+        "gameId": "hl1-won",
+        "ok": {"gameId":"hl1-won","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null},
+        "events": [{"name":"state","payload":{"gameId":"hl1-won","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},{"name":"running","payload":{"gameId":"hl1-won","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}}],
+        "logs": [{"level":"info","message":"[game-process] игра hl1-won зарегистрирована: PID 100, C:\\HLSR\\Games\\hl1-won\\hl.exe"}]
+      },
+      {
+        "op": "handle-exit",
+        "gameId": "hl1-won",
+        "events": [
+          {"name":"state","payload":{"gameId":"hl1-won","state":"crashed","running":false,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":{"outcome":"crashed","exitCode":null,"signal":null,"requested":false,"detected":true,"error":"spawn failed","at":"2026-10-16T12:00:00.000Z","pid":100,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"crashed","payload":{"gameId":"hl1-won","state":"crashed","running":false,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":{"outcome":"crashed","exitCode":null,"signal":null,"requested":false,"detected":true,"error":"spawn failed","at":"2026-10-16T12:00:00.000Z","pid":100,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"finished","payload":{"gameId":"hl1-won","lastExit":{"outcome":"crashed","exitCode":null,"signal":null,"requested":false,"detected":true,"error":"spawn failed","at":"2026-10-16T12:00:00.000Z","pid":100,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"state","payload":{"gameId":"hl1-won","state":"not-running","running":false,"since":null,"startedAt":null,"exitCode":null,"lastExit":{"outcome":"crashed","exitCode":null,"signal":null,"requested":false,"detected":true,"error":"spawn failed","at":"2026-10-16T12:00:00.000Z","pid":100,"startedAt":"2026-10-16T12:00:00.000Z"}}}
+        ],
+        "logs": [{"level":"error","message":"[game-process] игра hl1-won завершилась с ошибкой: код null, сигнал нет, PID 100, spawn failed"}]
+      },
+      {
+        "op": "register",
+        "gameId": "hl1-won",
+        "ok": {"gameId":"hl1-won","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null},
+        "events": [{"name":"state","payload":{"gameId":"hl1-won","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},{"name":"running","payload":{"gameId":"hl1-won","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}}],
+        "logs": [{"level":"info","message":"[game-process] игра hl1-won зарегистрирована: PID 100, C:\\HLSR\\Games\\hl1-won\\hl.exe"}]
+      },
+      {"op":"inspect"},
+      {
+        "op": "request-stop",
+        "gameId": "hl1-won",
+        "ok": {"status":"timeout","timeoutMs":10000},
+        "stopCalls": ["graceful(100)"],
+        "events": [
+          {"name":"state","payload":{"gameId":"hl1-won","state":"stopping","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},
+          {"name":"stopping","payload":{"gameId":"hl1-won","state":"stopping","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},
+          {"name":"state","payload":{"gameId":"hl1-won","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},
+          {"name":"running","payload":{"gameId":"hl1-won","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}}
+        ]
+      },
+      {"op":"handle-exit","gameId":"hl1-won","logs":[{"level":"info","message":"[game-process] игра hl1-won перезапустилась: PID 100 → 200"}]},
+      {"op":"register","gameId":"hl1-won","error":{"code":"ALREADY_RUNNING","message":"Игра hl1-won уже отслеживается","details":null}},
+      {
+        "op": "handle-exit",
+        "gameId": "hl1-won",
+        "events": [
+          {"name":"state","payload":{"gameId":"hl1-won","state":"exited","running":false,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":{"outcome":"exited","exitCode":null,"signal":null,"requested":false,"detected":true,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":200,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"exited","payload":{"gameId":"hl1-won","state":"exited","running":false,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":{"outcome":"exited","exitCode":null,"signal":null,"requested":false,"detected":true,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":200,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"finished","payload":{"gameId":"hl1-won","lastExit":{"outcome":"exited","exitCode":null,"signal":null,"requested":false,"detected":true,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":200,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"state","payload":{"gameId":"hl1-won","state":"not-running","running":false,"since":null,"startedAt":null,"exitCode":null,"lastExit":{"outcome":"exited","exitCode":null,"signal":null,"requested":false,"detected":true,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":200,"startedAt":"2026-10-16T12:00:00.000Z"}}}
+        ],
+        "logs": [{"level":"info","message":"[game-process] игра hl1-won закрыта штатно (код null, PID 200)"}]
+      },
+      {
+        "op": "register",
+        "gameId": "hl1-won",
+        "ok": {"gameId":"hl1-won","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null},
+        "events": [{"name":"state","payload":{"gameId":"hl1-won","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},{"name":"running","payload":{"gameId":"hl1-won","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}}],
+        "logs": [{"level":"info","message":"[game-process] игра hl1-won зарегистрирована: PID 100, C:\\HLSR\\Games\\hl1-won\\hl.exe"}]
+      },
+      {"op":"find"},
+      {"op":"handle-exit","gameId":"hl1-won","logs":[{"level":"info","message":"[game-process] игра hl1-won перезапустилась: PID 100 → 300"}]},
+      {"op":"query","gameId":"hl1-won","ok":{"publicState":{"gameId":"hl1-won","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null},"isRunning":true,"anyRunning":"hl1-won"}},
+      {
+        "op": "files",
+        "ok": {
+          "hl1-won.process.json": "{\n  \"version\": 1,\n  \"gameId\": \"hl1-won\",\n  \"state\": \"running\",\n  \"pid\": 300,\n  \"processKey\": \"4336d3f56c44b81e06afa7dedceee3f8\",\n  \"executablePath\": \"C:\\\\HLSR\\\\Games\\\\hl1-won\\\\hl.exe\",\n  \"startedAt\": \"2026-10-16T12:00:00.000Z\",\n  \"since\": \"2026-10-16T12:00:00.000Z\",\n  \"exitCode\": null,\n  \"signal\": null,\n  \"lastExit\": null,\n  \"installPath\": \"C:\\\\HLSR\\\\Games\\\\hl1-won\",\n  \"launcherPid\": 4242,\n  \"registeredAt\": \"2026-10-16T12:00:00.000Z\",\n  \"hostProcess\": false\n}\n"
+        }
+      }
+    ],
+    "files": {
+      "hl1-won.process.json": "{\n  \"version\": 1,\n  \"gameId\": \"hl1-won\",\n  \"state\": \"running\",\n  \"pid\": 300,\n  \"processKey\": \"4336d3f56c44b81e06afa7dedceee3f8\",\n  \"executablePath\": \"C:\\\\HLSR\\\\Games\\\\hl1-won\\\\hl.exe\",\n  \"startedAt\": \"2026-10-16T12:00:00.000Z\",\n  \"since\": \"2026-10-16T12:00:00.000Z\",\n  \"exitCode\": null,\n  \"signal\": null,\n  \"lastExit\": null,\n  \"installPath\": \"C:\\\\HLSR\\\\Games\\\\hl1-won\",\n  \"launcherPid\": 4242,\n  \"registeredAt\": \"2026-10-16T12:00:00.000Z\",\n  \"hostProcess\": false\n}\n"
+    }
+  },
+  {
+    "name": "exit: classification",
+    "scenario": {
+      "name": "exit: classification",
+      "ops": [
+        {"op":"alive","pids":[1,2,3,4,5,6,7]},
+        {"op":"register","gameId":"g-one","info":{"pid":1,"executablePath":"C:\\HLSR\\Games\\g-one\\hl.exe","installPath":"C:\\HLSR\\Games\\g-one","startedAt":"2026-10-16T12:00:00.000Z"}},
+        {"op":"handle-exit","gameId":"g-one","exitCode":0},
+        {"op":"register","gameId":"g-two","info":{"pid":2,"executablePath":"C:\\HLSR\\Games\\g-two\\hl.exe","installPath":"C:\\HLSR\\Games\\g-two","startedAt":"2026-10-16T12:00:00.000Z"}},
+        {"op":"handle-exit","gameId":"g-two","exitCode":3},
+        {"op":"register","gameId":"g-three","info":{"pid":3,"executablePath":"C:\\HLSR\\Games\\g-three\\hl.exe","installPath":"C:\\HLSR\\Games\\g-three","startedAt":"2026-10-16T12:00:00.000Z"}},
+        {"op":"handle-exit","gameId":"g-three"},
+        {"op":"register","gameId":"g-four","info":{"pid":4,"executablePath":"C:\\HLSR\\Games\\g-four\\hl.exe","installPath":"C:\\HLSR\\Games\\g-four","startedAt":"2026-10-16T12:00:00.000Z"}},
+        {"op":"handle-exit","gameId":"g-four","exitCode":0,"signal":"SIGSEGV"},
+        {"op":"register","gameId":"g-five","info":{"pid":5,"executablePath":"C:\\HLSR\\Games\\g-five\\hl.exe","installPath":"C:\\HLSR\\Games\\g-five","startedAt":"2026-10-16T12:00:00.000Z"}},
+        {"op":"handle-exit","gameId":"g-five","exitCode":1,"error":"boom"},
+        {"op":"register","gameId":"g-six","info":{"pid":6,"executablePath":"C:\\HLSR\\Games\\g-six\\hl.exe","installPath":"C:\\HLSR\\Games\\g-six","startedAt":"2026-10-16T12:00:00.000Z"}},
+        {"op":"handle-exit","gameId":"g-six","signal":"SIGKILL","detected":true},
+        {"op":"register","gameId":"g-seven","info":{"pid":7,"executablePath":"C:\\HLSR\\Games\\g-seven\\hl.exe","installPath":"C:\\HLSR\\Games\\g-seven","startedAt":"2026-10-16T12:00:00.000Z"}},
+        {"op":"handle-exit","gameId":"g-seven","exitCode":-1},
+        {"op":"handle-exit","gameId":"g-one","exitCode":9},
+        {"op":"handle-exit","gameId":"never-seen","exitCode":9},
+        {"op":"query","gameId":"g-one"},
+        {"op":"query","gameId":"g-two"},
+        {"op":"files"}
+      ]
+    },
+    "results": [
+      {"op":"alive"},
+      {
+        "op": "register",
+        "gameId": "g-one",
+        "ok": {"gameId":"g-one","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null},
+        "events": [{"name":"state","payload":{"gameId":"g-one","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},{"name":"running","payload":{"gameId":"g-one","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}}],
+        "logs": [{"level":"info","message":"[game-process] игра g-one зарегистрирована: PID 1, C:\\HLSR\\Games\\g-one\\hl.exe"}]
+      },
+      {
+        "op": "handle-exit",
+        "gameId": "g-one",
+        "events": [
+          {"name":"state","payload":{"gameId":"g-one","state":"exited","running":false,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":0,"lastExit":{"outcome":"exited","exitCode":0,"signal":null,"requested":false,"detected":false,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":1,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"exited","payload":{"gameId":"g-one","state":"exited","running":false,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":0,"lastExit":{"outcome":"exited","exitCode":0,"signal":null,"requested":false,"detected":false,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":1,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"finished","payload":{"gameId":"g-one","lastExit":{"outcome":"exited","exitCode":0,"signal":null,"requested":false,"detected":false,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":1,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"state","payload":{"gameId":"g-one","state":"not-running","running":false,"since":null,"startedAt":null,"exitCode":null,"lastExit":{"outcome":"exited","exitCode":0,"signal":null,"requested":false,"detected":false,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":1,"startedAt":"2026-10-16T12:00:00.000Z"}}}
+        ],
+        "logs": [{"level":"info","message":"[game-process] игра g-one закрыта штатно (код 0, PID 1)"}]
+      },
+      {
+        "op": "register",
+        "gameId": "g-two",
+        "ok": {"gameId":"g-two","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null},
+        "events": [{"name":"state","payload":{"gameId":"g-two","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},{"name":"running","payload":{"gameId":"g-two","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}}],
+        "logs": [{"level":"info","message":"[game-process] игра g-two зарегистрирована: PID 2, C:\\HLSR\\Games\\g-two\\hl.exe"}]
+      },
+      {
+        "op": "handle-exit",
+        "gameId": "g-two",
+        "events": [
+          {"name":"state","payload":{"gameId":"g-two","state":"crashed","running":false,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":3,"lastExit":{"outcome":"crashed","exitCode":3,"signal":null,"requested":false,"detected":false,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":2,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"crashed","payload":{"gameId":"g-two","state":"crashed","running":false,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":3,"lastExit":{"outcome":"crashed","exitCode":3,"signal":null,"requested":false,"detected":false,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":2,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"finished","payload":{"gameId":"g-two","lastExit":{"outcome":"crashed","exitCode":3,"signal":null,"requested":false,"detected":false,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":2,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"state","payload":{"gameId":"g-two","state":"not-running","running":false,"since":null,"startedAt":null,"exitCode":null,"lastExit":{"outcome":"crashed","exitCode":3,"signal":null,"requested":false,"detected":false,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":2,"startedAt":"2026-10-16T12:00:00.000Z"}}}
+        ],
+        "logs": [{"level":"error","message":"[game-process] игра g-two завершилась с ошибкой: код 3, сигнал нет, PID 2"}]
+      },
+      {
+        "op": "register",
+        "gameId": "g-three",
+        "ok": {"gameId":"g-three","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null},
+        "events": [{"name":"state","payload":{"gameId":"g-three","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},{"name":"running","payload":{"gameId":"g-three","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}}],
+        "logs": [{"level":"info","message":"[game-process] игра g-three зарегистрирована: PID 3, C:\\HLSR\\Games\\g-three\\hl.exe"}]
+      },
+      {
+        "op": "handle-exit",
+        "gameId": "g-three",
+        "events": [
+          {"name":"state","payload":{"gameId":"g-three","state":"exited","running":false,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":{"outcome":"exited","exitCode":null,"signal":null,"requested":false,"detected":false,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":3,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"exited","payload":{"gameId":"g-three","state":"exited","running":false,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":{"outcome":"exited","exitCode":null,"signal":null,"requested":false,"detected":false,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":3,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"finished","payload":{"gameId":"g-three","lastExit":{"outcome":"exited","exitCode":null,"signal":null,"requested":false,"detected":false,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":3,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"state","payload":{"gameId":"g-three","state":"not-running","running":false,"since":null,"startedAt":null,"exitCode":null,"lastExit":{"outcome":"exited","exitCode":null,"signal":null,"requested":false,"detected":false,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":3,"startedAt":"2026-10-16T12:00:00.000Z"}}}
+        ],
+        "logs": [{"level":"info","message":"[game-process] игра g-three закрыта штатно (код null, PID 3)"}]
+      },
+      {
+        "op": "register",
+        "gameId": "g-four",
+        "ok": {"gameId":"g-four","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null},
+        "events": [{"name":"state","payload":{"gameId":"g-four","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},{"name":"running","payload":{"gameId":"g-four","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}}],
+        "logs": [{"level":"info","message":"[game-process] игра g-four зарегистрирована: PID 4, C:\\HLSR\\Games\\g-four\\hl.exe"}]
+      },
+      {
+        "op": "handle-exit",
+        "gameId": "g-four",
+        "events": [
+          {"name":"state","payload":{"gameId":"g-four","state":"crashed","running":false,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":0,"lastExit":{"outcome":"crashed","exitCode":0,"signal":"SIGSEGV","requested":false,"detected":false,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":4,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"crashed","payload":{"gameId":"g-four","state":"crashed","running":false,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":0,"lastExit":{"outcome":"crashed","exitCode":0,"signal":"SIGSEGV","requested":false,"detected":false,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":4,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"finished","payload":{"gameId":"g-four","lastExit":{"outcome":"crashed","exitCode":0,"signal":"SIGSEGV","requested":false,"detected":false,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":4,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"state","payload":{"gameId":"g-four","state":"not-running","running":false,"since":null,"startedAt":null,"exitCode":null,"lastExit":{"outcome":"crashed","exitCode":0,"signal":"SIGSEGV","requested":false,"detected":false,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":4,"startedAt":"2026-10-16T12:00:00.000Z"}}}
+        ],
+        "logs": [{"level":"error","message":"[game-process] игра g-four завершилась с ошибкой: код 0, сигнал SIGSEGV, PID 4"}]
+      },
+      {
+        "op": "register",
+        "gameId": "g-five",
+        "ok": {"gameId":"g-five","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null},
+        "events": [{"name":"state","payload":{"gameId":"g-five","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},{"name":"running","payload":{"gameId":"g-five","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}}],
+        "logs": [{"level":"info","message":"[game-process] игра g-five зарегистрирована: PID 5, C:\\HLSR\\Games\\g-five\\hl.exe"}]
+      },
+      {
+        "op": "handle-exit",
+        "gameId": "g-five",
+        "events": [
+          {"name":"state","payload":{"gameId":"g-five","state":"crashed","running":false,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":1,"lastExit":{"outcome":"crashed","exitCode":1,"signal":null,"requested":false,"detected":false,"error":"boom","at":"2026-10-16T12:00:00.000Z","pid":5,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"crashed","payload":{"gameId":"g-five","state":"crashed","running":false,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":1,"lastExit":{"outcome":"crashed","exitCode":1,"signal":null,"requested":false,"detected":false,"error":"boom","at":"2026-10-16T12:00:00.000Z","pid":5,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"finished","payload":{"gameId":"g-five","lastExit":{"outcome":"crashed","exitCode":1,"signal":null,"requested":false,"detected":false,"error":"boom","at":"2026-10-16T12:00:00.000Z","pid":5,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"state","payload":{"gameId":"g-five","state":"not-running","running":false,"since":null,"startedAt":null,"exitCode":null,"lastExit":{"outcome":"crashed","exitCode":1,"signal":null,"requested":false,"detected":false,"error":"boom","at":"2026-10-16T12:00:00.000Z","pid":5,"startedAt":"2026-10-16T12:00:00.000Z"}}}
+        ],
+        "logs": [{"level":"error","message":"[game-process] игра g-five завершилась с ошибкой: код 1, сигнал нет, PID 5, boom"}]
+      },
+      {
+        "op": "register",
+        "gameId": "g-six",
+        "ok": {"gameId":"g-six","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null},
+        "events": [{"name":"state","payload":{"gameId":"g-six","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},{"name":"running","payload":{"gameId":"g-six","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}}],
+        "logs": [{"level":"info","message":"[game-process] игра g-six зарегистрирована: PID 6, C:\\HLSR\\Games\\g-six\\hl.exe"}]
+      },
+      {
+        "op": "handle-exit",
+        "gameId": "g-six",
+        "events": [
+          {"name":"state","payload":{"gameId":"g-six","state":"crashed","running":false,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":{"outcome":"crashed","exitCode":null,"signal":"SIGKILL","requested":false,"detected":true,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":6,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"crashed","payload":{"gameId":"g-six","state":"crashed","running":false,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":{"outcome":"crashed","exitCode":null,"signal":"SIGKILL","requested":false,"detected":true,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":6,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"finished","payload":{"gameId":"g-six","lastExit":{"outcome":"crashed","exitCode":null,"signal":"SIGKILL","requested":false,"detected":true,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":6,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"state","payload":{"gameId":"g-six","state":"not-running","running":false,"since":null,"startedAt":null,"exitCode":null,"lastExit":{"outcome":"crashed","exitCode":null,"signal":"SIGKILL","requested":false,"detected":true,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":6,"startedAt":"2026-10-16T12:00:00.000Z"}}}
+        ],
+        "logs": [{"level":"error","message":"[game-process] игра g-six завершилась с ошибкой: код null, сигнал SIGKILL, PID 6"}]
+      },
+      {
+        "op": "register",
+        "gameId": "g-seven",
+        "ok": {"gameId":"g-seven","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null},
+        "events": [{"name":"state","payload":{"gameId":"g-seven","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},{"name":"running","payload":{"gameId":"g-seven","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}}],
+        "logs": [{"level":"info","message":"[game-process] игра g-seven зарегистрирована: PID 7, C:\\HLSR\\Games\\g-seven\\hl.exe"}]
+      },
+      {
+        "op": "handle-exit",
+        "gameId": "g-seven",
+        "events": [
+          {"name":"state","payload":{"gameId":"g-seven","state":"crashed","running":false,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":-1,"lastExit":{"outcome":"crashed","exitCode":-1,"signal":null,"requested":false,"detected":false,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":7,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"crashed","payload":{"gameId":"g-seven","state":"crashed","running":false,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":-1,"lastExit":{"outcome":"crashed","exitCode":-1,"signal":null,"requested":false,"detected":false,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":7,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"finished","payload":{"gameId":"g-seven","lastExit":{"outcome":"crashed","exitCode":-1,"signal":null,"requested":false,"detected":false,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":7,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"state","payload":{"gameId":"g-seven","state":"not-running","running":false,"since":null,"startedAt":null,"exitCode":null,"lastExit":{"outcome":"crashed","exitCode":-1,"signal":null,"requested":false,"detected":false,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":7,"startedAt":"2026-10-16T12:00:00.000Z"}}}
+        ],
+        "logs": [{"level":"error","message":"[game-process] игра g-seven завершилась с ошибкой: код -1, сигнал нет, PID 7"}]
+      },
+      {"op":"handle-exit","gameId":"g-one"},
+      {"op":"handle-exit","gameId":"never-seen"},
+      {"op":"query","gameId":"g-one","ok":{"publicState":{"gameId":"g-one","state":"not-running","running":false,"since":null,"startedAt":null,"exitCode":null,"lastExit":{"outcome":"exited","exitCode":0,"signal":null,"requested":false,"detected":false,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":1,"startedAt":"2026-10-16T12:00:00.000Z"}},"isRunning":false,"anyRunning":null}},
+      {"op":"query","gameId":"g-two","ok":{"publicState":{"gameId":"g-two","state":"not-running","running":false,"since":null,"startedAt":null,"exitCode":null,"lastExit":{"outcome":"crashed","exitCode":3,"signal":null,"requested":false,"detected":false,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":2,"startedAt":"2026-10-16T12:00:00.000Z"}},"isRunning":false,"anyRunning":null}},
+      {"op":"files","ok":{}}
+    ],
+    "files": {}
+  },
+  {
+    "name": "exit: host process session",
+    "scenario": {
+      "name": "exit: host process session",
+      "ops": [
+        {"op":"alive","pids":[5150]},
+        {"op":"register","gameId":"hl2-4260","info":{"pid":5150,"executablePath":"C:\\HLSR\\Games\\hl2-4260\\hl2.exe","installPath":"C:\\HLSR\\Games\\hl2-4260","startedAt":"2026-10-16T12:00:00.000Z","hostProcess":true,"child":true}},
+        {"op":"mark-exited","gameId":"hl2-4260","pid":1},
+        {"op":"mark-exited","gameId":"other","pid":5150},
+        {"op":"query","gameId":"hl2-4260"},
+        {"op":"mark-exited","gameId":"hl2-4260","pid":5150},
+        {"op":"query","gameId":"hl2-4260"},
+        {"op":"child-exit","gameId":"hl2-4260","code":0},
+        {"op":"query","gameId":"hl2-4260"}
+      ]
+    },
+    "results": [
+      {"op":"alive"},
+      {
+        "op": "register",
+        "gameId": "hl2-4260",
+        "ok": {"gameId":"hl2-4260","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null},
+        "events": [{"name":"state","payload":{"gameId":"hl2-4260","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},{"name":"running","payload":{"gameId":"hl2-4260","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}}],
+        "logs": [{"level":"info","message":"[game-process] игра hl2-4260 зарегистрирована: PID 5150, C:\\HLSR\\Games\\hl2-4260\\hl2.exe"}]
+      },
+      {"op":"mark-exited","gameId":"hl2-4260","ok":false},
+      {"op":"mark-exited","gameId":"other","ok":false},
+      {"op":"query","gameId":"hl2-4260","ok":{"publicState":{"gameId":"hl2-4260","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null},"isRunning":true,"anyRunning":"hl2-4260"}},
+      {
+        "op": "mark-exited",
+        "gameId": "hl2-4260",
+        "ok": true,
+        "events": [
+          {"name":"state","payload":{"gameId":"hl2-4260","state":"exited","running":false,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":{"outcome":"exited","exitCode":null,"signal":null,"requested":false,"detected":true,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":5150,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"exited","payload":{"gameId":"hl2-4260","state":"exited","running":false,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":{"outcome":"exited","exitCode":null,"signal":null,"requested":false,"detected":true,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":5150,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"finished","payload":{"gameId":"hl2-4260","lastExit":{"outcome":"exited","exitCode":null,"signal":null,"requested":false,"detected":true,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":5150,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"state","payload":{"gameId":"hl2-4260","state":"not-running","running":false,"since":null,"startedAt":null,"exitCode":null,"lastExit":{"outcome":"exited","exitCode":null,"signal":null,"requested":false,"detected":true,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":5150,"startedAt":"2026-10-16T12:00:00.000Z"}}}
+        ],
+        "logs": [{"level":"info","message":"[game-process] игра hl2-4260 закрыта штатно (код null, PID 5150)"}]
+      },
+      {"op":"query","gameId":"hl2-4260","ok":{"publicState":{"gameId":"hl2-4260","state":"not-running","running":false,"since":null,"startedAt":null,"exitCode":null,"lastExit":{"outcome":"exited","exitCode":null,"signal":null,"requested":false,"detected":true,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":5150,"startedAt":"2026-10-16T12:00:00.000Z"}},"isRunning":false,"anyRunning":null}},
+      {"op":"child-exit","gameId":"hl2-4260"},
+      {"op":"query","gameId":"hl2-4260","ok":{"publicState":{"gameId":"hl2-4260","state":"not-running","running":false,"since":null,"startedAt":null,"exitCode":null,"lastExit":{"outcome":"exited","exitCode":null,"signal":null,"requested":false,"detected":true,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":5150,"startedAt":"2026-10-16T12:00:00.000Z"}},"isRunning":false,"anyRunning":null}}
+    ],
+    "files": {}
+  },
+  {
+    "name": "exit: mark-exited after a stop request counts as stopped",
+    "scenario": {
+      "name": "exit: mark-exited after a stop request counts as stopped",
+      "ops": [{"op":"alive","pids":[5150]},{"op":"register","gameId":"hl2-4260","info":{"pid":5150,"executablePath":"C:\\HLSR\\Games\\hl2-4260\\hl2.exe","installPath":"C:\\HLSR\\Games\\hl2-4260","startedAt":"2026-10-16T12:00:00.000Z","hostProcess":true,"child":true}},{"op":"request-stop","gameId":"hl2-4260","pid":5150,"timeoutMs":0},{"op":"mark-exited","gameId":"hl2-4260","pid":5150}]
+    },
+    "results": [
+      {"op":"alive"},
+      {
+        "op": "register",
+        "gameId": "hl2-4260",
+        "ok": {"gameId":"hl2-4260","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null},
+        "events": [{"name":"state","payload":{"gameId":"hl2-4260","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},{"name":"running","payload":{"gameId":"hl2-4260","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}}],
+        "logs": [{"level":"info","message":"[game-process] игра hl2-4260 зарегистрирована: PID 5150, C:\\HLSR\\Games\\hl2-4260\\hl2.exe"}]
+      },
+      {
+        "op": "request-stop",
+        "gameId": "hl2-4260",
+        "ok": {"status":"timeout","timeoutMs":10000},
+        "stopCalls": ["gracefulGroup(5150)"],
+        "events": [
+          {"name":"state","payload":{"gameId":"hl2-4260","state":"stopping","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},
+          {"name":"stopping","payload":{"gameId":"hl2-4260","state":"stopping","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},
+          {"name":"state","payload":{"gameId":"hl2-4260","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},
+          {"name":"running","payload":{"gameId":"hl2-4260","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}}
+        ]
+      },
+      {
+        "op": "mark-exited",
+        "gameId": "hl2-4260",
+        "ok": true,
+        "events": [
+          {"name":"state","payload":{"gameId":"hl2-4260","state":"exited","running":false,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":{"outcome":"exited","exitCode":null,"signal":null,"requested":false,"detected":true,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":5150,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"exited","payload":{"gameId":"hl2-4260","state":"exited","running":false,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":{"outcome":"exited","exitCode":null,"signal":null,"requested":false,"detected":true,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":5150,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"finished","payload":{"gameId":"hl2-4260","lastExit":{"outcome":"exited","exitCode":null,"signal":null,"requested":false,"detected":true,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":5150,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"state","payload":{"gameId":"hl2-4260","state":"not-running","running":false,"since":null,"startedAt":null,"exitCode":null,"lastExit":{"outcome":"exited","exitCode":null,"signal":null,"requested":false,"detected":true,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":5150,"startedAt":"2026-10-16T12:00:00.000Z"}}}
+        ],
+        "logs": [{"level":"info","message":"[game-process] игра hl2-4260 закрыта штатно (код null, PID 5150)"}]
+      }
+    ],
+    "files": {}
+  },
+  {
+    "name": "child: exit and error events",
+    "scenario": {
+      "name": "child: exit and error events",
+      "ops": [
+        {"op":"register","gameId":"g-one","info":{"pid":11,"executablePath":"C:\\HLSR\\Games\\g-one\\hl.exe","installPath":"C:\\HLSR\\Games\\g-one","startedAt":"2026-10-16T12:00:00.000Z","child":true}},
+        {"op":"register","gameId":"g-two","info":{"pid":12,"executablePath":"C:\\HLSR\\Games\\g-two\\hl.exe","installPath":"C:\\HLSR\\Games\\g-two","startedAt":"2026-10-16T12:00:00.000Z","child":true}},
+        {"op":"register","gameId":"g-three","info":{"pid":13,"executablePath":"C:\\HLSR\\Games\\g-three\\hl.exe","installPath":"C:\\HLSR\\Games\\g-three","startedAt":"2026-10-16T12:00:00.000Z","child":true}},
+        {"op":"register","gameId":"g-four","info":{"pid":14,"executablePath":"C:\\HLSR\\Games\\g-four\\hl.exe","installPath":"C:\\HLSR\\Games\\g-four","startedAt":"2026-10-16T12:00:00.000Z","child":true}},
+        {"op":"poll","gameId":"g-one"},
+        {"op":"child-exit","gameId":"g-one","code":0},
+        {"op":"child-exit","gameId":"g-two","code":3},
+        {"op":"child-exit","gameId":"g-three","code":null,"signal":"SIGTERM"},
+        {"op":"child-error","gameId":"g-four","message":"spawn ENOENT"},
+        {"op":"query","gameId":"g-one"},
+        {"op":"files"}
+      ]
+    },
+    "results": [
+      {
+        "op": "register",
+        "gameId": "g-one",
+        "ok": {"gameId":"g-one","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null},
+        "events": [{"name":"state","payload":{"gameId":"g-one","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},{"name":"running","payload":{"gameId":"g-one","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}}],
+        "logs": [{"level":"info","message":"[game-process] игра g-one зарегистрирована: PID 11, C:\\HLSR\\Games\\g-one\\hl.exe"}]
+      },
+      {
+        "op": "register",
+        "gameId": "g-two",
+        "ok": {"gameId":"g-two","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null},
+        "events": [{"name":"state","payload":{"gameId":"g-two","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},{"name":"running","payload":{"gameId":"g-two","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}}],
+        "logs": [{"level":"info","message":"[game-process] игра g-two зарегистрирована: PID 12, C:\\HLSR\\Games\\g-two\\hl.exe"}]
+      },
+      {
+        "op": "register",
+        "gameId": "g-three",
+        "ok": {"gameId":"g-three","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null},
+        "events": [{"name":"state","payload":{"gameId":"g-three","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},{"name":"running","payload":{"gameId":"g-three","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}}],
+        "logs": [{"level":"info","message":"[game-process] игра g-three зарегистрирована: PID 13, C:\\HLSR\\Games\\g-three\\hl.exe"}]
+      },
+      {
+        "op": "register",
+        "gameId": "g-four",
+        "ok": {"gameId":"g-four","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null},
+        "events": [{"name":"state","payload":{"gameId":"g-four","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},{"name":"running","payload":{"gameId":"g-four","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}}],
+        "logs": [{"level":"info","message":"[game-process] игра g-four зарегистрирована: PID 14, C:\\HLSR\\Games\\g-four\\hl.exe"}]
+      },
+      {"op":"poll","gameId":"g-one","ok":false},
+      {
+        "op": "child-exit",
+        "gameId": "g-one",
+        "events": [
+          {"name":"state","payload":{"gameId":"g-one","state":"exited","running":false,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":0,"lastExit":{"outcome":"exited","exitCode":0,"signal":null,"requested":false,"detected":false,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":11,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"exited","payload":{"gameId":"g-one","state":"exited","running":false,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":0,"lastExit":{"outcome":"exited","exitCode":0,"signal":null,"requested":false,"detected":false,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":11,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"finished","payload":{"gameId":"g-one","lastExit":{"outcome":"exited","exitCode":0,"signal":null,"requested":false,"detected":false,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":11,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"state","payload":{"gameId":"g-one","state":"not-running","running":false,"since":null,"startedAt":null,"exitCode":null,"lastExit":{"outcome":"exited","exitCode":0,"signal":null,"requested":false,"detected":false,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":11,"startedAt":"2026-10-16T12:00:00.000Z"}}}
+        ],
+        "logs": [{"level":"info","message":"[game-process] игра g-one закрыта штатно (код 0, PID 11)"}]
+      },
+      {
+        "op": "child-exit",
+        "gameId": "g-two",
+        "events": [
+          {"name":"state","payload":{"gameId":"g-two","state":"crashed","running":false,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":3,"lastExit":{"outcome":"crashed","exitCode":3,"signal":null,"requested":false,"detected":false,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":12,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"crashed","payload":{"gameId":"g-two","state":"crashed","running":false,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":3,"lastExit":{"outcome":"crashed","exitCode":3,"signal":null,"requested":false,"detected":false,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":12,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"finished","payload":{"gameId":"g-two","lastExit":{"outcome":"crashed","exitCode":3,"signal":null,"requested":false,"detected":false,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":12,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"state","payload":{"gameId":"g-two","state":"not-running","running":false,"since":null,"startedAt":null,"exitCode":null,"lastExit":{"outcome":"crashed","exitCode":3,"signal":null,"requested":false,"detected":false,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":12,"startedAt":"2026-10-16T12:00:00.000Z"}}}
+        ],
+        "logs": [{"level":"error","message":"[game-process] игра g-two завершилась с ошибкой: код 3, сигнал нет, PID 12"}]
+      },
+      {
+        "op": "child-exit",
+        "gameId": "g-three",
+        "events": [
+          {"name":"state","payload":{"gameId":"g-three","state":"crashed","running":false,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":{"outcome":"crashed","exitCode":null,"signal":"SIGTERM","requested":false,"detected":false,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":13,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"crashed","payload":{"gameId":"g-three","state":"crashed","running":false,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":{"outcome":"crashed","exitCode":null,"signal":"SIGTERM","requested":false,"detected":false,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":13,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"finished","payload":{"gameId":"g-three","lastExit":{"outcome":"crashed","exitCode":null,"signal":"SIGTERM","requested":false,"detected":false,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":13,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"state","payload":{"gameId":"g-three","state":"not-running","running":false,"since":null,"startedAt":null,"exitCode":null,"lastExit":{"outcome":"crashed","exitCode":null,"signal":"SIGTERM","requested":false,"detected":false,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":13,"startedAt":"2026-10-16T12:00:00.000Z"}}}
+        ],
+        "logs": [{"level":"error","message":"[game-process] игра g-three завершилась с ошибкой: код null, сигнал SIGTERM, PID 13"}]
+      },
+      {
+        "op": "child-error",
+        "gameId": "g-four",
+        "events": [
+          {"name":"state","payload":{"gameId":"g-four","state":"crashed","running":false,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":{"outcome":"crashed","exitCode":null,"signal":null,"requested":false,"detected":false,"error":"spawn ENOENT","at":"2026-10-16T12:00:00.000Z","pid":14,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"crashed","payload":{"gameId":"g-four","state":"crashed","running":false,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":{"outcome":"crashed","exitCode":null,"signal":null,"requested":false,"detected":false,"error":"spawn ENOENT","at":"2026-10-16T12:00:00.000Z","pid":14,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"finished","payload":{"gameId":"g-four","lastExit":{"outcome":"crashed","exitCode":null,"signal":null,"requested":false,"detected":false,"error":"spawn ENOENT","at":"2026-10-16T12:00:00.000Z","pid":14,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"state","payload":{"gameId":"g-four","state":"not-running","running":false,"since":null,"startedAt":null,"exitCode":null,"lastExit":{"outcome":"crashed","exitCode":null,"signal":null,"requested":false,"detected":false,"error":"spawn ENOENT","at":"2026-10-16T12:00:00.000Z","pid":14,"startedAt":"2026-10-16T12:00:00.000Z"}}}
+        ],
+        "logs": [{"level":"error","message":"[game-process] ошибка процесса g-four: spawn ENOENT"},{"level":"error","message":"[game-process] игра g-four завершилась с ошибкой: код null, сигнал нет, PID 14, spawn ENOENT"}]
+      },
+      {"op":"query","gameId":"g-one","ok":{"publicState":{"gameId":"g-one","state":"not-running","running":false,"since":null,"startedAt":null,"exitCode":null,"lastExit":{"outcome":"exited","exitCode":0,"signal":null,"requested":false,"detected":false,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":11,"startedAt":"2026-10-16T12:00:00.000Z"}},"isRunning":false,"anyRunning":null}},
+      {"op":"files","ok":{}}
+    ],
+    "files": {}
+  },
+  {
+    "name": "order: anyRunning follows registration order",
+    "scenario": {
+      "name": "order: anyRunning follows registration order",
+      "ops": [
+        {"op":"alive","pids":[1,2,3]},
+        {"op":"register","gameId":"g-a","info":{"pid":1,"executablePath":"C:\\HLSR\\Games\\g-a\\hl.exe","installPath":"C:\\HLSR\\Games\\g-a","startedAt":"2026-10-16T12:00:00.000Z"}},
+        {"op":"register","gameId":"g-b","info":{"pid":2,"executablePath":"C:\\HLSR\\Games\\g-b\\hl.exe","installPath":"C:\\HLSR\\Games\\g-b","startedAt":"2026-10-16T12:00:00.000Z"}},
+        {"op":"query","gameId":"g-a"},
+        {"op":"handle-exit","gameId":"g-a","exitCode":0},
+        {"op":"query","gameId":"g-b"},
+        {"op":"register","gameId":"g-a","info":{"pid":3,"executablePath":"C:\\HLSR\\Games\\g-a\\hl.exe","installPath":"C:\\HLSR\\Games\\g-a","startedAt":"2026-10-16T12:00:00.000Z"}},
+        {"op":"query","gameId":"g-a"},
+        {"op":"handle-exit","gameId":"g-b","exitCode":0},
+        {"op":"query","gameId":"g-a"},
+        {"op":"mark-starting","gameId":"g-c"},
+        {"op":"query","gameId":"g-c"}
+      ]
+    },
+    "results": [
+      {"op":"alive"},
+      {
+        "op": "register",
+        "gameId": "g-a",
+        "ok": {"gameId":"g-a","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null},
+        "events": [{"name":"state","payload":{"gameId":"g-a","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},{"name":"running","payload":{"gameId":"g-a","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}}],
+        "logs": [{"level":"info","message":"[game-process] игра g-a зарегистрирована: PID 1, C:\\HLSR\\Games\\g-a\\hl.exe"}]
+      },
+      {
+        "op": "register",
+        "gameId": "g-b",
+        "ok": {"gameId":"g-b","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null},
+        "events": [{"name":"state","payload":{"gameId":"g-b","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},{"name":"running","payload":{"gameId":"g-b","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}}],
+        "logs": [{"level":"info","message":"[game-process] игра g-b зарегистрирована: PID 2, C:\\HLSR\\Games\\g-b\\hl.exe"}]
+      },
+      {"op":"query","gameId":"g-a","ok":{"publicState":{"gameId":"g-a","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null},"isRunning":true,"anyRunning":"g-a"}},
+      {
+        "op": "handle-exit",
+        "gameId": "g-a",
+        "events": [
+          {"name":"state","payload":{"gameId":"g-a","state":"exited","running":false,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":0,"lastExit":{"outcome":"exited","exitCode":0,"signal":null,"requested":false,"detected":false,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":1,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"exited","payload":{"gameId":"g-a","state":"exited","running":false,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":0,"lastExit":{"outcome":"exited","exitCode":0,"signal":null,"requested":false,"detected":false,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":1,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"finished","payload":{"gameId":"g-a","lastExit":{"outcome":"exited","exitCode":0,"signal":null,"requested":false,"detected":false,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":1,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"state","payload":{"gameId":"g-a","state":"not-running","running":false,"since":null,"startedAt":null,"exitCode":null,"lastExit":{"outcome":"exited","exitCode":0,"signal":null,"requested":false,"detected":false,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":1,"startedAt":"2026-10-16T12:00:00.000Z"}}}
+        ],
+        "logs": [{"level":"info","message":"[game-process] игра g-a закрыта штатно (код 0, PID 1)"}]
+      },
+      {"op":"query","gameId":"g-b","ok":{"publicState":{"gameId":"g-b","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null},"isRunning":true,"anyRunning":"g-b"}},
+      {
+        "op": "register",
+        "gameId": "g-a",
+        "ok": {"gameId":"g-a","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null},
+        "events": [{"name":"state","payload":{"gameId":"g-a","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},{"name":"running","payload":{"gameId":"g-a","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}}],
+        "logs": [{"level":"info","message":"[game-process] игра g-a зарегистрирована: PID 3, C:\\HLSR\\Games\\g-a\\hl.exe"}]
+      },
+      {"op":"query","gameId":"g-a","ok":{"publicState":{"gameId":"g-a","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null},"isRunning":true,"anyRunning":"g-b"}},
+      {
+        "op": "handle-exit",
+        "gameId": "g-b",
+        "events": [
+          {"name":"state","payload":{"gameId":"g-b","state":"exited","running":false,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":0,"lastExit":{"outcome":"exited","exitCode":0,"signal":null,"requested":false,"detected":false,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":2,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"exited","payload":{"gameId":"g-b","state":"exited","running":false,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":0,"lastExit":{"outcome":"exited","exitCode":0,"signal":null,"requested":false,"detected":false,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":2,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"finished","payload":{"gameId":"g-b","lastExit":{"outcome":"exited","exitCode":0,"signal":null,"requested":false,"detected":false,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":2,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"state","payload":{"gameId":"g-b","state":"not-running","running":false,"since":null,"startedAt":null,"exitCode":null,"lastExit":{"outcome":"exited","exitCode":0,"signal":null,"requested":false,"detected":false,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":2,"startedAt":"2026-10-16T12:00:00.000Z"}}}
+        ],
+        "logs": [{"level":"info","message":"[game-process] игра g-b закрыта штатно (код 0, PID 2)"}]
+      },
+      {"op":"query","gameId":"g-a","ok":{"publicState":{"gameId":"g-a","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null},"isRunning":true,"anyRunning":"g-a"}},
+      {
+        "op": "mark-starting",
+        "gameId": "g-c",
+        "ok": {"gameId":"g-c","state":"starting","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":null,"exitCode":null,"lastExit":null},
+        "events": [{"name":"state","payload":{"gameId":"g-c","state":"starting","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":null,"exitCode":null,"lastExit":null}},{"name":"starting","payload":{"gameId":"g-c","state":"starting","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":null,"exitCode":null,"lastExit":null}}]
+      },
+      {"op":"query","gameId":"g-c","ok":{"publicState":{"gameId":"g-c","state":"starting","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":null,"exitCode":null,"lastExit":null},"isRunning":true,"anyRunning":"g-a"}}
+    ],
+    "files": {
+      "g-a.process.json": "{\n  \"version\": 1,\n  \"gameId\": \"g-a\",\n  \"state\": \"running\",\n  \"pid\": 3,\n  \"processKey\": \"ce825df441cf7b57c83626ae72874724\",\n  \"executablePath\": \"C:\\\\HLSR\\\\Games\\\\g-a\\\\hl.exe\",\n  \"startedAt\": \"2026-10-16T12:00:00.000Z\",\n  \"since\": \"2026-10-16T12:00:00.000Z\",\n  \"exitCode\": null,\n  \"signal\": null,\n  \"lastExit\": null,\n  \"installPath\": \"C:\\\\HLSR\\\\Games\\\\g-a\",\n  \"launcherPid\": 4242,\n  \"registeredAt\": \"2026-10-16T12:00:00.000Z\",\n  \"hostProcess\": false\n}\n",
+      "g-c.process.json": "{\n  \"version\": 1,\n  \"gameId\": \"g-c\",\n  \"state\": \"starting\",\n  \"pid\": null,\n  \"processKey\": null,\n  \"executablePath\": null,\n  \"startedAt\": null,\n  \"since\": \"2026-10-16T12:00:00.000Z\",\n  \"exitCode\": null,\n  \"signal\": null,\n  \"lastExit\": null\n}\n"
+    }
+  },
+  {
+    "name": "unregister",
+    "scenario": {
+      "name": "unregister",
+      "ops": [
+        {"op":"alive","pids":[1,2]},
+        {"op":"register","gameId":"g-a","info":{"pid":1,"executablePath":"C:\\HLSR\\Games\\g-a\\hl.exe","installPath":"C:\\HLSR\\Games\\g-a","startedAt":"2026-10-16T12:00:00.000Z"}},
+        {"op":"unregister","gameId":"g-a"},
+        {"op":"files"},
+        {"op":"register","gameId":"g-b","info":{"pid":2,"executablePath":"C:\\HLSR\\Games\\g-b\\hl.exe","installPath":"C:\\HLSR\\Games\\g-b","startedAt":"2026-10-16T12:00:00.000Z"}},
+        {"op":"unregister","gameId":"g-b","lastExit":{"outcome":"exited","exitCode":0}},
+        {"op":"unregister","gameId":"never-seen"},
+        {"op":"mark-starting","gameId":"g-c"},
+        {"op":"unregister","gameId":"g-c","lastExit":null},
+        {"op":"query","gameId":"g-c"}
+      ]
+    },
+    "results": [
+      {"op":"alive"},
+      {
+        "op": "register",
+        "gameId": "g-a",
+        "ok": {"gameId":"g-a","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null},
+        "events": [{"name":"state","payload":{"gameId":"g-a","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},{"name":"running","payload":{"gameId":"g-a","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}}],
+        "logs": [{"level":"info","message":"[game-process] игра g-a зарегистрирована: PID 1, C:\\HLSR\\Games\\g-a\\hl.exe"}]
+      },
+      {"op":"unregister","gameId":"g-a","ok":{"gameId":"g-a","state":"not-running","running":false,"since":null,"startedAt":null,"exitCode":null,"lastExit":null},"events":[{"name":"state","payload":{"gameId":"g-a","state":"not-running","running":false,"since":null,"startedAt":null,"exitCode":null,"lastExit":null}}]},
+      {"op":"files","ok":{}},
+      {
+        "op": "register",
+        "gameId": "g-b",
+        "ok": {"gameId":"g-b","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null},
+        "events": [{"name":"state","payload":{"gameId":"g-b","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},{"name":"running","payload":{"gameId":"g-b","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}}],
+        "logs": [{"level":"info","message":"[game-process] игра g-b зарегистрирована: PID 2, C:\\HLSR\\Games\\g-b\\hl.exe"}]
+      },
+      {"op":"unregister","gameId":"g-b","ok":{"gameId":"g-b","state":"not-running","running":false,"since":null,"startedAt":null,"exitCode":null,"lastExit":{"outcome":"exited","exitCode":0}},"events":[{"name":"state","payload":{"gameId":"g-b","state":"not-running","running":false,"since":null,"startedAt":null,"exitCode":null,"lastExit":{"outcome":"exited","exitCode":0}}}]},
+      {"op":"unregister","gameId":"never-seen","ok":{"gameId":"never-seen","state":"not-running","running":false,"since":null,"startedAt":null,"exitCode":null,"lastExit":null},"events":[{"name":"state","payload":{"gameId":"never-seen","state":"not-running","running":false,"since":null,"startedAt":null,"exitCode":null,"lastExit":null}}]},
+      {
+        "op": "mark-starting",
+        "gameId": "g-c",
+        "ok": {"gameId":"g-c","state":"starting","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":null,"exitCode":null,"lastExit":null},
+        "events": [{"name":"state","payload":{"gameId":"g-c","state":"starting","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":null,"exitCode":null,"lastExit":null}},{"name":"starting","payload":{"gameId":"g-c","state":"starting","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":null,"exitCode":null,"lastExit":null}}]
+      },
+      {"op":"unregister","gameId":"g-c","ok":{"gameId":"g-c","state":"not-running","running":false,"since":null,"startedAt":null,"exitCode":null,"lastExit":null},"events":[{"name":"state","payload":{"gameId":"g-c","state":"not-running","running":false,"since":null,"startedAt":null,"exitCode":null,"lastExit":null}}]},
+      {"op":"query","gameId":"g-c","ok":{"publicState":{"gameId":"g-c","state":"not-running","running":false,"since":null,"startedAt":null,"exitCode":null,"lastExit":null},"isRunning":false,"anyRunning":null}}
+    ],
+    "files": {}
+  },
+  {
+    "name": "after launcher restart: own process is adopted, stale records are dropped",
+    "scenario": {
+      "name": "after launcher restart: own process is adopted, stale records are dropped",
+      "ops": [
+        {"op":"alive","pids":[100,101,102,103,104,105,106]},
+        {
+          "op": "inspect",
+          "map": {
+            "100": {"pid":100,"executablePath":"C:\\HLSR\\Games\\g-ok\\hl.exe","name":"hl.exe","startedAt":"2026-10-16T12:00:00.000Z","source":"winapi"},
+            "101": {"pid":101,"executablePath":"C:\\HLSR\\Games\\g-dead\\hl.exe","name":"hl.exe","startedAt":"2026-10-16T12:00:00.000Z","source":"winapi"},
+            "102": {"pid":102,"executablePath":"C:\\HLSR\\Games\\g-other-exe\\another.exe","name":"hl.exe","startedAt":"2026-10-16T12:00:00.000Z","source":"winapi"},
+            "103": {"pid":103,"executablePath":"C:\\HLSR\\Games\\g-late\\hl.exe","name":"hl.exe","startedAt":"2026-10-16T12:00:06.000Z","source":"winapi"},
+            "104": {"pid":104,"executablePath":"C:\\HLSR\\Games\\g-key\\hl.exe","name":"hl.exe","startedAt":"2026-10-16T12:00:00.000Z","source":"winapi"},
+            "105": {"pid":105,"executablePath":"C:\\HLSR\\Games\\g-host\\hl.exe","name":"hl.exe","startedAt":"2026-10-16T12:00:00.000Z","source":"winapi"},
+            "106": {"pid":106,"executablePath":"C:\\Elsewhere\\g-outside\\hl.exe","name":"hl.exe","startedAt":"2026-10-16T12:00:00.000Z","source":"winapi"}
+          }
+        },
+        {"op":"register","gameId":"g-ok","info":{"pid":100,"executablePath":"C:\\HLSR\\Games\\g-ok\\hl.exe","installPath":"C:\\HLSR\\Games\\g-ok","startedAt":"2026-10-16T12:00:00.000Z"}},
+        {"op":"register","gameId":"g-dead","info":{"pid":101,"executablePath":"C:\\HLSR\\Games\\g-dead\\hl.exe","installPath":"C:\\HLSR\\Games\\g-dead","startedAt":"2026-10-16T12:00:00.000Z"}},
+        {"op":"register","gameId":"g-other-exe","info":{"pid":102,"executablePath":"C:\\HLSR\\Games\\g-other-exe\\hl.exe","installPath":"C:\\HLSR\\Games\\g-other-exe","startedAt":"2026-10-16T12:00:00.000Z"}},
+        {"op":"register","gameId":"g-late","info":{"pid":103,"executablePath":"C:\\HLSR\\Games\\g-late\\hl.exe","installPath":"C:\\HLSR\\Games\\g-late","startedAt":"2026-10-16T12:00:00.000Z"}},
+        {"op":"register","gameId":"g-host","info":{"pid":105,"executablePath":"C:\\HLSR\\Games\\g-host\\hl.exe","installPath":"C:\\HLSR\\Games\\g-host","startedAt":"2026-10-16T12:00:00.000Z","hostProcess":true,"child":true}},
+        {
+          "op": "write-file",
+          "name": "g-key.process.json",
+          "text": "{\n  \"version\": 1,\n  \"gameId\": \"g-key\",\n  \"state\": \"running\",\n  \"pid\": 104,\n  \"processKey\": \"0123456789abcdef0123456789abcdef\",\n  \"executablePath\": \"C:\\\\HLSR\\\\Games\\\\g-key\\\\hl.exe\",\n  \"startedAt\": \"2026-10-16T12:00:00.000Z\",\n  \"since\": \"2026-10-16T12:00:00.000Z\",\n  \"exitCode\": null,\n  \"signal\": null,\n  \"lastExit\": null,\n  \"installPath\": \"C:\\\\HLSR\\\\Games\\\\g-key\",\n  \"launcherPid\": 7,\n  \"registeredAt\": \"2026-10-16T12:00:00.000Z\",\n  \"hostProcess\": false\n}\n"
+        },
+        {
+          "op": "write-file",
+          "name": "g-outside.process.json",
+          "text": "{\n  \"version\": 1,\n  \"gameId\": \"g-outside\",\n  \"state\": \"running\",\n  \"pid\": 106,\n  \"processKey\": \"81ff0bb3b5b67419fa1b63dce97901c5\",\n  \"executablePath\": \"C:\\\\Elsewhere\\\\g-outside\\\\hl.exe\",\n  \"startedAt\": \"2026-10-16T12:00:00.000Z\",\n  \"since\": \"2026-10-16T12:00:00.000Z\",\n  \"exitCode\": null,\n  \"signal\": null,\n  \"lastExit\": null,\n  \"installPath\": \"C:\\\\Elsewhere\\\\g-outside\",\n  \"launcherPid\": 7,\n  \"registeredAt\": \"2026-10-16T12:00:00.000Z\",\n  \"hostProcess\": false\n}\n"
+        },
+        {"op":"write-file","name":"g-old.process.json","text":"{\"version\":2,\"gameId\":\"g-old\",\"state\":\"running\",\"pid\":100}"},
+        {"op":"write-file","name":"g-broken.process.json","text":"{ not json"},
+        {"op":"write-file","name":"g-noinstall.process.json","text":"{\n  \"version\": 1,\n  \"gameId\": \"g-noinstall\",\n  \"state\": \"running\",\n  \"pid\": 100,\n  \"executablePath\": \"C:\\\\HLSR\\\\Games\\\\g-ok\\\\hl.exe\",\n  \"startedAt\": \"2026-10-16T12:00:00.000Z\",\n  \"processKey\": \"f7beec14953954ecba0ad373a317aa48\"\n}\n"},
+        {"op":"write-file","name":"readme.txt","text":"не запись процесса"},
+        {"op":"files"},
+        {"op":"dispose"},
+        {"op":"alive","pids":[100,102,103,104,105,106]},
+        {"op":"reconcile"},
+        {"op":"query","gameId":"g-ok"},
+        {"op":"files"},
+        {"op":"poll","gameId":"g-ok"},
+        {"op":"alive","pids":[]},
+        {"op":"poll","gameId":"g-ok"},
+        {"op":"files"}
+      ]
+    },
+    "results": [
+      {"op":"alive"},
+      {"op":"inspect"},
+      {
+        "op": "register",
+        "gameId": "g-ok",
+        "ok": {"gameId":"g-ok","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null},
+        "events": [{"name":"state","payload":{"gameId":"g-ok","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},{"name":"running","payload":{"gameId":"g-ok","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}}],
+        "logs": [{"level":"info","message":"[game-process] игра g-ok зарегистрирована: PID 100, C:\\HLSR\\Games\\g-ok\\hl.exe"}]
+      },
+      {
+        "op": "register",
+        "gameId": "g-dead",
+        "ok": {"gameId":"g-dead","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null},
+        "events": [{"name":"state","payload":{"gameId":"g-dead","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},{"name":"running","payload":{"gameId":"g-dead","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}}],
+        "logs": [{"level":"info","message":"[game-process] игра g-dead зарегистрирована: PID 101, C:\\HLSR\\Games\\g-dead\\hl.exe"}]
+      },
+      {
+        "op": "register",
+        "gameId": "g-other-exe",
+        "ok": {"gameId":"g-other-exe","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null},
+        "events": [{"name":"state","payload":{"gameId":"g-other-exe","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},{"name":"running","payload":{"gameId":"g-other-exe","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}}],
+        "logs": [{"level":"info","message":"[game-process] игра g-other-exe зарегистрирована: PID 102, C:\\HLSR\\Games\\g-other-exe\\hl.exe"}]
+      },
+      {
+        "op": "register",
+        "gameId": "g-late",
+        "ok": {"gameId":"g-late","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null},
+        "events": [{"name":"state","payload":{"gameId":"g-late","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},{"name":"running","payload":{"gameId":"g-late","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}}],
+        "logs": [{"level":"info","message":"[game-process] игра g-late зарегистрирована: PID 103, C:\\HLSR\\Games\\g-late\\hl.exe"}]
+      },
+      {
+        "op": "register",
+        "gameId": "g-host",
+        "ok": {"gameId":"g-host","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null},
+        "events": [{"name":"state","payload":{"gameId":"g-host","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},{"name":"running","payload":{"gameId":"g-host","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}}],
+        "logs": [{"level":"info","message":"[game-process] игра g-host зарегистрирована: PID 105, C:\\HLSR\\Games\\g-host\\hl.exe"}]
+      },
+      {"op":"write-file"},
+      {"op":"write-file"},
+      {"op":"write-file"},
+      {"op":"write-file"},
+      {"op":"write-file"},
+      {"op":"write-file"},
+      {
+        "op": "files",
+        "ok": {
+          "g-broken.process.json": "{ not json",
+          "g-dead.process.json": "{\n  \"version\": 1,\n  \"gameId\": \"g-dead\",\n  \"state\": \"running\",\n  \"pid\": 101,\n  \"processKey\": \"c8578b5e6af1db4a2b9d18001c03a36e\",\n  \"executablePath\": \"C:\\\\HLSR\\\\Games\\\\g-dead\\\\hl.exe\",\n  \"startedAt\": \"2026-10-16T12:00:00.000Z\",\n  \"since\": \"2026-10-16T12:00:00.000Z\",\n  \"exitCode\": null,\n  \"signal\": null,\n  \"lastExit\": null,\n  \"installPath\": \"C:\\\\HLSR\\\\Games\\\\g-dead\",\n  \"launcherPid\": 4242,\n  \"registeredAt\": \"2026-10-16T12:00:00.000Z\",\n  \"hostProcess\": false\n}\n",
+          "g-host.process.json": "{\n  \"version\": 1,\n  \"gameId\": \"g-host\",\n  \"state\": \"running\",\n  \"pid\": 105,\n  \"processKey\": \"b7cfc25f6f6df0b1e57115f38b58066c\",\n  \"executablePath\": \"C:\\\\HLSR\\\\Games\\\\g-host\\\\hl.exe\",\n  \"startedAt\": \"2026-10-16T12:00:00.000Z\",\n  \"since\": \"2026-10-16T12:00:00.000Z\",\n  \"exitCode\": null,\n  \"signal\": null,\n  \"lastExit\": null,\n  \"installPath\": \"C:\\\\HLSR\\\\Games\\\\g-host\",\n  \"launcherPid\": 4242,\n  \"registeredAt\": \"2026-10-16T12:00:00.000Z\",\n  \"hostProcess\": true\n}\n",
+          "g-key.process.json": "{\n  \"version\": 1,\n  \"gameId\": \"g-key\",\n  \"state\": \"running\",\n  \"pid\": 104,\n  \"processKey\": \"0123456789abcdef0123456789abcdef\",\n  \"executablePath\": \"C:\\\\HLSR\\\\Games\\\\g-key\\\\hl.exe\",\n  \"startedAt\": \"2026-10-16T12:00:00.000Z\",\n  \"since\": \"2026-10-16T12:00:00.000Z\",\n  \"exitCode\": null,\n  \"signal\": null,\n  \"lastExit\": null,\n  \"installPath\": \"C:\\\\HLSR\\\\Games\\\\g-key\",\n  \"launcherPid\": 7,\n  \"registeredAt\": \"2026-10-16T12:00:00.000Z\",\n  \"hostProcess\": false\n}\n",
+          "g-late.process.json": "{\n  \"version\": 1,\n  \"gameId\": \"g-late\",\n  \"state\": \"running\",\n  \"pid\": 103,\n  \"processKey\": \"cda09712bcc73dfb7b27331bec0750f9\",\n  \"executablePath\": \"C:\\\\HLSR\\\\Games\\\\g-late\\\\hl.exe\",\n  \"startedAt\": \"2026-10-16T12:00:00.000Z\",\n  \"since\": \"2026-10-16T12:00:00.000Z\",\n  \"exitCode\": null,\n  \"signal\": null,\n  \"lastExit\": null,\n  \"installPath\": \"C:\\\\HLSR\\\\Games\\\\g-late\",\n  \"launcherPid\": 4242,\n  \"registeredAt\": \"2026-10-16T12:00:00.000Z\",\n  \"hostProcess\": false\n}\n",
+          "g-noinstall.process.json": "{\n  \"version\": 1,\n  \"gameId\": \"g-noinstall\",\n  \"state\": \"running\",\n  \"pid\": 100,\n  \"executablePath\": \"C:\\\\HLSR\\\\Games\\\\g-ok\\\\hl.exe\",\n  \"startedAt\": \"2026-10-16T12:00:00.000Z\",\n  \"processKey\": \"f7beec14953954ecba0ad373a317aa48\"\n}\n",
+          "g-ok.process.json": "{\n  \"version\": 1,\n  \"gameId\": \"g-ok\",\n  \"state\": \"running\",\n  \"pid\": 100,\n  \"processKey\": \"f7beec14953954ecba0ad373a317aa48\",\n  \"executablePath\": \"C:\\\\HLSR\\\\Games\\\\g-ok\\\\hl.exe\",\n  \"startedAt\": \"2026-10-16T12:00:00.000Z\",\n  \"since\": \"2026-10-16T12:00:00.000Z\",\n  \"exitCode\": null,\n  \"signal\": null,\n  \"lastExit\": null,\n  \"installPath\": \"C:\\\\HLSR\\\\Games\\\\g-ok\",\n  \"launcherPid\": 4242,\n  \"registeredAt\": \"2026-10-16T12:00:00.000Z\",\n  \"hostProcess\": false\n}\n",
+          "g-old.process.json": "{\"version\":2,\"gameId\":\"g-old\",\"state\":\"running\",\"pid\":100}",
+          "g-other-exe.process.json": "{\n  \"version\": 1,\n  \"gameId\": \"g-other-exe\",\n  \"state\": \"running\",\n  \"pid\": 102,\n  \"processKey\": \"b2adeee9119f26aa11105b065092a13f\",\n  \"executablePath\": \"C:\\\\HLSR\\\\Games\\\\g-other-exe\\\\hl.exe\",\n  \"startedAt\": \"2026-10-16T12:00:00.000Z\",\n  \"since\": \"2026-10-16T12:00:00.000Z\",\n  \"exitCode\": null,\n  \"signal\": null,\n  \"lastExit\": null,\n  \"installPath\": \"C:\\\\HLSR\\\\Games\\\\g-other-exe\",\n  \"launcherPid\": 4242,\n  \"registeredAt\": \"2026-10-16T12:00:00.000Z\",\n  \"hostProcess\": false\n}\n",
+          "g-outside.process.json": "{\n  \"version\": 1,\n  \"gameId\": \"g-outside\",\n  \"state\": \"running\",\n  \"pid\": 106,\n  \"processKey\": \"81ff0bb3b5b67419fa1b63dce97901c5\",\n  \"executablePath\": \"C:\\\\Elsewhere\\\\g-outside\\\\hl.exe\",\n  \"startedAt\": \"2026-10-16T12:00:00.000Z\",\n  \"since\": \"2026-10-16T12:00:00.000Z\",\n  \"exitCode\": null,\n  \"signal\": null,\n  \"lastExit\": null,\n  \"installPath\": \"C:\\\\Elsewhere\\\\g-outside\",\n  \"launcherPid\": 7,\n  \"registeredAt\": \"2026-10-16T12:00:00.000Z\",\n  \"hostProcess\": false\n}\n",
+          "readme.txt": "не запись процесса"
+        }
+      },
+      {"op":"dispose"},
+      {"op":"alive"},
+      {
+        "op": "reconcile",
+        "ok": [
+          {"gameId":"g-dead","adopted":false,"reason":"stale"},
+          {"gameId":"g-host","adopted":false,"reason":"stale"},
+          {"gameId":"g-key","adopted":false,"reason":"stale"},
+          {"gameId":"g-late","adopted":false,"reason":"stale"},
+          {"gameId":"g-noinstall","adopted":false,"reason":"stale"},
+          {"gameId":"g-ok","adopted":true,"pid":100},
+          {"gameId":"g-other-exe","adopted":false,"reason":"stale"},
+          {"gameId":"g-outside","adopted":false,"reason":"stale"}
+        ],
+        "events": [
+          {"name":"state","payload":{"gameId":"g-dead","state":"not-running","running":false,"since":null,"startedAt":null,"exitCode":null,"lastExit":null}},
+          {"name":"state","payload":{"gameId":"g-host","state":"not-running","running":false,"since":null,"startedAt":null,"exitCode":null,"lastExit":null}},
+          {"name":"state","payload":{"gameId":"g-key","state":"not-running","running":false,"since":null,"startedAt":null,"exitCode":null,"lastExit":null}},
+          {"name":"state","payload":{"gameId":"g-late","state":"not-running","running":false,"since":null,"startedAt":null,"exitCode":null,"lastExit":null}},
+          {"name":"state","payload":{"gameId":"g-noinstall","state":"not-running","running":false,"since":null,"startedAt":null,"exitCode":null,"lastExit":null}},
+          {"name":"state","payload":{"gameId":"g-ok","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},
+          {"name":"running","payload":{"gameId":"g-ok","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},
+          {"name":"state","payload":{"gameId":"g-other-exe","state":"not-running","running":false,"since":null,"startedAt":null,"exitCode":null,"lastExit":null}},
+          {"name":"state","payload":{"gameId":"g-outside","state":"not-running","running":false,"since":null,"startedAt":null,"exitCode":null,"lastExit":null}}
+        ],
+        "logs": [
+          {"level":"info","message":"[game-process] сохранённый процесс g-dead (PID 101) больше не наш — состояние очищено"},
+          {"level":"info","message":"[game-process] сохранённый процесс g-host (PID 105) больше не наш — состояние очищено"},
+          {"level":"info","message":"[game-process] сохранённый процесс g-key (PID 104) больше не наш — состояние очищено"},
+          {"level":"info","message":"[game-process] сохранённый процесс g-late (PID 103) больше не наш — состояние очищено"},
+          {"level":"info","message":"[game-process] сохранённый процесс g-noinstall (PID 100) больше не наш — состояние очищено"},
+          {"level":"warn","message":"[game-process] игра g-ok всё ещё запущена (PID 100) — восстанавливаю состояние после перезапуска лаунчера"},
+          {"level":"info","message":"[game-process] сохранённый процесс g-other-exe (PID 102) больше не наш — состояние очищено"},
+          {"level":"info","message":"[game-process] сохранённый процесс g-outside (PID 106) больше не наш — состояние очищено"}
+        ]
+      },
+      {"op":"query","gameId":"g-ok","ok":{"publicState":{"gameId":"g-ok","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null},"isRunning":true,"anyRunning":"g-ok"}},
+      {
+        "op": "files",
+        "ok": {
+          "g-broken.process.json": "{ not json",
+          "g-ok.process.json": "{\n  \"version\": 1,\n  \"gameId\": \"g-ok\",\n  \"state\": \"running\",\n  \"pid\": 100,\n  \"processKey\": \"f7beec14953954ecba0ad373a317aa48\",\n  \"executablePath\": \"C:\\\\HLSR\\\\Games\\\\g-ok\\\\hl.exe\",\n  \"startedAt\": \"2026-10-16T12:00:00.000Z\",\n  \"since\": \"2026-10-16T12:00:00.000Z\",\n  \"exitCode\": null,\n  \"signal\": null,\n  \"lastExit\": null,\n  \"installPath\": \"C:\\\\HLSR\\\\Games\\\\g-ok\",\n  \"launcherPid\": 4242,\n  \"registeredAt\": \"2026-10-16T12:00:00.000Z\",\n  \"hostProcess\": false,\n  \"adopted\": true\n}\n",
+          "g-old.process.json": "{\"version\":2,\"gameId\":\"g-old\",\"state\":\"running\",\"pid\":100}",
+          "readme.txt": "не запись процесса"
+        }
+      },
+      {"op":"poll","gameId":"g-ok","ok":true},
+      {"op":"alive"},
+      {
+        "op": "poll",
+        "gameId": "g-ok",
+        "ok": true,
+        "events": [
+          {"name":"state","payload":{"gameId":"g-ok","state":"exited","running":false,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":{"outcome":"exited","exitCode":null,"signal":null,"requested":false,"detected":true,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":100,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"exited","payload":{"gameId":"g-ok","state":"exited","running":false,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":{"outcome":"exited","exitCode":null,"signal":null,"requested":false,"detected":true,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":100,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"finished","payload":{"gameId":"g-ok","lastExit":{"outcome":"exited","exitCode":null,"signal":null,"requested":false,"detected":true,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":100,"startedAt":"2026-10-16T12:00:00.000Z"}}},
+          {"name":"state","payload":{"gameId":"g-ok","state":"not-running","running":false,"since":null,"startedAt":null,"exitCode":null,"lastExit":{"outcome":"exited","exitCode":null,"signal":null,"requested":false,"detected":true,"error":null,"at":"2026-10-16T12:00:00.000Z","pid":100,"startedAt":"2026-10-16T12:00:00.000Z"}}}
+        ],
+        "logs": [{"level":"info","message":"[game-process] игра g-ok закрыта штатно (код null, PID 100)"}]
+      },
+      {"op":"files","ok":{"g-broken.process.json":"{ not json","g-old.process.json":"{\"version\":2,\"gameId\":\"g-old\",\"state\":\"running\",\"pid\":100}","readme.txt":"не запись процесса"}}
+    ],
+    "files": {"g-broken.process.json":"{ not json","g-old.process.json":"{\"version\":2,\"gameId\":\"g-old\",\"state\":\"running\",\"pid\":100}","readme.txt":"не запись процесса"}
+  },
+  {
+    "name": "after launcher restart: chosen games only, adopted record keeps its fields",
+    "scenario": {
+      "name": "after launcher restart: chosen games only, adopted record keeps its fields",
+      "ops": [
+        {"op":"alive","pids":[100]},
+        {"op":"inspect","map":{"100":{"pid":100,"executablePath":"C:\\HLSR\\Games\\g-ok\\hl.exe","name":"hl.exe","startedAt":"2026-10-16T12:00:02.000Z","source":"winapi"}}},
+        {
+          "op": "write-file",
+          "name": "g-ok.process.json",
+          "text": "{\n  \"version\": 1,\n  \"gameId\": \"g-ok\",\n  \"state\": \"running\",\n  \"pid\": 100,\n  \"processKey\": \"f7beec14953954ecba0ad373a317aa48\",\n  \"executablePath\": \"C:\\\\HLSR\\\\Games\\\\g-ok\\\\hl.exe\",\n  \"startedAt\": \"2026-10-16T12:00:00.000Z\",\n  \"since\": \"2026-10-16T12:00:00.000Z\",\n  \"exitCode\": null,\n  \"signal\": null,\n  \"lastExit\": null,\n  \"installPath\": \"C:\\\\HLSR\\\\Games\\\\g-ok\",\n  \"launcherPid\": 99,\n  \"registeredAt\": \"2026-10-16T12:00:00.000Z\",\n  \"hostProcess\": false,\n  \"extra\": {\n    \"nested\": [\n      1,\n      2\n    ]\n  }\n}\n"
+        },
+        {
+          "op": "write-file",
+          "name": "g-skip.process.json",
+          "text": "{\n  \"version\": 1,\n  \"gameId\": \"g-skip\",\n  \"state\": \"running\",\n  \"pid\": 100,\n  \"processKey\": \"442468dd732ab2045bceb1e535a7a3e4\",\n  \"executablePath\": \"C:\\\\HLSR\\\\Games\\\\g-skip\\\\hl.exe\",\n  \"startedAt\": \"2026-10-16T12:00:00.000Z\",\n  \"since\": \"2026-10-16T12:00:00.000Z\",\n  \"exitCode\": null,\n  \"signal\": null,\n  \"lastExit\": null,\n  \"installPath\": \"C:\\\\HLSR\\\\Games\\\\g-skip\",\n  \"launcherPid\": 7,\n  \"registeredAt\": \"2026-10-16T12:00:00.000Z\",\n  \"hostProcess\": false\n}\n"
+        },
+        {"op":"reconcile","gameIds":["g-ok","g-missing"]},
+        {"op":"query","gameId":"g-ok"},
+        {"op":"files"}
+      ]
+    },
+    "results": [
+      {"op":"alive"},
+      {"op":"inspect"},
+      {"op":"write-file"},
+      {"op":"write-file"},
+      {
+        "op": "reconcile",
+        "ok": [{"gameId":"g-ok","adopted":true,"pid":100}],
+        "events": [{"name":"state","payload":{"gameId":"g-ok","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},{"name":"running","payload":{"gameId":"g-ok","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}}],
+        "logs": [{"level":"warn","message":"[game-process] игра g-ok всё ещё запущена (PID 100) — восстанавливаю состояние после перезапуска лаунчера"}]
+      },
+      {"op":"query","gameId":"g-ok","ok":{"publicState":{"gameId":"g-ok","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null},"isRunning":true,"anyRunning":"g-ok"}},
+      {
+        "op": "files",
+        "ok": {
+          "g-ok.process.json": "{\n  \"version\": 1,\n  \"gameId\": \"g-ok\",\n  \"state\": \"running\",\n  \"pid\": 100,\n  \"processKey\": \"f7beec14953954ecba0ad373a317aa48\",\n  \"executablePath\": \"C:\\\\HLSR\\\\Games\\\\g-ok\\\\hl.exe\",\n  \"startedAt\": \"2026-10-16T12:00:00.000Z\",\n  \"since\": \"2026-10-16T12:00:00.000Z\",\n  \"exitCode\": null,\n  \"signal\": null,\n  \"lastExit\": null,\n  \"installPath\": \"C:\\\\HLSR\\\\Games\\\\g-ok\",\n  \"launcherPid\": 99,\n  \"registeredAt\": \"2026-10-16T12:00:00.000Z\",\n  \"hostProcess\": false,\n  \"extra\": {\n    \"nested\": [\n      1,\n      2\n    ]\n  },\n  \"adopted\": true\n}\n",
+          "g-skip.process.json": "{\n  \"version\": 1,\n  \"gameId\": \"g-skip\",\n  \"state\": \"running\",\n  \"pid\": 100,\n  \"processKey\": \"442468dd732ab2045bceb1e535a7a3e4\",\n  \"executablePath\": \"C:\\\\HLSR\\\\Games\\\\g-skip\\\\hl.exe\",\n  \"startedAt\": \"2026-10-16T12:00:00.000Z\",\n  \"since\": \"2026-10-16T12:00:00.000Z\",\n  \"exitCode\": null,\n  \"signal\": null,\n  \"lastExit\": null,\n  \"installPath\": \"C:\\\\HLSR\\\\Games\\\\g-skip\",\n  \"launcherPid\": 7,\n  \"registeredAt\": \"2026-10-16T12:00:00.000Z\",\n  \"hostProcess\": false\n}\n"
+        }
+      }
+    ],
+    "files": {
+      "g-ok.process.json": "{\n  \"version\": 1,\n  \"gameId\": \"g-ok\",\n  \"state\": \"running\",\n  \"pid\": 100,\n  \"processKey\": \"f7beec14953954ecba0ad373a317aa48\",\n  \"executablePath\": \"C:\\\\HLSR\\\\Games\\\\g-ok\\\\hl.exe\",\n  \"startedAt\": \"2026-10-16T12:00:00.000Z\",\n  \"since\": \"2026-10-16T12:00:00.000Z\",\n  \"exitCode\": null,\n  \"signal\": null,\n  \"lastExit\": null,\n  \"installPath\": \"C:\\\\HLSR\\\\Games\\\\g-ok\",\n  \"launcherPid\": 99,\n  \"registeredAt\": \"2026-10-16T12:00:00.000Z\",\n  \"hostProcess\": false,\n  \"extra\": {\n    \"nested\": [\n      1,\n      2\n    ]\n  },\n  \"adopted\": true\n}\n",
+      "g-skip.process.json": "{\n  \"version\": 1,\n  \"gameId\": \"g-skip\",\n  \"state\": \"running\",\n  \"pid\": 100,\n  \"processKey\": \"442468dd732ab2045bceb1e535a7a3e4\",\n  \"executablePath\": \"C:\\\\HLSR\\\\Games\\\\g-skip\\\\hl.exe\",\n  \"startedAt\": \"2026-10-16T12:00:00.000Z\",\n  \"since\": \"2026-10-16T12:00:00.000Z\",\n  \"exitCode\": null,\n  \"signal\": null,\n  \"lastExit\": null,\n  \"installPath\": \"C:\\\\HLSR\\\\Games\\\\g-skip\",\n  \"launcherPid\": 7,\n  \"registeredAt\": \"2026-10-16T12:00:00.000Z\",\n  \"hostProcess\": false\n}\n"
+    }
+  },
+  {
+    "name": "public state of an untracked game reads the record on disk",
+    "scenario": {
+      "name": "public state of an untracked game reads the record on disk",
+      "ops": [
+        {
+          "op": "write-file",
+          "name": "g-disk.process.json",
+          "text": "{\n  \"version\": 1,\n  \"gameId\": \"g-disk\",\n  \"state\": \"running\",\n  \"pid\": 100,\n  \"processKey\": \"fda4b47779ed3fc4cffe8cdb1d47d07a\",\n  \"executablePath\": \"C:\\\\HLSR\\\\Games\\\\g-disk\\\\hl.exe\",\n  \"startedAt\": \"2026-10-16T12:00:00.000Z\",\n  \"since\": \"2026-10-16T12:00:00.000Z\",\n  \"exitCode\": null,\n  \"signal\": null,\n  \"lastExit\": null,\n  \"installPath\": \"C:\\\\HLSR\\\\Games\\\\g-disk\",\n  \"launcherPid\": 7,\n  \"registeredAt\": \"2026-10-16T12:00:00.000Z\",\n  \"hostProcess\": false\n}\n"
+        },
+        {"op":"query","gameId":"g-disk"},
+        {"op":"write-file","name":"g-bad.process.json","text":"{\"version\":2,\"gameId\":\"g-bad\",\"state\":\"running\",\"pid\":1}"},
+        {"op":"query","gameId":"g-bad"},
+        {"op":"write-file","name":"g-null.process.json","text":"null"},
+        {"op":"query","gameId":"g-null"},
+        {"op":"query","gameId":"g-none"}
+      ]
+    },
+    "results": [
+      {"op":"write-file"},
+      {"op":"query","gameId":"g-disk","ok":{"publicState":{"gameId":"g-disk","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null},"isRunning":false,"anyRunning":null}},
+      {"op":"write-file"},
+      {"op":"query","gameId":"g-bad","ok":{"publicState":{"gameId":"g-bad","state":"not-running","running":false,"since":null,"startedAt":null,"exitCode":null,"lastExit":null},"isRunning":false,"anyRunning":null}},
+      {"op":"write-file"},
+      {"op":"query","gameId":"g-null","ok":{"publicState":{"gameId":"g-null","state":"not-running","running":false,"since":null,"startedAt":null,"exitCode":null,"lastExit":null},"isRunning":false,"anyRunning":null}},
+      {"op":"query","gameId":"g-none","ok":{"publicState":{"gameId":"g-none","state":"not-running","running":false,"since":null,"startedAt":null,"exitCode":null,"lastExit":null},"isRunning":false,"anyRunning":null}}
+    ],
+    "files": {
+      "g-bad.process.json": "{\"version\":2,\"gameId\":\"g-bad\",\"state\":\"running\",\"pid\":1}",
+      "g-disk.process.json": "{\n  \"version\": 1,\n  \"gameId\": \"g-disk\",\n  \"state\": \"running\",\n  \"pid\": 100,\n  \"processKey\": \"fda4b47779ed3fc4cffe8cdb1d47d07a\",\n  \"executablePath\": \"C:\\\\HLSR\\\\Games\\\\g-disk\\\\hl.exe\",\n  \"startedAt\": \"2026-10-16T12:00:00.000Z\",\n  \"since\": \"2026-10-16T12:00:00.000Z\",\n  \"exitCode\": null,\n  \"signal\": null,\n  \"lastExit\": null,\n  \"installPath\": \"C:\\\\HLSR\\\\Games\\\\g-disk\",\n  \"launcherPid\": 7,\n  \"registeredAt\": \"2026-10-16T12:00:00.000Z\",\n  \"hostProcess\": false\n}\n",
+      "g-null.process.json": "null"
+    }
+  },
+  {
+    "name": "stop timeout from the options",
+    "scenario": {
+      "name": "stop timeout from the options",
+      "stopTimeoutMs": 0,
+      "ops": [
+        {"op":"alive","pids":[100]},
+        {"op":"inspect","map":{"100":{"pid":100,"executablePath":"C:\\HLSR\\Games\\hl1-won\\hl.exe","name":"hl.exe","startedAt":"2026-10-16T12:00:00.000Z","source":"winapi"}}},
+        {"op":"register","gameId":"hl1-won","info":{"pid":100,"executablePath":"C:\\HLSR\\Games\\hl1-won\\hl.exe","installPath":"C:\\HLSR\\Games\\hl1-won","startedAt":"2026-10-16T12:00:00.000Z"}},
+        {"op":"request-stop","gameId":"hl1-won","pid":100},
+        {"op":"request-stop","gameId":"hl1-won","pid":100,"timeoutMs":0,"force":true}
+      ]
+    },
+    "results": [
+      {"op":"alive"},
+      {"op":"inspect"},
+      {
+        "op": "register",
+        "gameId": "hl1-won",
+        "ok": {"gameId":"hl1-won","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null},
+        "events": [{"name":"state","payload":{"gameId":"hl1-won","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},{"name":"running","payload":{"gameId":"hl1-won","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}}],
+        "logs": [{"level":"info","message":"[game-process] игра hl1-won зарегистрирована: PID 100, C:\\HLSR\\Games\\hl1-won\\hl.exe"}]
+      },
+      {
+        "op": "request-stop",
+        "gameId": "hl1-won",
+        "ok": {"status":"timeout","timeoutMs":0},
+        "stopCalls": ["graceful(100)"],
+        "events": [
+          {"name":"state","payload":{"gameId":"hl1-won","state":"stopping","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},
+          {"name":"stopping","payload":{"gameId":"hl1-won","state":"stopping","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},
+          {"name":"state","payload":{"gameId":"hl1-won","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},
+          {"name":"running","payload":{"gameId":"hl1-won","state":"running","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}}
+        ]
+      },
+      {
+        "op": "request-stop",
+        "gameId": "hl1-won",
+        "error": {"code":"STOP_FAILED","message":"Процесс не удалось завершить даже принудительно","details":{"gameId":"hl1-won"}},
+        "stopCalls": ["force(100)"],
+        "events": [{"name":"state","payload":{"gameId":"hl1-won","state":"stopping","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}},{"name":"stopping","payload":{"gameId":"hl1-won","state":"stopping","running":true,"since":"2026-10-16T12:00:00.000Z","startedAt":"2026-10-16T12:00:00.000Z","exitCode":null,"lastExit":null}}]
+      }
+    ],
+    "files": {
+      "hl1-won.process.json": "{\n  \"version\": 1,\n  \"gameId\": \"hl1-won\",\n  \"state\": \"stopping\",\n  \"pid\": 100,\n  \"processKey\": \"f398a73248b27a400f6346b5891974ad\",\n  \"executablePath\": \"C:\\\\HLSR\\\\Games\\\\hl1-won\\\\hl.exe\",\n  \"startedAt\": \"2026-10-16T12:00:00.000Z\",\n  \"since\": \"2026-10-16T12:00:00.000Z\",\n  \"exitCode\": null,\n  \"signal\": null,\n  \"lastExit\": null,\n  \"installPath\": \"C:\\\\HLSR\\\\Games\\\\hl1-won\",\n  \"launcherPid\": 4242,\n  \"registeredAt\": \"2026-10-16T12:00:00.000Z\",\n  \"hostProcess\": false\n}\n"
+    }
+  }
+]

@@ -1,0 +1,132 @@
+{
+  "id": "settings/diagnostics",
+  "base": "settings/_base",
+  "state": "«Диагностика» после проверки: группы, состояния ok/warn/fail/skip, раскрыты «Подробности» у предупреждения",
+  "invoke": {
+    "diagnostics-run": {
+      "runId": "r1",
+      "checks": [
+        {
+          "id": "hlsr-version",
+          "group": "hlsr",
+          "status": "ok",
+          "detail": "0.4.9"
+        },
+        {
+          "id": "hlsr-arch",
+          "group": "hlsr",
+          "status": "ok",
+          "detail": "x64"
+        },
+        {
+          "id": "gpu-runtime",
+          "group": "graphics",
+          "status": "warn",
+          "detail": "software",
+          "code": "GPU_SOFTWARE_FALLBACK"
+        },
+        {
+          "id": "downloads-limit",
+          "group": "downloads",
+          "status": "ok",
+          "detail": "0"
+        },
+        {
+          "id": "win-version",
+          "group": "windows",
+          "status": "ok",
+          "detail": "Windows 11 26300"
+        },
+        {
+          "id": "win-clock",
+          "group": "windows",
+          "status": "skip"
+        },
+        {
+          "id": "lib-root",
+          "group": "library",
+          "status": "ok",
+          "detail": "C:\\HLSR"
+        },
+        {
+          "id": "lib-writable",
+          "group": "library",
+          "status": "fail",
+          "detail": "EACCES",
+          "code": "LAUNCH_CONFIG_INVALID"
+        },
+        {
+          "id": "profile-playtime",
+          "group": "profile",
+          "status": "ok",
+          "detailKey": "#L_DGV_PLAYTIME",
+          "detailArgs": [
+            36,
+            5,
+            0,
+            12,
+            3
+          ]
+        },
+        {
+          "id": "steam-owns-220",
+          "group": "steam",
+          "status": "ok"
+        },
+        {
+          "id": "net-dns",
+          "group": "network",
+          "status": "ok",
+          "detail": "140.82.121.4"
+        }
+      ]
+    }
+  },
+  "steps": [
+    {
+      "click": {
+        "css": ".game-rail__footer .game-rail__tool",
+        "index": 4,
+        "view": "rail-settings"
+      }
+    },
+    {
+      "wait": 600
+    },
+    {
+      "click": {
+        "css": ".settings-modal__tab",
+        "index": 3,
+        "view": "settings-tabs-3"
+      }
+    },
+    {
+      "wait": 600
+    },
+    {
+      "click": {
+        "css": ".diag__run",
+        "view": "diag-run"
+      }
+    },
+    {
+      "wait": 800
+    },
+    {
+      "click": {
+        "css": ".diag__row-details summary",
+        "index": 0,
+        "view": "diag-details-gpu-runtime"
+      }
+    },
+    {
+      "wait": 400
+    },
+    {
+      "move": [
+        800,
+        880
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1655 @@
+{
+  "constants": {"start":1792227600000,"exe":"/home/player/.local/opt/hlsr/versions/0.4.7-a00ebe2bb04a9f54/hlsr","sha16":"0123456789abcdef"},
+  "manifests": {
+    "MANIFEST": {
+      "schemaVersion": 1,
+      "version": "0.4.8",
+      "publishedAt": "2026-10-16T12:00:00.000Z",
+      "minimumSupportedVersion": "0.3.16",
+      "updateRequired": false,
+      "installer": {"filename":"HLSR-Setup-0.4.8-linux-x86_64.AppImage","size":70000,"sha256":"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc","sha512":"DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD==","urls":["https://hlsr.pro/downloads/launcher/linux/stable/HLSR-Setup-0.4.8-linux-x86_64.AppImage"]}
+    },
+    "WITH_DELTA": {
+      "schemaVersion": 1,
+      "version": "0.4.8",
+      "publishedAt": "2026-10-16T12:00:00.000Z",
+      "minimumSupportedVersion": "0.3.16",
+      "updateRequired": false,
+      "installer": {"filename":"HLSR-Setup-0.4.8-linux-x86_64.AppImage","size":70000,"sha256":"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc","sha512":"DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD==","urls":["https://hlsr.pro/downloads/launcher/linux/stable/HLSR-Setup-0.4.8-linux-x86_64.AppImage"]},
+      "delta": {"schema":1,"manifest":{"filename":"HLSR-0.4.8-linux.chunks.json","size":4096,"sha256":"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb","urls":["https://hlsr.pro/downloads/launcher/linux/stable/HLSR-0.4.8-linux.chunks.json"]},"chunkBaseUrls":["https://hlsr.pro/downloads/launcher/chunks"]}
+    },
+    "WITH_NOTES": {
+      "schemaVersion": 1,
+      "version": "0.4.8",
+      "publishedAt": "2026-10-16T12:00:00.000Z",
+      "minimumSupportedVersion": "0.3.16",
+      "updateRequired": false,
+      "installer": {"filename":"HLSR-Setup-0.4.8-linux-x86_64.AppImage","size":70000,"sha256":"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc","sha512":"DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD==","urls":["https://hlsr.pro/downloads/launcher/linux/stable/HLSR-Setup-0.4.8-linux-x86_64.AppImage"]},
+      "releaseNotes": "<h1>Новое</h1><p>Исправлено xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>"
+    }
+  },
+  "errorCodes": [
+    {"text":"HTTP 429","code":"RATE_LIMIT"},
+    {"text":"rate limit exceeded","code":"RATE_LIMIT"},
+    {"text":"Rate-Limit","code":"RATE_LIMIT"},
+    {"text":"ratelimit","code":"RATE_LIMIT"},
+    {"text":"ENOSPC: no space left on device, write","code":"NO_SPACE"},
+    {"text":"EACCES: permission denied","code":"ACCESS"},
+    {"text":"EPERM: operation not permitted","code":"ACCESS"},
+    {"text":"EROFS: read-only file system","code":"ACCESS"},
+    {"text":"SHA-256 не совпал","code":"VERIFY"},
+    {"text":"Подпись канала не прошла","code":"VERIFY"},
+    {"text":"метаданные: подпись","code":"VERIFY"},
+    {"text":"AppImage изменился","code":"VERIFY"},
+    {"text":"HTTP 503","code":"FEED"},
+    {"text":"feed unavailable","code":"FEED"},
+    {"text":"Таймаут скачивания","code":"NETWORK"},
+    {"text":"timeout","code":"NETWORK"},
+    {"text":"getaddrinfo ENOTFOUND hlsr.pro","code":"NETWORK"},
+    {"text":"connect ECONNREFUSED 127.0.0.1:443","code":"NETWORK"},
+    {"text":"ETIMEDOUT","code":"NETWORK"},
+    {"text":"Установщик содержит HLSR 0.4.9, а подписанный канал — 0.4.8","code":"VERIFY"},
+    {"text":"This operation was aborted","code":"UNKNOWN"},
+    {"text":"что-то иное","code":"UNKNOWN"},
+    {"text":"","code":"UNKNOWN"},
+    {"text":null,"value":"строка вместо ошибки","code":"RATE_LIMIT"}
+  ],
+  "relaunch": [
+    {"argv":["/home/player/.local/opt/hlsr/versions/0.4.7-a00ebe2bb04a9f54/hlsr"],"args":["--no-sandbox"]},
+    {"argv":["/home/player/.local/opt/hlsr/versions/0.4.7-a00ebe2bb04a9f54/hlsr","--no-sandbox"],"args":["--no-sandbox"]},
+    {"argv":["/home/player/.local/opt/hlsr/versions/0.4.7-a00ebe2bb04a9f54/hlsr","--ozone-platform=wayland","--no-sandbox","--disable-gpu"],"args":["--no-sandbox","--ozone-platform=wayland","--disable-gpu"]},
+    {"argv":["/home/player/.local/opt/hlsr/versions/0.4.7-a00ebe2bb04a9f54/hlsr","--no-sandbox","--no-sandbox","x"],"args":["--no-sandbox","x"]},
+    {"argv":["/home/player/.local/opt/hlsr/versions/0.4.7-a00ebe2bb04a9f54/hlsr","--NO-SANDBOX","--no-sandbox=1"],"args":["--no-sandbox","--NO-SANDBOX","--no-sandbox=1"]}
+  ],
+  "scenarios": [
+    {
+      "name": "disabled without an install root",
+      "installRoot": false,
+      "ops": [{"op":"invoke","channel":"updater-check"},{"op":"invoke","channel":"boot-gate-run"},{"op":"invoke","channel":"updater-download"},{"op":"invoke","channel":"updater-install-now"},{"op":"invoke","channel":"updater-install-on-quit"},{"op":"invoke","channel":"updater-get-state"}],
+      "records": [
+        ["return","updater-check",false],
+        ["step"],
+        ["return","boot-gate-run",{"action":"proceed","reason":"updates-disabled"}],
+        ["step"],
+        ["return","updater-download",false],
+        ["step"],
+        ["return","updater-install-now",false],
+        ["step"],
+        ["return","updater-install-on-quit",false],
+        ["step"],
+        ["return","updater-get-state",{"state":"idle","enabled":false,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"automatic","cancellable":false}],
+        ["step"]
+      ]
+    },
+    {
+      "name": "disabled when not packaged",
+      "packaged": false,
+      "ops": [{"op":"invoke","channel":"updater-check"},{"op":"invoke","channel":"boot-gate-run"},{"op":"invoke","channel":"updater-get-state"}],
+      "records": [["return","updater-check",false],["step"],["return","boot-gate-run",{"action":"proceed","reason":"updates-disabled"}],["step"],["return","updater-get-state",{"state":"idle","enabled":false,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"automatic","cancellable":false}],["step"]]
+    },
+    {
+      "name": "check: no update",
+      "evaluate": [
+        {
+          "result": {
+            "ok": true,
+            "problems": [],
+            "updateAvailable": false,
+            "downgrade": false,
+            "unsupported": false,
+            "code": null,
+            "updateRequired": false,
+            "manifest": {
+              "schemaVersion": 1,
+              "version": "0.4.8",
+              "publishedAt": "2026-10-16T12:00:00.000Z",
+              "minimumSupportedVersion": "0.3.16",
+              "updateRequired": false,
+              "installer": {"filename":"HLSR-Setup-0.4.8-linux-x86_64.AppImage","size":70000,"sha256":"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc","sha512":"DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD==","urls":["https://hlsr.pro/downloads/launcher/linux/stable/HLSR-Setup-0.4.8-linux-x86_64.AppImage"]}
+            }
+          }
+        }
+      ],
+      "ops": [{"op":"invoke","channel":"updater-check"},{"op":"invoke","channel":"updater-get-state"}],
+      "records": [
+        ["state",{"state":"checking","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["evaluate"],
+        ["return","updater-check",true],
+        ["state",{"state":"not-available","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["step"],
+        ["return","updater-get-state",{"state":"not-available","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["step"]
+      ]
+    },
+    {
+      "name": "check: rejected channel",
+      "evaluate": [{"result":{"ok":false,"problems":["подпись не прошла","версия"],"updateAvailable":false,"unsupported":false,"code":"LU_SIGNATURE_INVALID","updateRequired":false,"manifest":null}}],
+      "ops": [{"op":"invoke","channel":"updater-check"},{"op":"invoke","channel":"updater-get-state"},{"op":"invoke","channel":"updater-check"}],
+      "records": [
+        ["state",{"state":"checking","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["evaluate"],
+        ["return","updater-check",true],
+        ["state",{"state":"error","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":"метаданные: подпись не прошла; версия","errorCode":"VERIFY","checkSource":"manual","cancellable":false}],
+        ["telemetry","failed","0.4.7",null,"VERIFY"],
+        ["step"],
+        ["return","updater-get-state",{"state":"error","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":"метаданные: подпись не прошла; версия","errorCode":"VERIFY","checkSource":"manual","cancellable":false}],
+        ["step"],
+        ["state",{"state":"checking","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["evaluate"],
+        ["return","updater-check",true],
+        ["state",{"state":"error","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":"метаданные: подпись не прошла; версия","errorCode":"VERIFY","checkSource":"manual","cancellable":false}],
+        ["telemetry","failed","0.4.7",null,"VERIFY"],
+        ["step"]
+      ]
+    },
+    {
+      "name": "check: gate throws",
+      "evaluate": [{"throw":"HTTP 503"}],
+      "ops": [{"op":"invoke","channel":"updater-check"}],
+      "records": [
+        ["state",{"state":"checking","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["evaluate"],
+        ["return","updater-check",true],
+        ["state",{"state":"error","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":"HTTP 503","errorCode":"FEED","checkSource":"manual","cancellable":false}],
+        ["telemetry","failed","0.4.7",null,"FEED"],
+        ["step"]
+      ]
+    },
+    {
+      "name": "full download, install now relaunches the installed binary",
+      "argv": ["--ozone-platform=wayland","--no-sandbox","--disable-gpu"],
+      "ops": [{"op":"invoke","channel":"updater-check"},{"op":"invoke","channel":"updater-get-state"},{"op":"invoke","channel":"updater-download"},{"op":"invoke","channel":"updater-get-state"},{"op":"downloads"},{"op":"invoke","channel":"updater-install-now"},{"op":"invoke","channel":"updater-get-state"},{"op":"invoke","channel":"updater-check"}],
+      "records": [
+        ["state",{"state":"checking","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["evaluate"],
+        ["return","updater-check",true],
+        ["state",{"state":"available","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","available","0.4.7","0.4.8"],
+        ["versionAvailable","0.4.8","0.4.7",{"hasReleaseNotes":false}],
+        ["step"],
+        ["return","updater-get-state",{"state":"available","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["step"],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","downloadStarted","0.4.7","0.4.8"],
+        ["download","{root}/.downloads/update-{rand}","0.4.8"],
+        ["return","updater-download",true],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":{"transferred":35000,"total":70000,"percent":50,"bytesPerSecond":1000},"error":null,"errorCode":null,"checkSource":"manual","cancellable":true}],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":{"transferred":70000,"total":70000,"percent":100,"bytesPerSecond":2000},"error":null,"errorCode":null,"checkSource":"manual","cancellable":true}],
+        ["state",{"state":"verifying","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":true}],
+        ["extract","{root}/.downloads/update-{rand}/HLSR-Setup-0.4.8-linux-x86_64.AppImage","{root}/.downloads/update-{rand}"],
+        ["installer",1,"create"],
+        ["installer",1,"prepare","{root}/.downloads/update-{rand}/squashfs-root/resources/payload/HLSR-0.4.8-linux-x86_64.tar.gz","0.4.8"],
+        ["state",{"state":"downloaded","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","downloadCompleted","0.4.7","0.4.8",{"bytes":70000,"durationMs":0}],
+        ["step"],
+        ["return","updater-get-state",{"state":"downloaded","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["step"],
+        ["downloads",[]],
+        ["step"],
+        ["installer",1,"commit"],
+        ["relaunch","{root}/versions/0.4.8-0123456789abcdef/hlsr",["--no-sandbox","--ozone-platform=wayland","--disable-gpu"]],
+        ["receipt","0.4.7","0.4.8"],
+        ["return","updater-install-now",true],
+        ["quit"],
+        ["step"],
+        ["return","updater-get-state",{"state":"downloaded","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["step"],
+        ["return","updater-check",false],
+        ["step"],
+        ["installer",1,"discard"]
+      ]
+    },
+    {
+      "name": "release notes lose tags and stop at 4000",
+      "evaluate": [
+        {
+          "result": {
+            "ok": true,
+            "problems": [],
+            "updateAvailable": true,
+            "downgrade": false,
+            "unsupported": false,
+            "code": null,
+            "updateRequired": false,
+            "manifest": {
+              "schemaVersion": 1,
+              "version": "0.4.8",
+              "publishedAt": "2026-10-16T12:00:00.000Z",
+              "minimumSupportedVersion": "0.3.16",
+              "updateRequired": false,
+              "installer": {"filename":"HLSR-Setup-0.4.8-linux-x86_64.AppImage","size":70000,"sha256":"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc","sha512":"DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD==","urls":["https://hlsr.pro/downloads/launcher/linux/stable/HLSR-Setup-0.4.8-linux-x86_64.AppImage"]},
+              "releaseNotes": "<h1>Новое</h1><p>Исправлено xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>"
+            }
+          }
+        }
+      ],
+      "ops": [{"op":"invoke","channel":"updater-check"},{"op":"invoke","channel":"updater-get-state"}],
+      "records": [
+        ["state",{"state":"checking","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["evaluate"],
+        ["return","updater-check",true],
+        [
+          "state",
+          {
+            "state": "available",
+            "enabled": true,
+            "currentVersion": "0.4.7",
+            "version": "0.4.8",
+            "releaseNotes": " Новое  Исправлено xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            "info": {
+              "version": "0.4.8",
+              "releaseDate": "2026-10-16T12:00:00.000Z",
+              "releaseNotes": " Новое  Исправлено xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+            },
+            "progress": null,
+            "error": null,
+            "errorCode": null,
+            "checkSource": "manual",
+            "cancellable": false
+          }
+        ],
+        ["telemetry","available","0.4.7","0.4.8"],
+        ["versionAvailable","0.4.8","0.4.7",{"hasReleaseNotes":true}],
+        ["step"],
+        [
+          "return",
+          "updater-get-state",
+          {
+            "state": "available",
+            "enabled": true,
+            "currentVersion": "0.4.7",
+            "version": "0.4.8",
+            "releaseNotes": " Новое  Исправлено xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            "info": {
+              "version": "0.4.8",
+              "releaseDate": "2026-10-16T12:00:00.000Z",
+              "releaseNotes": " Новое  Исправлено xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+            },
+            "progress": null,
+            "error": null,
+            "errorCode": null,
+            "checkSource": "manual",
+            "cancellable": false
+          }
+        ],
+        ["step"]
+      ]
+    },
+    {
+      "name": "download is refused unless available",
+      "evaluate": [
+        {
+          "result": {
+            "ok": true,
+            "problems": [],
+            "updateAvailable": false,
+            "downgrade": false,
+            "unsupported": false,
+            "code": null,
+            "updateRequired": false,
+            "manifest": {
+              "schemaVersion": 1,
+              "version": "0.4.8",
+              "publishedAt": "2026-10-16T12:00:00.000Z",
+              "minimumSupportedVersion": "0.3.16",
+              "updateRequired": false,
+              "installer": {"filename":"HLSR-Setup-0.4.8-linux-x86_64.AppImage","size":70000,"sha256":"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc","sha512":"DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD==","urls":["https://hlsr.pro/downloads/launcher/linux/stable/HLSR-Setup-0.4.8-linux-x86_64.AppImage"]}
+            }
+          }
+        }
+      ],
+      "ops": [{"op":"invoke","channel":"updater-download"},{"op":"invoke","channel":"updater-check"},{"op":"invoke","channel":"updater-download"}],
+      "records": [
+        ["return","updater-download",false],
+        ["step"],
+        ["state",{"state":"checking","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["evaluate"],
+        ["return","updater-check",true],
+        ["state",{"state":"not-available","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["step"],
+        ["return","updater-download",false],
+        ["step"]
+      ]
+    },
+    {
+      "name": "installation is blocked during a game",
+      "ops": [{"op":"invoke","channel":"updater-check"},{"op":"invoke","channel":"updater-download"},{"op":"game","running":true},{"op":"invoke","channel":"updater-install-now"},{"op":"game","running":false},{"op":"invoke","channel":"updater-install-now"}],
+      "records": [
+        ["state",{"state":"checking","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["evaluate"],
+        ["return","updater-check",true],
+        ["state",{"state":"available","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","available","0.4.7","0.4.8"],
+        ["versionAvailable","0.4.8","0.4.7",{"hasReleaseNotes":false}],
+        ["step"],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","downloadStarted","0.4.7","0.4.8"],
+        ["download","{root}/.downloads/update-{rand}","0.4.8"],
+        ["return","updater-download",true],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":{"transferred":35000,"total":70000,"percent":50,"bytesPerSecond":1000},"error":null,"errorCode":null,"checkSource":"manual","cancellable":true}],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":{"transferred":70000,"total":70000,"percent":100,"bytesPerSecond":2000},"error":null,"errorCode":null,"checkSource":"manual","cancellable":true}],
+        ["state",{"state":"verifying","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":true}],
+        ["extract","{root}/.downloads/update-{rand}/HLSR-Setup-0.4.8-linux-x86_64.AppImage","{root}/.downloads/update-{rand}"],
+        ["installer",1,"create"],
+        ["installer",1,"prepare","{root}/.downloads/update-{rand}/squashfs-root/resources/payload/HLSR-0.4.8-linux-x86_64.tar.gz","0.4.8"],
+        ["state",{"state":"downloaded","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","downloadCompleted","0.4.7","0.4.8",{"bytes":70000,"durationMs":0}],
+        ["step"],
+        ["step"],
+        ["return","updater-install-now",false],
+        ["step"],
+        ["step"],
+        ["installer",1,"commit"],
+        ["relaunch","{root}/versions/0.4.8-0123456789abcdef/hlsr",["--no-sandbox"]],
+        ["receipt","0.4.7","0.4.8"],
+        ["return","updater-install-now",true],
+        ["quit"],
+        ["step"],
+        ["installer",1,"discard"]
+      ]
+    },
+    {
+      "name": "installation on quit requires an explicit choice",
+      "ops": [{"op":"invoke","channel":"updater-check"},{"op":"invoke","channel":"updater-download"},{"op":"beforeQuit"},{"op":"invoke","channel":"updater-install-on-quit"},{"op":"beforeQuit"},{"op":"beforeQuit"}],
+      "records": [
+        ["state",{"state":"checking","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["evaluate"],
+        ["return","updater-check",true],
+        ["state",{"state":"available","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","available","0.4.7","0.4.8"],
+        ["versionAvailable","0.4.8","0.4.7",{"hasReleaseNotes":false}],
+        ["step"],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","downloadStarted","0.4.7","0.4.8"],
+        ["download","{root}/.downloads/update-{rand}","0.4.8"],
+        ["return","updater-download",true],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":{"transferred":35000,"total":70000,"percent":50,"bytesPerSecond":1000},"error":null,"errorCode":null,"checkSource":"manual","cancellable":true}],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":{"transferred":70000,"total":70000,"percent":100,"bytesPerSecond":2000},"error":null,"errorCode":null,"checkSource":"manual","cancellable":true}],
+        ["state",{"state":"verifying","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":true}],
+        ["extract","{root}/.downloads/update-{rand}/HLSR-Setup-0.4.8-linux-x86_64.AppImage","{root}/.downloads/update-{rand}"],
+        ["installer",1,"create"],
+        ["installer",1,"prepare","{root}/.downloads/update-{rand}/squashfs-root/resources/payload/HLSR-0.4.8-linux-x86_64.tar.gz","0.4.8"],
+        ["state",{"state":"downloaded","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","downloadCompleted","0.4.7","0.4.8",{"bytes":70000,"durationMs":0}],
+        ["step"],
+        ["step"],
+        ["return","updater-install-on-quit",true],
+        ["step"],
+        ["installer",1,"commit"],
+        ["receipt","0.4.7","0.4.8"],
+        ["step"],
+        ["step"],
+        ["installer",1,"discard"]
+      ]
+    },
+    {
+      "name": "install on quit is skipped during a game",
+      "ops": [{"op":"invoke","channel":"updater-check"},{"op":"invoke","channel":"updater-download"},{"op":"invoke","channel":"updater-install-on-quit"},{"op":"game","running":true},{"op":"beforeQuit"}],
+      "records": [
+        ["state",{"state":"checking","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["evaluate"],
+        ["return","updater-check",true],
+        ["state",{"state":"available","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","available","0.4.7","0.4.8"],
+        ["versionAvailable","0.4.8","0.4.7",{"hasReleaseNotes":false}],
+        ["step"],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","downloadStarted","0.4.7","0.4.8"],
+        ["download","{root}/.downloads/update-{rand}","0.4.8"],
+        ["return","updater-download",true],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":{"transferred":35000,"total":70000,"percent":50,"bytesPerSecond":1000},"error":null,"errorCode":null,"checkSource":"manual","cancellable":true}],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":{"transferred":70000,"total":70000,"percent":100,"bytesPerSecond":2000},"error":null,"errorCode":null,"checkSource":"manual","cancellable":true}],
+        ["state",{"state":"verifying","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":true}],
+        ["extract","{root}/.downloads/update-{rand}/HLSR-Setup-0.4.8-linux-x86_64.AppImage","{root}/.downloads/update-{rand}"],
+        ["installer",1,"create"],
+        ["installer",1,"prepare","{root}/.downloads/update-{rand}/squashfs-root/resources/payload/HLSR-0.4.8-linux-x86_64.tar.gz","0.4.8"],
+        ["state",{"state":"downloaded","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","downloadCompleted","0.4.7","0.4.8",{"bytes":70000,"durationMs":0}],
+        ["step"],
+        ["return","updater-install-on-quit",true],
+        ["step"],
+        ["step"],
+        ["step"],
+        ["installer",1,"discard"]
+      ]
+    },
+    {
+      "name": "install on quit before download is refused",
+      "ops": [{"op":"invoke","channel":"updater-check"},{"op":"invoke","channel":"updater-install-on-quit"},{"op":"beforeQuit"}],
+      "records": [
+        ["state",{"state":"checking","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["evaluate"],
+        ["return","updater-check",true],
+        ["state",{"state":"available","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","available","0.4.7","0.4.8"],
+        ["versionAvailable","0.4.8","0.4.7",{"hasReleaseNotes":false}],
+        ["step"],
+        ["return","updater-install-on-quit",false],
+        ["step"],
+        ["step"]
+      ]
+    },
+    {
+      "name": "payload names another version",
+      "extracts": [{"version":"0.4.9"}],
+      "ops": [{"op":"invoke","channel":"updater-check"},{"op":"invoke","channel":"updater-download"},{"op":"invoke","channel":"updater-get-state"},{"op":"downloads"}],
+      "records": [
+        ["state",{"state":"checking","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["evaluate"],
+        ["return","updater-check",true],
+        ["state",{"state":"available","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","available","0.4.7","0.4.8"],
+        ["versionAvailable","0.4.8","0.4.7",{"hasReleaseNotes":false}],
+        ["step"],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","downloadStarted","0.4.7","0.4.8"],
+        ["download","{root}/.downloads/update-{rand}","0.4.8"],
+        ["return","updater-download",true],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":{"transferred":35000,"total":70000,"percent":50,"bytesPerSecond":1000},"error":null,"errorCode":null,"checkSource":"manual","cancellable":true}],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":{"transferred":70000,"total":70000,"percent":100,"bytesPerSecond":2000},"error":null,"errorCode":null,"checkSource":"manual","cancellable":true}],
+        ["state",{"state":"verifying","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":true}],
+        ["extract","{root}/.downloads/update-{rand}/HLSR-Setup-0.4.8-linux-x86_64.AppImage","{root}/.downloads/update-{rand}"],
+        ["state",{"state":"error","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":"Установщик содержит HLSR 0.4.9, а подписанный канал — 0.4.8","errorCode":"VERIFY","checkSource":"manual","cancellable":false}],
+        ["telemetry","failed","0.4.7","0.4.8","VERIFY"],
+        ["step"],
+        ["return","updater-get-state",{"state":"error","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":"Установщик содержит HLSR 0.4.9, а подписанный канал — 0.4.8","errorCode":"VERIFY","checkSource":"manual","cancellable":false}],
+        ["step"],
+        ["downloads",[]],
+        ["step"]
+      ]
+    },
+    {
+      "name": "cancelling a download leaves an available update and retry works",
+      "downloads": [{"progress":[{"transferred":35000,"total":70000,"percent":50,"bytesPerSecond":1000}],"waitAbort":true},{"progress":[{"transferred":35000,"total":70000,"percent":50,"bytesPerSecond":1000},{"transferred":70000,"total":70000,"percent":100,"bytesPerSecond":2000}],"file":true}],
+      "ops": [{"op":"invoke","channel":"updater-check"},{"op":"invoke","channel":"updater-download"},{"op":"invoke","channel":"updater-cancel"},{"op":"invoke","channel":"updater-get-state"},{"op":"invoke","channel":"updater-cancel"},{"op":"invoke","channel":"updater-download"},{"op":"invoke","channel":"updater-get-state"}],
+      "records": [
+        ["state",{"state":"checking","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["evaluate"],
+        ["return","updater-check",true],
+        ["state",{"state":"available","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","available","0.4.7","0.4.8"],
+        ["versionAvailable","0.4.8","0.4.7",{"hasReleaseNotes":false}],
+        ["step"],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","downloadStarted","0.4.7","0.4.8"],
+        ["download","{root}/.downloads/update-{rand}","0.4.8"],
+        ["return","updater-download",true],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":{"transferred":35000,"total":70000,"percent":50,"bytesPerSecond":1000},"error":null,"errorCode":null,"checkSource":"manual","cancellable":true}],
+        ["step"],
+        ["return","updater-cancel",true],
+        ["state",{"state":"available","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["step"],
+        ["return","updater-get-state",{"state":"available","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["step"],
+        ["return","updater-cancel",false],
+        ["step"],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","downloadStarted","0.4.7","0.4.8"],
+        ["download","{root}/.downloads/update-{rand}","0.4.8"],
+        ["return","updater-download",true],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":{"transferred":35000,"total":70000,"percent":50,"bytesPerSecond":1000},"error":null,"errorCode":null,"checkSource":"manual","cancellable":true}],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":{"transferred":70000,"total":70000,"percent":100,"bytesPerSecond":2000},"error":null,"errorCode":null,"checkSource":"manual","cancellable":true}],
+        ["state",{"state":"verifying","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":true}],
+        ["extract","{root}/.downloads/update-{rand}/HLSR-Setup-0.4.8-linux-x86_64.AppImage","{root}/.downloads/update-{rand}"],
+        ["installer",1,"create"],
+        ["installer",1,"prepare","{root}/.downloads/update-{rand}/squashfs-root/resources/payload/HLSR-0.4.8-linux-x86_64.tar.gz","0.4.8"],
+        ["state",{"state":"downloaded","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","downloadCompleted","0.4.7","0.4.8",{"bytes":70000,"durationMs":0}],
+        ["step"],
+        ["return","updater-get-state",{"state":"downloaded","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["step"],
+        ["installer",1,"discard"]
+      ]
+    },
+    {
+      "name": "cancelling while verifying",
+      "extracts": [{"waitAbort":true},{"version":"0.4.8"}],
+      "ops": [{"op":"invoke","channel":"updater-check"},{"op":"invoke","channel":"updater-download"},{"op":"invoke","channel":"updater-cancel"},{"op":"invoke","channel":"updater-get-state"},{"op":"invoke","channel":"updater-download"}],
+      "records": [
+        ["state",{"state":"checking","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["evaluate"],
+        ["return","updater-check",true],
+        ["state",{"state":"available","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","available","0.4.7","0.4.8"],
+        ["versionAvailable","0.4.8","0.4.7",{"hasReleaseNotes":false}],
+        ["step"],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","downloadStarted","0.4.7","0.4.8"],
+        ["download","{root}/.downloads/update-{rand}","0.4.8"],
+        ["return","updater-download",true],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":{"transferred":35000,"total":70000,"percent":50,"bytesPerSecond":1000},"error":null,"errorCode":null,"checkSource":"manual","cancellable":true}],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":{"transferred":70000,"total":70000,"percent":100,"bytesPerSecond":2000},"error":null,"errorCode":null,"checkSource":"manual","cancellable":true}],
+        ["state",{"state":"verifying","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":true}],
+        ["extract","{root}/.downloads/update-{rand}/HLSR-Setup-0.4.8-linux-x86_64.AppImage","{root}/.downloads/update-{rand}"],
+        ["step"],
+        ["return","updater-cancel",true],
+        ["state",{"state":"available","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["step"],
+        ["return","updater-get-state",{"state":"available","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["step"],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","downloadStarted","0.4.7","0.4.8"],
+        ["download","{root}/.downloads/update-{rand}","0.4.8"],
+        ["return","updater-download",true],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":{"transferred":35000,"total":70000,"percent":50,"bytesPerSecond":1000},"error":null,"errorCode":null,"checkSource":"manual","cancellable":true}],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":{"transferred":70000,"total":70000,"percent":100,"bytesPerSecond":2000},"error":null,"errorCode":null,"checkSource":"manual","cancellable":true}],
+        ["state",{"state":"verifying","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":true}],
+        ["extract","{root}/.downloads/update-{rand}/HLSR-Setup-0.4.8-linux-x86_64.AppImage","{root}/.downloads/update-{rand}"],
+        ["installer",1,"create"],
+        ["installer",1,"prepare","{root}/.downloads/update-{rand}/squashfs-root/resources/payload/HLSR-0.4.8-linux-x86_64.tar.gz","0.4.8"],
+        ["state",{"state":"downloaded","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","downloadCompleted","0.4.7","0.4.8",{"bytes":70000,"durationMs":0}],
+        ["step"],
+        ["installer",1,"discard"]
+      ]
+    },
+    {
+      "name": "cancelling while preparing",
+      "installers": [{"prepare":{"waitAbort":true}},{}],
+      "ops": [{"op":"invoke","channel":"updater-check"},{"op":"invoke","channel":"updater-download"},{"op":"invoke","channel":"updater-cancel"},{"op":"invoke","channel":"updater-get-state"}],
+      "records": [
+        ["state",{"state":"checking","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["evaluate"],
+        ["return","updater-check",true],
+        ["state",{"state":"available","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","available","0.4.7","0.4.8"],
+        ["versionAvailable","0.4.8","0.4.7",{"hasReleaseNotes":false}],
+        ["step"],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","downloadStarted","0.4.7","0.4.8"],
+        ["download","{root}/.downloads/update-{rand}","0.4.8"],
+        ["return","updater-download",true],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":{"transferred":35000,"total":70000,"percent":50,"bytesPerSecond":1000},"error":null,"errorCode":null,"checkSource":"manual","cancellable":true}],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":{"transferred":70000,"total":70000,"percent":100,"bytesPerSecond":2000},"error":null,"errorCode":null,"checkSource":"manual","cancellable":true}],
+        ["state",{"state":"verifying","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":true}],
+        ["extract","{root}/.downloads/update-{rand}/HLSR-Setup-0.4.8-linux-x86_64.AppImage","{root}/.downloads/update-{rand}"],
+        ["installer",1,"create"],
+        ["installer",1,"prepare","{root}/.downloads/update-{rand}/squashfs-root/resources/payload/HLSR-0.4.8-linux-x86_64.tar.gz","0.4.8"],
+        ["step"],
+        ["return","updater-cancel",true],
+        ["installer",1,"discard"],
+        ["state",{"state":"available","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["step"],
+        ["return","updater-get-state",{"state":"available","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["step"],
+        ["installer",1,"discard"]
+      ]
+    },
+    {
+      "name": "cancel is refused when nothing runs",
+      "ops": [{"op":"invoke","channel":"updater-cancel"},{"op":"invoke","channel":"updater-check"},{"op":"invoke","channel":"updater-cancel"}],
+      "records": [
+        ["return","updater-cancel",false],
+        ["step"],
+        ["state",{"state":"checking","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["evaluate"],
+        ["return","updater-check",true],
+        ["state",{"state":"available","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","available","0.4.7","0.4.8"],
+        ["versionAvailable","0.4.8","0.4.7",{"hasReleaseNotes":false}],
+        ["step"],
+        ["return","updater-cancel",false],
+        ["step"]
+      ]
+    },
+    {
+      "name": "download error backs off automatic checks",
+      "downloads": [{"error":"HTTP 503"}],
+      "ops": [{"op":"invoke","channel":"updater-check"},{"op":"invoke","channel":"updater-download"},{"op":"invoke","channel":"updater-get-state"},{"op":"checkOnFocus"},{"op":"advance","ms":120000},{"op":"checkOnFocus"},{"op":"invoke","channel":"updater-check"}],
+      "records": [
+        ["state",{"state":"checking","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["evaluate"],
+        ["return","updater-check",true],
+        ["state",{"state":"available","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","available","0.4.7","0.4.8"],
+        ["versionAvailable","0.4.8","0.4.7",{"hasReleaseNotes":false}],
+        ["step"],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","downloadStarted","0.4.7","0.4.8"],
+        ["download","{root}/.downloads/update-{rand}","0.4.8"],
+        ["return","updater-download",true],
+        ["state",{"state":"error","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":"HTTP 503","errorCode":"FEED","checkSource":"manual","cancellable":false}],
+        ["telemetry","failed","0.4.7","0.4.8","FEED"],
+        ["step"],
+        ["return","updater-get-state",{"state":"error","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":"HTTP 503","errorCode":"FEED","checkSource":"manual","cancellable":false}],
+        ["step"],
+        ["step"],
+        ["step"],
+        ["step"],
+        ["state",{"state":"checking","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["evaluate"],
+        ["return","updater-check",true],
+        ["state",{"state":"available","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","available","0.4.7","0.4.8"],
+        ["versionAvailable","0.4.8","0.4.7",{"hasReleaseNotes":false}],
+        ["step"]
+      ]
+    },
+    {
+      "name": "repeated check errors double the backoff up to 30 minutes",
+      "evaluate": [{"throw":"ETIMEDOUT"}],
+      "ops": [
+        {"op":"invoke","channel":"updater-check"},
+        {"op":"advance","ms":660000},
+        {"op":"checkOnFocus"},
+        {"op":"advance","ms":660000},
+        {"op":"checkOnFocus"},
+        {"op":"advance","ms":660000},
+        {"op":"checkOnFocus"},
+        {"op":"invoke","channel":"updater-check"},
+        {"op":"invoke","channel":"updater-check"},
+        {"op":"invoke","channel":"updater-check"},
+        {"op":"invoke","channel":"updater-check"},
+        {"op":"invoke","channel":"updater-check"},
+        {"op":"invoke","channel":"updater-check"}
+      ],
+      "records": [
+        ["state",{"state":"checking","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["evaluate"],
+        ["return","updater-check",true],
+        ["state",{"state":"error","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":"ETIMEDOUT","errorCode":"NETWORK","checkSource":"manual","cancellable":false}],
+        ["telemetry","failed","0.4.7",null,"NETWORK"],
+        ["step"],
+        ["step"],
+        ["state",{"state":"checking","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"automatic","cancellable":false}],
+        ["evaluate"],
+        ["state",{"state":"error","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":"ETIMEDOUT","errorCode":"NETWORK","checkSource":"automatic","cancellable":false}],
+        ["telemetry","failed","0.4.7",null,"NETWORK"],
+        ["step"],
+        ["step"],
+        ["state",{"state":"checking","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"automatic","cancellable":false}],
+        ["evaluate"],
+        ["state",{"state":"error","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":"ETIMEDOUT","errorCode":"NETWORK","checkSource":"automatic","cancellable":false}],
+        ["telemetry","failed","0.4.7",null,"NETWORK"],
+        ["step"],
+        ["step"],
+        ["state",{"state":"checking","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"automatic","cancellable":false}],
+        ["evaluate"],
+        ["state",{"state":"error","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":"ETIMEDOUT","errorCode":"NETWORK","checkSource":"automatic","cancellable":false}],
+        ["telemetry","failed","0.4.7",null,"NETWORK"],
+        ["step"],
+        ["state",{"state":"checking","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["evaluate"],
+        ["return","updater-check",true],
+        ["state",{"state":"error","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":"ETIMEDOUT","errorCode":"NETWORK","checkSource":"manual","cancellable":false}],
+        ["telemetry","failed","0.4.7",null,"NETWORK"],
+        ["step"],
+        ["state",{"state":"checking","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["evaluate"],
+        ["return","updater-check",true],
+        ["state",{"state":"error","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":"ETIMEDOUT","errorCode":"NETWORK","checkSource":"manual","cancellable":false}],
+        ["telemetry","failed","0.4.7",null,"NETWORK"],
+        ["step"],
+        ["state",{"state":"checking","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["evaluate"],
+        ["return","updater-check",true],
+        ["state",{"state":"error","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":"ETIMEDOUT","errorCode":"NETWORK","checkSource":"manual","cancellable":false}],
+        ["telemetry","failed","0.4.7",null,"NETWORK"],
+        ["step"],
+        ["state",{"state":"checking","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["evaluate"],
+        ["return","updater-check",true],
+        ["state",{"state":"error","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":"ETIMEDOUT","errorCode":"NETWORK","checkSource":"manual","cancellable":false}],
+        ["telemetry","failed","0.4.7",null,"NETWORK"],
+        ["step"],
+        ["state",{"state":"checking","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["evaluate"],
+        ["return","updater-check",true],
+        ["state",{"state":"error","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":"ETIMEDOUT","errorCode":"NETWORK","checkSource":"manual","cancellable":false}],
+        ["telemetry","failed","0.4.7",null,"NETWORK"],
+        ["step"],
+        ["state",{"state":"checking","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["evaluate"],
+        ["return","updater-check",true],
+        ["state",{"state":"error","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":"ETIMEDOUT","errorCode":"NETWORK","checkSource":"manual","cancellable":false}],
+        ["telemetry","failed","0.4.7",null,"NETWORK"],
+        ["step"]
+      ]
+    },
+    {
+      "name": "rate limit pauses for 15 minutes",
+      "evaluate": [
+        {"throw":"HTTP 429 Too Many Requests"},
+        {
+          "result": {
+            "ok": true,
+            "problems": [],
+            "updateAvailable": false,
+            "downgrade": false,
+            "unsupported": false,
+            "code": null,
+            "updateRequired": false,
+            "manifest": {
+              "schemaVersion": 1,
+              "version": "0.4.8",
+              "publishedAt": "2026-10-16T12:00:00.000Z",
+              "minimumSupportedVersion": "0.3.16",
+              "updateRequired": false,
+              "installer": {"filename":"HLSR-Setup-0.4.8-linux-x86_64.AppImage","size":70000,"sha256":"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc","sha512":"DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD==","urls":["https://hlsr.pro/downloads/launcher/linux/stable/HLSR-Setup-0.4.8-linux-x86_64.AppImage"]}
+            }
+          }
+        }
+      ],
+      "ops": [{"op":"invoke","channel":"updater-check"},{"op":"advance","ms":660000},{"op":"checkOnFocus"},{"op":"advance","ms":300000},{"op":"checkOnFocus"}],
+      "records": [
+        ["state",{"state":"checking","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["evaluate"],
+        ["return","updater-check",true],
+        ["state",{"state":"error","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":"HTTP 429 Too Many Requests","errorCode":"RATE_LIMIT","checkSource":"manual","cancellable":false}],
+        ["telemetry","failed","0.4.7",null,"RATE_LIMIT"],
+        ["step"],
+        ["step"],
+        ["step"],
+        ["step"],
+        ["state",{"state":"checking","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"automatic","cancellable":false}],
+        ["evaluate"],
+        ["state",{"state":"not-available","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"automatic","cancellable":false}],
+        ["step"]
+      ]
+    },
+    {
+      "name": "focus checks every 5 minutes, automatic every 10",
+      "evaluate": [
+        {
+          "result": {
+            "ok": true,
+            "problems": [],
+            "updateAvailable": false,
+            "downgrade": false,
+            "unsupported": false,
+            "code": null,
+            "updateRequired": false,
+            "manifest": {
+              "schemaVersion": 1,
+              "version": "0.4.8",
+              "publishedAt": "2026-10-16T12:00:00.000Z",
+              "minimumSupportedVersion": "0.3.16",
+              "updateRequired": false,
+              "installer": {"filename":"HLSR-Setup-0.4.8-linux-x86_64.AppImage","size":70000,"sha256":"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc","sha512":"DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD==","urls":["https://hlsr.pro/downloads/launcher/linux/stable/HLSR-Setup-0.4.8-linux-x86_64.AppImage"]}
+            }
+          }
+        }
+      ],
+      "ops": [{"op":"checkOnFocus"},{"op":"advance","ms":240000},{"op":"checkOnFocus"},{"op":"advance","ms":60000},{"op":"checkOnFocus"},{"op":"advance","ms":1860000}],
+      "records": [
+        ["state",{"state":"checking","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"automatic","cancellable":false}],
+        ["evaluate"],
+        ["state",{"state":"not-available","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"automatic","cancellable":false}],
+        ["step"],
+        ["step"],
+        ["step"],
+        ["step"],
+        ["state",{"state":"checking","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"automatic","cancellable":false}],
+        ["evaluate"],
+        ["state",{"state":"not-available","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"automatic","cancellable":false}],
+        ["step"],
+        ["step"]
+      ]
+    },
+    {
+      "name": "interval checks every 30 minutes plus jitter",
+      "evaluate": [
+        {
+          "result": {
+            "ok": true,
+            "problems": [],
+            "updateAvailable": false,
+            "downgrade": false,
+            "unsupported": false,
+            "code": null,
+            "updateRequired": false,
+            "manifest": {
+              "schemaVersion": 1,
+              "version": "0.4.8",
+              "publishedAt": "2026-10-16T12:00:00.000Z",
+              "minimumSupportedVersion": "0.3.16",
+              "updateRequired": false,
+              "installer": {"filename":"HLSR-Setup-0.4.8-linux-x86_64.AppImage","size":70000,"sha256":"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc","sha512":"DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD==","urls":["https://hlsr.pro/downloads/launcher/linux/stable/HLSR-Setup-0.4.8-linux-x86_64.AppImage"]}
+            }
+          }
+        }
+      ],
+      "ops": [{"op":"startCheckingInterval"},{"op":"advance","ms":1859999},{"op":"advance","ms":1},{"op":"startCheckingInterval"},{"op":"advance","ms":1860000}],
+      "records": [
+        ["state",{"state":"checking","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"automatic","cancellable":false}],
+        ["evaluate"],
+        ["state",{"state":"not-available","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"automatic","cancellable":false}],
+        ["step"],
+        ["step"],
+        ["state",{"state":"checking","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"automatic","cancellable":false}],
+        ["evaluate"],
+        ["state",{"state":"not-available","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"automatic","cancellable":false}],
+        ["step"],
+        ["step"],
+        ["state",{"state":"checking","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"automatic","cancellable":false}],
+        ["evaluate"],
+        ["state",{"state":"not-available","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"automatic","cancellable":false}],
+        ["step"]
+      ]
+    },
+    {
+      "name": "interval does not check after the boot gate ran",
+      "evaluate": [
+        {
+          "result": {
+            "ok": true,
+            "problems": [],
+            "updateAvailable": false,
+            "downgrade": false,
+            "unsupported": false,
+            "code": null,
+            "updateRequired": false,
+            "manifest": {
+              "schemaVersion": 1,
+              "version": "0.4.8",
+              "publishedAt": "2026-10-16T12:00:00.000Z",
+              "minimumSupportedVersion": "0.3.16",
+              "updateRequired": false,
+              "installer": {"filename":"HLSR-Setup-0.4.8-linux-x86_64.AppImage","size":70000,"sha256":"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc","sha512":"DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD==","urls":["https://hlsr.pro/downloads/launcher/linux/stable/HLSR-Setup-0.4.8-linux-x86_64.AppImage"]}
+            }
+          }
+        }
+      ],
+      "ops": [{"op":"invoke","channel":"boot-gate-run"},{"op":"startCheckingInterval"},{"op":"advance","ms":1860000}],
+      "records": [
+        ["state",{"state":"checking","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["evaluate"],
+        ["state",{"state":"not-available","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["return","boot-gate-run",{"action":"proceed","reason":"not-available"}],
+        ["step"],
+        ["step"],
+        ["state",{"state":"checking","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"automatic","cancellable":false}],
+        ["evaluate"],
+        ["state",{"state":"not-available","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"automatic","cancellable":false}],
+        ["step"]
+      ]
+    },
+    {
+      "name": "check is refused while downloaded",
+      "ops": [{"op":"invoke","channel":"updater-check"},{"op":"invoke","channel":"updater-download"},{"op":"invoke","channel":"updater-check"},{"op":"checkOnFocus"}],
+      "records": [
+        ["state",{"state":"checking","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["evaluate"],
+        ["return","updater-check",true],
+        ["state",{"state":"available","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","available","0.4.7","0.4.8"],
+        ["versionAvailable","0.4.8","0.4.7",{"hasReleaseNotes":false}],
+        ["step"],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","downloadStarted","0.4.7","0.4.8"],
+        ["download","{root}/.downloads/update-{rand}","0.4.8"],
+        ["return","updater-download",true],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":{"transferred":35000,"total":70000,"percent":50,"bytesPerSecond":1000},"error":null,"errorCode":null,"checkSource":"manual","cancellable":true}],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":{"transferred":70000,"total":70000,"percent":100,"bytesPerSecond":2000},"error":null,"errorCode":null,"checkSource":"manual","cancellable":true}],
+        ["state",{"state":"verifying","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":true}],
+        ["extract","{root}/.downloads/update-{rand}/HLSR-Setup-0.4.8-linux-x86_64.AppImage","{root}/.downloads/update-{rand}"],
+        ["installer",1,"create"],
+        ["installer",1,"prepare","{root}/.downloads/update-{rand}/squashfs-root/resources/payload/HLSR-0.4.8-linux-x86_64.tar.gz","0.4.8"],
+        ["state",{"state":"downloaded","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","downloadCompleted","0.4.7","0.4.8",{"bytes":70000,"durationMs":0}],
+        ["step"],
+        ["return","updater-check",false],
+        ["step"],
+        ["step"],
+        ["installer",1,"discard"]
+      ]
+    },
+    {
+      "name": "chunks build the version",
+      "evaluate": [
+        {
+          "result": {
+            "ok": true,
+            "problems": [],
+            "updateAvailable": true,
+            "downgrade": false,
+            "unsupported": false,
+            "code": null,
+            "updateRequired": false,
+            "manifest": {
+              "schemaVersion": 1,
+              "version": "0.4.8",
+              "publishedAt": "2026-10-16T12:00:00.000Z",
+              "minimumSupportedVersion": "0.3.16",
+              "updateRequired": false,
+              "installer": {"filename":"HLSR-Setup-0.4.8-linux-x86_64.AppImage","size":70000,"sha256":"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc","sha512":"DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD==","urls":["https://hlsr.pro/downloads/launcher/linux/stable/HLSR-Setup-0.4.8-linux-x86_64.AppImage"]},
+              "delta": {"schema":1,"manifest":{"filename":"HLSR-0.4.8-linux.chunks.json","size":4096,"sha256":"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb","urls":["https://hlsr.pro/downloads/launcher/linux/stable/HLSR-0.4.8-linux.chunks.json"]},"chunkBaseUrls":["https://hlsr.pro/downloads/launcher/chunks"]}
+            }
+          }
+        }
+      ],
+      "installers": [{"chunks":{"progress":[{"done":100,"total":300,"bytesPerSecond":50},{"done":300,"total":300,"bytesPerSecond":70}],"result":{"downloadedBytes":300,"reusedBytes":9000}}}],
+      "ops": [{"op":"invoke","channel":"updater-check"},{"op":"invoke","channel":"updater-download"},{"op":"invoke","channel":"updater-get-state"},{"op":"invoke","channel":"updater-install-now"}],
+      "records": [
+        ["state",{"state":"checking","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["evaluate"],
+        ["return","updater-check",true],
+        ["state",{"state":"available","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","available","0.4.7","0.4.8"],
+        ["versionAvailable","0.4.8","0.4.7",{"hasReleaseNotes":false}],
+        ["step"],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","downloadStarted","0.4.7","0.4.8"],
+        ["fetchManifest","HLSR-0.4.8-linux.chunks.json","0.4.8","linux"],
+        ["return","updater-download",true],
+        ["installer",1,"create"],
+        ["installer",1,"prepareFromChunks","0.4.8","0.4.8","{root}/.downloads/update-{rand}/chunks",["https://hlsr.pro/downloads/launcher/chunks"]],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":{"done":100,"total":300,"bytesPerSecond":50},"error":null,"errorCode":null,"checkSource":"manual","cancellable":true}],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":{"done":300,"total":300,"bytesPerSecond":70},"error":null,"errorCode":null,"checkSource":"manual","cancellable":true}],
+        ["log","info","[updater] 0.4.8 собрана из чанков: скачано 300 байт, с диска 9000"],
+        ["state",{"state":"downloaded","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":{"done":300,"total":300,"bytesPerSecond":70},"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","downloadCompleted","0.4.7","0.4.8",{"bytes":300,"durationMs":0}],
+        ["step"],
+        ["return","updater-get-state",{"state":"downloaded","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":{"done":300,"total":300,"bytesPerSecond":70},"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["step"],
+        ["installer",1,"commit"],
+        ["relaunch","{root}/versions/0.4.8-0123456789abcdef/hlsr",["--no-sandbox"]],
+        ["receipt","0.4.7","0.4.8"],
+        ["return","updater-install-now",true],
+        ["quit"],
+        ["step"],
+        ["installer",1,"discard"]
+      ]
+    },
+    {
+      "name": "chunk manifest fails, full installer is used",
+      "evaluate": [
+        {
+          "result": {
+            "ok": true,
+            "problems": [],
+            "updateAvailable": true,
+            "downgrade": false,
+            "unsupported": false,
+            "code": null,
+            "updateRequired": false,
+            "manifest": {
+              "schemaVersion": 1,
+              "version": "0.4.8",
+              "publishedAt": "2026-10-16T12:00:00.000Z",
+              "minimumSupportedVersion": "0.3.16",
+              "updateRequired": false,
+              "installer": {"filename":"HLSR-Setup-0.4.8-linux-x86_64.AppImage","size":70000,"sha256":"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc","sha512":"DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD==","urls":["https://hlsr.pro/downloads/launcher/linux/stable/HLSR-Setup-0.4.8-linux-x86_64.AppImage"]},
+              "delta": {"schema":1,"manifest":{"filename":"HLSR-0.4.8-linux.chunks.json","size":4096,"sha256":"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb","urls":["https://hlsr.pro/downloads/launcher/linux/stable/HLSR-0.4.8-linux.chunks.json"]},"chunkBaseUrls":["https://hlsr.pro/downloads/launcher/chunks"]}
+            }
+          }
+        }
+      ],
+      "manifests": [{"error":"Манифест чанков недоступен"}],
+      "ops": [{"op":"invoke","channel":"updater-check"},{"op":"invoke","channel":"updater-download"},{"op":"invoke","channel":"updater-get-state"}],
+      "records": [
+        ["state",{"state":"checking","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["evaluate"],
+        ["return","updater-check",true],
+        ["state",{"state":"available","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","available","0.4.7","0.4.8"],
+        ["versionAvailable","0.4.8","0.4.7",{"hasReleaseNotes":false}],
+        ["step"],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","downloadStarted","0.4.7","0.4.8"],
+        ["fetchManifest","HLSR-0.4.8-linux.chunks.json","0.4.8","linux"],
+        ["return","updater-download",true],
+        ["log","warn","[updater] чанки не сработали, качаю установщик целиком: Манифест чанков недоступен"],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":true}],
+        ["download","{root}/.downloads/update-{rand}","0.4.8"],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":{"transferred":35000,"total":70000,"percent":50,"bytesPerSecond":1000},"error":null,"errorCode":null,"checkSource":"manual","cancellable":true}],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":{"transferred":70000,"total":70000,"percent":100,"bytesPerSecond":2000},"error":null,"errorCode":null,"checkSource":"manual","cancellable":true}],
+        ["state",{"state":"verifying","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":true}],
+        ["extract","{root}/.downloads/update-{rand}/HLSR-Setup-0.4.8-linux-x86_64.AppImage","{root}/.downloads/update-{rand}"],
+        ["installer",1,"create"],
+        ["installer",1,"prepare","{root}/.downloads/update-{rand}/squashfs-root/resources/payload/HLSR-0.4.8-linux-x86_64.tar.gz","0.4.8"],
+        ["state",{"state":"downloaded","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","downloadCompleted","0.4.7","0.4.8",{"bytes":70000,"durationMs":0}],
+        ["step"],
+        ["return","updater-get-state",{"state":"downloaded","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["step"],
+        ["installer",1,"discard"]
+      ]
+    },
+    {
+      "name": "chunk assembly fails, installer is discarded and the full one is used",
+      "evaluate": [
+        {
+          "result": {
+            "ok": true,
+            "problems": [],
+            "updateAvailable": true,
+            "downgrade": false,
+            "unsupported": false,
+            "code": null,
+            "updateRequired": false,
+            "manifest": {
+              "schemaVersion": 1,
+              "version": "0.4.8",
+              "publishedAt": "2026-10-16T12:00:00.000Z",
+              "minimumSupportedVersion": "0.3.16",
+              "updateRequired": false,
+              "installer": {"filename":"HLSR-Setup-0.4.8-linux-x86_64.AppImage","size":70000,"sha256":"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc","sha512":"DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD==","urls":["https://hlsr.pro/downloads/launcher/linux/stable/HLSR-Setup-0.4.8-linux-x86_64.AppImage"]},
+              "delta": {"schema":1,"manifest":{"filename":"HLSR-0.4.8-linux.chunks.json","size":4096,"sha256":"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb","urls":["https://hlsr.pro/downloads/launcher/linux/stable/HLSR-0.4.8-linux.chunks.json"]},"chunkBaseUrls":["https://hlsr.pro/downloads/launcher/chunks"]}
+            }
+          }
+        }
+      ],
+      "installers": [{"chunks":{"error":"Кусок aa повреждён"}},{}],
+      "ops": [{"op":"invoke","channel":"updater-check"},{"op":"invoke","channel":"updater-download"},{"op":"invoke","channel":"updater-get-state"}],
+      "records": [
+        ["state",{"state":"checking","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["evaluate"],
+        ["return","updater-check",true],
+        ["state",{"state":"available","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","available","0.4.7","0.4.8"],
+        ["versionAvailable","0.4.8","0.4.7",{"hasReleaseNotes":false}],
+        ["step"],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","downloadStarted","0.4.7","0.4.8"],
+        ["fetchManifest","HLSR-0.4.8-linux.chunks.json","0.4.8","linux"],
+        ["return","updater-download",true],
+        ["installer",1,"create"],
+        ["installer",1,"prepareFromChunks","0.4.8","0.4.8","{root}/.downloads/update-{rand}/chunks",["https://hlsr.pro/downloads/launcher/chunks"]],
+        ["installer",1,"discard"],
+        ["log","warn","[updater] чанки не сработали, качаю установщик целиком: Кусок aa повреждён"],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":true}],
+        ["download","{root}/.downloads/update-{rand}","0.4.8"],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":{"transferred":35000,"total":70000,"percent":50,"bytesPerSecond":1000},"error":null,"errorCode":null,"checkSource":"manual","cancellable":true}],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":{"transferred":70000,"total":70000,"percent":100,"bytesPerSecond":2000},"error":null,"errorCode":null,"checkSource":"manual","cancellable":true}],
+        ["state",{"state":"verifying","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":true}],
+        ["extract","{root}/.downloads/update-{rand}/HLSR-Setup-0.4.8-linux-x86_64.AppImage","{root}/.downloads/update-{rand}"],
+        ["installer",1,"discard"],
+        ["installer",2,"create"],
+        ["installer",2,"prepare","{root}/.downloads/update-{rand}/squashfs-root/resources/payload/HLSR-0.4.8-linux-x86_64.tar.gz","0.4.8"],
+        ["state",{"state":"downloaded","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","downloadCompleted","0.4.7","0.4.8",{"bytes":70000,"durationMs":0}],
+        ["step"],
+        ["return","updater-get-state",{"state":"downloaded","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["step"],
+        ["installer",2,"discard"]
+      ]
+    },
+    {
+      "name": "chunks without a result count zero bytes",
+      "evaluate": [
+        {
+          "result": {
+            "ok": true,
+            "problems": [],
+            "updateAvailable": true,
+            "downgrade": false,
+            "unsupported": false,
+            "code": null,
+            "updateRequired": false,
+            "manifest": {
+              "schemaVersion": 1,
+              "version": "0.4.8",
+              "publishedAt": "2026-10-16T12:00:00.000Z",
+              "minimumSupportedVersion": "0.3.16",
+              "updateRequired": false,
+              "installer": {"filename":"HLSR-Setup-0.4.8-linux-x86_64.AppImage","size":70000,"sha256":"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc","sha512":"DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD==","urls":["https://hlsr.pro/downloads/launcher/linux/stable/HLSR-Setup-0.4.8-linux-x86_64.AppImage"]},
+              "delta": {"schema":1,"manifest":{"filename":"HLSR-0.4.8-linux.chunks.json","size":4096,"sha256":"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb","urls":["https://hlsr.pro/downloads/launcher/linux/stable/HLSR-0.4.8-linux.chunks.json"]},"chunkBaseUrls":["https://hlsr.pro/downloads/launcher/chunks"]}
+            }
+          }
+        }
+      ],
+      "installers": [{"chunks":{}}],
+      "ops": [{"op":"invoke","channel":"updater-check"},{"op":"invoke","channel":"updater-download"}],
+      "records": [
+        ["state",{"state":"checking","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["evaluate"],
+        ["return","updater-check",true],
+        ["state",{"state":"available","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","available","0.4.7","0.4.8"],
+        ["versionAvailable","0.4.8","0.4.7",{"hasReleaseNotes":false}],
+        ["step"],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","downloadStarted","0.4.7","0.4.8"],
+        ["fetchManifest","HLSR-0.4.8-linux.chunks.json","0.4.8","linux"],
+        ["return","updater-download",true],
+        ["installer",1,"create"],
+        ["installer",1,"prepareFromChunks","0.4.8","0.4.8","{root}/.downloads/update-{rand}/chunks",["https://hlsr.pro/downloads/launcher/chunks"]],
+        ["log","info","[updater] 0.4.8 собрана из чанков: скачано undefined байт, с диска undefined"],
+        ["state",{"state":"downloaded","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","downloadCompleted","0.4.7","0.4.8",{"bytes":0,"durationMs":0}],
+        ["step"],
+        ["installer",1,"discard"]
+      ]
+    },
+    {
+      "name": "cancelling chunk assembly does not fall back",
+      "evaluate": [
+        {
+          "result": {
+            "ok": true,
+            "problems": [],
+            "updateAvailable": true,
+            "downgrade": false,
+            "unsupported": false,
+            "code": null,
+            "updateRequired": false,
+            "manifest": {
+              "schemaVersion": 1,
+              "version": "0.4.8",
+              "publishedAt": "2026-10-16T12:00:00.000Z",
+              "minimumSupportedVersion": "0.3.16",
+              "updateRequired": false,
+              "installer": {"filename":"HLSR-Setup-0.4.8-linux-x86_64.AppImage","size":70000,"sha256":"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc","sha512":"DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD==","urls":["https://hlsr.pro/downloads/launcher/linux/stable/HLSR-Setup-0.4.8-linux-x86_64.AppImage"]},
+              "delta": {"schema":1,"manifest":{"filename":"HLSR-0.4.8-linux.chunks.json","size":4096,"sha256":"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb","urls":["https://hlsr.pro/downloads/launcher/linux/stable/HLSR-0.4.8-linux.chunks.json"]},"chunkBaseUrls":["https://hlsr.pro/downloads/launcher/chunks"]}
+            }
+          }
+        }
+      ],
+      "installers": [{"chunks":{"waitAbort":true}}],
+      "ops": [{"op":"invoke","channel":"updater-check"},{"op":"invoke","channel":"updater-download"},{"op":"invoke","channel":"updater-cancel"},{"op":"invoke","channel":"updater-get-state"}],
+      "records": [
+        ["state",{"state":"checking","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["evaluate"],
+        ["return","updater-check",true],
+        ["state",{"state":"available","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","available","0.4.7","0.4.8"],
+        ["versionAvailable","0.4.8","0.4.7",{"hasReleaseNotes":false}],
+        ["step"],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","downloadStarted","0.4.7","0.4.8"],
+        ["fetchManifest","HLSR-0.4.8-linux.chunks.json","0.4.8","linux"],
+        ["return","updater-download",true],
+        ["installer",1,"create"],
+        ["installer",1,"prepareFromChunks","0.4.8","0.4.8","{root}/.downloads/update-{rand}/chunks",["https://hlsr.pro/downloads/launcher/chunks"]],
+        ["step"],
+        ["return","updater-cancel",true],
+        ["installer",1,"discard"],
+        ["state",{"state":"available","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["step"],
+        ["return","updater-get-state",{"state":"available","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["step"],
+        ["installer",1,"discard"]
+      ]
+    },
+    {
+      "name": "invalid delta is ignored",
+      "evaluate": [
+        {
+          "result": {
+            "ok": true,
+            "problems": [],
+            "updateAvailable": true,
+            "downgrade": false,
+            "unsupported": false,
+            "code": null,
+            "updateRequired": false,
+            "manifest": {
+              "schemaVersion": 1,
+              "version": "0.4.8",
+              "publishedAt": "2026-10-16T12:00:00.000Z",
+              "minimumSupportedVersion": "0.3.16",
+              "updateRequired": false,
+              "installer": {"filename":"HLSR-Setup-0.4.8-linux-x86_64.AppImage","size":70000,"sha256":"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc","sha512":"DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD==","urls":["https://hlsr.pro/downloads/launcher/linux/stable/HLSR-Setup-0.4.8-linux-x86_64.AppImage"]},
+              "delta": {"schema":2,"manifest":{"filename":"HLSR-0.4.8-linux.chunks.json","size":4096,"sha256":"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb","urls":["https://hlsr.pro/downloads/launcher/linux/stable/HLSR-0.4.8-linux.chunks.json"]},"chunkBaseUrls":["https://hlsr.pro/downloads/launcher/chunks"]}
+            }
+          }
+        }
+      ],
+      "ops": [{"op":"invoke","channel":"updater-check"},{"op":"invoke","channel":"updater-download"}],
+      "records": [
+        ["state",{"state":"checking","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["evaluate"],
+        ["return","updater-check",true],
+        ["state",{"state":"available","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","available","0.4.7","0.4.8"],
+        ["versionAvailable","0.4.8","0.4.7",{"hasReleaseNotes":false}],
+        ["step"],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","downloadStarted","0.4.7","0.4.8"],
+        ["download","{root}/.downloads/update-{rand}","0.4.8"],
+        ["return","updater-download",true],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":{"transferred":35000,"total":70000,"percent":50,"bytesPerSecond":1000},"error":null,"errorCode":null,"checkSource":"manual","cancellable":true}],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":{"transferred":70000,"total":70000,"percent":100,"bytesPerSecond":2000},"error":null,"errorCode":null,"checkSource":"manual","cancellable":true}],
+        ["state",{"state":"verifying","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":true}],
+        ["extract","{root}/.downloads/update-{rand}/HLSR-Setup-0.4.8-linux-x86_64.AppImage","{root}/.downloads/update-{rand}"],
+        ["installer",1,"create"],
+        ["installer",1,"prepare","{root}/.downloads/update-{rand}/squashfs-root/resources/payload/HLSR-0.4.8-linux-x86_64.tar.gz","0.4.8"],
+        ["state",{"state":"downloaded","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","downloadCompleted","0.4.7","0.4.8",{"bytes":70000,"durationMs":0}],
+        ["step"],
+        ["installer",1,"discard"]
+      ]
+    },
+    {
+      "name": "commit failure is an error",
+      "installers": [{"commit":{"error":"EACCES: permission denied, rename"}}],
+      "ops": [{"op":"invoke","channel":"updater-check"},{"op":"invoke","channel":"updater-download"},{"op":"invoke","channel":"updater-install-now"},{"op":"invoke","channel":"updater-get-state"}],
+      "records": [
+        ["state",{"state":"checking","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["evaluate"],
+        ["return","updater-check",true],
+        ["state",{"state":"available","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","available","0.4.7","0.4.8"],
+        ["versionAvailable","0.4.8","0.4.7",{"hasReleaseNotes":false}],
+        ["step"],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","downloadStarted","0.4.7","0.4.8"],
+        ["download","{root}/.downloads/update-{rand}","0.4.8"],
+        ["return","updater-download",true],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":{"transferred":35000,"total":70000,"percent":50,"bytesPerSecond":1000},"error":null,"errorCode":null,"checkSource":"manual","cancellable":true}],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":{"transferred":70000,"total":70000,"percent":100,"bytesPerSecond":2000},"error":null,"errorCode":null,"checkSource":"manual","cancellable":true}],
+        ["state",{"state":"verifying","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":true}],
+        ["extract","{root}/.downloads/update-{rand}/HLSR-Setup-0.4.8-linux-x86_64.AppImage","{root}/.downloads/update-{rand}"],
+        ["installer",1,"create"],
+        ["installer",1,"prepare","{root}/.downloads/update-{rand}/squashfs-root/resources/payload/HLSR-0.4.8-linux-x86_64.tar.gz","0.4.8"],
+        ["state",{"state":"downloaded","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","downloadCompleted","0.4.7","0.4.8",{"bytes":70000,"durationMs":0}],
+        ["step"],
+        ["installer",1,"commit"],
+        ["state",{"state":"error","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":"EACCES: permission denied, rename","errorCode":"ACCESS","checkSource":"manual","cancellable":false}],
+        ["telemetry","failed","0.4.7","0.4.8","ACCESS"],
+        ["return","updater-install-now",false],
+        ["step"],
+        ["return","updater-get-state",{"state":"error","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":"EACCES: permission denied, rename","errorCode":"ACCESS","checkSource":"manual","cancellable":false}],
+        ["step"],
+        ["installer",1,"discard"]
+      ]
+    },
+    {
+      "name": "receipt failure is only a warning",
+      "throws": {"receipt":"диск полон"},
+      "ops": [{"op":"invoke","channel":"updater-check"},{"op":"invoke","channel":"updater-download"},{"op":"invoke","channel":"updater-install-now"}],
+      "records": [
+        ["state",{"state":"checking","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["evaluate"],
+        ["return","updater-check",true],
+        ["state",{"state":"available","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","available","0.4.7","0.4.8"],
+        ["versionAvailable","0.4.8","0.4.7",{"hasReleaseNotes":false}],
+        ["step"],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","downloadStarted","0.4.7","0.4.8"],
+        ["download","{root}/.downloads/update-{rand}","0.4.8"],
+        ["return","updater-download",true],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":{"transferred":35000,"total":70000,"percent":50,"bytesPerSecond":1000},"error":null,"errorCode":null,"checkSource":"manual","cancellable":true}],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":{"transferred":70000,"total":70000,"percent":100,"bytesPerSecond":2000},"error":null,"errorCode":null,"checkSource":"manual","cancellable":true}],
+        ["state",{"state":"verifying","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":true}],
+        ["extract","{root}/.downloads/update-{rand}/HLSR-Setup-0.4.8-linux-x86_64.AppImage","{root}/.downloads/update-{rand}"],
+        ["installer",1,"create"],
+        ["installer",1,"prepare","{root}/.downloads/update-{rand}/squashfs-root/resources/payload/HLSR-0.4.8-linux-x86_64.tar.gz","0.4.8"],
+        ["state",{"state":"downloaded","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","downloadCompleted","0.4.7","0.4.8",{"bytes":70000,"durationMs":0}],
+        ["step"],
+        ["installer",1,"commit"],
+        ["relaunch","{root}/versions/0.4.8-0123456789abcdef/hlsr",["--no-sandbox"]],
+        ["receipt","0.4.7","0.4.8"],
+        ["log","warn","[updater] receipt: диск полон"],
+        ["return","updater-install-now",true],
+        ["quit"],
+        ["step"],
+        ["installer",1,"discard"]
+      ]
+    },
+    {
+      "name": "telemetry and notification failures are warnings",
+      "throws": {"telemetry":"нет связи","versionEvents":"уведомления сломаны"},
+      "downloads": [{"error":"ENOSPC: no space left on device"}],
+      "ops": [{"op":"invoke","channel":"updater-check"},{"op":"invoke","channel":"updater-download"}],
+      "records": [
+        ["state",{"state":"checking","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["evaluate"],
+        ["return","updater-check",true],
+        ["state",{"state":"available","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","available","0.4.7","0.4.8"],
+        ["versionAvailable","0.4.8","0.4.7",{"hasReleaseNotes":false}],
+        ["log","warn","[updater] notification: уведомления сломаны"],
+        ["step"],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","downloadStarted","0.4.7","0.4.8"],
+        ["download","{root}/.downloads/update-{rand}","0.4.8"],
+        ["return","updater-download",true],
+        ["state",{"state":"error","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":"ENOSPC: no space left on device","errorCode":"NO_SPACE","checkSource":"manual","cancellable":false}],
+        ["telemetry","failed","0.4.7","0.4.8","NO_SPACE"],
+        ["log","warn","[updater] telemetry: нет связи"],
+        ["step"]
+      ]
+    },
+    {
+      "name": "without telemetry and version events",
+      "noTelemetry": true,
+      "noVersionEvents": true,
+      "ops": [{"op":"invoke","channel":"updater-check"},{"op":"invoke","channel":"updater-download"},{"op":"invoke","channel":"updater-install-now"}],
+      "records": [
+        ["state",{"state":"checking","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["evaluate"],
+        ["return","updater-check",true],
+        ["state",{"state":"available","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["step"],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["download","{root}/.downloads/update-{rand}","0.4.8"],
+        ["return","updater-download",true],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":{"transferred":35000,"total":70000,"percent":50,"bytesPerSecond":1000},"error":null,"errorCode":null,"checkSource":"manual","cancellable":true}],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":{"transferred":70000,"total":70000,"percent":100,"bytesPerSecond":2000},"error":null,"errorCode":null,"checkSource":"manual","cancellable":true}],
+        ["state",{"state":"verifying","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":true}],
+        ["extract","{root}/.downloads/update-{rand}/HLSR-Setup-0.4.8-linux-x86_64.AppImage","{root}/.downloads/update-{rand}"],
+        ["installer",1,"create"],
+        ["installer",1,"prepare","{root}/.downloads/update-{rand}/squashfs-root/resources/payload/HLSR-0.4.8-linux-x86_64.tar.gz","0.4.8"],
+        ["state",{"state":"downloaded","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["step"],
+        ["installer",1,"commit"],
+        ["relaunch","{root}/versions/0.4.8-0123456789abcdef/hlsr",["--no-sandbox"]],
+        ["return","updater-install-now",true],
+        ["quit"],
+        ["step"],
+        ["installer",1,"discard"]
+      ]
+    },
+    {"name":"boot gate: updates disabled","installRoot":false,"ops":[{"op":"invoke","channel":"boot-gate-run"}],"records":[["return","boot-gate-run",{"action":"proceed","reason":"updates-disabled"}],["step"]]},
+    {
+      "name": "boot gate: no update",
+      "evaluate": [
+        {
+          "result": {
+            "ok": true,
+            "problems": [],
+            "updateAvailable": false,
+            "downgrade": false,
+            "unsupported": false,
+            "code": null,
+            "updateRequired": false,
+            "manifest": {
+              "schemaVersion": 1,
+              "version": "0.4.8",
+              "publishedAt": "2026-10-16T12:00:00.000Z",
+              "minimumSupportedVersion": "0.3.16",
+              "updateRequired": false,
+              "installer": {"filename":"HLSR-Setup-0.4.8-linux-x86_64.AppImage","size":70000,"sha256":"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc","sha512":"DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD==","urls":["https://hlsr.pro/downloads/launcher/linux/stable/HLSR-Setup-0.4.8-linux-x86_64.AppImage"]}
+            }
+          }
+        }
+      ],
+      "ops": [{"op":"invoke","channel":"boot-gate-run"},{"op":"invoke","channel":"boot-gate-run"},{"op":"invoke","channel":"boot-gate-run","arg":{"retry":true}}],
+      "records": [
+        ["state",{"state":"checking","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["evaluate"],
+        ["state",{"state":"not-available","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["return","boot-gate-run",{"action":"proceed","reason":"not-available"}],
+        ["step"],
+        ["return","boot-gate-run",{"action":"proceed","reason":"not-available"}],
+        ["step"],
+        ["return","boot-gate-run",{"action":"proceed","reason":"not-available"}],
+        ["step"]
+      ]
+    },
+    {
+      "name": "boot gate: installs the update",
+      "argv": ["--hlsr-renderer=software"],
+      "ops": [{"op":"invoke","channel":"boot-gate-run"},{"op":"invoke","channel":"updater-get-state"}],
+      "records": [
+        ["state",{"state":"checking","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["evaluate"],
+        ["state",{"state":"available","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","available","0.4.7","0.4.8"],
+        ["versionAvailable","0.4.8","0.4.7",{"hasReleaseNotes":false}],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","downloadStarted","0.4.7","0.4.8"],
+        ["download","{root}/.downloads/update-{rand}","0.4.8"],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":{"transferred":35000,"total":70000,"percent":50,"bytesPerSecond":1000},"error":null,"errorCode":null,"checkSource":"manual","cancellable":true}],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":{"transferred":70000,"total":70000,"percent":100,"bytesPerSecond":2000},"error":null,"errorCode":null,"checkSource":"manual","cancellable":true}],
+        ["state",{"state":"verifying","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":true}],
+        ["extract","{root}/.downloads/update-{rand}/HLSR-Setup-0.4.8-linux-x86_64.AppImage","{root}/.downloads/update-{rand}"],
+        ["installer",1,"create"],
+        ["installer",1,"prepare","{root}/.downloads/update-{rand}/squashfs-root/resources/payload/HLSR-0.4.8-linux-x86_64.tar.gz","0.4.8"],
+        ["state",{"state":"downloaded","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","downloadCompleted","0.4.7","0.4.8",{"bytes":70000,"durationMs":0}],
+        ["installer",1,"commit"],
+        ["relaunch","{root}/versions/0.4.8-0123456789abcdef/hlsr",["--no-sandbox","--hlsr-renderer=software"]],
+        ["receipt","0.4.7","0.4.8"],
+        ["return","boot-gate-run",{"action":"installing","reason":"installing","version":"0.4.8"}],
+        ["quit"],
+        ["step"],
+        ["return","updater-get-state",{"state":"downloaded","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["step"],
+        ["installer",1,"discard"]
+      ]
+    },
+    {
+      "name": "boot gate: check timeout",
+      "evaluate": [{"hang":true}],
+      "ops": [{"op":"invoke","channel":"boot-gate-run"},{"op":"advance","ms":9999},{"op":"advance","ms":1},{"op":"invoke","channel":"updater-get-state"}],
+      "records": [
+        ["state",{"state":"checking","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["evaluate"],
+        ["step"],
+        ["step"],
+        ["return","boot-gate-run",{"action":"proceed","reason":"check-timeout"}],
+        ["step"],
+        ["return","updater-get-state",{"state":"checking","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["step"]
+      ]
+    },
+    {
+      "name": "boot gate: game running",
+      "gameRunning": true,
+      "ops": [{"op":"invoke","channel":"boot-gate-run"}],
+      "records": [
+        ["state",{"state":"checking","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["evaluate"],
+        ["state",{"state":"available","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","available","0.4.7","0.4.8"],
+        ["versionAvailable","0.4.8","0.4.7",{"hasReleaseNotes":false}],
+        ["return","boot-gate-run",{"action":"proceed","reason":"game-running"}],
+        ["step"]
+      ]
+    },
+    {
+      "name": "boot gate: mandatory update fails and blocks",
+      "evaluate": [
+        {"result":{"ok":false,"problems":["unsupported"],"updateAvailable":false,"unsupported":true,"code":"LU_VERSION_UNSUPPORTED","updateRequired":false,"manifest":null}},
+        {
+          "result": {
+            "ok": true,
+            "problems": [],
+            "updateAvailable": false,
+            "downgrade": false,
+            "unsupported": false,
+            "code": null,
+            "updateRequired": false,
+            "manifest": {
+              "schemaVersion": 1,
+              "version": "0.4.8",
+              "publishedAt": "2026-10-16T12:00:00.000Z",
+              "minimumSupportedVersion": "0.3.16",
+              "updateRequired": false,
+              "installer": {"filename":"HLSR-Setup-0.4.8-linux-x86_64.AppImage","size":70000,"sha256":"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc","sha512":"DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD==","urls":["https://hlsr.pro/downloads/launcher/linux/stable/HLSR-Setup-0.4.8-linux-x86_64.AppImage"]}
+            }
+          }
+        }
+      ],
+      "ops": [{"op":"invoke","channel":"boot-gate-run"},{"op":"invoke","channel":"boot-gate-run"},{"op":"invoke","channel":"boot-gate-run","arg":{"retry":true}}],
+      "records": [
+        ["state",{"state":"checking","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["evaluate"],
+        ["state",{"state":"error","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":"метаданные: unsupported","errorCode":"VERIFY","checkSource":"manual","cancellable":false}],
+        ["telemetry","failed","0.4.7",null,"VERIFY"],
+        ["return","boot-gate-run",{"action":"blocked","reason":"mandatory-update-failed","error":"метаданные: unsupported"}],
+        ["step"],
+        ["return","boot-gate-run",{"action":"blocked","reason":"mandatory-update-failed","error":"метаданные: unsupported"}],
+        ["step"],
+        ["state",{"state":"checking","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["evaluate"],
+        ["state",{"state":"not-available","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["return","boot-gate-run",{"action":"proceed","reason":"not-available"}],
+        ["step"]
+      ]
+    },
+    {
+      "name": "boot gate: required update download fails",
+      "evaluate": [
+        {
+          "result": {
+            "ok": true,
+            "problems": [],
+            "updateAvailable": true,
+            "downgrade": false,
+            "unsupported": false,
+            "code": null,
+            "updateRequired": true,
+            "manifest": {
+              "schemaVersion": 1,
+              "version": "0.4.8",
+              "publishedAt": "2026-10-16T12:00:00.000Z",
+              "minimumSupportedVersion": "0.3.16",
+              "updateRequired": false,
+              "installer": {"filename":"HLSR-Setup-0.4.8-linux-x86_64.AppImage","size":70000,"sha256":"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc","sha512":"DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD==","urls":["https://hlsr.pro/downloads/launcher/linux/stable/HLSR-Setup-0.4.8-linux-x86_64.AppImage"]}
+            }
+          }
+        }
+      ],
+      "downloads": [{"error":"HTTP 404"}],
+      "ops": [{"op":"invoke","channel":"boot-gate-run"}],
+      "records": [
+        ["state",{"state":"checking","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["evaluate"],
+        ["state",{"state":"available","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","available","0.4.7","0.4.8"],
+        ["versionAvailable","0.4.8","0.4.7",{"hasReleaseNotes":false}],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","downloadStarted","0.4.7","0.4.8"],
+        ["download","{root}/.downloads/update-{rand}","0.4.8"],
+        ["state",{"state":"error","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":"HTTP 404","errorCode":"FEED","checkSource":"manual","cancellable":false}],
+        ["telemetry","failed","0.4.7","0.4.8","FEED"],
+        ["return","boot-gate-run",{"action":"blocked","reason":"mandatory-update-failed","error":"HTTP 404"}],
+        ["step"]
+      ]
+    },
+    {
+      "name": "boot gate: optional update download fails",
+      "downloads": [{"error":"HTTP 404"}],
+      "ops": [{"op":"invoke","channel":"boot-gate-run"}],
+      "records": [
+        ["state",{"state":"checking","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["evaluate"],
+        ["state",{"state":"available","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","available","0.4.7","0.4.8"],
+        ["versionAvailable","0.4.8","0.4.7",{"hasReleaseNotes":false}],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","downloadStarted","0.4.7","0.4.8"],
+        ["download","{root}/.downloads/update-{rand}","0.4.8"],
+        ["state",{"state":"error","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":"HTTP 404","errorCode":"FEED","checkSource":"manual","cancellable":false}],
+        ["telemetry","failed","0.4.7","0.4.8","FEED"],
+        ["return","boot-gate-run",{"action":"proceed","reason":"error"}],
+        ["step"]
+      ]
+    },
+    {
+      "name": "boot gate: check refused while a check runs",
+      "evaluate": [{"hang":true}],
+      "ops": [{"op":"invoke","channel":"updater-check"},{"op":"invoke","channel":"boot-gate-run"},{"op":"advance","ms":10000}],
+      "records": [["state",{"state":"checking","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],["evaluate"],["return","updater-check",true],["step"],["step"],["return","boot-gate-run",{"action":"proceed","reason":"check-timeout"}],["step"]]
+    },
+    {
+      "name": "boot gate: commit fails",
+      "installers": [{"commit":{"error":"EROFS: read-only file system"}}],
+      "ops": [{"op":"invoke","channel":"boot-gate-run"}],
+      "records": [
+        ["state",{"state":"checking","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["evaluate"],
+        ["state",{"state":"available","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","available","0.4.7","0.4.8"],
+        ["versionAvailable","0.4.8","0.4.7",{"hasReleaseNotes":false}],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","downloadStarted","0.4.7","0.4.8"],
+        ["download","{root}/.downloads/update-{rand}","0.4.8"],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":{"transferred":35000,"total":70000,"percent":50,"bytesPerSecond":1000},"error":null,"errorCode":null,"checkSource":"manual","cancellable":true}],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":{"transferred":70000,"total":70000,"percent":100,"bytesPerSecond":2000},"error":null,"errorCode":null,"checkSource":"manual","cancellable":true}],
+        ["state",{"state":"verifying","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":true}],
+        ["extract","{root}/.downloads/update-{rand}/HLSR-Setup-0.4.8-linux-x86_64.AppImage","{root}/.downloads/update-{rand}"],
+        ["installer",1,"create"],
+        ["installer",1,"prepare","{root}/.downloads/update-{rand}/squashfs-root/resources/payload/HLSR-0.4.8-linux-x86_64.tar.gz","0.4.8"],
+        ["state",{"state":"downloaded","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","downloadCompleted","0.4.7","0.4.8",{"bytes":70000,"durationMs":0}],
+        ["installer",1,"commit"],
+        ["state",{"state":"error","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":"EROFS: read-only file system","errorCode":"ACCESS","checkSource":"manual","cancellable":false}],
+        ["telemetry","failed","0.4.7","0.4.8","ACCESS"],
+        ["return","boot-gate-run",{"action":"proceed","reason":"error"}],
+        ["step"],
+        ["installer",1,"discard"]
+      ]
+    },
+    {
+      "name": "quit during a download aborts it and quits after",
+      "downloads": [{"progress":[{"transferred":35000,"total":70000,"percent":50,"bytesPerSecond":1000}],"waitAbort":true}],
+      "ops": [{"op":"invoke","channel":"updater-check"},{"op":"invoke","channel":"updater-download"},{"op":"beforeQuit"},{"op":"beforeQuit"},{"op":"invoke","channel":"updater-get-state"}],
+      "records": [
+        ["state",{"state":"checking","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["evaluate"],
+        ["return","updater-check",true],
+        ["state",{"state":"available","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","available","0.4.7","0.4.8"],
+        ["versionAvailable","0.4.8","0.4.7",{"hasReleaseNotes":false}],
+        ["step"],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","downloadStarted","0.4.7","0.4.8"],
+        ["download","{root}/.downloads/update-{rand}","0.4.8"],
+        ["return","updater-download",true],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":{"transferred":35000,"total":70000,"percent":50,"bytesPerSecond":1000},"error":null,"errorCode":null,"checkSource":"manual","cancellable":true}],
+        ["step"],
+        ["preventDefault"],
+        ["state",{"state":"error","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":"This operation was aborted","errorCode":"UNKNOWN","checkSource":"manual","cancellable":false}],
+        ["telemetry","failed","0.4.7","0.4.8","UNKNOWN"],
+        ["quit"],
+        ["step"],
+        ["step"],
+        ["return","updater-get-state",{"state":"error","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":"This operation was aborted","errorCode":"UNKNOWN","checkSource":"manual","cancellable":false}],
+        ["step"]
+      ]
+    },
+    {
+      "name": "dispose during a download",
+      "downloads": [{"waitAbort":true}],
+      "ops": [{"op":"invoke","channel":"updater-check"},{"op":"invoke","channel":"updater-download"},{"op":"dispose"},{"op":"invoke","channel":"updater-get-state"},{"op":"invoke","channel":"updater-check"}],
+      "records": [
+        ["state",{"state":"checking","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["evaluate"],
+        ["return","updater-check",true],
+        ["state",{"state":"available","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","available","0.4.7","0.4.8"],
+        ["versionAvailable","0.4.8","0.4.7",{"hasReleaseNotes":false}],
+        ["step"],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","downloadStarted","0.4.7","0.4.8"],
+        ["download","{root}/.downloads/update-{rand}","0.4.8"],
+        ["return","updater-download",true],
+        ["step"],
+        ["telemetry","failed","0.4.7","0.4.8","UNKNOWN"],
+        ["step"],
+        ["return","updater-get-state",{"state":"error","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":"This operation was aborted","errorCode":"UNKNOWN","checkSource":"manual","cancellable":false}],
+        ["step"],
+        ["return","updater-check",false],
+        ["step"]
+      ]
+    },
+    {
+      "name": "dispose discards a prepared version",
+      "ops": [{"op":"invoke","channel":"updater-check"},{"op":"invoke","channel":"updater-download"},{"op":"dispose"}],
+      "records": [
+        ["state",{"state":"checking","enabled":true,"currentVersion":"0.4.7","version":null,"releaseNotes":null,"info":null,"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["evaluate"],
+        ["return","updater-check",true],
+        ["state",{"state":"available","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","available","0.4.7","0.4.8"],
+        ["versionAvailable","0.4.8","0.4.7",{"hasReleaseNotes":false}],
+        ["step"],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","downloadStarted","0.4.7","0.4.8"],
+        ["download","{root}/.downloads/update-{rand}","0.4.8"],
+        ["return","updater-download",true],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":{"transferred":35000,"total":70000,"percent":50,"bytesPerSecond":1000},"error":null,"errorCode":null,"checkSource":"manual","cancellable":true}],
+        ["state",{"state":"downloading","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":{"transferred":70000,"total":70000,"percent":100,"bytesPerSecond":2000},"error":null,"errorCode":null,"checkSource":"manual","cancellable":true}],
+        ["state",{"state":"verifying","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":true}],
+        ["extract","{root}/.downloads/update-{rand}/HLSR-Setup-0.4.8-linux-x86_64.AppImage","{root}/.downloads/update-{rand}"],
+        ["installer",1,"create"],
+        ["installer",1,"prepare","{root}/.downloads/update-{rand}/squashfs-root/resources/payload/HLSR-0.4.8-linux-x86_64.tar.gz","0.4.8"],
+        ["state",{"state":"downloaded","enabled":true,"currentVersion":"0.4.7","version":"0.4.8","releaseNotes":"","info":{"version":"0.4.8","releaseDate":"2026-10-16T12:00:00.000Z","releaseNotes":""},"progress":null,"error":null,"errorCode":null,"checkSource":"manual","cancellable":false}],
+        ["telemetry","downloadCompleted","0.4.7","0.4.8",{"bytes":70000,"durationMs":0}],
+        ["step"],
+        ["installer",1,"discard"],
+        ["step"],
+        ["installer",1,"discard"]
+      ]
+    },
+    {"name":"language switch","ops":[{"op":"invoke","channel":"updater-set-language","arg":"en"},{"op":"invoke","channel":"updater-set-language","arg":"de"},{"op":"invoke","channel":"updater-set-language","arg":"ru"}],"records":[["return","updater-set-language","en"],["step"],["return","updater-set-language","ru"],["step"],["return","updater-set-language","ru"],["step"]]}
+  ]
+}

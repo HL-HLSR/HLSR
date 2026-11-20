@@ -1,0 +1,25 @@
+{
+  "id": "demo/view-settings",
+  "state": "«Дополнительные настройки» предпросмотра поверх окна: KeyHUD, HUD, конфиг, свой HUD (недоступен)",
+  "base": "demo/_base",
+  "steps": [
+    {
+      "click": {
+        "css": ".game-rail .rail-item[aria-label=\"Демо\"]",
+        "view": "rail-demo"
+      }
+    },
+    {
+      "click": {
+        "css": ".dmp__list .dmp__group:nth-child(2) .dmp__item:nth-of-type(1)",
+        "view": "dmp-item-gh-run"
+      }
+    },
+    {
+      "click": {
+        "css": ".dvs__more",
+        "view": "dvs-more"
+      }
+    }
+  ]
+}

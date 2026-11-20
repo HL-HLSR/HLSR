@@ -1,0 +1,14 @@
+# Эталонные файлы сравниваются побайтно: git не должен менять концы строк
+# при checkout на Windows (core.autocrlf).
+crates/hlsr-core/tests/fixtures/** -text
+# Манифесты вшиваются include_str! и хешируются побайтно — одинаково на всех ОС.
+config/** -text
+crates/hlsr-delivery/tests/fixtures/** -text
+crates/hlsr-delivery/data/** -text
+crates/hlsr-online/tests/fixtures/** -text
+# Бинарники 7-Zip из 7zip-bin 5.2.0: система контроля версий не трогает ни байты, ни концы строк.
+resources/7zip/** binary
+tools/compat-047/** -text
+tools/release/tests/fixtures/** -text
+# Скрипты bash запускаются и на раннере Windows (Git Bash после core.autocrlf): концы строк — LF.
+*.sh text eol=lf

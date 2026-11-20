@@ -1,0 +1,15 @@
+{
+  "id": "dialogs/library-busy",
+  "screen": "dialogs",
+  "state": "0.4.9: «Использовать эту папку» — set-library-path отвечает busy: «Сначала дождись окончания загрузки или закрой игру», кнопка недоступна",
+  "themes": ["hlsr"],
+  "languages": ["ru"],
+  "invoke": {
+    "get-library-path": {"path": "C:\\HLSR", "confirmed": false},
+    "set-library-path": {"ok": false, "error": "busy"}
+  },
+  "steps": [
+    {"click": {"css": ".library-setup__btn.primary", "view": "library-confirm"}},
+    {"move": [800, 860]}
+  ]
+}

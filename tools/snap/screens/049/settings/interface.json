@@ -1,0 +1,44 @@
+{
+  "id": "settings/interface",
+  "base": "settings/_base",
+  "state": "«Интерфейс»: темы лаунчера (выбрана тема варианта), начало раздела",
+  "themes": [
+    "hlsr",
+    "lambda",
+    "resonance",
+    "combine",
+    "xen",
+    "steam2003",
+    "midnight",
+    "paper",
+    "liquid-glass"
+  ],
+  "steps": [
+    {
+      "click": {
+        "css": ".game-rail__footer .game-rail__tool",
+        "index": 4,
+        "view": "rail-settings"
+      }
+    },
+    {
+      "wait": 600
+    },
+    {
+      "click": {
+        "css": ".settings-modal__tab",
+        "index": 2,
+        "view": "settings-tabs-2"
+      }
+    },
+    {
+      "wait": 600
+    },
+    {
+      "move": [
+        800,
+        880
+      ]
+    }
+  ]
+}

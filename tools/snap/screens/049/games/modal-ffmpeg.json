@@ -1,0 +1,56 @@
+{
+  "id": "games/modal-ffmpeg",
+  "base": "games/_base",
+  "state": "«Демо» без FFmpeg: колонка → «Демо» → окно FFmpeg (источник, запасной, сборка, размер) → «Скачать» → загрузка 42 % (кнопка недоступна, «Отменить загрузку»)",
+  "invoke": {
+    "demo-ffmpeg-status": {
+      "status": "ok",
+      "ffmpeg": {
+        "state": "not-installed",
+        "installable": true,
+        "pinnedVersion": "9.0.2",
+        "build": "essentials",
+        "sizeBytes": 104857600,
+        "origins": [
+          {
+            "site": "github.com",
+            "release": "autobuild-2026-11-01"
+          },
+          {
+            "site": "hlsr.pro",
+            "release": null
+          }
+        ]
+      }
+    },
+    "demo-ffmpeg-install": {
+      "$pending": true
+    }
+  },
+  "steps": [
+    {
+      "click": {
+        "css": ".game-rail .rail-item[aria-label=\"Демо\"]",
+        "view": "rail-demo"
+      }
+    },
+    {
+      "click": {
+        "css": ".confirm__btn.primary",
+        "view": "confirm-accept"
+      }
+    },
+    {
+      "emit": "demo-ffmpeg-progress",
+      "payload": {
+        "percent": 42
+      }
+    },
+    {
+      "move": [
+        800,
+        880
+      ]
+    }
+  ]
+}

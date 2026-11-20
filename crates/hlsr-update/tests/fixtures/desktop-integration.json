@@ -1,0 +1,514 @@
+{
+  "scripts": [
+    {"root":"/home/user/.local/opt/hlsr","script":"#!/bin/sh\n# HLSR managed CLI launcher\nexec '/home/user/.local/opt/hlsr/start' \"$@\"\n"},
+    {"root":"/home/user/My Apps/hlsr","script":"#!/bin/sh\n# HLSR managed CLI launcher\nexec '/home/user/My Apps/hlsr/start' \"$@\"\n"},
+    {"root":"/home/user/it's/hlsr","script":"#!/bin/sh\n# HLSR managed CLI launcher\nexec '/home/user/it'\\''s/hlsr/start' \"$@\"\n"},
+    {"root":"/home/user/a'b'c","script":"#!/bin/sh\n# HLSR managed CLI launcher\nexec '/home/user/a'\\''b'\\''c/start' \"$@\"\n"},
+    {"root":"/home/user/программы/hlsr","script":"#!/bin/sh\n# HLSR managed CLI launcher\nexec '/home/user/программы/hlsr/start' \"$@\"\n"},
+    {"root":"/home/user/opt/hlsr/","script":"#!/bin/sh\n# HLSR managed CLI launcher\nexec '/home/user/opt/hlsr/start' \"$@\"\n"},
+    {"root":"/home/user/./x/../hlsr","script":"#!/bin/sh\n# HLSR managed CLI launcher\nexec '/home/user/hlsr/start' \"$@\"\n"},
+    {"root":"/home/user/\"quoted\"/hlsr","script":"#!/bin/sh\n# HLSR managed CLI launcher\nexec '/home/user/\"quoted\"/hlsr/start' \"$@\"\n"},
+    {"root":"/home/user/$HOME/`cmd`/hlsr","script":"#!/bin/sh\n# HLSR managed CLI launcher\nexec '/home/user/$HOME/`cmd`/hlsr/start' \"$@\"\n"}
+  ],
+  "execPaths": [
+    {"file":"/home/user/.local/opt/hlsr/start","exec":"\"/home/user/.local/opt/hlsr/start\""},
+    {"file":"/home/user/My Apps/hlsr/start","exec":"\"/home/user/My Apps/hlsr/start\""},
+    {"file":"/home/user/a\"b/start","exec":"\"/home/user/a\\\"b/start\""},
+    {"file":"/home/user/a\\b/start","exec":"\"/home/user/a\\\\b/start\""},
+    {"file":"/home/user/a$b/start","exec":"\"/home/user/a\\$b/start\""},
+    {"file":"/home/user/a`b/start","exec":"\"/home/user/a\\`b/start\""},
+    {"file":"/home/user/a%b/start","exec":"\"/home/user/a%%b/start\""},
+    {"file":"/home/user/a%%b/start","exec":"\"/home/user/a%%%%b/start\""},
+    {"file":"/home/user/it's/start","exec":"\"/home/user/it's/start\""},
+    {"file":"/home/user/программы/start","exec":"\"/home/user/программы/start\""},
+    {"file":"/home/user/a\nb/start","exec":null},
+    {"file":"/home/user/a\rb/start","exec":null},
+    {"file":"/home/user/a\u0000b/start","exec":null},
+    {"file":"relative/start","exec":null},
+    {"file":"./start","exec":null},
+    {"file":"","exec":null}
+  ],
+  "desktop": [
+    {
+      "name": "fresh menu entry",
+      "files": {"/home/user/.local/opt/hlsr/start":{"type":"file","data":"#!/bin/sh\n","mode":493},"/home/user/.local/opt/hlsr/.hlsr-install.json":{"type":"file","data":"{\"schema\":1}\n","mode":420},"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png":{"type":"file","data":"PNG icon","mode":420}},
+      "options": {"executable":"/home/user/.local/opt/hlsr/start","iconSource":"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png","dataHome":"/home/user/.local/share"},
+      "result": {"ok":true},
+      "ops": [
+        ["mkdir","/home/user/.local/share/applications",true],
+        ["mkdir","/home/user/.local/share/icons/hicolor/256x256/apps",true],
+        ["copy","/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png","/home/user/.local/share/icons/hicolor/256x256/apps/hlsr-appimage.png.<pid>.tmp"],
+        ["rename","/home/user/.local/share/icons/hicolor/256x256/apps/hlsr-appimage.png.<pid>.tmp","/home/user/.local/share/icons/hicolor/256x256/apps/hlsr-appimage.png"],
+        ["write","/home/user/.local/share/applications/hlsr.desktop.<pid>.tmp","[Desktop Entry]\nType=Application\nName=HLSR\nExec=\"/home/user/.local/opt/hlsr/start\" --no-sandbox %U\nIcon=hlsr-appimage\nStartupWMClass=hlsr\nTerminal=false\nCategories=Game;\nX-HLSR-Managed=true\n",420,null],
+        ["rename","/home/user/.local/share/applications/hlsr.desktop.<pid>.tmp","/home/user/.local/share/applications/hlsr.desktop"]
+      ],
+      "spawned": [{"command":"update-desktop-database","args":["/home/user/.local/share/applications"],"timeout":10000,"stdio":"ignore","env":null},{"command":"gtk-update-icon-cache","args":["-f","-t","/home/user/.local/share/icons/hicolor"],"timeout":10000,"stdio":"ignore","env":null}],
+      "tree": [
+        {"path":"/home/user/.local/opt/hlsr/.hlsr-install.json","data":"{\"schema\":1}\n","mode":420},
+        {"path":"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png","data":"PNG icon","mode":420},
+        {"path":"/home/user/.local/opt/hlsr/start","data":"#!/bin/sh\n","mode":493},
+        {"path":"/home/user/.local/share/applications/hlsr.desktop","data":"[Desktop Entry]\nType=Application\nName=HLSR\nExec=\"/home/user/.local/opt/hlsr/start\" --no-sandbox %U\nIcon=hlsr-appimage\nStartupWMClass=hlsr\nTerminal=false\nCategories=Game;\nX-HLSR-Managed=true\n","mode":420},
+        {"path":"/home/user/.local/share/icons/hicolor/256x256/apps/hlsr-appimage.png","data":"PNG icon","mode":420}
+      ]
+    },
+    {
+      "name": "install root with spaces and quotes",
+      "files": {"/opt/My \"HLSR\"/start":{"type":"file","data":"x","mode":493},"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png":{"type":"file","data":"PNG icon"}},
+      "options": {"executable":"/opt/My \"HLSR\"/start","iconSource":"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png","dataHome":"/home/user/.local/share"},
+      "result": {"ok":true},
+      "ops": [
+        ["mkdir","/home/user/.local/share/applications",true],
+        ["mkdir","/home/user/.local/share/icons/hicolor/256x256/apps",true],
+        ["copy","/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png","/home/user/.local/share/icons/hicolor/256x256/apps/hlsr-appimage.png.<pid>.tmp"],
+        ["rename","/home/user/.local/share/icons/hicolor/256x256/apps/hlsr-appimage.png.<pid>.tmp","/home/user/.local/share/icons/hicolor/256x256/apps/hlsr-appimage.png"],
+        ["write","/home/user/.local/share/applications/hlsr.desktop.<pid>.tmp","[Desktop Entry]\nType=Application\nName=HLSR\nExec=\"/opt/My \\\"HLSR\\\"/start\" --no-sandbox %U\nIcon=hlsr-appimage\nStartupWMClass=hlsr\nTerminal=false\nCategories=Game;\nX-HLSR-Managed=true\n",420,null],
+        ["rename","/home/user/.local/share/applications/hlsr.desktop.<pid>.tmp","/home/user/.local/share/applications/hlsr.desktop"]
+      ],
+      "spawned": [{"command":"update-desktop-database","args":["/home/user/.local/share/applications"],"timeout":10000,"stdio":"ignore","env":null},{"command":"gtk-update-icon-cache","args":["-f","-t","/home/user/.local/share/icons/hicolor"],"timeout":10000,"stdio":"ignore","env":null}],
+      "tree": [
+        {"path":"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png","data":"PNG icon"},
+        {"path":"/home/user/.local/share/applications/hlsr.desktop","data":"[Desktop Entry]\nType=Application\nName=HLSR\nExec=\"/opt/My \\\"HLSR\\\"/start\" --no-sandbox %U\nIcon=hlsr-appimage\nStartupWMClass=hlsr\nTerminal=false\nCategories=Game;\nX-HLSR-Managed=true\n","mode":420},
+        {"path":"/home/user/.local/share/icons/hicolor/256x256/apps/hlsr-appimage.png","data":"PNG icon"},
+        {"path":"/opt/My \"HLSR\"/start","data":"x","mode":493}
+      ]
+    },
+    {
+      "name": "managed entry already current",
+      "files": {
+        "/home/user/.local/opt/hlsr/start": {"type":"file","data":"#!/bin/sh\n","mode":493},
+        "/home/user/.local/opt/hlsr/.hlsr-install.json": {"type":"file","data":"{\"schema\":1}\n","mode":420},
+        "/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png": {"type":"file","data":"PNG icon","mode":420},
+        "/home/user/.local/share/applications/hlsr.desktop": {"type":"file","data":"[Desktop Entry]\nType=Application\nName=HLSR\nExec=\"/home/user/.local/opt/hlsr/start\" --no-sandbox %U\nIcon=hlsr-appimage\nStartupWMClass=hlsr\nTerminal=false\nCategories=Game;\nX-HLSR-Managed=true\n","mode":420}
+      },
+      "options": {"executable":"/home/user/.local/opt/hlsr/start","iconSource":"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png","dataHome":"/home/user/.local/share"},
+      "result": {"ok":true},
+      "ops": [
+        ["mkdir","/home/user/.local/share/applications",true],
+        ["mkdir","/home/user/.local/share/icons/hicolor/256x256/apps",true],
+        ["copy","/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png","/home/user/.local/share/icons/hicolor/256x256/apps/hlsr-appimage.png.<pid>.tmp"],
+        ["rename","/home/user/.local/share/icons/hicolor/256x256/apps/hlsr-appimage.png.<pid>.tmp","/home/user/.local/share/icons/hicolor/256x256/apps/hlsr-appimage.png"]
+      ],
+      "spawned": [{"command":"update-desktop-database","args":["/home/user/.local/share/applications"],"timeout":10000,"stdio":"ignore","env":null},{"command":"gtk-update-icon-cache","args":["-f","-t","/home/user/.local/share/icons/hicolor"],"timeout":10000,"stdio":"ignore","env":null}],
+      "tree": [
+        {"path":"/home/user/.local/opt/hlsr/.hlsr-install.json","data":"{\"schema\":1}\n","mode":420},
+        {"path":"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png","data":"PNG icon","mode":420},
+        {"path":"/home/user/.local/opt/hlsr/start","data":"#!/bin/sh\n","mode":493},
+        {"path":"/home/user/.local/share/applications/hlsr.desktop","data":"[Desktop Entry]\nType=Application\nName=HLSR\nExec=\"/home/user/.local/opt/hlsr/start\" --no-sandbox %U\nIcon=hlsr-appimage\nStartupWMClass=hlsr\nTerminal=false\nCategories=Game;\nX-HLSR-Managed=true\n","mode":420},
+        {"path":"/home/user/.local/share/icons/hicolor/256x256/apps/hlsr-appimage.png","data":"PNG icon","mode":420}
+      ]
+    },
+    {
+      "name": "managed entry from an AppImage is replaced",
+      "files": {
+        "/home/user/.local/opt/hlsr/start": {"type":"file","data":"#!/bin/sh\n","mode":493},
+        "/home/user/.local/opt/hlsr/.hlsr-install.json": {"type":"file","data":"{\"schema\":1}\n","mode":420},
+        "/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png": {"type":"file","data":"PNG icon","mode":420},
+        "/home/user/.local/share/applications/hlsr.desktop": {"type":"file","data":"[Desktop Entry]\nType=Application\nName=HLSR\nExec=\"/home/user/Apps/HLSR.AppImage\" --no-sandbox %U\nIcon=hlsr-appimage\nStartupWMClass=hlsr\nTerminal=false\nCategories=Game;\nX-HLSR-Managed=true\n","mode":384}
+      },
+      "options": {"executable":"/home/user/.local/opt/hlsr/start","iconSource":"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png","dataHome":"/home/user/.local/share"},
+      "result": {"ok":true},
+      "ops": [
+        ["mkdir","/home/user/.local/share/applications",true],
+        ["mkdir","/home/user/.local/share/icons/hicolor/256x256/apps",true],
+        ["copy","/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png","/home/user/.local/share/icons/hicolor/256x256/apps/hlsr-appimage.png.<pid>.tmp"],
+        ["rename","/home/user/.local/share/icons/hicolor/256x256/apps/hlsr-appimage.png.<pid>.tmp","/home/user/.local/share/icons/hicolor/256x256/apps/hlsr-appimage.png"],
+        ["write","/home/user/.local/share/applications/hlsr.desktop.<pid>.tmp","[Desktop Entry]\nType=Application\nName=HLSR\nExec=\"/home/user/.local/opt/hlsr/start\" --no-sandbox %U\nIcon=hlsr-appimage\nStartupWMClass=hlsr\nTerminal=false\nCategories=Game;\nX-HLSR-Managed=true\n",420,null],
+        ["rename","/home/user/.local/share/applications/hlsr.desktop.<pid>.tmp","/home/user/.local/share/applications/hlsr.desktop"]
+      ],
+      "spawned": [{"command":"update-desktop-database","args":["/home/user/.local/share/applications"],"timeout":10000,"stdio":"ignore","env":null},{"command":"gtk-update-icon-cache","args":["-f","-t","/home/user/.local/share/icons/hicolor"],"timeout":10000,"stdio":"ignore","env":null}],
+      "tree": [
+        {"path":"/home/user/.local/opt/hlsr/.hlsr-install.json","data":"{\"schema\":1}\n","mode":420},
+        {"path":"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png","data":"PNG icon","mode":420},
+        {"path":"/home/user/.local/opt/hlsr/start","data":"#!/bin/sh\n","mode":493},
+        {"path":"/home/user/.local/share/applications/hlsr.desktop","data":"[Desktop Entry]\nType=Application\nName=HLSR\nExec=\"/home/user/.local/opt/hlsr/start\" --no-sandbox %U\nIcon=hlsr-appimage\nStartupWMClass=hlsr\nTerminal=false\nCategories=Game;\nX-HLSR-Managed=true\n","mode":420},
+        {"path":"/home/user/.local/share/icons/hicolor/256x256/apps/hlsr-appimage.png","data":"PNG icon","mode":420}
+      ]
+    },
+    {
+      "name": "foreign entry is kept",
+      "files": {
+        "/home/user/.local/opt/hlsr/start": {"type":"file","data":"#!/bin/sh\n","mode":493},
+        "/home/user/.local/opt/hlsr/.hlsr-install.json": {"type":"file","data":"{\"schema\":1}\n","mode":420},
+        "/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png": {"type":"file","data":"PNG icon","mode":420},
+        "/home/user/.local/share/applications/hlsr.desktop": {"type":"file","data":"[Desktop Entry]\nName=Other\n","mode":420}
+      },
+      "options": {"executable":"/home/user/.local/opt/hlsr/start","iconSource":"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png","dataHome":"/home/user/.local/share"},
+      "result": {"ok":false},
+      "ops": [],
+      "spawned": [],
+      "tree": [{"path":"/home/user/.local/opt/hlsr/.hlsr-install.json","data":"{\"schema\":1}\n","mode":420},{"path":"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png","data":"PNG icon","mode":420},{"path":"/home/user/.local/opt/hlsr/start","data":"#!/bin/sh\n","mode":493},{"path":"/home/user/.local/share/applications/hlsr.desktop","data":"[Desktop Entry]\nName=Other\n","mode":420}]
+    },
+    {
+      "name": "empty entry is written as new",
+      "files": {"/home/user/.local/opt/hlsr/start":{"type":"file","data":"#!/bin/sh\n","mode":493},"/home/user/.local/opt/hlsr/.hlsr-install.json":{"type":"file","data":"{\"schema\":1}\n","mode":420},"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png":{"type":"file","data":"PNG icon","mode":420},"/home/user/.local/share/applications/hlsr.desktop":{"type":"file","data":"","mode":420}},
+      "options": {"executable":"/home/user/.local/opt/hlsr/start","iconSource":"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png","dataHome":"/home/user/.local/share"},
+      "result": {"ok":true},
+      "ops": [
+        ["mkdir","/home/user/.local/share/applications",true],
+        ["mkdir","/home/user/.local/share/icons/hicolor/256x256/apps",true],
+        ["copy","/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png","/home/user/.local/share/icons/hicolor/256x256/apps/hlsr-appimage.png.<pid>.tmp"],
+        ["rename","/home/user/.local/share/icons/hicolor/256x256/apps/hlsr-appimage.png.<pid>.tmp","/home/user/.local/share/icons/hicolor/256x256/apps/hlsr-appimage.png"],
+        ["write","/home/user/.local/share/applications/hlsr.desktop.<pid>.tmp","[Desktop Entry]\nType=Application\nName=HLSR\nExec=\"/home/user/.local/opt/hlsr/start\" --no-sandbox %U\nIcon=hlsr-appimage\nStartupWMClass=hlsr\nTerminal=false\nCategories=Game;\nX-HLSR-Managed=true\n",420,null],
+        ["rename","/home/user/.local/share/applications/hlsr.desktop.<pid>.tmp","/home/user/.local/share/applications/hlsr.desktop"]
+      ],
+      "spawned": [{"command":"update-desktop-database","args":["/home/user/.local/share/applications"],"timeout":10000,"stdio":"ignore","env":null},{"command":"gtk-update-icon-cache","args":["-f","-t","/home/user/.local/share/icons/hicolor"],"timeout":10000,"stdio":"ignore","env":null}],
+      "tree": [
+        {"path":"/home/user/.local/opt/hlsr/.hlsr-install.json","data":"{\"schema\":1}\n","mode":420},
+        {"path":"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png","data":"PNG icon","mode":420},
+        {"path":"/home/user/.local/opt/hlsr/start","data":"#!/bin/sh\n","mode":493},
+        {"path":"/home/user/.local/share/applications/hlsr.desktop","data":"[Desktop Entry]\nType=Application\nName=HLSR\nExec=\"/home/user/.local/opt/hlsr/start\" --no-sandbox %U\nIcon=hlsr-appimage\nStartupWMClass=hlsr\nTerminal=false\nCategories=Game;\nX-HLSR-Managed=true\n","mode":420},
+        {"path":"/home/user/.local/share/icons/hicolor/256x256/apps/hlsr-appimage.png","data":"PNG icon","mode":420}
+      ]
+    },
+    {
+      "name": "relative executable",
+      "files": {"/home/user/.local/opt/hlsr/start":{"type":"file","data":"#!/bin/sh\n","mode":493},"/home/user/.local/opt/hlsr/.hlsr-install.json":{"type":"file","data":"{\"schema\":1}\n","mode":420},"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png":{"type":"file","data":"PNG icon","mode":420}},
+      "options": {"executable":"start","iconSource":"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png","dataHome":"/home/user/.local/share"},
+      "result": {"ok":false},
+      "ops": [],
+      "spawned": [],
+      "tree": [{"path":"/home/user/.local/opt/hlsr/.hlsr-install.json","data":"{\"schema\":1}\n","mode":420},{"path":"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png","data":"PNG icon","mode":420},{"path":"/home/user/.local/opt/hlsr/start","data":"#!/bin/sh\n","mode":493}]
+    },
+    {
+      "name": "executable with a newline",
+      "files": {"/home/user/.local/opt/hlsr/start":{"type":"file","data":"#!/bin/sh\n","mode":493},"/home/user/.local/opt/hlsr/.hlsr-install.json":{"type":"file","data":"{\"schema\":1}\n","mode":420},"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png":{"type":"file","data":"PNG icon","mode":420}},
+      "options": {"executable":"/home/user/.local/opt/hlsr/st\nart","iconSource":"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png","dataHome":"/home/user/.local/share"},
+      "result": {"ok":false},
+      "ops": [],
+      "spawned": [],
+      "tree": [{"path":"/home/user/.local/opt/hlsr/.hlsr-install.json","data":"{\"schema\":1}\n","mode":420},{"path":"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png","data":"PNG icon","mode":420},{"path":"/home/user/.local/opt/hlsr/start","data":"#!/bin/sh\n","mode":493}]
+    },
+    {
+      "name": "missing executable",
+      "files": {"/home/user/.local/opt/hlsr/start":{"type":"file","data":"#!/bin/sh\n","mode":493},"/home/user/.local/opt/hlsr/.hlsr-install.json":{"type":"file","data":"{\"schema\":1}\n","mode":420},"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png":{"type":"file","data":"PNG icon","mode":420}},
+      "options": {"executable":"/home/user/.local/opt/hlsr/missing","iconSource":"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png","dataHome":"/home/user/.local/share"},
+      "result": {"ok":false},
+      "ops": [],
+      "spawned": [],
+      "tree": [{"path":"/home/user/.local/opt/hlsr/.hlsr-install.json","data":"{\"schema\":1}\n","mode":420},{"path":"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png","data":"PNG icon","mode":420},{"path":"/home/user/.local/opt/hlsr/start","data":"#!/bin/sh\n","mode":493}]
+    },
+    {
+      "name": "missing icon",
+      "files": {"/home/user/.local/opt/hlsr/start":{"type":"file","data":"#!/bin/sh\n","mode":493},"/home/user/.local/opt/hlsr/.hlsr-install.json":{"type":"file","data":"{\"schema\":1}\n","mode":420},"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png":{"type":"file","data":"PNG icon","mode":420}},
+      "options": {"executable":"/home/user/.local/opt/hlsr/start","iconSource":"/home/user/.local/opt/hlsr/none.png","dataHome":"/home/user/.local/share"},
+      "result": {"ok":false},
+      "ops": [],
+      "spawned": [],
+      "tree": [{"path":"/home/user/.local/opt/hlsr/.hlsr-install.json","data":"{\"schema\":1}\n","mode":420},{"path":"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png","data":"PNG icon","mode":420},{"path":"/home/user/.local/opt/hlsr/start","data":"#!/bin/sh\n","mode":493}]
+    },
+    {
+      "name": "without menu refresh",
+      "files": {"/home/user/.local/opt/hlsr/start":{"type":"file","data":"#!/bin/sh\n","mode":493},"/home/user/.local/opt/hlsr/.hlsr-install.json":{"type":"file","data":"{\"schema\":1}\n","mode":420},"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png":{"type":"file","data":"PNG icon","mode":420}},
+      "options": {"executable":"/home/user/.local/opt/hlsr/start","iconSource":"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png","dataHome":"/home/user/.local/share","refresh":false},
+      "result": {"ok":true},
+      "ops": [
+        ["mkdir","/home/user/.local/share/applications",true],
+        ["mkdir","/home/user/.local/share/icons/hicolor/256x256/apps",true],
+        ["copy","/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png","/home/user/.local/share/icons/hicolor/256x256/apps/hlsr-appimage.png.<pid>.tmp"],
+        ["rename","/home/user/.local/share/icons/hicolor/256x256/apps/hlsr-appimage.png.<pid>.tmp","/home/user/.local/share/icons/hicolor/256x256/apps/hlsr-appimage.png"],
+        ["write","/home/user/.local/share/applications/hlsr.desktop.<pid>.tmp","[Desktop Entry]\nType=Application\nName=HLSR\nExec=\"/home/user/.local/opt/hlsr/start\" --no-sandbox %U\nIcon=hlsr-appimage\nStartupWMClass=hlsr\nTerminal=false\nCategories=Game;\nX-HLSR-Managed=true\n",420,null],
+        ["rename","/home/user/.local/share/applications/hlsr.desktop.<pid>.tmp","/home/user/.local/share/applications/hlsr.desktop"]
+      ],
+      "spawned": [],
+      "tree": [
+        {"path":"/home/user/.local/opt/hlsr/.hlsr-install.json","data":"{\"schema\":1}\n","mode":420},
+        {"path":"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png","data":"PNG icon","mode":420},
+        {"path":"/home/user/.local/opt/hlsr/start","data":"#!/bin/sh\n","mode":493},
+        {"path":"/home/user/.local/share/applications/hlsr.desktop","data":"[Desktop Entry]\nType=Application\nName=HLSR\nExec=\"/home/user/.local/opt/hlsr/start\" --no-sandbox %U\nIcon=hlsr-appimage\nStartupWMClass=hlsr\nTerminal=false\nCategories=Game;\nX-HLSR-Managed=true\n","mode":420},
+        {"path":"/home/user/.local/share/icons/hicolor/256x256/apps/hlsr-appimage.png","data":"PNG icon","mode":420}
+      ]
+    },
+    {
+      "name": "other data home",
+      "files": {"/home/user/.local/opt/hlsr/start":{"type":"file","data":"#!/bin/sh\n","mode":493},"/home/user/.local/opt/hlsr/.hlsr-install.json":{"type":"file","data":"{\"schema\":1}\n","mode":420},"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png":{"type":"file","data":"PNG icon","mode":420}},
+      "options": {"executable":"/home/user/.local/opt/hlsr/start","iconSource":"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png","dataHome":"/data/xdg"},
+      "result": {"ok":true},
+      "ops": [
+        ["mkdir","/data/xdg/applications",true],
+        ["mkdir","/data/xdg/icons/hicolor/256x256/apps",true],
+        ["copy","/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png","/data/xdg/icons/hicolor/256x256/apps/hlsr-appimage.png.<pid>.tmp"],
+        ["rename","/data/xdg/icons/hicolor/256x256/apps/hlsr-appimage.png.<pid>.tmp","/data/xdg/icons/hicolor/256x256/apps/hlsr-appimage.png"],
+        ["write","/data/xdg/applications/hlsr.desktop.<pid>.tmp","[Desktop Entry]\nType=Application\nName=HLSR\nExec=\"/home/user/.local/opt/hlsr/start\" --no-sandbox %U\nIcon=hlsr-appimage\nStartupWMClass=hlsr\nTerminal=false\nCategories=Game;\nX-HLSR-Managed=true\n",420,null],
+        ["rename","/data/xdg/applications/hlsr.desktop.<pid>.tmp","/data/xdg/applications/hlsr.desktop"]
+      ],
+      "spawned": [{"command":"update-desktop-database","args":["/data/xdg/applications"],"timeout":10000,"stdio":"ignore","env":null},{"command":"gtk-update-icon-cache","args":["-f","-t","/data/xdg/icons/hicolor"],"timeout":10000,"stdio":"ignore","env":null}],
+      "tree": [
+        {"path":"/data/xdg/applications/hlsr.desktop","data":"[Desktop Entry]\nType=Application\nName=HLSR\nExec=\"/home/user/.local/opt/hlsr/start\" --no-sandbox %U\nIcon=hlsr-appimage\nStartupWMClass=hlsr\nTerminal=false\nCategories=Game;\nX-HLSR-Managed=true\n","mode":420},
+        {"path":"/data/xdg/icons/hicolor/256x256/apps/hlsr-appimage.png","data":"PNG icon","mode":420},
+        {"path":"/home/user/.local/opt/hlsr/.hlsr-install.json","data":"{\"schema\":1}\n","mode":420},
+        {"path":"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png","data":"PNG icon","mode":420},
+        {"path":"/home/user/.local/opt/hlsr/start","data":"#!/bin/sh\n","mode":493}
+      ]
+    }
+  ],
+  "cli": [
+    {
+      "name": "fresh command",
+      "files": {"/home/user/.local/opt/hlsr/start":{"type":"file","data":"#!/bin/sh\n","mode":493},"/home/user/.local/opt/hlsr/.hlsr-install.json":{"type":"file","data":"{\"schema\":1}\n","mode":420},"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png":{"type":"file","data":"PNG icon","mode":420}},
+      "options": {"installRoot":"/home/user/.local/opt/hlsr","home":"/home/user"},
+      "result": {"ok":true},
+      "ops": [["mkdir","/home/user/.local/bin",true],["write","/home/user/.local/bin/hlsr","#!/bin/sh\n# HLSR managed CLI launcher\nexec '/home/user/.local/opt/hlsr/start' \"$@\"\n",493,"wx"]],
+      "spawned": [],
+      "tree": [
+        {"path":"/home/user/.local/bin/hlsr","data":"#!/bin/sh\n# HLSR managed CLI launcher\nexec '/home/user/.local/opt/hlsr/start' \"$@\"\n","mode":493},
+        {"path":"/home/user/.local/opt/hlsr/.hlsr-install.json","data":"{\"schema\":1}\n","mode":420},
+        {"path":"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png","data":"PNG icon","mode":420},
+        {"path":"/home/user/.local/opt/hlsr/start","data":"#!/bin/sh\n","mode":493}
+      ]
+    },
+    {
+      "name": "managed command is kept and made executable",
+      "files": {
+        "/home/user/.local/opt/hlsr/start": {"type":"file","data":"#!/bin/sh\n","mode":493},
+        "/home/user/.local/opt/hlsr/.hlsr-install.json": {"type":"file","data":"{\"schema\":1}\n","mode":420},
+        "/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png": {"type":"file","data":"PNG icon","mode":420},
+        "/home/user/.local/bin/hlsr": {"type":"file","data":"#!/bin/sh\n# HLSR managed CLI launcher\nexec '/home/user/.local/opt/hlsr/start' \"$@\"\n","mode":384}
+      },
+      "cliScript": "/home/user/.local/opt/hlsr",
+      "options": {"installRoot":"/home/user/.local/opt/hlsr","home":"/home/user"},
+      "result": {"ok":true},
+      "ops": [["chmod","/home/user/.local/bin/hlsr",493]],
+      "spawned": [],
+      "tree": [
+        {"path":"/home/user/.local/bin/hlsr","data":"#!/bin/sh\n# HLSR managed CLI launcher\nexec '/home/user/.local/opt/hlsr/start' \"$@\"\n","mode":493},
+        {"path":"/home/user/.local/opt/hlsr/.hlsr-install.json","data":"{\"schema\":1}\n","mode":420},
+        {"path":"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png","data":"PNG icon","mode":420},
+        {"path":"/home/user/.local/opt/hlsr/start","data":"#!/bin/sh\n","mode":493}
+      ]
+    },
+    {
+      "name": "foreign command is kept",
+      "files": {"/home/user/.local/opt/hlsr/start":{"type":"file","data":"#!/bin/sh\n","mode":493},"/home/user/.local/opt/hlsr/.hlsr-install.json":{"type":"file","data":"{\"schema\":1}\n","mode":420},"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png":{"type":"file","data":"PNG icon","mode":420},"/home/user/.local/bin/hlsr":{"type":"file","data":"#!/bin/sh\nexec other\n","mode":493}},
+      "options": {"installRoot":"/home/user/.local/opt/hlsr","home":"/home/user"},
+      "result": {"ok":false},
+      "ops": [],
+      "spawned": [],
+      "tree": [{"path":"/home/user/.local/bin/hlsr","data":"#!/bin/sh\nexec other\n","mode":493},{"path":"/home/user/.local/opt/hlsr/.hlsr-install.json","data":"{\"schema\":1}\n","mode":420},{"path":"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png","data":"PNG icon","mode":420},{"path":"/home/user/.local/opt/hlsr/start","data":"#!/bin/sh\n","mode":493}]
+    },
+    {
+      "name": "command with the other root is foreign",
+      "files": {
+        "/home/user/.local/opt/hlsr/start": {"type":"file","data":"#!/bin/sh\n","mode":493},
+        "/home/user/.local/opt/hlsr/.hlsr-install.json": {"type":"file","data":"{\"schema\":1}\n","mode":420},
+        "/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png": {"type":"file","data":"PNG icon","mode":420},
+        "/home/user/.local/bin/hlsr": {"type":"file","data":"#!/bin/sh\n# HLSR managed CLI launcher\nexec '/opt/other/start' \"$@\"\n","mode":384}
+      },
+      "cliScript": "/opt/other",
+      "options": {"installRoot":"/home/user/.local/opt/hlsr","home":"/home/user"},
+      "result": {"ok":false},
+      "ops": [],
+      "spawned": [],
+      "tree": [
+        {"path":"/home/user/.local/bin/hlsr","data":"#!/bin/sh\n# HLSR managed CLI launcher\nexec '/opt/other/start' \"$@\"\n","mode":384},
+        {"path":"/home/user/.local/opt/hlsr/.hlsr-install.json","data":"{\"schema\":1}\n","mode":420},
+        {"path":"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png","data":"PNG icon","mode":420},
+        {"path":"/home/user/.local/opt/hlsr/start","data":"#!/bin/sh\n","mode":493}
+      ]
+    },
+    {
+      "name": "old symlink to start is replaced",
+      "files": {"/home/user/.local/opt/hlsr/start":{"type":"file","data":"#!/bin/sh\n","mode":493},"/home/user/.local/opt/hlsr/.hlsr-install.json":{"type":"file","data":"{\"schema\":1}\n","mode":420},"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png":{"type":"file","data":"PNG icon","mode":420},"/home/user/.local/bin/hlsr":{"type":"symlink","target":"/home/user/.local/opt/hlsr/start"}},
+      "options": {"installRoot":"/home/user/.local/opt/hlsr","home":"/home/user"},
+      "result": {"ok":true},
+      "ops": [["unlink","/home/user/.local/bin/hlsr"],["mkdir","/home/user/.local/bin",true],["write","/home/user/.local/bin/hlsr","#!/bin/sh\n# HLSR managed CLI launcher\nexec '/home/user/.local/opt/hlsr/start' \"$@\"\n",493,"wx"]],
+      "spawned": [],
+      "tree": [
+        {"path":"/home/user/.local/bin/hlsr","data":"#!/bin/sh\n# HLSR managed CLI launcher\nexec '/home/user/.local/opt/hlsr/start' \"$@\"\n","mode":493},
+        {"path":"/home/user/.local/opt/hlsr/.hlsr-install.json","data":"{\"schema\":1}\n","mode":420},
+        {"path":"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png","data":"PNG icon","mode":420},
+        {"path":"/home/user/.local/opt/hlsr/start","data":"#!/bin/sh\n","mode":493}
+      ]
+    },
+    {
+      "name": "relative symlink to start is replaced",
+      "files": {"/home/user/.local/opt/hlsr/start":{"type":"file","data":"#!/bin/sh\n","mode":493},"/home/user/.local/opt/hlsr/.hlsr-install.json":{"type":"file","data":"{\"schema\":1}\n","mode":420},"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png":{"type":"file","data":"PNG icon","mode":420},"/home/user/.local/bin/hlsr":{"type":"symlink","target":"../opt/hlsr/start"}},
+      "options": {"installRoot":"/home/user/.local/opt/hlsr","home":"/home/user"},
+      "result": {"ok":true},
+      "ops": [["unlink","/home/user/.local/bin/hlsr"],["mkdir","/home/user/.local/bin",true],["write","/home/user/.local/bin/hlsr","#!/bin/sh\n# HLSR managed CLI launcher\nexec '/home/user/.local/opt/hlsr/start' \"$@\"\n",493,"wx"]],
+      "spawned": [],
+      "tree": [
+        {"path":"/home/user/.local/bin/hlsr","data":"#!/bin/sh\n# HLSR managed CLI launcher\nexec '/home/user/.local/opt/hlsr/start' \"$@\"\n","mode":493},
+        {"path":"/home/user/.local/opt/hlsr/.hlsr-install.json","data":"{\"schema\":1}\n","mode":420},
+        {"path":"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png","data":"PNG icon","mode":420},
+        {"path":"/home/user/.local/opt/hlsr/start","data":"#!/bin/sh\n","mode":493}
+      ]
+    },
+    {
+      "name": "foreign symlink is kept",
+      "files": {"/home/user/.local/opt/hlsr/start":{"type":"file","data":"#!/bin/sh\n","mode":493},"/home/user/.local/opt/hlsr/.hlsr-install.json":{"type":"file","data":"{\"schema\":1}\n","mode":420},"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png":{"type":"file","data":"PNG icon","mode":420},"/home/user/.local/bin/hlsr":{"type":"symlink","target":"/usr/bin/other"}},
+      "options": {"installRoot":"/home/user/.local/opt/hlsr","home":"/home/user"},
+      "result": {"ok":false},
+      "ops": [],
+      "spawned": [],
+      "tree": [{"path":"/home/user/.local/bin/hlsr","symlink":"/usr/bin/other"},{"path":"/home/user/.local/opt/hlsr/.hlsr-install.json","data":"{\"schema\":1}\n","mode":420},{"path":"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png","data":"PNG icon","mode":420},{"path":"/home/user/.local/opt/hlsr/start","data":"#!/bin/sh\n","mode":493}]
+    },
+    {
+      "name": "relative install root",
+      "files": {"/home/user/.local/opt/hlsr/start":{"type":"file","data":"#!/bin/sh\n","mode":493},"/home/user/.local/opt/hlsr/.hlsr-install.json":{"type":"file","data":"{\"schema\":1}\n","mode":420},"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png":{"type":"file","data":"PNG icon","mode":420}},
+      "options": {"installRoot":"opt/hlsr","home":"/home/user"},
+      "result": {"ok":false},
+      "ops": [],
+      "spawned": [],
+      "tree": [{"path":"/home/user/.local/opt/hlsr/.hlsr-install.json","data":"{\"schema\":1}\n","mode":420},{"path":"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png","data":"PNG icon","mode":420},{"path":"/home/user/.local/opt/hlsr/start","data":"#!/bin/sh\n","mode":493}]
+    },
+    {"name":"no install marker","files":{"/home/user/.local/opt/hlsr/start":{"type":"file","data":"x","mode":493}},"options":{"installRoot":"/home/user/.local/opt/hlsr","home":"/home/user"},"result":{"ok":false},"ops":[],"spawned":[],"tree":[{"path":"/home/user/.local/opt/hlsr/start","data":"x","mode":493}]},
+    {
+      "name": "marker of another schema",
+      "files": {"/home/user/.local/opt/hlsr/start":{"type":"file","data":"#!/bin/sh\n","mode":493},"/home/user/.local/opt/hlsr/.hlsr-install.json":{"type":"file","data":"{\"schema\":2}","mode":420},"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png":{"type":"file","data":"PNG icon","mode":420}},
+      "options": {"installRoot":"/home/user/.local/opt/hlsr","home":"/home/user"},
+      "result": {"ok":false},
+      "ops": [],
+      "spawned": [],
+      "tree": [{"path":"/home/user/.local/opt/hlsr/.hlsr-install.json","data":"{\"schema\":2}","mode":420},{"path":"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png","data":"PNG icon","mode":420},{"path":"/home/user/.local/opt/hlsr/start","data":"#!/bin/sh\n","mode":493}]
+    },
+    {
+      "name": "start is not executable",
+      "files": {"/home/user/.local/opt/hlsr/start":{"type":"file","data":"x","mode":420},"/home/user/.local/opt/hlsr/.hlsr-install.json":{"type":"file","data":"{\"schema\":1}\n","mode":420},"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png":{"type":"file","data":"PNG icon","mode":420}},
+      "options": {"installRoot":"/home/user/.local/opt/hlsr","home":"/home/user"},
+      "result": {"ok":false},
+      "ops": [],
+      "spawned": [],
+      "tree": [{"path":"/home/user/.local/opt/hlsr/.hlsr-install.json","data":"{\"schema\":1}\n","mode":420},{"path":"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png","data":"PNG icon","mode":420},{"path":"/home/user/.local/opt/hlsr/start","data":"x","mode":420}]
+    },
+    {
+      "name": "trailing slash in the root",
+      "files": {"/home/user/.local/opt/hlsr/start":{"type":"file","data":"#!/bin/sh\n","mode":493},"/home/user/.local/opt/hlsr/.hlsr-install.json":{"type":"file","data":"{\"schema\":1}\n","mode":420},"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png":{"type":"file","data":"PNG icon","mode":420}},
+      "options": {"installRoot":"/home/user/.local/opt/hlsr/","home":"/home/user"},
+      "result": {"ok":true},
+      "ops": [["mkdir","/home/user/.local/bin",true],["write","/home/user/.local/bin/hlsr","#!/bin/sh\n# HLSR managed CLI launcher\nexec '/home/user/.local/opt/hlsr/start' \"$@\"\n",493,"wx"]],
+      "spawned": [],
+      "tree": [
+        {"path":"/home/user/.local/bin/hlsr","data":"#!/bin/sh\n# HLSR managed CLI launcher\nexec '/home/user/.local/opt/hlsr/start' \"$@\"\n","mode":493},
+        {"path":"/home/user/.local/opt/hlsr/.hlsr-install.json","data":"{\"schema\":1}\n","mode":420},
+        {"path":"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png","data":"PNG icon","mode":420},
+        {"path":"/home/user/.local/opt/hlsr/start","data":"#!/bin/sh\n","mode":493}
+      ]
+    }
+  ],
+  "managedCli": [
+    {
+      "name": "fresh command",
+      "files": {"/home/user/.local/opt/hlsr/start":{"type":"file","data":"#!/bin/sh\n","mode":493},"/home/user/.local/opt/hlsr/.hlsr-install.json":{"type":"file","data":"{\"schema\":1}\n","mode":420},"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png":{"type":"file","data":"PNG icon","mode":420}},
+      "options": {"installRoot":"/home/user/.local/opt/hlsr","home":"/home/user"},
+      "result": {"ok":null},
+      "ops": [],
+      "spawned": [],
+      "tree": [{"path":"/home/user/.local/opt/hlsr/.hlsr-install.json","data":"{\"schema\":1}\n","mode":420},{"path":"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png","data":"PNG icon","mode":420},{"path":"/home/user/.local/opt/hlsr/start","data":"#!/bin/sh\n","mode":493}]
+    },
+    {
+      "name": "managed command is kept and made executable",
+      "files": {
+        "/home/user/.local/opt/hlsr/start": {"type":"file","data":"#!/bin/sh\n","mode":493},
+        "/home/user/.local/opt/hlsr/.hlsr-install.json": {"type":"file","data":"{\"schema\":1}\n","mode":420},
+        "/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png": {"type":"file","data":"PNG icon","mode":420},
+        "/home/user/.local/bin/hlsr": {"type":"file","data":"#!/bin/sh\n# HLSR managed CLI launcher\nexec '/home/user/.local/opt/hlsr/start' \"$@\"\n","mode":384}
+      },
+      "options": {"installRoot":"/home/user/.local/opt/hlsr","home":"/home/user"},
+      "result": {"ok":"/home/user/.local/bin/hlsr"},
+      "ops": [],
+      "spawned": [],
+      "tree": [
+        {"path":"/home/user/.local/bin/hlsr","data":"#!/bin/sh\n# HLSR managed CLI launcher\nexec '/home/user/.local/opt/hlsr/start' \"$@\"\n","mode":384},
+        {"path":"/home/user/.local/opt/hlsr/.hlsr-install.json","data":"{\"schema\":1}\n","mode":420},
+        {"path":"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png","data":"PNG icon","mode":420},
+        {"path":"/home/user/.local/opt/hlsr/start","data":"#!/bin/sh\n","mode":493}
+      ]
+    },
+    {
+      "name": "foreign command is kept",
+      "files": {"/home/user/.local/opt/hlsr/start":{"type":"file","data":"#!/bin/sh\n","mode":493},"/home/user/.local/opt/hlsr/.hlsr-install.json":{"type":"file","data":"{\"schema\":1}\n","mode":420},"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png":{"type":"file","data":"PNG icon","mode":420},"/home/user/.local/bin/hlsr":{"type":"file","data":"#!/bin/sh\nexec other\n","mode":493}},
+      "options": {"installRoot":"/home/user/.local/opt/hlsr","home":"/home/user"},
+      "result": {"ok":null},
+      "ops": [],
+      "spawned": [],
+      "tree": [{"path":"/home/user/.local/bin/hlsr","data":"#!/bin/sh\nexec other\n","mode":493},{"path":"/home/user/.local/opt/hlsr/.hlsr-install.json","data":"{\"schema\":1}\n","mode":420},{"path":"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png","data":"PNG icon","mode":420},{"path":"/home/user/.local/opt/hlsr/start","data":"#!/bin/sh\n","mode":493}]
+    },
+    {
+      "name": "command with the other root is foreign",
+      "files": {
+        "/home/user/.local/opt/hlsr/start": {"type":"file","data":"#!/bin/sh\n","mode":493},
+        "/home/user/.local/opt/hlsr/.hlsr-install.json": {"type":"file","data":"{\"schema\":1}\n","mode":420},
+        "/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png": {"type":"file","data":"PNG icon","mode":420},
+        "/home/user/.local/bin/hlsr": {"type":"file","data":"#!/bin/sh\n# HLSR managed CLI launcher\nexec '/opt/other/start' \"$@\"\n","mode":384}
+      },
+      "options": {"installRoot":"/home/user/.local/opt/hlsr","home":"/home/user"},
+      "result": {"ok":null},
+      "ops": [],
+      "spawned": [],
+      "tree": [
+        {"path":"/home/user/.local/bin/hlsr","data":"#!/bin/sh\n# HLSR managed CLI launcher\nexec '/opt/other/start' \"$@\"\n","mode":384},
+        {"path":"/home/user/.local/opt/hlsr/.hlsr-install.json","data":"{\"schema\":1}\n","mode":420},
+        {"path":"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png","data":"PNG icon","mode":420},
+        {"path":"/home/user/.local/opt/hlsr/start","data":"#!/bin/sh\n","mode":493}
+      ]
+    },
+    {
+      "name": "old symlink to start is replaced",
+      "files": {"/home/user/.local/opt/hlsr/start":{"type":"file","data":"#!/bin/sh\n","mode":493},"/home/user/.local/opt/hlsr/.hlsr-install.json":{"type":"file","data":"{\"schema\":1}\n","mode":420},"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png":{"type":"file","data":"PNG icon","mode":420},"/home/user/.local/bin/hlsr":{"type":"symlink","target":"/home/user/.local/opt/hlsr/start"}},
+      "options": {"installRoot":"/home/user/.local/opt/hlsr","home":"/home/user"},
+      "result": {"ok":"/home/user/.local/bin/hlsr"},
+      "ops": [],
+      "spawned": [],
+      "tree": [{"path":"/home/user/.local/bin/hlsr","symlink":"/home/user/.local/opt/hlsr/start"},{"path":"/home/user/.local/opt/hlsr/.hlsr-install.json","data":"{\"schema\":1}\n","mode":420},{"path":"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png","data":"PNG icon","mode":420},{"path":"/home/user/.local/opt/hlsr/start","data":"#!/bin/sh\n","mode":493}]
+    },
+    {
+      "name": "relative symlink to start is replaced",
+      "files": {"/home/user/.local/opt/hlsr/start":{"type":"file","data":"#!/bin/sh\n","mode":493},"/home/user/.local/opt/hlsr/.hlsr-install.json":{"type":"file","data":"{\"schema\":1}\n","mode":420},"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png":{"type":"file","data":"PNG icon","mode":420},"/home/user/.local/bin/hlsr":{"type":"symlink","target":"../opt/hlsr/start"}},
+      "options": {"installRoot":"/home/user/.local/opt/hlsr","home":"/home/user"},
+      "result": {"ok":"/home/user/.local/bin/hlsr"},
+      "ops": [],
+      "spawned": [],
+      "tree": [{"path":"/home/user/.local/bin/hlsr","symlink":"../opt/hlsr/start"},{"path":"/home/user/.local/opt/hlsr/.hlsr-install.json","data":"{\"schema\":1}\n","mode":420},{"path":"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png","data":"PNG icon","mode":420},{"path":"/home/user/.local/opt/hlsr/start","data":"#!/bin/sh\n","mode":493}]
+    },
+    {
+      "name": "foreign symlink is kept",
+      "files": {"/home/user/.local/opt/hlsr/start":{"type":"file","data":"#!/bin/sh\n","mode":493},"/home/user/.local/opt/hlsr/.hlsr-install.json":{"type":"file","data":"{\"schema\":1}\n","mode":420},"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png":{"type":"file","data":"PNG icon","mode":420},"/home/user/.local/bin/hlsr":{"type":"symlink","target":"/usr/bin/other"}},
+      "options": {"installRoot":"/home/user/.local/opt/hlsr","home":"/home/user"},
+      "result": {"ok":null},
+      "ops": [],
+      "spawned": [],
+      "tree": [{"path":"/home/user/.local/bin/hlsr","symlink":"/usr/bin/other"},{"path":"/home/user/.local/opt/hlsr/.hlsr-install.json","data":"{\"schema\":1}\n","mode":420},{"path":"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png","data":"PNG icon","mode":420},{"path":"/home/user/.local/opt/hlsr/start","data":"#!/bin/sh\n","mode":493}]
+    },
+    {
+      "name": "relative install root",
+      "files": {"/home/user/.local/opt/hlsr/start":{"type":"file","data":"#!/bin/sh\n","mode":493},"/home/user/.local/opt/hlsr/.hlsr-install.json":{"type":"file","data":"{\"schema\":1}\n","mode":420},"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png":{"type":"file","data":"PNG icon","mode":420}},
+      "options": {"installRoot":"opt/hlsr","home":"/home/user"},
+      "result": {"ok":null},
+      "ops": [],
+      "spawned": [],
+      "tree": [{"path":"/home/user/.local/opt/hlsr/.hlsr-install.json","data":"{\"schema\":1}\n","mode":420},{"path":"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png","data":"PNG icon","mode":420},{"path":"/home/user/.local/opt/hlsr/start","data":"#!/bin/sh\n","mode":493}]
+    },
+    {"name":"no install marker","files":{"/home/user/.local/opt/hlsr/start":{"type":"file","data":"x","mode":493}},"options":{"installRoot":"/home/user/.local/opt/hlsr","home":"/home/user"},"result":{"ok":null},"ops":[],"spawned":[],"tree":[{"path":"/home/user/.local/opt/hlsr/start","data":"x","mode":493}]},
+    {
+      "name": "marker of another schema",
+      "files": {"/home/user/.local/opt/hlsr/start":{"type":"file","data":"#!/bin/sh\n","mode":493},"/home/user/.local/opt/hlsr/.hlsr-install.json":{"type":"file","data":"{\"schema\":2}","mode":420},"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png":{"type":"file","data":"PNG icon","mode":420}},
+      "options": {"installRoot":"/home/user/.local/opt/hlsr","home":"/home/user"},
+      "result": {"ok":null},
+      "ops": [],
+      "spawned": [],
+      "tree": [{"path":"/home/user/.local/opt/hlsr/.hlsr-install.json","data":"{\"schema\":2}","mode":420},{"path":"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png","data":"PNG icon","mode":420},{"path":"/home/user/.local/opt/hlsr/start","data":"#!/bin/sh\n","mode":493}]
+    },
+    {
+      "name": "start is not executable",
+      "files": {"/home/user/.local/opt/hlsr/start":{"type":"file","data":"x","mode":420},"/home/user/.local/opt/hlsr/.hlsr-install.json":{"type":"file","data":"{\"schema\":1}\n","mode":420},"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png":{"type":"file","data":"PNG icon","mode":420}},
+      "options": {"installRoot":"/home/user/.local/opt/hlsr","home":"/home/user"},
+      "result": {"ok":null},
+      "ops": [],
+      "spawned": [],
+      "tree": [{"path":"/home/user/.local/opt/hlsr/.hlsr-install.json","data":"{\"schema\":1}\n","mode":420},{"path":"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png","data":"PNG icon","mode":420},{"path":"/home/user/.local/opt/hlsr/start","data":"x","mode":420}]
+    },
+    {
+      "name": "trailing slash in the root",
+      "files": {"/home/user/.local/opt/hlsr/start":{"type":"file","data":"#!/bin/sh\n","mode":493},"/home/user/.local/opt/hlsr/.hlsr-install.json":{"type":"file","data":"{\"schema\":1}\n","mode":420},"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png":{"type":"file","data":"PNG icon","mode":420}},
+      "options": {"installRoot":"/home/user/.local/opt/hlsr/","home":"/home/user"},
+      "result": {"ok":null},
+      "ops": [],
+      "spawned": [],
+      "tree": [{"path":"/home/user/.local/opt/hlsr/.hlsr-install.json","data":"{\"schema\":1}\n","mode":420},{"path":"/home/user/.local/opt/hlsr/current/resources/icons/hlsr.png","data":"PNG icon","mode":420},{"path":"/home/user/.local/opt/hlsr/start","data":"#!/bin/sh\n","mode":493}]
+    }
+  ],
+  "refresh": [
+    {"name":"menu caches","result":{"ok":null},"ops":[],"spawned":[{"command":"update-desktop-database","args":["/home/user/.local/share/applications"],"timeout":10000,"stdio":"ignore","env":null},{"command":"gtk-update-icon-cache","args":["-f","-t","/home/user/.local/share/icons/hicolor"],"timeout":10000,"stdio":"ignore","env":null}],"tree":[]},
+    {"name":"KDE menu cache","result":{"ok":null},"ops":[],"spawned":[{"command":"kbuildsycoca6","args":["--noincremental"],"timeout":10000,"stdio":"ignore","env":{"XDG_DATA_HOME":"/home/user/.local/share","HLSR_KEEP":"1"}},{"command":"kbuildsycoca5","args":["--noincremental"],"timeout":10000,"stdio":"ignore","env":{"XDG_DATA_HOME":"/home/user/.local/share","HLSR_KEEP":"1"}}],"tree":[]}
+  ]
+}

@@ -1,0 +1,1291 @@
+{
+  "$defs": {
+    "d1": "{\"schemaVersion\":1,\"version\":\"0.5.0\",\"publishedAt\":\"2026-10-16T09:00:00.000Z\",\"minimumSupportedVersion\":\"0.2.7\",\"updateRequired\":false,\"installer\":{\"filename\":\"HLSR-Setup-0.5.0.exe\",\"size\":132000,\"sha256\":\"70049852de60dbef7e56a634c18ac76d74115e48deca417659bb4b239a470207\",\"sha512\":\"Tb/gt2d5VKKQgShBA6DpG4g4az2qCAaz+psDXsOG8iTF6k1eg1KuKFMd/tDdm/naWp/Sdo+0jZwIFc5gFxYYTA==\",\"urls\":[\"https://hlsr.pro/downloads/launcher/stable/x.exe\",\"https://github.com/HL-HLSR/HLSR-Releases/releases/download/v0.5.0/x.exe\"]},\"latestYmlSha256\":\"1ca8a4f5a3c70935647cded698b899c2f867941d93c69c88c0d22e6300003d8c\",\"signature\":{\"algorithm\":\"ed25519\",\"value\":\"tNlIHnBpr5L8oLO77MvgC8VBow7bOVw8td4Ujaswk44/ZRswUhz+aYoUxukHwM7NxMBXQcRV2Z53pE4GtF/ODQ==\"}}",
+    "d2": {"body":{"$ref":"d1"}},
+    "d3": [{"$ref":"d2"}],
+    "d4": "version: 0.5.0\nfiles:\n  - url: HLSR-Setup-0.5.0.exe\n    sha512: Tb/gt2d5VKKQgShBA6DpG4g4az2qCAaz+psDXsOG8iTF6k1eg1KuKFMd/tDdm/naWp/Sdo+0jZwIFc5gFxYYTA==\n    size: 132000\npath: HLSR-Setup-0.5.0.exe\nsha512: Tb/gt2d5VKKQgShBA6DpG4g4az2qCAaz+psDXsOG8iTF6k1eg1KuKFMd/tDdm/naWp/Sdo+0jZwIFc5gFxYYTA==\nreleaseDate: '2026-10-16T09:00:00.000Z'\n",
+    "d5": {"body":{"$ref":"d4"}},
+    "d6": [{"$ref":"d5"}],
+    "d7": {"/launcher-channel.json":{"$ref":"d3"},"/latest.yml":{"$ref":"d6"}},
+    "d8": {"p":{"$ref":"d7"},"f":{"$ref":"d7"}},
+    "d9": ["https://hlsr.pro/downloads/launcher/stable/x.exe","https://github.com/HL-HLSR/HLSR-Releases/releases/download/v0.5.0/x.exe"],
+    "d10": {"filename":"HLSR-Setup-0.5.0.exe","size":132000,"sha256":"70049852de60dbef7e56a634c18ac76d74115e48deca417659bb4b239a470207","sha512":"Tb/gt2d5VKKQgShBA6DpG4g4az2qCAaz+psDXsOG8iTF6k1eg1KuKFMd/tDdm/naWp/Sdo+0jZwIFc5gFxYYTA==","urls":{"$ref":"d9"}},
+    "d11": {"algorithm":"ed25519","value":"tNlIHnBpr5L8oLO77MvgC8VBow7bOVw8td4Ujaswk44/ZRswUhz+aYoUxukHwM7NxMBXQcRV2Z53pE4GtF/ODQ=="},
+    "d12": {"schemaVersion":1,"version":"0.5.0","publishedAt":"2026-10-16T09:00:00.000Z","minimumSupportedVersion":"0.2.7","updateRequired":false,"installer":{"$ref":"d10"},"latestYmlSha256":"1ca8a4f5a3c70935647cded698b899c2f867941d93c69c88c0d22e6300003d8c","signature":{"$ref":"d11"}},
+    "d13": {"ok":true,"problems":[],"updateAvailable":true,"downgrade":false,"unsupported":false,"code":null,"updateRequired":false,"manifest":{"$ref":"d12"},"sourceUrl":"http://{p}/launcher-channel.json"},
+    "d14": {"ok":{"$ref":"d13"}},
+    "d15": [{"$ref":"d14"}],
+    "d16": {"steps":{"$ref":"d15"},"requests":[["p","GET","/launcher-channel.json","HLSR-launcher-update"],["p","GET","/latest.yml","HLSR-launcher-update"]],"log":[]},
+    "d17": {"executable":{"path":"x","size":1,"sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","chunks":[]}},
+    "d18": {"/launcher-channel.json":[{"status":503,"body":""}],"/latest.yml":{"$ref":"d6"}},
+    "d19": {"p":{"$ref":"d18"},"f":{"$ref":"d7"}},
+    "d20": {"ok":true,"problems":[],"updateAvailable":true,"downgrade":false,"unsupported":false,"code":null,"updateRequired":false,"manifest":{"$ref":"d12"},"sourceUrl":"http://{f}/launcher-channel.json"},
+    "d21": {"ok":{"$ref":"d20"}},
+    "d22": [{"$ref":"d21"}],
+    "d23": [["p","GET","/launcher-channel.json","HLSR-launcher-update"],["f","GET","/launcher-channel.json","HLSR-launcher-update"],["p","GET","/latest.yml","HLSR-launcher-update"]],
+    "d24": {"/launcher-channel.json":[{"status":404,"body":""}],"/latest.yml":{"$ref":"d6"}},
+    "d25": {"steps":{"$ref":"d22"},"requests":{"$ref":"d23"},"log":[{"level":"warn","message":"[launcher-update] канал недоступен (http://{p}/launcher-channel.json): <json>"}]},
+    "d26": "{\"schemaVersion\":1,\"version\":\"0.5.0\",\"publishedAt\":\"2026-10-16T09:00:00.000Z\",\"minimumSupportedVersion\":\"0.2.7\",\"updateRequired\":false,\"installer\":{\"filename\":\"HLSR-Setup-0.5.0.exe\",\"size\":132000,\"sha256\":\"70049852de60dbef7e56a634c18ac76d74115e48deca417659bb4b239a470207\",\"sha512\":\"Tb/gt2d5VKKQgShBA6DpG4g4az2qCAaz+psDXsOG8iTF6k1eg1KuKFMd/tDdm/naWp/Sdo+0jZwIFc5gFxYYTA==\",\"urls\":[\"https://hlsr.pro/downloads/launcher/stable/x.exe\",\"https://github.com/HL-HLSR/HLSR-Releases/releases/download/v0.5.0/x.exe\"]},\"latestYmlSha256\":\"1ca8a4f5a3c70935647cded698b899c2f867941d93c69c88c0d22e6300003d8c\"}",
+    "d27": {"body":{"$ref":"d26"}},
+    "d28": [{"$ref":"d27"}],
+    "d29": {"/launcher-channel.json":{"$ref":"d28"},"/latest.yml":{"$ref":"d6"}},
+    "d30": {"p":{"$ref":"d29"},"f":{"$ref":"d7"}},
+    "d31": {"level":"info","message":"[launcher-update] основной канал не подошёл, взят резервный: http://{f}/launcher-channel.json"},
+    "d32": [{"$ref":"d31"}],
+    "d33": {"steps":{"$ref":"d22"},"requests":{"$ref":"d23"},"log":{"$ref":"d32"}},
+    "d34": "{\"schemaVersion\":1,\"version\":\"0.5.0\",\"publishedAt\":\"2026-10-16T09:00:00.000Z\",\"minimumSupportedVersion\":\"0.2.7\",\"updateRequired\":false,\"installer\":{\"filename\":\"HLSR-Setup-0.5.0.exe\",\"size\":132000,\"sha256\":\"70049852de60dbef7e56a634c18ac76d74115e48deca417659bb4b239a470207\",\"sha512\":\"Tb/gt2d5VKKQgShBA6DpG4g4az2qCAaz+psDXsOG8iTF6k1eg1KuKFMd/tDdm/naWp/Sdo+0jZwIFc5gFxYYTA==\",\"urls\":[\"https://hlsr.pro/downloads/launcher/stable/x.exe\",\"https://github.com/HL-HLSR/HLSR-Releases/releases/download/v0.5.0/x.exe\"]},\"latestYmlSha256\":\"1ca8a4f5a3c70935647cded698b899c2f867941d93c69c88c0d22e6300003d8c\",\"signature\":{\"algorithm\":\"ed25519\",\"value\":\"51gLotKR1YkJK9mrW/T6Amv09f74rxGo7Rjv7zh2x2pi24EnKd9Um245V5hfvdTIEIWeonOgfAazJtDrbMvxCg==\"}}",
+    "d35": {"body":{"$ref":"d34"}},
+    "d36": [{"$ref":"d35"}],
+    "d37": {"/launcher-channel.json":{"$ref":"d36"},"/latest.yml":{"$ref":"d6"}},
+    "d38": {"ok":false,"problems":["подпись Ed25519 не прошла проверку"],"updateAvailable":false,"downgrade":false,"unsupported":false,"code":"LU_SCHEMA_INVALID","updateRequired":false,"manifest":null,"sourceUrl":"http://{p}/launcher-channel.json"},
+    "d39": {"ok":{"$ref":"d38"}},
+    "d40": [{"$ref":"d39"}],
+    "d41": [["p","GET","/launcher-channel.json","HLSR-launcher-update"],["f","GET","/launcher-channel.json","HLSR-launcher-update"]],
+    "d42": {"steps":{"$ref":"d40"},"requests":{"$ref":"d41"},"log":[]},
+    "d43": {"/launcher-channel.json":[{"status":500,"body":""}],"/latest.yml":{"$ref":"d6"}},
+    "d44": {"steps":{"$ref":"d40"},"requests":{"$ref":"d41"},"log":[{"level":"warn","message":"[launcher-update] канал недоступен (http://{f}/launcher-channel.json): HTTP 500"}]},
+    "d45": {"ok":false,"problems":["подпись Ed25519 не прошла проверку"],"updateAvailable":false,"downgrade":false,"unsupported":false,"code":"LU_SCHEMA_INVALID","updateRequired":false,"manifest":null,"sourceUrl":"http://{f}/launcher-channel.json"},
+    "d46": {"ok":{"$ref":"d45"}},
+    "d47": [{"$ref":"d46"}],
+    "d48": {"steps":{"$ref":"d47"},"requests":{"$ref":"d41"},"log":[{"level":"warn","message":"[launcher-update] канал недоступен (http://{p}/launcher-channel.json): HTTP 500"}]},
+    "d49": [{"level":"warn","message":"[launcher-update] канал недоступен (http://{p}/launcher-channel.json): HTTP 503"},{"level":"warn","message":"[launcher-update] канал недоступен (http://{f}/launcher-channel.json): HTTP 500"}],
+    "d50": {"steps":[{"error":{"kind":"status:500","message":"HTTP 500"}}],"requests":{"$ref":"d41"},"log":{"$ref":"d49"}},
+    "d51": [{"level":"warn","message":"[launcher-update] канал недоступен (http://{p}/launcher-channel.json): <json>"},{"level":"warn","message":"[launcher-update] канал недоступен (http://{f}/launcher-channel.json): <json>"}],
+    "d52": {"steps":[{"error":{"kind":"not-json","message":null}}],"requests":{"$ref":"d41"},"log":{"$ref":"d51"}},
+    "d53": {"/launcher-channel.json":[{"hangUp":true}],"/latest.yml":{"$ref":"d6"}},
+    "d54": [{"level":"warn","message":"[launcher-update] канал недоступен (http://{p}/launcher-channel.json): <network>"},{"level":"warn","message":"[launcher-update] канал недоступен (http://{f}/launcher-channel.json): <network>"}],
+    "d55": {"steps":[{"error":{"kind":"network","message":null}}],"requests":{"$ref":"d41"},"log":{"$ref":"d54"}},
+    "d56": {"/launcher-channel.json":[{"body":"null"}],"/latest.yml":{"$ref":"d6"}},
+    "d57": {"ok":false,"problems":["манифест не является JSON-объектом"],"updateAvailable":false,"downgrade":false,"unsupported":false,"code":"LU_SCHEMA_INVALID","updateRequired":false,"manifest":null,"sourceUrl":"http://{p}/launcher-channel.json"},
+    "d58": {"ok":{"$ref":"d57"}},
+    "d59": [{"$ref":"d58"}],
+    "d60": {"steps":{"$ref":"d59"},"requests":{"$ref":"d41"},"log":[]},
+    "d61": {"/launcher-channel.json":[{"body":"{}"}],"/latest.yml":{"$ref":"d6"}},
+    "d62": ["неподдерживаемая schemaVersion: undefined","version не SemVer: undefined","publishedAt отсутствует или не дата","minimumSupportedVersion не SemVer: undefined","updateRequired должен быть boolean","нет блока installer"],
+    "d63": {"ok":false,"problems":{"$ref":"d62"},"updateAvailable":false,"downgrade":false,"unsupported":false,"code":"LU_SCHEMA_INVALID","updateRequired":false,"manifest":null,"sourceUrl":"http://{p}/launcher-channel.json"},
+    "d64": {"ok":{"$ref":"d63"}},
+    "d65": [{"$ref":"d64"}],
+    "d66": {"steps":{"$ref":"d65"},"requests":{"$ref":"d41"},"log":[]},
+    "d67": "{\"schemaVersion\":1,\"version\":\"0.5.0\",\"publishedAt\":\"2026-10-16T09:00:00.000Z\",\"minimumSupportedVersion\":\"0.2.7\",\"updateRequired\":false,\"installer\":{\"filename\":\"HLSR-Setup-0.5.0.exe\",\"size\":132000,\"sha256\":\"70049852de60dbef7e56a634c18ac76d74115e48deca417659bb4b239a470207\",\"sha512\":\"Tb/gt2d5VKKQgShBA6DpG4g4az2qCAaz+psDXsOG8iTF6k1eg1KuKFMd/tDdm/naWp/Sdo+0jZwIFc5gFxYYTA==\",\"urls\":[\"https://hlsr.pro/downloads/launcher/stable/x.exe\",\"https://github.com/HL-HLSR/HLSR-Releases/releases/download/v0.5.0/x.exe\"]},\"latestYmlSha256\":\"1ca8a4f5a3c70935647cded698b899c2f867941d93c69c88c0d22e6300003d8c\",\"signature\":null}",
+    "d68": {"body":{"$ref":"d67"}},
+    "d69": [{"$ref":"d68"}],
+    "d70": {"/launcher-channel.json":{"$ref":"d69"},"/latest.yml":{"$ref":"d6"}},
+    "d71": {"/launcher-channel.json":[{"status":302,"body":""}],"/latest.yml":{"$ref":"d6"}},
+    "d72": [{"level":"warn","message":"[launcher-update] канал недоступен (http://{p}/launcher-channel.json): HTTP 302"},{"level":"warn","message":"[launcher-update] канал недоступен (http://{f}/launcher-channel.json): HTTP 302"}],
+    "d73": {"steps":[{"error":{"kind":"status:302","message":"HTTP 302"}}],"requests":{"$ref":"d41"},"log":{"$ref":"d72"}},
+    "d74": {"/launcher-channel.json":[{"status":202,"body":""}],"/latest.yml":{"$ref":"d6"}},
+    "d75": [{"level":"warn","message":"[launcher-update] канал недоступен (http://{p}/launcher-channel.json): HTTP 202"},{"level":"warn","message":"[launcher-update] канал недоступен (http://{f}/launcher-channel.json): HTTP 202"}],
+    "d76": {"steps":[{"error":{"kind":"status:202","message":"HTTP 202"}}],"requests":{"$ref":"d41"},"log":{"$ref":"d75"}},
+    "d77": {"/launcher-channel.json":{"$ref":"d3"},"/latest.yml":[{"body":"version: 0.5.0\n"}]},
+    "d78": [["p","GET","/launcher-channel.json","HLSR-launcher-update"],["p","GET","/latest.yml","HLSR-launcher-update"],["f","GET","/latest.yml","HLSR-launcher-update"],["f","GET","/launcher-channel.json","HLSR-launcher-update"],["p","GET","/latest.yml","HLSR-launcher-update"],["f","GET","/latest.yml","HLSR-launcher-update"]],
+    "d79": {"/launcher-channel.json":{"$ref":"d3"},"/latest.yml":[{"status":404,"body":""}]},
+    "d80": [["p","GET","/launcher-channel.json","HLSR-launcher-update"],["p","GET","/latest.yml","HLSR-launcher-update"],["f","GET","/latest.yml","HLSR-launcher-update"]],
+    "d81": {"steps":{"$ref":"d15"},"requests":{"$ref":"d80"},"log":[]},
+    "d82": {"steps":[{"error":{"kind":"not-semver","message":"Не SemVer: 0.5.0 / garbage"}}],"requests":[["p","GET","/launcher-channel.json","HLSR-launcher-update"]],"log":[]},
+    "d83": "{\"schemaVersion\":1,\"version\":\"0.5.0\",\"publishedAt\":\"2026-10-16T09:00:00.000Z\",\"minimumSupportedVersion\":\"0.2.7\",\"updateRequired\":true,\"installer\":{\"filename\":\"HLSR-Setup-0.5.0.exe\",\"size\":132000,\"sha256\":\"70049852de60dbef7e56a634c18ac76d74115e48deca417659bb4b239a470207\",\"sha512\":\"Tb/gt2d5VKKQgShBA6DpG4g4az2qCAaz+psDXsOG8iTF6k1eg1KuKFMd/tDdm/naWp/Sdo+0jZwIFc5gFxYYTA==\",\"urls\":[\"https://hlsr.pro/downloads/launcher/stable/x.exe\",\"https://github.com/HL-HLSR/HLSR-Releases/releases/download/v0.5.0/x.exe\"]},\"latestYmlSha256\":\"1ca8a4f5a3c70935647cded698b899c2f867941d93c69c88c0d22e6300003d8c\",\"signature\":{\"algorithm\":\"ed25519\",\"value\":\"VNJVkg7M7k+ADD1eh/Pcln5n6Ags4ksVhzndjrcr+iklrzJG69keLMKpDkZRjGbnX0ELlFR1jNiIdmF9K9qTBA==\"}}",
+    "d84": {"body":{"$ref":"d83"}},
+    "d85": [{"$ref":"d84"}],
+    "d86": {"/launcher-channel.json":{"$ref":"d85"},"/latest.yml":{"$ref":"d6"}},
+    "d87": {"p":{"$ref":"d86"},"f":{"$ref":"d7"}},
+    "d88": {"algorithm":"ed25519","value":"VNJVkg7M7k+ADD1eh/Pcln5n6Ags4ksVhzndjrcr+iklrzJG69keLMKpDkZRjGbnX0ELlFR1jNiIdmF9K9qTBA=="},
+    "d89": {"schemaVersion":1,"version":"0.5.0","publishedAt":"2026-10-16T09:00:00.000Z","minimumSupportedVersion":"0.2.7","updateRequired":true,"installer":{"$ref":"d10"},"latestYmlSha256":"1ca8a4f5a3c70935647cded698b899c2f867941d93c69c88c0d22e6300003d8c","signature":{"$ref":"d88"}},
+    "d90": "{\"schemaVersion\":1,\"version\":\"0.5.0\",\"publishedAt\":\"2026-10-16T09:00:00.000Z\",\"minimumSupportedVersion\":\"0.2.7\",\"updateRequired\":true,\"installer\":{\"filename\":\"HLSR-Setup-0.5.0.exe\",\"size\":132000,\"sha256\":\"70049852de60dbef7e56a634c18ac76d74115e48deca417659bb4b239a470207\",\"sha512\":\"Tb/gt2d5VKKQgShBA6DpG4g4az2qCAaz+psDXsOG8iTF6k1eg1KuKFMd/tDdm/naWp/Sdo+0jZwIFc5gFxYYTA==\",\"urls\":[\"https://hlsr.pro/downloads/launcher/stable/x.exe\",\"https://github.com/HL-HLSR/HLSR-Releases/releases/download/v0.5.0/x.exe\"]},\"latestYmlSha256\":\"1ca8a4f5a3c70935647cded698b899c2f867941d93c69c88c0d22e6300003d8c\"}",
+    "d91": {"body":{"$ref":"d90"}},
+    "d92": [{"$ref":"d91"}],
+    "d93": {"/launcher-channel.json":{"$ref":"d92"},"/latest.yml":{"$ref":"d6"}},
+    "d94": [["p","GET","/launcher-channel.json","HLSR-launcher-update"],["p","GET","/moved.json","HLSR-launcher-update"],["p","GET","/latest.yml","HLSR-launcher-update"]],
+    "d95": {"steps":{"$ref":"d15"},"requests":{"$ref":"d94"},"log":[]},
+    "d96": {"/launcher-channel.json":[{"status":302,"headers":[["Location","http://{p}/blocked/x.json"]],"body":""}],"/latest.yml":{"$ref":"d6"}},
+    "d97": {"level":"warn","message":"[launcher-update] канал недоступен (http://{p}/launcher-channel.json): URL вне allowlist: http://{p}/blocked/x.json"},
+    "d98": [{"$ref":"d97"}],
+    "d99": {"level":"warn","message":"[launcher-update] канал недоступен (http://{f}/launcher-channel.json): URL вне allowlist: http://{p}/blocked/y.json"},
+    "d100": [{"$ref":"d97"},{"$ref":"d99"}],
+    "d101": {"steps":[{"error":{"kind":"not-allowed","message":"URL вне allowlist: http://{p}/blocked/y.json"}}],"requests":{"$ref":"d41"},"log":{"$ref":"d100"}},
+    "d102": {"level":"warn","message":"[launcher-update] канал недоступен (http://{p}/launcher-channel.json): слишком много редиректов"},
+    "d103": [{"$ref":"d102"}],
+    "d104": {"/launcher-channel.json":[{"status":302,"headers":[["Location","/launcher-channel.json"]],"body":""}],"/latest.yml":{"$ref":"d6"}},
+    "d105": [
+      ["p","GET","/launcher-channel.json","HLSR-launcher-update"],
+      ["p","GET","/launcher-channel.json","HLSR-launcher-update"],
+      ["p","GET","/launcher-channel.json","HLSR-launcher-update"],
+      ["p","GET","/launcher-channel.json","HLSR-launcher-update"],
+      ["p","GET","/launcher-channel.json","HLSR-launcher-update"],
+      ["p","GET","/launcher-channel.json","HLSR-launcher-update"],
+      ["f","GET","/launcher-channel.json","HLSR-launcher-update"],
+      ["f","GET","/launcher-channel.json","HLSR-launcher-update"],
+      ["f","GET","/launcher-channel.json","HLSR-launcher-update"],
+      ["f","GET","/launcher-channel.json","HLSR-launcher-update"],
+      ["f","GET","/launcher-channel.json","HLSR-launcher-update"],
+      ["f","GET","/launcher-channel.json","HLSR-launcher-update"]
+    ],
+    "d106": {"level":"warn","message":"[launcher-update] канал недоступен (http://{f}/launcher-channel.json): слишком много редиректов"},
+    "d107": [{"$ref":"d102"},{"$ref":"d106"}],
+    "d108": {"steps":[{"error":{"kind":"redirects","message":"слишком много редиректов"}}],"requests":{"$ref":"d105"},"log":{"$ref":"d107"}},
+    "d109": {"level":"warn","message":"[launcher-update] канал недоступен (http://{p}/launcher-channel.json): ответ слишком большой"},
+    "d110": [{"$ref":"d109"}],
+    "d111": [{"level":"warn","message":"[launcher-update] канал не ответил на справку (http://{p}/launcher-channel.json): HTTP 503"}],
+    "d112": {"steps":[{"ok":null}],"requests":[["p","GET","/launcher-channel.json","HLSR-launcher-update"]],"log":{"$ref":"d111"}},
+    "d113": {"steps":{"$ref":"d40"},"requests":[["p","GET","/launcher-channel.json","HLSR-launcher-update"]],"log":[]},
+    "d114": {"steps":[{"ok":null}],"requests":[["p","GET","/launcher-channel.json","HLSR-launcher-update"]],"log":[{"level":"warn","message":"[launcher-update] справка по каналу не удалась: Не SemVer: 0.5.0 / garbage"}]},
+    "d115": [{"level":"warn","message":"[launcher-update] канал недоступен (http://{p}/launcher-channel.json): HTTP 500"},{"level":"warn","message":"[launcher-update] канал недоступен (http://{f}/launcher-channel.json): HTTP 404"}],
+    "d116": {"steps":[{"error":{"kind":"status:404","message":"HTTP 404"}}],"requests":{"$ref":"d41"},"log":{"$ref":"d115"}},
+    "d117": {"steps":[{"ok":{"ok":false,"problems":["нет проверенных метаданных"],"code":"LU_NO_METADATA"}}],"requests":[],"log":[]},
+    "d118": [{"$ref":"d14"},{"ok":{"ok":true,"problems":[],"code":null}}],
+    "d119": {"steps":{"$ref":"d118"},"requests":[["p","GET","/launcher-channel.json","HLSR-launcher-update"],["p","GET","/latest.yml","HLSR-launcher-update"]],"log":[]},
+    "d120": [{"$ref":"d39"},{"ok":{"ok":false,"problems":["нет проверенных метаданных"],"code":"LU_NO_METADATA"}}],
+    "d121": {"steps":{"$ref":"d120"},"requests":{"$ref":"d41"},"log":[]},
+    "d122": [{"ok":{"ok":false,"problems":["проверенные метаданные описывают 0.5.0, а скачана 0.4.0"],"code":"LU_VERSION_MISMATCH"}}],
+    "d123": {"steps":{"$ref":"d122"},"requests":[],"log":[]},
+    "d124": {"ok":false,"problems":["файл не читается: ENOENT: no such file or directory, stat '{dir}/installer.bin'"],"code":"LU_INSTALLER_UNREADABLE"},
+    "d125": {"ok":{"$ref":"d124"}},
+    "d126": [{"$ref":"d2"},{"$ref":"d27"}],
+    "d127": {"/launcher-channel.json":{"$ref":"d126"},"/latest.yml":{"$ref":"d6"}},
+    "d128": "{\"schemaVersion\":1,\"version\":\"0.5.0\",\"publishedAt\":\"2026-10-16T09:00:00.000Z\",\"minimumSupportedVersion\":\"0.3.16\",\"updateRequired\":false,\"installer\":{\"filename\":\"HLSR-Setup-0.5.0-linux-x86_64.AppImage\",\"size\":132000,\"sha256\":\"70049852de60dbef7e56a634c18ac76d74115e48deca417659bb4b239a470207\",\"sha512\":\"Tb/gt2d5VKKQgShBA6DpG4g4az2qCAaz+psDXsOG8iTF6k1eg1KuKFMd/tDdm/naWp/Sdo+0jZwIFc5gFxYYTA==\",\"urls\":[\"https://hlsr.pro/downloads/launcher/linux/stable/x.AppImage\",\"https://github.com/HL-HLSR/HLSR-Releases/releases/download/linux-v0.5.0/x.AppImage\"]},\"latestYmlSha256\":\"a702fa2c57448bd2734558d0c1949f175a8ca65e48bf40f628abf79186f7ab41\",\"signature\":{\"algorithm\":\"ed25519\",\"value\":\"TP16QA6P+qqQbWn7sjP8Sn5ljZc44xFzD2EEp0zkK+/429Azhv05AJwA8IM5+tcTEeOrK9ZEqm9gXdCqjAaBCQ==\"}}",
+    "d129": {"body":{"$ref":"d128"}},
+    "d130": [{"$ref":"d129"}],
+    "d131": "version: 0.5.0\nfiles:\n  - url: HLSR-Setup-0.5.0-linux-x86_64.AppImage\n    sha512: Tb/gt2d5VKKQgShBA6DpG4g4az2qCAaz+psDXsOG8iTF6k1eg1KuKFMd/tDdm/naWp/Sdo+0jZwIFc5gFxYYTA==\n    size: 132000\npath: HLSR-Setup-0.5.0-linux-x86_64.AppImage\nsha512: Tb/gt2d5VKKQgShBA6DpG4g4az2qCAaz+psDXsOG8iTF6k1eg1KuKFMd/tDdm/naWp/Sdo+0jZwIFc5gFxYYTA==\nreleaseDate: '2026-10-16T09:00:00.000Z'\n",
+    "d132": {"body":{"$ref":"d131"}},
+    "d133": [{"$ref":"d132"}],
+    "d134": {"/launcher-channel.json":{"$ref":"d130"},"/latest-linux.yml":{"$ref":"d133"}},
+    "d135": {"p":{"$ref":"d134"},"f":{"$ref":"d134"}},
+    "d136": ["https://hlsr.pro/downloads/launcher/linux/stable/x.AppImage","https://github.com/HL-HLSR/HLSR-Releases/releases/download/linux-v0.5.0/x.AppImage"],
+    "d137": {"filename":"HLSR-Setup-0.5.0-linux-x86_64.AppImage","size":132000,"sha256":"70049852de60dbef7e56a634c18ac76d74115e48deca417659bb4b239a470207","sha512":"Tb/gt2d5VKKQgShBA6DpG4g4az2qCAaz+psDXsOG8iTF6k1eg1KuKFMd/tDdm/naWp/Sdo+0jZwIFc5gFxYYTA==","urls":{"$ref":"d136"}},
+    "d138": {"algorithm":"ed25519","value":"TP16QA6P+qqQbWn7sjP8Sn5ljZc44xFzD2EEp0zkK+/429Azhv05AJwA8IM5+tcTEeOrK9ZEqm9gXdCqjAaBCQ=="},
+    "d139": {"schemaVersion":1,"version":"0.5.0","publishedAt":"2026-10-16T09:00:00.000Z","minimumSupportedVersion":"0.3.16","updateRequired":false,"installer":{"$ref":"d137"},"latestYmlSha256":"a702fa2c57448bd2734558d0c1949f175a8ca65e48bf40f628abf79186f7ab41","signature":{"$ref":"d138"}},
+    "d140": {"ok":true,"problems":[],"updateAvailable":true,"downgrade":false,"unsupported":false,"code":null,"updateRequired":false,"manifest":{"$ref":"d139"},"sourceUrl":"http://{p}/launcher-channel.json"},
+    "d141": {"ok":{"$ref":"d140"}},
+    "d142": [{"$ref":"d141"}],
+    "d143": {"steps":{"$ref":"d142"},"requests":[["p","GET","/launcher-channel.json","HLSR-launcher-update"],["p","GET","/latest-linux.yml","HLSR-launcher-update"]],"log":[]},
+    "d144": {"/launcher-channel.json":[{"status":503,"body":""}],"/latest-linux.yml":{"$ref":"d133"}},
+    "d145": {"p":{"$ref":"d144"},"f":{"$ref":"d134"}},
+    "d146": {"ok":true,"problems":[],"updateAvailable":true,"downgrade":false,"unsupported":false,"code":null,"updateRequired":false,"manifest":{"$ref":"d139"},"sourceUrl":"http://{f}/launcher-channel.json"},
+    "d147": {"ok":{"$ref":"d146"}},
+    "d148": [{"$ref":"d147"}],
+    "d149": [["p","GET","/launcher-channel.json","HLSR-launcher-update"],["f","GET","/launcher-channel.json","HLSR-launcher-update"],["p","GET","/latest-linux.yml","HLSR-launcher-update"]],
+    "d150": {"/launcher-channel.json":[{"status":404,"body":""}],"/latest-linux.yml":{"$ref":"d133"}},
+    "d151": {"steps":{"$ref":"d148"},"requests":{"$ref":"d149"},"log":[{"level":"warn","message":"[launcher-update] канал недоступен (http://{p}/launcher-channel.json): <json>"}]},
+    "d152": "{\"schemaVersion\":1,\"version\":\"0.5.0\",\"publishedAt\":\"2026-10-16T09:00:00.000Z\",\"minimumSupportedVersion\":\"0.3.16\",\"updateRequired\":false,\"installer\":{\"filename\":\"HLSR-Setup-0.5.0-linux-x86_64.AppImage\",\"size\":132000,\"sha256\":\"70049852de60dbef7e56a634c18ac76d74115e48deca417659bb4b239a470207\",\"sha512\":\"Tb/gt2d5VKKQgShBA6DpG4g4az2qCAaz+psDXsOG8iTF6k1eg1KuKFMd/tDdm/naWp/Sdo+0jZwIFc5gFxYYTA==\",\"urls\":[\"https://hlsr.pro/downloads/launcher/linux/stable/x.AppImage\",\"https://github.com/HL-HLSR/HLSR-Releases/releases/download/linux-v0.5.0/x.AppImage\"]},\"latestYmlSha256\":\"a702fa2c57448bd2734558d0c1949f175a8ca65e48bf40f628abf79186f7ab41\"}",
+    "d153": {"body":{"$ref":"d152"}},
+    "d154": [{"$ref":"d153"}],
+    "d155": {"/launcher-channel.json":{"$ref":"d154"},"/latest-linux.yml":{"$ref":"d133"}},
+    "d156": {"p":{"$ref":"d155"},"f":{"$ref":"d134"}},
+    "d157": {"steps":{"$ref":"d148"},"requests":{"$ref":"d149"},"log":{"$ref":"d32"}},
+    "d158": "{\"schemaVersion\":1,\"version\":\"0.5.0\",\"publishedAt\":\"2026-10-16T09:00:00.000Z\",\"minimumSupportedVersion\":\"0.3.16\",\"updateRequired\":false,\"installer\":{\"filename\":\"HLSR-Setup-0.5.0-linux-x86_64.AppImage\",\"size\":132000,\"sha256\":\"70049852de60dbef7e56a634c18ac76d74115e48deca417659bb4b239a470207\",\"sha512\":\"Tb/gt2d5VKKQgShBA6DpG4g4az2qCAaz+psDXsOG8iTF6k1eg1KuKFMd/tDdm/naWp/Sdo+0jZwIFc5gFxYYTA==\",\"urls\":[\"https://hlsr.pro/downloads/launcher/linux/stable/x.AppImage\",\"https://github.com/HL-HLSR/HLSR-Releases/releases/download/linux-v0.5.0/x.AppImage\"]},\"latestYmlSha256\":\"a702fa2c57448bd2734558d0c1949f175a8ca65e48bf40f628abf79186f7ab41\",\"signature\":{\"algorithm\":\"ed25519\",\"value\":\"W3KBVJywZLXefg39x3ATey8kjEL/MtaH+5GbNs1xSe7Mo5LSRJPa3zNal4wC1su3vvTlHMBENX4AOh3B9x8wAA==\"}}",
+    "d159": {"body":{"$ref":"d158"}},
+    "d160": [{"$ref":"d159"}],
+    "d161": {"/launcher-channel.json":{"$ref":"d160"},"/latest-linux.yml":{"$ref":"d133"}},
+    "d162": {"/launcher-channel.json":[{"status":500,"body":""}],"/latest-linux.yml":{"$ref":"d133"}},
+    "d163": {"/launcher-channel.json":[{"hangUp":true}],"/latest-linux.yml":{"$ref":"d133"}},
+    "d164": {"/launcher-channel.json":[{"body":"null"}],"/latest-linux.yml":{"$ref":"d133"}},
+    "d165": {"/launcher-channel.json":[{"body":"{}"}],"/latest-linux.yml":{"$ref":"d133"}},
+    "d166": "{\"schemaVersion\":1,\"version\":\"0.5.0\",\"publishedAt\":\"2026-10-16T09:00:00.000Z\",\"minimumSupportedVersion\":\"0.3.16\",\"updateRequired\":false,\"installer\":{\"filename\":\"HLSR-Setup-0.5.0-linux-x86_64.AppImage\",\"size\":132000,\"sha256\":\"70049852de60dbef7e56a634c18ac76d74115e48deca417659bb4b239a470207\",\"sha512\":\"Tb/gt2d5VKKQgShBA6DpG4g4az2qCAaz+psDXsOG8iTF6k1eg1KuKFMd/tDdm/naWp/Sdo+0jZwIFc5gFxYYTA==\",\"urls\":[\"https://hlsr.pro/downloads/launcher/linux/stable/x.AppImage\",\"https://github.com/HL-HLSR/HLSR-Releases/releases/download/linux-v0.5.0/x.AppImage\"]},\"latestYmlSha256\":\"a702fa2c57448bd2734558d0c1949f175a8ca65e48bf40f628abf79186f7ab41\",\"signature\":null}",
+    "d167": {"body":{"$ref":"d166"}},
+    "d168": [{"$ref":"d167"}],
+    "d169": {"/launcher-channel.json":{"$ref":"d168"},"/latest-linux.yml":{"$ref":"d133"}},
+    "d170": {"/launcher-channel.json":[{"status":302,"body":""}],"/latest-linux.yml":{"$ref":"d133"}},
+    "d171": {"/launcher-channel.json":[{"status":202,"body":""}],"/latest-linux.yml":{"$ref":"d133"}},
+    "d172": {"/launcher-channel.json":{"$ref":"d130"},"/latest-linux.yml":[{"body":"version: 0.5.0\n"}]},
+    "d173": [["p","GET","/launcher-channel.json","HLSR-launcher-update"],["p","GET","/latest-linux.yml","HLSR-launcher-update"],["f","GET","/latest-linux.yml","HLSR-launcher-update"],["f","GET","/launcher-channel.json","HLSR-launcher-update"],["p","GET","/latest-linux.yml","HLSR-launcher-update"],["f","GET","/latest-linux.yml","HLSR-launcher-update"]],
+    "d174": {"/launcher-channel.json":{"$ref":"d130"},"/latest-linux.yml":[{"status":404,"body":""}]},
+    "d175": [["p","GET","/launcher-channel.json","HLSR-launcher-update"],["p","GET","/latest-linux.yml","HLSR-launcher-update"],["f","GET","/latest-linux.yml","HLSR-launcher-update"]],
+    "d176": {"steps":{"$ref":"d142"},"requests":{"$ref":"d175"},"log":[]},
+    "d177": "{\"schemaVersion\":1,\"version\":\"0.5.0\",\"publishedAt\":\"2026-10-16T09:00:00.000Z\",\"minimumSupportedVersion\":\"0.3.16\",\"updateRequired\":true,\"installer\":{\"filename\":\"HLSR-Setup-0.5.0-linux-x86_64.AppImage\",\"size\":132000,\"sha256\":\"70049852de60dbef7e56a634c18ac76d74115e48deca417659bb4b239a470207\",\"sha512\":\"Tb/gt2d5VKKQgShBA6DpG4g4az2qCAaz+psDXsOG8iTF6k1eg1KuKFMd/tDdm/naWp/Sdo+0jZwIFc5gFxYYTA==\",\"urls\":[\"https://hlsr.pro/downloads/launcher/linux/stable/x.AppImage\",\"https://github.com/HL-HLSR/HLSR-Releases/releases/download/linux-v0.5.0/x.AppImage\"]},\"latestYmlSha256\":\"a702fa2c57448bd2734558d0c1949f175a8ca65e48bf40f628abf79186f7ab41\",\"signature\":{\"algorithm\":\"ed25519\",\"value\":\"XHXEjQo5oXjF5Omy8Nl4JWv4de/0pYqLL1xIBdOigRVA5ZMArEzca89XRU2s4dqeQtjQjz9HCvP57/mvsiCIBg==\"}}",
+    "d178": {"body":{"$ref":"d177"}},
+    "d179": [{"$ref":"d178"}],
+    "d180": {"/launcher-channel.json":{"$ref":"d179"},"/latest-linux.yml":{"$ref":"d133"}},
+    "d181": {"p":{"$ref":"d180"},"f":{"$ref":"d134"}},
+    "d182": {"algorithm":"ed25519","value":"XHXEjQo5oXjF5Omy8Nl4JWv4de/0pYqLL1xIBdOigRVA5ZMArEzca89XRU2s4dqeQtjQjz9HCvP57/mvsiCIBg=="},
+    "d183": {"schemaVersion":1,"version":"0.5.0","publishedAt":"2026-10-16T09:00:00.000Z","minimumSupportedVersion":"0.3.16","updateRequired":true,"installer":{"$ref":"d137"},"latestYmlSha256":"a702fa2c57448bd2734558d0c1949f175a8ca65e48bf40f628abf79186f7ab41","signature":{"$ref":"d182"}},
+    "d184": "{\"schemaVersion\":1,\"version\":\"0.5.0\",\"publishedAt\":\"2026-10-16T09:00:00.000Z\",\"minimumSupportedVersion\":\"0.3.16\",\"updateRequired\":true,\"installer\":{\"filename\":\"HLSR-Setup-0.5.0-linux-x86_64.AppImage\",\"size\":132000,\"sha256\":\"70049852de60dbef7e56a634c18ac76d74115e48deca417659bb4b239a470207\",\"sha512\":\"Tb/gt2d5VKKQgShBA6DpG4g4az2qCAaz+psDXsOG8iTF6k1eg1KuKFMd/tDdm/naWp/Sdo+0jZwIFc5gFxYYTA==\",\"urls\":[\"https://hlsr.pro/downloads/launcher/linux/stable/x.AppImage\",\"https://github.com/HL-HLSR/HLSR-Releases/releases/download/linux-v0.5.0/x.AppImage\"]},\"latestYmlSha256\":\"a702fa2c57448bd2734558d0c1949f175a8ca65e48bf40f628abf79186f7ab41\"}",
+    "d185": {"body":{"$ref":"d184"}},
+    "d186": [{"$ref":"d185"}],
+    "d187": {"/launcher-channel.json":{"$ref":"d186"},"/latest-linux.yml":{"$ref":"d133"}},
+    "d188": [["p","GET","/launcher-channel.json","HLSR-launcher-update"],["p","GET","/moved.json","HLSR-launcher-update"],["p","GET","/latest-linux.yml","HLSR-launcher-update"]],
+    "d189": {"steps":{"$ref":"d142"},"requests":{"$ref":"d188"},"log":[]},
+    "d190": {"/launcher-channel.json":[{"status":302,"headers":[["Location","http://{p}/blocked/x.json"]],"body":""}],"/latest-linux.yml":{"$ref":"d133"}},
+    "d191": {"/launcher-channel.json":[{"status":302,"headers":[["Location","/launcher-channel.json"]],"body":""}],"/latest-linux.yml":{"$ref":"d133"}},
+    "d192": [{"$ref":"d141"},{"ok":{"ok":true,"problems":[],"code":null}}],
+    "d193": {"steps":{"$ref":"d192"},"requests":[["p","GET","/launcher-channel.json","HLSR-launcher-update"],["p","GET","/latest-linux.yml","HLSR-launcher-update"]],"log":[]},
+    "d194": [{"$ref":"d129"},{"$ref":"d153"}],
+    "d195": {"/launcher-channel.json":{"$ref":"d194"},"/latest-linux.yml":{"$ref":"d133"}},
+    "d196": {"results":[{"ok":{"length":5,"sha256":"5edd1832df25e2f1a72585c0ee55c1e585e7f4902eb1d15f7abf1c71c1b296ae","text":"moved"}}],"requests":[["p","GET","/x","HLSR-launcher-update"],["p","GET","/y","HLSR-launcher-update"]]},
+    "d197": {"results":[{"ok":{"length":5,"sha256":"d9298a10d1b0735837dc4bd85dac641b0f3cef27a47e5d53a54f2f3f5b2fcffa","text":"other"}}],"requests":[["p","GET","/x","HLSR-launcher-update"],["f","GET","/z","HLSR-launcher-update"]]},
+    "d198": [["p","GET","/x","HLSR-launcher-update"],["p","GET","/r1","HLSR-launcher-update"],["p","GET","/r2","HLSR-launcher-update"],["p","GET","/r3","HLSR-launcher-update"],["p","GET","/r4","HLSR-launcher-update"],["p","GET","/r5","HLSR-launcher-update"]],
+    "d199": {"results":[{"error":{"kind":"too-large","message":"ответ слишком большой"}}],"requests":[["p","GET","/x","HLSR-launcher-update"]]},
+    "d200": {"decision":{"action":"proceed","reason":"check-timeout","warn":"UPDATE_CHECK_TIMEOUT"},"calls":["check"],"log":[{"level":"warn","message":"[boot] update check timed out — starting current version"}],"subscribers":0},
+    "d201": [{"level":"info","message":"[boot] update available — downloading on loading screen"},{"level":"info","message":"[boot] verified update ready — installing"}],
+    "d202": {"decision":{"action":"installing","reason":"installing","version":"0.5.0"},"calls":["check","download","install"],"log":{"$ref":"d201"},"subscribers":0},
+    "d203": {"decision":{"action":"installing","reason":"installing","version":"0.5.0"},"calls":["check","install"],"log":[{"level":"info","message":"[boot] verified update ready — installing"}],"subscribers":0},
+    "d204": {"decision":{"action":"proceed","reason":"update-error","warn":"LU_FEED_UNAVAILABLE","error":"boom"},"calls":["check"],"log":[],"subscribers":0},
+    "d205": {"decision":{"action":"proceed","reason":"update-error","warn":"LU_FEED_UNAVAILABLE","error":"unknown"},"calls":["check"],"log":[],"subscribers":0}
+  },
+  "keys": {"A":"-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAjoJoJkT1QRm3JZBFEJm6iPxvW7a/8TLG/GSHzPj/xAw=\n-----END PUBLIC KEY-----\n"},
+  "installer": {"repeat":"hlsr installer payload for the gate fixture ","times":3000},
+  "gate": [
+    {"id":"win32: ok","platform":"win32","currentVersion":"0.4.7","steps":[{"op":"evaluate"}],"routes":{"$ref":"d8"},"result":{"$ref":"d16"}},
+    {
+      "id": "win32: ok keeps unknown fields",
+      "platform": "win32",
+      "currentVersion": "0.4.7",
+      "steps": [{"op":"evaluate"}],
+      "routes": {
+        "p": {
+          "/launcher-channel.json": [
+            {
+              "body": "{\"schemaVersion\":1,\"version\":\"0.5.0\",\"publishedAt\":\"2026-10-16T09:00:00.000Z\",\"minimumSupportedVersion\":\"0.2.7\",\"updateRequired\":false,\"installer\":{\"filename\":\"HLSR-Setup-0.5.0.exe\",\"size\":132000,\"sha256\":\"70049852de60dbef7e56a634c18ac76d74115e48deca417659bb4b239a470207\",\"sha512\":\"Tb/gt2d5VKKQgShBA6DpG4g4az2qCAaz+psDXsOG8iTF6k1eg1KuKFMd/tDdm/naWp/Sdo+0jZwIFc5gFxYYTA==\",\"urls\":[\"https://hlsr.pro/downloads/launcher/stable/x.exe\",\"https://github.com/HL-HLSR/HLSR-Releases/releases/download/v0.5.0/x.exe\"]},\"latestYmlSha256\":\"1ca8a4f5a3c70935647cded698b899c2f867941d93c69c88c0d22e6300003d8c\",\"build\":{\"executable\":{\"path\":\"x\",\"size\":1,\"sha256\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"chunks\":[]}},\"futureField\":[1,2],\"signature\":{\"algorithm\":\"ed25519\",\"value\":\"IGkwN95x1LcZdA4wsYW3fbyKYhlZTTLT+WJC3h7UMSJJKH+KVvXwcAFDgwH5OLWgTn65cndKNpTgQtdNRBbaAA==\"}}"
+            }
+          ],
+          "/latest.yml": {"$ref":"d6"}
+        },
+        "f": {"$ref":"d7"}
+      },
+      "result": {
+        "steps": [
+          {
+            "ok": {
+              "ok": true,
+              "problems": [],
+              "updateAvailable": true,
+              "downgrade": false,
+              "unsupported": false,
+              "code": null,
+              "updateRequired": false,
+              "manifest": {
+                "schemaVersion": 1,
+                "version": "0.5.0",
+                "publishedAt": "2026-10-16T09:00:00.000Z",
+                "minimumSupportedVersion": "0.2.7",
+                "updateRequired": false,
+                "installer": {"$ref":"d10"},
+                "latestYmlSha256": "1ca8a4f5a3c70935647cded698b899c2f867941d93c69c88c0d22e6300003d8c",
+                "build": {"$ref":"d17"},
+                "futureField": [1,2],
+                "signature": {"algorithm":"ed25519","value":"IGkwN95x1LcZdA4wsYW3fbyKYhlZTTLT+WJC3h7UMSJJKH+KVvXwcAFDgwH5OLWgTn65cndKNpTgQtdNRBbaAA=="}
+              },
+              "sourceUrl": "http://{p}/launcher-channel.json"
+            }
+          }
+        ],
+        "requests": [["p","GET","/launcher-channel.json","HLSR-launcher-update"],["p","GET","/latest.yml","HLSR-launcher-update"]],
+        "log": []
+      }
+    },
+    {
+      "id": "win32: ok twice (second request after repeating routes)",
+      "platform": "win32",
+      "currentVersion": "0.4.7",
+      "steps": [{"op":"evaluate"},{"op":"evaluate"}],
+      "routes": {"$ref":"d8"},
+      "result": {"steps":[{"$ref":"d14"},{"$ref":"d14"}],"requests":[["p","GET","/launcher-channel.json","HLSR-launcher-update"],["p","GET","/latest.yml","HLSR-launcher-update"],["p","GET","/launcher-channel.json","HLSR-launcher-update"],["p","GET","/latest.yml","HLSR-launcher-update"]],"log":[]}
+    },
+    {"id":"win32: primary 503, fallback ok","platform":"win32","currentVersion":"0.4.7","steps":[{"op":"evaluate"}],"routes":{"$ref":"d19"},"result":{"steps":{"$ref":"d22"},"requests":{"$ref":"d23"},"log":[{"level":"warn","message":"[launcher-update] канал недоступен (http://{p}/launcher-channel.json): HTTP 503"}]}},
+    {"id":"win32: primary 404, fallback ok","platform":"win32","currentVersion":"0.4.7","steps":[{"op":"evaluate"}],"routes":{"p":{"$ref":"d24"},"f":{"$ref":"d7"}},"result":{"steps":{"$ref":"d22"},"requests":{"$ref":"d23"},"log":[{"level":"warn","message":"[launcher-update] канал недоступен (http://{p}/launcher-channel.json): HTTP 404"}]}},
+    {"id":"win32: primary not JSON, fallback ok","platform":"win32","currentVersion":"0.4.7","steps":[{"op":"evaluate"}],"routes":{"p":{"/launcher-channel.json":[{"body":"<html>nope</html>"}],"/latest.yml":{"$ref":"d6"}},"f":{"$ref":"d7"}},"result":{"$ref":"d25"}},
+    {"id":"win32: primary empty body, fallback ok","platform":"win32","currentVersion":"0.4.7","steps":[{"op":"evaluate"}],"routes":{"p":{"/launcher-channel.json":[{"body":""}],"/latest.yml":{"$ref":"d6"}},"f":{"$ref":"d7"}},"result":{"$ref":"d25"}},
+    {
+      "id": "win32: primary truncated JSON, fallback ok",
+      "platform": "win32",
+      "currentVersion": "0.4.7",
+      "steps": [{"op":"evaluate"}],
+      "routes": {"p":{"/launcher-channel.json":[{"body":"{\"schemaVersion\":1,\"version\":\"0.5.0\",\"publishedAt\":\"2026-10-16T09:00:00.000Z\",\"minimumSupportedVersion\":\"0.2.7\",\"updateRequired\":false,\"installer\":{\"filename\":\"HLSR-Setup-0.5.0.exe\",\"size\":132000,\"sha"}],"/latest.yml":{"$ref":"d6"}},"f":{"$ref":"d7"}},
+      "result": {"$ref":"d25"}
+    },
+    {
+      "id": "win32: primary BOM, fallback ok",
+      "platform": "win32",
+      "currentVersion": "0.4.7",
+      "steps": [{"op":"evaluate"}],
+      "routes": {
+        "p": {
+          "/launcher-channel.json": [
+            {
+              "body": "﻿{\"schemaVersion\":1,\"version\":\"0.5.0\",\"publishedAt\":\"2026-10-16T09:00:00.000Z\",\"minimumSupportedVersion\":\"0.2.7\",\"updateRequired\":false,\"installer\":{\"filename\":\"HLSR-Setup-0.5.0.exe\",\"size\":132000,\"sha256\":\"70049852de60dbef7e56a634c18ac76d74115e48deca417659bb4b239a470207\",\"sha512\":\"Tb/gt2d5VKKQgShBA6DpG4g4az2qCAaz+psDXsOG8iTF6k1eg1KuKFMd/tDdm/naWp/Sdo+0jZwIFc5gFxYYTA==\",\"urls\":[\"https://hlsr.pro/downloads/launcher/stable/x.exe\",\"https://github.com/HL-HLSR/HLSR-Releases/releases/download/v0.5.0/x.exe\"]},\"latestYmlSha256\":\"1ca8a4f5a3c70935647cded698b899c2f867941d93c69c88c0d22e6300003d8c\",\"signature\":{\"algorithm\":\"ed25519\",\"value\":\"tNlIHnBpr5L8oLO77MvgC8VBow7bOVw8td4Ujaswk44/ZRswUhz+aYoUxukHwM7NxMBXQcRV2Z53pE4GtF/ODQ==\"}}"
+            }
+          ],
+          "/latest.yml": {"$ref":"d6"}
+        },
+        "f": {"$ref":"d7"}
+      },
+      "result": {"$ref":"d25"}
+    },
+    {"id":"win32: primary unsigned, fallback ok","platform":"win32","currentVersion":"0.4.7","steps":[{"op":"evaluate"}],"routes":{"$ref":"d30"},"result":{"$ref":"d33"}},
+    {"id":"win32: primary wrong key, fallback ok","platform":"win32","currentVersion":"0.4.7","steps":[{"op":"evaluate"}],"routes":{"p":{"$ref":"d37"},"f":{"$ref":"d7"}},"result":{"$ref":"d33"}},
+    {"id":"win32: both unsigned: first outcome wins","platform":"win32","currentVersion":"0.4.7","steps":[{"op":"evaluate"}],"routes":{"p":{"$ref":"d29"},"f":{"$ref":"d37"}},"result":{"$ref":"d42"}},
+    {"id":"win32: primary rejected, fallback unavailable: first outcome","platform":"win32","currentVersion":"0.4.7","steps":[{"op":"evaluate"}],"routes":{"p":{"$ref":"d29"},"f":{"$ref":"d43"}},"result":{"$ref":"d44"}},
+    {"id":"win32: primary unavailable, fallback rejected","platform":"win32","currentVersion":"0.4.7","steps":[{"op":"evaluate"}],"routes":{"p":{"$ref":"d43"},"f":{"$ref":"d29"}},"result":{"$ref":"d48"}},
+    {"id":"win32: both unavailable: last error","platform":"win32","currentVersion":"0.4.7","steps":[{"op":"evaluate"}],"routes":{"p":{"$ref":"d18"},"f":{"$ref":"d43"}},"result":{"$ref":"d50"}},
+    {"id":"win32: both not JSON: last error","platform":"win32","currentVersion":"0.4.7","steps":[{"op":"evaluate"}],"routes":{"p":{"/launcher-channel.json":[{"body":"x"}],"/latest.yml":{"$ref":"d6"}},"f":{"/launcher-channel.json":[{"body":"y"}],"/latest.yml":{"$ref":"d6"}}},"result":{"$ref":"d52"}},
+    {"id":"win32: both hang up","platform":"win32","currentVersion":"0.4.7","steps":[{"op":"evaluate"}],"routes":{"p":{"$ref":"d53"},"f":{"$ref":"d53"}},"result":{"$ref":"d55"}},
+    {
+      "id": "win32: primary dead port, fallback ok",
+      "platform": "win32",
+      "currentVersion": "0.4.7",
+      "steps": [{"op":"evaluate"}],
+      "dead": true,
+      "routes": {"$ref":"d8"},
+      "result": {"steps":{"$ref":"d22"},"requests":[["f","GET","/launcher-channel.json","HLSR-launcher-update"],["p","GET","/latest.yml","HLSR-launcher-update"]],"log":[{"level":"warn","message":"[launcher-update] канал недоступен (http://{dead}/launcher-channel.json): <network>"}]}
+    },
+    {
+      "id": "win32: primary cut mid-body, fallback ok",
+      "platform": "win32",
+      "currentVersion": "0.4.7",
+      "steps": [{"op":"evaluate"}],
+      "routes": {"p":{"/launcher-channel.json":[{"body":{"$ref":"d1"},"cutAfter":100}],"/latest.yml":{"$ref":"d6"}},"f":{"$ref":"d7"}},
+      "result": {"steps":{"$ref":"d22"},"requests":{"$ref":"d23"},"log":[{"level":"warn","message":"[launcher-update] канал недоступен (http://{p}/launcher-channel.json): <network>"}]}
+    },
+    {"id":"win32: channel body null","platform":"win32","currentVersion":"0.4.7","steps":[{"op":"evaluate"}],"routes":{"p":{"$ref":"d56"},"f":{"$ref":"d56"}},"result":{"$ref":"d60"}},
+    {"id":"win32: channel body empty object","platform":"win32","currentVersion":"0.4.7","steps":[{"op":"evaluate"}],"routes":{"p":{"$ref":"d61"},"f":{"$ref":"d61"}},"result":{"$ref":"d66"}},
+    {"id":"win32: channel signature null","platform":"win32","currentVersion":"0.4.7","steps":[{"op":"evaluate"}],"routes":{"p":{"$ref":"d70"},"f":{"$ref":"d70"}},"result":{"$ref":"d42"}},
+    {"id":"win32: channel redirected to 302 without location","platform":"win32","currentVersion":"0.4.7","steps":[{"op":"evaluate"}],"routes":{"p":{"$ref":"d71"},"f":{"$ref":"d71"}},"result":{"$ref":"d73"}},
+    {"id":"win32: channel 202","platform":"win32","currentVersion":"0.4.7","steps":[{"op":"evaluate"}],"routes":{"p":{"$ref":"d74"},"f":{"$ref":"d74"}},"result":{"$ref":"d76"}},
+    {
+      "id": "win32: latest.yml differs",
+      "platform": "win32",
+      "currentVersion": "0.4.7",
+      "steps": [{"op":"evaluate"}],
+      "routes": {"p":{"$ref":"d77"},"f":{"$ref":"d77"}},
+      "result": {"steps":[{"ok":{"ok":false,"problems":["latest.yml не подтверждён: SHA-256 latest.yml не совпал (http://{f}/latest.yml)"],"updateAvailable":true,"downgrade":false,"unsupported":false,"code":null,"updateRequired":false,"manifest":{"$ref":"d12"},"sourceUrl":"http://{p}/launcher-channel.json"}}],"requests":{"$ref":"d78"},"log":[]}
+    },
+    {"id":"win32: latest.yml first unavailable","platform":"win32","currentVersion":"0.4.7","steps":[{"op":"evaluate"}],"routes":{"p":{"$ref":"d79"},"f":{"$ref":"d7"}},"result":{"$ref":"d81"}},
+    {"id":"win32: latest.yml first differs, second ok","platform":"win32","currentVersion":"0.4.7","steps":[{"op":"evaluate"}],"routes":{"p":{"$ref":"d77"},"f":{"$ref":"d7"}},"result":{"$ref":"d81"}},
+    {
+      "id": "win32: latest.yml all unavailable",
+      "platform": "win32",
+      "currentVersion": "0.4.7",
+      "steps": [{"op":"evaluate"}],
+      "routes": {"p":{"$ref":"d79"},"f":{"/launcher-channel.json":{"$ref":"d3"},"/latest.yml":[{"status":500,"body":""}]}},
+      "result": {"steps":[{"ok":{"ok":false,"problems":["latest.yml не подтверждён: HTTP 500"],"updateAvailable":true,"downgrade":false,"unsupported":false,"code":null,"updateRequired":false,"manifest":{"$ref":"d12"},"sourceUrl":"http://{p}/launcher-channel.json"}}],"requests":{"$ref":"d78"},"log":[]}
+    },
+    {
+      "id": "win32: latest.yml too large",
+      "platform": "win32",
+      "currentVersion": "0.4.7",
+      "steps": [{"op":"evaluate"}],
+      "routes": {"p":{"/launcher-channel.json":{"$ref":"d3"},"/latest.yml":[{"bodySize":262145}]},"f":{"$ref":"d79"}},
+      "result": {"steps":[{"ok":{"ok":false,"problems":["latest.yml не подтверждён: HTTP 404"],"updateAvailable":true,"downgrade":false,"unsupported":false,"code":null,"updateRequired":false,"manifest":{"$ref":"d12"},"sourceUrl":"http://{p}/launcher-channel.json"}}],"requests":{"$ref":"d78"},"log":[]}
+    },
+    {
+      "id": "win32: without latestYmlSha256 the yml is not requested",
+      "platform": "win32",
+      "currentVersion": "0.4.7",
+      "steps": [{"op":"evaluate"}],
+      "routes": {
+        "p": {
+          "/launcher-channel.json": [
+            {
+              "body": "{\"schemaVersion\":1,\"version\":\"0.5.0\",\"publishedAt\":\"2026-10-16T09:00:00.000Z\",\"minimumSupportedVersion\":\"0.2.7\",\"updateRequired\":false,\"installer\":{\"filename\":\"HLSR-Setup-0.5.0.exe\",\"size\":132000,\"sha256\":\"70049852de60dbef7e56a634c18ac76d74115e48deca417659bb4b239a470207\",\"sha512\":\"Tb/gt2d5VKKQgShBA6DpG4g4az2qCAaz+psDXsOG8iTF6k1eg1KuKFMd/tDdm/naWp/Sdo+0jZwIFc5gFxYYTA==\",\"urls\":[\"https://hlsr.pro/downloads/launcher/stable/x.exe\",\"https://github.com/HL-HLSR/HLSR-Releases/releases/download/v0.5.0/x.exe\"]},\"signature\":{\"algorithm\":\"ed25519\",\"value\":\"dVnWW14+hQrmFAs1+nD4SBzEC02pGUrWqxo9O0NDPo4/7VD5K0mbzw3/iZEScQk+vNr/unmiNupsGh1Ei+X7Dg==\"}}"
+            }
+          ],
+          "/latest.yml": {"$ref":"d6"}
+        },
+        "f": {"$ref":"d7"}
+      },
+      "result": {
+        "steps": [
+          {
+            "ok": {
+              "ok": true,
+              "problems": [],
+              "updateAvailable": true,
+              "downgrade": false,
+              "unsupported": false,
+              "code": null,
+              "updateRequired": false,
+              "manifest": {"schemaVersion":1,"version":"0.5.0","publishedAt":"2026-10-16T09:00:00.000Z","minimumSupportedVersion":"0.2.7","updateRequired":false,"installer":{"$ref":"d10"},"signature":{"algorithm":"ed25519","value":"dVnWW14+hQrmFAs1+nD4SBzEC02pGUrWqxo9O0NDPo4/7VD5K0mbzw3/iZEScQk+vNr/unmiNupsGh1Ei+X7Dg=="}},
+              "sourceUrl": "http://{p}/launcher-channel.json"
+            }
+          }
+        ],
+        "requests": [["p","GET","/launcher-channel.json","HLSR-launcher-update"]],
+        "log": []
+      }
+    },
+    {
+      "id": "win32: latestYmlSha256 null",
+      "platform": "win32",
+      "currentVersion": "0.4.7",
+      "steps": [{"op":"evaluate"}],
+      "routes": {
+        "p": {
+          "/launcher-channel.json": [
+            {
+              "body": "{\"schemaVersion\":1,\"version\":\"0.5.0\",\"publishedAt\":\"2026-10-16T09:00:00.000Z\",\"minimumSupportedVersion\":\"0.2.7\",\"updateRequired\":false,\"installer\":{\"filename\":\"HLSR-Setup-0.5.0.exe\",\"size\":132000,\"sha256\":\"70049852de60dbef7e56a634c18ac76d74115e48deca417659bb4b239a470207\",\"sha512\":\"Tb/gt2d5VKKQgShBA6DpG4g4az2qCAaz+psDXsOG8iTF6k1eg1KuKFMd/tDdm/naWp/Sdo+0jZwIFc5gFxYYTA==\",\"urls\":[\"https://hlsr.pro/downloads/launcher/stable/x.exe\",\"https://github.com/HL-HLSR/HLSR-Releases/releases/download/v0.5.0/x.exe\"]},\"latestYmlSha256\":null,\"signature\":{\"algorithm\":\"ed25519\",\"value\":\"TqUtn/CiMboKlwAANtyrngyv2YOmmBtM4fb0O5t1lhCkXw4ioLpsrrBbBdSDNVCTax7da684Mr5ftr3Kh5ueAQ==\"}}"
+            }
+          ],
+          "/latest.yml": {"$ref":"d6"}
+        },
+        "f": {"$ref":"d7"}
+      },
+      "result": {
+        "steps": [
+          {
+            "ok": {
+              "ok": true,
+              "problems": [],
+              "updateAvailable": true,
+              "downgrade": false,
+              "unsupported": false,
+              "code": null,
+              "updateRequired": false,
+              "manifest": {"schemaVersion":1,"version":"0.5.0","publishedAt":"2026-10-16T09:00:00.000Z","minimumSupportedVersion":"0.2.7","updateRequired":false,"installer":{"$ref":"d10"},"latestYmlSha256":null,"signature":{"algorithm":"ed25519","value":"TqUtn/CiMboKlwAANtyrngyv2YOmmBtM4fb0O5t1lhCkXw4ioLpsrrBbBdSDNVCTax7da684Mr5ftr3Kh5ueAQ=="}},
+              "sourceUrl": "http://{p}/launcher-channel.json"
+            }
+          }
+        ],
+        "requests": [["p","GET","/launcher-channel.json","HLSR-launcher-update"]],
+        "log": []
+      }
+    },
+    {
+      "id": "win32: same version",
+      "platform": "win32",
+      "currentVersion": "0.5.0",
+      "steps": [{"op":"evaluate"}],
+      "routes": {"$ref":"d8"},
+      "result": {"steps":[{"ok":{"ok":true,"problems":[],"updateAvailable":false,"downgrade":false,"unsupported":false,"code":null,"updateRequired":false,"manifest":{"$ref":"d12"},"sourceUrl":"http://{p}/launcher-channel.json"}}],"requests":[["p","GET","/launcher-channel.json","HLSR-launcher-update"],["p","GET","/latest.yml","HLSR-launcher-update"]],"log":[]}
+    },
+    {
+      "id": "win32: downgrade rejected",
+      "platform": "win32",
+      "currentVersion": "0.6.0",
+      "steps": [{"op":"evaluate"}],
+      "routes": {"$ref":"d8"},
+      "result": {"steps":[{"ok":{"ok":false,"problems":["версия 0.5.0 старше установленной 0.6.0 (downgrade отклонён)"],"updateAvailable":false,"downgrade":true,"unsupported":false,"code":null,"updateRequired":false,"manifest":{"$ref":"d12"},"sourceUrl":"http://{p}/launcher-channel.json"}}],"requests":{"$ref":"d41"},"log":[]}
+    },
+    {
+      "id": "win32: downgrade on primary only, fallback also",
+      "platform": "win32",
+      "currentVersion": "0.5.1",
+      "steps": [{"op":"evaluate"}],
+      "routes": {"$ref":"d8"},
+      "result": {"steps":[{"ok":{"ok":false,"problems":["версия 0.5.0 старше установленной 0.5.1 (downgrade отклонён)"],"updateAvailable":false,"downgrade":true,"unsupported":false,"code":null,"updateRequired":false,"manifest":{"$ref":"d12"},"sourceUrl":"http://{p}/launcher-channel.json"}}],"requests":{"$ref":"d41"},"log":[]}
+    },
+    {
+      "id": "win32: unsupported",
+      "platform": "win32",
+      "currentVersion": "0.2.6",
+      "steps": [{"op":"evaluate"}],
+      "routes": {"$ref":"d8"},
+      "result": {"steps":[{"ok":{"ok":false,"problems":["установленная версия 0.2.6 ниже минимально поддерживаемой 0.2.7 — требуется установка вручную"],"updateAvailable":true,"downgrade":false,"unsupported":true,"code":"LU_VERSION_UNSUPPORTED","updateRequired":false,"manifest":null,"sourceUrl":"http://{p}/launcher-channel.json"}}],"requests":{"$ref":"d41"},"log":[]}
+    },
+    {"id":"win32: beta current","platform":"win32","currentVersion":"0.5.0-beta.1","steps":[{"op":"evaluate"}],"routes":{"$ref":"d8"},"result":{"$ref":"d16"}},
+    {"id":"win32: current not semver throws","platform":"win32","currentVersion":"garbage","steps":[{"op":"evaluate"}],"routes":{"$ref":"d8"},"result":{"$ref":"d82"}},
+    {"id":"win32: expected version ok","platform":"win32","currentVersion":"0.4.7","steps":[{"op":"evaluate","expected":"0.5.0"}],"routes":{"$ref":"d8"},"result":{"$ref":"d16"}},
+    {
+      "id": "win32: expected version differs",
+      "platform": "win32",
+      "currentVersion": "0.4.7",
+      "steps": [{"op":"evaluate","expected":"0.9.9"}],
+      "routes": {"$ref":"d8"},
+      "result": {"steps":[{"ok":{"ok":false,"problems":["feed предлагает 0.9.9, подписанные метаданные — 0.5.0"],"updateAvailable":true,"downgrade":false,"unsupported":false,"code":null,"updateRequired":false,"manifest":{"$ref":"d12"},"sourceUrl":"http://{p}/launcher-channel.json"}}],"requests":{"$ref":"d41"},"log":[]}
+    },
+    {"id":"win32: expected version empty","platform":"win32","currentVersion":"0.4.7","steps":[{"op":"evaluate","expected":""}],"routes":{"$ref":"d8"},"result":{"$ref":"d16"}},
+    {
+      "id": "win32: update required",
+      "platform": "win32",
+      "currentVersion": "0.4.7",
+      "steps": [{"op":"evaluate"}],
+      "routes": {"$ref":"d87"},
+      "result": {"steps":[{"ok":{"ok":true,"problems":[],"updateAvailable":true,"downgrade":false,"unsupported":false,"code":null,"updateRequired":true,"manifest":{"$ref":"d89"},"sourceUrl":"http://{p}/launcher-channel.json"}}],"requests":[["p","GET","/launcher-channel.json","HLSR-launcher-update"],["p","GET","/latest.yml","HLSR-launcher-update"]],"log":[]}
+    },
+    {"id":"win32: update required but rejected","platform":"win32","currentVersion":"0.4.7","steps":[{"op":"evaluate"}],"routes":{"p":{"$ref":"d93"},"f":{"$ref":"d93"}},"result":{"$ref":"d42"}},
+    {
+      "id": "win32: update required, same version",
+      "platform": "win32",
+      "currentVersion": "0.5.0",
+      "steps": [{"op":"evaluate"}],
+      "routes": {"$ref":"d87"},
+      "result": {"steps":[{"ok":{"ok":true,"problems":[],"updateAvailable":false,"downgrade":false,"unsupported":false,"code":null,"updateRequired":false,"manifest":{"$ref":"d89"},"sourceUrl":"http://{p}/launcher-channel.json"}}],"requests":[["p","GET","/launcher-channel.json","HLSR-launcher-update"],["p","GET","/latest.yml","HLSR-launcher-update"]],"log":[]}
+    },
+    {"id":"win32: redirect inside allowlist","platform":"win32","currentVersion":"0.4.7","steps":[{"op":"evaluate"}],"routes":{"p":{"/launcher-channel.json":[{"status":302,"headers":[["Location","http://{p}/moved.json"]],"body":""}],"/latest.yml":{"$ref":"d6"},"/moved.json":{"$ref":"d3"}},"f":{"$ref":"d7"}},"result":{"$ref":"d95"}},
+    {"id":"win32: redirect relative","platform":"win32","currentVersion":"0.4.7","steps":[{"op":"evaluate"}],"routes":{"p":{"/launcher-channel.json":[{"status":301,"headers":[["Location","/a/../moved.json"]],"body":""}],"/latest.yml":{"$ref":"d6"},"/moved.json":{"$ref":"d3"}},"f":{"$ref":"d7"}},"result":{"$ref":"d95"}},
+    {
+      "id": "win32: redirect to other server",
+      "platform": "win32",
+      "currentVersion": "0.4.7",
+      "steps": [{"op":"evaluate"}],
+      "routes": {"p":{"/launcher-channel.json":[{"status":307,"headers":[["Location","http://{f}/other.json"]],"body":""}],"/latest.yml":{"$ref":"d6"}},"f":{"/launcher-channel.json":{"$ref":"d3"},"/latest.yml":{"$ref":"d6"},"/other.json":{"$ref":"d3"}}},
+      "result": {"steps":{"$ref":"d15"},"requests":[["p","GET","/launcher-channel.json","HLSR-launcher-update"],["f","GET","/other.json","HLSR-launcher-update"],["p","GET","/latest.yml","HLSR-launcher-update"]],"log":[]}
+    },
+    {"id":"win32: redirect to blocked path, fallback ok","platform":"win32","currentVersion":"0.4.7","steps":[{"op":"evaluate"}],"routes":{"p":{"$ref":"d96"},"f":{"$ref":"d7"}},"result":{"steps":{"$ref":"d22"},"requests":{"$ref":"d23"},"log":{"$ref":"d98"}}},
+    {"id":"win32: redirect to blocked path on both","platform":"win32","currentVersion":"0.4.7","steps":[{"op":"evaluate"}],"routes":{"p":{"$ref":"d96"},"f":{"/launcher-channel.json":[{"status":302,"headers":[["Location","http://{p}/blocked/y.json"]],"body":""}],"/latest.yml":{"$ref":"d6"}}},"result":{"$ref":"d101"}},
+    {
+      "id": "win32: five redirects",
+      "platform": "win32",
+      "currentVersion": "0.4.7",
+      "steps": [{"op":"evaluate"}],
+      "routes": {
+        "p": {"/launcher-channel.json":[{"status":302,"headers":[["Location","/r1"]],"body":""}],"/latest.yml":{"$ref":"d6"},"/r1":[{"status":302,"headers":[["Location","/r2"]],"body":""}],"/r2":[{"status":302,"headers":[["Location","/r3"]],"body":""}],"/r3":[{"status":302,"headers":[["Location","/r4"]],"body":""}],"/r4":[{"status":302,"headers":[["Location","/r5"]],"body":""}],"/r5":{"$ref":"d3"}},
+        "f": {"$ref":"d7"}
+      },
+      "result": {"steps":{"$ref":"d15"},"requests":[["p","GET","/launcher-channel.json","HLSR-launcher-update"],["p","GET","/r1","HLSR-launcher-update"],["p","GET","/r2","HLSR-launcher-update"],["p","GET","/r3","HLSR-launcher-update"],["p","GET","/r4","HLSR-launcher-update"],["p","GET","/r5","HLSR-launcher-update"],["p","GET","/latest.yml","HLSR-launcher-update"]],"log":[]}
+    },
+    {
+      "id": "win32: six redirects, fallback ok",
+      "platform": "win32",
+      "currentVersion": "0.4.7",
+      "steps": [{"op":"evaluate"}],
+      "routes": {
+        "p": {
+          "/launcher-channel.json": [{"status":302,"headers":[["Location","/r1"]],"body":""}],
+          "/latest.yml": {"$ref":"d6"},
+          "/r1": [{"status":302,"headers":[["Location","/r2"]],"body":""}],
+          "/r2": [{"status":302,"headers":[["Location","/r3"]],"body":""}],
+          "/r3": [{"status":302,"headers":[["Location","/r4"]],"body":""}],
+          "/r4": [{"status":302,"headers":[["Location","/r5"]],"body":""}],
+          "/r5": [{"status":302,"headers":[["Location","/r6"]],"body":""}],
+          "/r6": {"$ref":"d3"}
+        },
+        "f": {"$ref":"d7"}
+      },
+      "result": {
+        "steps": {"$ref":"d22"},
+        "requests": [["p","GET","/launcher-channel.json","HLSR-launcher-update"],["p","GET","/r1","HLSR-launcher-update"],["p","GET","/r2","HLSR-launcher-update"],["p","GET","/r3","HLSR-launcher-update"],["p","GET","/r4","HLSR-launcher-update"],["p","GET","/r5","HLSR-launcher-update"],["f","GET","/launcher-channel.json","HLSR-launcher-update"],["p","GET","/latest.yml","HLSR-launcher-update"]],
+        "log": {"$ref":"d103"}
+      }
+    },
+    {"id":"win32: redirect loop on both","platform":"win32","currentVersion":"0.4.7","steps":[{"op":"evaluate"}],"routes":{"p":{"$ref":"d104"},"f":{"$ref":"d104"}},"result":{"$ref":"d108"}},
+    {
+      "id": "win32: redirect 300 is an error",
+      "platform": "win32",
+      "currentVersion": "0.4.7",
+      "steps": [{"op":"evaluate"}],
+      "routes": {"p":{"/launcher-channel.json":[{"status":300,"headers":[["Location","/moved.json"]],"body":""}],"/latest.yml":{"$ref":"d6"},"/moved.json":{"$ref":"d3"}},"f":{"$ref":"d7"}},
+      "result": {"steps":{"$ref":"d22"},"requests":{"$ref":"d23"},"log":[{"level":"warn","message":"[launcher-update] канал недоступен (http://{p}/launcher-channel.json): HTTP 300"}]}
+    },
+    {"id":"win32: redirect 304 with location is followed","platform":"win32","currentVersion":"0.4.7","steps":[{"op":"evaluate"}],"routes":{"p":{"/launcher-channel.json":[{"status":304,"headers":[["Location","/moved.json"]],"body":""}],"/latest.yml":{"$ref":"d6"},"/moved.json":{"$ref":"d3"}},"f":{"$ref":"d7"}},"result":{"$ref":"d95"}},
+    {"id":"win32: body exactly 256 KiB","platform":"win32","currentVersion":"0.4.7","steps":[{"op":"evaluate"}],"routes":{"p":{"/launcher-channel.json":[{"body":{"$ref":"d1"},"padTo":262144}],"/latest.yml":{"$ref":"d6"}},"f":{"$ref":"d7"}},"result":{"$ref":"d16"}},
+    {"id":"win32: body 256 KiB + 1, fallback ok","platform":"win32","currentVersion":"0.4.7","steps":[{"op":"evaluate"}],"routes":{"p":{"/launcher-channel.json":[{"body":{"$ref":"d1"},"padTo":262145}],"/latest.yml":{"$ref":"d6"}},"f":{"$ref":"d7"}},"result":{"steps":{"$ref":"d22"},"requests":{"$ref":"d23"},"log":{"$ref":"d110"}}},
+    {"id":"win32: body without content-length","platform":"win32","currentVersion":"0.4.7","steps":[{"op":"evaluate"}],"routes":{"p":{"/launcher-channel.json":[{"body":{"$ref":"d1"},"contentLength":null}],"/latest.yml":{"$ref":"d6"}},"f":{"$ref":"d7"}},"result":{"$ref":"d16"}},
+    {"id":"win32: probeLatest ok","platform":"win32","currentVersion":"0.4.7","steps":[{"op":"probeLatest"}],"routes":{"$ref":"d8"},"result":{"$ref":"d16"}},
+    {"id":"win32: probeLatest primary down","platform":"win32","currentVersion":"0.4.7","steps":[{"op":"probeLatest"}],"routes":{"$ref":"d19"},"result":{"$ref":"d112"}},
+    {"id":"win32: probeLatest primary rejected","platform":"win32","currentVersion":"0.4.7","steps":[{"op":"probeLatest"}],"routes":{"$ref":"d30"},"result":{"$ref":"d113"}},
+    {"id":"win32: probeLatest yml mismatch","platform":"win32","currentVersion":"0.4.7","steps":[{"op":"probeLatest"}],"routes":{"p":{"/launcher-channel.json":{"$ref":"d3"},"/latest.yml":[{"body":"x"}]},"f":{"$ref":"d7"}},"result":{"$ref":"d81"}},
+    {"id":"win32: probeLatest current not semver","platform":"win32","currentVersion":"garbage","steps":[{"op":"probeLatest"}],"routes":{"$ref":"d8"},"result":{"$ref":"d114"}},
+    {
+      "id": "win32: probeLatest does not remember",
+      "platform": "win32",
+      "currentVersion": "0.4.7",
+      "steps": [{"op":"probeLatest"},{"op":"verifyInstaller","file":"good"}],
+      "routes": {"$ref":"d8"},
+      "result": {"steps":[{"$ref":"d14"},{"ok":{"ok":false,"problems":["нет проверенных метаданных"],"code":"LU_NO_METADATA"}}],"requests":[["p","GET","/launcher-channel.json","HLSR-launcher-update"],["p","GET","/latest.yml","HLSR-launcher-update"]],"log":[]}
+    },
+    {"id":"win32: fetchChannel ok","platform":"win32","currentVersion":"0.4.7","steps":[{"op":"fetchChannel"}],"routes":{"$ref":"d8"},"result":{"steps":[{"ok":{"manifest":{"$ref":"d12"},"sourceUrl":"http://{p}/launcher-channel.json"}}],"requests":[["p","GET","/launcher-channel.json","HLSR-launcher-update"]],"log":[]}},
+    {
+      "id": "win32: fetchChannel falls back",
+      "platform": "win32",
+      "currentVersion": "0.4.7",
+      "steps": [{"op":"fetchChannel"}],
+      "routes": {"p":{"$ref":"d43"},"f":{"$ref":"d7"}},
+      "result": {"steps":[{"ok":{"manifest":{"$ref":"d12"},"sourceUrl":"http://{f}/launcher-channel.json"}}],"requests":{"$ref":"d41"},"log":[{"level":"warn","message":"[launcher-update] канал недоступен (http://{p}/launcher-channel.json): HTTP 500"}]}
+    },
+    {
+      "id": "win32: fetchChannel returns an unverified document",
+      "platform": "win32",
+      "currentVersion": "0.4.7",
+      "steps": [{"op":"fetchChannel"}],
+      "routes": {"$ref":"d30"},
+      "result": {
+        "steps": [{"ok":{"manifest":{"schemaVersion":1,"version":"0.5.0","publishedAt":"2026-10-16T09:00:00.000Z","minimumSupportedVersion":"0.2.7","updateRequired":false,"installer":{"$ref":"d10"},"latestYmlSha256":"1ca8a4f5a3c70935647cded698b899c2f867941d93c69c88c0d22e6300003d8c"},"sourceUrl":"http://{p}/launcher-channel.json"}}],
+        "requests": [["p","GET","/launcher-channel.json","HLSR-launcher-update"]],
+        "log": []
+      }
+    },
+    {"id":"win32: fetchChannel all down","platform":"win32","currentVersion":"0.4.7","steps":[{"op":"fetchChannel"}],"routes":{"p":{"$ref":"d43"},"f":{"$ref":"d24"}},"result":{"$ref":"d116"}},
+    {"id":"win32: verifyInstaller before evaluate","platform":"win32","currentVersion":"0.4.7","steps":[{"op":"verifyInstaller","file":"good"}],"routes":{"$ref":"d8"},"result":{"$ref":"d117"}},
+    {"id":"win32: verifyInstaller after evaluate","platform":"win32","currentVersion":"0.4.7","steps":[{"op":"evaluate"},{"op":"verifyInstaller","file":"good"}],"routes":{"$ref":"d8"},"result":{"$ref":"d119"}},
+    {
+      "id": "win32: verifyInstaller wrong content",
+      "platform": "win32",
+      "currentVersion": "0.4.7",
+      "steps": [{"op":"evaluate"},{"op":"verifyInstaller","file":"bad"}],
+      "routes": {"$ref":"d8"},
+      "result": {"steps":[{"$ref":"d14"},{"ok":{"ok":false,"problems":["SHA-256 не совпал"],"code":"LU_INSTALLER_SHA256"}}],"requests":[["p","GET","/launcher-channel.json","HLSR-launcher-update"],["p","GET","/latest.yml","HLSR-launcher-update"]],"log":[]}
+    },
+    {
+      "id": "win32: verifyInstaller wrong size",
+      "platform": "win32",
+      "currentVersion": "0.4.7",
+      "steps": [{"op":"evaluate"},{"op":"verifyInstaller","file":"short"}],
+      "routes": {"$ref":"d8"},
+      "result": {"steps":[{"$ref":"d14"},{"ok":{"ok":false,"problems":["размер 131990 != 132000"],"code":"LU_INSTALLER_SIZE"}}],"requests":[["p","GET","/launcher-channel.json","HLSR-launcher-update"],["p","GET","/latest.yml","HLSR-launcher-update"]],"log":[]}
+    },
+    {"id":"win32: verifyInstaller expected version ok","platform":"win32","currentVersion":"0.4.7","steps":[{"op":"evaluate"},{"op":"verifyInstaller","file":"good","expectedVersion":"0.5.0"}],"routes":{"$ref":"d8"},"result":{"$ref":"d119"}},
+    {
+      "id": "win32: verifyInstaller expected version differs",
+      "platform": "win32",
+      "currentVersion": "0.4.7",
+      "steps": [{"op":"evaluate"},{"op":"verifyInstaller","file":"good","expectedVersion":"0.5.1"}],
+      "routes": {"$ref":"d8"},
+      "result": {"steps":[{"$ref":"d14"},{"ok":{"ok":false,"problems":["проверенные метаданные описывают 0.5.0, а скачана 0.5.1"],"code":"LU_VERSION_MISMATCH"}}],"requests":[["p","GET","/launcher-channel.json","HLSR-launcher-update"],["p","GET","/latest.yml","HLSR-launcher-update"]],"log":[]}
+    },
+    {"id":"win32: verifyInstaller after rejected evaluate","platform":"win32","currentVersion":"0.4.7","steps":[{"op":"evaluate"},{"op":"verifyInstaller","file":"good"}],"routes":{"p":{"$ref":"d29"},"f":{"$ref":"d29"}},"result":{"$ref":"d121"}},
+    {"id":"win32: verifyInstaller own manifest","platform":"win32","currentVersion":"0.4.7","steps":[{"op":"verifyInstaller","file":"good","manifest":{"$ref":"d12"}}],"routes":{"$ref":"d8"},"result":{"steps":[{"ok":{"ok":true,"problems":[],"code":null}}],"requests":[],"log":[]}},
+    {"id":"win32: verifyInstaller own manifest, expected differs","platform":"win32","currentVersion":"0.4.7","steps":[{"op":"verifyInstaller","file":"good","manifest":{"$ref":"d12"},"expectedVersion":"0.4.0"}],"routes":{"$ref":"d8"},"result":{"$ref":"d123"}},
+    {"id":"win32: verifyInstaller missing file","platform":"win32","currentVersion":"0.4.7","steps":[{"op":"evaluate"},{"op":"verifyInstaller","file":"missing"}],"routes":{"$ref":"d8"},"result":{"steps":[{"$ref":"d14"},{"$ref":"d125"}],"requests":[["p","GET","/launcher-channel.json","HLSR-launcher-update"],["p","GET","/latest.yml","HLSR-launcher-update"]],"log":[]}},
+    {
+      "id": "win32: verifyInstaller remembers the last accepted",
+      "platform": "win32",
+      "currentVersion": "0.4.7",
+      "steps": [{"op":"evaluate"},{"op":"evaluate"},{"op":"verifyInstaller","file":"good"}],
+      "routes": {"p":{"$ref":"d127"},"f":{"$ref":"d127"}},
+      "result": {
+        "steps": [{"$ref":"d14"},{"$ref":"d21"},{"ok":{"ok":true,"problems":[],"code":null}}],
+        "requests": [["p","GET","/launcher-channel.json","HLSR-launcher-update"],["p","GET","/latest.yml","HLSR-launcher-update"],["p","GET","/launcher-channel.json","HLSR-launcher-update"],["f","GET","/launcher-channel.json","HLSR-launcher-update"],["p","GET","/latest.yml","HLSR-launcher-update"]],
+        "log": {"$ref":"d32"}
+      }
+    },
+    {"id":"linux: ok","platform":"linux","currentVersion":"0.4.7","steps":[{"op":"evaluate"}],"routes":{"$ref":"d135"},"result":{"$ref":"d143"}},
+    {
+      "id": "linux: ok keeps unknown fields",
+      "platform": "linux",
+      "currentVersion": "0.4.7",
+      "steps": [{"op":"evaluate"}],
+      "routes": {
+        "p": {
+          "/launcher-channel.json": [
+            {
+              "body": "{\"schemaVersion\":1,\"version\":\"0.5.0\",\"publishedAt\":\"2026-10-16T09:00:00.000Z\",\"minimumSupportedVersion\":\"0.3.16\",\"updateRequired\":false,\"installer\":{\"filename\":\"HLSR-Setup-0.5.0-linux-x86_64.AppImage\",\"size\":132000,\"sha256\":\"70049852de60dbef7e56a634c18ac76d74115e48deca417659bb4b239a470207\",\"sha512\":\"Tb/gt2d5VKKQgShBA6DpG4g4az2qCAaz+psDXsOG8iTF6k1eg1KuKFMd/tDdm/naWp/Sdo+0jZwIFc5gFxYYTA==\",\"urls\":[\"https://hlsr.pro/downloads/launcher/linux/stable/x.AppImage\",\"https://github.com/HL-HLSR/HLSR-Releases/releases/download/linux-v0.5.0/x.AppImage\"]},\"latestYmlSha256\":\"a702fa2c57448bd2734558d0c1949f175a8ca65e48bf40f628abf79186f7ab41\",\"build\":{\"executable\":{\"path\":\"x\",\"size\":1,\"sha256\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"chunks\":[]}},\"futureField\":[1,2],\"signature\":{\"algorithm\":\"ed25519\",\"value\":\"/8bCFp0ysXXLfhsPc4Oo4EufGSd7WPjIfuR8rOkrgv7JiL0Vp3bybSiADp7BtPB35+WVYpQ2RtoU3LxOkxmkDA==\"}}"
+            }
+          ],
+          "/latest-linux.yml": {"$ref":"d133"}
+        },
+        "f": {"$ref":"d134"}
+      },
+      "result": {
+        "steps": [
+          {
+            "ok": {
+              "ok": true,
+              "problems": [],
+              "updateAvailable": true,
+              "downgrade": false,
+              "unsupported": false,
+              "code": null,
+              "updateRequired": false,
+              "manifest": {
+                "schemaVersion": 1,
+                "version": "0.5.0",
+                "publishedAt": "2026-10-16T09:00:00.000Z",
+                "minimumSupportedVersion": "0.3.16",
+                "updateRequired": false,
+                "installer": {"$ref":"d137"},
+                "latestYmlSha256": "a702fa2c57448bd2734558d0c1949f175a8ca65e48bf40f628abf79186f7ab41",
+                "build": {"$ref":"d17"},
+                "futureField": [1,2],
+                "signature": {"algorithm":"ed25519","value":"/8bCFp0ysXXLfhsPc4Oo4EufGSd7WPjIfuR8rOkrgv7JiL0Vp3bybSiADp7BtPB35+WVYpQ2RtoU3LxOkxmkDA=="}
+              },
+              "sourceUrl": "http://{p}/launcher-channel.json"
+            }
+          }
+        ],
+        "requests": [["p","GET","/launcher-channel.json","HLSR-launcher-update"],["p","GET","/latest-linux.yml","HLSR-launcher-update"]],
+        "log": []
+      }
+    },
+    {
+      "id": "linux: ok twice (second request after repeating routes)",
+      "platform": "linux",
+      "currentVersion": "0.4.7",
+      "steps": [{"op":"evaluate"},{"op":"evaluate"}],
+      "routes": {"$ref":"d135"},
+      "result": {"steps":[{"$ref":"d141"},{"$ref":"d141"}],"requests":[["p","GET","/launcher-channel.json","HLSR-launcher-update"],["p","GET","/latest-linux.yml","HLSR-launcher-update"],["p","GET","/launcher-channel.json","HLSR-launcher-update"],["p","GET","/latest-linux.yml","HLSR-launcher-update"]],"log":[]}
+    },
+    {"id":"linux: primary 503, fallback ok","platform":"linux","currentVersion":"0.4.7","steps":[{"op":"evaluate"}],"routes":{"$ref":"d145"},"result":{"steps":{"$ref":"d148"},"requests":{"$ref":"d149"},"log":[{"level":"warn","message":"[launcher-update] канал недоступен (http://{p}/launcher-channel.json): HTTP 503"}]}},
+    {"id":"linux: primary 404, fallback ok","platform":"linux","currentVersion":"0.4.7","steps":[{"op":"evaluate"}],"routes":{"p":{"$ref":"d150"},"f":{"$ref":"d134"}},"result":{"steps":{"$ref":"d148"},"requests":{"$ref":"d149"},"log":[{"level":"warn","message":"[launcher-update] канал недоступен (http://{p}/launcher-channel.json): HTTP 404"}]}},
+    {"id":"linux: primary not JSON, fallback ok","platform":"linux","currentVersion":"0.4.7","steps":[{"op":"evaluate"}],"routes":{"p":{"/launcher-channel.json":[{"body":"<html>nope</html>"}],"/latest-linux.yml":{"$ref":"d133"}},"f":{"$ref":"d134"}},"result":{"$ref":"d151"}},
+    {"id":"linux: primary empty body, fallback ok","platform":"linux","currentVersion":"0.4.7","steps":[{"op":"evaluate"}],"routes":{"p":{"/launcher-channel.json":[{"body":""}],"/latest-linux.yml":{"$ref":"d133"}},"f":{"$ref":"d134"}},"result":{"$ref":"d151"}},
+    {
+      "id": "linux: primary truncated JSON, fallback ok",
+      "platform": "linux",
+      "currentVersion": "0.4.7",
+      "steps": [{"op":"evaluate"}],
+      "routes": {"p":{"/launcher-channel.json":[{"body":"{\"schemaVersion\":1,\"version\":\"0.5.0\",\"publishedAt\":\"2026-10-16T09:00:00.000Z\",\"minimumSupportedVersion\":\"0.3.16\",\"updateRequired\":false,\"installer\":{\"filename\":\"HLSR-Setup-0.5.0-linux-x86_64.AppImage\""}],"/latest-linux.yml":{"$ref":"d133"}},"f":{"$ref":"d134"}},
+      "result": {"$ref":"d151"}
+    },
+    {
+      "id": "linux: primary BOM, fallback ok",
+      "platform": "linux",
+      "currentVersion": "0.4.7",
+      "steps": [{"op":"evaluate"}],
+      "routes": {
+        "p": {
+          "/launcher-channel.json": [
+            {
+              "body": "﻿{\"schemaVersion\":1,\"version\":\"0.5.0\",\"publishedAt\":\"2026-10-16T09:00:00.000Z\",\"minimumSupportedVersion\":\"0.3.16\",\"updateRequired\":false,\"installer\":{\"filename\":\"HLSR-Setup-0.5.0-linux-x86_64.AppImage\",\"size\":132000,\"sha256\":\"70049852de60dbef7e56a634c18ac76d74115e48deca417659bb4b239a470207\",\"sha512\":\"Tb/gt2d5VKKQgShBA6DpG4g4az2qCAaz+psDXsOG8iTF6k1eg1KuKFMd/tDdm/naWp/Sdo+0jZwIFc5gFxYYTA==\",\"urls\":[\"https://hlsr.pro/downloads/launcher/linux/stable/x.AppImage\",\"https://github.com/HL-HLSR/HLSR-Releases/releases/download/linux-v0.5.0/x.AppImage\"]},\"latestYmlSha256\":\"a702fa2c57448bd2734558d0c1949f175a8ca65e48bf40f628abf79186f7ab41\",\"signature\":{\"algorithm\":\"ed25519\",\"value\":\"TP16QA6P+qqQbWn7sjP8Sn5ljZc44xFzD2EEp0zkK+/429Azhv05AJwA8IM5+tcTEeOrK9ZEqm9gXdCqjAaBCQ==\"}}"
+            }
+          ],
+          "/latest-linux.yml": {"$ref":"d133"}
+        },
+        "f": {"$ref":"d134"}
+      },
+      "result": {"$ref":"d151"}
+    },
+    {"id":"linux: primary unsigned, fallback ok","platform":"linux","currentVersion":"0.4.7","steps":[{"op":"evaluate"}],"routes":{"$ref":"d156"},"result":{"$ref":"d157"}},
+    {"id":"linux: primary wrong key, fallback ok","platform":"linux","currentVersion":"0.4.7","steps":[{"op":"evaluate"}],"routes":{"p":{"$ref":"d161"},"f":{"$ref":"d134"}},"result":{"$ref":"d157"}},
+    {"id":"linux: both unsigned: first outcome wins","platform":"linux","currentVersion":"0.4.7","steps":[{"op":"evaluate"}],"routes":{"p":{"$ref":"d155"},"f":{"$ref":"d161"}},"result":{"$ref":"d42"}},
+    {"id":"linux: primary rejected, fallback unavailable: first outcome","platform":"linux","currentVersion":"0.4.7","steps":[{"op":"evaluate"}],"routes":{"p":{"$ref":"d155"},"f":{"$ref":"d162"}},"result":{"$ref":"d44"}},
+    {"id":"linux: primary unavailable, fallback rejected","platform":"linux","currentVersion":"0.4.7","steps":[{"op":"evaluate"}],"routes":{"p":{"$ref":"d162"},"f":{"$ref":"d155"}},"result":{"$ref":"d48"}},
+    {"id":"linux: both unavailable: last error","platform":"linux","currentVersion":"0.4.7","steps":[{"op":"evaluate"}],"routes":{"p":{"$ref":"d144"},"f":{"$ref":"d162"}},"result":{"$ref":"d50"}},
+    {"id":"linux: both not JSON: last error","platform":"linux","currentVersion":"0.4.7","steps":[{"op":"evaluate"}],"routes":{"p":{"/launcher-channel.json":[{"body":"x"}],"/latest-linux.yml":{"$ref":"d133"}},"f":{"/launcher-channel.json":[{"body":"y"}],"/latest-linux.yml":{"$ref":"d133"}}},"result":{"$ref":"d52"}},
+    {"id":"linux: both hang up","platform":"linux","currentVersion":"0.4.7","steps":[{"op":"evaluate"}],"routes":{"p":{"$ref":"d163"},"f":{"$ref":"d163"}},"result":{"$ref":"d55"}},
+    {
+      "id": "linux: primary dead port, fallback ok",
+      "platform": "linux",
+      "currentVersion": "0.4.7",
+      "steps": [{"op":"evaluate"}],
+      "dead": true,
+      "routes": {"$ref":"d135"},
+      "result": {"steps":{"$ref":"d148"},"requests":[["f","GET","/launcher-channel.json","HLSR-launcher-update"],["p","GET","/latest-linux.yml","HLSR-launcher-update"]],"log":[{"level":"warn","message":"[launcher-update] канал недоступен (http://{dead}/launcher-channel.json): <network>"}]}
+    },
+    {
+      "id": "linux: primary cut mid-body, fallback ok",
+      "platform": "linux",
+      "currentVersion": "0.4.7",
+      "steps": [{"op":"evaluate"}],
+      "routes": {"p":{"/launcher-channel.json":[{"body":{"$ref":"d128"},"cutAfter":100}],"/latest-linux.yml":{"$ref":"d133"}},"f":{"$ref":"d134"}},
+      "result": {"steps":{"$ref":"d148"},"requests":{"$ref":"d149"},"log":[{"level":"warn","message":"[launcher-update] канал недоступен (http://{p}/launcher-channel.json): <network>"}]}
+    },
+    {"id":"linux: channel body null","platform":"linux","currentVersion":"0.4.7","steps":[{"op":"evaluate"}],"routes":{"p":{"$ref":"d164"},"f":{"$ref":"d164"}},"result":{"$ref":"d60"}},
+    {"id":"linux: channel body empty object","platform":"linux","currentVersion":"0.4.7","steps":[{"op":"evaluate"}],"routes":{"p":{"$ref":"d165"},"f":{"$ref":"d165"}},"result":{"$ref":"d66"}},
+    {"id":"linux: channel signature null","platform":"linux","currentVersion":"0.4.7","steps":[{"op":"evaluate"}],"routes":{"p":{"$ref":"d169"},"f":{"$ref":"d169"}},"result":{"$ref":"d42"}},
+    {"id":"linux: channel redirected to 302 without location","platform":"linux","currentVersion":"0.4.7","steps":[{"op":"evaluate"}],"routes":{"p":{"$ref":"d170"},"f":{"$ref":"d170"}},"result":{"$ref":"d73"}},
+    {"id":"linux: channel 202","platform":"linux","currentVersion":"0.4.7","steps":[{"op":"evaluate"}],"routes":{"p":{"$ref":"d171"},"f":{"$ref":"d171"}},"result":{"$ref":"d76"}},
+    {
+      "id": "linux: latest.yml differs",
+      "platform": "linux",
+      "currentVersion": "0.4.7",
+      "steps": [{"op":"evaluate"}],
+      "routes": {"p":{"$ref":"d172"},"f":{"$ref":"d172"}},
+      "result": {"steps":[{"ok":{"ok":false,"problems":["latest.yml не подтверждён: SHA-256 latest.yml не совпал (http://{f}/latest-linux.yml)"],"updateAvailable":true,"downgrade":false,"unsupported":false,"code":null,"updateRequired":false,"manifest":{"$ref":"d139"},"sourceUrl":"http://{p}/launcher-channel.json"}}],"requests":{"$ref":"d173"},"log":[]}
+    },
+    {"id":"linux: latest.yml first unavailable","platform":"linux","currentVersion":"0.4.7","steps":[{"op":"evaluate"}],"routes":{"p":{"$ref":"d174"},"f":{"$ref":"d134"}},"result":{"$ref":"d176"}},
+    {"id":"linux: latest.yml first differs, second ok","platform":"linux","currentVersion":"0.4.7","steps":[{"op":"evaluate"}],"routes":{"p":{"$ref":"d172"},"f":{"$ref":"d134"}},"result":{"$ref":"d176"}},
+    {
+      "id": "linux: latest.yml all unavailable",
+      "platform": "linux",
+      "currentVersion": "0.4.7",
+      "steps": [{"op":"evaluate"}],
+      "routes": {"p":{"$ref":"d174"},"f":{"/launcher-channel.json":{"$ref":"d130"},"/latest-linux.yml":[{"status":500,"body":""}]}},
+      "result": {"steps":[{"ok":{"ok":false,"problems":["latest.yml не подтверждён: HTTP 500"],"updateAvailable":true,"downgrade":false,"unsupported":false,"code":null,"updateRequired":false,"manifest":{"$ref":"d139"},"sourceUrl":"http://{p}/launcher-channel.json"}}],"requests":{"$ref":"d173"},"log":[]}
+    },
+    {
+      "id": "linux: latest.yml too large",
+      "platform": "linux",
+      "currentVersion": "0.4.7",
+      "steps": [{"op":"evaluate"}],
+      "routes": {"p":{"/launcher-channel.json":{"$ref":"d130"},"/latest-linux.yml":[{"bodySize":262145}]},"f":{"$ref":"d174"}},
+      "result": {"steps":[{"ok":{"ok":false,"problems":["latest.yml не подтверждён: HTTP 404"],"updateAvailable":true,"downgrade":false,"unsupported":false,"code":null,"updateRequired":false,"manifest":{"$ref":"d139"},"sourceUrl":"http://{p}/launcher-channel.json"}}],"requests":{"$ref":"d173"},"log":[]}
+    },
+    {
+      "id": "linux: without latestYmlSha256 the yml is not requested",
+      "platform": "linux",
+      "currentVersion": "0.4.7",
+      "steps": [{"op":"evaluate"}],
+      "routes": {
+        "p": {
+          "/launcher-channel.json": [
+            {
+              "body": "{\"schemaVersion\":1,\"version\":\"0.5.0\",\"publishedAt\":\"2026-10-16T09:00:00.000Z\",\"minimumSupportedVersion\":\"0.3.16\",\"updateRequired\":false,\"installer\":{\"filename\":\"HLSR-Setup-0.5.0-linux-x86_64.AppImage\",\"size\":132000,\"sha256\":\"70049852de60dbef7e56a634c18ac76d74115e48deca417659bb4b239a470207\",\"sha512\":\"Tb/gt2d5VKKQgShBA6DpG4g4az2qCAaz+psDXsOG8iTF6k1eg1KuKFMd/tDdm/naWp/Sdo+0jZwIFc5gFxYYTA==\",\"urls\":[\"https://hlsr.pro/downloads/launcher/linux/stable/x.AppImage\",\"https://github.com/HL-HLSR/HLSR-Releases/releases/download/linux-v0.5.0/x.AppImage\"]},\"signature\":{\"algorithm\":\"ed25519\",\"value\":\"eD8yCb1mu6QYytTJK4ni6NAXXrCzn19jqh3NHimKgX2xWHSyzHMnMNyeP0gjg8mCPTvH59uubCg6/bHN8WVsDQ==\"}}"
+            }
+          ],
+          "/latest-linux.yml": {"$ref":"d133"}
+        },
+        "f": {"$ref":"d134"}
+      },
+      "result": {
+        "steps": [
+          {
+            "ok": {
+              "ok": true,
+              "problems": [],
+              "updateAvailable": true,
+              "downgrade": false,
+              "unsupported": false,
+              "code": null,
+              "updateRequired": false,
+              "manifest": {"schemaVersion":1,"version":"0.5.0","publishedAt":"2026-10-16T09:00:00.000Z","minimumSupportedVersion":"0.3.16","updateRequired":false,"installer":{"$ref":"d137"},"signature":{"algorithm":"ed25519","value":"eD8yCb1mu6QYytTJK4ni6NAXXrCzn19jqh3NHimKgX2xWHSyzHMnMNyeP0gjg8mCPTvH59uubCg6/bHN8WVsDQ=="}},
+              "sourceUrl": "http://{p}/launcher-channel.json"
+            }
+          }
+        ],
+        "requests": [["p","GET","/launcher-channel.json","HLSR-launcher-update"]],
+        "log": []
+      }
+    },
+    {
+      "id": "linux: latestYmlSha256 null",
+      "platform": "linux",
+      "currentVersion": "0.4.7",
+      "steps": [{"op":"evaluate"}],
+      "routes": {
+        "p": {
+          "/launcher-channel.json": [
+            {
+              "body": "{\"schemaVersion\":1,\"version\":\"0.5.0\",\"publishedAt\":\"2026-10-16T09:00:00.000Z\",\"minimumSupportedVersion\":\"0.3.16\",\"updateRequired\":false,\"installer\":{\"filename\":\"HLSR-Setup-0.5.0-linux-x86_64.AppImage\",\"size\":132000,\"sha256\":\"70049852de60dbef7e56a634c18ac76d74115e48deca417659bb4b239a470207\",\"sha512\":\"Tb/gt2d5VKKQgShBA6DpG4g4az2qCAaz+psDXsOG8iTF6k1eg1KuKFMd/tDdm/naWp/Sdo+0jZwIFc5gFxYYTA==\",\"urls\":[\"https://hlsr.pro/downloads/launcher/linux/stable/x.AppImage\",\"https://github.com/HL-HLSR/HLSR-Releases/releases/download/linux-v0.5.0/x.AppImage\"]},\"latestYmlSha256\":null,\"signature\":{\"algorithm\":\"ed25519\",\"value\":\"PcW7761Ujg9uwkX8zmjGC9wb0UUJ0Q1E2dUfxuRcYkIqocKZ0ERLzTHMTfLBcxNU4lG6XwQv2Dznuti6OKkxCw==\"}}"
+            }
+          ],
+          "/latest-linux.yml": {"$ref":"d133"}
+        },
+        "f": {"$ref":"d134"}
+      },
+      "result": {
+        "steps": [
+          {
+            "ok": {
+              "ok": true,
+              "problems": [],
+              "updateAvailable": true,
+              "downgrade": false,
+              "unsupported": false,
+              "code": null,
+              "updateRequired": false,
+              "manifest": {"schemaVersion":1,"version":"0.5.0","publishedAt":"2026-10-16T09:00:00.000Z","minimumSupportedVersion":"0.3.16","updateRequired":false,"installer":{"$ref":"d137"},"latestYmlSha256":null,"signature":{"algorithm":"ed25519","value":"PcW7761Ujg9uwkX8zmjGC9wb0UUJ0Q1E2dUfxuRcYkIqocKZ0ERLzTHMTfLBcxNU4lG6XwQv2Dznuti6OKkxCw=="}},
+              "sourceUrl": "http://{p}/launcher-channel.json"
+            }
+          }
+        ],
+        "requests": [["p","GET","/launcher-channel.json","HLSR-launcher-update"]],
+        "log": []
+      }
+    },
+    {
+      "id": "linux: same version",
+      "platform": "linux",
+      "currentVersion": "0.5.0",
+      "steps": [{"op":"evaluate"}],
+      "routes": {"$ref":"d135"},
+      "result": {"steps":[{"ok":{"ok":true,"problems":[],"updateAvailable":false,"downgrade":false,"unsupported":false,"code":null,"updateRequired":false,"manifest":{"$ref":"d139"},"sourceUrl":"http://{p}/launcher-channel.json"}}],"requests":[["p","GET","/launcher-channel.json","HLSR-launcher-update"],["p","GET","/latest-linux.yml","HLSR-launcher-update"]],"log":[]}
+    },
+    {
+      "id": "linux: downgrade rejected",
+      "platform": "linux",
+      "currentVersion": "0.6.0",
+      "steps": [{"op":"evaluate"}],
+      "routes": {"$ref":"d135"},
+      "result": {"steps":[{"ok":{"ok":false,"problems":["версия 0.5.0 старше установленной 0.6.0 (downgrade отклонён)"],"updateAvailable":false,"downgrade":true,"unsupported":false,"code":null,"updateRequired":false,"manifest":{"$ref":"d139"},"sourceUrl":"http://{p}/launcher-channel.json"}}],"requests":{"$ref":"d41"},"log":[]}
+    },
+    {
+      "id": "linux: downgrade on primary only, fallback also",
+      "platform": "linux",
+      "currentVersion": "0.5.1",
+      "steps": [{"op":"evaluate"}],
+      "routes": {"$ref":"d135"},
+      "result": {"steps":[{"ok":{"ok":false,"problems":["версия 0.5.0 старше установленной 0.5.1 (downgrade отклонён)"],"updateAvailable":false,"downgrade":true,"unsupported":false,"code":null,"updateRequired":false,"manifest":{"$ref":"d139"},"sourceUrl":"http://{p}/launcher-channel.json"}}],"requests":{"$ref":"d41"},"log":[]}
+    },
+    {
+      "id": "linux: unsupported",
+      "platform": "linux",
+      "currentVersion": "0.3.15",
+      "steps": [{"op":"evaluate"}],
+      "routes": {"$ref":"d135"},
+      "result": {"steps":[{"ok":{"ok":false,"problems":["установленная версия 0.3.15 ниже минимально поддерживаемой 0.3.16 — требуется установка вручную"],"updateAvailable":true,"downgrade":false,"unsupported":true,"code":"LU_VERSION_UNSUPPORTED","updateRequired":false,"manifest":null,"sourceUrl":"http://{p}/launcher-channel.json"}}],"requests":{"$ref":"d41"},"log":[]}
+    },
+    {"id":"linux: beta current","platform":"linux","currentVersion":"0.5.0-beta.1","steps":[{"op":"evaluate"}],"routes":{"$ref":"d135"},"result":{"$ref":"d143"}},
+    {"id":"linux: current not semver throws","platform":"linux","currentVersion":"garbage","steps":[{"op":"evaluate"}],"routes":{"$ref":"d135"},"result":{"$ref":"d82"}},
+    {"id":"linux: expected version ok","platform":"linux","currentVersion":"0.4.7","steps":[{"op":"evaluate","expected":"0.5.0"}],"routes":{"$ref":"d135"},"result":{"$ref":"d143"}},
+    {
+      "id": "linux: expected version differs",
+      "platform": "linux",
+      "currentVersion": "0.4.7",
+      "steps": [{"op":"evaluate","expected":"0.9.9"}],
+      "routes": {"$ref":"d135"},
+      "result": {"steps":[{"ok":{"ok":false,"problems":["feed предлагает 0.9.9, подписанные метаданные — 0.5.0"],"updateAvailable":true,"downgrade":false,"unsupported":false,"code":null,"updateRequired":false,"manifest":{"$ref":"d139"},"sourceUrl":"http://{p}/launcher-channel.json"}}],"requests":{"$ref":"d41"},"log":[]}
+    },
+    {"id":"linux: expected version empty","platform":"linux","currentVersion":"0.4.7","steps":[{"op":"evaluate","expected":""}],"routes":{"$ref":"d135"},"result":{"$ref":"d143"}},
+    {
+      "id": "linux: update required",
+      "platform": "linux",
+      "currentVersion": "0.4.7",
+      "steps": [{"op":"evaluate"}],
+      "routes": {"$ref":"d181"},
+      "result": {"steps":[{"ok":{"ok":true,"problems":[],"updateAvailable":true,"downgrade":false,"unsupported":false,"code":null,"updateRequired":true,"manifest":{"$ref":"d183"},"sourceUrl":"http://{p}/launcher-channel.json"}}],"requests":[["p","GET","/launcher-channel.json","HLSR-launcher-update"],["p","GET","/latest-linux.yml","HLSR-launcher-update"]],"log":[]}
+    },
+    {"id":"linux: update required but rejected","platform":"linux","currentVersion":"0.4.7","steps":[{"op":"evaluate"}],"routes":{"p":{"$ref":"d187"},"f":{"$ref":"d187"}},"result":{"$ref":"d42"}},
+    {
+      "id": "linux: update required, same version",
+      "platform": "linux",
+      "currentVersion": "0.5.0",
+      "steps": [{"op":"evaluate"}],
+      "routes": {"$ref":"d181"},
+      "result": {"steps":[{"ok":{"ok":true,"problems":[],"updateAvailable":false,"downgrade":false,"unsupported":false,"code":null,"updateRequired":false,"manifest":{"$ref":"d183"},"sourceUrl":"http://{p}/launcher-channel.json"}}],"requests":[["p","GET","/launcher-channel.json","HLSR-launcher-update"],["p","GET","/latest-linux.yml","HLSR-launcher-update"]],"log":[]}
+    },
+    {"id":"linux: redirect inside allowlist","platform":"linux","currentVersion":"0.4.7","steps":[{"op":"evaluate"}],"routes":{"p":{"/launcher-channel.json":[{"status":302,"headers":[["Location","http://{p}/moved.json"]],"body":""}],"/latest-linux.yml":{"$ref":"d133"},"/moved.json":{"$ref":"d130"}},"f":{"$ref":"d134"}},"result":{"$ref":"d189"}},
+    {"id":"linux: redirect relative","platform":"linux","currentVersion":"0.4.7","steps":[{"op":"evaluate"}],"routes":{"p":{"/launcher-channel.json":[{"status":301,"headers":[["Location","/a/../moved.json"]],"body":""}],"/latest-linux.yml":{"$ref":"d133"},"/moved.json":{"$ref":"d130"}},"f":{"$ref":"d134"}},"result":{"$ref":"d189"}},
+    {
+      "id": "linux: redirect to other server",
+      "platform": "linux",
+      "currentVersion": "0.4.7",
+      "steps": [{"op":"evaluate"}],
+      "routes": {"p":{"/launcher-channel.json":[{"status":307,"headers":[["Location","http://{f}/other.json"]],"body":""}],"/latest-linux.yml":{"$ref":"d133"}},"f":{"/launcher-channel.json":{"$ref":"d130"},"/latest-linux.yml":{"$ref":"d133"},"/other.json":{"$ref":"d130"}}},
+      "result": {"steps":{"$ref":"d142"},"requests":[["p","GET","/launcher-channel.json","HLSR-launcher-update"],["f","GET","/other.json","HLSR-launcher-update"],["p","GET","/latest-linux.yml","HLSR-launcher-update"]],"log":[]}
+    },
+    {"id":"linux: redirect to blocked path, fallback ok","platform":"linux","currentVersion":"0.4.7","steps":[{"op":"evaluate"}],"routes":{"p":{"$ref":"d190"},"f":{"$ref":"d134"}},"result":{"steps":{"$ref":"d148"},"requests":{"$ref":"d149"},"log":{"$ref":"d98"}}},
+    {"id":"linux: redirect to blocked path on both","platform":"linux","currentVersion":"0.4.7","steps":[{"op":"evaluate"}],"routes":{"p":{"$ref":"d190"},"f":{"/launcher-channel.json":[{"status":302,"headers":[["Location","http://{p}/blocked/y.json"]],"body":""}],"/latest-linux.yml":{"$ref":"d133"}}},"result":{"$ref":"d101"}},
+    {
+      "id": "linux: five redirects",
+      "platform": "linux",
+      "currentVersion": "0.4.7",
+      "steps": [{"op":"evaluate"}],
+      "routes": {
+        "p": {
+          "/launcher-channel.json": [{"status":302,"headers":[["Location","/r1"]],"body":""}],
+          "/latest-linux.yml": {"$ref":"d133"},
+          "/r1": [{"status":302,"headers":[["Location","/r2"]],"body":""}],
+          "/r2": [{"status":302,"headers":[["Location","/r3"]],"body":""}],
+          "/r3": [{"status":302,"headers":[["Location","/r4"]],"body":""}],
+          "/r4": [{"status":302,"headers":[["Location","/r5"]],"body":""}],
+          "/r5": {"$ref":"d130"}
+        },
+        "f": {"$ref":"d134"}
+      },
+      "result": {"steps":{"$ref":"d142"},"requests":[["p","GET","/launcher-channel.json","HLSR-launcher-update"],["p","GET","/r1","HLSR-launcher-update"],["p","GET","/r2","HLSR-launcher-update"],["p","GET","/r3","HLSR-launcher-update"],["p","GET","/r4","HLSR-launcher-update"],["p","GET","/r5","HLSR-launcher-update"],["p","GET","/latest-linux.yml","HLSR-launcher-update"]],"log":[]}
+    },
+    {
+      "id": "linux: six redirects, fallback ok",
+      "platform": "linux",
+      "currentVersion": "0.4.7",
+      "steps": [{"op":"evaluate"}],
+      "routes": {
+        "p": {
+          "/launcher-channel.json": [{"status":302,"headers":[["Location","/r1"]],"body":""}],
+          "/latest-linux.yml": {"$ref":"d133"},
+          "/r1": [{"status":302,"headers":[["Location","/r2"]],"body":""}],
+          "/r2": [{"status":302,"headers":[["Location","/r3"]],"body":""}],
+          "/r3": [{"status":302,"headers":[["Location","/r4"]],"body":""}],
+          "/r4": [{"status":302,"headers":[["Location","/r5"]],"body":""}],
+          "/r5": [{"status":302,"headers":[["Location","/r6"]],"body":""}],
+          "/r6": {"$ref":"d130"}
+        },
+        "f": {"$ref":"d134"}
+      },
+      "result": {
+        "steps": {"$ref":"d148"},
+        "requests": [["p","GET","/launcher-channel.json","HLSR-launcher-update"],["p","GET","/r1","HLSR-launcher-update"],["p","GET","/r2","HLSR-launcher-update"],["p","GET","/r3","HLSR-launcher-update"],["p","GET","/r4","HLSR-launcher-update"],["p","GET","/r5","HLSR-launcher-update"],["f","GET","/launcher-channel.json","HLSR-launcher-update"],["p","GET","/latest-linux.yml","HLSR-launcher-update"]],
+        "log": {"$ref":"d103"}
+      }
+    },
+    {"id":"linux: redirect loop on both","platform":"linux","currentVersion":"0.4.7","steps":[{"op":"evaluate"}],"routes":{"p":{"$ref":"d191"},"f":{"$ref":"d191"}},"result":{"$ref":"d108"}},
+    {
+      "id": "linux: redirect 300 is an error",
+      "platform": "linux",
+      "currentVersion": "0.4.7",
+      "steps": [{"op":"evaluate"}],
+      "routes": {"p":{"/launcher-channel.json":[{"status":300,"headers":[["Location","/moved.json"]],"body":""}],"/latest-linux.yml":{"$ref":"d133"},"/moved.json":{"$ref":"d130"}},"f":{"$ref":"d134"}},
+      "result": {"steps":{"$ref":"d148"},"requests":{"$ref":"d149"},"log":[{"level":"warn","message":"[launcher-update] канал недоступен (http://{p}/launcher-channel.json): HTTP 300"}]}
+    },
+    {"id":"linux: redirect 304 with location is followed","platform":"linux","currentVersion":"0.4.7","steps":[{"op":"evaluate"}],"routes":{"p":{"/launcher-channel.json":[{"status":304,"headers":[["Location","/moved.json"]],"body":""}],"/latest-linux.yml":{"$ref":"d133"},"/moved.json":{"$ref":"d130"}},"f":{"$ref":"d134"}},"result":{"$ref":"d189"}},
+    {"id":"linux: body exactly 256 KiB","platform":"linux","currentVersion":"0.4.7","steps":[{"op":"evaluate"}],"routes":{"p":{"/launcher-channel.json":[{"body":{"$ref":"d128"},"padTo":262144}],"/latest-linux.yml":{"$ref":"d133"}},"f":{"$ref":"d134"}},"result":{"$ref":"d143"}},
+    {"id":"linux: body 256 KiB + 1, fallback ok","platform":"linux","currentVersion":"0.4.7","steps":[{"op":"evaluate"}],"routes":{"p":{"/launcher-channel.json":[{"body":{"$ref":"d128"},"padTo":262145}],"/latest-linux.yml":{"$ref":"d133"}},"f":{"$ref":"d134"}},"result":{"steps":{"$ref":"d148"},"requests":{"$ref":"d149"},"log":{"$ref":"d110"}}},
+    {"id":"linux: body without content-length","platform":"linux","currentVersion":"0.4.7","steps":[{"op":"evaluate"}],"routes":{"p":{"/launcher-channel.json":[{"body":{"$ref":"d128"},"contentLength":null}],"/latest-linux.yml":{"$ref":"d133"}},"f":{"$ref":"d134"}},"result":{"$ref":"d143"}},
+    {"id":"linux: probeLatest ok","platform":"linux","currentVersion":"0.4.7","steps":[{"op":"probeLatest"}],"routes":{"$ref":"d135"},"result":{"$ref":"d143"}},
+    {"id":"linux: probeLatest primary down","platform":"linux","currentVersion":"0.4.7","steps":[{"op":"probeLatest"}],"routes":{"$ref":"d145"},"result":{"$ref":"d112"}},
+    {"id":"linux: probeLatest primary rejected","platform":"linux","currentVersion":"0.4.7","steps":[{"op":"probeLatest"}],"routes":{"$ref":"d156"},"result":{"$ref":"d113"}},
+    {"id":"linux: probeLatest yml mismatch","platform":"linux","currentVersion":"0.4.7","steps":[{"op":"probeLatest"}],"routes":{"p":{"/launcher-channel.json":{"$ref":"d130"},"/latest-linux.yml":[{"body":"x"}]},"f":{"$ref":"d134"}},"result":{"$ref":"d176"}},
+    {"id":"linux: probeLatest current not semver","platform":"linux","currentVersion":"garbage","steps":[{"op":"probeLatest"}],"routes":{"$ref":"d135"},"result":{"$ref":"d114"}},
+    {
+      "id": "linux: probeLatest does not remember",
+      "platform": "linux",
+      "currentVersion": "0.4.7",
+      "steps": [{"op":"probeLatest"},{"op":"verifyInstaller","file":"good"}],
+      "routes": {"$ref":"d135"},
+      "result": {"steps":[{"$ref":"d141"},{"ok":{"ok":false,"problems":["нет проверенных метаданных"],"code":"LU_NO_METADATA"}}],"requests":[["p","GET","/launcher-channel.json","HLSR-launcher-update"],["p","GET","/latest-linux.yml","HLSR-launcher-update"]],"log":[]}
+    },
+    {"id":"linux: fetchChannel ok","platform":"linux","currentVersion":"0.4.7","steps":[{"op":"fetchChannel"}],"routes":{"$ref":"d135"},"result":{"steps":[{"ok":{"manifest":{"$ref":"d139"},"sourceUrl":"http://{p}/launcher-channel.json"}}],"requests":[["p","GET","/launcher-channel.json","HLSR-launcher-update"]],"log":[]}},
+    {
+      "id": "linux: fetchChannel falls back",
+      "platform": "linux",
+      "currentVersion": "0.4.7",
+      "steps": [{"op":"fetchChannel"}],
+      "routes": {"p":{"$ref":"d162"},"f":{"$ref":"d134"}},
+      "result": {"steps":[{"ok":{"manifest":{"$ref":"d139"},"sourceUrl":"http://{f}/launcher-channel.json"}}],"requests":{"$ref":"d41"},"log":[{"level":"warn","message":"[launcher-update] канал недоступен (http://{p}/launcher-channel.json): HTTP 500"}]}
+    },
+    {
+      "id": "linux: fetchChannel returns an unverified document",
+      "platform": "linux",
+      "currentVersion": "0.4.7",
+      "steps": [{"op":"fetchChannel"}],
+      "routes": {"$ref":"d156"},
+      "result": {
+        "steps": [{"ok":{"manifest":{"schemaVersion":1,"version":"0.5.0","publishedAt":"2026-10-16T09:00:00.000Z","minimumSupportedVersion":"0.3.16","updateRequired":false,"installer":{"$ref":"d137"},"latestYmlSha256":"a702fa2c57448bd2734558d0c1949f175a8ca65e48bf40f628abf79186f7ab41"},"sourceUrl":"http://{p}/launcher-channel.json"}}],
+        "requests": [["p","GET","/launcher-channel.json","HLSR-launcher-update"]],
+        "log": []
+      }
+    },
+    {"id":"linux: fetchChannel all down","platform":"linux","currentVersion":"0.4.7","steps":[{"op":"fetchChannel"}],"routes":{"p":{"$ref":"d162"},"f":{"$ref":"d150"}},"result":{"$ref":"d116"}},
+    {"id":"linux: verifyInstaller before evaluate","platform":"linux","currentVersion":"0.4.7","steps":[{"op":"verifyInstaller","file":"good"}],"routes":{"$ref":"d135"},"result":{"$ref":"d117"}},
+    {"id":"linux: verifyInstaller after evaluate","platform":"linux","currentVersion":"0.4.7","steps":[{"op":"evaluate"},{"op":"verifyInstaller","file":"good"}],"routes":{"$ref":"d135"},"result":{"$ref":"d193"}},
+    {
+      "id": "linux: verifyInstaller wrong content",
+      "platform": "linux",
+      "currentVersion": "0.4.7",
+      "steps": [{"op":"evaluate"},{"op":"verifyInstaller","file":"bad"}],
+      "routes": {"$ref":"d135"},
+      "result": {"steps":[{"$ref":"d141"},{"ok":{"ok":false,"problems":["SHA-256 не совпал"],"code":"LU_INSTALLER_SHA256"}}],"requests":[["p","GET","/launcher-channel.json","HLSR-launcher-update"],["p","GET","/latest-linux.yml","HLSR-launcher-update"]],"log":[]}
+    },
+    {
+      "id": "linux: verifyInstaller wrong size",
+      "platform": "linux",
+      "currentVersion": "0.4.7",
+      "steps": [{"op":"evaluate"},{"op":"verifyInstaller","file":"short"}],
+      "routes": {"$ref":"d135"},
+      "result": {"steps":[{"$ref":"d141"},{"ok":{"ok":false,"problems":["размер 131990 != 132000"],"code":"LU_INSTALLER_SIZE"}}],"requests":[["p","GET","/launcher-channel.json","HLSR-launcher-update"],["p","GET","/latest-linux.yml","HLSR-launcher-update"]],"log":[]}
+    },
+    {"id":"linux: verifyInstaller expected version ok","platform":"linux","currentVersion":"0.4.7","steps":[{"op":"evaluate"},{"op":"verifyInstaller","file":"good","expectedVersion":"0.5.0"}],"routes":{"$ref":"d135"},"result":{"$ref":"d193"}},
+    {
+      "id": "linux: verifyInstaller expected version differs",
+      "platform": "linux",
+      "currentVersion": "0.4.7",
+      "steps": [{"op":"evaluate"},{"op":"verifyInstaller","file":"good","expectedVersion":"0.5.1"}],
+      "routes": {"$ref":"d135"},
+      "result": {"steps":[{"$ref":"d141"},{"ok":{"ok":false,"problems":["проверенные метаданные описывают 0.5.0, а скачана 0.5.1"],"code":"LU_VERSION_MISMATCH"}}],"requests":[["p","GET","/launcher-channel.json","HLSR-launcher-update"],["p","GET","/latest-linux.yml","HLSR-launcher-update"]],"log":[]}
+    },
+    {"id":"linux: verifyInstaller after rejected evaluate","platform":"linux","currentVersion":"0.4.7","steps":[{"op":"evaluate"},{"op":"verifyInstaller","file":"good"}],"routes":{"p":{"$ref":"d155"},"f":{"$ref":"d155"}},"result":{"$ref":"d121"}},
+    {"id":"linux: verifyInstaller own manifest","platform":"linux","currentVersion":"0.4.7","steps":[{"op":"verifyInstaller","file":"good","manifest":{"$ref":"d139"}}],"routes":{"$ref":"d135"},"result":{"steps":[{"ok":{"ok":true,"problems":[],"code":null}}],"requests":[],"log":[]}},
+    {"id":"linux: verifyInstaller own manifest, expected differs","platform":"linux","currentVersion":"0.4.7","steps":[{"op":"verifyInstaller","file":"good","manifest":{"$ref":"d139"},"expectedVersion":"0.4.0"}],"routes":{"$ref":"d135"},"result":{"$ref":"d123"}},
+    {"id":"linux: verifyInstaller missing file","platform":"linux","currentVersion":"0.4.7","steps":[{"op":"evaluate"},{"op":"verifyInstaller","file":"missing"}],"routes":{"$ref":"d135"},"result":{"steps":[{"$ref":"d141"},{"$ref":"d125"}],"requests":[["p","GET","/launcher-channel.json","HLSR-launcher-update"],["p","GET","/latest-linux.yml","HLSR-launcher-update"]],"log":[]}},
+    {
+      "id": "linux: verifyInstaller remembers the last accepted",
+      "platform": "linux",
+      "currentVersion": "0.4.7",
+      "steps": [{"op":"evaluate"},{"op":"evaluate"},{"op":"verifyInstaller","file":"good"}],
+      "routes": {"p":{"$ref":"d195"},"f":{"$ref":"d195"}},
+      "result": {
+        "steps": [{"$ref":"d141"},{"$ref":"d147"},{"ok":{"ok":true,"problems":[],"code":null}}],
+        "requests": [["p","GET","/launcher-channel.json","HLSR-launcher-update"],["p","GET","/latest-linux.yml","HLSR-launcher-update"],["p","GET","/launcher-channel.json","HLSR-launcher-update"],["f","GET","/launcher-channel.json","HLSR-launcher-update"],["p","GET","/latest-linux.yml","HLSR-launcher-update"]],
+        "log": {"$ref":"d32"}
+      }
+    }
+  ],
+  "get": [
+    {"id":"ok","url":"http://{p}/x","options":{},"routes":{"p":{"/x":[{"body":"hello"}]}},"result":{"results":[{"ok":{"length":5,"sha256":"2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824","text":"hello"}}],"requests":[["p","GET","/x","HLSR-launcher-update"]]}},
+    {"id":"ok empty body","url":"http://{p}/x","options":{},"routes":{"p":{"/x":[{"body":""}]}},"result":{"results":[{"ok":{"length":0,"sha256":"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855","text":""}}],"requests":[["p","GET","/x","HLSR-launcher-update"]]}},
+    {"id":"ok chunked","url":"http://{p}/x","options":{},"routes":{"p":{"/x":[{"body":"chunked body","contentLength":null}]}},"result":{"results":[{"ok":{"length":12,"sha256":"aebd30e0419b5ad096bbf0fd326b6abdbffbee6340c4e21548b2f22314b9d319","text":"chunked body"}}],"requests":[["p","GET","/x","HLSR-launcher-update"]]}},
+    {"id":"query kept","url":"http://{p}/x?a=1&b=%D0%B0","options":{},"routes":{"p":{"/x?a=1&b=%D0%B0":[{"body":"q"}],"/x":[{"body":"plain"}]}},"result":{"results":[{"ok":{"length":1,"sha256":"8e35c2cd3bf6641bdb0e2050b76932cbb2e6034a0ddacc1d9bea82a6ba57f7cf","text":"q"}}],"requests":[["p","GET","/x?a=1&b=%D0%B0","HLSR-launcher-update"]]}},
+    {"id":"fragment dropped","url":"http://{p}/x#frag","options":{},"routes":{"p":{"/x":[{"body":"f"}]}},"result":{"results":[{"ok":{"length":1,"sha256":"252f10c83610ebca1a059c0bae8255eba2f95be4d1d7bcfa89d7248a82d9f111","text":"f"}}],"requests":[["p","GET","/x","HLSR-launcher-update"]]}},
+    {"id":"status 204","url":"http://{p}/x","options":{},"routes":{"p":{"/x":[{"status":204,"body":"ignored"}]}},"result":{"results":[{"error":{"kind":"status:204","message":"HTTP 204"}}],"requests":[["p","GET","/x","HLSR-launcher-update"]]}},
+    {"id":"status 400","url":"http://{p}/x","options":{},"routes":{"p":{"/x":[{"status":400,"body":"ignored"}]}},"result":{"results":[{"error":{"kind":"status:400","message":"HTTP 400"}}],"requests":[["p","GET","/x","HLSR-launcher-update"]]}},
+    {"id":"status 401","url":"http://{p}/x","options":{},"routes":{"p":{"/x":[{"status":401,"body":"ignored"}]}},"result":{"results":[{"error":{"kind":"status:401","message":"HTTP 401"}}],"requests":[["p","GET","/x","HLSR-launcher-update"]]}},
+    {"id":"status 403","url":"http://{p}/x","options":{},"routes":{"p":{"/x":[{"status":403,"body":"ignored"}]}},"result":{"results":[{"error":{"kind":"status:403","message":"HTTP 403"}}],"requests":[["p","GET","/x","HLSR-launcher-update"]]}},
+    {"id":"status 404","url":"http://{p}/x","options":{},"routes":{"p":{"/x":[{"status":404,"body":"ignored"}]}},"result":{"results":[{"error":{"kind":"status:404","message":"HTTP 404"}}],"requests":[["p","GET","/x","HLSR-launcher-update"]]}},
+    {"id":"status 410","url":"http://{p}/x","options":{},"routes":{"p":{"/x":[{"status":410,"body":"ignored"}]}},"result":{"results":[{"error":{"kind":"status:410","message":"HTTP 410"}}],"requests":[["p","GET","/x","HLSR-launcher-update"]]}},
+    {"id":"status 429","url":"http://{p}/x","options":{},"routes":{"p":{"/x":[{"status":429,"body":"ignored"}]}},"result":{"results":[{"error":{"kind":"status:429","message":"HTTP 429"}}],"requests":[["p","GET","/x","HLSR-launcher-update"]]}},
+    {"id":"status 500","url":"http://{p}/x","options":{},"routes":{"p":{"/x":[{"status":500,"body":"ignored"}]}},"result":{"results":[{"error":{"kind":"status:500","message":"HTTP 500"}}],"requests":[["p","GET","/x","HLSR-launcher-update"]]}},
+    {"id":"status 503","url":"http://{p}/x","options":{},"routes":{"p":{"/x":[{"status":503,"body":"ignored"}]}},"result":{"results":[{"error":{"kind":"status:503","message":"HTTP 503"}}],"requests":[["p","GET","/x","HLSR-launcher-update"]]}},
+    {"id":"200 range ignored","url":"http://{p}/x","options":{},"routes":{"p":{"/x":[{"status":206,"body":"partial"}]}},"result":{"results":[{"error":{"kind":"status:206","message":"HTTP 206"}}],"requests":[["p","GET","/x","HLSR-launcher-update"]]}},
+    {"id":"redirect 301","url":"http://{p}/x","options":{},"routes":{"p":{"/x":[{"status":301,"headers":[["Location","/y"]],"body":""}],"/y":[{"body":"moved"}]}},"result":{"$ref":"d196"}},
+    {"id":"redirect 302","url":"http://{p}/x","options":{},"routes":{"p":{"/x":[{"status":302,"headers":[["Location","/y"]],"body":""}],"/y":[{"body":"moved"}]}},"result":{"$ref":"d196"}},
+    {"id":"redirect 303","url":"http://{p}/x","options":{},"routes":{"p":{"/x":[{"status":303,"headers":[["Location","/y"]],"body":""}],"/y":[{"body":"moved"}]}},"result":{"$ref":"d196"}},
+    {"id":"redirect 304","url":"http://{p}/x","options":{},"routes":{"p":{"/x":[{"status":304,"headers":[["Location","/y"]],"body":""}],"/y":[{"body":"moved"}]}},"result":{"$ref":"d196"}},
+    {"id":"redirect 305","url":"http://{p}/x","options":{},"routes":{"p":{"/x":[{"status":305,"headers":[["Location","/y"]],"body":""}],"/y":[{"body":"moved"}]}},"result":{"$ref":"d196"}},
+    {"id":"redirect 306","url":"http://{p}/x","options":{},"routes":{"p":{"/x":[{"status":306,"headers":[["Location","/y"]],"body":""}],"/y":[{"body":"moved"}]}},"result":{"$ref":"d196"}},
+    {"id":"redirect 307","url":"http://{p}/x","options":{},"routes":{"p":{"/x":[{"status":307,"headers":[["Location","/y"]],"body":""}],"/y":[{"body":"moved"}]}},"result":{"$ref":"d196"}},
+    {"id":"redirect 308","url":"http://{p}/x","options":{},"routes":{"p":{"/x":[{"status":308,"headers":[["Location","/y"]],"body":""}],"/y":[{"body":"moved"}]}},"result":{"$ref":"d196"}},
+    {"id":"status 300 with location","url":"http://{p}/x","options":{},"routes":{"p":{"/x":[{"status":300,"headers":[["Location","/y"]],"body":""}],"/y":[{"body":"moved"}]}},"result":{"results":[{"error":{"kind":"status:300","message":"HTTP 300"}}],"requests":[["p","GET","/x","HLSR-launcher-update"]]}},
+    {"id":"status 309 with location","url":"http://{p}/x","options":{},"routes":{"p":{"/x":[{"status":309,"headers":[["Location","/y"]],"body":""}],"/y":[{"body":"moved"}]}},"result":{"results":[{"error":{"kind":"status:309","message":"HTTP 309"}}],"requests":[["p","GET","/x","HLSR-launcher-update"]]}},
+    {"id":"redirect without location","url":"http://{p}/x","options":{},"routes":{"p":{"/x":[{"status":302,"body":""}]}},"result":{"results":[{"error":{"kind":"status:302","message":"HTTP 302"}}],"requests":[["p","GET","/x","HLSR-launcher-update"]]}},
+    {"id":"redirect with empty location","url":"http://{p}/x","options":{},"routes":{"p":{"/x":[{"status":302,"headers":[["Location",""]],"body":""}]}},"result":{"results":[{"error":{"kind":"status:302","message":"HTTP 302"}}],"requests":[["p","GET","/x","HLSR-launcher-update"]]}},
+    {
+      "id": "redirect relative up",
+      "url": "http://{p}/a/b/x",
+      "options": {},
+      "routes": {"p":{"/a/b/x":[{"status":302,"headers":[["Location","../y"]],"body":""}],"/a/y":[{"body":"up"}]}},
+      "result": {"results":[{"ok":{"length":2,"sha256":"75a288c0d6898c5f7b054590845978a82a3ad79fcce3d43ff68a7501e5a91ee9","text":"up"}}],"requests":[["p","GET","/a/b/x","HLSR-launcher-update"],["p","GET","/a/y","HLSR-launcher-update"]]}
+    },
+    {"id":"redirect absolute other server","url":"http://{p}/x","options":{},"routes":{"p":{"/x":[{"status":302,"headers":[["Location","http://{f}/z"]],"body":""}]},"f":{"/z":[{"body":"other"}]}},"result":{"$ref":"d197"}},
+    {"id":"redirect protocol-relative","url":"http://{p}/x","options":{},"routes":{"p":{"/x":[{"status":302,"headers":[["Location","//{f}/z"]],"body":""}]},"f":{"/z":[{"body":"other"}]}},"result":{"$ref":"d197"}},
+    {
+      "id": "redirect with query",
+      "url": "http://{p}/x",
+      "options": {},
+      "routes": {"p":{"/x":[{"status":302,"headers":[["Location","/y?k=v"]],"body":""}],"/y":[{"body":"plain"}],"/y?k=v":[{"body":"with query"}]}},
+      "result": {"results":[{"ok":{"length":10,"sha256":"abd793f9aa41cba2ab8944566e750eaf7fcefe3c2e3c24428e16bc9d22c51baf","text":"with query"}}],"requests":[["p","GET","/x","HLSR-launcher-update"],["p","GET","/y?k=v","HLSR-launcher-update"]]}
+    },
+    {"id":"redirect to blocked","url":"http://{p}/x","options":{},"routes":{"p":{"/x":[{"status":302,"headers":[["Location","/blocked/y"]],"body":""}],"/blocked/y":[{"body":"no"}]}},"result":{"results":[{"error":{"kind":"not-allowed","message":"URL вне allowlist: http://{p}/blocked/y"}}],"requests":[["p","GET","/x","HLSR-launcher-update"]]}},
+    {"id":"redirect to garbage scheme","url":"http://{p}/x","options":{},"routes":{"p":{"/x":[{"status":302,"headers":[["Location","ftp://{p}/y"]],"body":""}]}},"result":{"results":[{"error":{"kind":"not-allowed","message":"URL вне allowlist: ftp://{p}/y"}}],"requests":[["p","GET","/x","HLSR-launcher-update"]]}},
+    {
+      "id": "five redirects",
+      "url": "http://{p}/x",
+      "options": {},
+      "routes": {"p":{"/x":[{"status":302,"headers":[["Location","/r1"]],"body":""}],"/r1":[{"status":302,"headers":[["Location","/r2"]],"body":""}],"/r2":[{"status":302,"headers":[["Location","/r3"]],"body":""}],"/r3":[{"status":302,"headers":[["Location","/r4"]],"body":""}],"/r4":[{"status":302,"headers":[["Location","/r5"]],"body":""}],"/r5":[{"body":"end"}]}},
+      "result": {"results":[{"ok":{"length":3,"sha256":"361e48d0308f20e32dba5fb56328baf18d72ef0ccb43b84f5c262d2a6a1fc6c8","text":"end"}}],"requests":{"$ref":"d198"}}
+    },
+    {
+      "id": "six redirects",
+      "url": "http://{p}/x",
+      "options": {},
+      "routes": {
+        "p": {
+          "/x": [{"status":302,"headers":[["Location","/r1"]],"body":""}],
+          "/r1": [{"status":302,"headers":[["Location","/r2"]],"body":""}],
+          "/r2": [{"status":302,"headers":[["Location","/r3"]],"body":""}],
+          "/r3": [{"status":302,"headers":[["Location","/r4"]],"body":""}],
+          "/r4": [{"status":302,"headers":[["Location","/r5"]],"body":""}],
+          "/r5": [{"status":302,"headers":[["Location","/r6"]],"body":""}],
+          "/r6": [{"body":"end"}]
+        }
+      },
+      "result": {"results":[{"error":{"kind":"redirects","message":"слишком много редиректов"}}],"requests":{"$ref":"d198"}}
+    },
+    {
+      "id": "loop",
+      "url": "http://{p}/x",
+      "options": {},
+      "routes": {"p":{"/x":[{"status":302,"headers":[["Location","/x"]],"body":""}]}},
+      "result": {"results":[{"error":{"kind":"redirects","message":"слишком много редиректов"}}],"requests":[["p","GET","/x","HLSR-launcher-update"],["p","GET","/x","HLSR-launcher-update"],["p","GET","/x","HLSR-launcher-update"],["p","GET","/x","HLSR-launcher-update"],["p","GET","/x","HLSR-launcher-update"],["p","GET","/x","HLSR-launcher-update"]]}
+    },
+    {"id":"first url blocked","url":"http://{p}/blocked/a","options":{},"routes":{"p":{"/blocked/a":[{"body":"no"}]}},"result":{"results":[{"error":{"kind":"not-allowed","message":"URL вне allowlist: http://{p}/blocked/a"}}],"requests":[]}},
+    {"id":"https url not allowed","url":"https://{p}/x","options":{},"routes":{"p":{}},"result":{"results":[{"error":{"kind":"not-allowed","message":"URL вне allowlist: https://{p}/x"}}],"requests":[]}},
+    {"id":"garbage url","url":"not a url","options":{},"routes":{"p":{}},"result":{"results":[{"error":{"kind":"not-allowed","message":"URL вне allowlist: not a url"}}],"requests":[]}},
+    {"id":"body 256 KiB","url":"http://{p}/x","options":{},"routes":{"p":{"/x":[{"bodySize":262144}]}},"result":{"results":[{"ok":{"length":262144,"sha256":"31a1f9dea0169551092d05e8bf4a446228c8c3eb4c9b713c66adcb7fd53c89be","text":null}}],"requests":[["p","GET","/x","HLSR-launcher-update"]]}},
+    {"id":"body 256 KiB + 1","url":"http://{p}/x","options":{},"routes":{"p":{"/x":[{"bodySize":262145}]}},"result":{"$ref":"d199"}},
+    {"id":"body 256 KiB + 1 chunked","url":"http://{p}/x","options":{},"routes":{"p":{"/x":[{"bodySize":262145,"contentLength":null}]}},"result":{"$ref":"d199"}},
+    {"id":"max body 100 exact","url":"http://{p}/x","options":{"maxBody":100},"routes":{"p":{"/x":[{"bodySize":100}]}},"result":{"results":[{"ok":{"length":100,"sha256":"bce0aff19cf5aa6a7469a30d61d04e4376e4bbf6381052ee9e7f33925c954d52","text":null}}],"requests":[["p","GET","/x","HLSR-launcher-update"]]}},
+    {"id":"max body 100 plus one","url":"http://{p}/x","options":{"maxBody":100},"routes":{"p":{"/x":[{"bodySize":101}]}},"result":{"$ref":"d199"}},
+    {"id":"max body 0 means default","url":"http://{p}/x","options":{"maxBody":0},"routes":{"p":{"/x":[{"bodySize":1000}]}},"result":{"results":[{"ok":{"length":1000,"sha256":"4e4c294b331f7a2099a379bec34b9f9fc03dc46ab465d998f4d683da53487e6d","text":null}}],"requests":[["p","GET","/x","HLSR-launcher-update"]]}},
+    {"id":"timeout before headers","url":"http://{p}/x","options":{"timeout":150},"routes":{"p":{"/x":[{"body":"late","delayMs":800}]}},"result":{"results":[{"error":{"kind":"timeout","message":"таймаут"}}],"requests":[["p","GET","/x","HLSR-launcher-update"]]}},
+    {"id":"timeout inside the body","url":"http://{p}/x","options":{"timeout":150},"routes":{"p":{"/x":[{"bodySize":2000,"pauseAfter":1000,"pauseMs":800}]}},"result":{"results":[{"error":{"kind":"timeout","message":"таймаут"}}],"requests":[["p","GET","/x","HLSR-launcher-update"]]}},
+    {"id":"slow but within the idle timeout","url":"http://{p}/x","options":{"timeout":600},"routes":{"p":{"/x":[{"bodySize":2000,"pauseAfter":1000,"pauseMs":150}]}},"result":{"results":[{"ok":{"length":2000,"sha256":"63d8d35920be456776a35578ade76725c687821ad55d4bb950225fed2d33e6cb","text":null}}],"requests":[["p","GET","/x","HLSR-launcher-update"]]}},
+    {"id":"timeout zero means default","url":"http://{p}/x","options":{"timeout":0},"routes":{"p":{"/x":[{"body":"fast"}]}},"result":{"results":[{"ok":{"length":4,"sha256":"115dc3606fbf8691fb69f2aefec86f2ecd302362a0502b3a9648bf2c4dc8290f","text":"fast"}}],"requests":[["p","GET","/x","HLSR-launcher-update"]]}},
+    {"id":"aborted before the request","url":"http://{p}/x","options":{"abortAfterMs":0},"routes":{"p":{"/x":[{"body":"late","delayMs":400}]}},"result":{"results":[{"error":{"kind":"aborted","message":"The operation was aborted"}}],"requests":[]}},
+    {"id":"aborted while waiting","url":"http://{p}/x","options":{"abortAfterMs":100},"routes":{"p":{"/x":[{"body":"late","delayMs":600}]}},"result":{"results":[{"error":{"kind":"aborted","message":"The operation was aborted"}}],"requests":[["p","GET","/x","HLSR-launcher-update"]]}},
+    {"id":"hang up","url":"http://{p}/x","options":{},"routes":{"p":{"/x":[{"hangUp":true}]}},"result":{"results":[{"error":{"kind":"network","message":null}}],"requests":[["p","GET","/x","HLSR-launcher-update"]]}},
+    {"id":"cut mid-body","url":"http://{p}/x","options":{},"routes":{"p":{"/x":[{"bodySize":5000,"cutAfter":100}]}},"result":{"results":[{"error":{"kind":"network","message":null}}],"requests":[["p","GET","/x","HLSR-launcher-update"]]}},
+    {"id":"cut mid-chunked body","url":"http://{p}/x","options":{},"routes":{"p":{"/x":[{"bodySize":5000,"contentLength":null,"cutAfter":100}]}},"result":{"results":[{"error":{"kind":"network","message":null}}],"requests":[["p","GET","/x","HLSR-launcher-update"]]}},
+    {"id":"dead port","url":"http://{dead}/x","options":{},"routes":{"p":{}},"result":{"results":[{"error":{"kind":"network","message":null}}],"requests":[]}},
+    {
+      "id": "two requests share nothing",
+      "url": "http://{p}/x",
+      "options": {},
+      "routes": {"p":{"/x":[{"body":"one"},{"body":"two"}]}},
+      "repeat": 2,
+      "result": {"results":[{"ok":{"length":3,"sha256":"7692c3ad3540bb803c020b3aee66cd8887123234ea0c6e7143c0add73ff431ed","text":"one"}},{"ok":{"length":3,"sha256":"3fc4ccfe745870e2c0d99f71f30ff0656c8dedd41cc1d7d3d376b0dbe685e2f3","text":"two"}}],"requests":[["p","GET","/x","HLSR-launcher-update"],["p","GET","/x","HLSR-launcher-update"]]}
+    }
+  ],
+  "bootGate": [
+    {"id":"disabled","enabled":false,"timeoutMs":60,"mandatory":false,"game":false,"version":"0.5.0","error":"boom","initialState":"idle","onCheck":[[5,"not-available"]],"onDownload":[],"onInstall":[],"maxMs":400,"result":{"decision":{"action":"proceed","reason":"updates-disabled"},"calls":[],"log":[],"subscribers":0}},
+    {"id":"no update","enabled":true,"timeoutMs":60,"mandatory":false,"game":false,"version":"0.5.0","error":"boom","initialState":"idle","onCheck":[[0,"checking"],[10,"not-available"]],"onDownload":[],"onInstall":[],"maxMs":400,"result":{"decision":{"action":"proceed","reason":"no-update"},"calls":["check"],"log":[],"subscribers":0}},
+    {"id":"no update immediately","enabled":true,"timeoutMs":60,"mandatory":false,"game":false,"version":"0.5.0","error":"boom","initialState":"idle","onCheck":[[0,"not-available"]],"onDownload":[],"onInstall":[],"maxMs":400,"result":{"decision":{"action":"proceed","reason":"no-update"},"calls":["check"],"log":[],"subscribers":0}},
+    {"id":"check never answers (idle)","enabled":true,"timeoutMs":60,"mandatory":false,"game":false,"version":"0.5.0","error":"boom","initialState":"idle","onCheck":[],"onDownload":[],"onInstall":[],"maxMs":400,"result":{"$ref":"d200"}},
+    {"id":"check stuck in checking","enabled":true,"timeoutMs":60,"mandatory":false,"game":false,"version":"0.5.0","error":"boom","initialState":"idle","onCheck":[[0,"checking"]],"onDownload":[],"onInstall":[],"maxMs":400,"result":{"$ref":"d200"}},
+    {"id":"check timeout then late answer is ignored","enabled":true,"timeoutMs":60,"mandatory":false,"game":false,"version":"0.5.0","error":"boom","initialState":"idle","onCheck":[[0,"checking"],[120,"available"]],"onDownload":[[0,"downloading"],[10,"downloaded"]],"onInstall":[],"maxMs":400,"result":{"$ref":"d200"}},
+    {"id":"state moved on before the timeout: no decision","enabled":true,"timeoutMs":60,"mandatory":false,"game":false,"version":"0.5.0","error":"boom","initialState":"idle","onCheck":[[0,"checking"],[20,"downloading"]],"onDownload":[],"onInstall":[],"maxMs":250,"result":{"decision":null,"calls":["check"],"log":[],"subscribers":1}},
+    {"id":"available, download, install","enabled":true,"timeoutMs":60,"mandatory":false,"game":false,"version":"0.5.0","error":"boom","initialState":"idle","onCheck":[[0,"checking"],[20,"available"]],"onDownload":[[0,"downloading"],[20,"verifying"],[40,"downloaded"]],"onInstall":[],"maxMs":400,"result":{"$ref":"d202"}},
+    {"id":"available, download longer than the check timeout","enabled":true,"timeoutMs":60,"mandatory":false,"game":false,"version":"0.5.0","error":"boom","initialState":"idle","onCheck":[[0,"checking"],[20,"available"]],"onDownload":[[0,"downloading"],[150,"downloaded"]],"onInstall":[],"maxMs":400,"result":{"$ref":"d202"}},
+    {
+      "id": "downloaded while a game runs",
+      "enabled": true,
+      "timeoutMs": 60,
+      "mandatory": false,
+      "game": true,
+      "version": "0.5.0",
+      "error": "boom",
+      "initialState": "idle",
+      "onCheck": [[0,"checking"],[20,"available"]],
+      "onDownload": [[0,"downloading"],[20,"downloaded"]],
+      "onInstall": [],
+      "maxMs": 400,
+      "result": {"decision":{"action":"proceed","reason":"game-running"},"calls":["check","download"],"log":[{"level":"info","message":"[boot] update available — downloading on loading screen"}],"subscribers":0}
+    },
+    {"id":"downloaded without available","enabled":true,"timeoutMs":60,"mandatory":false,"game":false,"version":"0.5.0","error":"boom","initialState":"idle","onCheck":[[0,"checking"],[20,"downloaded"]],"onDownload":[],"onInstall":[],"maxMs":400,"result":{"$ref":"d203"}},
+    {"id":"downloaded installs and install emits later states","enabled":true,"timeoutMs":60,"mandatory":false,"game":false,"version":"0.5.0","error":"boom","initialState":"idle","onCheck":[[0,"checking"],[10,"downloaded"]],"onDownload":[],"onInstall":[[10,"error"],[20,"not-available"]],"maxMs":400,"result":{"$ref":"d203"}},
+    {
+      "id": "version of the update is reported",
+      "enabled": true,
+      "timeoutMs": 60,
+      "mandatory": false,
+      "game": false,
+      "version": "0.5.7",
+      "error": "boom",
+      "initialState": "idle",
+      "onCheck": [[10,"downloaded"]],
+      "onDownload": [],
+      "onInstall": [],
+      "maxMs": 400,
+      "result": {"decision":{"action":"installing","reason":"installing","version":"0.5.7"},"calls":["check","install"],"log":[{"level":"info","message":"[boot] verified update ready — installing"}],"subscribers":0}
+    },
+    {
+      "id": "version missing",
+      "enabled": true,
+      "timeoutMs": 60,
+      "mandatory": false,
+      "game": false,
+      "version": null,
+      "error": "boom",
+      "initialState": "idle",
+      "onCheck": [[10,"downloaded"]],
+      "onDownload": [],
+      "onInstall": [],
+      "maxMs": 400,
+      "result": {"decision":{"action":"installing","reason":"installing","version":null},"calls":["check","install"],"log":[{"level":"info","message":"[boot] verified update ready — installing"}],"subscribers":0}
+    },
+    {"id":"error on check","enabled":true,"timeoutMs":60,"mandatory":false,"game":false,"version":"0.5.0","error":"boom","initialState":"idle","onCheck":[[0,"checking"],[10,"error"]],"onDownload":[],"onInstall":[],"maxMs":400,"result":{"$ref":"d204"}},
+    {"id":"error on check, empty message","enabled":true,"timeoutMs":60,"mandatory":false,"game":false,"version":"0.5.0","error":"","initialState":"idle","onCheck":[[10,"error"]],"onDownload":[],"onInstall":[],"maxMs":400,"result":{"$ref":"d205"}},
+    {"id":"error on check, no message","enabled":true,"timeoutMs":60,"mandatory":false,"game":false,"version":"0.5.0","error":null,"initialState":"idle","onCheck":[[10,"error"]],"onDownload":[],"onInstall":[],"maxMs":400,"result":{"$ref":"d205"}},
+    {"id":"mandatory error on check","enabled":true,"timeoutMs":60,"mandatory":true,"game":false,"version":"0.5.0","error":"boom","initialState":"idle","onCheck":[[10,"error"]],"onDownload":[],"onInstall":[],"maxMs":400,"result":{"decision":{"action":"blocked","reason":"mandatory-update-failed","mandatory":true,"error":"boom"},"calls":["check"],"log":[],"subscribers":0}},
+    {"id":"mandatory error without message","enabled":true,"timeoutMs":60,"mandatory":true,"game":false,"version":"0.5.0","error":null,"initialState":"idle","onCheck":[[10,"error"]],"onDownload":[],"onInstall":[],"maxMs":400,"result":{"decision":{"action":"blocked","reason":"mandatory-update-failed","mandatory":true,"error":"unknown"},"calls":["check"],"log":[],"subscribers":0}},
+    {
+      "id": "error during download",
+      "enabled": true,
+      "timeoutMs": 60,
+      "mandatory": false,
+      "game": false,
+      "version": "0.5.0",
+      "error": "boom",
+      "initialState": "idle",
+      "onCheck": [[0,"checking"],[10,"available"]],
+      "onDownload": [[0,"downloading"],[20,"error"]],
+      "onInstall": [],
+      "maxMs": 400,
+      "result": {"decision":{"action":"proceed","reason":"update-error","warn":"LU_FEED_UNAVAILABLE","error":"boom"},"calls":["check","download"],"log":[{"level":"info","message":"[boot] update available — downloading on loading screen"}],"subscribers":0}
+    },
+    {
+      "id": "mandatory error during download",
+      "enabled": true,
+      "timeoutMs": 60,
+      "mandatory": true,
+      "game": false,
+      "version": "0.5.0",
+      "error": "boom",
+      "initialState": "idle",
+      "onCheck": [[0,"checking"],[10,"available"]],
+      "onDownload": [[0,"downloading"],[20,"error"]],
+      "onInstall": [],
+      "maxMs": 400,
+      "result": {"decision":{"action":"blocked","reason":"mandatory-update-failed","mandatory":true,"error":"boom"},"calls":["check","download"],"log":[{"level":"info","message":"[boot] update available — downloading on loading screen"}],"subscribers":0}
+    },
+    {"id":"first decision wins","enabled":true,"timeoutMs":60,"mandatory":false,"game":false,"version":"0.5.0","error":"boom","initialState":"idle","onCheck":[[10,"error"],[20,"not-available"],[30,"downloaded"]],"onDownload":[],"onInstall":[],"maxMs":400,"result":{"$ref":"d204"}},
+    {
+      "id": "irrelevant states are ignored",
+      "enabled": true,
+      "timeoutMs": 60,
+      "mandatory": false,
+      "game": false,
+      "version": "0.5.0",
+      "error": "boom",
+      "initialState": "idle",
+      "onCheck": [[0,"idle"],[5,"checking"],[10,"downloading"],[15,"verifying"],[20,"not-available"]],
+      "onDownload": [],
+      "onInstall": [],
+      "maxMs": 400,
+      "result": {"decision":{"action":"proceed","reason":"no-update"},"calls":["check"],"log":[],"subscribers":0}
+    },
+    {
+      "id": "available twice downloads twice",
+      "enabled": true,
+      "timeoutMs": 60,
+      "mandatory": false,
+      "game": false,
+      "version": "0.5.0",
+      "error": "boom",
+      "initialState": "idle",
+      "onCheck": [[0,"checking"],[10,"available"],[20,"available"]],
+      "onDownload": [[0,"downloading"],[60,"downloaded"]],
+      "onInstall": [],
+      "maxMs": 400,
+      "result": {"decision":{"action":"installing","reason":"installing","version":"0.5.0"},"calls":["check","download","download","install"],"log":[{"level":"info","message":"[boot] update available — downloading on loading screen"},{"level":"info","message":"[boot] update available — downloading on loading screen"},{"level":"info","message":"[boot] verified update ready — installing"}],"subscribers":0}
+    },
+    {"id":"timeout while still idle after other states","enabled":true,"timeoutMs":60,"mandatory":false,"game":false,"version":"0.5.0","error":"boom","initialState":"idle","onCheck":[[0,"idle"]],"onDownload":[],"onInstall":[],"maxMs":400,"result":{"$ref":"d200"}},
+    {"id":"initial state downloading never times out","enabled":true,"timeoutMs":60,"mandatory":false,"game":false,"version":"0.5.0","error":"boom","initialState":"downloading","onCheck":[],"onDownload":[],"onInstall":[],"maxMs":250,"result":{"decision":null,"calls":["check"],"log":[],"subscribers":1}}
+  ]
+}

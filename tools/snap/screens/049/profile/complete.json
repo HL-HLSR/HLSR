@@ -1,0 +1,197 @@
+{
+  "id": "profile/complete",
+  "base": "profile/_base",
+  "state": "100 % достижений (и подписчик): золотая рамка и свечение окна, «39 из 39»",
+  "invoke": {
+    "runner-state": {
+      "status": "signed-in",
+      "userCode": null,
+      "expiresAt": null,
+      "error": null,
+      "ban": null,
+      "mute": null,
+      "account": {
+        "signedIn": true,
+        "steamId64": "76561199155902676",
+        "steamId2": "STEAM_0:0:597818474",
+        "personaName": "Kanoyo",
+        "avatarDataUri": "https://avatars.steamstatic.com/0000000000000000000000000000000000000001_full.jpg",
+        "connection": "connected"
+      },
+      "firstRunAt": "2026-03-14T08:20:00.000Z",
+      "achievements": [],
+      "summary": {
+        "unlocked": 39,
+        "total": 39,
+        "percent": 100
+      },
+      "stats": {
+        "totalSeconds": 512340,
+        "gamesPlayed": 2,
+        "launches": 48,
+        "best": {
+          "gameId": "ghosting-renewed",
+          "seconds": 401220,
+          "launcherId": "218"
+        }
+      },
+      "streak": {
+        "days": 3,
+        "best": 12
+      },
+      "badges": [
+        "developer",
+        "bughunter",
+        "anniversary-3"
+      ],
+      "customBadges": [],
+      "nick": {
+        "style": "developer",
+        "css": null
+      },
+      "avatarFrame": null,
+      "subscriber": true,
+      "boosterSince": null,
+      "supporterSince": 1760000000,
+      "perks": {
+        "styles": false,
+        "subscriber": null
+      },
+      "stylePreset": null,
+      "telegram": {
+        "linked": false,
+        "username": null
+      },
+      "discordLink": {
+        "linked": false,
+        "username": null,
+        "boosterSince": null
+      },
+      "details": {
+        "status": "Бегу Ghosting по выходным",
+        "pronouns": "",
+        "country": "RU",
+        "hideSteamId": false,
+        "pinnedRun": {
+          "id": "abcd1234",
+          "seconds": 1648.285,
+          "game": "Half-Life",
+          "category": "Any% · Glitchless",
+          "place": 2,
+          "url": "https://www.speedrun.com/hl1/runs/abcd1234"
+        },
+        "speedrun": "kanoyo",
+        "discord": "kanoyo",
+        "youtube": "https://www.youtube.com/@kanoyo",
+        "twitch": "https://www.twitch.tv/kanoyo"
+      },
+      "deletionAt": null,
+      "rating": {
+        "score": 14,
+        "likes": 15,
+        "dislikes": 1,
+        "dubious": false
+      },
+      "presence": {
+        "online": true,
+        "gameId": null,
+        "launcherId": null
+      }
+    },
+    "profile-get": {
+      "status": "signed-in",
+      "userCode": null,
+      "expiresAt": null,
+      "error": null,
+      "ban": null,
+      "mute": null,
+      "account": {
+        "signedIn": true,
+        "steamId64": "76561199155902676",
+        "steamId2": "STEAM_0:0:597818474",
+        "personaName": "Kanoyo",
+        "avatarDataUri": "https://avatars.steamstatic.com/0000000000000000000000000000000000000001_full.jpg",
+        "connection": "connected"
+      },
+      "firstRunAt": "2026-03-14T08:20:00.000Z",
+      "achievements": [],
+      "summary": {
+        "unlocked": 39,
+        "total": 39,
+        "percent": 100
+      },
+      "stats": {
+        "totalSeconds": 512340,
+        "gamesPlayed": 2,
+        "launches": 48,
+        "best": {
+          "gameId": "ghosting-renewed",
+          "seconds": 401220,
+          "launcherId": "218"
+        }
+      },
+      "streak": {
+        "days": 3,
+        "best": 12
+      },
+      "badges": [
+        "developer",
+        "bughunter",
+        "anniversary-3"
+      ],
+      "customBadges": [],
+      "nick": {
+        "style": "developer",
+        "css": null
+      },
+      "avatarFrame": null,
+      "subscriber": true,
+      "boosterSince": null,
+      "supporterSince": 1760000000,
+      "perks": {
+        "styles": false,
+        "subscriber": null
+      },
+      "stylePreset": null,
+      "telegram": {
+        "linked": false,
+        "username": null
+      },
+      "discordLink": {
+        "linked": false,
+        "username": null,
+        "boosterSince": null
+      },
+      "details": {
+        "status": "Бегу Ghosting по выходным",
+        "pronouns": "",
+        "country": "RU",
+        "hideSteamId": false,
+        "pinnedRun": {
+          "id": "abcd1234",
+          "seconds": 1648.285,
+          "game": "Half-Life",
+          "category": "Any% · Glitchless",
+          "place": 2,
+          "url": "https://www.speedrun.com/hl1/runs/abcd1234"
+        },
+        "speedrun": "kanoyo",
+        "discord": "kanoyo",
+        "youtube": "https://www.youtube.com/@kanoyo",
+        "twitch": "https://www.twitch.tv/kanoyo"
+      },
+      "deletionAt": null,
+      "rating": {
+        "score": 14,
+        "likes": 15,
+        "dislikes": 1,
+        "dubious": false
+      },
+      "presence": {
+        "online": true,
+        "gameId": null,
+        "launcherId": null
+      }
+    }
+  }
+}

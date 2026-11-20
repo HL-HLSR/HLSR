@@ -1,0 +1,263 @@
+{
+  "id": "games/modal-repair",
+  "base": "games/_base",
+  "state": "Ghosting: меню → «Починить» → окно ремонта (RepairModal): 32 файла сборки по папкам, раздел cfg; папка hl2/maps раскрыта, первый файл снят — у папки промежуточная галочка",
+  "invoke": {
+    "game-menu-state": {
+      "available": true,
+      "gameId": "ghosting-renewed",
+      "installed": true,
+      "busy": false,
+      "running": false,
+      "items": {
+        "settings": {
+          "enabled": true,
+          "reason": null
+        },
+        "shortcut": {
+          "enabled": true,
+          "reason": null
+        },
+        "screenshots": {
+          "enabled": true,
+          "reason": null
+        },
+        "folder": {
+          "enabled": true,
+          "reason": null
+        },
+        "verify": {
+          "enabled": true,
+          "reason": null
+        },
+        "repair": {
+          "enabled": true,
+          "reason": null
+        },
+        "exportBuild": {
+          "enabled": true,
+          "reason": null
+        },
+        "exportSettings": {
+          "enabled": true,
+          "reason": null
+        },
+        "importBuild": {
+          "enabled": true,
+          "reason": null
+        },
+        "uninstall": {
+          "enabled": true,
+          "reason": null
+        }
+      }
+    },
+    "game-menu-repair": {
+      "status": "confirmation-required",
+      "files": [
+        {
+          "path": "bin/client.dll",
+          "size": 4194304,
+          "kind": "damaged"
+        },
+        {
+          "path": "hl2/maps/d1_canals_01.bsp",
+          "size": 10485760,
+          "kind": "damaged"
+        },
+        {
+          "path": "hl2/maps/d1_canals_02.bsp",
+          "size": 11534336,
+          "kind": "damaged"
+        },
+        {
+          "path": "hl2/maps/d1_canals_03.bsp",
+          "size": 12582912,
+          "kind": "damaged"
+        },
+        {
+          "path": "hl2/maps/d1_canals_04.bsp",
+          "size": 13631488,
+          "kind": "missing"
+        },
+        {
+          "path": "hl2/maps/d1_canals_05.bsp",
+          "size": 14680064,
+          "kind": "damaged"
+        },
+        {
+          "path": "hl2/maps/d1_canals_06.bsp",
+          "size": 15728640,
+          "kind": "damaged"
+        },
+        {
+          "path": "hl2/maps/d1_canals_07.bsp",
+          "size": 16777216,
+          "kind": "damaged"
+        },
+        {
+          "path": "hl2/maps/d1_canals_08.bsp",
+          "size": 17825792,
+          "kind": "missing"
+        },
+        {
+          "path": "hl2/maps/d1_canals_09.bsp",
+          "size": 18874368,
+          "kind": "damaged"
+        },
+        {
+          "path": "hl2/maps/d1_canals_10.bsp",
+          "size": 19922944,
+          "kind": "damaged"
+        },
+        {
+          "path": "hl2/maps/d1_canals_11.bsp",
+          "size": 20971520,
+          "kind": "damaged"
+        },
+        {
+          "path": "hl2/maps/d1_canals_12.bsp",
+          "size": 22020096,
+          "kind": "missing"
+        },
+        {
+          "path": "hl2/maps/d1_canals_13.bsp",
+          "size": 23068672,
+          "kind": "damaged"
+        },
+        {
+          "path": "hl2/maps/d1_canals_14.bsp",
+          "size": 24117248,
+          "kind": "damaged"
+        },
+        {
+          "path": "hl2/maps/d1_canals_15.bsp",
+          "size": 25165824,
+          "kind": "damaged"
+        },
+        {
+          "path": "hl2/maps/d1_canals_16.bsp",
+          "size": 26214400,
+          "kind": "missing"
+        },
+        {
+          "path": "hl2/maps/d1_canals_17.bsp",
+          "size": 27262976,
+          "kind": "damaged"
+        },
+        {
+          "path": "hl2/maps/d1_canals_18.bsp",
+          "size": 28311552,
+          "kind": "damaged"
+        },
+        {
+          "path": "hl2/maps/d1_canals_19.bsp",
+          "size": 29360128,
+          "kind": "damaged"
+        },
+        {
+          "path": "hl2/maps/d1_canals_20.bsp",
+          "size": 30408704,
+          "kind": "missing"
+        },
+        {
+          "path": "hl2/maps/d1_canals_21.bsp",
+          "size": 31457280,
+          "kind": "damaged"
+        },
+        {
+          "path": "hl2/maps/d1_canals_22.bsp",
+          "size": 32505856,
+          "kind": "damaged"
+        },
+        {
+          "path": "hl2/maps/d1_canals_23.bsp",
+          "size": 33554432,
+          "kind": "damaged"
+        },
+        {
+          "path": "hl2/maps/d1_canals_24.bsp",
+          "size": 34603008,
+          "kind": "missing"
+        },
+        {
+          "path": "hl2/maps/d1_canals_25.bsp",
+          "size": 35651584,
+          "kind": "damaged"
+        },
+        {
+          "path": "hl2/maps/d1_canals_26.bsp",
+          "size": 36700160,
+          "kind": "damaged"
+        },
+        {
+          "path": "hl2/maps/d1_canals_27.bsp",
+          "size": 37748736,
+          "kind": "damaged"
+        },
+        {
+          "path": "hl2/maps/d1_canals_28.bsp",
+          "size": 38797312,
+          "kind": "missing"
+        },
+        {
+          "path": "hl2/maps/d1_canals_29.bsp",
+          "size": 39845888,
+          "kind": "damaged"
+        },
+        {
+          "path": "hl2/maps/d1_canals_30.bsp",
+          "size": 40894464,
+          "kind": "damaged"
+        },
+        {
+          "path": "hl2/maps/d1_canals_31.bsp",
+          "size": 41943040,
+          "kind": "damaged"
+        },
+        {
+          "path": "hl2/cfg/autoexec.cfg",
+          "size": 1843,
+          "kind": "cfg-changed"
+        },
+        {
+          "path": "hl2/cfg/config_default.cfg",
+          "size": 5120,
+          "kind": "cfg-missing"
+        }
+      ]
+    }
+  },
+  "steps": [
+    {
+      "click": {
+        "css": ".game-menu__trigger",
+        "view": "game-menu"
+      }
+    },
+    {
+      "click": {
+        "css": ".game-menu__item:nth-child(6)",
+        "view": "game-menu-repair"
+      }
+    },
+    {
+      "click": {
+        "css": ".rp__section:first-child .rp__list > li:nth-child(2) .rp__open",
+        "view": "rp-open-hl2/maps"
+      }
+    },
+    {
+      "click": {
+        "css": ".rp__files.nested .rp__pick input",
+        "view": "rp-file-1"
+      }
+    },
+    {
+      "move": [
+        800,
+        880
+      ]
+    }
+  ]
+}

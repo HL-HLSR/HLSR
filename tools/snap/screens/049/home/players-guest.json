@@ -1,0 +1,11 @@
+{
+  "id": "home/players-guest",
+  "base": "home/_base",
+  "state": "«Игроки» у гостя: приглашение войти и кнопка «Войти», списков не просим",
+  "invoke": {"public-news-get": {"status": "ok", "items": []}},
+  "steps": [
+    {"click": {"css": ".launcher-topbar__tab:nth-child(1)", "view": "topbar-tab-home"}},
+    {"click": {"css": "#home-tab-players", "view": "home-tabs-2"}},
+    {"move": [1000, 40]}
+  ]
+}

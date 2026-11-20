@@ -1,0 +1,113 @@
+//! Стандартный autoexec.cfg Ghosting Mod Renewed, который ставит лаунчер
+//! (`ghosting-default-autoexec.js`). Строки хранятся как есть, с комментариями для игрока;
+//! движок читает cfg побайтно, и кириллица в комментариях ему не мешает.
+
+use crate::bind_presets::ghosting_save_deletion;
+use hlsr_core::js::Platform;
+
+/// Строки до бинда удаления сейва.
+const BEFORE_SAVE_DELETION: &[&str] = &[
+    "//Эти настройки не влияют на спидран",
+    "demo_interplimit 999999999999999",
+    "cl_detaildist 99999999",
+    "cl_detailfade 99999999",
+    "sv_max_queries_window -1",
+    "sv_max_queries_sec 9999999999",
+    "mat_queue_mode -1 // ЯДРА КОТОРЫЕ БУДУТ ЗАДЕЙСТВОВАНЫ! -1 хватает, если лагает, ставь 2.",
+    "",
+    "//Обязательно должно быть включено (fps_max 0 запрещено!)",
+    "cl_showfps 1",
+    "cl_showpos 1",
+    "fps_max 999",
+    "",
+    "",
+    "//Сохранения",
+    "",
+    "bind mouse4 \"save quick\" //Клавиша сейва",
+    "bind mouse5 \"load quick\" //Клавиша загрузки сейва",
+    "",
+    "bind x \"save x; load x\" //Клавиша которая делает сохранение и загрузку одновременно",
+    "bind i \"load autosave\" //Клавиша чтобы загрузить автосейв ",
+    "bind k \"load quick01\" //Клавиша которая ОБЯЗАТЕЛЬНА должна быть забинджена! Она загружает позапрошлый сейв",
+    "",
+    "//Призраки (ТУТОРИАЛ https://www.youtube.com/watch?v=4t7q2RUZXs4)",
+    "",
+    "gh_name \"myrun\"",
+    "gh_opacity \"175\"",
+    "gh_runcomplete_notify 0 // включать только для левел ранов",
+    "",
+    "//Save Deletion",
+    "",
+];
+
+/// Строки после бинда удаления сейва.
+const AFTER_SAVE_DELETION: &[&str] = &[
+    "",
+    "",
+    "//Бинды на оружки которые используются в ране после Yesclip",
+    "",
+    "bind 1 \"use weapon_crowbar\" //Лом",
+    "bind 2 \"use weapon_pistol\" //Пистолет",
+    "bind 3 \"use weapon_smg1\" //Автомат",
+    "bind 4 \"use weapon_shotgun\" //Дробовик",
+    "bind 5 \"use weapon_frag\" //Граната",
+    "bind 6 \"use weapon_rpg\" //Базука",
+    "",
+    "",
+    "//Другие бинды",
+    "",
+    "bind u \"exec autoexec\" //Инжект autoexec конфига в игру, чтобы применились все настройки",
+    "bind \"]\" \"r_portalsopenall 1\" //Открыть всю карту во время спидрана (РИСК КРАША ИГРЫ!)",
+    "bind p \"load start;sv_cheats 0\" //Начать ран",
+    "bind 0 \"sv_cheats 0\" //Используется в конце игры, чтобы отключить ускорение катсцены",
+    "",
+    "",
+    "",
+    "//Рибинды которые обязательно нужны в ране!",
+    "",
+    "bind t \"bind mwheeldown +duck; bind mwheelup +duck\" //Биндит колесо мыши на приседания(Duckroll)",
+    "bind y \"bind mwheeldown pause; bind mwheelup pause\" //Биндит колесо мыши на паузу(Pauseboost)",
+    "bind n \"bind mwheeldown +use; bind mwheelup +use\" //Биндит колесо мыши на Использовать, нужен для валлклаймба(Wall Climb)",
+    "",
+    "",
+    "",
+    "//Настройки",
+    "",
+    "volume 0.2 //Громкость игры",
+    "sensitivity 3 //Сенса мыши",
+    "hud_quickinfo 1 //Убирает линии на прицеле",
+    "mat_specular 0 //Шейдеры которые влияют немного на FPS",
+    "",
+    "//Твой ФОВ",
+    "//ИЗМЕНИТЕ ОДИНАКОВОЕ ЗНАЧЕНИЕ ВО ВСЕХ FOV'ах НА ВСЯКИЙ СЛУЧАЙ",
+    "",
+    "default_fov 110",
+    "fov_desired 110",
+    "fov 110",
+    "",
+    "viewmodel_fov 62 //Сделать длинее руки",
+    "cl_showpos 1 //Показывает позицию игрока в правом верхнем углу, нужен будет для Yesclip ",
+    "cl_showfps 1 //Показывает FPS в правом верхнем углу",
+    "gh_timer 1 //Таймер советую держать выключенным, так как он мешает во время игры. Но если хочешь можешь включить его для себя, конечно",
+    "gh_hud 1 //Если у тебя установлена модификация с призраками, держи её включённой! Если нет смело ставь 0",
+    "sv_alternateticks 0 //Фиксит неработоспособность квик клипов.",
+    "clear",
+    "",
+    "gh_version ",
+    "",
+    "echo \"================================\"",
+    "echo \"AUTOEXEC EXECUTED SUCCESSFULLY\"",
+    "echo \"================================\"",
+];
+
+/// Текст стандартного autoexec.cfg: строки через `\r\n` и `\r\n` в конце. Бинд удаления
+/// сейва зависит от ОС игры: под Linux (Proton) работает `save /`, под Windows — `save :`.
+pub fn default_autoexec(platform: Platform) -> String {
+    let save_deletion = format!("bind h \"{}\"", ghosting_save_deletion(platform));
+    let mut lines: Vec<&str> = BEFORE_SAVE_DELETION.to_vec();
+    lines.push(&save_deletion);
+    lines.extend_from_slice(AFTER_SAVE_DELETION);
+    let mut text = lines.join("\r\n");
+    text.push_str("\r\n");
+    text
+}

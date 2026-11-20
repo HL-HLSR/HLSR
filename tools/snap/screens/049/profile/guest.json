@@ -1,0 +1,89 @@
+{
+  "id": "profile/guest",
+  "base": "profile/_base",
+  "state": "Гость: окно входа через Steam (узкое), согласие не отмечено — кнопка недоступна",
+  "invoke": {
+    "runner-state": {
+      "status": "signed-out",
+      "userCode": null,
+      "expiresAt": null,
+      "error": null,
+      "ban": null,
+      "mute": null,
+      "account": {
+        "signedIn": false
+      },
+      "firstRunAt": null,
+      "achievements": [],
+      "summary": {
+        "unlocked": 0,
+        "total": 39,
+        "percent": 0
+      },
+      "stats": {
+        "totalSeconds": 0,
+        "gamesPlayed": 0,
+        "launches": 0,
+        "best": null
+      },
+      "badges": [],
+      "customBadges": [],
+      "nick": null,
+      "avatarFrame": null,
+      "details": {},
+      "deletionAt": null,
+      "rating": {
+        "score": 0,
+        "likes": 0,
+        "dislikes": 0,
+        "dubious": false
+      },
+      "presence": {
+        "online": false,
+        "gameId": null,
+        "launcherId": null
+      }
+    },
+    "profile-get": {
+      "status": "signed-out",
+      "userCode": null,
+      "expiresAt": null,
+      "error": null,
+      "ban": null,
+      "mute": null,
+      "account": {
+        "signedIn": false
+      },
+      "firstRunAt": null,
+      "achievements": [],
+      "summary": {
+        "unlocked": 0,
+        "total": 39,
+        "percent": 0
+      },
+      "stats": {
+        "totalSeconds": 0,
+        "gamesPlayed": 0,
+        "launches": 0,
+        "best": null
+      },
+      "badges": [],
+      "customBadges": [],
+      "nick": null,
+      "avatarFrame": null,
+      "details": {},
+      "deletionAt": null,
+      "rating": {
+        "score": 0,
+        "likes": 0,
+        "dislikes": 0,
+        "dubious": false
+      },
+      "presence": {
+        "online": false,
+        "gameId": null,
+        "launcherId": null
+      }
+    }
+  }
+}

@@ -1,0 +1,2090 @@
+{
+  "apiRoot": "https://api.github.com/repos/",
+  "github": "https://github.com/",
+  "dependencies": [
+    {"id":"bxt","title":"Bunnymod XT","repo":"YaLTeR/BunnymodXT","asset":"^(\\d+-)?BunnymodXT-Windows\\.7z$","extract":"BunnymodXT.dll","target":"Bunnymod XT/BunnymodXT.dll","versionFile":"Bunnymod XT/version"},
+    {"id":"injector","title":"Bunnymod XT Injector","repo":"YaLTeR/BunnymodXT-Injector","asset":"^Injector\\.exe$","target":"Bunnymod XT/Injector.exe","versionFile":"Bunnymod XT/.hlsr-injector-version"}
+  ],
+  "mutable": {"Bunnymod XT/BunnymodXT.dll":true,"Bunnymod XT/version":true,"Bunnymod XT/Injector.exe":true,"Bunnymod XT/.hlsr-injector-version":true},
+  "maxAssetBytes": 33554432,
+  "archives": {
+    "ok": {"file":"deps/ok.7z","size":245,"sha256":"d278b744b70b0c92c03fc6c21316acd028694b886cd809889c77dd7fbff221a5"},
+    "noDll": {"file":"deps/noDll.7z","size":162,"sha256":"c5a342658bc96280d1f43e21a9261972a02cd4a68a73a6d5c2d9a23a59b47424"},
+    "notMz": {"file":"deps/notMz.7z","size":185,"sha256":"070d4630f20cb8f5f54df1fe1cd3d4f64c6ed5773c323c4a1113656ea2cf604e"},
+    "oneByte": {"file":"deps/oneByte.7z","size":143,"sha256":"d072d1421e486dc2cf19fe4553a145efec50295f52cc834cff9160d890f4f25a"},
+    "empty": {"file":"deps/empty.7z","size":106,"sha256":"fd3b54671d9090125c78da3587f47a1865e58290dac16dc2bbce24fac09323ff"},
+    "nested": {"file":"deps/nested.7z","size":186,"sha256":"1f87454341482789ee59016011494be06243b2c190aa7f2eb63f8bffee3e4e13"},
+    "asDir": {"file":"deps/asDir.7z","size":221,"sha256":"f762357d27ce990083c68937195c476ba85d264e1d68908979bc551dd9e1719b"}
+  },
+  "apiUrls": {"YaLTeR/BunnymodXT":"https://api.github.com/repos/YaLTeR/BunnymodXT/releases/latest","YaLTeR/BunnymodXT-Injector":"https://api.github.com/repos/YaLTeR/BunnymodXT-Injector/releases/latest"},
+  "timeouts": {"json":[10000],"download":[90000]},
+  "scenarios": [
+    {
+      "name": "новая версия с GitHub ставится, старая версия записывается как было",
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"update","deps":"injector"},{"op":"tree"},{"op":"update","deps":"injector"},{"op":"requests"},{"op":"tree"}],
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT-Injector/releases/latest": [{"body":"{\"tag_name\":\"v2\",\"assets\":[{\"name\":\"Injector.exe\",\"size\":14,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe\",\"digest\":\"sha256:5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e\"}]}"}],
+          "/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe": [{"body":"MZ injector v2"}]
+        }
+      },
+      "results": [
+        {"ok":[{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":"v2","status":"updated"}],"logs":[["info","[launch] Bunnymod XT Injector обновлён: v1 -> v2"]]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"fb04dcb6970e4c3d1873de51fd5a50d7bb46b3383113602665c350ec40b5f990","latin1":"v2"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":14,"sha256":"5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e","latin1":"MZ injector v2"}
+          ]
+        },
+        {"ok":[{"id":"injector","title":"Bunnymod XT Injector","from":"v2","to":"v2","status":"up-to-date"}],"logs":[]},
+        {
+          "requests": [
+            {"method":"GET","url":"/repos/YaLTeR/BunnymodXT-Injector/releases/latest","headers":{"user-agent":"HLSR-Launcher","accept":"application/vnd.github+json"}},
+            {"method":"GET","url":"/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe","headers":{"user-agent":"HLSR-Launcher"}},
+            {"method":"GET","url":"/repos/YaLTeR/BunnymodXT-Injector/releases/latest","headers":{"user-agent":"HLSR-Launcher","accept":"application/vnd.github+json"}}
+          ]
+        },
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"fb04dcb6970e4c3d1873de51fd5a50d7bb46b3383113602665c350ec40b5f990","latin1":"v2"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":14,"sha256":"5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e","latin1":"MZ injector v2"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "битое обновление не трогает рабочий файл и не мешает запуску",
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT-Injector/releases/latest": [{"body":"{\"tag_name\":\"v2\",\"assets\":[{\"name\":\"Injector.exe\",\"size\":14,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe\",\"digest\":\"sha256:0000000000000000000000000000000000000000000000000000000000000000\"}]}"}],
+          "/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe": [{"body":"MZ injector v2"}]
+        }
+      },
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"update","deps":"injector"},{"op":"tree"},{"op":"requests"}],
+      "results": [
+        {"ok":[{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":null,"status":"failed","error":{"code":"CHECKSUM_MISMATCH","message":"SHA-256 Injector.exe не совпал"}}],"logs":[["warn","[launch] Bunnymod XT Injector не обновлён: CHECKSUM_MISMATCH SHA-256 Injector.exe не совпал"]]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"3bfc269594ef649228e9a74bab00f042efc91d5acc6fbee31a382e80d42388fe","latin1":"v1"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":6,"sha256":"44f59413b683005e0106a15905baeb00488294e3dc25de13f30b73fd83de0601","latin1":"MZ old"}
+          ]
+        },
+        {"requests":[{"method":"GET","url":"/repos/YaLTeR/BunnymodXT-Injector/releases/latest","headers":{"user-agent":"HLSR-Launcher","accept":"application/vnd.github+json"}},{"method":"GET","url":"/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe","headers":{"user-agent":"HLSR-Launcher"}}]}
+      ]
+    },
+    {
+      "name": "не исполняемый файл (HTML) вместо Injector.exe",
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT-Injector/releases/latest": [{"body":"{\"tag_name\":\"v2\",\"assets\":[{\"name\":\"Injector.exe\",\"size\":6,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe\",\"digest\":\"sha256:b7d082ee12e91b756ea22e8513b8594eebcf5d39fab813da3cb55794dc888ad7\"}]}"}],
+          "/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe": [{"body":"<html>"}]
+        }
+      },
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"update","deps":"injector"},{"op":"tree"}],
+      "results": [
+        {"ok":[{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":null,"status":"failed","error":{"code":"EXTRACT_FAILED","message":".hlsr-update-injector-<pid>.download не похож на исполняемый файл Windows"}}],"logs":[["warn","[launch] Bunnymod XT Injector не обновлён: EXTRACT_FAILED .hlsr-update-injector-<pid>.download не похож на исполняемый файл Windows"]]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"3bfc269594ef649228e9a74bab00f042efc91d5acc6fbee31a382e80d42388fe","latin1":"v1"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":6,"sha256":"44f59413b683005e0106a15905baeb00488294e3dc25de13f30b73fd83de0601","latin1":"MZ old"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "файл релиза лежит не на github.com",
+      "servers": {"a":{"/repos/YaLTeR/BunnymodXT-Injector/releases/latest":[{"body":"{\"tag_name\":\"v2\",\"assets\":[{\"name\":\"Injector.exe\",\"size\":14,\"browser_download_url\":\"https://evil.example/Injector.exe\",\"digest\":\"sha256:5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e\"}]}"}]}},
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"update","deps":"injector"},{"op":"tree"},{"op":"requests"}],
+      "results": [
+        {"ok":[{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":null,"status":"failed","error":{"code":"PROVIDER_LINK_FAILED","message":"Файл релиза лежит не на github.com: evil.example"}}],"logs":[["warn","[launch] Bunnymod XT Injector не обновлён: PROVIDER_LINK_FAILED Файл релиза лежит не на github.com: evil.example"]]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"3bfc269594ef649228e9a74bab00f042efc91d5acc6fbee31a382e80d42388fe","latin1":"v1"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":6,"sha256":"44f59413b683005e0106a15905baeb00488294e3dc25de13f30b73fd83de0601","latin1":"MZ old"}
+          ]
+        },
+        {"requests":[{"method":"GET","url":"/repos/YaLTeR/BunnymodXT-Injector/releases/latest","headers":{"user-agent":"HLSR-Launcher","accept":"application/vnd.github+json"}}]}
+      ]
+    },
+    {
+      "name": "GitHub недоступен",
+      "api": "dead",
+      "servers": {},
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"update","deps":"injector"},{"op":"tree"}],
+      "results": [
+        {"ok":[{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":null,"status":"failed","error":{"code":"NETWORK_ERROR","message":"Сетевая ошибка: connect ECONNREFUSED {dead}"}}],"logs":[["warn","[launch] Bunnymod XT Injector не обновлён: NETWORK_ERROR Сетевая ошибка: connect ECONNREFUSED {dead}"]]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"3bfc269594ef649228e9a74bab00f042efc91d5acc6fbee31a382e80d42388fe","latin1":"v1"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":6,"sha256":"44f59413b683005e0106a15905baeb00488294e3dc25de13f30b73fd83de0601","latin1":"MZ old"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "сервер файлов недоступен после ответа API",
+      "download": "dead",
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"update","deps":"injector"},{"op":"tree"},{"op":"requests"}],
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT-Injector/releases/latest": [{"body":"{\"tag_name\":\"v2\",\"assets\":[{\"name\":\"Injector.exe\",\"size\":14,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe\",\"digest\":\"sha256:5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e\"}]}"}],
+          "/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe": [{"body":"MZ injector v2"}]
+        }
+      },
+      "results": [
+        {"ok":[{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":null,"status":"failed","error":{"code":"NETWORK_ERROR","message":"Сетевая ошибка: connect ECONNREFUSED {dead}"}}],"logs":[["warn","[launch] Bunnymod XT Injector не обновлён: NETWORK_ERROR Сетевая ошибка: connect ECONNREFUSED {dead}"]]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"3bfc269594ef649228e9a74bab00f042efc91d5acc6fbee31a382e80d42388fe","latin1":"v1"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":6,"sha256":"44f59413b683005e0106a15905baeb00488294e3dc25de13f30b73fd83de0601","latin1":"MZ old"}
+          ]
+        },
+        {"requests":[{"method":"GET","url":"/repos/YaLTeR/BunnymodXT-Injector/releases/latest","headers":{"user-agent":"HLSR-Launcher","accept":"application/vnd.github+json"}}]}
+      ]
+    },
+    {
+      "name": "объявленные зависимости HL1: репозитории, сборка для Cry of Fear не подходит",
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT/releases/latest": [
+            {
+              "body": "{\"tag_name\":\"v9\",\"assets\":[{\"name\":\"3-BunnymodXT-CoFSteam-Windows.7z\",\"size\":3,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT/releases/download/v9/3-BunnymodXT-CoFSteam-Windows.7z\",\"digest\":\"sha256:9b6350459e84801420f84db3b1b35f9fc42ba638e184f082f11c72d465a83dbe\"},{\"name\":\"1-BunnymodXT-Windows.7z\",\"size\":3,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT/releases/download/v9/1-BunnymodXT-Windows.7z\",\"digest\":\"sha256:7571124ba64645b7e3f38f63245b1287112411944f4e321c51328a2618189ef6\"}]}"
+            }
+          ],
+          "/repos/YaLTeR/BunnymodXT-Injector/releases/latest": [{"body":"{\"tag_name\":\"v2\",\"assets\":[{\"name\":\"Injector.exe\",\"size\":14,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe\",\"digest\":\"sha256:5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e\"}]}"}]
+        }
+      },
+      "setup": [],
+      "steps": [{"op":"latest","dep":"bxt"},{"op":"latest","dep":"injector"}],
+      "results": [
+        {"ok":{"tag":"v9","name":"1-BunnymodXT-Windows.7z","url":"https://github.com/YaLTeR/BunnymodXT/releases/download/v9/1-BunnymodXT-Windows.7z","size":3,"sha256":"7571124ba64645b7e3f38f63245b1287112411944f4e321c51328a2618189ef6"}},
+        {"ok":{"tag":"v2","name":"Injector.exe","url":"https://github.com/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe","size":14,"sha256":"5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e"}}
+      ]
+    },
+    {
+      "name": "обе зависимости: BXT из архива и Injector",
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT/releases/latest": [
+            {
+              "body": "{\"tag_name\":\"v3\",\"assets\":[{\"name\":\"3-BunnymodXT-CoFSteam-Windows.7z\",\"size\":3,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT/releases/download/v3/3-BunnymodXT-CoFSteam-Windows.7z\",\"digest\":\"sha256:9b6350459e84801420f84db3b1b35f9fc42ba638e184f082f11c72d465a83dbe\"},{\"name\":\"1-BunnymodXT-Windows.7z\",\"size\":245,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT/releases/download/v3/1-BunnymodXT-Windows.7z\",\"digest\":\"sha256:d278b744b70b0c92c03fc6c21316acd028694b886cd809889c77dd7fbff221a5\"}]}"
+            }
+          ],
+          "/YaLTeR/BunnymodXT/releases/download/v3/1-BunnymodXT-Windows.7z": [{"bodyFile":"ok"}],
+          "/repos/YaLTeR/BunnymodXT-Injector/releases/latest": [{"body":"{\"tag_name\":\"v2\",\"assets\":[{\"name\":\"Injector.exe\",\"size\":14,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe\",\"digest\":\"sha256:5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e\"}]}"}],
+          "/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe": [{"body":"MZ injector v2"}]
+        }
+      },
+      "setup": [{"file":"game/Bunnymod XT/version","utf8":"v1"},{"file":"game/Bunnymod XT/BunnymodXT.dll","utf8":"MZ old bxt"},{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"update","deps":"both"},{"op":"tree"},{"op":"requests"},{"op":"update","deps":"both"},{"op":"requests"}],
+      "results": [
+        {"ok":[{"id":"bxt","title":"Bunnymod XT","from":"v1","to":"v3","status":"updated"},{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":"v2","status":"updated"}],"logs":[["info","[launch] Bunnymod XT обновлён: v1 -> v3"],["info","[launch] Bunnymod XT Injector обновлён: v1 -> v2"]]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"fb04dcb6970e4c3d1873de51fd5a50d7bb46b3383113602665c350ec40b5f990","latin1":"v2"},
+            {"path":"game/Bunnymod XT/BunnymodXT.dll","kind":"file","size":10,"sha256":"357e2b42edc9f64de7a8242023bafd07eb6f7ef5dcf056c369d281f8c24f7c8c","latin1":"MZ\u0000bxt v2"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":14,"sha256":"5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e","latin1":"MZ injector v2"},
+            {"path":"game/Bunnymod XT/version","kind":"file","size":2,"sha256":"e0d2747b9ab7abb6eb65e0373fa1b428a28bd6d8a2380106dcc080f58005ee14","latin1":"v3"}
+          ]
+        },
+        {
+          "requests": [
+            {"method":"GET","url":"/repos/YaLTeR/BunnymodXT/releases/latest","headers":{"user-agent":"HLSR-Launcher","accept":"application/vnd.github+json"}},
+            {"method":"GET","url":"/YaLTeR/BunnymodXT/releases/download/v3/1-BunnymodXT-Windows.7z","headers":{"user-agent":"HLSR-Launcher"}},
+            {"method":"GET","url":"/repos/YaLTeR/BunnymodXT-Injector/releases/latest","headers":{"user-agent":"HLSR-Launcher","accept":"application/vnd.github+json"}},
+            {"method":"GET","url":"/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe","headers":{"user-agent":"HLSR-Launcher"}}
+          ]
+        },
+        {"ok":[{"id":"bxt","title":"Bunnymod XT","from":"v3","to":"v3","status":"up-to-date"},{"id":"injector","title":"Bunnymod XT Injector","from":"v2","to":"v2","status":"up-to-date"}],"logs":[]},
+        {"requests":[{"method":"GET","url":"/repos/YaLTeR/BunnymodXT/releases/latest","headers":{"user-agent":"HLSR-Launcher","accept":"application/vnd.github+json"}},{"method":"GET","url":"/repos/YaLTeR/BunnymodXT-Injector/releases/latest","headers":{"user-agent":"HLSR-Launcher","accept":"application/vnd.github+json"}}]}
+      ]
+    },
+    {
+      "name": "обе зависимости: первая не обновилась, вторая обновилась",
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT/releases/latest": [{"status":500,"body":"ошибка"}],
+          "/repos/YaLTeR/BunnymodXT-Injector/releases/latest": [{"body":"{\"tag_name\":\"v2\",\"assets\":[{\"name\":\"Injector.exe\",\"size\":14,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe\",\"digest\":\"sha256:5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e\"}]}"}],
+          "/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe": [{"body":"MZ injector v2"}]
+        }
+      },
+      "setup": [{"file":"game/Bunnymod XT/version","utf8":"v1"},{"file":"game/Bunnymod XT/BunnymodXT.dll","utf8":"MZ old bxt"},{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"update","deps":"both"},{"op":"tree"}],
+      "results": [
+        {
+          "ok": [{"id":"bxt","title":"Bunnymod XT","from":"v1","to":null,"status":"failed","error":{"code":"HTTP_ERROR","message":"HTTP 500 для http://{a}/repos/YaLTeR/BunnymodXT/releases/latest"}},{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":"v2","status":"updated"}],
+          "logs": [["warn","[launch] Bunnymod XT не обновлён: HTTP_ERROR HTTP 500 для http://{a}/repos/YaLTeR/BunnymodXT/releases/latest"],["info","[launch] Bunnymod XT Injector обновлён: v1 -> v2"]]
+        },
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"fb04dcb6970e4c3d1873de51fd5a50d7bb46b3383113602665c350ec40b5f990","latin1":"v2"},
+            {"path":"game/Bunnymod XT/BunnymodXT.dll","kind":"file","size":10,"sha256":"f969410deaeb5611f3e14514c6f2d40c08b28075b035dfdadefd55f53ae9fd60","latin1":"MZ old bxt"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":14,"sha256":"5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e","latin1":"MZ injector v2"},
+            {"path":"game/Bunnymod XT/version","kind":"file","size":2,"sha256":"3bfc269594ef649228e9a74bab00f042efc91d5acc6fbee31a382e80d42388fe","latin1":"v1"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "обе зависимости: репозитории не найдены",
+      "servers": {"a":{}},
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"update","deps":"both"},{"op":"tree"}],
+      "results": [
+        {
+          "ok": [{"id":"bxt","title":"Bunnymod XT","from":null,"to":null,"status":"failed","error":{"code":"HTTP_ERROR","message":"HTTP 404 для http://{a}/repos/YaLTeR/BunnymodXT/releases/latest"}},{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":null,"status":"failed","error":{"code":"HTTP_ERROR","message":"HTTP 404 для http://{a}/repos/YaLTeR/BunnymodXT-Injector/releases/latest"}}],
+          "logs": [["warn","[launch] Bunnymod XT не обновлён: HTTP_ERROR HTTP 404 для http://{a}/repos/YaLTeR/BunnymodXT/releases/latest"],["warn","[launch] Bunnymod XT Injector не обновлён: HTTP_ERROR HTTP 404 для http://{a}/repos/YaLTeR/BunnymodXT-Injector/releases/latest"]]
+        },
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"3bfc269594ef649228e9a74bab00f042efc91d5acc6fbee31a382e80d42388fe","latin1":"v1"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":6,"sha256":"44f59413b683005e0106a15905baeb00488294e3dc25de13f30b73fd83de0601","latin1":"MZ old"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "BXT: имя ресурса без регистра и номера",
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT/releases/latest": [
+            {
+              "body": "{\"tag_name\":\"v3\",\"assets\":[{\"name\":\"3-BunnymodXT-CoFSteam-Windows.7z\",\"size\":3,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT/releases/download/v3/3-BunnymodXT-CoFSteam-Windows.7z\",\"digest\":\"sha256:9b6350459e84801420f84db3b1b35f9fc42ba638e184f082f11c72d465a83dbe\"},{\"name\":\"BUNNYMODXT-WINDOWS.7Z\",\"size\":245,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT/releases/download/v3/BUNNYMODXT-WINDOWS.7Z\",\"digest\":\"sha256:d278b744b70b0c92c03fc6c21316acd028694b886cd809889c77dd7fbff221a5\"}]}"
+            }
+          ],
+          "/YaLTeR/BunnymodXT/releases/download/v3/BUNNYMODXT-WINDOWS.7Z": [{"bodyFile":"ok"}]
+        }
+      },
+      "setup": [{"file":"game/Bunnymod XT/version","utf8":"v1"},{"file":"game/Bunnymod XT/BunnymodXT.dll","utf8":"MZ old bxt"}],
+      "steps": [{"op":"update","deps":"bxt"},{"op":"tree"}],
+      "results": [
+        {"ok":[{"id":"bxt","title":"Bunnymod XT","from":"v1","to":"v3","status":"updated"}],"logs":[["info","[launch] Bunnymod XT обновлён: v1 -> v3"]]},
+        {
+          "tree": [{"path":"game","kind":"dir"},{"path":"game/Bunnymod XT","kind":"dir"},{"path":"game/Bunnymod XT/BunnymodXT.dll","kind":"file","size":10,"sha256":"357e2b42edc9f64de7a8242023bafd07eb6f7ef5dcf056c369d281f8c24f7c8c","latin1":"MZ\u0000bxt v2"},{"path":"game/Bunnymod XT/version","kind":"file","size":2,"sha256":"e0d2747b9ab7abb6eb65e0373fa1b428a28bd6d8a2380106dcc080f58005ee14","latin1":"v3"}]
+        }
+      ]
+    },
+    {
+      "name": "BXT: нет подходящего ресурса",
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT/releases/latest": [
+            {
+              "body": "{\"tag_name\":\"v3\",\"assets\":[{\"name\":\"3-BunnymodXT-CoFSteam-Windows.7z\",\"size\":1,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT/releases/download/v3/3-BunnymodXT-CoFSteam-Windows.7z\",\"digest\":\"sha256:2d711642b726b04401627ca9fbac32f5c8530fb1903cc4db02258717921a4881\"},{\"name\":\"BunnymodXT-Linux.tar.gz\",\"size\":1,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT/releases/download/v3/BunnymodXT-Linux.tar.gz\",\"digest\":\"sha256:a1fce4363854ff888cff4b8e7875d600c2682390412a8cf79b37d0b11148b0fa\"}]}"
+            }
+          ]
+        }
+      },
+      "setup": [{"file":"game/Bunnymod XT/version","utf8":"v1"},{"file":"game/Bunnymod XT/BunnymodXT.dll","utf8":"MZ old bxt"}],
+      "steps": [{"op":"update","deps":"bxt"},{"op":"tree"}],
+      "results": [
+        {"ok":[{"id":"bxt","title":"Bunnymod XT","from":"v1","to":null,"status":"failed","error":{"code":"PROVIDER_LINK_FAILED","message":"В релизе v3 нет файла ^(/d+-)?BunnymodXT-Windows/.7z$"}}],"logs":[["warn","[launch] Bunnymod XT не обновлён: PROVIDER_LINK_FAILED В релизе v3 нет файла ^(/d+-)?BunnymodXT-Windows/.7z$"]]},
+        {
+          "tree": [{"path":"game","kind":"dir"},{"path":"game/Bunnymod XT","kind":"dir"},{"path":"game/Bunnymod XT/BunnymodXT.dll","kind":"file","size":10,"sha256":"f969410deaeb5611f3e14514c6f2d40c08b28075b035dfdadefd55f53ae9fd60","latin1":"MZ old bxt"},{"path":"game/Bunnymod XT/version","kind":"file","size":2,"sha256":"3bfc269594ef649228e9a74bab00f042efc91d5acc6fbee31a382e80d42388fe","latin1":"v1"}]
+        }
+      ]
+    },
+    {
+      "name": "BXT: подходящих ресурсов два — берётся первый",
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT/releases/latest": [
+            {
+              "body": "{\"tag_name\":\"v3\",\"assets\":[{\"name\":\"BunnymodXT-Windows.7z\",\"size\":245,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT/releases/download/v3/BunnymodXT-Windows.7z\",\"digest\":\"sha256:d278b744b70b0c92c03fc6c21316acd028694b886cd809889c77dd7fbff221a5\"},{\"name\":\"2-BunnymodXT-Windows.7z\",\"size\":162,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT/releases/download/v3/2-BunnymodXT-Windows.7z\",\"digest\":\"sha256:c5a342658bc96280d1f43e21a9261972a02cd4a68a73a6d5c2d9a23a59b47424\"}]}"
+            }
+          ],
+          "/YaLTeR/BunnymodXT/releases/download/v3/BunnymodXT-Windows.7z": [{"bodyFile":"ok"}],
+          "/YaLTeR/BunnymodXT/releases/download/v3/2-BunnymodXT-Windows.7z": [{"bodyFile":"noDll"}]
+        }
+      },
+      "setup": [{"file":"game/Bunnymod XT/version","utf8":"v1"},{"file":"game/Bunnymod XT/BunnymodXT.dll","utf8":"MZ old bxt"}],
+      "steps": [{"op":"update","deps":"bxt"},{"op":"tree"},{"op":"requests"}],
+      "results": [
+        {"ok":[{"id":"bxt","title":"Bunnymod XT","from":"v1","to":"v3","status":"updated"}],"logs":[["info","[launch] Bunnymod XT обновлён: v1 -> v3"]]},
+        {
+          "tree": [{"path":"game","kind":"dir"},{"path":"game/Bunnymod XT","kind":"dir"},{"path":"game/Bunnymod XT/BunnymodXT.dll","kind":"file","size":10,"sha256":"357e2b42edc9f64de7a8242023bafd07eb6f7ef5dcf056c369d281f8c24f7c8c","latin1":"MZ\u0000bxt v2"},{"path":"game/Bunnymod XT/version","kind":"file","size":2,"sha256":"e0d2747b9ab7abb6eb65e0373fa1b428a28bd6d8a2380106dcc080f58005ee14","latin1":"v3"}]
+        },
+        {"requests":[{"method":"GET","url":"/repos/YaLTeR/BunnymodXT/releases/latest","headers":{"user-agent":"HLSR-Launcher","accept":"application/vnd.github+json"}},{"method":"GET","url":"/YaLTeR/BunnymodXT/releases/download/v3/BunnymodXT-Windows.7z","headers":{"user-agent":"HLSR-Launcher"}}]}
+      ]
+    },
+    {
+      "name": "BXT: в архиве нет BunnymodXT.dll",
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT/releases/latest": [
+            {
+              "body": "{\"tag_name\":\"v3\",\"assets\":[{\"name\":\"3-BunnymodXT-CoFSteam-Windows.7z\",\"size\":3,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT/releases/download/v3/3-BunnymodXT-CoFSteam-Windows.7z\",\"digest\":\"sha256:9b6350459e84801420f84db3b1b35f9fc42ba638e184f082f11c72d465a83dbe\"},{\"name\":\"1-BunnymodXT-Windows.7z\",\"size\":162,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT/releases/download/v3/1-BunnymodXT-Windows.7z\",\"digest\":\"sha256:c5a342658bc96280d1f43e21a9261972a02cd4a68a73a6d5c2d9a23a59b47424\"}]}"
+            }
+          ],
+          "/YaLTeR/BunnymodXT/releases/download/v3/1-BunnymodXT-Windows.7z": [{"bodyFile":"noDll"}]
+        }
+      },
+      "unix": false,
+      "setup": [{"file":"game/Bunnymod XT/version","utf8":"v1"},{"file":"game/Bunnymod XT/BunnymodXT.dll","utf8":"MZ old bxt"}],
+      "steps": [{"op":"update","deps":"bxt"},{"op":"tree"}],
+      "results": [
+        {"ok":[{"id":"bxt","title":"Bunnymod XT","from":"v1","to":null,"status":"failed","error":{"code":"EXTRACT_FAILED","message":"В 1-BunnymodXT-Windows.7z нет BunnymodXT.dll"}}],"logs":[["warn","[launch] Bunnymod XT не обновлён: EXTRACT_FAILED В 1-BunnymodXT-Windows.7z нет BunnymodXT.dll"]]},
+        {
+          "tree": [{"path":"game","kind":"dir"},{"path":"game/Bunnymod XT","kind":"dir"},{"path":"game/Bunnymod XT/BunnymodXT.dll","kind":"file","size":10,"sha256":"f969410deaeb5611f3e14514c6f2d40c08b28075b035dfdadefd55f53ae9fd60","latin1":"MZ old bxt"},{"path":"game/Bunnymod XT/version","kind":"file","size":2,"sha256":"3bfc269594ef649228e9a74bab00f042efc91d5acc6fbee31a382e80d42388fe","latin1":"v1"}]
+        }
+      ]
+    },
+    {
+      "name": "BXT: BunnymodXT.dll не похож на исполняемый файл",
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT/releases/latest": [
+            {
+              "body": "{\"tag_name\":\"v3\",\"assets\":[{\"name\":\"3-BunnymodXT-CoFSteam-Windows.7z\",\"size\":3,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT/releases/download/v3/3-BunnymodXT-CoFSteam-Windows.7z\",\"digest\":\"sha256:9b6350459e84801420f84db3b1b35f9fc42ba638e184f082f11c72d465a83dbe\"},{\"name\":\"1-BunnymodXT-Windows.7z\",\"size\":185,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT/releases/download/v3/1-BunnymodXT-Windows.7z\",\"digest\":\"sha256:070d4630f20cb8f5f54df1fe1cd3d4f64c6ed5773c323c4a1113656ea2cf604e\"}]}"
+            }
+          ],
+          "/YaLTeR/BunnymodXT/releases/download/v3/1-BunnymodXT-Windows.7z": [{"bodyFile":"notMz"}]
+        }
+      },
+      "unix": false,
+      "setup": [{"file":"game/Bunnymod XT/version","utf8":"v1"},{"file":"game/Bunnymod XT/BunnymodXT.dll","utf8":"MZ old bxt"}],
+      "steps": [{"op":"update","deps":"bxt"},{"op":"tree"}],
+      "results": [
+        {"ok":[{"id":"bxt","title":"Bunnymod XT","from":"v1","to":null,"status":"failed","error":{"code":"EXTRACT_FAILED","message":"BunnymodXT.dll не похож на исполняемый файл Windows"}}],"logs":[["warn","[launch] Bunnymod XT не обновлён: EXTRACT_FAILED BunnymodXT.dll не похож на исполняемый файл Windows"]]},
+        {
+          "tree": [{"path":"game","kind":"dir"},{"path":"game/Bunnymod XT","kind":"dir"},{"path":"game/Bunnymod XT/BunnymodXT.dll","kind":"file","size":10,"sha256":"f969410deaeb5611f3e14514c6f2d40c08b28075b035dfdadefd55f53ae9fd60","latin1":"MZ old bxt"},{"path":"game/Bunnymod XT/version","kind":"file","size":2,"sha256":"3bfc269594ef649228e9a74bab00f042efc91d5acc6fbee31a382e80d42388fe","latin1":"v1"}]
+        }
+      ]
+    },
+    {
+      "name": "BXT: BunnymodXT.dll из одного байта",
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT/releases/latest": [
+            {
+              "body": "{\"tag_name\":\"v3\",\"assets\":[{\"name\":\"3-BunnymodXT-CoFSteam-Windows.7z\",\"size\":3,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT/releases/download/v3/3-BunnymodXT-CoFSteam-Windows.7z\",\"digest\":\"sha256:9b6350459e84801420f84db3b1b35f9fc42ba638e184f082f11c72d465a83dbe\"},{\"name\":\"1-BunnymodXT-Windows.7z\",\"size\":143,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT/releases/download/v3/1-BunnymodXT-Windows.7z\",\"digest\":\"sha256:d072d1421e486dc2cf19fe4553a145efec50295f52cc834cff9160d890f4f25a\"}]}"
+            }
+          ],
+          "/YaLTeR/BunnymodXT/releases/download/v3/1-BunnymodXT-Windows.7z": [{"bodyFile":"oneByte"}]
+        }
+      },
+      "unix": false,
+      "setup": [{"file":"game/Bunnymod XT/version","utf8":"v1"},{"file":"game/Bunnymod XT/BunnymodXT.dll","utf8":"MZ old bxt"}],
+      "steps": [{"op":"update","deps":"bxt"},{"op":"tree"}],
+      "results": [
+        {"ok":[{"id":"bxt","title":"Bunnymod XT","from":"v1","to":null,"status":"failed","error":{"code":"EXTRACT_FAILED","message":"BunnymodXT.dll не похож на исполняемый файл Windows"}}],"logs":[["warn","[launch] Bunnymod XT не обновлён: EXTRACT_FAILED BunnymodXT.dll не похож на исполняемый файл Windows"]]},
+        {
+          "tree": [{"path":"game","kind":"dir"},{"path":"game/Bunnymod XT","kind":"dir"},{"path":"game/Bunnymod XT/BunnymodXT.dll","kind":"file","size":10,"sha256":"f969410deaeb5611f3e14514c6f2d40c08b28075b035dfdadefd55f53ae9fd60","latin1":"MZ old bxt"},{"path":"game/Bunnymod XT/version","kind":"file","size":2,"sha256":"3bfc269594ef649228e9a74bab00f042efc91d5acc6fbee31a382e80d42388fe","latin1":"v1"}]
+        }
+      ]
+    },
+    {
+      "name": "BXT: BunnymodXT.dll пустой",
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT/releases/latest": [
+            {
+              "body": "{\"tag_name\":\"v3\",\"assets\":[{\"name\":\"3-BunnymodXT-CoFSteam-Windows.7z\",\"size\":3,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT/releases/download/v3/3-BunnymodXT-CoFSteam-Windows.7z\",\"digest\":\"sha256:9b6350459e84801420f84db3b1b35f9fc42ba638e184f082f11c72d465a83dbe\"},{\"name\":\"1-BunnymodXT-Windows.7z\",\"size\":106,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT/releases/download/v3/1-BunnymodXT-Windows.7z\",\"digest\":\"sha256:fd3b54671d9090125c78da3587f47a1865e58290dac16dc2bbce24fac09323ff\"}]}"
+            }
+          ],
+          "/YaLTeR/BunnymodXT/releases/download/v3/1-BunnymodXT-Windows.7z": [{"bodyFile":"empty"}]
+        }
+      },
+      "unix": false,
+      "setup": [{"file":"game/Bunnymod XT/version","utf8":"v1"},{"file":"game/Bunnymod XT/BunnymodXT.dll","utf8":"MZ old bxt"}],
+      "steps": [{"op":"update","deps":"bxt"},{"op":"tree"}],
+      "results": [
+        {"ok":[{"id":"bxt","title":"Bunnymod XT","from":"v1","to":null,"status":"failed","error":{"code":"EXTRACT_FAILED","message":"BunnymodXT.dll не похож на исполняемый файл Windows"}}],"logs":[["warn","[launch] Bunnymod XT не обновлён: EXTRACT_FAILED BunnymodXT.dll не похож на исполняемый файл Windows"]]},
+        {
+          "tree": [{"path":"game","kind":"dir"},{"path":"game/Bunnymod XT","kind":"dir"},{"path":"game/Bunnymod XT/BunnymodXT.dll","kind":"file","size":10,"sha256":"f969410deaeb5611f3e14514c6f2d40c08b28075b035dfdadefd55f53ae9fd60","latin1":"MZ old bxt"},{"path":"game/Bunnymod XT/version","kind":"file","size":2,"sha256":"3bfc269594ef649228e9a74bab00f042efc91d5acc6fbee31a382e80d42388fe","latin1":"v1"}]
+        }
+      ]
+    },
+    {
+      "name": "BXT: DLL лежит во вложенной папке",
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT/releases/latest": [
+            {
+              "body": "{\"tag_name\":\"v3\",\"assets\":[{\"name\":\"3-BunnymodXT-CoFSteam-Windows.7z\",\"size\":3,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT/releases/download/v3/3-BunnymodXT-CoFSteam-Windows.7z\",\"digest\":\"sha256:9b6350459e84801420f84db3b1b35f9fc42ba638e184f082f11c72d465a83dbe\"},{\"name\":\"1-BunnymodXT-Windows.7z\",\"size\":186,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT/releases/download/v3/1-BunnymodXT-Windows.7z\",\"digest\":\"sha256:1f87454341482789ee59016011494be06243b2c190aa7f2eb63f8bffee3e4e13\"}]}"
+            }
+          ],
+          "/YaLTeR/BunnymodXT/releases/download/v3/1-BunnymodXT-Windows.7z": [{"bodyFile":"nested"}]
+        }
+      },
+      "unix": false,
+      "setup": [{"file":"game/Bunnymod XT/version","utf8":"v1"},{"file":"game/Bunnymod XT/BunnymodXT.dll","utf8":"MZ old bxt"}],
+      "steps": [{"op":"update","deps":"bxt"},{"op":"tree"}],
+      "results": [
+        {"ok":[{"id":"bxt","title":"Bunnymod XT","from":"v1","to":null,"status":"failed","error":{"code":"EXTRACT_FAILED","message":"В 1-BunnymodXT-Windows.7z нет BunnymodXT.dll"}}],"logs":[["warn","[launch] Bunnymod XT не обновлён: EXTRACT_FAILED В 1-BunnymodXT-Windows.7z нет BunnymodXT.dll"]]},
+        {
+          "tree": [{"path":"game","kind":"dir"},{"path":"game/Bunnymod XT","kind":"dir"},{"path":"game/Bunnymod XT/BunnymodXT.dll","kind":"file","size":10,"sha256":"f969410deaeb5611f3e14514c6f2d40c08b28075b035dfdadefd55f53ae9fd60","latin1":"MZ old bxt"},{"path":"game/Bunnymod XT/version","kind":"file","size":2,"sha256":"3bfc269594ef649228e9a74bab00f042efc91d5acc6fbee31a382e80d42388fe","latin1":"v1"}]
+        }
+      ]
+    },
+    {
+      "name": "BXT: вместо DLL папка с таким именем",
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT/releases/latest": [
+            {
+              "body": "{\"tag_name\":\"v3\",\"assets\":[{\"name\":\"3-BunnymodXT-CoFSteam-Windows.7z\",\"size\":3,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT/releases/download/v3/3-BunnymodXT-CoFSteam-Windows.7z\",\"digest\":\"sha256:9b6350459e84801420f84db3b1b35f9fc42ba638e184f082f11c72d465a83dbe\"},{\"name\":\"1-BunnymodXT-Windows.7z\",\"size\":221,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT/releases/download/v3/1-BunnymodXT-Windows.7z\",\"digest\":\"sha256:f762357d27ce990083c68937195c476ba85d264e1d68908979bc551dd9e1719b\"}]}"
+            }
+          ],
+          "/YaLTeR/BunnymodXT/releases/download/v3/1-BunnymodXT-Windows.7z": [{"bodyFile":"asDir"}]
+        }
+      },
+      "unix": true,
+      "setup": [{"file":"game/Bunnymod XT/version","utf8":"v1"},{"file":"game/Bunnymod XT/BunnymodXT.dll","utf8":"MZ old bxt"}],
+      "steps": [{"op":"update","deps":"bxt"},{"op":"tree"}],
+      "results": [
+        {"ok":[{"id":"bxt","title":"Bunnymod XT","from":"v1","to":null,"status":"failed","error":{"code":"NETWORK_ERROR","message":"EISDIR: illegal operation on a directory, read"}}],"logs":[["warn","[launch] Bunnymod XT не обновлён: NETWORK_ERROR EISDIR: illegal operation on a directory, read"]]},
+        {
+          "tree": [{"path":"game","kind":"dir"},{"path":"game/Bunnymod XT","kind":"dir"},{"path":"game/Bunnymod XT/BunnymodXT.dll","kind":"file","size":10,"sha256":"f969410deaeb5611f3e14514c6f2d40c08b28075b035dfdadefd55f53ae9fd60","latin1":"MZ old bxt"},{"path":"game/Bunnymod XT/version","kind":"file","size":2,"sha256":"3bfc269594ef649228e9a74bab00f042efc91d5acc6fbee31a382e80d42388fe","latin1":"v1"}]
+        }
+      ]
+    },
+    {
+      "name": "BXT: архив повреждён (хеш по digest не совпал)",
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT/releases/latest": [
+            {
+              "body": "{\"tag_name\":\"v3\",\"assets\":[{\"name\":\"3-BunnymodXT-CoFSteam-Windows.7z\",\"size\":3,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT/releases/download/v3/3-BunnymodXT-CoFSteam-Windows.7z\",\"digest\":\"sha256:9b6350459e84801420f84db3b1b35f9fc42ba638e184f082f11c72d465a83dbe\"},{\"name\":\"1-BunnymodXT-Windows.7z\",\"size\":245,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT/releases/download/v3/1-BunnymodXT-Windows.7z\",\"digest\":\"sha256:d278b744b70b0c92c03fc6c21316acd028694b886cd809889c77dd7fbff221a5\"}]}"
+            }
+          ],
+          "/YaLTeR/BunnymodXT/releases/download/v3/1-BunnymodXT-Windows.7z": [{"bodyFile":"ok","mutate":"flipLast"}]
+        }
+      },
+      "setup": [{"file":"game/Bunnymod XT/version","utf8":"v1"},{"file":"game/Bunnymod XT/BunnymodXT.dll","utf8":"MZ old bxt"}],
+      "steps": [{"op":"update","deps":"bxt"},{"op":"tree"}],
+      "results": [
+        {"ok":[{"id":"bxt","title":"Bunnymod XT","from":"v1","to":null,"status":"failed","error":{"code":"CHECKSUM_MISMATCH","message":"SHA-256 1-BunnymodXT-Windows.7z не совпал"}}],"logs":[["warn","[launch] Bunnymod XT не обновлён: CHECKSUM_MISMATCH SHA-256 1-BunnymodXT-Windows.7z не совпал"]]},
+        {
+          "tree": [{"path":"game","kind":"dir"},{"path":"game/Bunnymod XT","kind":"dir"},{"path":"game/Bunnymod XT/BunnymodXT.dll","kind":"file","size":10,"sha256":"f969410deaeb5611f3e14514c6f2d40c08b28075b035dfdadefd55f53ae9fd60","latin1":"MZ old bxt"},{"path":"game/Bunnymod XT/version","kind":"file","size":2,"sha256":"3bfc269594ef649228e9a74bab00f042efc91d5acc6fbee31a382e80d42388fe","latin1":"v1"}]
+        }
+      ]
+    },
+    {
+      "name": "BXT: архив не распаковывается (digest верный, содержимое — не 7z)",
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT/releases/latest": [{"body":"{\"tag_name\":\"v3\",\"assets\":[{\"name\":\"BunnymodXT-Windows.7z\",\"size\":35,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT/releases/download/v3/BunnymodXT-Windows.7z\",\"digest\":\"sha256:4d194a3c80767fc67a7cf130ad6123fb8e52d2d11c64ab89629560fe37081a65\"}]}"}],
+          "/YaLTeR/BunnymodXT/releases/download/v3/BunnymodXT-Windows.7z": [{"body":"this is not a 7z archive, only text"}]
+        }
+      },
+      "setup": [{"file":"game/Bunnymod XT/version","utf8":"v1"},{"file":"game/Bunnymod XT/BunnymodXT.dll","utf8":"MZ old bxt"}],
+      "steps": [{"op":"update","deps":"bxt"},{"op":"tree"}],
+      "results": [
+        {
+          "ok": [{"id":"bxt","title":"Bunnymod XT","from":"v1","to":null,"status":"failed","error":{"code":"EXTRACT_FAILED","message":"Ошибка распаковки: ERROR: <root>/game/Bunnymod XT/.hlsr-update-bxt-<pid>.download\nCan not open the file as archive"}}],
+          "logs": [["warn","[launch] Bunnymod XT не обновлён: EXTRACT_FAILED Ошибка распаковки: ERROR: <root>/game/Bunnymod XT/.hlsr-update-bxt-<pid>.download\nCan not open the file as archive"]]
+        },
+        {
+          "tree": [{"path":"game","kind":"dir"},{"path":"game/Bunnymod XT","kind":"dir"},{"path":"game/Bunnymod XT/BunnymodXT.dll","kind":"file","size":10,"sha256":"f969410deaeb5611f3e14514c6f2d40c08b28075b035dfdadefd55f53ae9fd60","latin1":"MZ old bxt"},{"path":"game/Bunnymod XT/version","kind":"file","size":2,"sha256":"3bfc269594ef649228e9a74bab00f042efc91d5acc6fbee31a382e80d42388fe","latin1":"v1"}]
+        }
+      ]
+    },
+    {
+      "name": "BXT: нет 7-Zip для распаковки",
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT/releases/latest": [
+            {
+              "body": "{\"tag_name\":\"v3\",\"assets\":[{\"name\":\"3-BunnymodXT-CoFSteam-Windows.7z\",\"size\":3,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT/releases/download/v3/3-BunnymodXT-CoFSteam-Windows.7z\",\"digest\":\"sha256:9b6350459e84801420f84db3b1b35f9fc42ba638e184f082f11c72d465a83dbe\"},{\"name\":\"1-BunnymodXT-Windows.7z\",\"size\":245,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT/releases/download/v3/1-BunnymodXT-Windows.7z\",\"digest\":\"sha256:d278b744b70b0c92c03fc6c21316acd028694b886cd809889c77dd7fbff221a5\"}]}"
+            }
+          ],
+          "/YaLTeR/BunnymodXT/releases/download/v3/1-BunnymodXT-Windows.7z": [{"bodyFile":"ok"}]
+        }
+      },
+      "setup": [{"file":"game/Bunnymod XT/version","utf8":"v1"},{"file":"game/Bunnymod XT/BunnymodXT.dll","utf8":"MZ old bxt"}],
+      "steps": [{"op":"update","deps":"bxt","archive":false},{"op":"tree"}],
+      "results": [
+        {"ok":[{"id":"bxt","title":"Bunnymod XT","from":"v1","to":null,"status":"failed","error":{"code":"EXTRACT_FAILED","message":"Нет 7-Zip для распаковки обновления"}}],"logs":[["warn","[launch] Bunnymod XT не обновлён: EXTRACT_FAILED Нет 7-Zip для распаковки обновления"]]},
+        {
+          "tree": [{"path":"game","kind":"dir"},{"path":"game/Bunnymod XT","kind":"dir"},{"path":"game/Bunnymod XT/BunnymodXT.dll","kind":"file","size":10,"sha256":"f969410deaeb5611f3e14514c6f2d40c08b28075b035dfdadefd55f53ae9fd60","latin1":"MZ old bxt"},{"path":"game/Bunnymod XT/version","kind":"file","size":2,"sha256":"3bfc269594ef649228e9a74bab00f042efc91d5acc6fbee31a382e80d42388fe","latin1":"v1"}]
+        }
+      ]
+    },
+    {
+      "name": "BXT: первой установки нет — папка и версия появляются",
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT/releases/latest": [
+            {
+              "body": "{\"tag_name\":\"v3\",\"assets\":[{\"name\":\"3-BunnymodXT-CoFSteam-Windows.7z\",\"size\":3,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT/releases/download/v3/3-BunnymodXT-CoFSteam-Windows.7z\",\"digest\":\"sha256:9b6350459e84801420f84db3b1b35f9fc42ba638e184f082f11c72d465a83dbe\"},{\"name\":\"1-BunnymodXT-Windows.7z\",\"size\":245,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT/releases/download/v3/1-BunnymodXT-Windows.7z\",\"digest\":\"sha256:d278b744b70b0c92c03fc6c21316acd028694b886cd809889c77dd7fbff221a5\"}]}"
+            }
+          ],
+          "/YaLTeR/BunnymodXT/releases/download/v3/1-BunnymodXT-Windows.7z": [{"bodyFile":"ok"}]
+        }
+      },
+      "setup": [{"dir":"game/Bunnymod XT"}],
+      "steps": [{"op":"update","deps":"bxt"},{"op":"tree"}],
+      "results": [
+        {"ok":[{"id":"bxt","title":"Bunnymod XT","from":null,"to":"v3","status":"updated"}],"logs":[["info","[launch] Bunnymod XT обновлён: неизвестная версия -> v3"]]},
+        {
+          "tree": [{"path":"game","kind":"dir"},{"path":"game/Bunnymod XT","kind":"dir"},{"path":"game/Bunnymod XT/BunnymodXT.dll","kind":"file","size":10,"sha256":"357e2b42edc9f64de7a8242023bafd07eb6f7ef5dcf056c369d281f8c24f7c8c","latin1":"MZ\u0000bxt v2"},{"path":"game/Bunnymod XT/version","kind":"file","size":2,"sha256":"e0d2747b9ab7abb6eb65e0373fa1b428a28bd6d8a2380106dcc080f58005ee14","latin1":"v3"}]
+        }
+      ]
+    },
+    {
+      "name": "API: tag отсутствует",
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT-Injector/releases/latest": [{"body":"{\"assets\":[{\"name\":\"Injector.exe\",\"size\":14,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe\",\"digest\":\"sha256:5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e\"}]}"}],
+          "/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe": [{"body":"MZ injector v2"}]
+        }
+      },
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"update","deps":"injector"},{"op":"tree"}],
+      "results": [
+        {"ok":[{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":null,"status":"failed","error":{"code":"PROVIDER_LINK_FAILED","message":"GitHub вернул недопустимый тег релиза: "}}],"logs":[["warn","[launch] Bunnymod XT Injector не обновлён: PROVIDER_LINK_FAILED GitHub вернул недопустимый тег релиза: "]]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"3bfc269594ef649228e9a74bab00f042efc91d5acc6fbee31a382e80d42388fe","latin1":"v1"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":6,"sha256":"44f59413b683005e0106a15905baeb00488294e3dc25de13f30b73fd83de0601","latin1":"MZ old"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "API: tag с пробелом",
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT-Injector/releases/latest": [{"body":"{\"tag_name\":\"v 2\",\"assets\":[{\"name\":\"Injector.exe\",\"size\":14,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe\",\"digest\":\"sha256:5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e\"}]}"}],
+          "/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe": [{"body":"MZ injector v2"}]
+        }
+      },
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"update","deps":"injector"},{"op":"tree"}],
+      "results": [
+        {"ok":[{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":null,"status":"failed","error":{"code":"PROVIDER_LINK_FAILED","message":"GitHub вернул недопустимый тег релиза: v 2"}}],"logs":[["warn","[launch] Bunnymod XT Injector не обновлён: PROVIDER_LINK_FAILED GitHub вернул недопустимый тег релиза: v 2"]]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"3bfc269594ef649228e9a74bab00f042efc91d5acc6fbee31a382e80d42388fe","latin1":"v1"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":6,"sha256":"44f59413b683005e0106a15905baeb00488294e3dc25de13f30b73fd83de0601","latin1":"MZ old"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "API: tag из 65 знаков",
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT-Injector/releases/latest": [{"body":"{\"tag_name\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"assets\":[{\"name\":\"Injector.exe\",\"size\":14,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe\",\"digest\":\"sha256:5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e\"}]}"}],
+          "/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe": [{"body":"MZ injector v2"}]
+        }
+      },
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"update","deps":"injector"},{"op":"tree"}],
+      "results": [
+        {
+          "ok": [{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":null,"status":"failed","error":{"code":"PROVIDER_LINK_FAILED","message":"GitHub вернул недопустимый тег релиза: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}}],
+          "logs": [["warn","[launch] Bunnymod XT Injector не обновлён: PROVIDER_LINK_FAILED GitHub вернул недопустимый тег релиза: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"]]
+        },
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"3bfc269594ef649228e9a74bab00f042efc91d5acc6fbee31a382e80d42388fe","latin1":"v1"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":6,"sha256":"44f59413b683005e0106a15905baeb00488294e3dc25de13f30b73fd83de0601","latin1":"MZ old"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "API: tag из 64 знаков",
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT-Injector/releases/latest": [{"body":"{\"tag_name\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"assets\":[{\"name\":\"Injector.exe\",\"size\":14,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe\",\"digest\":\"sha256:5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e\"}]}"}],
+          "/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe": [{"body":"MZ injector v2"}]
+        }
+      },
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"update","deps":"injector"},{"op":"tree"}],
+      "results": [
+        {"ok":[{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","status":"updated"}],"logs":[["info","[launch] Bunnymod XT Injector обновлён: v1 -> aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"]]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":64,"sha256":"ffe054fe7ae0cb6dc65c3af9b61d5209f439851db43d0ba5997337df154668eb","latin1":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":14,"sha256":"5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e","latin1":"MZ injector v2"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "API: tag v2.0-beta_1",
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT-Injector/releases/latest": [{"body":"{\"tag_name\":\"v2.0-beta_1\",\"assets\":[{\"name\":\"Injector.exe\",\"size\":14,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe\",\"digest\":\"sha256:5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e\"}]}"}],
+          "/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe": [{"body":"MZ injector v2"}]
+        }
+      },
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"update","deps":"injector"},{"op":"tree"}],
+      "results": [
+        {"ok":[{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":"v2.0-beta_1","status":"updated"}],"logs":[["info","[launch] Bunnymod XT Injector обновлён: v1 -> v2.0-beta_1"]]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":11,"sha256":"a560c416ab6820d37631d854f3531a6b6ef57a51706950b826af234b9b84fa53","latin1":"v2.0-beta_1"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":14,"sha256":"5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e","latin1":"MZ injector v2"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "API: тело ответа — null",
+      "servers": {"a":{"/repos/YaLTeR/BunnymodXT-Injector/releases/latest":[{"body":"null"}],"/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe":[{"body":"MZ injector v2"}]}},
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"update","deps":"injector"},{"op":"tree"}],
+      "results": [
+        {"ok":[{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":null,"status":"failed","error":{"code":"PROVIDER_LINK_FAILED","message":"GitHub вернул недопустимый тег релиза: "}}],"logs":[["warn","[launch] Bunnymod XT Injector не обновлён: PROVIDER_LINK_FAILED GitHub вернул недопустимый тег релиза: "]]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"3bfc269594ef649228e9a74bab00f042efc91d5acc6fbee31a382e80d42388fe","latin1":"v1"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":6,"sha256":"44f59413b683005e0106a15905baeb00488294e3dc25de13f30b73fd83de0601","latin1":"MZ old"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "API: тело ответа — массив",
+      "servers": {"a":{"/repos/YaLTeR/BunnymodXT-Injector/releases/latest":[{"body":"[]"}],"/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe":[{"body":"MZ injector v2"}]}},
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"update","deps":"injector"},{"op":"tree"}],
+      "results": [
+        {"ok":[{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":null,"status":"failed","error":{"code":"PROVIDER_LINK_FAILED","message":"GitHub вернул недопустимый тег релиза: "}}],"logs":[["warn","[launch] Bunnymod XT Injector не обновлён: PROVIDER_LINK_FAILED GitHub вернул недопустимый тег релиза: "]]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"3bfc269594ef649228e9a74bab00f042efc91d5acc6fbee31a382e80d42388fe","latin1":"v1"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":6,"sha256":"44f59413b683005e0106a15905baeb00488294e3dc25de13f30b73fd83de0601","latin1":"MZ old"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "API: тело ответа — не JSON (HTML)",
+      "servers": {"a":{"/repos/YaLTeR/BunnymodXT-Injector/releases/latest":[{"body":"<html>"}],"/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe":[{"body":"MZ injector v2"}]}},
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"update","deps":"injector"},{"op":"tree"}],
+      "results": [
+        {"ok":[{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":null,"status":"failed","error":{"code":"PROVIDER_LINK_FAILED","message":"Ответ не является JSON: "}}],"logs":[["warn","[launch] Bunnymod XT Injector не обновлён: PROVIDER_LINK_FAILED Ответ не является JSON: "]]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"3bfc269594ef649228e9a74bab00f042efc91d5acc6fbee31a382e80d42388fe","latin1":"v1"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":6,"sha256":"44f59413b683005e0106a15905baeb00488294e3dc25de13f30b73fd83de0601","latin1":"MZ old"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "API: assets отсутствует",
+      "servers": {"a":{"/repos/YaLTeR/BunnymodXT-Injector/releases/latest":[{"body":"{\"tag_name\":\"v2\"}"}],"/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe":[{"body":"MZ injector v2"}]}},
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"update","deps":"injector"},{"op":"tree"}],
+      "results": [
+        {"ok":[{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":null,"status":"failed","error":{"code":"PROVIDER_LINK_FAILED","message":"В релизе v2 нет файла ^Injector/.exe$"}}],"logs":[["warn","[launch] Bunnymod XT Injector не обновлён: PROVIDER_LINK_FAILED В релизе v2 нет файла ^Injector/.exe$"]]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"3bfc269594ef649228e9a74bab00f042efc91d5acc6fbee31a382e80d42388fe","latin1":"v1"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":6,"sha256":"44f59413b683005e0106a15905baeb00488294e3dc25de13f30b73fd83de0601","latin1":"MZ old"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "API: assets пуст",
+      "servers": {"a":{"/repos/YaLTeR/BunnymodXT-Injector/releases/latest":[{"body":"{\"tag_name\":\"v2\",\"assets\":[]}"}],"/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe":[{"body":"MZ injector v2"}]}},
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"update","deps":"injector"},{"op":"tree"}],
+      "results": [
+        {"ok":[{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":null,"status":"failed","error":{"code":"PROVIDER_LINK_FAILED","message":"В релизе v2 нет файла ^Injector/.exe$"}}],"logs":[["warn","[launch] Bunnymod XT Injector не обновлён: PROVIDER_LINK_FAILED В релизе v2 нет файла ^Injector/.exe$"]]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"3bfc269594ef649228e9a74bab00f042efc91d5acc6fbee31a382e80d42388fe","latin1":"v1"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":6,"sha256":"44f59413b683005e0106a15905baeb00488294e3dc25de13f30b73fd83de0601","latin1":"MZ old"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "API: в assets мусор перед нужным",
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT-Injector/releases/latest": [{"body":"{\"tag_name\":\"v2\",\"assets\":[null,0,\"s\",{},{\"name\":\"Injector.exe\",\"size\":14,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe\",\"digest\":\"sha256:5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e\"}]}"}],
+          "/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe": [{"body":"MZ injector v2"}]
+        }
+      },
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"update","deps":"injector"},{"op":"tree"}],
+      "results": [
+        {"ok":[{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":"v2","status":"updated"}],"logs":[["info","[launch] Bunnymod XT Injector обновлён: v1 -> v2"]]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"fb04dcb6970e4c3d1873de51fd5a50d7bb46b3383113602665c350ec40b5f990","latin1":"v2"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":14,"sha256":"5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e","latin1":"MZ injector v2"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "API: два подходящих: берётся первый",
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT-Injector/releases/latest": [
+            {
+              "body": "{\"tag_name\":\"v2\",\"assets\":[{\"name\":\"Injector.exe\",\"size\":14,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe\",\"digest\":\"sha256:5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e\"},{\"name\":\"Injector.exe\",\"size\":15,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe\",\"digest\":\"sha256:c6b221c0dcf4a2c16e2dd4a75ad3d10f1c24026c57eeb4688f0096f2f018af97\"}]}"
+            }
+          ],
+          "/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe": [{"body":"MZ injector v2"}]
+        }
+      },
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"update","deps":"injector"},{"op":"tree"}],
+      "results": [
+        {"ok":[{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":"v2","status":"updated"}],"logs":[["info","[launch] Bunnymod XT Injector обновлён: v1 -> v2"]]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"fb04dcb6970e4c3d1873de51fd5a50d7bb46b3383113602665c350ec40b5f990","latin1":"v2"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":14,"sha256":"5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e","latin1":"MZ injector v2"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "API: имя ресурса другим регистром подходит (флаг i)",
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT-Injector/releases/latest": [{"body":"{\"tag_name\":\"v2\",\"assets\":[{\"name\":\"injector.EXE\",\"size\":14,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe\",\"digest\":\"sha256:5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e\"}]}"}],
+          "/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe": [{"body":"MZ injector v2"}]
+        }
+      },
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"update","deps":"injector"},{"op":"tree"}],
+      "results": [
+        {"ok":[{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":"v2","status":"updated"}],"logs":[["info","[launch] Bunnymod XT Injector обновлён: v1 -> v2"]]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"fb04dcb6970e4c3d1873de51fd5a50d7bb46b3383113602665c350ec40b5f990","latin1":"v2"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":14,"sha256":"5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e","latin1":"MZ injector v2"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "API: адреса нет",
+      "servers": {"a":{"/repos/YaLTeR/BunnymodXT-Injector/releases/latest":[{"body":"{\"tag_name\":\"v2\",\"assets\":[{\"name\":\"Injector.exe\",\"size\":14,\"digest\":\"sha256:5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e\"}]}"}],"/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe":[{"body":"MZ injector v2"}]}},
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"update","deps":"injector"},{"op":"tree"},{"op":"requests"}],
+      "results": [
+        {"ok":[{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":null,"status":"failed","error":{"code":"PROVIDER_LINK_FAILED","message":"В релизе v2 нет файла ^Injector/.exe$"}}],"logs":[["warn","[launch] Bunnymod XT Injector не обновлён: PROVIDER_LINK_FAILED В релизе v2 нет файла ^Injector/.exe$"]]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"3bfc269594ef649228e9a74bab00f042efc91d5acc6fbee31a382e80d42388fe","latin1":"v1"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":6,"sha256":"44f59413b683005e0106a15905baeb00488294e3dc25de13f30b73fd83de0601","latin1":"MZ old"}
+          ]
+        },
+        {"requests":[{"method":"GET","url":"/repos/YaLTeR/BunnymodXT-Injector/releases/latest","headers":{"user-agent":"HLSR-Launcher","accept":"application/vnd.github+json"}}]}
+      ]
+    },
+    {
+      "name": "API: http вместо https",
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT-Injector/releases/latest": [{"body":"{\"tag_name\":\"v2\",\"assets\":[{\"name\":\"Injector.exe\",\"size\":14,\"browser_download_url\":\"http://github.com/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe\",\"digest\":\"sha256:5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e\"}]}"}],
+          "/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe": [{"body":"MZ injector v2"}]
+        }
+      },
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"update","deps":"injector"},{"op":"tree"},{"op":"requests"}],
+      "results": [
+        {"ok":[{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":null,"status":"failed","error":{"code":"PROVIDER_LINK_FAILED","message":"Файл релиза лежит не на github.com: github.com"}}],"logs":[["warn","[launch] Bunnymod XT Injector не обновлён: PROVIDER_LINK_FAILED Файл релиза лежит не на github.com: github.com"]]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"3bfc269594ef649228e9a74bab00f042efc91d5acc6fbee31a382e80d42388fe","latin1":"v1"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":6,"sha256":"44f59413b683005e0106a15905baeb00488294e3dc25de13f30b73fd83de0601","latin1":"MZ old"}
+          ]
+        },
+        {"requests":[{"method":"GET","url":"/repos/YaLTeR/BunnymodXT-Injector/releases/latest","headers":{"user-agent":"HLSR-Launcher","accept":"application/vnd.github+json"}}]}
+      ]
+    },
+    {
+      "name": "API: чужой хост с github.com в имени",
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT-Injector/releases/latest": [{"body":"{\"tag_name\":\"v2\",\"assets\":[{\"name\":\"Injector.exe\",\"size\":14,\"browser_download_url\":\"https://github.com.evil.example/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe\",\"digest\":\"sha256:5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e\"}]}"}],
+          "/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe": [{"body":"MZ injector v2"}]
+        }
+      },
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"update","deps":"injector"},{"op":"tree"},{"op":"requests"}],
+      "results": [
+        {"ok":[{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":null,"status":"failed","error":{"code":"PROVIDER_LINK_FAILED","message":"Файл релиза лежит не на github.com: github.com.evil.example"}}],"logs":[["warn","[launch] Bunnymod XT Injector не обновлён: PROVIDER_LINK_FAILED Файл релиза лежит не на github.com: github.com.evil.example"]]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"3bfc269594ef649228e9a74bab00f042efc91d5acc6fbee31a382e80d42388fe","latin1":"v1"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":6,"sha256":"44f59413b683005e0106a15905baeb00488294e3dc25de13f30b73fd83de0601","latin1":"MZ old"}
+          ]
+        },
+        {"requests":[{"method":"GET","url":"/repos/YaLTeR/BunnymodXT-Injector/releases/latest","headers":{"user-agent":"HLSR-Launcher","accept":"application/vnd.github+json"}}]}
+      ]
+    },
+    {
+      "name": "API: поддомен github.com",
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT-Injector/releases/latest": [{"body":"{\"tag_name\":\"v2\",\"assets\":[{\"name\":\"Injector.exe\",\"size\":14,\"browser_download_url\":\"https://api.github.com/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe\",\"digest\":\"sha256:5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e\"}]}"}],
+          "/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe": [{"body":"MZ injector v2"}]
+        }
+      },
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"update","deps":"injector"},{"op":"tree"},{"op":"requests"}],
+      "results": [
+        {"ok":[{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":null,"status":"failed","error":{"code":"PROVIDER_LINK_FAILED","message":"Файл релиза лежит не на github.com: api.github.com"}}],"logs":[["warn","[launch] Bunnymod XT Injector не обновлён: PROVIDER_LINK_FAILED Файл релиза лежит не на github.com: api.github.com"]]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"3bfc269594ef649228e9a74bab00f042efc91d5acc6fbee31a382e80d42388fe","latin1":"v1"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":6,"sha256":"44f59413b683005e0106a15905baeb00488294e3dc25de13f30b73fd83de0601","latin1":"MZ old"}
+          ]
+        },
+        {"requests":[{"method":"GET","url":"/repos/YaLTeR/BunnymodXT-Injector/releases/latest","headers":{"user-agent":"HLSR-Launcher","accept":"application/vnd.github+json"}}]}
+      ]
+    },
+    {
+      "name": "API: github.com заглавными",
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT-Injector/releases/latest": [{"body":"{\"tag_name\":\"v2\",\"assets\":[{\"name\":\"Injector.exe\",\"size\":14,\"browser_download_url\":\"https://GITHUB.COM/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe\",\"digest\":\"sha256:5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e\"}]}"}],
+          "/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe": [{"body":"MZ injector v2"}]
+        }
+      },
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"update","deps":"injector"},{"op":"tree"},{"op":"requests"}],
+      "results": [
+        {"ok":[{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":"v2","status":"updated"}],"logs":[["info","[launch] Bunnymod XT Injector обновлён: v1 -> v2"]]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"fb04dcb6970e4c3d1873de51fd5a50d7bb46b3383113602665c350ec40b5f990","latin1":"v2"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":14,"sha256":"5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e","latin1":"MZ injector v2"}
+          ]
+        },
+        {"requests":[{"method":"GET","url":"/repos/YaLTeR/BunnymodXT-Injector/releases/latest","headers":{"user-agent":"HLSR-Launcher","accept":"application/vnd.github+json"}},{"method":"GET","url":"/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe","headers":{"user-agent":"HLSR-Launcher"}}]}
+      ]
+    },
+    {
+      "name": "API: запрос и фрагмент в адресе",
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT-Injector/releases/latest": [{"body":"{\"tag_name\":\"v2\",\"assets\":[{\"name\":\"Injector.exe\",\"size\":14,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe?token=1#part\",\"digest\":\"sha256:5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e\"}]}"}],
+          "/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe": [{"body":"MZ injector v2"}]
+        }
+      },
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"update","deps":"injector"},{"op":"tree"},{"op":"requests"}],
+      "results": [
+        {"ok":[{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":"v2","status":"updated"}],"logs":[["info","[launch] Bunnymod XT Injector обновлён: v1 -> v2"]]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"fb04dcb6970e4c3d1873de51fd5a50d7bb46b3383113602665c350ec40b5f990","latin1":"v2"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":14,"sha256":"5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e","latin1":"MZ injector v2"}
+          ]
+        },
+        {"requests":[{"method":"GET","url":"/repos/YaLTeR/BunnymodXT-Injector/releases/latest","headers":{"user-agent":"HLSR-Launcher","accept":"application/vnd.github+json"}},{"method":"GET","url":"/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe?token=1","headers":{"user-agent":"HLSR-Launcher"}}]}
+      ]
+    },
+    {
+      "name": "API: размера нет",
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT-Injector/releases/latest": [{"body":"{\"tag_name\":\"v2\",\"assets\":[{\"name\":\"Injector.exe\",\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe\",\"digest\":\"sha256:5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e\"}]}"}],
+          "/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe": [{"body":"MZ injector v2"}]
+        }
+      },
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"update","deps":"injector"},{"op":"tree"}],
+      "results": [
+        {"ok":[{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":null,"status":"failed","error":{"code":"PROVIDER_LINK_FAILED","message":"Недопустимый размер Injector.exe: undefined"}}],"logs":[["warn","[launch] Bunnymod XT Injector не обновлён: PROVIDER_LINK_FAILED Недопустимый размер Injector.exe: undefined"]]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"3bfc269594ef649228e9a74bab00f042efc91d5acc6fbee31a382e80d42388fe","latin1":"v1"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":6,"sha256":"44f59413b683005e0106a15905baeb00488294e3dc25de13f30b73fd83de0601","latin1":"MZ old"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "API: размер 0",
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT-Injector/releases/latest": [{"body":"{\"tag_name\":\"v2\",\"assets\":[{\"name\":\"Injector.exe\",\"size\":0,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe\",\"digest\":\"sha256:5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e\"}]}"}],
+          "/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe": [{"body":"MZ injector v2"}]
+        }
+      },
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"update","deps":"injector"},{"op":"tree"}],
+      "results": [
+        {"ok":[{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":null,"status":"failed","error":{"code":"PROVIDER_LINK_FAILED","message":"Недопустимый размер Injector.exe: 0"}}],"logs":[["warn","[launch] Bunnymod XT Injector не обновлён: PROVIDER_LINK_FAILED Недопустимый размер Injector.exe: 0"]]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"3bfc269594ef649228e9a74bab00f042efc91d5acc6fbee31a382e80d42388fe","latin1":"v1"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":6,"sha256":"44f59413b683005e0106a15905baeb00488294e3dc25de13f30b73fd83de0601","latin1":"MZ old"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "API: размер 1.5",
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT-Injector/releases/latest": [{"body":"{\"tag_name\":\"v2\",\"assets\":[{\"name\":\"Injector.exe\",\"size\":1.5,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe\",\"digest\":\"sha256:5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e\"}]}"}],
+          "/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe": [{"body":"MZ injector v2"}]
+        }
+      },
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"update","deps":"injector"},{"op":"tree"}],
+      "results": [
+        {"ok":[{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":null,"status":"failed","error":{"code":"PROVIDER_LINK_FAILED","message":"Недопустимый размер Injector.exe: 1.5"}}],"logs":[["warn","[launch] Bunnymod XT Injector не обновлён: PROVIDER_LINK_FAILED Недопустимый размер Injector.exe: 1.5"]]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"3bfc269594ef649228e9a74bab00f042efc91d5acc6fbee31a382e80d42388fe","latin1":"v1"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":6,"sha256":"44f59413b683005e0106a15905baeb00488294e3dc25de13f30b73fd83de0601","latin1":"MZ old"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "API: размер — строка «14»",
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT-Injector/releases/latest": [{"body":"{\"tag_name\":\"v2\",\"assets\":[{\"name\":\"Injector.exe\",\"size\":\"14\",\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe\",\"digest\":\"sha256:5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e\"}]}"}],
+          "/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe": [{"body":"MZ injector v2"}]
+        }
+      },
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"update","deps":"injector"},{"op":"tree"}],
+      "results": [
+        {"ok":[{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":"v2","status":"updated"}],"logs":[["info","[launch] Bunnymod XT Injector обновлён: v1 -> v2"]]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"fb04dcb6970e4c3d1873de51fd5a50d7bb46b3383113602665c350ec40b5f990","latin1":"v2"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":14,"sha256":"5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e","latin1":"MZ injector v2"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "API: размер 32 МиБ (предел), тело короче",
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT-Injector/releases/latest": [{"body":"{\"tag_name\":\"v2\",\"assets\":[{\"name\":\"Injector.exe\",\"size\":33554432,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe\",\"digest\":\"sha256:5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e\"}]}"}],
+          "/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe": [{"body":"MZ injector v2"}]
+        }
+      },
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"update","deps":"injector"},{"op":"tree"}],
+      "results": [
+        {"ok":[{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":null,"status":"failed","error":{"code":"SIZE_MISMATCH","message":"Получено 14 Б из 33554432 для Injector.exe"}}],"logs":[["warn","[launch] Bunnymod XT Injector не обновлён: SIZE_MISMATCH Получено 14 Б из 33554432 для Injector.exe"]]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"3bfc269594ef649228e9a74bab00f042efc91d5acc6fbee31a382e80d42388fe","latin1":"v1"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":6,"sha256":"44f59413b683005e0106a15905baeb00488294e3dc25de13f30b73fd83de0601","latin1":"MZ old"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "API: размер 32 МиБ + 1",
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT-Injector/releases/latest": [{"body":"{\"tag_name\":\"v2\",\"assets\":[{\"name\":\"Injector.exe\",\"size\":33554433,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe\",\"digest\":\"sha256:5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e\"}]}"}],
+          "/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe": [{"body":"MZ injector v2"}]
+        }
+      },
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"update","deps":"injector"},{"op":"tree"}],
+      "results": [
+        {"ok":[{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":null,"status":"failed","error":{"code":"PROVIDER_LINK_FAILED","message":"Недопустимый размер Injector.exe: 33554433"}}],"logs":[["warn","[launch] Bunnymod XT Injector не обновлён: PROVIDER_LINK_FAILED Недопустимый размер Injector.exe: 33554433"]]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"3bfc269594ef649228e9a74bab00f042efc91d5acc6fbee31a382e80d42388fe","latin1":"v1"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":6,"sha256":"44f59413b683005e0106a15905baeb00488294e3dc25de13f30b73fd83de0601","latin1":"MZ old"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "API: размер 15",
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT-Injector/releases/latest": [{"body":"{\"tag_name\":\"v2\",\"assets\":[{\"name\":\"Injector.exe\",\"size\":15,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe\",\"digest\":\"sha256:5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e\"}]}"}],
+          "/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe": [{"body":"MZ injector v2"}]
+        }
+      },
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"update","deps":"injector"},{"op":"tree"}],
+      "results": [
+        {"ok":[{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":null,"status":"failed","error":{"code":"SIZE_MISMATCH","message":"Получено 14 Б из 15 для Injector.exe"}}],"logs":[["warn","[launch] Bunnymod XT Injector не обновлён: SIZE_MISMATCH Получено 14 Б из 15 для Injector.exe"]]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"3bfc269594ef649228e9a74bab00f042efc91d5acc6fbee31a382e80d42388fe","latin1":"v1"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":6,"sha256":"44f59413b683005e0106a15905baeb00488294e3dc25de13f30b73fd83de0601","latin1":"MZ old"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "API: размер 13",
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT-Injector/releases/latest": [{"body":"{\"tag_name\":\"v2\",\"assets\":[{\"name\":\"Injector.exe\",\"size\":13,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe\",\"digest\":\"sha256:5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e\"}]}"}],
+          "/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe": [{"body":"MZ injector v2"}]
+        }
+      },
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"update","deps":"injector"},{"op":"tree"}],
+      "results": [
+        {"ok":[{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":null,"status":"failed","error":{"code":"SIZE_MISMATCH","message":"Injector.exe больше объявленных 13 Б"}}],"logs":[["warn","[launch] Bunnymod XT Injector не обновлён: SIZE_MISMATCH Injector.exe больше объявленных 13 Б"]]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"3bfc269594ef649228e9a74bab00f042efc91d5acc6fbee31a382e80d42388fe","latin1":"v1"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":6,"sha256":"44f59413b683005e0106a15905baeb00488294e3dc25de13f30b73fd83de0601","latin1":"MZ old"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "API: digest отсутствует",
+      "servers": {"a":{"/repos/YaLTeR/BunnymodXT-Injector/releases/latest":[{"body":"{\"tag_name\":\"v2\",\"assets\":[{\"name\":\"Injector.exe\",\"size\":14,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe\"}]}"}],"/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe":[{"body":"MZ injector v2"}]}},
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"update","deps":"injector"},{"op":"tree"}],
+      "results": [
+        {"ok":[{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":"v2","status":"updated"}],"logs":[["info","[launch] Bunnymod XT Injector обновлён: v1 -> v2"]]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"fb04dcb6970e4c3d1873de51fd5a50d7bb46b3383113602665c350ec40b5f990","latin1":"v2"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":14,"sha256":"5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e","latin1":"MZ injector v2"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "API: digest заглавными",
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT-Injector/releases/latest": [{"body":"{\"tag_name\":\"v2\",\"assets\":[{\"name\":\"Injector.exe\",\"size\":14,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe\",\"digest\":\"sha256:5C46B8BDA659FF0958304E22FE2BE1D011E8DB6262FCED0237BF70200F9B4F8E\"}]}"}],
+          "/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe": [{"body":"MZ injector v2"}]
+        }
+      },
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"update","deps":"injector"},{"op":"tree"}],
+      "results": [
+        {"ok":[{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":"v2","status":"updated"}],"logs":[["info","[launch] Bunnymod XT Injector обновлён: v1 -> v2"]]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"fb04dcb6970e4c3d1873de51fd5a50d7bb46b3383113602665c350ec40b5f990","latin1":"v2"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":14,"sha256":"5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e","latin1":"MZ injector v2"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "API: digest sha1",
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT-Injector/releases/latest": [{"body":"{\"tag_name\":\"v2\",\"assets\":[{\"name\":\"Injector.exe\",\"size\":14,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe\",\"digest\":\"sha1:5c46b8bda659ff0958304e22fe2be1d011e8db62\"}]}"}],
+          "/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe": [{"body":"MZ injector v2"}]
+        }
+      },
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"update","deps":"injector"},{"op":"tree"}],
+      "results": [
+        {"ok":[{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":"v2","status":"updated"}],"logs":[["info","[launch] Bunnymod XT Injector обновлён: v1 -> v2"]]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"fb04dcb6970e4c3d1873de51fd5a50d7bb46b3383113602665c350ec40b5f990","latin1":"v2"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":14,"sha256":"5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e","latin1":"MZ injector v2"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "API: digest верный по форме, но чужой",
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT-Injector/releases/latest": [{"body":"{\"tag_name\":\"v2\",\"assets\":[{\"name\":\"Injector.exe\",\"size\":14,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe\",\"digest\":\"sha256:0000000000000000000000000000000000000000000000000000000000000000\"}]}"}],
+          "/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe": [{"body":"MZ injector v2"}]
+        }
+      },
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"update","deps":"injector"},{"op":"tree"}],
+      "results": [
+        {"ok":[{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":null,"status":"failed","error":{"code":"CHECKSUM_MISMATCH","message":"SHA-256 Injector.exe не совпал"}}],"logs":[["warn","[launch] Bunnymod XT Injector не обновлён: CHECKSUM_MISMATCH SHA-256 Injector.exe не совпал"]]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"3bfc269594ef649228e9a74bab00f042efc91d5acc6fbee31a382e80d42388fe","latin1":"v1"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":6,"sha256":"44f59413b683005e0106a15905baeb00488294e3dc25de13f30b73fd83de0601","latin1":"MZ old"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "API: digest верный",
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT-Injector/releases/latest": [{"body":"{\"tag_name\":\"v2\",\"assets\":[{\"name\":\"Injector.exe\",\"size\":14,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe\",\"digest\":\"sha256:5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e\"}]}"}],
+          "/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe": [{"body":"MZ injector v2"}]
+        }
+      },
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"update","deps":"injector"},{"op":"tree"}],
+      "results": [
+        {"ok":[{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":"v2","status":"updated"}],"logs":[["info","[launch] Bunnymod XT Injector обновлён: v1 -> v2"]]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"fb04dcb6970e4c3d1873de51fd5a50d7bb46b3383113602665c350ec40b5f990","latin1":"v2"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":14,"sha256":"5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e","latin1":"MZ injector v2"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "API: сервер — 404",
+      "servers": {"a":{"/repos/YaLTeR/BunnymodXT-Injector/releases/latest":[{"status":404,"body":"нет"}],"/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe":[{"body":"MZ injector v2"}]}},
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"update","deps":"injector"},{"op":"tree"},{"op":"requests"}],
+      "results": [
+        {"ok":[{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":null,"status":"failed","error":{"code":"HTTP_ERROR","message":"HTTP 404 для http://{a}/repos/YaLTeR/BunnymodXT-Injector/releases/latest"}}],"logs":[["warn","[launch] Bunnymod XT Injector не обновлён: HTTP_ERROR HTTP 404 для http://{a}/repos/YaLTeR/BunnymodXT-Injector/releases/latest"]]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"3bfc269594ef649228e9a74bab00f042efc91d5acc6fbee31a382e80d42388fe","latin1":"v1"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":6,"sha256":"44f59413b683005e0106a15905baeb00488294e3dc25de13f30b73fd83de0601","latin1":"MZ old"}
+          ]
+        },
+        {"requests":[{"method":"GET","url":"/repos/YaLTeR/BunnymodXT-Injector/releases/latest","headers":{"user-agent":"HLSR-Launcher","accept":"application/vnd.github+json"}}]}
+      ]
+    },
+    {
+      "name": "API: сервер — 403 (лимит запросов)",
+      "servers": {"a":{"/repos/YaLTeR/BunnymodXT-Injector/releases/latest":[{"status":403,"body":"{\"message\":\"API rate limit exceeded\"}"}],"/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe":[{"body":"MZ injector v2"}]}},
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"update","deps":"injector"},{"op":"tree"},{"op":"requests"}],
+      "results": [
+        {"ok":[{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":null,"status":"failed","error":{"code":"PROVIDER_FORBIDDEN","message":"Доступ запрещён: HTTP 403"}}],"logs":[["warn","[launch] Bunnymod XT Injector не обновлён: PROVIDER_FORBIDDEN Доступ запрещён: HTTP 403"]]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"3bfc269594ef649228e9a74bab00f042efc91d5acc6fbee31a382e80d42388fe","latin1":"v1"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":6,"sha256":"44f59413b683005e0106a15905baeb00488294e3dc25de13f30b73fd83de0601","latin1":"MZ old"}
+          ]
+        },
+        {"requests":[{"method":"GET","url":"/repos/YaLTeR/BunnymodXT-Injector/releases/latest","headers":{"user-agent":"HLSR-Launcher","accept":"application/vnd.github+json"}}]}
+      ]
+    },
+    {
+      "name": "API: сервер — 500",
+      "servers": {"a":{"/repos/YaLTeR/BunnymodXT-Injector/releases/latest":[{"status":500,"body":"ошибка"}],"/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe":[{"body":"MZ injector v2"}]}},
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"update","deps":"injector"},{"op":"tree"},{"op":"requests"}],
+      "results": [
+        {"ok":[{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":null,"status":"failed","error":{"code":"HTTP_ERROR","message":"HTTP 500 для http://{a}/repos/YaLTeR/BunnymodXT-Injector/releases/latest"}}],"logs":[["warn","[launch] Bunnymod XT Injector не обновлён: HTTP_ERROR HTTP 500 для http://{a}/repos/YaLTeR/BunnymodXT-Injector/releases/latest"]]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"3bfc269594ef649228e9a74bab00f042efc91d5acc6fbee31a382e80d42388fe","latin1":"v1"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":6,"sha256":"44f59413b683005e0106a15905baeb00488294e3dc25de13f30b73fd83de0601","latin1":"MZ old"}
+          ]
+        },
+        {"requests":[{"method":"GET","url":"/repos/YaLTeR/BunnymodXT-Injector/releases/latest","headers":{"user-agent":"HLSR-Launcher","accept":"application/vnd.github+json"}}]}
+      ]
+    },
+    {
+      "name": "API: сервер — 204 без тела",
+      "servers": {"a":{"/repos/YaLTeR/BunnymodXT-Injector/releases/latest":[{"status":204}],"/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe":[{"body":"MZ injector v2"}]}},
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"update","deps":"injector"},{"op":"tree"},{"op":"requests"}],
+      "results": [
+        {"ok":[{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":null,"status":"failed","error":{"code":"PROVIDER_LINK_FAILED","message":"Ответ не является JSON: "}}],"logs":[["warn","[launch] Bunnymod XT Injector не обновлён: PROVIDER_LINK_FAILED Ответ не является JSON: "]]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"3bfc269594ef649228e9a74bab00f042efc91d5acc6fbee31a382e80d42388fe","latin1":"v1"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":6,"sha256":"44f59413b683005e0106a15905baeb00488294e3dc25de13f30b73fd83de0601","latin1":"MZ old"}
+          ]
+        },
+        {"requests":[{"method":"GET","url":"/repos/YaLTeR/BunnymodXT-Injector/releases/latest","headers":{"user-agent":"HLSR-Launcher","accept":"application/vnd.github+json"}}]}
+      ]
+    },
+    {
+      "name": "API: сервер — тело больше 256 КБ",
+      "servers": {"a":{"/repos/YaLTeR/BunnymodXT-Injector/releases/latest":[{"bodySize":300000}],"/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe":[{"body":"MZ injector v2"}]}},
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"update","deps":"injector"},{"op":"tree"},{"op":"requests"}],
+      "results": [
+        {"ok":[{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":null,"status":"failed","error":{"code":"HTTP_ERROR","message":"Ответ превысил допустимый размер"}}],"logs":[["warn","[launch] Bunnymod XT Injector не обновлён: HTTP_ERROR Ответ превысил допустимый размер"]]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"3bfc269594ef649228e9a74bab00f042efc91d5acc6fbee31a382e80d42388fe","latin1":"v1"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":6,"sha256":"44f59413b683005e0106a15905baeb00488294e3dc25de13f30b73fd83de0601","latin1":"MZ old"}
+          ]
+        },
+        {"requests":[{"method":"GET","url":"/repos/YaLTeR/BunnymodXT-Injector/releases/latest","headers":{"user-agent":"HLSR-Launcher","accept":"application/vnd.github+json"}}]}
+      ]
+    },
+    {
+      "name": "API: сервер — тело ровно 256 КБ (предел не превышен, но это не JSON)",
+      "servers": {"a":{"/repos/YaLTeR/BunnymodXT-Injector/releases/latest":[{"bodySize":262144}],"/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe":[{"body":"MZ injector v2"}]}},
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"update","deps":"injector"},{"op":"tree"},{"op":"requests"}],
+      "results": [
+        {"ok":[{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":null,"status":"failed","error":{"code":"PROVIDER_LINK_FAILED","message":"Ответ не является JSON: "}}],"logs":[["warn","[launch] Bunnymod XT Injector не обновлён: PROVIDER_LINK_FAILED Ответ не является JSON: "]]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"3bfc269594ef649228e9a74bab00f042efc91d5acc6fbee31a382e80d42388fe","latin1":"v1"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":6,"sha256":"44f59413b683005e0106a15905baeb00488294e3dc25de13f30b73fd83de0601","latin1":"MZ old"}
+          ]
+        },
+        {"requests":[{"method":"GET","url":"/repos/YaLTeR/BunnymodXT-Injector/releases/latest","headers":{"user-agent":"HLSR-Launcher","accept":"application/vnd.github+json"}}]}
+      ]
+    },
+    {
+      "name": "API: сервер — обрыв посреди тела",
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT-Injector/releases/latest": [{"body":"{\"tag_name\":\"v2\",\"assets\":[{\"name\":\"Injector.exe\",\"size\":14,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe\",\"digest\":\"sha256:5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e\"}]}","contentLength":5000,"cutAfter":20}],
+          "/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe": [{"body":"MZ injector v2"}]
+        }
+      },
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"update","deps":"injector"},{"op":"tree"},{"op":"requests"}],
+      "results": [
+        {"ok":[{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":null,"status":"failed","error":{"code":"NETWORK_ERROR","message":"Обрыв ответа: aborted"}}],"logs":[["warn","[launch] Bunnymod XT Injector не обновлён: NETWORK_ERROR Обрыв ответа: aborted"]]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"3bfc269594ef649228e9a74bab00f042efc91d5acc6fbee31a382e80d42388fe","latin1":"v1"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":6,"sha256":"44f59413b683005e0106a15905baeb00488294e3dc25de13f30b73fd83de0601","latin1":"MZ old"}
+          ]
+        },
+        {"requests":[{"method":"GET","url":"/repos/YaLTeR/BunnymodXT-Injector/releases/latest","headers":{"user-agent":"HLSR-Launcher","accept":"application/vnd.github+json"}}]}
+      ]
+    },
+    {
+      "name": "API: сервер — соединение разорвано без ответа",
+      "servers": {"a":{"/repos/YaLTeR/BunnymodXT-Injector/releases/latest":[{"hangUp":true}],"/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe":[{"body":"MZ injector v2"}]}},
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"update","deps":"injector"},{"op":"tree"},{"op":"requests"}],
+      "results": [
+        {"ok":[{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":null,"status":"failed","error":{"code":"NETWORK_ERROR","message":"Сетевая ошибка: socket hang up"}}],"logs":[["warn","[launch] Bunnymod XT Injector не обновлён: NETWORK_ERROR Сетевая ошибка: socket hang up"]]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"3bfc269594ef649228e9a74bab00f042efc91d5acc6fbee31a382e80d42388fe","latin1":"v1"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":6,"sha256":"44f59413b683005e0106a15905baeb00488294e3dc25de13f30b73fd83de0601","latin1":"MZ old"}
+          ]
+        },
+        {"requests":[{"method":"GET","url":"/repos/YaLTeR/BunnymodXT-Injector/releases/latest","headers":{"user-agent":"HLSR-Launcher","accept":"application/vnd.github+json"}}]}
+      ]
+    },
+    {
+      "name": "API: сервер — редирект 302 на тот же ответ",
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT-Injector/releases/latest": [{"status":302,"headers":[["Location","http://{a}/moved/release.json"]]}],
+          "/moved/release.json": [{"body":"{\"tag_name\":\"v2\",\"assets\":[{\"name\":\"Injector.exe\",\"size\":14,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe\",\"digest\":\"sha256:5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e\"}]}"}],
+          "/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe": [{"body":"MZ injector v2"}]
+        }
+      },
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"update","deps":"injector"},{"op":"tree"},{"op":"requests"}],
+      "results": [
+        {"ok":[{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":"v2","status":"updated"}],"logs":[["info","[launch] Bunnymod XT Injector обновлён: v1 -> v2"]]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"fb04dcb6970e4c3d1873de51fd5a50d7bb46b3383113602665c350ec40b5f990","latin1":"v2"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":14,"sha256":"5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e","latin1":"MZ injector v2"}
+          ]
+        },
+        {
+          "requests": [
+            {"method":"GET","url":"/repos/YaLTeR/BunnymodXT-Injector/releases/latest","headers":{"user-agent":"HLSR-Launcher","accept":"application/vnd.github+json"}},
+            {"method":"GET","url":"/moved/release.json","headers":{"user-agent":"HLSR-Launcher","accept":"application/vnd.github+json"}},
+            {"method":"GET","url":"/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe","headers":{"user-agent":"HLSR-Launcher"}}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "API: запрос — заголовки и адрес",
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT-Injector/releases/latest": [{"body":"{\"tag_name\":\"v2\",\"assets\":[{\"name\":\"Injector.exe\",\"size\":14,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe\",\"digest\":\"sha256:5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e\"}]}"}],
+          "/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe": [{"body":"MZ injector v2"}],
+          "/repos/YaLTeR/BunnymodXT/releases/latest": [{"status":404}]
+        }
+      },
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"update","deps":"both"},{"op":"requests"}],
+      "results": [
+        {
+          "ok": [{"id":"bxt","title":"Bunnymod XT","from":null,"to":null,"status":"failed","error":{"code":"HTTP_ERROR","message":"HTTP 404 для http://{a}/repos/YaLTeR/BunnymodXT/releases/latest"}},{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":"v2","status":"updated"}],
+          "logs": [["warn","[launch] Bunnymod XT не обновлён: HTTP_ERROR HTTP 404 для http://{a}/repos/YaLTeR/BunnymodXT/releases/latest"],["info","[launch] Bunnymod XT Injector обновлён: v1 -> v2"]]
+        },
+        {
+          "requests": [
+            {"method":"GET","url":"/repos/YaLTeR/BunnymodXT/releases/latest","headers":{"user-agent":"HLSR-Launcher","accept":"application/vnd.github+json"}},
+            {"method":"GET","url":"/repos/YaLTeR/BunnymodXT-Injector/releases/latest","headers":{"user-agent":"HLSR-Launcher","accept":"application/vnd.github+json"}},
+            {"method":"GET","url":"/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe","headers":{"user-agent":"HLSR-Launcher"}}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "файл: сервер — 404",
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT-Injector/releases/latest": [{"body":"{\"tag_name\":\"v2\",\"assets\":[{\"name\":\"Injector.exe\",\"size\":14,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe\",\"digest\":\"sha256:5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e\"}]}"}],
+          "/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe": [{"status":404,"body":"нет"}]
+        }
+      },
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"update","deps":"injector"},{"op":"tree"},{"op":"requests"}],
+      "results": [
+        {"ok":[{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":null,"status":"failed","error":{"code":"HTTP_ERROR","message":"HTTP 404 для Injector.exe"}}],"logs":[["warn","[launch] Bunnymod XT Injector не обновлён: HTTP_ERROR HTTP 404 для Injector.exe"]]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"3bfc269594ef649228e9a74bab00f042efc91d5acc6fbee31a382e80d42388fe","latin1":"v1"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":6,"sha256":"44f59413b683005e0106a15905baeb00488294e3dc25de13f30b73fd83de0601","latin1":"MZ old"}
+          ]
+        },
+        {"requests":[{"method":"GET","url":"/repos/YaLTeR/BunnymodXT-Injector/releases/latest","headers":{"user-agent":"HLSR-Launcher","accept":"application/vnd.github+json"}},{"method":"GET","url":"/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe","headers":{"user-agent":"HLSR-Launcher"}}]}
+      ]
+    },
+    {
+      "name": "файл: сервер — 500",
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT-Injector/releases/latest": [{"body":"{\"tag_name\":\"v2\",\"assets\":[{\"name\":\"Injector.exe\",\"size\":14,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe\",\"digest\":\"sha256:5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e\"}]}"}],
+          "/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe": [{"status":500,"body":"ошибка"}]
+        }
+      },
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"update","deps":"injector"},{"op":"tree"},{"op":"requests"}],
+      "results": [
+        {"ok":[{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":null,"status":"failed","error":{"code":"HTTP_ERROR","message":"HTTP 500 для Injector.exe"}}],"logs":[["warn","[launch] Bunnymod XT Injector не обновлён: HTTP_ERROR HTTP 500 для Injector.exe"]]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"3bfc269594ef649228e9a74bab00f042efc91d5acc6fbee31a382e80d42388fe","latin1":"v1"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":6,"sha256":"44f59413b683005e0106a15905baeb00488294e3dc25de13f30b73fd83de0601","latin1":"MZ old"}
+          ]
+        },
+        {"requests":[{"method":"GET","url":"/repos/YaLTeR/BunnymodXT-Injector/releases/latest","headers":{"user-agent":"HLSR-Launcher","accept":"application/vnd.github+json"}},{"method":"GET","url":"/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe","headers":{"user-agent":"HLSR-Launcher"}}]}
+      ]
+    },
+    {
+      "name": "файл: сервер — пустое тело",
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT-Injector/releases/latest": [{"body":"{\"tag_name\":\"v2\",\"assets\":[{\"name\":\"Injector.exe\",\"size\":14,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe\",\"digest\":\"sha256:5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e\"}]}"}],
+          "/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe": [{"body":""}]
+        }
+      },
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"update","deps":"injector"},{"op":"tree"},{"op":"requests"}],
+      "results": [
+        {"ok":[{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":null,"status":"failed","error":{"code":"SIZE_MISMATCH","message":"Получено 0 Б из 14 для Injector.exe"}}],"logs":[["warn","[launch] Bunnymod XT Injector не обновлён: SIZE_MISMATCH Получено 0 Б из 14 для Injector.exe"]]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"3bfc269594ef649228e9a74bab00f042efc91d5acc6fbee31a382e80d42388fe","latin1":"v1"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":6,"sha256":"44f59413b683005e0106a15905baeb00488294e3dc25de13f30b73fd83de0601","latin1":"MZ old"}
+          ]
+        },
+        {"requests":[{"method":"GET","url":"/repos/YaLTeR/BunnymodXT-Injector/releases/latest","headers":{"user-agent":"HLSR-Launcher","accept":"application/vnd.github+json"}},{"method":"GET","url":"/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe","headers":{"user-agent":"HLSR-Launcher"}}]}
+      ]
+    },
+    {
+      "name": "файл: сервер — тело короче объявленного",
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT-Injector/releases/latest": [{"body":"{\"tag_name\":\"v2\",\"assets\":[{\"name\":\"Injector.exe\",\"size\":14,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe\",\"digest\":\"sha256:5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e\"}]}"}],
+          "/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe": [{"body":"MZ injector"}]
+        }
+      },
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"update","deps":"injector"},{"op":"tree"},{"op":"requests"}],
+      "results": [
+        {"ok":[{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":null,"status":"failed","error":{"code":"SIZE_MISMATCH","message":"Получено 11 Б из 14 для Injector.exe"}}],"logs":[["warn","[launch] Bunnymod XT Injector не обновлён: SIZE_MISMATCH Получено 11 Б из 14 для Injector.exe"]]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"3bfc269594ef649228e9a74bab00f042efc91d5acc6fbee31a382e80d42388fe","latin1":"v1"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":6,"sha256":"44f59413b683005e0106a15905baeb00488294e3dc25de13f30b73fd83de0601","latin1":"MZ old"}
+          ]
+        },
+        {"requests":[{"method":"GET","url":"/repos/YaLTeR/BunnymodXT-Injector/releases/latest","headers":{"user-agent":"HLSR-Launcher","accept":"application/vnd.github+json"}},{"method":"GET","url":"/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe","headers":{"user-agent":"HLSR-Launcher"}}]}
+      ]
+    },
+    {
+      "name": "файл: сервер — тело на байт длиннее",
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT-Injector/releases/latest": [{"body":"{\"tag_name\":\"v2\",\"assets\":[{\"name\":\"Injector.exe\",\"size\":14,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe\",\"digest\":\"sha256:5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e\"}]}"}],
+          "/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe": [{"body":"MZ injector v2!"}]
+        }
+      },
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"update","deps":"injector"},{"op":"tree"},{"op":"requests"}],
+      "results": [
+        {"ok":[{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":null,"status":"failed","error":{"code":"SIZE_MISMATCH","message":"Injector.exe больше объявленных 14 Б"}}],"logs":[["warn","[launch] Bunnymod XT Injector не обновлён: SIZE_MISMATCH Injector.exe больше объявленных 14 Б"]]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"3bfc269594ef649228e9a74bab00f042efc91d5acc6fbee31a382e80d42388fe","latin1":"v1"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":6,"sha256":"44f59413b683005e0106a15905baeb00488294e3dc25de13f30b73fd83de0601","latin1":"MZ old"}
+          ]
+        },
+        {"requests":[{"method":"GET","url":"/repos/YaLTeR/BunnymodXT-Injector/releases/latest","headers":{"user-agent":"HLSR-Launcher","accept":"application/vnd.github+json"}},{"method":"GET","url":"/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe","headers":{"user-agent":"HLSR-Launcher"}}]}
+      ]
+    },
+    {
+      "name": "файл: сервер — обрыв посреди тела",
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT-Injector/releases/latest": [{"body":"{\"tag_name\":\"v2\",\"assets\":[{\"name\":\"Injector.exe\",\"size\":14,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe\",\"digest\":\"sha256:5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e\"}]}"}],
+          "/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe": [{"body":"MZ injector v2","contentLength":100,"cutAfter":5}]
+        }
+      },
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"update","deps":"injector"},{"op":"tree"},{"op":"requests"}],
+      "results": [
+        {"ok":[{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":null,"status":"failed","error":{"code":"NETWORK_ERROR","message":"aborted"}}],"logs":[["warn","[launch] Bunnymod XT Injector не обновлён: NETWORK_ERROR aborted"]]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"3bfc269594ef649228e9a74bab00f042efc91d5acc6fbee31a382e80d42388fe","latin1":"v1"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":6,"sha256":"44f59413b683005e0106a15905baeb00488294e3dc25de13f30b73fd83de0601","latin1":"MZ old"}
+          ]
+        },
+        {"requests":[{"method":"GET","url":"/repos/YaLTeR/BunnymodXT-Injector/releases/latest","headers":{"user-agent":"HLSR-Launcher","accept":"application/vnd.github+json"}},{"method":"GET","url":"/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe","headers":{"user-agent":"HLSR-Launcher"}}]}
+      ]
+    },
+    {
+      "name": "файл: сервер — соединение разорвано без ответа",
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT-Injector/releases/latest": [{"body":"{\"tag_name\":\"v2\",\"assets\":[{\"name\":\"Injector.exe\",\"size\":14,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe\",\"digest\":\"sha256:5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e\"}]}"}],
+          "/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe": [{"hangUp":true}]
+        }
+      },
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"update","deps":"injector"},{"op":"tree"},{"op":"requests"}],
+      "results": [
+        {"ok":[{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":null,"status":"failed","error":{"code":"NETWORK_ERROR","message":"Сетевая ошибка: socket hang up"}}],"logs":[["warn","[launch] Bunnymod XT Injector не обновлён: NETWORK_ERROR Сетевая ошибка: socket hang up"]]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"3bfc269594ef649228e9a74bab00f042efc91d5acc6fbee31a382e80d42388fe","latin1":"v1"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":6,"sha256":"44f59413b683005e0106a15905baeb00488294e3dc25de13f30b73fd83de0601","latin1":"MZ old"}
+          ]
+        },
+        {"requests":[{"method":"GET","url":"/repos/YaLTeR/BunnymodXT-Injector/releases/latest","headers":{"user-agent":"HLSR-Launcher","accept":"application/vnd.github+json"}},{"method":"GET","url":"/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe","headers":{"user-agent":"HLSR-Launcher"}}]}
+      ]
+    },
+    {
+      "name": "файл: сервер — тело без Content-Length",
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT-Injector/releases/latest": [{"body":"{\"tag_name\":\"v2\",\"assets\":[{\"name\":\"Injector.exe\",\"size\":14,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe\",\"digest\":\"sha256:5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e\"}]}"}],
+          "/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe": [{"body":"MZ injector v2","contentLength":null}]
+        }
+      },
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"update","deps":"injector"},{"op":"tree"},{"op":"requests"}],
+      "results": [
+        {"ok":[{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":"v2","status":"updated"}],"logs":[["info","[launch] Bunnymod XT Injector обновлён: v1 -> v2"]]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"fb04dcb6970e4c3d1873de51fd5a50d7bb46b3383113602665c350ec40b5f990","latin1":"v2"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":14,"sha256":"5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e","latin1":"MZ injector v2"}
+          ]
+        },
+        {"requests":[{"method":"GET","url":"/repos/YaLTeR/BunnymodXT-Injector/releases/latest","headers":{"user-agent":"HLSR-Launcher","accept":"application/vnd.github+json"}},{"method":"GET","url":"/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe","headers":{"user-agent":"HLSR-Launcher"}}]}
+      ]
+    },
+    {
+      "name": "файл: сервер — редирект на объекты GitHub",
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT-Injector/releases/latest": [{"body":"{\"tag_name\":\"v2\",\"assets\":[{\"name\":\"Injector.exe\",\"size\":14,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe\",\"digest\":\"sha256:5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e\"}]}"}],
+          "/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe": [{"status":302,"headers":[["Location","http://{a}/objects/injector"]]}],
+          "/objects/injector": [{"body":"MZ injector v2"}]
+        }
+      },
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"update","deps":"injector"},{"op":"tree"},{"op":"requests"}],
+      "results": [
+        {"ok":[{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":"v2","status":"updated"}],"logs":[["info","[launch] Bunnymod XT Injector обновлён: v1 -> v2"]]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"fb04dcb6970e4c3d1873de51fd5a50d7bb46b3383113602665c350ec40b5f990","latin1":"v2"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":14,"sha256":"5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e","latin1":"MZ injector v2"}
+          ]
+        },
+        {"requests":[{"method":"GET","url":"/repos/YaLTeR/BunnymodXT-Injector/releases/latest","headers":{"user-agent":"HLSR-Launcher","accept":"application/vnd.github+json"}},{"method":"GET","url":"/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe","headers":{"user-agent":"HLSR-Launcher"}},{"method":"GET","url":"/objects/injector","headers":{"user-agent":"HLSR-Launcher"}}]}
+      ]
+    },
+    {
+      "name": "файл: сервер — относительный редирект",
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT-Injector/releases/latest": [{"body":"{\"tag_name\":\"v2\",\"assets\":[{\"name\":\"Injector.exe\",\"size\":14,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe\",\"digest\":\"sha256:5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e\"}]}"}],
+          "/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe": [{"status":301,"headers":[["Location","/objects/injector"]]}],
+          "/objects/injector": [{"body":"MZ injector v2"}]
+        }
+      },
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"update","deps":"injector"},{"op":"tree"},{"op":"requests"}],
+      "results": [
+        {"ok":[{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":"v2","status":"updated"}],"logs":[["info","[launch] Bunnymod XT Injector обновлён: v1 -> v2"]]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"fb04dcb6970e4c3d1873de51fd5a50d7bb46b3383113602665c350ec40b5f990","latin1":"v2"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":14,"sha256":"5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e","latin1":"MZ injector v2"}
+          ]
+        },
+        {"requests":[{"method":"GET","url":"/repos/YaLTeR/BunnymodXT-Injector/releases/latest","headers":{"user-agent":"HLSR-Launcher","accept":"application/vnd.github+json"}},{"method":"GET","url":"/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe","headers":{"user-agent":"HLSR-Launcher"}},{"method":"GET","url":"/objects/injector","headers":{"user-agent":"HLSR-Launcher"}}]}
+      ]
+    },
+    {
+      "name": "файл: после неудачи следующий запуск обновляет",
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT-Injector/releases/latest": [{"body":"{\"tag_name\":\"v2\",\"assets\":[{\"name\":\"Injector.exe\",\"size\":14,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe\",\"digest\":\"sha256:5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e\"}]}"}],
+          "/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe": [{"status":500}]
+        }
+      },
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [
+        {"op":"update","deps":"injector"},
+        {"op":"tree"},
+        {
+          "op": "routes",
+          "routes": {
+            "/repos/YaLTeR/BunnymodXT-Injector/releases/latest": [{"body":"{\"tag_name\":\"v2\",\"assets\":[{\"name\":\"Injector.exe\",\"size\":14,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe\",\"digest\":\"sha256:5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e\"}]}"}],
+            "/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe": [{"body":"MZ injector v2"}]
+          }
+        },
+        {"op":"update","deps":"injector"},
+        {"op":"tree"},
+        {"op":"requests"}
+      ],
+      "results": [
+        {"ok":[{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":null,"status":"failed","error":{"code":"HTTP_ERROR","message":"HTTP 500 для Injector.exe"}}],"logs":[["warn","[launch] Bunnymod XT Injector не обновлён: HTTP_ERROR HTTP 500 для Injector.exe"]]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"3bfc269594ef649228e9a74bab00f042efc91d5acc6fbee31a382e80d42388fe","latin1":"v1"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":6,"sha256":"44f59413b683005e0106a15905baeb00488294e3dc25de13f30b73fd83de0601","latin1":"MZ old"}
+          ]
+        },
+        null,
+        {"ok":[{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":"v2","status":"updated"}],"logs":[["info","[launch] Bunnymod XT Injector обновлён: v1 -> v2"]]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"fb04dcb6970e4c3d1873de51fd5a50d7bb46b3383113602665c350ec40b5f990","latin1":"v2"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":14,"sha256":"5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e","latin1":"MZ injector v2"}
+          ]
+        },
+        {
+          "requests": [
+            {"method":"GET","url":"/repos/YaLTeR/BunnymodXT-Injector/releases/latest","headers":{"user-agent":"HLSR-Launcher","accept":"application/vnd.github+json"}},
+            {"method":"GET","url":"/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe","headers":{"user-agent":"HLSR-Launcher"}},
+            {"method":"GET","url":"/repos/YaLTeR/BunnymodXT-Injector/releases/latest","headers":{"user-agent":"HLSR-Launcher","accept":"application/vnd.github+json"}},
+            {"method":"GET","url":"/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe","headers":{"user-agent":"HLSR-Launcher"}}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "файл: нет маршрута файла (404 по умолчанию)",
+      "servers": {"a":{"/repos/YaLTeR/BunnymodXT-Injector/releases/latest":[{"body":"{\"tag_name\":\"v2\",\"assets\":[{\"name\":\"Injector.exe\",\"size\":14,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe\",\"digest\":\"sha256:5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e\"}]}"}]}},
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"update","deps":"injector"},{"op":"requests"}],
+      "results": [
+        {"ok":[{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":null,"status":"failed","error":{"code":"HTTP_ERROR","message":"HTTP 404 для Injector.exe"}}],"logs":[["warn","[launch] Bunnymod XT Injector не обновлён: HTTP_ERROR HTTP 404 для Injector.exe"]]},
+        {"requests":[{"method":"GET","url":"/repos/YaLTeR/BunnymodXT-Injector/releases/latest","headers":{"user-agent":"HLSR-Launcher","accept":"application/vnd.github+json"}},{"method":"GET","url":"/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe","headers":{"user-agent":"HLSR-Launcher"}}]}
+      ]
+    },
+    {
+      "name": "версия совпала и файл на месте — ничего не качается",
+      "servers": {"a":{"/repos/YaLTeR/BunnymodXT-Injector/releases/latest":[{"body":"{\"tag_name\":\"v1\",\"assets\":[{\"name\":\"Injector.exe\",\"size\":14,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT-Injector/releases/download/v1/Injector.exe\",\"digest\":\"sha256:5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e\"}]}"}]}},
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"update","deps":"injector"},{"op":"requests"},{"op":"tree"}],
+      "results": [
+        {"ok":[{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":"v1","status":"up-to-date"}],"logs":[]},
+        {"requests":[{"method":"GET","url":"/repos/YaLTeR/BunnymodXT-Injector/releases/latest","headers":{"user-agent":"HLSR-Launcher","accept":"application/vnd.github+json"}}]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"3bfc269594ef649228e9a74bab00f042efc91d5acc6fbee31a382e80d42388fe","latin1":"v1"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":6,"sha256":"44f59413b683005e0106a15905baeb00488294e3dc25de13f30b73fd83de0601","latin1":"MZ old"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "версия совпала, а файла нет — качается заново",
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v2"}],
+      "steps": [{"op":"update","deps":"injector"},{"op":"tree"},{"op":"requests"}],
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT-Injector/releases/latest": [{"body":"{\"tag_name\":\"v2\",\"assets\":[{\"name\":\"Injector.exe\",\"size\":14,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe\",\"digest\":\"sha256:5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e\"}]}"}],
+          "/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe": [{"body":"MZ injector v2"}]
+        }
+      },
+      "results": [
+        {"ok":[{"id":"injector","title":"Bunnymod XT Injector","from":"v2","to":"v2","status":"updated"}],"logs":[["info","[launch] Bunnymod XT Injector обновлён: v2 -> v2"]]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"fb04dcb6970e4c3d1873de51fd5a50d7bb46b3383113602665c350ec40b5f990","latin1":"v2"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":14,"sha256":"5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e","latin1":"MZ injector v2"}
+          ]
+        },
+        {"requests":[{"method":"GET","url":"/repos/YaLTeR/BunnymodXT-Injector/releases/latest","headers":{"user-agent":"HLSR-Launcher","accept":"application/vnd.github+json"}},{"method":"GET","url":"/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe","headers":{"user-agent":"HLSR-Launcher"}}]}
+      ]
+    },
+    {
+      "name": "файла версии нет",
+      "setup": [{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"update","deps":"injector"},{"op":"tree"}],
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT-Injector/releases/latest": [{"body":"{\"tag_name\":\"v2\",\"assets\":[{\"name\":\"Injector.exe\",\"size\":14,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe\",\"digest\":\"sha256:5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e\"}]}"}],
+          "/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe": [{"body":"MZ injector v2"}]
+        }
+      },
+      "results": [
+        {"ok":[{"id":"injector","title":"Bunnymod XT Injector","from":null,"to":"v2","status":"updated"}],"logs":[["info","[launch] Bunnymod XT Injector обновлён: неизвестная версия -> v2"]]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"fb04dcb6970e4c3d1873de51fd5a50d7bb46b3383113602665c350ec40b5f990","latin1":"v2"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":14,"sha256":"5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e","latin1":"MZ injector v2"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "файл версии с BOM, пробелами и переводом строки",
+      "setup": [{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"},{"file":"game/Bunnymod XT/.hlsr-injector-version","hex":"efbbbf2020763220200d0a"}],
+      "steps": [{"op":"update","deps":"injector"},{"op":"requests"},{"op":"tree"}],
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT-Injector/releases/latest": [{"body":"{\"tag_name\":\"v2\",\"assets\":[{\"name\":\"Injector.exe\",\"size\":14,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe\",\"digest\":\"sha256:5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e\"}]}"}],
+          "/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe": [{"body":"MZ injector v2"}]
+        }
+      },
+      "results": [
+        {"ok":[{"id":"injector","title":"Bunnymod XT Injector","from":"v2","to":"v2","status":"up-to-date"}],"logs":[]},
+        {"requests":[{"method":"GET","url":"/repos/YaLTeR/BunnymodXT-Injector/releases/latest","headers":{"user-agent":"HLSR-Launcher","accept":"application/vnd.github+json"}}]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":11,"sha256":"9fc01cb281010ce799f4190cc894a0db7f4903f7aa318bafe344a29368fd967e","latin1":"ï»¿  v2  \r\n"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":6,"sha256":"44f59413b683005e0106a15905baeb00488294e3dc25de13f30b73fd83de0601","latin1":"MZ old"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "папки Bunnymod XT нет — файл загрузки не создать",
+      "setup": [],
+      "steps": [{"op":"update","deps":"injector"},{"op":"tree"}],
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT-Injector/releases/latest": [{"body":"{\"tag_name\":\"v2\",\"assets\":[{\"name\":\"Injector.exe\",\"size\":14,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe\",\"digest\":\"sha256:5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e\"}]}"}],
+          "/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe": [{"body":"MZ injector v2"}]
+        }
+      },
+      "results": [
+        {
+          "ok": [{"id":"injector","title":"Bunnymod XT Injector","from":null,"to":null,"status":"failed","error":{"code":"NETWORK_ERROR","message":"ENOENT: no such file or directory, open '<root>/game/Bunnymod XT/.hlsr-update-injector-<pid>.download'"}}],
+          "logs": [["warn","[launch] Bunnymod XT Injector не обновлён: NETWORK_ERROR ENOENT: no such file or directory, open '<root>/game/Bunnymod XT/.hlsr-update-injector-<pid>.download'"]]
+        },
+        {"tree":[]}
+      ]
+    },
+    {
+      "name": "права: папка Bunnymod XT без записи",
+      "unix": true,
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"chmod","file":"game/Bunnymod XT","mode":365},{"op":"update","deps":"injector"},{"op":"chmod","file":"game/Bunnymod XT","mode":493},{"op":"tree"}],
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT-Injector/releases/latest": [{"body":"{\"tag_name\":\"v2\",\"assets\":[{\"name\":\"Injector.exe\",\"size\":14,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe\",\"digest\":\"sha256:5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e\"}]}"}],
+          "/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe": [{"body":"MZ injector v2"}]
+        }
+      },
+      "results": [
+        null,
+        {
+          "ok": [{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":null,"status":"failed","error":{"code":"NETWORK_ERROR","message":"EACCES: permission denied, open '<root>/game/Bunnymod XT/.hlsr-update-injector-<pid>.download'"}}],
+          "logs": [["warn","[launch] Bunnymod XT Injector не обновлён: NETWORK_ERROR EACCES: permission denied, open '<root>/game/Bunnymod XT/.hlsr-update-injector-<pid>.download'"]]
+        },
+        null,
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"3bfc269594ef649228e9a74bab00f042efc91d5acc6fbee31a382e80d42388fe","latin1":"v1"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":6,"sha256":"44f59413b683005e0106a15905baeb00488294e3dc25de13f30b73fd83de0601","latin1":"MZ old"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "кириллица и пробелы в пути установки",
+      "setup": [{"file":"Моя игра/Bunnymod XT/.hlsr-injector-version","utf8":"v1"}],
+      "steps": [{"op":"update","deps":"injector","installDir":"Моя игра"},{"op":"tree"}],
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT-Injector/releases/latest": [{"body":"{\"tag_name\":\"v2\",\"assets\":[{\"name\":\"Injector.exe\",\"size\":14,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe\",\"digest\":\"sha256:5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e\"}]}"}],
+          "/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe": [{"body":"MZ injector v2"}]
+        }
+      },
+      "results": [
+        {"ok":[{"id":"injector","title":"Bunnymod XT Injector","from":"v1","to":"v2","status":"updated"}],"logs":[["info","[launch] Bunnymod XT Injector обновлён: v1 -> v2"]]},
+        {
+          "tree": [
+            {"path":"Моя игра","kind":"dir"},
+            {"path":"Моя игра/Bunnymod XT","kind":"dir"},
+            {"path":"Моя игра/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"fb04dcb6970e4c3d1873de51fd5a50d7bb46b3383113602665c350ec40b5f990","latin1":"v2"},
+            {"path":"Моя игра/Bunnymod XT/Injector.exe","kind":"file","size":14,"sha256":"5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e","latin1":"MZ injector v2"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "описание: репозиторий недопустим",
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [
+        {"op":"update","deps":[{"id":"tool","title":"Инструмент, с запятой","repo":"a/b/c","asset":"^Injector\\.exe$","target":"Bunnymod XT/Injector.exe","versionFile":"Bunnymod XT/.tool-version"}]},
+        {"op":"update","deps":[{"id":"tool","title":"Инструмент, с запятой","repo":"YaLTeR","asset":"^Injector\\.exe$","target":"Bunnymod XT/Injector.exe","versionFile":"Bunnymod XT/.tool-version"}]},
+        {"op":"update","deps":[{"id":"tool","title":"Инструмент, с запятой","repo":"","asset":"^Injector\\.exe$","target":"Bunnymod XT/Injector.exe","versionFile":"Bunnymod XT/.tool-version"}]},
+        {"op":"requests"}
+      ],
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT-Injector/releases/latest": [{"body":"{\"tag_name\":\"v2\",\"assets\":[{\"name\":\"Injector.exe\",\"size\":14,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe\",\"digest\":\"sha256:5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e\"}]}"}],
+          "/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe": [{"body":"MZ injector v2"}]
+        }
+      },
+      "results": [
+        {"ok":[{"id":"tool","title":"Инструмент, с запятой","from":null,"to":null,"status":"failed","error":{"code":"MANIFEST_INVALID","message":"Недопустимый репозиторий a/b/c"}}],"logs":[["warn","[launch] Инструмент, с запятой не обновлён: MANIFEST_INVALID Недопустимый репозиторий a/b/c"]]},
+        {"ok":[{"id":"tool","title":"Инструмент, с запятой","from":null,"to":null,"status":"failed","error":{"code":"MANIFEST_INVALID","message":"Недопустимый репозиторий YaLTeR"}}],"logs":[["warn","[launch] Инструмент, с запятой не обновлён: MANIFEST_INVALID Недопустимый репозиторий YaLTeR"]]},
+        {"ok":[{"id":"tool","title":"Инструмент, с запятой","from":null,"to":null,"status":"failed","error":{"code":"MANIFEST_INVALID","message":"Недопустимый репозиторий "}}],"logs":[["warn","[launch] Инструмент, с запятой не обновлён: MANIFEST_INVALID Недопустимый репозиторий "]]},
+        {"requests":[]}
+      ]
+    },
+    {
+      "name": "описание: цель выходит за установку — это ошибка обновления",
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [
+        {"op":"update","deps":[{"id":"tool","title":"Инструмент, с запятой","repo":"YaLTeR/BunnymodXT-Injector","asset":"^Injector\\.exe$","target":"../outside.exe","versionFile":"Bunnymod XT/.tool-version"}]},
+        {"op":"update","deps":[{"id":"tool","title":"Инструмент, с запятой","repo":"YaLTeR/BunnymodXT-Injector","asset":"^Injector\\.exe$","target":"a/../../b.exe","versionFile":"Bunnymod XT/.tool-version"}]},
+        {"op":"requests"},
+        {"op":"tree"}
+      ],
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT-Injector/releases/latest": [{"body":"{\"tag_name\":\"v2\",\"assets\":[{\"name\":\"Injector.exe\",\"size\":14,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe\",\"digest\":\"sha256:5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e\"}]}"}],
+          "/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe": [{"body":"MZ injector v2"}]
+        }
+      },
+      "results": [
+        {"ok":[{"id":"tool","title":"Инструмент, с запятой","from":null,"to":null,"status":"failed","error":{"code":"PATH_INVALID","message":"Зависимость выходит за пределы разрешённого каталога: <root>/outside.exe"}}],"logs":[["warn","[launch] Инструмент, с запятой не обновлён: PATH_INVALID Зависимость выходит за пределы разрешённого каталога: <root>/outside.exe"]]},
+        {"ok":[{"id":"tool","title":"Инструмент, с запятой","from":null,"to":null,"status":"failed","error":{"code":"PATH_INVALID","message":"Зависимость выходит за пределы разрешённого каталога: <root>/b.exe"}}],"logs":[["warn","[launch] Инструмент, с запятой не обновлён: PATH_INVALID Зависимость выходит за пределы разрешённого каталога: <root>/b.exe"]]},
+        {"requests":[]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"3bfc269594ef649228e9a74bab00f042efc91d5acc6fbee31a382e80d42388fe","latin1":"v1"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":6,"sha256":"44f59413b683005e0106a15905baeb00488294e3dc25de13f30b73fd83de0601","latin1":"MZ old"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "описание: файл версии выходит за установку — исключение наружу",
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"update","deps":[{"id":"tool","title":"Инструмент, с запятой","repo":"YaLTeR/BunnymodXT-Injector","asset":"^Injector\\.exe$","target":"Bunnymod XT/Injector.exe","versionFile":"../version"}]},{"op":"requests"},{"op":"tree"}],
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT-Injector/releases/latest": [{"body":"{\"tag_name\":\"v2\",\"assets\":[{\"name\":\"Injector.exe\",\"size\":14,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe\",\"digest\":\"sha256:5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e\"}]}"}],
+          "/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe": [{"body":"MZ injector v2"}]
+        }
+      },
+      "results": [
+        {"error":{"code":"PATH_INVALID","message":"Зависимость выходит за пределы разрешённого каталога: <root>/version","details":null},"logs":[["warn","[launch] Инструмент, с запятой не обновлён: PATH_INVALID Зависимость выходит за пределы разрешённого каталога: <root>/version"]]},
+        {"requests":[]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"3bfc269594ef649228e9a74bab00f042efc91d5acc6fbee31a382e80d42388fe","latin1":"v1"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":6,"sha256":"44f59413b683005e0106a15905baeb00488294e3dc25de13f30b73fd83de0601","latin1":"MZ old"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "описание: у второй зависимости версия выходит наружу — первая уже обновилась",
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [
+        {"op":"update","deps":[{"id":"tool","title":"Инструмент, с запятой","repo":"YaLTeR/BunnymodXT-Injector","asset":"^Injector\\.exe$","target":"Bunnymod XT/Injector.exe","versionFile":"Bunnymod XT/.tool-version"},{"id":"second","title":"Инструмент, с запятой","repo":"YaLTeR/BunnymodXT-Injector","asset":"^Injector\\.exe$","target":"Bunnymod XT/Injector.exe","versionFile":"../version"}]},
+        {"op":"tree"}
+      ],
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT-Injector/releases/latest": [{"body":"{\"tag_name\":\"v2\",\"assets\":[{\"name\":\"Injector.exe\",\"size\":14,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe\",\"digest\":\"sha256:5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e\"}]}"}],
+          "/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe": [{"body":"MZ injector v2"}]
+        }
+      },
+      "results": [
+        {"error":{"code":"PATH_INVALID","message":"Зависимость выходит за пределы разрешённого каталога: <root>/version","details":null},"logs":[["info","[launch] Инструмент, с запятой обновлён: неизвестная версия -> v2"],["warn","[launch] Инструмент, с запятой не обновлён: PATH_INVALID Зависимость выходит за пределы разрешённого каталога: <root>/version"]]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"3bfc269594ef649228e9a74bab00f042efc91d5acc6fbee31a382e80d42388fe","latin1":"v1"},
+            {"path":"game/Bunnymod XT/.tool-version","kind":"file","size":2,"sha256":"fb04dcb6970e4c3d1873de51fd5a50d7bb46b3383113602665c350ec40b5f990","latin1":"v2"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":14,"sha256":"5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e","latin1":"MZ injector v2"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "описание: распаковываемый файл выходит из временной папки",
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT/releases/latest": [
+            {
+              "body": "{\"tag_name\":\"v3\",\"assets\":[{\"name\":\"3-BunnymodXT-CoFSteam-Windows.7z\",\"size\":3,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT/releases/download/v3/3-BunnymodXT-CoFSteam-Windows.7z\",\"digest\":\"sha256:9b6350459e84801420f84db3b1b35f9fc42ba638e184f082f11c72d465a83dbe\"},{\"name\":\"1-BunnymodXT-Windows.7z\",\"size\":245,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT/releases/download/v3/1-BunnymodXT-Windows.7z\",\"digest\":\"sha256:d278b744b70b0c92c03fc6c21316acd028694b886cd809889c77dd7fbff221a5\"}]}"
+            }
+          ],
+          "/YaLTeR/BunnymodXT/releases/download/v3/1-BunnymodXT-Windows.7z": [{"bodyFile":"ok"}]
+        }
+      },
+      "setup": [{"file":"game/Bunnymod XT/version","utf8":"v1"},{"file":"game/Bunnymod XT/BunnymodXT.dll","utf8":"MZ old bxt"}],
+      "steps": [{"op":"update","deps":[{"id":"bxt","title":"Инструмент, с запятой","repo":"YaLTeR/BunnymodXT","asset":"^(\\d+-)?BunnymodXT-Windows\\.7z$","target":"Bunnymod XT/BunnymodXT.dll","versionFile":"Bunnymod XT/version","extract":"../outside.dll"}]},{"op":"tree"}],
+      "results": [
+        {
+          "ok": [{"id":"bxt","title":"Инструмент, с запятой","from":"v1","to":null,"status":"failed","error":{"code":"PATH_INVALID","message":"Зависимость выходит за пределы разрешённого каталога: <root>/game/Bunnymod XT/outside.dll"}}],
+          "logs": [["warn","[launch] Инструмент, с запятой не обновлён: PATH_INVALID Зависимость выходит за пределы разрешённого каталога: <root>/game/Bunnymod XT/outside.dll"]]
+        },
+        {
+          "tree": [{"path":"game","kind":"dir"},{"path":"game/Bunnymod XT","kind":"dir"},{"path":"game/Bunnymod XT/BunnymodXT.dll","kind":"file","size":10,"sha256":"f969410deaeb5611f3e14514c6f2d40c08b28075b035dfdadefd55f53ae9fd60","latin1":"MZ old bxt"},{"path":"game/Bunnymod XT/version","kind":"file","size":2,"sha256":"3bfc269594ef649228e9a74bab00f042efc91d5acc6fbee31a382e80d42388fe","latin1":"v1"}]
+        }
+      ]
+    },
+    {
+      "name": "описание: распаковываемый файл в подпапке архива",
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT/releases/latest": [
+            {
+              "body": "{\"tag_name\":\"v3\",\"assets\":[{\"name\":\"3-BunnymodXT-CoFSteam-Windows.7z\",\"size\":3,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT/releases/download/v3/3-BunnymodXT-CoFSteam-Windows.7z\",\"digest\":\"sha256:9b6350459e84801420f84db3b1b35f9fc42ba638e184f082f11c72d465a83dbe\"},{\"name\":\"1-BunnymodXT-Windows.7z\",\"size\":245,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT/releases/download/v3/1-BunnymodXT-Windows.7z\",\"digest\":\"sha256:d278b744b70b0c92c03fc6c21316acd028694b886cd809889c77dd7fbff221a5\"}]}"
+            }
+          ],
+          "/YaLTeR/BunnymodXT/releases/download/v3/1-BunnymodXT-Windows.7z": [{"bodyFile":"ok"}]
+        }
+      },
+      "setup": [{"file":"game/Bunnymod XT/version","utf8":"v1"},{"file":"game/Bunnymod XT/BunnymodXT.dll","utf8":"MZ old bxt"}],
+      "steps": [{"op":"update","deps":[{"id":"bxt","title":"Инструмент, с запятой","repo":"YaLTeR/BunnymodXT","asset":"^(\\d+-)?BunnymodXT-Windows\\.7z$","target":"Bunnymod XT/BunnymodXT.dll","versionFile":"Bunnymod XT/version","extract":"libs/extra.dll"}]},{"op":"tree"}],
+      "results": [
+        {"ok":[{"id":"bxt","title":"Инструмент, с запятой","from":"v1","to":"v3","status":"updated"}],"logs":[["info","[launch] Инструмент, с запятой обновлён: v1 -> v3"]]},
+        {
+          "tree": [{"path":"game","kind":"dir"},{"path":"game/Bunnymod XT","kind":"dir"},{"path":"game/Bunnymod XT/BunnymodXT.dll","kind":"file","size":9,"sha256":"2e9a59fa84bc6011c2effd0e196dec6b6d958b3952c9f2770ecc3e4149162d05","latin1":"MZ\u0000extra"},{"path":"game/Bunnymod XT/version","kind":"file","size":2,"sha256":"e0d2747b9ab7abb6eb65e0373fa1b428a28bd6d8a2380106dcc080f58005ee14","latin1":"v3"}]
+        }
+      ]
+    },
+    {
+      "name": "описание: пустой список зависимостей",
+      "servers": {},
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [{"op":"update","deps":[]},{"op":"requests"},{"op":"tree"}],
+      "results": [
+        {"ok":[],"logs":[]},
+        {"requests":[]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"3bfc269594ef649228e9a74bab00f042efc91d5acc6fbee31a382e80d42388fe","latin1":"v1"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":6,"sha256":"44f59413b683005e0106a15905baeb00488294e3dc25de13f30b73fd83de0601","latin1":"MZ old"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "описание: две зависимости с одним репозиторием",
+      "setup": [{"file":"game/Bunnymod XT/.hlsr-injector-version","utf8":"v1"},{"file":"game/Bunnymod XT/Injector.exe","utf8":"MZ old"}],
+      "steps": [
+        {
+          "op": "update",
+          "deps": [{"id":"tool","title":"Инструмент, с запятой","repo":"YaLTeR/BunnymodXT-Injector","asset":"^Injector\\.exe$","target":"Bunnymod XT/Injector.exe","versionFile":"Bunnymod XT/.tool-version"},{"id":"copy","title":"Инструмент, с запятой","repo":"YaLTeR/BunnymodXT-Injector","asset":"^Injector\\.exe$","target":"Bunnymod XT/Copy.exe","versionFile":"Bunnymod XT/.copy-version"}]
+        },
+        {"op":"requests"},
+        {"op":"tree"}
+      ],
+      "servers": {
+        "a": {
+          "/repos/YaLTeR/BunnymodXT-Injector/releases/latest": [{"body":"{\"tag_name\":\"v2\",\"assets\":[{\"name\":\"Injector.exe\",\"size\":14,\"browser_download_url\":\"https://github.com/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe\",\"digest\":\"sha256:5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e\"}]}"}],
+          "/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe": [{"body":"MZ injector v2"}]
+        }
+      },
+      "results": [
+        {"ok":[{"id":"tool","title":"Инструмент, с запятой","from":null,"to":"v2","status":"updated"},{"id":"copy","title":"Инструмент, с запятой","from":null,"to":"v2","status":"updated"}],"logs":[["info","[launch] Инструмент, с запятой обновлён: неизвестная версия -> v2"],["info","[launch] Инструмент, с запятой обновлён: неизвестная версия -> v2"]]},
+        {
+          "requests": [
+            {"method":"GET","url":"/repos/YaLTeR/BunnymodXT-Injector/releases/latest","headers":{"user-agent":"HLSR-Launcher","accept":"application/vnd.github+json"}},
+            {"method":"GET","url":"/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe","headers":{"user-agent":"HLSR-Launcher"}},
+            {"method":"GET","url":"/repos/YaLTeR/BunnymodXT-Injector/releases/latest","headers":{"user-agent":"HLSR-Launcher","accept":"application/vnd.github+json"}},
+            {"method":"GET","url":"/YaLTeR/BunnymodXT-Injector/releases/download/v2/Injector.exe","headers":{"user-agent":"HLSR-Launcher"}}
+          ]
+        },
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Bunnymod XT","kind":"dir"},
+            {"path":"game/Bunnymod XT/.copy-version","kind":"file","size":2,"sha256":"fb04dcb6970e4c3d1873de51fd5a50d7bb46b3383113602665c350ec40b5f990","latin1":"v2"},
+            {"path":"game/Bunnymod XT/.hlsr-injector-version","kind":"file","size":2,"sha256":"3bfc269594ef649228e9a74bab00f042efc91d5acc6fbee31a382e80d42388fe","latin1":"v1"},
+            {"path":"game/Bunnymod XT/.tool-version","kind":"file","size":2,"sha256":"fb04dcb6970e4c3d1873de51fd5a50d7bb46b3383113602665c350ec40b5f990","latin1":"v2"},
+            {"path":"game/Bunnymod XT/Copy.exe","kind":"file","size":14,"sha256":"5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e","latin1":"MZ injector v2"},
+            {"path":"game/Bunnymod XT/Injector.exe","kind":"file","size":14,"sha256":"5c46b8bda659ff0958304e22fe2be1d011e8db6262fced0237bf70200f9b4f8e","latin1":"MZ injector v2"}
+          ]
+        }
+      ]
+    }
+  ]
+}

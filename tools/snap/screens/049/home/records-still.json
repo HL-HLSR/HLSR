@@ -1,0 +1,6 @@
+{
+  "id": "home/records-still",
+  "base": "home/_records",
+  "state": "«Рекорды» без анимаций: места неподвижны (свечение полное, без блика, кубок без масштаба)",
+  "prefs": {"animations": false}
+}

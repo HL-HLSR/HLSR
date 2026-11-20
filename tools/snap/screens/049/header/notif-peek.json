@@ -1,0 +1,17 @@
+{
+  "id": "header/notif-peek",
+  "screen": "header",
+  "state": "Всплывающее превью обновления лаунчера под колокольчиком («Обновить»), счётчик 1",
+  "themes": ["hlsr", "paper"],
+  "languages": ["ru"],
+  "prefs": {"configTourSeen": true},
+  "invoke": {
+    "notifications-list": {
+      "items": [
+        {"id": 4, "code": "LAUNCHER_UPDATE_AVAILABLE", "level": "info", "read": false, "ts": 1794915600000, "count": 1, "detail": null,
+         "meta": {"target": "launcher", "oldVersion": "0.4.9", "newVersion": "0.4.10", "hasReleaseNotes": true}}
+      ],
+      "unread": 1
+    }
+  }
+}

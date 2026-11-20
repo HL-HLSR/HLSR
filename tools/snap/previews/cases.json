@@ -1,0 +1,92 @@
+{
+  "about": "Случаи сверки превью персонализации (задачи 33, 34, 38 ПП5; с G9 — эталон 0.4.9: оружие HL1 по bxt_viewmodel_ofs_forward, HUD-мод hudMod, сцены scenes — призрак на пляже kind ghost и спрей на стене kind spray, mesh box — своя модель призрака). views — вид с зумом (GhostingPreviewViewport.paint, кадр hl1-default): box — ширина вида (высота — по кадру 16:9), zoom — от «вписать» или percent — масштаб вида, cx/cy — точка кадра в центре, handle — ручка оверлея, hot — под указателем. value — правка поверх defaultPersonalization(), extra — правка поверх defaults() игры. exact — кадр без масштабирования и текста: ждём те же пиксели, что у Electron (canvas на ЦП). Эталон снимает tools/reference/snap-previews.js под невидимым столом.",
+  "hl1": [
+    {"id": "hl1-default", "exact": true, "value": {}},
+    {"id": "hl1-hud-color", "exact": true, "value": {"hudEnabled": true, "hudColor": {"r": 0, "g": 200, "b": 255}, "hudAlpha": 200, "extra": {"timer": true, "jumpspeed": true, "jumpdistance": true, "viewangles": true, "precision": 2, "speedometerX": 30, "timerY": 60, "viewanglesX": 90, "viewanglesY": 5}}},
+    {"id": "hl1-hud-plain", "exact": true, "value": {"hudEnabled": true, "hudColor": {"r": 255, "g": 80, "b": 40}, "hudAlpha": -1, "extra": {"viewangles": true, "precision": 0, "jumpspeed": true}}},
+    {"id": "hl1-angles-wide", "exact": true, "value": {"extra": {"viewangles": true, "precision": 9, "speedometer": false}}},
+    {"id": "hl1-cross-full", "exact": true, "value": {"crossEnabled": true, "crossHideDefault": true, "crossColor": {"r": 255, "g": 255, "b": 0}, "crossAlpha": 200, "crossThickness": 3, "crossSize": 12, "crossGap": 4, "crossOutline": true, "crossOutlineThickness": 2, "crossCircleRadius": 9, "crossDotSize": 3, "crossDotColor": {"r": 255, "g": 0, "b": 0}}},
+    {"id": "hl1-cross-thin", "exact": true, "value": {"crossEnabled": true, "crossHideDefault": false, "crossThickness": 1, "crossSize": 6, "crossGap": 2, "crossOutline": true, "crossOutlineThickness": 1, "crossTopLine": false, "crossRightLine": false, "hudEnabled": true, "hudAffectsCrosshair": true, "hudColor": {"r": 200, "g": 120, "b": 255}}},
+    {"id": "hl1-cross-dot", "exact": true, "value": {"crossEnabled": true, "crossThickness": 0, "crossDotSize": 4, "crossCircleRadius": 20, "crossOutline": true, "crossOutlineThickness": 1}},
+    {"id": "hl1-pack-ag", "exact": true, "value": {"extra": {"packHud": "ag-hud", "packCrosshair": "execut4ble-crosshair"}}},
+    {"id": "hl1-pack-changer", "exact": true, "value": {"hudEnabled": true, "hudColor": {"r": 120, "g": 255, "b": 90}, "hudAlpha": 128, "extra": {"packHud": "ag-hud", "packCrosshair": "crosshair-changer", "changerShape": "Medium Circle with 1px", "changerColor": "lightblue"}}},
+    {"id": "hl1-pack-hidden", "exact": true, "value": {"crossEnabled": true, "crossHideDefault": true, "extra": {"packCrosshair": "execut4ble-crosshair"}}},
+    {"id": "hl1-semi", "exact": true, "value": {"extra": {"viewmodelSemitransparent": true, "hideCrosshair": true}}},
+    {"id": "hl1-noweapon", "exact": true, "value": {"extra": {"removeViewmodel": true, "speedometer": false}}},
+    {"id": "hl1-fov100", "exact": true, "value": {"extra": {"fov": 100}}},
+    {"id": "hl1-fov80-vm70", "exact": true, "value": {"extra": {"fov": 80, "viewmodelFov": 70, "viewmodelSemitransparent": true}}},
+    {"id": "hl1-fov95", "exact": false, "value": {"extra": {"fov": 95}}},
+    {"id": "hl1-widescreen", "exact": false, "value": {"extra": {"fixWidescreenFov": true}}},
+    {"id": "hl1-offsets", "exact": false, "value": {"extra": {"viewmodelForward": 6, "viewmodelRight": -3, "viewmodelUp": 2}}},
+    {"id": "hl1-forward10", "exact": true, "value": {"extra": {"viewmodelForward": 10}}},
+    {"id": "hl1-forward20-semi", "exact": true, "value": {"extra": {"viewmodelForward": 20, "viewmodelSemitransparent": true}}},
+    {"id": "hl1-back10-fov110", "exact": true, "value": {"extra": {"viewmodelForward": -10, "viewmodelFov": 110}}},
+    {"id": "hl1-back20-hidden", "exact": true, "value": {"extra": {"viewmodelForward": -20}}}
+  ],
+  "ghosting": [
+    {"id": "gh-default", "section": "hud", "value": {}},
+    {"id": "gh-hud", "section": "hud", "value": {"hudEnabled": true, "hudColor": {"r": 0, "g": 220, "b": 255}, "hudAlpha": 160, "extra": {"gh_hud_labels": false, "gh_hud_bg": false}}},
+    {"id": "gh-hud-alpha0", "section": "hud", "value": {"hudEnabled": true, "hudColor": {"r": 255, "g": 60, "b": 60}, "hudAlpha": 0, "extra": {"gh_hud_icons": false}}},
+    {"id": "gh-cross", "section": "crosshair", "value": {"crossEnabled": true, "crossHideDefault": false, "crossOutline": true, "crossCircleRadius": 10, "crossDotSize": 2, "crossColor": {"r": 255, "g": 0, "b": 255}, "crossAlpha": 220, "hideQuickInfo": true}},
+    {"id": "gh-moved", "section": "hud", "value": {"extra": {"gh_health_align": "5", "gh_ammo_x": -20, "gh_ammo_y": -10, "gh_timer_mirror": true, "gh_keyshud": true, "cl_showfps": "2", "cl_showpos": false, "gh_speedmeter_bg": false}}},
+    {"id": "gh-keys-full", "section": "keys", "time": 0.25, "value": {"extra": {"gh_keyshud": true, "gh_keyshud_full": true, "gh_keyshud_bg": false}}},
+    {"id": "gh-weapon", "section": "weapon", "value": {"extra": {"viewmodel_offset_x": 2.3, "viewmodel_offset_y": 3, "viewmodel_offset_z": -1, "viewmodel_fov": 70}}},
+    {"id": "gh-lefthand", "section": "weapon", "value": {"extra": {"cl_righthand": false}}},
+    {"id": "gh-bob", "section": "weapon", "time": 0.25, "value": {}},
+    {"id": "gh-wide", "section": "hud", "frameWidth": 2133, "value": {}},
+    {"id": "gh-narrow", "section": "hud", "frameWidth": 1440, "value": {"hudEnabled": true, "hudColor": {"r": 140, "g": 255, "b": 120}}},
+    {"id": "gh-font", "section": "hud", "value": {"extra": {"gh_hud_font": "Arial", "gh_hud_fontscale": 1.2, "gh_hud_fontweight": 700, "gh_hud_fontoutline": true}}},
+    {"id": "gh-fov90", "section": "misc", "value": {"extra": {"fov_desired": 90}}},
+    {"id": "gh-fov95", "section": "misc", "value": {"extra": {"fov_desired": 95}}},
+    {"id": "gh-spray", "section": "misc", "spray": "avatar.png", "value": {}},
+    {"id": "gh-overlay", "section": "hud", "overlay": {"enabled": true}, "value": {}},
+    {"id": "gh-condensed", "section": "hud", "hudMod": "condensed-hud", "value": {}},
+    {"id": "gh-condensed-color", "section": "hud", "hudMod": "condensed-hud", "value": {"hudEnabled": true, "hudColor": {"r": 0, "g": 220, "b": 255}, "hudAlpha": 200, "extra": {"gh_hud_labels": false, "gh_ammo_x": -20}}}
+  ],
+  "scenes": [
+    {"id": "scene-ghost", "kind": "ghost", "frameWidth": 675, "value": {}},
+    {"id": "scene-ghost-wide", "kind": "ghost", "frameWidth": 1080, "value": {"hudEnabled": true, "hudColor": {"r": 80, "g": 200, "b": 255}, "extra": {"gh_ghost_names_own_color": false, "gh_name": "Kanoyo", "gh_trail_color": {"r": 60, "g": 255, "b": 120}, "gh_trail_length": 12}}},
+    {"id": "scene-ghost-solid", "kind": "ghost", "frameWidth": 405, "value": {"extra": {"gh_draw_trails": false, "gh_opacity": 255, "gh_opacity_range": 0, "gh_ghost_color": {"r": 90, "g": 140, "b": 255}, "gh_ghost_names": false}}},
+    {"id": "scene-ghost-model", "kind": "ghost", "frameWidth": 675, "mesh": "box", "value": {"extra": {"gh_model": "models/box.mdl"}}},
+    {"id": "scene-spray", "kind": "spray", "frameWidth": 1600, "value": {}},
+    {"id": "scene-spray-file", "kind": "spray", "frameWidth": 1600, "spray": "avatar.png", "value": {"extra": {"gh_spray_scale": 0.6}}},
+    {"id": "scene-spray-off", "kind": "spray", "frameWidth": 1600, "value": {"extra": {"gh_sprays": false}}}
+  ],
+  "livesplit": ["hl1", "ghosting"],
+  "views": [
+    {"id": "view-fit", "box": 480, "zoom": 1, "cx": 800, "cy": 450},
+    {"id": "view-200", "box": 480, "percent": 200, "cx": 640, "cy": 520},
+    {"id": "view-pan", "box": 480, "zoom": 6, "cx": 1210, "cy": 820},
+    {"id": "view-small", "box": 300, "zoom": 1, "cx": 800, "cy": 450},
+    {"id": "view-handle", "box": 480, "zoom": 1.5, "cx": 900, "cy": 400, "handle": {"left": 1196, "top": 41, "width": 280, "height": 332}},
+    {"id": "view-handle-hot", "box": 480, "zoom": 1.5, "cx": 900, "cy": 400, "hot": true, "handle": {"left": 1196, "top": 41, "width": 280, "height": 332}}
+  ],
+  "nick": {
+    "background": "#12161d",
+    "texts": [
+      {"id": "s15", "text": "Kanoyo", "size": 15, "weight": 500},
+      {"id": "s22", "text": "Gordon Freeman", "size": 22, "weight": 700}
+    ],
+    "styles": [
+      {"id": "developer", "style": "developer", "css": "", "times": [0, 3000]},
+      {"id": "gold", "style": "gold", "css": "", "times": [0, 2500]},
+      {"id": "ghost", "style": "ghost", "css": "", "times": [0, 1600]},
+      {"id": "preset-css", "style": "", "css": "color: #ffd76a; text-shadow: 0 0 0.4em rgba(255, 196, 80, 0.5); animation: nick-glow 2.4s ease-in-out infinite", "times": [0, 1200]},
+      {"id": "subscriber", "style": "", "css": "", "subscriber": true, "times": [0, 3600]},
+      {"id": "subscriber-gold", "style": "gold", "css": "", "subscriber": true, "times": [0]}
+    ]
+  },
+  "frames": {
+    "background": "#12161d",
+    "hole": "#12161d",
+    "avatar": "#5a6170",
+    "size": 40,
+    "width": 3,
+    "styles": [
+      {"id": "conic-spin", "css": "background: conic-gradient(from var(--frame-angle), #f0f, #0ff); animation: frame-spin 3s linear infinite", "times": [0, 1500]},
+      {"id": "gold-ring", "css": "background: linear-gradient(135deg, #c9932a, #fff6cf 50%, #c9932a); box-shadow: 0 0 6px rgba(255, 196, 80, 0.55)", "times": [0]},
+      {"id": "hue", "css": "background: linear-gradient(90deg, #5ec8ff, #ff7ad9); animation: frame-hue 4s linear infinite", "times": [0, 2000]},
+      {"id": "pulse", "css": "background: #8af7e4; animation: frame-pulse 2s ease-in-out infinite", "times": [0, 1000]}
+    ]
+  }
+}

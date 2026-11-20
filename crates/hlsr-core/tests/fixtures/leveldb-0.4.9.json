@@ -1,0 +1,16 @@
+{
+  "localStorage": {
+    "hlsr-launcher-prefs": "{\"ghostingBuild\":\"Episode One\",\"ruleCategory\":{\"hl1-won\":\"scripted\",\"ghosting-renewed\":\"scriptless\"},\"launcherTheme\":\"paper\",\"paperAccent\":\"sea\",\"fullscreenButton\":false,\"configTourSeen\":true,\"keyboardFull\":true,\"speedLimit\":5,\"accent\":\"#fff\",\"zz\":1}",
+    "hlsr.keyboard.runMode": "scripted",
+    "hlsr.pane.bad": "abc",
+    "hlsr.pane.keyboard:hl1-won": "412",
+    "hlsr.pane.pz-fields:ghosting-renewed": "380",
+    "hlsr.pane.zero": "0",
+    "wasLaunched": "true"
+  },
+  "prefs": "{\"speedLimit\":5,\"animations\":true,\"hideWhilePlaying\":true,\"fullscreenButton\":false,\"hideSteamId\":false,\"timerOffered\":false,\"toolSplits\":{},\"liveSplitGame\":\"\",\"coloredBoot\":true,\"launcherTheme\":\"paper\",\"paperAccent\":\"sea\",\"railExpanded\":false,\"welcomeSeen\":false,\"configTourSeen\":true,\"ruleCategory\":{\"hl1-won\":\"scripted\",\"ghosting-renewed\":\"scriptless\"},\"keyboardFull\":true,\"ghostingBuild\":\"Episode One\",\"zz\":1}",
+  "pane": {
+    "keyboard:hl1-won": 412,
+    "pz-fields:ghosting-renewed": 380
+  }
+}

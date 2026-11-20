@@ -1,0 +1,25 @@
+{
+  "id": "configs/pz-ghosts",
+  "state": "Ghosting: подраздел «Призраки» — имя, модель с выбором файла, цвета, ползунки",
+  "base": "configs/_pz",
+  "steps": [
+    {
+      "click": {
+        "css": ".launcher-topbar__tab:nth-child(3)",
+        "view": "topbar-tab-configs"
+      }
+    },
+    {
+      "click": {
+        "css": "#gx-tab-ghosts",
+        "view": "gx-tab-ghosts"
+      }
+    },
+    {
+      "move": [
+        800,
+        880
+      ]
+    }
+  ]
+}

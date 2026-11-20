@@ -1,0 +1,132 @@
+[workspace]
+resolver = "3"
+# Крейты добавляются сюда по мере появления: маска crates/* требует Cargo.toml
+# в каждом каталоге, а в crates/hlsr-ui сначала появляются только файлы строк.
+members = [
+    "crates/hlsr-core",
+    "crates/hlsr-delivery",
+    "crates/hlsr-online",
+    "crates/hlsr-platform",
+    "crates/hlsr-update",
+    "crates/hlsr-demo",
+    "crates/hlsr-ui-build",
+    "crates/hlsr-ui",
+    "crates/hlsr-gpui",
+    "crates/hlsr-app",
+    "tools/release",
+    "tools/snap",
+]
+# Изменённые копии чужих крейтов (vendor/*/HLSR-PATCH.md) — не члены workspace: их подключает
+# [patch.crates-io], clippy и тесты workspace их не трогают.
+exclude = ["vendor"]
+
+[workspace.package]
+version = "0.5.0"
+edition = "2024"
+rust-version = "1.98"
+publish = false
+
+[workspace.dependencies]
+hlsr-core = { path = "crates/hlsr-core" }
+hlsr-delivery = { path = "crates/hlsr-delivery" }
+hlsr-update = { path = "crates/hlsr-update" }
+
+# GPUI — снимок Zed main (docs/gpui/01-gpui.md): pre-1.0, API меняется каждую неделю, поэтому
+# точный пин и обновление всех gpui-pre-* разом. gpui_platform не берём: на Windows он включает
+# манифест gpui, и вместе с hlsr.manifest линковка падает (CVT1100).
+gpui = { package = "gpui-pre", version = "=0.3.13", default-features = false, features = ["font-kit"] }
+gpui_windows = { package = "gpui-pre-windows", version = "=0.3.13", default-features = false }
+gpui_linux = { package = "gpui-pre-linux", version = "=0.3.13" }
+
+tokio = "1.53"
+serde = { version = "1.0.229", features = ["derive"] }
+serde_json = { version = "1.0.154", features = ["preserve_order", "arbitrary_precision"] }
+tracing = "0.1.44"
+tracing-subscriber = { version = "0.3.23", default-features = false }
+tracing-log = "0.2.0"
+log = "0.4.34"
+rusty-leveldb = "4.0.1"
+ksni = "0.3.6"
+# Онлайн (Linux): связка ключей — Secret Service и KWallet по D-Bus (перенос входа 0.4.7 и
+# новое хранилище сессии). Тот же zbus 5, что приходит с ksni, на tokio.
+zbus = { version = "5.19", default-features = false, features = ["tokio"] }
+# Онлайн: расшифровка os_crypt Chromium (AES-128-CBC, AES-256-GCM) и PBKDF2-HMAC-SHA1 —
+# своими руками поверх блочного шифра и хеша: aes-gcm, cbc и pbkdf2 нет в автономном кеше.
+# Поколение digest 0.10 (оно уже есть через sha2 0.10).
+aes = "0.8.4"
+sha1 = "0.10.6"
+# Тесты онлайна: обмен ключами DH в поддельной службе Secret Service (как у GNOME Keyring).
+num-bigint = "0.4.8"
+tray-icon = { version = "0.26.1", default-features = false }
+rfd = { version = "0.17.2", default-features = false }
+x11rb = "0.13"
+windows-sys = "0.61.2"
+ab_glyph = "0.2.32"
+image = { version = "0.25.10", default-features = false }
+chrono = { version = "0.4", default-features = false, features = ["clock", "std"] }
+
+thiserror = "2.0.21"
+tempfile = "3.27.0"
+sha2 = "0.11.1"
+sys-locale = "0.3.2"
+ryu-js = "1.0.3"
+regex = "1.13.1"
+# Регулярные выражения JS (редактор cfg: пользовательский поиск, флаги iu, lookbehind).
+regress = { version = "0.12.0", features = ["utf16"] }
+skrifa = { version = "0.44.0", default-features = false, features = ["std"] }
+# Canvas 2D fillText превью «Персонализации» (hlsr-ui render/canvas_text.rs): раскладка parley,
+# глифы swash.
+parley = "0.11.1"
+swash = "0.2.10"
+rustix = "1.1.5"
+winresource = "0.1.34"
+# Доставка: подпись манифестов Ed25519 (verify_strict: каноничный S и отказ слабым
+# ключам и R, как у OpenSSL/BoringSSL), base64 подписей и PEM, разбор адресов
+# как у WHATWG URL (new URL() в Node), случайное зерно для новых ключей.
+ed25519-dalek = "2.2"
+base64 = "0.23"
+url = "2.5"
+getrandom = "0.3"
+# Доставка: HTTP как http-client.js 0.4.7 (решение 3 спецификации ПП2) — HTTP/1.1 без
+# сжатия и системного прокси, редиректы вручную. TLS — rustls с ring и корнями Mozilla
+# (webpki-roots — тот же список, что встроен в Node); конфигурация rustls собирается
+# сама и передаётся reqwest готовой, поэтому системный проверщик сертификатов
+# (rustls-platform-verifier из функции rustls-no-provider) не используется.
+reqwest = { version = "0.13.5", default-features = false, features = ["rustls-no-provider"] }
+rustls = { version = "0.23.46", default-features = false, features = ["ring", "std", "tls12"] }
+webpki-roots = "1.0.9"
+# Платформа: метаданные Proton при TLS-ошибке — повтор с проверкой сертификатов системой
+# (замена повтора через Chromium в 0.4.7, решение 5 спецификации ПП3); уже приходит с reqwest.
+rustls-platform-verifier = "0.7.1"
+bytes = "1.12"
+# Обновление: куски лаунчера сжаты brotli (chunks.js, zlib.brotliCompressSync q9).
+brotli = "8"
+# Выпуск: строгий USTAR для архива лаунчера Linux (tools/release); распаковка — свой разбор 1:1.
+tar = "0.4.46"
+# Доставка: превью TGA как PNG (zlib и CRC32 фрагментов). Байты сжатия у miniz_oxide и zlib
+# Node различаются, поэтому PNG сравнивается по пикселям, а не по байтам.
+flate2 = { version = "1.1.10", default-features = false, features = ["rust_backend"] }
+crc32fast = "1.5.2"
+# Порядок имён как у localeCompare Node (V8 с ICU): список cfg-файлов в редакторе.
+icu_collator = "2.3"
+icu_locale_core = "2.3"
+# Онлайн: NFKD в проверке ссылок статуса (link-guard.js, String.prototype.normalize).
+icu_normalizer = "2.3"
+# Онлайн: разбор PNG и JPEG для эмоутов и значков (nativeImage.createFromBuffer в 0.4.7 — libpng и
+# libjpeg-turbo); масштаб как у Skia (`skia::ImageOperations`) — своими руками, `png` и `zune-jpeg`
+# уже в Cargo.lock.
+png = "0.18.1"
+zune-jpeg = "0.5.15"
+
+# Отрисовка GPUI на Windows со снимком того, что под стеклом Liquid Glass (подложка блока до его
+# первой тени): vendor/gpui-pre-windows/HLSR-PATCH.md. Текст GPUI с разрядкой и переносом, как у
+# Chromium: vendor/gpui-pre/HLSR-PATCH.md.
+[patch.crates-io]
+gpui-pre = { path = "vendor/gpui-pre" }
+gpui-pre-windows = { path = "vendor/gpui-pre-windows" }
+
+[profile.release]
+lto = "fat"
+codegen-units = 1
+panic = "unwind"
+debug = "line-tables-only"

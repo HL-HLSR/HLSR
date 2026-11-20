@@ -1,0 +1,31 @@
+{
+  "id": "configs/pz-hl1-hud",
+  "state": "HL1: подраздел «HUD Bunnymod XT» — переключатели, позиции с ползунками, недоступные поля с «Работает, когда включено…»",
+  "base": "configs/_pz",
+  "steps": [
+    {
+      "click": {
+        "css": ".launcher-topbar__tab:nth-child(3)",
+        "view": "topbar-tab-configs"
+      }
+    },
+    {
+      "click": {
+        "css": ".cfgp__game:nth-child(2)",
+        "view": "cfgp-game-70"
+      }
+    },
+    {
+      "click": {
+        "css": "#gx-tab-hl1hud",
+        "view": "gx-tab-hl1hud"
+      }
+    },
+    {
+      "move": [
+        800,
+        880
+      ]
+    }
+  ]
+}

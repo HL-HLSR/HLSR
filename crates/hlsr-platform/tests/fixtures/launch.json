@@ -1,0 +1,41 @@
+{
+  "dep": {"COMPAT_LAYERS":"HKCU\\Software\\Microsoft\\Windows NT\\CurrentVersion\\AppCompatFlags\\Layers","LAYER":"DisableNXShowUI","POLICY":{"0":"AlwaysOff","1":"AlwaysOn","2":"OptIn","3":"OptOut"},"ACCESS_VIOLATION":3221225477},
+  "layersOf": [
+    {"stdout":"\r\nHKCU\\Software\\Microsoft\\Windows NT\\CurrentVersion\\AppCompatFlags\\Layers\r\n    D:\\HLSR\\Half-Life\\Games\\hl1-won\\Half-Life\\hl.exe    REG_SZ    ~ DisableNXShowUI\r\n\r\n","exe":"D:\\HLSR\\Half-Life\\Games\\hl1-won\\Half-Life\\hl.exe","result":"~ DisableNXShowUI"},
+    {"stdout":"\r\nHKCU\\Software\\Microsoft\\Windows NT\\CurrentVersion\\AppCompatFlags\\Layers\r\n    D:\\HLSR\\Half-Life\\Games\\hl1-won\\Half-Life\\hl.exe    REG_SZ    ~ RUNASADMIN WINXPSP3\r\n\r\n","exe":"D:\\HLSR\\Half-Life\\Games\\hl1-won\\Half-Life\\hl.exe","result":"~ RUNASADMIN WINXPSP3"},
+    {"stdout":"\r\nHKCU\\Software\\Microsoft\\Windows NT\\CurrentVersion\\AppCompatFlags\\Layers\r\n    D:\\HLSR\\Half-Life\\Games\\hl1-won\\Half-Life\\hl.exe    REG_SZ    ~ RUNASADMIN WINXPSP3 DisableNXShowUI\r\n\r\n","exe":"D:\\HLSR\\Half-Life\\Games\\hl1-won\\Half-Life\\hl.exe","result":"~ RUNASADMIN WINXPSP3 DisableNXShowUI"},
+    {"stdout":"\r\nHKCU\\Software\\Microsoft\\Windows NT\\CurrentVersion\\AppCompatFlags\\Layers\r\n    D:\\HLSR\\HALF-LIFE\\GAMES\\HL1-WON\\HALF-LIFE\\HL.EXE    REG_SZ    ~ DisableNXShowUI\r\n\r\n","exe":"D:\\HLSR\\Half-Life\\Games\\hl1-won\\Half-Life\\hl.exe","result":"~ DisableNXShowUI"},
+    {"stdout":"\r\nHKCU\\Software\\Microsoft\\Windows NT\\CurrentVersion\\AppCompatFlags\\Layers\r\n    C:\\other\\hl.exe    REG_SZ    ~ DisableNXShowUI\r\n\r\n","exe":"D:\\HLSR\\Half-Life\\Games\\hl1-won\\Half-Life\\hl.exe","result":null},
+    {"stdout":"\r\nHKCU\\Software\\Microsoft\\Windows NT\\CurrentVersion\\AppCompatFlags\\Layers\r\n    D:\\HLSR\\Half-Life\\Games\\hl1-won\\Half-Life\\hl.exe    REG_SZ    \r\n\r\n","exe":"D:\\HLSR\\Half-Life\\Games\\hl1-won\\Half-Life\\hl.exe","result":""},
+    {"stdout":"","exe":"D:\\HLSR\\Half-Life\\Games\\hl1-won\\Half-Life\\hl.exe","result":null},
+    {"stdout":"\r\nHKCU\\Software\\Microsoft\\Windows NT\\CurrentVersion\\AppCompatFlags\\Layers\r\n    D:\\HLSR\\Half-Life\\Games\\hl1-won\\Half-Life\\hl.exe    REG_EXPAND_SZ    ~ DisableNXShowUI\r\n\r\n","exe":"D:\\HLSR\\Half-Life\\Games\\hl1-won\\Half-Life\\hl.exe","result":null},
+    {"stdout":null,"exe":"D:\\HLSR\\Half-Life\\Games\\hl1-won\\Half-Life\\hl.exe","result":null}
+  ],
+  "mergeLayers": [
+    {"current":null,"result":"~ DisableNXShowUI"},
+    {"current":"","result":"~ DisableNXShowUI"},
+    {"current":"~","result":"~ DisableNXShowUI"},
+    {"current":"~ DisableNXShowUI","result":null},
+    {"current":"~ RUNASADMIN WINXPSP3","result":"~ RUNASADMIN WINXPSP3 DisableNXShowUI"},
+    {"current":"~ RUNASADMIN disablenxshowui","result":null},
+    {"current":"RUNASADMIN WINXPSP3","result":"~ RUNASADMIN WINXPSP3 DisableNXShowUI"},
+    {"current":"   ~   RUNASADMIN   ","result":"~ RUNASADMIN DisableNXShowUI"},
+    {"current":"DisableNXShowUI","result":null}
+  ],
+  "parsePolicy": [{"stdout":"0","result":0},{"stdout":"1","result":1},{"stdout":"2","result":2},{"stdout":"3","result":3},{"stdout":"3\r\n","result":3},{"stdout":" 2 ","result":2},{"stdout":"4","result":null},{"stdout":"-1","result":null},{"stdout":"ошибка","result":null},{"stdout":"","result":null},{"stdout":"2x","result":2},{"stdout":null,"result":null}],
+  "crashHint": [
+    {"state":{"policy":1,"exemption":"added"},"exitCode":null,"result":"DEP_ALWAYS_ON"},
+    {"state":{"policy":3,"exemption":"failed"},"exitCode":null,"result":"DEP_EXEMPTION_FAILED"},
+    {"state":{"policy":3,"exemption":"added"},"exitCode":null,"result":null},
+    {"state":{"policy":2,"exemption":"failed"},"exitCode":null,"result":null},
+    {"state":{"policy":0,"exemption":"failed"},"exitCode":null,"result":null},
+    {"state":{"policy":1,"exemption":"added"},"exitCode":3221225477,"result":"DEP_ALWAYS_ON"},
+    {"state":{"policy":1,"exemption":"added"},"exitCode":-1073741819,"result":"DEP_ALWAYS_ON"},
+    {"state":{"policy":1,"exemption":"added"},"exitCode":1,"result":null},
+    {"state":{"policy":1,"exemption":"added"},"exitCode":0,"result":null},
+    {"state":{"policy":3,"exemption":"failed"},"exitCode":-1073741819,"result":"DEP_EXEMPTION_FAILED"},
+    {"state":{"policy":null,"exemption":"added"},"exitCode":null,"result":null},
+    {"state":null,"exitCode":null,"result":null}
+  ],
+  "rinput": {"HOOK":5424,"STUB":5450,"TRAMPOLINE":4784,"CAVE":49536,"CAVE_SIZE":64,"base":1680605184,"getCursorInfo":2069569536,"originalHook":"8b4424048b0d742b2d648b15782b2d64890889500433c0c20400","buildCave":"83ec14c704241400000054b800205b7bffd085c07416f644240401740f837c240800740883c414e90451ffff83c4148b442404e97c53ffff"}
+}

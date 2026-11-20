@@ -1,0 +1,383 @@
+{
+  "id": "games/bar-builds",
+  "base": "games/_base",
+  "state": "Ghosting: открыт список «Версия сборки» — HL1 MOVEMENT, Episode One и Episode Two с общим размером нескачанных эпизодов справа",
+  "invoke": {
+    "game-delivery-get-status": {
+      "$args": [
+        [
+          [
+            null
+          ],
+          [
+            {
+              "gameId": "ghosting-renewed",
+              "launcherId": "218",
+              "state": "ready",
+              "percent": 100,
+              "bytesDownloaded": 0,
+              "totalBytes": 1945918366,
+              "speedBps": 0,
+              "etaSeconds": null,
+              "version": "1.0.9",
+              "installedVersion": "1.0.9",
+              "installedAt": "2026-10-01T09:30:00.000Z",
+              "buildMetadata": null,
+              "buildDate": null,
+              "buildDateSource": null,
+              "metadataState": "legacy",
+              "metadataIssue": null,
+              "installable": true,
+              "reasons": [],
+              "unavailableReason": null,
+              "error": null,
+              "pending": null,
+              "phase": null,
+              "checked": 0,
+              "totalChecked": 0,
+              "integrity": null,
+              "updatePlan": null,
+              "source": "http",
+              "operation": null,
+              "chain": null,
+              "process": {
+                "gameId": "ghosting-renewed",
+                "state": "not-running",
+                "running": false,
+                "since": null,
+                "startedAt": null,
+                "exitCode": null,
+                "lastExit": null
+              },
+              "update": {
+                "installedVersion": "1.0.9",
+                "availableVersion": "1.0.9",
+                "upToDate": true,
+                "updateAvailable": false,
+                "updateRequired": false,
+                "kind": null,
+                "totalSize": 0,
+                "steps": [],
+                "source": null,
+                "checkedAt": "2026-10-16T12:00:00.000Z",
+                "stale": false,
+                "unknown": false,
+                "error": null
+              },
+              "mainButton": {
+                "state": "ready",
+                "action": "play",
+                "enabled": true,
+                "spinner": false,
+                "progress": false
+              },
+              "requiresLicense": false,
+              "episodes": {
+                "ep1": {
+                  "installed": false,
+                  "version": null,
+                  "size": 2147483648,
+                  "paused": false,
+                  "available": true
+                },
+                "ep2": {
+                  "installed": false,
+                  "version": null,
+                  "size": 751619276,
+                  "paused": false,
+                  "available": true
+                }
+              }
+            },
+            {
+              "gameId": "hl2-4260",
+              "launcherId": "220",
+              "state": "not-installed",
+              "totalBytes": 1704734880,
+              "version": "1.0.0",
+              "installedVersion": null,
+              "installedAt": null,
+              "buildMetadata": null,
+              "buildDate": null,
+              "buildDateSource": null,
+              "metadataState": "not-installed",
+              "metadataIssue": null,
+              "installable": true,
+              "reasons": [],
+              "unavailableReason": null,
+              "error": null,
+              "pending": null,
+              "phase": null,
+              "integrity": null,
+              "updatePlan": null,
+              "source": "http",
+              "operation": null,
+              "chain": null,
+              "process": {
+                "gameId": "hl2-4260",
+                "state": "not-running",
+                "running": false,
+                "since": null,
+                "startedAt": null,
+                "exitCode": null,
+                "lastExit": null
+              },
+              "update": null,
+              "mainButton": {
+                "state": "not-installed",
+                "action": "install",
+                "enabled": true,
+                "spinner": false,
+                "progress": false
+              },
+              "requiresLicense": true
+            },
+            {
+              "gameId": "hl1-won",
+              "launcherId": "70",
+              "state": "ready",
+              "percent": 100,
+              "bytesDownloaded": 0,
+              "totalBytes": 162457024,
+              "speedBps": 0,
+              "etaSeconds": null,
+              "version": "1.0.0",
+              "installedVersion": "1.0.0",
+              "installedAt": "2026-09-20T18:00:00.000Z",
+              "buildMetadata": null,
+              "buildDate": null,
+              "buildDateSource": null,
+              "metadataState": "legacy",
+              "metadataIssue": null,
+              "installable": true,
+              "reasons": [],
+              "unavailableReason": null,
+              "error": null,
+              "pending": null,
+              "phase": null,
+              "checked": 0,
+              "totalChecked": 0,
+              "integrity": null,
+              "updatePlan": null,
+              "source": "http",
+              "operation": null,
+              "chain": null,
+              "process": {
+                "gameId": "hl1-won",
+                "state": "not-running",
+                "running": false,
+                "since": null,
+                "startedAt": null,
+                "exitCode": null,
+                "lastExit": null
+              },
+              "update": null,
+              "mainButton": {
+                "state": "ready",
+                "action": "play",
+                "enabled": true,
+                "spinner": false,
+                "progress": false
+              },
+              "requiresLicense": true
+            }
+          ]
+        ],
+        [
+          [
+            "ghosting-renewed"
+          ],
+          {
+            "gameId": "ghosting-renewed",
+            "launcherId": "218",
+            "state": "ready",
+            "percent": 100,
+            "bytesDownloaded": 0,
+            "totalBytes": 1945918366,
+            "speedBps": 0,
+            "etaSeconds": null,
+            "version": "1.0.9",
+            "installedVersion": "1.0.9",
+            "installedAt": "2026-10-01T09:30:00.000Z",
+            "buildMetadata": null,
+            "buildDate": null,
+            "buildDateSource": null,
+            "metadataState": "legacy",
+            "metadataIssue": null,
+            "installable": true,
+            "reasons": [],
+            "unavailableReason": null,
+            "error": null,
+            "pending": null,
+            "phase": null,
+            "checked": 0,
+            "totalChecked": 0,
+            "integrity": null,
+            "updatePlan": null,
+            "source": "http",
+            "operation": null,
+            "chain": null,
+            "process": {
+              "gameId": "ghosting-renewed",
+              "state": "not-running",
+              "running": false,
+              "since": null,
+              "startedAt": null,
+              "exitCode": null,
+              "lastExit": null
+            },
+            "update": {
+              "installedVersion": "1.0.9",
+              "availableVersion": "1.0.9",
+              "upToDate": true,
+              "updateAvailable": false,
+              "updateRequired": false,
+              "kind": null,
+              "totalSize": 0,
+              "steps": [],
+              "source": null,
+              "checkedAt": "2026-10-16T12:00:00.000Z",
+              "stale": false,
+              "unknown": false,
+              "error": null
+            },
+            "mainButton": {
+              "state": "ready",
+              "action": "play",
+              "enabled": true,
+              "spinner": false,
+              "progress": false
+            },
+            "requiresLicense": false,
+            "episodes": {
+              "ep1": {
+                "installed": false,
+                "version": null,
+                "size": 2147483648,
+                "paused": false,
+                "available": true
+              },
+              "ep2": {
+                "installed": false,
+                "version": null,
+                "size": 751619276,
+                "paused": false,
+                "available": true
+              }
+            }
+          }
+        ],
+        [
+          [
+            "hl2-4260"
+          ],
+          {
+            "gameId": "hl2-4260",
+            "launcherId": "220",
+            "state": "not-installed",
+            "totalBytes": 1704734880,
+            "version": "1.0.0",
+            "installedVersion": null,
+            "installedAt": null,
+            "buildMetadata": null,
+            "buildDate": null,
+            "buildDateSource": null,
+            "metadataState": "not-installed",
+            "metadataIssue": null,
+            "installable": true,
+            "reasons": [],
+            "unavailableReason": null,
+            "error": null,
+            "pending": null,
+            "phase": null,
+            "integrity": null,
+            "updatePlan": null,
+            "source": "http",
+            "operation": null,
+            "chain": null,
+            "process": {
+              "gameId": "hl2-4260",
+              "state": "not-running",
+              "running": false,
+              "since": null,
+              "startedAt": null,
+              "exitCode": null,
+              "lastExit": null
+            },
+            "update": null,
+            "mainButton": {
+              "state": "not-installed",
+              "action": "install",
+              "enabled": true,
+              "spinner": false,
+              "progress": false
+            },
+            "requiresLicense": true
+          }
+        ],
+        [
+          [
+            "hl1-won"
+          ],
+          {
+            "gameId": "hl1-won",
+            "launcherId": "70",
+            "state": "ready",
+            "percent": 100,
+            "bytesDownloaded": 0,
+            "totalBytes": 162457024,
+            "speedBps": 0,
+            "etaSeconds": null,
+            "version": "1.0.0",
+            "installedVersion": "1.0.0",
+            "installedAt": "2026-09-20T18:00:00.000Z",
+            "buildMetadata": null,
+            "buildDate": null,
+            "buildDateSource": null,
+            "metadataState": "legacy",
+            "metadataIssue": null,
+            "installable": true,
+            "reasons": [],
+            "unavailableReason": null,
+            "error": null,
+            "pending": null,
+            "phase": null,
+            "checked": 0,
+            "totalChecked": 0,
+            "integrity": null,
+            "updatePlan": null,
+            "source": "http",
+            "operation": null,
+            "chain": null,
+            "process": {
+              "gameId": "hl1-won",
+              "state": "not-running",
+              "running": false,
+              "since": null,
+              "startedAt": null,
+              "exitCode": null,
+              "lastExit": null
+            },
+            "update": null,
+            "mainButton": {
+              "state": "ready",
+              "action": "play",
+              "enabled": true,
+              "spinner": false,
+              "progress": false
+            },
+            "requiresLicense": true
+          }
+        ]
+      ]
+    }
+  },
+  "steps": [
+    {
+      "click": {
+        "css": ".build-panel .ui-dropdown__toggle",
+        "view": "build-select"
+      }
+    }
+  ]
+}

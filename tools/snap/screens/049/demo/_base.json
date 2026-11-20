@@ -1,0 +1,591 @@
+{
+  "$comment": "Страница «Демо» (G11: DemoPanel.vue, DemoFfmpegCard.vue, DemoViewSettings.vue 0.4.9). Плеер в GPUI — заглушка G11 (кадр без видео, кнопки неактивны), окно экспорта — G13. Время записей у эталона в UTC, у GPUI — в поясе машины.",
+  "screen": "games",
+  "themes": [
+    "hlsr"
+  ],
+  "languages": [
+    "ru"
+  ],
+  "rails": [
+    "closed",
+    "open"
+  ],
+  "prefs": {
+    "configTourSeen": true
+  },
+  "invoke": {
+    "demo-list": {
+      "status": "ok",
+      "items": [
+        {
+          "id": "hl1-series",
+          "name": "hlsrrun",
+          "source": "game",
+          "gameId": "hl1-won",
+          "game": "hl1",
+          "kind": "segments",
+          "map": "c1a0",
+          "duration": 1325.4,
+          "segmentCount": 12,
+          "mtimeMs": 1763373600000,
+          "size": 25165824,
+          "supported": true,
+          "path": "C:\\demos\\hl1-series.dem",
+          "series": true,
+          "missing": [
+            4
+          ],
+          "maps": [
+            "c1a0",
+            "c1a0d",
+            "c1a1"
+          ],
+          "runTime": 1310.2
+        },
+        {
+          "id": "hl1-bad",
+          "name": "broken.dem",
+          "source": "game",
+          "gameId": "hl1-won",
+          "game": "hl1",
+          "kind": "demo",
+          "map": "c1a2",
+          "duration": 0,
+          "segmentCount": 1,
+          "mtimeMs": 1763380200000,
+          "size": 2048,
+          "supported": false,
+          "path": "C:\\demos\\hl1-bad.dem",
+          "reason": "DEMO_TRUNCATED"
+        },
+        {
+          "id": "gh-run",
+          "name": "myrun",
+          "source": "game",
+          "gameId": "ghosting-renewed",
+          "game": "ghosting",
+          "kind": "playlist",
+          "map": "d1_trainstation_01",
+          "duration": 144.46,
+          "segmentCount": 3,
+          "mtimeMs": 1763379000000,
+          "size": 3145728,
+          "supported": true,
+          "path": "C:\\demos\\gh-run.dem",
+          "maps": [
+            "d1_trainstation_01",
+            "d1_trainstation_02",
+            "d1_trainstation_03"
+          ],
+          "runTime": 140.1
+        },
+        {
+          "id": "gh-one",
+          "name": "test.dem",
+          "source": "game",
+          "gameId": "ghosting-renewed",
+          "game": "ghosting",
+          "kind": "demo",
+          "map": "d1_canals_01",
+          "duration": 52.31,
+          "segmentCount": 1,
+          "mtimeMs": 1763294400000,
+          "size": 1048576,
+          "supported": true,
+          "path": "C:\\demos\\gh-one.dem"
+        },
+        {
+          "id": "m-set",
+          "name": "c1a0.dem",
+          "source": "manual",
+          "gameId": "hl1-won",
+          "game": "hl1",
+          "kind": "segments",
+          "map": "c1a0",
+          "duration": 212.9,
+          "segmentCount": 2,
+          "mtimeMs": 1763208000000,
+          "size": 4194304,
+          "supported": true,
+          "path": "C:\\demos\\m-set.dem",
+          "maps": [
+            "c1a0",
+            "c1a0d"
+          ]
+        }
+      ]
+    },
+    "demo-inspect": {
+      "$args": [
+        [
+          [
+            "hl1-series"
+          ],
+          {
+            "status": "ok",
+            "item": {
+              "id": "hl1-series",
+              "name": "hlsrrun",
+              "source": "game",
+              "gameId": "hl1-won",
+              "game": "hl1",
+              "kind": "segments",
+              "map": "c1a0",
+              "duration": 1325.4,
+              "segmentCount": 12,
+              "mtimeMs": 1763373600000,
+              "size": 25165824,
+              "supported": true,
+              "path": "C:\\demos\\hl1-series.dem",
+              "series": true,
+              "missing": [
+                4
+              ],
+              "maps": [
+                "c1a0",
+                "c1a0d",
+                "c1a1"
+              ],
+              "runTime": 1310.2
+            },
+            "segments": [
+              {
+                "name": "hlsrrun1.dem",
+                "duration": 110.4
+              },
+              {
+                "name": "hlsrrun2.dem",
+                "duration": 110.4
+              },
+              {
+                "name": "hlsrrun3.dem",
+                "duration": 110.4
+              },
+              {
+                "name": "hlsrrun5.dem",
+                "duration": 110.4
+              },
+              {
+                "name": "hlsrrun6.dem",
+                "duration": 110.4
+              },
+              {
+                "name": "hlsrrun7.dem",
+                "duration": 110.4
+              },
+              {
+                "name": "hlsrrun8.dem",
+                "duration": 110.4
+              },
+              {
+                "name": "hlsrrun9.dem",
+                "duration": 110.4
+              },
+              {
+                "name": "hlsrrun10.dem",
+                "duration": 110.4
+              },
+              {
+                "name": "hlsrrun11.dem",
+                "duration": 110.4
+              },
+              {
+                "name": "hlsrrun12.dem",
+                "duration": 110.4
+              },
+              {
+                "name": "hlsrrun13.dem",
+                "duration": 110.4
+              }
+            ],
+            "markers": [
+              {
+                "t": 0,
+                "type": "map",
+                "label": "c1a0"
+              },
+              {
+                "t": 70.2,
+                "type": "segment",
+                "label": "2"
+              }
+            ],
+            "render": {
+              "ok": false,
+              "code": "BXTRS_MISSING",
+              "view": {
+                "keyhud": true,
+                "hud": true,
+                "ownConfig": true,
+                "ownHud": false
+              }
+            }
+          }
+        ],
+        [
+          [
+            "hl1-bad"
+          ],
+          {
+            "status": "ok",
+            "item": {
+              "id": "hl1-bad",
+              "name": "broken.dem",
+              "source": "game",
+              "gameId": "hl1-won",
+              "game": "hl1",
+              "kind": "demo",
+              "map": "c1a2",
+              "duration": 0,
+              "segmentCount": 1,
+              "mtimeMs": 1763380200000,
+              "size": 2048,
+              "supported": false,
+              "path": "C:\\demos\\hl1-bad.dem",
+              "reason": "DEMO_TRUNCATED"
+            },
+            "segments": [
+              {
+                "name": "broken.dem",
+                "duration": null
+              }
+            ],
+            "markers": [],
+            "render": {
+              "ok": false,
+              "code": "DEMO_TRUNCATED",
+              "view": {}
+            }
+          }
+        ],
+        [
+          [
+            "gh-run"
+          ],
+          {
+            "status": "ok",
+            "item": {
+              "id": "gh-run",
+              "name": "myrun",
+              "source": "game",
+              "gameId": "ghosting-renewed",
+              "game": "ghosting",
+              "kind": "playlist",
+              "map": "d1_trainstation_01",
+              "duration": 144.46,
+              "segmentCount": 3,
+              "mtimeMs": 1763379000000,
+              "size": 3145728,
+              "supported": true,
+              "path": "C:\\demos\\gh-run.dem",
+              "maps": [
+                "d1_trainstation_01",
+                "d1_trainstation_02",
+                "d1_trainstation_03"
+              ],
+              "runTime": 140.1
+            },
+            "segments": [
+              {
+                "name": "myrun_1.dem",
+                "duration": 40.2
+              },
+              {
+                "name": "myrun_2.dem",
+                "duration": 50.1
+              },
+              {
+                "name": "myrun_3.dem",
+                "duration": 54.16
+              }
+            ],
+            "markers": [
+              {
+                "t": 0,
+                "type": "chapter",
+                "label": "1"
+              },
+              {
+                "t": 25.85,
+                "type": "map",
+                "label": "d1_trainstation_02"
+              },
+              {
+                "t": 61.2,
+                "type": "saveload",
+                "label": "2"
+              },
+              {
+                "t": 98.4,
+                "type": "map",
+                "label": "d1_trainstation_03"
+              },
+              {
+                "t": 140.1,
+                "type": "finish",
+                "label": "GHRD"
+              }
+            ],
+            "render": {
+              "ok": true,
+              "code": null,
+              "view": {
+                "keyhud": true,
+                "hud": true,
+                "ownConfig": true,
+                "ownHud": false
+              }
+            }
+          }
+        ],
+        [
+          [
+            "gh-one"
+          ],
+          {
+            "status": "ok",
+            "item": {
+              "id": "gh-one",
+              "name": "test.dem",
+              "source": "game",
+              "gameId": "ghosting-renewed",
+              "game": "ghosting",
+              "kind": "demo",
+              "map": "d1_canals_01",
+              "duration": 52.31,
+              "segmentCount": 1,
+              "mtimeMs": 1763294400000,
+              "size": 1048576,
+              "supported": true,
+              "path": "C:\\demos\\gh-one.dem"
+            },
+            "segments": [
+              {
+                "name": "test.dem",
+                "duration": 52.31
+              }
+            ],
+            "markers": [
+              {
+                "t": 4.36,
+                "type": "saveload",
+                "label": "2"
+              }
+            ],
+            "render": {
+              "ok": true,
+              "code": null,
+              "view": {
+                "keyhud": true,
+                "hud": true,
+                "ownConfig": true,
+                "ownHud": false
+              }
+            }
+          }
+        ],
+        [
+          [
+            "m-set"
+          ],
+          {
+            "status": "ok",
+            "item": {
+              "id": "m-set",
+              "name": "c1a0.dem",
+              "source": "manual",
+              "gameId": "hl1-won",
+              "game": "hl1",
+              "kind": "segments",
+              "map": "c1a0",
+              "duration": 212.9,
+              "segmentCount": 2,
+              "mtimeMs": 1763208000000,
+              "size": 4194304,
+              "supported": true,
+              "path": "C:\\demos\\m-set.dem",
+              "maps": [
+                "c1a0",
+                "c1a0d"
+              ]
+            },
+            "segments": [
+              {
+                "name": "c1a0.dem",
+                "duration": 101.2
+              },
+              {
+                "name": "c1a0d.dem",
+                "duration": 111.7
+              }
+            ],
+            "markers": [
+              {
+                "t": 0,
+                "type": "map",
+                "label": "c1a0"
+              },
+              {
+                "t": 101.2,
+                "type": "segment",
+                "label": "2"
+              }
+            ],
+            "render": {
+              "ok": false,
+              "code": "RENDER_NOT_READY",
+              "view": {}
+            }
+          }
+        ]
+      ]
+    },
+    "demo-ffmpeg-status": {
+      "status": "ok",
+      "ffmpeg": {
+        "state": "ready",
+        "installable": true,
+        "pinnedVersion": "9.0.2",
+        "sizeBytes": 104857600
+      }
+    },
+    "demo-bxtrs-status": {
+      "status": "ok",
+      "bxtrs": {
+        "state": "missing",
+        "installable": true,
+        "pinnedVersion": "1.0.4",
+        "sizeBytes": 6291456,
+        "sourceLink": "bxtrs-source",
+        "licenseLink": "bxtrs-license"
+      }
+    },
+    "demo-settings-get": {
+      "status": "ok",
+      "preview": {
+        "keyhud": true,
+        "hud": true,
+        "ownConfig": true,
+        "ownHud": false
+      }
+    },
+    "demo-rendered-list": {
+      "status": "ok",
+      "outputDir": "C:\\Users\\Runner\\Videos\\HLSR",
+      "items": [
+        {
+          "name": "myrun.mp4",
+          "size": 52428800,
+          "mtimeMs": 1763379900000,
+          "video": {
+            "duration": 140.2,
+            "width": 1920,
+            "height": 1080,
+            "fps": 60,
+            "speed": 1
+          },
+          "source": {
+            "game": "ghosting",
+            "map": "d1_trainstation_01"
+          },
+          "markerCount": 3
+        },
+        {
+          "name": "hlsrrun.mp4",
+          "size": 104857600,
+          "mtimeMs": 1763375400000,
+          "video": {
+            "duration": 662.7,
+            "width": 2560,
+            "height": 1440,
+            "fps": 60,
+            "speed": 2
+          },
+          "source": {
+            "game": "hl1",
+            "map": "c1a0"
+          },
+          "markerCount": 2
+        }
+      ]
+    },
+    "demo-rendered-open": {
+      "status": "ok",
+      "name": "myrun.mp4",
+      "url": null,
+      "video": {
+        "duration": 140.2,
+        "width": 1920,
+        "height": 1080,
+        "fps": 60,
+        "speed": 1,
+        "range": {
+          "from": 0,
+          "to": 140.2
+        }
+      },
+      "source": {
+        "game": "ghosting",
+        "map": "d1_trainstation_01"
+      },
+      "markers": [
+        {
+          "t": 0,
+          "type": "chapter",
+          "label": "1",
+          "sourceTime": 0
+        },
+        {
+          "t": 25.85,
+          "type": "map",
+          "label": "d1_trainstation_02",
+          "sourceTime": 25.85
+        },
+        {
+          "t": 140.1,
+          "type": "finish",
+          "label": "GHRD",
+          "sourceTime": 140.1
+        }
+      ],
+      "sourceId": "gh-run"
+    },
+    "demo-estimate": {
+      "status": "ok",
+      "threshold": 60,
+      "items": [
+        {
+          "seconds": 20
+        }
+      ]
+    },
+    "demo-preview-start": {
+      "$pending": true
+    },
+    "demo-preview-clear": {
+      "status": "ok",
+      "cleared": false
+    },
+    "demo-pick-files": {
+      "status": "cancelled"
+    },
+    "open-external-link": {
+      "status": "ok"
+    }
+  },
+  "steps": [
+    {
+      "click": {
+        "css": ".game-rail .rail-item[aria-label=\"Демо\"]",
+        "view": "rail-demo"
+      }
+    },
+    {
+      "move": [
+        800,
+        880
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1410 @@
+{
+  "timing": {"earlyExitWindowMs":30,"injectedGameTimeoutMs":1500,"injectedGamePollMs":20,"rinputPatchPollMs":10,"rinputPatchWaitMs":2000},
+  "env": {"PATH":"C:\\Windows\\System32;C:\\Windows","SteamAppId":"220","STEAMGAMEID":"1","SteamOverlayGameId":"2","steamappuser":"me","KEEP_ME":"1","HLSR_OLD":"kept"},
+  "cpuCount": 8,
+  "steamLanguage": {"HKCU\\Software\\Valve\\Steam":{"Language":"english"}},
+  "scenarios": [
+    {
+      "scenario": {
+        "name": "ghosting-started",
+        "gameId": "ghosting-renewed",
+        "layout": [
+          {"file":"hl2.exe","utf8":"MZ"},
+          {"file":"ghostingmod/gameinfo.txt","utf8":"\"GameInfo\"\r\n{\r\n\tgame \"Ghosting\"\r\n\tSteamAppId\t243730 // Ghosting\r\n}\r\n"},
+          {"file":"steam_appid.txt","hex":"3232300a00"},
+          {"file":"ghostingmod/cfg/config.cfg","utf8":"viewmodel_fov \"84\"\ngh_timer \"1\"\ngh_cross_size \"30\"\n"},
+          {"file":"ghostingmod/cfg/hlsr-personalization.cfg","utf8":"// Original personalization\ngh_cross_size \"8\"\n"}
+        ],
+        "settings": {
+          "launchArgs": "-novid +map gh_test",
+          "console": true,
+          "excludeCpu0": true,
+          "language": "auto",
+          "liveSplitOverlay": {"enabled":true},
+          "binds": {"+jump":["SPACE","MWHEELDOWN"]},
+          "personalization": {
+            "hudEnabled": true,
+            "hudColor": {"r":255,"g":220,"b":0},
+            "hudAlpha": -1,
+            "hudAffectsCrosshair": false,
+            "hideQuickInfo": false,
+            "crossPreset": "standard",
+            "crossEnabled": false,
+            "crossColor": {"r":0,"g":255,"b":0},
+            "crossAlpha": 255,
+            "crossThickness": 2,
+            "crossSize": 8,
+            "crossGap": 3,
+            "crossOutline": false,
+            "crossOutlineThickness": 1,
+            "crossCircleRadius": 0,
+            "crossDotColor": null,
+            "crossDotSize": 0,
+            "crossTopLine": true,
+            "crossBottomLine": true,
+            "crossLeftLine": true,
+            "crossRightLine": true,
+            "crossHideDefault": true,
+            "extra": {"gh_timer":false}
+          }
+        },
+        "steam": [{"ok":true,"code":null,"steam":{"installPath":"C:\\Steam","steamExe":"C:\\Steam\\steam.exe","pid":4321,"source":"registry"},"app":null}],
+        "extraEnv": {"HLSR_PRESENCE_PIPE":"\\\\.\\pipe\\hlsr-presence","HLSR_PRESENCE_TOKEN":"token","HLSR_EMPTY":"","hlsr_lower":"x","OTHER":"y"},
+        "game": {"behaviour":"alive","inspect":{"executable":"hl2.exe","startedAt":"2026-10-16T12:00:01.250Z"}},
+        "overlayExit": 0
+      },
+      "result": {"ok":{"status":"started","process":{"state":"running","pid":5000}}},
+      "events": [
+        {"op":"isRunning","gameId":"ghosting-renewed"},
+        {"op":"isBusy"},
+        {"op":"installedOf","gameId":"ghosting-renewed"},
+        {"op":"markStarting","gameId":"ghosting-renewed"},
+        {"op":"describeSteamOnly"},
+        {"op":"settings.get","gameId":"ghosting-renewed"},
+        {
+          "op": "settings.save",
+          "gameId": "ghosting-renewed",
+          "settings": {
+            "launchArgs": "-novid +map gh_test",
+            "console": true,
+            "excludeCpu0": true,
+            "language": "auto",
+            "liveSplitOverlay": {"enabled":true},
+            "binds": {"+jump":["SPACE","MWHEELDOWN"]},
+            "personalization": {
+              "hudEnabled": true,
+              "hudColor": {"r":255,"g":220,"b":0},
+              "hudAlpha": -1,
+              "hudAffectsCrosshair": false,
+              "hideQuickInfo": false,
+              "crossPreset": "standard",
+              "crossEnabled": false,
+              "crossColor": {"r":0,"g":255,"b":0},
+              "crossAlpha": 255,
+              "crossThickness": 2,
+              "crossSize": 8,
+              "crossGap": 3,
+              "crossOutline": false,
+              "crossOutlineThickness": 1,
+              "crossCircleRadius": 0,
+              "crossDotColor": null,
+              "crossDotSize": 0,
+              "crossTopLine": true,
+              "crossBottomLine": true,
+              "crossLeftLine": true,
+              "crossRightLine": true,
+              "crossHideDefault": true,
+              "extra": {"viewmodel_fov":84,"gh_timer":false}
+            }
+          }
+        },
+        {"op":"spawn","file":"<root>/game/hl2.exe","args":["-steam","-game","ghostingmod","-insecure","-console","-novid","+map","gh_test"],"cwd":"<root>/game","detached":true,"windowsHide":false,"env":{"HLSR_OLD":"kept","HLSR_PRESENCE_PIPE":"/./pipe/hlsr-presence","HLSR_PRESENCE_TOKEN":"token","KEEP_ME":"1","PATH":"C:/Windows/System32;C:/Windows"}},
+        {"op":"settings.get","gameId":"ghosting-renewed"},
+        {"op":"affinity","pid":5000,"mask":"254"},
+        {"op":"register","gameId":"ghosting-renewed","info":{"pid":5000,"executablePath":"<root>/game/hl2.exe","startedAt":"2026-10-16T12:00:01.250Z","child":true}},
+        {"op":"spawn","file":"<root>/data/livesplit-overlay/ghosting-renewed/hlsr-overlay.exe","args":["inject","--name","hl2.exe","--dll","<root>/data/livesplit-overlay/ghosting-renewed/hlsr-overlay.dll","--timeout","90"],"cwd":"<root>/data/livesplit-overlay/ghosting-renewed","detached":true,"windowsHide":true,"env":null},
+        {"op":"describeSteamOnly"}
+      ],
+      "logs": [
+        {"level":"info","message":"[launch] steam_appid.txt приведён к 243730 (было \"220\")"},
+        {"level":"info","message":"[launch] ghosting-renewed: маска процессоров 0xFE (8 ЦП, нулевой исключён)"},
+        {"level":"info","message":"[launch] ghosting-renewed запущена: PID 5000, <root>/game/hl2.exe, аргументы [-steam -game ghostingmod -insecure -console -novid +map gh_test], AppID 243730, Steam PID 4321"},
+        {"level":"info","message":"[launch] оверлей LiveSplit внедрён в hl2.exe"}
+      ],
+      "after": {"crashHint":[null,null,null],"availability":{"ok":true,"code":null,"steam":{"installPath":"C:/Steam","steamExe":"C:/Steam/steam.exe","pid":4321,"source":"registry"},"app":null}},
+      "trees": {
+        "game": [
+          {"path":"ghostingmod","kind":"dir"},
+          {"path":"ghostingmod/cfg","kind":"dir"},
+          {"path":"ghostingmod/cfg/autoexec.cfg","kind":"file","size":4103,"sha256":"8ffb8413ad9abecb6886f5e33df5f29e87c0b79474e340f1cba69839d251cbd4"},
+          {"path":"ghostingmod/cfg/config.cfg","kind":"file","size":51,"sha256":"99ba3d241ca35b99b790f93a55f8bbef8ecccfd138670d558ad7c25f74841a3b"},
+          {"path":"ghostingmod/cfg/hlsr-binds.cfg","kind":"file","size":165,"sha256":"7f9869b409ba647579ffe8a3d464f7d2a6ab6ab2c196a8c79dd9fbd54ecefc03"},
+          {"path":"ghostingmod/cfg/hlsr-personalization.cfg","kind":"file","size":693,"sha256":"cf4935b4a76b33829eca54a0d9a13c238d1221937f2faa04efc896810ba2a760"},
+          {"path":"ghostingmod/gameinfo.txt","kind":"file","size":68,"sha256":"b3d7e0f4eb403581dbd848aecc1d2415bb01ff789cc40985519005335f2871bd"},
+          {"path":"hl2.exe","kind":"file","size":2,"sha256":"9b8db510ef42b8ed54a3712636fda55a4f8cfcd5493e20b74ab00cd4f3979f2d"},
+          {"path":"steam_appid.txt","kind":"file","size":8,"sha256":"e5677eaadba80d0c4368354e56634b8acda823e57beebcaeaa681354bc2e63f1"}
+        ],
+        "logs": null,
+        "data": [
+          {"path":"livesplit-overlay","kind":"dir"},
+          {"path":"livesplit-overlay/ghosting-renewed","kind":"dir"},
+          {"path":"livesplit-overlay/ghosting-renewed/hlsr-overlay.dll","kind":"file","size":19,"sha256":"05af290434f8f4b1c2a760ecec622dda0865b2d9db0e907f263caa651e60f38c"},
+          {"path":"livesplit-overlay/ghosting-renewed/hlsr-overlay.exe","kind":"file","size":19,"sha256":"31d1c019747ef423254480e752c52bcfe4b7f70091d99d75f36d4ba7febe6513"},
+          {"path":"livesplit-overlay/ghosting-renewed/hlsr-overlay64.exe","kind":"file","size":21,"sha256":"475097eba9420da3c88735ca313f8e4fc44aa6bf570e2c3125d7282bb4dbf82b"},
+          {"path":"livesplit-overlay/ghosting-renewed/hlsr-share64.dll","kind":"file","size":19,"sha256":"74ae547e2caa6c053a69d842c4aff5cd16c63430c6995f360169bfc57256c2b6"},
+          {"path":"livesplit-overlay/ghosting-renewed/overlay.ini","kind":"file","size":225,"sha256":"15b43709ae1c36a30e6a3c0ebca68a51d503c558368de1469042180cd78a01b2"}
+        ]
+      }
+    },
+    {
+      "scenario": {
+        "name": "ghosting-save-fails-exit",
+        "gameId": "ghosting-renewed",
+        "layout": [
+          {"file":"hl2.exe","utf8":"MZ"},
+          {"file":"ghostingmod/gameinfo.txt","utf8":"\"GameInfo\"\r\n{\r\n\tgame \"Ghosting\"\r\n\tSteamAppId\t243730 // Ghosting\r\n}\r\n"},
+          {"file":"steam_appid.txt","hex":"3232300a00"},
+          {"file":"ghostingmod/cfg/config.cfg","utf8":"viewmodel_fov \"84\"\ngh_timer \"1\"\ngh_cross_size \"30\"\n"},
+          {"file":"ghostingmod/cfg/hlsr-personalization.cfg","utf8":"// Original personalization\ngh_cross_size \"8\"\n"}
+        ],
+        "settings": {
+          "launchArgs": "-novid +map gh_test",
+          "console": true,
+          "excludeCpu0": true,
+          "language": "auto",
+          "liveSplitOverlay": {"enabled":true},
+          "binds": {"+jump":["SPACE","MWHEELDOWN"]},
+          "personalization": {
+            "hudEnabled": true,
+            "hudColor": {"r":255,"g":220,"b":0},
+            "hudAlpha": -1,
+            "hudAffectsCrosshair": false,
+            "hideQuickInfo": false,
+            "crossPreset": "standard",
+            "crossEnabled": false,
+            "crossColor": {"r":0,"g":255,"b":0},
+            "crossAlpha": 255,
+            "crossThickness": 2,
+            "crossSize": 8,
+            "crossGap": 3,
+            "crossOutline": false,
+            "crossOutlineThickness": 1,
+            "crossCircleRadius": 0,
+            "crossDotColor": null,
+            "crossDotSize": 0,
+            "crossTopLine": true,
+            "crossBottomLine": true,
+            "crossLeftLine": true,
+            "crossRightLine": true,
+            "crossHideDefault": true,
+            "extra": {"gh_timer":false}
+          }
+        },
+        "saveFails": true,
+        "steam": [{"ok":true,"code":null,"steam":{"installPath":"C:\\Steam","steamExe":"C:\\Steam\\steam.exe","pid":4321,"source":"registry"},"app":null},{"ok":false,"code":"STEAM_ELEVATED","message":"Steam запущен от имени администратора"}],
+        "game": {"behaviour":{"exit":1}}
+      },
+      "result": {"error":{"code":"STEAM_ELEVATED","message":"Steam запущен от имени администратора","details":{"originalCode":"LAUNCH_FAILED","originalMessage":"Игра завершилась сразу после запуска (код 1). Обычно это означает, что Steam отклонил запуск."}}},
+      "events": [
+        {"op":"isRunning","gameId":"ghosting-renewed"},
+        {"op":"isBusy"},
+        {"op":"installedOf","gameId":"ghosting-renewed"},
+        {"op":"markStarting","gameId":"ghosting-renewed"},
+        {"op":"describeSteamOnly"},
+        {"op":"settings.get","gameId":"ghosting-renewed"},
+        {
+          "op": "settings.save",
+          "gameId": "ghosting-renewed",
+          "settings": {
+            "launchArgs": "-novid +map gh_test",
+            "console": true,
+            "excludeCpu0": true,
+            "language": "auto",
+            "liveSplitOverlay": {"enabled":true},
+            "binds": {"+jump":["SPACE","MWHEELDOWN"]},
+            "personalization": {
+              "hudEnabled": true,
+              "hudColor": {"r":255,"g":220,"b":0},
+              "hudAlpha": -1,
+              "hudAffectsCrosshair": false,
+              "hideQuickInfo": false,
+              "crossPreset": "standard",
+              "crossEnabled": false,
+              "crossColor": {"r":0,"g":255,"b":0},
+              "crossAlpha": 255,
+              "crossThickness": 2,
+              "crossSize": 8,
+              "crossGap": 3,
+              "crossOutline": false,
+              "crossOutlineThickness": 1,
+              "crossCircleRadius": 0,
+              "crossDotColor": null,
+              "crossDotSize": 0,
+              "crossTopLine": true,
+              "crossBottomLine": true,
+              "crossLeftLine": true,
+              "crossRightLine": true,
+              "crossHideDefault": true,
+              "extra": {"viewmodel_fov":84,"gh_timer":false}
+            }
+          }
+        },
+        {"op":"spawn","file":"<root>/game/hl2.exe","args":["-steam","-game","ghostingmod","-insecure","-console","-novid","+map","gh_test"],"cwd":"<root>/game","detached":true,"windowsHide":false,"env":{"HLSR_OLD":"kept","KEEP_ME":"1","PATH":"C:/Windows/System32;C:/Windows"}},
+        {"op":"describeSteamOnly"},
+        {"op":"cancelStarting","gameId":"ghosting-renewed","reason":"STEAM_ELEVATED: Steam запущен от имени администратора"},
+        {"op":"describeSteamOnly"}
+      ],
+      "logs": [
+        {"level":"info","message":"[launch] steam_appid.txt приведён к 243730 (было \"220\")"},
+        {"level":"warn","message":"[launch] персонализация не применена: Ghosting settings migration failed"},
+        {"level":"info","message":"[launch] причина уточнена: LAUNCH_FAILED -> STEAM_ELEVATED (Steam запущен от имени администратора)"},
+        {"level":"error","message":"[launch] запуск ghosting-renewed не удался: STEAM_ELEVATED Steam запущен от имени администратора"}
+      ],
+      "after": {"crashHint":[null,null,null],"availability":{"ok":false,"code":"STEAM_ELEVATED","message":"Steam запущен от имени администратора"}},
+      "trees": {
+        "game": [
+          {"path":"ghostingmod","kind":"dir"},
+          {"path":"ghostingmod/cfg","kind":"dir"},
+          {"path":"ghostingmod/cfg/autoexec.cfg","kind":"file","size":4072,"sha256":"6bca59e492c95284c1950780f08e68eb929d961280007a141d7320fe90b85f78"},
+          {"path":"ghostingmod/cfg/config.cfg","kind":"file","size":51,"sha256":"99ba3d241ca35b99b790f93a55f8bbef8ecccfd138670d558ad7c25f74841a3b"},
+          {"path":"ghostingmod/cfg/hlsr-binds.cfg","kind":"file","size":165,"sha256":"7f9869b409ba647579ffe8a3d464f7d2a6ab6ab2c196a8c79dd9fbd54ecefc03"},
+          {"path":"ghostingmod/cfg/hlsr-personalization.cfg","kind":"file","size":46,"sha256":"d168e332b488ef6cd3a081ac510f8c7be59d62ab16d818f126bcf211e3f69f6f"},
+          {"path":"ghostingmod/gameinfo.txt","kind":"file","size":68,"sha256":"b3d7e0f4eb403581dbd848aecc1d2415bb01ff789cc40985519005335f2871bd"},
+          {"path":"hl2.exe","kind":"file","size":2,"sha256":"9b8db510ef42b8ed54a3712636fda55a4f8cfcd5493e20b74ab00cd4f3979f2d"},
+          {"path":"steam_appid.txt","kind":"file","size":8,"sha256":"e5677eaadba80d0c4368354e56634b8acda823e57beebcaeaa681354bc2e63f1"}
+        ],
+        "logs": null,
+        "data": null
+      }
+    },
+    {
+      "scenario": {
+        "name": "ghosting-gameinfo-mismatch",
+        "gameId": "ghosting-renewed",
+        "layout": [{"file":"hl2.exe","utf8":"MZ"},{"file":"ghostingmod/gameinfo.txt","utf8":"\"GameInfo\"\n{\n SteamAppId 220\n}\n"},{"file":"steam_appid.txt","hex":"3232300a00"},{"file":"ghostingmod/cfg/config.cfg","utf8":"viewmodel_fov \"84\"\ngh_timer \"1\"\ngh_cross_size \"30\"\n"},{"file":"ghostingmod/cfg/hlsr-personalization.cfg","utf8":"// Original personalization\ngh_cross_size \"8\"\n"}],
+        "settings": {
+          "launchArgs": "-novid +map gh_test",
+          "console": true,
+          "excludeCpu0": true,
+          "language": "auto",
+          "liveSplitOverlay": {"enabled":true},
+          "binds": {"+jump":["SPACE","MWHEELDOWN"]},
+          "personalization": {
+            "hudEnabled": true,
+            "hudColor": {"r":255,"g":220,"b":0},
+            "hudAlpha": -1,
+            "hudAffectsCrosshair": false,
+            "hideQuickInfo": false,
+            "crossPreset": "standard",
+            "crossEnabled": false,
+            "crossColor": {"r":0,"g":255,"b":0},
+            "crossAlpha": 255,
+            "crossThickness": 2,
+            "crossSize": 8,
+            "crossGap": 3,
+            "crossOutline": false,
+            "crossOutlineThickness": 1,
+            "crossCircleRadius": 0,
+            "crossDotColor": null,
+            "crossDotSize": 0,
+            "crossTopLine": true,
+            "crossBottomLine": true,
+            "crossLeftLine": true,
+            "crossRightLine": true,
+            "crossHideDefault": true,
+            "extra": {"gh_timer":false}
+          }
+        },
+        "steam": [{"ok":true,"code":null,"steam":{"installPath":"C:\\Steam","steamExe":"C:\\Steam\\steam.exe","pid":4321,"source":"registry"},"app":null}]
+      },
+      "result": {"error":{"code":"STEAM_APP_ID_MISMATCH","message":"gameinfo.txt использует SteamAppId 220, ожидался 243730","details":{"gameinfo":"<root>/game/ghostingmod/gameinfo.txt","expected":243730,"actual":220}}},
+      "events": [{"op":"isRunning","gameId":"ghosting-renewed"},{"op":"isBusy"},{"op":"installedOf","gameId":"ghosting-renewed"},{"op":"markStarting","gameId":"ghosting-renewed"},{"op":"describeSteamOnly"},{"op":"cancelStarting","gameId":"ghosting-renewed","reason":"STEAM_APP_ID_MISMATCH: gameinfo.txt использует SteamAppId 220, ожидался 243730"},{"op":"describeSteamOnly"}],
+      "logs": [{"level":"info","message":"[launch] steam_appid.txt приведён к 243730 (было \"220\")"},{"level":"error","message":"[launch] запуск ghosting-renewed не удался: STEAM_APP_ID_MISMATCH gameinfo.txt использует SteamAppId 220, ожидался 243730"}],
+      "after": {"crashHint":[null,null,null],"availability":{"ok":true,"code":null,"steam":{"installPath":"C:/Steam","steamExe":"C:/Steam/steam.exe","pid":4321,"source":"registry"},"app":null}},
+      "trees": {
+        "game": [
+          {"path":"ghostingmod","kind":"dir"},
+          {"path":"ghostingmod/cfg","kind":"dir"},
+          {"path":"ghostingmod/cfg/config.cfg","kind":"file","size":51,"sha256":"99ba3d241ca35b99b790f93a55f8bbef8ecccfd138670d558ad7c25f74841a3b"},
+          {"path":"ghostingmod/cfg/hlsr-personalization.cfg","kind":"file","size":46,"sha256":"d168e332b488ef6cd3a081ac510f8c7be59d62ab16d818f126bcf211e3f69f6f"},
+          {"path":"ghostingmod/gameinfo.txt","kind":"file","size":31,"sha256":"7cf9f14a68c477f11ff1cd8afc4edc591536e65e95e4d5cf1ec7f57a2f430709"},
+          {"path":"hl2.exe","kind":"file","size":2,"sha256":"9b8db510ef42b8ed54a3712636fda55a4f8cfcd5493e20b74ab00cd4f3979f2d"},
+          {"path":"steam_appid.txt","kind":"file","size":8,"sha256":"e5677eaadba80d0c4368354e56634b8acda823e57beebcaeaa681354bc2e63f1"}
+        ],
+        "logs": null,
+        "data": null
+      }
+    },
+    {
+      "scenario": {
+        "name": "ghosting-no-gameinfo-appid",
+        "gameId": "ghosting-renewed",
+        "layout": [
+          {"file":"hl2.exe","utf8":"MZ"},
+          {"file":"ghostingmod/gameinfo.txt","utf8":"\"GameInfo\"\n{\n SteamAppId 243730x\n //SteamAppId 243730\n}\n"},
+          {"file":"steam_appid.txt","hex":"3232300a00"},
+          {"file":"ghostingmod/cfg/config.cfg","utf8":"viewmodel_fov \"84\"\ngh_timer \"1\"\ngh_cross_size \"30\"\n"},
+          {"file":"ghostingmod/cfg/hlsr-personalization.cfg","utf8":"// Original personalization\ngh_cross_size \"8\"\n"}
+        ],
+        "settings": null,
+        "steam": [{"ok":true,"code":null,"steam":{"installPath":"C:\\Steam","steamExe":"C:\\Steam\\steam.exe","pid":4321,"source":"registry"},"app":null}]
+      },
+      "result": {"error":{"code":"STEAM_APP_ID_MISMATCH","message":"В gameinfo.txt не найден SteamAppId","details":{"gameinfo":"<root>/game/ghostingmod/gameinfo.txt"}}},
+      "events": [{"op":"isRunning","gameId":"ghosting-renewed"},{"op":"isBusy"},{"op":"installedOf","gameId":"ghosting-renewed"},{"op":"markStarting","gameId":"ghosting-renewed"},{"op":"describeSteamOnly"},{"op":"cancelStarting","gameId":"ghosting-renewed","reason":"STEAM_APP_ID_MISMATCH: В gameinfo.txt не найден SteamAppId"},{"op":"describeSteamOnly"}],
+      "logs": [{"level":"info","message":"[launch] steam_appid.txt приведён к 243730 (было \"220\")"},{"level":"error","message":"[launch] запуск ghosting-renewed не удался: STEAM_APP_ID_MISMATCH В gameinfo.txt не найден SteamAppId"}],
+      "after": {"crashHint":[null,null,null],"availability":{"ok":true,"code":null,"steam":{"installPath":"C:/Steam","steamExe":"C:/Steam/steam.exe","pid":4321,"source":"registry"},"app":null}},
+      "trees": {
+        "game": [
+          {"path":"ghostingmod","kind":"dir"},
+          {"path":"ghostingmod/cfg","kind":"dir"},
+          {"path":"ghostingmod/cfg/config.cfg","kind":"file","size":51,"sha256":"99ba3d241ca35b99b790f93a55f8bbef8ecccfd138670d558ad7c25f74841a3b"},
+          {"path":"ghostingmod/cfg/hlsr-personalization.cfg","kind":"file","size":46,"sha256":"d168e332b488ef6cd3a081ac510f8c7be59d62ab16d818f126bcf211e3f69f6f"},
+          {"path":"ghostingmod/gameinfo.txt","kind":"file","size":56,"sha256":"c519eb35469d3bc6585f68c6909fe77af19a33891dbaba27c2f2f855a29692c2"},
+          {"path":"hl2.exe","kind":"file","size":2,"sha256":"9b8db510ef42b8ed54a3712636fda55a4f8cfcd5493e20b74ab00cd4f3979f2d"},
+          {"path":"steam_appid.txt","kind":"file","size":8,"sha256":"e5677eaadba80d0c4368354e56634b8acda823e57beebcaeaa681354bc2e63f1"}
+        ],
+        "logs": null,
+        "data": null
+      }
+    },
+    {
+      "scenario": {
+        "name": "ghosting-no-steam",
+        "gameId": "ghosting-renewed",
+        "layout": [
+          {"file":"hl2.exe","utf8":"MZ"},
+          {"file":"ghostingmod/gameinfo.txt","utf8":"\"GameInfo\"\r\n{\r\n\tgame \"Ghosting\"\r\n\tSteamAppId\t243730 // Ghosting\r\n}\r\n"},
+          {"file":"steam_appid.txt","hex":"3232300a00"},
+          {"file":"ghostingmod/cfg/config.cfg","utf8":"viewmodel_fov \"84\"\ngh_timer \"1\"\ngh_cross_size \"30\"\n"},
+          {"file":"ghostingmod/cfg/hlsr-personalization.cfg","utf8":"// Original personalization\ngh_cross_size \"8\"\n"}
+        ],
+        "settings": {
+          "launchArgs": "-novid +map gh_test",
+          "console": true,
+          "excludeCpu0": true,
+          "language": "auto",
+          "liveSplitOverlay": {"enabled":true},
+          "binds": {"+jump":["SPACE","MWHEELDOWN"]},
+          "personalization": {
+            "hudEnabled": true,
+            "hudColor": {"r":255,"g":220,"b":0},
+            "hudAlpha": -1,
+            "hudAffectsCrosshair": false,
+            "hideQuickInfo": false,
+            "crossPreset": "standard",
+            "crossEnabled": false,
+            "crossColor": {"r":0,"g":255,"b":0},
+            "crossAlpha": 255,
+            "crossThickness": 2,
+            "crossSize": 8,
+            "crossGap": 3,
+            "crossOutline": false,
+            "crossOutlineThickness": 1,
+            "crossCircleRadius": 0,
+            "crossDotColor": null,
+            "crossDotSize": 0,
+            "crossTopLine": true,
+            "crossBottomLine": true,
+            "crossLeftLine": true,
+            "crossRightLine": true,
+            "crossHideDefault": true,
+            "extra": {"gh_timer":false}
+          }
+        },
+        "steam": [{"ok":false,"code":"STEAM_NOT_RUNNING","message":"Steam не запущен"}]
+      },
+      "result": {"error":{"code":"STEAM_NOT_RUNNING","message":"Steam не запущен","details":null}},
+      "events": [{"op":"isRunning","gameId":"ghosting-renewed"},{"op":"isBusy"},{"op":"installedOf","gameId":"ghosting-renewed"},{"op":"markStarting","gameId":"ghosting-renewed"},{"op":"describeSteamOnly"},{"op":"describeSteamOnly"},{"op":"cancelStarting","gameId":"ghosting-renewed","reason":"STEAM_NOT_RUNNING: Steam не запущен"},{"op":"describeSteamOnly"}],
+      "logs": [{"level":"error","message":"[launch] запуск ghosting-renewed не удался: STEAM_NOT_RUNNING Steam не запущен"}],
+      "after": {"crashHint":[null,null,null],"availability":{"ok":false,"code":"STEAM_NOT_RUNNING","message":"Steam не запущен"}},
+      "trees": {
+        "game": [
+          {"path":"ghostingmod","kind":"dir"},
+          {"path":"ghostingmod/cfg","kind":"dir"},
+          {"path":"ghostingmod/cfg/config.cfg","kind":"file","size":51,"sha256":"99ba3d241ca35b99b790f93a55f8bbef8ecccfd138670d558ad7c25f74841a3b"},
+          {"path":"ghostingmod/cfg/hlsr-personalization.cfg","kind":"file","size":46,"sha256":"d168e332b488ef6cd3a081ac510f8c7be59d62ab16d818f126bcf211e3f69f6f"},
+          {"path":"ghostingmod/gameinfo.txt","kind":"file","size":68,"sha256":"b3d7e0f4eb403581dbd848aecc1d2415bb01ff789cc40985519005335f2871bd"},
+          {"path":"hl2.exe","kind":"file","size":2,"sha256":"9b8db510ef42b8ed54a3712636fda55a4f8cfcd5493e20b74ab00cd4f3979f2d"},
+          {"path":"steam_appid.txt","kind":"file","size":5,"sha256":"e9f250beddf1a980bc952701af4ab08990b48e835ac34dad6874791b8d1b1b16"}
+        ],
+        "logs": null,
+        "data": null
+      }
+    },
+    {
+      "scenario": {
+        "name": "hl2-language-started",
+        "gameId": "hl2-4260",
+        "layout": [{"file":"hl2.exe","utf8":"MZ"},{"file":"hl2/gameinfo.txt","utf8":"\"GameInfo\"\n{\n  SteamAppId 220\n}\n"},{"file":"hl2/resource/gameui_russian.txt","utf8":"\"lang\" { \"Language\" \"russian\" }\n"},{"file":"hl2/resource/hl2_russian.txt","utf8":"\"lang\" { \"Language\" \"russian\" }\n"}],
+        "settings": {"language":"russian","noaafonts":true},
+        "registry": {"HKCU\\Software\\Valve\\Source":{"Language":"english"}},
+        "steam": [{"ok":true,"code":null,"steam":{"installPath":"C:\\Steam","steamExe":"C:\\Steam\\steam.exe","pid":4321,"source":"registry"},"app":null}],
+        "depot": "ok",
+        "game": {"behaviour":"alive","inspect":null}
+      },
+      "result": {"ok":{"status":"started","process":{"state":"running","pid":5000}}},
+      "events": [
+        {"op":"isRunning","gameId":"hl2-4260"},
+        {"op":"isBusy"},
+        {"op":"installedOf","gameId":"hl2-4260"},
+        {"op":"markStarting","gameId":"hl2-4260"},
+        {"op":"describeSteamOnly"},
+        {"op":"assertOwns","appIds":[220]},
+        {"op":"settings.get","gameId":"hl2-4260"},
+        {"op":"spawn","file":"<root>/game/hl2.exe","args":["-steam","-game","hl2","-insecure","-noaafonts"],"cwd":"<root>/game","detached":true,"windowsHide":false,"env":{"HLSR_OLD":"kept","KEEP_ME":"1","PATH":"C:/Windows/System32;C:/Windows"}},
+        {"op":"settings.get","gameId":"hl2-4260"},
+        {"op":"register","gameId":"hl2-4260","info":{"pid":5000,"executablePath":"<root>/game/hl2.exe","startedAt":"<now>","child":true}},
+        {"op":"describeSteamOnly"}
+      ],
+      "logs": [
+        {"level":"info","message":"[launch] steam_appid.txt приведён к 220"},
+        {"level":"info","message":"[launch] hl2-4260: язык russian подменой 2 файлов (движок подставит english)"},
+        {"level":"warn","message":"[launch] система не отдала данные о PID 5000 — использую данные spawn"},
+        {"level":"info","message":"[launch] hl2-4260 запущена: PID 5000, <root>/game/hl2.exe, аргументы [-steam -game hl2 -insecure -noaafonts], AppID 220, Steam PID 4321"}
+      ],
+      "after": {"crashHint":[null,null,null],"availability":{"ok":true,"code":null,"steam":{"installPath":"C:/Steam","steamExe":"C:/Steam/steam.exe","pid":4321,"source":"registry"},"app":null}},
+      "trees": {
+        "game": [
+          {"path":"hl2","kind":"dir"},
+          {"path":"hl2.exe","kind":"file","size":2,"sha256":"9b8db510ef42b8ed54a3712636fda55a4f8cfcd5493e20b74ab00cd4f3979f2d"},
+          {"path":"hl2/cfg","kind":"dir"},
+          {"path":"hl2/cfg/autoexec.cfg","kind":"file","size":20,"sha256":"f508435420195dc35db6264d3a53c278d7c6833638cdc3f8eee549f29b8eebb3"},
+          {"path":"hl2/cfg/hlsr-binds.cfg","kind":"file","size":165,"sha256":"7f9869b409ba647579ffe8a3d464f7d2a6ab6ab2c196a8c79dd9fbd54ecefc03"},
+          {"path":"hl2/custom","kind":"dir"},
+          {"path":"hl2/custom/hlsr-language","kind":"dir"},
+          {"path":"hl2/custom/hlsr-language/README.txt","kind":"file","size":502,"sha256":"7c6f4a3df7b3452f0012fab562de80fc03a2583076d9b551bec0b12495c27923"},
+          {"path":"hl2/custom/hlsr-language/resource","kind":"dir"},
+          {"path":"hl2/custom/hlsr-language/resource/gameui_english.txt","kind":"file","size":32,"sha256":"9a68bdc75cd554538ab4cdc9976ef9d02c072ce73a26a5aef67deee818c2de4e"},
+          {"path":"hl2/custom/hlsr-language/resource/hl2_english.txt","kind":"file","size":32,"sha256":"9a68bdc75cd554538ab4cdc9976ef9d02c072ce73a26a5aef67deee818c2de4e"},
+          {"path":"hl2/gameinfo.txt","kind":"file","size":32,"sha256":"2c51a3c8edbb1e006dde4213dc66cae548d8ccd1d92bb77504c43cf6f74ebe4c"},
+          {"path":"hl2/resource","kind":"dir"},
+          {"path":"hl2/resource/gameui_russian.txt","kind":"file","size":32,"sha256":"9a68bdc75cd554538ab4cdc9976ef9d02c072ce73a26a5aef67deee818c2de4e"},
+          {"path":"hl2/resource/hl2_russian.txt","kind":"file","size":32,"sha256":"9a68bdc75cd554538ab4cdc9976ef9d02c072ce73a26a5aef67deee818c2de4e"},
+          {"path":"steam_appid.txt","kind":"file","size":4,"sha256":"cbdd19a3980a0d492694d4805af33ac243c847017d8a73a1c02ed1d88c45cb3e"}
+        ],
+        "logs": null,
+        "data": null
+      }
+    },
+    {
+      "scenario": {
+        "name": "hl2-not-owned",
+        "gameId": "hl2-4260",
+        "layout": [{"file":"hl2.exe","utf8":"MZ"},{"file":"hl2/gameinfo.txt","utf8":"\"GameInfo\"\n{\n  SteamAppId 220\n}\n"},{"file":"hl2/resource/gameui_russian.txt","utf8":"\"lang\" { \"Language\" \"russian\" }\n"},{"file":"hl2/resource/hl2_russian.txt","utf8":"\"lang\" { \"Language\" \"russian\" }\n"}],
+        "settings": null,
+        "steam": [{"ok":true,"code":null,"steam":{"installPath":"C:\\Steam","steamExe":"C:\\Steam\\steam.exe","pid":4321,"source":"registry"},"app":null}],
+        "depot": {"code":"STEAM_APP_NOT_OWNED","message":"На аккаунте Steam нет Half-Life 2"}
+      },
+      "result": {"error":{"code":"STEAM_APP_NOT_OWNED","message":"На аккаунте Steam нет Half-Life 2","details":null}},
+      "events": [{"op":"isRunning","gameId":"hl2-4260"},{"op":"isBusy"},{"op":"installedOf","gameId":"hl2-4260"},{"op":"markStarting","gameId":"hl2-4260"},{"op":"describeSteamOnly"},{"op":"assertOwns","appIds":[220]},{"op":"cancelStarting","gameId":"hl2-4260","reason":"STEAM_APP_NOT_OWNED: На аккаунте Steam нет Half-Life 2"},{"op":"describeSteamOnly"}],
+      "logs": [{"level":"error","message":"[launch] запуск hl2-4260 не удался: STEAM_APP_NOT_OWNED На аккаунте Steam нет Half-Life 2"}],
+      "after": {"crashHint":[null,null,null],"availability":{"ok":true,"code":null,"steam":{"installPath":"C:/Steam","steamExe":"C:/Steam/steam.exe","pid":4321,"source":"registry"},"app":null}},
+      "trees": {
+        "game": [
+          {"path":"hl2","kind":"dir"},
+          {"path":"hl2.exe","kind":"file","size":2,"sha256":"9b8db510ef42b8ed54a3712636fda55a4f8cfcd5493e20b74ab00cd4f3979f2d"},
+          {"path":"hl2/gameinfo.txt","kind":"file","size":32,"sha256":"2c51a3c8edbb1e006dde4213dc66cae548d8ccd1d92bb77504c43cf6f74ebe4c"},
+          {"path":"hl2/resource","kind":"dir"},
+          {"path":"hl2/resource/gameui_russian.txt","kind":"file","size":32,"sha256":"9a68bdc75cd554538ab4cdc9976ef9d02c072ce73a26a5aef67deee818c2de4e"},
+          {"path":"hl2/resource/hl2_russian.txt","kind":"file","size":32,"sha256":"9a68bdc75cd554538ab4cdc9976ef9d02c072ce73a26a5aef67deee818c2de4e"}
+        ],
+        "logs": null,
+        "data": null
+      }
+    },
+    {
+      "scenario": {
+        "name": "hl2-uncertain-ownership-spawn-error",
+        "gameId": "hl2-4260",
+        "layout": [{"file":"hl2.exe","utf8":"MZ"},{"file":"hl2/gameinfo.txt","utf8":"\"GameInfo\"\n{\n  SteamAppId 220\n}\n"},{"file":"hl2/resource/gameui_russian.txt","utf8":"\"lang\" { \"Language\" \"russian\" }\n"},{"file":"hl2/resource/hl2_russian.txt","utf8":"\"lang\" { \"Language\" \"russian\" }\n"}],
+        "settings": null,
+        "steam": [{"ok":true,"code":null,"steam":{"installPath":"C:\\Steam","steamExe":"C:\\Steam\\steam.exe","pid":4321,"source":"registry"},"app":null}],
+        "depot": {"code":"STEAM_TIMEOUT","message":"Steam не ответил"},
+        "game": {"behaviour":{"error":"spawn C:\\game\\hl2.exe ENOENT"}}
+      },
+      "result": {"error":{"code":"LAUNCH_FAILED","message":"Процесс игры не запустился: spawn C:/game/hl2.exe ENOENT","details":null}},
+      "events": [
+        {"op":"isRunning","gameId":"hl2-4260"},
+        {"op":"isBusy"},
+        {"op":"installedOf","gameId":"hl2-4260"},
+        {"op":"markStarting","gameId":"hl2-4260"},
+        {"op":"describeSteamOnly"},
+        {"op":"assertOwns","appIds":[220]},
+        {"op":"settings.get","gameId":"hl2-4260"},
+        {"op":"spawn","file":"<root>/game/hl2.exe","args":["-steam","-game","hl2","-insecure"],"cwd":"<root>/game","detached":true,"windowsHide":false,"env":{"HLSR_OLD":"kept","KEEP_ME":"1","PATH":"C:/Windows/System32;C:/Windows"}},
+        {"op":"describeSteamOnly"},
+        {"op":"cancelStarting","gameId":"hl2-4260","reason":"LAUNCH_FAILED: Процесс игры не запустился: spawn C:/game/hl2.exe ENOENT"},
+        {"op":"describeSteamOnly"}
+      ],
+      "logs": [{"level":"warn","message":"[launch] hl2-4260: лицензию подтвердить не удалось (STEAM_TIMEOUT: Steam не ответил) — запуск продолжается, решение за игрой"},{"level":"info","message":"[launch] steam_appid.txt приведён к 220"},{"level":"error","message":"[launch] запуск hl2-4260 не удался: LAUNCH_FAILED Процесс игры не запустился: spawn C:/game/hl2.exe ENOENT"}],
+      "after": {"crashHint":[null,null,null],"availability":{"ok":true,"code":null,"steam":{"installPath":"C:/Steam","steamExe":"C:/Steam/steam.exe","pid":4321,"source":"registry"},"app":null}},
+      "trees": {
+        "game": [
+          {"path":"hl2","kind":"dir"},
+          {"path":"hl2.exe","kind":"file","size":2,"sha256":"9b8db510ef42b8ed54a3712636fda55a4f8cfcd5493e20b74ab00cd4f3979f2d"},
+          {"path":"hl2/cfg","kind":"dir"},
+          {"path":"hl2/cfg/autoexec.cfg","kind":"file","size":20,"sha256":"f508435420195dc35db6264d3a53c278d7c6833638cdc3f8eee549f29b8eebb3"},
+          {"path":"hl2/cfg/hlsr-binds.cfg","kind":"file","size":165,"sha256":"7f9869b409ba647579ffe8a3d464f7d2a6ab6ab2c196a8c79dd9fbd54ecefc03"},
+          {"path":"hl2/gameinfo.txt","kind":"file","size":32,"sha256":"2c51a3c8edbb1e006dde4213dc66cae548d8ccd1d92bb77504c43cf6f74ebe4c"},
+          {"path":"hl2/resource","kind":"dir"},
+          {"path":"hl2/resource/gameui_russian.txt","kind":"file","size":32,"sha256":"9a68bdc75cd554538ab4cdc9976ef9d02c072ce73a26a5aef67deee818c2de4e"},
+          {"path":"hl2/resource/hl2_russian.txt","kind":"file","size":32,"sha256":"9a68bdc75cd554538ab4cdc9976ef9d02c072ce73a26a5aef67deee818c2de4e"},
+          {"path":"steam_appid.txt","kind":"file","size":4,"sha256":"cbdd19a3980a0d492694d4805af33ac243c847017d8a73a1c02ed1d88c45cb3e"}
+        ],
+        "logs": null,
+        "data": null
+      }
+    },
+    {
+      "scenario": {
+        "name": "hl2-other-file",
+        "gameId": "hl2-2707",
+        "layout": [{"file":"hl2.exe","utf8":"MZ"},{"file":"hl2/gameinfo.txt","utf8":"\"GameInfo\"\n{\n  SteamAppId 220\n}\n"},{"file":"hl2/resource/gameui_russian.txt","utf8":"\"lang\" { \"Language\" \"russian\" }\n"},{"file":"hl2/resource/hl2_russian.txt","utf8":"\"lang\" { \"Language\" \"russian\" }\n"}],
+        "settings": null,
+        "steam": [{"ok":true,"code":null,"steam":{"installPath":"C:\\Steam","steamExe":"C:\\Steam\\steam.exe","pid":4321,"source":"registry"},"app":null}],
+        "depot": "ok",
+        "game": {"behaviour":"alive","inspect":{"executable":"other/hl2.exe","startedAt":"2026-10-16T12:00:01.250Z"}}
+      },
+      "result": {"error":{"code":"LAUNCH_FAILED","message":"PID 5000 принадлежит другому файлу: <root>/game/other/hl2.exe","details":null}},
+      "events": [
+        {"op":"isRunning","gameId":"hl2-2707"},
+        {"op":"isBusy"},
+        {"op":"installedOf","gameId":"hl2-2707"},
+        {"op":"markStarting","gameId":"hl2-2707"},
+        {"op":"describeSteamOnly"},
+        {"op":"assertOwns","appIds":[220]},
+        {"op":"settings.get","gameId":"hl2-2707"},
+        {"op":"spawn","file":"<root>/game/hl2.exe","args":["-steam","-game","hl2","-insecure"],"cwd":"<root>/game","detached":true,"windowsHide":false,"env":{"HLSR_OLD":"kept","KEEP_ME":"1","PATH":"C:/Windows/System32;C:/Windows"}},
+        {"op":"describeSteamOnly"},
+        {"op":"cancelStarting","gameId":"hl2-2707","reason":"LAUNCH_FAILED: PID 5000 принадлежит другому файлу: <root>/game/other/hl2.exe"},
+        {"op":"describeSteamOnly"}
+      ],
+      "logs": [{"level":"info","message":"[launch] steam_appid.txt приведён к 220"},{"level":"error","message":"[launch] запуск hl2-2707 не удался: LAUNCH_FAILED PID 5000 принадлежит другому файлу: <root>/game/other/hl2.exe"}],
+      "after": {"crashHint":[null,null,null],"availability":{"ok":true,"code":null,"steam":{"installPath":"C:/Steam","steamExe":"C:/Steam/steam.exe","pid":4321,"source":"registry"},"app":null}},
+      "trees": {
+        "game": [
+          {"path":"hl2","kind":"dir"},
+          {"path":"hl2.exe","kind":"file","size":2,"sha256":"9b8db510ef42b8ed54a3712636fda55a4f8cfcd5493e20b74ab00cd4f3979f2d"},
+          {"path":"hl2/cfg","kind":"dir"},
+          {"path":"hl2/cfg/autoexec.cfg","kind":"file","size":20,"sha256":"f508435420195dc35db6264d3a53c278d7c6833638cdc3f8eee549f29b8eebb3"},
+          {"path":"hl2/cfg/hlsr-binds.cfg","kind":"file","size":165,"sha256":"7f9869b409ba647579ffe8a3d464f7d2a6ab6ab2c196a8c79dd9fbd54ecefc03"},
+          {"path":"hl2/gameinfo.txt","kind":"file","size":32,"sha256":"2c51a3c8edbb1e006dde4213dc66cae548d8ccd1d92bb77504c43cf6f74ebe4c"},
+          {"path":"hl2/resource","kind":"dir"},
+          {"path":"hl2/resource/gameui_russian.txt","kind":"file","size":32,"sha256":"9a68bdc75cd554538ab4cdc9976ef9d02c072ce73a26a5aef67deee818c2de4e"},
+          {"path":"hl2/resource/hl2_russian.txt","kind":"file","size":32,"sha256":"9a68bdc75cd554538ab4cdc9976ef9d02c072ce73a26a5aef67deee818c2de4e"},
+          {"path":"steam_appid.txt","kind":"file","size":4,"sha256":"cbdd19a3980a0d492694d4805af33ac243c847017d8a73a1c02ed1d88c45cb3e"}
+        ],
+        "logs": null,
+        "data": null
+      }
+    },
+    {
+      "scenario": {
+        "name": "hl2-gone",
+        "gameId": "hl2-5288",
+        "layout": [{"file":"hl2.exe","utf8":"MZ"},{"file":"hl2/gameinfo.txt","utf8":"\"GameInfo\"\n{\n  SteamAppId 220\n}\n"},{"file":"hl2/resource/gameui_russian.txt","utf8":"\"lang\" { \"Language\" \"russian\" }\n"},{"file":"hl2/resource/hl2_russian.txt","utf8":"\"lang\" { \"Language\" \"russian\" }\n"}],
+        "settings": null,
+        "steam": [{"ok":true,"code":null,"steam":{"installPath":"C:\\Steam","steamExe":"C:\\Steam\\steam.exe","pid":4321,"source":"registry"},"app":null}],
+        "depot": "ok",
+        "game": {"behaviour":"alive","alive":false}
+      },
+      "result": {"error":{"code":"LAUNCH_FAILED","message":"Процесс игры не найден после запуска","details":null}},
+      "events": [
+        {"op":"isRunning","gameId":"hl2-5288"},
+        {"op":"isBusy"},
+        {"op":"installedOf","gameId":"hl2-5288"},
+        {"op":"markStarting","gameId":"hl2-5288"},
+        {"op":"describeSteamOnly"},
+        {"op":"assertOwns","appIds":[220]},
+        {"op":"settings.get","gameId":"hl2-5288"},
+        {"op":"spawn","file":"<root>/game/hl2.exe","args":["-steam","-game","hl2","-insecure"],"cwd":"<root>/game","detached":true,"windowsHide":false,"env":{"HLSR_OLD":"kept","KEEP_ME":"1","PATH":"C:/Windows/System32;C:/Windows"}},
+        {"op":"describeSteamOnly"},
+        {"op":"cancelStarting","gameId":"hl2-5288","reason":"LAUNCH_FAILED: Процесс игры не найден после запуска"},
+        {"op":"describeSteamOnly"}
+      ],
+      "logs": [{"level":"info","message":"[launch] steam_appid.txt приведён к 220"},{"level":"error","message":"[launch] запуск hl2-5288 не удался: LAUNCH_FAILED Процесс игры не найден после запуска"}],
+      "after": {"crashHint":[null,null,null],"availability":{"ok":true,"code":null,"steam":{"installPath":"C:/Steam","steamExe":"C:/Steam/steam.exe","pid":4321,"source":"registry"},"app":null}},
+      "trees": {
+        "game": [
+          {"path":"hl2","kind":"dir"},
+          {"path":"hl2.exe","kind":"file","size":2,"sha256":"9b8db510ef42b8ed54a3712636fda55a4f8cfcd5493e20b74ab00cd4f3979f2d"},
+          {"path":"hl2/cfg","kind":"dir"},
+          {"path":"hl2/cfg/autoexec.cfg","kind":"file","size":20,"sha256":"f508435420195dc35db6264d3a53c278d7c6833638cdc3f8eee549f29b8eebb3"},
+          {"path":"hl2/cfg/hlsr-binds.cfg","kind":"file","size":165,"sha256":"7f9869b409ba647579ffe8a3d464f7d2a6ab6ab2c196a8c79dd9fbd54ecefc03"},
+          {"path":"hl2/gameinfo.txt","kind":"file","size":32,"sha256":"2c51a3c8edbb1e006dde4213dc66cae548d8ccd1d92bb77504c43cf6f74ebe4c"},
+          {"path":"hl2/resource","kind":"dir"},
+          {"path":"hl2/resource/gameui_russian.txt","kind":"file","size":32,"sha256":"9a68bdc75cd554538ab4cdc9976ef9d02c072ce73a26a5aef67deee818c2de4e"},
+          {"path":"hl2/resource/hl2_russian.txt","kind":"file","size":32,"sha256":"9a68bdc75cd554538ab4cdc9976ef9d02c072ce73a26a5aef67deee818c2de4e"},
+          {"path":"steam_appid.txt","kind":"file","size":4,"sha256":"cbdd19a3980a0d492694d4805af33ac243c847017d8a73a1c02ed1d88c45cb3e"}
+        ],
+        "logs": null,
+        "data": null
+      }
+    },
+    {
+      "scenario": {
+        "name": "hl2-spawn-throws",
+        "gameId": "hl2-4260",
+        "layout": [{"file":"hl2.exe","utf8":"MZ"},{"file":"hl2/gameinfo.txt","utf8":"\"GameInfo\"\n{\n  SteamAppId 220\n}\n"},{"file":"hl2/resource/gameui_russian.txt","utf8":"\"lang\" { \"Language\" \"russian\" }\n"},{"file":"hl2/resource/hl2_russian.txt","utf8":"\"lang\" { \"Language\" \"russian\" }\n"}],
+        "settings": {},
+        "steam": [{"ok":true,"code":null,"steam":{"installPath":"C:\\Steam","steamExe":"C:\\Steam\\steam.exe","pid":4321,"source":"registry"},"app":null},{"ok":false,"code":"STEAM_ELEVATED","message":"Steam запущен от имени администратора"}],
+        "depot": "ok",
+        "game": {"behaviour":{"throw":"spawn EFTYPE"}}
+      },
+      "result": {"error":{"code":"STEAM_ELEVATED","message":"Steam запущен от имени администратора","details":{"originalCode":"LAUNCH_FAILED","originalMessage":"spawn EFTYPE"}}},
+      "events": [
+        {"op":"isRunning","gameId":"hl2-4260"},
+        {"op":"isBusy"},
+        {"op":"installedOf","gameId":"hl2-4260"},
+        {"op":"markStarting","gameId":"hl2-4260"},
+        {"op":"describeSteamOnly"},
+        {"op":"assertOwns","appIds":[220]},
+        {"op":"settings.get","gameId":"hl2-4260"},
+        {"op":"spawn","file":"<root>/game/hl2.exe","args":["-steam","-game","hl2","-insecure"],"cwd":"<root>/game","detached":true,"windowsHide":false,"env":{"HLSR_OLD":"kept","KEEP_ME":"1","PATH":"C:/Windows/System32;C:/Windows"}},
+        {"op":"describeSteamOnly"},
+        {"op":"cancelStarting","gameId":"hl2-4260","reason":"STEAM_ELEVATED: Steam запущен от имени администратора"},
+        {"op":"describeSteamOnly"}
+      ],
+      "logs": [{"level":"info","message":"[launch] steam_appid.txt приведён к 220"},{"level":"info","message":"[launch] причина уточнена: LAUNCH_FAILED -> STEAM_ELEVATED (Steam запущен от имени администратора)"},{"level":"error","message":"[launch] запуск hl2-4260 не удался: STEAM_ELEVATED Steam запущен от имени администратора"}],
+      "after": {"crashHint":[null,null,null],"availability":{"ok":false,"code":"STEAM_ELEVATED","message":"Steam запущен от имени администратора"}},
+      "trees": {
+        "game": [
+          {"path":"hl2","kind":"dir"},
+          {"path":"hl2.exe","kind":"file","size":2,"sha256":"9b8db510ef42b8ed54a3712636fda55a4f8cfcd5493e20b74ab00cd4f3979f2d"},
+          {"path":"hl2/cfg","kind":"dir"},
+          {"path":"hl2/cfg/autoexec.cfg","kind":"file","size":20,"sha256":"f508435420195dc35db6264d3a53c278d7c6833638cdc3f8eee549f29b8eebb3"},
+          {"path":"hl2/cfg/hlsr-binds.cfg","kind":"file","size":165,"sha256":"7f9869b409ba647579ffe8a3d464f7d2a6ab6ab2c196a8c79dd9fbd54ecefc03"},
+          {"path":"hl2/gameinfo.txt","kind":"file","size":32,"sha256":"2c51a3c8edbb1e006dde4213dc66cae548d8ccd1d92bb77504c43cf6f74ebe4c"},
+          {"path":"hl2/resource","kind":"dir"},
+          {"path":"hl2/resource/gameui_russian.txt","kind":"file","size":32,"sha256":"9a68bdc75cd554538ab4cdc9976ef9d02c072ce73a26a5aef67deee818c2de4e"},
+          {"path":"hl2/resource/hl2_russian.txt","kind":"file","size":32,"sha256":"9a68bdc75cd554538ab4cdc9976ef9d02c072ce73a26a5aef67deee818c2de4e"},
+          {"path":"steam_appid.txt","kind":"file","size":4,"sha256":"cbdd19a3980a0d492694d4805af33ac243c847017d8a73a1c02ed1d88c45cb3e"}
+        ],
+        "logs": null,
+        "data": null
+      }
+    },
+    {
+      "scenario": {
+        "name": "hl2-no-exe",
+        "gameId": "hl2-4260",
+        "layout": [{"file":"hl2/gameinfo.txt","utf8":"\"GameInfo\"\n{\n  SteamAppId 220\n}\n"},{"file":"hl2/resource/gameui_russian.txt","utf8":"\"lang\" { \"Language\" \"russian\" }\n"},{"file":"hl2/resource/hl2_russian.txt","utf8":"\"lang\" { \"Language\" \"russian\" }\n"}],
+        "settings": null,
+        "steam": [{"ok":true,"code":null,"steam":{"installPath":"C:\\Steam","steamExe":"C:\\Steam\\steam.exe","pid":4321,"source":"registry"},"app":null}],
+        "depot": "ok"
+      },
+      "result": {"error":{"code":"GAME_EXECUTABLE_MISSING","message":"В установленной сборке нет hl2.exe","details":{"executable":"<root>/game/hl2.exe"}}},
+      "events": [{"op":"isRunning","gameId":"hl2-4260"},{"op":"isBusy"},{"op":"installedOf","gameId":"hl2-4260"},{"op":"markStarting","gameId":"hl2-4260"},{"op":"describeSteamOnly"},{"op":"assertOwns","appIds":[220]},{"op":"cancelStarting","gameId":"hl2-4260","reason":"GAME_EXECUTABLE_MISSING: В установленной сборке нет hl2.exe"},{"op":"describeSteamOnly"}],
+      "logs": [{"level":"error","message":"[launch] запуск hl2-4260 не удался: GAME_EXECUTABLE_MISSING В установленной сборке нет hl2.exe"}],
+      "after": {"crashHint":[null,null,null],"availability":{"ok":true,"code":null,"steam":{"installPath":"C:/Steam","steamExe":"C:/Steam/steam.exe","pid":4321,"source":"registry"},"app":null}},
+      "trees": {
+        "game": [
+          {"path":"hl2","kind":"dir"},
+          {"path":"hl2/gameinfo.txt","kind":"file","size":32,"sha256":"2c51a3c8edbb1e006dde4213dc66cae548d8ccd1d92bb77504c43cf6f74ebe4c"},
+          {"path":"hl2/resource","kind":"dir"},
+          {"path":"hl2/resource/gameui_russian.txt","kind":"file","size":32,"sha256":"9a68bdc75cd554538ab4cdc9976ef9d02c072ce73a26a5aef67deee818c2de4e"},
+          {"path":"hl2/resource/hl2_russian.txt","kind":"file","size":32,"sha256":"9a68bdc75cd554538ab4cdc9976ef9d02c072ce73a26a5aef67deee818c2de4e"}
+        ],
+        "logs": null,
+        "data": null
+      }
+    },
+    {
+      "scenario": {
+        "name": "hl2-no-gameinfo",
+        "gameId": "hl2-4260",
+        "layout": [{"file":"hl2.exe","utf8":"MZ"},{"file":"hl2/resource/gameui_russian.txt","utf8":"\"lang\" { \"Language\" \"russian\" }\n"},{"file":"hl2/resource/hl2_russian.txt","utf8":"\"lang\" { \"Language\" \"russian\" }\n"}],
+        "settings": null,
+        "steam": [{"ok":true,"code":null,"steam":{"installPath":"C:\\Steam","steamExe":"C:\\Steam\\steam.exe","pid":4321,"source":"registry"},"app":null}],
+        "depot": "ok"
+      },
+      "result": {"error":{"code":"GAME_DIRECTORY_MISSING","message":"В каталоге мода нет gameinfo.txt","details":{"gameinfo":"<root>/game/hl2/gameinfo.txt"}}},
+      "events": [{"op":"isRunning","gameId":"hl2-4260"},{"op":"isBusy"},{"op":"installedOf","gameId":"hl2-4260"},{"op":"markStarting","gameId":"hl2-4260"},{"op":"describeSteamOnly"},{"op":"assertOwns","appIds":[220]},{"op":"cancelStarting","gameId":"hl2-4260","reason":"GAME_DIRECTORY_MISSING: В каталоге мода нет gameinfo.txt"},{"op":"describeSteamOnly"}],
+      "logs": [{"level":"error","message":"[launch] запуск hl2-4260 не удался: GAME_DIRECTORY_MISSING В каталоге мода нет gameinfo.txt"}],
+      "after": {"crashHint":[null,null,null],"availability":{"ok":true,"code":null,"steam":{"installPath":"C:/Steam","steamExe":"C:/Steam/steam.exe","pid":4321,"source":"registry"},"app":null}},
+      "trees": {
+        "game": [
+          {"path":"hl2","kind":"dir"},
+          {"path":"hl2.exe","kind":"file","size":2,"sha256":"9b8db510ef42b8ed54a3712636fda55a4f8cfcd5493e20b74ab00cd4f3979f2d"},
+          {"path":"hl2/resource","kind":"dir"},
+          {"path":"hl2/resource/gameui_russian.txt","kind":"file","size":32,"sha256":"9a68bdc75cd554538ab4cdc9976ef9d02c072ce73a26a5aef67deee818c2de4e"},
+          {"path":"hl2/resource/hl2_russian.txt","kind":"file","size":32,"sha256":"9a68bdc75cd554538ab4cdc9976ef9d02c072ce73a26a5aef67deee818c2de4e"}
+        ],
+        "logs": null,
+        "data": null
+      }
+    },
+    {
+      "scenario": {"name":"hl2-gamedir-file","gameId":"hl2-4260","layout":[{"file":"hl2.exe","utf8":"MZ"},{"file":"hl2","utf8":"not a folder"}],"settings":null,"steam":[{"ok":true,"code":null,"steam":{"installPath":"C:\\Steam","steamExe":"C:\\Steam\\steam.exe","pid":4321,"source":"registry"},"app":null}],"depot":"ok"},
+      "result": {"error":{"code":"GAME_DIRECTORY_MISSING","message":"В установленной сборке нет каталога hl2","details":{"gameDirectory":"<root>/game/hl2"}}},
+      "events": [{"op":"isRunning","gameId":"hl2-4260"},{"op":"isBusy"},{"op":"installedOf","gameId":"hl2-4260"},{"op":"markStarting","gameId":"hl2-4260"},{"op":"describeSteamOnly"},{"op":"assertOwns","appIds":[220]},{"op":"cancelStarting","gameId":"hl2-4260","reason":"GAME_DIRECTORY_MISSING: В установленной сборке нет каталога hl2"},{"op":"describeSteamOnly"}],
+      "logs": [{"level":"error","message":"[launch] запуск hl2-4260 не удался: GAME_DIRECTORY_MISSING В установленной сборке нет каталога hl2"}],
+      "after": {"crashHint":[null,null,null],"availability":{"ok":true,"code":null,"steam":{"installPath":"C:/Steam","steamExe":"C:/Steam/steam.exe","pid":4321,"source":"registry"},"app":null}},
+      "trees": {"game":[{"path":"hl2","kind":"file","size":12,"sha256":"75867a6093f3b3ed31db687b99c2927f953d432ca8170cddfe0d74b1a915b5b0"},{"path":"hl2.exe","kind":"file","size":2,"sha256":"9b8db510ef42b8ed54a3712636fda55a4f8cfcd5493e20b74ab00cd4f3979f2d"}],"logs":null,"data":null}
+    },
+    {
+      "scenario": {
+        "name": "hl2-metadata",
+        "gameId": "hl2-4260",
+        "layout": [{"file":"hl2.exe","utf8":"MZ"},{"file":"hl2/gameinfo.txt","utf8":"\"GameInfo\"\n{\n  SteamAppId 220\n}\n"},{"file":"hl2/resource/gameui_russian.txt","utf8":"\"lang\" { \"Language\" \"russian\" }\n"},{"file":"hl2/resource/hl2_russian.txt","utf8":"\"lang\" { \"Language\" \"russian\" }\n"}],
+        "installed": {"buildMetadata":{"schemaVersion":1,"buildId":"hl2-4260"}},
+        "settings": null,
+        "steam": [{"ok":true,"code":null,"steam":{"installPath":"C:\\Steam","steamExe":"C:\\Steam\\steam.exe","pid":4321,"source":"registry"},"app":null}],
+        "depot": "ok"
+      },
+      "result": {"error":{"code":"BUILD_METADATA_MISSING","message":"Сборка не подтверждена метаданными: BUILD_METADATA_MISSING","details":{"relativePath":"ghostingmod/hlsr-build.json"}}},
+      "events": [{"op":"isRunning","gameId":"hl2-4260"},{"op":"isBusy"},{"op":"installedOf","gameId":"hl2-4260"},{"op":"markStarting","gameId":"hl2-4260"},{"op":"cancelStarting","gameId":"hl2-4260","reason":"BUILD_METADATA_MISSING: Сборка не подтверждена метаданными: BUILD_METADATA_MISSING"},{"op":"describeSteamOnly"}],
+      "logs": [{"level":"error","message":"[launch] запуск hl2-4260 не удался: BUILD_METADATA_MISSING Сборка не подтверждена метаданными: BUILD_METADATA_MISSING"}],
+      "after": {"crashHint":[null,null,null],"availability":{"ok":true,"code":null,"steam":{"installPath":"C:/Steam","steamExe":"C:/Steam/steam.exe","pid":4321,"source":"registry"},"app":null}},
+      "trees": {
+        "game": [
+          {"path":"hl2","kind":"dir"},
+          {"path":"hl2.exe","kind":"file","size":2,"sha256":"9b8db510ef42b8ed54a3712636fda55a4f8cfcd5493e20b74ab00cd4f3979f2d"},
+          {"path":"hl2/gameinfo.txt","kind":"file","size":32,"sha256":"2c51a3c8edbb1e006dde4213dc66cae548d8ccd1d92bb77504c43cf6f74ebe4c"},
+          {"path":"hl2/resource","kind":"dir"},
+          {"path":"hl2/resource/gameui_russian.txt","kind":"file","size":32,"sha256":"9a68bdc75cd554538ab4cdc9976ef9d02c072ce73a26a5aef67deee818c2de4e"},
+          {"path":"hl2/resource/hl2_russian.txt","kind":"file","size":32,"sha256":"9a68bdc75cd554538ab4cdc9976ef9d02c072ce73a26a5aef67deee818c2de4e"}
+        ],
+        "logs": null,
+        "data": null
+      }
+    },
+    {
+      "scenario": {
+        "name": "already-running",
+        "gameId": "hl2-4260",
+        "layout": [{"file":"hl2.exe","utf8":"MZ"},{"file":"hl2/gameinfo.txt","utf8":"\"GameInfo\"\n{\n  SteamAppId 220\n}\n"},{"file":"hl2/resource/gameui_russian.txt","utf8":"\"lang\" { \"Language\" \"russian\" }\n"},{"file":"hl2/resource/hl2_russian.txt","utf8":"\"lang\" { \"Language\" \"russian\" }\n"}],
+        "settings": null,
+        "steam": [{"ok":true,"code":null,"steam":{"installPath":"C:\\Steam","steamExe":"C:\\Steam\\steam.exe","pid":4321,"source":"registry"},"app":null}],
+        "running": true
+      },
+      "result": {"ok":{"status":"already-running","process":{"state":"running","pid":1}}},
+      "events": [{"op":"isRunning","gameId":"hl2-4260"},{"op":"getProcessState","gameId":"hl2-4260"},{"op":"describeSteamOnly"}],
+      "logs": [],
+      "after": {"crashHint":[null,null,null],"availability":{"ok":true,"code":null,"steam":{"installPath":"C:/Steam","steamExe":"C:/Steam/steam.exe","pid":4321,"source":"registry"},"app":null}},
+      "trees": {
+        "game": [
+          {"path":"hl2","kind":"dir"},
+          {"path":"hl2.exe","kind":"file","size":2,"sha256":"9b8db510ef42b8ed54a3712636fda55a4f8cfcd5493e20b74ab00cd4f3979f2d"},
+          {"path":"hl2/gameinfo.txt","kind":"file","size":32,"sha256":"2c51a3c8edbb1e006dde4213dc66cae548d8ccd1d92bb77504c43cf6f74ebe4c"},
+          {"path":"hl2/resource","kind":"dir"},
+          {"path":"hl2/resource/gameui_russian.txt","kind":"file","size":32,"sha256":"9a68bdc75cd554538ab4cdc9976ef9d02c072ce73a26a5aef67deee818c2de4e"},
+          {"path":"hl2/resource/hl2_russian.txt","kind":"file","size":32,"sha256":"9a68bdc75cd554538ab4cdc9976ef9d02c072ce73a26a5aef67deee818c2de4e"}
+        ],
+        "logs": null,
+        "data": null
+      }
+    },
+    {
+      "scenario": {
+        "name": "busy",
+        "gameId": "hl2-4260",
+        "layout": [{"file":"hl2.exe","utf8":"MZ"},{"file":"hl2/gameinfo.txt","utf8":"\"GameInfo\"\n{\n  SteamAppId 220\n}\n"},{"file":"hl2/resource/gameui_russian.txt","utf8":"\"lang\" { \"Language\" \"russian\" }\n"},{"file":"hl2/resource/hl2_russian.txt","utf8":"\"lang\" { \"Language\" \"russian\" }\n"}],
+        "settings": null,
+        "steam": [{"ok":true,"code":null,"steam":{"installPath":"C:\\Steam","steamExe":"C:\\Steam\\steam.exe","pid":4321,"source":"registry"},"app":null}],
+        "busy": true
+      },
+      "result": {"error":{"code":"ALREADY_RUNNING","message":"Дождитесь завершения текущей операции","details":{"gameId":"hl2-4260"}}},
+      "events": [{"op":"isRunning","gameId":"hl2-4260"},{"op":"isBusy"},{"op":"describeSteamOnly"}],
+      "logs": [],
+      "after": {"crashHint":[null,null,null],"availability":{"ok":true,"code":null,"steam":{"installPath":"C:/Steam","steamExe":"C:/Steam/steam.exe","pid":4321,"source":"registry"},"app":null}},
+      "trees": {
+        "game": [
+          {"path":"hl2","kind":"dir"},
+          {"path":"hl2.exe","kind":"file","size":2,"sha256":"9b8db510ef42b8ed54a3712636fda55a4f8cfcd5493e20b74ab00cd4f3979f2d"},
+          {"path":"hl2/gameinfo.txt","kind":"file","size":32,"sha256":"2c51a3c8edbb1e006dde4213dc66cae548d8ccd1d92bb77504c43cf6f74ebe4c"},
+          {"path":"hl2/resource","kind":"dir"},
+          {"path":"hl2/resource/gameui_russian.txt","kind":"file","size":32,"sha256":"9a68bdc75cd554538ab4cdc9976ef9d02c072ce73a26a5aef67deee818c2de4e"},
+          {"path":"hl2/resource/hl2_russian.txt","kind":"file","size":32,"sha256":"9a68bdc75cd554538ab4cdc9976ef9d02c072ce73a26a5aef67deee818c2de4e"}
+        ],
+        "logs": null,
+        "data": null
+      }
+    },
+    {
+      "scenario": {"name":"unknown-game","gameId":"hl3","layout":[],"settings":null,"steam":[{"ok":true,"code":null,"steam":{"installPath":"C:\\Steam","steamExe":"C:\\Steam\\steam.exe","pid":4321,"source":"registry"},"app":null}]},
+      "result": {"error":{"code":"LAUNCH_CONFIG_INVALID","message":"Для игры hl3 нет доверенной конфигурации запуска","details":{"gameId":"hl3"}}},
+      "events": [],
+      "logs": [],
+      "after": {"crashHint":[null,null,null],"availability":{"ok":false,"code":"LAUNCH_CONFIG_INVALID"}},
+      "trees": {"game":[],"logs":null,"data":null}
+    },
+    {
+      "scenario": {
+        "name": "config-absolute-exe",
+        "gameId": "hl2-4260",
+        "registry_config": {"base":"hl2-4260","executable":"C:\\hl2.exe"},
+        "layout": [{"file":"hl2.exe","utf8":"MZ"},{"file":"hl2/gameinfo.txt","utf8":"\"GameInfo\"\n{\n  SteamAppId 220\n}\n"},{"file":"hl2/resource/gameui_russian.txt","utf8":"\"lang\" { \"Language\" \"russian\" }\n"},{"file":"hl2/resource/hl2_russian.txt","utf8":"\"lang\" { \"Language\" \"russian\" }\n"}],
+        "settings": null,
+        "steam": [{"ok":true,"code":null,"steam":{"installPath":"C:\\Steam","steamExe":"C:\\Steam\\steam.exe","pid":4321,"source":"registry"},"app":null}]
+      },
+      "result": {"error":{"code":"LAUNCH_CONFIG_INVALID","message":"Исполняемый файл задаётся относительным путём внутри сборки","details":null}},
+      "events": [],
+      "logs": [],
+      "after": {"crashHint":[null,null,null],"availability":{"ok":false,"code":"LAUNCH_CONFIG_INVALID"}},
+      "trees": {
+        "game": [
+          {"path":"hl2","kind":"dir"},
+          {"path":"hl2.exe","kind":"file","size":2,"sha256":"9b8db510ef42b8ed54a3712636fda55a4f8cfcd5493e20b74ab00cd4f3979f2d"},
+          {"path":"hl2/gameinfo.txt","kind":"file","size":32,"sha256":"2c51a3c8edbb1e006dde4213dc66cae548d8ccd1d92bb77504c43cf6f74ebe4c"},
+          {"path":"hl2/resource","kind":"dir"},
+          {"path":"hl2/resource/gameui_russian.txt","kind":"file","size":32,"sha256":"9a68bdc75cd554538ab4cdc9976ef9d02c072ce73a26a5aef67deee818c2de4e"},
+          {"path":"hl2/resource/hl2_russian.txt","kind":"file","size":32,"sha256":"9a68bdc75cd554538ab4cdc9976ef9d02c072ce73a26a5aef67deee818c2de4e"}
+        ],
+        "logs": null,
+        "data": null
+      }
+    },
+    {
+      "scenario": {
+        "name": "config-no-app-id",
+        "gameId": "hl2-4260",
+        "registry_config": {"base":"hl2-4260","steamAppId":0},
+        "layout": [{"file":"hl2.exe","utf8":"MZ"},{"file":"hl2/gameinfo.txt","utf8":"\"GameInfo\"\n{\n  SteamAppId 220\n}\n"},{"file":"hl2/resource/gameui_russian.txt","utf8":"\"lang\" { \"Language\" \"russian\" }\n"},{"file":"hl2/resource/hl2_russian.txt","utf8":"\"lang\" { \"Language\" \"russian\" }\n"}],
+        "settings": null,
+        "steam": [{"ok":true,"code":null,"steam":{"installPath":"C:\\Steam","steamExe":"C:\\Steam\\steam.exe","pid":4321,"source":"registry"},"app":null}]
+      },
+      "result": {"error":{"code":"LAUNCH_CONFIG_INVALID","message":"Некорректный steamAppId в конфигурации","details":null}},
+      "events": [],
+      "logs": [],
+      "after": {"crashHint":[null,null,null],"availability":{"ok":false,"code":"LAUNCH_CONFIG_INVALID"}},
+      "trees": {
+        "game": [
+          {"path":"hl2","kind":"dir"},
+          {"path":"hl2.exe","kind":"file","size":2,"sha256":"9b8db510ef42b8ed54a3712636fda55a4f8cfcd5493e20b74ab00cd4f3979f2d"},
+          {"path":"hl2/gameinfo.txt","kind":"file","size":32,"sha256":"2c51a3c8edbb1e006dde4213dc66cae548d8ccd1d92bb77504c43cf6f74ebe4c"},
+          {"path":"hl2/resource","kind":"dir"},
+          {"path":"hl2/resource/gameui_russian.txt","kind":"file","size":32,"sha256":"9a68bdc75cd554538ab4cdc9976ef9d02c072ce73a26a5aef67deee818c2de4e"},
+          {"path":"hl2/resource/hl2_russian.txt","kind":"file","size":32,"sha256":"9a68bdc75cd554538ab4cdc9976ef9d02c072ce73a26a5aef67deee818c2de4e"}
+        ],
+        "logs": null,
+        "data": null
+      }
+    },
+    {
+      "scenario": {
+        "name": "config-sdk-preflight-fails",
+        "gameId": "hl2-4260",
+        "registry_config": {"base":"hl2-4260","sourceSdkRequired":true},
+        "layout": [{"file":"hl2.exe","utf8":"MZ"},{"file":"hl2/gameinfo.txt","utf8":"\"GameInfo\"\n{\n  SteamAppId 220\n}\n"},{"file":"hl2/resource/gameui_russian.txt","utf8":"\"lang\" { \"Language\" \"russian\" }\n"},{"file":"hl2/resource/hl2_russian.txt","utf8":"\"lang\" { \"Language\" \"russian\" }\n"}],
+        "settings": null,
+        "steam": [{"ok":true,"code":null,"steam":{"installPath":"C:\\Steam","steamExe":"C:\\Steam\\steam.exe","pid":4321,"source":"registry"},"app":null}],
+        "preflight": {"error":{"code":"STEAM_NOT_INSTALLED","message":"Steam не найден"}}
+      },
+      "result": {"error":{"code":"STEAM_NOT_INSTALLED","message":"Steam не найден","details":null}},
+      "events": [{"op":"isRunning","gameId":"hl2-4260"},{"op":"isBusy"},{"op":"installedOf","gameId":"hl2-4260"},{"op":"markStarting","gameId":"hl2-4260"},{"op":"preflight","appId":220},{"op":"cancelStarting","gameId":"hl2-4260","reason":"STEAM_NOT_INSTALLED: Steam не найден"},{"op":"describeAvailability","appId":220}],
+      "logs": [{"level":"error","message":"[launch] запуск hl2-4260 не удался: STEAM_NOT_INSTALLED Steam не найден"}],
+      "after": {"crashHint":[null,null,null],"availability":{"ok":true,"code":null,"appId":220}},
+      "trees": {
+        "game": [
+          {"path":"hl2","kind":"dir"},
+          {"path":"hl2.exe","kind":"file","size":2,"sha256":"9b8db510ef42b8ed54a3712636fda55a4f8cfcd5493e20b74ab00cd4f3979f2d"},
+          {"path":"hl2/gameinfo.txt","kind":"file","size":32,"sha256":"2c51a3c8edbb1e006dde4213dc66cae548d8ccd1d92bb77504c43cf6f74ebe4c"},
+          {"path":"hl2/resource","kind":"dir"},
+          {"path":"hl2/resource/gameui_russian.txt","kind":"file","size":32,"sha256":"9a68bdc75cd554538ab4cdc9976ef9d02c072ce73a26a5aef67deee818c2de4e"},
+          {"path":"hl2/resource/hl2_russian.txt","kind":"file","size":32,"sha256":"9a68bdc75cd554538ab4cdc9976ef9d02c072ce73a26a5aef67deee818c2de4e"}
+        ],
+        "logs": null,
+        "data": null
+      }
+    },
+    {
+      "scenario": {
+        "name": "config-sdk-preflight-ok",
+        "gameId": "hl2-4260",
+        "registry_config": {"base":"hl2-4260","sourceSdkRequired":true,"requiresOwnedAppIds":[]},
+        "layout": [{"file":"hl2.exe","utf8":"MZ"},{"file":"hl2/gameinfo.txt","utf8":"\"GameInfo\"\n{\n  SteamAppId 220\n}\n"},{"file":"hl2/resource/gameui_russian.txt","utf8":"\"lang\" { \"Language\" \"russian\" }\n"},{"file":"hl2/resource/hl2_russian.txt","utf8":"\"lang\" { \"Language\" \"russian\" }\n"}],
+        "settings": null,
+        "steam": [{"ok":true,"code":null,"steam":{"installPath":"C:\\Steam","steamExe":"C:\\Steam\\steam.exe","pid":4321,"source":"registry"},"app":null}],
+        "preflight": {"ok":{"steam":{"installPath":"C:\\Steam","steamExe":"C:\\Steam\\steam.exe","pid":77,"source":"scan"},"app":{"appId":220}}},
+        "game": {"behaviour":"alive","inspect":{"executable":"hl2.exe","startedAt":"2026-10-16T12:00:01.250Z"}}
+      },
+      "result": {"ok":{"status":"started","process":{"state":"running","pid":5000}}},
+      "events": [
+        {"op":"isRunning","gameId":"hl2-4260"},
+        {"op":"isBusy"},
+        {"op":"installedOf","gameId":"hl2-4260"},
+        {"op":"markStarting","gameId":"hl2-4260"},
+        {"op":"preflight","appId":220},
+        {"op":"settings.get","gameId":"hl2-4260"},
+        {"op":"spawn","file":"<root>/game/hl2.exe","args":["-steam","-game","hl2","-insecure"],"cwd":"<root>/game","detached":true,"windowsHide":false,"env":{"HLSR_OLD":"kept","KEEP_ME":"1","PATH":"C:/Windows/System32;C:/Windows"}},
+        {"op":"settings.get","gameId":"hl2-4260"},
+        {"op":"register","gameId":"hl2-4260","info":{"pid":5000,"executablePath":"<root>/game/hl2.exe","startedAt":"2026-10-16T12:00:01.250Z","child":true}},
+        {"op":"describeAvailability","appId":220}
+      ],
+      "logs": [{"level":"info","message":"[launch] steam_appid.txt приведён к 220"},{"level":"info","message":"[launch] hl2-4260 запущена: PID 5000, <root>/game/hl2.exe, аргументы [-steam -game hl2 -insecure], AppID 220, Steam PID 77"}],
+      "after": {"crashHint":[null,null,null],"availability":{"ok":true,"code":null,"appId":220}},
+      "trees": {
+        "game": [
+          {"path":"hl2","kind":"dir"},
+          {"path":"hl2.exe","kind":"file","size":2,"sha256":"9b8db510ef42b8ed54a3712636fda55a4f8cfcd5493e20b74ab00cd4f3979f2d"},
+          {"path":"hl2/cfg","kind":"dir"},
+          {"path":"hl2/cfg/autoexec.cfg","kind":"file","size":20,"sha256":"f508435420195dc35db6264d3a53c278d7c6833638cdc3f8eee549f29b8eebb3"},
+          {"path":"hl2/cfg/hlsr-binds.cfg","kind":"file","size":165,"sha256":"7f9869b409ba647579ffe8a3d464f7d2a6ab6ab2c196a8c79dd9fbd54ecefc03"},
+          {"path":"hl2/gameinfo.txt","kind":"file","size":32,"sha256":"2c51a3c8edbb1e006dde4213dc66cae548d8ccd1d92bb77504c43cf6f74ebe4c"},
+          {"path":"hl2/resource","kind":"dir"},
+          {"path":"hl2/resource/gameui_russian.txt","kind":"file","size":32,"sha256":"9a68bdc75cd554538ab4cdc9976ef9d02c072ce73a26a5aef67deee818c2de4e"},
+          {"path":"hl2/resource/hl2_russian.txt","kind":"file","size":32,"sha256":"9a68bdc75cd554538ab4cdc9976ef9d02c072ce73a26a5aef67deee818c2de4e"},
+          {"path":"steam_appid.txt","kind":"file","size":4,"sha256":"cbdd19a3980a0d492694d4805af33ac243c847017d8a73a1c02ed1d88c45cb3e"}
+        ],
+        "logs": null,
+        "data": null
+      }
+    },
+    {
+      "scenario": {
+        "name": "hl1-started",
+        "gameId": "hl1-won",
+        "layout": [{"file":"Half-Life/hl.exe","utf8":"MZ"},{"file":"Half-Life/valve_WON/liblist.gam","utf8":"game \"Half-Life\"\n"},{"file":"Half-Life/steam_appid.txt","utf8":"220"},{"file":"Bunnymod XT/Injector.exe","utf8":"MZ"},{"file":"RInput/RInput.exe","utf8":"MZ"}],
+        "rootLayout": [{"file":"logs/bxt.log","utf8":"old"}],
+        "settings": {"windowed":true,"console":true,"width":1280,"height":960,"refreshRate":144,"launchArgs":"-w 800 +sv_cheats 1","rinputMenuFix":true,"excludeCpu0":true,"liveSplitOverlay":{"enabled":true}},
+        "steam": [{"ok":true,"code":null,"steam":{"installPath":"C:\\Steam","steamExe":"C:\\Steam\\steam.exe","pid":4321,"source":"registry"},"app":null}],
+        "depot": "ok",
+        "extraEnv": {"HLSR_PRESENCE_PIPE":"\\\\.\\pipe\\hlsr-presence","HLSR_PRESENCE_TOKEN":"token","HLSR_EMPTY":"","hlsr_lower":"x","OTHER":"y"},
+        "logsDir": true,
+        "dependencies": [{"id":"bxt","status":"current"}],
+        "packs": {"applied":[]},
+        "injector": {"behaviour":{"exit":0},"found":{"after":2,"entries":[{"pid":10,"executable":"Half-Life/hl.exe","offset":-60000},{"pid":11,"executable":"other/hl.exe","offset":300},{"pid":12,"executable":"Half-Life/hl.exe","offset":100},{"pid":13,"executable":"Half-Life/hl.exe","offset":-1500,"dead":true},{"pid":14,"executable":"Half-Life/hl.exe","offset":-2500}]}},
+        "rinputExit": 0,
+        "menu": ["waiting","patched"],
+        "overlayExit": 3,
+        "policy": 3
+      },
+      "result": {"ok":{"status":"started","process":{"state":"running","pid":12},"dependencies":[{"id":"bxt","status":"current"}],"packs":{"applied":[]}}},
+      "events": [
+        {"op":"isRunning","gameId":"hl1-won"},
+        {"op":"isBusy"},
+        {"op":"installedOf","gameId":"hl1-won"},
+        {"op":"markStarting","gameId":"hl1-won"},
+        {"op":"describeSteamOnly"},
+        {"op":"assertOwns","appIds":[70]},
+        {"op":"dependencies","installPath":"<root>/game"},
+        {"op":"settings.get","gameId":"hl1-won"},
+        {"op":"packs","installPath":"<root>/game","settings":{"windowed":true,"console":true,"width":1280,"height":960,"refreshRate":144,"launchArgs":"-w 800 +sv_cheats 1","rinputMenuFix":true,"excludeCpu0":true,"liveSplitOverlay":{"enabled":true}}},
+        {"op":"dep.ensureExemption","executable":"<root>/game/Half-Life/hl.exe"},
+        {"op":"dep.queryPolicy"},
+        {
+          "op": "spawn",
+          "file": "<root>/game/Bunnymod XT/Injector.exe",
+          "args": ["<root>/game/Half-Life/hl.exe","-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms","-console","-windowed","-freq","144","-w","800","+sv_cheats","1"],
+          "cwd": "<root>/game/Half-Life",
+          "detached": true,
+          "windowsHide": false,
+          "env": {"BXT_DISABLE_VSYNC":"1","BXT_LOGFILE":"<root>/logs/bxt.log","HLSR_OLD":"kept","HLSR_PRESENCE_PIPE":"/./pipe/hlsr-presence","HLSR_PRESENCE_TOKEN":"token","KEEP_ME":"1","PATH":"C:/Windows/System32;C:/Windows","PROTON_ENABLE_WAYLAND":"0","__GL_SYNC_TO_VBLANK":"0"}
+        },
+        {"op":"settings.get","gameId":"hl1-won"},
+        {"op":"affinity","pid":12,"mask":"254"},
+        {"op":"register","gameId":"hl1-won","info":{"pid":12,"executablePath":"<root>/game/Half-Life/hl.exe","startedAt":"spawn+100","child":false}},
+        {"op":"spawn","file":"<root>/game/RInput/RInput.exe","args":["hl.exe"],"cwd":"<root>/game/RInput","detached":true,"windowsHide":true,"env":null},
+        {"op":"rinput.session"},
+        {"op":"rinput.patch","processName":"hl.exe"},
+        {"op":"spawn","file":"<root>/data/livesplit-overlay/hl1-won/hlsr-overlay.exe","args":["inject","--name","hl.exe","--dll","<root>/data/livesplit-overlay/hl1-won/hlsr-overlay.dll","--timeout","90","--wait-module","bunnymodxt.dll"],"cwd":"<root>/data/livesplit-overlay/hl1-won","detached":true,"windowsHide":true,"env":null},
+        {"op":"rinput.patch","processName":"hl.exe"},
+        {"op":"rinput.close"},
+        {"op":"describeSteamOnly"}
+      ],
+      "logs": [
+        {"level":"info","message":"[launch] Half-Life/steam_appid.txt приведён к 70"},
+        {"level":"info","message":"[launch] лог BXT: <root>/logs/bxt.log"},
+        {"level":"info","message":"[dep] режим DEP: OptOut, слой для hl.exe: added"},
+        {"level":"info","message":"[launch] hl1-won: маска процессоров 0xFE (8 ЦП, нулевой исключён)"},
+        {"level":"info","message":"[launch] hl1-won запущена через Bunnymod XT: PID 12, <root>/game/Half-Life/hl.exe, аргументы [-steam -gl -32bpp -game valve_WON -noforcemparms -console -windowed -freq 144 -w 800 +sv_cheats 1], AppID 70"},
+        {"level":"info","message":"[launch] RInput завершился (код 0)"},
+        {"level":"warn","message":"[launch] оверлей LiveSplit не внедрён (код 3), журнал: <root>/data/livesplit-overlay/hl1-won/overlay.log"},
+        {"level":"info","message":"[launch] курсор RInput в меню исправлен"}
+      ],
+      "after": {"crashHint":[null,null,null],"availability":{"ok":true,"code":null,"steam":{"installPath":"C:/Steam","steamExe":"C:/Steam/steam.exe","pid":4321,"source":"registry"},"app":null}},
+      "trees": {
+        "game": [
+          {"path":"Bunnymod XT","kind":"dir"},
+          {"path":"Bunnymod XT/Injector.exe","kind":"file","size":2,"sha256":"9b8db510ef42b8ed54a3712636fda55a4f8cfcd5493e20b74ab00cd4f3979f2d"},
+          {"path":"Half-Life","kind":"dir"},
+          {"path":"Half-Life/hl.exe","kind":"file","size":2,"sha256":"9b8db510ef42b8ed54a3712636fda55a4f8cfcd5493e20b74ab00cd4f3979f2d"},
+          {"path":"Half-Life/steam_appid.txt","kind":"file","size":3,"sha256":"6442bc26a7c562f5afe6467dab36365c709909f6a81afcecfc0c25cff0f1bab0"},
+          {"path":"Half-Life/valve_WON","kind":"dir"},
+          {"path":"Half-Life/valve_WON/liblist.gam","kind":"file","size":17,"sha256":"f40b32507ea3bca121d548ab64c9fcc649e7ddd74066acf5105bbc3094a2decf"},
+          {"path":"RInput","kind":"dir"},
+          {"path":"RInput/RInput.exe","kind":"file","size":2,"sha256":"9b8db510ef42b8ed54a3712636fda55a4f8cfcd5493e20b74ab00cd4f3979f2d"}
+        ],
+        "logs": [],
+        "data": [
+          {"path":"livesplit-overlay","kind":"dir"},
+          {"path":"livesplit-overlay/hl1-won","kind":"dir"},
+          {"path":"livesplit-overlay/hl1-won/hlsr-overlay.dll","kind":"file","size":19,"sha256":"05af290434f8f4b1c2a760ecec622dda0865b2d9db0e907f263caa651e60f38c"},
+          {"path":"livesplit-overlay/hl1-won/hlsr-overlay.exe","kind":"file","size":19,"sha256":"31d1c019747ef423254480e752c52bcfe4b7f70091d99d75f36d4ba7febe6513"},
+          {"path":"livesplit-overlay/hl1-won/hlsr-overlay64.exe","kind":"file","size":21,"sha256":"475097eba9420da3c88735ca313f8e4fc44aa6bf570e2c3125d7282bb4dbf82b"},
+          {"path":"livesplit-overlay/hl1-won/hlsr-share64.dll","kind":"file","size":19,"sha256":"74ae547e2caa6c053a69d842c4aff5cd16c63430c6995f360169bfc57256c2b6"},
+          {"path":"livesplit-overlay/hl1-won/overlay.ini","kind":"file","size":225,"sha256":"15b43709ae1c36a30e6a3c0ebca68a51d503c558368de1469042180cd78a01b2"}
+        ]
+      }
+    },
+    {
+      "scenario": {
+        "name": "hl1-defaults",
+        "gameId": "hl1-won",
+        "layout": [{"file":"Half-Life/hl.exe","utf8":"MZ"},{"file":"Half-Life/valve_WON/liblist.gam","utf8":"game \"Half-Life\"\n"},{"file":"Half-Life/steam_appid.txt","utf8":"220"},{"file":"Bunnymod XT/Injector.exe","utf8":"MZ"}],
+        "settings": {},
+        "steam": [{"ok":true,"code":null,"steam":{"installPath":"C:\\Steam","steamExe":"C:\\Steam\\steam.exe","pid":4321,"source":"registry"},"app":null}],
+        "depot": "ok",
+        "injector": {"behaviour":"alive","found":{"after":1,"entries":[{"pid":20,"executable":"Half-Life/hl.exe"}]}},
+        "policy": null
+      },
+      "result": {"ok":{"status":"started","process":{"state":"running","pid":20},"dependencies":[],"packs":null}},
+      "events": [
+        {"op":"isRunning","gameId":"hl1-won"},
+        {"op":"isBusy"},
+        {"op":"installedOf","gameId":"hl1-won"},
+        {"op":"markStarting","gameId":"hl1-won"},
+        {"op":"describeSteamOnly"},
+        {"op":"assertOwns","appIds":[70]},
+        {"op":"settings.get","gameId":"hl1-won"},
+        {"op":"dep.ensureExemption","executable":"<root>/game/Half-Life/hl.exe"},
+        {"op":"dep.queryPolicy"},
+        {"op":"spawn","file":"<root>/game/Bunnymod XT/Injector.exe","args":["<root>/game/Half-Life/hl.exe","-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms"],"cwd":"<root>/game/Half-Life","detached":true,"windowsHide":false,"env":{"BXT_DISABLE_VSYNC":"1","HLSR_OLD":"kept","KEEP_ME":"1","PATH":"C:/Windows/System32;C:/Windows","PROTON_ENABLE_WAYLAND":"0","__GL_SYNC_TO_VBLANK":"0"}},
+        {"op":"settings.get","gameId":"hl1-won"},
+        {"op":"register","gameId":"hl1-won","info":{"pid":20,"executablePath":"<root>/game/Half-Life/hl.exe","startedAt":"<now>","child":false}},
+        {"op":"describeSteamOnly"}
+      ],
+      "logs": [
+        {"level":"info","message":"[launch] Half-Life/steam_appid.txt приведён к 70"},
+        {"level":"info","message":"[dep] режим DEP: не определён, слой для hl.exe: added"},
+        {"level":"warn","message":"[launch] RInput не найден: <root>/game/RInput/RInput.exe"},
+        {"level":"info","message":"[launch] hl1-won запущена через Bunnymod XT: PID 20, <root>/game/Half-Life/hl.exe, аргументы [-steam -gl -32bpp -game valve_WON -noforcemparms], AppID 70"}
+      ],
+      "after": {"crashHint":[null,null,null],"availability":{"ok":true,"code":null,"steam":{"installPath":"C:/Steam","steamExe":"C:/Steam/steam.exe","pid":4321,"source":"registry"},"app":null}},
+      "trees": {
+        "game": [
+          {"path":"Bunnymod XT","kind":"dir"},
+          {"path":"Bunnymod XT/Injector.exe","kind":"file","size":2,"sha256":"9b8db510ef42b8ed54a3712636fda55a4f8cfcd5493e20b74ab00cd4f3979f2d"},
+          {"path":"Half-Life","kind":"dir"},
+          {"path":"Half-Life/hl.exe","kind":"file","size":2,"sha256":"9b8db510ef42b8ed54a3712636fda55a4f8cfcd5493e20b74ab00cd4f3979f2d"},
+          {"path":"Half-Life/steam_appid.txt","kind":"file","size":3,"sha256":"6442bc26a7c562f5afe6467dab36365c709909f6a81afcecfc0c25cff0f1bab0"},
+          {"path":"Half-Life/valve_WON","kind":"dir"},
+          {"path":"Half-Life/valve_WON/liblist.gam","kind":"file","size":17,"sha256":"f40b32507ea3bca121d548ab64c9fcc649e7ddd74066acf5105bbc3094a2decf"}
+        ],
+        "logs": null,
+        "data": null
+      }
+    },
+    {
+      "scenario": {
+        "name": "hl1-rinput-off",
+        "gameId": "hl1-won",
+        "layout": [{"file":"Half-Life/hl.exe","utf8":"MZ"},{"file":"Half-Life/valve_WON/liblist.gam","utf8":"game \"Half-Life\"\n"},{"file":"Half-Life/steam_appid.txt","utf8":"220"},{"file":"Bunnymod XT/Injector.exe","utf8":"MZ"},{"file":"RInput/RInput.exe","utf8":"MZ"}],
+        "settings": {"rinput":false,"rinputMenuFix":true},
+        "steam": [{"ok":true,"code":null,"steam":{"installPath":"C:\\Steam","steamExe":"C:\\Steam\\steam.exe","pid":4321,"source":"registry"},"app":null}],
+        "depot": "ok",
+        "injector": {"behaviour":{"exit":0},"found":{"after":2,"entries":[{"pid":21,"executable":"Half-Life/hl.exe","offset":50}]}},
+        "policy": 1
+      },
+      "result": {"ok":{"status":"started","process":{"state":"running","pid":21},"dependencies":[],"packs":null}},
+      "events": [
+        {"op":"isRunning","gameId":"hl1-won"},
+        {"op":"isBusy"},
+        {"op":"installedOf","gameId":"hl1-won"},
+        {"op":"markStarting","gameId":"hl1-won"},
+        {"op":"describeSteamOnly"},
+        {"op":"assertOwns","appIds":[70]},
+        {"op":"settings.get","gameId":"hl1-won"},
+        {"op":"dep.ensureExemption","executable":"<root>/game/Half-Life/hl.exe"},
+        {"op":"dep.queryPolicy"},
+        {"op":"spawn","file":"<root>/game/Bunnymod XT/Injector.exe","args":["<root>/game/Half-Life/hl.exe","-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms"],"cwd":"<root>/game/Half-Life","detached":true,"windowsHide":false,"env":{"BXT_DISABLE_VSYNC":"1","HLSR_OLD":"kept","KEEP_ME":"1","PATH":"C:/Windows/System32;C:/Windows","PROTON_ENABLE_WAYLAND":"0","__GL_SYNC_TO_VBLANK":"0"}},
+        {"op":"settings.get","gameId":"hl1-won"},
+        {"op":"register","gameId":"hl1-won","info":{"pid":21,"executablePath":"<root>/game/Half-Life/hl.exe","startedAt":"spawn+50","child":false}},
+        {"op":"describeSteamOnly"}
+      ],
+      "logs": [{"level":"info","message":"[launch] Half-Life/steam_appid.txt приведён к 70"},{"level":"info","message":"[dep] режим DEP: AlwaysOn, слой для hl.exe: added"},{"level":"info","message":"[launch] hl1-won запущена через Bunnymod XT: PID 21, <root>/game/Half-Life/hl.exe, аргументы [-steam -gl -32bpp -game valve_WON -noforcemparms], AppID 70"}],
+      "after": {"crashHint":["DEP_ALWAYS_ON","DEP_ALWAYS_ON",null],"availability":{"ok":true,"code":null,"steam":{"installPath":"C:/Steam","steamExe":"C:/Steam/steam.exe","pid":4321,"source":"registry"},"app":null}},
+      "trees": {
+        "game": [
+          {"path":"Bunnymod XT","kind":"dir"},
+          {"path":"Bunnymod XT/Injector.exe","kind":"file","size":2,"sha256":"9b8db510ef42b8ed54a3712636fda55a4f8cfcd5493e20b74ab00cd4f3979f2d"},
+          {"path":"Half-Life","kind":"dir"},
+          {"path":"Half-Life/hl.exe","kind":"file","size":2,"sha256":"9b8db510ef42b8ed54a3712636fda55a4f8cfcd5493e20b74ab00cd4f3979f2d"},
+          {"path":"Half-Life/steam_appid.txt","kind":"file","size":3,"sha256":"6442bc26a7c562f5afe6467dab36365c709909f6a81afcecfc0c25cff0f1bab0"},
+          {"path":"Half-Life/valve_WON","kind":"dir"},
+          {"path":"Half-Life/valve_WON/liblist.gam","kind":"file","size":17,"sha256":"f40b32507ea3bca121d548ab64c9fcc649e7ddd74066acf5105bbc3094a2decf"},
+          {"path":"RInput","kind":"dir"},
+          {"path":"RInput/RInput.exe","kind":"file","size":2,"sha256":"9b8db510ef42b8ed54a3712636fda55a4f8cfcd5493e20b74ab00cd4f3979f2d"}
+        ],
+        "logs": null,
+        "data": null
+      }
+    },
+    {
+      "scenario": {
+        "name": "hl1-rinput-unsupported",
+        "gameId": "hl1-won",
+        "layout": [{"file":"Half-Life/hl.exe","utf8":"MZ"},{"file":"Half-Life/valve_WON/liblist.gam","utf8":"game \"Half-Life\"\n"},{"file":"Half-Life/steam_appid.txt","utf8":"220"},{"file":"Bunnymod XT/Injector.exe","utf8":"MZ"},{"file":"RInput/RInput.exe","utf8":"MZ"}],
+        "settings": {"rinputMenuFix":true},
+        "steam": [{"ok":true,"code":null,"steam":{"installPath":"C:\\Steam","steamExe":"C:\\Steam\\steam.exe","pid":4321,"source":"registry"},"app":null}],
+        "depot": "ok",
+        "injector": {"behaviour":{"exit":0},"found":{"after":2,"entries":[{"pid":22,"executable":"Half-Life/hl.exe","offset":10}]}},
+        "rinputExit": 1,
+        "menu": ["waiting","unsupported"],
+        "policy": 2
+      },
+      "result": {"ok":{"status":"started","process":{"state":"running","pid":22},"dependencies":[],"packs":null}},
+      "events": [
+        {"op":"isRunning","gameId":"hl1-won"},
+        {"op":"isBusy"},
+        {"op":"installedOf","gameId":"hl1-won"},
+        {"op":"markStarting","gameId":"hl1-won"},
+        {"op":"describeSteamOnly"},
+        {"op":"assertOwns","appIds":[70]},
+        {"op":"settings.get","gameId":"hl1-won"},
+        {"op":"dep.ensureExemption","executable":"<root>/game/Half-Life/hl.exe"},
+        {"op":"dep.queryPolicy"},
+        {"op":"spawn","file":"<root>/game/Bunnymod XT/Injector.exe","args":["<root>/game/Half-Life/hl.exe","-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms"],"cwd":"<root>/game/Half-Life","detached":true,"windowsHide":false,"env":{"BXT_DISABLE_VSYNC":"1","HLSR_OLD":"kept","KEEP_ME":"1","PATH":"C:/Windows/System32;C:/Windows","PROTON_ENABLE_WAYLAND":"0","__GL_SYNC_TO_VBLANK":"0"}},
+        {"op":"settings.get","gameId":"hl1-won"},
+        {"op":"register","gameId":"hl1-won","info":{"pid":22,"executablePath":"<root>/game/Half-Life/hl.exe","startedAt":"spawn+10","child":false}},
+        {"op":"spawn","file":"<root>/game/RInput/RInput.exe","args":["hl.exe"],"cwd":"<root>/game/RInput","detached":true,"windowsHide":true,"env":null},
+        {"op":"rinput.session"},
+        {"op":"rinput.patch","processName":"hl.exe"},
+        {"op":"rinput.patch","processName":"hl.exe"},
+        {"op":"rinput.close"},
+        {"op":"describeSteamOnly"}
+      ],
+      "logs": [
+        {"level":"info","message":"[launch] Half-Life/steam_appid.txt приведён к 70"},
+        {"level":"info","message":"[dep] режим DEP: OptIn, слой для hl.exe: added"},
+        {"level":"info","message":"[launch] hl1-won запущена через Bunnymod XT: PID 22, <root>/game/Half-Life/hl.exe, аргументы [-steam -gl -32bpp -game valve_WON -noforcemparms], AppID 70"},
+        {"level":"info","message":"[launch] RInput завершился (код 1)"},
+        {"level":"warn","message":"[launch] курсор RInput в меню не исправлен: незнакомая версия RInput"}
+      ],
+      "after": {"crashHint":[null,null,null],"availability":{"ok":true,"code":null,"steam":{"installPath":"C:/Steam","steamExe":"C:/Steam/steam.exe","pid":4321,"source":"registry"},"app":null}},
+      "trees": {
+        "game": [
+          {"path":"Bunnymod XT","kind":"dir"},
+          {"path":"Bunnymod XT/Injector.exe","kind":"file","size":2,"sha256":"9b8db510ef42b8ed54a3712636fda55a4f8cfcd5493e20b74ab00cd4f3979f2d"},
+          {"path":"Half-Life","kind":"dir"},
+          {"path":"Half-Life/hl.exe","kind":"file","size":2,"sha256":"9b8db510ef42b8ed54a3712636fda55a4f8cfcd5493e20b74ab00cd4f3979f2d"},
+          {"path":"Half-Life/steam_appid.txt","kind":"file","size":3,"sha256":"6442bc26a7c562f5afe6467dab36365c709909f6a81afcecfc0c25cff0f1bab0"},
+          {"path":"Half-Life/valve_WON","kind":"dir"},
+          {"path":"Half-Life/valve_WON/liblist.gam","kind":"file","size":17,"sha256":"f40b32507ea3bca121d548ab64c9fcc649e7ddd74066acf5105bbc3094a2decf"},
+          {"path":"RInput","kind":"dir"},
+          {"path":"RInput/RInput.exe","kind":"file","size":2,"sha256":"9b8db510ef42b8ed54a3712636fda55a4f8cfcd5493e20b74ab00cd4f3979f2d"}
+        ],
+        "logs": null,
+        "data": null
+      }
+    },
+    {
+      "scenario": {
+        "name": "hl1-rinput-session-fails",
+        "gameId": "hl1-won",
+        "layout": [{"file":"Half-Life/hl.exe","utf8":"MZ"},{"file":"Half-Life/valve_WON/liblist.gam","utf8":"game \"Half-Life\"\n"},{"file":"Half-Life/steam_appid.txt","utf8":"220"},{"file":"Bunnymod XT/Injector.exe","utf8":"MZ"},{"file":"RInput/RInput.exe","utf8":"MZ"}],
+        "settings": {"rinputMenuFix":true},
+        "steam": [{"ok":true,"code":null,"steam":{"installPath":"C:\\Steam","steamExe":"C:\\Steam\\steam.exe","pid":4321,"source":"registry"},"app":null}],
+        "depot": "ok",
+        "injector": {"behaviour":{"exit":0},"found":{"after":2,"entries":[{"pid":23,"executable":"Half-Life/hl.exe","offset":10}]}},
+        "rinputBehaviour": {"error":"spawn RInput.exe EACCES"},
+        "menu": [{"error":"OpenProcess: код 5"}],
+        "policy": 3
+      },
+      "result": {"ok":{"status":"started","process":{"state":"running","pid":23},"dependencies":[],"packs":null}},
+      "events": [
+        {"op":"isRunning","gameId":"hl1-won"},
+        {"op":"isBusy"},
+        {"op":"installedOf","gameId":"hl1-won"},
+        {"op":"markStarting","gameId":"hl1-won"},
+        {"op":"describeSteamOnly"},
+        {"op":"assertOwns","appIds":[70]},
+        {"op":"settings.get","gameId":"hl1-won"},
+        {"op":"dep.ensureExemption","executable":"<root>/game/Half-Life/hl.exe"},
+        {"op":"dep.queryPolicy"},
+        {"op":"spawn","file":"<root>/game/Bunnymod XT/Injector.exe","args":["<root>/game/Half-Life/hl.exe","-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms"],"cwd":"<root>/game/Half-Life","detached":true,"windowsHide":false,"env":{"BXT_DISABLE_VSYNC":"1","HLSR_OLD":"kept","KEEP_ME":"1","PATH":"C:/Windows/System32;C:/Windows","PROTON_ENABLE_WAYLAND":"0","__GL_SYNC_TO_VBLANK":"0"}},
+        {"op":"settings.get","gameId":"hl1-won"},
+        {"op":"register","gameId":"hl1-won","info":{"pid":23,"executablePath":"<root>/game/Half-Life/hl.exe","startedAt":"spawn+10","child":false}},
+        {"op":"spawn","file":"<root>/game/RInput/RInput.exe","args":["hl.exe"],"cwd":"<root>/game/RInput","detached":true,"windowsHide":true,"env":null},
+        {"op":"rinput.session"},
+        {"op":"rinput.patch","processName":"hl.exe"},
+        {"op":"rinput.close"},
+        {"op":"describeSteamOnly"}
+      ],
+      "logs": [
+        {"level":"info","message":"[launch] Half-Life/steam_appid.txt приведён к 70"},
+        {"level":"info","message":"[dep] режим DEP: OptOut, слой для hl.exe: added"},
+        {"level":"info","message":"[launch] hl1-won запущена через Bunnymod XT: PID 23, <root>/game/Half-Life/hl.exe, аргументы [-steam -gl -32bpp -game valve_WON -noforcemparms], AppID 70"},
+        {"level":"warn","message":"[launch] курсор RInput в меню не исправлен: OpenProcess: код 5"},
+        {"level":"warn","message":"[launch] RInput не запущен: spawn RInput.exe EACCES"}
+      ],
+      "after": {"crashHint":[null,null,null],"availability":{"ok":true,"code":null,"steam":{"installPath":"C:/Steam","steamExe":"C:/Steam/steam.exe","pid":4321,"source":"registry"},"app":null}},
+      "trees": {
+        "game": [
+          {"path":"Bunnymod XT","kind":"dir"},
+          {"path":"Bunnymod XT/Injector.exe","kind":"file","size":2,"sha256":"9b8db510ef42b8ed54a3712636fda55a4f8cfcd5493e20b74ab00cd4f3979f2d"},
+          {"path":"Half-Life","kind":"dir"},
+          {"path":"Half-Life/hl.exe","kind":"file","size":2,"sha256":"9b8db510ef42b8ed54a3712636fda55a4f8cfcd5493e20b74ab00cd4f3979f2d"},
+          {"path":"Half-Life/steam_appid.txt","kind":"file","size":3,"sha256":"6442bc26a7c562f5afe6467dab36365c709909f6a81afcecfc0c25cff0f1bab0"},
+          {"path":"Half-Life/valve_WON","kind":"dir"},
+          {"path":"Half-Life/valve_WON/liblist.gam","kind":"file","size":17,"sha256":"f40b32507ea3bca121d548ab64c9fcc649e7ddd74066acf5105bbc3094a2decf"},
+          {"path":"RInput","kind":"dir"},
+          {"path":"RInput/RInput.exe","kind":"file","size":2,"sha256":"9b8db510ef42b8ed54a3712636fda55a4f8cfcd5493e20b74ab00cd4f3979f2d"}
+        ],
+        "logs": null,
+        "data": null
+      }
+    },
+    {
+      "scenario": {
+        "name": "hl1-injector-exit-code",
+        "gameId": "hl1-won",
+        "layout": [{"file":"Half-Life/hl.exe","utf8":"MZ"},{"file":"Half-Life/valve_WON/liblist.gam","utf8":"game \"Half-Life\"\n"},{"file":"Half-Life/steam_appid.txt","utf8":"220"},{"file":"Bunnymod XT/Injector.exe","utf8":"MZ"},{"file":"RInput/RInput.exe","utf8":"MZ"}],
+        "settings": null,
+        "steam": [{"ok":true,"code":null,"steam":{"installPath":"C:\\Steam","steamExe":"C:\\Steam\\steam.exe","pid":4321,"source":"registry"},"app":null}],
+        "depot": "ok",
+        "injector": {"behaviour":{"exit":3},"found":{"after":99,"entries":[]}},
+        "policy": 3
+      },
+      "result": {"error":{"code":"LAUNCH_FAILED","message":"Инжектор Bunnymod XT завершился с кодом 3","details":{"exitCode":3}}},
+      "events": [
+        {"op":"isRunning","gameId":"hl1-won"},
+        {"op":"isBusy"},
+        {"op":"installedOf","gameId":"hl1-won"},
+        {"op":"markStarting","gameId":"hl1-won"},
+        {"op":"describeSteamOnly"},
+        {"op":"assertOwns","appIds":[70]},
+        {"op":"settings.get","gameId":"hl1-won"},
+        {"op":"dep.ensureExemption","executable":"<root>/game/Half-Life/hl.exe"},
+        {"op":"dep.queryPolicy"},
+        {"op":"spawn","file":"<root>/game/Bunnymod XT/Injector.exe","args":["<root>/game/Half-Life/hl.exe","-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms"],"cwd":"<root>/game/Half-Life","detached":true,"windowsHide":false,"env":{"BXT_DISABLE_VSYNC":"1","HLSR_OLD":"kept","KEEP_ME":"1","PATH":"C:/Windows/System32;C:/Windows","PROTON_ENABLE_WAYLAND":"0","__GL_SYNC_TO_VBLANK":"0"}},
+        {"op":"describeSteamOnly"},
+        {"op":"cancelStarting","gameId":"hl1-won","reason":"LAUNCH_FAILED: Инжектор Bunnymod XT завершился с кодом 3"},
+        {"op":"describeSteamOnly"}
+      ],
+      "logs": [{"level":"info","message":"[launch] Half-Life/steam_appid.txt приведён к 70"},{"level":"info","message":"[dep] режим DEP: OptOut, слой для hl.exe: added"},{"level":"error","message":"[launch] запуск hl1-won не удался: LAUNCH_FAILED Инжектор Bunnymod XT завершился с кодом 3"}],
+      "after": {"crashHint":[null,null,null],"availability":{"ok":true,"code":null,"steam":{"installPath":"C:/Steam","steamExe":"C:/Steam/steam.exe","pid":4321,"source":"registry"},"app":null}},
+      "trees": {
+        "game": [
+          {"path":"Bunnymod XT","kind":"dir"},
+          {"path":"Bunnymod XT/Injector.exe","kind":"file","size":2,"sha256":"9b8db510ef42b8ed54a3712636fda55a4f8cfcd5493e20b74ab00cd4f3979f2d"},
+          {"path":"Half-Life","kind":"dir"},
+          {"path":"Half-Life/hl.exe","kind":"file","size":2,"sha256":"9b8db510ef42b8ed54a3712636fda55a4f8cfcd5493e20b74ab00cd4f3979f2d"},
+          {"path":"Half-Life/steam_appid.txt","kind":"file","size":3,"sha256":"6442bc26a7c562f5afe6467dab36365c709909f6a81afcecfc0c25cff0f1bab0"},
+          {"path":"Half-Life/valve_WON","kind":"dir"},
+          {"path":"Half-Life/valve_WON/liblist.gam","kind":"file","size":17,"sha256":"f40b32507ea3bca121d548ab64c9fcc649e7ddd74066acf5105bbc3094a2decf"},
+          {"path":"RInput","kind":"dir"},
+          {"path":"RInput/RInput.exe","kind":"file","size":2,"sha256":"9b8db510ef42b8ed54a3712636fda55a4f8cfcd5493e20b74ab00cd4f3979f2d"}
+        ],
+        "logs": null,
+        "data": null
+      }
+    },
+    {
+      "scenario": {
+        "name": "hl1-injector-error",
+        "gameId": "hl1-won",
+        "layout": [{"file":"Half-Life/hl.exe","utf8":"MZ"},{"file":"Half-Life/valve_WON/liblist.gam","utf8":"game \"Half-Life\"\n"},{"file":"Half-Life/steam_appid.txt","utf8":"220"},{"file":"Bunnymod XT/Injector.exe","utf8":"MZ"},{"file":"RInput/RInput.exe","utf8":"MZ"}],
+        "settings": null,
+        "steam": [{"ok":true,"code":null,"steam":{"installPath":"C:\\Steam","steamExe":"C:\\Steam\\steam.exe","pid":4321,"source":"registry"},"app":null},{"ok":false,"code":"STEAM_ELEVATED","message":"Steam запущен от имени администратора"}],
+        "depot": "ok",
+        "injector": {"behaviour":{"error":"spawn Injector.exe EACCES"},"found":{"after":99,"entries":[]}},
+        "policy": 3
+      },
+      "result": {"error":{"code":"STEAM_ELEVATED","message":"Steam запущен от имени администратора","details":{"originalCode":"LAUNCH_FAILED","originalMessage":"Инжектор Bunnymod XT не запустился: spawn Injector.exe EACCES"}}},
+      "events": [
+        {"op":"isRunning","gameId":"hl1-won"},
+        {"op":"isBusy"},
+        {"op":"installedOf","gameId":"hl1-won"},
+        {"op":"markStarting","gameId":"hl1-won"},
+        {"op":"describeSteamOnly"},
+        {"op":"assertOwns","appIds":[70]},
+        {"op":"settings.get","gameId":"hl1-won"},
+        {"op":"dep.ensureExemption","executable":"<root>/game/Half-Life/hl.exe"},
+        {"op":"dep.queryPolicy"},
+        {"op":"spawn","file":"<root>/game/Bunnymod XT/Injector.exe","args":["<root>/game/Half-Life/hl.exe","-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms"],"cwd":"<root>/game/Half-Life","detached":true,"windowsHide":false,"env":{"BXT_DISABLE_VSYNC":"1","HLSR_OLD":"kept","KEEP_ME":"1","PATH":"C:/Windows/System32;C:/Windows","PROTON_ENABLE_WAYLAND":"0","__GL_SYNC_TO_VBLANK":"0"}},
+        {"op":"describeSteamOnly"},
+        {"op":"cancelStarting","gameId":"hl1-won","reason":"STEAM_ELEVATED: Steam запущен от имени администратора"},
+        {"op":"describeSteamOnly"}
+      ],
+      "logs": [
+        {"level":"info","message":"[launch] Half-Life/steam_appid.txt приведён к 70"},
+        {"level":"info","message":"[dep] режим DEP: OptOut, слой для hl.exe: added"},
+        {"level":"info","message":"[launch] причина уточнена: LAUNCH_FAILED -> STEAM_ELEVATED (Steam запущен от имени администратора)"},
+        {"level":"error","message":"[launch] запуск hl1-won не удался: STEAM_ELEVATED Steam запущен от имени администратора"}
+      ],
+      "after": {"crashHint":[null,null,null],"availability":{"ok":false,"code":"STEAM_ELEVATED","message":"Steam запущен от имени администратора"}},
+      "trees": {
+        "game": [
+          {"path":"Bunnymod XT","kind":"dir"},
+          {"path":"Bunnymod XT/Injector.exe","kind":"file","size":2,"sha256":"9b8db510ef42b8ed54a3712636fda55a4f8cfcd5493e20b74ab00cd4f3979f2d"},
+          {"path":"Half-Life","kind":"dir"},
+          {"path":"Half-Life/hl.exe","kind":"file","size":2,"sha256":"9b8db510ef42b8ed54a3712636fda55a4f8cfcd5493e20b74ab00cd4f3979f2d"},
+          {"path":"Half-Life/steam_appid.txt","kind":"file","size":3,"sha256":"6442bc26a7c562f5afe6467dab36365c709909f6a81afcecfc0c25cff0f1bab0"},
+          {"path":"Half-Life/valve_WON","kind":"dir"},
+          {"path":"Half-Life/valve_WON/liblist.gam","kind":"file","size":17,"sha256":"f40b32507ea3bca121d548ab64c9fcc649e7ddd74066acf5105bbc3094a2decf"},
+          {"path":"RInput","kind":"dir"},
+          {"path":"RInput/RInput.exe","kind":"file","size":2,"sha256":"9b8db510ef42b8ed54a3712636fda55a4f8cfcd5493e20b74ab00cd4f3979f2d"}
+        ],
+        "logs": null,
+        "data": null
+      }
+    },
+    {
+      "scenario": {
+        "name": "hl1-injector-timeout",
+        "gameId": "hl1-won",
+        "layout": [{"file":"Half-Life/hl.exe","utf8":"MZ"},{"file":"Half-Life/valve_WON/liblist.gam","utf8":"game \"Half-Life\"\n"},{"file":"Half-Life/steam_appid.txt","utf8":"220"},{"file":"Bunnymod XT/Injector.exe","utf8":"MZ"},{"file":"RInput/RInput.exe","utf8":"MZ"}],
+        "settings": null,
+        "steam": [{"ok":true,"code":null,"steam":{"installPath":"C:\\Steam","steamExe":"C:\\Steam\\steam.exe","pid":4321,"source":"registry"},"app":null}],
+        "depot": "ok",
+        "injector": {"behaviour":"alive","found":{"after":99,"entries":[]}},
+        "injectedTimeoutMs": 150,
+        "policy": 3
+      },
+      "result": {"error":{"code":"LAUNCH_FAILED","message":"Игра не запустилась через Bunnymod XT за отведённое время","details":null}},
+      "events": [
+        {"op":"isRunning","gameId":"hl1-won"},
+        {"op":"isBusy"},
+        {"op":"installedOf","gameId":"hl1-won"},
+        {"op":"markStarting","gameId":"hl1-won"},
+        {"op":"describeSteamOnly"},
+        {"op":"assertOwns","appIds":[70]},
+        {"op":"settings.get","gameId":"hl1-won"},
+        {"op":"dep.ensureExemption","executable":"<root>/game/Half-Life/hl.exe"},
+        {"op":"dep.queryPolicy"},
+        {"op":"spawn","file":"<root>/game/Bunnymod XT/Injector.exe","args":["<root>/game/Half-Life/hl.exe","-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms"],"cwd":"<root>/game/Half-Life","detached":true,"windowsHide":false,"env":{"BXT_DISABLE_VSYNC":"1","HLSR_OLD":"kept","KEEP_ME":"1","PATH":"C:/Windows/System32;C:/Windows","PROTON_ENABLE_WAYLAND":"0","__GL_SYNC_TO_VBLANK":"0"}},
+        {"op":"describeSteamOnly"},
+        {"op":"cancelStarting","gameId":"hl1-won","reason":"LAUNCH_FAILED: Игра не запустилась через Bunnymod XT за отведённое время"},
+        {"op":"describeSteamOnly"}
+      ],
+      "logs": [{"level":"info","message":"[launch] Half-Life/steam_appid.txt приведён к 70"},{"level":"info","message":"[dep] режим DEP: OptOut, слой для hl.exe: added"},{"level":"error","message":"[launch] запуск hl1-won не удался: LAUNCH_FAILED Игра не запустилась через Bunnymod XT за отведённое время"}],
+      "after": {"crashHint":[null,null,null],"availability":{"ok":true,"code":null,"steam":{"installPath":"C:/Steam","steamExe":"C:/Steam/steam.exe","pid":4321,"source":"registry"},"app":null}},
+      "trees": {
+        "game": [
+          {"path":"Bunnymod XT","kind":"dir"},
+          {"path":"Bunnymod XT/Injector.exe","kind":"file","size":2,"sha256":"9b8db510ef42b8ed54a3712636fda55a4f8cfcd5493e20b74ab00cd4f3979f2d"},
+          {"path":"Half-Life","kind":"dir"},
+          {"path":"Half-Life/hl.exe","kind":"file","size":2,"sha256":"9b8db510ef42b8ed54a3712636fda55a4f8cfcd5493e20b74ab00cd4f3979f2d"},
+          {"path":"Half-Life/steam_appid.txt","kind":"file","size":3,"sha256":"6442bc26a7c562f5afe6467dab36365c709909f6a81afcecfc0c25cff0f1bab0"},
+          {"path":"Half-Life/valve_WON","kind":"dir"},
+          {"path":"Half-Life/valve_WON/liblist.gam","kind":"file","size":17,"sha256":"f40b32507ea3bca121d548ab64c9fcc649e7ddd74066acf5105bbc3094a2decf"},
+          {"path":"RInput","kind":"dir"},
+          {"path":"RInput/RInput.exe","kind":"file","size":2,"sha256":"9b8db510ef42b8ed54a3712636fda55a4f8cfcd5493e20b74ab00cd4f3979f2d"}
+        ],
+        "logs": null,
+        "data": null
+      }
+    },
+    {
+      "scenario": {
+        "name": "hl1-no-injector",
+        "gameId": "hl1-won",
+        "layout": [{"file":"Half-Life/hl.exe","utf8":"MZ"},{"file":"Half-Life/valve_WON/liblist.gam","utf8":"game \"Half-Life\"\n"},{"file":"Half-Life/steam_appid.txt","utf8":"220"},{"file":"RInput/RInput.exe","utf8":"MZ"}],
+        "settings": null,
+        "steam": [{"ok":true,"code":null,"steam":{"installPath":"C:\\Steam","steamExe":"C:\\Steam\\steam.exe","pid":4321,"source":"registry"},"app":null}],
+        "depot": "ok",
+        "dependencies": [],
+        "packs": null
+      },
+      "result": {"error":{"code":"GAME_EXECUTABLE_MISSING","message":"В установленной сборке нет Bunnymod XT/Injector.exe","details":{"injector":"<root>/game/Bunnymod XT/Injector.exe"}}},
+      "events": [
+        {"op":"isRunning","gameId":"hl1-won"},
+        {"op":"isBusy"},
+        {"op":"installedOf","gameId":"hl1-won"},
+        {"op":"markStarting","gameId":"hl1-won"},
+        {"op":"describeSteamOnly"},
+        {"op":"assertOwns","appIds":[70]},
+        {"op":"dependencies","installPath":"<root>/game"},
+        {"op":"cancelStarting","gameId":"hl1-won","reason":"GAME_EXECUTABLE_MISSING: В установленной сборке нет Bunnymod XT/Injector.exe"},
+        {"op":"describeSteamOnly"}
+      ],
+      "logs": [{"level":"error","message":"[launch] запуск hl1-won не удался: GAME_EXECUTABLE_MISSING В установленной сборке нет Bunnymod XT/Injector.exe"}],
+      "after": {"crashHint":[null,null,null],"availability":{"ok":true,"code":null,"steam":{"installPath":"C:/Steam","steamExe":"C:/Steam/steam.exe","pid":4321,"source":"registry"},"app":null}},
+      "trees": {
+        "game": [
+          {"path":"Half-Life","kind":"dir"},
+          {"path":"Half-Life/hl.exe","kind":"file","size":2,"sha256":"9b8db510ef42b8ed54a3712636fda55a4f8cfcd5493e20b74ab00cd4f3979f2d"},
+          {"path":"Half-Life/steam_appid.txt","kind":"file","size":3,"sha256":"36790ecd55c2030dc553685bef719df653f413a20cdad1bfd1dc934c76686ddd"},
+          {"path":"Half-Life/valve_WON","kind":"dir"},
+          {"path":"Half-Life/valve_WON/liblist.gam","kind":"file","size":17,"sha256":"f40b32507ea3bca121d548ab64c9fcc649e7ddd74066acf5105bbc3094a2decf"},
+          {"path":"RInput","kind":"dir"},
+          {"path":"RInput/RInput.exe","kind":"file","size":2,"sha256":"9b8db510ef42b8ed54a3712636fda55a4f8cfcd5493e20b74ab00cd4f3979f2d"}
+        ],
+        "logs": null,
+        "data": null
+      }
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "id": "settings/draft-changed",
+  "base": "settings/_base",
+  "state": "Черновик изменён: «Кнопка полного экрана» и «Анимации» выключены, ещё не сохранено",
+  "themes": [
+    "hlsr"
+  ],
+  "steps": [
+    {
+      "click": {
+        "css": ".game-rail__footer .game-rail__tool",
+        "index": 4,
+        "view": "rail-settings"
+      }
+    },
+    {
+      "wait": 600
+    },
+    {
+      "click": {
+        "css": ".settings-modal__tab",
+        "index": 2,
+        "view": "settings-tabs-2"
+      }
+    },
+    {
+      "wait": 600
+    },
+    {
+      "wheel": {
+        "css": ".settings-modal__section",
+        "view": "settings-body"
+      },
+      "deltaY": -6000
+    },
+    {
+      "wait": 600
+    },
+    {
+      "click": {
+        "css": ".settings-switch input",
+        "index": 0,
+        "view": "settings-fullscreenButton"
+      }
+    },
+    {
+      "click": {
+        "css": ".settings-switch input",
+        "index": 1,
+        "view": "settings-animations"
+      }
+    },
+    {
+      "wait": 600
+    },
+    {
+      "move": [
+        800,
+        880
+      ]
+    }
+  ]
+}

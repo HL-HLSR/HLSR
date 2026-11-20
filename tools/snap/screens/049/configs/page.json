@@ -1,0 +1,19 @@
+{
+  "id": "configs/page",
+  "state": "Страница: заголовок, «?», чипы (HL2 «в разработке», LiveSplit неактивный), разделы Ghosting слева",
+  "base": "configs/_base",
+  "steps": [
+    {
+      "click": {
+        "css": ".launcher-topbar__tab:nth-child(3)",
+        "view": "topbar-tab-configs"
+      }
+    },
+    {
+      "move": [
+        800,
+        880
+      ]
+    }
+  ]
+}

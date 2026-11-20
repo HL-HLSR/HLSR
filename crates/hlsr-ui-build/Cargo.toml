@@ -1,0 +1,16 @@
+[package]
+name = "hlsr-ui-build"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+
+# Логика build.rs крейта hlsr-ui: строки → таблица Rust; разбор themes.json.
+# Отдельный крейт, чтобы проверять её обычным cargo test.
+
+[dependencies]
+thiserror.workspace = true
+serde_json.workspace = true
+
+[dev-dependencies]
+tempfile.workspace = true

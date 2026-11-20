@@ -1,0 +1,257 @@
+{
+  "id": "sponsors/v2",
+  "base": "sponsors/_base",
+  "state": "Новый сервер (v2): шапка с кнопками «Подписка»/«Донат» (бот), подписчики (подсветка, рамка, значок, «Аноним»), начало донатов; подсказка внизу",
+  "themes": [
+    "hlsr",
+    "paper",
+    "liquid-glass"
+  ],
+  "invoke": {
+    "public-sponsors-get": {
+      "status": "ok",
+      "version": 2,
+      "links": {
+        "subscribe": "https://t.me/tribute/app?startapp=sabc",
+        "donate": "https://t.me/tribute/app?startapp=dabc",
+        "bot": "https://t.me/hlsr_support_bot"
+      },
+      "active": [
+        {
+          "profile": {
+            "personaName": "Kanoyo",
+            "avatarUrl": "https://avatars.steamstatic.com/0000000000000000000000000000000000000001_full.jpg",
+            "nick": {
+              "style": null,
+              "css": "color: #ffd76a; text-shadow: 0 0 0.4em rgba(255, 196, 80, 0.5)"
+            },
+            "avatarFrame": {
+              "css": "background: linear-gradient(135deg, #c9932a, #fff6cf 50%, #c9932a); box-shadow: 0 0 6px rgba(255, 196, 80, 0.55)"
+            },
+            "subscriber": true
+          },
+          "name": "",
+          "amount": 0,
+          "note": "",
+          "since": "",
+          "link": {
+            "mode": "profile",
+            "steamId64": "76561199155902676"
+          }
+        },
+        {
+          "profile": {
+            "personaName": "Buster",
+            "avatarUrl": "https://avatars.steamstatic.com/0000000000000000000000000000000000000001_full.jpg",
+            "nick": null,
+            "avatarFrame": null,
+            "subscriber": true
+          },
+          "name": "",
+          "amount": 0,
+          "note": "",
+          "since": "",
+          "link": {
+            "mode": "profile",
+            "steamId64": "76561198000000002"
+          }
+        },
+        {
+          "profile": {
+            "personaName": "",
+            "avatarUrl": null,
+            "nick": null,
+            "avatarFrame": null,
+            "subscriber": true
+          },
+          "name": "",
+          "amount": 0,
+          "note": "",
+          "since": "",
+          "link": {
+            "mode": "none"
+          }
+        },
+        {
+          "profile": {
+            "personaName": "gordon_freeman_1998",
+            "avatarUrl": null,
+            "nick": null,
+            "avatarFrame": null,
+            "subscriber": true
+          },
+          "name": "",
+          "amount": 0,
+          "note": "",
+          "since": "",
+          "link": {
+            "mode": "none"
+          }
+        }
+      ],
+      "donors": [
+        {
+          "profile": {
+            "personaName": "Kanoyo",
+            "avatarUrl": "https://avatars.steamstatic.com/0000000000000000000000000000000000000001_full.jpg",
+            "nick": {
+              "style": null,
+              "css": "color: #ffd76a; text-shadow: 0 0 0.4em rgba(255, 196, 80, 0.5)"
+            },
+            "avatarFrame": {
+              "css": "background: linear-gradient(135deg, #c9932a, #fff6cf 50%, #c9932a); box-shadow: 0 0 6px rgba(255, 196, 80, 0.55)"
+            },
+            "subscriber": true
+          },
+          "name": "Kanoyo",
+          "amount": 25000,
+          "note": "За лучший лаунчер для спидранов Half-Life!",
+          "since": "",
+          "link": {
+            "mode": "profile",
+            "steamId64": "76561199155902676"
+          }
+        },
+        {
+          "profile": {
+            "personaName": "Buster",
+            "avatarUrl": "https://avatars.steamstatic.com/0000000000000000000000000000000000000001_full.jpg",
+            "nick": null,
+            "avatarFrame": null,
+            "subscriber": true
+          },
+          "name": "Buster",
+          "amount": 12000,
+          "note": "Удачи с GPUI",
+          "since": "",
+          "link": {
+            "mode": "url",
+            "url": "https://example.com/buster"
+          }
+        },
+        {
+          "profile": null,
+          "name": "Аноним из Твери",
+          "amount": 5000,
+          "note": "",
+          "since": "",
+          "link": {
+            "mode": "none"
+          }
+        },
+        {
+          "profile": {
+            "personaName": "Shadow",
+            "avatarUrl": "https://avatars.steamstatic.com/0000000000000000000000000000000000000001_full.jpg",
+            "nick": null,
+            "avatarFrame": null,
+            "subscriber": false
+          },
+          "name": "Shadow",
+          "amount": 3000,
+          "note": "Спасибо!",
+          "since": "",
+          "link": {
+            "mode": "none"
+          }
+        },
+        {
+          "profile": null,
+          "name": "mr_bhop",
+          "amount": 1500,
+          "note": "",
+          "since": "",
+          "link": {
+            "mode": "none"
+          }
+        },
+        {
+          "profile": {
+            "personaName": "",
+            "avatarUrl": null,
+            "nick": null,
+            "avatarFrame": null,
+            "subscriber": false
+          },
+          "name": "",
+          "amount": 1000,
+          "note": "",
+          "since": "",
+          "link": {
+            "mode": "none"
+          }
+        },
+        {
+          "profile": null,
+          "name": "Lambda",
+          "amount": 500,
+          "note": "",
+          "since": "",
+          "link": {
+            "mode": "none"
+          }
+        }
+      ],
+      "past": [
+        {
+          "profile": null,
+          "name": "Barney",
+          "amount": 0,
+          "note": "",
+          "since": "",
+          "link": {
+            "mode": "none"
+          }
+        },
+        {
+          "profile": {
+            "personaName": "Alyx",
+            "avatarUrl": "https://avatars.steamstatic.com/0000000000000000000000000000000000000001_full.jpg",
+            "nick": null,
+            "avatarFrame": null,
+            "subscriber": false
+          },
+          "name": "",
+          "amount": 0,
+          "note": "",
+          "since": "",
+          "link": {
+            "mode": "profile",
+            "steamId64": "76561198000000003"
+          }
+        },
+        {
+          "profile": null,
+          "name": "",
+          "amount": 0,
+          "note": "",
+          "since": "",
+          "link": {
+            "mode": "none"
+          }
+        },
+        {
+          "profile": null,
+          "name": "Eli Vance",
+          "amount": 0,
+          "note": "",
+          "since": "",
+          "link": {
+            "mode": "url",
+            "url": "https://example.org/eli"
+          }
+        },
+        {
+          "profile": null,
+          "name": "Very Long Speedrunner Name From Long Ago",
+          "amount": 0,
+          "note": "",
+          "since": "",
+          "link": {
+            "mode": "none"
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "$comment": "«Игры» в корне оболочки (G1: HeroPanel.vue, GameStats.vue, ToolPanel.vue 0.4.9). Пока фон S2 не подключён к корню, в GPUI под героем кадр каркаса F3 (Ghosting у всех игр): сверять героя и нижнюю панель инструмента. Передний план каркаса в debug готов через 2–3 с (settleMs).",
+  "screen": "games",
+  "themes": [
+    "hlsr"
+  ],
+  "languages": [
+    "ru"
+  ],
+  "rails": [
+    "closed",
+    "open"
+  ],
+  "prefs": {
+    "configTourSeen": true
+  },
+  "settleMs": 4000
+}

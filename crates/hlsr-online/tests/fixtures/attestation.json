@@ -1,0 +1,718 @@
+{
+  "now": 1800000000000,
+  "chunk": 65536,
+  "buildLength": 328457,
+  "buildSha256": "e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038",
+  "label": "hlsr-attest/1",
+  "seal": {
+    "sealed": [
+      {"seed":"8efd6168a055d1e45863c237eb3feab2be94f10b7ccdc5bf8bb54305c8b19f7f","sealed":"1.AQEBAQEBAQEBAQEBAQEBAQ==.AgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgI=.dceFdL3ak42RCvt08z5Ei+6EK8TLx/eaFNf0s9dqeAM="},
+      {"seed":"0eb026731d9ea3f870511f8c18daeb814eaa2c9e276082b204f2a962212fb5bd","sealed":"1.AwMDAwMDAwMDAwMDAwMDAw==.BAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQ=.Ts6hYHGj540SV1eiu+LFV7VB1G//qcmimSQcQanphms="},
+      {"seed":"532b20b0105c9883348558ed2711c7d23ea6b4ee718364a87e16fad4b3c3a029","sealed":"1.BQUFBQUFBQUFBQUFBQUFBQ==.BgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgY=.319eA5iAzLzNUIhW3eSZTqFT3BROfln603jM0DDD6Ls="}
+    ],
+    "unseal": [
+      ["1.AQEBAQEBAQEBAQEBAQEBAQ==.AgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgI=.dceFdL3ak42RCvt08z5Ei+6EK8TLx/eaFNf0s9dqeAM=","8efd6168a055d1e45863c237eb3feab2be94f10b7ccdc5bf8bb54305c8b19f7f"],
+      ["1.AwMDAwMDAwMDAwMDAwMDAw==.BAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQ=.Ts6hYHGj540SV1eiu+LFV7VB1G//qcmimSQcQanphms=","0eb026731d9ea3f870511f8c18daeb814eaa2c9e276082b204f2a962212fb5bd"],
+      ["1.BQUFBQUFBQUFBQUFBQUFBQ==.BgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgY=.319eA5iAzLzNUIhW3eSZTqFT3BROfln603jM0DDD6Ls=","532b20b0105c9883348558ed2711c7d23ea6b4ee718364a87e16fad4b3c3a029"],
+      ["1.AQEBAQEBAQEBAQEBAQEBAQ.AgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgI.dceFdL3ak42RCvt08z5Ei+6EK8TLx/eaFNf0s9dqeAM","8efd6168a055d1e45863c237eb3feab2be94f10b7ccdc5bf8bb54305c8b19f7f"],
+      ["1.AQEBAQEBAQEBAQEBAQEBAQ==.AgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgI=.dceFdL3ak42RCvt08z5Ei-6EK8TLx_eaFNf0s9dqeAM=","8efd6168a055d1e45863c237eb3feab2be94f10b7ccdc5bf8bb54305c8b19f7f"],
+      ["1. AQEBAQEBAQEBAQEBAQEBAQ==\n. AgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgI=\n. dceFdL3ak42RCvt08z5Ei+6EK8TLx/eaFNf0s9dqeAM=\n","8efd6168a055d1e45863c237eb3feab2be94f10b7ccdc5bf8bb54305c8b19f7f"],
+      ["1.AQEBAQEBAQEBAQEBAQEBAQ==.AgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgI=.dceFdL3ak42RCvt08z5E!!i+6EK8TLx/eaFNf0s9dqeAM=","8efd6168a055d1e45863c237eb3feab2be94f10b7ccdc5bf8bb54305c8b19f7f"],
+      ["",null],
+      ["x",null],
+      ["2.AQEBAQEBAQEBAQEBAQEBAQ==.AgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgI=.dceFdL3ak42RCvt08z5Ei+6EK8TLx/eaFNf0s9dqeAM=",null],
+      ["1.AQEBAQEBAQEBAQEBAQEBAQ==.AgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgI=",null],
+      ["1.AQEBAQEBAQEBAQEBAQEBAQ==.AgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgI=.dceFdL3ak42RCvt08z5Ei+6EK8TLx/eaFNf0s9dq",null],
+      ["1.AQEBAQEBAQEBAQEBAQEBAQ==.AgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgI=.dceFdL3ak42RCvt08z5Ei+6EK8TLx/eaFNf0s9dqeAM=.",null],
+      ["1...",null],
+      ["1.AQEBAQEBAQEBAQEBAQEBAQ==.AgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgI=.dceFdL3ak42RCvt08z5Ei+6EK8TLx/eaFNf0s9dqeAM=AAAA","8efd6168a055d1e45863c237eb3feab2be94f10b7ccdc5bf8bb54305c8b19f7f"],
+      ["1.AgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgI=.AQEBAQEBAQEBAQEBAQEBAQ==.dceFdL3ak42RCvt08z5Ei+6EK8TLx/eaFNf0s9dqeAM=",null],
+      ["1.AQEBAQEBAQEBAQEBAQEBAQ======.AgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgI===.dceFdL3ak42RCvt08z5Ei+6EK8TLx/eaFNf0s9dqeAM===","8efd6168a055d1e45863c237eb3feab2be94f10b7ccdc5bf8bb54305c8b19f7f"],
+      [" 1.AQEBAQEBAQEBAQEBAQEBAQ==.AgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgI=.dceFdL3ak42RCvt08z5Ei+6EK8TLx/eaFNf0s9dqeAM=",null],
+      ["01.AQEBAQEBAQEBAQEBAQEBAQ==.AgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgI=.dceFdL3ak42RCvt08z5Ei+6EK8TLx/eaFNf0s9dqeAM=",null]
+    ],
+    "unsealUndefined": null,
+    "shortSeed": "seed ключа аттестации: нужно 32 байта"
+  },
+  "sign": [
+    {
+      "seed": "8efd6168a055d1e45863c237eb3feab2be94f10b7ccdc5bf8bb54305c8b19f7f",
+      "publicKey": "4b59e263b941dba922f8c2349c8eafb3f60d9c58c9750475e5d78144f7d9a8fe",
+      "signatures": [
+        ["hello","YqpTh_aLAkDDCN5Ni7DUjXQ0rVRBZAwjvVdlEu91c9naQONl4pAwC_SrozPrwBCIC0LwFk0c-sJww_Ayk1upBg"],
+        ["","oG3eGxoW0vte2HPjRndM8ulgUPvI3kRKGMSFa7sShKhPpr8qzHv_MNsJ7MHNXj2C33rAQY4Qknp-LPoeaHBqAw"],
+        ["hlsr-attest/1\nlinux/0.4.5/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\nchallenge\nbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb","FuyN6crcX6E5S7Yn3JLCH7Yjp4jDoBAclx9ANaDAoqT7-QXnFp-m-_FbosHKxcAS65Hi_F0C6pIW6W_ksdb6Dg"],
+        ["кириллица ✓","SpPxjlfnTc_FzENRtB5otQeP3JkJHb5I1X-p_la0_eMyba02Z7ofMCFy0qayLtHL2pPybmwQmM226nR9o6MRDQ"],
+        [
+          "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "5eIWceLcXYhO8wDmwyj7oltje3WoFh5MPaWOWsaqrhdMVlGEwIv0nUeCjPySe5bFpwN0XyaiE_OXLhD5SdxKDg"
+        ]
+      ]
+    },
+    {
+      "seed": "0eb026731d9ea3f870511f8c18daeb814eaa2c9e276082b204f2a962212fb5bd",
+      "publicKey": "ac7e46fc69b0d79648895b5d1efcaf8a1c42d128142f07f2d9b434c8e4119b6f",
+      "signatures": [
+        ["hello","_xkRQuW9V6g3ACLVBJq9qn93uXf-icUsxP_xVatPMEd3dGveamn9PLoj0m5WI3GkaZjY9TQinzXZNusTlzH-AQ"],
+        ["","Wb5D-nq7EuSzePB8QoAjG42PW0MeqjTayB1GVK1fwM3OSOf0z2Gj6kLjDbzsXrwXCPJLhXZxwKhkOzV00eopDw"],
+        ["hlsr-attest/1\nlinux/0.4.5/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\nchallenge\nbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb","HqDzFIE6OHUdaoFvpzwr4oIZISrDSAPjfzaHPdy1q_msOxenELAK8SmpQ7k3ehx5fJ6DYqlHeNHhIYvLklMjCA"],
+        ["кириллица ✓","tmz6c9Srqpk7SN6P-sllkhF4eNs5P4vIB6EInmAKZg5EoHaAJtohcVB9jqVfAcUC9_8olAJX5q3Uc0uYrTvdBA"],
+        [
+          "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "m_t2p99oNtofKPQhgQ7YgZ-m-V22jkUPHioEmFFvT2nTZnxkO2hcMKaz8DwWrhPw7sqo9dozqQLZvg22K37NDA"
+        ]
+      ]
+    },
+    {
+      "seed": "532b20b0105c9883348558ed2711c7d23ea6b4ee718364a87e16fad4b3c3a029",
+      "publicKey": "ce44d521abe4a4b6c2d6f5e02d70ebd3d9e3d7edf2471228ed9f7f995a5909a2",
+      "signatures": [
+        ["hello","-jQFWga1Ju-9xBBopwDM7LLtNCL3YrgXvUTSSq6b6vhenxkFqUWmTg1cESPSunz2nkkWq6zton2KI6CTAQbODA"],
+        ["","5mF0p0z012OK8U16B7gXHmYnFk7EPCMiCr7LQJwswWLdcbb_Pk2yWy3LYlkx0-fOQVVrdqZwBBYktryZw5nYBg"],
+        ["hlsr-attest/1\nlinux/0.4.5/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\nchallenge\nbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb","1CymCBXJYDt8TbqqRsluG9KjWqLlxbhI0EPS1ErPB-8MwlVxYBYHb7x8WR6X1TKMT3rUvM4kbhgqE3V2vXsSAA"],
+        ["кириллица ✓","kqhSFQ_ERF9ApJt0jI5K7OvLhTjgmHDt9yDx76P0d-zpY3QMLW4JrowlFK5c1oN1CoX2-zMlXpHz1XhQ4T6RCg"],
+        [
+          "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "vIiwQ8vhtJkX8NlsH65Zkf3qomUMA-_gJmLvr07XG3uA_7BCJF6j0wswL4v5KiL4F6WOgih9K0Dj3BDtAkY2AA"
+        ]
+      ]
+    }
+  ],
+  "headers": [
+    ["linux/0.4.5/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",true],
+    ["win32/0.5.0-beta.1/0000000000000000000000000000000000000000000000000000000000000000",true],
+    ["linux/0.4.5/dev",false],
+    ["linux/0.4.5/missing",false],
+    ["darwin/0.4.5/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",false],
+    ["linux/0.4.5/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",false],
+    ["linux//aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",false],
+    ["linux/0.4_5/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",false],
+    ["linux/0.4.5/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",false],
+    ["linux/0.4.5/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\n",false]
+  ],
+  "scenarios": [
+    {
+      "name": "билет: кеш, обновление заранее, force",
+      "steps": [{"op":"ticket"},{"op":"ticket"},{"op":"ticket"},{"op":"advance","ms":779000},{"op":"ticket"},{"op":"advance","ms":1000},{"op":"ticket"},{"op":"advance","ms":11000},{"op":"ticket","force":true},{"op":"advance","ms":2000},{"op":"ticket","force":true},{"op":"advance","ms":901000},{"op":"ticket"}],
+      "header": "linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038",
+      "results": [
+        {
+          "result": {"ticket":"eyJrIjoidCIsIm4iOiIwMDAwMDAwMiIsImUiOjE4MDAwMDA5MDB9.ZrlI0wlIOoboIgYITQm2sYotxBCrWbmRq09xPw_sXgM"},
+          "logs": [],
+          "signed": [
+            "hlsr-attest/1\nlinux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038\neyJrIjoiYyIsImkiOlswLDIsNCw1XSwibiI6IjAwMDAwMDAxIiwiZSI6MTgwMDAwMDA5MH0.Qv4icR9F2RRMCO7R0-nnBcQ7ekR_-j0EUcIDu7Tk0G8\nc2a19b29e9a734066ffb748d00176ca95e52545a0b0afe9e73f085740aeb97f8,1dd101d2093ce4abe758ae02dd1d894df9357d252c1c2151632f2710fd6ddb1a,799f049aa4ba04955e11039198e2e084e2ce3e22ef7541f604a12ebed7390812,b3f1df5cd32f6c8dc69383e7caa964ed89f2c7752f5fb002518a15deb5c09475"
+          ],
+          "requests": [
+            {"url":"https://api.test/v1/attest/challenge","method":"POST","headers":{"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},"body":"{}","timeoutMs":10000,"maxResponseBytes":65536,"launcherVersion":"0.4.5"},
+            {
+              "url": "https://api.test/v1/attest/prove",
+              "method": "POST",
+              "headers": {"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},
+              "body": "{\"challenge\":\"eyJrIjoiYyIsImkiOlswLDIsNCw1XSwibiI6IjAwMDAwMDAxIiwiZSI6MTgwMDAwMDA5MH0.Qv4icR9F2RRMCO7R0-nnBcQ7ekR_-j0EUcIDu7Tk0G8\",\"signature\":\"lWiHsSvOPQ18Bl09XvO8qLXjDzdPcbIcTk5N7iwnQY6zVLJpzOCS_xi2ou8affOKEWw3g_ushFdjt32GHGguBg\"}",
+              "timeoutMs": 10000,
+              "maxResponseBytes": 65536,
+              "launcherVersion": "0.4.5"
+            }
+          ]
+        },
+        {"result":{"ticket":"eyJrIjoidCIsIm4iOiIwMDAwMDAwMiIsImUiOjE4MDAwMDA5MDB9.ZrlI0wlIOoboIgYITQm2sYotxBCrWbmRq09xPw_sXgM"},"logs":[],"signed":[],"requests":[]},
+        {"result":{"ticket":"eyJrIjoidCIsIm4iOiIwMDAwMDAwMiIsImUiOjE4MDAwMDA5MDB9.ZrlI0wlIOoboIgYITQm2sYotxBCrWbmRq09xPw_sXgM"},"logs":[],"signed":[],"requests":[]},
+        {"result":null,"logs":[],"signed":[],"requests":[]},
+        {"result":{"ticket":"eyJrIjoidCIsIm4iOiIwMDAwMDAwMiIsImUiOjE4MDAwMDA5MDB9.ZrlI0wlIOoboIgYITQm2sYotxBCrWbmRq09xPw_sXgM"},"logs":[],"signed":[],"requests":[]},
+        {"result":null,"logs":[],"signed":[],"requests":[]},
+        {
+          "result": {"ticket":"eyJrIjoidCIsIm4iOiIwMDAwMDAwNCIsImUiOjE4MDAwMDE2ODB9.FW0NlNLixGfolfd5bIt7fnfJmJreCs6HzF1kpLre6qI"},
+          "logs": [],
+          "signed": [
+            "hlsr-attest/1\nlinux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038\neyJrIjoiYyIsImkiOlswLDIsNCw1XSwibiI6IjAwMDAwMDAzIiwiZSI6MTgwMDAwMDg3MH0.9C8euod8GzUvMvH-E8uZfau8ZwXq48l_F1BvBCt3vF8\nc2a19b29e9a734066ffb748d00176ca95e52545a0b0afe9e73f085740aeb97f8,1dd101d2093ce4abe758ae02dd1d894df9357d252c1c2151632f2710fd6ddb1a,799f049aa4ba04955e11039198e2e084e2ce3e22ef7541f604a12ebed7390812,b3f1df5cd32f6c8dc69383e7caa964ed89f2c7752f5fb002518a15deb5c09475"
+          ],
+          "requests": [
+            {"url":"https://api.test/v1/attest/challenge","method":"POST","headers":{"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},"body":"{}","timeoutMs":10000,"maxResponseBytes":65536,"launcherVersion":"0.4.5"},
+            {
+              "url": "https://api.test/v1/attest/prove",
+              "method": "POST",
+              "headers": {"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},
+              "body": "{\"challenge\":\"eyJrIjoiYyIsImkiOlswLDIsNCw1XSwibiI6IjAwMDAwMDAzIiwiZSI6MTgwMDAwMDg3MH0.9C8euod8GzUvMvH-E8uZfau8ZwXq48l_F1BvBCt3vF8\",\"signature\":\"SlMNoq5xGRdomuego-QTq-SpQGVSuRx9XE4mmx3YCr4mIN2eVlzgdXT9IXIVOodqMYBfCCUfmU_i_jo1DvFRCQ\"}",
+              "timeoutMs": 10000,
+              "maxResponseBytes": 65536,
+              "launcherVersion": "0.4.5"
+            }
+          ]
+        },
+        {"result":null,"logs":[],"signed":[],"requests":[]},
+        {
+          "result": {"ticket":"eyJrIjoidCIsIm4iOiIwMDAwMDAwNiIsImUiOjE4MDAwMDE2OTF9.gjYNgtOylq2wElpnpoy5UlkhYJWQqiNMQ7nCILY4TsY"},
+          "logs": [],
+          "signed": [
+            "hlsr-attest/1\nlinux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038\neyJrIjoiYyIsImkiOlswLDIsNCw1XSwibiI6IjAwMDAwMDA1IiwiZSI6MTgwMDAwMDg4MX0.LHVo2n0vS0Ys1HPeiquRmsVsvlzwYSnZS-tV__8ZWts\nc2a19b29e9a734066ffb748d00176ca95e52545a0b0afe9e73f085740aeb97f8,1dd101d2093ce4abe758ae02dd1d894df9357d252c1c2151632f2710fd6ddb1a,799f049aa4ba04955e11039198e2e084e2ce3e22ef7541f604a12ebed7390812,b3f1df5cd32f6c8dc69383e7caa964ed89f2c7752f5fb002518a15deb5c09475"
+          ],
+          "requests": [
+            {"url":"https://api.test/v1/attest/challenge","method":"POST","headers":{"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},"body":"{}","timeoutMs":10000,"maxResponseBytes":65536,"launcherVersion":"0.4.5"},
+            {
+              "url": "https://api.test/v1/attest/prove",
+              "method": "POST",
+              "headers": {"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},
+              "body": "{\"challenge\":\"eyJrIjoiYyIsImkiOlswLDIsNCw1XSwibiI6IjAwMDAwMDA1IiwiZSI6MTgwMDAwMDg4MX0.LHVo2n0vS0Ys1HPeiquRmsVsvlzwYSnZS-tV__8ZWts\",\"signature\":\"_xWbfSyh7XV_ErHN_QgfA18fl9Sw1Vl1f7WlGNwCX_FluzinyefWPymOuuaLk6VkRAvPwkWsQapGH8thPV3TBg\"}",
+              "timeoutMs": 10000,
+              "maxResponseBytes": 65536,
+              "launcherVersion": "0.4.5"
+            }
+          ]
+        },
+        {"result":null,"logs":[],"signed":[],"requests":[]},
+        {
+          "result": {"ticket":"eyJrIjoidCIsIm4iOiIwMDAwMDAwOCIsImUiOjE4MDAwMDE2OTN9.TY7cTaJkTiD9jN3yw8dP0-ULz_749LR4VgAVaWklKjE"},
+          "logs": [],
+          "signed": [
+            "hlsr-attest/1\nlinux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038\neyJrIjoiYyIsImkiOlswLDIsNCw1XSwibiI6IjAwMDAwMDA3IiwiZSI6MTgwMDAwMDg4M30.x7PggDPv-2hnPXXxzougktEriWWUvWhUDsgKFEAQPwc\nc2a19b29e9a734066ffb748d00176ca95e52545a0b0afe9e73f085740aeb97f8,1dd101d2093ce4abe758ae02dd1d894df9357d252c1c2151632f2710fd6ddb1a,799f049aa4ba04955e11039198e2e084e2ce3e22ef7541f604a12ebed7390812,b3f1df5cd32f6c8dc69383e7caa964ed89f2c7752f5fb002518a15deb5c09475"
+          ],
+          "requests": [
+            {"url":"https://api.test/v1/attest/challenge","method":"POST","headers":{"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},"body":"{}","timeoutMs":10000,"maxResponseBytes":65536,"launcherVersion":"0.4.5"},
+            {
+              "url": "https://api.test/v1/attest/prove",
+              "method": "POST",
+              "headers": {"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},
+              "body": "{\"challenge\":\"eyJrIjoiYyIsImkiOlswLDIsNCw1XSwibiI6IjAwMDAwMDA3IiwiZSI6MTgwMDAwMDg4M30.x7PggDPv-2hnPXXxzougktEriWWUvWhUDsgKFEAQPwc\",\"signature\":\"ZRAC2XhDU2o0A68qFdOfhTIBIFBBiBl9FgNJ3nbCQxEUTvWiBIaOxpDdCL2mopNHoF9pZxYGKAmGptgWV43wAw\"}",
+              "timeoutMs": 10000,
+              "maxResponseBytes": 65536,
+              "launcherVersion": "0.4.5"
+            }
+          ]
+        },
+        {"result":null,"logs":[],"signed":[],"requests":[]},
+        {
+          "result": {"ticket":"eyJrIjoidCIsIm4iOiIwMDAwMDAwYSIsImUiOjE4MDAwMDI1OTR9.3j2tIPO7wbRetDUaEijYEE85GmVfePBYqs0HMoBPENo"},
+          "logs": [],
+          "signed": [
+            "hlsr-attest/1\nlinux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038\neyJrIjoiYyIsImkiOlswLDIsNCw1XSwibiI6IjAwMDAwMDA5IiwiZSI6MTgwMDAwMTc4NH0.fPfS0_1wcs4p_gVVpjrpOAqm04wTsOiN1H51N6YNkvM\nc2a19b29e9a734066ffb748d00176ca95e52545a0b0afe9e73f085740aeb97f8,1dd101d2093ce4abe758ae02dd1d894df9357d252c1c2151632f2710fd6ddb1a,799f049aa4ba04955e11039198e2e084e2ce3e22ef7541f604a12ebed7390812,b3f1df5cd32f6c8dc69383e7caa964ed89f2c7752f5fb002518a15deb5c09475"
+          ],
+          "requests": [
+            {"url":"https://api.test/v1/attest/challenge","method":"POST","headers":{"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},"body":"{}","timeoutMs":10000,"maxResponseBytes":65536,"launcherVersion":"0.4.5"},
+            {
+              "url": "https://api.test/v1/attest/prove",
+              "method": "POST",
+              "headers": {"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},
+              "body": "{\"challenge\":\"eyJrIjoiYyIsImkiOlswLDIsNCw1XSwibiI6IjAwMDAwMDA5IiwiZSI6MTgwMDAwMTc4NH0.fPfS0_1wcs4p_gVVpjrpOAqm04wTsOiN1H51N6YNkvM\",\"signature\":\"UZ5hgrCTCmzRtfv54y2n59TVlAFHYJ9ugfTZyw5dkx6w7mlI667F8tZs-KFwK1qGOEw1kxkrFzgre_Rv_NDIBQ\"}",
+              "timeoutMs": 10000,
+              "maxResponseBytes": 65536,
+              "launcherVersion": "0.4.5"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "параллельные запросы делят одно рукопожатие",
+      "steps": [{"op":"parallel","count":3},{"op":"parallel","count":2,"force":true}],
+      "header": "linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038",
+      "results": [
+        {
+          "result": [{"ticket":"eyJrIjoidCIsIm4iOiIwMDAwMDAwMiIsImUiOjE4MDAwMDA5MDB9.ZrlI0wlIOoboIgYITQm2sYotxBCrWbmRq09xPw_sXgM"},{"ticket":"eyJrIjoidCIsIm4iOiIwMDAwMDAwMiIsImUiOjE4MDAwMDA5MDB9.ZrlI0wlIOoboIgYITQm2sYotxBCrWbmRq09xPw_sXgM"},{"ticket":"eyJrIjoidCIsIm4iOiIwMDAwMDAwMiIsImUiOjE4MDAwMDA5MDB9.ZrlI0wlIOoboIgYITQm2sYotxBCrWbmRq09xPw_sXgM"}],
+          "logs": [],
+          "signed": [
+            "hlsr-attest/1\nlinux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038\neyJrIjoiYyIsImkiOlswLDIsNCw1XSwibiI6IjAwMDAwMDAxIiwiZSI6MTgwMDAwMDA5MH0.Qv4icR9F2RRMCO7R0-nnBcQ7ekR_-j0EUcIDu7Tk0G8\nc2a19b29e9a734066ffb748d00176ca95e52545a0b0afe9e73f085740aeb97f8,1dd101d2093ce4abe758ae02dd1d894df9357d252c1c2151632f2710fd6ddb1a,799f049aa4ba04955e11039198e2e084e2ce3e22ef7541f604a12ebed7390812,b3f1df5cd32f6c8dc69383e7caa964ed89f2c7752f5fb002518a15deb5c09475"
+          ],
+          "requests": [
+            {"url":"https://api.test/v1/attest/challenge","method":"POST","headers":{"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},"body":"{}","timeoutMs":10000,"maxResponseBytes":65536,"launcherVersion":"0.4.5"},
+            {
+              "url": "https://api.test/v1/attest/prove",
+              "method": "POST",
+              "headers": {"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},
+              "body": "{\"challenge\":\"eyJrIjoiYyIsImkiOlswLDIsNCw1XSwibiI6IjAwMDAwMDAxIiwiZSI6MTgwMDAwMDA5MH0.Qv4icR9F2RRMCO7R0-nnBcQ7ekR_-j0EUcIDu7Tk0G8\",\"signature\":\"lWiHsSvOPQ18Bl09XvO8qLXjDzdPcbIcTk5N7iwnQY6zVLJpzOCS_xi2ou8affOKEWw3g_ushFdjt32GHGguBg\"}",
+              "timeoutMs": 10000,
+              "maxResponseBytes": 65536,
+              "launcherVersion": "0.4.5"
+            }
+          ]
+        },
+        {
+          "result": [{"ticket":"eyJrIjoidCIsIm4iOiIwMDAwMDAwNCIsImUiOjE4MDAwMDA5MDB9.6M24zQUhE_aJBKXuGuU0PQOuB7_FXcrSQc5qIfFeRy0"},{"ticket":"eyJrIjoidCIsIm4iOiIwMDAwMDAwNCIsImUiOjE4MDAwMDA5MDB9.6M24zQUhE_aJBKXuGuU0PQOuB7_FXcrSQc5qIfFeRy0"}],
+          "logs": [],
+          "signed": [
+            "hlsr-attest/1\nlinux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038\neyJrIjoiYyIsImkiOlswLDIsNCw1XSwibiI6IjAwMDAwMDAzIiwiZSI6MTgwMDAwMDA5MH0.jJB3uXQLMEZedU2MNFsAu0HTb0sIEkINUmChEQLrvEU\nc2a19b29e9a734066ffb748d00176ca95e52545a0b0afe9e73f085740aeb97f8,1dd101d2093ce4abe758ae02dd1d894df9357d252c1c2151632f2710fd6ddb1a,799f049aa4ba04955e11039198e2e084e2ce3e22ef7541f604a12ebed7390812,b3f1df5cd32f6c8dc69383e7caa964ed89f2c7752f5fb002518a15deb5c09475"
+          ],
+          "requests": [
+            {"url":"https://api.test/v1/attest/challenge","method":"POST","headers":{"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},"body":"{}","timeoutMs":10000,"maxResponseBytes":65536,"launcherVersion":"0.4.5"},
+            {
+              "url": "https://api.test/v1/attest/prove",
+              "method": "POST",
+              "headers": {"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},
+              "body": "{\"challenge\":\"eyJrIjoiYyIsImkiOlswLDIsNCw1XSwibiI6IjAwMDAwMDAzIiwiZSI6MTgwMDAwMDA5MH0.jJB3uXQLMEZedU2MNFsAu0HTb0sIEkINUmChEQLrvEU\",\"signature\":\"68rVnGZB5VMRMobuunupZkG-B6Hp_gbGYt5zozmiBR12Fg8Rm5YpUDK0ySKAKdRwLX3VgW3CUC_f85ercZAoCQ\"}",
+              "timeoutMs": 10000,
+              "maxResponseBytes": 65536,
+              "launcherVersion": "0.4.5"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "чужой ключ: CLIENT_MODIFIED",
+      "server": {"otherKey":true},
+      "steps": [{"op":"ticket"},{"op":"ticket"},{"op":"parallel","count":2}],
+      "header": "linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038",
+      "results": [
+        {
+          "result": {"error":"CLIENT_MODIFIED"},
+          "logs": [],
+          "signed": [
+            "hlsr-attest/1\nlinux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038\neyJrIjoiYyIsImkiOlswLDIsNCw1XSwibiI6IjAwMDAwMDAxIiwiZSI6MTgwMDAwMDA5MH0.Qv4icR9F2RRMCO7R0-nnBcQ7ekR_-j0EUcIDu7Tk0G8\nc2a19b29e9a734066ffb748d00176ca95e52545a0b0afe9e73f085740aeb97f8,1dd101d2093ce4abe758ae02dd1d894df9357d252c1c2151632f2710fd6ddb1a,799f049aa4ba04955e11039198e2e084e2ce3e22ef7541f604a12ebed7390812,b3f1df5cd32f6c8dc69383e7caa964ed89f2c7752f5fb002518a15deb5c09475"
+          ],
+          "requests": [
+            {"url":"https://api.test/v1/attest/challenge","method":"POST","headers":{"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},"body":"{}","timeoutMs":10000,"maxResponseBytes":65536,"launcherVersion":"0.4.5"},
+            {
+              "url": "https://api.test/v1/attest/prove",
+              "method": "POST",
+              "headers": {"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},
+              "body": "{\"challenge\":\"eyJrIjoiYyIsImkiOlswLDIsNCw1XSwibiI6IjAwMDAwMDAxIiwiZSI6MTgwMDAwMDA5MH0.Qv4icR9F2RRMCO7R0-nnBcQ7ekR_-j0EUcIDu7Tk0G8\",\"signature\":\"lWiHsSvOPQ18Bl09XvO8qLXjDzdPcbIcTk5N7iwnQY6zVLJpzOCS_xi2ou8affOKEWw3g_ushFdjt32GHGguBg\"}",
+              "timeoutMs": 10000,
+              "maxResponseBytes": 65536,
+              "launcherVersion": "0.4.5"
+            }
+          ]
+        },
+        {
+          "result": {"error":"CLIENT_MODIFIED"},
+          "logs": [],
+          "signed": [
+            "hlsr-attest/1\nlinux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038\neyJrIjoiYyIsImkiOlswLDIsNCw1XSwibiI6IjAwMDAwMDAyIiwiZSI6MTgwMDAwMDA5MH0.NDzyH4DiTvtQ9HTKfdnGuDwD-2RTjhTWOJ3NOgtJhrw\nc2a19b29e9a734066ffb748d00176ca95e52545a0b0afe9e73f085740aeb97f8,1dd101d2093ce4abe758ae02dd1d894df9357d252c1c2151632f2710fd6ddb1a,799f049aa4ba04955e11039198e2e084e2ce3e22ef7541f604a12ebed7390812,b3f1df5cd32f6c8dc69383e7caa964ed89f2c7752f5fb002518a15deb5c09475"
+          ],
+          "requests": [
+            {"url":"https://api.test/v1/attest/challenge","method":"POST","headers":{"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},"body":"{}","timeoutMs":10000,"maxResponseBytes":65536,"launcherVersion":"0.4.5"},
+            {
+              "url": "https://api.test/v1/attest/prove",
+              "method": "POST",
+              "headers": {"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},
+              "body": "{\"challenge\":\"eyJrIjoiYyIsImkiOlswLDIsNCw1XSwibiI6IjAwMDAwMDAyIiwiZSI6MTgwMDAwMDA5MH0.NDzyH4DiTvtQ9HTKfdnGuDwD-2RTjhTWOJ3NOgtJhrw\",\"signature\":\"hF9dQHa9yCEWLAKHhySfmXIthBqe4KtGn8qZrOq31CJAP-ClvhxkW5pRb81PY53RwmgeWuDCA2HYSwQ8QV4rBQ\"}",
+              "timeoutMs": 10000,
+              "maxResponseBytes": 65536,
+              "launcherVersion": "0.4.5"
+            }
+          ]
+        },
+        {
+          "result": [{"error":"CLIENT_MODIFIED"},{"error":"CLIENT_MODIFIED"}],
+          "logs": [],
+          "signed": [
+            "hlsr-attest/1\nlinux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038\neyJrIjoiYyIsImkiOlswLDIsNCw1XSwibiI6IjAwMDAwMDAzIiwiZSI6MTgwMDAwMDA5MH0.jJB3uXQLMEZedU2MNFsAu0HTb0sIEkINUmChEQLrvEU\nc2a19b29e9a734066ffb748d00176ca95e52545a0b0afe9e73f085740aeb97f8,1dd101d2093ce4abe758ae02dd1d894df9357d252c1c2151632f2710fd6ddb1a,799f049aa4ba04955e11039198e2e084e2ce3e22ef7541f604a12ebed7390812,b3f1df5cd32f6c8dc69383e7caa964ed89f2c7752f5fb002518a15deb5c09475"
+          ],
+          "requests": [
+            {"url":"https://api.test/v1/attest/challenge","method":"POST","headers":{"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},"body":"{}","timeoutMs":10000,"maxResponseBytes":65536,"launcherVersion":"0.4.5"},
+            {
+              "url": "https://api.test/v1/attest/prove",
+              "method": "POST",
+              "headers": {"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},
+              "body": "{\"challenge\":\"eyJrIjoiYyIsImkiOlswLDIsNCw1XSwibiI6IjAwMDAwMDAzIiwiZSI6MTgwMDAwMDA5MH0.jJB3uXQLMEZedU2MNFsAu0HTb0sIEkINUmChEQLrvEU\",\"signature\":\"68rVnGZB5VMRMobuunupZkG-B6Hp_gbGYt5zozmiBR12Fg8Rm5YpUDK0ySKAKdRwLX3VgW3CUC_f85ercZAoCQ\"}",
+              "timeoutMs": 10000,
+              "maxResponseBytes": 65536,
+              "launcherVersion": "0.4.5"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "чужая сборка в заголовке: CLIENT_MODIFIED",
+      "server": {"otherHeader":true},
+      "steps": [{"op":"ticket"}],
+      "header": "linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038",
+      "results": [{"result":{"error":"CLIENT_MODIFIED"},"logs":[],"signed":[],"requests":[{"url":"https://api.test/v1/attest/challenge","method":"POST","headers":{"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},"body":"{}","timeoutMs":10000,"maxResponseBytes":65536,"launcherVersion":"0.4.5"}]}]
+    },
+    {
+      "name": "байты подменены при том же размере и времени",
+      "tamper": {"at":131077},
+      "steps": [{"op":"ticket"}],
+      "header": "linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038",
+      "results": [
+        {
+          "result": {"error":"CLIENT_MODIFIED"},
+          "logs": [],
+          "signed": [
+            "hlsr-attest/1\nlinux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038\neyJrIjoiYyIsImkiOlswLDIsNCw1XSwibiI6IjAwMDAwMDAxIiwiZSI6MTgwMDAwMDA5MH0.Qv4icR9F2RRMCO7R0-nnBcQ7ekR_-j0EUcIDu7Tk0G8\nc2a19b29e9a734066ffb748d00176ca95e52545a0b0afe9e73f085740aeb97f8,f15fa62b5e4af4356cf0b05e98f151db3d8fc7bd17469a53466a9681a679cc2e,799f049aa4ba04955e11039198e2e084e2ce3e22ef7541f604a12ebed7390812,b3f1df5cd32f6c8dc69383e7caa964ed89f2c7752f5fb002518a15deb5c09475"
+          ],
+          "requests": [
+            {"url":"https://api.test/v1/attest/challenge","method":"POST","headers":{"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},"body":"{}","timeoutMs":10000,"maxResponseBytes":65536,"launcherVersion":"0.4.5"},
+            {
+              "url": "https://api.test/v1/attest/prove",
+              "method": "POST",
+              "headers": {"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},
+              "body": "{\"challenge\":\"eyJrIjoiYyIsImkiOlswLDIsNCw1XSwibiI6IjAwMDAwMDAxIiwiZSI6MTgwMDAwMDA5MH0.Qv4icR9F2RRMCO7R0-nnBcQ7ekR_-j0EUcIDu7Tk0G8\",\"signature\":\"roRD7MsCbLQq7owHbM6_lFHT4lUYQF5oL3mG3mhsQsrWrunoyKKHR8ZwrOwtrNBmin23awHJ72eSBGxI-mc5BQ\"}",
+              "timeoutMs": 10000,
+              "maxResponseBytes": 65536,
+              "launcherVersion": "0.4.5"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "файл обновлён после подсчёта хеша",
+      "steps": [{"op":"append"},{"op":"ticket"},{"op":"advance","ms":29999},{"op":"ticket"},{"op":"ticket","force":true},{"op":"advance","ms":1},{"op":"ticket"}],
+      "header": "linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038",
+      "results": [
+        {"result":null,"logs":[],"signed":[],"requests":[]},
+        {"result":{"ticket":null},"logs":[["warn","[attest] подтвердить сборку не удалось: ASAR_CHANGED"]],"signed":[],"requests":[{"url":"https://api.test/v1/attest/challenge","method":"POST","headers":{"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},"body":"{}","timeoutMs":10000,"maxResponseBytes":65536,"launcherVersion":"0.4.5"}]},
+        {"result":null,"logs":[],"signed":[],"requests":[]},
+        {"result":{"ticket":null},"logs":[],"signed":[],"requests":[]},
+        {"result":{"ticket":null},"logs":[["warn","[attest] подтвердить сборку не удалось: ASAR_CHANGED"]],"signed":[],"requests":[{"url":"https://api.test/v1/attest/challenge","method":"POST","headers":{"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},"body":"{}","timeoutMs":10000,"maxResponseBytes":65536,"launcherVersion":"0.4.5"}]},
+        {"result":null,"logs":[],"signed":[],"requests":[]},
+        {"result":{"ticket":null},"logs":[],"signed":[],"requests":[]}
+      ]
+    },
+    {
+      "name": "404: тишина на час",
+      "server": {"status":{"code":404,"error":"NOT_FOUND"}},
+      "steps": [{"op":"ticket"},{"op":"ticket","force":true},{"op":"advance","ms":3600000},{"op":"ticket"},{"op":"advance","ms":1},{"op":"ticket"}],
+      "header": "linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038",
+      "results": [
+        {"result":{"ticket":null},"logs":[],"signed":[],"requests":[{"url":"https://api.test/v1/attest/challenge","method":"POST","headers":{"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},"body":"{}","timeoutMs":10000,"maxResponseBytes":65536,"launcherVersion":"0.4.5"}]},
+        {"result":{"ticket":null},"logs":[],"signed":[],"requests":[]},
+        {"result":null,"logs":[],"signed":[],"requests":[]},
+        {"result":{"ticket":null},"logs":[],"signed":[],"requests":[{"url":"https://api.test/v1/attest/challenge","method":"POST","headers":{"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},"body":"{}","timeoutMs":10000,"maxResponseBytes":65536,"launcherVersion":"0.4.5"}]},
+        {"result":null,"logs":[],"signed":[],"requests":[]},
+        {"result":{"ticket":null},"logs":[],"signed":[],"requests":[]}
+      ]
+    },
+    {
+      "name": "сбой сети: пауза 30 с, force не чаще 10 с",
+      "server": {"answers":[{"throw":"TELEMETRY_NETWORK"},{"throw":"TELEMETRY_TIMEOUT"},{"throw":"TELEMETRY_NETWORK"}]},
+      "steps": [{"op":"ticket"},{"op":"ticket"},{"op":"advance","ms":9999},{"op":"ticket","force":true},{"op":"advance","ms":1},{"op":"ticket","force":true},{"op":"advance","ms":31000},{"op":"ticket"},{"op":"ticket"}],
+      "header": "linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038",
+      "results": [
+        {"result":{"ticket":null},"logs":[["warn","[attest] подтвердить сборку не удалось: TELEMETRY_NETWORK"]],"signed":[],"requests":[{"url":"https://api.test/v1/attest/challenge","method":"POST","headers":{"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},"body":"{}","timeoutMs":10000,"maxResponseBytes":65536,"launcherVersion":"0.4.5"}]},
+        {"result":{"ticket":null},"logs":[],"signed":[],"requests":[]},
+        {"result":null,"logs":[],"signed":[],"requests":[]},
+        {"result":{"ticket":null},"logs":[],"signed":[],"requests":[]},
+        {"result":null,"logs":[],"signed":[],"requests":[]},
+        {"result":{"ticket":null},"logs":[["warn","[attest] подтвердить сборку не удалось: TELEMETRY_TIMEOUT"]],"signed":[],"requests":[{"url":"https://api.test/v1/attest/challenge","method":"POST","headers":{"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},"body":"{}","timeoutMs":10000,"maxResponseBytes":65536,"launcherVersion":"0.4.5"}]},
+        {"result":null,"logs":[],"signed":[],"requests":[]},
+        {"result":{"ticket":null},"logs":[["warn","[attest] подтвердить сборку не удалось: TELEMETRY_NETWORK"]],"signed":[],"requests":[{"url":"https://api.test/v1/attest/challenge","method":"POST","headers":{"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},"body":"{}","timeoutMs":10000,"maxResponseBytes":65536,"launcherVersion":"0.4.5"}]},
+        {"result":{"ticket":null},"logs":[],"signed":[],"requests":[]}
+      ]
+    },
+    {
+      "name": "ответы сервера: коды и мусор",
+      "server": {"answers":[{"status":500,"body":{"error":"DB"}},{"status":403,"body":{"error":"FORBIDDEN"}},{"status":403,"body":"nope"},{"status":502,"body":"[1]"},{"status":429,"body":{"error":7}},{"status":200,"body":"not json"},{"status":200,"body":"5"},{"status":201,"body":{}},{"status":403,"body":{"error":"CLIENT_MODIFIED"}}]},
+      "steps": [
+        {"op":"ticket"},
+        {"op":"advance","ms":30000},
+        {"op":"ticket"},
+        {"op":"advance","ms":30000},
+        {"op":"ticket"},
+        {"op":"advance","ms":30000},
+        {"op":"ticket"},
+        {"op":"advance","ms":30000},
+        {"op":"ticket"},
+        {"op":"advance","ms":30000},
+        {"op":"ticket"},
+        {"op":"advance","ms":30000},
+        {"op":"ticket"},
+        {"op":"advance","ms":30000},
+        {"op":"ticket"},
+        {"op":"advance","ms":30000},
+        {"op":"ticket"},
+        {"op":"advance","ms":30000}
+      ],
+      "header": "linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038",
+      "results": [
+        {"result":{"ticket":null},"logs":[["warn","[attest] подтвердить сборку не удалось: ATTEST_HTTP_500_DB"]],"signed":[],"requests":[{"url":"https://api.test/v1/attest/challenge","method":"POST","headers":{"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},"body":"{}","timeoutMs":10000,"maxResponseBytes":65536,"launcherVersion":"0.4.5"}]},
+        {"result":null,"logs":[],"signed":[],"requests":[]},
+        {"result":{"ticket":null},"logs":[["warn","[attest] подтвердить сборку не удалось: ATTEST_HTTP_403_FORBIDDEN"]],"signed":[],"requests":[{"url":"https://api.test/v1/attest/challenge","method":"POST","headers":{"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},"body":"{}","timeoutMs":10000,"maxResponseBytes":65536,"launcherVersion":"0.4.5"}]},
+        {"result":null,"logs":[],"signed":[],"requests":[]},
+        {"result":{"ticket":null},"logs":[["warn","[attest] подтвердить сборку не удалось: ATTEST_HTTP_403"]],"signed":[],"requests":[{"url":"https://api.test/v1/attest/challenge","method":"POST","headers":{"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},"body":"{}","timeoutMs":10000,"maxResponseBytes":65536,"launcherVersion":"0.4.5"}]},
+        {"result":null,"logs":[],"signed":[],"requests":[]},
+        {"result":{"ticket":null},"logs":[["warn","[attest] подтвердить сборку не удалось: ATTEST_HTTP_502"]],"signed":[],"requests":[{"url":"https://api.test/v1/attest/challenge","method":"POST","headers":{"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},"body":"{}","timeoutMs":10000,"maxResponseBytes":65536,"launcherVersion":"0.4.5"}]},
+        {"result":null,"logs":[],"signed":[],"requests":[]},
+        {"result":{"ticket":null},"logs":[["warn","[attest] подтвердить сборку не удалось: ATTEST_HTTP_429_7"]],"signed":[],"requests":[{"url":"https://api.test/v1/attest/challenge","method":"POST","headers":{"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},"body":"{}","timeoutMs":10000,"maxResponseBytes":65536,"launcherVersion":"0.4.5"}]},
+        {"result":null,"logs":[],"signed":[],"requests":[]},
+        {"result":{"ticket":null},"logs":[["warn","[attest] подтвердить сборку не удалось: ATTEST_BAD_RESPONSE"]],"signed":[],"requests":[{"url":"https://api.test/v1/attest/challenge","method":"POST","headers":{"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},"body":"{}","timeoutMs":10000,"maxResponseBytes":65536,"launcherVersion":"0.4.5"}]},
+        {"result":null,"logs":[],"signed":[],"requests":[]},
+        {"result":{"ticket":null},"logs":[["warn","[attest] подтвердить сборку не удалось: ATTEST_BAD_RESPONSE"]],"signed":[],"requests":[{"url":"https://api.test/v1/attest/challenge","method":"POST","headers":{"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},"body":"{}","timeoutMs":10000,"maxResponseBytes":65536,"launcherVersion":"0.4.5"}]},
+        {"result":null,"logs":[],"signed":[],"requests":[]},
+        {"result":{"ticket":null},"logs":[["warn","[attest] подтвердить сборку не удалось: ATTEST_HTTP_201"]],"signed":[],"requests":[{"url":"https://api.test/v1/attest/challenge","method":"POST","headers":{"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},"body":"{}","timeoutMs":10000,"maxResponseBytes":65536,"launcherVersion":"0.4.5"}]},
+        {"result":null,"logs":[],"signed":[],"requests":[]},
+        {"result":{"error":"CLIENT_MODIFIED"},"logs":[],"signed":[],"requests":[{"url":"https://api.test/v1/attest/challenge","method":"POST","headers":{"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},"body":"{}","timeoutMs":10000,"maxResponseBytes":65536,"launcherVersion":"0.4.5"}]},
+        {"result":null,"logs":[],"signed":[],"requests":[]}
+      ]
+    },
+    {
+      "name": "мусорный вызов: ничего не подписывается",
+      "server": {
+        "answers": [
+          {"status":200,"body":{"challenge":"x","ranges":[]}},
+          {"status":200,"body":{"challenge":"x","ranges":[[0,262145]]}},
+          {"status":200,"body":{"challenge":"x","ranges":[[-1,10]]}},
+          {"status":200,"body":{"challenge":"x","ranges":[[0,10],[0,10],[0,10],[0,10],[0,10],[0,10],[0,10],[0,10],[0,10]]}},
+          {"status":200,"body":{"challenge":5,"ranges":[[0,10]]}},
+          {
+            "status": 200,
+            "body": {
+              "challenge": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+              "ranges": [[0,10]]
+            }
+          },
+          {
+            "status": 200,
+            "body": {
+              "challenge": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+              "ranges": [[0,10],[1.5,10]]
+            }
+          },
+          {"status":200,"body":{"challenge":"x","ranges":[[0,10,1]]}},
+          {"status":200,"body":{"challenge":"x","ranges":[["0",10]]}},
+          {"status":200,"body":{"challenge":"x","ranges":[[0,0]]}},
+          {"status":200,"body":{"challenge":"x"}},
+          {"status":200,"body":[1,2]},
+          {"status":200,"body":"строка"},
+          {"status":200,"body":"null"}
+        ]
+      },
+      "steps": [
+        {"op":"ticket"},
+        {"op":"advance","ms":40000},
+        {"op":"ticket"},
+        {"op":"advance","ms":40000},
+        {"op":"ticket"},
+        {"op":"advance","ms":40000},
+        {"op":"ticket"},
+        {"op":"advance","ms":40000},
+        {"op":"ticket"},
+        {"op":"advance","ms":40000},
+        {"op":"ticket"},
+        {"op":"advance","ms":40000},
+        {"op":"ticket"},
+        {"op":"advance","ms":40000},
+        {"op":"ticket"},
+        {"op":"advance","ms":40000},
+        {"op":"ticket"},
+        {"op":"advance","ms":40000},
+        {"op":"ticket"},
+        {"op":"advance","ms":40000},
+        {"op":"ticket"},
+        {"op":"advance","ms":40000},
+        {"op":"ticket"},
+        {"op":"advance","ms":40000},
+        {"op":"ticket"},
+        {"op":"advance","ms":40000},
+        {"op":"ticket"},
+        {"op":"advance","ms":40000}
+      ],
+      "header": "linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038",
+      "results": [
+        {"result":{"ticket":null},"logs":[["warn","[attest] подтвердить сборку не удалось: ATTEST_BAD_CHALLENGE"]],"signed":[],"requests":[{"url":"https://api.test/v1/attest/challenge","method":"POST","headers":{"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},"body":"{}","timeoutMs":10000,"maxResponseBytes":65536,"launcherVersion":"0.4.5"}]},
+        {"result":null,"logs":[],"signed":[],"requests":[]},
+        {"result":{"ticket":null},"logs":[["warn","[attest] подтвердить сборку не удалось: ATTEST_BAD_CHALLENGE"]],"signed":[],"requests":[{"url":"https://api.test/v1/attest/challenge","method":"POST","headers":{"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},"body":"{}","timeoutMs":10000,"maxResponseBytes":65536,"launcherVersion":"0.4.5"}]},
+        {"result":null,"logs":[],"signed":[],"requests":[]},
+        {"result":{"ticket":null},"logs":[["warn","[attest] подтвердить сборку не удалось: ATTEST_BAD_CHALLENGE"]],"signed":[],"requests":[{"url":"https://api.test/v1/attest/challenge","method":"POST","headers":{"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},"body":"{}","timeoutMs":10000,"maxResponseBytes":65536,"launcherVersion":"0.4.5"}]},
+        {"result":null,"logs":[],"signed":[],"requests":[]},
+        {"result":{"ticket":null},"logs":[["warn","[attest] подтвердить сборку не удалось: ATTEST_BAD_CHALLENGE"]],"signed":[],"requests":[{"url":"https://api.test/v1/attest/challenge","method":"POST","headers":{"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},"body":"{}","timeoutMs":10000,"maxResponseBytes":65536,"launcherVersion":"0.4.5"}]},
+        {"result":null,"logs":[],"signed":[],"requests":[]},
+        {"result":{"ticket":null},"logs":[["warn","[attest] подтвердить сборку не удалось: ATTEST_BAD_CHALLENGE"]],"signed":[],"requests":[{"url":"https://api.test/v1/attest/challenge","method":"POST","headers":{"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},"body":"{}","timeoutMs":10000,"maxResponseBytes":65536,"launcherVersion":"0.4.5"}]},
+        {"result":null,"logs":[],"signed":[],"requests":[]},
+        {"result":{"ticket":null},"logs":[["warn","[attest] подтвердить сборку не удалось: ATTEST_BAD_CHALLENGE"]],"signed":[],"requests":[{"url":"https://api.test/v1/attest/challenge","method":"POST","headers":{"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},"body":"{}","timeoutMs":10000,"maxResponseBytes":65536,"launcherVersion":"0.4.5"}]},
+        {"result":null,"logs":[],"signed":[],"requests":[]},
+        {"result":{"ticket":null},"logs":[["warn","[attest] подтвердить сборку не удалось: ATTEST_BAD_CHALLENGE"]],"signed":[],"requests":[{"url":"https://api.test/v1/attest/challenge","method":"POST","headers":{"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},"body":"{}","timeoutMs":10000,"maxResponseBytes":65536,"launcherVersion":"0.4.5"}]},
+        {"result":null,"logs":[],"signed":[],"requests":[]},
+        {"result":{"ticket":null},"logs":[["warn","[attest] подтвердить сборку не удалось: ATTEST_BAD_CHALLENGE"]],"signed":[],"requests":[{"url":"https://api.test/v1/attest/challenge","method":"POST","headers":{"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},"body":"{}","timeoutMs":10000,"maxResponseBytes":65536,"launcherVersion":"0.4.5"}]},
+        {"result":null,"logs":[],"signed":[],"requests":[]},
+        {"result":{"ticket":null},"logs":[["warn","[attest] подтвердить сборку не удалось: ATTEST_BAD_CHALLENGE"]],"signed":[],"requests":[{"url":"https://api.test/v1/attest/challenge","method":"POST","headers":{"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},"body":"{}","timeoutMs":10000,"maxResponseBytes":65536,"launcherVersion":"0.4.5"}]},
+        {"result":null,"logs":[],"signed":[],"requests":[]},
+        {"result":{"ticket":null},"logs":[["warn","[attest] подтвердить сборку не удалось: ATTEST_BAD_CHALLENGE"]],"signed":[],"requests":[{"url":"https://api.test/v1/attest/challenge","method":"POST","headers":{"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},"body":"{}","timeoutMs":10000,"maxResponseBytes":65536,"launcherVersion":"0.4.5"}]},
+        {"result":null,"logs":[],"signed":[],"requests":[]},
+        {"result":{"ticket":null},"logs":[["warn","[attest] подтвердить сборку не удалось: ATTEST_BAD_CHALLENGE"]],"signed":[],"requests":[{"url":"https://api.test/v1/attest/challenge","method":"POST","headers":{"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},"body":"{}","timeoutMs":10000,"maxResponseBytes":65536,"launcherVersion":"0.4.5"}]},
+        {"result":null,"logs":[],"signed":[],"requests":[]},
+        {"result":{"ticket":null},"logs":[["warn","[attest] подтвердить сборку не удалось: ATTEST_BAD_CHALLENGE"]],"signed":[],"requests":[{"url":"https://api.test/v1/attest/challenge","method":"POST","headers":{"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},"body":"{}","timeoutMs":10000,"maxResponseBytes":65536,"launcherVersion":"0.4.5"}]},
+        {"result":null,"logs":[],"signed":[],"requests":[]},
+        {"result":{"ticket":null},"logs":[["warn","[attest] подтвердить сборку не удалось: ATTEST_BAD_RESPONSE"]],"signed":[],"requests":[{"url":"https://api.test/v1/attest/challenge","method":"POST","headers":{"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},"body":"{}","timeoutMs":10000,"maxResponseBytes":65536,"launcherVersion":"0.4.5"}]},
+        {"result":null,"logs":[],"signed":[],"requests":[]},
+        {"result":{"ticket":null},"logs":[["warn","[attest] подтвердить сборку не удалось: ATTEST_BAD_RESPONSE"]],"signed":[],"requests":[{"url":"https://api.test/v1/attest/challenge","method":"POST","headers":{"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},"body":"{}","timeoutMs":10000,"maxResponseBytes":65536,"launcherVersion":"0.4.5"}]},
+        {"result":null,"logs":[],"signed":[],"requests":[]}
+      ]
+    },
+    {
+      "name": "ответ на доказательство: мусор",
+      "server": {
+        "answers": [
+          {"status":200,"body":{"challenge":"c1","ranges":[[0,10]]}},
+          {"status":200,"body":{"ticket":"","ttl":900}},
+          {"status":200,"body":{"challenge":"c2","ranges":[[0,10]]}},
+          {"status":200,"body":{"ticket":"T","ttl":59}},
+          {"status":200,"body":{"challenge":"c3","ranges":[[0,10]]}},
+          {"status":200,"body":{"ticket":"T","ttl":900.5}},
+          {"status":200,"body":{"challenge":"c4","ranges":[[0,10]]}},
+          {
+            "status": 200,
+            "body": {
+              "ticket": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+              "ttl": 900
+            }
+          },
+          {"status":200,"body":{"challenge":"c5","ranges":[[0,10]]}},
+          {"status":404,"body":{}},
+          {"status":200,"body":{"challenge":"c6","ranges":[[0,10]]}},
+          {"status":200,"body":{"ticket":"T6","ttl":3600}}
+        ]
+      },
+      "steps": [{"op":"ticket"},{"op":"advance","ms":30000},{"op":"ticket"},{"op":"advance","ms":30000},{"op":"ticket"},{"op":"advance","ms":30000},{"op":"ticket"},{"op":"advance","ms":30000},{"op":"ticket"},{"op":"advance","ms":3600000},{"op":"ticket"},{"op":"advance","ms":3480000},{"op":"ticket"},{"op":"advance","ms":1},{"op":"ticket"}],
+      "header": "linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038",
+      "results": [
+        {
+          "result": {"ticket":null},
+          "logs": [["warn","[attest] подтвердить сборку не удалось: ATTEST_BAD_RESPONSE"]],
+          "signed": ["hlsr-attest/1\nlinux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038\nc1\n7d071c217f1805291d8c35997b0e7b7038989315064369ad2fd8756f2c804124"],
+          "requests": [
+            {"url":"https://api.test/v1/attest/challenge","method":"POST","headers":{"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},"body":"{}","timeoutMs":10000,"maxResponseBytes":65536,"launcherVersion":"0.4.5"},
+            {"url":"https://api.test/v1/attest/prove","method":"POST","headers":{"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},"body":"{\"challenge\":\"c1\",\"signature\":\"jb6xexD0pIlZOXBdNzLs9Kg0EyLLLg33AFkVqt-SllA7jfm-zuhpJAiaogJ75w8uoUJ49igPCvrzefi3qGMvBQ\"}","timeoutMs":10000,"maxResponseBytes":65536,"launcherVersion":"0.4.5"}
+          ]
+        },
+        {"result":null,"logs":[],"signed":[],"requests":[]},
+        {
+          "result": {"ticket":null},
+          "logs": [["warn","[attest] подтвердить сборку не удалось: ATTEST_BAD_RESPONSE"]],
+          "signed": ["hlsr-attest/1\nlinux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038\nc2\n7d071c217f1805291d8c35997b0e7b7038989315064369ad2fd8756f2c804124"],
+          "requests": [
+            {"url":"https://api.test/v1/attest/challenge","method":"POST","headers":{"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},"body":"{}","timeoutMs":10000,"maxResponseBytes":65536,"launcherVersion":"0.4.5"},
+            {"url":"https://api.test/v1/attest/prove","method":"POST","headers":{"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},"body":"{\"challenge\":\"c2\",\"signature\":\"-CWj2Fk36T5r2EoXJZc9Bv400uffvdcM-Id9TcAW3FulGAHiZhEdjrRQBaqop8dmn9D0cHnihi3k_8tbLQHBDA\"}","timeoutMs":10000,"maxResponseBytes":65536,"launcherVersion":"0.4.5"}
+          ]
+        },
+        {"result":null,"logs":[],"signed":[],"requests":[]},
+        {
+          "result": {"ticket":null},
+          "logs": [["warn","[attest] подтвердить сборку не удалось: ATTEST_BAD_RESPONSE"]],
+          "signed": ["hlsr-attest/1\nlinux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038\nc3\n7d071c217f1805291d8c35997b0e7b7038989315064369ad2fd8756f2c804124"],
+          "requests": [
+            {"url":"https://api.test/v1/attest/challenge","method":"POST","headers":{"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},"body":"{}","timeoutMs":10000,"maxResponseBytes":65536,"launcherVersion":"0.4.5"},
+            {"url":"https://api.test/v1/attest/prove","method":"POST","headers":{"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},"body":"{\"challenge\":\"c3\",\"signature\":\"OxBpnSd4QWBw_UkhPEU7lCK8pdSfPxgKVdjS60bvvTZ9k6poGZ7iwwcQ9cqYamzSCp1hORrWAp58ATK24BFuBQ\"}","timeoutMs":10000,"maxResponseBytes":65536,"launcherVersion":"0.4.5"}
+          ]
+        },
+        {"result":null,"logs":[],"signed":[],"requests":[]},
+        {
+          "result": {"ticket":null},
+          "logs": [["warn","[attest] подтвердить сборку не удалось: ATTEST_BAD_RESPONSE"]],
+          "signed": ["hlsr-attest/1\nlinux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038\nc4\n7d071c217f1805291d8c35997b0e7b7038989315064369ad2fd8756f2c804124"],
+          "requests": [
+            {"url":"https://api.test/v1/attest/challenge","method":"POST","headers":{"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},"body":"{}","timeoutMs":10000,"maxResponseBytes":65536,"launcherVersion":"0.4.5"},
+            {"url":"https://api.test/v1/attest/prove","method":"POST","headers":{"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},"body":"{\"challenge\":\"c4\",\"signature\":\"H3WAKx3iceuWqdQpxyCWIilXqI-m-yJ93R66FqZ3x12uvFpghzzD_p-I2CVXOv_9_Llw47cv6ARGB3TTVlezCw\"}","timeoutMs":10000,"maxResponseBytes":65536,"launcherVersion":"0.4.5"}
+          ]
+        },
+        {"result":null,"logs":[],"signed":[],"requests":[]},
+        {
+          "result": {"ticket":null},
+          "logs": [],
+          "signed": ["hlsr-attest/1\nlinux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038\nc5\n7d071c217f1805291d8c35997b0e7b7038989315064369ad2fd8756f2c804124"],
+          "requests": [
+            {"url":"https://api.test/v1/attest/challenge","method":"POST","headers":{"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},"body":"{}","timeoutMs":10000,"maxResponseBytes":65536,"launcherVersion":"0.4.5"},
+            {"url":"https://api.test/v1/attest/prove","method":"POST","headers":{"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},"body":"{\"challenge\":\"c5\",\"signature\":\"ChbPomHa1bV44y9pvGaFC3d2sYd7s4x0FqTczgoV1OOnO9opIHIrhMsaeTyDxh_pgLCZ3XSDlQxryedw9aaKAg\"}","timeoutMs":10000,"maxResponseBytes":65536,"launcherVersion":"0.4.5"}
+          ]
+        },
+        {"result":null,"logs":[],"signed":[],"requests":[]},
+        {
+          "result": {"ticket":"T6"},
+          "logs": [],
+          "signed": ["hlsr-attest/1\nlinux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038\nc6\n7d071c217f1805291d8c35997b0e7b7038989315064369ad2fd8756f2c804124"],
+          "requests": [
+            {"url":"https://api.test/v1/attest/challenge","method":"POST","headers":{"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},"body":"{}","timeoutMs":10000,"maxResponseBytes":65536,"launcherVersion":"0.4.5"},
+            {"url":"https://api.test/v1/attest/prove","method":"POST","headers":{"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},"body":"{\"challenge\":\"c6\",\"signature\":\"PMAzGqczYFZ9cWbqOXXpo2olMwuBD3XifVMG-fCB6AEWKuo7zhy8uIbYBJmb1wXl5Br699ahcENtxuqo7zmBDw\"}","timeoutMs":10000,"maxResponseBytes":65536,"launcherVersion":"0.4.5"}
+          ]
+        },
+        {"result":null,"logs":[],"signed":[],"requests":[]},
+        {
+          "result": {"ticket":"eyJrIjoidCIsIm4iOiIwMDAwMDAwMiIsImUiOjE4MDAwMDgxMDB9.2OSPvaydQuxrf-H-Ww1VzRWLBppPbjYqReL4KAcEfAs"},
+          "logs": [],
+          "signed": [
+            "hlsr-attest/1\nlinux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038\neyJrIjoiYyIsImkiOlswLDIsNCw1XSwibiI6IjAwMDAwMDAxIiwiZSI6MTgwMDAwNzI5MH0.JuHj-vyXXfoyLQiOuHb0ymn7gSYB59wHQ8U2K0RZCm8\nc2a19b29e9a734066ffb748d00176ca95e52545a0b0afe9e73f085740aeb97f8,1dd101d2093ce4abe758ae02dd1d894df9357d252c1c2151632f2710fd6ddb1a,799f049aa4ba04955e11039198e2e084e2ce3e22ef7541f604a12ebed7390812,b3f1df5cd32f6c8dc69383e7caa964ed89f2c7752f5fb002518a15deb5c09475"
+          ],
+          "requests": [
+            {"url":"https://api.test/v1/attest/challenge","method":"POST","headers":{"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},"body":"{}","timeoutMs":10000,"maxResponseBytes":65536,"launcherVersion":"0.4.5"},
+            {
+              "url": "https://api.test/v1/attest/prove",
+              "method": "POST",
+              "headers": {"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},
+              "body": "{\"challenge\":\"eyJrIjoiYyIsImkiOlswLDIsNCw1XSwibiI6IjAwMDAwMDAxIiwiZSI6MTgwMDAwNzI5MH0.JuHj-vyXXfoyLQiOuHb0ymn7gSYB59wHQ8U2K0RZCm8\",\"signature\":\"O20AO-VPFangNKo7bKVR2CnG4-GO3n2wFzyxYRd6oJGuxQpfvAfOclILxPywMxoRa2fd6h5m0Zg59IW1Ho6cAg\"}",
+              "timeoutMs": 10000,
+              "maxResponseBytes": 65536,
+              "launcherVersion": "0.4.5"
+            }
+          ]
+        },
+        {"result":null,"logs":[],"signed":[],"requests":[]},
+        {"result":{"ticket":"eyJrIjoidCIsIm4iOiIwMDAwMDAwMiIsImUiOjE4MDAwMDgxMDB9.2OSPvaydQuxrf-H-Ww1VzRWLBppPbjYqReL4KAcEfAs"},"logs":[],"signed":[],"requests":[]}
+      ]
+    },
+    {
+      "name": "последний неполный кусок",
+      "server": {"picked":[5]},
+      "steps": [{"op":"ticket"}],
+      "header": "linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038",
+      "results": [
+        {
+          "result": {"ticket":"eyJrIjoidCIsIm4iOiIwMDAwMDAwMiIsImUiOjE4MDAwMDA5MDB9.ZrlI0wlIOoboIgYITQm2sYotxBCrWbmRq09xPw_sXgM"},
+          "logs": [],
+          "signed": ["hlsr-attest/1\nlinux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038\neyJrIjoiYyIsImkiOls1XSwibiI6IjAwMDAwMDAxIiwiZSI6MTgwMDAwMDA5MH0.wQb0uxrTiV4S1hCjfhPmh_hAG4vEzNGEBFYl2P-UKG0\nb3f1df5cd32f6c8dc69383e7caa964ed89f2c7752f5fb002518a15deb5c09475"],
+          "requests": [
+            {"url":"https://api.test/v1/attest/challenge","method":"POST","headers":{"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},"body":"{}","timeoutMs":10000,"maxResponseBytes":65536,"launcherVersion":"0.4.5"},
+            {
+              "url": "https://api.test/v1/attest/prove",
+              "method": "POST",
+              "headers": {"x-hlsr-build":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038"},
+              "body": "{\"challenge\":\"eyJrIjoiYyIsImkiOls1XSwibiI6IjAwMDAwMDAxIiwiZSI6MTgwMDAwMDA5MH0.wQb0uxrTiV4S1hCjfhPmh_hAG4vEzNGEBFYl2P-UKG0\",\"signature\":\"99Niv3PsmXW7VUk1by2XvU_dBluvXdF7lqpdOwVU6XIush4wT8evzJsbMiqRr825g5_6OCkw7lk7NfwYjXQTBw\"}",
+              "timeoutMs": 10000,
+              "maxResponseBytes": 65536,
+              "launcherVersion": "0.4.5"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "без ключа аттестация выключена",
+      "key": "",
+      "steps": [{"op":"ticket"},{"op":"ticket","force":true},{"op":"enabled"}],
+      "header": "linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038",
+      "results": [{"result":{"ticket":null},"logs":[],"signed":[],"requests":[]},{"result":{"ticket":null},"logs":[],"signed":[],"requests":[]},{"result":false,"logs":[],"signed":[],"requests":[]}]
+    },
+    {
+      "name": "сборка разработки: dev",
+      "packaged": false,
+      "steps": [{"op":"header"},{"op":"ticket","force":true},{"op":"enabled"},{"op":"readRange","range":[0,10]}],
+      "header": "linux/0.4.5/dev",
+      "results": [{"result":"linux/0.4.5/dev","logs":[],"signed":[],"requests":[]},{"result":{"ticket":null},"logs":[],"signed":[],"requests":[]},{"result":false,"logs":[],"signed":[],"requests":[]},{"result":{"error":"ASAR_UNREADABLE","code":null},"logs":[],"signed":[],"requests":[]}]
+    },
+    {
+      "name": "участки файла",
+      "steps": [
+        {"op":"header"},
+        {"op":"enabled"},
+        {"op":"readRange","range":[65536,1000]},
+        {"op":"readRange","range":[328447,10]},
+        {"op":"readRange","range":[-1,10]},
+        {"op":"readRange","range":[0,0]},
+        {"op":"readRange","range":[0,262145]},
+        {"op":"readRange","range":[1.5,10]},
+        {"op":"readRange","range":[0,"NaN"]},
+        {"op":"readRange","range":["0",10]},
+        {"op":"readRange","range":[328452,10]},
+        {"op":"readRange","range":[0,262144]},
+        {"op":"append"},
+        {"op":"readRange","range":[0,10]}
+      ],
+      "header": "linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038",
+      "results": [
+        {"result":"linux/0.4.5/e61742fd20c9cd03053806c9ffb688d849ad1bf6187e54338f56b650d3a11038","logs":[],"signed":[],"requests":[]},
+        {"result":true,"logs":[],"signed":[],"requests":[]},
+        {"result":{"sha256":"6e74e3b86150197f7559f033e57f6bfb8fcd73b8b18f043e55cf414497d6ee51","length":1000},"logs":[],"signed":[],"requests":[]},
+        {"result":{"sha256":"23e0d5c01d42bf07606bb06b206ae01cf2036a4dc57bec2c18aeb7f60095c591","length":10},"logs":[],"signed":[],"requests":[]},
+        {"result":{"error":"ASAR_BAD_RANGE","code":null},"logs":[],"signed":[],"requests":[]},
+        {"result":{"error":"ASAR_BAD_RANGE","code":null},"logs":[],"signed":[],"requests":[]},
+        {"result":{"error":"ASAR_BAD_RANGE","code":null},"logs":[],"signed":[],"requests":[]},
+        {"result":{"error":"ASAR_BAD_RANGE","code":null},"logs":[],"signed":[],"requests":[]},
+        {"result":{"error":"ASAR_BAD_RANGE","code":null},"logs":[],"signed":[],"requests":[]},
+        {"result":{"error":"ASAR_BAD_RANGE","code":null},"logs":[],"signed":[],"requests":[]},
+        {"result":{"error":"ASAR_SHORT","code":null},"logs":[],"signed":[],"requests":[]},
+        {"result":{"sha256":"88a27acc92907475c5f16c76b14633def7715e1a1f7672fd362564229c05ce96","length":262144},"logs":[],"signed":[],"requests":[]},
+        {"result":null,"logs":[],"signed":[],"requests":[]},
+        {"result":{"error":"ASAR_CHANGED","code":"ASAR_CHANGED"},"logs":[],"signed":[],"requests":[]}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "id": "dialogs/confirm",
+  "screen": "dialogs",
+  "state": "«Играть» без Steam: тост ошибки и окно подтверждения «Steam не запущен» (askConfirm) поверх, фокус на «Отмене».",
+  "themes": ["hlsr", "paper", "liquid-glass"],
+  "languages": ["ru"],
+  "prefs": {"configTourSeen": true},
+  "invoke": {
+    "game-process-launch": {"status": "error", "error": {"code": "STEAM_NOT_RUNNING"}}
+  },
+  "steps": [
+    {"click": {"css": ".download-bar__play", "view": "download-play"}},
+    {"move": [800, 880]}
+  ]
+}

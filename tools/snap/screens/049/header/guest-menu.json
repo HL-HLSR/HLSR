@@ -1,0 +1,22 @@
+{
+  "id": "header/guest-menu",
+  "base": "header/_base",
+  "state": "Гость, меню аккаунта: «Войти через Steam», «Друзья»",
+  "steps": [
+    {
+      "click": {
+        "css": ".account-menu__toggle",
+        "view": "account-toggle"
+      }
+    },
+    {
+      "wait": 600
+    },
+    {
+      "move": [
+        800,
+        880
+      ]
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "id": "configs/pz-condensed",
+  "state": "Ghosting: «Оформление HUD» с включённым модом Condensed HUD — раскладка мода в превью, шрифт цифр — запасной DIN (G9)",
+  "base": "configs/_pz",
+  "invoke": {
+    "custom-packs-get": {
+      "status": "ok",
+      "installed": true,
+      "packs": [
+        {
+          "id": "condensed-hud",
+          "game": "ghosting-renewed",
+          "kind": "hud",
+          "enabled": true,
+          "available": true
+        }
+      ]
+    },
+    "game-personalization-preview-asset": {
+      "status": "missing"
+    }
+  },
+  "steps": [
+    {
+      "click": {
+        "css": ".launcher-topbar__tab:nth-child(3)",
+        "view": "topbar-tab-configs"
+      }
+    },
+    {
+      "click": {
+        "css": "#gx-tab-hud",
+        "view": "gx-tab-hud"
+      }
+    },
+    {
+      "move": [
+        800,
+        880
+      ]
+    }
+  ]
+}

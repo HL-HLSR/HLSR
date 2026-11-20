@@ -1,0 +1,25 @@
+{
+  "id": "configs/pz-chat",
+  "state": "Ghosting: подраздел «Чат» — вид сообщений, канал Twitch, трансляция YouTube, эмоуты и значки",
+  "base": "configs/_pz",
+  "steps": [
+    {
+      "click": {
+        "css": ".launcher-topbar__tab:nth-child(3)",
+        "view": "topbar-tab-configs"
+      }
+    },
+    {
+      "click": {
+        "css": "#gx-tab-chat",
+        "view": "gx-tab-chat"
+      }
+    },
+    {
+      "move": [
+        800,
+        880
+      ]
+    }
+  ]
+}

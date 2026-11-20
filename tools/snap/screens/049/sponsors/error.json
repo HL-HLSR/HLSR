@@ -1,0 +1,15 @@
+{
+  "id": "sponsors/error",
+  "base": "sponsors/_base",
+  "state": "Сбой /v2 (не 404): «Не удалось загрузить список спонсоров», без кнопок и подсказки",
+  "invoke": {
+    "public-sponsors-get": {
+      "status": "error",
+      "version": 2,
+      "links": {},
+      "active": [],
+      "donors": [],
+      "past": []
+    }
+  }
+}

@@ -1,0 +1,633 @@
+{
+  "generator": "tools/reference/ui/shell-windows.js",
+  "unavailable": [
+    {"reason":"STEAM_NOT_RUNNING","icon":"fab fa-steam","title":"#L_UA_STEAM_NOT_RUNNING","text":"#L_UA_STEAM_NOT_RUNNING_T","actions":[{"id":"open-steam","icon":"fab fa-steam","key":"#L_UA_ACT_OPEN_STEAM"},{"id":"recheck","icon":"fas fa-sync-alt","key":"#L_UA_ACT_RECHECK"},{"id":"open-diagnostics","icon":"fas fa-stethoscope","key":"#L_UA_ACT_DIAG"}]},
+    {"reason":"STEAM_INTEGRATION_UNAVAILABLE","icon":"fas fa-plug","title":"#L_UA_STEAM_INTEGRATION","text":"#L_UA_STEAM_INTEGRATION_T","actions":[{"id":"recheck","icon":"fas fa-sync-alt","key":"#L_UA_ACT_RECHECK"},{"id":"open-diagnostics","icon":"fas fa-stethoscope","key":"#L_UA_ACT_DIAG"},{"id":"open-discord","icon":"fab fa-discord","key":"#L_UA_ACT_DISCORD"}]},
+    {"reason":"SOURCE_SDK_2013_MISSING","icon":"fas fa-cube","title":"#L_UA_SDK_MISSING","text":"#L_UA_SDK_MISSING_T","actions":[{"id":"install-sdk","icon":"fas fa-download","key":"#L_UA_ACT_SDK"},{"id":"recheck","icon":"fas fa-sync-alt","key":"#L_UA_ACT_RECHECK"}]},
+    {"reason":"REQUIRED_LICENSE_MISSING","icon":"fas fa-id-card","title":"#L_UA_LICENSE","text":"#L_UA_LICENSE_T","actions":[{"id":"open-steam","icon":"fab fa-steam","key":"#L_UA_ACT_OPEN_STEAM"},{"id":"recheck","icon":"fas fa-sync-alt","key":"#L_UA_ACT_RECHECK"},{"id":"open-discord","icon":"fab fa-discord","key":"#L_UA_ACT_DISCORD"}]},
+    {"reason":"LICENSE_CHECK_UNAVAILABLE","icon":"fas fa-question-circle","title":"#L_UA_LICENSE_CHECK","text":"#L_UA_LICENSE_CHECK_T","actions":[{"id":"recheck","icon":"fas fa-sync-alt","key":"#L_UA_ACT_RECHECK"},{"id":"open-diagnostics","icon":"fas fa-stethoscope","key":"#L_UA_ACT_DIAG"}]},
+    {"reason":"GAME_NOT_INSTALLED","icon":"fas fa-download","title":"#L_UA_NOT_INSTALLED","text":"#L_UA_NOT_INSTALLED_T","actions":[{"id":"recheck","icon":"fas fa-sync-alt","key":"#L_UA_ACT_RECHECK"}]},
+    {"reason":"DELIVERY_CHANNEL_DISABLED","icon":"fas fa-satellite-dish","title":"#L_UA_CHANNEL","text":"#L_UA_CHANNEL_T","actions":[{"id":"recheck","icon":"fas fa-sync-alt","key":"#L_UA_ACT_RECHECK"},{"id":"open-discord","icon":"fab fa-discord","key":"#L_UA_ACT_DISCORD"}]},
+    {"reason":"MANIFEST_UNAVAILABLE","icon":"fas fa-wifi","title":"#L_UA_MANIFEST","text":"#L_UA_MANIFEST_T","actions":[{"id":"recheck","icon":"fas fa-sync-alt","key":"#L_UA_ACT_RECHECK"},{"id":"open-diagnostics","icon":"fas fa-stethoscope","key":"#L_UA_ACT_DIAG"}]},
+    {"reason":"MANIFEST_SIGNATURE_INVALID","icon":"fas fa-shield-alt","title":"#L_UA_SIGNATURE","text":"#L_UA_SIGNATURE_T","actions":[{"id":"recheck","icon":"fas fa-sync-alt","key":"#L_UA_ACT_RECHECK"},{"id":"open-discord","icon":"fab fa-discord","key":"#L_UA_ACT_DISCORD"}]},
+    {"reason":"UPDATE_REQUIRED","icon":"fas fa-sync-alt","title":"#L_UA_UPDATE_REQUIRED","text":"#L_UA_UPDATE_REQUIRED_T","actions":[{"id":"recheck","icon":"fas fa-sync-alt","key":"#L_UA_ACT_RECHECK"}]},
+    {"reason":"GAME_FILES_DAMAGED","icon":"fas fa-wrench","title":"#L_UA_DAMAGED","text":"#L_UA_DAMAGED_T","actions":[{"id":"repair","icon":"fas fa-wrench","key":"#L_UA_ACT_REPAIR"}]},
+    {"reason":"LIBRARY_UNAVAILABLE","icon":"fas fa-folder-minus","title":"#L_UA_LIBRARY","text":"#L_UA_LIBRARY_T","actions":[{"id":"open-library-settings","icon":"fas fa-folder-open","key":"#L_UA_ACT_LIBRARY"},{"id":"recheck","icon":"fas fa-sync-alt","key":"#L_UA_ACT_RECHECK"}]},
+    {"reason":"LIBRARY_READ_ONLY","icon":"fas fa-lock","title":"#L_UA_LIBRARY_RO","text":"#L_UA_LIBRARY_RO_T","actions":[{"id":"open-library-settings","icon":"fas fa-folder-open","key":"#L_UA_ACT_LIBRARY"},{"id":"recheck","icon":"fas fa-sync-alt","key":"#L_UA_ACT_RECHECK"}]},
+    {"reason":"INSUFFICIENT_DISK_SPACE","icon":"fas fa-hdd","title":"#L_UA_SPACE","text":"#L_UA_SPACE_T","actions":[{"id":"open-library-settings","icon":"fas fa-folder-open","key":"#L_UA_ACT_LIBRARY"},{"id":"recheck","icon":"fas fa-sync-alt","key":"#L_UA_ACT_RECHECK"}]},
+    {"reason":"GAME_PROCESS_ALREADY_RUNNING","icon":"fas fa-gamepad","title":"#L_UA_RUNNING","text":"#L_UA_RUNNING_T","actions":[{"id":"recheck","icon":"fas fa-sync-alt","key":"#L_UA_ACT_RECHECK"}]},
+    {"reason":"UNKNOWN_UNAVAILABLE","icon":"fas fa-info-circle","title":"#L_UA_UNKNOWN","text":"#L_UA_UNKNOWN_T","actions":[{"id":"recheck","icon":"fas fa-sync-alt","key":"#L_UA_ACT_RECHECK"},{"id":"open-diagnostics","icon":"fas fa-stethoscope","key":"#L_UA_ACT_DIAG"},{"id":"open-discord","icon":"fab fa-discord","key":"#L_UA_ACT_DISCORD"}]},
+    {"reason":"BUILD_METADATA_MISSING","icon":"fas fa-file-alt","title":"#L_UA_BUILD_META","text":"#L_UA_BUILD_META_MISSING_T","actions":[{"id":"repair","icon":"fas fa-wrench","key":"#L_UA_ACT_REPAIR"},{"id":"open-diagnostics","icon":"fas fa-stethoscope","key":"#L_UA_ACT_DIAG"}]},
+    {"reason":"BUILD_METADATA_INVALID","icon":"fas fa-file-alt","title":"#L_UA_BUILD_META","text":"#L_UA_BUILD_META_INVALID_T","actions":[{"id":"repair","icon":"fas fa-wrench","key":"#L_UA_ACT_REPAIR"},{"id":"open-diagnostics","icon":"fas fa-stethoscope","key":"#L_UA_ACT_DIAG"}]},
+    {"reason":"BUILD_METADATA_MISMATCH","icon":"fas fa-file-alt","title":"#L_UA_BUILD_META","text":"#L_UA_BUILD_META_MISMATCH_T","actions":[{"id":"repair","icon":"fas fa-wrench","key":"#L_UA_ACT_REPAIR"},{"id":"open-diagnostics","icon":"fas fa-stethoscope","key":"#L_UA_ACT_DIAG"}]},
+    {"reason":"BUILD_METADATA_UNSUPPORTED","icon":"fas fa-file-alt","title":"#L_UA_BUILD_META_UNSUPPORTED","text":"#L_UA_BUILD_META_UNSUPPORTED_T","actions":[{"id":"check-launcher-update","icon":"fas fa-arrow-up","key":"#L_UA_ACT_UPDATE_LAUNCHER"},{"id":"open-diagnostics","icon":"fas fa-stethoscope","key":"#L_UA_ACT_DIAG"},{"id":"open-discord","icon":"fab fa-discord","key":"#L_UA_ACT_DISCORD"}]},
+    {
+      "reason": "BUILD_REQUIRES_NEWER_LAUNCHER",
+      "icon": "fas fa-arrow-alt-circle-up",
+      "title": "#L_UA_BUILD_NEWER_LAUNCHER",
+      "text": "#L_UA_BUILD_NEWER_LAUNCHER_T",
+      "actions": [{"id":"check-launcher-update","icon":"fas fa-arrow-up","key":"#L_UA_ACT_UPDATE_LAUNCHER"},{"id":"open-diagnostics","icon":"fas fa-stethoscope","key":"#L_UA_ACT_DIAG"},{"id":"open-discord","icon":"fab fa-discord","key":"#L_UA_ACT_DISCORD"}]
+    },
+    {"reason":"SOMETHING_NEW","icon":"fas fa-info-circle","title":"#L_UA_UNKNOWN","text":"#L_UA_UNKNOWN_T","actions":[{"id":"recheck","icon":"fas fa-sync-alt","key":"#L_UA_ACT_RECHECK"},{"id":"open-diagnostics","icon":"fas fa-stethoscope","key":"#L_UA_ACT_DIAG"},{"id":"open-discord","icon":"fab fa-discord","key":"#L_UA_ACT_DISCORD"}]},
+    {"reason":"","icon":"fas fa-info-circle","title":"#L_UA_UNKNOWN","text":"#L_UA_UNKNOWN_T","actions":[{"id":"recheck","icon":"fas fa-sync-alt","key":"#L_UA_ACT_RECHECK"},{"id":"open-diagnostics","icon":"fas fa-stethoscope","key":"#L_UA_ACT_DIAG"},{"id":"open-discord","icon":"fab fa-discord","key":"#L_UA_ACT_DISCORD"}]}
+  ],
+  "gameNotes": [
+    {
+      "input": {
+        "gameTitle": "Half-Life 2: Ghosting Mod: Renewed",
+        "version": "1.1.0",
+        "notes": {"version":"1.1.0","items":["Исправлено <b>что-то</b>","  ",7,"  много   пробелов  ","xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"]}
+      },
+      "title": "T(#L_GN_TITLE|Half-Life 2: Ghosting Mod: Renewed 1.1.0)",
+      "items": ["Исправлено что-то","много пробелов","xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"]
+    },
+    {"input":{"gameTitle":"Half-Life","version":"1.0.0","notes":{"version":"0.9.0","items":["другая версия"]}},"title":"T(#L_GN_TITLE|Half-Life 1.0.0)","items":[]},
+    {"input":{"gameTitle":"Half-Life 2","version":"4260","notes":null},"title":"T(#L_GN_TITLE|Half-Life 2 4260)","items":[]},
+    {"input":{"gameTitle":"Half-Life 2","version":"4260","notes":{"version":"4260","items":"не список"}},"title":"T(#L_GN_TITLE|Half-Life 2 4260)","items":[]},
+    {
+      "input": {"gameTitle":"Half-Life 2","version":"4260","notes":{"version":"4260","items":["пункт 0","пункт 1","пункт 2","пункт 3","пункт 4","пункт 5","пункт 6","пункт 7","пункт 8","пункт 9","пункт 10","пункт 11","пункт 12","пункт 13","пункт 14","пункт 15","пункт 16","пункт 17","пункт 18","пункт 19","пункт 20","пункт 21","пункт 22","пункт 23","пункт 24"]}},
+      "title": "T(#L_GN_TITLE|Half-Life 2 4260)",
+      "items": ["пункт 0","пункт 1","пункт 2","пункт 3","пункт 4","пункт 5","пункт 6","пункт 7","пункт 8","пункт 9","пункт 10","пункт 11","пункт 12","пункт 13","пункт 14","пункт 15","пункт 16","пункт 17","пункт 18","пункт 19"]
+    },
+    {"input":{"gameTitle":"Half-Life 2","version":"4260","notes":{"version":"4260","items":["<br>","<i></i>ок"]}},"title":"T(#L_GN_TITLE|Half-Life 2 4260)","items":["ок"]}
+  ],
+  "changelog": {
+    "filtered": [
+      {
+        "lang": "en",
+        "version": "0.4.7",
+        "releases": [
+          {"version":"0.4.7","title":"HLSR update 0.4.7","current":true},
+          {"version":"0.4.6","title":"HLSR update 0.4.6","current":false},
+          {"version":"0.4.5","title":"HLSR update 0.4.5","current":false},
+          {"version":"0.4.4","title":"HLSR update 0.4.4","current":false},
+          {"version":"0.4.3","title":"HLSR update 0.4.3","current":false},
+          {"version":"0.4.2","title":"HLSR update 0.4.2","current":false},
+          {"version":"0.4.1","title":"HLSR update 0.4.1","current":false},
+          {"version":"0.4.0","title":"HLSR update 0.4.0","current":false},
+          {"version":"0.3.16","title":"HLSR update 0.3.16","current":false},
+          {"version":"0.3.15","title":"HLSR update 0.3.15","current":false},
+          {"version":"0.3.14","title":"HLSR update 0.3.14","current":false},
+          {"version":"0.3.13","title":"HLSR update 0.3.13","current":false},
+          {"version":"0.3.12","title":"HLSR update 0.3.12","current":false},
+          {"version":"0.3.11","title":"HLSR update 0.3.11","current":false},
+          {"version":"0.3.10","title":"HLSR update 0.3.10","current":false},
+          {"version":"0.3.9","title":"HLSR update 0.3.9","current":false},
+          {"version":"0.3.8","title":"HLSR update 0.3.8","current":false},
+          {"version":"0.3.7","title":"HLSR update 0.3.7","current":false},
+          {"version":"0.3.6","title":"HLSR update 0.3.6","current":false},
+          {"version":"0.3.5","title":"HLSR update 0.3.5","current":false},
+          {"version":"0.3.4","title":"HLSR update 0.3.4","current":false},
+          {"version":"0.3.3","title":"HLSR update 0.3.3","current":false},
+          {"version":"0.3.2","title":"HLSR update 0.3.2","current":false},
+          {"version":"0.3.1","title":"HLSR update 0.3.1","current":false},
+          {"version":"0.3.0","title":"HLSR update 0.3.0","current":false}
+        ]
+      },
+      {
+        "lang": "en",
+        "version": "0.4.2",
+        "releases": [
+          {"version":"0.4.2","title":"HLSR update 0.4.2","current":true},
+          {"version":"0.4.1","title":"HLSR update 0.4.1","current":false},
+          {"version":"0.4.0","title":"HLSR update 0.4.0","current":false},
+          {"version":"0.3.16","title":"HLSR update 0.3.16","current":false},
+          {"version":"0.3.15","title":"HLSR update 0.3.15","current":false},
+          {"version":"0.3.14","title":"HLSR update 0.3.14","current":false},
+          {"version":"0.3.13","title":"HLSR update 0.3.13","current":false},
+          {"version":"0.3.12","title":"HLSR update 0.3.12","current":false},
+          {"version":"0.3.11","title":"HLSR update 0.3.11","current":false},
+          {"version":"0.3.10","title":"HLSR update 0.3.10","current":false},
+          {"version":"0.3.9","title":"HLSR update 0.3.9","current":false},
+          {"version":"0.3.8","title":"HLSR update 0.3.8","current":false},
+          {"version":"0.3.7","title":"HLSR update 0.3.7","current":false},
+          {"version":"0.3.6","title":"HLSR update 0.3.6","current":false},
+          {"version":"0.3.5","title":"HLSR update 0.3.5","current":false},
+          {"version":"0.3.4","title":"HLSR update 0.3.4","current":false},
+          {"version":"0.3.3","title":"HLSR update 0.3.3","current":false},
+          {"version":"0.3.2","title":"HLSR update 0.3.2","current":false},
+          {"version":"0.3.1","title":"HLSR update 0.3.1","current":false},
+          {"version":"0.3.0","title":"HLSR update 0.3.0","current":false}
+        ]
+      },
+      {
+        "lang": "en",
+        "version": "0.3.16",
+        "releases": [
+          {"version":"0.3.16","title":"HLSR update 0.3.16","current":true},
+          {"version":"0.3.15","title":"HLSR update 0.3.15","current":false},
+          {"version":"0.3.14","title":"HLSR update 0.3.14","current":false},
+          {"version":"0.3.13","title":"HLSR update 0.3.13","current":false},
+          {"version":"0.3.12","title":"HLSR update 0.3.12","current":false},
+          {"version":"0.3.11","title":"HLSR update 0.3.11","current":false},
+          {"version":"0.3.10","title":"HLSR update 0.3.10","current":false},
+          {"version":"0.3.9","title":"HLSR update 0.3.9","current":false},
+          {"version":"0.3.8","title":"HLSR update 0.3.8","current":false},
+          {"version":"0.3.7","title":"HLSR update 0.3.7","current":false},
+          {"version":"0.3.6","title":"HLSR update 0.3.6","current":false},
+          {"version":"0.3.5","title":"HLSR update 0.3.5","current":false},
+          {"version":"0.3.4","title":"HLSR update 0.3.4","current":false},
+          {"version":"0.3.3","title":"HLSR update 0.3.3","current":false},
+          {"version":"0.3.2","title":"HLSR update 0.3.2","current":false},
+          {"version":"0.3.1","title":"HLSR update 0.3.1","current":false},
+          {"version":"0.3.0","title":"HLSR update 0.3.0","current":false}
+        ]
+      },
+      {"lang":"en","version":"0.3.0","releases":[{"version":"0.3.0","title":"HLSR update 0.3.0","current":true}]},
+      {"lang":"en","version":"0.2.9","releases":[]},
+      {
+        "lang": "en",
+        "version": "0.5.0",
+        "releases": [
+          {"version":"0.5.0","title":"HLSR update 0.5.0","current":true},
+          {"version":"0.4.9","title":"HLSR update 0.4.9","current":false},
+          {"version":"0.4.8","title":"HLSR update 0.4.8","current":false},
+          {"version":"0.4.7","title":"HLSR update 0.4.7","current":false},
+          {"version":"0.4.6","title":"HLSR update 0.4.6","current":false},
+          {"version":"0.4.5","title":"HLSR update 0.4.5","current":false},
+          {"version":"0.4.4","title":"HLSR update 0.4.4","current":false},
+          {"version":"0.4.3","title":"HLSR update 0.4.3","current":false},
+          {"version":"0.4.2","title":"HLSR update 0.4.2","current":false},
+          {"version":"0.4.1","title":"HLSR update 0.4.1","current":false},
+          {"version":"0.4.0","title":"HLSR update 0.4.0","current":false},
+          {"version":"0.3.16","title":"HLSR update 0.3.16","current":false},
+          {"version":"0.3.15","title":"HLSR update 0.3.15","current":false},
+          {"version":"0.3.14","title":"HLSR update 0.3.14","current":false},
+          {"version":"0.3.13","title":"HLSR update 0.3.13","current":false},
+          {"version":"0.3.12","title":"HLSR update 0.3.12","current":false},
+          {"version":"0.3.11","title":"HLSR update 0.3.11","current":false},
+          {"version":"0.3.10","title":"HLSR update 0.3.10","current":false},
+          {"version":"0.3.9","title":"HLSR update 0.3.9","current":false},
+          {"version":"0.3.8","title":"HLSR update 0.3.8","current":false},
+          {"version":"0.3.7","title":"HLSR update 0.3.7","current":false},
+          {"version":"0.3.6","title":"HLSR update 0.3.6","current":false},
+          {"version":"0.3.5","title":"HLSR update 0.3.5","current":false},
+          {"version":"0.3.4","title":"HLSR update 0.3.4","current":false},
+          {"version":"0.3.3","title":"HLSR update 0.3.3","current":false},
+          {"version":"0.3.2","title":"HLSR update 0.3.2","current":false},
+          {"version":"0.3.1","title":"HLSR update 0.3.1","current":false},
+          {"version":"0.3.0","title":"HLSR update 0.3.0","current":false}
+        ]
+      },
+      {
+        "lang": "en",
+        "version": "0.4.7-beta.1",
+        "releases": [
+          {"version":"0.4.7","title":"HLSR update 0.4.7","current":true},
+          {"version":"0.4.6","title":"HLSR update 0.4.6","current":false},
+          {"version":"0.4.5","title":"HLSR update 0.4.5","current":false},
+          {"version":"0.4.4","title":"HLSR update 0.4.4","current":false},
+          {"version":"0.4.3","title":"HLSR update 0.4.3","current":false},
+          {"version":"0.4.2","title":"HLSR update 0.4.2","current":false},
+          {"version":"0.4.1","title":"HLSR update 0.4.1","current":false},
+          {"version":"0.4.0","title":"HLSR update 0.4.0","current":false},
+          {"version":"0.3.16","title":"HLSR update 0.3.16","current":false},
+          {"version":"0.3.15","title":"HLSR update 0.3.15","current":false},
+          {"version":"0.3.14","title":"HLSR update 0.3.14","current":false},
+          {"version":"0.3.13","title":"HLSR update 0.3.13","current":false},
+          {"version":"0.3.12","title":"HLSR update 0.3.12","current":false},
+          {"version":"0.3.11","title":"HLSR update 0.3.11","current":false},
+          {"version":"0.3.10","title":"HLSR update 0.3.10","current":false},
+          {"version":"0.3.9","title":"HLSR update 0.3.9","current":false},
+          {"version":"0.3.8","title":"HLSR update 0.3.8","current":false},
+          {"version":"0.3.7","title":"HLSR update 0.3.7","current":false},
+          {"version":"0.3.6","title":"HLSR update 0.3.6","current":false},
+          {"version":"0.3.5","title":"HLSR update 0.3.5","current":false},
+          {"version":"0.3.4","title":"HLSR update 0.3.4","current":false},
+          {"version":"0.3.3","title":"HLSR update 0.3.3","current":false},
+          {"version":"0.3.2","title":"HLSR update 0.3.2","current":false},
+          {"version":"0.3.1","title":"HLSR update 0.3.1","current":false},
+          {"version":"0.3.0","title":"HLSR update 0.3.0","current":false}
+        ]
+      },
+      {"lang":"en","version":"bad","releases":[]},
+      {
+        "lang": "ru",
+        "version": "0.4.7",
+        "releases": [
+          {"version":"0.4.7","title":"Обновление HLSR 0.4.7","current":true},
+          {"version":"0.4.6","title":"Обновление HLSR 0.4.6","current":false},
+          {"version":"0.4.5","title":"Обновление HLSR 0.4.5","current":false},
+          {"version":"0.4.4","title":"Обновление HLSR 0.4.4","current":false},
+          {"version":"0.4.3","title":"Обновление HLSR 0.4.3","current":false},
+          {"version":"0.4.2","title":"Обновление HLSR 0.4.2","current":false},
+          {"version":"0.4.1","title":"Обновление HLSR 0.4.1","current":false},
+          {"version":"0.4.0","title":"Обновление HLSR 0.4.0","current":false},
+          {"version":"0.3.16","title":"Обновление HLSR 0.3.16","current":false},
+          {"version":"0.3.15","title":"Обновление HLSR 0.3.15","current":false},
+          {"version":"0.3.14","title":"Обновление HLSR 0.3.14","current":false},
+          {"version":"0.3.13","title":"Обновление HLSR 0.3.13","current":false},
+          {"version":"0.3.12","title":"Обновление HLSR 0.3.12","current":false},
+          {"version":"0.3.11","title":"Обновление HLSR 0.3.11","current":false},
+          {"version":"0.3.10","title":"Обновление HLSR 0.3.10","current":false},
+          {"version":"0.3.9","title":"Обновление HLSR 0.3.9","current":false},
+          {"version":"0.3.8","title":"Обновление HLSR 0.3.8","current":false},
+          {"version":"0.3.7","title":"Обновление HLSR 0.3.7","current":false},
+          {"version":"0.3.6","title":"Обновление HLSR 0.3.6","current":false},
+          {"version":"0.3.5","title":"Обновление HLSR 0.3.5","current":false},
+          {"version":"0.3.4","title":"Обновление HLSR 0.3.4","current":false},
+          {"version":"0.3.3","title":"Обновление HLSR 0.3.3","current":false},
+          {"version":"0.3.2","title":"Обновление HLSR 0.3.2","current":false},
+          {"version":"0.3.1","title":"Обновление HLSR 0.3.1","current":false},
+          {"version":"0.3.0","title":"Обновление HLSR 0.3.0","current":false}
+        ]
+      },
+      {
+        "lang": "ru",
+        "version": "0.4.2",
+        "releases": [
+          {"version":"0.4.2","title":"Обновление HLSR 0.4.2","current":true},
+          {"version":"0.4.1","title":"Обновление HLSR 0.4.1","current":false},
+          {"version":"0.4.0","title":"Обновление HLSR 0.4.0","current":false},
+          {"version":"0.3.16","title":"Обновление HLSR 0.3.16","current":false},
+          {"version":"0.3.15","title":"Обновление HLSR 0.3.15","current":false},
+          {"version":"0.3.14","title":"Обновление HLSR 0.3.14","current":false},
+          {"version":"0.3.13","title":"Обновление HLSR 0.3.13","current":false},
+          {"version":"0.3.12","title":"Обновление HLSR 0.3.12","current":false},
+          {"version":"0.3.11","title":"Обновление HLSR 0.3.11","current":false},
+          {"version":"0.3.10","title":"Обновление HLSR 0.3.10","current":false},
+          {"version":"0.3.9","title":"Обновление HLSR 0.3.9","current":false},
+          {"version":"0.3.8","title":"Обновление HLSR 0.3.8","current":false},
+          {"version":"0.3.7","title":"Обновление HLSR 0.3.7","current":false},
+          {"version":"0.3.6","title":"Обновление HLSR 0.3.6","current":false},
+          {"version":"0.3.5","title":"Обновление HLSR 0.3.5","current":false},
+          {"version":"0.3.4","title":"Обновление HLSR 0.3.4","current":false},
+          {"version":"0.3.3","title":"Обновление HLSR 0.3.3","current":false},
+          {"version":"0.3.2","title":"Обновление HLSR 0.3.2","current":false},
+          {"version":"0.3.1","title":"Обновление HLSR 0.3.1","current":false},
+          {"version":"0.3.0","title":"Обновление HLSR 0.3.0","current":false}
+        ]
+      },
+      {
+        "lang": "ru",
+        "version": "0.3.16",
+        "releases": [
+          {"version":"0.3.16","title":"Обновление HLSR 0.3.16","current":true},
+          {"version":"0.3.15","title":"Обновление HLSR 0.3.15","current":false},
+          {"version":"0.3.14","title":"Обновление HLSR 0.3.14","current":false},
+          {"version":"0.3.13","title":"Обновление HLSR 0.3.13","current":false},
+          {"version":"0.3.12","title":"Обновление HLSR 0.3.12","current":false},
+          {"version":"0.3.11","title":"Обновление HLSR 0.3.11","current":false},
+          {"version":"0.3.10","title":"Обновление HLSR 0.3.10","current":false},
+          {"version":"0.3.9","title":"Обновление HLSR 0.3.9","current":false},
+          {"version":"0.3.8","title":"Обновление HLSR 0.3.8","current":false},
+          {"version":"0.3.7","title":"Обновление HLSR 0.3.7","current":false},
+          {"version":"0.3.6","title":"Обновление HLSR 0.3.6","current":false},
+          {"version":"0.3.5","title":"Обновление HLSR 0.3.5","current":false},
+          {"version":"0.3.4","title":"Обновление HLSR 0.3.4","current":false},
+          {"version":"0.3.3","title":"Обновление HLSR 0.3.3","current":false},
+          {"version":"0.3.2","title":"Обновление HLSR 0.3.2","current":false},
+          {"version":"0.3.1","title":"Обновление HLSR 0.3.1","current":false},
+          {"version":"0.3.0","title":"Обновление HLSR 0.3.0","current":false}
+        ]
+      },
+      {"lang":"ru","version":"0.3.0","releases":[{"version":"0.3.0","title":"Обновление HLSR 0.3.0","current":true}]},
+      {"lang":"ru","version":"0.2.9","releases":[]},
+      {
+        "lang": "ru",
+        "version": "0.5.0",
+        "releases": [
+          {"version":"0.5.0","title":"Обновление HLSR 0.5.0","current":true},
+          {"version":"0.4.9","title":"Обновление HLSR 0.4.9","current":false},
+          {"version":"0.4.8","title":"Обновление HLSR 0.4.8","current":false},
+          {"version":"0.4.7","title":"Обновление HLSR 0.4.7","current":false},
+          {"version":"0.4.6","title":"Обновление HLSR 0.4.6","current":false},
+          {"version":"0.4.5","title":"Обновление HLSR 0.4.5","current":false},
+          {"version":"0.4.4","title":"Обновление HLSR 0.4.4","current":false},
+          {"version":"0.4.3","title":"Обновление HLSR 0.4.3","current":false},
+          {"version":"0.4.2","title":"Обновление HLSR 0.4.2","current":false},
+          {"version":"0.4.1","title":"Обновление HLSR 0.4.1","current":false},
+          {"version":"0.4.0","title":"Обновление HLSR 0.4.0","current":false},
+          {"version":"0.3.16","title":"Обновление HLSR 0.3.16","current":false},
+          {"version":"0.3.15","title":"Обновление HLSR 0.3.15","current":false},
+          {"version":"0.3.14","title":"Обновление HLSR 0.3.14","current":false},
+          {"version":"0.3.13","title":"Обновление HLSR 0.3.13","current":false},
+          {"version":"0.3.12","title":"Обновление HLSR 0.3.12","current":false},
+          {"version":"0.3.11","title":"Обновление HLSR 0.3.11","current":false},
+          {"version":"0.3.10","title":"Обновление HLSR 0.3.10","current":false},
+          {"version":"0.3.9","title":"Обновление HLSR 0.3.9","current":false},
+          {"version":"0.3.8","title":"Обновление HLSR 0.3.8","current":false},
+          {"version":"0.3.7","title":"Обновление HLSR 0.3.7","current":false},
+          {"version":"0.3.6","title":"Обновление HLSR 0.3.6","current":false},
+          {"version":"0.3.5","title":"Обновление HLSR 0.3.5","current":false},
+          {"version":"0.3.4","title":"Обновление HLSR 0.3.4","current":false},
+          {"version":"0.3.3","title":"Обновление HLSR 0.3.3","current":false},
+          {"version":"0.3.2","title":"Обновление HLSR 0.3.2","current":false},
+          {"version":"0.3.1","title":"Обновление HLSR 0.3.1","current":false},
+          {"version":"0.3.0","title":"Обновление HLSR 0.3.0","current":false}
+        ]
+      },
+      {
+        "lang": "ru",
+        "version": "0.4.7-beta.1",
+        "releases": [
+          {"version":"0.4.7","title":"Обновление HLSR 0.4.7","current":true},
+          {"version":"0.4.6","title":"Обновление HLSR 0.4.6","current":false},
+          {"version":"0.4.5","title":"Обновление HLSR 0.4.5","current":false},
+          {"version":"0.4.4","title":"Обновление HLSR 0.4.4","current":false},
+          {"version":"0.4.3","title":"Обновление HLSR 0.4.3","current":false},
+          {"version":"0.4.2","title":"Обновление HLSR 0.4.2","current":false},
+          {"version":"0.4.1","title":"Обновление HLSR 0.4.1","current":false},
+          {"version":"0.4.0","title":"Обновление HLSR 0.4.0","current":false},
+          {"version":"0.3.16","title":"Обновление HLSR 0.3.16","current":false},
+          {"version":"0.3.15","title":"Обновление HLSR 0.3.15","current":false},
+          {"version":"0.3.14","title":"Обновление HLSR 0.3.14","current":false},
+          {"version":"0.3.13","title":"Обновление HLSR 0.3.13","current":false},
+          {"version":"0.3.12","title":"Обновление HLSR 0.3.12","current":false},
+          {"version":"0.3.11","title":"Обновление HLSR 0.3.11","current":false},
+          {"version":"0.3.10","title":"Обновление HLSR 0.3.10","current":false},
+          {"version":"0.3.9","title":"Обновление HLSR 0.3.9","current":false},
+          {"version":"0.3.8","title":"Обновление HLSR 0.3.8","current":false},
+          {"version":"0.3.7","title":"Обновление HLSR 0.3.7","current":false},
+          {"version":"0.3.6","title":"Обновление HLSR 0.3.6","current":false},
+          {"version":"0.3.5","title":"Обновление HLSR 0.3.5","current":false},
+          {"version":"0.3.4","title":"Обновление HLSR 0.3.4","current":false},
+          {"version":"0.3.3","title":"Обновление HLSR 0.3.3","current":false},
+          {"version":"0.3.2","title":"Обновление HLSR 0.3.2","current":false},
+          {"version":"0.3.1","title":"Обновление HLSR 0.3.1","current":false},
+          {"version":"0.3.0","title":"Обновление HLSR 0.3.0","current":false}
+        ]
+      },
+      {"lang":"ru","version":"bad","releases":[]},
+      {
+        "lang": "de",
+        "version": "0.4.7",
+        "releases": [
+          {"version":"0.4.7","title":"Обновление HLSR 0.4.7","current":true},
+          {"version":"0.4.6","title":"Обновление HLSR 0.4.6","current":false},
+          {"version":"0.4.5","title":"Обновление HLSR 0.4.5","current":false},
+          {"version":"0.4.4","title":"Обновление HLSR 0.4.4","current":false},
+          {"version":"0.4.3","title":"Обновление HLSR 0.4.3","current":false},
+          {"version":"0.4.2","title":"Обновление HLSR 0.4.2","current":false},
+          {"version":"0.4.1","title":"Обновление HLSR 0.4.1","current":false},
+          {"version":"0.4.0","title":"Обновление HLSR 0.4.0","current":false},
+          {"version":"0.3.16","title":"Обновление HLSR 0.3.16","current":false},
+          {"version":"0.3.15","title":"Обновление HLSR 0.3.15","current":false},
+          {"version":"0.3.14","title":"Обновление HLSR 0.3.14","current":false},
+          {"version":"0.3.13","title":"Обновление HLSR 0.3.13","current":false},
+          {"version":"0.3.12","title":"Обновление HLSR 0.3.12","current":false},
+          {"version":"0.3.11","title":"Обновление HLSR 0.3.11","current":false},
+          {"version":"0.3.10","title":"Обновление HLSR 0.3.10","current":false},
+          {"version":"0.3.9","title":"Обновление HLSR 0.3.9","current":false},
+          {"version":"0.3.8","title":"Обновление HLSR 0.3.8","current":false},
+          {"version":"0.3.7","title":"Обновление HLSR 0.3.7","current":false},
+          {"version":"0.3.6","title":"Обновление HLSR 0.3.6","current":false},
+          {"version":"0.3.5","title":"Обновление HLSR 0.3.5","current":false},
+          {"version":"0.3.4","title":"Обновление HLSR 0.3.4","current":false},
+          {"version":"0.3.3","title":"Обновление HLSR 0.3.3","current":false},
+          {"version":"0.3.2","title":"Обновление HLSR 0.3.2","current":false},
+          {"version":"0.3.1","title":"Обновление HLSR 0.3.1","current":false},
+          {"version":"0.3.0","title":"Обновление HLSR 0.3.0","current":false}
+        ]
+      },
+      {
+        "lang": "de",
+        "version": "0.4.2",
+        "releases": [
+          {"version":"0.4.2","title":"Обновление HLSR 0.4.2","current":true},
+          {"version":"0.4.1","title":"Обновление HLSR 0.4.1","current":false},
+          {"version":"0.4.0","title":"Обновление HLSR 0.4.0","current":false},
+          {"version":"0.3.16","title":"Обновление HLSR 0.3.16","current":false},
+          {"version":"0.3.15","title":"Обновление HLSR 0.3.15","current":false},
+          {"version":"0.3.14","title":"Обновление HLSR 0.3.14","current":false},
+          {"version":"0.3.13","title":"Обновление HLSR 0.3.13","current":false},
+          {"version":"0.3.12","title":"Обновление HLSR 0.3.12","current":false},
+          {"version":"0.3.11","title":"Обновление HLSR 0.3.11","current":false},
+          {"version":"0.3.10","title":"Обновление HLSR 0.3.10","current":false},
+          {"version":"0.3.9","title":"Обновление HLSR 0.3.9","current":false},
+          {"version":"0.3.8","title":"Обновление HLSR 0.3.8","current":false},
+          {"version":"0.3.7","title":"Обновление HLSR 0.3.7","current":false},
+          {"version":"0.3.6","title":"Обновление HLSR 0.3.6","current":false},
+          {"version":"0.3.5","title":"Обновление HLSR 0.3.5","current":false},
+          {"version":"0.3.4","title":"Обновление HLSR 0.3.4","current":false},
+          {"version":"0.3.3","title":"Обновление HLSR 0.3.3","current":false},
+          {"version":"0.3.2","title":"Обновление HLSR 0.3.2","current":false},
+          {"version":"0.3.1","title":"Обновление HLSR 0.3.1","current":false},
+          {"version":"0.3.0","title":"Обновление HLSR 0.3.0","current":false}
+        ]
+      },
+      {
+        "lang": "de",
+        "version": "0.3.16",
+        "releases": [
+          {"version":"0.3.16","title":"Обновление HLSR 0.3.16","current":true},
+          {"version":"0.3.15","title":"Обновление HLSR 0.3.15","current":false},
+          {"version":"0.3.14","title":"Обновление HLSR 0.3.14","current":false},
+          {"version":"0.3.13","title":"Обновление HLSR 0.3.13","current":false},
+          {"version":"0.3.12","title":"Обновление HLSR 0.3.12","current":false},
+          {"version":"0.3.11","title":"Обновление HLSR 0.3.11","current":false},
+          {"version":"0.3.10","title":"Обновление HLSR 0.3.10","current":false},
+          {"version":"0.3.9","title":"Обновление HLSR 0.3.9","current":false},
+          {"version":"0.3.8","title":"Обновление HLSR 0.3.8","current":false},
+          {"version":"0.3.7","title":"Обновление HLSR 0.3.7","current":false},
+          {"version":"0.3.6","title":"Обновление HLSR 0.3.6","current":false},
+          {"version":"0.3.5","title":"Обновление HLSR 0.3.5","current":false},
+          {"version":"0.3.4","title":"Обновление HLSR 0.3.4","current":false},
+          {"version":"0.3.3","title":"Обновление HLSR 0.3.3","current":false},
+          {"version":"0.3.2","title":"Обновление HLSR 0.3.2","current":false},
+          {"version":"0.3.1","title":"Обновление HLSR 0.3.1","current":false},
+          {"version":"0.3.0","title":"Обновление HLSR 0.3.0","current":false}
+        ]
+      },
+      {"lang":"de","version":"0.3.0","releases":[{"version":"0.3.0","title":"Обновление HLSR 0.3.0","current":true}]},
+      {"lang":"de","version":"0.2.9","releases":[]},
+      {
+        "lang": "de",
+        "version": "0.5.0",
+        "releases": [
+          {"version":"0.5.0","title":"Обновление HLSR 0.5.0","current":true},
+          {"version":"0.4.9","title":"Обновление HLSR 0.4.9","current":false},
+          {"version":"0.4.8","title":"Обновление HLSR 0.4.8","current":false},
+          {"version":"0.4.7","title":"Обновление HLSR 0.4.7","current":false},
+          {"version":"0.4.6","title":"Обновление HLSR 0.4.6","current":false},
+          {"version":"0.4.5","title":"Обновление HLSR 0.4.5","current":false},
+          {"version":"0.4.4","title":"Обновление HLSR 0.4.4","current":false},
+          {"version":"0.4.3","title":"Обновление HLSR 0.4.3","current":false},
+          {"version":"0.4.2","title":"Обновление HLSR 0.4.2","current":false},
+          {"version":"0.4.1","title":"Обновление HLSR 0.4.1","current":false},
+          {"version":"0.4.0","title":"Обновление HLSR 0.4.0","current":false},
+          {"version":"0.3.16","title":"Обновление HLSR 0.3.16","current":false},
+          {"version":"0.3.15","title":"Обновление HLSR 0.3.15","current":false},
+          {"version":"0.3.14","title":"Обновление HLSR 0.3.14","current":false},
+          {"version":"0.3.13","title":"Обновление HLSR 0.3.13","current":false},
+          {"version":"0.3.12","title":"Обновление HLSR 0.3.12","current":false},
+          {"version":"0.3.11","title":"Обновление HLSR 0.3.11","current":false},
+          {"version":"0.3.10","title":"Обновление HLSR 0.3.10","current":false},
+          {"version":"0.3.9","title":"Обновление HLSR 0.3.9","current":false},
+          {"version":"0.3.8","title":"Обновление HLSR 0.3.8","current":false},
+          {"version":"0.3.7","title":"Обновление HLSR 0.3.7","current":false},
+          {"version":"0.3.6","title":"Обновление HLSR 0.3.6","current":false},
+          {"version":"0.3.5","title":"Обновление HLSR 0.3.5","current":false},
+          {"version":"0.3.4","title":"Обновление HLSR 0.3.4","current":false},
+          {"version":"0.3.3","title":"Обновление HLSR 0.3.3","current":false},
+          {"version":"0.3.2","title":"Обновление HLSR 0.3.2","current":false},
+          {"version":"0.3.1","title":"Обновление HLSR 0.3.1","current":false},
+          {"version":"0.3.0","title":"Обновление HLSR 0.3.0","current":false}
+        ]
+      },
+      {
+        "lang": "de",
+        "version": "0.4.7-beta.1",
+        "releases": [
+          {"version":"0.4.7","title":"Обновление HLSR 0.4.7","current":true},
+          {"version":"0.4.6","title":"Обновление HLSR 0.4.6","current":false},
+          {"version":"0.4.5","title":"Обновление HLSR 0.4.5","current":false},
+          {"version":"0.4.4","title":"Обновление HLSR 0.4.4","current":false},
+          {"version":"0.4.3","title":"Обновление HLSR 0.4.3","current":false},
+          {"version":"0.4.2","title":"Обновление HLSR 0.4.2","current":false},
+          {"version":"0.4.1","title":"Обновление HLSR 0.4.1","current":false},
+          {"version":"0.4.0","title":"Обновление HLSR 0.4.0","current":false},
+          {"version":"0.3.16","title":"Обновление HLSR 0.3.16","current":false},
+          {"version":"0.3.15","title":"Обновление HLSR 0.3.15","current":false},
+          {"version":"0.3.14","title":"Обновление HLSR 0.3.14","current":false},
+          {"version":"0.3.13","title":"Обновление HLSR 0.3.13","current":false},
+          {"version":"0.3.12","title":"Обновление HLSR 0.3.12","current":false},
+          {"version":"0.3.11","title":"Обновление HLSR 0.3.11","current":false},
+          {"version":"0.3.10","title":"Обновление HLSR 0.3.10","current":false},
+          {"version":"0.3.9","title":"Обновление HLSR 0.3.9","current":false},
+          {"version":"0.3.8","title":"Обновление HLSR 0.3.8","current":false},
+          {"version":"0.3.7","title":"Обновление HLSR 0.3.7","current":false},
+          {"version":"0.3.6","title":"Обновление HLSR 0.3.6","current":false},
+          {"version":"0.3.5","title":"Обновление HLSR 0.3.5","current":false},
+          {"version":"0.3.4","title":"Обновление HLSR 0.3.4","current":false},
+          {"version":"0.3.3","title":"Обновление HLSR 0.3.3","current":false},
+          {"version":"0.3.2","title":"Обновление HLSR 0.3.2","current":false},
+          {"version":"0.3.1","title":"Обновление HLSR 0.3.1","current":false},
+          {"version":"0.3.0","title":"Обновление HLSR 0.3.0","current":false}
+        ]
+      },
+      {"lang":"de","version":"bad","releases":[]}
+    ],
+    "extras": [
+      {"extraRelease":{"version":"0.4.8","items":["Первое","<b>второе</b>","   ",3]},"safe":{"version":"0.4.8","title":"HLSR 0.4.8","upcoming":true,"groups":[{"title":null,"items":["Первое","второе"]}]},"versions":["0.4.8","0.4.7","0.4.6"]},
+      {"extraRelease":{"version":"0.4.7","items":["уже есть"]},"safe":{"version":"0.4.7","title":"HLSR 0.4.7","upcoming":true,"groups":[{"title":null,"items":["уже есть"]}]},"versions":["0.4.7","0.4.6"]},
+      {"extraRelease":{"version":"bad version!","items":["x"]},"safe":null,"versions":["0.4.7","0.4.6"]},
+      {"extraRelease":{"version":"0.4.9","items":[]},"safe":null,"versions":["0.4.7","0.4.6"]},
+      {"extraRelease":{"version":"0.4.9","items":"строка"},"safe":null,"versions":["0.4.7","0.4.6"]},
+      {"extraRelease":null,"safe":null,"versions":["0.4.7","0.4.6"]},
+      {"extraRelease":{"version":5,"items":["x"]},"safe":null,"versions":["0.4.7","0.4.6"]}
+    ],
+    "games": [
+      {
+        "reply": [
+          {"gameId":"hl1-won","launcherId":"70","versions":[{"version":"1.2.0","items":["Пункт <i>один</i>"," "]},{"version":"bad version","items":["x"]},{"version":"1.1.0","items":[]}]},
+          {"gameId":"hl2-4260","launcherId":220,"versions":[{"version":"4260","items":["два"]}]},
+          {"gameId":"ghosting-renewed","versions":[{"version":"1.0.0","items":["три"]}]},
+          {"gameId":5,"versions":[]},
+          {"gameId":"empty","versions":[{"version":"1.0","items":["   "]}]},
+          null
+        ],
+        "gameNotes": [{"gameId":"hl1-won","launcherId":"70","versions":[{"version":"1.2.0","items":["Пункт один"]}]},{"gameId":"hl2-4260","launcherId":null,"versions":[{"version":"4260","items":["два"]}]},{"gameId":"ghosting-renewed","launcherId":null,"versions":[{"version":"1.0.0","items":["три"]}]}],
+        "titles": ["Half-Life","hl2-4260","ghosting-renewed"]
+      },
+      {"reply":{"status":"error"},"gameNotes":[],"titles":[]},
+      {"reply":null,"gameNotes":[],"titles":[]}
+    ],
+    "focus": [{"initialVersion":"0.4.6","focused":[false,true,false]},{"initialVersion":null,"focused":[false,false,false]},{"initialVersion":"","focused":[false,false,false]}]
+  },
+  "liveSplit": [
+    {
+      "input": {
+        "defaultGame": "70",
+        "chosen": {"hl1-won":"hl1-maps"},
+        "steps": [{"pick":"218"},{"pick":"218"},{"preset":"maps"},{"pick":"70"},{"accept":true}],
+        "games": [
+          {"id":"218","gameId":"ghosting-renewed","label":"HL2 Ghosting","presets":[{"id":"chapters","kind":"chapters","category":null},{"id":"maps","kind":"maps","category":null}]},
+          {"id":"220","gameId":null,"label":"Half-Life 2","presets":[]},
+          {"id":"70","gameId":"hl1-won","label":"Half-Life","presets":[{"id":"hl1-any","kind":"chapters","category":"Any%"},{"id":"hl1-maps","kind":"maps","category":"100%"}]}
+        ]
+      },
+      "log": [
+        {"gameId":"70","presetId":"hl1-maps","presets":["hl1-any","hl1-maps"],"text":"#L_TOOL_LIVESPLIT_GAME_TEXT_WIN"},
+        {"gameId":"218","presetId":"chapters","presets":["chapters","maps"]},
+        {"gameId":"218","presetId":"chapters","presets":["chapters","maps"]},
+        {"gameId":"218","presetId":"maps","presets":["chapters","maps"]},
+        {"gameId":"70","presetId":"hl1-maps","presets":["hl1-any","hl1-maps"]},
+        {"gameId":"70","presetId":"hl1-maps","presets":["hl1-any","hl1-maps"]}
+      ],
+      "emitted": [["resolve",{"game":"70","gameId":"hl1-won","preset":"hl1-maps"}]],
+      "labels": [{"title":"Any%","small":"T(#L_TOOL_SPLITS_CHAPTERS)"},{"title":"100%","small":"T(#L_TOOL_SPLITS_MAPS)"},{"title":"T(#L_TOOL_SPLITS_CHAPTERS)","small":null},{"title":"T(#L_TOOL_SPLITS_MAPS)","small":null}]
+    },
+    {
+      "input": {
+        "defaultGame": null,
+        "chosen": {},
+        "steps": [{"pick":"220"},{"accept":true}],
+        "games": [
+          {"id":"218","gameId":"ghosting-renewed","label":"HL2 Ghosting","presets":[{"id":"chapters","kind":"chapters","category":null},{"id":"maps","kind":"maps","category":null}]},
+          {"id":"220","gameId":null,"label":"Half-Life 2","presets":[]},
+          {"id":"70","gameId":"hl1-won","label":"Half-Life","presets":[{"id":"hl1-any","kind":"chapters","category":"Any%"},{"id":"hl1-maps","kind":"maps","category":"100%"}]}
+        ]
+      },
+      "log": [{"gameId":"218","presetId":"chapters","presets":["chapters","maps"],"text":"#L_TOOL_LIVESPLIT_GAME_TEXT_WIN"},{"gameId":"220","presetId":null,"presets":[]},{"gameId":"220","presetId":null,"presets":[]}],
+      "emitted": [["resolve",{"game":"220","gameId":null,"preset":null}]],
+      "labels": [{"title":"Any%","small":"T(#L_TOOL_SPLITS_CHAPTERS)"},{"title":"100%","small":"T(#L_TOOL_SPLITS_MAPS)"},{"title":"T(#L_TOOL_SPLITS_CHAPTERS)","small":null},{"title":"T(#L_TOOL_SPLITS_MAPS)","small":null}]
+    },
+    {
+      "input": {
+        "defaultGame": "999",
+        "chosen": {"ghosting-renewed":"gone"},
+        "steps": [{"accept":true}],
+        "games": [
+          {"id":"218","gameId":"ghosting-renewed","label":"HL2 Ghosting","presets":[{"id":"chapters","kind":"chapters","category":null},{"id":"maps","kind":"maps","category":null}]},
+          {"id":"220","gameId":null,"label":"Half-Life 2","presets":[]},
+          {"id":"70","gameId":"hl1-won","label":"Half-Life","presets":[{"id":"hl1-any","kind":"chapters","category":"Any%"},{"id":"hl1-maps","kind":"maps","category":"100%"}]}
+        ]
+      },
+      "log": [{"gameId":"218","presetId":"chapters","presets":["chapters","maps"],"text":"#L_TOOL_LIVESPLIT_GAME_TEXT_WIN"},{"gameId":"218","presetId":"chapters","presets":["chapters","maps"]}],
+      "emitted": [["resolve",{"game":"218","gameId":"ghosting-renewed","preset":"chapters"}]],
+      "labels": [{"title":"Any%","small":"T(#L_TOOL_SPLITS_CHAPTERS)"},{"title":"100%","small":"T(#L_TOOL_SPLITS_MAPS)"},{"title":"T(#L_TOOL_SPLITS_CHAPTERS)","small":null},{"title":"T(#L_TOOL_SPLITS_MAPS)","small":null}]
+    },
+    {
+      "input": {
+        "defaultGame": "218",
+        "chosen": {"ghosting-renewed":"maps"},
+        "platform": "linux",
+        "steps": [{"cancel":true}],
+        "games": [
+          {"id":"218","gameId":"ghosting-renewed","label":"HL2 Ghosting","presets":[{"id":"chapters","kind":"chapters","category":null},{"id":"maps","kind":"maps","category":null}]},
+          {"id":"220","gameId":null,"label":"Half-Life 2","presets":[]},
+          {"id":"70","gameId":"hl1-won","label":"Half-Life","presets":[{"id":"hl1-any","kind":"chapters","category":"Any%"},{"id":"hl1-maps","kind":"maps","category":"100%"}]}
+        ]
+      },
+      "log": [{"gameId":"218","presetId":"maps","presets":["chapters","maps"],"text":"#L_TOOL_LIVESPLIT_GAME_TEXT"},{"gameId":"218","presetId":"maps","presets":["chapters","maps"]}],
+      "emitted": [["resolve",false]],
+      "labels": [{"title":"Any%","small":"T(#L_TOOL_SPLITS_CHAPTERS)"},{"title":"100%","small":"T(#L_TOOL_SPLITS_MAPS)"},{"title":"T(#L_TOOL_SPLITS_CHAPTERS)","small":null},{"title":"T(#L_TOOL_SPLITS_MAPS)","small":null}]
+    }
+  ],
+  "librarySetup": [
+    {
+      "input": {"name":"ok","replies":{"validate-install-path":[{"ok":true,"path":"C:\\HLSR","freeSpaceMb":52428.8,"hasCyrillic":false}]},"steps":["mount","confirm"],"confirm":{"ok":true,"path":"C:\\HLSR"}},
+      "calls": [["validate-install-path",["C:\\HLSR"]],["set-library-path",["C:\\HLSR"]]],
+      "states": [{"step":"mount","path":"C:\\HLSR","freeSpaceGb":"51,2","hasCyrillic":false,"error":null},{"step":"confirm","path":"C:\\HLSR","freeSpaceGb":"51,2","hasCyrillic":false,"error":null}],
+      "emitted": [["confirmed","C:\\HLSR"]]
+    },
+    {"input":{"name":"cyrillic","replies":{"validate-install-path":[{"ok":true,"path":"D:\\Игры\\HLSR","freeSpaceMb":"1023","hasCyrillic":1}]},"steps":["mount"]},"calls":[["validate-install-path",["C:\\HLSR"]]],"states":[{"step":"mount","path":"D:\\Игры\\HLSR","freeSpaceGb":"1,0","hasCyrillic":true,"error":null}],"emitted":[]},
+    {"input":{"name":"no-space","replies":{"validate-install-path":[{"ok":true,"path":"E:\\HLSR","freeSpaceMb":0}]},"steps":["mount"]},"calls":[["validate-install-path",["C:\\HLSR"]]],"states":[{"step":"mount","path":"E:\\HLSR","freeSpaceGb":null,"hasCyrillic":false,"error":null}],"emitted":[]},
+    {"input":{"name":"no-access","replies":{"validate-install-path":[{"ok":false,"error":"no-access"}]},"steps":["mount"]},"calls":[["validate-install-path",["C:\\HLSR"]]],"states":[{"step":"mount","path":"C:\\HLSR","freeSpaceGb":null,"hasCyrillic":false,"error":"T(#L_S_PATH_NO_ACCESS)"}],"emitted":[]},
+    {
+      "input": {"name":"invalid-then-choose","replies":{"validate-install-path":[{"ok":false,"error":"bad"},{"ok":true,"path":"F:\\Games","freeSpaceMb":2048}],"select-install-folder":["F:\\Games"]},"steps":["mount","choose"]},
+      "calls": [["validate-install-path",["C:\\HLSR"]],["select-install-folder",["C:\\HLSR"]],["validate-install-path",["F:\\Games"]]],
+      "states": [{"step":"mount","path":"C:\\HLSR","freeSpaceGb":null,"hasCyrillic":false,"error":"T(#L_S_PATH_INVALID)"},{"step":"choose","path":"F:\\Games","freeSpaceGb":"2,0","hasCyrillic":false,"error":null}],
+      "emitted": []
+    },
+    {
+      "input": {"name":"choose-cancelled","replies":{"validate-install-path":[{"ok":true,"path":"C:\\HLSR","freeSpaceMb":100}],"select-install-folder":[null]},"steps":["mount","choose"]},
+      "calls": [["validate-install-path",["C:\\HLSR"]],["select-install-folder",["C:\\HLSR"]]],
+      "states": [{"step":"mount","path":"C:\\HLSR","freeSpaceGb":"0,1","hasCyrillic":false,"error":null},{"step":"choose","path":"C:\\HLSR","freeSpaceGb":"0,1","hasCyrillic":false,"error":null}],
+      "emitted": []
+    },
+    {
+      "input": {"name":"confirm-refused","replies":{"validate-install-path":[{"ok":true,"path":"C:\\HLSR","freeSpaceMb":100}]},"steps":["mount","confirm"],"confirm":{"ok":false,"error":"no-access"}},
+      "calls": [["validate-install-path",["C:\\HLSR"]],["set-library-path",["C:\\HLSR"]]],
+      "states": [{"step":"mount","path":"C:\\HLSR","freeSpaceGb":"0,1","hasCyrillic":false,"error":null},{"step":"confirm","path":"C:\\HLSR","freeSpaceGb":"0,1","hasCyrillic":false,"error":"T(#L_S_PATH_NO_ACCESS)"}],
+      "emitted": []
+    },
+    {
+      "input": {"name":"confirm-invalid","replies":{"validate-install-path":[{"ok":true,"path":"C:\\HLSR","freeSpaceMb":100}]},"steps":["mount","confirm"],"confirm":{"ok":false}},
+      "calls": [["validate-install-path",["C:\\HLSR"]],["set-library-path",["C:\\HLSR"]]],
+      "states": [{"step":"mount","path":"C:\\HLSR","freeSpaceGb":"0,1","hasCyrillic":false,"error":null},{"step":"confirm","path":"C:\\HLSR","freeSpaceGb":"0,1","hasCyrillic":false,"error":"T(#L_S_PATH_INVALID)"}],
+      "emitted": []
+    }
+  ]
+}

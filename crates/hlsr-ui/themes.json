@@ -1,0 +1,5651 @@
+{
+  "order": [
+    "hlsr",
+    "lambda",
+    "resonance",
+    "combine",
+    "xen",
+    "steam2003",
+    "midnight",
+    "liquid-glass",
+    "paper"
+  ],
+  "themes": {
+    "hlsr": {
+      "accent-color": {
+        "color": "#00ABFFFF"
+      },
+      "l-bg": {
+        "color": "#06101BFF"
+      },
+      "l-bg-raised": {
+        "color": "#0C1C2EFF"
+      },
+      "l-surface": {
+        "color": "#0C1E32B8"
+      },
+      "l-surface-solid": {
+        "color": "#0E2136FF"
+      },
+      "l-border": {
+        "color": "#60BEFF29"
+      },
+      "l-border-strong": {
+        "color": "#60BEFF52"
+      },
+      "l-text": {
+        "color": "#F2F7FBFF"
+      },
+      "l-text-dim": {
+        "color": "#A3BCD2FF"
+      },
+      "l-text-faint": {
+        "color": "#6A8299FF"
+      },
+      "l-level-error": {
+        "color": "#FF6B78FF"
+      },
+      "l-level-warning": {
+        "color": "#F2CF4AFF"
+      },
+      "l-level-ok": {
+        "color": "#5FD068FF"
+      },
+      "l-chip-bg": {
+        "color": "#00000052"
+      },
+      "l-chip-hover": {
+        "color": "#FFFFFF14"
+      },
+      "l-note-bg": {
+        "color": "#00000047"
+      },
+      "l-field-bg": {
+        "color": "#00000038"
+      },
+      "l-orange": {
+        "color": "#FF7A1CFF"
+      },
+      "l-accent": {
+        "color": "#00ABFFFF"
+      },
+      "l-accent-hover": {
+        "color": "#2FBAFFFF"
+      },
+      "l-accent-soft": {
+        "color": "#00ABFF29"
+      },
+      "btn-ready-bg": {
+        "color": "#00A2FFFF"
+      },
+      "btn-ready-hover": {
+        "color": "#29B2FFFF"
+      },
+      "btn-ready-pressed": {
+        "color": "#008BDBFF"
+      },
+      "btn-ready-glow": {
+        "color": "#00A2FF52"
+      },
+      "btn-progress-bg": {
+        "color": "#1F7AE0FF"
+      },
+      "btn-progress-hover": {
+        "color": "#3A8CE8FF"
+      },
+      "btn-progress-pressed": {
+        "color": "#1A68C0FF"
+      },
+      "btn-progress-glow": {
+        "color": "#1F7AE04D"
+      },
+      "btn-progress-text": {
+        "color": "#FFFFFFFF"
+      },
+      "btn-repair-bg": {
+        "color": "#E8A33DFF"
+      },
+      "btn-repair-hover": {
+        "color": "#F0B055FF"
+      },
+      "btn-repair-pressed": {
+        "color": "#CF8F2FFF"
+      },
+      "btn-repair-glow": {
+        "color": "#E8A33D4D"
+      },
+      "btn-danger-bg": {
+        "color": "#E0455AFF"
+      },
+      "btn-danger-hover": {
+        "color": "#E85F72FF"
+      },
+      "btn-danger-pressed": {
+        "color": "#C53A4DFF"
+      },
+      "btn-danger-glow": {
+        "color": "#E0455A4D"
+      },
+      "btn-muted-bg": {
+        "color": "#22262DFF"
+      },
+      "btn-muted-hover": {
+        "color": "#2A2F37FF"
+      },
+      "l-radius": {
+        "length": 12
+      },
+      "l-radius-sm": {
+        "length": 8
+      },
+      "l-topbar-h": {
+        "length": 80
+      },
+      "l-header-control": {
+        "length": 40
+      },
+      "l-header-gap": {
+        "length": 32
+      },
+      "l-header-inset": {
+        "length": 8
+      },
+      "l-brand-mark": {
+        "length": 40
+      },
+      "l-edge-pad": {
+        "length": 24
+      },
+      "l-rail-w": {
+        "length": 80
+      },
+      "l-rail-item": {
+        "length": 56
+      },
+      "l-rail-circle": {
+        "length": 48
+      },
+      "l-rail-logo": {
+        "length": 32
+      },
+      "l-rail-gap": {
+        "length": 8
+      },
+      "l-rail-tool": {
+        "length": 40
+      },
+      "l-rail-tool-gap": {
+        "length": 4
+      },
+      "l-rail-bottom": {
+        "length": 12
+      },
+      "l-rail-open-w": {
+        "length": 240
+      },
+      "l-hero-pad": {
+        "length": 48
+      },
+      "l-hero-top": {
+        "length": 192
+      },
+      "l-hero-gap": {
+        "length": 32
+      },
+      "l-hero-title": {
+        "length": 56
+      },
+      "l-hero-title-lh": {
+        "length": 60
+      },
+      "l-hero-subtitle-lh": {
+        "length": 28
+      },
+      "l-stats-gap": {
+        "length": 28
+      },
+      "l-stats-icon": {
+        "length": 48
+      },
+      "l-stats-value": {
+        "length": 18
+      },
+      "l-stats-value-lh": {
+        "length": 24
+      },
+      "l-stats-texts-gap": {
+        "length": 4
+      },
+      "l-bottombar-h": {
+        "length": 96
+      },
+      "l-bottombar-gap": {
+        "length": 32
+      },
+      "l-bottombar-lead": {
+        "length": 32
+      },
+      "l-control-gap": {
+        "length": 16
+      },
+      "l-play-w": {
+        "length": 256
+      },
+      "l-play-h": {
+        "length": 56
+      },
+      "l-play-font": {
+        "length": 19
+      },
+      "l-play-icon": {
+        "length": 16
+      },
+      "l-build-h": {
+        "length": 56
+      },
+      "l-ease": {
+        "easing": [
+          0.22,
+          1,
+          0.36,
+          1
+        ]
+      },
+      "l-ease-in": {
+        "easing": [
+          0.55,
+          0,
+          0.75,
+          0.2
+        ]
+      },
+      "l-ease-spring": {
+        "easing": [
+          0.34,
+          1.56,
+          0.64,
+          1
+        ]
+      },
+      "l-dur-fast": {
+        "duration": 160
+      },
+      "l-dur": {
+        "duration": 260
+      },
+      "l-dur-slow": {
+        "duration": 420
+      },
+      "l-ease-fade": {
+        "easing": [
+          0.45,
+          0,
+          0.55,
+          1
+        ]
+      },
+      "l-dur-fade": {
+        "duration": 500
+      },
+      "l-ease-swipe": {
+        "easing": [
+          0.32,
+          0.72,
+          0,
+          1
+        ]
+      },
+      "l-dur-swipe": {
+        "duration": 500
+      },
+      "l-dur-tab": {
+        "duration": 350
+      },
+      "l-swipe-gap": {
+        "length": 40
+      },
+      "l-ink-lead": {
+        "duration": 230
+      },
+      "l-ink-trail": {
+        "duration": 350
+      },
+      "l-rise": {
+        "length": 8
+      },
+      "l-glow": {
+        "color": "#00ABFF2E"
+      },
+      "l-chrome": {
+        "color": "#08121E8C"
+      },
+      "l-app-bg": {
+        "gradient": {
+          "angle": 180,
+          "stops": [
+            {
+              "color": "#0C1C2EFF",
+              "pos": 0
+            },
+            {
+              "color": "#06101BFF",
+              "pos": 1
+            }
+          ]
+        }
+      },
+      "l-bg-inset": {
+        "length": 0
+      },
+      "l-bg-fallback": {
+        "gradient": {
+          "angle": 180,
+          "stops": [
+            {
+              "color": "#0C1C2EFF",
+              "pos": 0
+            },
+            {
+              "color": "#06101BFF",
+              "pos": 1
+            }
+          ]
+        }
+      },
+      "l-modal-bg": {
+        "color": "#12161DFF"
+      },
+      "l-modal-nav": {
+        "color": "#0E1219FF"
+      },
+      "l-modal-bar": {
+        "color": "#10151CFF"
+      },
+      "l-modal-border": {
+        "color": "#FFFFFF1A"
+      },
+      "l-modal-scrim": {
+        "color": "#00000094"
+      },
+      "l-shade-rgb": {
+        "color": "#060B12FF"
+      },
+      "l-deep-rgb": {
+        "color": "#08121EFF"
+      },
+      "l-panel-rgb": {
+        "color": "#0C1E32FF"
+      },
+      "l-tint-rgb": {
+        "color": "#60BEFFFF"
+      },
+      "l-bg-zoom": {
+        "number": 1
+      },
+      "l-rail-fill": {
+        "color": "#060B1280"
+      },
+      "l-rail-open-fill": {
+        "color": "#060B1238"
+      },
+      "l-rail-blur": {
+        "length": 28
+      },
+      "l-rail-game": {
+        "color": "#AAB4BFFF"
+      },
+      "l-rail-icon": {
+        "color": "#7C90A8FF"
+      },
+      "l-footer-feather": {
+        "length": 72
+      },
+      "l-footer-fill": {
+        "gradient": {
+          "angle": 0,
+          "stops": [
+            {
+              "color": "#060B12F5",
+              "pos": 0
+            },
+            {
+              "color": "#060B12DB",
+              "pos": 0.34
+            },
+            {
+              "color": "#060B1299",
+              "pos": 0.62
+            },
+            {
+              "color": "#060B123D",
+              "pos": 0.84
+            },
+            {
+              "color": "#060B1200",
+              "pos": 1
+            }
+          ]
+        }
+      },
+      "l-app-scrim": {
+        "gradient": {
+          "angle": 180,
+          "stops": [
+            {
+              "color": "#060B1273",
+              "pos": 0
+            },
+            {
+              "color": "#04080E94",
+              "pos": 1
+            }
+          ]
+        }
+      },
+      "accent": {
+        "color": "#00ABFFFF"
+      },
+      "accent-rgb": {
+        "color": "#00ABFFFF"
+      },
+      "accent-hover": {
+        "color": "#2FBAFFFF"
+      },
+      "accent-pressed": {
+        "color": "#0090DAFF"
+      },
+      "accent-soft": {
+        "color": "#00ABFF29"
+      },
+      "accent-border": {
+        "color": "#00ABFF8C"
+      },
+      "accent-focus": {
+        "color": "#4FC3FFFF"
+      },
+      "accent-contrast-text": {
+        "color": "#FFFFFFFF"
+      },
+      "btn-ready-text": {
+        "color": "#FFFFFFFF"
+      },
+      "l-switch-thumb-on": {
+        "color": "#FFFFFFFF"
+      }
+    },
+    "lambda": {
+      "accent-color": {
+        "color": "#FF7A1CFF"
+      },
+      "l-bg": {
+        "color": "#100B08FF"
+      },
+      "l-bg-raised": {
+        "color": "#17110DFF"
+      },
+      "l-surface": {
+        "color": "#26180FB8"
+      },
+      "l-surface-solid": {
+        "color": "#17110DFF"
+      },
+      "l-border": {
+        "color": "#FFB07829"
+      },
+      "l-border-strong": {
+        "color": "#FFB07852"
+      },
+      "l-text": {
+        "color": "#F2F7FBFF"
+      },
+      "l-text-dim": {
+        "color": "#C4B0A0FF"
+      },
+      "l-text-faint": {
+        "color": "#87725FFF"
+      },
+      "l-level-error": {
+        "color": "#FF6B78FF"
+      },
+      "l-level-warning": {
+        "color": "#F2CF4AFF"
+      },
+      "l-level-ok": {
+        "color": "#5FD068FF"
+      },
+      "l-chip-bg": {
+        "color": "#00000052"
+      },
+      "l-chip-hover": {
+        "color": "#FFFFFF14"
+      },
+      "l-note-bg": {
+        "color": "#00000047"
+      },
+      "l-field-bg": {
+        "color": "#00000038"
+      },
+      "l-orange": {
+        "color": "#FF7A1CFF"
+      },
+      "l-accent": {
+        "color": "#FF7A1CFF"
+      },
+      "l-accent-hover": {
+        "color": "#FF9445FF"
+      },
+      "l-accent-soft": {
+        "color": "#FF7A1C29"
+      },
+      "btn-ready-bg": {
+        "color": "#FF7A1CFF"
+      },
+      "btn-ready-hover": {
+        "color": "#FF9445FF"
+      },
+      "btn-ready-pressed": {
+        "color": "#E0650EFF"
+      },
+      "btn-ready-glow": {
+        "color": "#FF7A1C52"
+      },
+      "btn-progress-bg": {
+        "color": "#BF5C15FF"
+      },
+      "btn-progress-hover": {
+        "color": "#BF6F34FF"
+      },
+      "btn-progress-pressed": {
+        "color": "#A84C0BFF"
+      },
+      "btn-progress-glow": {
+        "color": "#FF7A1C3D"
+      },
+      "btn-progress-text": {
+        "color": "#FFFFFFFF"
+      },
+      "btn-repair-bg": {
+        "color": "#E8A33DFF"
+      },
+      "btn-repair-hover": {
+        "color": "#F0B055FF"
+      },
+      "btn-repair-pressed": {
+        "color": "#CF8F2FFF"
+      },
+      "btn-repair-glow": {
+        "color": "#E8A33D4D"
+      },
+      "btn-danger-bg": {
+        "color": "#E0455AFF"
+      },
+      "btn-danger-hover": {
+        "color": "#E85F72FF"
+      },
+      "btn-danger-pressed": {
+        "color": "#C53A4DFF"
+      },
+      "btn-danger-glow": {
+        "color": "#E0455A4D"
+      },
+      "btn-muted-bg": {
+        "color": "#22262DFF"
+      },
+      "btn-muted-hover": {
+        "color": "#2A2F37FF"
+      },
+      "l-radius": {
+        "length": 12
+      },
+      "l-radius-sm": {
+        "length": 8
+      },
+      "l-topbar-h": {
+        "length": 80
+      },
+      "l-header-control": {
+        "length": 40
+      },
+      "l-header-gap": {
+        "length": 32
+      },
+      "l-header-inset": {
+        "length": 8
+      },
+      "l-brand-mark": {
+        "length": 40
+      },
+      "l-edge-pad": {
+        "length": 24
+      },
+      "l-rail-w": {
+        "length": 80
+      },
+      "l-rail-item": {
+        "length": 56
+      },
+      "l-rail-circle": {
+        "length": 48
+      },
+      "l-rail-logo": {
+        "length": 32
+      },
+      "l-rail-gap": {
+        "length": 8
+      },
+      "l-rail-tool": {
+        "length": 40
+      },
+      "l-rail-tool-gap": {
+        "length": 4
+      },
+      "l-rail-bottom": {
+        "length": 12
+      },
+      "l-rail-open-w": {
+        "length": 240
+      },
+      "l-hero-pad": {
+        "length": 48
+      },
+      "l-hero-top": {
+        "length": 192
+      },
+      "l-hero-gap": {
+        "length": 32
+      },
+      "l-hero-title": {
+        "length": 56
+      },
+      "l-hero-title-lh": {
+        "length": 60
+      },
+      "l-hero-subtitle-lh": {
+        "length": 28
+      },
+      "l-stats-gap": {
+        "length": 28
+      },
+      "l-stats-icon": {
+        "length": 48
+      },
+      "l-stats-value": {
+        "length": 18
+      },
+      "l-stats-value-lh": {
+        "length": 24
+      },
+      "l-stats-texts-gap": {
+        "length": 4
+      },
+      "l-bottombar-h": {
+        "length": 96
+      },
+      "l-bottombar-gap": {
+        "length": 32
+      },
+      "l-bottombar-lead": {
+        "length": 32
+      },
+      "l-control-gap": {
+        "length": 16
+      },
+      "l-play-w": {
+        "length": 256
+      },
+      "l-play-h": {
+        "length": 56
+      },
+      "l-play-font": {
+        "length": 19
+      },
+      "l-play-icon": {
+        "length": 16
+      },
+      "l-build-h": {
+        "length": 56
+      },
+      "l-ease": {
+        "easing": [
+          0.22,
+          1,
+          0.36,
+          1
+        ]
+      },
+      "l-ease-in": {
+        "easing": [
+          0.55,
+          0,
+          0.75,
+          0.2
+        ]
+      },
+      "l-ease-spring": {
+        "easing": [
+          0.34,
+          1.56,
+          0.64,
+          1
+        ]
+      },
+      "l-dur-fast": {
+        "duration": 160
+      },
+      "l-dur": {
+        "duration": 260
+      },
+      "l-dur-slow": {
+        "duration": 420
+      },
+      "l-ease-fade": {
+        "easing": [
+          0.45,
+          0,
+          0.55,
+          1
+        ]
+      },
+      "l-dur-fade": {
+        "duration": 500
+      },
+      "l-ease-swipe": {
+        "easing": [
+          0.32,
+          0.72,
+          0,
+          1
+        ]
+      },
+      "l-dur-swipe": {
+        "duration": 500
+      },
+      "l-dur-tab": {
+        "duration": 350
+      },
+      "l-swipe-gap": {
+        "length": 40
+      },
+      "l-ink-lead": {
+        "duration": 230
+      },
+      "l-ink-trail": {
+        "duration": 350
+      },
+      "l-rise": {
+        "length": 8
+      },
+      "l-glow": {
+        "color": "#FF7A1C2E"
+      },
+      "l-chrome": {
+        "color": "#180F098C"
+      },
+      "l-app-bg": {
+        "gradient": {
+          "angle": 180,
+          "stops": [
+            {
+              "color": "#17110DFF",
+              "pos": 0
+            },
+            {
+              "color": "#100B08FF",
+              "pos": 1
+            }
+          ]
+        }
+      },
+      "l-bg-inset": {
+        "length": 0
+      },
+      "l-bg-fallback": {
+        "gradient": {
+          "angle": 180,
+          "stops": [
+            {
+              "color": "#17110DFF",
+              "pos": 0
+            },
+            {
+              "color": "#100B08FF",
+              "pos": 1
+            }
+          ]
+        }
+      },
+      "l-modal-bg": {
+        "color": "#1A1310FF"
+      },
+      "l-modal-nav": {
+        "color": "#140F0BFF"
+      },
+      "l-modal-bar": {
+        "color": "#140F0BFF"
+      },
+      "l-modal-border": {
+        "color": "#FFFFFF1A"
+      },
+      "l-modal-scrim": {
+        "color": "#00000094"
+      },
+      "l-shade-rgb": {
+        "color": "#0E0906FF"
+      },
+      "l-deep-rgb": {
+        "color": "#180F09FF"
+      },
+      "l-panel-rgb": {
+        "color": "#26180FFF"
+      },
+      "l-tint-rgb": {
+        "color": "#FFB078FF"
+      },
+      "l-bg-zoom": {
+        "number": 1
+      },
+      "l-rail-fill": {
+        "color": "#0E090680"
+      },
+      "l-rail-open-fill": {
+        "color": "#0E090638"
+      },
+      "l-rail-blur": {
+        "length": 28
+      },
+      "l-rail-game": {
+        "color": "#C6B8ABFF"
+      },
+      "l-rail-icon": {
+        "color": "#9E8877FF"
+      },
+      "l-footer-feather": {
+        "length": 72
+      },
+      "l-footer-fill": {
+        "gradient": {
+          "angle": 0,
+          "stops": [
+            {
+              "color": "#0E0906F5",
+              "pos": 0
+            },
+            {
+              "color": "#0E0906DB",
+              "pos": 0.34
+            },
+            {
+              "color": "#0E090699",
+              "pos": 0.62
+            },
+            {
+              "color": "#0E09063D",
+              "pos": 0.84
+            },
+            {
+              "color": "#0E090600",
+              "pos": 1
+            }
+          ]
+        }
+      },
+      "l-app-scrim": {
+        "gradient": {
+          "angle": 180,
+          "stops": [
+            {
+              "color": "#140A0480",
+              "pos": 0
+            },
+            {
+              "color": "#0E0703A8",
+              "pos": 1
+            }
+          ]
+        }
+      },
+      "accent": {
+        "color": "#FF7A1CFF"
+      },
+      "accent-rgb": {
+        "color": "#FF7A1CFF"
+      },
+      "accent-hover": {
+        "color": "#FF9445FF"
+      },
+      "accent-pressed": {
+        "color": "#E0650EFF"
+      },
+      "accent-soft": {
+        "color": "#FF7A1C29"
+      },
+      "accent-border": {
+        "color": "#FF7A1C8C"
+      },
+      "accent-focus": {
+        "color": "#FF9445FF"
+      },
+      "accent-contrast-text": {
+        "color": "#FFFFFFFF"
+      },
+      "btn-ready-text": {
+        "color": "#FFFFFFFF"
+      },
+      "l-switch-thumb-on": {
+        "color": "#FFFFFFFF"
+      }
+    },
+    "resonance": {
+      "accent-color": {
+        "color": "#2FCF6CFF"
+      },
+      "l-bg": {
+        "color": "#08100BFF"
+      },
+      "l-bg-raised": {
+        "color": "#0D1510FF"
+      },
+      "l-surface": {
+        "color": "#0E2215B8"
+      },
+      "l-surface-solid": {
+        "color": "#0D1510FF"
+      },
+      "l-border": {
+        "color": "#78EBA029"
+      },
+      "l-border-strong": {
+        "color": "#78EBA052"
+      },
+      "l-text": {
+        "color": "#F2F7FBFF"
+      },
+      "l-text-dim": {
+        "color": "#A4C3ADFF"
+      },
+      "l-text-faint": {
+        "color": "#67846FFF"
+      },
+      "l-level-error": {
+        "color": "#FF6B78FF"
+      },
+      "l-level-warning": {
+        "color": "#F2CF4AFF"
+      },
+      "l-level-ok": {
+        "color": "#5FD068FF"
+      },
+      "l-chip-bg": {
+        "color": "#00000052"
+      },
+      "l-chip-hover": {
+        "color": "#FFFFFF14"
+      },
+      "l-note-bg": {
+        "color": "#00000047"
+      },
+      "l-field-bg": {
+        "color": "#00000038"
+      },
+      "l-orange": {
+        "color": "#FF7A1CFF"
+      },
+      "l-accent": {
+        "color": "#2FCF6CFF"
+      },
+      "l-accent-hover": {
+        "color": "#4FE086FF"
+      },
+      "l-accent-soft": {
+        "color": "#2FCF6C29"
+      },
+      "btn-ready-bg": {
+        "color": "#2FCF6CFF"
+      },
+      "btn-ready-hover": {
+        "color": "#4FE086FF"
+      },
+      "btn-ready-pressed": {
+        "color": "#22B058FF"
+      },
+      "btn-ready-glow": {
+        "color": "#2FCF6C52"
+      },
+      "btn-progress-bg": {
+        "color": "#239B51FF"
+      },
+      "btn-progress-hover": {
+        "color": "#3BA865FF"
+      },
+      "btn-progress-pressed": {
+        "color": "#1A8442FF"
+      },
+      "btn-progress-glow": {
+        "color": "#2FCF6C3D"
+      },
+      "btn-progress-text": {
+        "color": "#04170BFF"
+      },
+      "btn-repair-bg": {
+        "color": "#E8A33DFF"
+      },
+      "btn-repair-hover": {
+        "color": "#F0B055FF"
+      },
+      "btn-repair-pressed": {
+        "color": "#CF8F2FFF"
+      },
+      "btn-repair-glow": {
+        "color": "#E8A33D4D"
+      },
+      "btn-danger-bg": {
+        "color": "#E0455AFF"
+      },
+      "btn-danger-hover": {
+        "color": "#E85F72FF"
+      },
+      "btn-danger-pressed": {
+        "color": "#C53A4DFF"
+      },
+      "btn-danger-glow": {
+        "color": "#E0455A4D"
+      },
+      "btn-muted-bg": {
+        "color": "#22262DFF"
+      },
+      "btn-muted-hover": {
+        "color": "#2A2F37FF"
+      },
+      "l-radius": {
+        "length": 12
+      },
+      "l-radius-sm": {
+        "length": 8
+      },
+      "l-topbar-h": {
+        "length": 80
+      },
+      "l-header-control": {
+        "length": 40
+      },
+      "l-header-gap": {
+        "length": 32
+      },
+      "l-header-inset": {
+        "length": 8
+      },
+      "l-brand-mark": {
+        "length": 40
+      },
+      "l-edge-pad": {
+        "length": 24
+      },
+      "l-rail-w": {
+        "length": 80
+      },
+      "l-rail-item": {
+        "length": 56
+      },
+      "l-rail-circle": {
+        "length": 48
+      },
+      "l-rail-logo": {
+        "length": 32
+      },
+      "l-rail-gap": {
+        "length": 8
+      },
+      "l-rail-tool": {
+        "length": 40
+      },
+      "l-rail-tool-gap": {
+        "length": 4
+      },
+      "l-rail-bottom": {
+        "length": 12
+      },
+      "l-rail-open-w": {
+        "length": 240
+      },
+      "l-hero-pad": {
+        "length": 48
+      },
+      "l-hero-top": {
+        "length": 192
+      },
+      "l-hero-gap": {
+        "length": 32
+      },
+      "l-hero-title": {
+        "length": 56
+      },
+      "l-hero-title-lh": {
+        "length": 60
+      },
+      "l-hero-subtitle-lh": {
+        "length": 28
+      },
+      "l-stats-gap": {
+        "length": 28
+      },
+      "l-stats-icon": {
+        "length": 48
+      },
+      "l-stats-value": {
+        "length": 18
+      },
+      "l-stats-value-lh": {
+        "length": 24
+      },
+      "l-stats-texts-gap": {
+        "length": 4
+      },
+      "l-bottombar-h": {
+        "length": 96
+      },
+      "l-bottombar-gap": {
+        "length": 32
+      },
+      "l-bottombar-lead": {
+        "length": 32
+      },
+      "l-control-gap": {
+        "length": 16
+      },
+      "l-play-w": {
+        "length": 256
+      },
+      "l-play-h": {
+        "length": 56
+      },
+      "l-play-font": {
+        "length": 19
+      },
+      "l-play-icon": {
+        "length": 16
+      },
+      "l-build-h": {
+        "length": 56
+      },
+      "l-ease": {
+        "easing": [
+          0.22,
+          1,
+          0.36,
+          1
+        ]
+      },
+      "l-ease-in": {
+        "easing": [
+          0.55,
+          0,
+          0.75,
+          0.2
+        ]
+      },
+      "l-ease-spring": {
+        "easing": [
+          0.34,
+          1.56,
+          0.64,
+          1
+        ]
+      },
+      "l-dur-fast": {
+        "duration": 160
+      },
+      "l-dur": {
+        "duration": 260
+      },
+      "l-dur-slow": {
+        "duration": 420
+      },
+      "l-ease-fade": {
+        "easing": [
+          0.45,
+          0,
+          0.55,
+          1
+        ]
+      },
+      "l-dur-fade": {
+        "duration": 500
+      },
+      "l-ease-swipe": {
+        "easing": [
+          0.32,
+          0.72,
+          0,
+          1
+        ]
+      },
+      "l-dur-swipe": {
+        "duration": 500
+      },
+      "l-dur-tab": {
+        "duration": 350
+      },
+      "l-swipe-gap": {
+        "length": 40
+      },
+      "l-ink-lead": {
+        "duration": 230
+      },
+      "l-ink-trail": {
+        "duration": 350
+      },
+      "l-rise": {
+        "length": 8
+      },
+      "l-glow": {
+        "color": "#2FCF6C2E"
+      },
+      "l-chrome": {
+        "color": "#08150D8C"
+      },
+      "l-app-bg": {
+        "gradient": {
+          "angle": 180,
+          "stops": [
+            {
+              "color": "#0D1510FF",
+              "pos": 0
+            },
+            {
+              "color": "#08100BFF",
+              "pos": 1
+            }
+          ]
+        }
+      },
+      "l-bg-inset": {
+        "length": 0
+      },
+      "l-bg-fallback": {
+        "gradient": {
+          "angle": 180,
+          "stops": [
+            {
+              "color": "#0D1510FF",
+              "pos": 0
+            },
+            {
+              "color": "#08100BFF",
+              "pos": 1
+            }
+          ]
+        }
+      },
+      "l-modal-bg": {
+        "color": "#0F1912FF"
+      },
+      "l-modal-nav": {
+        "color": "#0B130EFF"
+      },
+      "l-modal-bar": {
+        "color": "#0B130EFF"
+      },
+      "l-modal-border": {
+        "color": "#FFFFFF1A"
+      },
+      "l-modal-scrim": {
+        "color": "#00000094"
+      },
+      "l-shade-rgb": {
+        "color": "#050D08FF"
+      },
+      "l-deep-rgb": {
+        "color": "#08150DFF"
+      },
+      "l-panel-rgb": {
+        "color": "#0E2215FF"
+      },
+      "l-tint-rgb": {
+        "color": "#78EBA0FF"
+      },
+      "l-bg-zoom": {
+        "number": 1
+      },
+      "l-rail-fill": {
+        "color": "#050D0880"
+      },
+      "l-rail-open-fill": {
+        "color": "#050D0838"
+      },
+      "l-rail-blur": {
+        "length": 28
+      },
+      "l-rail-game": {
+        "color": "#B1C3B6FF"
+      },
+      "l-rail-icon": {
+        "color": "#7C9885FF"
+      },
+      "l-footer-feather": {
+        "length": 72
+      },
+      "l-footer-fill": {
+        "gradient": {
+          "angle": 0,
+          "stops": [
+            {
+              "color": "#050D08F5",
+              "pos": 0
+            },
+            {
+              "color": "#050D08DB",
+              "pos": 0.34
+            },
+            {
+              "color": "#050D0899",
+              "pos": 0.62
+            },
+            {
+              "color": "#050D083D",
+              "pos": 0.84
+            },
+            {
+              "color": "#050D0800",
+              "pos": 1
+            }
+          ]
+        }
+      },
+      "l-app-scrim": {
+        "gradient": {
+          "angle": 180,
+          "stops": [
+            {
+              "color": "#030E0780",
+              "pos": 0
+            },
+            {
+              "color": "#020A05A8",
+              "pos": 1
+            }
+          ]
+        }
+      },
+      "accent": {
+        "color": "#2FCF6CFF"
+      },
+      "accent-rgb": {
+        "color": "#2FCF6CFF"
+      },
+      "accent-hover": {
+        "color": "#4FE086FF"
+      },
+      "accent-pressed": {
+        "color": "#22B058FF"
+      },
+      "accent-soft": {
+        "color": "#2FCF6C29"
+      },
+      "accent-border": {
+        "color": "#2FCF6C8C"
+      },
+      "accent-focus": {
+        "color": "#4FE086FF"
+      },
+      "accent-contrast-text": {
+        "color": "#04170BFF"
+      },
+      "btn-ready-text": {
+        "color": "#04170BFF"
+      },
+      "l-switch-thumb-on": {
+        "color": "#FFFFFFFF"
+      }
+    },
+    "combine": {
+      "accent-color": {
+        "color": "#3EC4D6FF"
+      },
+      "l-bg": {
+        "color": "#0A1014FF"
+      },
+      "l-bg-raised": {
+        "color": "#0F171CFF"
+      },
+      "l-surface": {
+        "color": "#0D1F27B8"
+      },
+      "l-surface-solid": {
+        "color": "#0F171CFF"
+      },
+      "l-border": {
+        "color": "#6EDCEB29"
+      },
+      "l-border-strong": {
+        "color": "#6EDCEB52"
+      },
+      "l-text": {
+        "color": "#F2F7FBFF"
+      },
+      "l-text-dim": {
+        "color": "#A2BFC5FF"
+      },
+      "l-text-faint": {
+        "color": "#68868EFF"
+      },
+      "l-level-error": {
+        "color": "#FF6B78FF"
+      },
+      "l-level-warning": {
+        "color": "#F2CF4AFF"
+      },
+      "l-level-ok": {
+        "color": "#5FD068FF"
+      },
+      "l-chip-bg": {
+        "color": "#00000052"
+      },
+      "l-chip-hover": {
+        "color": "#FFFFFF14"
+      },
+      "l-note-bg": {
+        "color": "#00000047"
+      },
+      "l-field-bg": {
+        "color": "#00000038"
+      },
+      "l-orange": {
+        "color": "#FF7A1CFF"
+      },
+      "l-accent": {
+        "color": "#3EC4D6FF"
+      },
+      "l-accent-hover": {
+        "color": "#62D4E3FF"
+      },
+      "l-accent-soft": {
+        "color": "#3EC4D629"
+      },
+      "btn-ready-bg": {
+        "color": "#3EC4D6FF"
+      },
+      "btn-ready-hover": {
+        "color": "#62D4E3FF"
+      },
+      "btn-ready-pressed": {
+        "color": "#2BA7B8FF"
+      },
+      "btn-ready-glow": {
+        "color": "#3EC4D652"
+      },
+      "btn-progress-bg": {
+        "color": "#2F93A1FF"
+      },
+      "btn-progress-hover": {
+        "color": "#499FAAFF"
+      },
+      "btn-progress-pressed": {
+        "color": "#207D8AFF"
+      },
+      "btn-progress-glow": {
+        "color": "#3EC4D63D"
+      },
+      "btn-progress-text": {
+        "color": "#03181CFF"
+      },
+      "btn-repair-bg": {
+        "color": "#E8A33DFF"
+      },
+      "btn-repair-hover": {
+        "color": "#F0B055FF"
+      },
+      "btn-repair-pressed": {
+        "color": "#CF8F2FFF"
+      },
+      "btn-repair-glow": {
+        "color": "#E8A33D4D"
+      },
+      "btn-danger-bg": {
+        "color": "#E0455AFF"
+      },
+      "btn-danger-hover": {
+        "color": "#E85F72FF"
+      },
+      "btn-danger-pressed": {
+        "color": "#C53A4DFF"
+      },
+      "btn-danger-glow": {
+        "color": "#E0455A4D"
+      },
+      "btn-muted-bg": {
+        "color": "#22262DFF"
+      },
+      "btn-muted-hover": {
+        "color": "#2A2F37FF"
+      },
+      "l-radius": {
+        "length": 12
+      },
+      "l-radius-sm": {
+        "length": 8
+      },
+      "l-topbar-h": {
+        "length": 80
+      },
+      "l-header-control": {
+        "length": 40
+      },
+      "l-header-gap": {
+        "length": 32
+      },
+      "l-header-inset": {
+        "length": 8
+      },
+      "l-brand-mark": {
+        "length": 40
+      },
+      "l-edge-pad": {
+        "length": 24
+      },
+      "l-rail-w": {
+        "length": 80
+      },
+      "l-rail-item": {
+        "length": 56
+      },
+      "l-rail-circle": {
+        "length": 48
+      },
+      "l-rail-logo": {
+        "length": 32
+      },
+      "l-rail-gap": {
+        "length": 8
+      },
+      "l-rail-tool": {
+        "length": 40
+      },
+      "l-rail-tool-gap": {
+        "length": 4
+      },
+      "l-rail-bottom": {
+        "length": 12
+      },
+      "l-rail-open-w": {
+        "length": 240
+      },
+      "l-hero-pad": {
+        "length": 48
+      },
+      "l-hero-top": {
+        "length": 192
+      },
+      "l-hero-gap": {
+        "length": 32
+      },
+      "l-hero-title": {
+        "length": 56
+      },
+      "l-hero-title-lh": {
+        "length": 60
+      },
+      "l-hero-subtitle-lh": {
+        "length": 28
+      },
+      "l-stats-gap": {
+        "length": 28
+      },
+      "l-stats-icon": {
+        "length": 48
+      },
+      "l-stats-value": {
+        "length": 18
+      },
+      "l-stats-value-lh": {
+        "length": 24
+      },
+      "l-stats-texts-gap": {
+        "length": 4
+      },
+      "l-bottombar-h": {
+        "length": 96
+      },
+      "l-bottombar-gap": {
+        "length": 32
+      },
+      "l-bottombar-lead": {
+        "length": 32
+      },
+      "l-control-gap": {
+        "length": 16
+      },
+      "l-play-w": {
+        "length": 256
+      },
+      "l-play-h": {
+        "length": 56
+      },
+      "l-play-font": {
+        "length": 19
+      },
+      "l-play-icon": {
+        "length": 16
+      },
+      "l-build-h": {
+        "length": 56
+      },
+      "l-ease": {
+        "easing": [
+          0.22,
+          1,
+          0.36,
+          1
+        ]
+      },
+      "l-ease-in": {
+        "easing": [
+          0.55,
+          0,
+          0.75,
+          0.2
+        ]
+      },
+      "l-ease-spring": {
+        "easing": [
+          0.34,
+          1.56,
+          0.64,
+          1
+        ]
+      },
+      "l-dur-fast": {
+        "duration": 160
+      },
+      "l-dur": {
+        "duration": 260
+      },
+      "l-dur-slow": {
+        "duration": 420
+      },
+      "l-ease-fade": {
+        "easing": [
+          0.45,
+          0,
+          0.55,
+          1
+        ]
+      },
+      "l-dur-fade": {
+        "duration": 500
+      },
+      "l-ease-swipe": {
+        "easing": [
+          0.32,
+          0.72,
+          0,
+          1
+        ]
+      },
+      "l-dur-swipe": {
+        "duration": 500
+      },
+      "l-dur-tab": {
+        "duration": 350
+      },
+      "l-swipe-gap": {
+        "length": 40
+      },
+      "l-ink-lead": {
+        "duration": 230
+      },
+      "l-ink-trail": {
+        "duration": 350
+      },
+      "l-rise": {
+        "length": 8
+      },
+      "l-glow": {
+        "color": "#3EC4D62E"
+      },
+      "l-chrome": {
+        "color": "#08141A8C"
+      },
+      "l-app-bg": {
+        "gradient": {
+          "angle": 180,
+          "stops": [
+            {
+              "color": "#0F171CFF",
+              "pos": 0
+            },
+            {
+              "color": "#0A1014FF",
+              "pos": 1
+            }
+          ]
+        }
+      },
+      "l-bg-inset": {
+        "length": 0
+      },
+      "l-bg-fallback": {
+        "gradient": {
+          "angle": 180,
+          "stops": [
+            {
+              "color": "#0F171CFF",
+              "pos": 0
+            },
+            {
+              "color": "#0A1014FF",
+              "pos": 1
+            }
+          ]
+        }
+      },
+      "l-modal-bg": {
+        "color": "#111A20FF"
+      },
+      "l-modal-nav": {
+        "color": "#0C1418FF"
+      },
+      "l-modal-bar": {
+        "color": "#0C1418FF"
+      },
+      "l-modal-border": {
+        "color": "#FFFFFF1A"
+      },
+      "l-modal-scrim": {
+        "color": "#00000094"
+      },
+      "l-shade-rgb": {
+        "color": "#050C10FF"
+      },
+      "l-deep-rgb": {
+        "color": "#08141AFF"
+      },
+      "l-panel-rgb": {
+        "color": "#0D1F27FF"
+      },
+      "l-tint-rgb": {
+        "color": "#6EDCEBFF"
+      },
+      "l-bg-zoom": {
+        "number": 1
+      },
+      "l-rail-fill": {
+        "color": "#050C1080"
+      },
+      "l-rail-open-fill": {
+        "color": "#050C1038"
+      },
+      "l-rail-blur": {
+        "length": 28
+      },
+      "l-rail-game": {
+        "color": "#ACBCC0FF"
+      },
+      "l-rail-icon": {
+        "color": "#7B949AFF"
+      },
+      "l-footer-feather": {
+        "length": 72
+      },
+      "l-footer-fill": {
+        "gradient": {
+          "angle": 0,
+          "stops": [
+            {
+              "color": "#050C10F5",
+              "pos": 0
+            },
+            {
+              "color": "#050C10DB",
+              "pos": 0.34
+            },
+            {
+              "color": "#050C1099",
+              "pos": 0.62
+            },
+            {
+              "color": "#050C103D",
+              "pos": 0.84
+            },
+            {
+              "color": "#050C1000",
+              "pos": 1
+            }
+          ]
+        }
+      },
+      "l-app-scrim": {
+        "gradient": {
+          "angle": 180,
+          "stops": [
+            {
+              "color": "#050D1285",
+              "pos": 0
+            },
+            {
+              "color": "#03090DAD",
+              "pos": 1
+            }
+          ]
+        }
+      },
+      "accent": {
+        "color": "#3EC4D6FF"
+      },
+      "accent-rgb": {
+        "color": "#3EC4D6FF"
+      },
+      "accent-hover": {
+        "color": "#62D4E3FF"
+      },
+      "accent-pressed": {
+        "color": "#2BA7B8FF"
+      },
+      "accent-soft": {
+        "color": "#3EC4D629"
+      },
+      "accent-border": {
+        "color": "#3EC4D68C"
+      },
+      "accent-focus": {
+        "color": "#62D4E3FF"
+      },
+      "accent-contrast-text": {
+        "color": "#03181CFF"
+      },
+      "btn-ready-text": {
+        "color": "#03181CFF"
+      },
+      "l-switch-thumb-on": {
+        "color": "#FFFFFFFF"
+      }
+    },
+    "xen": {
+      "accent-color": {
+        "color": "#A06BFFFF"
+      },
+      "l-bg": {
+        "color": "#0E0A16FF"
+      },
+      "l-bg-raised": {
+        "color": "#140E1EFF"
+      },
+      "l-surface": {
+        "color": "#1C112DB8"
+      },
+      "l-surface-solid": {
+        "color": "#140E1EFF"
+      },
+      "l-border": {
+        "color": "#C3A0FF29"
+      },
+      "l-border-strong": {
+        "color": "#C3A0FF52"
+      },
+      "l-text": {
+        "color": "#F2F7FBFF"
+      },
+      "l-text-dim": {
+        "color": "#B6AACBFF"
+      },
+      "l-text-faint": {
+        "color": "#7B6E93FF"
+      },
+      "l-level-error": {
+        "color": "#FF6B78FF"
+      },
+      "l-level-warning": {
+        "color": "#F2CF4AFF"
+      },
+      "l-level-ok": {
+        "color": "#5FD068FF"
+      },
+      "l-chip-bg": {
+        "color": "#00000052"
+      },
+      "l-chip-hover": {
+        "color": "#FFFFFF14"
+      },
+      "l-note-bg": {
+        "color": "#00000047"
+      },
+      "l-field-bg": {
+        "color": "#00000038"
+      },
+      "l-orange": {
+        "color": "#FF7A1CFF"
+      },
+      "l-accent": {
+        "color": "#A06BFFFF"
+      },
+      "l-accent-hover": {
+        "color": "#B489FFFF"
+      },
+      "l-accent-soft": {
+        "color": "#A06BFF29"
+      },
+      "btn-ready-bg": {
+        "color": "#A06BFFFF"
+      },
+      "btn-ready-hover": {
+        "color": "#B489FFFF"
+      },
+      "btn-ready-pressed": {
+        "color": "#8752E6FF"
+      },
+      "btn-ready-glow": {
+        "color": "#A06BFF52"
+      },
+      "btn-progress-bg": {
+        "color": "#7850BFFF"
+      },
+      "btn-progress-hover": {
+        "color": "#8767BFFF"
+      },
+      "btn-progress-pressed": {
+        "color": "#653DADFF"
+      },
+      "btn-progress-glow": {
+        "color": "#A06BFF3D"
+      },
+      "btn-progress-text": {
+        "color": "#FFFFFFFF"
+      },
+      "btn-repair-bg": {
+        "color": "#E8A33DFF"
+      },
+      "btn-repair-hover": {
+        "color": "#F0B055FF"
+      },
+      "btn-repair-pressed": {
+        "color": "#CF8F2FFF"
+      },
+      "btn-repair-glow": {
+        "color": "#E8A33D4D"
+      },
+      "btn-danger-bg": {
+        "color": "#E0455AFF"
+      },
+      "btn-danger-hover": {
+        "color": "#E85F72FF"
+      },
+      "btn-danger-pressed": {
+        "color": "#C53A4DFF"
+      },
+      "btn-danger-glow": {
+        "color": "#E0455A4D"
+      },
+      "btn-muted-bg": {
+        "color": "#22262DFF"
+      },
+      "btn-muted-hover": {
+        "color": "#2A2F37FF"
+      },
+      "l-radius": {
+        "length": 12
+      },
+      "l-radius-sm": {
+        "length": 8
+      },
+      "l-topbar-h": {
+        "length": 80
+      },
+      "l-header-control": {
+        "length": 40
+      },
+      "l-header-gap": {
+        "length": 32
+      },
+      "l-header-inset": {
+        "length": 8
+      },
+      "l-brand-mark": {
+        "length": 40
+      },
+      "l-edge-pad": {
+        "length": 24
+      },
+      "l-rail-w": {
+        "length": 80
+      },
+      "l-rail-item": {
+        "length": 56
+      },
+      "l-rail-circle": {
+        "length": 48
+      },
+      "l-rail-logo": {
+        "length": 32
+      },
+      "l-rail-gap": {
+        "length": 8
+      },
+      "l-rail-tool": {
+        "length": 40
+      },
+      "l-rail-tool-gap": {
+        "length": 4
+      },
+      "l-rail-bottom": {
+        "length": 12
+      },
+      "l-rail-open-w": {
+        "length": 240
+      },
+      "l-hero-pad": {
+        "length": 48
+      },
+      "l-hero-top": {
+        "length": 192
+      },
+      "l-hero-gap": {
+        "length": 32
+      },
+      "l-hero-title": {
+        "length": 56
+      },
+      "l-hero-title-lh": {
+        "length": 60
+      },
+      "l-hero-subtitle-lh": {
+        "length": 28
+      },
+      "l-stats-gap": {
+        "length": 28
+      },
+      "l-stats-icon": {
+        "length": 48
+      },
+      "l-stats-value": {
+        "length": 18
+      },
+      "l-stats-value-lh": {
+        "length": 24
+      },
+      "l-stats-texts-gap": {
+        "length": 4
+      },
+      "l-bottombar-h": {
+        "length": 96
+      },
+      "l-bottombar-gap": {
+        "length": 32
+      },
+      "l-bottombar-lead": {
+        "length": 32
+      },
+      "l-control-gap": {
+        "length": 16
+      },
+      "l-play-w": {
+        "length": 256
+      },
+      "l-play-h": {
+        "length": 56
+      },
+      "l-play-font": {
+        "length": 19
+      },
+      "l-play-icon": {
+        "length": 16
+      },
+      "l-build-h": {
+        "length": 56
+      },
+      "l-ease": {
+        "easing": [
+          0.22,
+          1,
+          0.36,
+          1
+        ]
+      },
+      "l-ease-in": {
+        "easing": [
+          0.55,
+          0,
+          0.75,
+          0.2
+        ]
+      },
+      "l-ease-spring": {
+        "easing": [
+          0.34,
+          1.56,
+          0.64,
+          1
+        ]
+      },
+      "l-dur-fast": {
+        "duration": 160
+      },
+      "l-dur": {
+        "duration": 260
+      },
+      "l-dur-slow": {
+        "duration": 420
+      },
+      "l-ease-fade": {
+        "easing": [
+          0.45,
+          0,
+          0.55,
+          1
+        ]
+      },
+      "l-dur-fade": {
+        "duration": 500
+      },
+      "l-ease-swipe": {
+        "easing": [
+          0.32,
+          0.72,
+          0,
+          1
+        ]
+      },
+      "l-dur-swipe": {
+        "duration": 500
+      },
+      "l-dur-tab": {
+        "duration": 350
+      },
+      "l-swipe-gap": {
+        "length": 40
+      },
+      "l-ink-lead": {
+        "duration": 230
+      },
+      "l-ink-trail": {
+        "duration": 350
+      },
+      "l-rise": {
+        "length": 8
+      },
+      "l-glow": {
+        "color": "#A06BFF2E"
+      },
+      "l-chrome": {
+        "color": "#110B1C8C"
+      },
+      "l-app-bg": {
+        "gradient": {
+          "angle": 180,
+          "stops": [
+            {
+              "color": "#140E1EFF",
+              "pos": 0
+            },
+            {
+              "color": "#0E0A16FF",
+              "pos": 1
+            }
+          ]
+        }
+      },
+      "l-bg-inset": {
+        "length": 0
+      },
+      "l-bg-fallback": {
+        "gradient": {
+          "angle": 180,
+          "stops": [
+            {
+              "color": "#140E1EFF",
+              "pos": 0
+            },
+            {
+              "color": "#0E0A16FF",
+              "pos": 1
+            }
+          ]
+        }
+      },
+      "l-modal-bg": {
+        "color": "#171021FF"
+      },
+      "l-modal-nav": {
+        "color": "#110C1AFF"
+      },
+      "l-modal-bar": {
+        "color": "#110C1AFF"
+      },
+      "l-modal-border": {
+        "color": "#FFFFFF1A"
+      },
+      "l-modal-scrim": {
+        "color": "#00000094"
+      },
+      "l-shade-rgb": {
+        "color": "#0B0712FF"
+      },
+      "l-deep-rgb": {
+        "color": "#110B1CFF"
+      },
+      "l-panel-rgb": {
+        "color": "#1C112DFF"
+      },
+      "l-tint-rgb": {
+        "color": "#C3A0FFFF"
+      },
+      "l-bg-zoom": {
+        "number": 1
+      },
+      "l-rail-fill": {
+        "color": "#0B071280"
+      },
+      "l-rail-open-fill": {
+        "color": "#0B071238"
+      },
+      "l-rail-blur": {
+        "length": 28
+      },
+      "l-rail-game": {
+        "color": "#BBB3C9FF"
+      },
+      "l-rail-icon": {
+        "color": "#8E81A7FF"
+      },
+      "l-footer-feather": {
+        "length": 72
+      },
+      "l-footer-fill": {
+        "gradient": {
+          "angle": 0,
+          "stops": [
+            {
+              "color": "#0B0712F5",
+              "pos": 0
+            },
+            {
+              "color": "#0B0712DB",
+              "pos": 0.34
+            },
+            {
+              "color": "#0B071299",
+              "pos": 0.62
+            },
+            {
+              "color": "#0B07123D",
+              "pos": 0.84
+            },
+            {
+              "color": "#0B071200",
+              "pos": 1
+            }
+          ]
+        }
+      },
+      "l-app-scrim": {
+        "gradient": {
+          "angle": 180,
+          "stops": [
+            {
+              "color": "#10061C80",
+              "pos": 0
+            },
+            {
+              "color": "#0A0414A8",
+              "pos": 1
+            }
+          ]
+        }
+      },
+      "accent": {
+        "color": "#A06BFFFF"
+      },
+      "accent-rgb": {
+        "color": "#A06BFFFF"
+      },
+      "accent-hover": {
+        "color": "#B489FFFF"
+      },
+      "accent-pressed": {
+        "color": "#8752E6FF"
+      },
+      "accent-soft": {
+        "color": "#A06BFF29"
+      },
+      "accent-border": {
+        "color": "#A06BFF8C"
+      },
+      "accent-focus": {
+        "color": "#B489FFFF"
+      },
+      "accent-contrast-text": {
+        "color": "#FFFFFFFF"
+      },
+      "btn-ready-text": {
+        "color": "#FFFFFFFF"
+      },
+      "l-switch-thumb-on": {
+        "color": "#FFFFFFFF"
+      }
+    },
+    "steam2003": {
+      "accent-color": {
+        "color": "#C4B550FF"
+      },
+      "l-bg": {
+        "color": "#2A3025FF"
+      },
+      "l-bg-raised": {
+        "color": "#353D2FFF"
+      },
+      "l-surface": {
+        "color": "#3E4637B8"
+      },
+      "l-surface-solid": {
+        "color": "#353D2FFF"
+      },
+      "l-border": {
+        "color": "#FFFFFF1A"
+      },
+      "l-border-strong": {
+        "color": "#C4CDB452"
+      },
+      "l-text": {
+        "color": "#F2F7FBFF"
+      },
+      "l-text-dim": {
+        "color": "#A8B29CFF"
+      },
+      "l-text-faint": {
+        "color": "#7D8873FF"
+      },
+      "l-level-error": {
+        "color": "#FF6B78FF"
+      },
+      "l-level-warning": {
+        "color": "#F2CF4AFF"
+      },
+      "l-level-ok": {
+        "color": "#5FD068FF"
+      },
+      "l-chip-bg": {
+        "color": "#00000052"
+      },
+      "l-chip-hover": {
+        "color": "#FFFFFF14"
+      },
+      "l-note-bg": {
+        "color": "#00000047"
+      },
+      "l-field-bg": {
+        "color": "#00000038"
+      },
+      "l-orange": {
+        "color": "#FF7A1CFF"
+      },
+      "l-accent": {
+        "color": "#C4B550FF"
+      },
+      "l-accent-hover": {
+        "color": "#D6C863FF"
+      },
+      "l-accent-soft": {
+        "color": "#C4B55029"
+      },
+      "btn-ready-bg": {
+        "color": "#C4B550FF"
+      },
+      "btn-ready-hover": {
+        "color": "#D6C863FF"
+      },
+      "btn-ready-pressed": {
+        "color": "#A99A3EFF"
+      },
+      "btn-ready-glow": {
+        "color": "#C4B55052"
+      },
+      "btn-progress-bg": {
+        "color": "#93883CFF"
+      },
+      "btn-progress-hover": {
+        "color": "#A1964AFF"
+      },
+      "btn-progress-pressed": {
+        "color": "#7F732FFF"
+      },
+      "btn-progress-glow": {
+        "color": "#C4B5503D"
+      },
+      "btn-progress-text": {
+        "color": "#1D2116FF"
+      },
+      "btn-repair-bg": {
+        "color": "#E8A33DFF"
+      },
+      "btn-repair-hover": {
+        "color": "#F0B055FF"
+      },
+      "btn-repair-pressed": {
+        "color": "#CF8F2FFF"
+      },
+      "btn-repair-glow": {
+        "color": "#E8A33D4D"
+      },
+      "btn-danger-bg": {
+        "color": "#E0455AFF"
+      },
+      "btn-danger-hover": {
+        "color": "#E85F72FF"
+      },
+      "btn-danger-pressed": {
+        "color": "#C53A4DFF"
+      },
+      "btn-danger-glow": {
+        "color": "#E0455A4D"
+      },
+      "btn-muted-bg": {
+        "color": "#22262DFF"
+      },
+      "btn-muted-hover": {
+        "color": "#2A2F37FF"
+      },
+      "l-radius": {
+        "length": 12
+      },
+      "l-radius-sm": {
+        "length": 8
+      },
+      "l-topbar-h": {
+        "length": 80
+      },
+      "l-header-control": {
+        "length": 40
+      },
+      "l-header-gap": {
+        "length": 32
+      },
+      "l-header-inset": {
+        "length": 8
+      },
+      "l-brand-mark": {
+        "length": 40
+      },
+      "l-edge-pad": {
+        "length": 24
+      },
+      "l-rail-w": {
+        "length": 80
+      },
+      "l-rail-item": {
+        "length": 56
+      },
+      "l-rail-circle": {
+        "length": 48
+      },
+      "l-rail-logo": {
+        "length": 32
+      },
+      "l-rail-gap": {
+        "length": 8
+      },
+      "l-rail-tool": {
+        "length": 40
+      },
+      "l-rail-tool-gap": {
+        "length": 4
+      },
+      "l-rail-bottom": {
+        "length": 12
+      },
+      "l-rail-open-w": {
+        "length": 240
+      },
+      "l-hero-pad": {
+        "length": 48
+      },
+      "l-hero-top": {
+        "length": 192
+      },
+      "l-hero-gap": {
+        "length": 32
+      },
+      "l-hero-title": {
+        "length": 56
+      },
+      "l-hero-title-lh": {
+        "length": 60
+      },
+      "l-hero-subtitle-lh": {
+        "length": 28
+      },
+      "l-stats-gap": {
+        "length": 28
+      },
+      "l-stats-icon": {
+        "length": 48
+      },
+      "l-stats-value": {
+        "length": 18
+      },
+      "l-stats-value-lh": {
+        "length": 24
+      },
+      "l-stats-texts-gap": {
+        "length": 4
+      },
+      "l-bottombar-h": {
+        "length": 96
+      },
+      "l-bottombar-gap": {
+        "length": 32
+      },
+      "l-bottombar-lead": {
+        "length": 32
+      },
+      "l-control-gap": {
+        "length": 16
+      },
+      "l-play-w": {
+        "length": 256
+      },
+      "l-play-h": {
+        "length": 56
+      },
+      "l-play-font": {
+        "length": 19
+      },
+      "l-play-icon": {
+        "length": 16
+      },
+      "l-build-h": {
+        "length": 56
+      },
+      "l-ease": {
+        "easing": [
+          0.22,
+          1,
+          0.36,
+          1
+        ]
+      },
+      "l-ease-in": {
+        "easing": [
+          0.55,
+          0,
+          0.75,
+          0.2
+        ]
+      },
+      "l-ease-spring": {
+        "easing": [
+          0.34,
+          1.56,
+          0.64,
+          1
+        ]
+      },
+      "l-dur-fast": {
+        "duration": 160
+      },
+      "l-dur": {
+        "duration": 260
+      },
+      "l-dur-slow": {
+        "duration": 420
+      },
+      "l-ease-fade": {
+        "easing": [
+          0.45,
+          0,
+          0.55,
+          1
+        ]
+      },
+      "l-dur-fade": {
+        "duration": 500
+      },
+      "l-ease-swipe": {
+        "easing": [
+          0.32,
+          0.72,
+          0,
+          1
+        ]
+      },
+      "l-dur-swipe": {
+        "duration": 500
+      },
+      "l-dur-tab": {
+        "duration": 350
+      },
+      "l-swipe-gap": {
+        "length": 40
+      },
+      "l-ink-lead": {
+        "duration": 230
+      },
+      "l-ink-trail": {
+        "duration": 350
+      },
+      "l-rise": {
+        "length": 8
+      },
+      "l-glow": {
+        "color": "#C4B5502E"
+      },
+      "l-chrome": {
+        "color": "#2A30258C"
+      },
+      "l-app-bg": {
+        "gradient": {
+          "angle": 180,
+          "stops": [
+            {
+              "color": "#353D2FFF",
+              "pos": 0
+            },
+            {
+              "color": "#2A3025FF",
+              "pos": 1
+            }
+          ]
+        }
+      },
+      "l-bg-inset": {
+        "length": 0
+      },
+      "l-bg-fallback": {
+        "gradient": {
+          "angle": 180,
+          "stops": [
+            {
+              "color": "#353D2FFF",
+              "pos": 0
+            },
+            {
+              "color": "#2A3025FF",
+              "pos": 1
+            }
+          ]
+        }
+      },
+      "l-modal-bg": {
+        "color": "#3E4637FF"
+      },
+      "l-modal-nav": {
+        "color": "#353D2FFF"
+      },
+      "l-modal-bar": {
+        "color": "#353D2FFF"
+      },
+      "l-modal-border": {
+        "color": "#88918073"
+      },
+      "l-modal-scrim": {
+        "color": "#00000094"
+      },
+      "l-shade-rgb": {
+        "color": "#1E231AFF"
+      },
+      "l-deep-rgb": {
+        "color": "#2A3025FF"
+      },
+      "l-panel-rgb": {
+        "color": "#3E4637FF"
+      },
+      "l-tint-rgb": {
+        "color": "#C4CDB4FF"
+      },
+      "l-bg-zoom": {
+        "number": 1
+      },
+      "l-rail-fill": {
+        "color": "#1E231A80"
+      },
+      "l-rail-open-fill": {
+        "color": "#1E231A38"
+      },
+      "l-rail-blur": {
+        "length": 28
+      },
+      "l-rail-game": {
+        "color": "#C9CFBFFF"
+      },
+      "l-rail-icon": {
+        "color": "#A3AD97FF"
+      },
+      "l-footer-feather": {
+        "length": 72
+      },
+      "l-footer-fill": {
+        "gradient": {
+          "angle": 0,
+          "stops": [
+            {
+              "color": "#1E231AF5",
+              "pos": 0
+            },
+            {
+              "color": "#1E231ADB",
+              "pos": 0.34
+            },
+            {
+              "color": "#1E231A99",
+              "pos": 0.62
+            },
+            {
+              "color": "#1E231A3D",
+              "pos": 0.84
+            },
+            {
+              "color": "#1E231A00",
+              "pos": 1
+            }
+          ]
+        }
+      },
+      "l-app-scrim": {
+        "gradient": {
+          "angle": 180,
+          "stops": [
+            {
+              "color": "#282E229E",
+              "pos": 0
+            },
+            {
+              "color": "#1E231AC2",
+              "pos": 1
+            }
+          ]
+        }
+      },
+      "accent": {
+        "color": "#C4B550FF"
+      },
+      "accent-rgb": {
+        "color": "#C4B550FF"
+      },
+      "accent-hover": {
+        "color": "#D6C863FF"
+      },
+      "accent-pressed": {
+        "color": "#A99A3EFF"
+      },
+      "accent-soft": {
+        "color": "#C4B55029"
+      },
+      "accent-border": {
+        "color": "#C4B5508C"
+      },
+      "accent-focus": {
+        "color": "#D6C863FF"
+      },
+      "accent-contrast-text": {
+        "color": "#1D2116FF"
+      },
+      "btn-ready-text": {
+        "color": "#1D2116FF"
+      },
+      "l-switch-thumb-on": {
+        "color": "#FFFFFFFF"
+      }
+    },
+    "midnight": {
+      "accent-color": {
+        "color": "#E8ECF1FF"
+      },
+      "l-bg": {
+        "color": "#000000FF"
+      },
+      "l-bg-raised": {
+        "color": "#070708FF"
+      },
+      "l-surface": {
+        "color": "#121214B8"
+      },
+      "l-surface-solid": {
+        "color": "#070708FF"
+      },
+      "l-border": {
+        "color": "#FFFFFF29"
+      },
+      "l-border-strong": {
+        "color": "#FFFFFF52"
+      },
+      "l-text": {
+        "color": "#F2F7FBFF"
+      },
+      "l-text-dim": {
+        "color": "#A7AAAFFF"
+      },
+      "l-text-faint": {
+        "color": "#6C6F75FF"
+      },
+      "l-level-error": {
+        "color": "#FF6B78FF"
+      },
+      "l-level-warning": {
+        "color": "#F2CF4AFF"
+      },
+      "l-level-ok": {
+        "color": "#5FD068FF"
+      },
+      "l-chip-bg": {
+        "color": "#00000052"
+      },
+      "l-chip-hover": {
+        "color": "#FFFFFF14"
+      },
+      "l-note-bg": {
+        "color": "#00000047"
+      },
+      "l-field-bg": {
+        "color": "#00000038"
+      },
+      "l-orange": {
+        "color": "#FF7A1CFF"
+      },
+      "l-accent": {
+        "color": "#E8ECF1FF"
+      },
+      "l-accent-hover": {
+        "color": "#FFFFFFFF"
+      },
+      "l-accent-soft": {
+        "color": "#E8ECF129"
+      },
+      "btn-ready-bg": {
+        "color": "#E8ECF1FF"
+      },
+      "btn-ready-hover": {
+        "color": "#FFFFFFFF"
+      },
+      "btn-ready-pressed": {
+        "color": "#C9CED6FF"
+      },
+      "btn-ready-glow": {
+        "color": "#E8ECF152"
+      },
+      "btn-progress-bg": {
+        "color": "#AEB1B5FF"
+      },
+      "btn-progress-hover": {
+        "color": "#BFBFBFFF"
+      },
+      "btn-progress-pressed": {
+        "color": "#979AA1FF"
+      },
+      "btn-progress-glow": {
+        "color": "#E8ECF13D"
+      },
+      "btn-progress-text": {
+        "color": "#0A0B0DFF"
+      },
+      "btn-repair-bg": {
+        "color": "#E8A33DFF"
+      },
+      "btn-repair-hover": {
+        "color": "#F0B055FF"
+      },
+      "btn-repair-pressed": {
+        "color": "#CF8F2FFF"
+      },
+      "btn-repair-glow": {
+        "color": "#E8A33D4D"
+      },
+      "btn-danger-bg": {
+        "color": "#E0455AFF"
+      },
+      "btn-danger-hover": {
+        "color": "#E85F72FF"
+      },
+      "btn-danger-pressed": {
+        "color": "#C53A4DFF"
+      },
+      "btn-danger-glow": {
+        "color": "#E0455A4D"
+      },
+      "btn-muted-bg": {
+        "color": "#22262DFF"
+      },
+      "btn-muted-hover": {
+        "color": "#2A2F37FF"
+      },
+      "l-radius": {
+        "length": 12
+      },
+      "l-radius-sm": {
+        "length": 8
+      },
+      "l-topbar-h": {
+        "length": 80
+      },
+      "l-header-control": {
+        "length": 40
+      },
+      "l-header-gap": {
+        "length": 32
+      },
+      "l-header-inset": {
+        "length": 8
+      },
+      "l-brand-mark": {
+        "length": 40
+      },
+      "l-edge-pad": {
+        "length": 24
+      },
+      "l-rail-w": {
+        "length": 80
+      },
+      "l-rail-item": {
+        "length": 56
+      },
+      "l-rail-circle": {
+        "length": 48
+      },
+      "l-rail-logo": {
+        "length": 32
+      },
+      "l-rail-gap": {
+        "length": 8
+      },
+      "l-rail-tool": {
+        "length": 40
+      },
+      "l-rail-tool-gap": {
+        "length": 4
+      },
+      "l-rail-bottom": {
+        "length": 12
+      },
+      "l-rail-open-w": {
+        "length": 240
+      },
+      "l-hero-pad": {
+        "length": 48
+      },
+      "l-hero-top": {
+        "length": 192
+      },
+      "l-hero-gap": {
+        "length": 32
+      },
+      "l-hero-title": {
+        "length": 56
+      },
+      "l-hero-title-lh": {
+        "length": 60
+      },
+      "l-hero-subtitle-lh": {
+        "length": 28
+      },
+      "l-stats-gap": {
+        "length": 28
+      },
+      "l-stats-icon": {
+        "length": 48
+      },
+      "l-stats-value": {
+        "length": 18
+      },
+      "l-stats-value-lh": {
+        "length": 24
+      },
+      "l-stats-texts-gap": {
+        "length": 4
+      },
+      "l-bottombar-h": {
+        "length": 96
+      },
+      "l-bottombar-gap": {
+        "length": 32
+      },
+      "l-bottombar-lead": {
+        "length": 32
+      },
+      "l-control-gap": {
+        "length": 16
+      },
+      "l-play-w": {
+        "length": 256
+      },
+      "l-play-h": {
+        "length": 56
+      },
+      "l-play-font": {
+        "length": 19
+      },
+      "l-play-icon": {
+        "length": 16
+      },
+      "l-build-h": {
+        "length": 56
+      },
+      "l-ease": {
+        "easing": [
+          0.22,
+          1,
+          0.36,
+          1
+        ]
+      },
+      "l-ease-in": {
+        "easing": [
+          0.55,
+          0,
+          0.75,
+          0.2
+        ]
+      },
+      "l-ease-spring": {
+        "easing": [
+          0.34,
+          1.56,
+          0.64,
+          1
+        ]
+      },
+      "l-dur-fast": {
+        "duration": 160
+      },
+      "l-dur": {
+        "duration": 260
+      },
+      "l-dur-slow": {
+        "duration": 420
+      },
+      "l-ease-fade": {
+        "easing": [
+          0.45,
+          0,
+          0.55,
+          1
+        ]
+      },
+      "l-dur-fade": {
+        "duration": 500
+      },
+      "l-ease-swipe": {
+        "easing": [
+          0.32,
+          0.72,
+          0,
+          1
+        ]
+      },
+      "l-dur-swipe": {
+        "duration": 500
+      },
+      "l-dur-tab": {
+        "duration": 350
+      },
+      "l-swipe-gap": {
+        "length": 40
+      },
+      "l-ink-lead": {
+        "duration": 230
+      },
+      "l-ink-trail": {
+        "duration": 350
+      },
+      "l-rise": {
+        "length": 8
+      },
+      "l-glow": {
+        "color": "#E8ECF12E"
+      },
+      "l-chrome": {
+        "color": "#0808098C"
+      },
+      "l-app-bg": {
+        "gradient": {
+          "angle": 180,
+          "stops": [
+            {
+              "color": "#070708FF",
+              "pos": 0
+            },
+            {
+              "color": "#000000FF",
+              "pos": 1
+            }
+          ]
+        }
+      },
+      "l-bg-inset": {
+        "length": 0
+      },
+      "l-bg-fallback": {
+        "gradient": {
+          "angle": 180,
+          "stops": [
+            {
+              "color": "#070708FF",
+              "pos": 0
+            },
+            {
+              "color": "#000000FF",
+              "pos": 1
+            }
+          ]
+        }
+      },
+      "l-modal-bg": {
+        "color": "#0A0A0BFF"
+      },
+      "l-modal-nav": {
+        "color": "#050506FF"
+      },
+      "l-modal-bar": {
+        "color": "#050506FF"
+      },
+      "l-modal-border": {
+        "color": "#FFFFFF1A"
+      },
+      "l-modal-scrim": {
+        "color": "#00000094"
+      },
+      "l-shade-rgb": {
+        "color": "#000000FF"
+      },
+      "l-deep-rgb": {
+        "color": "#080809FF"
+      },
+      "l-panel-rgb": {
+        "color": "#121214FF"
+      },
+      "l-tint-rgb": {
+        "color": "#FFFFFFFF"
+      },
+      "l-bg-zoom": {
+        "number": 1
+      },
+      "l-rail-fill": {
+        "color": "#00000080"
+      },
+      "l-rail-open-fill": {
+        "color": "#00000038"
+      },
+      "l-rail-blur": {
+        "length": 28
+      },
+      "l-rail-game": {
+        "color": "#B5B8BCFF"
+      },
+      "l-rail-icon": {
+        "color": "#85888DFF"
+      },
+      "l-footer-feather": {
+        "length": 72
+      },
+      "l-footer-fill": {
+        "gradient": {
+          "angle": 0,
+          "stops": [
+            {
+              "color": "#000000F5",
+              "pos": 0
+            },
+            {
+              "color": "#000000DB",
+              "pos": 0.34
+            },
+            {
+              "color": "#00000099",
+              "pos": 0.62
+            },
+            {
+              "color": "#0000003D",
+              "pos": 0.84
+            },
+            {
+              "color": "#00000000",
+              "pos": 1
+            }
+          ]
+        }
+      },
+      "l-app-scrim": {
+        "gradient": {
+          "angle": 180,
+          "stops": [
+            {
+              "color": "#0000009E",
+              "pos": 0
+            },
+            {
+              "color": "#000000C7",
+              "pos": 1
+            }
+          ]
+        }
+      },
+      "accent": {
+        "color": "#E8ECF1FF"
+      },
+      "accent-rgb": {
+        "color": "#E8ECF1FF"
+      },
+      "accent-hover": {
+        "color": "#FFFFFFFF"
+      },
+      "accent-pressed": {
+        "color": "#C9CED6FF"
+      },
+      "accent-soft": {
+        "color": "#E8ECF129"
+      },
+      "accent-border": {
+        "color": "#E8ECF18C"
+      },
+      "accent-focus": {
+        "color": "#FFFFFFFF"
+      },
+      "accent-contrast-text": {
+        "color": "#0A0B0DFF"
+      },
+      "btn-ready-text": {
+        "color": "#0A0B0DFF"
+      },
+      "l-switch-thumb-on": {
+        "color": "#0A0B0DFF"
+      }
+    },
+    "liquid-glass": {
+      "accent-color": {
+        "color": "#0A84FFFF"
+      },
+      "l-bg": {
+        "color": "#0D1118FF"
+      },
+      "l-bg-raised": {
+        "color": "#FFFFFF12"
+      },
+      "l-surface": {
+        "color": "#FFFFFF1A"
+      },
+      "l-surface-solid": {
+        "color": "#FFFFFF12"
+      },
+      "l-border": {
+        "color": "#FFFFFF1F"
+      },
+      "l-border-strong": {
+        "color": "#FFFFFF3D"
+      },
+      "l-text": {
+        "color": "#F2F7FBFF"
+      },
+      "l-text-dim": {
+        "color": "#C3C9D2FF"
+      },
+      "l-text-faint": {
+        "color": "#8A919CFF"
+      },
+      "l-level-error": {
+        "color": "#FF8A94FF"
+      },
+      "l-level-warning": {
+        "color": "#FFDC6BFF"
+      },
+      "l-level-ok": {
+        "color": "#79E384FF"
+      },
+      "l-chip-bg": {
+        "color": "#00000052"
+      },
+      "l-chip-hover": {
+        "color": "#FFFFFF14"
+      },
+      "l-note-bg": {
+        "color": "#00000047"
+      },
+      "l-field-bg": {
+        "color": "#00000038"
+      },
+      "l-orange": {
+        "color": "#FF7A1CFF"
+      },
+      "l-accent": {
+        "color": "#0A84FFFF"
+      },
+      "l-accent-hover": {
+        "color": "#409CFFFF"
+      },
+      "l-accent-soft": {
+        "color": "#0A84FF29"
+      },
+      "btn-ready-bg": {
+        "color": "#0A84FFFF"
+      },
+      "btn-ready-hover": {
+        "color": "#409CFFFF"
+      },
+      "btn-ready-pressed": {
+        "color": "#0071E3FF"
+      },
+      "btn-ready-glow": {
+        "color": "#0A84FF52"
+      },
+      "btn-progress-bg": {
+        "color": "#0863BFFF"
+      },
+      "btn-progress-hover": {
+        "color": "#3075BFFF"
+      },
+      "btn-progress-pressed": {
+        "color": "#0055AAFF"
+      },
+      "btn-progress-glow": {
+        "color": "#0A84FF3D"
+      },
+      "btn-progress-text": {
+        "color": "#FFFFFFFF"
+      },
+      "btn-repair-bg": {
+        "color": "#E8A33DFF"
+      },
+      "btn-repair-hover": {
+        "color": "#F0B055FF"
+      },
+      "btn-repair-pressed": {
+        "color": "#CF8F2FFF"
+      },
+      "btn-repair-glow": {
+        "color": "#E8A33D4D"
+      },
+      "btn-danger-bg": {
+        "color": "#E0455AFF"
+      },
+      "btn-danger-hover": {
+        "color": "#E85F72FF"
+      },
+      "btn-danger-pressed": {
+        "color": "#C53A4DFF"
+      },
+      "btn-danger-glow": {
+        "color": "#E0455A4D"
+      },
+      "btn-muted-bg": {
+        "color": "#22262DFF"
+      },
+      "btn-muted-hover": {
+        "color": "#2A2F37FF"
+      },
+      "l-radius": {
+        "length": 18
+      },
+      "l-radius-sm": {
+        "length": 12
+      },
+      "l-topbar-h": {
+        "length": 80
+      },
+      "l-header-control": {
+        "length": 40
+      },
+      "l-header-gap": {
+        "length": 32
+      },
+      "l-header-inset": {
+        "length": 8
+      },
+      "l-brand-mark": {
+        "length": 40
+      },
+      "l-edge-pad": {
+        "length": 24
+      },
+      "l-rail-w": {
+        "length": 80
+      },
+      "l-rail-item": {
+        "length": 56
+      },
+      "l-rail-circle": {
+        "length": 48
+      },
+      "l-rail-logo": {
+        "length": 32
+      },
+      "l-rail-gap": {
+        "length": 8
+      },
+      "l-rail-tool": {
+        "length": 40
+      },
+      "l-rail-tool-gap": {
+        "length": 4
+      },
+      "l-rail-bottom": {
+        "length": 12
+      },
+      "l-rail-open-w": {
+        "length": 240
+      },
+      "l-hero-pad": {
+        "length": 48
+      },
+      "l-hero-top": {
+        "length": 192
+      },
+      "l-hero-gap": {
+        "length": 32
+      },
+      "l-hero-title": {
+        "length": 56
+      },
+      "l-hero-title-lh": {
+        "length": 60
+      },
+      "l-hero-subtitle-lh": {
+        "length": 28
+      },
+      "l-stats-gap": {
+        "length": 28
+      },
+      "l-stats-icon": {
+        "length": 48
+      },
+      "l-stats-value": {
+        "length": 18
+      },
+      "l-stats-value-lh": {
+        "length": 24
+      },
+      "l-stats-texts-gap": {
+        "length": 4
+      },
+      "l-bottombar-h": {
+        "length": 96
+      },
+      "l-bottombar-gap": {
+        "length": 32
+      },
+      "l-bottombar-lead": {
+        "length": 32
+      },
+      "l-control-gap": {
+        "length": 16
+      },
+      "l-play-w": {
+        "length": 256
+      },
+      "l-play-h": {
+        "length": 56
+      },
+      "l-play-font": {
+        "length": 19
+      },
+      "l-play-icon": {
+        "length": 16
+      },
+      "l-build-h": {
+        "length": 56
+      },
+      "l-ease": {
+        "easing": [
+          0.22,
+          1,
+          0.36,
+          1
+        ]
+      },
+      "l-ease-in": {
+        "easing": [
+          0.55,
+          0,
+          0.75,
+          0.2
+        ]
+      },
+      "l-ease-spring": {
+        "easing": [
+          0.34,
+          1.56,
+          0.64,
+          1
+        ]
+      },
+      "l-dur-fast": {
+        "duration": 160
+      },
+      "l-dur": {
+        "duration": 260
+      },
+      "l-dur-slow": {
+        "duration": 420
+      },
+      "l-ease-fade": {
+        "easing": [
+          0.45,
+          0,
+          0.55,
+          1
+        ]
+      },
+      "l-dur-fade": {
+        "duration": 500
+      },
+      "l-ease-swipe": {
+        "easing": [
+          0.32,
+          0.72,
+          0,
+          1
+        ]
+      },
+      "l-dur-swipe": {
+        "duration": 500
+      },
+      "l-dur-tab": {
+        "duration": 350
+      },
+      "l-swipe-gap": {
+        "length": 40
+      },
+      "l-ink-lead": {
+        "duration": 230
+      },
+      "l-ink-trail": {
+        "duration": 350
+      },
+      "l-rise": {
+        "length": 8
+      },
+      "l-glow": {
+        "color": "#0A84FF2E"
+      },
+      "l-chrome": {
+        "color": "#10141C8C"
+      },
+      "l-app-bg": {
+        "gradient": {
+          "angle": 180,
+          "stops": [
+            {
+              "color": "#FFFFFF12",
+              "pos": 0
+            },
+            {
+              "color": "#0D1118FF",
+              "pos": 1
+            }
+          ]
+        }
+      },
+      "l-bg-inset": {
+        "length": 0
+      },
+      "l-bg-fallback": {
+        "gradient": {
+          "angle": 180,
+          "stops": [
+            {
+              "color": "#FFFFFF12",
+              "pos": 0
+            },
+            {
+              "color": "#0D1118FF",
+              "pos": 1
+            }
+          ]
+        }
+      },
+      "l-modal-bg": {
+        "color": "#181C2480"
+      },
+      "l-modal-nav": {
+        "color": "#FFFFFF0A"
+      },
+      "l-modal-bar": {
+        "color": "#FFFFFF0A"
+      },
+      "l-modal-border": {
+        "color": "#FFFFFF29"
+      },
+      "l-modal-scrim": {
+        "color": "#02040880"
+      },
+      "l-shade-rgb": {
+        "color": "#080C12FF"
+      },
+      "l-deep-rgb": {
+        "color": "#10141CFF"
+      },
+      "l-panel-rgb": {
+        "color": "#1C2028FF"
+      },
+      "l-tint-rgb": {
+        "color": "#FFFFFFFF"
+      },
+      "l-bg-zoom": {
+        "number": 1
+      },
+      "l-rail-fill": {
+        "color": "#080C1280"
+      },
+      "l-rail-open-fill": {
+        "color": "#080C1238"
+      },
+      "l-rail-blur": {
+        "length": 28
+      },
+      "l-rail-game": {
+        "color": "#D5DAE1FF"
+      },
+      "l-rail-icon": {
+        "color": "#A9B0BAFF"
+      },
+      "l-footer-feather": {
+        "length": 72
+      },
+      "l-footer-fill": {
+        "gradient": {
+          "angle": 0,
+          "stops": [
+            {
+              "color": "#080C12F5",
+              "pos": 0
+            },
+            {
+              "color": "#080C12DB",
+              "pos": 0.34
+            },
+            {
+              "color": "#080C1299",
+              "pos": 0.62
+            },
+            {
+              "color": "#080C123D",
+              "pos": 0.84
+            },
+            {
+              "color": "#080C1200",
+              "pos": 1
+            }
+          ]
+        }
+      },
+      "l-app-scrim": {
+        "gradient": {
+          "angle": 180,
+          "stops": [
+            {
+              "color": "#04080E33",
+              "pos": 0
+            },
+            {
+              "color": "#04080E61",
+              "pos": 1
+            }
+          ]
+        }
+      },
+      "accent": {
+        "color": "#0A84FFFF"
+      },
+      "accent-rgb": {
+        "color": "#0A84FFFF"
+      },
+      "accent-hover": {
+        "color": "#409CFFFF"
+      },
+      "accent-pressed": {
+        "color": "#0071E3FF"
+      },
+      "accent-soft": {
+        "color": "#0A84FF29"
+      },
+      "accent-border": {
+        "color": "#0A84FF8C"
+      },
+      "accent-focus": {
+        "color": "#409CFFFF"
+      },
+      "accent-contrast-text": {
+        "color": "#FFFFFFFF"
+      },
+      "btn-ready-text": {
+        "color": "#FFFFFFFF"
+      },
+      "l-switch-thumb-on": {
+        "color": "#FFFFFFFF"
+      }
+    },
+    "paper": {
+      "accent-color": {
+        "color": "#D5876DFF"
+      },
+      "l-bg": {
+        "color": "#1E1417FF"
+      },
+      "l-bg-raised": {
+        "color": "#251A1CFF"
+      },
+      "l-surface": {
+        "color": "#251A1CB8"
+      },
+      "l-surface-solid": {
+        "color": "#251A1CFF"
+      },
+      "l-border": {
+        "color": "#402A30FF"
+      },
+      "l-border-strong": {
+        "color": "#5C3F46FF"
+      },
+      "l-text": {
+        "color": "#EEE3DFFF"
+      },
+      "l-text-dim": {
+        "color": "#BCAAA5FF"
+      },
+      "l-text-faint": {
+        "color": "#8F7C79FF"
+      },
+      "l-level-error": {
+        "color": "#FF6B78FF"
+      },
+      "l-level-warning": {
+        "color": "#F2CF4AFF"
+      },
+      "l-level-ok": {
+        "color": "#5FD068FF"
+      },
+      "l-chip-bg": {
+        "color": "#00000052"
+      },
+      "l-chip-hover": {
+        "color": "#FFFFFF14"
+      },
+      "l-note-bg": {
+        "color": "#00000047"
+      },
+      "l-field-bg": {
+        "color": "#00000038"
+      },
+      "l-orange": {
+        "color": "#FF7A1CFF"
+      },
+      "l-accent": {
+        "color": "#D5876DFF"
+      },
+      "l-accent-hover": {
+        "color": "#EFA38BFF"
+      },
+      "l-accent-soft": {
+        "color": "#D5876D29"
+      },
+      "btn-ready-bg": {
+        "color": "#D5876DFF"
+      },
+      "btn-ready-hover": {
+        "color": "#EFA38BFF"
+      },
+      "btn-ready-pressed": {
+        "color": "#BF725AFF"
+      },
+      "btn-ready-glow": {
+        "color": "#D5876D52"
+      },
+      "btn-progress-bg": {
+        "color": "#A06552FF"
+      },
+      "btn-progress-hover": {
+        "color": "#B37A68FF"
+      },
+      "btn-progress-pressed": {
+        "color": "#8F5544FF"
+      },
+      "btn-progress-glow": {
+        "color": "#D5876D3D"
+      },
+      "btn-progress-text": {
+        "color": "#231313FF"
+      },
+      "btn-repair-bg": {
+        "color": "#C99A5CFF"
+      },
+      "btn-repair-hover": {
+        "color": "#D8AB6EFF"
+      },
+      "btn-repair-pressed": {
+        "color": "#B3874DFF"
+      },
+      "btn-repair-glow": {
+        "color": "#C99A5C4D"
+      },
+      "btn-danger-bg": {
+        "color": "#B4545CFF"
+      },
+      "btn-danger-hover": {
+        "color": "#BF5F67FF"
+      },
+      "btn-danger-pressed": {
+        "color": "#9E4850FF"
+      },
+      "btn-danger-glow": {
+        "color": "#B4545C4D"
+      },
+      "btn-muted-bg": {
+        "color": "#2B1F21FF"
+      },
+      "btn-muted-hover": {
+        "color": "#302225FF"
+      },
+      "l-radius": {
+        "length": 12
+      },
+      "l-radius-sm": {
+        "length": 8
+      },
+      "l-topbar-h": {
+        "length": 80
+      },
+      "l-header-control": {
+        "length": 40
+      },
+      "l-header-gap": {
+        "length": 32
+      },
+      "l-header-inset": {
+        "length": 8
+      },
+      "l-brand-mark": {
+        "length": 40
+      },
+      "l-edge-pad": {
+        "length": 24
+      },
+      "l-rail-w": {
+        "length": 80
+      },
+      "l-rail-item": {
+        "length": 56
+      },
+      "l-rail-circle": {
+        "length": 48
+      },
+      "l-rail-logo": {
+        "length": 32
+      },
+      "l-rail-gap": {
+        "length": 8
+      },
+      "l-rail-tool": {
+        "length": 40
+      },
+      "l-rail-tool-gap": {
+        "length": 4
+      },
+      "l-rail-bottom": {
+        "length": 12
+      },
+      "l-rail-open-w": {
+        "length": 240
+      },
+      "l-hero-pad": {
+        "length": 48
+      },
+      "l-hero-top": {
+        "length": 192
+      },
+      "l-hero-gap": {
+        "length": 32
+      },
+      "l-hero-title": {
+        "length": 56
+      },
+      "l-hero-title-lh": {
+        "length": 60
+      },
+      "l-hero-subtitle-lh": {
+        "length": 28
+      },
+      "l-stats-gap": {
+        "length": 28
+      },
+      "l-stats-icon": {
+        "length": 48
+      },
+      "l-stats-value": {
+        "length": 18
+      },
+      "l-stats-value-lh": {
+        "length": 24
+      },
+      "l-stats-texts-gap": {
+        "length": 4
+      },
+      "l-bottombar-h": {
+        "length": 96
+      },
+      "l-bottombar-gap": {
+        "length": 32
+      },
+      "l-bottombar-lead": {
+        "length": 32
+      },
+      "l-control-gap": {
+        "length": 16
+      },
+      "l-play-w": {
+        "length": 256
+      },
+      "l-play-h": {
+        "length": 56
+      },
+      "l-play-font": {
+        "length": 19
+      },
+      "l-play-icon": {
+        "length": 16
+      },
+      "l-build-h": {
+        "length": 56
+      },
+      "l-ease": {
+        "easing": [
+          0.22,
+          1,
+          0.36,
+          1
+        ]
+      },
+      "l-ease-in": {
+        "easing": [
+          0.55,
+          0,
+          0.75,
+          0.2
+        ]
+      },
+      "l-ease-spring": {
+        "easing": [
+          0.34,
+          1.56,
+          0.64,
+          1
+        ]
+      },
+      "l-dur-fast": {
+        "duration": 160
+      },
+      "l-dur": {
+        "duration": 260
+      },
+      "l-dur-slow": {
+        "duration": 420
+      },
+      "l-ease-fade": {
+        "easing": [
+          0.45,
+          0,
+          0.55,
+          1
+        ]
+      },
+      "l-dur-fade": {
+        "duration": 500
+      },
+      "l-ease-swipe": {
+        "easing": [
+          0.32,
+          0.72,
+          0,
+          1
+        ]
+      },
+      "l-dur-swipe": {
+        "duration": 500
+      },
+      "l-dur-tab": {
+        "duration": 350
+      },
+      "l-swipe-gap": {
+        "length": 40
+      },
+      "l-ink-lead": {
+        "duration": 230
+      },
+      "l-ink-trail": {
+        "duration": 350
+      },
+      "l-rise": {
+        "length": 8
+      },
+      "l-glow": {
+        "color": "#D5876D2E"
+      },
+      "l-chrome": {
+        "color": "#170E108C"
+      },
+      "l-app-bg": {
+        "gradient": {
+          "angle": 180,
+          "stops": [
+            {
+              "color": "#251A1CFF",
+              "pos": 0
+            },
+            {
+              "color": "#1E1417FF",
+              "pos": 1
+            }
+          ]
+        }
+      },
+      "l-bg-inset": {
+        "length": 0
+      },
+      "l-bg-fallback": {
+        "gradient": {
+          "angle": 180,
+          "stops": [
+            {
+              "color": "#251A1CFF",
+              "pos": 0
+            },
+            {
+              "color": "#1E1417FF",
+              "pos": 1
+            }
+          ]
+        }
+      },
+      "l-modal-bg": {
+        "color": "#1E1417FF"
+      },
+      "l-modal-nav": {
+        "color": "#170E10FF"
+      },
+      "l-modal-bar": {
+        "color": "#170E10FF"
+      },
+      "l-modal-border": {
+        "color": "#402A30FF"
+      },
+      "l-modal-scrim": {
+        "color": "#0C070899"
+      },
+      "l-shade-rgb": {
+        "color": "#100A0CFF"
+      },
+      "l-deep-rgb": {
+        "color": "#170E10FF"
+      },
+      "l-panel-rgb": {
+        "color": "#251A1CFF"
+      },
+      "l-tint-rgb": {
+        "color": "#E0AD9DFF"
+      },
+      "l-bg-zoom": {
+        "number": 1
+      },
+      "l-rail-fill": {
+        "color": "#100A0C80"
+      },
+      "l-rail-open-fill": {
+        "color": "#100A0C38"
+      },
+      "l-rail-blur": {
+        "length": 28
+      },
+      "l-rail-game": {
+        "color": "#BCAAA5FF"
+      },
+      "l-rail-icon": {
+        "color": "#8F7C79FF"
+      },
+      "l-footer-feather": {
+        "length": 72
+      },
+      "l-footer-fill": {
+        "gradient": {
+          "angle": 0,
+          "stops": [
+            {
+              "color": "#100A0CF5",
+              "pos": 0
+            },
+            {
+              "color": "#100A0CDB",
+              "pos": 0.34
+            },
+            {
+              "color": "#100A0C99",
+              "pos": 0.62
+            },
+            {
+              "color": "#100A0C3D",
+              "pos": 0.84
+            },
+            {
+              "color": "#100A0C00",
+              "pos": 1
+            }
+          ]
+        }
+      },
+      "l-app-scrim": {
+        "gradient": {
+          "angle": 180,
+          "stops": [
+            {
+              "color": "#1E1417D6",
+              "pos": 0
+            },
+            {
+              "color": "#170E10EB",
+              "pos": 1
+            }
+          ]
+        }
+      },
+      "accent": {
+        "color": "#D5876DFF"
+      },
+      "accent-rgb": {
+        "color": "#D5876DFF"
+      },
+      "accent-hover": {
+        "color": "#EFA38BFF"
+      },
+      "accent-pressed": {
+        "color": "#BF725AFF"
+      },
+      "accent-soft": {
+        "color": "#D5876D29"
+      },
+      "accent-border": {
+        "color": "#D5876D8C"
+      },
+      "accent-focus": {
+        "color": "#EFA38BFF"
+      },
+      "accent-contrast-text": {
+        "color": "#231313FF"
+      },
+      "btn-ready-text": {
+        "color": "#231313FF"
+      },
+      "l-switch-thumb-on": {
+        "color": "#FFFFFFFF"
+      }
+    }
+  },
+  "accents": {
+    "paper": {
+      "default": "clay",
+      "order": [
+        "clay",
+        "rose",
+        "amber",
+        "sea"
+      ],
+      "values": {
+        "clay": {
+          "accent-color": {
+            "color": "#D5876DFF"
+          },
+          "l-accent": {
+            "color": "#D5876DFF"
+          },
+          "l-accent-hover": {
+            "color": "#EFA38BFF"
+          },
+          "l-accent-soft": {
+            "color": "#D5876D29"
+          },
+          "btn-ready-bg": {
+            "color": "#D5876DFF"
+          },
+          "btn-ready-hover": {
+            "color": "#EFA38BFF"
+          },
+          "btn-ready-pressed": {
+            "color": "#BF725AFF"
+          },
+          "btn-ready-glow": {
+            "color": "#D5876D52"
+          },
+          "btn-progress-bg": {
+            "color": "#A06552FF"
+          },
+          "btn-progress-hover": {
+            "color": "#B37A68FF"
+          },
+          "btn-progress-pressed": {
+            "color": "#8F5544FF"
+          },
+          "btn-progress-glow": {
+            "color": "#D5876D3D"
+          },
+          "btn-progress-text": {
+            "color": "#231313FF"
+          },
+          "l-glow": {
+            "color": "#D5876D2E"
+          },
+          "accent": {
+            "color": "#D5876DFF"
+          },
+          "accent-rgb": {
+            "color": "#D5876DFF"
+          },
+          "accent-hover": {
+            "color": "#EFA38BFF"
+          },
+          "accent-pressed": {
+            "color": "#BF725AFF"
+          },
+          "accent-soft": {
+            "color": "#D5876D29"
+          },
+          "accent-border": {
+            "color": "#D5876D8C"
+          },
+          "accent-focus": {
+            "color": "#EFA38BFF"
+          },
+          "accent-contrast-text": {
+            "color": "#231313FF"
+          },
+          "btn-ready-text": {
+            "color": "#231313FF"
+          }
+        },
+        "rose": {
+          "accent-color": {
+            "color": "#D78AA8FF"
+          },
+          "l-accent": {
+            "color": "#D78AA8FF"
+          },
+          "l-accent-hover": {
+            "color": "#EBB0CAFF"
+          },
+          "l-accent-soft": {
+            "color": "#D78AA829"
+          },
+          "btn-ready-bg": {
+            "color": "#D78AA8FF"
+          },
+          "btn-ready-hover": {
+            "color": "#EBB0CAFF"
+          },
+          "btn-ready-pressed": {
+            "color": "#C07493FF"
+          },
+          "btn-ready-glow": {
+            "color": "#D78AA852"
+          },
+          "btn-progress-bg": {
+            "color": "#A1677EFF"
+          },
+          "btn-progress-hover": {
+            "color": "#B08498FF"
+          },
+          "btn-progress-pressed": {
+            "color": "#90576EFF"
+          },
+          "btn-progress-glow": {
+            "color": "#D78AA83D"
+          },
+          "btn-progress-text": {
+            "color": "#24131DFF"
+          },
+          "l-glow": {
+            "color": "#D78AA82E"
+          },
+          "accent": {
+            "color": "#D78AA8FF"
+          },
+          "accent-rgb": {
+            "color": "#D78AA8FF"
+          },
+          "accent-hover": {
+            "color": "#EBB0CAFF"
+          },
+          "accent-pressed": {
+            "color": "#C07493FF"
+          },
+          "accent-soft": {
+            "color": "#D78AA829"
+          },
+          "accent-border": {
+            "color": "#D78AA88C"
+          },
+          "accent-focus": {
+            "color": "#EBB0CAFF"
+          },
+          "accent-contrast-text": {
+            "color": "#24131DFF"
+          },
+          "btn-ready-text": {
+            "color": "#24131DFF"
+          }
+        },
+        "amber": {
+          "accent-color": {
+            "color": "#D5AA6BFF"
+          },
+          "l-accent": {
+            "color": "#D5AA6BFF"
+          },
+          "l-accent-hover": {
+            "color": "#EBC38BFF"
+          },
+          "l-accent-soft": {
+            "color": "#D5AA6B29"
+          },
+          "btn-ready-bg": {
+            "color": "#D5AA6BFF"
+          },
+          "btn-ready-hover": {
+            "color": "#EBC38BFF"
+          },
+          "btn-ready-pressed": {
+            "color": "#BE9457FF"
+          },
+          "btn-ready-glow": {
+            "color": "#D5AA6B52"
+          },
+          "btn-progress-bg": {
+            "color": "#A08050FF"
+          },
+          "btn-progress-hover": {
+            "color": "#B09268FF"
+          },
+          "btn-progress-pressed": {
+            "color": "#8F6F41FF"
+          },
+          "btn-progress-glow": {
+            "color": "#D5AA6B3D"
+          },
+          "btn-progress-text": {
+            "color": "#251B0EFF"
+          },
+          "l-glow": {
+            "color": "#D5AA6B2E"
+          },
+          "accent": {
+            "color": "#D5AA6BFF"
+          },
+          "accent-rgb": {
+            "color": "#D5AA6BFF"
+          },
+          "accent-hover": {
+            "color": "#EBC38BFF"
+          },
+          "accent-pressed": {
+            "color": "#BE9457FF"
+          },
+          "accent-soft": {
+            "color": "#D5AA6B29"
+          },
+          "accent-border": {
+            "color": "#D5AA6B8C"
+          },
+          "accent-focus": {
+            "color": "#EBC38BFF"
+          },
+          "accent-contrast-text": {
+            "color": "#251B0EFF"
+          },
+          "btn-ready-text": {
+            "color": "#251B0EFF"
+          }
+        },
+        "sea": {
+          "accent-color": {
+            "color": "#80B2BAFF"
+          },
+          "l-accent": {
+            "color": "#80B2BAFF"
+          },
+          "l-accent-hover": {
+            "color": "#A6D2D5FF"
+          },
+          "l-accent-soft": {
+            "color": "#80B2BA29"
+          },
+          "btn-ready-bg": {
+            "color": "#80B2BAFF"
+          },
+          "btn-ready-hover": {
+            "color": "#A6D2D5FF"
+          },
+          "btn-ready-pressed": {
+            "color": "#6C9DA5FF"
+          },
+          "btn-ready-glow": {
+            "color": "#80B2BA52"
+          },
+          "btn-progress-bg": {
+            "color": "#60858CFF"
+          },
+          "btn-progress-hover": {
+            "color": "#7C9DA0FF"
+          },
+          "btn-progress-pressed": {
+            "color": "#51767CFF"
+          },
+          "btn-progress-glow": {
+            "color": "#80B2BA3D"
+          },
+          "btn-progress-text": {
+            "color": "#102024FF"
+          },
+          "l-glow": {
+            "color": "#80B2BA2E"
+          },
+          "accent": {
+            "color": "#80B2BAFF"
+          },
+          "accent-rgb": {
+            "color": "#80B2BAFF"
+          },
+          "accent-hover": {
+            "color": "#A6D2D5FF"
+          },
+          "accent-pressed": {
+            "color": "#6C9DA5FF"
+          },
+          "accent-soft": {
+            "color": "#80B2BA29"
+          },
+          "accent-border": {
+            "color": "#80B2BA8C"
+          },
+          "accent-focus": {
+            "color": "#A6D2D5FF"
+          },
+          "accent-contrast-text": {
+            "color": "#102024FF"
+          },
+          "btn-ready-text": {
+            "color": "#102024FF"
+          }
+        }
+      }
+    }
+  },
+  "unsupported": {
+    "fa-width": "auto",
+    "l-fast": "0.16s cubic-bezier(0.22, 1, 0.36, 1)",
+    "l-med": "0.26s cubic-bezier(0.22, 1, 0.36, 1)",
+    "l-base": "0.26s cubic-bezier(0.22, 1, 0.36, 1)",
+    "l-slow": "0.42s cubic-bezier(0.22, 1, 0.36, 1)",
+    "l-shadow-pop": "0 18px 48px rgba(0, 0, 0, 0.55)",
+    "l-bg-scrim": "linear-gradient(90deg, rgba(6, 11, 18, 0.86) 0%, rgba(6, 11, 18, 0.66) 18%, rgba(6, 11, 18, 0.36) 34%, rgba(6, 11, 18, 0.1) 48%, rgba(6, 11, 18, 0) 62%), linear-gradient(0deg, rgba(6, 11, 18, 0.88) 0%, rgba(6, 11, 18, 0.45) 13%, rgba(6, 11, 18, 0.06) 28%, rgba(6, 11, 18, 0) 42%), linear-gradient(180deg, rgba(6, 11, 18, 0.42) 0%, rgba(6, 11, 18, 0.1) 7%, rgba(6, 11, 18, 0) 14%), linear-gradient(270deg, rgba(6, 11, 18, 0.3) 0%, rgba(6, 11, 18, 0.07) 12%, rgba(6, 11, 18, 0) 24%)",
+    "l-bg-shift-x": "0%",
+    "l-footer-lead-in": "clamp(150px, 13vw, 260px)"
+  },
+  "scoped": {
+    "liquid-glass": {
+      "lg-filter": {
+        "unsupported": "blur(14px) url(#lg-refract) saturate(170%) brightness(1.06)"
+      },
+      "lg-filter-panel": {
+        "unsupported": "blur(8px) url(#lg-refract-strong) saturate(160%)"
+      },
+      "lg-filter-soft": {
+        "unsupported": "blur(6px) url(#lg-refract-strong) saturate(140%)"
+      },
+      "lg-tint": {
+        "color": "#FFFFFF12"
+      },
+      "lg-rim": {
+        "unsupported": "inset 2px 2px 1px 0 rgba(255, 255, 255, 0.28), inset -1px -1px 1px 1px rgba(255, 255, 255, 0.14)"
+      },
+      "lg-shadow": {
+        "unsupported": "0 6px 6px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.1), 0 24px 60px rgba(0, 0, 0, 0.28)"
+      },
+      "lg-sheen": {
+        "gradient": {
+          "angle": 150,
+          "stops": [
+            {
+              "color": "#FFFFFF24",
+              "pos": 0
+            },
+            {
+              "color": "#FFFFFF0A",
+              "pos": 0.3
+            },
+            {
+              "color": "#FFFFFF00",
+              "pos": 0.55
+            },
+            {
+              "color": "#FFFFFF0F",
+              "pos": 1
+            }
+          ]
+        }
+      }
+    },
+    "paper": {
+      "paper-text-rgb": {
+        "color": "#EEE3DFFF"
+      },
+      "l-paper-title": {
+        "color": "#EEE3DFFF"
+      },
+      "l-paper-subtitle": {
+        "color": "#EEE3DFD9"
+      },
+      "l-paper-stats-icon": {
+        "color": "#EEE3DFFF"
+      },
+      "l-paper-stats-label": {
+        "color": "#EEE3DF9E"
+      },
+      "l-paper-stats-divider": {
+        "color": "#EEE3DF47"
+      },
+      "l-paper-confirm-danger": {
+        "color": "#B4545CFF"
+      },
+      "l-paper-tool-bg": {
+        "unsupported": "radial-gradient(46% 52% at 70% 40%, rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0) 70%), repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.024) 0px, rgba(255, 255, 255, 0.024) 2px, rgba(0, 0, 0, 0) 2px, rgba(0, 0, 0, 0) 6px), linear-gradient(160deg, rgb(23, 14, 16) 0%, rgb(27, 17, 19) 55%, rgb(30, 20, 23) 100%)"
+      },
+      "l-paper-nav-dot-ring": {
+        "color": "#2E1E20FF"
+      }
+    }
+  },
+  "layout": {
+    "conditions": [
+      {
+        "feature": "max-height",
+        "px": 663
+      },
+      {
+        "feature": "min-height",
+        "px": 708
+      },
+      {
+        "feature": "max-width",
+        "px": 1295
+      },
+      {
+        "feature": "min-height",
+        "px": 780
+      },
+      {
+        "feature": "min-height",
+        "px": 860
+      }
+    ],
+    "cases": [
+      {
+        "matches": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "values": {
+          "l-topbar-h": {
+            "length": 80
+          },
+          "l-header-control": {
+            "length": 40
+          },
+          "l-header-gap": {
+            "length": 32
+          },
+          "l-header-inset": {
+            "length": 8
+          },
+          "l-brand-mark": {
+            "length": 40
+          },
+          "l-rail-w": {
+            "length": 80
+          },
+          "l-rail-item": {
+            "length": 56
+          },
+          "l-rail-circle": {
+            "length": 48
+          },
+          "l-rail-logo": {
+            "length": 32
+          },
+          "l-rail-gap": {
+            "length": 8
+          },
+          "l-rail-tool": {
+            "length": 40
+          },
+          "l-rail-tool-gap": {
+            "length": 4
+          },
+          "l-rail-bottom": {
+            "length": 12
+          },
+          "l-hero-pad": {
+            "length": 48
+          },
+          "l-hero-top": {
+            "length": 192
+          },
+          "l-hero-gap": {
+            "length": 32
+          },
+          "l-hero-title": {
+            "length": 56
+          },
+          "l-hero-title-lh": {
+            "length": 60
+          },
+          "l-hero-subtitle-lh": {
+            "length": 28
+          },
+          "l-stats-gap": {
+            "length": 28
+          },
+          "l-stats-icon": {
+            "length": 48
+          },
+          "l-stats-value": {
+            "length": 18
+          },
+          "l-stats-value-lh": {
+            "length": 24
+          },
+          "l-stats-texts-gap": {
+            "length": 4
+          },
+          "l-bottombar-h": {
+            "length": 96
+          },
+          "l-bottombar-gap": {
+            "length": 32
+          },
+          "l-bottombar-lead": {
+            "length": 32
+          },
+          "l-play-w": {
+            "length": 256
+          },
+          "l-play-h": {
+            "length": 56
+          },
+          "l-play-font": {
+            "length": 19
+          },
+          "l-play-icon": {
+            "length": 16
+          },
+          "l-build-h": {
+            "length": 56
+          }
+        }
+      },
+      {
+        "matches": [
+          false,
+          false,
+          true,
+          false,
+          false
+        ],
+        "values": {
+          "l-topbar-h": {
+            "length": 80
+          },
+          "l-header-control": {
+            "length": 40
+          },
+          "l-header-gap": {
+            "length": 24
+          },
+          "l-header-inset": {
+            "length": 8
+          },
+          "l-brand-mark": {
+            "length": 40
+          },
+          "l-rail-w": {
+            "length": 80
+          },
+          "l-rail-item": {
+            "length": 56
+          },
+          "l-rail-circle": {
+            "length": 48
+          },
+          "l-rail-logo": {
+            "length": 32
+          },
+          "l-rail-gap": {
+            "length": 8
+          },
+          "l-rail-tool": {
+            "length": 40
+          },
+          "l-rail-tool-gap": {
+            "length": 4
+          },
+          "l-rail-bottom": {
+            "length": 12
+          },
+          "l-hero-pad": {
+            "length": 48
+          },
+          "l-hero-top": {
+            "length": 192
+          },
+          "l-hero-gap": {
+            "length": 32
+          },
+          "l-hero-title": {
+            "length": 56
+          },
+          "l-hero-title-lh": {
+            "length": 60
+          },
+          "l-hero-subtitle-lh": {
+            "length": 28
+          },
+          "l-stats-gap": {
+            "length": 28
+          },
+          "l-stats-icon": {
+            "length": 48
+          },
+          "l-stats-value": {
+            "length": 18
+          },
+          "l-stats-value-lh": {
+            "length": 24
+          },
+          "l-stats-texts-gap": {
+            "length": 4
+          },
+          "l-bottombar-h": {
+            "length": 96
+          },
+          "l-bottombar-gap": {
+            "length": 32
+          },
+          "l-bottombar-lead": {
+            "length": 32
+          },
+          "l-play-w": {
+            "length": 256
+          },
+          "l-play-h": {
+            "length": 56
+          },
+          "l-play-font": {
+            "length": 19
+          },
+          "l-play-icon": {
+            "length": 16
+          },
+          "l-build-h": {
+            "length": 56
+          }
+        }
+      },
+      {
+        "matches": [
+          false,
+          true,
+          false,
+          false,
+          false
+        ],
+        "values": {
+          "l-topbar-h": {
+            "length": 80
+          },
+          "l-header-control": {
+            "length": 40
+          },
+          "l-header-gap": {
+            "length": 32
+          },
+          "l-header-inset": {
+            "length": 8
+          },
+          "l-brand-mark": {
+            "length": 40
+          },
+          "l-rail-w": {
+            "length": 80
+          },
+          "l-rail-item": {
+            "length": 56
+          },
+          "l-rail-circle": {
+            "length": 48
+          },
+          "l-rail-logo": {
+            "length": 32
+          },
+          "l-rail-gap": {
+            "length": 8
+          },
+          "l-rail-tool": {
+            "length": 40
+          },
+          "l-rail-tool-gap": {
+            "length": 8
+          },
+          "l-rail-bottom": {
+            "length": 16
+          },
+          "l-hero-pad": {
+            "length": 56
+          },
+          "l-hero-top": {
+            "length": 208
+          },
+          "l-hero-gap": {
+            "length": 32
+          },
+          "l-hero-title": {
+            "length": 56
+          },
+          "l-hero-title-lh": {
+            "length": 60
+          },
+          "l-hero-subtitle-lh": {
+            "length": 28
+          },
+          "l-stats-gap": {
+            "length": 28
+          },
+          "l-stats-icon": {
+            "length": 48
+          },
+          "l-stats-value": {
+            "length": 18
+          },
+          "l-stats-value-lh": {
+            "length": 24
+          },
+          "l-stats-texts-gap": {
+            "length": 4
+          },
+          "l-bottombar-h": {
+            "length": 96
+          },
+          "l-bottombar-gap": {
+            "length": 40
+          },
+          "l-bottombar-lead": {
+            "length": 32
+          },
+          "l-play-w": {
+            "length": 256
+          },
+          "l-play-h": {
+            "length": 56
+          },
+          "l-play-font": {
+            "length": 19
+          },
+          "l-play-icon": {
+            "length": 16
+          },
+          "l-build-h": {
+            "length": 56
+          }
+        }
+      },
+      {
+        "matches": [
+          false,
+          true,
+          false,
+          true,
+          false
+        ],
+        "values": {
+          "l-topbar-h": {
+            "length": 88
+          },
+          "l-header-control": {
+            "length": 40
+          },
+          "l-header-gap": {
+            "length": 32
+          },
+          "l-header-inset": {
+            "length": 8
+          },
+          "l-brand-mark": {
+            "length": 40
+          },
+          "l-rail-w": {
+            "length": 88
+          },
+          "l-rail-item": {
+            "length": 56
+          },
+          "l-rail-circle": {
+            "length": 48
+          },
+          "l-rail-logo": {
+            "length": 32
+          },
+          "l-rail-gap": {
+            "length": 8
+          },
+          "l-rail-tool": {
+            "length": 48
+          },
+          "l-rail-tool-gap": {
+            "length": 8
+          },
+          "l-rail-bottom": {
+            "length": 20
+          },
+          "l-hero-pad": {
+            "length": 64
+          },
+          "l-hero-top": {
+            "length": 232
+          },
+          "l-hero-gap": {
+            "length": 36
+          },
+          "l-hero-title": {
+            "length": 56
+          },
+          "l-hero-title-lh": {
+            "length": 60
+          },
+          "l-hero-subtitle-lh": {
+            "length": 28
+          },
+          "l-stats-gap": {
+            "length": 32
+          },
+          "l-stats-icon": {
+            "length": 48
+          },
+          "l-stats-value": {
+            "length": 20
+          },
+          "l-stats-value-lh": {
+            "length": 24
+          },
+          "l-stats-texts-gap": {
+            "length": 4
+          },
+          "l-bottombar-h": {
+            "length": 104
+          },
+          "l-bottombar-gap": {
+            "length": 40
+          },
+          "l-bottombar-lead": {
+            "length": 40
+          },
+          "l-play-w": {
+            "length": 272
+          },
+          "l-play-h": {
+            "length": 64
+          },
+          "l-play-font": {
+            "length": 21
+          },
+          "l-play-icon": {
+            "length": 18
+          },
+          "l-build-h": {
+            "length": 56
+          }
+        }
+      },
+      {
+        "matches": [
+          false,
+          true,
+          false,
+          true,
+          true
+        ],
+        "values": {
+          "l-topbar-h": {
+            "length": 96
+          },
+          "l-header-control": {
+            "length": 48
+          },
+          "l-header-gap": {
+            "length": 32
+          },
+          "l-header-inset": {
+            "length": 12
+          },
+          "l-brand-mark": {
+            "length": 48
+          },
+          "l-rail-w": {
+            "length": 96
+          },
+          "l-rail-item": {
+            "length": 64
+          },
+          "l-rail-circle": {
+            "length": 56
+          },
+          "l-rail-logo": {
+            "length": 40
+          },
+          "l-rail-gap": {
+            "length": 12
+          },
+          "l-rail-tool": {
+            "length": 48
+          },
+          "l-rail-tool-gap": {
+            "length": 8
+          },
+          "l-rail-bottom": {
+            "length": 24
+          },
+          "l-hero-pad": {
+            "length": 72
+          },
+          "l-hero-top": {
+            "length": 256
+          },
+          "l-hero-gap": {
+            "length": 40
+          },
+          "l-hero-title": {
+            "length": 68
+          },
+          "l-hero-title-lh": {
+            "length": 72
+          },
+          "l-hero-subtitle-lh": {
+            "length": 32
+          },
+          "l-stats-gap": {
+            "length": 36
+          },
+          "l-stats-icon": {
+            "length": 56
+          },
+          "l-stats-value": {
+            "length": 22
+          },
+          "l-stats-value-lh": {
+            "length": 28
+          },
+          "l-stats-texts-gap": {
+            "length": 8
+          },
+          "l-bottombar-h": {
+            "length": 112
+          },
+          "l-bottombar-gap": {
+            "length": 48
+          },
+          "l-bottombar-lead": {
+            "length": 40
+          },
+          "l-play-w": {
+            "length": 304
+          },
+          "l-play-h": {
+            "length": 72
+          },
+          "l-play-font": {
+            "length": 23
+          },
+          "l-play-icon": {
+            "length": 20
+          },
+          "l-build-h": {
+            "length": 64
+          }
+        }
+      },
+      {
+        "matches": [
+          false,
+          true,
+          true,
+          false,
+          false
+        ],
+        "values": {
+          "l-topbar-h": {
+            "length": 80
+          },
+          "l-header-control": {
+            "length": 40
+          },
+          "l-header-gap": {
+            "length": 24
+          },
+          "l-header-inset": {
+            "length": 8
+          },
+          "l-brand-mark": {
+            "length": 40
+          },
+          "l-rail-w": {
+            "length": 80
+          },
+          "l-rail-item": {
+            "length": 56
+          },
+          "l-rail-circle": {
+            "length": 48
+          },
+          "l-rail-logo": {
+            "length": 32
+          },
+          "l-rail-gap": {
+            "length": 8
+          },
+          "l-rail-tool": {
+            "length": 40
+          },
+          "l-rail-tool-gap": {
+            "length": 8
+          },
+          "l-rail-bottom": {
+            "length": 16
+          },
+          "l-hero-pad": {
+            "length": 56
+          },
+          "l-hero-top": {
+            "length": 208
+          },
+          "l-hero-gap": {
+            "length": 32
+          },
+          "l-hero-title": {
+            "length": 56
+          },
+          "l-hero-title-lh": {
+            "length": 60
+          },
+          "l-hero-subtitle-lh": {
+            "length": 28
+          },
+          "l-stats-gap": {
+            "length": 28
+          },
+          "l-stats-icon": {
+            "length": 48
+          },
+          "l-stats-value": {
+            "length": 18
+          },
+          "l-stats-value-lh": {
+            "length": 24
+          },
+          "l-stats-texts-gap": {
+            "length": 4
+          },
+          "l-bottombar-h": {
+            "length": 96
+          },
+          "l-bottombar-gap": {
+            "length": 40
+          },
+          "l-bottombar-lead": {
+            "length": 32
+          },
+          "l-play-w": {
+            "length": 256
+          },
+          "l-play-h": {
+            "length": 56
+          },
+          "l-play-font": {
+            "length": 19
+          },
+          "l-play-icon": {
+            "length": 16
+          },
+          "l-build-h": {
+            "length": 56
+          }
+        }
+      },
+      {
+        "matches": [
+          false,
+          true,
+          true,
+          true,
+          false
+        ],
+        "values": {
+          "l-topbar-h": {
+            "length": 88
+          },
+          "l-header-control": {
+            "length": 40
+          },
+          "l-header-gap": {
+            "length": 24
+          },
+          "l-header-inset": {
+            "length": 8
+          },
+          "l-brand-mark": {
+            "length": 40
+          },
+          "l-rail-w": {
+            "length": 88
+          },
+          "l-rail-item": {
+            "length": 56
+          },
+          "l-rail-circle": {
+            "length": 48
+          },
+          "l-rail-logo": {
+            "length": 32
+          },
+          "l-rail-gap": {
+            "length": 8
+          },
+          "l-rail-tool": {
+            "length": 48
+          },
+          "l-rail-tool-gap": {
+            "length": 8
+          },
+          "l-rail-bottom": {
+            "length": 20
+          },
+          "l-hero-pad": {
+            "length": 64
+          },
+          "l-hero-top": {
+            "length": 232
+          },
+          "l-hero-gap": {
+            "length": 36
+          },
+          "l-hero-title": {
+            "length": 56
+          },
+          "l-hero-title-lh": {
+            "length": 60
+          },
+          "l-hero-subtitle-lh": {
+            "length": 28
+          },
+          "l-stats-gap": {
+            "length": 32
+          },
+          "l-stats-icon": {
+            "length": 48
+          },
+          "l-stats-value": {
+            "length": 20
+          },
+          "l-stats-value-lh": {
+            "length": 24
+          },
+          "l-stats-texts-gap": {
+            "length": 4
+          },
+          "l-bottombar-h": {
+            "length": 104
+          },
+          "l-bottombar-gap": {
+            "length": 40
+          },
+          "l-bottombar-lead": {
+            "length": 40
+          },
+          "l-play-w": {
+            "length": 272
+          },
+          "l-play-h": {
+            "length": 64
+          },
+          "l-play-font": {
+            "length": 21
+          },
+          "l-play-icon": {
+            "length": 18
+          },
+          "l-build-h": {
+            "length": 56
+          }
+        }
+      },
+      {
+        "matches": [
+          false,
+          true,
+          true,
+          true,
+          true
+        ],
+        "values": {
+          "l-topbar-h": {
+            "length": 96
+          },
+          "l-header-control": {
+            "length": 48
+          },
+          "l-header-gap": {
+            "length": 24
+          },
+          "l-header-inset": {
+            "length": 12
+          },
+          "l-brand-mark": {
+            "length": 48
+          },
+          "l-rail-w": {
+            "length": 96
+          },
+          "l-rail-item": {
+            "length": 64
+          },
+          "l-rail-circle": {
+            "length": 56
+          },
+          "l-rail-logo": {
+            "length": 40
+          },
+          "l-rail-gap": {
+            "length": 12
+          },
+          "l-rail-tool": {
+            "length": 48
+          },
+          "l-rail-tool-gap": {
+            "length": 8
+          },
+          "l-rail-bottom": {
+            "length": 24
+          },
+          "l-hero-pad": {
+            "length": 72
+          },
+          "l-hero-top": {
+            "length": 256
+          },
+          "l-hero-gap": {
+            "length": 40
+          },
+          "l-hero-title": {
+            "length": 68
+          },
+          "l-hero-title-lh": {
+            "length": 72
+          },
+          "l-hero-subtitle-lh": {
+            "length": 32
+          },
+          "l-stats-gap": {
+            "length": 36
+          },
+          "l-stats-icon": {
+            "length": 56
+          },
+          "l-stats-value": {
+            "length": 22
+          },
+          "l-stats-value-lh": {
+            "length": 28
+          },
+          "l-stats-texts-gap": {
+            "length": 8
+          },
+          "l-bottombar-h": {
+            "length": 112
+          },
+          "l-bottombar-gap": {
+            "length": 48
+          },
+          "l-bottombar-lead": {
+            "length": 40
+          },
+          "l-play-w": {
+            "length": 304
+          },
+          "l-play-h": {
+            "length": 72
+          },
+          "l-play-font": {
+            "length": 23
+          },
+          "l-play-icon": {
+            "length": 20
+          },
+          "l-build-h": {
+            "length": 64
+          }
+        }
+      },
+      {
+        "matches": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "values": {
+          "l-topbar-h": {
+            "length": 80
+          },
+          "l-header-control": {
+            "length": 40
+          },
+          "l-header-gap": {
+            "length": 32
+          },
+          "l-header-inset": {
+            "length": 8
+          },
+          "l-brand-mark": {
+            "length": 40
+          },
+          "l-rail-w": {
+            "length": 80
+          },
+          "l-rail-item": {
+            "length": 48
+          },
+          "l-rail-circle": {
+            "length": 40
+          },
+          "l-rail-logo": {
+            "length": 32
+          },
+          "l-rail-gap": {
+            "length": 8
+          },
+          "l-rail-tool": {
+            "length": 40
+          },
+          "l-rail-tool-gap": {
+            "length": 4
+          },
+          "l-rail-bottom": {
+            "length": 12
+          },
+          "l-hero-pad": {
+            "length": 48
+          },
+          "l-hero-top": {
+            "length": 184
+          },
+          "l-hero-gap": {
+            "length": 28
+          },
+          "l-hero-title": {
+            "length": 56
+          },
+          "l-hero-title-lh": {
+            "length": 60
+          },
+          "l-hero-subtitle-lh": {
+            "length": 28
+          },
+          "l-stats-gap": {
+            "length": 24
+          },
+          "l-stats-icon": {
+            "length": 48
+          },
+          "l-stats-value": {
+            "length": 18
+          },
+          "l-stats-value-lh": {
+            "length": 24
+          },
+          "l-stats-texts-gap": {
+            "length": 4
+          },
+          "l-bottombar-h": {
+            "length": 96
+          },
+          "l-bottombar-gap": {
+            "length": 32
+          },
+          "l-bottombar-lead": {
+            "length": 32
+          },
+          "l-play-w": {
+            "length": 256
+          },
+          "l-play-h": {
+            "length": 56
+          },
+          "l-play-font": {
+            "length": 19
+          },
+          "l-play-icon": {
+            "length": 16
+          },
+          "l-build-h": {
+            "length": 56
+          }
+        }
+      },
+      {
+        "matches": [
+          true,
+          false,
+          true,
+          false,
+          false
+        ],
+        "values": {
+          "l-topbar-h": {
+            "length": 80
+          },
+          "l-header-control": {
+            "length": 40
+          },
+          "l-header-gap": {
+            "length": 24
+          },
+          "l-header-inset": {
+            "length": 8
+          },
+          "l-brand-mark": {
+            "length": 40
+          },
+          "l-rail-w": {
+            "length": 80
+          },
+          "l-rail-item": {
+            "length": 48
+          },
+          "l-rail-circle": {
+            "length": 40
+          },
+          "l-rail-logo": {
+            "length": 32
+          },
+          "l-rail-gap": {
+            "length": 8
+          },
+          "l-rail-tool": {
+            "length": 40
+          },
+          "l-rail-tool-gap": {
+            "length": 4
+          },
+          "l-rail-bottom": {
+            "length": 12
+          },
+          "l-hero-pad": {
+            "length": 48
+          },
+          "l-hero-top": {
+            "length": 184
+          },
+          "l-hero-gap": {
+            "length": 28
+          },
+          "l-hero-title": {
+            "length": 56
+          },
+          "l-hero-title-lh": {
+            "length": 60
+          },
+          "l-hero-subtitle-lh": {
+            "length": 28
+          },
+          "l-stats-gap": {
+            "length": 24
+          },
+          "l-stats-icon": {
+            "length": 48
+          },
+          "l-stats-value": {
+            "length": 18
+          },
+          "l-stats-value-lh": {
+            "length": 24
+          },
+          "l-stats-texts-gap": {
+            "length": 4
+          },
+          "l-bottombar-h": {
+            "length": 96
+          },
+          "l-bottombar-gap": {
+            "length": 32
+          },
+          "l-bottombar-lead": {
+            "length": 32
+          },
+          "l-play-w": {
+            "length": 256
+          },
+          "l-play-h": {
+            "length": 56
+          },
+          "l-play-font": {
+            "length": 19
+          },
+          "l-play-icon": {
+            "length": 16
+          },
+          "l-build-h": {
+            "length": 56
+          }
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+[package]
+name = "hlsr-release"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+
+# Инструменты выпуска (подпроект 6, задача 8): упаковка установщика Windows, архива и AppImage
+# Linux, latest*.yml, удостоверение QA-сборки. Подпись канала, нарезка на куски и публикация —
+# Node-скрипты 0.4.7 в `node/` (решение Р8). В выпуск не входит.
+
+[lib]
+name = "hlsr_release"
+path = "src/lib.rs"
+
+[[bin]]
+name = "hlsr-release"
+path = "src/main.rs"
+
+[dependencies]
+hlsr-core.workspace = true
+hlsr-update.workspace = true
+base64.workspace = true
+# Архив Linux: gzip без зависимости от системного `gzip`.
+flate2.workspace = true
+serde_json.workspace = true
+sha2.workspace = true
+tar.workspace = true
+thiserror.workspace = true
+
+[dev-dependencies]
+tempfile.workspace = true

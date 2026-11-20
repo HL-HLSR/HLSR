@@ -1,0 +1,18 @@
+{
+  "$comment": "«Главная» (S6, HomePanel/NewsPost/NewsImageViewer 0.4.9): вход щелчком по вкладке шапки, указатель уводится на пустую шапку. Картинки https — файлы tools/snap/screens/assets. Гость: «мои реакции» не запрашиваются. configTourSeen — без подсказки вкладки «Персонализация» поверх ленты.",
+  "screen": "home",
+  "themes": ["hlsr"],
+  "languages": ["ru"],
+  "prefs": {"configTourSeen": true},
+  "https": {
+    "https://avatars.steamstatic.com/0000000000000000000000000000000000000001_full.jpg": "../assets/avatar.png",
+    "https://api.hlsr.pro/news/images/1.png": "../assets/news-image.png",
+    "https://api.hlsr.pro/news/images/2.png": "../assets/news-image.png",
+    "https://api.hlsr.pro/news/images/3.png": "../assets/news-image.png"
+  },
+  "settleMs": 1500,
+  "steps": [
+    {"click": {"css": ".launcher-topbar__tab:nth-child(1)", "view": "topbar-tab-home"}},
+    {"move": [1000, 40]}
+  ]
+}

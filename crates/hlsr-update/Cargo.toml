@@ -1,0 +1,62 @@
+[package]
+name = "hlsr-update"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+
+# Установка и обновление лаунчера без интерфейса (подпроект 6): то, что делают launcher-update,
+# UpdateManager, updater, windows-install, uninstall, installer и diagnostics 0.4.7.
+# От `hlsr-delivery` не зависит (Р7): подпись и общий TLS живут в `hlsr-core`.
+
+[features]
+# Отладочные возможности (локальный QA-канал, перенаправления) в сборке выпуска.
+# «production» 0.4.7 (NODE_ENV, IS_QA_BUILD) — это выпуск без этого признака.
+dev-hooks = ["hlsr-core/dev-hooks"]
+
+[dependencies]
+hlsr-core.workspace = true
+base64.workspace = true
+brotli.workspace = true
+# Linux: архив лаунчера .tar.gz (launcher-update/archive.js, zlib.createGunzip).
+flate2.workspace = true
+regress.workspace = true
+reqwest.workspace = true
+serde_json.workspace = true
+sha1.workspace = true
+sha2.workspace = true
+thiserror.workspace = true
+tokio = { workspace = true, features = ["fs", "io-util", "macros", "net", "rt", "sync", "time"] }
+tracing.workspace = true
+url.workspace = true
+# Диагностика: имя ZIP по местному времени, временный каталог выгрузки.
+chrono.workspace = true
+tempfile.workspace = true
+# Windows-установка: идентификатор установки `{UUID}` и суффиксы `.hlsr-new-<8hex>` (crypto.randomUUID/randomBytes).
+getrandom.workspace = true
+
+# Windows: реестр (windows-sys) и ярлыки .lnk через COM (IShellLinkW, IPropertyStore, SHGetKnownFolderPath).
+[target.'cfg(windows)'.dependencies]
+windows-sys = { workspace = true, features = [
+    "Win32_Foundation",
+    "Win32_Security",
+    "Win32_Storage_FileSystem",
+    "Win32_System_IO",
+    "Win32_System_Ioctl",
+    "Win32_System_Registry",
+    "Win32_System_Threading",
+] }
+windows = { version = "0.62.2", features = [
+    "Win32_Foundation",
+    "Win32_Storage_EnhancedStorage",
+    "Win32_Storage_FileSystem",
+    "Win32_System_Com",
+    "Win32_System_Com_StructuredStorage",
+    "Win32_System_Diagnostics_ToolHelp",
+    "Win32_System_Variant",
+    "Win32_UI_Shell",
+    "Win32_UI_Shell_PropertiesSystem",
+] }
+
+[dev-dependencies]
+tokio = { workspace = true, features = ["fs", "io-util", "macros", "net", "rt", "rt-multi-thread", "sync", "test-util", "time"] }

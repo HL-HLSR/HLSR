@@ -1,0 +1,13 @@
+{
+  "id": "configs/kb-full",
+  "state": "HL1: «Клавиатура» — вся клавиатура (стрелки, нумпад, мышь), выбрана X",
+  "base": "configs/_kb",
+  "steps": [
+    {"click": {"css": ".launcher-topbar__tab:nth-child(3)", "view": "topbar-tab-configs"}},
+    {"click": {"css": ".cfgp__game:nth-child(2)", "view": "cfgp-game-70"}},
+    {"click": {"css": ".game-settings__tab[data-tour=\"gs-keyboard\"]", "view": "gs-keyboard"}},
+    {"click": {"css": ".kb-key[aria-label^=\"X:\"]", "view": "kb-key-x"}},
+    {"click": {"css": ".kb-legend .kb-btn", "view": "kb-full"}},
+    {"move": [800, 880]}
+  ]
+}

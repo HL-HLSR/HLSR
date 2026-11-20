@@ -1,0 +1,11 @@
+{
+  "id": "shell/tab-hover",
+  "screen": "shell",
+  "state": "Наведение на невыбранную вкладку «Главная»",
+  "themes": ["hlsr"],
+  "languages": ["ru"],
+  "prefs": {"configTourSeen": true},
+  "steps": [
+    {"hover": {"css": ".launcher-topbar__tab:nth-child(1)", "view": "topbar-tab-home"}}
+  ]
+}

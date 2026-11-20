@@ -1,0 +1,39 @@
+{
+  "$comment": "«Игроки» (S7, HomePlayers 0.4.9): вошедший (Kanoyo), вход на «Главную», вкладка «Игроки», указатель на пустой шапке. «В сети» — трое (свой — в игре и с подпиской), «Топ» по часам — четверо с местами 1–3.",
+  "base": "home/_base",
+  "steps": [
+    {"click": {"css": ".launcher-topbar__tab:nth-child(1)", "view": "topbar-tab-home"}},
+    {"click": {"css": "#home-tab-players", "view": "home-tabs-2"}},
+    {"move": [1000, 40]}
+  ],
+  "invoke": {
+    "public-news-get": {"status": "ok", "items": []},
+    "runner-state": {
+      "status": "signed-in", "userCode": null, "expiresAt": null, "error": null, "ban": null, "mute": null,
+      "account": {"signedIn": true, "steamId64": "76561199155902676", "steamId2": "STEAM_0:0:597818474", "personaName": "Kanoyo", "avatarDataUri": "https://avatars.steamstatic.com/0000000000000000000000000000000000000001_full.jpg", "connection": "connected"},
+      "firstRunAt": "2026-03-14T08:20:00.000Z", "achievements": [],
+      "summary": {"unlocked": 14, "total": 39, "percent": 36},
+      "stats": {"totalSeconds": 512340, "gamesPlayed": 2, "launches": 48, "best": null},
+      "streak": {"days": 3, "best": 12},
+      "badges": [], "customBadges": [], "nick": {"style": "developer", "css": null}, "avatarFrame": null,
+      "subscriber": true, "boosterSince": null, "supporterSince": null, "perks": {"styles": false, "subscriber": null},
+      "stylePreset": null, "telegram": {"linked": false, "username": null}, "discordLink": {"linked": false, "username": null, "boosterSince": null},
+      "details": {"status": "", "pronouns": "", "country": "RU", "hideSteamId": false, "pinnedRun": null, "speedrun": "", "discord": "", "youtube": "", "twitch": ""},
+      "deletionAt": null, "rating": {"score": 14, "likes": 15, "dislikes": 1, "dubious": false},
+      "presence": {"online": true, "gameId": null, "launcherId": null}
+    },
+    "runner-players": {"$args": [
+      [[{"view": "online"}], {"status": "ok", "signedIn": true, "total": 3, "playing": 1, "profiles": [
+        {"steamId64": "76561199155902676", "personaName": "Kanoyo", "nick": {"style": "developer", "css": null}, "avatarFrame": null, "subscriber": true, "details": {"avatarUrl": "https://avatars.steamstatic.com/0000000000000000000000000000000000000001_full.jpg"}, "presence": {"online": true, "gameId": "ghosting-renewed", "launcherId": "218"}, "games": {}, "achievementCount": 14, "rating": {"score": 14}, "registeredAt": "2026-03-14T08:20:00.000Z", "rank": 1},
+        {"steamId64": "76561190000000002", "personaName": "Zed", "nick": null, "avatarFrame": null, "details": {"avatarUrl": null}, "presence": {"online": true, "gameId": null, "launcherId": null}, "games": {}, "achievementCount": 3, "rating": {"score": 0}, "registeredAt": "2026-06-01T10:00:00.000Z", "rank": 2},
+        {"steamId64": "76561190000000003", "personaName": "Mia", "nick": null, "avatarFrame": null, "details": {"avatarUrl": "https://avatars.steamstatic.com/0000000000000000000000000000000000000001_full.jpg"}, "presence": {"online": true, "gameId": null, "launcherId": null}, "games": {}, "achievementCount": 9, "rating": {"score": 2}, "registeredAt": "2026-09-20T10:00:00.000Z", "rank": 3}
+      ]}],
+      [[{"view": "top", "sort": "hours", "game": "", "offset": 0}], {"status": "ok", "signedIn": true, "more": true, "profiles": [
+        {"steamId64": "76561190000000003", "personaName": "Mia", "nick": null, "avatarFrame": null, "details": {"avatarUrl": "https://avatars.steamstatic.com/0000000000000000000000000000000000000001_full.jpg"}, "presence": {"online": true, "gameId": null, "launcherId": null}, "games": {"hl1-won": {"totalPlaySeconds": 640800, "launchCount": 210}}, "achievementCount": 9, "rating": {"score": 2}, "registeredAt": null, "rank": 1},
+        {"steamId64": "76561199155902676", "personaName": "Kanoyo", "nick": {"style": "developer", "css": null}, "avatarFrame": null, "subscriber": true, "details": {"avatarUrl": "https://avatars.steamstatic.com/0000000000000000000000000000000000000001_full.jpg"}, "presence": {"online": true, "gameId": "ghosting-renewed", "launcherId": "218"}, "games": {"ghosting-renewed": {"totalPlaySeconds": 401220, "launchCount": 48}}, "achievementCount": 14, "rating": {"score": 14}, "registeredAt": null, "rank": 2},
+        {"steamId64": "76561190000000002", "personaName": "Zed", "nick": null, "avatarFrame": null, "details": {"avatarUrl": null}, "presence": {"online": false, "gameId": null, "launcherId": null}, "games": {"hl2-4260": {"totalPlaySeconds": 90000, "launchCount": 31}}, "achievementCount": 3, "rating": {"score": 0}, "registeredAt": null, "rank": 3},
+        {"steamId64": "76561190000000004", "personaName": "Lev", "nick": null, "avatarFrame": null, "details": {"avatarUrl": null}, "presence": {"online": false, "gameId": null, "launcherId": null}, "games": {"hl1-won": {"totalPlaySeconds": 27000, "launchCount": 9}}, "achievementCount": 1, "rating": {"score": -1}, "registeredAt": null, "rank": 4}
+      ]}]
+    ], "$else": {"status": "error", "code": "RUNNER_HTTP_500"}}
+  }
+}

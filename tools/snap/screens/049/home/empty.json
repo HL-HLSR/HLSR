@@ -1,0 +1,6 @@
+{
+  "id": "home/empty",
+  "base": "home/_base",
+  "state": "Лента пришла пустой: «Новостей пока нет»",
+  "invoke": {"public-news-get": {"status": "ok", "items": []}}
+}

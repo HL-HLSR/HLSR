@@ -1,0 +1,67 @@
+{
+  "id": "sponsors/v1",
+  "base": "sponsors/_base",
+  "state": "Старый сервер (откат на /v1): окно 0.4.7 — розовый баннер, трон, пьедестал, сетка; без кнопок и разделов",
+  "invoke": {
+    "public-sponsors-get": {
+      "status": "ok",
+      "version": 1,
+      "sponsors": [
+        {
+          "id": "1",
+          "name": "Kanoyo",
+          "note": "За лучший лаунчер для спидранов Half-Life!",
+          "amount": 150000000,
+          "profile": {
+            "steamId64": "76561199155902676",
+            "personaName": "Kanoyo",
+            "avatarUrl": "https://avatars.steamstatic.com/0000000000000000000000000000000000000001_full.jpg",
+            "nick": {
+              "style": null,
+              "css": "color: #ffd76a; text-shadow: 0 0 0.4em rgba(255, 196, 80, 0.5)"
+            },
+            "avatarFrame": {
+              "css": "background: linear-gradient(135deg, #c9932a, #fff6cf 50%, #c9932a); box-shadow: 0 0 6px rgba(255, 196, 80, 0.55)"
+            },
+            "subscriber": true
+          }
+        },
+        {
+          "id": "2",
+          "name": "Buster",
+          "note": "",
+          "amount": 12000,
+          "profile": null
+        },
+        {
+          "id": "3",
+          "name": "Shadow",
+          "note": "Спасибо!",
+          "amount": 5000,
+          "profile": {
+            "steamId64": "76561198000000002",
+            "personaName": "Shadow",
+            "avatarUrl": "https://avatars.steamstatic.com/0000000000000000000000000000000000000001_full.jpg",
+            "nick": null,
+            "avatarFrame": null,
+            "subscriber": false
+          }
+        },
+        {
+          "id": "4",
+          "name": "mr_bhop",
+          "note": "",
+          "amount": 1500,
+          "profile": null
+        },
+        {
+          "id": "5",
+          "name": "Lambda",
+          "note": "",
+          "amount": 500,
+          "profile": null
+        }
+      ]
+    }
+  }
+}

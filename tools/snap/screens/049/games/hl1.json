@@ -1,0 +1,75 @@
+{
+  "id": "games/hl1",
+  "base": "games/_base",
+  "state": "Half-Life: статистика от main (последний запуск больше 6 дней назад — дата, 2 ч 3 мин), даты сборки нет",
+  "store": {
+    "library": {
+      "installed": {},
+      "lastLaunched": "70",
+      "libraryConfirmed": true,
+      "config": {
+        "50": {
+          "steam": false,
+          "bxt": true,
+          "rinput": true,
+          "livesplit": false,
+          "args": "",
+          "inGameTime": 0
+        },
+        "70": {
+          "steam": false,
+          "edited_dll": false,
+          "bxt": true,
+          "rinput": true,
+          "livesplit": false,
+          "args": "",
+          "inGameTime": 0
+        },
+        "130": {
+          "steam": true,
+          "bxt": true,
+          "rinput": true,
+          "livesplit": false,
+          "args": "",
+          "inGameTime": 0
+        },
+        "218": {
+          "steam": false,
+          "bxt": false,
+          "rinput": false,
+          "livesplit": true,
+          "args": "",
+          "inGameTime": 0
+        },
+        "220": {
+          "steam": true,
+          "bxt": false,
+          "rinput": true,
+          "livesplit": true,
+          "args": "",
+          "inGameTime": 0
+        }
+      },
+      "libraryPath": "C:\\HLSR"
+    }
+  },
+  "invoke": {
+    "game-stats-get": {
+      "$args": [
+        [
+          [
+            "70"
+          ],
+          {
+            "available": true,
+            "lastLaunchAt": "2026-10-20T12:00:00.000Z",
+            "totalPlaySeconds": 7380
+          }
+        ]
+      ],
+      "$else": {
+        "available": false
+      }
+    }
+  }
+}

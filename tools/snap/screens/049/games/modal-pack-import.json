@@ -1,0 +1,92 @@
+{
+  "id": "games/modal-pack-import",
+  "base": "games/_base",
+  "state": "Ghosting: меню → «Импорт сборки» → пак 1.0.9 с изменёнными файлами: тост-итог на 15 с (восстановлено, перенесено в custom/imported, отклонено, отброшено)",
+  "invoke": {
+    "game-menu-state": {
+      "available": true,
+      "gameId": "ghosting-renewed",
+      "installed": true,
+      "busy": false,
+      "running": false,
+      "items": {
+        "settings": {
+          "enabled": true,
+          "reason": null
+        },
+        "shortcut": {
+          "enabled": true,
+          "reason": null
+        },
+        "screenshots": {
+          "enabled": true,
+          "reason": null
+        },
+        "folder": {
+          "enabled": true,
+          "reason": null
+        },
+        "verify": {
+          "enabled": true,
+          "reason": null
+        },
+        "repair": {
+          "enabled": true,
+          "reason": null
+        },
+        "exportBuild": {
+          "enabled": true,
+          "reason": null
+        },
+        "exportSettings": {
+          "enabled": true,
+          "reason": null
+        },
+        "importBuild": {
+          "enabled": true,
+          "reason": null
+        },
+        "uninstall": {
+          "enabled": true,
+          "reason": null
+        }
+      }
+    },
+    "game-build-import": {
+      "status": "ok",
+      "kind": "pack",
+      "version": "1.0.9",
+      "launcherId": "218",
+      "gameId": "ghosting-renewed",
+      "dropped": 2,
+      "modified": {
+        "changed": 5,
+        "restored": 5,
+        "custom": 3,
+        "customDir": "custom/imported",
+        "backup": 0,
+        "rejected": 1
+      }
+    }
+  },
+  "steps": [
+    {
+      "click": {
+        "css": ".game-menu__trigger",
+        "view": "game-menu"
+      }
+    },
+    {
+      "click": {
+        "css": ".game-menu__item:nth-child(9)",
+        "view": "game-menu-importBuild"
+      }
+    },
+    {
+      "move": [
+        800,
+        880
+      ]
+    }
+  ]
+}

@@ -1,0 +1,993 @@
+{
+  "options": [{},{"headings":true},{"preserveCodeIndent":true},{"headings":true,"preserveCodeIndent":true},{"scriptIds":["jump","a-b","x_1",""],"imageBase":"https://example.com/guide"},{"headings":true,"scriptIds":[],"imageBase":"https://example.com/guide/"}],
+  "docs": [
+    {
+      "markdown": "# Заголовок\n\n**Жирный** и *курсив* `код`\n\n- один\n- два\n\n[Сайт](https://example.com) [плохой](javascript:alert)\n\n<img src=x onerror=evil()>\n\n![img](https://evil.example/x.png)\n\n```\n  код\n```",
+      "news": "<h3>Заголовок</h3><p><strong>Жирный</strong> и <em>курсив</em> <code>код</code></p><ul><li>один</li><li>два</li></ul><p><a href=\"#\" data-href=\"https://example.com\">Сайт</a> плохой</p><p>&lt;img src=x onerror=evil()&gt;</p><p></p><pre><code>  код</code></pre>",
+      "guide": [
+        "<p># Заголовок</p><p><strong>Жирный</strong> и <em>курсив</em> <code>код</code></p><ul><li>один</li><li>два</li></ul><p><a href=\"#\" data-href=\"https://example.com\">Сайт</a> плохой</p><p>&lt;img src=x onerror=evil()&gt;</p><p></p><pre><code>код</code></pre>",
+        "<h3>Заголовок</h3><p><strong>Жирный</strong> и <em>курсив</em> <code>код</code></p><ul><li>один</li><li>два</li></ul><p><a href=\"#\" data-href=\"https://example.com\">Сайт</a> плохой</p><p>&lt;img src=x onerror=evil()&gt;</p><p></p><pre><code>код</code></pre>",
+        "<p># Заголовок</p><p><strong>Жирный</strong> и <em>курсив</em> <code>код</code></p><ul><li>один</li><li>два</li></ul><p><a href=\"#\" data-href=\"https://example.com\">Сайт</a> плохой</p><p>&lt;img src=x onerror=evil()&gt;</p><p></p><pre><code>  код</code></pre>",
+        "<h3>Заголовок</h3><p><strong>Жирный</strong> и <em>курсив</em> <code>код</code></p><ul><li>один</li><li>два</li></ul><p><a href=\"#\" data-href=\"https://example.com\">Сайт</a> плохой</p><p>&lt;img src=x onerror=evil()&gt;</p><p></p><pre><code>  код</code></pre>",
+        "<p># Заголовок</p><p><strong>Жирный</strong> и <em>курсив</em> <code>код</code></p><ul><li>один</li><li>два</li></ul><p><a href=\"#\" data-href=\"https://example.com\">Сайт</a> плохой</p><p>&lt;img src=x onerror=evil()&gt;</p><p></p><pre><code>код</code></pre>",
+        "<h3>Заголовок</h3><p><strong>Жирный</strong> и <em>курсив</em> <code>код</code></p><ul><li>один</li><li>два</li></ul><p><a href=\"#\" data-href=\"https://example.com\">Сайт</a> плохой</p><p>&lt;img src=x onerror=evil()&gt;</p><p></p><pre><code>код</code></pre>"
+      ]
+    },
+    {"markdown":"# Описание\n\n```\n  код\n```","news":"<h3>Описание</h3><pre><code>  код</code></pre>","guide":["<p># Описание</p><pre><code>код</code></pre>","<h3>Описание</h3><pre><code>код</code></pre>","<p># Описание</p><pre><code>  код</code></pre>","<h3>Описание</h3><pre><code>  код</code></pre>","<p># Описание</p><pre><code>код</code></pre>","<h3>Описание</h3><pre><code>код</code></pre>"]},
+    {
+      "markdown": "[Скрипт](#jump) ![Кадр](images/shot.png)",
+      "news": "<p><a href=\"#\" data-script=\"jump\">Скрипт</a> </p>",
+      "guide": [
+        "<p><a href=\"#\" data-script=\"jump\">Скрипт</a> </p>",
+        "<p><a href=\"#\" data-script=\"jump\">Скрипт</a> </p>",
+        "<p><a href=\"#\" data-script=\"jump\">Скрипт</a> </p>",
+        "<p><a href=\"#\" data-script=\"jump\">Скрипт</a> </p>",
+        "<p><a href=\"#\" data-script=\"jump\">Скрипт</a> <img src=\"https://example.com/guide/images/shot.png\" alt=\"Кадр\" loading=\"lazy\"></p>",
+        "<p>Скрипт <img src=\"https://example.com/guide//images/shot.png\" alt=\"Кадр\" loading=\"lazy\"></p>"
+      ]
+    },
+    {"markdown":"[Чужой](#evil)","news":"<p><a href=\"#\" data-script=\"evil\">Чужой</a></p>","guide":["<p><a href=\"#\" data-script=\"evil\">Чужой</a></p>","<p><a href=\"#\" data-script=\"evil\">Чужой</a></p>","<p><a href=\"#\" data-script=\"evil\">Чужой</a></p>","<p><a href=\"#\" data-script=\"evil\">Чужой</a></p>","<p>Чужой</p>","<p>Чужой</p>"]},
+    {"markdown":"Текст\n\nВторой абзац","news":"<p>Текст</p><p>Второй абзац</p>","guide":["<p>Текст</p><p>Второй абзац</p>","<p>Текст</p><p>Второй абзац</p>","<p>Текст</p><p>Второй абзац</p>","<p>Текст</p><p>Второй абзац</p>","<p>Текст</p><p>Второй абзац</p>","<p>Текст</p><p>Второй абзац</p>"]},
+    {"markdown":"","news":"","guide":["","","","","",""]},
+    {"markdown":" ","news":"","guide":["","","","","",""]},
+    {"markdown":"\n","news":"","guide":["","","","","",""]},
+    {"markdown":"\n\n\n","news":"","guide":["","","","","",""]},
+    {"markdown":"   \n  \n","news":"","guide":["","","","","",""]},
+    {"markdown":"\t","news":"","guide":["","","","","",""]},
+    {"markdown":" ","news":"","guide":["","","","","",""]},
+    {"markdown":"﻿","news":"","guide":["","","","","",""]},
+    {"markdown":"","news":"<p></p>","guide":["<p></p>","<p></p>","<p></p>","<p></p>","<p></p>","<p></p>"]},
+    {"markdown":" ","news":"","guide":["","","","","",""]},
+    {"markdown":"a b","news":"<p>a b</p>","guide":["<p>a b</p>","<p>a b</p>","<p>a b</p>","<p>a b</p>","<p>a b</p>","<p>a b</p>"]},
+    {"markdown":"a\rb","news":"<p>a\rb</p>","guide":["<p>a\rb</p>","<p>a\rb</p>","<p>a\rb</p>","<p>a\rb</p>","<p>a\rb</p>","<p>a\rb</p>"]},
+    {"markdown":"a\r\nb","news":"<p>a<br>b</p>","guide":["<p>a<br>b</p>","<p>a<br>b</p>","<p>a<br>b</p>","<p>a<br>b</p>","<p>a<br>b</p>","<p>a<br>b</p>"]},
+    {"markdown":"a\r\n\r\nb","news":"<p>a</p><p>b</p>","guide":["<p>a</p><p>b</p>","<p>a</p><p>b</p>","<p>a</p><p>b</p>","<p>a</p><p>b</p>","<p>a</p><p>b</p>","<p>a</p><p>b</p>"]},
+    {"markdown":"a\n\r\nb\r","news":"<p>a</p><p>b</p>","guide":["<p>a</p><p>b</p>","<p>a</p><p>b</p>","<p>a</p><p>b</p>","<p>a</p><p>b</p>","<p>a</p><p>b</p>","<p>a</p><p>b</p>"]},
+    {"markdown":"\r\n","news":"","guide":["","","","","",""]},
+    {"markdown":"\r","news":"","guide":["","","","","",""]},
+    {"markdown":"один","news":"<p>один</p>","guide":["<p>один</p>","<p>один</p>","<p>один</p>","<p>один</p>","<p>один</p>","<p>один</p>"]},
+    {"markdown":"один\nдва","news":"<p>один<br>два</p>","guide":["<p>один<br>два</p>","<p>один<br>два</p>","<p>один<br>два</p>","<p>один<br>два</p>","<p>один<br>два</p>","<p>один<br>два</p>"]},
+    {"markdown":"один\nдва\n\nтри\nчетыре","news":"<p>один<br>два</p><p>три<br>четыре</p>","guide":["<p>один<br>два</p><p>три<br>четыре</p>","<p>один<br>два</p><p>три<br>четыре</p>","<p>один<br>два</p><p>три<br>четыре</p>","<p>один<br>два</p><p>три<br>четыре</p>","<p>один<br>два</p><p>три<br>четыре</p>","<p>один<br>два</p><p>три<br>четыре</p>"]},
+    {"markdown":"  отступ\n  два","news":"<p>отступ<br>два</p>","guide":["<p>отступ<br>два</p>","<p>отступ<br>два</p>","<p>отступ<br>два</p>","<p>отступ<br>два</p>","<p>отступ<br>два</p>","<p>отступ<br>два</p>"]},
+    {"markdown":"\tтаб","news":"<p>таб</p>","guide":["<p>таб</p>","<p>таб</p>","<p>таб</p>","<p>таб</p>","<p>таб</p>","<p>таб</p>"]},
+    {"markdown":"один  \nдва","news":"<p>один<br>два</p>","guide":["<p>один<br>два</p>","<p>один<br>два</p>","<p>один<br>два</p>","<p>один<br>два</p>","<p>один<br>два</p>","<p>один<br>два</p>"]},
+    {"markdown":"a\n \nb","news":"<p>a</p><p>b</p>","guide":["<p>a</p><p>b</p>","<p>a</p><p>b</p>","<p>a</p><p>b</p>","<p>a</p><p>b</p>","<p>a</p><p>b</p>","<p>a</p><p>b</p>"]},
+    {"markdown":"a\n \nb","news":"<p>a</p><p>b</p>","guide":["<p>a</p><p>b</p>","<p>a</p><p>b</p>","<p>a</p><p>b</p>","<p>a</p><p>b</p>","<p>a</p><p>b</p>","<p>a</p><p>b</p>"]},
+    {"markdown":"a\n\nb","news":"<p>a<br><br>b</p>","guide":["<p>a<br><br>b</p>","<p>a<br><br>b</p>","<p>a<br><br>b</p>","<p>a<br><br>b</p>","<p>a<br><br>b</p>","<p>a<br><br>b</p>"]},
+    {"markdown":"a\n﻿\nb","news":"<p>a</p><p>b</p>","guide":["<p>a</p><p>b</p>","<p>a</p><p>b</p>","<p>a</p><p>b</p>","<p>a</p><p>b</p>","<p>a</p><p>b</p>","<p>a</p><p>b</p>"]},
+    {
+      "markdown": "слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово",
+      "news": "<p>слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово</p>",
+      "guide": [
+        "<p>слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово</p>",
+        "<p>слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово</p>",
+        "<p>слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово</p>",
+        "<p>слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово</p>",
+        "<p>слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово</p>",
+        "<p>слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово</p>"
+      ]
+    },
+    {"markdown":"&<>\"'","news":"<p>&amp;&lt;&gt;&quot;&#39;</p>","guide":["<p>&amp;&lt;&gt;&quot;&#39;</p>","<p>&amp;&lt;&gt;&quot;&#39;</p>","<p>&amp;&lt;&gt;&quot;&#39;</p>","<p>&amp;&lt;&gt;&quot;&#39;</p>","<p>&amp;&lt;&gt;&quot;&#39;</p>","<p>&amp;&lt;&gt;&quot;&#39;</p>"]},
+    {"markdown":"<script>alert(1)</script>","news":"<p>&lt;script&gt;alert(1)&lt;/script&gt;</p>","guide":["<p>&lt;script&gt;alert(1)&lt;/script&gt;</p>","<p>&lt;script&gt;alert(1)&lt;/script&gt;</p>","<p>&lt;script&gt;alert(1)&lt;/script&gt;</p>","<p>&lt;script&gt;alert(1)&lt;/script&gt;</p>","<p>&lt;script&gt;alert(1)&lt;/script&gt;</p>","<p>&lt;script&gt;alert(1)&lt;/script&gt;</p>"]},
+    {
+      "markdown": "a & b < c > d \" e ' f",
+      "news": "<p>a &amp; b &lt; c &gt; d &quot; e &#39; f</p>",
+      "guide": ["<p>a &amp; b &lt; c &gt; d &quot; e &#39; f</p>","<p>a &amp; b &lt; c &gt; d &quot; e &#39; f</p>","<p>a &amp; b &lt; c &gt; d &quot; e &#39; f</p>","<p>a &amp; b &lt; c &gt; d &quot; e &#39; f</p>","<p>a &amp; b &lt; c &gt; d &quot; e &#39; f</p>","<p>a &amp; b &lt; c &gt; d &quot; e &#39; f</p>"]
+    },
+    {"markdown":"&amp; &lt; &#39;","news":"<p>&amp;amp; &amp;lt; &amp;#39;</p>","guide":["<p>&amp;amp; &amp;lt; &amp;#39;</p>","<p>&amp;amp; &amp;lt; &amp;#39;</p>","<p>&amp;amp; &amp;lt; &amp;#39;</p>","<p>&amp;amp; &amp;lt; &amp;#39;</p>","<p>&amp;amp; &amp;lt; &amp;#39;</p>","<p>&amp;amp; &amp;lt; &amp;#39;</p>"]},
+    {"markdown":"😀 эмодзи 👍🏽 и ӝ","news":"<p>😀 эмодзи 👍🏽 и ӝ</p>","guide":["<p>😀 эмодзи 👍🏽 и ӝ</p>","<p>😀 эмодзи 👍🏽 и ӝ</p>","<p>😀 эмодзи 👍🏽 и ӝ</p>","<p>😀 эмодзи 👍🏽 и ӝ</p>","<p>😀 эмодзи 👍🏽 и ӝ</p>","<p>😀 эмодзи 👍🏽 и ӝ</p>"]},
+    {"markdown":"# Один","news":"<h3>Один</h3>","guide":["<p># Один</p>","<h3>Один</h3>","<p># Один</p>","<h3>Один</h3>","<p># Один</p>","<h3>Один</h3>"]},
+    {"markdown":"## Два","news":"<h4>Два</h4>","guide":["<p>## Два</p>","<h4>Два</h4>","<p>## Два</p>","<h4>Два</h4>","<p>## Два</p>","<h4>Два</h4>"]},
+    {"markdown":"### Три","news":"<h5>Три</h5>","guide":["<p>### Три</p>","<h5>Три</h5>","<p>### Три</p>","<h5>Три</h5>","<p>### Три</p>","<h5>Три</h5>"]},
+    {"markdown":"#### Четыре","news":"<h6>Четыре</h6>","guide":["<p>#### Четыре</p>","<h6>Четыре</h6>","<p>#### Четыре</p>","<h6>Четыре</h6>","<p>#### Четыре</p>","<h6>Четыре</h6>"]},
+    {"markdown":"##### Пять","news":"<h6>Пять</h6>","guide":["<p>##### Пять</p>","<h6>Пять</h6>","<p>##### Пять</p>","<h6>Пять</h6>","<p>##### Пять</p>","<h6>Пять</h6>"]},
+    {"markdown":"###### Шесть","news":"<h6>Шесть</h6>","guide":["<p>###### Шесть</p>","<h6>Шесть</h6>","<p>###### Шесть</p>","<h6>Шесть</h6>","<p>###### Шесть</p>","<h6>Шесть</h6>"]},
+    {"markdown":"####### Семь","news":"<p>####### Семь</p>","guide":["<p>####### Семь</p>","<p>####### Семь</p>","<p>####### Семь</p>","<p>####### Семь</p>","<p>####### Семь</p>","<p>####### Семь</p>"]},
+    {"markdown":"#нет","news":"<p>#нет</p>","guide":["<p>#нет</p>","<p>#нет</p>","<p>#нет</p>","<p>#нет</p>","<p>#нет</p>","<p>#нет</p>"]},
+    {"markdown":"# ","news":"<p>#</p>","guide":["<p>#</p>","<p>#</p>","<p>#</p>","<p>#</p>","<p>#</p>","<p>#</p>"]},
+    {"markdown":"#  ","news":"<h3> </h3>","guide":["<p>#</p>","<h3> </h3>","<p>#</p>","<h3> </h3>","<p>#</p>","<h3> </h3>"]},
+    {"markdown":"#   текст","news":"<h3>текст</h3>","guide":["<p>#   текст</p>","<h3>текст</h3>","<p>#   текст</p>","<h3>текст</h3>","<p>#   текст</p>","<h3>текст</h3>"]},
+    {"markdown":"#\tтекст","news":"<h3>текст</h3>","guide":["<p>#\tтекст</p>","<h3>текст</h3>","<p>#\tтекст</p>","<h3>текст</h3>","<p>#\tтекст</p>","<h3>текст</h3>"]},
+    {"markdown":"# текст #","news":"<h3>текст #</h3>","guide":["<p># текст #</p>","<h3>текст #</h3>","<p># текст #</p>","<h3>текст #</h3>","<p># текст #</p>","<h3>текст #</h3>"]},
+    {
+      "markdown": "# **жирный** `код`",
+      "news": "<h3><strong>жирный</strong> <code>код</code></h3>",
+      "guide": ["<p># <strong>жирный</strong> <code>код</code></p>","<h3><strong>жирный</strong> <code>код</code></h3>","<p># <strong>жирный</strong> <code>код</code></p>","<h3><strong>жирный</strong> <code>код</code></h3>","<p># <strong>жирный</strong> <code>код</code></p>","<h3><strong>жирный</strong> <code>код</code></h3>"]
+    },
+    {"markdown":"текст\n# заголовок\nещё","news":"<p>текст</p><h3>заголовок</h3><p>ещё</p>","guide":["<p>текст<br># заголовок<br>ещё</p>","<p>текст</p><h3>заголовок</h3><p>ещё</p>","<p>текст<br># заголовок<br>ещё</p>","<p>текст</p><h3>заголовок</h3><p>ещё</p>","<p>текст<br># заголовок<br>ещё</p>","<p>текст</p><h3>заголовок</h3><p>ещё</p>"]},
+    {"markdown":"# а\n# б","news":"<h3>а</h3><h3>б</h3>","guide":["<p># а<br># б</p>","<h3>а</h3><h3>б</h3>","<p># а<br># б</p>","<h3>а</h3><h3>б</h3>","<p># а<br># б</p>","<h3>а</h3><h3>б</h3>"]},
+    {"markdown":"- список\n# заголовок","news":"<ul><li>список</li></ul><h3>заголовок</h3>","guide":["<ul><li>список</li></ul><p># заголовок</p>","<ul><li>список</li></ul><h3>заголовок</h3>","<ul><li>список</li></ul><p># заголовок</p>","<ul><li>список</li></ul><h3>заголовок</h3>","<ul><li>список</li></ul><p># заголовок</p>","<ul><li>список</li></ul><h3>заголовок</h3>"]},
+    {"markdown":"```\n# не заголовок\n```","news":"<pre><code># не заголовок</code></pre>","guide":["<pre><code># не заголовок</code></pre>","<pre><code># не заголовок</code></pre>","<pre><code># не заголовок</code></pre>","<pre><code># не заголовок</code></pre>","<pre><code># не заголовок</code></pre>","<pre><code># не заголовок</code></pre>"]},
+    {"markdown":"# текст","news":"<h3>текст</h3>","guide":["<p># текст</p>","<h3>текст</h3>","<p># текст</p>","<h3>текст</h3>","<p># текст</p>","<h3>текст</h3>"]},
+    {"markdown":"#текст","news":"<p>#текст</p>","guide":["<p>#текст</p>","<p>#текст</p>","<p>#текст</p>","<p>#текст</p>","<p>#текст</p>","<p>#текст</p>"]},
+    {"markdown":"#﻿text","news":"<h3>text</h3>","guide":["<p>#﻿text</p>","<h3>text</h3>","<p>#﻿text</p>","<h3>text</h3>","<p>#﻿text</p>","<h3>text</h3>"]},
+    {"markdown":"# a\rb","news":"<p># a\rb</p>","guide":["<p># a\rb</p>","<p># a\rb</p>","<p># a\rb</p>","<p># a\rb</p>","<p># a\rb</p>","<p># a\rb</p>"]},
+    {"markdown":"# a b","news":"<p># a b</p>","guide":["<p># a b</p>","<p># a b</p>","<p># a b</p>","<p># a b</p>","<p># a b</p>","<p># a b</p>"]},
+    {"markdown":" # отступ","news":"<p># отступ</p>","guide":["<p># отступ</p>","<p># отступ</p>","<p># отступ</p>","<p># отступ</p>","<p># отступ</p>","<p># отступ</p>"]},
+    {"markdown":"- а","news":"<ul><li>а</li></ul>","guide":["<ul><li>а</li></ul>","<ul><li>а</li></ul>","<ul><li>а</li></ul>","<ul><li>а</li></ul>","<ul><li>а</li></ul>","<ul><li>а</li></ul>"]},
+    {"markdown":"* а","news":"<ul><li>а</li></ul>","guide":["<ul><li>а</li></ul>","<ul><li>а</li></ul>","<ul><li>а</li></ul>","<ul><li>а</li></ul>","<ul><li>а</li></ul>","<ul><li>а</li></ul>"]},
+    {"markdown":"- а\n- б\n- в","news":"<ul><li>а</li><li>б</li><li>в</li></ul>","guide":["<ul><li>а</li><li>б</li><li>в</li></ul>","<ul><li>а</li><li>б</li><li>в</li></ul>","<ul><li>а</li><li>б</li><li>в</li></ul>","<ul><li>а</li><li>б</li><li>в</li></ul>","<ul><li>а</li><li>б</li><li>в</li></ul>","<ul><li>а</li><li>б</li><li>в</li></ul>"]},
+    {"markdown":"* а\n* б","news":"<ul><li>а</li><li>б</li></ul>","guide":["<ul><li>а</li><li>б</li></ul>","<ul><li>а</li><li>б</li></ul>","<ul><li>а</li><li>б</li></ul>","<ul><li>а</li><li>б</li></ul>","<ul><li>а</li><li>б</li></ul>","<ul><li>а</li><li>б</li></ul>"]},
+    {"markdown":"- а\n* б","news":"<ul><li>а</li><li>б</li></ul>","guide":["<ul><li>а</li><li>б</li></ul>","<ul><li>а</li><li>б</li></ul>","<ul><li>а</li><li>б</li></ul>","<ul><li>а</li><li>б</li></ul>","<ul><li>а</li><li>б</li></ul>","<ul><li>а</li><li>б</li></ul>"]},
+    {"markdown":"* а\n- б","news":"<ul><li>а</li><li>б</li></ul>","guide":["<ul><li>а</li><li>б</li></ul>","<ul><li>а</li><li>б</li></ul>","<ul><li>а</li><li>б</li></ul>","<ul><li>а</li><li>б</li></ul>","<ul><li>а</li><li>б</li></ul>","<ul><li>а</li><li>б</li></ul>"]},
+    {"markdown":"1. а\n2. б\n3. в","news":"<ol><li>а</li><li>б</li><li>в</li></ol>","guide":["<ol><li>а</li><li>б</li><li>в</li></ol>","<ol><li>а</li><li>б</li><li>в</li></ol>","<ol><li>а</li><li>б</li><li>в</li></ol>","<ol><li>а</li><li>б</li><li>в</li></ol>","<ol><li>а</li><li>б</li><li>в</li></ol>","<ol><li>а</li><li>б</li><li>в</li></ol>"]},
+    {"markdown":"1. а\n1. б","news":"<ol><li>а</li><li>б</li></ol>","guide":["<ol><li>а</li><li>б</li></ol>","<ol><li>а</li><li>б</li></ol>","<ol><li>а</li><li>б</li></ol>","<ol><li>а</li><li>б</li></ol>","<ol><li>а</li><li>б</li></ol>","<ol><li>а</li><li>б</li></ol>"]},
+    {"markdown":"2. а\n3. б","news":"<ol start=\"2\"><li>а</li><li>б</li></ol>","guide":["<ol start=\"2\"><li>а</li><li>б</li></ol>","<ol start=\"2\"><li>а</li><li>б</li></ol>","<ol start=\"2\"><li>а</li><li>б</li></ol>","<ol start=\"2\"><li>а</li><li>б</li></ol>","<ol start=\"2\"><li>а</li><li>б</li></ol>","<ol start=\"2\"><li>а</li><li>б</li></ol>"]},
+    {"markdown":"10. а\n11. б","news":"<ol start=\"10\"><li>а</li><li>б</li></ol>","guide":["<ol start=\"10\"><li>а</li><li>б</li></ol>","<ol start=\"10\"><li>а</li><li>б</li></ol>","<ol start=\"10\"><li>а</li><li>б</li></ol>","<ol start=\"10\"><li>а</li><li>б</li></ol>","<ol start=\"10\"><li>а</li><li>б</li></ol>","<ol start=\"10\"><li>а</li><li>б</li></ol>"]},
+    {"markdown":"0. а","news":"<ol start=\"0\"><li>а</li></ol>","guide":["<ol start=\"0\"><li>а</li></ol>","<ol start=\"0\"><li>а</li></ol>","<ol start=\"0\"><li>а</li></ol>","<ol start=\"0\"><li>а</li></ol>","<ol start=\"0\"><li>а</li></ol>","<ol start=\"0\"><li>а</li></ol>"]},
+    {"markdown":"007. а","news":"<ol start=\"7\"><li>а</li></ol>","guide":["<ol start=\"7\"><li>а</li></ol>","<ol start=\"7\"><li>а</li></ol>","<ol start=\"7\"><li>а</li></ol>","<ol start=\"7\"><li>а</li></ol>","<ol start=\"7\"><li>а</li></ol>","<ol start=\"7\"><li>а</li></ol>"]},
+    {
+      "markdown": "99999999999999999999. а",
+      "news": "<ol start=\"100000000000000000000\"><li>а</li></ol>",
+      "guide": ["<ol start=\"100000000000000000000\"><li>а</li></ol>","<ol start=\"100000000000000000000\"><li>а</li></ol>","<ol start=\"100000000000000000000\"><li>а</li></ol>","<ol start=\"100000000000000000000\"><li>а</li></ol>","<ol start=\"100000000000000000000\"><li>а</li></ol>","<ol start=\"100000000000000000000\"><li>а</li></ol>"]
+    },
+    {"markdown":"1000000000000000000000. а","news":"<ol start=\"1e+21\"><li>а</li></ol>","guide":["<ol start=\"1e+21\"><li>а</li></ol>","<ol start=\"1e+21\"><li>а</li></ol>","<ol start=\"1e+21\"><li>а</li></ol>","<ol start=\"1e+21\"><li>а</li></ol>","<ol start=\"1e+21\"><li>а</li></ol>","<ol start=\"1e+21\"><li>а</li></ol>"]},
+    {"markdown":"1) а","news":"<p>1) а</p>","guide":["<p>1) а</p>","<p>1) а</p>","<p>1) а</p>","<p>1) а</p>","<p>1) а</p>","<p>1) а</p>"]},
+    {"markdown":"- ","news":"<ul><li></li></ul>","guide":["<ul><li></li></ul>","<ul><li></li></ul>","<ul><li></li></ul>","<ul><li></li></ul>","<ul><li></li></ul>","<ul><li></li></ul>"]},
+    {"markdown":"-","news":"<p>-</p>","guide":["<p>-</p>","<p>-</p>","<p>-</p>","<p>-</p>","<p>-</p>","<p>-</p>"]},
+    {"markdown":"- \n","news":"<ul><li></li></ul>","guide":["<ul><li></li></ul>","<ul><li></li></ul>","<ul><li></li></ul>","<ul><li></li></ul>","<ul><li></li></ul>","<ul><li></li></ul>"]},
+    {"markdown":"-  ","news":"<ul><li></li></ul>","guide":["<ul><li></li></ul>","<ul><li></li></ul>","<ul><li></li></ul>","<ul><li></li></ul>","<ul><li></li></ul>","<ul><li></li></ul>"]},
+    {"markdown":"-а","news":"<p>-а</p>","guide":["<p>-а</p>","<p>-а</p>","<p>-а</p>","<p>-а</p>","<p>-а</p>","<p>-а</p>"]},
+    {"markdown":"-\tа","news":"<ul><li>а</li></ul>","guide":["<ul><li>а</li></ul>","<ul><li>а</li></ul>","<ul><li>а</li></ul>","<ul><li>а</li></ul>","<ul><li>а</li></ul>","<ul><li>а</li></ul>"]},
+    {"markdown":"*\tа","news":"<ul><li>а</li></ul>","guide":["<ul><li>а</li></ul>","<ul><li>а</li></ul>","<ul><li>а</li></ul>","<ul><li>а</li></ul>","<ul><li>а</li></ul>","<ul><li>а</li></ul>"]},
+    {"markdown":"1.\tа","news":"<ol><li>а</li></ol>","guide":["<ol><li>а</li></ol>","<ol><li>а</li></ol>","<ol><li>а</li></ol>","<ol><li>а</li></ol>","<ol><li>а</li></ol>","<ol><li>а</li></ol>"]},
+    {"markdown":"1.а","news":"<p>1.а</p>","guide":["<p>1.а</p>","<p>1.а</p>","<p>1.а</p>","<p>1.а</p>","<p>1.а</p>","<p>1.а</p>"]},
+    {"markdown":"-  два пробела","news":"<ul><li>два пробела</li></ul>","guide":["<ul><li>два пробела</li></ul>","<ul><li>два пробела</li></ul>","<ul><li>два пробела</li></ul>","<ul><li>два пробела</li></ul>","<ul><li>два пробела</li></ul>","<ul><li>два пробела</li></ul>"]},
+    {"markdown":"- а\r- б","news":"<p>- а\r- б</p>","guide":["<p>- а\r- б</p>","<p>- а\r- б</p>","<p>- а\r- б</p>","<p>- а\r- б</p>","<p>- а\r- б</p>","<p>- а\r- б</p>"]},
+    {
+      "markdown": "- а\n  - б\n  - в\n- г",
+      "news": "<ul><li>а<ul><li>б</li><li>в</li></ul></li><li>г</li></ul>",
+      "guide": ["<ul><li>а<ul><li>б</li><li>в</li></ul></li><li>г</li></ul>","<ul><li>а<ul><li>б</li><li>в</li></ul></li><li>г</li></ul>","<ul><li>а<ul><li>б</li><li>в</li></ul></li><li>г</li></ul>","<ul><li>а<ul><li>б</li><li>в</li></ul></li><li>г</li></ul>","<ul><li>а<ul><li>б</li><li>в</li></ul></li><li>г</li></ul>","<ul><li>а<ul><li>б</li><li>в</li></ul></li><li>г</li></ul>"]
+    },
+    {
+      "markdown": "- а\n    - б\n        - в\n- г",
+      "news": "<ul><li>а<ul><li>б<ul><li>в</li></ul></li></ul></li><li>г</li></ul>",
+      "guide": [
+        "<ul><li>а<ul><li>б<ul><li>в</li></ul></li></ul></li><li>г</li></ul>",
+        "<ul><li>а<ul><li>б<ul><li>в</li></ul></li></ul></li><li>г</li></ul>",
+        "<ul><li>а<ul><li>б<ul><li>в</li></ul></li></ul></li><li>г</li></ul>",
+        "<ul><li>а<ul><li>б<ul><li>в</li></ul></li></ul></li><li>г</li></ul>",
+        "<ul><li>а<ul><li>б<ul><li>в</li></ul></li></ul></li><li>г</li></ul>",
+        "<ul><li>а<ul><li>б<ul><li>в</li></ul></li></ul></li><li>г</li></ul>"
+      ]
+    },
+    {
+      "markdown": "- а\n - б\n  - в",
+      "news": "<ul><li>а<ul><li>б<ul><li>в</li></ul></li></ul></li></ul>",
+      "guide": ["<ul><li>а<ul><li>б<ul><li>в</li></ul></li></ul></li></ul>","<ul><li>а<ul><li>б<ul><li>в</li></ul></li></ul></li></ul>","<ul><li>а<ul><li>б<ul><li>в</li></ul></li></ul></li></ul>","<ul><li>а<ul><li>б<ul><li>в</li></ul></li></ul></li></ul>","<ul><li>а<ul><li>б<ul><li>в</li></ul></li></ul></li></ul>","<ul><li>а<ul><li>б<ul><li>в</li></ul></li></ul></li></ul>"]
+    },
+    {
+      "markdown": "- а\n  - б\n- в\n  - г",
+      "news": "<ul><li>а<ul><li>б</li></ul></li><li>в<ul><li>г</li></ul></li></ul>",
+      "guide": [
+        "<ul><li>а<ul><li>б</li></ul></li><li>в<ul><li>г</li></ul></li></ul>",
+        "<ul><li>а<ul><li>б</li></ul></li><li>в<ul><li>г</li></ul></li></ul>",
+        "<ul><li>а<ul><li>б</li></ul></li><li>в<ul><li>г</li></ul></li></ul>",
+        "<ul><li>а<ul><li>б</li></ul></li><li>в<ul><li>г</li></ul></li></ul>",
+        "<ul><li>а<ul><li>б</li></ul></li><li>в<ul><li>г</li></ul></li></ul>",
+        "<ul><li>а<ul><li>б</li></ul></li><li>в<ul><li>г</li></ul></li></ul>"
+      ]
+    },
+    {"markdown":"- а\n\t- б","news":"<ul><li>а<ul><li>б</li></ul></li></ul>","guide":["<ul><li>а<ul><li>б</li></ul></li></ul>","<ul><li>а<ul><li>б</li></ul></li></ul>","<ul><li>а<ul><li>б</li></ul></li></ul>","<ul><li>а<ul><li>б</li></ul></li></ul>","<ul><li>а<ul><li>б</li></ul></li></ul>","<ul><li>а<ul><li>б</li></ul></li></ul>"]},
+    {
+      "markdown": "- а\n\t\t- б\n\t- в",
+      "news": "<ul><li>а<ul><li>б</li></ul><ul><li>в</li></ul></li></ul>",
+      "guide": ["<ul><li>а<ul><li>б</li></ul><ul><li>в</li></ul></li></ul>","<ul><li>а<ul><li>б</li></ul><ul><li>в</li></ul></li></ul>","<ul><li>а<ul><li>б</li></ul><ul><li>в</li></ul></li></ul>","<ul><li>а<ul><li>б</li></ul><ul><li>в</li></ul></li></ul>","<ul><li>а<ul><li>б</li></ul><ul><li>в</li></ul></li></ul>","<ul><li>а<ul><li>б</li></ul><ul><li>в</li></ul></li></ul>"]
+    },
+    {"markdown":"  - а\n- б","news":"<ul><li>а</li></ul><ul><li>б</li></ul>","guide":["<ul><li>а</li></ul><ul><li>б</li></ul>","<ul><li>а</li></ul><ul><li>б</li></ul>","<ul><li>а</li></ul><ul><li>б</li></ul>","<ul><li>а</li></ul><ul><li>б</li></ul>","<ul><li>а</li></ul><ul><li>б</li></ul>","<ul><li>а</li></ul><ul><li>б</li></ul>"]},
+    {
+      "markdown": "    - а\n  - б\n- в",
+      "news": "<ul><li>а</li></ul><ul><li>б</li></ul><ul><li>в</li></ul>",
+      "guide": ["<ul><li>а</li></ul><ul><li>б</li></ul><ul><li>в</li></ul>","<ul><li>а</li></ul><ul><li>б</li></ul><ul><li>в</li></ul>","<ul><li>а</li></ul><ul><li>б</li></ul><ul><li>в</li></ul>","<ul><li>а</li></ul><ul><li>б</li></ul><ul><li>в</li></ul>","<ul><li>а</li></ul><ul><li>б</li></ul><ul><li>в</li></ul>","<ul><li>а</li></ul><ul><li>б</li></ul><ul><li>в</li></ul>"]
+    },
+    {
+      "markdown": "- а\n  1. б\n  2. в",
+      "news": "<ul><li>а<ol><li>б</li><li>в</li></ol></li></ul>",
+      "guide": ["<ul><li>а<ol><li>б</li><li>в</li></ol></li></ul>","<ul><li>а<ol><li>б</li><li>в</li></ol></li></ul>","<ul><li>а<ol><li>б</li><li>в</li></ol></li></ul>","<ul><li>а<ol><li>б</li><li>в</li></ol></li></ul>","<ul><li>а<ol><li>б</li><li>в</li></ol></li></ul>","<ul><li>а<ol><li>б</li><li>в</li></ol></li></ul>"]
+    },
+    {
+      "markdown": "1. а\n   - б\n   - в\n2. г",
+      "news": "<ol><li>а<ul><li>б</li><li>в</li></ul></li><li>г</li></ol>",
+      "guide": ["<ol><li>а<ul><li>б</li><li>в</li></ul></li><li>г</li></ol>","<ol><li>а<ul><li>б</li><li>в</li></ul></li><li>г</li></ol>","<ol><li>а<ul><li>б</li><li>в</li></ul></li><li>г</li></ol>","<ol><li>а<ul><li>б</li><li>в</li></ul></li><li>г</li></ol>","<ol><li>а<ul><li>б</li><li>в</li></ul></li><li>г</li></ol>","<ol><li>а<ul><li>б</li><li>в</li></ul></li><li>г</li></ol>"]
+    },
+    {
+      "markdown": "- а\n  1. б\n- в",
+      "news": "<ul><li>а<ol><li>б</li></ol></li><li>в</li></ul>",
+      "guide": ["<ul><li>а<ol><li>б</li></ol></li><li>в</li></ul>","<ul><li>а<ol><li>б</li></ol></li><li>в</li></ul>","<ul><li>а<ol><li>б</li></ol></li><li>в</li></ul>","<ul><li>а<ol><li>б</li></ol></li><li>в</li></ul>","<ul><li>а<ol><li>б</li></ol></li><li>в</li></ul>","<ul><li>а<ol><li>б</li></ol></li><li>в</li></ul>"]
+    },
+    {"markdown":"1. а\n- б","news":"<ol><li>а</li></ol><ul><li>б</li></ul>","guide":["<ol><li>а</li></ol><ul><li>б</li></ul>","<ol><li>а</li></ol><ul><li>б</li></ul>","<ol><li>а</li></ol><ul><li>б</li></ul>","<ol><li>а</li></ol><ul><li>б</li></ul>","<ol><li>а</li></ol><ul><li>б</li></ul>","<ol><li>а</li></ol><ul><li>б</li></ul>"]},
+    {
+      "markdown": "- а\n1. б\n- в",
+      "news": "<ul><li>а</li></ul><ol><li>б</li></ol><ul><li>в</li></ul>",
+      "guide": ["<ul><li>а</li></ul><ol><li>б</li></ol><ul><li>в</li></ul>","<ul><li>а</li></ul><ol><li>б</li></ol><ul><li>в</li></ul>","<ul><li>а</li></ul><ol><li>б</li></ol><ul><li>в</li></ul>","<ul><li>а</li></ul><ol><li>б</li></ol><ul><li>в</li></ul>","<ul><li>а</li></ul><ol><li>б</li></ol><ul><li>в</li></ul>","<ul><li>а</li></ul><ol><li>б</li></ol><ul><li>в</li></ul>"]
+    },
+    {
+      "markdown": "- а\n  - б\n    - в\n      - г\n- д",
+      "news": "<ul><li>а<ul><li>б<ul><li>в<ul><li>г</li></ul></li></ul></li></ul></li><li>д</li></ul>",
+      "guide": [
+        "<ul><li>а<ul><li>б<ul><li>в<ul><li>г</li></ul></li></ul></li></ul></li><li>д</li></ul>",
+        "<ul><li>а<ul><li>б<ul><li>в<ul><li>г</li></ul></li></ul></li></ul></li><li>д</li></ul>",
+        "<ul><li>а<ul><li>б<ul><li>в<ul><li>г</li></ul></li></ul></li></ul></li><li>д</li></ul>",
+        "<ul><li>а<ul><li>б<ul><li>в<ul><li>г</li></ul></li></ul></li></ul></li><li>д</li></ul>",
+        "<ul><li>а<ul><li>б<ul><li>в<ul><li>г</li></ul></li></ul></li></ul></li><li>д</li></ul>",
+        "<ul><li>а<ul><li>б<ul><li>в<ul><li>г</li></ul></li></ul></li></ul></li><li>д</li></ul>"
+      ]
+    },
+    {"markdown":"- а\n  продолжение","news":"<ul><li>а<br>продолжение</li></ul>","guide":["<ul><li>а<br>продолжение</li></ul>","<ul><li>а<br>продолжение</li></ul>","<ul><li>а<br>продолжение</li></ul>","<ul><li>а<br>продолжение</li></ul>","<ul><li>а<br>продолжение</li></ul>","<ul><li>а<br>продолжение</li></ul>"]},
+    {"markdown":"- а\n  продолжение\n  ещё","news":"<ul><li>а<br>продолжение<br>ещё</li></ul>","guide":["<ul><li>а<br>продолжение<br>ещё</li></ul>","<ul><li>а<br>продолжение<br>ещё</li></ul>","<ul><li>а<br>продолжение<br>ещё</li></ul>","<ul><li>а<br>продолжение<br>ещё</li></ul>","<ul><li>а<br>продолжение<br>ещё</li></ul>","<ul><li>а<br>продолжение<br>ещё</li></ul>"]},
+    {
+      "markdown": "- а\n  - б\n  продолжение б",
+      "news": "<ul><li>а<ul><li>б<br>продолжение б</li></ul></li></ul>",
+      "guide": ["<ul><li>а<ul><li>б<br>продолжение б</li></ul></li></ul>","<ul><li>а<ul><li>б<br>продолжение б</li></ul></li></ul>","<ul><li>а<ul><li>б<br>продолжение б</li></ul></li></ul>","<ul><li>а<ul><li>б<br>продолжение б</li></ul></li></ul>","<ul><li>а<ul><li>б<br>продолжение б</li></ul></li></ul>","<ul><li>а<ul><li>б<br>продолжение б</li></ul></li></ul>"]
+    },
+    {
+      "markdown": "- а\n  - б\n продолжение",
+      "news": "<ul><li>а<ul><li>б<br>продолжение</li></ul></li></ul>",
+      "guide": ["<ul><li>а<ul><li>б<br>продолжение</li></ul></li></ul>","<ul><li>а<ul><li>б<br>продолжение</li></ul></li></ul>","<ul><li>а<ul><li>б<br>продолжение</li></ul></li></ul>","<ul><li>а<ul><li>б<br>продолжение</li></ul></li></ul>","<ul><li>а<ul><li>б<br>продолжение</li></ul></li></ul>","<ul><li>а<ul><li>б<br>продолжение</li></ul></li></ul>"]
+    },
+    {"markdown":"- а\n\n- б","news":"<ul><li>а</li></ul><ul><li>б</li></ul>","guide":["<ul><li>а</li></ul><ul><li>б</li></ul>","<ul><li>а</li></ul><ul><li>б</li></ul>","<ul><li>а</li></ul><ul><li>б</li></ul>","<ul><li>а</li></ul><ul><li>б</li></ul>","<ul><li>а</li></ul><ul><li>б</li></ul>","<ul><li>а</li></ul><ul><li>б</li></ul>"]},
+    {"markdown":"- а\n\nабзац","news":"<ul><li>а</li></ul><p>абзац</p>","guide":["<ul><li>а</li></ul><p>абзац</p>","<ul><li>а</li></ul><p>абзац</p>","<ul><li>а</li></ul><p>абзац</p>","<ul><li>а</li></ul><p>абзац</p>","<ul><li>а</li></ul><p>абзац</p>","<ul><li>а</li></ul><p>абзац</p>"]},
+    {"markdown":"- а\nабзац","news":"<ul><li>а</li></ul><p>абзац</p>","guide":["<ul><li>а</li></ul><p>абзац</p>","<ul><li>а</li></ul><p>абзац</p>","<ul><li>а</li></ul><p>абзац</p>","<ul><li>а</li></ul><p>абзац</p>","<ul><li>а</li></ul><p>абзац</p>","<ul><li>а</li></ul><p>абзац</p>"]},
+    {
+      "markdown": "- а\n- б\nабзац\n- в",
+      "news": "<ul><li>а</li><li>б</li></ul><p>абзац</p><ul><li>в</li></ul>",
+      "guide": ["<ul><li>а</li><li>б</li></ul><p>абзац</p><ul><li>в</li></ul>","<ul><li>а</li><li>б</li></ul><p>абзац</p><ul><li>в</li></ul>","<ul><li>а</li><li>б</li></ul><p>абзац</p><ul><li>в</li></ul>","<ul><li>а</li><li>б</li></ul><p>абзац</p><ul><li>в</li></ul>","<ul><li>а</li><li>б</li></ul><p>абзац</p><ul><li>в</li></ul>","<ul><li>а</li><li>б</li></ul><p>абзац</p><ul><li>в</li></ul>"]
+    },
+    {
+      "markdown": "- а\n  ```\n  код\n  ```\n- б",
+      "news": "<ul><li>а</li></ul><pre><code>  код</code></pre><ul><li>б</li></ul>",
+      "guide": [
+        "<ul><li>а</li></ul><pre><code>код</code></pre><ul><li>б</li></ul>",
+        "<ul><li>а</li></ul><pre><code>код</code></pre><ul><li>б</li></ul>",
+        "<ul><li>а</li></ul><pre><code>  код</code></pre><ul><li>б</li></ul>",
+        "<ul><li>а</li></ul><pre><code>  код</code></pre><ul><li>б</li></ul>",
+        "<ul><li>а</li></ul><pre><code>код</code></pre><ul><li>б</li></ul>",
+        "<ul><li>а</li></ul><pre><code>код</code></pre><ul><li>б</li></ul>"
+      ]
+    },
+    {"markdown":"- а\n```\nкод\n```","news":"<ul><li>а</li></ul><pre><code>код</code></pre>","guide":["<ul><li>а</li></ul><pre><code>код</code></pre>","<ul><li>а</li></ul><pre><code>код</code></pre>","<ul><li>а</li></ul><pre><code>код</code></pre>","<ul><li>а</li></ul><pre><code>код</code></pre>","<ul><li>а</li></ul><pre><code>код</code></pre>","<ul><li>а</li></ul><pre><code>код</code></pre>"]},
+    {
+      "markdown": "- **жирный** [ссылка](https://example.com) `код`",
+      "news": "<ul><li><strong>жирный</strong> <a href=\"#\" data-href=\"https://example.com\">ссылка</a> <code>код</code></li></ul>",
+      "guide": [
+        "<ul><li><strong>жирный</strong> <a href=\"#\" data-href=\"https://example.com\">ссылка</a> <code>код</code></li></ul>",
+        "<ul><li><strong>жирный</strong> <a href=\"#\" data-href=\"https://example.com\">ссылка</a> <code>код</code></li></ul>",
+        "<ul><li><strong>жирный</strong> <a href=\"#\" data-href=\"https://example.com\">ссылка</a> <code>код</code></li></ul>",
+        "<ul><li><strong>жирный</strong> <a href=\"#\" data-href=\"https://example.com\">ссылка</a> <code>код</code></li></ul>",
+        "<ul><li><strong>жирный</strong> <a href=\"#\" data-href=\"https://example.com\">ссылка</a> <code>код</code></li></ul>",
+        "<ul><li><strong>жирный</strong> <a href=\"#\" data-href=\"https://example.com\">ссылка</a> <code>код</code></li></ul>"
+      ]
+    },
+    {
+      "markdown": "1. [a](#jump)\n2. [b](#x_1)",
+      "news": "<ol><li><a href=\"#\" data-script=\"jump\">a</a></li><li><a href=\"#\" data-script=\"x_1\">b</a></li></ol>",
+      "guide": [
+        "<ol><li><a href=\"#\" data-script=\"jump\">a</a></li><li><a href=\"#\" data-script=\"x_1\">b</a></li></ol>",
+        "<ol><li><a href=\"#\" data-script=\"jump\">a</a></li><li><a href=\"#\" data-script=\"x_1\">b</a></li></ol>",
+        "<ol><li><a href=\"#\" data-script=\"jump\">a</a></li><li><a href=\"#\" data-script=\"x_1\">b</a></li></ol>",
+        "<ol><li><a href=\"#\" data-script=\"jump\">a</a></li><li><a href=\"#\" data-script=\"x_1\">b</a></li></ol>",
+        "<ol><li><a href=\"#\" data-script=\"jump\">a</a></li><li><a href=\"#\" data-script=\"x_1\">b</a></li></ol>",
+        "<ol><li>a</li><li>b</li></ol>"
+      ]
+    },
+    {
+      "markdown": "- а\n  - б\n- в\n  - г\n    - д\n  - е",
+      "news": "<ul><li>а<ul><li>б</li></ul></li><li>в<ul><li>г<ul><li>д</li></ul></li><li>е</li></ul></li></ul>",
+      "guide": [
+        "<ul><li>а<ul><li>б</li></ul></li><li>в<ul><li>г<ul><li>д</li></ul></li><li>е</li></ul></li></ul>",
+        "<ul><li>а<ul><li>б</li></ul></li><li>в<ul><li>г<ul><li>д</li></ul></li><li>е</li></ul></li></ul>",
+        "<ul><li>а<ul><li>б</li></ul></li><li>в<ul><li>г<ul><li>д</li></ul></li><li>е</li></ul></li></ul>",
+        "<ul><li>а<ul><li>б</li></ul></li><li>в<ul><li>г<ul><li>д</li></ul></li><li>е</li></ul></li></ul>",
+        "<ul><li>а<ul><li>б</li></ul></li><li>в<ul><li>г<ul><li>д</li></ul></li><li>е</li></ul></li></ul>",
+        "<ul><li>а<ul><li>б</li></ul></li><li>в<ul><li>г<ul><li>д</li></ul></li><li>е</li></ul></li></ul>"
+      ]
+    },
+    {
+      "markdown": "  - а\n  - б\n- в",
+      "news": "<ul><li>а</li><li>б</li></ul><ul><li>в</li></ul>",
+      "guide": ["<ul><li>а</li><li>б</li></ul><ul><li>в</li></ul>","<ul><li>а</li><li>б</li></ul><ul><li>в</li></ul>","<ul><li>а</li><li>б</li></ul><ul><li>в</li></ul>","<ul><li>а</li><li>б</li></ul><ul><li>в</li></ul>","<ul><li>а</li><li>б</li></ul><ul><li>в</li></ul>","<ul><li>а</li><li>б</li></ul><ul><li>в</li></ul>"]
+    },
+    {
+      "markdown": "- a\n   - b\n  - c\n - d",
+      "news": "<ul><li>a<ul><li>b</li></ul><ul><li>c</li></ul><ul><li>d</li></ul></li></ul>",
+      "guide": [
+        "<ul><li>a<ul><li>b</li></ul><ul><li>c</li></ul><ul><li>d</li></ul></li></ul>",
+        "<ul><li>a<ul><li>b</li></ul><ul><li>c</li></ul><ul><li>d</li></ul></li></ul>",
+        "<ul><li>a<ul><li>b</li></ul><ul><li>c</li></ul><ul><li>d</li></ul></li></ul>",
+        "<ul><li>a<ul><li>b</li></ul><ul><li>c</li></ul><ul><li>d</li></ul></li></ul>",
+        "<ul><li>a<ul><li>b</li></ul><ul><li>c</li></ul><ul><li>d</li></ul></li></ul>",
+        "<ul><li>a<ul><li>b</li></ul><ul><li>c</li></ul><ul><li>d</li></ul></li></ul>"
+      ]
+    },
+    {
+      "markdown": "- a\n  - b\n - c\n- d",
+      "news": "<ul><li>a<ul><li>b</li></ul><ul><li>c</li></ul></li><li>d</li></ul>",
+      "guide": [
+        "<ul><li>a<ul><li>b</li></ul><ul><li>c</li></ul></li><li>d</li></ul>",
+        "<ul><li>a<ul><li>b</li></ul><ul><li>c</li></ul></li><li>d</li></ul>",
+        "<ul><li>a<ul><li>b</li></ul><ul><li>c</li></ul></li><li>d</li></ul>",
+        "<ul><li>a<ul><li>b</li></ul><ul><li>c</li></ul></li><li>d</li></ul>",
+        "<ul><li>a<ul><li>b</li></ul><ul><li>c</li></ul></li><li>d</li></ul>",
+        "<ul><li>a<ul><li>b</li></ul><ul><li>c</li></ul></li><li>d</li></ul>"
+      ]
+    },
+    {
+      "markdown": "- a\n    - b\n  - c",
+      "news": "<ul><li>a<ul><li>b</li></ul><ul><li>c</li></ul></li></ul>",
+      "guide": ["<ul><li>a<ul><li>b</li></ul><ul><li>c</li></ul></li></ul>","<ul><li>a<ul><li>b</li></ul><ul><li>c</li></ul></li></ul>","<ul><li>a<ul><li>b</li></ul><ul><li>c</li></ul></li></ul>","<ul><li>a<ul><li>b</li></ul><ul><li>c</li></ul></li></ul>","<ul><li>a<ul><li>b</li></ul><ul><li>c</li></ul></li></ul>","<ul><li>a<ul><li>b</li></ul><ul><li>c</li></ul></li></ul>"]
+    },
+    {
+      "markdown": "- a\n  - b\n    - c\n  - d\n- e",
+      "news": "<ul><li>a<ul><li>b<ul><li>c</li></ul></li><li>d</li></ul></li><li>e</li></ul>",
+      "guide": [
+        "<ul><li>a<ul><li>b<ul><li>c</li></ul></li><li>d</li></ul></li><li>e</li></ul>",
+        "<ul><li>a<ul><li>b<ul><li>c</li></ul></li><li>d</li></ul></li><li>e</li></ul>",
+        "<ul><li>a<ul><li>b<ul><li>c</li></ul></li><li>d</li></ul></li><li>e</li></ul>",
+        "<ul><li>a<ul><li>b<ul><li>c</li></ul></li><li>d</li></ul></li><li>e</li></ul>",
+        "<ul><li>a<ul><li>b<ul><li>c</li></ul></li><li>d</li></ul></li><li>e</li></ul>",
+        "<ul><li>a<ul><li>b<ul><li>c</li></ul></li><li>d</li></ul></li><li>e</li></ul>"
+      ]
+    },
+    {"markdown":"- а","news":"<ul><li>а</li></ul>","guide":["<ul><li>а</li></ul>","<ul><li>а</li></ul>","<ul><li>а</li></ul>","<ul><li>а</li></ul>","<ul><li>а</li></ul>","<ul><li>а</li></ul>"]},
+    {"markdown":"-  а","news":"<ul><li>а</li></ul>","guide":["<ul><li>а</li></ul>","<ul><li>а</li></ul>","<ul><li>а</li></ul>","<ul><li>а</li></ul>","<ul><li>а</li></ul>","<ul><li>а</li></ul>"]},
+    {"markdown":" - а","news":"<ul><li>а</li></ul>","guide":["<ul><li>а</li></ul>","<ul><li>а</li></ul>","<ul><li>а</li></ul>","<ul><li>а</li></ul>","<ul><li>а</li></ul>","<ul><li>а</li></ul>"]},
+    {"markdown":"-а","news":"<p>-а</p>","guide":["<p>-а</p>","<p>-а</p>","<p>-а</p>","<p>-а</p>","<p>-а</p>","<p>-а</p>"]},
+    {"markdown":"- а б","news":"<p>- а б</p>","guide":["<p>- а б</p>","<p>- а б</p>","<p>- а б</p>","<p>- а б</p>","<p>- а б</p>","<p>- а б</p>"]},
+    {"markdown":"- а\rб","news":"<p>- а\rб</p>","guide":["<p>- а\rб</p>","<p>- а\rб</p>","<p>- а\rб</p>","<p>- а\rб</p>","<p>- а\rб</p>","<p>- а\rб</p>"]},
+    {
+      "markdown": "3. а\n  1. б\n  2. в\n4. г",
+      "news": "<ol start=\"3\"><li>а<ol><li>б</li><li>в</li></ol></li><li>г</li></ol>",
+      "guide": [
+        "<ol start=\"3\"><li>а<ol><li>б</li><li>в</li></ol></li><li>г</li></ol>",
+        "<ol start=\"3\"><li>а<ol><li>б</li><li>в</li></ol></li><li>г</li></ol>",
+        "<ol start=\"3\"><li>а<ol><li>б</li><li>в</li></ol></li><li>г</li></ol>",
+        "<ol start=\"3\"><li>а<ol><li>б</li><li>в</li></ol></li><li>г</li></ol>",
+        "<ol start=\"3\"><li>а<ol><li>б</li><li>в</li></ol></li><li>г</li></ol>",
+        "<ol start=\"3\"><li>а<ol><li>б</li><li>в</li></ol></li><li>г</li></ol>"
+      ]
+    },
+    {
+      "markdown": "1. а\n 1. б\n1. в",
+      "news": "<ol><li>а<ol><li>б</li></ol></li><li>в</li></ol>",
+      "guide": ["<ol><li>а<ol><li>б</li></ol></li><li>в</li></ol>","<ol><li>а<ol><li>б</li></ol></li><li>в</li></ol>","<ol><li>а<ol><li>б</li></ol></li><li>в</li></ol>","<ol><li>а<ol><li>б</li></ol></li><li>в</li></ol>","<ol><li>а<ol><li>б</li></ol></li><li>в</li></ol>","<ol><li>а<ol><li>б</li></ol></li><li>в</li></ol>"]
+    },
+    {"markdown":"```\nкод\n```","news":"<pre><code>код</code></pre>","guide":["<pre><code>код</code></pre>","<pre><code>код</code></pre>","<pre><code>код</code></pre>","<pre><code>код</code></pre>","<pre><code>код</code></pre>","<pre><code>код</code></pre>"]},
+    {"markdown":"```\n  отступ\n    два\n```","news":"<pre><code>  отступ\n    два</code></pre>","guide":["<pre><code>отступ\nдва</code></pre>","<pre><code>отступ\nдва</code></pre>","<pre><code>  отступ\n    два</code></pre>","<pre><code>  отступ\n    два</code></pre>","<pre><code>отступ\nдва</code></pre>","<pre><code>отступ\nдва</code></pre>"]},
+    {"markdown":"```js\nvar x = 1;\n```","news":"<pre><code>var x = 1;</code></pre>","guide":["<pre><code>var x = 1;</code></pre>","<pre><code>var x = 1;</code></pre>","<pre><code>var x = 1;</code></pre>","<pre><code>var x = 1;</code></pre>","<pre><code>var x = 1;</code></pre>","<pre><code>var x = 1;</code></pre>"]},
+    {"markdown":"   ```\nкод\n   ```","news":"<pre><code>код</code></pre>","guide":["<pre><code>код</code></pre>","<pre><code>код</code></pre>","<pre><code>код</code></pre>","<pre><code>код</code></pre>","<pre><code>код</code></pre>","<pre><code>код</code></pre>"]},
+    {"markdown":"```\nне закрыт","news":"<pre><code>не закрыт</code></pre>","guide":["<pre><code>не закрыт</code></pre>","<pre><code>не закрыт</code></pre>","<pre><code>не закрыт</code></pre>","<pre><code>не закрыт</code></pre>","<pre><code>не закрыт</code></pre>","<pre><code>не закрыт</code></pre>"]},
+    {"markdown":"```\n```","news":"<pre><code></code></pre>","guide":["<pre><code></code></pre>","<pre><code></code></pre>","<pre><code></code></pre>","<pre><code></code></pre>","<pre><code></code></pre>","<pre><code></code></pre>"]},
+    {"markdown":"```","news":"<pre><code></code></pre>","guide":["<pre><code></code></pre>","<pre><code></code></pre>","<pre><code></code></pre>","<pre><code></code></pre>","<pre><code></code></pre>","<pre><code></code></pre>"]},
+    {"markdown":"``````","news":"<pre><code></code></pre>","guide":["<pre><code></code></pre>","<pre><code></code></pre>","<pre><code></code></pre>","<pre><code></code></pre>","<pre><code></code></pre>","<pre><code></code></pre>"]},
+    {"markdown":"```\n\n\n```","news":"<pre><code>\n</code></pre>","guide":["<pre><code>\n</code></pre>","<pre><code>\n</code></pre>","<pre><code>\n</code></pre>","<pre><code>\n</code></pre>","<pre><code>\n</code></pre>","<pre><code>\n</code></pre>"]},
+    {
+      "markdown": "```\n<b>&</b>\n```",
+      "news": "<pre><code>&lt;b&gt;&amp;&lt;/b&gt;</code></pre>",
+      "guide": ["<pre><code>&lt;b&gt;&amp;&lt;/b&gt;</code></pre>","<pre><code>&lt;b&gt;&amp;&lt;/b&gt;</code></pre>","<pre><code>&lt;b&gt;&amp;&lt;/b&gt;</code></pre>","<pre><code>&lt;b&gt;&amp;&lt;/b&gt;</code></pre>","<pre><code>&lt;b&gt;&amp;&lt;/b&gt;</code></pre>","<pre><code>&lt;b&gt;&amp;&lt;/b&gt;</code></pre>"]
+    },
+    {
+      "markdown": "текст\n```\nкод\n```\nтекст",
+      "news": "<p>текст</p><pre><code>код</code></pre><p>текст</p>",
+      "guide": ["<p>текст</p><pre><code>код</code></pre><p>текст</p>","<p>текст</p><pre><code>код</code></pre><p>текст</p>","<p>текст</p><pre><code>код</code></pre><p>текст</p>","<p>текст</p><pre><code>код</code></pre><p>текст</p>","<p>текст</p><pre><code>код</code></pre><p>текст</p>","<p>текст</p><pre><code>код</code></pre><p>текст</p>"]
+    },
+    {"markdown":"текст```не блок```","news":"<p>текст``<code>не блок</code>``</p>","guide":["<p>текст``<code>не блок</code>``</p>","<p>текст``<code>не блок</code>``</p>","<p>текст``<code>не блок</code>``</p>","<p>текст``<code>не блок</code>``</p>","<p>текст``<code>не блок</code>``</p>","<p>текст``<code>не блок</code>``</p>"]},
+    {"markdown":"  ```\n  код с отступом\n  ```","news":"<pre><code>  код с отступом</code></pre>","guide":["<pre><code>код с отступом</code></pre>","<pre><code>код с отступом</code></pre>","<pre><code>  код с отступом</code></pre>","<pre><code>  код с отступом</code></pre>","<pre><code>код с отступом</code></pre>","<pre><code>код с отступом</code></pre>"]},
+    {"markdown":"```\n\tтаб\n```","news":"<pre><code>\tтаб</code></pre>","guide":["<pre><code>таб</code></pre>","<pre><code>таб</code></pre>","<pre><code>\tтаб</code></pre>","<pre><code>\tтаб</code></pre>","<pre><code>таб</code></pre>","<pre><code>таб</code></pre>"]},
+    {"markdown":"```\nкод\r\nдва\r\n```","news":"<pre><code>код\nдва</code></pre>","guide":["<pre><code>код\nдва</code></pre>","<pre><code>код\nдва</code></pre>","<pre><code>код\nдва</code></pre>","<pre><code>код\nдва</code></pre>","<pre><code>код\nдва</code></pre>","<pre><code>код\nдва</code></pre>"]},
+    {"markdown":"```\n  код  \n```","news":"<pre><code>  код  </code></pre>","guide":["<pre><code>код</code></pre>","<pre><code>код</code></pre>","<pre><code>  код  </code></pre>","<pre><code>  код  </code></pre>","<pre><code>код</code></pre>","<pre><code>код</code></pre>"]},
+    {"markdown":"~~~\nне блок\n~~~","news":"<p>~~~<br>не блок<br>~~~</p>","guide":["<p>~~~<br>не блок<br>~~~</p>","<p>~~~<br>не блок<br>~~~</p>","<p>~~~<br>не блок<br>~~~</p>","<p>~~~<br>не блок<br>~~~</p>","<p>~~~<br>не блок<br>~~~</p>","<p>~~~<br>не блок<br>~~~</p>"]},
+    {"markdown":"```\nодин\n``` текст\nдва","news":"<pre><code>один</code></pre><p>два</p>","guide":["<pre><code>один</code></pre><p>два</p>","<pre><code>один</code></pre><p>два</p>","<pre><code>один</code></pre><p>два</p>","<pre><code>один</code></pre><p>два</p>","<pre><code>один</code></pre><p>два</p>","<pre><code>один</code></pre><p>два</p>"]},
+    {"markdown":"```\nодин\n```текст\nдва","news":"<pre><code>один</code></pre><p>два</p>","guide":["<pre><code>один</code></pre><p>два</p>","<pre><code>один</code></pre><p>два</p>","<pre><code>один</code></pre><p>два</p>","<pre><code>один</code></pre><p>два</p>","<pre><code>один</code></pre><p>два</p>","<pre><code>один</code></pre><p>два</p>"]},
+    {"markdown":" ```\nкод\n```","news":"<pre><code>код</code></pre>","guide":["<pre><code>код</code></pre>","<pre><code>код</code></pre>","<pre><code>код</code></pre>","<pre><code>код</code></pre>","<pre><code>код</code></pre>","<pre><code>код</code></pre>"]},
+    {"markdown":"﻿```\nкод\n```","news":"<pre><code>код</code></pre>","guide":["<pre><code>код</code></pre>","<pre><code>код</code></pre>","<pre><code>код</code></pre>","<pre><code>код</code></pre>","<pre><code>код</code></pre>","<pre><code>код</code></pre>"]},
+    {"markdown":"`код`","news":"<p><code>код</code></p>","guide":["<p><code>код</code></p>","<p><code>код</code></p>","<p><code>код</code></p>","<p><code>код</code></p>","<p><code>код</code></p>","<p><code>код</code></p>"]},
+    {"markdown":"``код``","news":"<p>`<code>код</code>`</p>","guide":["<p>`<code>код</code>`</p>","<p>`<code>код</code>`</p>","<p>`<code>код</code>`</p>","<p>`<code>код</code>`</p>","<p>`<code>код</code>`</p>","<p>`<code>код</code>`</p>"]},
+    {"markdown":"`a` `b`","news":"<p><code>a</code> <code>b</code></p>","guide":["<p><code>a</code> <code>b</code></p>","<p><code>a</code> <code>b</code></p>","<p><code>a</code> <code>b</code></p>","<p><code>a</code> <code>b</code></p>","<p><code>a</code> <code>b</code></p>","<p><code>a</code> <code>b</code></p>"]},
+    {"markdown":"`a`b`c`","news":"<p><code>a</code>b<code>c</code></p>","guide":["<p><code>a</code>b<code>c</code></p>","<p><code>a</code>b<code>c</code></p>","<p><code>a</code>b<code>c</code></p>","<p><code>a</code>b<code>c</code></p>","<p><code>a</code>b<code>c</code></p>","<p><code>a</code>b<code>c</code></p>"]},
+    {"markdown":"`` ` ``","news":"<p>`<code> </code> ``</p>","guide":["<p>`<code> </code> ``</p>","<p>`<code> </code> ``</p>","<p>`<code> </code> ``</p>","<p>`<code> </code> ``</p>","<p>`<code> </code> ``</p>","<p>`<code> </code> ``</p>"]},
+    {"markdown":"`","news":"<p>`</p>","guide":["<p>`</p>","<p>`</p>","<p>`</p>","<p>`</p>","<p>`</p>","<p>`</p>"]},
+    {"markdown":"``","news":"<p>``</p>","guide":["<p>``</p>","<p>``</p>","<p>``</p>","<p>``</p>","<p>``</p>","<p>``</p>"]},
+    {"markdown":"`не закрыт","news":"<p>`не закрыт</p>","guide":["<p>`не закрыт</p>","<p>`не закрыт</p>","<p>`не закрыт</p>","<p>`не закрыт</p>","<p>`не закрыт</p>","<p>`не закрыт</p>"]},
+    {"markdown":"`<b>&</b>`","news":"<p><code>&lt;b&gt;&amp;&lt;/b&gt;</code></p>","guide":["<p><code>&lt;b&gt;&amp;&lt;/b&gt;</code></p>","<p><code>&lt;b&gt;&amp;&lt;/b&gt;</code></p>","<p><code>&lt;b&gt;&amp;&lt;/b&gt;</code></p>","<p><code>&lt;b&gt;&amp;&lt;/b&gt;</code></p>","<p><code>&lt;b&gt;&amp;&lt;/b&gt;</code></p>","<p><code>&lt;b&gt;&amp;&lt;/b&gt;</code></p>"]},
+    {"markdown":"`  пробелы  `","news":"<p><code>  пробелы  </code></p>","guide":["<p><code>  пробелы  </code></p>","<p><code>  пробелы  </code></p>","<p><code>  пробелы  </code></p>","<p><code>  пробелы  </code></p>","<p><code>  пробелы  </code></p>","<p><code>  пробелы  </code></p>"]},
+    {"markdown":"`a\nb`","news":"<p>`a<br>b`</p>","guide":["<p>`a<br>b`</p>","<p>`a<br>b`</p>","<p>`a<br>b`</p>","<p>`a<br>b`</p>","<p>`a<br>b`</p>","<p>`a<br>b`</p>"]},
+    {"markdown":"`**не жирный**`","news":"<p><code>**не жирный**</code></p>","guide":["<p><code>**не жирный**</code></p>","<p><code>**не жирный**</code></p>","<p><code>**не жирный**</code></p>","<p><code>**не жирный**</code></p>","<p><code>**не жирный**</code></p>","<p><code>**не жирный**</code></p>"]},
+    {"markdown":"**жирный**","news":"<p><strong>жирный</strong></p>","guide":["<p><strong>жирный</strong></p>","<p><strong>жирный</strong></p>","<p><strong>жирный</strong></p>","<p><strong>жирный</strong></p>","<p><strong>жирный</strong></p>","<p><strong>жирный</strong></p>"]},
+    {"markdown":"**а** **б**","news":"<p><strong>а</strong> <strong>б</strong></p>","guide":["<p><strong>а</strong> <strong>б</strong></p>","<p><strong>а</strong> <strong>б</strong></p>","<p><strong>а</strong> <strong>б</strong></p>","<p><strong>а</strong> <strong>б</strong></p>","<p><strong>а</strong> <strong>б</strong></p>","<p><strong>а</strong> <strong>б</strong></p>"]},
+    {"markdown":"**а*б**","news":"<p><strong>а*б</strong></p>","guide":["<p><strong>а*б</strong></p>","<p><strong>а*б</strong></p>","<p><strong>а*б</strong></p>","<p><strong>а*б</strong></p>","<p><strong>а*б</strong></p>","<p><strong>а*б</strong></p>"]},
+    {"markdown":"***тройной***","news":"<p><strong>*тройной</strong>*</p>","guide":["<p><strong>*тройной</strong>*</p>","<p><strong>*тройной</strong>*</p>","<p><strong>*тройной</strong>*</p>","<p><strong>*тройной</strong>*</p>","<p><strong>*тройной</strong>*</p>","<p><strong>*тройной</strong>*</p>"]},
+    {"markdown":"****","news":"<p><em>**</em></p>","guide":["<p><em>**</em></p>","<p><em>**</em></p>","<p><em>**</em></p>","<p><em>**</em></p>","<p><em>**</em></p>","<p><em>**</em></p>"]},
+    {"markdown":"**","news":"<p>**</p>","guide":["<p>**</p>","<p>**</p>","<p>**</p>","<p>**</p>","<p>**</p>","<p>**</p>"]},
+    {"markdown":"** а **","news":"<p><strong> а </strong></p>","guide":["<p><strong> а </strong></p>","<p><strong> а </strong></p>","<p><strong> а </strong></p>","<p><strong> а </strong></p>","<p><strong> а </strong></p>","<p><strong> а </strong></p>"]},
+    {"markdown":"**не закрыт","news":"<p>**не закрыт</p>","guide":["<p>**не закрыт</p>","<p>**не закрыт</p>","<p>**не закрыт</p>","<p>**не закрыт</p>","<p>**не закрыт</p>","<p>**не закрыт</p>"]},
+    {"markdown":"а**б**в","news":"<p>а<strong>б</strong>в</p>","guide":["<p>а<strong>б</strong>в</p>","<p>а<strong>б</strong>в</p>","<p>а<strong>б</strong>в</p>","<p>а<strong>б</strong>в</p>","<p>а<strong>б</strong>в</p>","<p>а<strong>б</strong>в</p>"]},
+    {
+      "markdown": "**жирный *курсив* внутри**",
+      "news": "<p><strong>жирный <em>курсив</em> внутри</strong></p>",
+      "guide": ["<p><strong>жирный <em>курсив</em> внутри</strong></p>","<p><strong>жирный <em>курсив</em> внутри</strong></p>","<p><strong>жирный <em>курсив</em> внутри</strong></p>","<p><strong>жирный <em>курсив</em> внутри</strong></p>","<p><strong>жирный <em>курсив</em> внутри</strong></p>","<p><strong>жирный <em>курсив</em> внутри</strong></p>"]
+    },
+    {"markdown":"**1** и **2**","news":"<p><strong>1</strong> и <strong>2</strong></p>","guide":["<p><strong>1</strong> и <strong>2</strong></p>","<p><strong>1</strong> и <strong>2</strong></p>","<p><strong>1</strong> и <strong>2</strong></p>","<p><strong>1</strong> и <strong>2</strong></p>","<p><strong>1</strong> и <strong>2</strong></p>","<p><strong>1</strong> и <strong>2</strong></p>"]},
+    {"markdown":"**a\nb**","news":"<p>**a<br>b**</p>","guide":["<p>**a<br>b**</p>","<p>**a<br>b**</p>","<p>**a<br>b**</p>","<p>**a<br>b**</p>","<p>**a<br>b**</p>","<p>**a<br>b**</p>"]},
+    {"markdown":"**a b**","news":"<p>**a b**</p>","guide":["<p>**a b**</p>","<p>**a b**</p>","<p>**a b**</p>","<p>**a b**</p>","<p>**a b**</p>","<p>**a b**</p>"]},
+    {"markdown":"*курсив*","news":"<p><em>курсив</em></p>","guide":["<p><em>курсив</em></p>","<p><em>курсив</em></p>","<p><em>курсив</em></p>","<p><em>курсив</em></p>","<p><em>курсив</em></p>","<p><em>курсив</em></p>"]},
+    {"markdown":"*а* *б*","news":"<p><em>а</em> <em>б</em></p>","guide":["<p><em>а</em> <em>б</em></p>","<p><em>а</em> <em>б</em></p>","<p><em>а</em> <em>б</em></p>","<p><em>а</em> <em>б</em></p>","<p><em>а</em> <em>б</em></p>","<p><em>а</em> <em>б</em></p>"]},
+    {"markdown":"а *б* в","news":"<p>а <em>б</em> в</p>","guide":["<p>а <em>б</em> в</p>","<p>а <em>б</em> в</p>","<p>а <em>б</em> в</p>","<p>а <em>б</em> в</p>","<p>а <em>б</em> в</p>","<p>а <em>б</em> в</p>"]},
+    {"markdown":"(*скобки*)","news":"<p>(<em>скобки</em>)</p>","guide":["<p>(<em>скобки</em>)</p>","<p>(<em>скобки</em>)</p>","<p>(<em>скобки</em>)</p>","<p>(<em>скобки</em>)</p>","<p>(<em>скобки</em>)</p>","<p>(<em>скобки</em>)</p>"]},
+    {"markdown":"(*скобки* и текст)","news":"<p>(<em>скобки</em> и текст)</p>","guide":["<p>(<em>скобки</em> и текст)</p>","<p>(<em>скобки</em> и текст)</p>","<p>(<em>скобки</em> и текст)</p>","<p>(<em>скобки</em> и текст)</p>","<p>(<em>скобки</em> и текст)</p>","<p>(<em>скобки</em> и текст)</p>"]},
+    {"markdown":"x*y*z","news":"<p>x*y*z</p>","guide":["<p>x*y*z</p>","<p>x*y*z</p>","<p>x*y*z</p>","<p>x*y*z</p>","<p>x*y*z</p>","<p>x*y*z</p>"]},
+    {"markdown":"x *y*z","news":"<p>x *y*z</p>","guide":["<p>x *y*z</p>","<p>x *y*z</p>","<p>x *y*z</p>","<p>x *y*z</p>","<p>x *y*z</p>","<p>x *y*z</p>"]},
+    {"markdown":"x*y* z","news":"<p>x*y* z</p>","guide":["<p>x*y* z</p>","<p>x*y* z</p>","<p>x*y* z</p>","<p>x*y* z</p>","<p>x*y* z</p>","<p>x*y* z</p>"]},
+    {"markdown":"*y*z","news":"<p>*y*z</p>","guide":["<p>*y*z</p>","<p>*y*z</p>","<p>*y*z</p>","<p>*y*z</p>","<p>*y*z</p>","<p>*y*z</p>"]},
+    {"markdown":"*y*.","news":"<p><em>y</em>.</p>","guide":["<p><em>y</em>.</p>","<p><em>y</em>.</p>","<p><em>y</em>.</p>","<p><em>y</em>.</p>","<p><em>y</em>.</p>","<p><em>y</em>.</p>"]},
+    {"markdown":"*y*,","news":"<p><em>y</em>,</p>","guide":["<p><em>y</em>,</p>","<p><em>y</em>,</p>","<p><em>y</em>,</p>","<p><em>y</em>,</p>","<p><em>y</em>,</p>","<p><em>y</em>,</p>"]},
+    {"markdown":"*y*;","news":"<p><em>y</em>;</p>","guide":["<p><em>y</em>;</p>","<p><em>y</em>;</p>","<p><em>y</em>;</p>","<p><em>y</em>;</p>","<p><em>y</em>;</p>","<p><em>y</em>;</p>"]},
+    {"markdown":"*y*:","news":"<p><em>y</em>:</p>","guide":["<p><em>y</em>:</p>","<p><em>y</em>:</p>","<p><em>y</em>:</p>","<p><em>y</em>:</p>","<p><em>y</em>:</p>","<p><em>y</em>:</p>"]},
+    {"markdown":"*y*!","news":"<p><em>y</em>!</p>","guide":["<p><em>y</em>!</p>","<p><em>y</em>!</p>","<p><em>y</em>!</p>","<p><em>y</em>!</p>","<p><em>y</em>!</p>","<p><em>y</em>!</p>"]},
+    {"markdown":"*y*?","news":"<p><em>y</em>?</p>","guide":["<p><em>y</em>?</p>","<p><em>y</em>?</p>","<p><em>y</em>?</p>","<p><em>y</em>?</p>","<p><em>y</em>?</p>","<p><em>y</em>?</p>"]},
+    {"markdown":"*y*)","news":"<p><em>y</em>)</p>","guide":["<p><em>y</em>)</p>","<p><em>y</em>)</p>","<p><em>y</em>)</p>","<p><em>y</em>)</p>","<p><em>y</em>)</p>","<p><em>y</em>)</p>"]},
+    {"markdown":"*y*(","news":"<p>*y*(</p>","guide":["<p>*y*(</p>","<p>*y*(</p>","<p>*y*(</p>","<p>*y*(</p>","<p>*y*(</p>","<p>*y*(</p>"]},
+    {"markdown":"*y*-","news":"<p>*y*-</p>","guide":["<p>*y*-</p>","<p>*y*-</p>","<p>*y*-</p>","<p>*y*-</p>","<p>*y*-</p>","<p>*y*-</p>"]},
+    {"markdown":"*y*\"","news":"<p>*y*&quot;</p>","guide":["<p>*y*&quot;</p>","<p>*y*&quot;</p>","<p>*y*&quot;</p>","<p>*y*&quot;</p>","<p>*y*&quot;</p>","<p>*y*&quot;</p>"]},
+    {"markdown":"*y*'","news":"<p>*y*&#39;</p>","guide":["<p>*y*&#39;</p>","<p>*y*&#39;</p>","<p>*y*&#39;</p>","<p>*y*&#39;</p>","<p>*y*&#39;</p>","<p>*y*&#39;</p>"]},
+    {"markdown":"* пробел после *","news":"<ul><li>пробел после *</li></ul>","guide":["<ul><li>пробел после *</li></ul>","<ul><li>пробел после *</li></ul>","<ul><li>пробел после *</li></ul>","<ul><li>пробел после *</li></ul>","<ul><li>пробел после *</li></ul>","<ul><li>пробел после *</li></ul>"]},
+    {"markdown":"*пробел *","news":"<p><em>пробел </em></p>","guide":["<p><em>пробел </em></p>","<p><em>пробел </em></p>","<p><em>пробел </em></p>","<p><em>пробел </em></p>","<p><em>пробел </em></p>","<p><em>пробел </em></p>"]},
+    {"markdown":"* a*","news":"<ul><li>a*</li></ul>","guide":["<ul><li>a*</li></ul>","<ul><li>a*</li></ul>","<ul><li>a*</li></ul>","<ul><li>a*</li></ul>","<ul><li>a*</li></ul>","<ul><li>a*</li></ul>"]},
+    {"markdown":"*a *","news":"<p><em>a </em></p>","guide":["<p><em>a </em></p>","<p><em>a </em></p>","<p><em>a </em></p>","<p><em>a </em></p>","<p><em>a </em></p>","<p><em>a </em></p>"]},
+    {"markdown":"*a*b*","news":"<p><em>a*b</em></p>","guide":["<p><em>a*b</em></p>","<p><em>a*b</em></p>","<p><em>a*b</em></p>","<p><em>a*b</em></p>","<p><em>a*b</em></p>","<p><em>a*b</em></p>"]},
+    {"markdown":"*a**b*","news":"<p><em>a**b</em></p>","guide":["<p><em>a**b</em></p>","<p><em>a**b</em></p>","<p><em>a**b</em></p>","<p><em>a**b</em></p>","<p><em>a**b</em></p>","<p><em>a**b</em></p>"]},
+    {"markdown":"**a*b*c**","news":"<p><strong>a*b*c</strong></p>","guide":["<p><strong>a*b*c</strong></p>","<p><strong>a*b*c</strong></p>","<p><strong>a*b*c</strong></p>","<p><strong>a*b*c</strong></p>","<p><strong>a*b*c</strong></p>","<p><strong>a*b*c</strong></p>"]},
+    {"markdown":"*а*\n*б*","news":"<p><em>а</em><br><em>б</em></p>","guide":["<p><em>а</em><br><em>б</em></p>","<p><em>а</em><br><em>б</em></p>","<p><em>а</em><br><em>б</em></p>","<p><em>а</em><br><em>б</em></p>","<p><em>а</em><br><em>б</em></p>","<p><em>а</em><br><em>б</em></p>"]},
+    {
+      "markdown": "[*а*](https://example.com)",
+      "news": "<p><a href=\"#\" data-href=\"https://example.com\"><em>а</em></a></p>",
+      "guide": [
+        "<p><a href=\"#\" data-href=\"https://example.com\"><em>а</em></a></p>",
+        "<p><a href=\"#\" data-href=\"https://example.com\"><em>а</em></a></p>",
+        "<p><a href=\"#\" data-href=\"https://example.com\"><em>а</em></a></p>",
+        "<p><a href=\"#\" data-href=\"https://example.com\"><em>а</em></a></p>",
+        "<p><a href=\"#\" data-href=\"https://example.com\"><em>а</em></a></p>",
+        "<p><a href=\"#\" data-href=\"https://example.com\"><em>а</em></a></p>"
+      ]
+    },
+    {
+      "markdown": "*[а](https://example.com)*",
+      "news": "<p><em><a href=\"#\" data-href=\"https://example.com\">а</a></em></p>",
+      "guide": [
+        "<p><em><a href=\"#\" data-href=\"https://example.com\">а</a></em></p>",
+        "<p><em><a href=\"#\" data-href=\"https://example.com\">а</a></em></p>",
+        "<p><em><a href=\"#\" data-href=\"https://example.com\">а</a></em></p>",
+        "<p><em><a href=\"#\" data-href=\"https://example.com\">а</a></em></p>",
+        "<p><em><a href=\"#\" data-href=\"https://example.com\">а</a></em></p>",
+        "<p><em><a href=\"#\" data-href=\"https://example.com\">а</a></em></p>"
+      ]
+    },
+    {"markdown":"а *б*","news":"<p>а <em>б</em></p>","guide":["<p>а <em>б</em></p>","<p>а <em>б</em></p>","<p>а <em>б</em></p>","<p>а <em>б</em></p>","<p>а <em>б</em></p>","<p>а <em>б</em></p>"]},
+    {"markdown":"а *б*","news":"<p>а <em>б</em></p>","guide":["<p>а <em>б</em></p>","<p>а <em>б</em></p>","<p>а <em>б</em></p>","<p>а <em>б</em></p>","<p>а <em>б</em></p>","<p>а <em>б</em></p>"]},
+    {"markdown":"а﻿*б*","news":"<p>а﻿<em>б</em></p>","guide":["<p>а﻿<em>б</em></p>","<p>а﻿<em>б</em></p>","<p>а﻿<em>б</em></p>","<p>а﻿<em>б</em></p>","<p>а﻿<em>б</em></p>","<p>а﻿<em>б</em></p>"]},
+    {"markdown":"а*б*","news":"<p>а*б*</p>","guide":["<p>а*б*</p>","<p>а*б*</p>","<p>а*б*</p>","<p>а*б*</p>","<p>а*б*</p>","<p>а*б*</p>"]},
+    {"markdown":"а\t*б*","news":"<p>а\t<em>б</em></p>","guide":["<p>а\t<em>б</em></p>","<p>а\t<em>б</em></p>","<p>а\t<em>б</em></p>","<p>а\t<em>б</em></p>","<p>а\t<em>б</em></p>","<p>а\t<em>б</em></p>"]},
+    {"markdown":"а\n*б*","news":"<p>а<br><em>б</em></p>","guide":["<p>а<br><em>б</em></p>","<p>а<br><em>б</em></p>","<p>а<br><em>б</em></p>","<p>а<br><em>б</em></p>","<p>а<br><em>б</em></p>","<p>а<br><em>б</em></p>"]},
+    {"markdown":"(**жирный**)","news":"<p>(<strong>жирный</strong>)</p>","guide":["<p>(<strong>жирный</strong>)</p>","<p>(<strong>жирный</strong>)</p>","<p>(<strong>жирный</strong>)</p>","<p>(<strong>жирный</strong>)</p>","<p>(<strong>жирный</strong>)</p>","<p>(<strong>жирный</strong>)</p>"]},
+    {"markdown":"**а**(**б**)","news":"<p><strong>а</strong>(<strong>б</strong>)</p>","guide":["<p><strong>а</strong>(<strong>б</strong>)</p>","<p><strong>а</strong>(<strong>б</strong>)</p>","<p><strong>а</strong>(<strong>б</strong>)</p>","<p><strong>а</strong>(<strong>б</strong>)</p>","<p><strong>а</strong>(<strong>б</strong>)</p>","<p><strong>а</strong>(<strong>б</strong>)</p>"]},
+    {"markdown":"*а* *б* *в*","news":"<p><em>а</em> <em>б</em> <em>в</em></p>","guide":["<p><em>а</em> <em>б</em> <em>в</em></p>","<p><em>а</em> <em>б</em> <em>в</em></p>","<p><em>а</em> <em>б</em> <em>в</em></p>","<p><em>а</em> <em>б</em> <em>в</em></p>","<p><em>а</em> <em>б</em> <em>в</em></p>","<p><em>а</em> <em>б</em> <em>в</em></p>"]},
+    {"markdown":"2 * 3 * 4","news":"<p>2 * 3 * 4</p>","guide":["<p>2 * 3 * 4</p>","<p>2 * 3 * 4</p>","<p>2 * 3 * 4</p>","<p>2 * 3 * 4</p>","<p>2 * 3 * 4</p>","<p>2 * 3 * 4</p>"]},
+    {"markdown":"2*3*4","news":"<p>2*3*4</p>","guide":["<p>2*3*4</p>","<p>2*3*4</p>","<p>2*3*4</p>","<p>2*3*4</p>","<p>2*3*4</p>","<p>2*3*4</p>"]},
+    {"markdown":"a * b","news":"<p>a * b</p>","guide":["<p>a * b</p>","<p>a * b</p>","<p>a * b</p>","<p>a * b</p>","<p>a * b</p>","<p>a * b</p>"]},
+    {"markdown":"*","news":"<p>*</p>","guide":["<p>*</p>","<p>*</p>","<p>*</p>","<p>*</p>","<p>*</p>","<p>*</p>"]},
+    {"markdown":"* *","news":"<ul><li>*</li></ul>","guide":["<ul><li>*</li></ul>","<ul><li>*</li></ul>","<ul><li>*</li></ul>","<ul><li>*</li></ul>","<ul><li>*</li></ul>","<ul><li>*</li></ul>"]},
+    {
+      "markdown": "**a** *b* `c`",
+      "news": "<p><strong>a</strong> <em>b</em> <code>c</code></p>",
+      "guide": ["<p><strong>a</strong> <em>b</em> <code>c</code></p>","<p><strong>a</strong> <em>b</em> <code>c</code></p>","<p><strong>a</strong> <em>b</em> <code>c</code></p>","<p><strong>a</strong> <em>b</em> <code>c</code></p>","<p><strong>a</strong> <em>b</em> <code>c</code></p>","<p><strong>a</strong> <em>b</em> <code>c</code></p>"]
+    },
+    {"markdown":"*`код`*","news":"<p><em><code>код</code></em></p>","guide":["<p><em><code>код</code></em></p>","<p><em><code>код</code></em></p>","<p><em><code>код</code></em></p>","<p><em><code>код</code></em></p>","<p><em><code>код</code></em></p>","<p><em><code>код</code></em></p>"]},
+    {"markdown":"**`код`**","news":"<p><strong><code>код</code></strong></p>","guide":["<p><strong><code>код</code></strong></p>","<p><strong><code>код</code></strong></p>","<p><strong><code>код</code></strong></p>","<p><strong><code>код</code></strong></p>","<p><strong><code>код</code></strong></p>","<p><strong><code>код</code></strong></p>"]},
+    {"markdown":"`*a*`","news":"<p><code>*a*</code></p>","guide":["<p><code>*a*</code></p>","<p><code>*a*</code></p>","<p><code>*a*</code></p>","<p><code>*a*</code></p>","<p><code>*a*</code></p>","<p><code>*a*</code></p>"]},
+    {
+      "markdown": "[ссылка](https://example.com)",
+      "news": "<p><a href=\"#\" data-href=\"https://example.com\">ссылка</a></p>",
+      "guide": [
+        "<p><a href=\"#\" data-href=\"https://example.com\">ссылка</a></p>",
+        "<p><a href=\"#\" data-href=\"https://example.com\">ссылка</a></p>",
+        "<p><a href=\"#\" data-href=\"https://example.com\">ссылка</a></p>",
+        "<p><a href=\"#\" data-href=\"https://example.com\">ссылка</a></p>",
+        "<p><a href=\"#\" data-href=\"https://example.com\">ссылка</a></p>",
+        "<p><a href=\"#\" data-href=\"https://example.com\">ссылка</a></p>"
+      ]
+    },
+    {
+      "markdown": "[ссылка](https://example.com/a?b=c&d=e#f)",
+      "news": "<p><a href=\"#\" data-href=\"https://example.com/a?b=c&amp;d=e#f\">ссылка</a></p>",
+      "guide": [
+        "<p><a href=\"#\" data-href=\"https://example.com/a?b=c&amp;d=e#f\">ссылка</a></p>",
+        "<p><a href=\"#\" data-href=\"https://example.com/a?b=c&amp;d=e#f\">ссылка</a></p>",
+        "<p><a href=\"#\" data-href=\"https://example.com/a?b=c&amp;d=e#f\">ссылка</a></p>",
+        "<p><a href=\"#\" data-href=\"https://example.com/a?b=c&amp;d=e#f\">ссылка</a></p>",
+        "<p><a href=\"#\" data-href=\"https://example.com/a?b=c&amp;d=e#f\">ссылка</a></p>",
+        "<p><a href=\"#\" data-href=\"https://example.com/a?b=c&amp;d=e#f\">ссылка</a></p>"
+      ]
+    },
+    {"markdown":"[ссылка](http://example.com)","news":"<p>ссылка</p>","guide":["<p>ссылка</p>","<p>ссылка</p>","<p>ссылка</p>","<p>ссылка</p>","<p>ссылка</p>","<p>ссылка</p>"]},
+    {"markdown":"[ссылка](javascript:alert(1))","news":"<p>ссылка)</p>","guide":["<p>ссылка)</p>","<p>ссылка)</p>","<p>ссылка)</p>","<p>ссылка)</p>","<p>ссылка)</p>","<p>ссылка)</p>"]},
+    {"markdown":"[ссылка](data:text/html,x)","news":"<p>ссылка</p>","guide":["<p>ссылка</p>","<p>ссылка</p>","<p>ссылка</p>","<p>ссылка</p>","<p>ссылка</p>","<p>ссылка</p>"]},
+    {"markdown":"[ссылка](mailto:a@b.c)","news":"<p>ссылка</p>","guide":["<p>ссылка</p>","<p>ссылка</p>","<p>ссылка</p>","<p>ссылка</p>","<p>ссылка</p>","<p>ссылка</p>"]},
+    {"markdown":"[ссылка](//example.com)","news":"<p>ссылка</p>","guide":["<p>ссылка</p>","<p>ссылка</p>","<p>ссылка</p>","<p>ссылка</p>","<p>ссылка</p>","<p>ссылка</p>"]},
+    {"markdown":"[ссылка](/relative)","news":"<p>ссылка</p>","guide":["<p>ссылка</p>","<p>ссылка</p>","<p>ссылка</p>","<p>ссылка</p>","<p>ссылка</p>","<p>ссылка</p>"]},
+    {"markdown":"[ссылка](relative)","news":"<p>ссылка</p>","guide":["<p>ссылка</p>","<p>ссылка</p>","<p>ссылка</p>","<p>ссылка</p>","<p>ссылка</p>","<p>ссылка</p>"]},
+    {"markdown":"[ссылка](HTTPS://EXAMPLE.COM)","news":"<p>ссылка</p>","guide":["<p>ссылка</p>","<p>ссылка</p>","<p>ссылка</p>","<p>ссылка</p>","<p>ссылка</p>","<p>ссылка</p>"]},
+    {"markdown":"[ссылка](https://)","news":"<p>ссылка</p>","guide":["<p>ссылка</p>","<p>ссылка</p>","<p>ссылка</p>","<p>ссылка</p>","<p>ссылка</p>","<p>ссылка</p>"]},
+    {
+      "markdown": "[ссылка](https://a)",
+      "news": "<p><a href=\"#\" data-href=\"https://a\">ссылка</a></p>",
+      "guide": ["<p><a href=\"#\" data-href=\"https://a\">ссылка</a></p>","<p><a href=\"#\" data-href=\"https://a\">ссылка</a></p>","<p><a href=\"#\" data-href=\"https://a\">ссылка</a></p>","<p><a href=\"#\" data-href=\"https://a\">ссылка</a></p>","<p><a href=\"#\" data-href=\"https://a\">ссылка</a></p>","<p><a href=\"#\" data-href=\"https://a\">ссылка</a></p>"]
+    },
+    {"markdown":"[ссылка](https://a\"b)","news":"<p>ссылка</p>","guide":["<p>ссылка</p>","<p>ссылка</p>","<p>ссылка</p>","<p>ссылка</p>","<p>ссылка</p>","<p>ссылка</p>"]},
+    {"markdown":"[ссылка](https://a'b)","news":"<p>ссылка</p>","guide":["<p>ссылка</p>","<p>ссылка</p>","<p>ссылка</p>","<p>ссылка</p>","<p>ссылка</p>","<p>ссылка</p>"]},
+    {"markdown":"[ссылка](https://a<b)","news":"<p>ссылка</p>","guide":["<p>ссылка</p>","<p>ссылка</p>","<p>ссылка</p>","<p>ссылка</p>","<p>ссылка</p>","<p>ссылка</p>"]},
+    {"markdown":"[ссылка](https://a>b)","news":"<p>ссылка</p>","guide":["<p>ссылка</p>","<p>ссылка</p>","<p>ссылка</p>","<p>ссылка</p>","<p>ссылка</p>","<p>ссылка</p>"]},
+    {
+      "markdown": "[ссылка](https://a&b)",
+      "news": "<p><a href=\"#\" data-href=\"https://a&amp;b\">ссылка</a></p>",
+      "guide": ["<p><a href=\"#\" data-href=\"https://a&amp;b\">ссылка</a></p>","<p><a href=\"#\" data-href=\"https://a&amp;b\">ссылка</a></p>","<p><a href=\"#\" data-href=\"https://a&amp;b\">ссылка</a></p>","<p><a href=\"#\" data-href=\"https://a&amp;b\">ссылка</a></p>","<p><a href=\"#\" data-href=\"https://a&amp;b\">ссылка</a></p>","<p><a href=\"#\" data-href=\"https://a&amp;b\">ссылка</a></p>"]
+    },
+    {"markdown":"[ссылка](https://example.com/ x)","news":"<p>[ссылка](https://example.com/ x)</p>","guide":["<p>[ссылка](https://example.com/ x)</p>","<p>[ссылка](https://example.com/ x)</p>","<p>[ссылка](https://example.com/ x)</p>","<p>[ссылка](https://example.com/ x)</p>","<p>[ссылка](https://example.com/ x)</p>","<p>[ссылка](https://example.com/ x)</p>"]},
+    {
+      "markdown": "[ссылка](https://example.com/ж)",
+      "news": "<p><a href=\"#\" data-href=\"https://example.com/ж\">ссылка</a></p>",
+      "guide": [
+        "<p><a href=\"#\" data-href=\"https://example.com/ж\">ссылка</a></p>",
+        "<p><a href=\"#\" data-href=\"https://example.com/ж\">ссылка</a></p>",
+        "<p><a href=\"#\" data-href=\"https://example.com/ж\">ссылка</a></p>",
+        "<p><a href=\"#\" data-href=\"https://example.com/ж\">ссылка</a></p>",
+        "<p><a href=\"#\" data-href=\"https://example.com/ж\">ссылка</a></p>",
+        "<p><a href=\"#\" data-href=\"https://example.com/ж\">ссылка</a></p>"
+      ]
+    },
+    {
+      "markdown": "[ссылка](https://example.com/😀)",
+      "news": "<p><a href=\"#\" data-href=\"https://example.com/😀\">ссылка</a></p>",
+      "guide": [
+        "<p><a href=\"#\" data-href=\"https://example.com/😀\">ссылка</a></p>",
+        "<p><a href=\"#\" data-href=\"https://example.com/😀\">ссылка</a></p>",
+        "<p><a href=\"#\" data-href=\"https://example.com/😀\">ссылка</a></p>",
+        "<p><a href=\"#\" data-href=\"https://example.com/😀\">ссылка</a></p>",
+        "<p><a href=\"#\" data-href=\"https://example.com/😀\">ссылка</a></p>",
+        "<p><a href=\"#\" data-href=\"https://example.com/😀\">ссылка</a></p>"
+      ]
+    },
+    {"markdown":"[ссылка](#jump)","news":"<p><a href=\"#\" data-script=\"jump\">ссылка</a></p>","guide":["<p><a href=\"#\" data-script=\"jump\">ссылка</a></p>","<p><a href=\"#\" data-script=\"jump\">ссылка</a></p>","<p><a href=\"#\" data-script=\"jump\">ссылка</a></p>","<p><a href=\"#\" data-script=\"jump\">ссылка</a></p>","<p><a href=\"#\" data-script=\"jump\">ссылка</a></p>","<p>ссылка</p>"]},
+    {"markdown":"[ссылка](#)","news":"<p><a href=\"#\" data-script=\"\">ссылка</a></p>","guide":["<p><a href=\"#\" data-script=\"\">ссылка</a></p>","<p><a href=\"#\" data-script=\"\">ссылка</a></p>","<p><a href=\"#\" data-script=\"\">ссылка</a></p>","<p><a href=\"#\" data-script=\"\">ссылка</a></p>","<p><a href=\"#\" data-script=\"\">ссылка</a></p>","<p>ссылка</p>"]},
+    {"markdown":"[ссылка](#a-b)","news":"<p><a href=\"#\" data-script=\"a-b\">ссылка</a></p>","guide":["<p><a href=\"#\" data-script=\"a-b\">ссылка</a></p>","<p><a href=\"#\" data-script=\"a-b\">ссылка</a></p>","<p><a href=\"#\" data-script=\"a-b\">ссылка</a></p>","<p><a href=\"#\" data-script=\"a-b\">ссылка</a></p>","<p><a href=\"#\" data-script=\"a-b\">ссылка</a></p>","<p>ссылка</p>"]},
+    {"markdown":"[ссылка](#evil)","news":"<p><a href=\"#\" data-script=\"evil\">ссылка</a></p>","guide":["<p><a href=\"#\" data-script=\"evil\">ссылка</a></p>","<p><a href=\"#\" data-script=\"evil\">ссылка</a></p>","<p><a href=\"#\" data-script=\"evil\">ссылка</a></p>","<p><a href=\"#\" data-script=\"evil\">ссылка</a></p>","<p>ссылка</p>","<p>ссылка</p>"]},
+    {"markdown":"[ссылка](#a\"b)","news":"<p><a href=\"#\" data-script=\"a&quot;b\">ссылка</a></p>","guide":["<p><a href=\"#\" data-script=\"a&quot;b\">ссылка</a></p>","<p><a href=\"#\" data-script=\"a&quot;b\">ссылка</a></p>","<p><a href=\"#\" data-script=\"a&quot;b\">ссылка</a></p>","<p><a href=\"#\" data-script=\"a&quot;b\">ссылка</a></p>","<p>ссылка</p>","<p>ссылка</p>"]},
+    {"markdown":"[ссылка](#<b>)","news":"<p><a href=\"#\" data-script=\"&lt;b&gt;\">ссылка</a></p>","guide":["<p><a href=\"#\" data-script=\"&lt;b&gt;\">ссылка</a></p>","<p><a href=\"#\" data-script=\"&lt;b&gt;\">ссылка</a></p>","<p><a href=\"#\" data-script=\"&lt;b&gt;\">ссылка</a></p>","<p><a href=\"#\" data-script=\"&lt;b&gt;\">ссылка</a></p>","<p>ссылка</p>","<p>ссылка</p>"]},
+    {"markdown":"[ссылка]()","news":"<p>[ссылка]()</p>","guide":["<p>[ссылка]()</p>","<p>[ссылка]()</p>","<p>[ссылка]()</p>","<p>[ссылка]()</p>","<p>[ссылка]()</p>","<p>[ссылка]()</p>"]},
+    {"markdown":"[ссылка](","news":"<p>[ссылка](</p>","guide":["<p>[ссылка](</p>","<p>[ссылка](</p>","<p>[ссылка](</p>","<p>[ссылка](</p>","<p>[ссылка](</p>","<p>[ссылка](</p>"]},
+    {"markdown":"[ссылка]","news":"<p>[ссылка]</p>","guide":["<p>[ссылка]</p>","<p>[ссылка]</p>","<p>[ссылка]</p>","<p>[ссылка]</p>","<p>[ссылка]</p>","<p>[ссылка]</p>"]},
+    {"markdown":"[ссылка] (https://example.com)","news":"<p>[ссылка] (https://example.com)</p>","guide":["<p>[ссылка] (https://example.com)</p>","<p>[ссылка] (https://example.com)</p>","<p>[ссылка] (https://example.com)</p>","<p>[ссылка] (https://example.com)</p>","<p>[ссылка] (https://example.com)</p>","<p>[ссылка] (https://example.com)</p>"]},
+    {"markdown":"[](https://example.com)","news":"<p>[](https://example.com)</p>","guide":["<p>[](https://example.com)</p>","<p>[](https://example.com)</p>","<p>[](https://example.com)</p>","<p>[](https://example.com)</p>","<p>[](https://example.com)</p>","<p>[](https://example.com)</p>"]},
+    {"markdown":"[]()","news":"<p>[]()</p>","guide":["<p>[]()</p>","<p>[]()</p>","<p>[]()</p>","<p>[]()</p>","<p>[]()</p>","<p>[]()</p>"]},
+    {
+      "markdown": "[а](https://example.com) и [б](https://example.org)",
+      "news": "<p><a href=\"#\" data-href=\"https://example.com\">а</a> и <a href=\"#\" data-href=\"https://example.org\">б</a></p>",
+      "guide": [
+        "<p><a href=\"#\" data-href=\"https://example.com\">а</a> и <a href=\"#\" data-href=\"https://example.org\">б</a></p>",
+        "<p><a href=\"#\" data-href=\"https://example.com\">а</a> и <a href=\"#\" data-href=\"https://example.org\">б</a></p>",
+        "<p><a href=\"#\" data-href=\"https://example.com\">а</a> и <a href=\"#\" data-href=\"https://example.org\">б</a></p>",
+        "<p><a href=\"#\" data-href=\"https://example.com\">а</a> и <a href=\"#\" data-href=\"https://example.org\">б</a></p>",
+        "<p><a href=\"#\" data-href=\"https://example.com\">а</a> и <a href=\"#\" data-href=\"https://example.org\">б</a></p>",
+        "<p><a href=\"#\" data-href=\"https://example.com\">а</a> и <a href=\"#\" data-href=\"https://example.org\">б</a></p>"
+      ]
+    },
+    {
+      "markdown": "[**жирная** ссылка](https://example.com)",
+      "news": "<p><a href=\"#\" data-href=\"https://example.com\"><strong>жирная</strong> ссылка</a></p>",
+      "guide": [
+        "<p><a href=\"#\" data-href=\"https://example.com\"><strong>жирная</strong> ссылка</a></p>",
+        "<p><a href=\"#\" data-href=\"https://example.com\"><strong>жирная</strong> ссылка</a></p>",
+        "<p><a href=\"#\" data-href=\"https://example.com\"><strong>жирная</strong> ссылка</a></p>",
+        "<p><a href=\"#\" data-href=\"https://example.com\"><strong>жирная</strong> ссылка</a></p>",
+        "<p><a href=\"#\" data-href=\"https://example.com\"><strong>жирная</strong> ссылка</a></p>",
+        "<p><a href=\"#\" data-href=\"https://example.com\"><strong>жирная</strong> ссылка</a></p>"
+      ]
+    },
+    {
+      "markdown": "[`код`](https://example.com)",
+      "news": "<p><a href=\"#\" data-href=\"https://example.com\"><code>код</code></a></p>",
+      "guide": [
+        "<p><a href=\"#\" data-href=\"https://example.com\"><code>код</code></a></p>",
+        "<p><a href=\"#\" data-href=\"https://example.com\"><code>код</code></a></p>",
+        "<p><a href=\"#\" data-href=\"https://example.com\"><code>код</code></a></p>",
+        "<p><a href=\"#\" data-href=\"https://example.com\"><code>код</code></a></p>",
+        "<p><a href=\"#\" data-href=\"https://example.com\"><code>код</code></a></p>",
+        "<p><a href=\"#\" data-href=\"https://example.com\"><code>код</code></a></p>"
+      ]
+    },
+    {
+      "markdown": "[а [б](https://example.com) в](https://example.org)",
+      "news": "<p><a href=\"#\" data-href=\"https://example.com\">а [б</a> в](https://example.org)</p>",
+      "guide": [
+        "<p><a href=\"#\" data-href=\"https://example.com\">а [б</a> в](https://example.org)</p>",
+        "<p><a href=\"#\" data-href=\"https://example.com\">а [б</a> в](https://example.org)</p>",
+        "<p><a href=\"#\" data-href=\"https://example.com\">а [б</a> в](https://example.org)</p>",
+        "<p><a href=\"#\" data-href=\"https://example.com\">а [б</a> в](https://example.org)</p>",
+        "<p><a href=\"#\" data-href=\"https://example.com\">а [б</a> в](https://example.org)</p>",
+        "<p><a href=\"#\" data-href=\"https://example.com\">а [б</a> в](https://example.org)</p>"
+      ]
+    },
+    {
+      "markdown": "[а](https://example.com)(скобки)",
+      "news": "<p><a href=\"#\" data-href=\"https://example.com\">а</a>(скобки)</p>",
+      "guide": [
+        "<p><a href=\"#\" data-href=\"https://example.com\">а</a>(скобки)</p>",
+        "<p><a href=\"#\" data-href=\"https://example.com\">а</a>(скобки)</p>",
+        "<p><a href=\"#\" data-href=\"https://example.com\">а</a>(скобки)</p>",
+        "<p><a href=\"#\" data-href=\"https://example.com\">а</a>(скобки)</p>",
+        "<p><a href=\"#\" data-href=\"https://example.com\">а</a>(скобки)</p>",
+        "<p><a href=\"#\" data-href=\"https://example.com\">а</a>(скобки)</p>"
+      ]
+    },
+    {
+      "markdown": "[а](https://example.com))",
+      "news": "<p><a href=\"#\" data-href=\"https://example.com\">а</a>)</p>",
+      "guide": ["<p><a href=\"#\" data-href=\"https://example.com\">а</a>)</p>","<p><a href=\"#\" data-href=\"https://example.com\">а</a>)</p>","<p><a href=\"#\" data-href=\"https://example.com\">а</a>)</p>","<p><a href=\"#\" data-href=\"https://example.com\">а</a>)</p>","<p><a href=\"#\" data-href=\"https://example.com\">а</a>)</p>","<p><a href=\"#\" data-href=\"https://example.com\">а</a>)</p>"]
+    },
+    {
+      "markdown": "[а](https://example.com(б))",
+      "news": "<p><a href=\"#\" data-href=\"https://example.com(б\">а</a>)</p>",
+      "guide": [
+        "<p><a href=\"#\" data-href=\"https://example.com(б\">а</a>)</p>",
+        "<p><a href=\"#\" data-href=\"https://example.com(б\">а</a>)</p>",
+        "<p><a href=\"#\" data-href=\"https://example.com(б\">а</a>)</p>",
+        "<p><a href=\"#\" data-href=\"https://example.com(б\">а</a>)</p>",
+        "<p><a href=\"#\" data-href=\"https://example.com(б\">а</a>)</p>",
+        "<p><a href=\"#\" data-href=\"https://example.com(б\">а</a>)</p>"
+      ]
+    },
+    {"markdown":"[а\nб](https://example.com)","news":"<p>[а<br>б](https://example.com)</p>","guide":["<p>[а<br>б](https://example.com)</p>","<p>[а<br>б](https://example.com)</p>","<p>[а<br>б](https://example.com)</p>","<p>[а<br>б](https://example.com)</p>","<p>[а<br>б](https://example.com)</p>","<p>[а<br>б](https://example.com)</p>"]},
+    {"markdown":"[a](https://example.com\nb)","news":"<p>[a](https://example.com<br>b)</p>","guide":["<p>[a](https://example.com<br>b)</p>","<p>[a](https://example.com<br>b)</p>","<p>[a](https://example.com<br>b)</p>","<p>[a](https://example.com<br>b)</p>","<p>[a](https://example.com<br>b)</p>","<p>[a](https://example.com<br>b)</p>"]},
+    {"markdown":"[a](https://example.com b)","news":"<p>[a](https://example.com b)</p>","guide":["<p>[a](https://example.com b)</p>","<p>[a](https://example.com b)</p>","<p>[a](https://example.com b)</p>","<p>[a](https://example.com b)</p>","<p>[a](https://example.com b)</p>","<p>[a](https://example.com b)</p>"]},
+    {"markdown":"[a](https://example.com\tb)","news":"<p>[a](https://example.com\tb)</p>","guide":["<p>[a](https://example.com\tb)</p>","<p>[a](https://example.com\tb)</p>","<p>[a](https://example.com\tb)</p>","<p>[a](https://example.com\tb)</p>","<p>[a](https://example.com\tb)</p>","<p>[a](https://example.com\tb)</p>"]},
+    {"markdown":"[a]( https://example.com)","news":"<p>[a]( https://example.com)</p>","guide":["<p>[a]( https://example.com)</p>","<p>[a]( https://example.com)</p>","<p>[a]( https://example.com)</p>","<p>[a]( https://example.com)</p>","<p>[a]( https://example.com)</p>","<p>[a]( https://example.com)</p>"]},
+    {"markdown":"[a](https://example.com )","news":"<p>[a](https://example.com )</p>","guide":["<p>[a](https://example.com )</p>","<p>[a](https://example.com )</p>","<p>[a](https://example.com )</p>","<p>[a](https://example.com )</p>","<p>[a](https://example.com )</p>","<p>[a](https://example.com )</p>"]},
+    {"markdown":"![картинка](images/a.png)","news":"<p></p>","guide":["<p></p>","<p></p>","<p></p>","<p></p>","<p><img src=\"https://example.com/guide/images/a.png\" alt=\"картинка\" loading=\"lazy\"></p>","<p><img src=\"https://example.com/guide//images/a.png\" alt=\"картинка\" loading=\"lazy\"></p>"]},
+    {"markdown":"![картинка](./images/a.png)","news":"<p></p>","guide":["<p></p>","<p></p>","<p></p>","<p></p>","<p><img src=\"https://example.com/guide/images/a.png\" alt=\"картинка\" loading=\"lazy\"></p>","<p><img src=\"https://example.com/guide//images/a.png\" alt=\"картинка\" loading=\"lazy\"></p>"]},
+    {"markdown":"![картинка](/images/a.png)","news":"<p></p>","guide":["<p></p>","<p></p>","<p></p>","<p></p>","<p><img src=\"https://example.com/guide/images/a.png\" alt=\"картинка\" loading=\"lazy\"></p>","<p><img src=\"https://example.com/guide//images/a.png\" alt=\"картинка\" loading=\"lazy\"></p>"]},
+    {"markdown":"![картинка](../a.png)","news":"<p></p>","guide":["<p></p>","<p></p>","<p></p>","<p></p>","<p></p>","<p></p>"]},
+    {"markdown":"![картинка](images/../a.png)","news":"<p></p>","guide":["<p></p>","<p></p>","<p></p>","<p></p>","<p></p>","<p></p>"]},
+    {"markdown":"![картинка](a..b.png)","news":"<p></p>","guide":["<p></p>","<p></p>","<p></p>","<p></p>","<p></p>","<p></p>"]},
+    {"markdown":"![картинка](images/a b.png)","news":"<p>![картинка](images/a b.png)</p>","guide":["<p>![картинка](images/a b.png)</p>","<p>![картинка](images/a b.png)</p>","<p>![картинка](images/a b.png)</p>","<p>![картинка](images/a b.png)</p>","<p>![картинка](images/a b.png)</p>","<p>![картинка](images/a b.png)</p>"]},
+    {"markdown":"![картинка](images/ж.png)","news":"<p></p>","guide":["<p></p>","<p></p>","<p></p>","<p></p>","<p></p>","<p></p>"]},
+    {"markdown":"![картинка](images/a%20b.png)","news":"<p></p>","guide":["<p></p>","<p></p>","<p></p>","<p></p>","<p><img src=\"https://example.com/guide/images/a%20b.png\" alt=\"картинка\" loading=\"lazy\"></p>","<p><img src=\"https://example.com/guide//images/a%20b.png\" alt=\"картинка\" loading=\"lazy\"></p>"]},
+    {"markdown":"![картинка](images/a_b-c.png)","news":"<p></p>","guide":["<p></p>","<p></p>","<p></p>","<p></p>","<p><img src=\"https://example.com/guide/images/a_b-c.png\" alt=\"картинка\" loading=\"lazy\"></p>","<p><img src=\"https://example.com/guide//images/a_b-c.png\" alt=\"картинка\" loading=\"lazy\"></p>"]},
+    {"markdown":"![картинка](a.png?x=1)","news":"<p></p>","guide":["<p></p>","<p></p>","<p></p>","<p></p>","<p></p>","<p></p>"]},
+    {"markdown":"![картинка](https://evil.example/x.png)","news":"<p></p>","guide":["<p></p>","<p></p>","<p></p>","<p></p>","<p></p>","<p></p>"]},
+    {"markdown":"![картинка](.hidden)","news":"<p></p>","guide":["<p></p>","<p></p>","<p></p>","<p></p>","<p><img src=\"https://example.com/guide/.hidden\" alt=\"картинка\" loading=\"lazy\"></p>","<p><img src=\"https://example.com/guide//.hidden\" alt=\"картинка\" loading=\"lazy\"></p>"]},
+    {"markdown":"![картинка](./)","news":"<p></p>","guide":["<p></p>","<p></p>","<p></p>","<p></p>","<p><img src=\"https://example.com/guide/\" alt=\"картинка\" loading=\"lazy\"></p>","<p><img src=\"https://example.com/guide//\" alt=\"картинка\" loading=\"lazy\"></p>"]},
+    {"markdown":"![](images/a.png)","news":"<p></p>","guide":["<p></p>","<p></p>","<p></p>","<p></p>","<p><img src=\"https://example.com/guide/images/a.png\" alt=\"\" loading=\"lazy\"></p>","<p><img src=\"https://example.com/guide//images/a.png\" alt=\"\" loading=\"lazy\"></p>"]},
+    {"markdown":"![a\"b](images/a.png)","news":"<p></p>","guide":["<p></p>","<p></p>","<p></p>","<p></p>","<p><img src=\"https://example.com/guide/images/a.png\" alt=\"a&quot;b\" loading=\"lazy\"></p>","<p><img src=\"https://example.com/guide//images/a.png\" alt=\"a&quot;b\" loading=\"lazy\"></p>"]},
+    {"markdown":"![<b>](images/a.png)","news":"<p></p>","guide":["<p></p>","<p></p>","<p></p>","<p></p>","<p><img src=\"https://example.com/guide/images/a.png\" alt=\"&lt;b&gt;\" loading=\"lazy\"></p>","<p><img src=\"https://example.com/guide//images/a.png\" alt=\"&lt;b&gt;\" loading=\"lazy\"></p>"]},
+    {"markdown":"![картинка]()","news":"<p>![картинка]()</p>","guide":["<p>![картинка]()</p>","<p>![картинка]()</p>","<p>![картинка]()</p>","<p>![картинка]()</p>","<p>![картинка]()</p>","<p>![картинка]()</p>"]},
+    {"markdown":"![картинка](","news":"<p>![картинка](</p>","guide":["<p>![картинка](</p>","<p>![картинка](</p>","<p>![картинка](</p>","<p>![картинка](</p>","<p>![картинка](</p>","<p>![картинка](</p>"]},
+    {"markdown":"!![картинка](images/a.png)","news":"<p>!</p>","guide":["<p>!</p>","<p>!</p>","<p>!</p>","<p>!</p>","<p>!<img src=\"https://example.com/guide/images/a.png\" alt=\"картинка\" loading=\"lazy\"></p>","<p>!<img src=\"https://example.com/guide//images/a.png\" alt=\"картинка\" loading=\"lazy\"></p>"]},
+    {"markdown":"!\\[a](b)","news":"<p>!\\a</p>","guide":["<p>!\\a</p>","<p>!\\a</p>","<p>!\\a</p>","<p>!\\a</p>","<p>!\\a</p>","<p>!\\a</p>"]},
+    {
+      "markdown": "![а](images/a.png) ![б](images/b.png)",
+      "news": "<p> </p>",
+      "guide": ["<p> </p>","<p> </p>","<p> </p>","<p> </p>","<p><img src=\"https://example.com/guide/images/a.png\" alt=\"а\" loading=\"lazy\"> <img src=\"https://example.com/guide/images/b.png\" alt=\"б\" loading=\"lazy\"></p>","<p><img src=\"https://example.com/guide//images/a.png\" alt=\"а\" loading=\"lazy\"> <img src=\"https://example.com/guide//images/b.png\" alt=\"б\" loading=\"lazy\"></p>"]
+    },
+    {"markdown":"текст ![а](images/a.png) текст","news":"<p>текст  текст</p>","guide":["<p>текст  текст</p>","<p>текст  текст</p>","<p>текст  текст</p>","<p>текст  текст</p>","<p>текст <img src=\"https://example.com/guide/images/a.png\" alt=\"а\" loading=\"lazy\"> текст</p>","<p>текст <img src=\"https://example.com/guide//images/a.png\" alt=\"а\" loading=\"lazy\"> текст</p>"]},
+    {"markdown":"[![а](images/a.png)](https://example.com)","news":"<p>![а](https://example.com)</p>","guide":["<p>![а](https://example.com)</p>","<p>![а](https://example.com)</p>","<p>![а](https://example.com)</p>","<p>![а](https://example.com)</p>","<p>![а](https://example.com)</p>","<p>![а](https://example.com)</p>"]},
+    {"markdown":"![а](images/a.png)(скобки)","news":"<p>(скобки)</p>","guide":["<p>(скобки)</p>","<p>(скобки)</p>","<p>(скобки)</p>","<p>(скобки)</p>","<p><img src=\"https://example.com/guide/images/a.png\" alt=\"а\" loading=\"lazy\">(скобки)</p>","<p><img src=\"https://example.com/guide//images/a.png\" alt=\"а\" loading=\"lazy\">(скобки)</p>"]},
+    {"markdown":"![а](images/a.png\nb)","news":"<p>![а](images/a.png<br>b)</p>","guide":["<p>![а](images/a.png<br>b)</p>","<p>![а](images/a.png<br>b)</p>","<p>![а](images/a.png<br>b)</p>","<p>![а](images/a.png<br>b)</p>","<p>![а](images/a.png<br>b)</p>","<p>![а](images/a.png<br>b)</p>"]},
+    {"markdown":"![картинка](images//a.png)","news":"<p></p>","guide":["<p></p>","<p></p>","<p></p>","<p></p>","<p><img src=\"https://example.com/guide/images//a.png\" alt=\"картинка\" loading=\"lazy\"></p>","<p><img src=\"https://example.com/guide//images//a.png\" alt=\"картинка\" loading=\"lazy\"></p>"]},
+    {"markdown":"![картинка](.//a.png)","news":"<p></p>","guide":["<p></p>","<p></p>","<p></p>","<p></p>","<p><img src=\"https://example.com/guide//a.png\" alt=\"картинка\" loading=\"lazy\"></p>","<p><img src=\"https://example.com/guide///a.png\" alt=\"картинка\" loading=\"lazy\"></p>"]},
+    {"markdown":"![картинка](./.a.png)","news":"<p></p>","guide":["<p></p>","<p></p>","<p></p>","<p></p>","<p><img src=\"https://example.com/guide/.a.png\" alt=\"картинка\" loading=\"lazy\"></p>","<p><img src=\"https://example.com/guide//.a.png\" alt=\"картинка\" loading=\"lazy\"></p>"]},
+    {"markdown":"\\*не курсив\\*","news":"<p>\\*не курсив\\*</p>","guide":["<p>\\*не курсив\\*</p>","<p>\\*не курсив\\*</p>","<p>\\*не курсив\\*</p>","<p>\\*не курсив\\*</p>","<p>\\*не курсив\\*</p>","<p>\\*не курсив\\*</p>"]},
+    {"markdown":"\\`не код\\`","news":"<p>\\<code>не код\\</code></p>","guide":["<p>\\<code>не код\\</code></p>","<p>\\<code>не код\\</code></p>","<p>\\<code>не код\\</code></p>","<p>\\<code>не код\\</code></p>","<p>\\<code>не код\\</code></p>","<p>\\<code>не код\\</code></p>"]},
+    {
+      "markdown": "\\[не ссылка](https://example.com)",
+      "news": "<p>\\<a href=\"#\" data-href=\"https://example.com\">не ссылка</a></p>",
+      "guide": [
+        "<p>\\<a href=\"#\" data-href=\"https://example.com\">не ссылка</a></p>",
+        "<p>\\<a href=\"#\" data-href=\"https://example.com\">не ссылка</a></p>",
+        "<p>\\<a href=\"#\" data-href=\"https://example.com\">не ссылка</a></p>",
+        "<p>\\<a href=\"#\" data-href=\"https://example.com\">не ссылка</a></p>",
+        "<p>\\<a href=\"#\" data-href=\"https://example.com\">не ссылка</a></p>",
+        "<p>\\<a href=\"#\" data-href=\"https://example.com\">не ссылка</a></p>"
+      ]
+    },
+    {"markdown":"a\\\\b","news":"<p>a\\\\b</p>","guide":["<p>a\\\\b</p>","<p>a\\\\b</p>","<p>a\\\\b</p>","<p>a\\\\b</p>","<p>a\\\\b</p>","<p>a\\\\b</p>"]},
+    {"markdown":"a\\","news":"<p>a\\</p>","guide":["<p>a\\</p>","<p>a\\</p>","<p>a\\</p>","<p>a\\</p>","<p>a\\</p>","<p>a\\</p>"]},
+    {"markdown":"** **","news":"<p><strong> </strong></p>","guide":["<p><strong> </strong></p>","<p><strong> </strong></p>","<p><strong> </strong></p>","<p><strong> </strong></p>","<p><strong> </strong></p>","<p><strong> </strong></p>"]},
+    {
+      "markdown": "[ ](https://example.com)",
+      "news": "<p><a href=\"#\" data-href=\"https://example.com\"> </a></p>",
+      "guide": ["<p><a href=\"#\" data-href=\"https://example.com\"> </a></p>","<p><a href=\"#\" data-href=\"https://example.com\"> </a></p>","<p><a href=\"#\" data-href=\"https://example.com\"> </a></p>","<p><a href=\"#\" data-href=\"https://example.com\"> </a></p>","<p><a href=\"#\" data-href=\"https://example.com\"> </a></p>","<p><a href=\"#\" data-href=\"https://example.com\"> </a></p>"]
+    },
+    {"markdown":"![ ](a.png)","news":"<p></p>","guide":["<p></p>","<p></p>","<p></p>","<p></p>","<p><img src=\"https://example.com/guide/a.png\" alt=\" \" loading=\"lazy\"></p>","<p><img src=\"https://example.com/guide//a.png\" alt=\" \" loading=\"lazy\"></p>"]},
+    {
+      "markdown": "# Релиз 0.5.0\n\nСписок изменений:\n\n- **Новое**: лента новостей\n- *Исправлено*: `код`\n  - вложенное [ссылка](https://example.com)\n\n1. Первый\n2. Второй\n\n```\nкод <b>\n```\n\nКонец.",
+      "news": "<h3>Релиз 0.5.0</h3><p>Список изменений:</p><ul><li><strong>Новое</strong>: лента новостей</li><li><em>Исправлено</em>: <code>код</code><ul><li>вложенное <a href=\"#\" data-href=\"https://example.com\">ссылка</a></li></ul></li></ul><ol><li>Первый</li><li>Второй</li></ol><pre><code>код &lt;b&gt;</code></pre><p>Конец.</p>",
+      "guide": [
+        "<p># Релиз 0.5.0</p><p>Список изменений:</p><ul><li><strong>Новое</strong>: лента новостей</li><li><em>Исправлено</em>: <code>код</code><ul><li>вложенное <a href=\"#\" data-href=\"https://example.com\">ссылка</a></li></ul></li></ul><ol><li>Первый</li><li>Второй</li></ol><pre><code>код &lt;b&gt;</code></pre><p>Конец.</p>",
+        "<h3>Релиз 0.5.0</h3><p>Список изменений:</p><ul><li><strong>Новое</strong>: лента новостей</li><li><em>Исправлено</em>: <code>код</code><ul><li>вложенное <a href=\"#\" data-href=\"https://example.com\">ссылка</a></li></ul></li></ul><ol><li>Первый</li><li>Второй</li></ol><pre><code>код &lt;b&gt;</code></pre><p>Конец.</p>",
+        "<p># Релиз 0.5.0</p><p>Список изменений:</p><ul><li><strong>Новое</strong>: лента новостей</li><li><em>Исправлено</em>: <code>код</code><ul><li>вложенное <a href=\"#\" data-href=\"https://example.com\">ссылка</a></li></ul></li></ul><ol><li>Первый</li><li>Второй</li></ol><pre><code>код &lt;b&gt;</code></pre><p>Конец.</p>",
+        "<h3>Релиз 0.5.0</h3><p>Список изменений:</p><ul><li><strong>Новое</strong>: лента новостей</li><li><em>Исправлено</em>: <code>код</code><ul><li>вложенное <a href=\"#\" data-href=\"https://example.com\">ссылка</a></li></ul></li></ul><ol><li>Первый</li><li>Второй</li></ol><pre><code>код &lt;b&gt;</code></pre><p>Конец.</p>",
+        "<p># Релиз 0.5.0</p><p>Список изменений:</p><ul><li><strong>Новое</strong>: лента новостей</li><li><em>Исправлено</em>: <code>код</code><ul><li>вложенное <a href=\"#\" data-href=\"https://example.com\">ссылка</a></li></ul></li></ul><ol><li>Первый</li><li>Второй</li></ol><pre><code>код &lt;b&gt;</code></pre><p>Конец.</p>",
+        "<h3>Релиз 0.5.0</h3><p>Список изменений:</p><ul><li><strong>Новое</strong>: лента новостей</li><li><em>Исправлено</em>: <code>код</code><ul><li>вложенное <a href=\"#\" data-href=\"https://example.com\">ссылка</a></li></ul></li></ul><ol><li>Первый</li><li>Второй</li></ol><pre><code>код &lt;b&gt;</code></pre><p>Конец.</p>"
+      ]
+    },
+    {
+      "markdown": "Абзац **с** *разметкой*\nи продолжением `кода`\n\n## Раздел\n\nТекст\n- список сразу\n- ещё\nтекст после",
+      "news": "<p>Абзац <strong>с</strong> <em>разметкой</em><br>и продолжением <code>кода</code></p><h4>Раздел</h4><p>Текст</p><ul><li>список сразу</li><li>ещё</li></ul><p>текст после</p>",
+      "guide": [
+        "<p>Абзац <strong>с</strong> <em>разметкой</em><br>и продолжением <code>кода</code></p><p>## Раздел</p><p>Текст</p><ul><li>список сразу</li><li>ещё</li></ul><p>текст после</p>",
+        "<p>Абзац <strong>с</strong> <em>разметкой</em><br>и продолжением <code>кода</code></p><h4>Раздел</h4><p>Текст</p><ul><li>список сразу</li><li>ещё</li></ul><p>текст после</p>",
+        "<p>Абзац <strong>с</strong> <em>разметкой</em><br>и продолжением <code>кода</code></p><p>## Раздел</p><p>Текст</p><ul><li>список сразу</li><li>ещё</li></ul><p>текст после</p>",
+        "<p>Абзац <strong>с</strong> <em>разметкой</em><br>и продолжением <code>кода</code></p><h4>Раздел</h4><p>Текст</p><ul><li>список сразу</li><li>ещё</li></ul><p>текст после</p>",
+        "<p>Абзац <strong>с</strong> <em>разметкой</em><br>и продолжением <code>кода</code></p><p>## Раздел</p><p>Текст</p><ul><li>список сразу</li><li>ещё</li></ul><p>текст после</p>",
+        "<p>Абзац <strong>с</strong> <em>разметкой</em><br>и продолжением <code>кода</code></p><h4>Раздел</h4><p>Текст</p><ul><li>список сразу</li><li>ещё</li></ul><p>текст после</p>"
+      ]
+    },
+    {
+      "markdown": "# 1\n## 2\n### 3\n#### 4\n##### 5\n###### 6",
+      "news": "<h3>1</h3><h4>2</h4><h5>3</h5><h6>4</h6><h6>5</h6><h6>6</h6>",
+      "guide": ["<p># 1<br>## 2<br>### 3<br>#### 4<br>##### 5<br>###### 6</p>","<h3>1</h3><h4>2</h4><h5>3</h5><h6>4</h6><h6>5</h6><h6>6</h6>","<p># 1<br>## 2<br>### 3<br>#### 4<br>##### 5<br>###### 6</p>","<h3>1</h3><h4>2</h4><h5>3</h5><h6>4</h6><h6>5</h6><h6>6</h6>","<p># 1<br>## 2<br>### 3<br>#### 4<br>##### 5<br>###### 6</p>","<h3>1</h3><h4>2</h4><h5>3</h5><h6>4</h6><h6>5</h6><h6>6</h6>"]
+    },
+    {
+      "markdown": "- а\n- б\n\n\n- в\n\n1. г\n2. д",
+      "news": "<ul><li>а</li><li>б</li></ul><ul><li>в</li></ul><ol><li>г</li><li>д</li></ol>",
+      "guide": [
+        "<ul><li>а</li><li>б</li></ul><ul><li>в</li></ul><ol><li>г</li><li>д</li></ol>",
+        "<ul><li>а</li><li>б</li></ul><ul><li>в</li></ul><ol><li>г</li><li>д</li></ol>",
+        "<ul><li>а</li><li>б</li></ul><ul><li>в</li></ul><ol><li>г</li><li>д</li></ol>",
+        "<ul><li>а</li><li>б</li></ul><ul><li>в</li></ul><ol><li>г</li><li>д</li></ol>",
+        "<ul><li>а</li><li>б</li></ul><ul><li>в</li></ul><ol><li>г</li><li>д</li></ol>",
+        "<ul><li>а</li><li>б</li></ul><ul><li>в</li></ul><ol><li>г</li><li>д</li></ol>"
+      ]
+    },
+    {"markdown":"текст\n\n   \n\nтекст","news":"<p>текст</p><p>текст</p>","guide":["<p>текст</p><p>текст</p>","<p>текст</p><p>текст</p>","<p>текст</p><p>текст</p>","<p>текст</p><p>текст</p>","<p>текст</p><p>текст</p>","<p>текст</p><p>текст</p>"]},
+    {
+      "markdown": "- a\n  - b\n    - c\n  d\n- e",
+      "news": "<ul><li>a<ul><li>b<ul><li>c<br>d</li></ul></li></ul></li><li>e</li></ul>",
+      "guide": [
+        "<ul><li>a<ul><li>b<ul><li>c<br>d</li></ul></li></ul></li><li>e</li></ul>",
+        "<ul><li>a<ul><li>b<ul><li>c<br>d</li></ul></li></ul></li><li>e</li></ul>",
+        "<ul><li>a<ul><li>b<ul><li>c<br>d</li></ul></li></ul></li><li>e</li></ul>",
+        "<ul><li>a<ul><li>b<ul><li>c<br>d</li></ul></li></ul></li><li>e</li></ul>",
+        "<ul><li>a<ul><li>b<ul><li>c<br>d</li></ul></li></ul></li><li>e</li></ul>",
+        "<ul><li>a<ul><li>b<ul><li>c<br>d</li></ul></li></ul></li><li>e</li></ul>"
+      ]
+    },
+    {
+      "markdown": "1. a\n   1. b\n      1. c\n2. d",
+      "news": "<ol><li>a<ol><li>b<ol><li>c</li></ol></li></ol></li><li>d</li></ol>",
+      "guide": [
+        "<ol><li>a<ol><li>b<ol><li>c</li></ol></li></ol></li><li>d</li></ol>",
+        "<ol><li>a<ol><li>b<ol><li>c</li></ol></li></ol></li><li>d</li></ol>",
+        "<ol><li>a<ol><li>b<ol><li>c</li></ol></li></ol></li><li>d</li></ol>",
+        "<ol><li>a<ol><li>b<ol><li>c</li></ol></li></ol></li><li>d</li></ol>",
+        "<ol><li>a<ol><li>b<ol><li>c</li></ol></li></ol></li><li>d</li></ol>",
+        "<ol><li>a<ol><li>b<ol><li>c</li></ol></li></ol></li><li>d</li></ol>"
+      ]
+    },
+    {
+      "markdown": "* a\n  * b\n    - c\n  - d\n  * e",
+      "news": "<ul><li>a<ul><li>b<ul><li>c</li></ul></li><li>d</li><li>e</li></ul></li></ul>",
+      "guide": [
+        "<ul><li>a<ul><li>b<ul><li>c</li></ul></li><li>d</li><li>e</li></ul></li></ul>",
+        "<ul><li>a<ul><li>b<ul><li>c</li></ul></li><li>d</li><li>e</li></ul></li></ul>",
+        "<ul><li>a<ul><li>b<ul><li>c</li></ul></li><li>d</li><li>e</li></ul></li></ul>",
+        "<ul><li>a<ul><li>b<ul><li>c</li></ul></li><li>d</li><li>e</li></ul></li></ul>",
+        "<ul><li>a<ul><li>b<ul><li>c</li></ul></li><li>d</li><li>e</li></ul></li></ul>",
+        "<ul><li>a<ul><li>b<ul><li>c</li></ul></li><li>d</li><li>e</li></ul></li></ul>"
+      ]
+    },
+    {
+      "markdown": "- a\n  ```\n  - не пункт\n  ```\n  - b",
+      "news": "<ul><li>a</li></ul><pre><code>  - не пункт</code></pre><ul><li>b</li></ul>",
+      "guide": [
+        "<ul><li>a</li></ul><pre><code>- не пункт</code></pre><ul><li>b</li></ul>",
+        "<ul><li>a</li></ul><pre><code>- не пункт</code></pre><ul><li>b</li></ul>",
+        "<ul><li>a</li></ul><pre><code>  - не пункт</code></pre><ul><li>b</li></ul>",
+        "<ul><li>a</li></ul><pre><code>  - не пункт</code></pre><ul><li>b</li></ul>",
+        "<ul><li>a</li></ul><pre><code>- не пункт</code></pre><ul><li>b</li></ul>",
+        "<ul><li>a</li></ul><pre><code>- не пункт</code></pre><ul><li>b</li></ul>"
+      ]
+    },
+    {
+      "markdown": "a\n- b\nc\n1. d\ne",
+      "news": "<p>a</p><ul><li>b</li></ul><p>c</p><ol><li>d</li></ol><p>e</p>",
+      "guide": ["<p>a</p><ul><li>b</li></ul><p>c</p><ol><li>d</li></ol><p>e</p>","<p>a</p><ul><li>b</li></ul><p>c</p><ol><li>d</li></ol><p>e</p>","<p>a</p><ul><li>b</li></ul><p>c</p><ol><li>d</li></ol><p>e</p>","<p>a</p><ul><li>b</li></ul><p>c</p><ol><li>d</li></ol><p>e</p>","<p>a</p><ul><li>b</li></ul><p>c</p><ol><li>d</li></ol><p>e</p>","<p>a</p><ul><li>b</li></ul><p>c</p><ol><li>d</li></ol><p>e</p>"]
+    },
+    {
+      "markdown": "# **a** *b*\n- **c** *d*\n[e](https://example.com)",
+      "news": "<h3><strong>a</strong> <em>b</em></h3><ul><li><strong>c</strong> <em>d</em></li></ul><p><a href=\"#\" data-href=\"https://example.com\">e</a></p>",
+      "guide": [
+        "<p># <strong>a</strong> <em>b</em></p><ul><li><strong>c</strong> <em>d</em></li></ul><p><a href=\"#\" data-href=\"https://example.com\">e</a></p>",
+        "<h3><strong>a</strong> <em>b</em></h3><ul><li><strong>c</strong> <em>d</em></li></ul><p><a href=\"#\" data-href=\"https://example.com\">e</a></p>",
+        "<p># <strong>a</strong> <em>b</em></p><ul><li><strong>c</strong> <em>d</em></li></ul><p><a href=\"#\" data-href=\"https://example.com\">e</a></p>",
+        "<h3><strong>a</strong> <em>b</em></h3><ul><li><strong>c</strong> <em>d</em></li></ul><p><a href=\"#\" data-href=\"https://example.com\">e</a></p>",
+        "<p># <strong>a</strong> <em>b</em></p><ul><li><strong>c</strong> <em>d</em></li></ul><p><a href=\"#\" data-href=\"https://example.com\">e</a></p>",
+        "<h3><strong>a</strong> <em>b</em></h3><ul><li><strong>c</strong> <em>d</em></li></ul><p><a href=\"#\" data-href=\"https://example.com\">e</a></p>"
+      ]
+    },
+    {
+      "markdown": "<p>html</p>\n<br>\n&nbsp;",
+      "news": "<p>&lt;p&gt;html&lt;/p&gt;<br>&lt;br&gt;<br>&amp;nbsp;</p>",
+      "guide": ["<p>&lt;p&gt;html&lt;/p&gt;<br>&lt;br&gt;<br>&amp;nbsp;</p>","<p>&lt;p&gt;html&lt;/p&gt;<br>&lt;br&gt;<br>&amp;nbsp;</p>","<p>&lt;p&gt;html&lt;/p&gt;<br>&lt;br&gt;<br>&amp;nbsp;</p>","<p>&lt;p&gt;html&lt;/p&gt;<br>&lt;br&gt;<br>&amp;nbsp;</p>","<p>&lt;p&gt;html&lt;/p&gt;<br>&lt;br&gt;<br>&amp;nbsp;</p>","<p>&lt;p&gt;html&lt;/p&gt;<br>&lt;br&gt;<br>&amp;nbsp;</p>"]
+    },
+    {
+      "markdown": "Строка 1\r\nСтрока 2\r\n\r\n- пункт\r\n- пункт",
+      "news": "<p>Строка 1<br>Строка 2</p><ul><li>пункт</li><li>пункт</li></ul>",
+      "guide": [
+        "<p>Строка 1<br>Строка 2</p><ul><li>пункт</li><li>пункт</li></ul>",
+        "<p>Строка 1<br>Строка 2</p><ul><li>пункт</li><li>пункт</li></ul>",
+        "<p>Строка 1<br>Строка 2</p><ul><li>пункт</li><li>пункт</li></ul>",
+        "<p>Строка 1<br>Строка 2</p><ul><li>пункт</li><li>пункт</li></ul>",
+        "<p>Строка 1<br>Строка 2</p><ul><li>пункт</li><li>пункт</li></ul>",
+        "<p>Строка 1<br>Строка 2</p><ul><li>пункт</li><li>пункт</li></ul>"
+      ]
+    },
+    {
+      "markdown": "😀 - не список\n- 😀 список\n1.😀",
+      "news": "<p>😀 - не список</p><ul><li>😀 список</li></ul><p>1.😀</p>",
+      "guide": ["<p>😀 - не список</p><ul><li>😀 список</li></ul><p>1.😀</p>","<p>😀 - не список</p><ul><li>😀 список</li></ul><p>1.😀</p>","<p>😀 - не список</p><ul><li>😀 список</li></ul><p>1.😀</p>","<p>😀 - не список</p><ul><li>😀 список</li></ul><p>1.😀</p>","<p>😀 - не список</p><ul><li>😀 список</li></ul><p>1.😀</p>","<p>😀 - не список</p><ul><li>😀 список</li></ul><p>1.😀</p>"]
+    },
+    {"markdown":"а б в　г","news":"<p>а б в　г</p>","guide":["<p>а б в　г</p>","<p>а б в　г</p>","<p>а б в　г</p>","<p>а б в　г</p>","<p>а б в　г</p>","<p>а б в　г</p>"]},
+    {"markdown":"* \n- \n1. ","news":"<ul><li></li><li></li></ul><ol><li></li></ol>","guide":["<ul><li></li><li></li></ul><ol><li></li></ol>","<ul><li></li><li></li></ul><ol><li></li></ol>","<ul><li></li><li></li></ul><ol><li></li></ol>","<ul><li></li><li></li></ul><ol><li></li></ol>","<ul><li></li><li></li></ul><ol><li></li></ol>","<ul><li></li><li></li></ul><ol><li></li></ol>"]},
+    {"markdown":"-  \n  а","news":"<ul><li><br>а</li></ul>","guide":["<ul><li><br>а</li></ul>","<ul><li><br>а</li></ul>","<ul><li><br>а</li></ul>","<ul><li><br>а</li></ul>","<ul><li><br>а</li></ul>","<ul><li><br>а</li></ul>"]},
+    {
+      "markdown": "абзац слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово\nабзац слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово\nабзац слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово\nабзац слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово\nабзац слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово\n",
+      "news": "<p>абзац слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово<br>абзац слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово<br>абзац слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово<br>абзац слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово<br>абзац слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово</p>",
+      "guide": [
+        "<p>абзац слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово<br>абзац слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово<br>абзац слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово<br>абзац слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово<br>абзац слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово</p>",
+        "<p>абзац слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово<br>абзац слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово<br>абзац слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово<br>абзац слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово<br>абзац слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово</p>",
+        "<p>абзац слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово<br>абзац слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово<br>абзац слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово<br>абзац слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово<br>абзац слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово</p>",
+        "<p>абзац слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово<br>абзац слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово<br>абзац слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово<br>абзац слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово<br>абзац слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово</p>",
+        "<p>абзац слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово<br>абзац слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово<br>абзац слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово<br>абзац слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово<br>абзац слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово</p>",
+        "<p>абзац слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово<br>абзац слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово<br>абзац слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово<br>абзац слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово<br>абзац слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово слово</p>"
+      ]
+    }
+  ],
+  "inline": [
+    {"text":"","html":["","","","","",""]},
+    {"text":" ","html":[" "," "," "," "," "," "]},
+    {"text":"текст","html":["текст","текст","текст","текст","текст","текст"]},
+    {"text":"`код`","html":["<code>код</code>","<code>код</code>","<code>код</code>","<code>код</code>","<code>код</code>","<code>код</code>"]},
+    {"text":"**жирный**","html":["<strong>жирный</strong>","<strong>жирный</strong>","<strong>жирный</strong>","<strong>жирный</strong>","<strong>жирный</strong>","<strong>жирный</strong>"]},
+    {"text":"*курсив*","html":["<em>курсив</em>","<em>курсив</em>","<em>курсив</em>","<em>курсив</em>","<em>курсив</em>","<em>курсив</em>"]},
+    {"text":"а *б* в","html":["а <em>б</em> в","а <em>б</em> в","а <em>б</em> в","а <em>б</em> в","а <em>б</em> в","а <em>б</em> в"]},
+    {"text":"(*б*)","html":["(<em>б</em>)","(<em>б</em>)","(<em>б</em>)","(<em>б</em>)","(<em>б</em>)","(<em>б</em>)"]},
+    {"text":"x*y*z","html":["x*y*z","x*y*z","x*y*z","x*y*z","x*y*z","x*y*z"]},
+    {"text":"**а *б* в**","html":["<strong>а <em>б</em> в</strong>","<strong>а <em>б</em> в</strong>","<strong>а <em>б</em> в</strong>","<strong>а <em>б</em> в</strong>","<strong>а <em>б</em> в</strong>","<strong>а <em>б</em> в</strong>"]},
+    {"text":"*а **б** в*","html":["<em>а <em>*б</em></em> в*","<em>а <em>*б</em></em> в*","<em>а <em>*б</em></em> в*","<em>а <em>*б</em></em> в*","<em>а <em>*б</em></em> в*","<em>а <em>*б</em></em> в*"]},
+    {"text":"[а](https://example.com)","html":["<a href=\"#\" data-href=\"https://example.com\">а</a>","<a href=\"#\" data-href=\"https://example.com\">а</a>","<a href=\"#\" data-href=\"https://example.com\">а</a>","<a href=\"#\" data-href=\"https://example.com\">а</a>","<a href=\"#\" data-href=\"https://example.com\">а</a>","<a href=\"#\" data-href=\"https://example.com\">а</a>"]},
+    {"text":"[а](#jump)","html":["<a href=\"#\" data-script=\"jump\">а</a>","<a href=\"#\" data-script=\"jump\">а</a>","<a href=\"#\" data-script=\"jump\">а</a>","<a href=\"#\" data-script=\"jump\">а</a>","<a href=\"#\" data-script=\"jump\">а</a>","а"]},
+    {"text":"[а](javascript:x)","html":["а","а","а","а","а","а"]},
+    {"text":"![а](images/a.png)","html":["","","","","<img src=\"https://example.com/guide/images/a.png\" alt=\"а\" loading=\"lazy\">","<img src=\"https://example.com/guide//images/a.png\" alt=\"а\" loading=\"lazy\">"]},
+    {"text":"![а](../a.png)","html":["","","","","",""]},
+    {"text":"![](a.png)","html":["","","","","<img src=\"https://example.com/guide/a.png\" alt=\"\" loading=\"lazy\">","<img src=\"https://example.com/guide//a.png\" alt=\"\" loading=\"lazy\">"]},
+    {"text":"&<>\"'","html":["&amp;&lt;&gt;&quot;&#39;","&amp;&lt;&gt;&quot;&#39;","&amp;&lt;&gt;&quot;&#39;","&amp;&lt;&gt;&quot;&#39;","&amp;&lt;&gt;&quot;&#39;","&amp;&lt;&gt;&quot;&#39;"]},
+    {"text":"`<>`","html":["<code>&lt;&gt;</code>","<code>&lt;&gt;</code>","<code>&lt;&gt;</code>","<code>&lt;&gt;</code>","<code>&lt;&gt;</code>","<code>&lt;&gt;</code>"]},
+    {"text":"**`<>`**","html":["<strong><code>&lt;&gt;</code></strong>","<strong><code>&lt;&gt;</code></strong>","<strong><code>&lt;&gt;</code></strong>","<strong><code>&lt;&gt;</code></strong>","<strong><code>&lt;&gt;</code></strong>","<strong><code>&lt;&gt;</code></strong>"]},
+    {
+      "text": "[<>](https://example.com)",
+      "html": ["<a href=\"#\" data-href=\"https://example.com\">&lt;&gt;</a>","<a href=\"#\" data-href=\"https://example.com\">&lt;&gt;</a>","<a href=\"#\" data-href=\"https://example.com\">&lt;&gt;</a>","<a href=\"#\" data-href=\"https://example.com\">&lt;&gt;</a>","<a href=\"#\" data-href=\"https://example.com\">&lt;&gt;</a>","<a href=\"#\" data-href=\"https://example.com\">&lt;&gt;</a>"]
+    },
+    {"text":"a *b*","html":["a <em>b</em>","a <em>b</em>","a <em>b</em>","a <em>b</em>","a <em>b</em>","a <em>b</em>"]},
+    {"text":"a﻿*b*","html":["a﻿<em>b</em>","a﻿<em>b</em>","a﻿<em>b</em>","a﻿<em>b</em>","a﻿<em>b</em>","a﻿<em>b</em>"]},
+    {"text":"a*b*","html":["a*b*","a*b*","a*b*","a*b*","a*b*","a*b*"]},
+    {"text":"a *b*","html":["a <em>b</em>","a <em>b</em>","a <em>b</em>","a <em>b</em>","a <em>b</em>","a <em>b</em>"]},
+    {"text":"a\r*b*","html":["a\r<em>b</em>","a\r<em>b</em>","a\r<em>b</em>","a\r<em>b</em>","a\r<em>b</em>","a\r<em>b</em>"]},
+    {"text":"*a\rb*","html":["*a\rb*","*a\rb*","*a\rb*","*a\rb*","*a\rb*","*a\rb*"]},
+    {"text":"**a\rb**","html":["**a\rb**","**a\rb**","**a\rb**","**a\rb**","**a\rb**","**a\rb**"]},
+    {"text":"`a\rb`","html":["<code>a\rb</code>","<code>a\rb</code>","<code>a\rb</code>","<code>a\rb</code>","<code>a\rb</code>","<code>a\rb</code>"]},
+    {
+      "text": "[a\rb](https://example.com)",
+      "html": ["<a href=\"#\" data-href=\"https://example.com\">a\rb</a>","<a href=\"#\" data-href=\"https://example.com\">a\rb</a>","<a href=\"#\" data-href=\"https://example.com\">a\rb</a>","<a href=\"#\" data-href=\"https://example.com\">a\rb</a>","<a href=\"#\" data-href=\"https://example.com\">a\rb</a>","<a href=\"#\" data-href=\"https://example.com\">a\rb</a>"]
+    },
+    {"text":"[a](https://e.com/\r)","html":["[a](https://e.com/\r)","[a](https://e.com/\r)","[a](https://e.com/\r)","[a](https://e.com/\r)","[a](https://e.com/\r)","[a](https://e.com/\r)"]},
+    {"text":"*a b*","html":["*a b*","*a b*","*a b*","*a b*","*a b*","*a b*"]},
+    {"text":"**a b**","html":["**a b**","**a b**","**a b**","**a b**","**a b**","**a b**"]},
+    {"text":"`a b`","html":["<code>a b</code>","<code>a b</code>","<code>a b</code>","<code>a b</code>","<code>a b</code>","<code>a b</code>"]},
+    {"text":"*a*b","html":["*a*b","*a*b","*a*b","*a*b","*a*b","*a*b"]},
+    {"text":"*a*.","html":["<em>a</em>.","<em>a</em>.","<em>a</em>.","<em>a</em>.","<em>a</em>.","<em>a</em>."]},
+    {"text":"*a* ","html":["<em>a</em> ","<em>a</em> ","<em>a</em> ","<em>a</em> ","<em>a</em> ","<em>a</em> "]},
+    {"text":"*a* ","html":["<em>a</em> ","<em>a</em> ","<em>a</em> ","<em>a</em> ","<em>a</em> ","<em>a</em> "]},
+    {"text":"*a*","html":["*a*","*a*","*a*","*a*","*a*","*a*"]},
+    {"text":"*a* ","html":["<em>a</em> ","<em>a</em> ","<em>a</em> ","<em>a</em> ","<em>a</em> ","<em>a</em> "]},
+    {"text":"*a*﻿","html":["<em>a</em>﻿","<em>a</em>﻿","<em>a</em>﻿","<em>a</em>﻿","<em>a</em>﻿","<em>a</em>﻿"]},
+    {"text":"*a*\t","html":["<em>a</em>\t","<em>a</em>\t","<em>a</em>\t","<em>a</em>\t","<em>a</em>\t","<em>a</em>\t"]},
+    {"text":"*a*\n","html":["<em>a</em>\n","<em>a</em>\n","<em>a</em>\n","<em>a</em>\n","<em>a</em>\n","<em>a</em>\n"]},
+    {"text":"*a*\r","html":["<em>a</em>\r","<em>a</em>\r","<em>a</em>\r","<em>a</em>\r","<em>a</em>\r","<em>a</em>\r"]},
+    {"text":"***a***","html":["<strong>*a</strong>*","<strong>*a</strong>*","<strong>*a</strong>*","<strong>*a</strong>*","<strong>*a</strong>*","<strong>*a</strong>*"]},
+    {"text":"****a****","html":["<strong>**a</strong>**","<strong>**a</strong>**","<strong>**a</strong>**","<strong>**a</strong>**","<strong>**a</strong>**","<strong>**a</strong>**"]},
+    {"text":"* a*","html":["* a*","* a*","* a*","* a*","* a*","* a*"]},
+    {"text":"*a *","html":["<em>a </em>","<em>a </em>","<em>a </em>","<em>a </em>","<em>a </em>","<em>a </em>"]},
+    {"text":"**a **","html":["<strong>a </strong>","<strong>a </strong>","<strong>a </strong>","<strong>a </strong>","<strong>a </strong>","<strong>a </strong>"]},
+    {"text":"** a**","html":["<strong> a</strong>","<strong> a</strong>","<strong> a</strong>","<strong> a</strong>","<strong> a</strong>","<strong> a</strong>"]},
+    {
+      "text": "[*a*](https://example.com)",
+      "html": ["<a href=\"#\" data-href=\"https://example.com\"><em>a</em></a>","<a href=\"#\" data-href=\"https://example.com\"><em>a</em></a>","<a href=\"#\" data-href=\"https://example.com\"><em>a</em></a>","<a href=\"#\" data-href=\"https://example.com\"><em>a</em></a>","<a href=\"#\" data-href=\"https://example.com\"><em>a</em></a>","<a href=\"#\" data-href=\"https://example.com\"><em>a</em></a>"]
+    },
+    {
+      "text": "[**a**](https://example.com)",
+      "html": [
+        "<a href=\"#\" data-href=\"https://example.com\"><strong>a</strong></a>",
+        "<a href=\"#\" data-href=\"https://example.com\"><strong>a</strong></a>",
+        "<a href=\"#\" data-href=\"https://example.com\"><strong>a</strong></a>",
+        "<a href=\"#\" data-href=\"https://example.com\"><strong>a</strong></a>",
+        "<a href=\"#\" data-href=\"https://example.com\"><strong>a</strong></a>",
+        "<a href=\"#\" data-href=\"https://example.com\"><strong>a</strong></a>"
+      ]
+    },
+    {
+      "text": "[`a`](https://example.com)",
+      "html": [
+        "<a href=\"#\" data-href=\"https://example.com\"><code>a</code></a>",
+        "<a href=\"#\" data-href=\"https://example.com\"><code>a</code></a>",
+        "<a href=\"#\" data-href=\"https://example.com\"><code>a</code></a>",
+        "<a href=\"#\" data-href=\"https://example.com\"><code>a</code></a>",
+        "<a href=\"#\" data-href=\"https://example.com\"><code>a</code></a>",
+        "<a href=\"#\" data-href=\"https://example.com\"><code>a</code></a>"
+      ]
+    },
+    {"text":"[![a](images/a.png)](https://example.com)","html":["![a](https://example.com)","![a](https://example.com)","![a](https://example.com)","![a](https://example.com)","![a](https://example.com)","![a](https://example.com)"]},
+    {
+      "text": "*[a](https://example.com)*",
+      "html": ["<em><a href=\"#\" data-href=\"https://example.com\">a</a></em>","<em><a href=\"#\" data-href=\"https://example.com\">a</a></em>","<em><a href=\"#\" data-href=\"https://example.com\">a</a></em>","<em><a href=\"#\" data-href=\"https://example.com\">a</a></em>","<em><a href=\"#\" data-href=\"https://example.com\">a</a></em>","<em><a href=\"#\" data-href=\"https://example.com\">a</a></em>"]
+    },
+    {
+      "text": "**[a](https://example.com)**",
+      "html": [
+        "<strong><a href=\"#\" data-href=\"https://example.com\">a</a></strong>",
+        "<strong><a href=\"#\" data-href=\"https://example.com\">a</a></strong>",
+        "<strong><a href=\"#\" data-href=\"https://example.com\">a</a></strong>",
+        "<strong><a href=\"#\" data-href=\"https://example.com\">a</a></strong>",
+        "<strong><a href=\"#\" data-href=\"https://example.com\">a</a></strong>",
+        "<strong><a href=\"#\" data-href=\"https://example.com\">a</a></strong>"
+      ]
+    },
+    {"text":"*![a](images/a.png)*","html":["<em></em>","<em></em>","<em></em>","<em></em>","<em><img src=\"https://example.com/guide/images/a.png\" alt=\"a\" loading=\"lazy\"></em>","<em><img src=\"https://example.com/guide//images/a.png\" alt=\"a\" loading=\"lazy\"></em>"]},
+    {"text":"~~зачёркнуто~~","html":["~~зачёркнуто~~","~~зачёркнуто~~","~~зачёркнуто~~","~~зачёркнуто~~","~~зачёркнуто~~","~~зачёркнуто~~"]},
+    {"text":"_подчёркнуто_","html":["_подчёркнуто_","_подчёркнуто_","_подчёркнуто_","_подчёркнуто_","_подчёркнуто_","_подчёркнуто_"]},
+    {"text":"__жирный__","html":["__жирный__","__жирный__","__жирный__","__жирный__","__жирный__","__жирный__"]},
+    {"text":"\\*a\\*","html":["\\*a\\*","\\*a\\*","\\*a\\*","\\*a\\*","\\*a\\*","\\*a\\*"]},
+    {"text":"**","html":["**","**","**","**","**","**"]},
+    {"text":"*","html":["*","*","*","*","*","*"]},
+    {"text":"`","html":["`","`","`","`","`","`"]},
+    {"text":"[","html":["[","[","[","[","[","["]},
+    {"text":"]","html":["]","]","]","]","]","]"]},
+    {"text":"(","html":["(","(","(","(","(","("]},
+    {"text":")","html":[")",")",")",")",")",")"]},
+    {"text":"![","html":["![","![","![","![","![","!["]},
+    {"text":"[]()","html":["[]()","[]()","[]()","[]()","[]()","[]()"]},
+    {"text":"[](","html":["[](","[](","[](","[](","[](","[]("]},
+    {"text":"![]()","html":["![]()","![]()","![]()","![]()","![]()","![]()"]},
+    {"text":"a ** b ** c","html":["a <strong> b </strong> c","a <strong> b </strong> c","a <strong> b </strong> c","a <strong> b </strong> c","a <strong> b </strong> c","a <strong> b </strong> c"]},
+    {"text":"a * b * c","html":["a * b * c","a * b * c","a * b * c","a * b * c","a * b * c","a * b * c"]},
+    {"text":"а ӝ б","html":["а ӝ б","а ӝ б","а ӝ б","а ӝ б","а ӝ б","а ӝ б"]},
+    {"text":"😀*😀*😀","html":["😀*😀*😀","😀*😀*😀","😀*😀*😀","😀*😀*😀","😀*😀*😀","😀*😀*😀"]},
+    {"text":"(*😀*)","html":["(<em>😀</em>)","(<em>😀</em>)","(<em>😀</em>)","(<em>😀</em>)","(<em>😀</em>)","(<em>😀</em>)"]},
+    {"text":"(😀 *😀*)","html":["(😀 <em>😀</em>)","(😀 <em>😀</em>)","(😀 <em>😀</em>)","(😀 <em>😀</em>)","(😀 <em>😀</em>)","(😀 <em>😀</em>)"]}
+  ],
+  "escapes": [
+    {"text":"","html":""},
+    {"text":"a","html":"a"},
+    {"text":"&","html":"&amp;"},
+    {"text":"<","html":"&lt;"},
+    {"text":">","html":"&gt;"},
+    {"text":"\"","html":"&quot;"},
+    {"text":"'","html":"&#39;"},
+    {"text":"&amp;","html":"&amp;amp;"},
+    {"text":"<script>","html":"&lt;script&gt;"},
+    {"text":"a & b < c > d \" e ' f","html":"a &amp; b &lt; c &gt; d &quot; e &#39; f"},
+    {"text":"яблоко","html":"яблоко"},
+    {"text":"😀","html":"😀"},
+    {"text":" ","html":" "},
+    {"text":"`","html":"`"},
+    {"text":"/","html":"/"}
+  ]
+}

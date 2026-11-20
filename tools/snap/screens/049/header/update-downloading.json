@@ -1,0 +1,35 @@
+{
+  "id": "header/update-downloading",
+  "base": "header/_base",
+  "state": "Карточка: скачивание 42 %, объём, скорость, время, «Отмена»",
+  "invoke": {
+    "updater-get-state": {
+      "state": "downloading",
+      "enabled": true,
+      "currentVersion": "0.4.9",
+      "version": "0.5.0",
+      "releaseNotes": null,
+      "progress": {
+        "percent": 42.4,
+        "transferred": 53477376,
+        "total": 125829120,
+        "bytesPerSecond": 3355443.2
+      },
+      "error": null,
+      "errorCode": null,
+      "checkSource": null,
+      "cancellable": true
+    }
+  },
+  "steps": [
+    {
+      "wait": 600
+    },
+    {
+      "move": [
+        800,
+        880
+      ]
+    }
+  ]
+}

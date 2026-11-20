@@ -1,0 +1,558 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://hlsr.pro/schemas/channel-manifest-1.json",
+  "title": "HLSR channel manifest",
+  "description": "Удалённое описание канала обновлений одной сборки. Нужен, чтобы находить новые версии игры без выпуска нового лаунчера. Как и игровой манифест, описывает ТОЛЬКО данные: ни исполняемого файла, ни аргументов запуска, ни Steam AppID здесь быть не может. Обновлением самого лаунчера занимается electron-updater — эти системы не смешиваются.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "gameId",
+    "channel",
+    "version",
+    "publishedAt",
+    "minimumLauncherVersion",
+    "updateRequired",
+    "fullArchive",
+    "filesManifest",
+    "enabled"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "gameId": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "minLength": 3,
+      "maxLength": 64
+    },
+    "channel": {
+      "type": "string",
+      "enum": [
+        "stable",
+        "beta",
+        "test"
+      ]
+    },
+    "version": {
+      "description": "Актуальная версия сборки в этом канале.",
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+(-[0-9A-Za-z.-]+)?$"
+    },
+    "publishedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "minimumLauncherVersion": {
+      "description": "Лаунчер старее указанного не должен применять это обновление.",
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "updateRequired": {
+      "description": "true — старая сборка не запускается через основную кнопку, пока не обновится.",
+      "type": "boolean"
+    },
+    "expectedInstalledSize": {
+      "oneOf": [
+        {
+          "type": "integer",
+          "minimum": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "fullArchive": {
+      "$ref": "#/definitions/archive"
+    },
+    "repairArchives": {
+      "description": "Эталонные архивы по версиям — источник для восстановления файлов установленной версии.",
+      "type": "array",
+      "maxItems": 32,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "version",
+          "archive"
+        ],
+        "properties": {
+          "version": {
+            "type": "string",
+            "pattern": "^\\d+\\.\\d+\\.\\d+(-[0-9A-Za-z.-]+)?$"
+          },
+          "archive": {
+            "$ref": "#/definitions/archive"
+          }
+        }
+      }
+    },
+    "repairMirror": {
+      "description": "Пофайловое зеркало для восстановления. Без него ремонт одного испорченного файла требует полного архива сборки: это гигабайты трафика ради килобайтов. Файл адресуется своим SHA-256, поэтому адрес и есть контрольная сумма, а подменить содержимое по известному адресу нельзя. Крупные файлы в зеркало не входят: maxFileSize задаёт границу, за которой лаунчер возвращается к полному архиву.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "version",
+        "maxFileSize",
+        "layout",
+        "providers"
+      ],
+      "properties": {
+        "version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+(-[0-9A-Za-z.-]+)?$"
+        },
+        "maxFileSize": {
+          "description": "Файлы строго больше этого размера в зеркале не лежат.",
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 268435456
+        },
+        "layout": {
+          "description": "sha256-2 — путь <первые два символа>/<полный sha256>. Раскладка по двум символам держит число записей в каталоге в разумных пределах.",
+          "type": "string",
+          "enum": [
+            "sha256-2"
+          ]
+        },
+        "files": {
+          "description": "Сколько файлов выложено. Справочное значение для диагностики и отчётов.",
+          "type": "integer",
+          "minimum": 0
+        },
+        "totalSize": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "providers": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 8,
+          "items": {
+            "$ref": "#/definitions/manifestProvider"
+          }
+        }
+      }
+    },
+    "filesManifest": {
+      "description": "Файловый манифест объявленной версии: по нему лаунчер проверяет и чинит установленную сборку. Скачивается только после успешной проверки подписи всего channel manifest.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "version",
+        "sha256",
+        "size",
+        "filename",
+        "providers"
+      ],
+      "properties": {
+        "version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+(-[0-9A-Za-z.-]+)?$"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "size": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 67108864
+        },
+        "filename": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200,
+          "pattern": "^[^/\\\\:*?\"<>|]+\\.json$"
+        },
+        "providers": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 8,
+          "items": {
+            "$ref": "#/definitions/manifestProvider"
+          }
+        }
+      }
+    },
+    "buildMetadata": {
+      "description": "Дескриптор файла сведений о сборке ghostingmod/hlsr-build.json для версии, объявленной этим манифестом. Поле необязательное: без него лаунчер работает как раньше и берёт дескриптор из вшитого игрового манифеста. Смысл поля в том, чтобы выпуск новой сборки не требовал выпуска нового лаунчера: манифест канала подписан тем же ключом Ed25519 и проверяется целиком до использования, поэтому дескриптор отсюда доверенный ровно в той же мере, что и вшитый. Описывать он обязан именно версию из поля version этого манифеста.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "schemaVersion",
+        "required",
+        "buildId",
+        "buildName",
+        "builtAt",
+        "gitCommit",
+        "architecture"
+      ],
+      "properties": {
+        "path": {
+          "description": "Фиксированный allowlist-путь внутри сборки. Только это значение и допустимо.",
+          "const": "ghostingmod/hlsr-build.json"
+        },
+        "schemaVersion": {
+          "const": 1
+        },
+        "required": {
+          "type": "boolean"
+        },
+        "buildId": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 128,
+          "pattern": "^[a-z0-9]+([._-][a-z0-9]+)*$"
+        },
+        "buildName": {
+          "type": "string",
+          "enum": [
+            "HL1 Movement"
+          ]
+        },
+        "builtAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "gitCommit": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{7,40}$"
+        },
+        "architecture": {
+          "type": "string",
+          "enum": [
+            "x86"
+          ]
+        }
+      }
+    },
+    "patches": {
+      "type": "array",
+      "maxItems": 64,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "fromVersion",
+          "toVersion",
+          "archive",
+          "resultingFilesManifestSha256"
+        ],
+        "properties": {
+          "fromVersion": {
+            "type": "string",
+            "pattern": "^\\d+\\.\\d+\\.\\d+(-[0-9A-Za-z.-]+)?$"
+          },
+          "toVersion": {
+            "type": "string",
+            "pattern": "^\\d+\\.\\d+\\.\\d+(-[0-9A-Za-z.-]+)?$"
+          },
+          "publishedAt": {
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "archive": {
+            "$ref": "#/definitions/archive"
+          },
+          "changedFiles": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "deletedFiles": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "resultingFilesManifestSha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "resultingInstalledSize": {
+            "type": "integer",
+            "minimum": 1
+          }
+        }
+      }
+    },
+    "notes": {
+      "type": "string",
+      "maxLength": 2000
+    },
+    "signature": {
+      "$ref": "#/definitions/signature"
+    },
+    "enabled": {
+      "description": "false — канал не раздаётся: лаунчер покажет DELIVERY_CHANNEL_DISABLED.",
+      "type": "boolean"
+    },
+    "versionStatus": {
+      "description": "assigned — версия назначена владельцем; draft — ещё нет.",
+      "type": "string",
+      "enum": [
+        "draft",
+        "assigned",
+        "retired"
+      ]
+    }
+  },
+  "definitions": {
+    "signature": {
+      "description": "Ed25519-подпись канонической формы манифеста без самого поля signature.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "algorithm",
+        "value"
+      ],
+      "properties": {
+        "algorithm": {
+          "const": "ed25519"
+        },
+        "keyId": {
+          "type": "string",
+          "maxLength": 64
+        },
+        "value": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9+/=]{64,256}$"
+        }
+      }
+    },
+    "archive": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "filename",
+        "size",
+        "sha256",
+        "providers"
+      ],
+      "properties": {
+        "version": {
+          "description": "Версия сборки ВНУТРИ архива. Поле необязательное: без него архив описывает ту же версию, что и манифест — так было всегда и так остаётся для старых выпусков. Смысл поля в том, чтобы полный архив не приходилось пересобирать и перезаливать на каждый выпуск: он остаётся базой прошлой версии, а до объявленной лаунчер доводит установку патчем от этой базы. Патч база -> version обязан быть объявлен в patches, иначе свежая установка встанет на старой версии.",
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+(-[0-9A-Za-z.-]+)?$"
+        },
+        "filename": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200,
+          "pattern": "^[^/\\\\:*?\"<>|]+\\.(7z|zip)$"
+        },
+        "size": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "rootPrefix": {
+          "oneOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 260,
+              "allOf": [
+                {
+                  "not": {
+                    "pattern": "(^|/)\\.\\.(/|$)"
+                  }
+                },
+                {
+                  "pattern": "^(?![A-Za-z]:)(?!/)[^\\\\:*?\"<>|]+$"
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "providers": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 8,
+          "items": {
+            "$ref": "#/definitions/provider"
+          }
+        }
+      }
+    },
+    "manifestProvider": {
+      "description": "Источник файлового манифеста. Только прямой HTTPS или локальный HTTP тестового сервера: временные ссылки (Яндекс.Диск) сюда не годятся, их нельзя ни сохранить, ни переиспользовать.",
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "status"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+          "maxLength": 64
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "https-direct",
+            "local-http"
+          ]
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "temporary",
+            "permanent"
+          ]
+        },
+        "priority": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        }
+      },
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "id": true,
+            "type": {
+              "const": "https-direct"
+            },
+            "status": true,
+            "priority": true,
+            "url": {
+              "type": "string",
+              "pattern": "^https://[A-Za-z0-9.-]+(:\\d+)?/[^\\s\"'<>]*$"
+            }
+          },
+          "required": [
+            "url"
+          ]
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "id": true,
+            "type": {
+              "const": "local-http"
+            },
+            "status": true,
+            "priority": true,
+            "url": {
+              "description": "Только localhost. Используется тестовым HTTP-сервером, в production недоступен.",
+              "type": "string",
+              "pattern": "^http://(127\\.0\\.0\\.1|localhost)(:\\d+)?/[^\\s\"'<>]*$"
+            }
+          },
+          "required": [
+            "url"
+          ]
+        }
+      ]
+    },
+    "provider": {
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "status"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+          "maxLength": 64
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "yandex-public",
+            "https-direct",
+            "local-http"
+          ]
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "temporary",
+            "permanent"
+          ]
+        },
+        "priority": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        }
+      },
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "id": true,
+            "type": {
+              "const": "yandex-public"
+            },
+            "status": true,
+            "priority": true,
+            "publicUrl": {
+              "type": "string",
+              "pattern": "^https://disk\\.yandex\\.(ru|com)/d/[A-Za-z0-9_-]+$"
+            }
+          },
+          "required": [
+            "publicUrl"
+          ]
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "id": true,
+            "type": {
+              "const": "https-direct"
+            },
+            "status": true,
+            "priority": true,
+            "url": {
+              "type": "string",
+              "pattern": "^https://[A-Za-z0-9.-]+(:\\d+)?/[^\\s\"'<>]*$"
+            }
+          },
+          "required": [
+            "url"
+          ]
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "id": true,
+            "type": {
+              "const": "local-http"
+            },
+            "status": true,
+            "priority": true,
+            "url": {
+              "type": "string",
+              "pattern": "^http://(127\\.0\\.0\\.1|localhost)(:\\d+)?/[^\\s\"'<>]*$"
+            }
+          },
+          "required": [
+            "url"
+          ]
+        }
+      ]
+    }
+  }
+}

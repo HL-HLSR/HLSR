@@ -1,0 +1,30 @@
+{
+  "id": "configs/pz-livesplit",
+  "state": "Ghosting: оверлей LiveSplit (G10) — LiveSplit не запущен, в карточке источника и в превью пример; маска «Нет»",
+  "base": "configs/_pz",
+  "invoke": {
+    "livesplit-overlay-capture": {
+      "status": "not-running"
+    }
+  },
+  "steps": [
+    {
+      "click": {
+        "css": ".launcher-topbar__tab:nth-child(3)",
+        "view": "topbar-tab-configs"
+      }
+    },
+    {
+      "click": {
+        "css": "#gx-tab-livesplit",
+        "view": "gx-tab-livesplit"
+      }
+    },
+    {
+      "move": [
+        800,
+        880
+      ]
+    }
+  ]
+}

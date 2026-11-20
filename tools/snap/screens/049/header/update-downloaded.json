@@ -1,0 +1,29 @@
+{
+  "id": "header/update-downloaded",
+  "base": "header/_base",
+  "state": "Карточка: готово к установке, «Перезапустить», «При выходе»",
+  "invoke": {
+    "updater-get-state": {
+      "state": "downloaded",
+      "enabled": true,
+      "currentVersion": "0.4.9",
+      "version": "0.5.0",
+      "releaseNotes": "Новая шапка.",
+      "progress": null,
+      "error": null,
+      "errorCode": null,
+      "checkSource": null
+    }
+  },
+  "steps": [
+    {
+      "wait": 600
+    },
+    {
+      "move": [
+        800,
+        880
+      ]
+    }
+  ]
+}

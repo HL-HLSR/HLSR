@@ -1,0 +1,22 @@
+{
+  "$comment": "Шапка справа (S4, RunnerSearch/SponsorsButton/AccountMenu/UpdateCard 0.4.9): окно лаунчера целиком. По умолчанию гость (runner-state базы 049); сцены со входом задают runner-state сами: подписчик, аватар, «Играет в HL2 Ghosting». Ник без оформления: бесконечные анимации эталон ставит на t = 0.",
+  "screen": "header",
+  "themes": [
+    "hlsr"
+  ],
+  "languages": [
+    "ru"
+  ],
+  "prefs": {
+    "configTourSeen": true
+  },
+  "https": {
+    "https://avatars.steamstatic.com/0000000000000000000000000000000000000001_full.jpg": "../assets/avatar.png"
+  },
+  "settleMs": 1500,
+  "invoke": {
+    "runner-sync": null,
+    "runner-speedrun-bests": null,
+    "friends-avatars": {}
+  }
+}

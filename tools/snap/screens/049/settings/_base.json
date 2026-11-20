@@ -1,0 +1,43 @@
+{
+  "$comment": "Окно «Настройки» лаунчера (S13, SettingsModal.vue 0.4.9). Открывается пятой кнопкой низа колонки («Настройки лаунчера»; в GPUI — rail-settings). Указатель уводится на подложку под окном. Строки «Аппаратное ускорение» в GPUI нет (решение владельца 4): в «Интерфейсе» она ниже края раздела, внизу прокрутки — отличие.",
+  "screen": "settings",
+  "themes": [
+    "hlsr",
+    "paper"
+  ],
+  "languages": [
+    "ru"
+  ],
+  "prefs": {
+    "configTourSeen": true
+  },
+  "settleMs": 1500,
+  "invoke": {
+    "discord-rpc-get": {
+      "enabled": true,
+      "state": "connected",
+      "code": null
+    },
+    "runner-sync": null,
+    "runner-speedrun-bests": null,
+    "friends-avatars": {}
+  },
+  "steps": [
+    {
+      "click": {
+        "css": ".game-rail__footer .game-rail__tool",
+        "index": 4,
+        "view": "rail-settings"
+      }
+    },
+    {
+      "wait": 600
+    },
+    {
+      "move": [
+        800,
+        880
+      ]
+    }
+  ]
+}

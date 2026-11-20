@@ -1,0 +1,23 @@
+{
+  "id": "games/livesplit-narrow",
+  "base": "games/_base",
+  "state": "LiveSplit в CSS-окне 1152×648: уже 1600 — под описанием тёмная подложка (filter: blur 12px)",
+  "window": {
+    "width": 1152,
+    "height": 648
+  },
+  "zooms": [
+    1
+  ],
+  "rails": [
+    "closed"
+  ],
+  "steps": [
+    {
+      "click": {
+        "css": ".game-rail .rail-item[aria-label=\"LiveSplit\"]",
+        "view": "rail-tool-livesplit"
+      }
+    }
+  ]
+}

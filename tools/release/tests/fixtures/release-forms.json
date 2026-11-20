@@ -1,0 +1,129 @@
+{
+  "generator": "tools/reference/update/release-forms.js",
+  "latestYml": [
+    {
+      "name": "one byte",
+      "version": "0.5.0",
+      "releaseDate": "2026-10-16T09:00:00.000Z",
+      "sha512": "ODGmphVeUJ3uWaf0Ues1Mk2Pjy3243CIlHQPmP3uI4ifTeWtsMUBDftVXNp3yKtdyQIJTFLeMnjzWnXrwl8JOg==",
+      "size": 1,
+      "windows": {"filename":"HLSR-Setup-0.5.0.exe","text":"version: 0.5.0\nfiles:\n  - url: HLSR-Setup-0.5.0.exe\n    sha512: ODGmphVeUJ3uWaf0Ues1Mk2Pjy3243CIlHQPmP3uI4ifTeWtsMUBDftVXNp3yKtdyQIJTFLeMnjzWnXrwl8JOg==\n    size: 1\npath: HLSR-Setup-0.5.0.exe\nsha512: ODGmphVeUJ3uWaf0Ues1Mk2Pjy3243CIlHQPmP3uI4ifTeWtsMUBDftVXNp3yKtdyQIJTFLeMnjzWnXrwl8JOg==\nreleaseDate: '2026-10-16T09:00:00.000Z'\n"},
+      "linux": {
+        "filename": "HLSR-Setup-0.5.0-linux-x86_64.AppImage",
+        "text": "version: 0.5.0\nfiles:\n  - url: HLSR-Setup-0.5.0-linux-x86_64.AppImage\n    sha512: ODGmphVeUJ3uWaf0Ues1Mk2Pjy3243CIlHQPmP3uI4ifTeWtsMUBDftVXNp3yKtdyQIJTFLeMnjzWnXrwl8JOg==\n    size: 1\npath: HLSR-Setup-0.5.0-linux-x86_64.AppImage\nsha512: ODGmphVeUJ3uWaf0Ues1Mk2Pjy3243CIlHQPmP3uI4ifTeWtsMUBDftVXNp3yKtdyQIJTFLeMnjzWnXrwl8JOg==\nreleaseDate: '2026-10-16T09:00:00.000Z'\n"
+      }
+    },
+    {
+      "name": "small",
+      "version": "0.5.0",
+      "releaseDate": "2026-10-16T09:00:00.000Z",
+      "sha512": "DoxeEHl/Dg9M5uxOvSmzqykMhmkGEhiZwsUq5zAhXXG91jRvEu54cPwoqUtg0lMJDoIsgJ55JZy5vsRnPzpmpw==",
+      "size": 100,
+      "windows": {"filename":"HLSR-Setup-0.5.0.exe","text":"version: 0.5.0\nfiles:\n  - url: HLSR-Setup-0.5.0.exe\n    sha512: DoxeEHl/Dg9M5uxOvSmzqykMhmkGEhiZwsUq5zAhXXG91jRvEu54cPwoqUtg0lMJDoIsgJ55JZy5vsRnPzpmpw==\n    size: 100\npath: HLSR-Setup-0.5.0.exe\nsha512: DoxeEHl/Dg9M5uxOvSmzqykMhmkGEhiZwsUq5zAhXXG91jRvEu54cPwoqUtg0lMJDoIsgJ55JZy5vsRnPzpmpw==\nreleaseDate: '2026-10-16T09:00:00.000Z'\n"},
+      "linux": {
+        "filename": "HLSR-Setup-0.5.0-linux-x86_64.AppImage",
+        "text": "version: 0.5.0\nfiles:\n  - url: HLSR-Setup-0.5.0-linux-x86_64.AppImage\n    sha512: DoxeEHl/Dg9M5uxOvSmzqykMhmkGEhiZwsUq5zAhXXG91jRvEu54cPwoqUtg0lMJDoIsgJ55JZy5vsRnPzpmpw==\n    size: 100\npath: HLSR-Setup-0.5.0-linux-x86_64.AppImage\nsha512: DoxeEHl/Dg9M5uxOvSmzqykMhmkGEhiZwsUq5zAhXXG91jRvEu54cPwoqUtg0lMJDoIsgJ55JZy5vsRnPzpmpw==\nreleaseDate: '2026-10-16T09:00:00.000Z'\n"
+      }
+    },
+    {
+      "name": "70 KiB",
+      "version": "12.34.567",
+      "releaseDate": "2026-10-16T09:00:00.000Z",
+      "sha512": "/UYHyYrUD23RlFIqFlnlSpIAXP1jyQGAmeqLThf8xXU29dNFl5fFKCihlUsdJY2eX8NsVKzejnihupmws9Yfag==",
+      "size": 70000,
+      "windows": {
+        "filename": "HLSR-Setup-12.34.567.exe",
+        "text": "version: 12.34.567\nfiles:\n  - url: HLSR-Setup-12.34.567.exe\n    sha512: /UYHyYrUD23RlFIqFlnlSpIAXP1jyQGAmeqLThf8xXU29dNFl5fFKCihlUsdJY2eX8NsVKzejnihupmws9Yfag==\n    size: 70000\npath: HLSR-Setup-12.34.567.exe\nsha512: /UYHyYrUD23RlFIqFlnlSpIAXP1jyQGAmeqLThf8xXU29dNFl5fFKCihlUsdJY2eX8NsVKzejnihupmws9Yfag==\nreleaseDate: '2026-10-16T09:00:00.000Z'\n"
+      },
+      "linux": {
+        "filename": "HLSR-Setup-12.34.567-linux-x86_64.AppImage",
+        "text": "version: 12.34.567\nfiles:\n  - url: HLSR-Setup-12.34.567-linux-x86_64.AppImage\n    sha512: /UYHyYrUD23RlFIqFlnlSpIAXP1jyQGAmeqLThf8xXU29dNFl5fFKCihlUsdJY2eX8NsVKzejnihupmws9Yfag==\n    size: 70000\npath: HLSR-Setup-12.34.567-linux-x86_64.AppImage\nsha512: /UYHyYrUD23RlFIqFlnlSpIAXP1jyQGAmeqLThf8xXU29dNFl5fFKCihlUsdJY2eX8NsVKzejnihupmws9Yfag==\nreleaseDate: '2026-10-16T09:00:00.000Z'\n"
+      }
+    }
+  ],
+  "payloadJson": [
+    {
+      "input": {"version":"0.5.0","size":98765432,"sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","sha512":"BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB==","unpackedSize":123456789},
+      "text": "{\n  \"schema\": 1,\n  \"version\": \"0.5.0\",\n  \"installer\": {\n    \"format\": \"tar.gz\",\n    \"filename\": \"HLSR-0.5.0-linux-x86_64.tar.gz\",\n    \"size\": 98765432,\n    \"sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\n    \"sha512\": \"BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB==\",\n    \"unpackedSize\": 123456789\n  }\n}\n"
+    },
+    {
+      "input": {"version":"1.20.300","size":1,"sha256":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","sha512":"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc==","unpackedSize":2147483648},
+      "text": "{\n  \"schema\": 1,\n  \"version\": \"1.20.300\",\n  \"installer\": {\n    \"format\": \"tar.gz\",\n    \"filename\": \"HLSR-1.20.300-linux-x86_64.tar.gz\",\n    \"size\": 1,\n    \"sha256\": \"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef\",\n    \"sha512\": \"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc==\",\n    \"unpackedSize\": 2147483648\n  }\n}\n"
+    }
+  ],
+  "archive": {
+    "version": "0.5.0",
+    "tree": [
+      {"path":"hlsr","hex":"7f454c4602010100000000000000000000003e0000000000000000000000000000000000000000006c61756e63686572"},
+      {
+        "path": "resources/app.asar",
+        "hex": "040000000c01000008010000020100007b2266696c6573223a7b227061636b6167652e6a736f6e223a7b2273697a65223a33332c226f6666736574223a2230222c22696e74656772697479223a7b22616c676f726974686d223a22534841323536222c2268617368223a2266313931386135613936383139373434633538306539313436386239383661366333616461633539663165326164393663636333366236346631316133646264222c22626c6f636b53697a65223a343139343330342c22626c6f636b73223a5b2266313931386135613936383139373434633538306539313436386239383661366333616461633539663165326164393663636333366236346631316133646264225d7d7d7d7d00007b226e616d65223a22686c7372222c2276657273696f6e223a22302e352e30227d"
+      },
+      {"path":"resources/icons/hlsr.png","hex":"89504e470d0a1a0a69636f6e"},
+      {"path":"resources/7zip/linux/x64/7za","hex":"377a61206c696e7578"},
+      {"path":"resources/linux/install-userns-profile.sh","hex":"23212f62696e2f73680a"},
+      {"path":"resources/Лицензия.txt","hex":"d182d0b5d0bad181d182"},
+      {"path":"resources/B.txt","hex":"7570706572"},
+      {"path":"resources/a.txt","hex":"6c6f776572"},
+      {"path":"resources/dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd/eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee/file.bin","hex":"646565702066696c6520696e2061206c6f6e672070617468"}
+    ],
+    "releaseMarker": "{\"version\":\"0.5.0\",\"platform\":\"linux\",\"arch\":\"x64\",\"executable\":\"hlsr\"}\n",
+    "info": "{\"version\":\"0.5.0\",\"unpackedSize\":504}\n",
+    "unpackedSize": 504,
+    "entries": [
+      {"name":"./","type":"5","size":0,"uid":0,"gid":0,"ustar":"ustar"},
+      {"name":".hlsr-release.json","type":"0","size":72,"uid":0,"gid":0,"ustar":"ustar"},
+      {"name":"hlsr","type":"0","size":48,"uid":0,"gid":0,"ustar":"ustar"},
+      {"name":"resources/","type":"5","size":0,"uid":0,"gid":0,"ustar":"ustar"},
+      {"name":"resources/7zip/","type":"5","size":0,"uid":0,"gid":0,"ustar":"ustar"},
+      {"name":"resources/7zip/linux/","type":"5","size":0,"uid":0,"gid":0,"ustar":"ustar"},
+      {"name":"resources/7zip/linux/x64/","type":"5","size":0,"uid":0,"gid":0,"ustar":"ustar"},
+      {"name":"resources/7zip/linux/x64/7za","type":"0","size":9,"uid":0,"gid":0,"ustar":"ustar"},
+      {"name":"resources/B.txt","type":"0","size":5,"uid":0,"gid":0,"ustar":"ustar"},
+      {"name":"resources/a.txt","type":"0","size":5,"uid":0,"gid":0,"ustar":"ustar"},
+      {"name":"resources/app.asar","type":"0","size":309,"uid":0,"gid":0,"ustar":"ustar"},
+      {"name":"resources/dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd/","type":"5","size":0,"uid":0,"gid":0,"ustar":"ustar"},
+      {"name":"resources/dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd/eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee/","type":"5","size":0,"uid":0,"gid":0,"ustar":"ustar"},
+      {"name":"resources/dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd/eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee/file.bin","type":"0","size":24,"uid":0,"gid":0,"ustar":"ustar"},
+      {"name":"resources/icons/","type":"5","size":0,"uid":0,"gid":0,"ustar":"ustar"},
+      {"name":"resources/icons/hlsr.png","type":"0","size":12,"uid":0,"gid":0,"ustar":"ustar"},
+      {"name":"resources/linux/","type":"5","size":0,"uid":0,"gid":0,"ustar":"ustar"},
+      {"name":"resources/linux/install-userns-profile.sh","type":"0","size":10,"uid":0,"gid":0,"ustar":"ustar"},
+      {"name":"resources/Лицензия.txt","type":"0","size":10,"uid":0,"gid":0,"ustar":"ustar"}
+    ]
+  },
+  "installFiles": {
+    "tree": [
+      {
+        "path": "HLSR.exe",
+        "hex": "4d5a00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000005045000064860000000000000000000000000000f00000000b020000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000a505c143e5b7e3e1853137d9a1da7bcb522509b0b898d9417b219062da78f6e07b0ae23ceb4f405a326f593add8e6fe2cc55e32f86c523aec2146ea78e14a3af038b92346e868d6fc2f25d06a2bd5c1232fa30640e14ee7bbe9c3e8efabf33988639759f793fce7298d349389d22a1187ec3da2cadf1821415f4522ce795d45a4b4c8e1762029c2594c82a47d440ae4133f12ab014b34bb105c66ea86b8a1e6e3c47728818181ac0d02e53a70a0105fa739cae2236e284055730770de40b54f733819d9cc23f262d6de9243526c29d6119f02c71fb4ed29795727182809b8ab518caadea95ce57fedfc40d01c123caab50f0f1c92a86555b566f1ac70dd630ff8e03b81a32cb2eb782a57e34ff8fb080fdb597f2319984746397dd90c3c668954dfeec593b5534a2a885ed4f340863e9362b76e47155912578191dbd4731abfdeb49625dcc2429de9b3ac3da7211210f76fb53151047a5382d989dfaaa1d1ea93c99715a376fe92394bdef080e9299df1651e9c937c2135fa61500cac0402e09aa5ada4e57ffebcf4f16ee76784f1ce6517ab75f61ac7c184ff506a3e38da448f2953e0b6c73bffd737f7beec09911128b4b6acce2f9acf28fd0478f61be1844c79bea5fd0e4134cb0756f9425fd73fbb1ef02d7d014cf6705d2de3fbf972cc5d72c2b8bfca558529f0b20b1575c72f690e51b7102cebb889e1928db0d4860cc4325fe489089c992942674cdf374a1ce14ac3268b430fa3b98b2b4c06012c952b13d32de11661506ecb60b8b80636ecc614e5c3dd1b463b1aa354b715a03bf4afafaf0e7e169282c48e1153ca4130a98a7b3ec9c4ac4572d947fe61c7f3e395cec55f89dc2fea6654faefd94949facd1e637bf812b61a5bbf73f94482316ab1ada2b278c292e06ef1cce9e7dc0b749894a729363178245aec42cdae7864a5b09c5b963d971b7a186111426b588bdf369b417f4e3a8921c29b384d90645c244fdd0f5881a6d61bbac1c0f7eb96f15bf14feef655844ddd05aa74368c0c46ac74284b97744887d4fc28342d796ad564345979203ea448de1abacce020eda5adf013dbf0e15452cabdb5a5098ef29dbb43dabde2f0c51eef51f6971b4eca8f1d81f0d0397a1396c5f58aaed553688388492885b57b90e576b7c8b5ccf40cd23a65645c82f0d2d6638415f18edab5935e149eeaa2ea29842fb1caef0af7a1b2627eb316e005b820065b3eb027406559eb7229e7faa98758da1a08a4d742083952c8f767e6daa11eed98f2dce20f618c2344297b30bc108afe8594c35119a4651c45cc981459e5e3c8f29b2ca1a2fb6a2bdf9ea58cf0071f5f489442b412f5ee023c1db1e93c8ce8ccc3fd1c2eceb2593a4dbd05f1898e7f302c3f98263c825c2b04361506b447865357825c703c7654d3ac5c1da0c71a31b27737f21b43246f93bb173cd0fa35af486568900ea6d3954f62b825b2223ef5826bcb35c307d6aaea959c5483c7dc8e63d366b26ed44dd07f4c32f19392f9092e9350ce36cf41f4f6e97e482d47495b6630d71435f0f3e61502fddd39eb9f9ea2d17c283e1023d86afb15c3b34af1d33d4e913d0ddbe568748cfe3a98508c8d6c6dc0906399c135d8251e576df080929252405263898bd590782712aaa9070d303569eea0eedc221a832d0037f7ba0797889976e398f4fd32731dc35597b2a7ceca680b4594f5e44e7c991c6e9aa6aa7d46a77cbd1d841c56c10e2c818bad1c769f45968fee38aedfbe98e525d22b72a4b455cef2eaca0ec648c410ccf982ad9e367df6fe92236e2d3276ab30f06cf8d889fc0d84546b2a10aa4c10cb8e8aaab3443600266bf7543a9f6c969dacec5f067ae5ca1d824c49297f4e050f58c5f5a2d9b62e18dbfe22ca9c9405a2ddf992878f8300c26a90f39bc3855f4dcf99890fc1ba4c835b174d44248693803bfb8e2b4647331fdfb48a13acfb5a9ad87b50bbafcd0414654db288ec124f5e8ea1280f2990610b6784a6592736494ebff24e27310318428bf09f8bd70616c3c5be14f3f2281721b39eca34d6efb4b801032af57c4e24bb4cc685a7f42499a2ae25c97353b158f9af90f84d04143065a5317ac74836e356646e6f59ecfd6ff9c1c4b3038b932d4d52f54e7310a5739bd2b539183e01395ed2c02422db06c1965aa9b5e035e4d3cde8c13ecc8c6cfe1c515415389a3eb362772a7912f387edba772dd9eef881b3b8a62f3b0546d2a5aafc7fb6c1506e8c513958f7b4cba3674ed23ddb94b4fb129dd2179216b8fd222d3c5780a6fa459a303a6128cef66f6b0f1620c7c3494ab5c813a46019a66c4c2d84e4ffbb39c066de1b8df84c6f58296b3ffa5780ef4b3bcb0d19f0fbf242e57aa4deb9ade1de12249a29873bdfb6a90577267f9f121ba731fc18b4d8629bfd82fc414961590778b30ef6d5d98ebf644880d3127621e05e534037157ee0b8594628147754cd8230ceb0d56d668c5d17db8ea7f5c3b6a81793fcb5778ca6264f978eddd139ae3c58b64aa0bd6387f99ef3537893ea374536ec80315aa22a7688e3684b91ddbd2dfb0ce38020189774951aa86228afeebb38e8efe2f8309fb28d6f2c3f8aea08c40e09c3ddd56d8f37a20a0393c56f1928ab95876f5d1c664904de5fdad466bef68671cd6ab87f3502e8613da6021a19004aa634c1022993f31e959d04125c0579b349e5cea875fde8756a0b8b5c3d0e178f09d257974f5257cc7b0c73a0f530de693d1732e68ef12f262eacb0f14634c63859bd3613a27f519a24aa57f05962fd2705490cb515653f15a87d65f75c45171cf8a44157b4480dbc4ca0d75eb055b246023a157036ec5a38660e69834528e194246ea3b6b5819b9a2fcb5609b4251aef6c6139ec063e9e21ed5872cde57968db0d52e3fb2700d39c909a816699703d4d7408d5185083f6f20c5f714e9d77c6e7229ea6fecf354a1c2bef3bf91a767658c0a67965a9936cc443f1d249f2115b2a296be50517bedf8eda6af76e491270770e25cccad585bafd8ad87cfa0e0cc3d4e887a75264d6987794e18ec7f2491449bb47dcf51c9e999932ae922bde8ef70220be7f6a88e21d7980c1d225ecc4489fb80c3fcad257e09201bd4349136cf07f57a25382f21acf177e77a5a2989d2c83f10330dbe7ea7deafed697909d768a54a5f93c3a74801c5efcb60297b188c4458f618e1f88b4c1cbd5746d9e5397a3934203903170824d2d10f759d19e7a30805a082729d616b1208e167c4d5161c6c18ed27ba842e91a52ae39c8dca4deb8725079f38a2e605b1b8586a1cceabb8e9e2906a4340ecbf76395949cc4deb2fd13ced6f080fa11d0323983fb809964f41de96f6468192b2286590efc6d4ff05f3825f7315eb11b263f265498f9028851cc90eb6f7a0a05d37f57a41b606afaf9b83bc54c78ee8710137fcd304d56d8c6b93e41b428e98bb4b056095679043dd054262b4f264ac05dbee3e0bd21f2ff96a7cf6bd9cbcb134f5b3f4848b67dd938630bc52e756a5c0226189887758a0b54953b7ff91ff9a1332f0d1c837d732dc22391475ca8ac15851893b470423642dd58ffa9d3dc0cd0d720e7732e5c9974036f5f8c2c9c2217f1ddfc641a648c1f10593ee33e73459f2f87cdeccb68575ba65ef79468167c17fb99e440eae64e8f9d9784e8e7d97a177c2110f7a365cd9f4797fddbef378ad64f15afd2b75f119bfd3c80cb857e6f18fa5e66aa009a0da6de57e6b3f90f2d0d1db7a6bc3d956cad93b43cefa9bf82f385d074ef805f0810f485e85382c99678201ca73613163388acb1d15722fc8cb96ed7674180c8e4652caa5fb9c552f5ad2e186df0d754e593ada20e145726f8867e95c1033dd489ea7ec795ab55506f9ea9dfb6a533c9b0445f2595b3ab63d145f784c9a9ac9da09df1cb0c5c887386057d4d8c9b3fa5980f57e8d5596f8139c4df78c271491e8bf227411fdff6de88126ce37aafd9fd3094c65b70e8b83de2289d2a9a199976da30ae84e61ca9f65c5b8b04ff57a151afe1c58e9aead03c68dc98db4eb4755f0258aaf0c36dbc8d955715e95746a2d1255043e47291dc32ce7e2345350329e38eac4a20f8cd3d40a740dde408ac7f14be4e82a66f62a199ebd241fdbcebf5e1ff136a7acedf30a897ba42ea4778c3b1cbb98bafbf29c0a0b8324e5ed9874bfb0cf13cfb13426ab1f19d1c723fe143c5ee5ce1f2447f003ef446ff8b1c8e530f095ff"
+      },
+      {"path":"resources/7zip/win/x64/7za.exe","hex":"377a61"},
+      {"path":"resources/7zip/LICENSE.txt","hex":"377a6970206c6963656e7365"},
+      {
+        "path": "resources/livesplit-overlay/hlsr-overlay.dll",
+        "hex": "2909ec355ddce665d7916bb84efc300efc2d98d2a4ba766cd43c4bc9268b7cf119d7848fc89bbee5c3ec447f2670619ab404cc50807803e9a56320673964b114d03fca3a345992e2355df990fbfd5eb9d306c6d77541a06c695bd3fa0c531c6adbcb95cd9e18933a8c4d1c99608f3a084b45a77ddd803e4b30424068b76f8b42f517db1a505cb7ad34e221e72be3152f24831166a3c47a015a596c3a888241af09fad507597f8009dc9abe1f3785330ae73c2aeb2f9095a5e1d6b0d1e4e5b38f684ba9d23420f1dc552d693f16786f41bc50d257742818c1212e0d1681ff1df013c2fdcf5e882fbdf82608b83461b71741b4bf7b70f66cd0af34421070798d174c0f094322e993be28272ad58fc600910d6fe6f7ca028ee0910a4fe55ae6baa9df50c75528bb9492358d0145bb5b226bcb23dd90f49f80b15445917398a52e0f8ac5959380096d769f2f24d0d05b1ce26564b410645eac6ef4559d2d5410141fcc2233b0664f1aff8403929b7f4820471ff4ff484741bf161a1cadb7e52da1a7f7192072e5f92eaf37c4baa01e25a2c9ed7f53221e08a7ecc6802b88fa65fa136ee85a1f0ee1e6d71db2cd72ece71f5561895a296a38661ce3a8c631bbfae6e6d881dc595e38ad08ef12be66daa71210cd234b4bb30e705496c2a3f0cc1533d9fb2769f6396789d7b232af5fefffb6d473be07b9"
+      },
+      {"path":"resources/licenses/Лицензия HLSR.txt","hex":"d0bbd0b8d186d0b5d0bdd0b7d0b8d18f0a"},
+      {"path":"resources/licenses/B.txt","hex":"42"},
+      {"path":"resources/licenses/a.txt","hex":"61"},
+      {"path":"resources/licenses/_x.txt","hex":"78"},
+      {"path":"resources/licenses/Ёж.txt","hex":"d191d0b6"},
+      {"path":"resources/licenses/😀.txt","hex":"736d696c65"}
+    ],
+    "cases": [
+      {
+        "name": "production",
+        "version": "0.5.0",
+        "app": {"appId":"com.hlsrteam.hlsr","productName":"HLSR"},
+        "text": "{\"schema\":1,\"version\":\"0.5.0\",\"app\":{\"appId\":\"com.hlsrteam.hlsr\",\"productName\":\"HLSR\"},\"files\":[{\"path\":\"HLSR.exe\",\"size\":3512,\"sha256\":\"702c159048177dfd4359216c1f763ca5747b18361d614bedb0425f885734262d\"},{\"path\":\"resources/7zip/LICENSE.txt\",\"size\":12,\"sha256\":\"9b0388e90b58068643f0f80a0d1c8d835779ef35c6aa222d0e2360d640c7cfd7\"},{\"path\":\"resources/7zip/win/x64/7za.exe\",\"size\":3,\"sha256\":\"ab23fde149f67f8284b01f851c02b82972020a7dfbef1a576d0b1820fc9467ac\"},{\"path\":\"resources/licenses/B.txt\",\"size\":1,\"sha256\":\"df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c\"},{\"path\":\"resources/licenses/_x.txt\",\"size\":1,\"sha256\":\"2d711642b726b04401627ca9fbac32f5c8530fb1903cc4db02258717921a4881\"},{\"path\":\"resources/licenses/a.txt\",\"size\":1,\"sha256\":\"ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb\"},{\"path\":\"resources/licenses/Ёж.txt\",\"size\":4,\"sha256\":\"58221a30a64e1ff746b53b6ed1d64a2ca7d413874dbeb1086fe5dfd7eca646f5\"},{\"path\":\"resources/licenses/Лицензия HLSR.txt\",\"size\":17,\"sha256\":\"6b7f9a0d79e000c0e139d29da276b95926f28b3db5cac302d89af2d958c17cfc\"},{\"path\":\"resources/licenses/😀.txt\",\"size\":5,\"sha256\":\"fa1eadc4c6995667412681c69ce33adfc9302a2965f521c40908549e670e2e4e\"},{\"path\":\"resources/livesplit-overlay/hlsr-overlay.dll\",\"size\":500,\"sha256\":\"4beedd63b4ecac7932c6f0e53385b0a5c7d00251f6721f4177a56c5979a1607b\"}]}\n"
+      },
+      {
+        "name": "qa",
+        "version": "9.9.9",
+        "app": {"appId":"com.hlsrteam.hlsr.qa","productName":"HLSR-QA"},
+        "text": "{\"schema\":1,\"version\":\"9.9.9\",\"app\":{\"appId\":\"com.hlsrteam.hlsr.qa\",\"productName\":\"HLSR-QA\"},\"files\":[{\"path\":\"HLSR.exe\",\"size\":3512,\"sha256\":\"702c159048177dfd4359216c1f763ca5747b18361d614bedb0425f885734262d\"},{\"path\":\"resources/7zip/LICENSE.txt\",\"size\":12,\"sha256\":\"9b0388e90b58068643f0f80a0d1c8d835779ef35c6aa222d0e2360d640c7cfd7\"},{\"path\":\"resources/7zip/win/x64/7za.exe\",\"size\":3,\"sha256\":\"ab23fde149f67f8284b01f851c02b82972020a7dfbef1a576d0b1820fc9467ac\"},{\"path\":\"resources/licenses/B.txt\",\"size\":1,\"sha256\":\"df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c\"},{\"path\":\"resources/licenses/_x.txt\",\"size\":1,\"sha256\":\"2d711642b726b04401627ca9fbac32f5c8530fb1903cc4db02258717921a4881\"},{\"path\":\"resources/licenses/a.txt\",\"size\":1,\"sha256\":\"ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb\"},{\"path\":\"resources/licenses/Ёж.txt\",\"size\":4,\"sha256\":\"58221a30a64e1ff746b53b6ed1d64a2ca7d413874dbeb1086fe5dfd7eca646f5\"},{\"path\":\"resources/licenses/Лицензия HLSR.txt\",\"size\":17,\"sha256\":\"6b7f9a0d79e000c0e139d29da276b95926f28b3db5cac302d89af2d958c17cfc\"},{\"path\":\"resources/licenses/😀.txt\",\"size\":5,\"sha256\":\"fa1eadc4c6995667412681c69ce33adfc9302a2965f521c40908549e670e2e4e\"},{\"path\":\"resources/livesplit-overlay/hlsr-overlay.dll\",\"size\":500,\"sha256\":\"4beedd63b4ecac7932c6f0e53385b0a5c7d00251f6721f4177a56c5979a1607b\"}]}\n"
+      }
+    ]
+  }
+}

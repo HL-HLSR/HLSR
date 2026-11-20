@@ -1,0 +1,11 @@
+{
+  "id": "home/records-hl1",
+  "base": "home/_records",
+  "state": "«Рекорды», фильтр «HL»: выбранная кнопка, у карточек только категория",
+  "steps": [
+    {"click": {"css": ".launcher-topbar__tab:nth-child(1)", "view": "topbar-tab-home"}},
+    {"click": {"css": "#home-tab-records", "view": "home-tabs-1"}},
+    {"click": {"css": ".home-panel__filters .home-chip:nth-child(2)", "view": "home-chip-hl1"}},
+    {"move": [1000, 40]}
+  ]
+}

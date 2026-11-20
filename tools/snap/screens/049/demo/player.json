@@ -1,0 +1,37 @@
+{
+  "id": "demo/player",
+  "state": "Плеер без видео: шкала во времени демо, «Начало здесь» по шкале — интервал, подсказка над шкалой",
+  "base": "demo/_base",
+  "steps": [
+    {
+      "click": {
+        "css": ".game-rail .rail-item[aria-label=\"Демо\"]",
+        "view": "rail-demo"
+      }
+    },
+    {
+      "click": {
+        "css": ".dmp__list .dmp__group:nth-child(2) .dmp__item:nth-of-type(1)",
+        "view": "dmp-item-gh-run"
+      }
+    },
+    {
+      "click": {
+        "css": ".dpl__track",
+        "view": "dpl-track"
+      }
+    },
+    {
+      "click": {
+        "css": ".dpl__mark",
+        "view": "dpl-from"
+      }
+    },
+    {
+      "hover": {
+        "css": ".dpl__track",
+        "view": "dpl-track"
+      }
+    }
+  ]
+}

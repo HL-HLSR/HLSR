@@ -1,0 +1,120 @@
+name: Linux installer
+
+# Лаунчер на Rust (подпроект 6): hlsr собирает контейнер Ubuntu 18.04 (glibc 2.27,
+# scripts/slint/build-linux.sh), hlsr-release упаковывает архив лаунчера (строгий USTAR
+# .tar.gz), payload.json и AppImage-установщик с вшитым архивом (рантайм type2 с
+# закреплённым sha256, packaging/linux/appimage-runtime.env), Node-скрипты
+# tools/release/node подписывают канал и режут куски обновления. Выпуск, не прошедший
+# приёмку 0.4.7 (замороженная обновлялка с НАСТОЯЩИМ рантаймом AppImage,
+# tools/compat-047/accept-release.js), не публикуется.
+#
+# Пока владелец не закрепил sha256 рантайма AppImage, упаковка AppImage и приёмка
+# пропускаются с предупреждением (не молча); публикация без них невозможна.
+
+on:
+  push:
+    branches: [main, dev]
+  workflow_dispatch:
+    inputs:
+      publish:
+        description: Publish the signed Linux update (Windows latest is unchanged)
+        type: boolean
+        default: false
+permissions:
+  contents: read
+concurrency:
+  group: launcher-linux-release
+  cancel-in-progress: false
+env:
+  CARGO_TERM_COLOR: always
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      # Версия — как в rust-toolchain.toml.
+      - uses: dtolnay/rust-toolchain@16c20dfc2b8bc5cd72c3bf5072a9453664776e70 # 1.98.0
+      # Скрипты выпуска и приёмка 0.4.7 — Node без пакетов (npm ci не нужен).
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: ".nvmrc"
+      - run: sudo apt-get update && sudo apt-get install -y binutils squashfs-tools
+      # Упаковщик, Node-скрипты выпуска и замороженные копии 0.4.7 (сквозной выпуск на тестовом ключе).
+      - run: cargo test --release -p hlsr-release --no-fail-fast
+      - run: scripts/slint/build-linux.sh --release
+      - name: Is the AppImage runtime pinned?
+        id: runtime
+        run: |
+          if grep -q '^RUNTIME_SHA256=UNPINNED' packaging/linux/appimage-runtime.env; then
+            echo "pinned=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::sha256 of the AppImage runtime is not pinned (packaging/linux/appimage-runtime.env): AppImage packaging and the 0.4.7 acceptance are skipped"
+          else
+            echo "pinned=true" >> "$GITHUB_OUTPUT"
+          fi
+      # Выпуск — ровно X.Y.Z (Р9); на обычном push версия Cargo.toml может быть 0.5.0-dev:
+      # пробная упаковка по числам (в публикацию не идёт).
+      - name: Pack archive, payload and AppImage (development version, never published)
+        if: steps.runtime.outputs.pinned == 'true'
+        run: scripts/slint/package-linux.sh --exe target/dist/linux/hlsr --dev
+      # Приёмка 0.4.7 на тестовом ключе, настоящий рантайм AppImage.
+      - name: Acceptance 0.4.7 (test-signed channel, real AppImage runtime)
+        if: steps.runtime.outputs.pinned == 'true'
+        run: scripts/slint/accept-linux.sh
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        if: ${{ github.event_name == 'workflow_dispatch' && !inputs.publish && steps.runtime.outputs.pinned == 'true' }}
+        with:
+          name: linux-build
+          path: |
+            target/dist/linux/*.AppImage
+            target/dist/linux/latest-linux.yml
+          if-no-files-found: error
+  publish:
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.publish }}
+    needs: build
+    runs-on: ubuntu-22.04
+    environment: release
+    env:
+      # Ключ аттестации версии создаёт и вшивает в бинарник сборка (build.rs, подпроект 7);
+      # пока этого нет, канал выходит без build.attest. После подключения build.rs убрать переменную.
+      HLSR_ATTEST_DISABLE: "1"
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: dtolnay/rust-toolchain@16c20dfc2b8bc5cd72c3bf5072a9453664776e70 # 1.98.0
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: ".nvmrc"
+      - run: sudo apt-get update && sudo apt-get install -y binutils squashfs-tools
+      - name: Fail if the AppImage runtime is not pinned
+        run: |
+          if grep -q '^RUNTIME_SHA256=UNPINNED' packaging/linux/appimage-runtime.env; then
+            echo "::error::sha256 of the AppImage runtime is not pinned (packaging/linux/appimage-runtime.env)"
+            exit 1
+          fi
+      - run: scripts/slint/build-linux.sh --release
+      # ЕДИНСТВЕННАЯ упаковка: версия Cargo.toml — ровно X.Y.Z (иначе упаковщик откажется).
+      - name: Pack archive, payload and AppImage once
+        run: scripts/slint/package-linux.sh --exe target/dist/linux/hlsr
+      # Ключ подписи канала — только во временный файл вне worktree, удаляется ВСЕГДА.
+      - name: Materialize launcher channel signing key
+        env:
+          CHANNEL_KEY_B64: ${{ secrets.HLSR_LAUNCHER_CHANNEL_PRIVATE_KEY_B64 }}
+        run: |
+          [ -n "$CHANNEL_KEY_B64" ] || { echo "::error::Launcher signing key is missing"; exit 1; }
+          key="$RUNNER_TEMP/hlsr-launcher-channel.pem"
+          umask 077
+          printf '%s' "$CHANNEL_KEY_B64" | base64 -d > "$key"
+          [ "$(wc -c < "$key")" -ge 64 ] || { echo "::error::Decoded signing key is suspiciously small"; exit 1; }
+          echo "HLSR_MANIFEST_PRIVATE_KEY_PATH=$key" >> "$GITHUB_ENV"
+      - name: Sign with the existing launcher key
+        run: node tools/release/node/launcher-release-prepare-linux.js --build-dir target/dist/linux --out target/dist/linux
+      - run: node tools/release/node/verify-launcher-release-linux.js target/dist/linux
+      # Приёмка 0.4.7 на боевом канале: вшитые ключи, настоящий рантайм AppImage.
+      - name: Acceptance 0.4.7 (production channel, real AppImage runtime)
+        run: scripts/slint/accept-linux.sh --dist target/dist/linux
+      - name: Publish and verify GitHub artifacts
+        env:
+          GH_TOKEN: ${{ secrets.HLSR_RELEASES_TOKEN }}
+        run: node tools/release/node/publish-launcher-linux.js target/dist/linux --publish
+      - name: Remove signing key from the runner
+        if: always()
+        run: rm -f "$RUNNER_TEMP/hlsr-launcher-channel.pem"

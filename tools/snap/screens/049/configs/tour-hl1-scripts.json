@@ -1,0 +1,18 @@
+{
+  "id": "configs/tour-hl1-scripts",
+  "state": "Обучение HL1 по «?», шаг 8 из 10: «Скрипты» в списке слева (только у HL1)",
+  "base": "configs/_kb",
+  "steps": [
+    {"click": {"css": ".launcher-topbar__tab:nth-child(3)", "view": "topbar-tab-configs"}},
+    {"click": {"css": ".cfgp__game:nth-child(2)", "view": "cfgp-game-70"}},
+    {"click": {"css": ".cfgp__help", "view": "cfgp-help"}},
+    {"click": {"css": ".tour__btn.primary", "view": "tour-next"}},
+    {"click": {"css": ".tour__btn.primary", "view": "tour-next"}},
+    {"click": {"css": ".tour__btn.primary", "view": "tour-next"}},
+    {"click": {"css": ".tour__btn.primary", "view": "tour-next"}},
+    {"click": {"css": ".tour__btn.primary", "view": "tour-next"}},
+    {"click": {"css": ".tour__btn.primary", "view": "tour-next"}},
+    {"click": {"css": ".tour__btn.primary", "view": "tour-next"}},
+    {"move": [800, 880]}
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "id": "boot/checking",
+  "screen": "boot",
+  "state": "Заставка: проверка обновления, boot-gate-run ещё не ответил — «С возвращением», подпись проверки, 24 треугольника",
+  "route": "/",
+  "themes": ["hlsr"],
+  "languages": ["ru"],
+  "invoke": {"boot-gate-run": {"$pending": true}}
+}

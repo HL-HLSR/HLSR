@@ -1,0 +1,16 @@
+{
+  "id": "header/sponsors-hover",
+  "base": "header/_base",
+  "state": "Сердце под курсором: залито (биение эталон ставит на t = 0)",
+  "steps": [
+    {
+      "hover": {
+        "css": ".sponsors__btn",
+        "view": "sponsors-btn"
+      }
+    },
+    {
+      "wait": 600
+    }
+  ]
+}

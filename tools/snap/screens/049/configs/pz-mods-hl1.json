@@ -1,0 +1,186 @@
+{
+  "id": "configs/pz-mods-hl1",
+  "state": "HL1: моды (G10) — модели включены, спрайты недоступны (файлов игры нет), у звуков открыт список файлов с кнопками «Оригинал» и «Мод»",
+  "base": "configs/_pz",
+  "invoke": {
+    "custom-packs-get": {
+      "status": "ok",
+      "installed": true,
+      "packs": [
+        {
+          "id": "arianon-viewmodels",
+          "kind": "models",
+          "author": "Arianon",
+          "files": [
+            "models/v_357.mdl",
+            "models/v_9mmar.mdl",
+            "models/v_9mmhandgun.mdl",
+            "models/v_crossbow.mdl",
+            "models/v_crowbar.mdl",
+            "models/v_egon.mdl",
+            "models/v_gauss.mdl",
+            "models/v_grenade.mdl",
+            "models/v_hgun.mdl",
+            "models/v_rpg.mdl",
+            "models/v_satchel.mdl",
+            "models/v_satchel_radio.mdl",
+            "models/v_shotgun.mdl",
+            "models/v_squeak.mdl",
+            "models/v_tripmine.mdl"
+          ],
+          "enabled": true,
+          "available": true
+        },
+        {
+          "id": "item-sprites",
+          "kind": "sprites",
+          "author": null,
+          "files": [
+            "models/w_357.mdl",
+            "models/w_357ammobox.mdl",
+            "models/w_9mmar.mdl",
+            "models/w_9mmarclip.mdl",
+            "models/w_9mmclip.mdl",
+            "models/w_9mmhandgun.mdl",
+            "models/w_argrenade.mdl",
+            "models/w_battery.mdl",
+            "models/w_crossbow.mdl",
+            "models/w_crossbow_clip.mdl",
+            "models/w_egon.mdl",
+            "models/w_gauss.mdl",
+            "models/w_gaussammo.mdl",
+            "models/w_grenade.mdl",
+            "models/w_hgun.mdl",
+            "models/w_longjump.mdl",
+            "models/w_medkit.mdl",
+            "models/w_rpg.mdl",
+            "models/w_rpgammo.mdl",
+            "models/w_satchel.mdl",
+            "models/w_shotbox.mdl",
+            "models/w_shotgun.mdl",
+            "models/w_sqknest.mdl"
+          ],
+          "enabled": false,
+          "available": false
+        },
+        {
+          "id": "oxcjae-soundpack-lite",
+          "kind": "sounds",
+          "author": "oxcjae",
+          "files": [
+            "sound/barney/ba_die3.wav",
+            "sound/barney/ba_dontmake.wav",
+            "sound/barney/ba_endline.wav",
+            "sound/barney/ba_iwish.wav",
+            "sound/barney/ba_somuch.wav",
+            "sound/barney/ba_stepoff.wav",
+            "sound/barney/ba_tomb.wav",
+            "sound/barney/ba_uwish.wav",
+            "sound/barney/c1a0_ba_hevyes.wav",
+            "sound/barney/c1a4_ba_octo3.wav",
+            "sound/barney/c2a2_ba_launch.wav",
+            "sound/barney/c2a3_ba_assn.wav",
+            "sound/barney/c2a4_ba_5tau.wav",
+            "sound/barney/c2a4_ba_alive.wav",
+            "sound/hgrunt/c2a3_ambush_vox.wav",
+            "sound/hgrunt/c2a3_hg_1drag.wav",
+            "sound/hgrunt/c2a3_hg_2drag.wav",
+            "sound/hgrunt/c2a3_hg_3drag.wav",
+            "sound/hgrunt/c2a3_hg_4drag.wav",
+            "sound/hgrunt/c2a3_hg_5drag.wav",
+            "sound/hgrunt/c2a3_hg_laugh.wav",
+            "sound/hgrunt/c2a5_hg_abandon.wav",
+            "sound/hgrunt/c2a5_hg_lebuz.wav",
+            "sound/hgrunt/hg_civvies.wav",
+            "sound/scientist/afellowsci.wav",
+            "sound/scientist/ahfreeman.wav",
+            "sound/scientist/c1a0_sci_crit1a.wav",
+            "sound/scientist/c1a0_sci_ctrl1a.wav",
+            "sound/scientist/c1a0_sci_ctrl2a.wav",
+            "sound/scientist/c1a0_sci_dis1a.wav",
+            "sound/scientist/c1a0_sci_dis9a.wav",
+            "sound/scientist/c1a0_sci_disa.wav",
+            "sound/scientist/c1a0_sci_lock4a.wav",
+            "sound/scientist/c1a0_sci_lock6a.wav",
+            "sound/scientist/c1a2_sci_dangling.wav",
+            "sound/scientist/c1a3_sci_silo1a.wav",
+            "sound/scientist/c1a3_sci_silo2a.wav",
+            "sound/scientist/c1a4_sci_gener.wav",
+            "sound/scientist/c2a3_sci_track.wav",
+            "sound/scientist/c2a4_sci_letout.wav",
+            "sound/scientist/c2a5_sci_boobie.wav",
+            "sound/scientist/c3a2_sci_fool.wav",
+            "sound/scientist/canttakemore.wav",
+            "sound/scientist/freeman.wav",
+            "sound/scientist/freemanalive.wav",
+            "sound/scientist/goodtoseeyou.wav",
+            "sound/scientist/greetings.wav",
+            "sound/scientist/greetings2.wav",
+            "sound/scientist/heal1.wav",
+            "sound/scientist/heal2.wav",
+            "sound/scientist/heal3.wav",
+            "sound/scientist/heal4.wav",
+            "sound/scientist/heal5.wav",
+            "sound/scientist/hello.wav",
+            "sound/scientist/hello2.wav",
+            "sound/scientist/hellofreeman.wav",
+            "sound/scientist/hellofromlab.wav",
+            "sound/scientist/hellothere.wav",
+            "sound/scientist/holdstill.wav",
+            "sound/scientist/inmesstoo.wav",
+            "sound/scientist/iwounded.wav",
+            "sound/scientist/iwounded2.wav",
+            "sound/scientist/iwoundedbad.wav",
+            "sound/scientist/letstrythis.wav",
+            "sound/scientist/newhevsuit.wav",
+            "sound/scientist/sci_pain1.wav",
+            "sound/scientist/sci_pain2.wav",
+            "sound/scientist/sci_pain3.wav",
+            "sound/scientist/sci_pain4.wav",
+            "sound/scientist/sci_pain5.wav",
+            "sound/scientist/scream01.wav",
+            "sound/scientist/scream3.wav",
+            "sound/scientist/scream4.wav",
+            "sound/scientist/youlookbad.wav",
+            "sound/scientist/youneedmedic.wav",
+            "sound/scientist/youwounded.wav"
+          ],
+          "enabled": false,
+          "available": true
+        }
+      ]
+    }
+  },
+  "steps": [
+    {
+      "click": {
+        "css": ".launcher-topbar__tab:nth-child(3)",
+        "view": "topbar-tab-configs"
+      }
+    },
+    {
+      "click": {
+        "css": ".cfgp__game:nth-child(2)",
+        "view": "cfgp-game-70"
+      }
+    },
+    {
+      "click": {
+        "css": "#gx-tab-mods",
+        "view": "gx-tab-mods"
+      }
+    },
+    {
+      "click": {
+        "css": ".cpk-card:nth-child(3) .cpk-files summary",
+        "view": "cpk-files-oxcjae-soundpack-lite"
+      }
+    },
+    {
+      "move": [
+        800,
+        880
+      ]
+    }
+  ]
+}

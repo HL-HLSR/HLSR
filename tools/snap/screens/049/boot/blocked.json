@@ -1,0 +1,9 @@
+{
+  "id": "boot/blocked",
+  "screen": "boot",
+  "state": "Заставка: обязательное обновление не установилось — «Требуется обновление», причина и «Повторить»",
+  "route": "/",
+  "themes": ["hlsr"],
+  "languages": ["ru"],
+  "invoke": {"boot-gate-run": {"action": "blocked", "error": "ECONNREFUSED 127.0.0.1:443"}}
+}

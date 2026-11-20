@@ -1,0 +1,386 @@
+{
+  "parse": [
+    {"line":"","result":{"ok":false,"reason":"NOT_JSON"}},
+    {"line":" ","result":{"ok":false,"reason":"NOT_JSON"}},
+    {"line":"{","result":{"ok":false,"reason":"NOT_JSON"}},
+    {"line":"{\"v\":1","result":{"ok":false,"reason":"NOT_JSON"}},
+    {"line":"не json","result":{"ok":false,"reason":"NOT_JSON"}},
+    {"line":"null","result":{"ok":false,"reason":"NOT_AN_OBJECT"}},
+    {"line":"[]","result":{"ok":false,"reason":"NOT_AN_OBJECT"}},
+    {"line":"[1]","result":{"ok":false,"reason":"NOT_AN_OBJECT"}},
+    {"line":"5","result":{"ok":false,"reason":"NOT_AN_OBJECT"}},
+    {"line":"true","result":{"ok":false,"reason":"NOT_AN_OBJECT"}},
+    {"line":"\"hello\"","result":{"ok":false,"reason":"NOT_AN_OBJECT"}},
+    {"line":"{}","result":{"ok":false,"reason":"BAD_VERSION"}},
+    {"line":"{\"v\":1}","result":{"ok":false,"reason":"UNKNOWN_TYPE"}},
+    {"line":"{\"v\":2,\"type\":\"hello\"}","result":{"ok":false,"reason":"BAD_VERSION"}},
+    {"line":"{\"v\":\"1\",\"type\":\"hello\"}","result":{"ok":false,"reason":"BAD_VERSION"}},
+    {"line":"{\"v\":1.0,\"type\":\"unknown\"}","result":{"ok":false,"reason":"UNKNOWN_TYPE"}},
+    {"line":"{\"v\":1,\"type\":5}","result":{"ok":false,"reason":"UNKNOWN_TYPE"}},
+    {"line":"{\"v\":1,\"type\":\"HELLO\"}","result":{"ok":false,"reason":"UNKNOWN_TYPE"}},
+    {"line":"{\"type\":\"hello\"}","result":{"ok":false,"reason":"BAD_VERSION"}},
+    {
+      "line": "{\"v\":1,\"type\":\"hello\",\"token\":\"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef\",\"session\":\"0123abcd\",\"extra\":\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"}",
+      "result": {"ok":false,"reason":"TOO_LONG"}
+    },
+    {
+      "line": "{\"v\":1,\"type\":\"hello\",\"token\":\"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef\",\"session\":\"0123abcd\",\"extra\":\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"}",
+      "result": {"ok":false,"reason":"TOO_LONG"}
+    },
+    {
+      "line": "{\"v\":1,\"type\":\"hello\",\"token\":\"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef\",\"session\":\"0123abcd\",\"extra\":\"яяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяя\"}",
+      "result": {"ok":false,"reason":"TOO_LONG"}
+    },
+    {
+      "line": "{\"v\":1,\"type\":\"hello\",\"token\":\"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef\",\"session\":\"0123abcd\",\"extra\":\"яяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяя\"}",
+      "result": {"ok":false,"reason":"TOO_LONG"}
+    },
+    {"line":"{\"v\":1,\"type\":\"hello\",\"token\":\"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef\",\"session\":\"0123abcd\"}","result":{"ok":true,"message":{"type":"hello","token":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","session":"0123abcd"}}},
+    {"line":"{\"v\":1,\"type\":\"hello\",\"token\":\"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef\",\"session\":\"0123abc\"}","result":{"ok":false,"reason":"BAD_SESSION"}},
+    {"line":"{\"v\":1,\"type\":\"hello\",\"token\":\"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef\",\"session\":\"01234567\"}","result":{"ok":true,"message":{"type":"hello","token":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","session":"01234567"}}},
+    {
+      "line": "{\"v\":1,\"type\":\"hello\",\"token\":\"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef\",\"session\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}",
+      "result": {"ok":true,"message":{"type":"hello","token":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","session":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}}
+    },
+    {"line":"{\"v\":1,\"type\":\"hello\",\"token\":\"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef\",\"session\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}","result":{"ok":false,"reason":"BAD_SESSION"}},
+    {"line":"{\"v\":1,\"type\":\"hello\",\"token\":\"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef\",\"session\":\"0123ABCD\"}","result":{"ok":false,"reason":"BAD_SESSION"}},
+    {"line":"{\"v\":1,\"type\":\"hello\",\"token\":\"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef\",\"session\":12345678}","result":{"ok":false,"reason":"BAD_SESSION"}},
+    {"line":"{\"v\":1,\"type\":\"hello\",\"token\":\"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef\",\"session\":null}","result":{"ok":false,"reason":"BAD_SESSION"}},
+    {"line":"{\"v\":1,\"type\":\"hello\",\"token\":\"123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef\",\"session\":\"0123abcd\"}","result":{"ok":false,"reason":"BAD_TOKEN"}},
+    {"line":"{\"v\":1,\"type\":\"hello\",\"token\":\"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0\",\"session\":\"0123abcd\"}","result":{"ok":false,"reason":"BAD_TOKEN"}},
+    {"line":"{\"v\":1,\"type\":\"hello\",\"token\":\"0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF\",\"session\":\"0123abcd\"}","result":{"ok":false,"reason":"BAD_TOKEN"}},
+    {"line":"{\"v\":1,\"type\":\"hello\",\"token\":5,\"session\":\"0123abcd\"}","result":{"ok":false,"reason":"BAD_TOKEN"}},
+    {"line":"{\"v\":1,\"type\":\"hello\",\"session\":\"0123abcd\"}","result":{"ok":false,"reason":"BAD_TOKEN"}},
+    {"line":"{\"v\":1,\"type\":\"hello\",\"token\":\"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef\"}","result":{"ok":false,"reason":"BAD_SESSION"}},
+    {"line":"{\"v\":1,\"type\":\"hello\",\"token\":\"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef\",\"session\":\"0123abcd\",\"extra\":1}","result":{"ok":false,"reason":"UNKNOWN_FIELD:extra"}},
+    {"line":"{\"v\":1,\"type\":\"hello\",\"token\":\"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef\",\"session\":\"0123abcd\",\"seq\":1}","result":{"ok":false,"reason":"UNKNOWN_FIELD:seq"}},
+    {"line":"{\"5\":1,\"v\":1,\"type\":\"hello\",\"token\":\"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef\",\"session\":\"0123abcd\"}","result":{"ok":false,"reason":"UNKNOWN_FIELD:5"}},
+    {"line":"{\"v\":1,\"type\":\"hello\",\"token\":\"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef\",\"session\":\"0123abcd\",\"zeta\":1,\"alpha\":2}","result":{"ok":false,"reason":"UNKNOWN_FIELD:zeta"}},
+    {"line":"{\"v\":1,\"type\":\"hello\",\"token\":\"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef\",\"session\":\"0123abcd\",\"session\":\"deadbeef\"}","result":{"ok":true,"message":{"type":"hello","token":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","session":"deadbeef"}}},
+    {"line":"  {\"v\":1,\"type\":\"hello\",\"token\":\"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef\",\"session\":\"0123abcd\"}  ","result":{"ok":true,"message":{"type":"hello","token":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","session":"0123abcd"}}},
+    {
+      "line": "{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"d1_trainstation_01\",\"fps\":60,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234}",
+      "result": {"ok":true,"message":{"type":"state","session":"0123abcd","seq":3,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":1234}}
+    },
+    {
+      "line": "{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":0,\"lifecycle\":\"playing\",\"mapName\":\"d1_trainstation_01\",\"fps\":60,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234}",
+      "result": {"ok":true,"message":{"type":"state","session":"0123abcd","seq":0,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":1234}}
+    },
+    {"line":"{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":-1,\"lifecycle\":\"playing\",\"mapName\":\"d1_trainstation_01\",\"fps\":60,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234}","result":{"ok":false,"reason":"BAD_SEQ"}},
+    {"line":"{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":1.5,\"lifecycle\":\"playing\",\"mapName\":\"d1_trainstation_01\",\"fps\":60,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234}","result":{"ok":false,"reason":"BAD_SEQ"}},
+    {"line":"{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":\"3\",\"lifecycle\":\"playing\",\"mapName\":\"d1_trainstation_01\",\"fps\":60,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234}","result":{"ok":false,"reason":"BAD_SEQ"}},
+    {"line":"{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":null,\"lifecycle\":\"playing\",\"mapName\":\"d1_trainstation_01\",\"fps\":60,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234}","result":{"ok":false,"reason":"BAD_SEQ"}},
+    {
+      "line": "{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":1000,\"lifecycle\":\"playing\",\"mapName\":\"d1_trainstation_01\",\"fps\":60,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234}",
+      "result": {"ok":true,"message":{"type":"state","session":"0123abcd","seq":1000,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":1234}}
+    },
+    {
+      "line": "{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":9007199254740992,\"lifecycle\":\"playing\",\"mapName\":\"d1_trainstation_01\",\"fps\":60,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234}",
+      "result": {"ok":true,"message":{"type":"state","session":"0123abcd","seq":9007199254740992,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":1234}}
+    },
+    {"line":"{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":null,\"lifecycle\":\"playing\",\"mapName\":\"d1_trainstation_01\",\"fps\":60,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234}","result":{"ok":false,"reason":"BAD_SEQ"}},
+    {
+      "line": "{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":4.0,\"lifecycle\":\"playing\",\"mapName\":\"d1_trainstation_01\",\"fps\":60,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234}",
+      "result": {"ok":true,"message":{"type":"state","session":"0123abcd","seq":4,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":1234}}
+    },
+    {"line":"{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":1e400,\"lifecycle\":\"playing\",\"mapName\":\"d1_trainstation_01\",\"fps\":60,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234}","result":{"ok":false,"reason":"BAD_SEQ"}},
+    {"line":"{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"d1_trainstation_01\",\"fps\":1e400,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234}","result":{"ok":false,"reason":"BAD_FPS"}},
+    {"line":"{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"d1_trainstation_01\",\"fps\":-1e400,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234}","result":{"ok":false,"reason":"BAD_FPS"}},
+    {"line":"{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"d1_trainstation_01\",\"fps\":60,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1e400}","result":{"ok":false,"reason":"BAD_ELAPSED"}},
+    {
+      "line": "{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"d1_trainstation_01\",\"fps\":6e1,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234}",
+      "result": {"ok":true,"message":{"type":"state","session":"0123abcd","seq":3,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":1234}}
+    },
+    {
+      "line": "{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"d1_trainstation_01\",\"fps\":59.5e0,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234}",
+      "result": {"ok":true,"message":{"type":"state","session":"0123abcd","seq":3,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":1234}}
+    },
+    {"line":"{\"v\":1,\"type\":\"state\",\"session\":\"xyz\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"d1_trainstation_01\",\"fps\":60,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234}","result":{"ok":false,"reason":"BAD_SESSION"}},
+    {"line":"{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"loading\",\"mapName\":\"d1_trainstation_01\",\"fps\":60,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234}","result":{"ok":false,"reason":"BAD_LIFECYCLE"}},
+    {"line":"{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":1,\"mapName\":\"d1_trainstation_01\",\"fps\":60,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234}","result":{"ok":false,"reason":"BAD_LIFECYCLE"}},
+    {"line":"{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"d1_trainstation_01\",\"fps\":60,\"timerRunning\":1,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234}","result":{"ok":false,"reason":"BAD_TIMER_RUNNING"}},
+    {"line":"{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"d1_trainstation_01\",\"fps\":60,\"timerRunning\":\"true\",\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234}","result":{"ok":false,"reason":"BAD_TIMER_RUNNING"}},
+    {"line":"{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"d1_trainstation_01\",\"fps\":60,\"timerRunning\":true,\"timerCompleted\":null,\"timerElapsedMilliseconds\":1234}","result":{"ok":false,"reason":"BAD_TIMER_COMPLETED"}},
+    {"line":"{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"d1_trainstation_01\",\"fps\":60,\"timerRunning\":true,\"timerElapsedMilliseconds\":1234}","result":{"ok":false,"reason":"BAD_TIMER_COMPLETED"}},
+    {
+      "line": "{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"maps/D1_Canals_01.BSP\",\"fps\":60,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234}",
+      "result": {"ok":true,"message":{"type":"state","session":"0123abcd","seq":3,"lifecycle":"playing","mapName":"d1_canals_01","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":1234}}
+    },
+    {
+      "line": "{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"  maps\\\\d1_canals_01.bsp  \",\"fps\":60,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234}",
+      "result": {"ok":true,"message":{"type":"state","session":"0123abcd","seq":3,"lifecycle":"playing","mapName":"d1_canals_01","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":1234}}
+    },
+    {"line":"{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"d1_canals_01.bsp.bsp\",\"fps\":60,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234}","result":{"ok":false,"reason":"BAD_MAP_NAME"}},
+    {"line":"{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"maps/maps/d1\",\"fps\":60,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234}","result":{"ok":false,"reason":"BAD_MAP_NAME"}},
+    {
+      "line": "{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"unknown_map\",\"fps\":60,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234}",
+      "result": {"ok":true,"message":{"type":"state","session":"0123abcd","seq":3,"lifecycle":"playing","mapName":"unknown_map","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":1234}}
+    },
+    {"line":"{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"map with space\",\"fps\":60,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234}","result":{"ok":false,"reason":"BAD_MAP_NAME"}},
+    {"line":"{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"карта\",\"fps\":60,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234}","result":{"ok":false,"reason":"BAD_MAP_NAME"}},
+    {"line":"{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"\",\"fps\":60,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234}","result":{"ok":false,"reason":"BAD_MAP_NAME"}},
+    {
+      "line": "{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"fps\":60,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234}",
+      "result": {"ok":true,"message":{"type":"state","session":"0123abcd","seq":3,"lifecycle":"playing","mapName":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":1234}}
+    },
+    {"line":"{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"fps\":60,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234}","result":{"ok":false,"reason":"BAD_MAP_NAME"}},
+    {
+      "line": "{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"fps\":60,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234}",
+      "result": {"ok":false,"reason":"BAD_MAP_NAME"}
+    },
+    {
+      "line": "{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"fps\":60,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234}",
+      "result": {"ok":false,"reason":"BAD_MAP_NAME"}
+    },
+    {
+      "line": "{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"                                                                                                    d1                                                                                                  \",\"fps\":60,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234}",
+      "result": {"ok":true,"message":{"type":"state","session":"0123abcd","seq":3,"lifecycle":"playing","mapName":"d1","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":1234}}
+    },
+    {
+      "line": "{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"                                                                                                    d1                                                                                                   \",\"fps\":60,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234}",
+      "result": {"ok":false,"reason":"BAD_MAP_NAME"}
+    },
+    {"line":"{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":5,\"fps\":60,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234}","result":{"ok":false,"reason":"BAD_MAP_NAME"}},
+    {"line":"{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":[\"d1\"],\"fps\":60,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234}","result":{"ok":false,"reason":"BAD_MAP_NAME"}},
+    {"line":"{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":null,\"fps\":60,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234}","result":{"ok":false,"reason":"PLAYING_WITHOUT_MAP"}},
+    {"line":"{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"fps\":60,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234}","result":{"ok":false,"reason":"PLAYING_WITHOUT_MAP"}},
+    {
+      "line": "{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"d1_trainstation_01\",\"fps\":0,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234}",
+      "result": {"ok":true,"message":{"type":"state","session":"0123abcd","seq":3,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":0,"timerRunning":true,"timerCompleted":false,"elapsedMs":1234}}
+    },
+    {
+      "line": "{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"d1_trainstation_01\",\"fps\":1,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234}",
+      "result": {"ok":true,"message":{"type":"state","session":"0123abcd","seq":3,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":1,"timerRunning":true,"timerCompleted":false,"elapsedMs":1234}}
+    },
+    {
+      "line": "{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"d1_trainstation_01\",\"fps\":0.4,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234}",
+      "result": {"ok":true,"message":{"type":"state","session":"0123abcd","seq":3,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":0,"timerRunning":true,"timerCompleted":false,"elapsedMs":1234}}
+    },
+    {
+      "line": "{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"d1_trainstation_01\",\"fps\":0.5,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234}",
+      "result": {"ok":true,"message":{"type":"state","session":"0123abcd","seq":3,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":1,"timerRunning":true,"timerCompleted":false,"elapsedMs":1234}}
+    },
+    {
+      "line": "{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"d1_trainstation_01\",\"fps\":2.5,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234}",
+      "result": {"ok":true,"message":{"type":"state","session":"0123abcd","seq":3,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":3,"timerRunning":true,"timerCompleted":false,"elapsedMs":1234}}
+    },
+    {
+      "line": "{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"d1_trainstation_01\",\"fps\":59.5,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234}",
+      "result": {"ok":true,"message":{"type":"state","session":"0123abcd","seq":3,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":1234}}
+    },
+    {
+      "line": "{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"d1_trainstation_01\",\"fps\":59.49,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234}",
+      "result": {"ok":true,"message":{"type":"state","session":"0123abcd","seq":3,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":59,"timerRunning":true,"timerCompleted":false,"elapsedMs":1234}}
+    },
+    {
+      "line": "{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"d1_trainstation_01\",\"fps\":60,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234}",
+      "result": {"ok":true,"message":{"type":"state","session":"0123abcd","seq":3,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":1234}}
+    },
+    {
+      "line": "{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"d1_trainstation_01\",\"fps\":144.4,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234}",
+      "result": {"ok":true,"message":{"type":"state","session":"0123abcd","seq":3,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":144,"timerRunning":true,"timerCompleted":false,"elapsedMs":1234}}
+    },
+    {
+      "line": "{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"d1_trainstation_01\",\"fps\":999.5,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234}",
+      "result": {"ok":true,"message":{"type":"state","session":"0123abcd","seq":3,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":1000,"timerRunning":true,"timerCompleted":false,"elapsedMs":1234}}
+    },
+    {
+      "line": "{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"d1_trainstation_01\",\"fps\":1000,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234}",
+      "result": {"ok":true,"message":{"type":"state","session":"0123abcd","seq":3,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":1000,"timerRunning":true,"timerCompleted":false,"elapsedMs":1234}}
+    },
+    {"line":"{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"d1_trainstation_01\",\"fps\":1000.4,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234}","result":{"ok":false,"reason":"BAD_FPS"}},
+    {"line":"{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"d1_trainstation_01\",\"fps\":1000.5,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234}","result":{"ok":false,"reason":"BAD_FPS"}},
+    {"line":"{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"d1_trainstation_01\",\"fps\":1001,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234}","result":{"ok":false,"reason":"BAD_FPS"}},
+    {"line":"{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"d1_trainstation_01\",\"fps\":-0.1,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234}","result":{"ok":false,"reason":"BAD_FPS"}},
+    {"line":"{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"d1_trainstation_01\",\"fps\":-1,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234}","result":{"ok":false,"reason":"BAD_FPS"}},
+    {"line":"{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"d1_trainstation_01\",\"fps\":\"60\",\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234}","result":{"ok":false,"reason":"BAD_FPS"}},
+    {"line":"{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"d1_trainstation_01\",\"fps\":true,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234}","result":{"ok":false,"reason":"BAD_FPS"}},
+    {"line":"{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"d1_trainstation_01\",\"fps\":[],\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234}","result":{"ok":false,"reason":"BAD_FPS"}},
+    {
+      "line": "{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"d1_trainstation_01\",\"fps\":null,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234}",
+      "result": {"ok":true,"message":{"type":"state","session":"0123abcd","seq":3,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":null,"timerRunning":true,"timerCompleted":false,"elapsedMs":1234}}
+    },
+    {
+      "line": "{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"d1_trainstation_01\",\"fps\":null,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234}",
+      "result": {"ok":true,"message":{"type":"state","session":"0123abcd","seq":3,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":null,"timerRunning":true,"timerCompleted":false,"elapsedMs":1234}}
+    },
+    {
+      "line": "{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"d1_trainstation_01\",\"fps\":null,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234}",
+      "result": {"ok":true,"message":{"type":"state","session":"0123abcd","seq":3,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":null,"timerRunning":true,"timerCompleted":false,"elapsedMs":1234}}
+    },
+    {
+      "line": "{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"d1_trainstation_01\",\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234}",
+      "result": {"ok":true,"message":{"type":"state","session":"0123abcd","seq":3,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":null,"timerRunning":true,"timerCompleted":false,"elapsedMs":1234}}
+    },
+    {
+      "line": "{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"d1_trainstation_01\",\"fps\":60,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":0}",
+      "result": {"ok":true,"message":{"type":"state","session":"0123abcd","seq":3,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":0}}
+    },
+    {
+      "line": "{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"d1_trainstation_01\",\"fps\":60,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1}",
+      "result": {"ok":true,"message":{"type":"state","session":"0123abcd","seq":3,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":1}}
+    },
+    {
+      "line": "{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"d1_trainstation_01\",\"fps\":60,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":0.9}",
+      "result": {"ok":true,"message":{"type":"state","session":"0123abcd","seq":3,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":0}}
+    },
+    {
+      "line": "{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"d1_trainstation_01\",\"fps\":60,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":999.99}",
+      "result": {"ok":true,"message":{"type":"state","session":"0123abcd","seq":3,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":999}}
+    },
+    {
+      "line": "{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"d1_trainstation_01\",\"fps\":60,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":86400000}",
+      "result": {"ok":true,"message":{"type":"state","session":"0123abcd","seq":3,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":86400000}}
+    },
+    {"line":"{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"d1_trainstation_01\",\"fps\":60,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":86400000.5}","result":{"ok":false,"reason":"BAD_ELAPSED"}},
+    {
+      "line": "{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"d1_trainstation_01\",\"fps\":60,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":86399999.99}",
+      "result": {"ok":true,"message":{"type":"state","session":"0123abcd","seq":3,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":86399999}}
+    },
+    {"line":"{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"d1_trainstation_01\",\"fps\":60,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":86400001}","result":{"ok":false,"reason":"BAD_ELAPSED"}},
+    {"line":"{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"d1_trainstation_01\",\"fps\":60,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":-1}","result":{"ok":false,"reason":"BAD_ELAPSED"}},
+    {"line":"{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"d1_trainstation_01\",\"fps\":60,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":-0.5}","result":{"ok":false,"reason":"BAD_ELAPSED"}},
+    {"line":"{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"d1_trainstation_01\",\"fps\":60,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":\"5\"}","result":{"ok":false,"reason":"BAD_ELAPSED"}},
+    {"line":"{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"d1_trainstation_01\",\"fps\":60,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":false}","result":{"ok":false,"reason":"BAD_ELAPSED"}},
+    {"line":"{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"d1_trainstation_01\",\"fps\":60,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":{}}","result":{"ok":false,"reason":"BAD_ELAPSED"}},
+    {"line":"{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"d1_trainstation_01\",\"fps\":60,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":null}","result":{"ok":false,"reason":"RUNNING_WITHOUT_ELAPSED"}},
+    {"line":"{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"d1_trainstation_01\",\"fps\":60,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":null}","result":{"ok":false,"reason":"RUNNING_WITHOUT_ELAPSED"}},
+    {"line":"{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"d1_trainstation_01\",\"fps\":60,\"timerRunning\":true,\"timerCompleted\":false}","result":{"ok":false,"reason":"RUNNING_WITHOUT_ELAPSED"}},
+    {"line":"{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"d1_trainstation_01\",\"fps\":60,\"timerRunning\":false,\"timerCompleted\":false}","result":{"ok":true,"message":{"type":"state","session":"0123abcd","seq":3,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}}},
+    {
+      "line": "{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"d1_trainstation_01\",\"fps\":60,\"timerRunning\":false,\"timerCompleted\":false,\"timerElapsedMilliseconds\":null}",
+      "result": {"ok":true,"message":{"type":"state","session":"0123abcd","seq":3,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}}
+    },
+    {"line":"{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"menu\",\"mapName\":\"d1_trainstation_01\",\"fps\":60,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234}","result":{"ok":false,"reason":"MAP_OUTSIDE_PLAYING"}},
+    {"line":"{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"menu\",\"mapName\":null,\"fps\":60,\"timerRunning\":false,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234}","result":{"ok":true,"message":{"type":"state","session":"0123abcd","seq":3,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":1234}}},
+    {"line":"{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"menu\",\"mapName\":null,\"fps\":60,\"timerRunning\":false,\"timerCompleted\":false,\"timerElapsedMilliseconds\":0}","result":{"ok":true,"message":{"type":"state","session":"0123abcd","seq":3,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":0}}},
+    {"line":"{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"exited\",\"mapName\":null,\"fps\":null,\"timerRunning\":false,\"timerCompleted\":false,\"timerElapsedMilliseconds\":null}","result":{"ok":true,"message":{"type":"state","session":"0123abcd","seq":3,"lifecycle":"exited","mapName":null,"fps":null,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}}},
+    {"line":"{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"exited\",\"mapName\":\"d1_canals_01\",\"fps\":60,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234}","result":{"ok":false,"reason":"MAP_OUTSIDE_PLAYING"}},
+    {"line":"{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":null,\"fps\":60,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234}","result":{"ok":false,"reason":"PLAYING_WITHOUT_MAP"}},
+    {"line":"{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":null,\"fps\":60,\"timerRunning\":false,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234}","result":{"ok":false,"reason":"PLAYING_WITHOUT_MAP"}},
+    {"line":"{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"d1_trainstation_01\",\"fps\":60,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234,\"extra\":true}","result":{"ok":false,"reason":"UNKNOWN_FIELD:extra"}},
+    {"line":"{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"d1_trainstation_01\",\"fps\":60,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234,\"Seq\":1}","result":{"ok":false,"reason":"UNKNOWN_FIELD:Seq"}},
+    {"line":"{\"2\":2,\"7\":1,\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"playing\",\"mapName\":\"d1_trainstation_01\",\"fps\":60,\"timerRunning\":true,\"timerCompleted\":false,\"timerElapsedMilliseconds\":1234,\"zzz\":3}","result":{"ok":false,"reason":"UNKNOWN_FIELD:2"}},
+    {"line":"{\"v\":1,\"type\":\"state\"}","result":{"ok":false,"reason":"BAD_SESSION"}},
+    {"line":"{\"v\":1,\"type\":\"chat.subscribe\",\"session\":\"0123abcd\",\"platform\":\"twitch\",\"id\":\"12345\"}","result":{"ok":true,"message":{"type":"chat.subscribe","session":"0123abcd","platform":"twitch","id":"12345"}}},
+    {"line":"{\"v\":1,\"type\":\"chat.subscribe\",\"session\":\"0123abcd\",\"platform\":\"twitch\",\"id\":\"0\"}","result":{"ok":true,"message":{"type":"chat.subscribe","session":"0123abcd","platform":"twitch","id":"0"}}},
+    {"line":"{\"v\":1,\"type\":\"chat.subscribe\",\"session\":\"0123abcd\",\"platform\":\"twitch\",\"id\":\"11111111111111111111\"}","result":{"ok":true,"message":{"type":"chat.subscribe","session":"0123abcd","platform":"twitch","id":"11111111111111111111"}}},
+    {"line":"{\"v\":1,\"type\":\"chat.subscribe\",\"session\":\"0123abcd\",\"platform\":\"twitch\",\"id\":\"111111111111111111111\"}","result":{"ok":false,"reason":"BAD_ID"}},
+    {"line":"{\"v\":1,\"type\":\"chat.subscribe\",\"session\":\"0123abcd\",\"platform\":\"twitch\",\"id\":\"\"}","result":{"ok":false,"reason":"BAD_ID"}},
+    {"line":"{\"v\":1,\"type\":\"chat.subscribe\",\"session\":\"0123abcd\",\"platform\":\"twitch\",\"id\":\"12a\"}","result":{"ok":false,"reason":"BAD_ID"}},
+    {"line":"{\"v\":1,\"type\":\"chat.subscribe\",\"session\":\"0123abcd\",\"platform\":\"twitch\",\"id\":12345}","result":{"ok":false,"reason":"BAD_ID"}},
+    {"line":"{\"v\":1,\"type\":\"chat.subscribe\",\"session\":\"0123abcd\",\"platform\":\"twitch\",\"id\":null}","result":{"ok":false,"reason":"BAD_ID"}},
+    {"line":"{\"v\":1,\"type\":\"chat.subscribe\",\"session\":\"0123abcd\",\"platform\":\"youtube\",\"id\":\"dQw4w9WgXcQ\"}","result":{"ok":true,"message":{"type":"chat.subscribe","session":"0123abcd","platform":"youtube","id":"dQw4w9WgXcQ"}}},
+    {"line":"{\"v\":1,\"type\":\"chat.subscribe\",\"session\":\"0123abcd\",\"platform\":\"youtube\",\"id\":\"abcd\"}","result":{"ok":false,"reason":"BAD_ID"}},
+    {"line":"{\"v\":1,\"type\":\"chat.subscribe\",\"session\":\"0123abcd\",\"platform\":\"youtube\",\"id\":\"abcde\"}","result":{"ok":true,"message":{"type":"chat.subscribe","session":"0123abcd","platform":"youtube","id":"abcde"}}},
+    {"line":"{\"v\":1,\"type\":\"chat.subscribe\",\"session\":\"0123abcd\",\"platform\":\"youtube\",\"id\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}","result":{"ok":true,"message":{"type":"chat.subscribe","session":"0123abcd","platform":"youtube","id":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}}},
+    {"line":"{\"v\":1,\"type\":\"chat.subscribe\",\"session\":\"0123abcd\",\"platform\":\"youtube\",\"id\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}","result":{"ok":false,"reason":"BAD_ID"}},
+    {"line":"{\"v\":1,\"type\":\"chat.subscribe\",\"session\":\"0123abcd\",\"platform\":\"youtube\",\"id\":\"a_b-C\"}","result":{"ok":true,"message":{"type":"chat.subscribe","session":"0123abcd","platform":"youtube","id":"a_b-C"}}},
+    {"line":"{\"v\":1,\"type\":\"chat.subscribe\",\"session\":\"0123abcd\",\"platform\":\"youtube\",\"id\":\"a b c d\"}","result":{"ok":false,"reason":"BAD_ID"}},
+    {"line":"{\"v\":1,\"type\":\"chat.subscribe\",\"session\":\"0123abcd\",\"platform\":\"youtube\",\"id\":\"12345\"}","result":{"ok":true,"message":{"type":"chat.subscribe","session":"0123abcd","platform":"youtube","id":"12345"}}},
+    {"line":"{\"v\":1,\"type\":\"chat.subscribe\",\"session\":\"0123abcd\",\"platform\":\"Twitch\",\"id\":\"12345\"}","result":{"ok":false,"reason":"BAD_PLATFORM"}},
+    {"line":"{\"v\":1,\"type\":\"chat.subscribe\",\"session\":\"0123abcd\",\"platform\":\"kick\",\"id\":\"12345\"}","result":{"ok":false,"reason":"BAD_PLATFORM"}},
+    {"line":"{\"v\":1,\"type\":\"chat.subscribe\",\"session\":\"0123abcd\",\"platform\":null,\"id\":\"12345\"}","result":{"ok":false,"reason":"BAD_PLATFORM"}},
+    {"line":"{\"v\":1,\"type\":\"chat.subscribe\",\"session\":\"bad\",\"platform\":\"twitch\",\"id\":\"12345\"}","result":{"ok":false,"reason":"BAD_SESSION"}},
+    {"line":"{\"v\":1,\"type\":\"chat.subscribe\",\"session\":\"0123abcd\",\"platform\":\"twitch\",\"id\":\"12345\",\"extra\":1}","result":{"ok":false,"reason":"UNKNOWN_FIELD:extra"}},
+    {"line":"{\"v\":1,\"type\":\"chat.subscribe\",\"session\":\"0123abcd\",\"platform\":\"twitch\"}","result":{"ok":false,"reason":"BAD_ID"}},
+    {"line":"{\"v\":1,\"type\":\"chat.unsubscribe\",\"session\":\"0123abcd\"}","result":{"ok":true,"message":{"type":"chat.unsubscribe","session":"0123abcd"}}},
+    {"line":"{\"v\":1,\"type\":\"chat.unsubscribe\",\"session\":\"zz\"}","result":{"ok":false,"reason":"BAD_SESSION"}},
+    {"line":"{\"v\":1,\"type\":\"chat.unsubscribe\",\"session\":\"0123abcd\",\"platform\":\"twitch\"}","result":{"ok":false,"reason":"UNKNOWN_FIELD:platform"}},
+    {"line":"{\"v\":1,\"type\":\"chat.unsubscribe\"}","result":{"ok":false,"reason":"BAD_SESSION"}},
+    {"line":"{\"v\":1,\"type\":\"emote.set\",\"session\":\"0123abcd\",\"roomId\":\"12345\"}","result":{"ok":true,"message":{"type":"emote.set","session":"0123abcd","roomId":"12345"}}},
+    {"line":"{\"v\":1,\"type\":\"emote.set\",\"session\":\"0123abcd\",\"roomId\":\"0\"}","result":{"ok":true,"message":{"type":"emote.set","session":"0123abcd","roomId":"0"}}},
+    {"line":"{\"v\":1,\"type\":\"emote.set\",\"session\":\"0123abcd\",\"roomId\":\"11111111111111111111\"}","result":{"ok":true,"message":{"type":"emote.set","session":"0123abcd","roomId":"11111111111111111111"}}},
+    {"line":"{\"v\":1,\"type\":\"emote.set\",\"session\":\"0123abcd\",\"roomId\":\"111111111111111111111\"}","result":{"ok":false,"reason":"BAD_ROOM_ID"}},
+    {"line":"{\"v\":1,\"type\":\"emote.set\",\"session\":\"0123abcd\",\"roomId\":\"twitch:123\"}","result":{"ok":true,"message":{"type":"emote.set","session":"0123abcd","roomId":"twitch:123"}}},
+    {"line":"{\"v\":1,\"type\":\"emote.set\",\"session\":\"0123abcd\",\"roomId\":\"twitch:\"}","result":{"ok":false,"reason":"BAD_ROOM_ID"}},
+    {"line":"{\"v\":1,\"type\":\"emote.set\",\"session\":\"0123abcd\",\"roomId\":\"twitch:99999999999999999999\"}","result":{"ok":true,"message":{"type":"emote.set","session":"0123abcd","roomId":"twitch:99999999999999999999"}}},
+    {"line":"{\"v\":1,\"type\":\"emote.set\",\"session\":\"0123abcd\",\"roomId\":\"twitch:999999999999999999999\"}","result":{"ok":false,"reason":"BAD_ROOM_ID"}},
+    {"line":"{\"v\":1,\"type\":\"emote.set\",\"session\":\"0123abcd\",\"roomId\":\"set:abc\"}","result":{"ok":true,"message":{"type":"emote.set","session":"0123abcd","roomId":"set:abc"}}},
+    {"line":"{\"v\":1,\"type\":\"emote.set\",\"session\":\"0123abcd\",\"roomId\":\"set:ABCxyz123\"}","result":{"ok":true,"message":{"type":"emote.set","session":"0123abcd","roomId":"set:ABCxyz123"}}},
+    {"line":"{\"v\":1,\"type\":\"emote.set\",\"session\":\"0123abcd\",\"roomId\":\"set:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}","result":{"ok":true,"message":{"type":"emote.set","session":"0123abcd","roomId":"set:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}}},
+    {"line":"{\"v\":1,\"type\":\"emote.set\",\"session\":\"0123abcd\",\"roomId\":\"set:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}","result":{"ok":false,"reason":"BAD_ROOM_ID"}},
+    {"line":"{\"v\":1,\"type\":\"emote.set\",\"session\":\"0123abcd\",\"roomId\":\"set:\"}","result":{"ok":false,"reason":"BAD_ROOM_ID"}},
+    {"line":"{\"v\":1,\"type\":\"emote.set\",\"session\":\"0123abcd\",\"roomId\":\"user:01HZ\"}","result":{"ok":true,"message":{"type":"emote.set","session":"0123abcd","roomId":"user:01HZ"}}},
+    {"line":"{\"v\":1,\"type\":\"emote.set\",\"session\":\"0123abcd\",\"roomId\":\"user:a_b\"}","result":{"ok":false,"reason":"BAD_ROOM_ID"}},
+    {"line":"{\"v\":1,\"type\":\"emote.set\",\"session\":\"0123abcd\",\"roomId\":\"user:ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ\"}","result":{"ok":true,"message":{"type":"emote.set","session":"0123abcd","roomId":"user:ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ"}}},
+    {"line":"{\"v\":1,\"type\":\"emote.set\",\"session\":\"0123abcd\",\"roomId\":\"group:1\"}","result":{"ok":false,"reason":"BAD_ROOM_ID"}},
+    {"line":"{\"v\":1,\"type\":\"emote.set\",\"session\":\"0123abcd\",\"roomId\":\"SET:abc\"}","result":{"ok":false,"reason":"BAD_ROOM_ID"}},
+    {"line":"{\"v\":1,\"type\":\"emote.set\",\"session\":\"0123abcd\",\"roomId\":\"set:abc \"}","result":{"ok":false,"reason":"BAD_ROOM_ID"}},
+    {"line":"{\"v\":1,\"type\":\"emote.set\",\"session\":\"0123abcd\",\"roomId\":\"\"}","result":{"ok":false,"reason":"BAD_ROOM_ID"}},
+    {"line":"{\"v\":1,\"type\":\"emote.set\",\"session\":\"0123abcd\",\"roomId\":\"twitch:12a\"}","result":{"ok":false,"reason":"BAD_ROOM_ID"}},
+    {"line":"{\"v\":1,\"type\":\"emote.set\",\"session\":\"0123abcd\",\"roomId\":5}","result":{"ok":false,"reason":"BAD_ROOM_ID"}},
+    {"line":"{\"v\":1,\"type\":\"emote.set\",\"session\":\"0123abcd\",\"roomId\":null}","result":{"ok":false,"reason":"BAD_ROOM_ID"}},
+    {"line":"{\"v\":1,\"type\":\"emote.set\",\"session\":\"0123abcd\",\"roomId\":\"12345\",\"extra\":1}","result":{"ok":false,"reason":"UNKNOWN_FIELD:extra"}},
+    {"line":"{\"v\":1,\"type\":\"emote.set\",\"session\":\"0123abcd\"}","result":{"ok":false,"reason":"BAD_ROOM_ID"}},
+    {"line":"{\"v\":1,\"type\":\"emote.resolve\",\"session\":\"0123abcd\",\"name\":\"Kappa\",\"px\":28}","result":{"ok":true,"message":{"type":"emote.resolve","session":"0123abcd","name":"Kappa","px":28}}},
+    {"line":"{\"v\":1,\"type\":\"emote.resolve\",\"session\":\"0123abcd\",\"name\":\"a\",\"px\":28}","result":{"ok":true,"message":{"type":"emote.resolve","session":"0123abcd","name":"a","px":28}}},
+    {"line":"{\"v\":1,\"type\":\"emote.resolve\",\"session\":\"0123abcd\",\"name\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"px\":28}","result":{"ok":true,"message":{"type":"emote.resolve","session":"0123abcd","name":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","px":28}}},
+    {"line":"{\"v\":1,\"type\":\"emote.resolve\",\"session\":\"0123abcd\",\"name\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"px\":28}","result":{"ok":false,"reason":"BAD_EMOTE_NAME"}},
+    {"line":"{\"v\":1,\"type\":\"emote.resolve\",\"session\":\"0123abcd\",\"name\":\"tw:25\",\"px\":28}","result":{"ok":true,"message":{"type":"emote.resolve","session":"0123abcd","name":"tw:25","px":28}}},
+    {"line":"{\"v\":1,\"type\":\"emote.resolve\",\"session\":\"0123abcd\",\"name\":\"tw:emotesv2_abc\",\"px\":28}","result":{"ok":true,"message":{"type":"emote.resolve","session":"0123abcd","name":"tw:emotesv2_abc","px":28}}},
+    {"line":"{\"v\":1,\"type\":\"emote.resolve\",\"session\":\"0123abcd\",\"name\":\"(:\",\"px\":28}","result":{"ok":true,"message":{"type":"emote.resolve","session":"0123abcd","name":"(:","px":28}}},
+    {"line":"{\"v\":1,\"type\":\"emote.resolve\",\"session\":\"0123abcd\",\"name\":\"O_o\",\"px\":28}","result":{"ok":true,"message":{"type":"emote.resolve","session":"0123abcd","name":"O_o","px":28}}},
+    {"line":"{\"v\":1,\"type\":\"emote.resolve\",\"session\":\"0123abcd\",\"name\":\"!?\",\"px\":28}","result":{"ok":true,"message":{"type":"emote.resolve","session":"0123abcd","name":"!?","px":28}}},
+    {"line":"{\"v\":1,\"type\":\"emote.resolve\",\"session\":\"0123abcd\",\"name\":\"a b\",\"px\":28}","result":{"ok":false,"reason":"BAD_EMOTE_NAME"}},
+    {"line":"{\"v\":1,\"type\":\"emote.resolve\",\"session\":\"0123abcd\",\"name\":\"a.b\",\"px\":28}","result":{"ok":false,"reason":"BAD_EMOTE_NAME"}},
+    {"line":"{\"v\":1,\"type\":\"emote.resolve\",\"session\":\"0123abcd\",\"name\":\"a/b\",\"px\":28}","result":{"ok":false,"reason":"BAD_EMOTE_NAME"}},
+    {"line":"{\"v\":1,\"type\":\"emote.resolve\",\"session\":\"0123abcd\",\"name\":\"\",\"px\":28}","result":{"ok":false,"reason":"BAD_EMOTE_NAME"}},
+    {"line":"{\"v\":1,\"type\":\"emote.resolve\",\"session\":\"0123abcd\",\"name\":\"Эмоут\",\"px\":28}","result":{"ok":false,"reason":"BAD_EMOTE_NAME"}},
+    {"line":"{\"v\":1,\"type\":\"emote.resolve\",\"session\":\"0123abcd\",\"name\":5,\"px\":28}","result":{"ok":false,"reason":"BAD_EMOTE_NAME"}},
+    {"line":"{\"v\":1,\"type\":\"emote.resolve\",\"session\":\"0123abcd\",\"name\":null,\"px\":28}","result":{"ok":false,"reason":"BAD_EMOTE_NAME"}},
+    {"line":"{\"v\":1,\"type\":\"emote.resolve\",\"session\":\"0123abcd\",\"name\":\"a-b\",\"px\":28}","result":{"ok":true,"message":{"type":"emote.resolve","session":"0123abcd","name":"a-b","px":28}}},
+    {"line":"{\"v\":1,\"type\":\"emote.resolve\",\"session\":\"0123abcd\",\"name\":\"-\",\"px\":28}","result":{"ok":true,"message":{"type":"emote.resolve","session":"0123abcd","name":"-","px":28}}},
+    {"line":"{\"v\":1,\"type\":\"emote.resolve\",\"session\":\"0123abcd\",\"name\":\":\",\"px\":28}","result":{"ok":true,"message":{"type":"emote.resolve","session":"0123abcd","name":":","px":28}}},
+    {"line":"{\"v\":1,\"type\":\"emote.resolve\",\"session\":\"0123abcd\",\"name\":\"Kappa\",\"px\":8}","result":{"ok":true,"message":{"type":"emote.resolve","session":"0123abcd","name":"Kappa","px":8}}},
+    {"line":"{\"v\":1,\"type\":\"emote.resolve\",\"session\":\"0123abcd\",\"name\":\"Kappa\",\"px\":7}","result":{"ok":false,"reason":"BAD_EMOTE_PX"}},
+    {"line":"{\"v\":1,\"type\":\"emote.resolve\",\"session\":\"0123abcd\",\"name\":\"Kappa\",\"px\":128}","result":{"ok":true,"message":{"type":"emote.resolve","session":"0123abcd","name":"Kappa","px":128}}},
+    {"line":"{\"v\":1,\"type\":\"emote.resolve\",\"session\":\"0123abcd\",\"name\":\"Kappa\",\"px\":129}","result":{"ok":false,"reason":"BAD_EMOTE_PX"}},
+    {"line":"{\"v\":1,\"type\":\"emote.resolve\",\"session\":\"0123abcd\",\"name\":\"Kappa\",\"px\":8.5}","result":{"ok":false,"reason":"BAD_EMOTE_PX"}},
+    {"line":"{\"v\":1,\"type\":\"emote.resolve\",\"session\":\"0123abcd\",\"name\":\"Kappa\",\"px\":28}","result":{"ok":true,"message":{"type":"emote.resolve","session":"0123abcd","name":"Kappa","px":28}}},
+    {"line":"{\"v\":1,\"type\":\"emote.resolve\",\"session\":\"0123abcd\",\"name\":\"Kappa\",\"px\":\"28\"}","result":{"ok":false,"reason":"BAD_EMOTE_PX"}},
+    {"line":"{\"v\":1,\"type\":\"emote.resolve\",\"session\":\"0123abcd\",\"name\":\"Kappa\",\"px\":null}","result":{"ok":false,"reason":"BAD_EMOTE_PX"}},
+    {"line":"{\"v\":1,\"type\":\"emote.resolve\",\"session\":\"0123abcd\",\"name\":\"Kappa\",\"px\":0}","result":{"ok":false,"reason":"BAD_EMOTE_PX"}},
+    {"line":"{\"v\":1,\"type\":\"emote.resolve\",\"session\":\"0123abcd\",\"name\":\"Kappa\",\"px\":-8}","result":{"ok":false,"reason":"BAD_EMOTE_PX"}},
+    {"line":"{\"v\":1,\"type\":\"emote.resolve\",\"session\":\"0123abcd\",\"name\":\"Kappa\",\"px\":true}","result":{"ok":false,"reason":"BAD_EMOTE_PX"}},
+    {"line":"{\"v\":1,\"type\":\"emote.resolve\",\"session\":\"0123abcd\",\"name\":\"Kappa\",\"px\":null}","result":{"ok":false,"reason":"BAD_EMOTE_PX"}},
+    {"line":"{\"v\":1,\"type\":\"emote.resolve\",\"session\":\"0123abcd\",\"name\":\"Kappa\"}","result":{"ok":true,"message":{"type":"emote.resolve","session":"0123abcd","name":"Kappa","px":null}}},
+    {"line":"{\"v\":1,\"type\":\"emote.resolve\",\"session\":\"0123abcd\",\"name\":\"Kappa\",\"px\":28,\"extra\":1}","result":{"ok":false,"reason":"UNKNOWN_FIELD:extra"}},
+    {"line":"{\"v\":1,\"type\":\"emote.resolve\",\"session\":\"0123abcd\",\"px\":28}","result":{"ok":false,"reason":"BAD_EMOTE_NAME"}},
+    {"line":"{\"v\":1,\"type\":\"discord\"}","result":{"ok":false,"reason":"UNKNOWN_TYPE"}},
+    {"line":"{\"v\":1,\"type\":\"chat.line\"}","result":{"ok":false,"reason":"UNKNOWN_TYPE"}},
+    {"line":"{\"v\":1,\"type\":\"emote.begin\"}","result":{"ok":false,"reason":"UNKNOWN_TYPE"}},
+    {"line":"{\"v\":1,\"type\":\"emote.frame\"}","result":{"ok":false,"reason":"UNKNOWN_TYPE"}},
+    {"line":"{\"v\":1,\"type\":\"emote.ready\"}","result":{"ok":false,"reason":"UNKNOWN_TYPE"}},
+    {"line":"{\"v\":1,\"type\":\"emote.miss\"}","result":{"ok":false,"reason":"UNKNOWN_TYPE"}},
+    {"line":"{\"v\":1,\"type\":\"badge.ready\"}","result":{"ok":false,"reason":"UNKNOWN_TYPE"}}
+  ],
+  "encode": [
+    {"fn":"encodeDiscordAck","args":[true],"result":"{\"v\":1,\"type\":\"discord\",\"connected\":true}\n"},
+    {"fn":"encodeDiscordAck","args":[false],"result":"{\"v\":1,\"type\":\"discord\",\"connected\":false}\n"},
+    {"fn":"encodeChatLine","args":["twitch","Runner","привет \"всем\"\n","tw:broadcaster/1","tw:vip/1"],"result":"{\"v\":1,\"type\":\"chat.line\",\"platform\":\"twitch\",\"badge1\":\"tw:broadcaster/1\",\"badge2\":\"tw:vip/1\",\"nick\":\"Runner\",\"text\":\"привет \\\"всем\\\"\\n\"}\n"},
+    {"fn":"encodeChatLine","args":["youtube","Ник","текст","",""],"result":"{\"v\":1,\"type\":\"chat.line\",\"platform\":\"youtube\",\"badge1\":\"\",\"badge2\":\"\",\"nick\":\"Ник\",\"text\":\"текст\"}\n"},
+    {
+      "fn": "encodeChatLine",
+      "args": ["twitch","nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn","ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt","bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb","ccccccccccccccccccccccccccccccc"],
+      "result": "{\"v\":1,\"type\":\"chat.line\",\"platform\":\"twitch\",\"badge1\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\",\"badge2\":\"ccccccccccccccccccccccccccccccc\",\"nick\":\"nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn\",\"text\":\"tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt\"}\n"
+    },
+    {
+      "fn": "encodeChatLine",
+      "args": ["twitch","nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn😀","ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt😀","bbbbbbbbbbbbbbbbbbbbbbbbbbbbbb😀",""],
+      "result": "{\"v\":1,\"type\":\"chat.line\",\"platform\":\"twitch\",\"badge1\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\",\"badge2\":\"\",\"nick\":\"nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn\",\"text\":\"ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt\"}\n"
+    },
+    {"fn":"encodeChatLine","args":["platform-longer-than-16","n","t","",""],"result":"{\"v\":1,\"type\":\"chat.line\",\"platform\":\"platform-longer-\",\"badge1\":\"\",\"badge2\":\"\",\"nick\":\"n\",\"text\":\"t\"}\n"},
+    {"fn":"encodeEmoteBegin","args":["Kappa",28,28,12,40],"result":"{\"v\":1,\"type\":\"emote.begin\",\"name\":\"Kappa\",\"wide\":28,\"tall\":28,\"frames\":12,\"frameMs\":40}\n"},
+    {"fn":"encodeEmoteBegin","args":["aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",112,28,1,0],"result":"{\"v\":1,\"type\":\"emote.begin\",\"name\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"wide\":112,\"tall\":28,\"frames\":1,\"frameMs\":0}\n"},
+    {"fn":"encodeEmoteFrame","args":["Kappa",3,"AAAA"],"result":"{\"v\":1,\"type\":\"emote.frame\",\"name\":\"Kappa\",\"index\":3,\"rgba\":\"AAAA\"}\n"},
+    {"fn":"encodeEmoteFrame","args":["aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",0,""],"result":"{\"v\":1,\"type\":\"emote.frame\",\"name\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"index\":0,\"rgba\":\"\"}\n"},
+    {"fn":"encodeEmoteReady","args":["tw:25",28,28,"AQID"],"result":"{\"v\":1,\"type\":\"emote.ready\",\"name\":\"tw:25\",\"wide\":28,\"tall\":28,\"rgba\":\"AQID\"}\n"},
+    {"fn":"encodeEmoteReady","args":["aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",1,2,"AQID"],"result":"{\"v\":1,\"type\":\"emote.ready\",\"name\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"wide\":1,\"tall\":2,\"rgba\":\"AQID\"}\n"},
+    {"fn":"encodeBadgeReady","args":["tw:broadcaster/1",18,18,"AQID"],"result":"{\"v\":1,\"type\":\"badge.ready\",\"name\":\"tw:broadcaster/1\",\"wide\":18,\"tall\":18,\"rgba\":\"AQID\"}\n"},
+    {"fn":"encodeBadgeReady","args":["bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",18,18,"AQID"],"result":"{\"v\":1,\"type\":\"badge.ready\",\"name\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\",\"wide\":18,\"tall\":18,\"rgba\":\"AQID\"}\n"},
+    {"fn":"encodeEmoteMiss","args":["Kappa"],"result":"{\"v\":1,\"type\":\"emote.miss\",\"name\":\"Kappa\"}\n"},
+    {"fn":"encodeEmoteMiss","args":["aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa😀"],"result":"{\"v\":1,\"type\":\"emote.miss\",\"name\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}\n"},
+    {"fn":"encodeEmoteMiss","args":["aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"],"result":"{\"v\":1,\"type\":\"emote.miss\",\"name\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}\n"}
+  ]
+}

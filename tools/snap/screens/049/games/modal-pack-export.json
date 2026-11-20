@@ -1,0 +1,82 @@
+{
+  "id": "games/modal-pack-export",
+  "base": "games/_base",
+  "state": "Ghosting: меню → «Экспорт сборки», в сборке изменены файлы (свой HUD) → подтверждение 0.4.9 (confirmation-required, modified, custom)",
+  "invoke": {
+    "game-menu-state": {
+      "available": true,
+      "gameId": "ghosting-renewed",
+      "installed": true,
+      "busy": false,
+      "running": false,
+      "items": {
+        "settings": {
+          "enabled": true,
+          "reason": null
+        },
+        "shortcut": {
+          "enabled": true,
+          "reason": null
+        },
+        "screenshots": {
+          "enabled": true,
+          "reason": null
+        },
+        "folder": {
+          "enabled": true,
+          "reason": null
+        },
+        "verify": {
+          "enabled": true,
+          "reason": null
+        },
+        "repair": {
+          "enabled": true,
+          "reason": null
+        },
+        "exportBuild": {
+          "enabled": true,
+          "reason": null
+        },
+        "exportSettings": {
+          "enabled": true,
+          "reason": null
+        },
+        "importBuild": {
+          "enabled": true,
+          "reason": null
+        },
+        "uninstall": {
+          "enabled": true,
+          "reason": null
+        }
+      }
+    },
+    "game-build-export": {
+      "status": "confirmation-required",
+      "token": "pack-1",
+      "modified": 12,
+      "custom": true
+    }
+  },
+  "steps": [
+    {
+      "click": {
+        "css": ".game-menu__trigger",
+        "view": "game-menu"
+      }
+    },
+    {
+      "click": {
+        "css": ".game-menu__item:nth-child(7)",
+        "view": "game-menu-exportBuild"
+      }
+    },
+    {
+      "move": [
+        800,
+        880
+      ]
+    }
+  ]
+}

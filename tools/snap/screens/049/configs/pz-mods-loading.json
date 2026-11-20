@@ -1,0 +1,30 @@
+{
+  "id": "configs/pz-mods-loading",
+  "state": "Ghosting: моды (G10) — список с диска ещё грузится",
+  "base": "configs/_pz",
+  "invoke": {
+    "custom-packs-get": {
+      "$pending": true
+    }
+  },
+  "steps": [
+    {
+      "click": {
+        "css": ".launcher-topbar__tab:nth-child(3)",
+        "view": "topbar-tab-configs"
+      }
+    },
+    {
+      "click": {
+        "css": "#gx-tab-mods",
+        "view": "gx-tab-mods"
+      }
+    },
+    {
+      "move": [
+        800,
+        880
+      ]
+    }
+  ]
+}

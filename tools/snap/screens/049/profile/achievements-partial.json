@@ -1,0 +1,1199 @@
+{
+  "id": "profile/achievements-partial",
+  "base": "profile/own",
+  "state": "Достижения частично: полученные по редкости (золото, фиолет, обычные) с датами, секретное золотое и розовое, полосы прогресса, секретные под замком",
+  "themes": [
+    "hlsr"
+  ],
+  "invoke": {
+    "runner-state": {
+      "status": "signed-in",
+      "userCode": null,
+      "expiresAt": null,
+      "error": null,
+      "ban": null,
+      "mute": null,
+      "account": {
+        "signedIn": true,
+        "steamId64": "76561199155902676",
+        "steamId2": "STEAM_0:0:597818474",
+        "personaName": "Kanoyo",
+        "avatarDataUri": "https://avatars.steamstatic.com/0000000000000000000000000000000000000001_full.jpg",
+        "connection": "connected"
+      },
+      "firstRunAt": "2026-03-14T08:20:00.000Z",
+      "achievements": [
+        {
+          "id": "keep-the-flame",
+          "title": "#L_ACH_FLAME_TITLE",
+          "description": "#L_ACH_FLAME_DESC",
+          "icon": "fas fa-fire-flame-curved",
+          "tier": "gold",
+          "unlocked": true,
+          "progress": 1,
+          "value": null,
+          "goal": null,
+          "at": "2026-11-08T02:41:00.000Z"
+        },
+        {
+          "id": "patron",
+          "title": "#L_ACH_PATRON_TITLE",
+          "description": "#L_ACH_PATRON_DESC",
+          "icon": "fas fa-hand-holding-heart",
+          "tier": "gold",
+          "unlocked": true,
+          "progress": 1,
+          "value": null,
+          "goal": null,
+          "at": "2026-07-15T12:00:00.000Z"
+        },
+        {
+          "id": "good-memory",
+          "title": "#L_ACH_MEMORY_TITLE",
+          "description": "#L_ACH_MEMORY_DESC",
+          "icon": "fas fa-brain",
+          "tier": "gold",
+          "unlocked": true,
+          "progress": 1,
+          "value": null,
+          "goal": null,
+          "at": "2026-10-19T17:45:00.000Z",
+          "secret": true
+        },
+        {
+          "id": "day-after-day",
+          "title": "#L_ACH_DAYS_TITLE",
+          "description": "#L_ACH_DAYS_DESC",
+          "icon": "fas fa-calendar-days",
+          "tier": "purple",
+          "unlocked": true,
+          "progress": 1,
+          "value": null,
+          "goal": null,
+          "at": "2026-09-30T20:20:00.000Z"
+        },
+        {
+          "id": "first-launch",
+          "title": "#L_ACH_FIRST_TITLE",
+          "description": "#L_ACH_FIRST_DESC",
+          "icon": "fas fa-download",
+          "tier": null,
+          "unlocked": true,
+          "progress": 1,
+          "value": null,
+          "goal": null,
+          "at": "2026-03-14T08:20:00.000Z"
+        },
+        {
+          "id": "touch-grass",
+          "title": "#L_ACH_GRASS_TITLE",
+          "description": "#L_ACH_GRASS_DESC",
+          "icon": "fas fa-seedling",
+          "tier": null,
+          "unlocked": true,
+          "progress": 1,
+          "value": 111,
+          "goal": 50,
+          "gameId": "ghosting-renewed",
+          "at": "2026-05-02T19:40:00.000Z"
+        },
+        {
+          "id": "full-set",
+          "title": "#L_ACH_FULLSET_TITLE",
+          "description": "#L_ACH_FULLSET_DESC",
+          "icon": "fas fa-layer-group",
+          "tier": null,
+          "unlocked": true,
+          "progress": 1,
+          "value": null,
+          "goal": null,
+          "at": "2026-03-14T09:02:00.000Z"
+        },
+        {
+          "id": "warmup",
+          "title": "#L_ACH_WARMUP_TITLE",
+          "description": "#L_ACH_WARMUP_DESC",
+          "icon": "fas fa-play",
+          "tier": null,
+          "unlocked": true,
+          "progress": 1,
+          "value": 25,
+          "goal": 25,
+          "at": "2026-04-11T10:12:00.000Z"
+        },
+        {
+          "id": "marathon",
+          "title": "#L_ACH_MARATHON_TITLE",
+          "description": "#L_ACH_MARATHON_DESC",
+          "icon": "fas fa-hourglass-half",
+          "tier": null,
+          "unlocked": true,
+          "progress": 1,
+          "value": null,
+          "goal": null,
+          "at": "2026-06-07T23:51:00.000Z"
+        },
+        {
+          "id": "own-binds",
+          "title": "#L_ACH_BINDS_TITLE",
+          "description": "#L_ACH_BINDS_DESC",
+          "icon": "fas fa-keyboard",
+          "tier": null,
+          "unlocked": true,
+          "progress": 1,
+          "value": null,
+          "goal": null,
+          "at": null
+        },
+        {
+          "id": "stopwatch",
+          "title": "#L_ACH_STOPWATCH_TITLE",
+          "description": "#L_ACH_STOPWATCH_DESC",
+          "icon": "fas fa-stopwatch",
+          "tier": null,
+          "unlocked": true,
+          "progress": 1,
+          "value": null,
+          "goal": null,
+          "at": "2026-03-20T18:30:00.000Z"
+        },
+        {
+          "id": "scout",
+          "title": "#L_ACH_SCOUT_TITLE",
+          "description": "#L_ACH_SCOUT_DESC",
+          "icon": "fas fa-binoculars",
+          "tier": null,
+          "unlocked": true,
+          "progress": 1,
+          "value": null,
+          "goal": null,
+          "at": null
+        },
+        {
+          "id": "chronicler",
+          "title": "#L_ACH_CHRONICLER_TITLE",
+          "description": "#L_ACH_CHRONICLER_DESC",
+          "icon": "fas fa-scroll",
+          "tier": null,
+          "unlocked": true,
+          "progress": 1,
+          "value": null,
+          "goal": null,
+          "at": "2026-11-02T13:15:00.000Z"
+        },
+        {
+          "id": "back-to-past",
+          "title": "#L_ACH_PAST_TITLE",
+          "description": "#L_ACH_PAST_DESC",
+          "icon": "fas fa-history",
+          "tier": null,
+          "unlocked": true,
+          "progress": 1,
+          "value": null,
+          "goal": null,
+          "at": "2026-04-01T00:01:00.000Z",
+          "secret": true
+        },
+        {
+          "id": "double-shift",
+          "title": "#L_ACH_DOUBLE_TITLE",
+          "description": "#L_ACH_GRASS_DESC",
+          "icon": "fas fa-business-time",
+          "tier": null,
+          "unlocked": true,
+          "progress": 1,
+          "value": 111,
+          "goal": 100,
+          "gameId": "ghosting-renewed",
+          "at": "2026-08-21T22:05:00.000Z"
+        },
+        {
+          "id": "hard-worker",
+          "title": "#L_ACH_WORKER_TITLE",
+          "description": "#L_ACH_WORKER_DESC",
+          "icon": "fas fa-hammer",
+          "tier": null,
+          "unlocked": true,
+          "progress": 1,
+          "value": null,
+          "goal": null,
+          "at": "2026-10-01T08:00:00.000Z"
+        },
+        {
+          "id": "week-streak",
+          "title": "#L_ACH_WEEK_TITLE",
+          "description": "#L_ACH_WEEK_DESC",
+          "icon": "fas fa-calendar-check",
+          "tier": null,
+          "unlocked": false,
+          "progress": 0,
+          "value": null,
+          "goal": null,
+          "at": null
+        },
+        {
+          "id": "own-style",
+          "title": "#L_ACH_STYLE_TITLE",
+          "description": "#L_ACH_STYLE_DESC",
+          "icon": "fas fa-paintbrush",
+          "tier": null,
+          "unlocked": false,
+          "progress": 0,
+          "value": null,
+          "goal": null,
+          "at": null
+        },
+        {
+          "id": "community-voice",
+          "title": "#L_ACH_VOICE_TITLE",
+          "description": "#L_ACH_VOICE_DESC",
+          "icon": "fas fa-heart",
+          "tier": null,
+          "unlocked": false,
+          "progress": 0,
+          "value": null,
+          "goal": null,
+          "at": null
+        },
+        {
+          "id": "cursed",
+          "title": "#L_ACH_CURSED_TITLE",
+          "description": "#L_ACH_GRASS_DESC",
+          "icon": "fas fa-skull",
+          "tier": "purple",
+          "unlocked": false,
+          "progress": 0.22290000000000001,
+          "value": 111,
+          "goal": 500,
+          "gameId": "ghosting-renewed",
+          "at": null
+        },
+        {
+          "id": "avid-runner",
+          "title": "#L_ACH_AVID_TITLE",
+          "description": "#L_ACH_GRASS_DESC",
+          "icon": "fas fa-person-running",
+          "tier": "gold",
+          "unlocked": false,
+          "progress": 0.11145000000000001,
+          "value": 111,
+          "goal": 1000,
+          "gameId": "ghosting-renewed",
+          "at": null
+        },
+        {
+          "id": "mountain-dweller",
+          "title": "#L_ACH_MOUNTAIN_TITLE",
+          "description": "#L_ACH_WARMUP_DESC",
+          "icon": "fas fa-mountain",
+          "tier": "purple",
+          "unlocked": false,
+          "progress": 0.096,
+          "value": 48,
+          "goal": 500,
+          "at": null
+        },
+        {
+          "id": "shut-it-down",
+          "title": "#L_ACH_SHUT_TITLE",
+          "description": "#L_ACH_WARMUP_DESC",
+          "icon": "fas fa-power-off",
+          "tier": "gold",
+          "unlocked": false,
+          "progress": 0.048,
+          "value": 48,
+          "goal": 1000,
+          "at": null
+        },
+        {
+          "id": "around-the-clock",
+          "title": "#L_ACH_CLOCK_TITLE",
+          "description": "#L_ACH_CLOCK_DESC",
+          "icon": "fas fa-clock",
+          "tier": "purple",
+          "unlocked": false,
+          "progress": 0,
+          "value": null,
+          "goal": null,
+          "at": null
+        },
+        {
+          "id": "frankenstein",
+          "title": "#L_ACH_FRANK_TITLE",
+          "description": "#L_ACH_FRANK_DESC",
+          "icon": "fas fa-bolt",
+          "tier": null,
+          "unlocked": false,
+          "progress": 0,
+          "value": null,
+          "goal": null,
+          "at": null
+        },
+        {
+          "id": "hoarder",
+          "title": "#L_ACH_HOARDER_TITLE",
+          "description": "#L_ACH_HOARDER_DESC",
+          "icon": "fas fa-box-archive",
+          "tier": null,
+          "unlocked": false,
+          "progress": 0,
+          "value": null,
+          "goal": null,
+          "at": null
+        },
+        {
+          "id": "video-editor",
+          "title": "#L_ACH_EDITOR_TITLE",
+          "description": "#L_ACH_EDITOR_DESC",
+          "icon": "fas fa-film",
+          "tier": null,
+          "unlocked": false,
+          "progress": 0,
+          "value": null,
+          "goal": null,
+          "at": null
+        },
+        {
+          "id": "particle-accelerator",
+          "title": "#L_ACH_BOOSTER_TITLE",
+          "description": "#L_ACH_BOOSTER_DESC",
+          "icon": "fas fa-atom",
+          "tier": "gold",
+          "unlocked": false,
+          "progress": 0,
+          "value": null,
+          "goal": null,
+          "at": null
+        },
+        {
+          "id": "respected",
+          "title": "#L_ACH_RESPECT_TITLE",
+          "description": "#L_ACH_RESPECT_DESC",
+          "icon": "fas fa-star",
+          "tier": null,
+          "unlocked": false,
+          "progress": 0,
+          "value": null,
+          "goal": null,
+          "at": null
+        },
+        {
+          "id": "secret-1",
+          "title": "#L_ACH_SECRET_TITLE",
+          "description": "#L_ACH_SECRET_DESC",
+          "icon": "fas fa-question",
+          "tier": null,
+          "unlocked": false,
+          "progress": 0,
+          "value": null,
+          "goal": null,
+          "at": null,
+          "secret": true,
+          "hidden": true
+        },
+        {
+          "id": "secret-2",
+          "title": "#L_ACH_SECRET_TITLE",
+          "description": "#L_ACH_SECRET_DESC",
+          "icon": "fas fa-question",
+          "tier": null,
+          "unlocked": false,
+          "progress": 0,
+          "value": null,
+          "goal": null,
+          "at": null,
+          "secret": true,
+          "hidden": true
+        },
+        {
+          "id": "secret-3",
+          "title": "#L_ACH_SECRET_TITLE",
+          "description": "#L_ACH_SECRET_DESC",
+          "icon": "fas fa-question",
+          "tier": null,
+          "unlocked": false,
+          "progress": 0,
+          "value": null,
+          "goal": null,
+          "at": null,
+          "secret": true,
+          "hidden": true
+        },
+        {
+          "id": "secret-4",
+          "title": "#L_ACH_SECRET_TITLE",
+          "description": "#L_ACH_SECRET_DESC",
+          "icon": "fas fa-question",
+          "tier": null,
+          "unlocked": false,
+          "progress": 0,
+          "value": null,
+          "goal": null,
+          "at": null,
+          "secret": true,
+          "hidden": true
+        },
+        {
+          "id": "secret-5",
+          "title": "#L_ACH_SECRET_TITLE",
+          "description": "#L_ACH_SECRET_DESC",
+          "icon": "fas fa-question",
+          "tier": null,
+          "unlocked": false,
+          "progress": 0,
+          "value": null,
+          "goal": null,
+          "at": null,
+          "secret": true,
+          "hidden": true
+        },
+        {
+          "id": "secret-6",
+          "title": "#L_ACH_SECRET_TITLE",
+          "description": "#L_ACH_SECRET_DESC",
+          "icon": "fas fa-question",
+          "tier": null,
+          "unlocked": false,
+          "progress": 0,
+          "value": null,
+          "goal": null,
+          "at": null,
+          "secret": true,
+          "hidden": true
+        },
+        {
+          "id": "secret-7",
+          "title": "#L_ACH_SECRET_TITLE",
+          "description": "#L_ACH_SECRET_DESC",
+          "icon": "fas fa-question",
+          "tier": null,
+          "unlocked": false,
+          "progress": 0,
+          "value": null,
+          "goal": null,
+          "at": null,
+          "secret": true,
+          "hidden": true
+        },
+        {
+          "id": "secret-8",
+          "title": "#L_ACH_SECRET_TITLE",
+          "description": "#L_ACH_SECRET_DESC",
+          "icon": "fas fa-question",
+          "tier": null,
+          "unlocked": false,
+          "progress": 0,
+          "value": null,
+          "goal": null,
+          "at": null,
+          "secret": true,
+          "hidden": true
+        },
+        {
+          "id": "secret-9",
+          "title": "#L_ACH_SECRET_TITLE",
+          "description": "#L_ACH_SECRET_DESC",
+          "icon": "fas fa-question",
+          "tier": null,
+          "unlocked": false,
+          "progress": 0,
+          "value": null,
+          "goal": null,
+          "at": null,
+          "secret": true,
+          "hidden": true
+        }
+      ],
+      "summary": {
+        "unlocked": 16,
+        "total": 37,
+        "percent": 43
+      },
+      "stats": {
+        "totalSeconds": 512340,
+        "gamesPlayed": 2,
+        "launches": 48,
+        "best": {
+          "gameId": "ghosting-renewed",
+          "seconds": 401220,
+          "launcherId": "218"
+        }
+      },
+      "streak": {
+        "days": 3,
+        "best": 12
+      },
+      "badges": [
+        "developer",
+        "bughunter",
+        "anniversary-3"
+      ],
+      "customBadges": [],
+      "nick": {
+        "style": "developer",
+        "css": null
+      },
+      "avatarFrame": null,
+      "subscriber": false,
+      "boosterSince": null,
+      "supporterSince": null,
+      "perks": {
+        "styles": false,
+        "subscriber": null
+      },
+      "stylePreset": null,
+      "telegram": {
+        "linked": false,
+        "username": null
+      },
+      "discordLink": {
+        "linked": false,
+        "username": null,
+        "boosterSince": null
+      },
+      "details": {
+        "status": "Бегу Ghosting по выходным",
+        "pronouns": "",
+        "country": "RU",
+        "hideSteamId": false,
+        "pinnedRun": {
+          "id": "abcd1234",
+          "seconds": 1648.285,
+          "game": "Half-Life",
+          "category": "Any% · Glitchless",
+          "place": 2,
+          "url": "https://www.speedrun.com/hl1/runs/abcd1234"
+        },
+        "speedrun": "kanoyo",
+        "discord": "kanoyo",
+        "youtube": "https://www.youtube.com/@kanoyo",
+        "twitch": "https://www.twitch.tv/kanoyo"
+      },
+      "deletionAt": null,
+      "rating": {
+        "score": 14,
+        "likes": 15,
+        "dislikes": 1,
+        "dubious": false
+      },
+      "presence": {
+        "online": true,
+        "gameId": null,
+        "launcherId": null
+      }
+    },
+    "profile-get": {
+      "status": "signed-in",
+      "userCode": null,
+      "expiresAt": null,
+      "error": null,
+      "ban": null,
+      "mute": null,
+      "account": {
+        "signedIn": true,
+        "steamId64": "76561199155902676",
+        "steamId2": "STEAM_0:0:597818474",
+        "personaName": "Kanoyo",
+        "avatarDataUri": "https://avatars.steamstatic.com/0000000000000000000000000000000000000001_full.jpg",
+        "connection": "connected"
+      },
+      "firstRunAt": "2026-03-14T08:20:00.000Z",
+      "achievements": [
+        {
+          "id": "keep-the-flame",
+          "title": "#L_ACH_FLAME_TITLE",
+          "description": "#L_ACH_FLAME_DESC",
+          "icon": "fas fa-fire-flame-curved",
+          "tier": "gold",
+          "unlocked": true,
+          "progress": 1,
+          "value": null,
+          "goal": null,
+          "at": "2026-11-08T02:41:00.000Z"
+        },
+        {
+          "id": "patron",
+          "title": "#L_ACH_PATRON_TITLE",
+          "description": "#L_ACH_PATRON_DESC",
+          "icon": "fas fa-hand-holding-heart",
+          "tier": "gold",
+          "unlocked": true,
+          "progress": 1,
+          "value": null,
+          "goal": null,
+          "at": "2026-07-15T12:00:00.000Z"
+        },
+        {
+          "id": "good-memory",
+          "title": "#L_ACH_MEMORY_TITLE",
+          "description": "#L_ACH_MEMORY_DESC",
+          "icon": "fas fa-brain",
+          "tier": "gold",
+          "unlocked": true,
+          "progress": 1,
+          "value": null,
+          "goal": null,
+          "at": "2026-10-19T17:45:00.000Z",
+          "secret": true
+        },
+        {
+          "id": "day-after-day",
+          "title": "#L_ACH_DAYS_TITLE",
+          "description": "#L_ACH_DAYS_DESC",
+          "icon": "fas fa-calendar-days",
+          "tier": "purple",
+          "unlocked": true,
+          "progress": 1,
+          "value": null,
+          "goal": null,
+          "at": "2026-09-30T20:20:00.000Z"
+        },
+        {
+          "id": "first-launch",
+          "title": "#L_ACH_FIRST_TITLE",
+          "description": "#L_ACH_FIRST_DESC",
+          "icon": "fas fa-download",
+          "tier": null,
+          "unlocked": true,
+          "progress": 1,
+          "value": null,
+          "goal": null,
+          "at": "2026-03-14T08:20:00.000Z"
+        },
+        {
+          "id": "touch-grass",
+          "title": "#L_ACH_GRASS_TITLE",
+          "description": "#L_ACH_GRASS_DESC",
+          "icon": "fas fa-seedling",
+          "tier": null,
+          "unlocked": true,
+          "progress": 1,
+          "value": 111,
+          "goal": 50,
+          "gameId": "ghosting-renewed",
+          "at": "2026-05-02T19:40:00.000Z"
+        },
+        {
+          "id": "full-set",
+          "title": "#L_ACH_FULLSET_TITLE",
+          "description": "#L_ACH_FULLSET_DESC",
+          "icon": "fas fa-layer-group",
+          "tier": null,
+          "unlocked": true,
+          "progress": 1,
+          "value": null,
+          "goal": null,
+          "at": "2026-03-14T09:02:00.000Z"
+        },
+        {
+          "id": "warmup",
+          "title": "#L_ACH_WARMUP_TITLE",
+          "description": "#L_ACH_WARMUP_DESC",
+          "icon": "fas fa-play",
+          "tier": null,
+          "unlocked": true,
+          "progress": 1,
+          "value": 25,
+          "goal": 25,
+          "at": "2026-04-11T10:12:00.000Z"
+        },
+        {
+          "id": "marathon",
+          "title": "#L_ACH_MARATHON_TITLE",
+          "description": "#L_ACH_MARATHON_DESC",
+          "icon": "fas fa-hourglass-half",
+          "tier": null,
+          "unlocked": true,
+          "progress": 1,
+          "value": null,
+          "goal": null,
+          "at": "2026-06-07T23:51:00.000Z"
+        },
+        {
+          "id": "own-binds",
+          "title": "#L_ACH_BINDS_TITLE",
+          "description": "#L_ACH_BINDS_DESC",
+          "icon": "fas fa-keyboard",
+          "tier": null,
+          "unlocked": true,
+          "progress": 1,
+          "value": null,
+          "goal": null,
+          "at": null
+        },
+        {
+          "id": "stopwatch",
+          "title": "#L_ACH_STOPWATCH_TITLE",
+          "description": "#L_ACH_STOPWATCH_DESC",
+          "icon": "fas fa-stopwatch",
+          "tier": null,
+          "unlocked": true,
+          "progress": 1,
+          "value": null,
+          "goal": null,
+          "at": "2026-03-20T18:30:00.000Z"
+        },
+        {
+          "id": "scout",
+          "title": "#L_ACH_SCOUT_TITLE",
+          "description": "#L_ACH_SCOUT_DESC",
+          "icon": "fas fa-binoculars",
+          "tier": null,
+          "unlocked": true,
+          "progress": 1,
+          "value": null,
+          "goal": null,
+          "at": null
+        },
+        {
+          "id": "chronicler",
+          "title": "#L_ACH_CHRONICLER_TITLE",
+          "description": "#L_ACH_CHRONICLER_DESC",
+          "icon": "fas fa-scroll",
+          "tier": null,
+          "unlocked": true,
+          "progress": 1,
+          "value": null,
+          "goal": null,
+          "at": "2026-11-02T13:15:00.000Z"
+        },
+        {
+          "id": "back-to-past",
+          "title": "#L_ACH_PAST_TITLE",
+          "description": "#L_ACH_PAST_DESC",
+          "icon": "fas fa-history",
+          "tier": null,
+          "unlocked": true,
+          "progress": 1,
+          "value": null,
+          "goal": null,
+          "at": "2026-04-01T00:01:00.000Z",
+          "secret": true
+        },
+        {
+          "id": "double-shift",
+          "title": "#L_ACH_DOUBLE_TITLE",
+          "description": "#L_ACH_GRASS_DESC",
+          "icon": "fas fa-business-time",
+          "tier": null,
+          "unlocked": true,
+          "progress": 1,
+          "value": 111,
+          "goal": 100,
+          "gameId": "ghosting-renewed",
+          "at": "2026-08-21T22:05:00.000Z"
+        },
+        {
+          "id": "hard-worker",
+          "title": "#L_ACH_WORKER_TITLE",
+          "description": "#L_ACH_WORKER_DESC",
+          "icon": "fas fa-hammer",
+          "tier": null,
+          "unlocked": true,
+          "progress": 1,
+          "value": null,
+          "goal": null,
+          "at": "2026-10-01T08:00:00.000Z"
+        },
+        {
+          "id": "week-streak",
+          "title": "#L_ACH_WEEK_TITLE",
+          "description": "#L_ACH_WEEK_DESC",
+          "icon": "fas fa-calendar-check",
+          "tier": null,
+          "unlocked": false,
+          "progress": 0,
+          "value": null,
+          "goal": null,
+          "at": null
+        },
+        {
+          "id": "own-style",
+          "title": "#L_ACH_STYLE_TITLE",
+          "description": "#L_ACH_STYLE_DESC",
+          "icon": "fas fa-paintbrush",
+          "tier": null,
+          "unlocked": false,
+          "progress": 0,
+          "value": null,
+          "goal": null,
+          "at": null
+        },
+        {
+          "id": "community-voice",
+          "title": "#L_ACH_VOICE_TITLE",
+          "description": "#L_ACH_VOICE_DESC",
+          "icon": "fas fa-heart",
+          "tier": null,
+          "unlocked": false,
+          "progress": 0,
+          "value": null,
+          "goal": null,
+          "at": null
+        },
+        {
+          "id": "cursed",
+          "title": "#L_ACH_CURSED_TITLE",
+          "description": "#L_ACH_GRASS_DESC",
+          "icon": "fas fa-skull",
+          "tier": "purple",
+          "unlocked": false,
+          "progress": 0.22290000000000001,
+          "value": 111,
+          "goal": 500,
+          "gameId": "ghosting-renewed",
+          "at": null
+        },
+        {
+          "id": "avid-runner",
+          "title": "#L_ACH_AVID_TITLE",
+          "description": "#L_ACH_GRASS_DESC",
+          "icon": "fas fa-person-running",
+          "tier": "gold",
+          "unlocked": false,
+          "progress": 0.11145000000000001,
+          "value": 111,
+          "goal": 1000,
+          "gameId": "ghosting-renewed",
+          "at": null
+        },
+        {
+          "id": "mountain-dweller",
+          "title": "#L_ACH_MOUNTAIN_TITLE",
+          "description": "#L_ACH_WARMUP_DESC",
+          "icon": "fas fa-mountain",
+          "tier": "purple",
+          "unlocked": false,
+          "progress": 0.096,
+          "value": 48,
+          "goal": 500,
+          "at": null
+        },
+        {
+          "id": "shut-it-down",
+          "title": "#L_ACH_SHUT_TITLE",
+          "description": "#L_ACH_WARMUP_DESC",
+          "icon": "fas fa-power-off",
+          "tier": "gold",
+          "unlocked": false,
+          "progress": 0.048,
+          "value": 48,
+          "goal": 1000,
+          "at": null
+        },
+        {
+          "id": "around-the-clock",
+          "title": "#L_ACH_CLOCK_TITLE",
+          "description": "#L_ACH_CLOCK_DESC",
+          "icon": "fas fa-clock",
+          "tier": "purple",
+          "unlocked": false,
+          "progress": 0,
+          "value": null,
+          "goal": null,
+          "at": null
+        },
+        {
+          "id": "frankenstein",
+          "title": "#L_ACH_FRANK_TITLE",
+          "description": "#L_ACH_FRANK_DESC",
+          "icon": "fas fa-bolt",
+          "tier": null,
+          "unlocked": false,
+          "progress": 0,
+          "value": null,
+          "goal": null,
+          "at": null
+        },
+        {
+          "id": "hoarder",
+          "title": "#L_ACH_HOARDER_TITLE",
+          "description": "#L_ACH_HOARDER_DESC",
+          "icon": "fas fa-box-archive",
+          "tier": null,
+          "unlocked": false,
+          "progress": 0,
+          "value": null,
+          "goal": null,
+          "at": null
+        },
+        {
+          "id": "video-editor",
+          "title": "#L_ACH_EDITOR_TITLE",
+          "description": "#L_ACH_EDITOR_DESC",
+          "icon": "fas fa-film",
+          "tier": null,
+          "unlocked": false,
+          "progress": 0,
+          "value": null,
+          "goal": null,
+          "at": null
+        },
+        {
+          "id": "particle-accelerator",
+          "title": "#L_ACH_BOOSTER_TITLE",
+          "description": "#L_ACH_BOOSTER_DESC",
+          "icon": "fas fa-atom",
+          "tier": "gold",
+          "unlocked": false,
+          "progress": 0,
+          "value": null,
+          "goal": null,
+          "at": null
+        },
+        {
+          "id": "respected",
+          "title": "#L_ACH_RESPECT_TITLE",
+          "description": "#L_ACH_RESPECT_DESC",
+          "icon": "fas fa-star",
+          "tier": null,
+          "unlocked": false,
+          "progress": 0,
+          "value": null,
+          "goal": null,
+          "at": null
+        },
+        {
+          "id": "secret-1",
+          "title": "#L_ACH_SECRET_TITLE",
+          "description": "#L_ACH_SECRET_DESC",
+          "icon": "fas fa-question",
+          "tier": null,
+          "unlocked": false,
+          "progress": 0,
+          "value": null,
+          "goal": null,
+          "at": null,
+          "secret": true,
+          "hidden": true
+        },
+        {
+          "id": "secret-2",
+          "title": "#L_ACH_SECRET_TITLE",
+          "description": "#L_ACH_SECRET_DESC",
+          "icon": "fas fa-question",
+          "tier": null,
+          "unlocked": false,
+          "progress": 0,
+          "value": null,
+          "goal": null,
+          "at": null,
+          "secret": true,
+          "hidden": true
+        },
+        {
+          "id": "secret-3",
+          "title": "#L_ACH_SECRET_TITLE",
+          "description": "#L_ACH_SECRET_DESC",
+          "icon": "fas fa-question",
+          "tier": null,
+          "unlocked": false,
+          "progress": 0,
+          "value": null,
+          "goal": null,
+          "at": null,
+          "secret": true,
+          "hidden": true
+        },
+        {
+          "id": "secret-4",
+          "title": "#L_ACH_SECRET_TITLE",
+          "description": "#L_ACH_SECRET_DESC",
+          "icon": "fas fa-question",
+          "tier": null,
+          "unlocked": false,
+          "progress": 0,
+          "value": null,
+          "goal": null,
+          "at": null,
+          "secret": true,
+          "hidden": true
+        },
+        {
+          "id": "secret-5",
+          "title": "#L_ACH_SECRET_TITLE",
+          "description": "#L_ACH_SECRET_DESC",
+          "icon": "fas fa-question",
+          "tier": null,
+          "unlocked": false,
+          "progress": 0,
+          "value": null,
+          "goal": null,
+          "at": null,
+          "secret": true,
+          "hidden": true
+        },
+        {
+          "id": "secret-6",
+          "title": "#L_ACH_SECRET_TITLE",
+          "description": "#L_ACH_SECRET_DESC",
+          "icon": "fas fa-question",
+          "tier": null,
+          "unlocked": false,
+          "progress": 0,
+          "value": null,
+          "goal": null,
+          "at": null,
+          "secret": true,
+          "hidden": true
+        },
+        {
+          "id": "secret-7",
+          "title": "#L_ACH_SECRET_TITLE",
+          "description": "#L_ACH_SECRET_DESC",
+          "icon": "fas fa-question",
+          "tier": null,
+          "unlocked": false,
+          "progress": 0,
+          "value": null,
+          "goal": null,
+          "at": null,
+          "secret": true,
+          "hidden": true
+        },
+        {
+          "id": "secret-8",
+          "title": "#L_ACH_SECRET_TITLE",
+          "description": "#L_ACH_SECRET_DESC",
+          "icon": "fas fa-question",
+          "tier": null,
+          "unlocked": false,
+          "progress": 0,
+          "value": null,
+          "goal": null,
+          "at": null,
+          "secret": true,
+          "hidden": true
+        },
+        {
+          "id": "secret-9",
+          "title": "#L_ACH_SECRET_TITLE",
+          "description": "#L_ACH_SECRET_DESC",
+          "icon": "fas fa-question",
+          "tier": null,
+          "unlocked": false,
+          "progress": 0,
+          "value": null,
+          "goal": null,
+          "at": null,
+          "secret": true,
+          "hidden": true
+        }
+      ],
+      "summary": {
+        "unlocked": 16,
+        "total": 37,
+        "percent": 43
+      },
+      "stats": {
+        "totalSeconds": 512340,
+        "gamesPlayed": 2,
+        "launches": 48,
+        "best": {
+          "gameId": "ghosting-renewed",
+          "seconds": 401220,
+          "launcherId": "218"
+        }
+      },
+      "streak": {
+        "days": 3,
+        "best": 12
+      },
+      "badges": [
+        "developer",
+        "bughunter",
+        "anniversary-3"
+      ],
+      "customBadges": [],
+      "nick": {
+        "style": "developer",
+        "css": null
+      },
+      "avatarFrame": null,
+      "subscriber": false,
+      "boosterSince": null,
+      "supporterSince": null,
+      "perks": {
+        "styles": false,
+        "subscriber": null
+      },
+      "stylePreset": null,
+      "telegram": {
+        "linked": false,
+        "username": null
+      },
+      "discordLink": {
+        "linked": false,
+        "username": null,
+        "boosterSince": null
+      },
+      "details": {
+        "status": "Бегу Ghosting по выходным",
+        "pronouns": "",
+        "country": "RU",
+        "hideSteamId": false,
+        "pinnedRun": {
+          "id": "abcd1234",
+          "seconds": 1648.285,
+          "game": "Half-Life",
+          "category": "Any% · Glitchless",
+          "place": 2,
+          "url": "https://www.speedrun.com/hl1/runs/abcd1234"
+        },
+        "speedrun": "kanoyo",
+        "discord": "kanoyo",
+        "youtube": "https://www.youtube.com/@kanoyo",
+        "twitch": "https://www.twitch.tv/kanoyo"
+      },
+      "deletionAt": null,
+      "rating": {
+        "score": 14,
+        "likes": 15,
+        "dislikes": 1,
+        "dubious": false
+      },
+      "presence": {
+        "online": true,
+        "gameId": null,
+        "launcherId": null
+      }
+    }
+  },
+  "steps": [
+    {
+      "click": {
+        "css": ".account-menu__toggle",
+        "view": "account-toggle"
+      }
+    },
+    {
+      "wait": 300
+    },
+    {
+      "click": {
+        "css": ".account-menu__item",
+        "index": 0,
+        "view": "account-item-0"
+      }
+    },
+    {
+      "wait": 600
+    },
+    {
+      "click": {
+        "css": ".profile__tab",
+        "index": 1,
+        "view": "profile-tabs-1"
+      }
+    },
+    {
+      "wait": 600
+    },
+    {
+      "move": [
+        800,
+        880
+      ]
+    }
+  ]
+}

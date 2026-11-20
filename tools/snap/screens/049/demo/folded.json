@@ -1,0 +1,31 @@
+{
+  "id": "demo/folded",
+  "state": "Карточка свёрнута кнопкой посередине: плеер на всю высоту",
+  "base": "demo/_base",
+  "steps": [
+    {
+      "click": {
+        "css": ".game-rail .rail-item[aria-label=\"Демо\"]",
+        "view": "rail-demo"
+      }
+    },
+    {
+      "click": {
+        "css": ".dmp__list .dmp__group:nth-child(2) .dmp__item:nth-of-type(1)",
+        "view": "dmp-item-gh-run"
+      }
+    },
+    {
+      "click": {
+        "css": ".dmp__fold",
+        "view": "dmp-fold"
+      }
+    },
+    {
+      "move": [
+        800,
+        880
+      ]
+    }
+  ]
+}

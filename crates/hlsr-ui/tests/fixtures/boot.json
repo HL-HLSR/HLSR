@@ -1,0 +1,263 @@
+{
+  "scenarios": [
+    {
+      "name": "быстрый ответ: ждём минимум 1 200 мс",
+      "wasLaunched": false,
+      "coloredBoot": true,
+      "steps": [{"at":0,"do":"resolve","call":0,"value":{"action":"proceed"}},{"at":1199,"do":"observe"},{"at":1200,"do":"observe"}],
+      "splash": "T(#UI_WELCOME_HLSR)",
+      "calls": [{"at":0,"channel":"boot-gate-run","options":{}}],
+      "writes": [{"at":0,"key":"wasLaunched","value":"true"}],
+      "pushes": [{"at":1200,"to":"launcher"}],
+      "timeline": [
+        {"label":"mounted","at":0,"phase":"checking","done":false,"statusText":"T(#UI_WELCOME_HLSR)","substatus":true,"percent":0,"bytes":"","speed":"","bootError":null,"updateVersion":null,"pushes":0},
+        {"label":"resolve","at":0,"phase":"checking","done":true,"statusText":"T(#UI_WELCOME_HLSR)","substatus":false,"percent":0,"bytes":"","speed":"","bootError":null,"updateVersion":null,"pushes":0},
+        {"label":"observe","at":1199,"phase":"checking","done":true,"statusText":"T(#UI_WELCOME_HLSR)","substatus":false,"percent":0,"bytes":"","speed":"","bootError":null,"updateVersion":null,"pushes":0},
+        {"label":"observe","at":1200,"phase":"checking","done":true,"statusText":"T(#UI_WELCOME_HLSR)","substatus":false,"percent":0,"bytes":"","speed":"","bootError":null,"updateVersion":null,"pushes":1}
+      ],
+      "listenerAfterUnmount": false
+    },
+    {
+      "name": "ответ позже минимума: переход сразу",
+      "wasLaunched": false,
+      "coloredBoot": true,
+      "steps": [{"at":1500,"do":"resolve","call":0,"value":{"action":"proceed","reason":"up-to-date"}},{"at":1500,"do":"observe","label":"после перехода"}],
+      "splash": "T(#UI_WELCOME_HLSR)",
+      "calls": [{"at":0,"channel":"boot-gate-run","options":{}}],
+      "writes": [{"at":0,"key":"wasLaunched","value":"true"}],
+      "pushes": [{"at":1500,"to":"launcher"}],
+      "timeline": [
+        {"label":"mounted","at":0,"phase":"checking","done":false,"statusText":"T(#UI_WELCOME_HLSR)","substatus":true,"percent":0,"bytes":"","speed":"","bootError":null,"updateVersion":null,"pushes":0},
+        {"label":"resolve","at":1500,"phase":"checking","done":true,"statusText":"T(#UI_WELCOME_HLSR)","substatus":false,"percent":0,"bytes":"","speed":"","bootError":null,"updateVersion":null,"pushes":0},
+        {"label":"после перехода","at":1500,"phase":"checking","done":true,"statusText":"T(#UI_WELCOME_HLSR)","substatus":false,"percent":0,"bytes":"","speed":"","bootError":null,"updateVersion":null,"pushes":1}
+      ],
+      "listenerAfterUnmount": false
+    },
+    {
+      "name": "повторный запуск: «С возвращением»",
+      "wasLaunched": true,
+      "coloredBoot": true,
+      "steps": [{"at":300,"do":"resolve","call":0,"value":{"action":"proceed"}},{"at":1200,"do":"observe"}],
+      "splash": "T(#UI_WELCOME_BACK)",
+      "calls": [{"at":0,"channel":"boot-gate-run","options":{}}],
+      "writes": [{"at":0,"key":"wasLaunched","value":"true"}],
+      "pushes": [{"at":1200,"to":"launcher"}],
+      "timeline": [
+        {"label":"mounted","at":0,"phase":"checking","done":false,"statusText":"T(#UI_WELCOME_BACK)","substatus":true,"percent":0,"bytes":"","speed":"","bootError":null,"updateVersion":null,"pushes":0},
+        {"label":"resolve","at":300,"phase":"checking","done":true,"statusText":"T(#UI_WELCOME_BACK)","substatus":false,"percent":0,"bytes":"","speed":"","bootError":null,"updateVersion":null,"pushes":0},
+        {"label":"observe","at":1200,"phase":"checking","done":true,"statusText":"T(#UI_WELCOME_BACK)","substatus":false,"percent":0,"bytes":"","speed":"","bootError":null,"updateVersion":null,"pushes":1}
+      ],
+      "listenerAfterUnmount": false
+    },
+    {
+      "name": "без ответа: страховка через 20 000 мс",
+      "wasLaunched": false,
+      "coloredBoot": true,
+      "steps": [{"at":19999,"do":"observe"},{"at":20000,"do":"observe"},{"at":20001,"do":"observe"}],
+      "splash": "T(#UI_WELCOME_HLSR)",
+      "calls": [{"at":0,"channel":"boot-gate-run","options":{}}],
+      "writes": [{"at":0,"key":"wasLaunched","value":"true"}],
+      "pushes": [{"at":20000,"to":"launcher"}],
+      "timeline": [
+        {"label":"mounted","at":0,"phase":"checking","done":false,"statusText":"T(#UI_WELCOME_HLSR)","substatus":true,"percent":0,"bytes":"","speed":"","bootError":null,"updateVersion":null,"pushes":0},
+        {"label":"observe","at":19999,"phase":"checking","done":false,"statusText":"T(#UI_WELCOME_HLSR)","substatus":true,"percent":0,"bytes":"","speed":"","bootError":null,"updateVersion":null,"pushes":0},
+        {"label":"observe","at":20000,"phase":"checking","done":true,"statusText":"T(#UI_WELCOME_HLSR)","substatus":false,"percent":0,"bytes":"","speed":"","bootError":null,"updateVersion":null,"pushes":1},
+        {"label":"observe","at":20001,"phase":"checking","done":true,"statusText":"T(#UI_WELCOME_HLSR)","substatus":false,"percent":0,"bytes":"","speed":"","bootError":null,"updateVersion":null,"pushes":1}
+      ],
+      "listenerAfterUnmount": false
+    },
+    {
+      "name": "сбой канала: proceed (ipc-error)",
+      "wasLaunched": false,
+      "coloredBoot": true,
+      "steps": [{"at":100,"do":"reject","call":0},{"at":1200,"do":"observe"}],
+      "splash": "T(#UI_WELCOME_HLSR)",
+      "calls": [{"at":0,"channel":"boot-gate-run","options":{}}],
+      "writes": [{"at":0,"key":"wasLaunched","value":"true"}],
+      "pushes": [{"at":1200,"to":"launcher"}],
+      "timeline": [
+        {"label":"mounted","at":0,"phase":"checking","done":false,"statusText":"T(#UI_WELCOME_HLSR)","substatus":true,"percent":0,"bytes":"","speed":"","bootError":null,"updateVersion":null,"pushes":0},
+        {"label":"reject","at":100,"phase":"checking","done":true,"statusText":"T(#UI_WELCOME_HLSR)","substatus":false,"percent":0,"bytes":"","speed":"","bootError":null,"updateVersion":null,"pushes":0},
+        {"label":"observe","at":1200,"phase":"checking","done":true,"statusText":"T(#UI_WELCOME_HLSR)","substatus":false,"percent":0,"bytes":"","speed":"","bootError":null,"updateVersion":null,"pushes":1}
+      ],
+      "listenerAfterUnmount": false
+    },
+    {
+      "name": "пустой ответ: proceed",
+      "wasLaunched": false,
+      "coloredBoot": true,
+      "steps": [{"at":50,"do":"resolve","call":0,"value":null},{"at":1200,"do":"observe"}],
+      "splash": "T(#UI_WELCOME_HLSR)",
+      "calls": [{"at":0,"channel":"boot-gate-run","options":{}}],
+      "writes": [{"at":0,"key":"wasLaunched","value":"true"}],
+      "pushes": [{"at":1200,"to":"launcher"}],
+      "timeline": [
+        {"label":"mounted","at":0,"phase":"checking","done":false,"statusText":"T(#UI_WELCOME_HLSR)","substatus":true,"percent":0,"bytes":"","speed":"","bootError":null,"updateVersion":null,"pushes":0},
+        {"label":"resolve","at":50,"phase":"checking","done":true,"statusText":"T(#UI_WELCOME_HLSR)","substatus":false,"percent":0,"bytes":"","speed":"","bootError":null,"updateVersion":null,"pushes":0},
+        {"label":"observe","at":1200,"phase":"checking","done":true,"statusText":"T(#UI_WELCOME_HLSR)","substatus":false,"percent":0,"bytes":"","speed":"","bootError":null,"updateVersion":null,"pushes":1}
+      ],
+      "listenerAfterUnmount": false
+    },
+    {
+      "name": "неизвестное действие: proceed",
+      "wasLaunched": false,
+      "coloredBoot": true,
+      "steps": [{"at":50,"do":"resolve","call":0,"value":{"action":"wait"}},{"at":1200,"do":"observe"}],
+      "splash": "T(#UI_WELCOME_HLSR)",
+      "calls": [{"at":0,"channel":"boot-gate-run","options":{}}],
+      "writes": [{"at":0,"key":"wasLaunched","value":"true"}],
+      "pushes": [{"at":1200,"to":"launcher"}],
+      "timeline": [
+        {"label":"mounted","at":0,"phase":"checking","done":false,"statusText":"T(#UI_WELCOME_HLSR)","substatus":true,"percent":0,"bytes":"","speed":"","bootError":null,"updateVersion":null,"pushes":0},
+        {"label":"resolve","at":50,"phase":"checking","done":true,"statusText":"T(#UI_WELCOME_HLSR)","substatus":false,"percent":0,"bytes":"","speed":"","bootError":null,"updateVersion":null,"pushes":0},
+        {"label":"observe","at":1200,"phase":"checking","done":true,"statusText":"T(#UI_WELCOME_HLSR)","substatus":false,"percent":0,"bytes":"","speed":"","bootError":null,"updateVersion":null,"pushes":1}
+      ],
+      "listenerAfterUnmount": false
+    },
+    {
+      "name": "установка обновления: перехода нет",
+      "wasLaunched": false,
+      "coloredBoot": true,
+      "steps": [{"at":200,"do":"resolve","call":0,"value":{"action":"installing"}},{"at":25000,"do":"observe","label":"через 25 с"}],
+      "splash": "T(#UI_WELCOME_HLSR)",
+      "calls": [{"at":0,"channel":"boot-gate-run","options":{}}],
+      "writes": [{"at":0,"key":"wasLaunched","value":"true"}],
+      "pushes": [],
+      "timeline": [
+        {"label":"mounted","at":0,"phase":"checking","done":false,"statusText":"T(#UI_WELCOME_HLSR)","substatus":true,"percent":0,"bytes":"","speed":"","bootError":null,"updateVersion":null,"pushes":0},
+        {"label":"resolve","at":200,"phase":"installing","done":false,"statusText":"T(#L_B_INSTALLING_UPDATE)","substatus":false,"percent":0,"bytes":"","speed":"","bootError":null,"updateVersion":null,"pushes":0},
+        {"label":"через 25 с","at":25000,"phase":"installing","done":false,"statusText":"T(#L_B_INSTALLING_UPDATE)","substatus":false,"percent":0,"bytes":"","speed":"","bootError":null,"updateVersion":null,"pushes":0}
+      ],
+      "listenerAfterUnmount": false
+    },
+    {
+      "name": "заблокировано и повтор",
+      "wasLaunched": false,
+      "coloredBoot": true,
+      "steps": [{"at":400,"do":"resolve","call":0,"value":{"action":"blocked","error":"ERR_NETWORK"}},{"at":5000,"do":"retry"},{"at":5100,"do":"resolve","call":1,"value":{"action":"proceed"}},{"at":6300,"do":"observe","label":"после повтора"}],
+      "splash": "T(#UI_WELCOME_HLSR)",
+      "calls": [{"at":0,"channel":"boot-gate-run","options":{}},{"at":5000,"channel":"boot-gate-run","options":{"retry":true}}],
+      "writes": [{"at":0,"key":"wasLaunched","value":"true"}],
+      "pushes": [{"at":5100,"to":"launcher"}],
+      "timeline": [
+        {"label":"mounted","at":0,"phase":"checking","done":false,"statusText":"T(#UI_WELCOME_HLSR)","substatus":true,"percent":0,"bytes":"","speed":"","bootError":null,"updateVersion":null,"pushes":0},
+        {"label":"resolve","at":400,"phase":"blocked","done":false,"statusText":"T(#L_B_BLOCKED_TITLE)","substatus":false,"percent":0,"bytes":"","speed":"","bootError":"ERR_NETWORK","updateVersion":null,"pushes":0},
+        {"label":"retry","at":5000,"phase":"checking","done":false,"statusText":"T(#UI_WELCOME_HLSR)","substatus":true,"percent":0,"bytes":"","speed":"","bootError":null,"updateVersion":null,"pushes":0},
+        {"label":"resolve","at":5100,"phase":"checking","done":true,"statusText":"T(#UI_WELCOME_HLSR)","substatus":false,"percent":0,"bytes":"","speed":"","bootError":null,"updateVersion":null,"pushes":0},
+        {"label":"после повтора","at":6300,"phase":"checking","done":true,"statusText":"T(#UI_WELCOME_HLSR)","substatus":false,"percent":0,"bytes":"","speed":"","bootError":null,"updateVersion":null,"pushes":1}
+      ],
+      "listenerAfterUnmount": false
+    },
+    {
+      "name": "заблокировано без текста ошибки",
+      "wasLaunched": false,
+      "coloredBoot": true,
+      "steps": [{"at":400,"do":"resolve","call":0,"value":{"action":"blocked"}}],
+      "splash": "T(#UI_WELCOME_HLSR)",
+      "calls": [{"at":0,"channel":"boot-gate-run","options":{}}],
+      "writes": [{"at":0,"key":"wasLaunched","value":"true"}],
+      "pushes": [],
+      "timeline": [{"label":"mounted","at":0,"phase":"checking","done":false,"statusText":"T(#UI_WELCOME_HLSR)","substatus":true,"percent":0,"bytes":"","speed":"","bootError":null,"updateVersion":null,"pushes":0},{"label":"resolve","at":400,"phase":"blocked","done":false,"statusText":"T(#L_B_BLOCKED_TITLE)","substatus":false,"percent":0,"bytes":"","speed":"","bootError":null,"updateVersion":null,"pushes":0}],
+      "listenerAfterUnmount": false
+    },
+    {
+      "name": "загрузка обновления: проценты, байты, скорость",
+      "wasLaunched": false,
+      "coloredBoot": true,
+      "steps": [
+        {"at":100,"do":"updater","status":{"state":"downloading","version":"0.4.8","progress":{"percent":0,"transferred":0,"total":0,"bytesPerSecond":0}}},
+        {"at":200,"do":"updater","status":{"state":"downloading","version":"0.4.8","progress":{"percent":37.4,"transferred":12582912,"total":33554432,"bytesPerSecond":1572864}}},
+        {"at":300,"do":"updater","status":{"state":"downloading","progress":{"percent":37.5,"transferred":12582913,"total":33554432,"bytesPerSecond":0}}},
+        {"at":400,"do":"updater","status":{"state":"downloading","progress":{"percent":99.6,"transferred":33000000,"total":33554432,"bytesPerSecond":104857.6}}},
+        {"at":500,"do":"updater","status":{"state":"downloading","progress":{"percent":140,"transferred":1,"total":2,"bytesPerSecond":3}}},
+        {"at":600,"do":"updater","status":{"state":"downloading","progress":{"percent":-5,"transferred":1,"total":2,"bytesPerSecond":3}}},
+        {"at":700,"do":"updater","status":{"state":"downloading","progress":{"percent":12.5,"transferred":5000000,"total":0,"bytesPerSecond":2500000}}},
+        {"at":800,"do":"updater","status":{"state":"downloading","progress":null}},
+        {"at":900,"do":"updater","status":{"state":"verifying"}},
+        {"at":1000,"do":"updater","status":{"state":"checking"}},
+        {"at":1100,"do":"updater","status":null},
+        {"at":1200,"do":"updater","status":{"state":"downloaded","version":"0.4.9"}}
+      ],
+      "splash": "T(#UI_WELCOME_HLSR)",
+      "calls": [{"at":0,"channel":"boot-gate-run","options":{}}],
+      "writes": [{"at":0,"key":"wasLaunched","value":"true"}],
+      "pushes": [],
+      "timeline": [
+        {"label":"mounted","at":0,"phase":"checking","done":false,"statusText":"T(#UI_WELCOME_HLSR)","substatus":true,"percent":0,"bytes":"","speed":"","bootError":null,"updateVersion":null,"pushes":0},
+        {"label":"updater","at":100,"phase":"downloading","done":false,"statusText":"T(#L_B_DOWNLOADING|0.4.8)","substatus":false,"percent":0,"bytes":"","speed":"","bootError":null,"updateVersion":"0.4.8","pushes":0},
+        {"label":"updater","at":200,"phase":"downloading","done":false,"statusText":"T(#L_B_DOWNLOADING|0.4.8)","substatus":false,"percent":37,"bytes":"12T(#L_DECIMAL)0 T(#L_MB) / 32T(#L_DECIMAL)0 T(#L_MB)","speed":"T(#L_U_SPEED|1T(#L_DECIMAL)5)","bootError":null,"updateVersion":"0.4.8","pushes":0},
+        {"label":"updater","at":300,"phase":"downloading","done":false,"statusText":"T(#L_B_DOWNLOADING|0.4.8)","substatus":false,"percent":38,"bytes":"12T(#L_DECIMAL)0 T(#L_MB) / 32T(#L_DECIMAL)0 T(#L_MB)","speed":"","bootError":null,"updateVersion":"0.4.8","pushes":0},
+        {"label":"updater","at":400,"phase":"downloading","done":false,"statusText":"T(#L_B_DOWNLOADING|0.4.8)","substatus":false,"percent":100,"bytes":"31T(#L_DECIMAL)5 T(#L_MB) / 32T(#L_DECIMAL)0 T(#L_MB)","speed":"T(#L_U_SPEED|0T(#L_DECIMAL)1)","bootError":null,"updateVersion":"0.4.8","pushes":0},
+        {"label":"updater","at":500,"phase":"downloading","done":false,"statusText":"T(#L_B_DOWNLOADING|0.4.8)","substatus":false,"percent":100,"bytes":"1 T(#L_B) / 2 T(#L_B)","speed":"T(#L_U_SPEED|0T(#L_DECIMAL)0)","bootError":null,"updateVersion":"0.4.8","pushes":0},
+        {"label":"updater","at":600,"phase":"downloading","done":false,"statusText":"T(#L_B_DOWNLOADING|0.4.8)","substatus":false,"percent":0,"bytes":"1 T(#L_B) / 2 T(#L_B)","speed":"T(#L_U_SPEED|0T(#L_DECIMAL)0)","bootError":null,"updateVersion":"0.4.8","pushes":0},
+        {"label":"updater","at":700,"phase":"downloading","done":false,"statusText":"T(#L_B_DOWNLOADING|0.4.8)","substatus":false,"percent":13,"bytes":"","speed":"T(#L_U_SPEED|2T(#L_DECIMAL)4)","bootError":null,"updateVersion":"0.4.8","pushes":0},
+        {"label":"updater","at":800,"phase":"downloading","done":false,"statusText":"T(#L_B_DOWNLOADING|0.4.8)","substatus":false,"percent":0,"bytes":"","speed":"","bootError":null,"updateVersion":"0.4.8","pushes":0},
+        {"label":"updater","at":900,"phase":"verifying","done":false,"statusText":"T(#L_B_VERIFYING)","substatus":false,"percent":0,"bytes":"","speed":"","bootError":null,"updateVersion":"0.4.8","pushes":0},
+        {"label":"updater","at":1000,"phase":"verifying","done":false,"statusText":"T(#L_B_VERIFYING)","substatus":false,"percent":0,"bytes":"","speed":"","bootError":null,"updateVersion":"0.4.8","pushes":0},
+        {"label":"updater","at":1100,"phase":"verifying","done":false,"statusText":"T(#L_B_VERIFYING)","substatus":false,"percent":0,"bytes":"","speed":"","bootError":null,"updateVersion":"0.4.8","pushes":0},
+        {"label":"updater","at":1200,"phase":"verifying","done":false,"statusText":"T(#L_B_VERIFYING)","substatus":false,"percent":0,"bytes":"","speed":"","bootError":null,"updateVersion":"0.4.9","pushes":0}
+      ],
+      "listenerAfterUnmount": false
+    },
+    {
+      "name": "размеры: байты, килобайты, гигабайты",
+      "wasLaunched": false,
+      "coloredBoot": true,
+      "steps": [{"at":100,"do":"updater","status":{"state":"downloading","version":"0.4.10","progress":{"percent":3,"transferred":512,"total":2048,"bytesPerSecond":700}}},{"at":200,"do":"updater","status":{"state":"downloading","progress":{"percent":60,"transferred":1288490188.8,"total":2147483648,"bytesPerSecond":1073741824}}}],
+      "splash": "T(#UI_WELCOME_HLSR)",
+      "calls": [{"at":0,"channel":"boot-gate-run","options":{}}],
+      "writes": [{"at":0,"key":"wasLaunched","value":"true"}],
+      "pushes": [],
+      "timeline": [
+        {"label":"mounted","at":0,"phase":"checking","done":false,"statusText":"T(#UI_WELCOME_HLSR)","substatus":true,"percent":0,"bytes":"","speed":"","bootError":null,"updateVersion":null,"pushes":0},
+        {"label":"updater","at":100,"phase":"downloading","done":false,"statusText":"T(#L_B_DOWNLOADING|0.4.10)","substatus":false,"percent":3,"bytes":"512 T(#L_B) / 2T(#L_DECIMAL)0 T(#L_KB)","speed":"T(#L_U_SPEED|0T(#L_DECIMAL)0)","bootError":null,"updateVersion":"0.4.10","pushes":0},
+        {"label":"updater","at":200,"phase":"downloading","done":false,"statusText":"T(#L_B_DOWNLOADING|0.4.10)","substatus":false,"percent":60,"bytes":"1T(#L_DECIMAL)2 T(#L_GB) / 2T(#L_DECIMAL)0 T(#L_GB)","speed":"T(#L_U_SPEED|1024T(#L_DECIMAL)0)","bootError":null,"updateVersion":"0.4.10","pushes":0}
+      ],
+      "listenerAfterUnmount": false
+    },
+    {
+      "name": "загрузка без версии",
+      "wasLaunched": false,
+      "coloredBoot": true,
+      "steps": [{"at":100,"do":"updater","status":{"state":"downloading","progress":{"percent":1,"transferred":1,"total":1,"bytesPerSecond":1}}}],
+      "splash": "T(#UI_WELCOME_HLSR)",
+      "calls": [{"at":0,"channel":"boot-gate-run","options":{}}],
+      "writes": [{"at":0,"key":"wasLaunched","value":"true"}],
+      "pushes": [],
+      "timeline": [
+        {"label":"mounted","at":0,"phase":"checking","done":false,"statusText":"T(#UI_WELCOME_HLSR)","substatus":true,"percent":0,"bytes":"","speed":"","bootError":null,"updateVersion":null,"pushes":0},
+        {"label":"updater","at":100,"phase":"downloading","done":false,"statusText":"T(#L_B_DOWNLOADING|)","substatus":false,"percent":1,"bytes":"1 T(#L_B) / 1 T(#L_B)","speed":"T(#L_U_SPEED|0T(#L_DECIMAL)0)","bootError":null,"updateVersion":null,"pushes":0}
+      ],
+      "listenerAfterUnmount": false
+    },
+    {
+      "name": "без цветного фона",
+      "wasLaunched": false,
+      "coloredBoot": false,
+      "steps": [{"at":10,"do":"resolve","call":0,"value":{"action":"proceed"}}],
+      "splash": "T(#UI_WELCOME_HLSR)",
+      "calls": [{"at":0,"channel":"boot-gate-run","options":{}}],
+      "writes": [{"at":0,"key":"wasLaunched","value":"true"}],
+      "pushes": [],
+      "timeline": [{"label":"mounted","at":0,"phase":"checking","done":false,"statusText":"T(#UI_WELCOME_HLSR)","substatus":true,"percent":0,"bytes":"","speed":"","bootError":null,"updateVersion":null,"pushes":0},{"label":"resolve","at":10,"phase":"checking","done":true,"statusText":"T(#UI_WELCOME_HLSR)","substatus":false,"percent":0,"bytes":"","speed":"","bootError":null,"updateVersion":null,"pushes":0}],
+      "listenerAfterUnmount": false
+    },
+    {
+      "name": "загрузка, затем обычный ответ шлюза",
+      "wasLaunched": false,
+      "coloredBoot": true,
+      "steps": [{"at":100,"do":"updater","status":{"state":"downloading","version":"0.4.8","progress":{"percent":50,"transferred":50,"total":100,"bytesPerSecond":1048576}}},{"at":2000,"do":"resolve","call":0,"value":{"action":"proceed"}},{"at":2000,"do":"observe","label":"после ответа"}],
+      "splash": "T(#UI_WELCOME_HLSR)",
+      "calls": [{"at":0,"channel":"boot-gate-run","options":{}}],
+      "writes": [{"at":0,"key":"wasLaunched","value":"true"}],
+      "pushes": [{"at":2000,"to":"launcher"}],
+      "timeline": [
+        {"label":"mounted","at":0,"phase":"checking","done":false,"statusText":"T(#UI_WELCOME_HLSR)","substatus":true,"percent":0,"bytes":"","speed":"","bootError":null,"updateVersion":null,"pushes":0},
+        {"label":"updater","at":100,"phase":"downloading","done":false,"statusText":"T(#L_B_DOWNLOADING|0.4.8)","substatus":false,"percent":50,"bytes":"50 T(#L_B) / 100 T(#L_B)","speed":"T(#L_U_SPEED|1T(#L_DECIMAL)0)","bootError":null,"updateVersion":"0.4.8","pushes":0},
+        {"label":"resolve","at":2000,"phase":"downloading","done":true,"statusText":"T(#L_B_DOWNLOADING|0.4.8)","substatus":false,"percent":50,"bytes":"50 T(#L_B) / 100 T(#L_B)","speed":"T(#L_U_SPEED|1T(#L_DECIMAL)0)","bootError":null,"updateVersion":"0.4.8","pushes":0},
+        {"label":"после ответа","at":2000,"phase":"downloading","done":true,"statusText":"T(#L_B_DOWNLOADING|0.4.8)","substatus":false,"percent":50,"bytes":"50 T(#L_B) / 100 T(#L_B)","speed":"T(#L_U_SPEED|1T(#L_DECIMAL)0)","bootError":null,"updateVersion":"0.4.8","pushes":1}
+      ],
+      "listenerAfterUnmount": false
+    }
+  ]
+}

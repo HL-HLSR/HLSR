@@ -1,0 +1,6 @@
+{
+  "id": "home/failed",
+  "base": "home/_base",
+  "state": "Лента не загрузилась, постов нет: заметка «не загрузилось»",
+  "invoke": {"public-news-get": {"status": "error", "items": []}}
+}

@@ -1,0 +1,477 @@
+{
+  "$comment": "Страница «Персонализация» (G4: GameConfigsPanel.vue + GameSettingsModal.vue embedded 0.4.9). Игры: Ghosting и HL1 установлены, HL2 нет. Разделы внешнего вида, «Конфиг», «Клавиатура», «Скрипты» — заглушки G5–G8 в GPUI. Демо HL1: одно с датой в будущем — отмечено в обоих (у GPUI часы сцены не применяются).",
+  "screen": "configs",
+  "themes": [
+    "hlsr"
+  ],
+  "languages": [
+    "ru"
+  ],
+  "rails": [
+    "closed",
+    "open"
+  ],
+  "invoke": {
+    "game-settings-get": {
+      "$args": [
+        [
+          [
+            "218"
+          ],
+          {
+            "status": "ok",
+            "settings": {
+              "console": false,
+              "novid": false,
+              "borderless": false,
+              "dx9": false,
+              "nocrashdialog": false,
+              "noasync": false,
+              "noaafonts": false,
+              "high": false,
+              "excludeCpu0": false,
+              "startTimer": false,
+              "language": "auto",
+              "rinput": true,
+              "rinputMenuFix": false,
+              "windowed": false,
+              "developer": false,
+              "condebug": false,
+              "nojoy": false,
+              "width": 0,
+              "height": 0,
+              "refreshRate": 0,
+              "packs": {
+                "hud": "default",
+                "crosshair": "default",
+                "changerShape": "Default",
+                "changerColor": "green"
+              },
+              "bxt": {
+                "timer": false,
+                "timerX": 0,
+                "timerY": 50,
+                "speedometer": true,
+                "speedometerX": 50,
+                "speedometerY": 100,
+                "jumpspeed": false,
+                "jumpspeedX": 50,
+                "jumpspeedY": 100,
+                "viewangles": false,
+                "viewanglesX": 100,
+                "viewanglesY": 0,
+                "jumpdistance": false,
+                "precision": 6,
+                "incorrectFps": true,
+                "fov": 90,
+                "fixWidescreenFov": false,
+                "viewmodelFov": 0,
+                "viewmodelSemitransparent": false,
+                "removeViewmodel": false,
+                "viewmodelForward": 0,
+                "viewmodelRight": 0,
+                "viewmodelUp": 0,
+                "viewmodelBobAngled": false,
+                "viewmodelNoIdle": false,
+                "viewmodelNoEquip": false,
+                "hideCrosshair": false
+              },
+              "binds": {},
+              "personalization": {
+                "hudEnabled": false,
+                "hudColor": {
+                  "r": 255,
+                  "g": 220,
+                  "b": 0
+                },
+                "hudAlpha": -1,
+                "hudAffectsCrosshair": false,
+                "hideQuickInfo": false,
+                "crossPreset": "custom",
+                "crossEnabled": false,
+                "crossColor": {
+                  "r": 0,
+                  "g": 255,
+                  "b": 0
+                },
+                "crossAlpha": 255,
+                "crossThickness": 2,
+                "crossSize": 10,
+                "crossGap": 3,
+                "crossOutline": false,
+                "crossOutlineThickness": 1,
+                "crossCircleRadius": 0,
+                "crossDotColor": null,
+                "crossDotSize": 0,
+                "crossTopLine": true,
+                "crossBottomLine": true,
+                "crossLeftLine": true,
+                "crossRightLine": true,
+                "crossHideDefault": true,
+                "extra": {
+                  "viewmodel_fov": 76
+                }
+              },
+              "liveSplitOverlay": {
+                "enabled": false,
+                "x": 100,
+                "y": 50,
+                "height": 45,
+                "opacity": 100,
+                "key": "none",
+                "keyColor": {
+                  "r": 0,
+                  "g": 255,
+                  "b": 0
+                },
+                "similarity": 400,
+                "smoothness": 80,
+                "lumaMin": 0.1,
+                "lumaMinSmooth": 0.05,
+                "lumaMax": 1,
+                "lumaMaxSmooth": 0,
+                "crop": {
+                  "top": 0,
+                  "right": 0,
+                  "bottom": 0,
+                  "left": 0
+                }
+              },
+              "launchArgs": "",
+              "protonOptions": ""
+            },
+            "languages": [],
+            "personalizationImported": true,
+            "bindsGameId": "ghosting-renewed",
+            "keyBinds": {
+              "binds": {
+                "0": {
+                  "command": "sv_cheats 0",
+                  "source": "autoexec.cfg"
+                },
+                "1": {
+                  "command": "use weapon_crowbar",
+                  "source": "autoexec.cfg"
+                },
+                "2": {
+                  "command": "use weapon_pistol",
+                  "source": "autoexec.cfg"
+                },
+                "3": {
+                  "command": "use weapon_smg1",
+                  "source": "autoexec.cfg"
+                },
+                "4": {
+                  "command": "use weapon_shotgun",
+                  "source": "autoexec.cfg"
+                },
+                "5": {
+                  "command": "use weapon_frag",
+                  "source": "autoexec.cfg"
+                },
+                "6": {
+                  "command": "use weapon_rpg",
+                  "source": "autoexec.cfg"
+                },
+                "SPACE": {
+                  "command": "+jump",
+                  "source": "config.cfg"
+                },
+                "MOUSE4": {
+                  "command": "save quick",
+                  "source": "autoexec.cfg"
+                },
+                "MOUSE5": {
+                  "command": "load quick",
+                  "source": "autoexec.cfg"
+                },
+                "x": {
+                  "command": "save x; load x",
+                  "source": "autoexec.cfg"
+                },
+                "i": {
+                  "command": "load autosave",
+                  "source": "autoexec.cfg"
+                },
+                "k": {
+                  "command": "load quick01",
+                  "source": "autoexec.cfg"
+                },
+                "h": {
+                  "command": "save /; reload",
+                  "source": "autoexec.cfg"
+                },
+                "u": {
+                  "command": "exec autoexec",
+                  "source": "autoexec.cfg"
+                },
+                "]": {
+                  "command": "r_portalsopenall 1",
+                  "source": "autoexec.cfg"
+                },
+                "p": {
+                  "command": "load start;sv_cheats 0",
+                  "source": "autoexec.cfg"
+                },
+                "t": {
+                  "command": "bind mwheeldown +duck; bind mwheelup +duck",
+                  "source": "autoexec.cfg"
+                },
+                "y": {
+                  "command": "bind mwheeldown pause; bind mwheelup pause",
+                  "source": "autoexec.cfg"
+                },
+                "n": {
+                  "command": "bind mwheeldown +use; bind mwheelup +use",
+                  "source": "autoexec.cfg"
+                }
+              },
+              "aliases": {},
+              "cvars": {
+                "sensitivity": "3"
+              },
+              "files": [
+                "config.cfg",
+                "autoexec.cfg"
+              ]
+            },
+            "vulkan": true
+          }
+        ],
+        [
+          [
+            "70"
+          ],
+          {
+            "status": "ok",
+            "settings": {
+              "console": false,
+              "novid": false,
+              "borderless": false,
+              "dx9": false,
+              "nocrashdialog": false,
+              "noasync": false,
+              "noaafonts": false,
+              "high": false,
+              "excludeCpu0": false,
+              "startTimer": false,
+              "language": "auto",
+              "rinput": true,
+              "rinputMenuFix": false,
+              "windowed": false,
+              "developer": false,
+              "condebug": false,
+              "nojoy": false,
+              "width": 0,
+              "height": 0,
+              "refreshRate": 0,
+              "packs": {
+                "hud": "default",
+                "crosshair": "default",
+                "changerShape": "Default",
+                "changerColor": "green"
+              },
+              "bxt": {
+                "timer": false,
+                "timerX": 0,
+                "timerY": 50,
+                "speedometer": true,
+                "speedometerX": 50,
+                "speedometerY": 100,
+                "jumpspeed": false,
+                "jumpspeedX": 50,
+                "jumpspeedY": 100,
+                "viewangles": false,
+                "viewanglesX": 100,
+                "viewanglesY": 0,
+                "jumpdistance": false,
+                "precision": 6,
+                "incorrectFps": true,
+                "fov": 90,
+                "fixWidescreenFov": false,
+                "viewmodelFov": 0,
+                "viewmodelSemitransparent": false,
+                "removeViewmodel": false,
+                "viewmodelForward": 0,
+                "viewmodelRight": 0,
+                "viewmodelUp": 0,
+                "viewmodelBobAngled": false,
+                "viewmodelNoIdle": false,
+                "viewmodelNoEquip": false,
+                "hideCrosshair": false
+              },
+              "binds": {},
+              "personalization": {
+                "hudEnabled": false,
+                "hudColor": {
+                  "r": 255,
+                  "g": 220,
+                  "b": 0
+                },
+                "hudAlpha": -1,
+                "hudAffectsCrosshair": false,
+                "hideQuickInfo": false,
+                "crossPreset": "standard",
+                "crossEnabled": false,
+                "crossColor": {
+                  "r": 0,
+                  "g": 255,
+                  "b": 0
+                },
+                "crossAlpha": 255,
+                "crossThickness": 2,
+                "crossSize": 10,
+                "crossGap": 3,
+                "crossOutline": false,
+                "crossOutlineThickness": 1,
+                "crossCircleRadius": 0,
+                "crossDotColor": null,
+                "crossDotSize": 0,
+                "crossTopLine": true,
+                "crossBottomLine": true,
+                "crossLeftLine": true,
+                "crossRightLine": true,
+                "crossHideDefault": true,
+                "extra": {}
+              },
+              "liveSplitOverlay": {
+                "enabled": false,
+                "x": 100,
+                "y": 50,
+                "height": 45,
+                "opacity": 100,
+                "key": "none",
+                "keyColor": {
+                  "r": 0,
+                  "g": 255,
+                  "b": 0
+                },
+                "similarity": 400,
+                "smoothness": 80,
+                "lumaMin": 0.1,
+                "lumaMinSmooth": 0.05,
+                "lumaMax": 1,
+                "lumaMaxSmooth": 0,
+                "crop": {
+                  "top": 0,
+                  "right": 0,
+                  "bottom": 0,
+                  "left": 0
+                }
+              },
+              "launchArgs": "",
+              "protonOptions": ""
+            },
+            "languages": [],
+            "packs": {
+              "sourcePage": "https://www.speedrun.com/hl1/resources",
+              "packs": [
+                {
+                  "id": "ag-hud",
+                  "kind": "hud",
+                  "title": "Big AG HUD",
+                  "author": "execut4ble"
+                },
+                {
+                  "id": "execut4ble-crosshair",
+                  "kind": "crosshair",
+                  "title": "Crosshair by execut4ble",
+                  "author": "execut4ble"
+                },
+                {
+                  "id": "crosshair-changer",
+                  "kind": "crosshair",
+                  "title": "Half-Life Crosshair Changer",
+                  "author": "aarongeorge"
+                }
+              ],
+              "changerShapes": [
+                "Default",
+                "1px",
+                "3px",
+                "Small Circle",
+                "Medium Circle",
+                "Large Circle",
+                "Small Circle with 1px",
+                "Medium Circle with 1px",
+                "Large Circle with 1px"
+              ],
+              "changerColors": [
+                "green",
+                "red",
+                "blue",
+                "lightblue",
+                "orange",
+                "pink",
+                "yellow"
+              ]
+            },
+            "bindsGameId": "hl1-won",
+            "keyBinds": {
+              "binds": {
+                "w": {
+                  "command": "+forward",
+                  "source": "config.cfg"
+                }
+              },
+              "aliases": {},
+              "cvars": {
+                "sensitivity": "3"
+              },
+              "files": [
+                "config.cfg"
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    "player-config-check": {
+      "status": "nothing"
+    },
+    "game-demos-list": {
+      "$args": [
+        [
+          [
+            "70"
+          ],
+          {
+            "status": "ok",
+            "demos": [
+              {
+                "dir": "valve_WON",
+                "name": "c1a0.dem",
+                "size": 524288,
+                "mtimeMs": 1796119200000
+              },
+              {
+                "dir": "valve_WON",
+                "name": "c1a1.dem",
+                "size": 1048576,
+                "mtimeMs": 1791571200000
+              },
+              {
+                "dir": "valve_WON",
+                "name": "c2a5_tram.dem",
+                "size": 2621440,
+                "mtimeMs": 1791830400000
+              }
+            ]
+          }
+        ],
+        [
+          [
+            "218"
+          ],
+          {
+            "status": "ok",
+            "demos": []
+          }
+        ]
+      ]
+    }
+  },
+  "prefs": {
+    "configTourSeen": true
+  }
+}

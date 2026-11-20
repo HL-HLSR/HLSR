@@ -1,0 +1,119 @@
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+env:
+  CARGO_TERM_COLOR: always
+jobs:
+  linux:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      # Тесты упаковщика выпуска (tools/release) гоняют Node-скрипты выпуска и приёмку 0.4.7
+      # (tools/compat-047): Node без пакетов, версия из .nvmrc.
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: ".nvmrc"
+      # Места на раннере мало для двух сборок (отладка, контейнер): убрать ненужные предустановленные SDK.
+      - run: sudo rm -rf /usr/local/lib/android /usr/share/dotnet /opt/ghc /usr/local/share/boost && df -h /
+      # GPUI (gpui-pre-linux): шрифты — fontconfig и freetype, клавиатура — xkbcommon и xkbcommon-x11
+      # через pkg-config при сборке и компоновке; X11, Wayland и Vulkan грузятся во время работы.
+      # Звук (cpal → alsa-sys) — libasound через pkg-config.
+      - run: >-
+          sudo apt-get update && sudo apt-get install -y --no-install-recommends
+          libfontconfig1-dev libfreetype-dev libxkbcommon-dev libxkbcommon-x11-dev libasound2-dev
+      # Версия — как в rust-toolchain.toml.
+      - uses: dtolnay/rust-toolchain@16c20dfc2b8bc5cd72c3bf5072a9453664776e70 # 1.98.0
+        with:
+          components: rustfmt, clippy
+      - run: cargo fmt --all --check
+      - run: cargo clippy --workspace --all-targets -- -D warnings
+      # Все тестовые бинарники, даже после первого упавшего: видно все расхождения сразу.
+      # Тесты доставки берут 7za из resources/7zip.
+      - run: cargo test --workspace --no-fail-fast
+      # Проверка подписей канала в сборке выпуска без dev-hooks (тестовые ключи не принимаются).
+      - run: cargo test --release -p hlsr-delivery --test signing
+      # Онлайн в сборке выпуска без dev-hooks: API и картинки только по https (http на loopback — нет).
+      - run: cargo test --release -p hlsr-online --test transport_release --test image_loader_release
+      # Платформа в сборке выпуска без dev-hooks: ни подмены адреса аватаров, ни QA-запуска нет.
+      - run: cargo test --release -p hlsr-platform --no-fail-fast
+      # Обновление в сборке выпуска без dev-hooks: только боевые ключи канала, без QA-ленты и перенаправлений.
+      - run: cargo test --release -p hlsr-update --no-fail-fast
+      - uses: EmbarkStudios/cargo-deny-action@3c6349835b2b7b196a839186cb8b78e02f7b5f25 # v2.1.1
+      # Сборка выпуска на glibc 2.27 (Ubuntu 18.04 в podman) и проверка glibc.
+      - run: rm -rf target/debug && scripts/slint/build-linux.sh --release && rm -rf target/linux-1804
+      # Экраны против Electron 0.4.9 (hlsr-snap screens) здесь не снимаются: эталону нужна копия
+      # release-0.4.9 с Electron — это scripts/slint/parity.sh.
+
+  windows:
+    runs-on: windows-2022
+    env:
+      # Путь Б приёмки на самом раннере (настоящий HKCU под QA-идентичностью, уборка в конце):
+      # hlsr.exe умеет режим Setup с задачи 9 подпроекта 6.
+      HLSR_ACCEPT_NATIVE: "1"
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      # Версия — как в rust-toolchain.toml.
+      - uses: dtolnay/rust-toolchain@16c20dfc2b8bc5cd72c3bf5072a9453664776e70 # 1.98.0
+        with:
+          components: rustfmt, clippy
+      # Тесты упаковщика выпуска (tools/release) гоняют Node-скрипты выпуска и приёмку 0.4.7
+      # (tools/compat-047): Node без пакетов, версия из .nvmrc.
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: ".nvmrc"
+      # Формат — как в задаче linux (rustfmt по умолчанию берёт концы строк из самого файла: CRLF
+      # после autocrlf раннера — не расхождение). Clippy нативно под MSVC проверяет код cfg(windows)
+      # целиком; с dev-hooks — ещё раз вид и приложение (снимки, сцены стенда, живой прогон).
+      - run: cargo fmt --all --check
+      - run: cargo clippy --workspace --all-targets -- -D warnings
+      - run: cargo clippy -p hlsr-gpui -p hlsr-app --all-targets --features hlsr-gpui/dev-hooks,hlsr-app/dev-hooks -- -D warnings
+      # Тесты доставки — с 7za.exe из resources/7zip.
+      - run: cargo test --workspace --no-fail-fast
+      - run: cargo test --release -p hlsr-online --test transport_release --test image_loader_release
+      # Платформа в сборке выпуска без dev-hooks (настоящие процессы, каналы и WinAPI — свои, во
+      # временных папках).
+      - run: cargo test --release -p hlsr-platform --no-fail-fast
+      # Обновление в сборке выпуска без dev-hooks (реестр, ярлыки, Toolhelp32 — во временных местах).
+      - run: cargo test --release -p hlsr-update --no-fail-fast
+      # Приёмка 0.4.7 на боевой сборке (без dev-hooks): hlsr-release упаковывает установщик и latest.yml,
+      # Node-скрипт выпуска подписывает канал ТЕСТОВЫМ ключом (боевого здесь нет), замороженная
+      # обновлялка 0.4.7 проверяет готовые байты (подпись, имя и размер, latest.yml, plan.validate,
+      # блок build, нагрузка, ProductVersion).
+      # Сборки выпуска (здесь и ниже) — с нейтральными путями сборки в exe (/cargo/…, /hlsr/…), как в
+      # release-windows.yml; шейдеры GPUI компилирует fxc.exe из Windows SDK раннера.
+      - run: echo "RUSTFLAGS=$(scripts/slint/remap-flags.sh)" >> "$GITHUB_ENV"
+        shell: bash
+      - run: cargo build -p hlsr-app -p hlsr-release --release
+      - run: pwsh scripts/slint/accept-windows.ps1 -Exe target\release\hlsr.exe -HlsrRelease target\release\hlsr-release.exe
+        shell: pwsh
+      # Путь Б: замороженные install.js и process-wait.js запускают установщик 0.5 на самом раннере
+      # (одноразовый: настоящий HKCU под QA-идентичностью, ярлыки, AUMID, tasklist, уборка).
+      - if: ${{ env.HLSR_ACCEPT_NATIVE == '1' }}
+        run: pwsh scripts/slint/accept-windows.ps1 -Exe target\release\hlsr.exe -HlsrRelease target\release\hlsr-release.exe -Qa -Native
+        shell: pwsh
+      - run: cargo build -p hlsr-app --release --features dev-hooks
+      # Тихие режимы установщика и удаления сквозь hlsr.exe (dev-hooks): реестр — файл JSON, папки и
+      # данные — во временном каталоге, запуски — dry-run.
+      - run: pwsh scripts/slint/check-setup.ps1 -Exe target\release\hlsr.exe -HlsrRelease target\release\hlsr-release.exe -Work "$env:RUNNER_TEMP\check-setup"
+        shell: pwsh
+      # Видеокарты нет: GPUI рисует через DirectX 11 на WARP. Снимок окна, масштаб интерфейса 1,5,
+      # режим очистки.
+      - run: pwsh scripts/slint/smoke-windows.ps1 -Exe target\release\hlsr.exe -Out "$env:RUNNER_TEMP\smoke"
+        shell: pwsh
+      # Журналы и снимки смоука — только при ошибке: квота артефактов аккаунта общая с релизными
+      # сборками, её исчерпание не должно валить проверку.
+      - if: failure()
+        continue-on-error: true
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: hlsr-windows-smoke
+          path: ${{ runner.temp }}/smoke
+          retention-days: 3

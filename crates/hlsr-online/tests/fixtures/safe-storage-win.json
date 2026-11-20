@@ -1,0 +1,60 @@
+{
+  "electron": "44.5.1",
+  "note": "nonce GCM случайный; шифротексты побайтно не повторяются, расшифровки — те же",
+  "knownKey": "AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8=",
+  "session": {"token":"hlsr_0123456789abcdef_AbCdEfGhIjKlMnOpQrStUvWxYz0123456789-_AbCdE","profile":{"steamId64":"76561198000000111","personaName":"Fake runner","registeredAt":"2026-10-05T10:00:00Z","games":{},"details":{},"badges":["verified"],"generationId":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}},
+  "samples": ["","a","hello world","xxxxxxxxxxxxxxx","xxxxxxxxxxxxxxxx","xxxxxxxxxxxxxxxxx","кириллица ✓ 😀"],
+  "available": true,
+  "backendMethod": false,
+  "backendThrew": null,
+  "known": {
+    "samples": [
+      ["","djEwEjNTaMg/eXVy91tJ4p8Emcxja9cAxUbT/T3OJg=="],
+      ["a","djEwyDUO62hAvPk4uXn+zaXhhmBGdf6KIVmzLwOeA+0="],
+      ["hello world","djEwd846r9CkZnTcaPbRRa01y/Mzwb8b4AeSPMcE2Jh0HsnkIj888S+g"],
+      ["xxxxxxxxxxxxxxx","djEwR2a/g7A3eFyWvORS3/4sSqwqMZgXPAYcATqe0eDdNPfYvXT82/DRveIclQ=="],
+      ["xxxxxxxxxxxxxxxx","djEwrBUP9wMn4OaJw+Cce1OGC/inWA62gVRbmq6s28DGzyd6BveLrGUxhrlR48k="],
+      ["xxxxxxxxxxxxxxxxx","djEw9YdowxTVY15Gw3pwq0yfENw9CnilT5KQ51JTyCbdnaid33iqTkQ5Uh7aTeIS"],
+      ["кириллица ✓ 😀","djEwResgjxjtW0NgqwbbDMxgGnvF8QD57bIxJoS/CwuRJYnM44T3Gb4gVYneX9+0DMSkn9Oc6aWetg=="]
+    ],
+    "decrypted": ["","a","hello world","xxxxxxxxxxxxxxx","xxxxxxxxxxxxxxxx","xxxxxxxxxxxxxxxxx","кириллица ✓ 😀"],
+    "session": "{\"version\":1,\"cipher\":\"djEw2qIWEvviDE8yrhJxv0kjYQbedGc5XrwrUVg85pStsn2/Vyzn/RI8Lbct2H7sUz8GKAqeuVsVunLr6KsBqubBh+IHFR+hzDFqqBfv5D2ReWLXKej+CHCunfaG1nberEACt35ZMoxrPTEDhmH/q7daNYpXKEZI3H1AfNEWOi9FudR5dX6kQZPnjjhwi2DOEcRz3Urps3IJZg0NfJYng5CwYMw0q2N9scM/zGbJtUtNN4Cpia4Chtp+nXBysaLBB81bk+mTrUE1qHorfQ3mK22K+zFFmlYi6nq5di0KOfiPE4glhQTf66311ejrTqJpE2Qt1BnYx74KDdc7ztsR2O5HSfX7biM22YhCZUEYrOjhY/J0ayOCfw4PcD2lC2GxY6Gd53AVYT1m/4igPVAWscZnNsV7HMJEwMwOtjfETYbrJQ9UKYW712hHB4W5utcAhs0ruhqMGIcS6EatIYhCXEXbHTh3o7Ng0kfktr4O+l4Lecj9Gx+X6lvYNHpKoxfKnqh2R4At+vjHEkP0bl3fPYbeIV7VFOCMY4xlWweExELCUf2i2amPLTsZWRYm/fSSrwM0Dx8If9PPN+HORSmrQrP8Ju8rBKmSBxtSmbb4bDVx7IB7RaualQnNVJfcv01xCy/0bgvRz/v0hN6YmTNwH9ahOlhCJAGSWVSfigL8rbvYtKjnrrkF68fnpK98etXR3IESHr6uYgTfznGaTXiL0PR/PK2JJARe6ophEuqWVsFxTKFl7hBj1gnAnX2rBajgAp00+3QZxszr+fS8b/e3ggS+KDAuvWeFW3Dc4P7wOEsuyOk5IfYdgl02j+ZZu78TTUTojQ==\"}",
+    "sessionData": {
+      "token": "hlsr_0123456789abcdef_AbCdEfGhIjKlMnOpQrStUvWxYz0123456789-_AbCdE",
+      "profile": {
+        "steamId64": "76561198000000111",
+        "personaName": "Fake runner",
+        "registeredAt": "2026-10-05T10:00:00Z",
+        "badges": ["verified"],
+        "customBadges": [],
+        "nick": null,
+        "avatarFrame": null,
+        "presence": {"online":false,"gameId":null},
+        "games": {},
+        "details": {"status":"","pronouns":"","country":"","discord":"","youtube":"","twitch":"","avatarUrl":"","hideFromPlayers":false,"hideGame":false,"secrets":[]},
+        "rating": {"score":0,"likes":0,"dislikes":0,"dubious":false},
+        "deletionAt": null,
+        "generationId": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+    },
+    "readBack": {
+      "token": "hlsr_0123456789abcdef_AbCdEfGhIjKlMnOpQrStUvWxYz0123456789-_AbCdE",
+      "profile": {
+        "steamId64": "76561198000000111",
+        "personaName": "Fake runner",
+        "registeredAt": "2026-10-05T10:00:00Z",
+        "badges": ["verified"],
+        "customBadges": [],
+        "nick": null,
+        "avatarFrame": null,
+        "presence": {"online":false,"gameId":null},
+        "games": {},
+        "details": {"status":"","pronouns":"","country":"","discord":"","youtube":"","twitch":"","avatarUrl":"","hideFromPlayers":false,"hideGame":false,"secrets":[]},
+        "rating": {"score":0,"likes":0,"dislikes":0,"dubious":false},
+        "deletionAt": null,
+        "generationId": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+    }
+  },
+  "generated": {"prefix":"DPAPI","keyLenAfterDpapi":32,"localStateKeys":["os_crypt","uninstall_metrics"],"osCryptKeys":["audit_enabled","encrypted_key"]}
+}

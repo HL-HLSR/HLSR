@@ -1,0 +1,1752 @@
+{
+  "apply": [
+    {
+      "name": "меню, карта, забег идёт",
+      "steps": [
+        {
+          "at": 1000,
+          "message": {"type":"state","session":"0123abcd","seq":1,"lifecycle":"menu","mapName":null,"fps":30,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "state": {"active":true,"session":"0123abcd","lastSeq":1,"lifecycle":"menu","map":null,"mapKnown":false,"fps":30,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "changed": true,
+          "ignored": null,
+          "same": false,
+          "sameExceptFps": false,
+          "publish": [true,true,true,true]
+        },
+        {
+          "at": 2000,
+          "message": {"type":"state","session":"0123abcd","seq":2,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "state": {"active":true,"session":"0123abcd","lastSeq":2,"lifecycle":"playing","map":"d1_trainstation_01","mapKnown":true,"fps":60,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "changed": true,
+          "ignored": null,
+          "same": false,
+          "sameExceptFps": false,
+          "publish": [true,true,true,true]
+        },
+        {
+          "at": 3000,
+          "message": {"type":"state","session":"0123abcd","seq":3,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":500},
+          "state": {"active":true,"session":"0123abcd","lastSeq":3,"lifecycle":"playing","map":"d1_trainstation_01","mapKnown":true,"fps":60,"running":true,"runStartedAtMs":2500,"finalTime":false,"runSeenOnMap":"d1_trainstation_01"},
+          "changed": true,
+          "ignored": null,
+          "same": false,
+          "sameExceptFps": false,
+          "publish": [true,true,true,true]
+        },
+        {
+          "at": 4000,
+          "message": {"type":"state","session":"0123abcd","seq":4,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":1500},
+          "state": {"active":true,"session":"0123abcd","lastSeq":4,"lifecycle":"playing","map":"d1_trainstation_01","mapKnown":true,"fps":60,"running":true,"runStartedAtMs":2500,"finalTime":false,"runSeenOnMap":"d1_trainstation_01"},
+          "changed": false,
+          "ignored": null,
+          "same": true,
+          "sameExceptFps": true,
+          "publish": [false,false,false,false]
+        },
+        {
+          "at": 5000,
+          "message": {"type":"state","session":"0123abcd","seq":5,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":2600},
+          "state": {"active":true,"session":"0123abcd","lastSeq":5,"lifecycle":"playing","map":"d1_trainstation_01","mapKnown":true,"fps":60,"running":true,"runStartedAtMs":2500,"finalTime":false,"runSeenOnMap":"d1_trainstation_01"},
+          "changed": false,
+          "ignored": null,
+          "same": true,
+          "sameExceptFps": true,
+          "publish": [false,false,false,false]
+        }
+      ]
+    },
+    {
+      "name": "якорь забега: допуск 1500 мс",
+      "steps": [
+        {
+          "at": 10000,
+          "message": {"type":"state","session":"0123abcd","seq":1,"lifecycle":"playing","mapName":"d1_canals_01","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":1000},
+          "state": {"active":true,"session":"0123abcd","lastSeq":1,"lifecycle":"playing","map":"d1_canals_01","mapKnown":true,"fps":60,"running":true,"runStartedAtMs":9000,"finalTime":false,"runSeenOnMap":"d1_canals_01"},
+          "changed": true,
+          "ignored": null,
+          "same": false,
+          "sameExceptFps": false,
+          "publish": [true,true,true,true]
+        },
+        {
+          "at": 11000,
+          "message": {"type":"state","session":"0123abcd","seq":2,"lifecycle":"playing","mapName":"d1_canals_01","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":2000},
+          "state": {"active":true,"session":"0123abcd","lastSeq":2,"lifecycle":"playing","map":"d1_canals_01","mapKnown":true,"fps":60,"running":true,"runStartedAtMs":9000,"finalTime":false,"runSeenOnMap":"d1_canals_01"},
+          "changed": false,
+          "ignored": null,
+          "same": true,
+          "sameExceptFps": true,
+          "publish": [false,false,false,false]
+        },
+        {
+          "at": 12500,
+          "message": {"type":"state","session":"0123abcd","seq":3,"lifecycle":"playing","mapName":"d1_canals_01","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":3500},
+          "state": {"active":true,"session":"0123abcd","lastSeq":3,"lifecycle":"playing","map":"d1_canals_01","mapKnown":true,"fps":60,"running":true,"runStartedAtMs":9000,"finalTime":false,"runSeenOnMap":"d1_canals_01"},
+          "changed": false,
+          "ignored": null,
+          "same": true,
+          "sameExceptFps": true,
+          "publish": [false,false,false,false]
+        },
+        {
+          "at": 14999,
+          "message": {"type":"state","session":"0123abcd","seq":4,"lifecycle":"playing","mapName":"d1_canals_01","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":5999},
+          "state": {"active":true,"session":"0123abcd","lastSeq":4,"lifecycle":"playing","map":"d1_canals_01","mapKnown":true,"fps":60,"running":true,"runStartedAtMs":9000,"finalTime":false,"runSeenOnMap":"d1_canals_01"},
+          "changed": false,
+          "ignored": null,
+          "same": true,
+          "sameExceptFps": true,
+          "publish": [false,false,false,false]
+        },
+        {
+          "at": 16000,
+          "message": {"type":"state","session":"0123abcd","seq":5,"lifecycle":"playing","mapName":"d1_canals_01","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":7600},
+          "state": {"active":true,"session":"0123abcd","lastSeq":5,"lifecycle":"playing","map":"d1_canals_01","mapKnown":true,"fps":60,"running":true,"runStartedAtMs":9000,"finalTime":false,"runSeenOnMap":"d1_canals_01"},
+          "changed": false,
+          "ignored": null,
+          "same": true,
+          "sameExceptFps": true,
+          "publish": [false,false,false,false]
+        },
+        {
+          "at": 16001,
+          "message": {"type":"state","session":"0123abcd","seq":6,"lifecycle":"playing","mapName":"d1_canals_01","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":7601},
+          "state": {"active":true,"session":"0123abcd","lastSeq":6,"lifecycle":"playing","map":"d1_canals_01","mapKnown":true,"fps":60,"running":true,"runStartedAtMs":9000,"finalTime":false,"runSeenOnMap":"d1_canals_01"},
+          "changed": false,
+          "ignored": null,
+          "same": true,
+          "sameExceptFps": true,
+          "publish": [false,false,false,false]
+        },
+        {
+          "at": 20000,
+          "message": {"type":"state","session":"0123abcd","seq":7,"lifecycle":"playing","mapName":"d1_canals_01","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":6000},
+          "state": {"active":true,"session":"0123abcd","lastSeq":7,"lifecycle":"playing","map":"d1_canals_01","mapKnown":true,"fps":60,"running":true,"runStartedAtMs":14000,"finalTime":false,"runSeenOnMap":"d1_canals_01"},
+          "changed": true,
+          "ignored": null,
+          "same": false,
+          "sameExceptFps": false,
+          "publish": [true,true,true,true]
+        }
+      ]
+    },
+    {
+      "name": "смена карты в забеге",
+      "steps": [
+        {
+          "at": 1000,
+          "message": {"type":"state","session":"0123abcd","seq":1,"lifecycle":"playing","mapName":"d1_canals_01","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":1000},
+          "state": {"active":true,"session":"0123abcd","lastSeq":1,"lifecycle":"playing","map":"d1_canals_01","mapKnown":true,"fps":60,"running":true,"runStartedAtMs":0,"finalTime":false,"runSeenOnMap":"d1_canals_01"},
+          "changed": true,
+          "ignored": null,
+          "same": false,
+          "sameExceptFps": false,
+          "publish": [true,true,true,true]
+        },
+        {
+          "at": 2000,
+          "message": {"type":"state","session":"0123abcd","seq":2,"lifecycle":"playing","mapName":"d1_canals_02","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":2000},
+          "state": {"active":true,"session":"0123abcd","lastSeq":2,"lifecycle":"playing","map":"d1_canals_02","mapKnown":true,"fps":60,"running":true,"runStartedAtMs":0,"finalTime":false,"runSeenOnMap":"d1_canals_02"},
+          "changed": true,
+          "ignored": null,
+          "same": false,
+          "sameExceptFps": false,
+          "publish": [true,true,true,true]
+        },
+        {
+          "at": 3000,
+          "message": {"type":"state","session":"0123abcd","seq":3,"lifecycle":"playing","mapName":"d1_canals_02","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":3000},
+          "state": {"active":true,"session":"0123abcd","lastSeq":3,"lifecycle":"playing","map":"d1_canals_02","mapKnown":true,"fps":60,"running":true,"runStartedAtMs":0,"finalTime":false,"runSeenOnMap":"d1_canals_02"},
+          "changed": false,
+          "ignored": null,
+          "same": true,
+          "sameExceptFps": true,
+          "publish": [false,false,false,false]
+        },
+        {
+          "at": 4000,
+          "message": {"type":"state","session":"0123abcd","seq":4,"lifecycle":"playing","mapName":"unknown_map_x","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":4000},
+          "state": {"active":true,"session":"0123abcd","lastSeq":4,"lifecycle":"playing","map":"unknown_map_x","mapKnown":false,"fps":60,"running":true,"runStartedAtMs":0,"finalTime":false,"runSeenOnMap":"unknown_map_x"},
+          "changed": true,
+          "ignored": null,
+          "same": false,
+          "sameExceptFps": false,
+          "publish": [true,true,true,true]
+        },
+        {
+          "at": 5000,
+          "message": {"type":"state","session":"0123abcd","seq":5,"lifecycle":"playing","mapName":"unknown_map_x","fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":4500},
+          "state": {"active":true,"session":"0123abcd","lastSeq":5,"lifecycle":"playing","map":"unknown_map_x","mapKnown":false,"fps":60,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":"unknown_map_x"},
+          "changed": true,
+          "ignored": null,
+          "same": false,
+          "sameExceptFps": false,
+          "publish": [true,true,true,true]
+        }
+      ]
+    },
+    {
+      "name": "забег остановлен, сброс, итоговое время",
+      "steps": [
+        {
+          "at": 1000,
+          "message": {"type":"state","session":"0123abcd","seq":1,"lifecycle":"playing","mapName":"d3_breen_01","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":1000},
+          "state": {"active":true,"session":"0123abcd","lastSeq":1,"lifecycle":"playing","map":"d3_breen_01","mapKnown":true,"fps":60,"running":true,"runStartedAtMs":0,"finalTime":false,"runSeenOnMap":"d3_breen_01"},
+          "changed": true,
+          "ignored": null,
+          "same": false,
+          "sameExceptFps": false,
+          "publish": [true,true,true,true]
+        },
+        {
+          "at": 2000,
+          "message": {"type":"state","session":"0123abcd","seq":2,"lifecycle":"playing","mapName":"d3_breen_01","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":2000},
+          "state": {"active":true,"session":"0123abcd","lastSeq":2,"lifecycle":"playing","map":"d3_breen_01","mapKnown":true,"fps":60,"running":true,"runStartedAtMs":0,"finalTime":false,"runSeenOnMap":"d3_breen_01"},
+          "changed": false,
+          "ignored": null,
+          "same": true,
+          "sameExceptFps": true,
+          "publish": [false,false,false,false]
+        },
+        {
+          "at": 3000,
+          "message": {"type":"state","session":"0123abcd","seq":3,"lifecycle":"playing","mapName":"d3_breen_01","fps":60,"timerRunning":false,"timerCompleted":true,"elapsedMs":2500},
+          "state": {"active":true,"session":"0123abcd","lastSeq":3,"lifecycle":"playing","map":"d3_breen_01","mapKnown":true,"fps":60,"running":false,"runStartedAtMs":null,"finalTime":true,"runSeenOnMap":"d3_breen_01"},
+          "changed": true,
+          "ignored": null,
+          "same": false,
+          "sameExceptFps": false,
+          "publish": [true,true,true,true]
+        },
+        {
+          "at": 4000,
+          "message": {"type":"state","session":"0123abcd","seq":4,"lifecycle":"playing","mapName":"d3_breen_01","fps":60,"timerRunning":false,"timerCompleted":true,"elapsedMs":0},
+          "state": {"active":true,"session":"0123abcd","lastSeq":4,"lifecycle":"playing","map":"d3_breen_01","mapKnown":true,"fps":60,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":"d3_breen_01"},
+          "changed": true,
+          "ignored": null,
+          "same": false,
+          "sameExceptFps": false,
+          "publish": [true,true,true,true]
+        },
+        {
+          "at": 5000,
+          "message": {"type":"state","session":"0123abcd","seq":5,"lifecycle":"playing","mapName":"d3_breen_01","fps":60,"timerRunning":false,"timerCompleted":true,"elapsedMs":null},
+          "state": {"active":true,"session":"0123abcd","lastSeq":5,"lifecycle":"playing","map":"d3_breen_01","mapKnown":true,"fps":60,"running":false,"runStartedAtMs":null,"finalTime":true,"runSeenOnMap":"d3_breen_01"},
+          "changed": true,
+          "ignored": null,
+          "same": false,
+          "sameExceptFps": false,
+          "publish": [true,true,true,true]
+        },
+        {
+          "at": 6000,
+          "message": {"type":"state","session":"0123abcd","seq":6,"lifecycle":"playing","mapName":"d3_breen_01","fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":2500},
+          "state": {"active":true,"session":"0123abcd","lastSeq":6,"lifecycle":"playing","map":"d3_breen_01","mapKnown":true,"fps":60,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":"d3_breen_01"},
+          "changed": true,
+          "ignored": null,
+          "same": false,
+          "sameExceptFps": false,
+          "publish": [true,true,true,true]
+        }
+      ]
+    },
+    {
+      "name": "итоговое время только на своей карте",
+      "steps": [
+        {
+          "at": 1000,
+          "message": {"type":"state","session":"0123abcd","seq":1,"lifecycle":"playing","mapName":"d3_c17_13","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":1000},
+          "state": {"active":true,"session":"0123abcd","lastSeq":1,"lifecycle":"playing","map":"d3_c17_13","mapKnown":true,"fps":60,"running":true,"runStartedAtMs":0,"finalTime":false,"runSeenOnMap":"d3_c17_13"},
+          "changed": true,
+          "ignored": null,
+          "same": false,
+          "sameExceptFps": false,
+          "publish": [true,true,true,true]
+        },
+        {
+          "at": 2000,
+          "message": {"type":"state","session":"0123abcd","seq":2,"lifecycle":"playing","mapName":"d3_c17_13","fps":60,"timerRunning":false,"timerCompleted":true,"elapsedMs":1500},
+          "state": {"active":true,"session":"0123abcd","lastSeq":2,"lifecycle":"playing","map":"d3_c17_13","mapKnown":true,"fps":60,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":"d3_c17_13"},
+          "changed": true,
+          "ignored": null,
+          "same": false,
+          "sameExceptFps": false,
+          "publish": [true,true,true,true]
+        },
+        {
+          "at": 3000,
+          "message": {"type":"state","session":"0123abcd","seq":3,"lifecycle":"playing","mapName":"d3_breen_01","fps":60,"timerRunning":false,"timerCompleted":true,"elapsedMs":1500},
+          "state": {"active":true,"session":"0123abcd","lastSeq":3,"lifecycle":"playing","map":"d3_breen_01","mapKnown":true,"fps":60,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "changed": true,
+          "ignored": null,
+          "same": false,
+          "sameExceptFps": false,
+          "publish": [true,true,true,true]
+        },
+        {
+          "at": 4000,
+          "message": {"type":"state","session":"0123abcd","seq":4,"lifecycle":"playing","mapName":"d3_c17_13","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":2000},
+          "state": {"active":true,"session":"0123abcd","lastSeq":4,"lifecycle":"playing","map":"d3_c17_13","mapKnown":true,"fps":60,"running":true,"runStartedAtMs":2000,"finalTime":false,"runSeenOnMap":"d3_c17_13"},
+          "changed": true,
+          "ignored": null,
+          "same": false,
+          "sameExceptFps": false,
+          "publish": [true,true,true,true]
+        },
+        {
+          "at": 5000,
+          "message": {"type":"state","session":"0123abcd","seq":5,"lifecycle":"playing","mapName":"d3_breen_01","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":3000},
+          "state": {"active":true,"session":"0123abcd","lastSeq":5,"lifecycle":"playing","map":"d3_breen_01","mapKnown":true,"fps":60,"running":true,"runStartedAtMs":2000,"finalTime":false,"runSeenOnMap":"d3_breen_01"},
+          "changed": true,
+          "ignored": null,
+          "same": false,
+          "sameExceptFps": false,
+          "publish": [true,true,true,true]
+        },
+        {
+          "at": 6000,
+          "message": {"type":"state","session":"0123abcd","seq":6,"lifecycle":"playing","mapName":"d3_breen_01","fps":60,"timerRunning":false,"timerCompleted":true,"elapsedMs":3500},
+          "state": {"active":true,"session":"0123abcd","lastSeq":6,"lifecycle":"playing","map":"d3_breen_01","mapKnown":true,"fps":60,"running":false,"runStartedAtMs":null,"finalTime":true,"runSeenOnMap":"d3_breen_01"},
+          "changed": true,
+          "ignored": null,
+          "same": false,
+          "sameExceptFps": false,
+          "publish": [true,true,true,true]
+        },
+        {
+          "at": 7000,
+          "message": {"type":"state","session":"0123abcd","seq":7,"lifecycle":"playing","mapName":"d3_c17_13","fps":60,"timerRunning":false,"timerCompleted":true,"elapsedMs":3500},
+          "state": {"active":true,"session":"0123abcd","lastSeq":7,"lifecycle":"playing","map":"d3_c17_13","mapKnown":true,"fps":60,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "changed": true,
+          "ignored": null,
+          "same": false,
+          "sameExceptFps": false,
+          "publish": [true,true,true,true]
+        }
+      ]
+    },
+    {
+      "name": "порядок номеров, новый сеанс",
+      "steps": [
+        {
+          "at": 1000,
+          "message": {"type":"state","session":"0123abcd","seq":5,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "state": {"active":true,"session":"0123abcd","lastSeq":5,"lifecycle":"playing","map":"d1_trainstation_01","mapKnown":true,"fps":60,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "changed": true,
+          "ignored": null,
+          "same": false,
+          "sameExceptFps": false,
+          "publish": [true,true,true,true]
+        },
+        {
+          "at": 2000,
+          "message": {"type":"state","session":"0123abcd","seq":5,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":70,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "state": {"active":true,"session":"0123abcd","lastSeq":5,"lifecycle":"playing","map":"d1_trainstation_01","mapKnown":true,"fps":60,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "changed": false,
+          "ignored": "STALE_SEQ",
+          "same": true,
+          "sameExceptFps": true,
+          "publish": [false,false,false,false]
+        },
+        {
+          "at": 3000,
+          "message": {"type":"state","session":"0123abcd","seq":4,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":80,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "state": {"active":true,"session":"0123abcd","lastSeq":5,"lifecycle":"playing","map":"d1_trainstation_01","mapKnown":true,"fps":60,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "changed": false,
+          "ignored": "STALE_SEQ",
+          "same": true,
+          "sameExceptFps": true,
+          "publish": [false,false,false,false]
+        },
+        {
+          "at": 4000,
+          "message": {"type":"state","session":"0123abcd","seq":6,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":61,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "state": {"active":true,"session":"0123abcd","lastSeq":6,"lifecycle":"playing","map":"d1_trainstation_01","mapKnown":true,"fps":61,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "changed": true,
+          "ignored": null,
+          "same": false,
+          "sameExceptFps": true,
+          "publish": [true,false,false,false]
+        },
+        {
+          "at": 5000,
+          "message": {"type":"state","session":"deadbeef01","seq":0,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":62,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "state": {"active":true,"session":"deadbeef01","lastSeq":0,"lifecycle":"playing","map":"d1_trainstation_01","mapKnown":true,"fps":62,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "changed": true,
+          "ignored": null,
+          "same": false,
+          "sameExceptFps": true,
+          "publish": [true,false,false,false]
+        },
+        {
+          "at": 6000,
+          "message": {"type":"state","session":"0123abcd","seq":100,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "state": {"active":true,"session":"0123abcd","lastSeq":100,"lifecycle":"playing","map":"d1_trainstation_01","mapKnown":true,"fps":60,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "changed": true,
+          "ignored": null,
+          "same": false,
+          "sameExceptFps": true,
+          "publish": [true,false,false,false]
+        },
+        {"at":7000,"message":{"type":"chat.subscribe","session":"0123abcd"},"state":{"active":true,"session":"0123abcd","lastSeq":100,"lifecycle":"playing","map":"d1_trainstation_01","mapKnown":true,"fps":60,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},"changed":false,"ignored":"NOT_STATE","same":true,"sameExceptFps":true,"publish":[false,false,false,false]},
+        {"at":8000,"message":{"type":"hello","session":"0123abcd","token":"x"},"state":{"active":true,"session":"0123abcd","lastSeq":100,"lifecycle":"playing","map":"d1_trainstation_01","mapKnown":true,"fps":60,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},"changed":false,"ignored":"NOT_STATE","same":true,"sameExceptFps":true,"publish":[false,false,false,false]},
+        {"at":9000,"message":null,"state":{"active":true,"session":"0123abcd","lastSeq":100,"lifecycle":"playing","map":"d1_trainstation_01","mapKnown":true,"fps":60,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},"changed":false,"ignored":"NOT_STATE","same":true,"sameExceptFps":true,"publish":[false,false,false,false]},
+        {"at":10000,"message":{},"state":{"active":true,"session":"0123abcd","lastSeq":100,"lifecycle":"playing","map":"d1_trainstation_01","mapKnown":true,"fps":60,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},"changed":false,"ignored":"NOT_STATE","same":true,"sameExceptFps":true,"publish":[false,false,false,false]}
+      ]
+    },
+    {
+      "name": "выход игры",
+      "steps": [
+        {
+          "at": 1000,
+          "message": {"type":"state","session":"0123abcd","seq":1,"lifecycle":"playing","mapName":"d1_canals_01","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":1000},
+          "state": {"active":true,"session":"0123abcd","lastSeq":1,"lifecycle":"playing","map":"d1_canals_01","mapKnown":true,"fps":60,"running":true,"runStartedAtMs":0,"finalTime":false,"runSeenOnMap":"d1_canals_01"},
+          "changed": true,
+          "ignored": null,
+          "same": false,
+          "sameExceptFps": false,
+          "publish": [true,true,true,true]
+        },
+        {
+          "at": 2000,
+          "message": {"type":"state","session":"0123abcd","seq":2,"lifecycle":"exited","mapName":null,"fps":null,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "state": {"active":false,"session":"0123abcd","lastSeq":2,"lifecycle":"exited","map":null,"mapKnown":false,"fps":null,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "changed": true,
+          "ignored": null,
+          "same": false,
+          "sameExceptFps": false,
+          "publish": [true,true,true,true]
+        },
+        {
+          "at": 3000,
+          "message": {"type":"state","session":"0123abcd","seq":3,"lifecycle":"exited","mapName":null,"fps":null,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "state": {"active":false,"session":"0123abcd","lastSeq":3,"lifecycle":"exited","map":null,"mapKnown":false,"fps":null,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "changed": false,
+          "ignored": null,
+          "same": true,
+          "sameExceptFps": true,
+          "publish": [false,false,false,false]
+        },
+        {
+          "at": 4000,
+          "message": {"type":"state","session":"0123abcd","seq":4,"lifecycle":"menu","mapName":null,"fps":30,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "state": {"active":true,"session":"0123abcd","lastSeq":4,"lifecycle":"menu","map":null,"mapKnown":false,"fps":30,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "changed": true,
+          "ignored": null,
+          "same": false,
+          "sameExceptFps": false,
+          "publish": [true,true,true,true]
+        },
+        {
+          "at": 5000,
+          "message": {"type":"state","session":"0123abcd","seq":5,"lifecycle":"exited","mapName":null,"fps":null,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "state": {"active":false,"session":"0123abcd","lastSeq":5,"lifecycle":"exited","map":null,"mapKnown":false,"fps":null,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "changed": true,
+          "ignored": null,
+          "same": false,
+          "sameExceptFps": false,
+          "publish": [true,true,true,true]
+        },
+        {
+          "at": 6000,
+          "message": {"type":"state","session":"0123abcd","seq":5,"lifecycle":"exited","mapName":null,"fps":null,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "state": {"active":false,"session":"0123abcd","lastSeq":5,"lifecycle":"exited","map":null,"mapKnown":false,"fps":null,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "changed": false,
+          "ignored": "STALE_SEQ",
+          "same": true,
+          "sameExceptFps": true,
+          "publish": [false,false,false,false]
+        }
+      ]
+    },
+    {
+      "name": "игра пропала",
+      "steps": [
+        {
+          "at": 1000,
+          "message": {"type":"state","session":"0123abcd","seq":1,"lifecycle":"playing","mapName":"d1_canals_01","fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "state": {"active":true,"session":"0123abcd","lastSeq":1,"lifecycle":"playing","map":"d1_canals_01","mapKnown":true,"fps":60,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "changed": true,
+          "ignored": null,
+          "same": false,
+          "sameExceptFps": false,
+          "publish": [true,true,true,true]
+        },
+        {
+          "at": 3000,
+          "message": {"type":"state","session":"0123abcd","seq":1,"lifecycle":"menu","mapName":null,"fps":30,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "state": {"active":true,"session":"0123abcd","lastSeq":1,"lifecycle":"playing","map":"d1_canals_01","mapKnown":true,"fps":60,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "changed": false,
+          "ignored": "STALE_SEQ",
+          "same": true,
+          "sameExceptFps": true,
+          "publish": [false,false,false,false]
+        },
+        {
+          "at": 6000,
+          "message": {"type":"state","session":"0123abcd","seq":1,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "state": {"active":true,"session":"0123abcd","lastSeq":1,"lifecycle":"playing","map":"d1_canals_01","mapKnown":true,"fps":60,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "changed": false,
+          "ignored": "STALE_SEQ",
+          "same": true,
+          "sameExceptFps": true,
+          "publish": [false,false,false,false]
+        },
+        {
+          "at": 7000,
+          "message": {"type":"state","session":"deadbeef01","seq":2,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "state": {"active":true,"session":"deadbeef01","lastSeq":2,"lifecycle":"playing","map":"d1_trainstation_01","mapKnown":true,"fps":60,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "changed": true,
+          "ignored": null,
+          "same": false,
+          "sameExceptFps": false,
+          "publish": [true,true,true,true]
+        },
+        {
+          "at": 9000,
+          "message": {"type":"state","session":"0123abcd","seq":1,"lifecycle":"menu","mapName":null,"fps":30,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "state": {"active":true,"session":"0123abcd","lastSeq":1,"lifecycle":"menu","map":null,"mapKnown":false,"fps":30,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "changed": true,
+          "ignored": null,
+          "same": false,
+          "sameExceptFps": false,
+          "publish": [true,true,true,true]
+        }
+      ]
+    },
+    {
+      "name": "частота кадров не чаще раза в 15 с",
+      "steps": [
+        {
+          "at": 0,
+          "message": {"type":"state","session":"0123abcd","seq":1,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "state": {"active":true,"session":"0123abcd","lastSeq":1,"lifecycle":"playing","map":"d1_trainstation_01","mapKnown":true,"fps":60,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "changed": true,
+          "ignored": null,
+          "same": false,
+          "sameExceptFps": false,
+          "publish": [true,true,true,true]
+        },
+        {
+          "at": 1000,
+          "message": {"type":"state","session":"0123abcd","seq":2,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":61,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "state": {"active":true,"session":"0123abcd","lastSeq":2,"lifecycle":"playing","map":"d1_trainstation_01","mapKnown":true,"fps":61,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "changed": true,
+          "ignored": null,
+          "same": false,
+          "sameExceptFps": true,
+          "publish": [true,false,false,false]
+        },
+        {
+          "at": 14999,
+          "message": {"type":"state","session":"0123abcd","seq":3,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":62,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "state": {"active":true,"session":"0123abcd","lastSeq":3,"lifecycle":"playing","map":"d1_trainstation_01","mapKnown":true,"fps":62,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "changed": true,
+          "ignored": null,
+          "same": false,
+          "sameExceptFps": true,
+          "publish": [true,false,false,false]
+        },
+        {
+          "at": 15000,
+          "message": {"type":"state","session":"0123abcd","seq":4,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":63,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "state": {"active":true,"session":"0123abcd","lastSeq":4,"lifecycle":"playing","map":"d1_trainstation_01","mapKnown":true,"fps":63,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "changed": true,
+          "ignored": null,
+          "same": false,
+          "sameExceptFps": true,
+          "publish": [true,true,false,false]
+        },
+        {
+          "at": 15001,
+          "message": {"type":"state","session":"0123abcd","seq":5,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":64,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "state": {"active":true,"session":"0123abcd","lastSeq":5,"lifecycle":"playing","map":"d1_trainstation_01","mapKnown":true,"fps":64,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "changed": true,
+          "ignored": null,
+          "same": false,
+          "sameExceptFps": true,
+          "publish": [true,true,false,false]
+        },
+        {
+          "at": 29999,
+          "message": {"type":"state","session":"0123abcd","seq":6,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":65,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "state": {"active":true,"session":"0123abcd","lastSeq":6,"lifecycle":"playing","map":"d1_trainstation_01","mapKnown":true,"fps":65,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "changed": true,
+          "ignored": null,
+          "same": false,
+          "sameExceptFps": true,
+          "publish": [true,true,true,false]
+        },
+        {
+          "at": 30000,
+          "message": {"type":"state","session":"0123abcd","seq":7,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":66,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "state": {"active":true,"session":"0123abcd","lastSeq":7,"lifecycle":"playing","map":"d1_trainstation_01","mapKnown":true,"fps":66,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "changed": true,
+          "ignored": null,
+          "same": false,
+          "sameExceptFps": true,
+          "publish": [true,true,true,true]
+        },
+        {
+          "at": 30001,
+          "message": {"type":"state","session":"0123abcd","seq":8,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":66,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "state": {"active":true,"session":"0123abcd","lastSeq":8,"lifecycle":"playing","map":"d1_trainstation_01","mapKnown":true,"fps":66,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "changed": false,
+          "ignored": null,
+          "same": true,
+          "sameExceptFps": true,
+          "publish": [false,false,false,false]
+        },
+        {
+          "at": 31000,
+          "message": {"type":"state","session":"0123abcd","seq":9,"lifecycle":"playing","mapName":"d1_canals_01","fps":67,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "state": {"active":true,"session":"0123abcd","lastSeq":9,"lifecycle":"playing","map":"d1_canals_01","mapKnown":true,"fps":67,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "changed": true,
+          "ignored": null,
+          "same": false,
+          "sameExceptFps": false,
+          "publish": [true,true,true,true]
+        },
+        {
+          "at": 32000,
+          "message": {"type":"state","session":"0123abcd","seq":10,"lifecycle":"playing","mapName":"d1_canals_01","fps":68,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "state": {"active":true,"session":"0123abcd","lastSeq":10,"lifecycle":"playing","map":"d1_canals_01","mapKnown":true,"fps":68,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "changed": true,
+          "ignored": null,
+          "same": false,
+          "sameExceptFps": true,
+          "publish": [true,true,true,true]
+        },
+        {
+          "at": 46999,
+          "message": {"type":"state","session":"0123abcd","seq":11,"lifecycle":"playing","mapName":"d1_canals_01","fps":69,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "state": {"active":true,"session":"0123abcd","lastSeq":11,"lifecycle":"playing","map":"d1_canals_01","mapKnown":true,"fps":69,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "changed": true,
+          "ignored": null,
+          "same": false,
+          "sameExceptFps": true,
+          "publish": [true,true,true,true]
+        },
+        {
+          "at": 47000,
+          "message": {"type":"state","session":"0123abcd","seq":12,"lifecycle":"playing","mapName":"d1_canals_01","fps":70,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "state": {"active":true,"session":"0123abcd","lastSeq":12,"lifecycle":"playing","map":"d1_canals_01","mapKnown":true,"fps":70,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "changed": true,
+          "ignored": null,
+          "same": false,
+          "sameExceptFps": true,
+          "publish": [true,true,true,true]
+        },
+        {
+          "at": 47001,
+          "message": {"type":"state","session":"0123abcd","seq":13,"lifecycle":"playing","mapName":"d1_canals_01","fps":null,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "state": {"active":true,"session":"0123abcd","lastSeq":13,"lifecycle":"playing","map":"d1_canals_01","mapKnown":true,"fps":null,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "changed": true,
+          "ignored": null,
+          "same": false,
+          "sameExceptFps": true,
+          "publish": [true,true,true,true]
+        },
+        {
+          "at": 62000,
+          "message": {"type":"state","session":"0123abcd","seq":14,"lifecycle":"playing","mapName":"d1_canals_01","fps":71,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "state": {"active":true,"session":"0123abcd","lastSeq":14,"lifecycle":"playing","map":"d1_canals_01","mapKnown":true,"fps":71,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "changed": true,
+          "ignored": null,
+          "same": false,
+          "sameExceptFps": true,
+          "publish": [true,true,true,true]
+        }
+      ]
+    },
+    {
+      "name": "fps вместе с другим полем публикуется сразу",
+      "steps": [
+        {
+          "at": 0,
+          "message": {"type":"state","session":"0123abcd","seq":1,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "state": {"active":true,"session":"0123abcd","lastSeq":1,"lifecycle":"playing","map":"d1_trainstation_01","mapKnown":true,"fps":60,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "changed": true,
+          "ignored": null,
+          "same": false,
+          "sameExceptFps": false,
+          "publish": [true,true,true,true]
+        },
+        {
+          "at": 100,
+          "message": {"type":"state","session":"0123abcd","seq":2,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":61,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "state": {"active":true,"session":"0123abcd","lastSeq":2,"lifecycle":"playing","map":"d1_trainstation_01","mapKnown":true,"fps":61,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "changed": true,
+          "ignored": null,
+          "same": false,
+          "sameExceptFps": true,
+          "publish": [true,false,false,false]
+        },
+        {
+          "at": 200,
+          "message": {"type":"state","session":"0123abcd","seq":3,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":62,"timerRunning":true,"timerCompleted":false,"elapsedMs":100},
+          "state": {"active":true,"session":"0123abcd","lastSeq":3,"lifecycle":"playing","map":"d1_trainstation_01","mapKnown":true,"fps":62,"running":true,"runStartedAtMs":100,"finalTime":false,"runSeenOnMap":"d1_trainstation_01"},
+          "changed": true,
+          "ignored": null,
+          "same": false,
+          "sameExceptFps": false,
+          "publish": [true,true,true,true]
+        },
+        {
+          "at": 300,
+          "message": {"type":"state","session":"0123abcd","seq":4,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":63,"timerRunning":true,"timerCompleted":false,"elapsedMs":200},
+          "state": {"active":true,"session":"0123abcd","lastSeq":4,"lifecycle":"playing","map":"d1_trainstation_01","mapKnown":true,"fps":63,"running":true,"runStartedAtMs":100,"finalTime":false,"runSeenOnMap":"d1_trainstation_01"},
+          "changed": true,
+          "ignored": null,
+          "same": false,
+          "sameExceptFps": true,
+          "publish": [true,false,false,false]
+        },
+        {
+          "at": 400,
+          "message": {"type":"state","session":"0123abcd","seq":5,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":64,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "state": {"active":true,"session":"0123abcd","lastSeq":5,"lifecycle":"playing","map":"d1_trainstation_01","mapKnown":true,"fps":64,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":"d1_trainstation_01"},
+          "changed": true,
+          "ignored": null,
+          "same": false,
+          "sameExceptFps": false,
+          "publish": [true,true,true,true]
+        },
+        {
+          "at": 500,
+          "message": {"type":"state","session":"0123abcd","seq":6,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":65,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "state": {"active":true,"session":"0123abcd","lastSeq":6,"lifecycle":"playing","map":"d1_trainstation_01","mapKnown":true,"fps":65,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":"d1_trainstation_01"},
+          "changed": true,
+          "ignored": null,
+          "same": false,
+          "sameExceptFps": true,
+          "publish": [true,false,false,false]
+        }
+      ]
+    },
+    {
+      "name": "карта известна и неизвестна",
+      "steps": [
+        {
+          "at": 1000,
+          "message": {"type":"state","session":"0123abcd","seq":1,"lifecycle":"playing","mapName":"d1_eli_01","fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "state": {"active":true,"session":"0123abcd","lastSeq":1,"lifecycle":"playing","map":"d1_eli_01","mapKnown":true,"fps":60,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "changed": true,
+          "ignored": null,
+          "same": false,
+          "sameExceptFps": false,
+          "publish": [true,true,true,true]
+        },
+        {
+          "at": 2000,
+          "message": {"type":"state","session":"0123abcd","seq":2,"lifecycle":"playing","mapName":"d1_eli_09","fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "state": {"active":true,"session":"0123abcd","lastSeq":2,"lifecycle":"playing","map":"d1_eli_09","mapKnown":false,"fps":60,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "changed": true,
+          "ignored": null,
+          "same": false,
+          "sameExceptFps": false,
+          "publish": [true,true,true,true]
+        },
+        {
+          "at": 3000,
+          "message": {"type":"state","session":"0123abcd","seq":3,"lifecycle":"playing","mapName":"d1_eli_01","fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "state": {"active":true,"session":"0123abcd","lastSeq":3,"lifecycle":"playing","map":"d1_eli_01","mapKnown":true,"fps":60,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "changed": true,
+          "ignored": null,
+          "same": false,
+          "sameExceptFps": false,
+          "publish": [true,true,true,true]
+        },
+        {
+          "at": 4000,
+          "message": {"type":"state","session":"0123abcd","seq":4,"lifecycle":"menu","mapName":null,"fps":30,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "state": {"active":true,"session":"0123abcd","lastSeq":4,"lifecycle":"menu","map":null,"mapKnown":false,"fps":30,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "changed": true,
+          "ignored": null,
+          "same": false,
+          "sameExceptFps": false,
+          "publish": [true,true,true,true]
+        }
+      ]
+    },
+    {
+      "name": "забег на другой карте после перерыва",
+      "steps": [
+        {
+          "at": 1000,
+          "message": {"type":"state","session":"0123abcd","seq":1,"lifecycle":"playing","mapName":"d1_canals_01","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":5000},
+          "state": {"active":true,"session":"0123abcd","lastSeq":1,"lifecycle":"playing","map":"d1_canals_01","mapKnown":true,"fps":60,"running":true,"runStartedAtMs":-4000,"finalTime":false,"runSeenOnMap":"d1_canals_01"},
+          "changed": true,
+          "ignored": null,
+          "same": false,
+          "sameExceptFps": false,
+          "publish": [true,true,true,true]
+        },
+        {
+          "at": 2000,
+          "message": {"type":"state","session":"0123abcd","seq":2,"lifecycle":"playing","mapName":"d1_canals_01","fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":5500},
+          "state": {"active":true,"session":"0123abcd","lastSeq":2,"lifecycle":"playing","map":"d1_canals_01","mapKnown":true,"fps":60,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":"d1_canals_01"},
+          "changed": true,
+          "ignored": null,
+          "same": false,
+          "sameExceptFps": false,
+          "publish": [true,true,true,true]
+        },
+        {
+          "at": 3000,
+          "message": {"type":"state","session":"0123abcd","seq":3,"lifecycle":"playing","mapName":"d1_canals_01","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":5600},
+          "state": {"active":true,"session":"0123abcd","lastSeq":3,"lifecycle":"playing","map":"d1_canals_01","mapKnown":true,"fps":60,"running":true,"runStartedAtMs":-2600,"finalTime":false,"runSeenOnMap":"d1_canals_01"},
+          "changed": true,
+          "ignored": null,
+          "same": false,
+          "sameExceptFps": false,
+          "publish": [true,true,true,true]
+        },
+        {
+          "at": 4000,
+          "message": {"type":"state","session":"0123abcd","seq":4,"lifecycle":"playing","mapName":"d1_canals_01","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":6600},
+          "state": {"active":true,"session":"0123abcd","lastSeq":4,"lifecycle":"playing","map":"d1_canals_01","mapKnown":true,"fps":60,"running":true,"runStartedAtMs":-2600,"finalTime":false,"runSeenOnMap":"d1_canals_01"},
+          "changed": false,
+          "ignored": null,
+          "same": true,
+          "sameExceptFps": true,
+          "publish": [false,false,false,false]
+        },
+        {
+          "at": 5000,
+          "message": {"type":"state","session":"0123abcd","seq":5,"lifecycle":"menu","mapName":null,"fps":30,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "state": {"active":true,"session":"0123abcd","lastSeq":5,"lifecycle":"menu","map":null,"mapKnown":false,"fps":30,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":"d1_canals_01"},
+          "changed": true,
+          "ignored": null,
+          "same": false,
+          "sameExceptFps": false,
+          "publish": [true,true,true,true]
+        },
+        {
+          "at": 6000,
+          "message": {"type":"state","session":"0123abcd","seq":6,"lifecycle":"playing","mapName":"d1_canals_01","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":100},
+          "state": {"active":true,"session":"0123abcd","lastSeq":6,"lifecycle":"playing","map":"d1_canals_01","mapKnown":true,"fps":60,"running":true,"runStartedAtMs":5900,"finalTime":false,"runSeenOnMap":"d1_canals_01"},
+          "changed": true,
+          "ignored": null,
+          "same": false,
+          "sameExceptFps": false,
+          "publish": [true,true,true,true]
+        }
+      ]
+    }
+  ],
+  "bridge": [
+    {
+      "name": "меню, карта, забег идёт",
+      "steps": [
+        {
+          "at": 1000,
+          "message": {"type":"state","session":"0123abcd","seq":1,"lifecycle":"menu","mapName":null,"fps":30,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "returned": true,
+          "emitted": [{"active":true,"lifecycle":"menu","map":null,"fps":30,"running":false,"runStartedAtMs":null,"finalTime":false}],
+          "snapshot": {"active":true,"lifecycle":"menu","map":null,"fps":30,"running":false,"runStartedAtMs":null,"finalTime":false},
+          "diagnostics": {"lifecycle":"menu","hasMap":false},
+          "state": {"active":true,"session":"0123abcd","lastSeq":1,"lifecycle":"menu","map":null,"mapKnown":false,"fps":30,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "lastFpsPublishAtMs": null
+        },
+        {
+          "at": 2000,
+          "message": {"type":"state","session":"0123abcd","seq":2,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "returned": true,
+          "emitted": [{"active":true,"lifecycle":"playing","map":"d1_trainstation_01","fps":60,"running":false,"runStartedAtMs":null,"finalTime":false}],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d1_trainstation_01","fps":60,"running":false,"runStartedAtMs":null,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":2,"lifecycle":"playing","map":"d1_trainstation_01","mapKnown":true,"fps":60,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "lastFpsPublishAtMs": null
+        },
+        {
+          "at": 3000,
+          "message": {"type":"state","session":"0123abcd","seq":3,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":500},
+          "returned": true,
+          "emitted": [{"active":true,"lifecycle":"playing","map":"d1_trainstation_01","fps":60,"running":true,"runStartedAtMs":2500,"finalTime":false}],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d1_trainstation_01","fps":60,"running":true,"runStartedAtMs":2500,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":3,"lifecycle":"playing","map":"d1_trainstation_01","mapKnown":true,"fps":60,"running":true,"runStartedAtMs":2500,"finalTime":false,"runSeenOnMap":"d1_trainstation_01"},
+          "lastFpsPublishAtMs": null
+        },
+        {
+          "at": 4000,
+          "message": {"type":"state","session":"0123abcd","seq":4,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":1500},
+          "returned": false,
+          "emitted": [],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d1_trainstation_01","fps":60,"running":true,"runStartedAtMs":2500,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":4,"lifecycle":"playing","map":"d1_trainstation_01","mapKnown":true,"fps":60,"running":true,"runStartedAtMs":2500,"finalTime":false,"runSeenOnMap":"d1_trainstation_01"},
+          "lastFpsPublishAtMs": null
+        },
+        {
+          "at": 5000,
+          "message": {"type":"state","session":"0123abcd","seq":5,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":2600},
+          "returned": false,
+          "emitted": [],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d1_trainstation_01","fps":60,"running":true,"runStartedAtMs":2500,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":5,"lifecycle":"playing","map":"d1_trainstation_01","mapKnown":true,"fps":60,"running":true,"runStartedAtMs":2500,"finalTime":false,"runSeenOnMap":"d1_trainstation_01"},
+          "lastFpsPublishAtMs": null
+        }
+      ]
+    },
+    {
+      "name": "якорь забега: допуск 1500 мс",
+      "steps": [
+        {
+          "at": 10000,
+          "message": {"type":"state","session":"0123abcd","seq":1,"lifecycle":"playing","mapName":"d1_canals_01","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":1000},
+          "returned": true,
+          "emitted": [{"active":true,"lifecycle":"playing","map":"d1_canals_01","fps":60,"running":true,"runStartedAtMs":9000,"finalTime":false}],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d1_canals_01","fps":60,"running":true,"runStartedAtMs":9000,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":1,"lifecycle":"playing","map":"d1_canals_01","mapKnown":true,"fps":60,"running":true,"runStartedAtMs":9000,"finalTime":false,"runSeenOnMap":"d1_canals_01"},
+          "lastFpsPublishAtMs": null
+        },
+        {
+          "at": 11000,
+          "message": {"type":"state","session":"0123abcd","seq":2,"lifecycle":"playing","mapName":"d1_canals_01","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":2000},
+          "returned": false,
+          "emitted": [],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d1_canals_01","fps":60,"running":true,"runStartedAtMs":9000,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":2,"lifecycle":"playing","map":"d1_canals_01","mapKnown":true,"fps":60,"running":true,"runStartedAtMs":9000,"finalTime":false,"runSeenOnMap":"d1_canals_01"},
+          "lastFpsPublishAtMs": null
+        },
+        {
+          "at": 12500,
+          "message": {"type":"state","session":"0123abcd","seq":3,"lifecycle":"playing","mapName":"d1_canals_01","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":3500},
+          "returned": false,
+          "emitted": [],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d1_canals_01","fps":60,"running":true,"runStartedAtMs":9000,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":3,"lifecycle":"playing","map":"d1_canals_01","mapKnown":true,"fps":60,"running":true,"runStartedAtMs":9000,"finalTime":false,"runSeenOnMap":"d1_canals_01"},
+          "lastFpsPublishAtMs": null
+        },
+        {
+          "at": 14999,
+          "message": {"type":"state","session":"0123abcd","seq":4,"lifecycle":"playing","mapName":"d1_canals_01","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":5999},
+          "returned": false,
+          "emitted": [],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d1_canals_01","fps":60,"running":true,"runStartedAtMs":9000,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":4,"lifecycle":"playing","map":"d1_canals_01","mapKnown":true,"fps":60,"running":true,"runStartedAtMs":9000,"finalTime":false,"runSeenOnMap":"d1_canals_01"},
+          "lastFpsPublishAtMs": null
+        },
+        {
+          "at": 16000,
+          "message": {"type":"state","session":"0123abcd","seq":5,"lifecycle":"playing","mapName":"d1_canals_01","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":7600},
+          "returned": false,
+          "emitted": [],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d1_canals_01","fps":60,"running":true,"runStartedAtMs":9000,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":5,"lifecycle":"playing","map":"d1_canals_01","mapKnown":true,"fps":60,"running":true,"runStartedAtMs":9000,"finalTime":false,"runSeenOnMap":"d1_canals_01"},
+          "lastFpsPublishAtMs": null
+        },
+        {
+          "at": 16001,
+          "message": {"type":"state","session":"0123abcd","seq":6,"lifecycle":"playing","mapName":"d1_canals_01","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":7601},
+          "returned": false,
+          "emitted": [],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d1_canals_01","fps":60,"running":true,"runStartedAtMs":9000,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":6,"lifecycle":"playing","map":"d1_canals_01","mapKnown":true,"fps":60,"running":true,"runStartedAtMs":9000,"finalTime":false,"runSeenOnMap":"d1_canals_01"},
+          "lastFpsPublishAtMs": null
+        },
+        {
+          "at": 20000,
+          "message": {"type":"state","session":"0123abcd","seq":7,"lifecycle":"playing","mapName":"d1_canals_01","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":6000},
+          "returned": true,
+          "emitted": [{"active":true,"lifecycle":"playing","map":"d1_canals_01","fps":60,"running":true,"runStartedAtMs":14000,"finalTime":false}],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d1_canals_01","fps":60,"running":true,"runStartedAtMs":14000,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":7,"lifecycle":"playing","map":"d1_canals_01","mapKnown":true,"fps":60,"running":true,"runStartedAtMs":14000,"finalTime":false,"runSeenOnMap":"d1_canals_01"},
+          "lastFpsPublishAtMs": null
+        }
+      ]
+    },
+    {
+      "name": "смена карты в забеге",
+      "steps": [
+        {
+          "at": 1000,
+          "message": {"type":"state","session":"0123abcd","seq":1,"lifecycle":"playing","mapName":"d1_canals_01","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":1000},
+          "returned": true,
+          "emitted": [{"active":true,"lifecycle":"playing","map":"d1_canals_01","fps":60,"running":true,"runStartedAtMs":0,"finalTime":false}],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d1_canals_01","fps":60,"running":true,"runStartedAtMs":0,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":1,"lifecycle":"playing","map":"d1_canals_01","mapKnown":true,"fps":60,"running":true,"runStartedAtMs":0,"finalTime":false,"runSeenOnMap":"d1_canals_01"},
+          "lastFpsPublishAtMs": null
+        },
+        {
+          "at": 2000,
+          "message": {"type":"state","session":"0123abcd","seq":2,"lifecycle":"playing","mapName":"d1_canals_02","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":2000},
+          "returned": true,
+          "emitted": [{"active":true,"lifecycle":"playing","map":"d1_canals_02","fps":60,"running":true,"runStartedAtMs":0,"finalTime":false}],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d1_canals_02","fps":60,"running":true,"runStartedAtMs":0,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":2,"lifecycle":"playing","map":"d1_canals_02","mapKnown":true,"fps":60,"running":true,"runStartedAtMs":0,"finalTime":false,"runSeenOnMap":"d1_canals_02"},
+          "lastFpsPublishAtMs": null
+        },
+        {
+          "at": 3000,
+          "message": {"type":"state","session":"0123abcd","seq":3,"lifecycle":"playing","mapName":"d1_canals_02","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":3000},
+          "returned": false,
+          "emitted": [],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d1_canals_02","fps":60,"running":true,"runStartedAtMs":0,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":3,"lifecycle":"playing","map":"d1_canals_02","mapKnown":true,"fps":60,"running":true,"runStartedAtMs":0,"finalTime":false,"runSeenOnMap":"d1_canals_02"},
+          "lastFpsPublishAtMs": null
+        },
+        {
+          "at": 4000,
+          "message": {"type":"state","session":"0123abcd","seq":4,"lifecycle":"playing","mapName":"unknown_map_x","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":4000},
+          "returned": true,
+          "emitted": [{"active":true,"lifecycle":"playing","map":"unknown_map_x","fps":60,"running":true,"runStartedAtMs":0,"finalTime":false}],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"unknown_map_x","fps":60,"running":true,"runStartedAtMs":0,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":4,"lifecycle":"playing","map":"unknown_map_x","mapKnown":false,"fps":60,"running":true,"runStartedAtMs":0,"finalTime":false,"runSeenOnMap":"unknown_map_x"},
+          "lastFpsPublishAtMs": null
+        },
+        {
+          "at": 5000,
+          "message": {"type":"state","session":"0123abcd","seq":5,"lifecycle":"playing","mapName":"unknown_map_x","fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":4500},
+          "returned": true,
+          "emitted": [{"active":true,"lifecycle":"playing","map":"unknown_map_x","fps":60,"running":false,"runStartedAtMs":null,"finalTime":false}],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"unknown_map_x","fps":60,"running":false,"runStartedAtMs":null,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":5,"lifecycle":"playing","map":"unknown_map_x","mapKnown":false,"fps":60,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":"unknown_map_x"},
+          "lastFpsPublishAtMs": null
+        }
+      ]
+    },
+    {
+      "name": "забег остановлен, сброс, итоговое время",
+      "steps": [
+        {
+          "at": 1000,
+          "message": {"type":"state","session":"0123abcd","seq":1,"lifecycle":"playing","mapName":"d3_breen_01","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":1000},
+          "returned": true,
+          "emitted": [{"active":true,"lifecycle":"playing","map":"d3_breen_01","fps":60,"running":true,"runStartedAtMs":0,"finalTime":false}],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d3_breen_01","fps":60,"running":true,"runStartedAtMs":0,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":1,"lifecycle":"playing","map":"d3_breen_01","mapKnown":true,"fps":60,"running":true,"runStartedAtMs":0,"finalTime":false,"runSeenOnMap":"d3_breen_01"},
+          "lastFpsPublishAtMs": null
+        },
+        {
+          "at": 2000,
+          "message": {"type":"state","session":"0123abcd","seq":2,"lifecycle":"playing","mapName":"d3_breen_01","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":2000},
+          "returned": false,
+          "emitted": [],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d3_breen_01","fps":60,"running":true,"runStartedAtMs":0,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":2,"lifecycle":"playing","map":"d3_breen_01","mapKnown":true,"fps":60,"running":true,"runStartedAtMs":0,"finalTime":false,"runSeenOnMap":"d3_breen_01"},
+          "lastFpsPublishAtMs": null
+        },
+        {
+          "at": 3000,
+          "message": {"type":"state","session":"0123abcd","seq":3,"lifecycle":"playing","mapName":"d3_breen_01","fps":60,"timerRunning":false,"timerCompleted":true,"elapsedMs":2500},
+          "returned": true,
+          "emitted": [{"active":true,"lifecycle":"playing","map":"d3_breen_01","fps":60,"running":false,"runStartedAtMs":null,"finalTime":true}],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d3_breen_01","fps":60,"running":false,"runStartedAtMs":null,"finalTime":true},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":3,"lifecycle":"playing","map":"d3_breen_01","mapKnown":true,"fps":60,"running":false,"runStartedAtMs":null,"finalTime":true,"runSeenOnMap":"d3_breen_01"},
+          "lastFpsPublishAtMs": null
+        },
+        {
+          "at": 4000,
+          "message": {"type":"state","session":"0123abcd","seq":4,"lifecycle":"playing","mapName":"d3_breen_01","fps":60,"timerRunning":false,"timerCompleted":true,"elapsedMs":0},
+          "returned": true,
+          "emitted": [{"active":true,"lifecycle":"playing","map":"d3_breen_01","fps":60,"running":false,"runStartedAtMs":null,"finalTime":false}],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d3_breen_01","fps":60,"running":false,"runStartedAtMs":null,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":4,"lifecycle":"playing","map":"d3_breen_01","mapKnown":true,"fps":60,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":"d3_breen_01"},
+          "lastFpsPublishAtMs": null
+        },
+        {
+          "at": 5000,
+          "message": {"type":"state","session":"0123abcd","seq":5,"lifecycle":"playing","mapName":"d3_breen_01","fps":60,"timerRunning":false,"timerCompleted":true,"elapsedMs":null},
+          "returned": true,
+          "emitted": [{"active":true,"lifecycle":"playing","map":"d3_breen_01","fps":60,"running":false,"runStartedAtMs":null,"finalTime":true}],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d3_breen_01","fps":60,"running":false,"runStartedAtMs":null,"finalTime":true},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":5,"lifecycle":"playing","map":"d3_breen_01","mapKnown":true,"fps":60,"running":false,"runStartedAtMs":null,"finalTime":true,"runSeenOnMap":"d3_breen_01"},
+          "lastFpsPublishAtMs": null
+        },
+        {
+          "at": 6000,
+          "message": {"type":"state","session":"0123abcd","seq":6,"lifecycle":"playing","mapName":"d3_breen_01","fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":2500},
+          "returned": true,
+          "emitted": [{"active":true,"lifecycle":"playing","map":"d3_breen_01","fps":60,"running":false,"runStartedAtMs":null,"finalTime":false}],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d3_breen_01","fps":60,"running":false,"runStartedAtMs":null,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":6,"lifecycle":"playing","map":"d3_breen_01","mapKnown":true,"fps":60,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":"d3_breen_01"},
+          "lastFpsPublishAtMs": null
+        }
+      ]
+    },
+    {
+      "name": "итоговое время только на своей карте",
+      "steps": [
+        {
+          "at": 1000,
+          "message": {"type":"state","session":"0123abcd","seq":1,"lifecycle":"playing","mapName":"d3_c17_13","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":1000},
+          "returned": true,
+          "emitted": [{"active":true,"lifecycle":"playing","map":"d3_c17_13","fps":60,"running":true,"runStartedAtMs":0,"finalTime":false}],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d3_c17_13","fps":60,"running":true,"runStartedAtMs":0,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":1,"lifecycle":"playing","map":"d3_c17_13","mapKnown":true,"fps":60,"running":true,"runStartedAtMs":0,"finalTime":false,"runSeenOnMap":"d3_c17_13"},
+          "lastFpsPublishAtMs": null
+        },
+        {
+          "at": 2000,
+          "message": {"type":"state","session":"0123abcd","seq":2,"lifecycle":"playing","mapName":"d3_c17_13","fps":60,"timerRunning":false,"timerCompleted":true,"elapsedMs":1500},
+          "returned": true,
+          "emitted": [{"active":true,"lifecycle":"playing","map":"d3_c17_13","fps":60,"running":false,"runStartedAtMs":null,"finalTime":false}],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d3_c17_13","fps":60,"running":false,"runStartedAtMs":null,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":2,"lifecycle":"playing","map":"d3_c17_13","mapKnown":true,"fps":60,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":"d3_c17_13"},
+          "lastFpsPublishAtMs": null
+        },
+        {
+          "at": 3000,
+          "message": {"type":"state","session":"0123abcd","seq":3,"lifecycle":"playing","mapName":"d3_breen_01","fps":60,"timerRunning":false,"timerCompleted":true,"elapsedMs":1500},
+          "returned": true,
+          "emitted": [{"active":true,"lifecycle":"playing","map":"d3_breen_01","fps":60,"running":false,"runStartedAtMs":null,"finalTime":false}],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d3_breen_01","fps":60,"running":false,"runStartedAtMs":null,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":3,"lifecycle":"playing","map":"d3_breen_01","mapKnown":true,"fps":60,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "lastFpsPublishAtMs": null
+        },
+        {
+          "at": 4000,
+          "message": {"type":"state","session":"0123abcd","seq":4,"lifecycle":"playing","mapName":"d3_c17_13","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":2000},
+          "returned": true,
+          "emitted": [{"active":true,"lifecycle":"playing","map":"d3_c17_13","fps":60,"running":true,"runStartedAtMs":2000,"finalTime":false}],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d3_c17_13","fps":60,"running":true,"runStartedAtMs":2000,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":4,"lifecycle":"playing","map":"d3_c17_13","mapKnown":true,"fps":60,"running":true,"runStartedAtMs":2000,"finalTime":false,"runSeenOnMap":"d3_c17_13"},
+          "lastFpsPublishAtMs": null
+        },
+        {
+          "at": 5000,
+          "message": {"type":"state","session":"0123abcd","seq":5,"lifecycle":"playing","mapName":"d3_breen_01","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":3000},
+          "returned": true,
+          "emitted": [{"active":true,"lifecycle":"playing","map":"d3_breen_01","fps":60,"running":true,"runStartedAtMs":2000,"finalTime":false}],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d3_breen_01","fps":60,"running":true,"runStartedAtMs":2000,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":5,"lifecycle":"playing","map":"d3_breen_01","mapKnown":true,"fps":60,"running":true,"runStartedAtMs":2000,"finalTime":false,"runSeenOnMap":"d3_breen_01"},
+          "lastFpsPublishAtMs": null
+        },
+        {
+          "at": 6000,
+          "message": {"type":"state","session":"0123abcd","seq":6,"lifecycle":"playing","mapName":"d3_breen_01","fps":60,"timerRunning":false,"timerCompleted":true,"elapsedMs":3500},
+          "returned": true,
+          "emitted": [{"active":true,"lifecycle":"playing","map":"d3_breen_01","fps":60,"running":false,"runStartedAtMs":null,"finalTime":true}],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d3_breen_01","fps":60,"running":false,"runStartedAtMs":null,"finalTime":true},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":6,"lifecycle":"playing","map":"d3_breen_01","mapKnown":true,"fps":60,"running":false,"runStartedAtMs":null,"finalTime":true,"runSeenOnMap":"d3_breen_01"},
+          "lastFpsPublishAtMs": null
+        },
+        {
+          "at": 7000,
+          "message": {"type":"state","session":"0123abcd","seq":7,"lifecycle":"playing","mapName":"d3_c17_13","fps":60,"timerRunning":false,"timerCompleted":true,"elapsedMs":3500},
+          "returned": true,
+          "emitted": [{"active":true,"lifecycle":"playing","map":"d3_c17_13","fps":60,"running":false,"runStartedAtMs":null,"finalTime":false}],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d3_c17_13","fps":60,"running":false,"runStartedAtMs":null,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":7,"lifecycle":"playing","map":"d3_c17_13","mapKnown":true,"fps":60,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "lastFpsPublishAtMs": null
+        }
+      ]
+    },
+    {
+      "name": "порядок номеров, новый сеанс",
+      "steps": [
+        {
+          "at": 1000,
+          "message": {"type":"state","session":"0123abcd","seq":5,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "returned": true,
+          "emitted": [{"active":true,"lifecycle":"playing","map":"d1_trainstation_01","fps":60,"running":false,"runStartedAtMs":null,"finalTime":false}],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d1_trainstation_01","fps":60,"running":false,"runStartedAtMs":null,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":5,"lifecycle":"playing","map":"d1_trainstation_01","mapKnown":true,"fps":60,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "lastFpsPublishAtMs": null
+        },
+        {
+          "at": 2000,
+          "message": {"type":"state","session":"0123abcd","seq":5,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":70,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "returned": false,
+          "emitted": [],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d1_trainstation_01","fps":60,"running":false,"runStartedAtMs":null,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":5,"lifecycle":"playing","map":"d1_trainstation_01","mapKnown":true,"fps":60,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "lastFpsPublishAtMs": null
+        },
+        {
+          "at": 3000,
+          "message": {"type":"state","session":"0123abcd","seq":4,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":80,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "returned": false,
+          "emitted": [],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d1_trainstation_01","fps":60,"running":false,"runStartedAtMs":null,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":5,"lifecycle":"playing","map":"d1_trainstation_01","mapKnown":true,"fps":60,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "lastFpsPublishAtMs": null
+        },
+        {
+          "at": 4000,
+          "message": {"type":"state","session":"0123abcd","seq":6,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":61,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "returned": true,
+          "emitted": [{"active":true,"lifecycle":"playing","map":"d1_trainstation_01","fps":61,"running":false,"runStartedAtMs":null,"finalTime":false}],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d1_trainstation_01","fps":61,"running":false,"runStartedAtMs":null,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":6,"lifecycle":"playing","map":"d1_trainstation_01","mapKnown":true,"fps":61,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "lastFpsPublishAtMs": 4000
+        },
+        {
+          "at": 5000,
+          "message": {"type":"state","session":"deadbeef01","seq":0,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":62,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "returned": false,
+          "emitted": [],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d1_trainstation_01","fps":62,"running":false,"runStartedAtMs":null,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"deadbeef01","lastSeq":0,"lifecycle":"playing","map":"d1_trainstation_01","mapKnown":true,"fps":62,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "lastFpsPublishAtMs": 4000
+        },
+        {
+          "at": 6000,
+          "message": {"type":"state","session":"0123abcd","seq":100,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "returned": false,
+          "emitted": [],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d1_trainstation_01","fps":60,"running":false,"runStartedAtMs":null,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":100,"lifecycle":"playing","map":"d1_trainstation_01","mapKnown":true,"fps":60,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "lastFpsPublishAtMs": 4000
+        },
+        {
+          "at": 7000,
+          "message": {"type":"chat.subscribe","session":"0123abcd"},
+          "returned": false,
+          "emitted": [],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d1_trainstation_01","fps":60,"running":false,"runStartedAtMs":null,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":100,"lifecycle":"playing","map":"d1_trainstation_01","mapKnown":true,"fps":60,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "lastFpsPublishAtMs": 4000
+        },
+        {
+          "at": 8000,
+          "message": {"type":"hello","session":"0123abcd","token":"x"},
+          "returned": false,
+          "emitted": [],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d1_trainstation_01","fps":60,"running":false,"runStartedAtMs":null,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":100,"lifecycle":"playing","map":"d1_trainstation_01","mapKnown":true,"fps":60,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "lastFpsPublishAtMs": 4000
+        },
+        {
+          "at": 9000,
+          "message": null,
+          "returned": false,
+          "emitted": [],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d1_trainstation_01","fps":60,"running":false,"runStartedAtMs":null,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":100,"lifecycle":"playing","map":"d1_trainstation_01","mapKnown":true,"fps":60,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "lastFpsPublishAtMs": 4000
+        },
+        {
+          "at": 10000,
+          "message": {},
+          "returned": false,
+          "emitted": [],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d1_trainstation_01","fps":60,"running":false,"runStartedAtMs":null,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":100,"lifecycle":"playing","map":"d1_trainstation_01","mapKnown":true,"fps":60,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "lastFpsPublishAtMs": 4000
+        }
+      ]
+    },
+    {
+      "name": "выход игры",
+      "steps": [
+        {
+          "at": 1000,
+          "message": {"type":"state","session":"0123abcd","seq":1,"lifecycle":"playing","mapName":"d1_canals_01","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":1000},
+          "returned": true,
+          "emitted": [{"active":true,"lifecycle":"playing","map":"d1_canals_01","fps":60,"running":true,"runStartedAtMs":0,"finalTime":false}],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d1_canals_01","fps":60,"running":true,"runStartedAtMs":0,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":1,"lifecycle":"playing","map":"d1_canals_01","mapKnown":true,"fps":60,"running":true,"runStartedAtMs":0,"finalTime":false,"runSeenOnMap":"d1_canals_01"},
+          "lastFpsPublishAtMs": null
+        },
+        {
+          "at": 2000,
+          "message": {"type":"state","session":"0123abcd","seq":2,"lifecycle":"exited","mapName":null,"fps":null,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "returned": true,
+          "emitted": [{"active":false,"lifecycle":"exited","map":null,"fps":null,"running":false,"runStartedAtMs":null,"finalTime":false}],
+          "snapshot": {"active":false,"lifecycle":"exited","map":null,"fps":null,"running":false,"runStartedAtMs":null,"finalTime":false},
+          "diagnostics": {"lifecycle":"exited","hasMap":false},
+          "state": {"active":false,"session":"0123abcd","lastSeq":2,"lifecycle":"exited","map":null,"mapKnown":false,"fps":null,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "lastFpsPublishAtMs": null
+        },
+        {
+          "at": 3000,
+          "message": {"type":"state","session":"0123abcd","seq":3,"lifecycle":"exited","mapName":null,"fps":null,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "returned": false,
+          "emitted": [],
+          "snapshot": {"active":false,"lifecycle":"exited","map":null,"fps":null,"running":false,"runStartedAtMs":null,"finalTime":false},
+          "diagnostics": {"lifecycle":"exited","hasMap":false},
+          "state": {"active":false,"session":"0123abcd","lastSeq":3,"lifecycle":"exited","map":null,"mapKnown":false,"fps":null,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "lastFpsPublishAtMs": null
+        },
+        {
+          "at": 4000,
+          "message": {"type":"state","session":"0123abcd","seq":4,"lifecycle":"menu","mapName":null,"fps":30,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "returned": true,
+          "emitted": [{"active":true,"lifecycle":"menu","map":null,"fps":30,"running":false,"runStartedAtMs":null,"finalTime":false}],
+          "snapshot": {"active":true,"lifecycle":"menu","map":null,"fps":30,"running":false,"runStartedAtMs":null,"finalTime":false},
+          "diagnostics": {"lifecycle":"menu","hasMap":false},
+          "state": {"active":true,"session":"0123abcd","lastSeq":4,"lifecycle":"menu","map":null,"mapKnown":false,"fps":30,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "lastFpsPublishAtMs": null
+        },
+        {
+          "at": 5000,
+          "message": {"type":"state","session":"0123abcd","seq":5,"lifecycle":"exited","mapName":null,"fps":null,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "returned": true,
+          "emitted": [{"active":false,"lifecycle":"exited","map":null,"fps":null,"running":false,"runStartedAtMs":null,"finalTime":false}],
+          "snapshot": {"active":false,"lifecycle":"exited","map":null,"fps":null,"running":false,"runStartedAtMs":null,"finalTime":false},
+          "diagnostics": {"lifecycle":"exited","hasMap":false},
+          "state": {"active":false,"session":"0123abcd","lastSeq":5,"lifecycle":"exited","map":null,"mapKnown":false,"fps":null,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "lastFpsPublishAtMs": null
+        },
+        {
+          "at": 6000,
+          "message": {"type":"state","session":"0123abcd","seq":5,"lifecycle":"exited","mapName":null,"fps":null,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "returned": false,
+          "emitted": [],
+          "snapshot": {"active":false,"lifecycle":"exited","map":null,"fps":null,"running":false,"runStartedAtMs":null,"finalTime":false},
+          "diagnostics": {"lifecycle":"exited","hasMap":false},
+          "state": {"active":false,"session":"0123abcd","lastSeq":5,"lifecycle":"exited","map":null,"mapKnown":false,"fps":null,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "lastFpsPublishAtMs": null
+        }
+      ]
+    },
+    {
+      "name": "игра пропала",
+      "steps": [
+        {
+          "at": 1000,
+          "message": {"type":"state","session":"0123abcd","seq":1,"lifecycle":"playing","mapName":"d1_canals_01","fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "returned": true,
+          "emitted": [{"active":true,"lifecycle":"playing","map":"d1_canals_01","fps":60,"running":false,"runStartedAtMs":null,"finalTime":false}],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d1_canals_01","fps":60,"running":false,"runStartedAtMs":null,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":1,"lifecycle":"playing","map":"d1_canals_01","mapKnown":true,"fps":60,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "lastFpsPublishAtMs": null
+        },
+        {
+          "at": 2000,
+          "message": "gone",
+          "returned": true,
+          "emitted": [{"active":false,"lifecycle":null,"map":null,"fps":null,"running":false,"runStartedAtMs":null,"finalTime":false}],
+          "snapshot": {"active":false,"lifecycle":null,"map":null,"fps":null,"running":false,"runStartedAtMs":null,"finalTime":false},
+          "diagnostics": {"lifecycle":null,"hasMap":false},
+          "state": {"active":false,"session":null,"lastSeq":-1,"lifecycle":null,"map":null,"mapKnown":false,"fps":null,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "lastFpsPublishAtMs": null
+        },
+        {
+          "at": 3000,
+          "message": {"type":"state","session":"0123abcd","seq":1,"lifecycle":"menu","mapName":null,"fps":30,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "returned": true,
+          "emitted": [{"active":true,"lifecycle":"menu","map":null,"fps":30,"running":false,"runStartedAtMs":null,"finalTime":false}],
+          "snapshot": {"active":true,"lifecycle":"menu","map":null,"fps":30,"running":false,"runStartedAtMs":null,"finalTime":false},
+          "diagnostics": {"lifecycle":"menu","hasMap":false},
+          "state": {"active":true,"session":"0123abcd","lastSeq":1,"lifecycle":"menu","map":null,"mapKnown":false,"fps":30,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "lastFpsPublishAtMs": null
+        },
+        {
+          "at": 4000,
+          "message": "gone",
+          "returned": true,
+          "emitted": [{"active":false,"lifecycle":null,"map":null,"fps":null,"running":false,"runStartedAtMs":null,"finalTime":false}],
+          "snapshot": {"active":false,"lifecycle":null,"map":null,"fps":null,"running":false,"runStartedAtMs":null,"finalTime":false},
+          "diagnostics": {"lifecycle":null,"hasMap":false},
+          "state": {"active":false,"session":null,"lastSeq":-1,"lifecycle":null,"map":null,"mapKnown":false,"fps":null,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "lastFpsPublishAtMs": null
+        },
+        {
+          "at": 5000,
+          "message": "gone",
+          "returned": false,
+          "emitted": [],
+          "snapshot": {"active":false,"lifecycle":null,"map":null,"fps":null,"running":false,"runStartedAtMs":null,"finalTime":false},
+          "diagnostics": {"lifecycle":null,"hasMap":false},
+          "state": {"active":false,"session":null,"lastSeq":-1,"lifecycle":null,"map":null,"mapKnown":false,"fps":null,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "lastFpsPublishAtMs": null
+        },
+        {
+          "at": 6000,
+          "message": {"type":"state","session":"0123abcd","seq":1,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "returned": true,
+          "emitted": [{"active":true,"lifecycle":"playing","map":"d1_trainstation_01","fps":60,"running":false,"runStartedAtMs":null,"finalTime":false}],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d1_trainstation_01","fps":60,"running":false,"runStartedAtMs":null,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":1,"lifecycle":"playing","map":"d1_trainstation_01","mapKnown":true,"fps":60,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "lastFpsPublishAtMs": null
+        },
+        {
+          "at": 7000,
+          "message": {"type":"state","session":"deadbeef01","seq":2,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "returned": false,
+          "emitted": [],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d1_trainstation_01","fps":60,"running":false,"runStartedAtMs":null,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"deadbeef01","lastSeq":2,"lifecycle":"playing","map":"d1_trainstation_01","mapKnown":true,"fps":60,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "lastFpsPublishAtMs": null
+        },
+        {
+          "at": 8000,
+          "message": "shutdown",
+          "returned": null,
+          "emitted": [],
+          "snapshot": {"active":false,"lifecycle":null,"map":null,"fps":null,"running":false,"runStartedAtMs":null,"finalTime":false},
+          "diagnostics": {"lifecycle":null,"hasMap":false},
+          "state": {"active":false,"session":null,"lastSeq":-1,"lifecycle":null,"map":null,"mapKnown":false,"fps":null,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "lastFpsPublishAtMs": null
+        },
+        {
+          "at": 9000,
+          "message": {"type":"state","session":"0123abcd","seq":1,"lifecycle":"menu","mapName":null,"fps":30,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "returned": true,
+          "emitted": [{"active":true,"lifecycle":"menu","map":null,"fps":30,"running":false,"runStartedAtMs":null,"finalTime":false}],
+          "snapshot": {"active":true,"lifecycle":"menu","map":null,"fps":30,"running":false,"runStartedAtMs":null,"finalTime":false},
+          "diagnostics": {"lifecycle":"menu","hasMap":false},
+          "state": {"active":true,"session":"0123abcd","lastSeq":1,"lifecycle":"menu","map":null,"mapKnown":false,"fps":30,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "lastFpsPublishAtMs": null
+        }
+      ]
+    },
+    {
+      "name": "частота кадров не чаще раза в 15 с",
+      "steps": [
+        {
+          "at": 0,
+          "message": {"type":"state","session":"0123abcd","seq":1,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "returned": true,
+          "emitted": [{"active":true,"lifecycle":"playing","map":"d1_trainstation_01","fps":60,"running":false,"runStartedAtMs":null,"finalTime":false}],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d1_trainstation_01","fps":60,"running":false,"runStartedAtMs":null,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":1,"lifecycle":"playing","map":"d1_trainstation_01","mapKnown":true,"fps":60,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "lastFpsPublishAtMs": null
+        },
+        {
+          "at": 1000,
+          "message": {"type":"state","session":"0123abcd","seq":2,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":61,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "returned": true,
+          "emitted": [{"active":true,"lifecycle":"playing","map":"d1_trainstation_01","fps":61,"running":false,"runStartedAtMs":null,"finalTime":false}],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d1_trainstation_01","fps":61,"running":false,"runStartedAtMs":null,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":2,"lifecycle":"playing","map":"d1_trainstation_01","mapKnown":true,"fps":61,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "lastFpsPublishAtMs": 1000
+        },
+        {
+          "at": 14999,
+          "message": {"type":"state","session":"0123abcd","seq":3,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":62,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "returned": false,
+          "emitted": [],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d1_trainstation_01","fps":62,"running":false,"runStartedAtMs":null,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":3,"lifecycle":"playing","map":"d1_trainstation_01","mapKnown":true,"fps":62,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "lastFpsPublishAtMs": 1000
+        },
+        {
+          "at": 15000,
+          "message": {"type":"state","session":"0123abcd","seq":4,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":63,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "returned": false,
+          "emitted": [],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d1_trainstation_01","fps":63,"running":false,"runStartedAtMs":null,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":4,"lifecycle":"playing","map":"d1_trainstation_01","mapKnown":true,"fps":63,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "lastFpsPublishAtMs": 1000
+        },
+        {
+          "at": 15001,
+          "message": {"type":"state","session":"0123abcd","seq":5,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":64,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "returned": false,
+          "emitted": [],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d1_trainstation_01","fps":64,"running":false,"runStartedAtMs":null,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":5,"lifecycle":"playing","map":"d1_trainstation_01","mapKnown":true,"fps":64,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "lastFpsPublishAtMs": 1000
+        },
+        {
+          "at": 29999,
+          "message": {"type":"state","session":"0123abcd","seq":6,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":65,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "returned": true,
+          "emitted": [{"active":true,"lifecycle":"playing","map":"d1_trainstation_01","fps":65,"running":false,"runStartedAtMs":null,"finalTime":false}],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d1_trainstation_01","fps":65,"running":false,"runStartedAtMs":null,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":6,"lifecycle":"playing","map":"d1_trainstation_01","mapKnown":true,"fps":65,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "lastFpsPublishAtMs": 29999
+        },
+        {
+          "at": 30000,
+          "message": {"type":"state","session":"0123abcd","seq":7,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":66,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "returned": false,
+          "emitted": [],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d1_trainstation_01","fps":66,"running":false,"runStartedAtMs":null,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":7,"lifecycle":"playing","map":"d1_trainstation_01","mapKnown":true,"fps":66,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "lastFpsPublishAtMs": 29999
+        },
+        {
+          "at": 30001,
+          "message": {"type":"state","session":"0123abcd","seq":8,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":66,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "returned": false,
+          "emitted": [],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d1_trainstation_01","fps":66,"running":false,"runStartedAtMs":null,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":8,"lifecycle":"playing","map":"d1_trainstation_01","mapKnown":true,"fps":66,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "lastFpsPublishAtMs": 29999
+        },
+        {
+          "at": 31000,
+          "message": {"type":"state","session":"0123abcd","seq":9,"lifecycle":"playing","mapName":"d1_canals_01","fps":67,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "returned": true,
+          "emitted": [{"active":true,"lifecycle":"playing","map":"d1_canals_01","fps":67,"running":false,"runStartedAtMs":null,"finalTime":false}],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d1_canals_01","fps":67,"running":false,"runStartedAtMs":null,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":9,"lifecycle":"playing","map":"d1_canals_01","mapKnown":true,"fps":67,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "lastFpsPublishAtMs": null
+        },
+        {
+          "at": 32000,
+          "message": {"type":"state","session":"0123abcd","seq":10,"lifecycle":"playing","mapName":"d1_canals_01","fps":68,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "returned": true,
+          "emitted": [{"active":true,"lifecycle":"playing","map":"d1_canals_01","fps":68,"running":false,"runStartedAtMs":null,"finalTime":false}],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d1_canals_01","fps":68,"running":false,"runStartedAtMs":null,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":10,"lifecycle":"playing","map":"d1_canals_01","mapKnown":true,"fps":68,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "lastFpsPublishAtMs": 32000
+        },
+        {
+          "at": 46999,
+          "message": {"type":"state","session":"0123abcd","seq":11,"lifecycle":"playing","mapName":"d1_canals_01","fps":69,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "returned": false,
+          "emitted": [],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d1_canals_01","fps":69,"running":false,"runStartedAtMs":null,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":11,"lifecycle":"playing","map":"d1_canals_01","mapKnown":true,"fps":69,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "lastFpsPublishAtMs": 32000
+        },
+        {
+          "at": 47000,
+          "message": {"type":"state","session":"0123abcd","seq":12,"lifecycle":"playing","mapName":"d1_canals_01","fps":70,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "returned": true,
+          "emitted": [{"active":true,"lifecycle":"playing","map":"d1_canals_01","fps":70,"running":false,"runStartedAtMs":null,"finalTime":false}],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d1_canals_01","fps":70,"running":false,"runStartedAtMs":null,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":12,"lifecycle":"playing","map":"d1_canals_01","mapKnown":true,"fps":70,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "lastFpsPublishAtMs": 47000
+        },
+        {
+          "at": 47001,
+          "message": {"type":"state","session":"0123abcd","seq":13,"lifecycle":"playing","mapName":"d1_canals_01","fps":null,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "returned": false,
+          "emitted": [],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d1_canals_01","fps":null,"running":false,"runStartedAtMs":null,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":13,"lifecycle":"playing","map":"d1_canals_01","mapKnown":true,"fps":null,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "lastFpsPublishAtMs": 47000
+        },
+        {
+          "at": 62000,
+          "message": {"type":"state","session":"0123abcd","seq":14,"lifecycle":"playing","mapName":"d1_canals_01","fps":71,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "returned": true,
+          "emitted": [{"active":true,"lifecycle":"playing","map":"d1_canals_01","fps":71,"running":false,"runStartedAtMs":null,"finalTime":false}],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d1_canals_01","fps":71,"running":false,"runStartedAtMs":null,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":14,"lifecycle":"playing","map":"d1_canals_01","mapKnown":true,"fps":71,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "lastFpsPublishAtMs": 62000
+        }
+      ]
+    },
+    {
+      "name": "fps вместе с другим полем публикуется сразу",
+      "steps": [
+        {
+          "at": 0,
+          "message": {"type":"state","session":"0123abcd","seq":1,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "returned": true,
+          "emitted": [{"active":true,"lifecycle":"playing","map":"d1_trainstation_01","fps":60,"running":false,"runStartedAtMs":null,"finalTime":false}],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d1_trainstation_01","fps":60,"running":false,"runStartedAtMs":null,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":1,"lifecycle":"playing","map":"d1_trainstation_01","mapKnown":true,"fps":60,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "lastFpsPublishAtMs": null
+        },
+        {
+          "at": 100,
+          "message": {"type":"state","session":"0123abcd","seq":2,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":61,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "returned": true,
+          "emitted": [{"active":true,"lifecycle":"playing","map":"d1_trainstation_01","fps":61,"running":false,"runStartedAtMs":null,"finalTime":false}],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d1_trainstation_01","fps":61,"running":false,"runStartedAtMs":null,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":2,"lifecycle":"playing","map":"d1_trainstation_01","mapKnown":true,"fps":61,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "lastFpsPublishAtMs": 100
+        },
+        {
+          "at": 200,
+          "message": {"type":"state","session":"0123abcd","seq":3,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":62,"timerRunning":true,"timerCompleted":false,"elapsedMs":100},
+          "returned": true,
+          "emitted": [{"active":true,"lifecycle":"playing","map":"d1_trainstation_01","fps":62,"running":true,"runStartedAtMs":100,"finalTime":false}],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d1_trainstation_01","fps":62,"running":true,"runStartedAtMs":100,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":3,"lifecycle":"playing","map":"d1_trainstation_01","mapKnown":true,"fps":62,"running":true,"runStartedAtMs":100,"finalTime":false,"runSeenOnMap":"d1_trainstation_01"},
+          "lastFpsPublishAtMs": null
+        },
+        {
+          "at": 300,
+          "message": {"type":"state","session":"0123abcd","seq":4,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":63,"timerRunning":true,"timerCompleted":false,"elapsedMs":200},
+          "returned": true,
+          "emitted": [{"active":true,"lifecycle":"playing","map":"d1_trainstation_01","fps":63,"running":true,"runStartedAtMs":100,"finalTime":false}],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d1_trainstation_01","fps":63,"running":true,"runStartedAtMs":100,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":4,"lifecycle":"playing","map":"d1_trainstation_01","mapKnown":true,"fps":63,"running":true,"runStartedAtMs":100,"finalTime":false,"runSeenOnMap":"d1_trainstation_01"},
+          "lastFpsPublishAtMs": 300
+        },
+        {
+          "at": 400,
+          "message": {"type":"state","session":"0123abcd","seq":5,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":64,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "returned": true,
+          "emitted": [{"active":true,"lifecycle":"playing","map":"d1_trainstation_01","fps":64,"running":false,"runStartedAtMs":null,"finalTime":false}],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d1_trainstation_01","fps":64,"running":false,"runStartedAtMs":null,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":5,"lifecycle":"playing","map":"d1_trainstation_01","mapKnown":true,"fps":64,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":"d1_trainstation_01"},
+          "lastFpsPublishAtMs": null
+        },
+        {
+          "at": 500,
+          "message": {"type":"state","session":"0123abcd","seq":6,"lifecycle":"playing","mapName":"d1_trainstation_01","fps":65,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "returned": true,
+          "emitted": [{"active":true,"lifecycle":"playing","map":"d1_trainstation_01","fps":65,"running":false,"runStartedAtMs":null,"finalTime":false}],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d1_trainstation_01","fps":65,"running":false,"runStartedAtMs":null,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":6,"lifecycle":"playing","map":"d1_trainstation_01","mapKnown":true,"fps":65,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":"d1_trainstation_01"},
+          "lastFpsPublishAtMs": 500
+        }
+      ]
+    },
+    {
+      "name": "карта известна и неизвестна",
+      "steps": [
+        {
+          "at": 1000,
+          "message": {"type":"state","session":"0123abcd","seq":1,"lifecycle":"playing","mapName":"d1_eli_01","fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "returned": true,
+          "emitted": [{"active":true,"lifecycle":"playing","map":"d1_eli_01","fps":60,"running":false,"runStartedAtMs":null,"finalTime":false}],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d1_eli_01","fps":60,"running":false,"runStartedAtMs":null,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":1,"lifecycle":"playing","map":"d1_eli_01","mapKnown":true,"fps":60,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "lastFpsPublishAtMs": null
+        },
+        {
+          "at": 2000,
+          "message": {"type":"state","session":"0123abcd","seq":2,"lifecycle":"playing","mapName":"d1_eli_09","fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "returned": true,
+          "emitted": [{"active":true,"lifecycle":"playing","map":"d1_eli_09","fps":60,"running":false,"runStartedAtMs":null,"finalTime":false}],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d1_eli_09","fps":60,"running":false,"runStartedAtMs":null,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":2,"lifecycle":"playing","map":"d1_eli_09","mapKnown":false,"fps":60,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "lastFpsPublishAtMs": null
+        },
+        {
+          "at": 3000,
+          "message": {"type":"state","session":"0123abcd","seq":3,"lifecycle":"playing","mapName":"d1_eli_01","fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "returned": true,
+          "emitted": [{"active":true,"lifecycle":"playing","map":"d1_eli_01","fps":60,"running":false,"runStartedAtMs":null,"finalTime":false}],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d1_eli_01","fps":60,"running":false,"runStartedAtMs":null,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":3,"lifecycle":"playing","map":"d1_eli_01","mapKnown":true,"fps":60,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "lastFpsPublishAtMs": null
+        },
+        {
+          "at": 4000,
+          "message": {"type":"state","session":"0123abcd","seq":4,"lifecycle":"menu","mapName":null,"fps":30,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "returned": true,
+          "emitted": [{"active":true,"lifecycle":"menu","map":null,"fps":30,"running":false,"runStartedAtMs":null,"finalTime":false}],
+          "snapshot": {"active":true,"lifecycle":"menu","map":null,"fps":30,"running":false,"runStartedAtMs":null,"finalTime":false},
+          "diagnostics": {"lifecycle":"menu","hasMap":false},
+          "state": {"active":true,"session":"0123abcd","lastSeq":4,"lifecycle":"menu","map":null,"mapKnown":false,"fps":30,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null},
+          "lastFpsPublishAtMs": null
+        }
+      ]
+    },
+    {
+      "name": "забег на другой карте после перерыва",
+      "steps": [
+        {
+          "at": 1000,
+          "message": {"type":"state","session":"0123abcd","seq":1,"lifecycle":"playing","mapName":"d1_canals_01","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":5000},
+          "returned": true,
+          "emitted": [{"active":true,"lifecycle":"playing","map":"d1_canals_01","fps":60,"running":true,"runStartedAtMs":-4000,"finalTime":false}],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d1_canals_01","fps":60,"running":true,"runStartedAtMs":-4000,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":1,"lifecycle":"playing","map":"d1_canals_01","mapKnown":true,"fps":60,"running":true,"runStartedAtMs":-4000,"finalTime":false,"runSeenOnMap":"d1_canals_01"},
+          "lastFpsPublishAtMs": null
+        },
+        {
+          "at": 2000,
+          "message": {"type":"state","session":"0123abcd","seq":2,"lifecycle":"playing","mapName":"d1_canals_01","fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":5500},
+          "returned": true,
+          "emitted": [{"active":true,"lifecycle":"playing","map":"d1_canals_01","fps":60,"running":false,"runStartedAtMs":null,"finalTime":false}],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d1_canals_01","fps":60,"running":false,"runStartedAtMs":null,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":2,"lifecycle":"playing","map":"d1_canals_01","mapKnown":true,"fps":60,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":"d1_canals_01"},
+          "lastFpsPublishAtMs": null
+        },
+        {
+          "at": 3000,
+          "message": {"type":"state","session":"0123abcd","seq":3,"lifecycle":"playing","mapName":"d1_canals_01","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":5600},
+          "returned": true,
+          "emitted": [{"active":true,"lifecycle":"playing","map":"d1_canals_01","fps":60,"running":true,"runStartedAtMs":-2600,"finalTime":false}],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d1_canals_01","fps":60,"running":true,"runStartedAtMs":-2600,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":3,"lifecycle":"playing","map":"d1_canals_01","mapKnown":true,"fps":60,"running":true,"runStartedAtMs":-2600,"finalTime":false,"runSeenOnMap":"d1_canals_01"},
+          "lastFpsPublishAtMs": null
+        },
+        {
+          "at": 4000,
+          "message": {"type":"state","session":"0123abcd","seq":4,"lifecycle":"playing","mapName":"d1_canals_01","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":6600},
+          "returned": false,
+          "emitted": [],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d1_canals_01","fps":60,"running":true,"runStartedAtMs":-2600,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":4,"lifecycle":"playing","map":"d1_canals_01","mapKnown":true,"fps":60,"running":true,"runStartedAtMs":-2600,"finalTime":false,"runSeenOnMap":"d1_canals_01"},
+          "lastFpsPublishAtMs": null
+        },
+        {
+          "at": 5000,
+          "message": {"type":"state","session":"0123abcd","seq":5,"lifecycle":"menu","mapName":null,"fps":30,"timerRunning":false,"timerCompleted":false,"elapsedMs":null},
+          "returned": true,
+          "emitted": [{"active":true,"lifecycle":"menu","map":null,"fps":30,"running":false,"runStartedAtMs":null,"finalTime":false}],
+          "snapshot": {"active":true,"lifecycle":"menu","map":null,"fps":30,"running":false,"runStartedAtMs":null,"finalTime":false},
+          "diagnostics": {"lifecycle":"menu","hasMap":false},
+          "state": {"active":true,"session":"0123abcd","lastSeq":5,"lifecycle":"menu","map":null,"mapKnown":false,"fps":30,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":"d1_canals_01"},
+          "lastFpsPublishAtMs": null
+        },
+        {
+          "at": 6000,
+          "message": {"type":"state","session":"0123abcd","seq":6,"lifecycle":"playing","mapName":"d1_canals_01","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":100},
+          "returned": true,
+          "emitted": [{"active":true,"lifecycle":"playing","map":"d1_canals_01","fps":60,"running":true,"runStartedAtMs":5900,"finalTime":false}],
+          "snapshot": {"active":true,"lifecycle":"playing","map":"d1_canals_01","fps":60,"running":true,"runStartedAtMs":5900,"finalTime":false},
+          "diagnostics": {"lifecycle":"playing","hasMap":true},
+          "state": {"active":true,"session":"0123abcd","lastSeq":6,"lifecycle":"playing","map":"d1_canals_01","mapKnown":true,"fps":60,"running":true,"runStartedAtMs":5900,"finalTime":false,"runSeenOnMap":"d1_canals_01"},
+          "lastFpsPublishAtMs": null
+        }
+      ]
+    }
+  ],
+  "firstPublish": true,
+  "throwingHandler": {"returned":true,"warnings":["[game-presence] потребитель состояния упал: обработчик упал"],"state":{"active":true,"session":"0123abcd","lastSeq":1,"lifecycle":"playing","map":"d1_trainstation_01","mapKnown":true,"fps":60,"running":false,"runStartedAtMs":null,"finalTime":false,"runSeenOnMap":null}}
+}

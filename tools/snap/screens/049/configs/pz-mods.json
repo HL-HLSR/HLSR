@@ -1,0 +1,158 @@
+{
+  "id": "configs/pz-mods",
+  "state": "Ghosting: моды (G10) — пять плиток, Condensed HUD и SMG включены (кадры «до / после» и перекраски)",
+  "base": "configs/_pz",
+  "invoke": {
+    "custom-packs-get": {
+      "status": "ok",
+      "installed": true,
+      "packs": [
+        {
+          "id": "condensed-hud",
+          "kind": "hud",
+          "author": null,
+          "files": [
+            "materials/vgui/hud/icon_acid.vmt",
+            "materials/vgui/hud/icon_acid.vtf",
+            "materials/vgui/hud/icon_blank.vmt",
+            "materials/vgui/hud/icon_blank.vtf",
+            "materials/vgui/hud/icon_blast.vmt",
+            "materials/vgui/hud/icon_blast.vtf",
+            "materials/vgui/hud/icon_energy.vmt",
+            "materials/vgui/hud/icon_energy.vtf",
+            "materials/vgui/hud/icon_heat.vmt",
+            "materials/vgui/hud/icon_heat.vtf",
+            "materials/vgui/hud/icon_oxygen.vmt",
+            "materials/vgui/hud/icon_oxygen.vtf",
+            "materials/vgui/hud/icon_poison.vmt",
+            "materials/vgui/hud/icon_poison.vtf",
+            "materials/vgui/hud/icon_radiation.vmt",
+            "materials/vgui/hud/icon_radiation.vtf",
+            "materials/vgui/hud/icon_shock.vmt",
+            "materials/vgui/hud/icon_shock.vtf",
+            "resource/clientscheme.res",
+            "resource/valve_english.txt",
+            "resource/valve_russian.txt",
+            "resource/synergy_english.txt",
+            "resource/Hype font.txt",
+            "resource/LICENSE_OFL.txt",
+            "resource/din1451alt.ttf",
+            "resource/din1451alt2.ttf",
+            "resource/FacileSans.ttf",
+            "resource/halflife2.ttf",
+            "resource/hl2crosshairs.ttf",
+            "resource/HL2EP2.ttf",
+            "resource/HL2MMod.ttf",
+            "resource/HL2MP.ttf",
+            "resource/HYPE.ttf",
+            "resource/K12HL2.ttf",
+            "resource/lostcoast.ttf",
+            "resource/nokia-pure-text.ttf",
+            "resource/RealBeta's Weapon Icons.ttf",
+            "resource/SynFont.ttf",
+            "resource/NotoSans-Bold.ttf",
+            "resource/NotoSans-BoldItalic.ttf",
+            "resource/NotoSans-Italic.ttf",
+            "resource/NotoSans-Regular.ttf",
+            "resource/Roboto-Black.ttf",
+            "resource/Roboto-BlackItalic.ttf",
+            "resource/Roboto-Bold.ttf",
+            "resource/Roboto-BoldItalic.ttf",
+            "resource/Roboto-Italic.ttf",
+            "resource/Roboto-Light.ttf",
+            "resource/Roboto-LightItalic.ttf",
+            "resource/Roboto-Medium.ttf",
+            "resource/Roboto-MediumItalic.ttf",
+            "resource/Roboto-Regular.ttf",
+            "resource/Roboto-Thin.ttf",
+            "resource/Roboto-ThinItalic.ttf",
+            "resource/RobotoCondensed-Bold.ttf",
+            "resource/RobotoCondensed-BoldItalic.ttf",
+            "resource/RobotoCondensed-Italic.ttf",
+            "resource/RobotoCondensed-Light.ttf",
+            "resource/RobotoCondensed-LightItalic.ttf",
+            "resource/RobotoCondensed-Regular.ttf",
+            "scripts/hudanimations.txt",
+            "scripts/hudanimations_manifest.txt",
+            "scripts/hudanimations_syn.txt",
+            "scripts/hudlayout.res"
+          ],
+          "enabled": true,
+          "available": true
+        },
+        {
+          "id": "m9-bayonet",
+          "kind": "models",
+          "author": null,
+          "files": [
+            "models/weapons/v_crowbar.mdl",
+            "models/weapons/v_crowbar.ani",
+            "models/weapons/v_crowbar.vvd",
+            "models/weapons/v_crowbar.dx80.vtx",
+            "models/weapons/v_crowbar.dx90.vtx",
+            "models/weapons/v_crowbar.sw.vtx",
+            "materials/models/csgo_knife/knife_m9_bay.vmt",
+            "materials/models/csgo_knife/knife_m9_bay.vtf",
+            "materials/models/csgo_knife/knife_m9_bay_ao.vtf",
+            "materials/models/csgo_knife/knife_m9_bay_exponent.vtf"
+          ],
+          "enabled": false,
+          "available": true
+        },
+        {
+          "id": "signed-smg",
+          "kind": "skins",
+          "author": "Eold",
+          "files": [
+            "materials/models/weapons/v_smg1/v_smg1_sheet.vtf"
+          ],
+          "enabled": true,
+          "available": true
+        },
+        {
+          "id": "signed-shotgun",
+          "kind": "skins",
+          "author": "Eold",
+          "files": [
+            "materials/models/weapons/v_shotgun/vshotgun_albedo.vtf"
+          ],
+          "enabled": false,
+          "available": true
+        },
+        {
+          "id": "signed-rpg",
+          "kind": "skins",
+          "author": "Eold",
+          "files": [
+            "materials/models/weapons/v_rocket_launcher/rocket launcher sheet.vtf"
+          ],
+          "enabled": false,
+          "available": true
+        }
+      ]
+    },
+    "game-personalization-preview-asset": {
+      "status": "missing"
+    }
+  },
+  "steps": [
+    {
+      "click": {
+        "css": ".launcher-topbar__tab:nth-child(3)",
+        "view": "topbar-tab-configs"
+      }
+    },
+    {
+      "click": {
+        "css": "#gx-tab-mods",
+        "view": "gx-tab-mods"
+      }
+    },
+    {
+      "move": [
+        800,
+        880
+      ]
+    }
+  ]
+}

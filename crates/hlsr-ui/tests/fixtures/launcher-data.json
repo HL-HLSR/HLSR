@@ -1,0 +1,44 @@
+{
+  "gameArt": {
+    "50": {"hero":"screenshots/opposing-force-background.jpg","logo":"launcher/logos/opposing-force.svg","accent":"#7fd334","accentSoft":"rgba(127, 211, 52, 0.16)"},
+    "70": {"hero":"launcher/hl1-bg.jpg","heroFront":"launcher/hl1-front.png","heroFrontLayout":{"--front-size":"auto 170cqh","--front-pos":"calc(50% + 22cqw) 10cqh","--front-origin-x":"72cqw","--front-origin-y":"70cqh"},"logo":"launcher/logos/half-life.svg","accent":"#ffa41c","accentSoft":"rgba(255, 164, 28, 0.16)"},
+    "130": {"hero":"screenshots/blue-shift-background.jpg","logo":"launcher/logos/blue-shift.svg","accent":"#3fa7ff","accentSoft":"rgba(63, 167, 255, 0.16)"},
+    "218": {"hero":"launcher/hl2-ghosting-bg.png","episodesHero":"launcher/hl2-episodes-bg.jpg","heroFront":"launcher/hl2-ghosting-front.webp","logo":"launcher/logos/ghosting.svg","accent":"#ff7a1c","accentSoft":"rgba(255, 122, 28, 0.16)"},
+    "220": {"hero":"launcher/hero-hl2.jpg","heroFront":"launcher/hl2-front.webp","heroFrontLayout":{"--front-size":"auto 100cqh","--front-pos":"calc(var(--front-bleed-x) + 106cqw - 178cqh) 9cqh","--front-origin-x":"70cqw","--front-origin-y":"70cqh"},"logo":"launcher/logos/half-life-2.svg","accent":"#ff7a1c","accentSoft":"rgba(255, 122, 28, 0.16)"},
+    "380": {"hero":"launcher/hero-hl2.jpg","heroFront":"launcher/hl2-front.webp","heroFrontLayout":{"--front-size":"auto 100cqh","--front-pos":"calc(var(--front-bleed-x) + 106cqw - 178cqh) 9cqh","--front-origin-x":"70cqw","--front-origin-y":"70cqh"},"logo":"launcher/logos/episode-one.svg","accent":"#ffb01c","accentSoft":"rgba(255, 176, 28, 0.16)"},
+    "420": {"hero":"launcher/hero-hl2.jpg","heroFront":"launcher/hl2-front.webp","heroFrontLayout":{"--front-size":"auto 100cqh","--front-pos":"calc(var(--front-bleed-x) + 106cqw - 178cqh) 9cqh","--front-origin-x":"70cqw","--front-origin-y":"70cqh"},"logo":"launcher/logos/episode-two.svg","accent":"#ffd21c","accentSoft":"rgba(255, 210, 28, 0.16)"}
+  },
+  "toolArt": {"livesplit":{"logo":"launcher/logos/livesplit.svg"}},
+  "demoState": {
+    "50": {"lastLaunchDays":6,"buildUpdated":"02.02.2025 19:05","builds":["GoldSrc Package","WON","Steam Legacy"],"download":{"done":513,"total":513}},
+    "70": {"lastLaunchDays":null,"buildUpdated":null,"builds":["WON 2005"],"download":null},
+    "130": {"lastLaunchDays":null,"buildUpdated":"17.01.2025 12:44","builds":["GoldSrc Package","Steam Legacy"],"download":{"done":285,"total":285}},
+    "218": {"lastLaunchDays":null,"buildUpdated":null,"builds":["HL1 MOVEMENT","Episode One","Episode Two"],"episodes":{"Episode One":"ep1","Episode Two":"ep2"},"download":null},
+    "220": {"lastLaunchDays":null,"buildUpdated":null,"builds":["4260","2707","5288"],"download":null}
+  },
+  "shortNames": {"50":"Opposing Force","70":"Half-Life","130":"Blue Shift","218":"HL2 Ghosting","220":"Half-Life 2","380":"HL2: Episode One","420":"HL2: Episode Two"},
+  "heroSubtitles": {"218":"Ghosting Mod: Renewed"},
+  "deliveryIds": {"70":"hl1-won","218":"ghosting-renewed","220":"hl2-4260"},
+  "ghostingGameId": "218",
+  "goldsrcGameIds": ["70"],
+  "availability": {"available":["218","220","70"],"default":"218","order":["218","220","70"],"hidden":["50","130","380","420"]},
+  "sizes": {
+    "launcher/hero-hl2.jpg": 258630,
+    "launcher/hl1-bg.jpg": 170174,
+    "launcher/hl1-front.png": 423870,
+    "launcher/hl2-episodes-bg.jpg": 508149,
+    "launcher/hl2-front.webp": 314464,
+    "launcher/hl2-ghosting-bg.png": 1586056,
+    "launcher/hl2-ghosting-front.webp": 532344,
+    "launcher/logos/blue-shift.svg": 4277,
+    "launcher/logos/episode-one.svg": 4236,
+    "launcher/logos/episode-two.svg": 4936,
+    "launcher/logos/ghosting.svg": 2594,
+    "launcher/logos/half-life-2.svg": 2299,
+    "launcher/logos/half-life.svg": 808,
+    "launcher/logos/livesplit.svg": 506,
+    "launcher/logos/opposing-force.svg": 3211,
+    "screenshots/blue-shift-background.jpg": 1205015,
+    "screenshots/opposing-force-background.jpg": 179624
+  }
+}

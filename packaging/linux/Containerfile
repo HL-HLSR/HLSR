@@ -1,0 +1,21 @@
+# Сборка лаунчера для Linux на glibc 2.27 (Ubuntu 18.04): бинарник работает
+# на любом дистрибутиве с glibc 2.27 и новее. scripts/slint/build-linux.sh.
+FROM docker.io/library/ubuntu:18.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+# GPUI (gpui-pre-linux): libfontconfig1-dev — шрифты (zed-font-kit → yeslogic-fontconfig-sys;
+# freetype 2.8 из 18.04 старше нужной freetype-sys, свою копию она собирает сама), libxkbcommon-dev
+# и libxkbcommon-x11-dev — клавиатура (компонуются). libasound2-dev — звук (cpal → alsa-sys).
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends \
+      build-essential pkg-config curl ca-certificates binutils libfontconfig1-dev \
+      libxkbcommon-dev libxkbcommon-x11-dev libasound2-dev \
+ && rm -rf /var/lib/apt/lists/*
+
+ENV RUSTUP_HOME=/opt/rustup CARGO_HOME=/opt/cargo PATH=/opt/cargo/bin:$PATH
+# Версия и состав — как в rust-toolchain.toml (иначе rustup доставит их при
+# каждом запуске контейнера).
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs \
+      | sh -s -- -y --profile minimal --default-toolchain 1.98.0 \
+        --component rustfmt --component clippy --target x86_64-pc-windows-msvc \
+ && rustc --version

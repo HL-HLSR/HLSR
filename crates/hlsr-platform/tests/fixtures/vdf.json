@@ -1,0 +1,178 @@
+{
+  "parse": [
+    {
+      "text": "\"libraryfolders\"\r\n{\r\n\t\"0\"\r\n\t{\r\n\t\t\"path\"\t\t\"C:\\\\Program Files (x86)\\\\Steam\"\r\n\t\t\"label\"\t\t\"\"\r\n\t\t\"contentid\"\t\t\"1234567890123456789\"\r\n\t\t\"totalsize\"\t\t\"0\"\r\n\t\t\"update_clean_bytes_tally\"\t\t\"1234567\"\r\n\t\t\"time_last_update_corruption\"\t\t\"0\"\r\n\t\t\"apps\"\r\n\t\t{\r\n\t\t\t\"228980\"\t\t\"346178\"\r\n\t\t\t\"243730\"\t\t\"7800000\"\r\n\t\t}\r\n\t}\r\n\t\"1\"\r\n\t{\r\n\t\t\"path\"\t\t\"D:\\\\SteamLibrary\"\r\n\t\t\"label\"\t\t\"Игры\"\r\n\t\t\"apps\"\r\n\t\t{\r\n\t\t\t\"1136490\"\t\t\"5000\"\r\n\t\t}\r\n\t}\r\n}\r\n",
+      "ok": {"libraryfolders":{"0":{"path":"C:\\Program Files (x86)\\Steam","label":"","contentid":"1234567890123456789","totalsize":"0","update_clean_bytes_tally":"1234567","time_last_update_corruption":"0","apps":{"228980":"346178","243730":"7800000"}},"1":{"path":"D:\\SteamLibrary","label":"Игры","apps":{"1136490":"5000"}}}}
+    },
+    {"text":"\"LibraryFolders\"\n{\n\t\"TimeNextStatsReport\"\t\t\"1500000000\"\n\t\"ContentStatsID\"\t\t\"-1234567890123456789\"\n\t\"1\"\t\t\"D:\\\\Games\\\\Steam\"\n\t\"2\"\t\t\"E:\\\\Steam Library\"\n}\n","ok":{"LibraryFolders":{"1":"D:\\Games\\Steam","2":"E:\\Steam Library","TimeNextStatsReport":"1500000000","ContentStatsID":"-1234567890123456789"}}},
+    {
+      "text": "\"users\"\r\n{\r\n\t\"76561198000000001\"\r\n\t{\r\n\t\t\"AccountName\"\t\t\"user_one\"\r\n\t\t\"PersonaName\"\t\t\"Имя Игрока\"\r\n\t\t\"RememberPassword\"\t\t\"1\"\r\n\t\t\"WantsOfflineMode\"\t\t\"0\"\r\n\t\t\"SkipOfflineModeWarning\"\t\t\"0\"\r\n\t\t\"AllowAutoLogin\"\t\t\"1\"\r\n\t\t\"MostRecent\"\t\t\"1\"\r\n\t\t\"Timestamp\"\t\t\"1700000000\"\r\n\t}\r\n\t\"76561198000000002\"\r\n\t{\r\n\t\t\"AccountName\"\t\t\"user_two\"\r\n\t\t\"PersonaName\"\t\t\"  Padded \\\"Name\\\"  \"\r\n\t\t\"MostRecent\"\t\t\"0\"\r\n\t}\r\n}\r\n",
+      "ok": {"users":{"76561198000000001":{"AccountName":"user_one","PersonaName":"Имя Игрока","RememberPassword":"1","WantsOfflineMode":"0","SkipOfflineModeWarning":"0","AllowAutoLogin":"1","MostRecent":"1","Timestamp":"1700000000"},"76561198000000002":{"AccountName":"user_two","PersonaName":"  Padded \"Name\"  ","MostRecent":"0"}}}
+    },
+    {
+      "text": "\"AppState\"\n{\n\t\"appid\"\t\t\"243730\"\n\t\"Universe\"\t\t\"1\"\n\t\"name\"\t\t\"Source SDK Base 2013 Multiplayer\"\n\t\"StateFlags\"\t\t\"4\"\n\t\"installdir\"\t\t\"Source SDK Base 2013 Multiplayer\"\n\t\"LastUpdated\"\t\t\"1700000000\"\n\t\"SizeOnDisk\"\t\t\"1234567890\"\n\t\"buildid\"\t\t\"1234567\"\n\t\"InstalledDepots\"\n\t{\n\t\t\"243731\"\n\t\t{\n\t\t\t\"manifest\"\t\t\"1234567890123456789\"\n\t\t\t\"size\"\t\t\"1234\"\n\t\t}\n\t}\n\t\"UserConfig\"\n\t{\n\t\t\"language\"\t\t\"russian\"\n\t}\n}\n",
+      "ok": {"AppState":{"appid":"243730","Universe":"1","name":"Source SDK Base 2013 Multiplayer","StateFlags":"4","installdir":"Source SDK Base 2013 Multiplayer","LastUpdated":"1700000000","SizeOnDisk":"1234567890","buildid":"1234567","InstalledDepots":{"243731":{"manifest":"1234567890123456789","size":"1234"}},"UserConfig":{"language":"russian"}}}
+    },
+    {
+      "text": "\"UserLocalConfigStore\"\n{\n\t\"Software\"\n\t{\n\t\t\"Valve\"\n\t\t{\n\t\t\t\"Steam\"\n\t\t\t{\n\t\t\t\t\"apps\"\n\t\t\t\t{\n\t\t\t\t\t\"243730\"\n\t\t\t\t\t{\n\t\t\t\t\t\t\"LaunchOptions\"\t\t\"-novid -console\"\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n\t\"friends\"\n\t{\n\t\t\"42\"\t\t{ \"name\" \"Owner\" }\n\t\t\"123\"\t\t{ \"name\" \"Friend\" \"NameTag\" \"\" }\n\t\t\"7\"\t\t{ \"name\" \"Seven\" }\n\t\t\"01\"\t\t{ \"name\" \"Leading zero\" }\n\t\t\"4294967295\"\t\t{ \"name\" \"Too big for an index\" }\n\t\t\"4294967294\"\t\t{ \"name\" \"Last index\" }\n\t\t\"abc\"\t\t{ \"name\" \"Letters\" }\n\t}\n}\n",
+      "ok": {"UserLocalConfigStore":{"Software":{"Valve":{"Steam":{"apps":{"243730":{"LaunchOptions":"-novid -console"}}}}},"friends":{"7":{"name":"Seven"},"42":{"name":"Owner"},"123":{"name":"Friend","NameTag":""},"4294967294":{"name":"Last index"},"01":{"name":"Leading zero"},"4294967295":{"name":"Too big for an index"},"abc":{"name":"Letters"}}}}
+    },
+    {"text":"","ok":{}},
+    {"text":"   \r\n\t\n","ok":{}},
+    {"text":"// только комментарий","ok":{}},
+    {"text":"// комментарий\n\"a\" \"b\" // после значения\n","ok":{"a":"b"}},
+    {"text":"\"a\" \"b\"","ok":{"a":"b"}},
+    {"text":"\"a\"\n{\n}\n","ok":{"a":{}}},
+    {"text":"\"a\" { \"b\" { \"c\" { } } }","ok":{"a":{"b":{"c":{}}}}},
+    {"text":"key value","ok":{"key":"value"}},
+    {"text":"key value\nother {\n inner 1 }\n","ok":{"key":"value","other":{"inner":"1"}}},
+    {"text":"a//b c","error":{"code":"LAUNCH_CONFIG_INVALID","message":"VDF, строка 1: у ключа \"a\" нет значения"}},
+    {"text":"a b//c","ok":{"a":"b"}},
+    {"text":"k v1\nk v2","ok":{"k":"v2"}},
+    {"text":"num 42 neg -7 flt 1.5 pth C:\\Games\\X","ok":{"num":"42","neg":"-7","flt":"1.5","pth":"C:\\Games\\X"}},
+    {"text":"\"a\" \"b\" [$WIN32]\n\"c\" \"d\" [$LINUX]","ok":{"a":"b","c":"d"}},
+    {"text":"\"a\" [$WIN32] \"b\"","ok":{"a":"b"}},
+    {"text":"\"a\" \"b\" [$WIN32","error":{"code":"LAUNCH_CONFIG_INVALID","message":"VDF, строка 1: незакрытая условная метка ["}},
+    {"text":"[$X]","ok":{}},
+    {"text":"\"a\"\n[$X\n]\n\"b\"","ok":{"a":"b"}},
+    {"text":"\"a\\nb\" \"c\\td\"","ok":{"a\nb":"c\td"}},
+    {"text":"\"a\\\"b\" \"c\\\\d\"","ok":{"a\"b":"c\\d"}},
+    {"text":"\"a\\rb\" \"c\\xd\"","ok":{"a\rb":"c\\xd"}},
+    {"text":"\"a\\\"","error":{"code":"LAUNCH_CONFIG_INVALID","message":"VDF, строка 1: незакрытая строка"}},
+    {"text":"\"a\\","error":{"code":"LAUNCH_CONFIG_INVALID","message":"VDF, строка 1: незакрытая строка"}},
+    {"text":"\"path\" \"C:\\\\Program Files (x86)\\\\Steam\"","ok":{"path":"C:\\Program Files (x86)\\Steam"}},
+    {"text":"\"path\" \"C:\\Program Files\"","ok":{"path":"C:\\Program Files"}},
+    {"text":"\"multi\nline\" \"v\"","ok":{"multi\nline":"v"}},
+    {"text":"\"a\" \"multi\r\nline\"","ok":{"a":"multi\r\nline"}},
+    {"text":"\"a\" \"1\" \"a\" \"2\"","ok":{"a":"2"}},
+    {"text":"\"a\" { \"x\" \"1\" } \"a\" \"str\"","ok":{"a":"str"}},
+    {"text":"\"a\" \"str\" \"a\" { \"x\" \"1\" }","ok":{"a":{"x":"1"}}},
+    {"text":"\"10\" \"a\" \"2\" \"b\" \"x\" \"c\" \"1\" \"d\" \"02\" \"e\"","ok":{"1":"d","2":"b","10":"a","x":"c","02":"e"}},
+    {"text":"\"__proto__\" \"x\" \"y\" \"z\"","ok":{"y":"z"}},
+    {"text":"\"__proto__\" { \"a\" \"b\" } \"c\" \"d\"","ok":{"c":"d"}},
+    {"text":"\"constructor\" \"x\" \"toString\" \"y\" \"hasOwnProperty\" { \"z\" \"1\" }","ok":{"constructor":"x","toString":"y","hasOwnProperty":{"z":"1"}}},
+    {"text":"\"\" \"empty key\" \"empty value\" \"\"","ok":{"":"empty key","empty value":""}},
+    {"text":"\"ключ\" \"значение\" \"😀\" \"🙂\"","ok":{"ключ":"значение","😀":"🙂"}},
+    {"text":"﻿\"a\" \"b\"","error":{"code":"LAUNCH_CONFIG_INVALID","message":"VDF, строка 1: неожиданный символ \"﻿\""}},
+    {"text":"\"a\" \"b\"","error":{"code":"LAUNCH_CONFIG_INVALID","message":"VDF, строка 1: неожиданный символ \" \""}},
+    {"text":"\"a\" \"b\" \"c\" \"d\"","error":{"code":"LAUNCH_CONFIG_INVALID","message":"VDF, строка 1: неожиданный символ \" \""}},
+    {"text":"\"a\"","error":{"code":"LAUNCH_CONFIG_INVALID","message":"VDF, строка 1: у ключа \"a\" нет значения"}},
+    {"text":"\"a\" {","error":{"code":"LAUNCH_CONFIG_INVALID","message":"VDF, строка ?: неожиданный конец файла: не хватает }"}},
+    {"text":"\"a\" { \"b\"","error":{"code":"LAUNCH_CONFIG_INVALID","message":"VDF, строка 1: у ключа \"b\" нет значения"}},
+    {"text":"\"a\" { \"b\" \"c\" ","error":{"code":"LAUNCH_CONFIG_INVALID","message":"VDF, строка ?: неожиданный конец файла: не хватает }"}},
+    {"text":"}","error":{"code":"LAUNCH_CONFIG_INVALID","message":"VDF, строка 1: лишняя закрывающая скобка"}},
+    {"text":"\"a\" \"b\" }","error":{"code":"LAUNCH_CONFIG_INVALID","message":"VDF, строка 1: лишняя закрывающая скобка"}},
+    {"text":"\"a\" { } }","error":{"code":"LAUNCH_CONFIG_INVALID","message":"VDF, строка 1: лишняя закрывающая скобка"}},
+    {"text":"{ }","error":{"code":"LAUNCH_CONFIG_INVALID","message":"VDF, строка 1: ожидался ключ, а не \"{\""}},
+    {"text":"\"a\" { { } }","error":{"code":"LAUNCH_CONFIG_INVALID","message":"VDF, строка 1: ожидался ключ, а не \"{\""}},
+    {"text":"\"a\" }","error":{"code":"LAUNCH_CONFIG_INVALID","message":"VDF, строка 1: у ключа \"a\" вместо значения \"}\""}},
+    {"text":"\"a","error":{"code":"LAUNCH_CONFIG_INVALID","message":"VDF, строка 1: незакрытая строка"}},
+    {"text":"\"a\" \"b","error":{"code":"LAUNCH_CONFIG_INVALID","message":"VDF, строка 1: незакрытая строка"}},
+    {"text":"\"a\" \"b\n","error":{"code":"LAUNCH_CONFIG_INVALID","message":"VDF, строка 2: незакрытая строка"}},
+    {"text":"\u000b\"a\" \"b\"","error":{"code":"LAUNCH_CONFIG_INVALID","message":"VDF, строка 1: неожиданный символ \"\u000b\""}},
+    {"text":"\f","error":{"code":"LAUNCH_CONFIG_INVALID","message":"VDF, строка 1: неожиданный символ \"\f\""}},
+    {"text":"\"a\" \"b\"\n\n\n}","error":{"code":"LAUNCH_CONFIG_INVALID","message":"VDF, строка 4: лишняя закрывающая скобка"}},
+    {"text":"\"k\" { \"v\" \"w\" }","ok":{"k":{"v":"w"}}},
+    {
+      "text": "\"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"v\" \"w\" } } } } } } } } } } } } } } } } } } } } } } } } } } } } } } }",
+      "ok": {"k":{"k":{"k":{"k":{"k":{"k":{"k":{"k":{"k":{"k":{"k":{"k":{"k":{"k":{"k":{"k":{"k":{"k":{"k":{"k":{"k":{"k":{"k":{"k":{"k":{"k":{"k":{"k":{"k":{"k":{"k":{"v":"w"}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}
+    },
+    {
+      "text": "\"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"v\" \"w\" } } } } } } } } } } } } } } } } } } } } } } } } } } } } } } } }",
+      "ok": {"k":{"k":{"k":{"k":{"k":{"k":{"k":{"k":{"k":{"k":{"k":{"k":{"k":{"k":{"k":{"k":{"k":{"k":{"k":{"k":{"k":{"k":{"k":{"k":{"k":{"k":{"k":{"k":{"k":{"k":{"k":{"k":{"v":"w"}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}
+    },
+    {
+      "text": "\"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"v\" \"w\" } } } } } } } } } } } } } } } } } } } } } } } } } } } } } } } } }",
+      "error": {"code":"LAUNCH_CONFIG_INVALID","message":"VDF, строка 1: слишком глубокая вложенность"}
+    },
+    {
+      "text": "\"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"k\" { \"v\" \"w\" } } } } } } } } } } } } } } } } } } } } } } } } } } } } } } } } } } } } } } } }",
+      "error": {"code":"LAUNCH_CONFIG_INVALID","message":"VDF, строка 1: слишком глубокая вложенность"}
+    }
+  ],
+  "getInsensitive": [
+    {
+      "text": "\"UserLocalConfigStore\"\n{\n\t\"Software\"\n\t{\n\t\t\"Valve\"\n\t\t{\n\t\t\t\"Steam\"\n\t\t\t{\n\t\t\t\t\"apps\"\n\t\t\t\t{\n\t\t\t\t\t\"243730\"\n\t\t\t\t\t{\n\t\t\t\t\t\t\"LaunchOptions\"\t\t\"-novid -console\"\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n\t\"friends\"\n\t{\n\t\t\"42\"\t\t{ \"name\" \"Owner\" }\n\t\t\"123\"\t\t{ \"name\" \"Friend\" \"NameTag\" \"\" }\n\t\t\"7\"\t\t{ \"name\" \"Seven\" }\n\t\t\"01\"\t\t{ \"name\" \"Leading zero\" }\n\t\t\"4294967295\"\t\t{ \"name\" \"Too big for an index\" }\n\t\t\"4294967294\"\t\t{ \"name\" \"Last index\" }\n\t\t\"abc\"\t\t{ \"name\" \"Letters\" }\n\t}\n}\n",
+      "keys": ["usERLOCALconfigSTORE","FRIENDS","42","NAME"],
+      "found": true,
+      "value": "Owner"
+    },
+    {
+      "text": "\"UserLocalConfigStore\"\n{\n\t\"Software\"\n\t{\n\t\t\"Valve\"\n\t\t{\n\t\t\t\"Steam\"\n\t\t\t{\n\t\t\t\t\"apps\"\n\t\t\t\t{\n\t\t\t\t\t\"243730\"\n\t\t\t\t\t{\n\t\t\t\t\t\t\"LaunchOptions\"\t\t\"-novid -console\"\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n\t\"friends\"\n\t{\n\t\t\"42\"\t\t{ \"name\" \"Owner\" }\n\t\t\"123\"\t\t{ \"name\" \"Friend\" \"NameTag\" \"\" }\n\t\t\"7\"\t\t{ \"name\" \"Seven\" }\n\t\t\"01\"\t\t{ \"name\" \"Leading zero\" }\n\t\t\"4294967295\"\t\t{ \"name\" \"Too big for an index\" }\n\t\t\"4294967294\"\t\t{ \"name\" \"Last index\" }\n\t\t\"abc\"\t\t{ \"name\" \"Letters\" }\n\t}\n}\n",
+      "keys": ["userlocalconfigstore","software","valve","steam","apps","243730","launchoptions"],
+      "found": true,
+      "value": "-novid -console"
+    },
+    {
+      "text": "\"UserLocalConfigStore\"\n{\n\t\"Software\"\n\t{\n\t\t\"Valve\"\n\t\t{\n\t\t\t\"Steam\"\n\t\t\t{\n\t\t\t\t\"apps\"\n\t\t\t\t{\n\t\t\t\t\t\"243730\"\n\t\t\t\t\t{\n\t\t\t\t\t\t\"LaunchOptions\"\t\t\"-novid -console\"\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n\t\"friends\"\n\t{\n\t\t\"42\"\t\t{ \"name\" \"Owner\" }\n\t\t\"123\"\t\t{ \"name\" \"Friend\" \"NameTag\" \"\" }\n\t\t\"7\"\t\t{ \"name\" \"Seven\" }\n\t\t\"01\"\t\t{ \"name\" \"Leading zero\" }\n\t\t\"4294967295\"\t\t{ \"name\" \"Too big for an index\" }\n\t\t\"4294967294\"\t\t{ \"name\" \"Last index\" }\n\t\t\"abc\"\t\t{ \"name\" \"Letters\" }\n\t}\n}\n",
+      "keys": ["UserLocalConfigStore","friends","abc","NAME"],
+      "found": true,
+      "value": "Letters"
+    },
+    {
+      "text": "\"UserLocalConfigStore\"\n{\n\t\"Software\"\n\t{\n\t\t\"Valve\"\n\t\t{\n\t\t\t\"Steam\"\n\t\t\t{\n\t\t\t\t\"apps\"\n\t\t\t\t{\n\t\t\t\t\t\"243730\"\n\t\t\t\t\t{\n\t\t\t\t\t\t\"LaunchOptions\"\t\t\"-novid -console\"\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n\t\"friends\"\n\t{\n\t\t\"42\"\t\t{ \"name\" \"Owner\" }\n\t\t\"123\"\t\t{ \"name\" \"Friend\" \"NameTag\" \"\" }\n\t\t\"7\"\t\t{ \"name\" \"Seven\" }\n\t\t\"01\"\t\t{ \"name\" \"Leading zero\" }\n\t\t\"4294967295\"\t\t{ \"name\" \"Too big for an index\" }\n\t\t\"4294967294\"\t\t{ \"name\" \"Last index\" }\n\t\t\"abc\"\t\t{ \"name\" \"Letters\" }\n\t}\n}\n",
+      "keys": ["UserLocalConfigStore","nothing"],
+      "found": false,
+      "value": null
+    },
+    {
+      "text": "\"UserLocalConfigStore\"\n{\n\t\"Software\"\n\t{\n\t\t\"Valve\"\n\t\t{\n\t\t\t\"Steam\"\n\t\t\t{\n\t\t\t\t\"apps\"\n\t\t\t\t{\n\t\t\t\t\t\"243730\"\n\t\t\t\t\t{\n\t\t\t\t\t\t\"LaunchOptions\"\t\t\"-novid -console\"\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n\t\"friends\"\n\t{\n\t\t\"42\"\t\t{ \"name\" \"Owner\" }\n\t\t\"123\"\t\t{ \"name\" \"Friend\" \"NameTag\" \"\" }\n\t\t\"7\"\t\t{ \"name\" \"Seven\" }\n\t\t\"01\"\t\t{ \"name\" \"Leading zero\" }\n\t\t\"4294967295\"\t\t{ \"name\" \"Too big for an index\" }\n\t\t\"4294967294\"\t\t{ \"name\" \"Last index\" }\n\t\t\"abc\"\t\t{ \"name\" \"Letters\" }\n\t}\n}\n",
+      "keys": ["USERLOCALCONFIGSTORE"],
+      "found": true,
+      "value": {"Software":{"Valve":{"Steam":{"apps":{"243730":{"LaunchOptions":"-novid -console"}}}}},"friends":{"7":{"name":"Seven"},"42":{"name":"Owner"},"123":{"name":"Friend","NameTag":""},"4294967294":{"name":"Last index"},"01":{"name":"Leading zero"},"4294967295":{"name":"Too big for an index"},"abc":{"name":"Letters"}}}
+    },
+    {
+      "text": "\"users\"\r\n{\r\n\t\"76561198000000001\"\r\n\t{\r\n\t\t\"AccountName\"\t\t\"user_one\"\r\n\t\t\"PersonaName\"\t\t\"Имя Игрока\"\r\n\t\t\"RememberPassword\"\t\t\"1\"\r\n\t\t\"WantsOfflineMode\"\t\t\"0\"\r\n\t\t\"SkipOfflineModeWarning\"\t\t\"0\"\r\n\t\t\"AllowAutoLogin\"\t\t\"1\"\r\n\t\t\"MostRecent\"\t\t\"1\"\r\n\t\t\"Timestamp\"\t\t\"1700000000\"\r\n\t}\r\n\t\"76561198000000002\"\r\n\t{\r\n\t\t\"AccountName\"\t\t\"user_two\"\r\n\t\t\"PersonaName\"\t\t\"  Padded \\\"Name\\\"  \"\r\n\t\t\"MostRecent\"\t\t\"0\"\r\n\t}\r\n}\r\n",
+      "keys": ["USERS","76561198000000002","personaname"],
+      "found": true,
+      "value": "  Padded \"Name\"  "
+    },
+    {
+      "text": "\"users\"\r\n{\r\n\t\"76561198000000001\"\r\n\t{\r\n\t\t\"AccountName\"\t\t\"user_one\"\r\n\t\t\"PersonaName\"\t\t\"Имя Игрока\"\r\n\t\t\"RememberPassword\"\t\t\"1\"\r\n\t\t\"WantsOfflineMode\"\t\t\"0\"\r\n\t\t\"SkipOfflineModeWarning\"\t\t\"0\"\r\n\t\t\"AllowAutoLogin\"\t\t\"1\"\r\n\t\t\"MostRecent\"\t\t\"1\"\r\n\t\t\"Timestamp\"\t\t\"1700000000\"\r\n\t}\r\n\t\"76561198000000002\"\r\n\t{\r\n\t\t\"AccountName\"\t\t\"user_two\"\r\n\t\t\"PersonaName\"\t\t\"  Padded \\\"Name\\\"  \"\r\n\t\t\"MostRecent\"\t\t\"0\"\r\n\t}\r\n}\r\n",
+      "keys": ["Users","76561198000000001","MOSTRECENT"],
+      "found": true,
+      "value": "1"
+    },
+    {
+      "text": "\"users\"\r\n{\r\n\t\"76561198000000001\"\r\n\t{\r\n\t\t\"AccountName\"\t\t\"user_one\"\r\n\t\t\"PersonaName\"\t\t\"Имя Игрока\"\r\n\t\t\"RememberPassword\"\t\t\"1\"\r\n\t\t\"WantsOfflineMode\"\t\t\"0\"\r\n\t\t\"SkipOfflineModeWarning\"\t\t\"0\"\r\n\t\t\"AllowAutoLogin\"\t\t\"1\"\r\n\t\t\"MostRecent\"\t\t\"1\"\r\n\t\t\"Timestamp\"\t\t\"1700000000\"\r\n\t}\r\n\t\"76561198000000002\"\r\n\t{\r\n\t\t\"AccountName\"\t\t\"user_two\"\r\n\t\t\"PersonaName\"\t\t\"  Padded \\\"Name\\\"  \"\r\n\t\t\"MostRecent\"\t\t\"0\"\r\n\t}\r\n}\r\n",
+      "keys": ["users","76561198000000003"],
+      "found": false,
+      "value": null
+    },
+    {
+      "text": "\"users\"\r\n{\r\n\t\"76561198000000001\"\r\n\t{\r\n\t\t\"AccountName\"\t\t\"user_one\"\r\n\t\t\"PersonaName\"\t\t\"Имя Игрока\"\r\n\t\t\"RememberPassword\"\t\t\"1\"\r\n\t\t\"WantsOfflineMode\"\t\t\"0\"\r\n\t\t\"SkipOfflineModeWarning\"\t\t\"0\"\r\n\t\t\"AllowAutoLogin\"\t\t\"1\"\r\n\t\t\"MostRecent\"\t\t\"1\"\r\n\t\t\"Timestamp\"\t\t\"1700000000\"\r\n\t}\r\n\t\"76561198000000002\"\r\n\t{\r\n\t\t\"AccountName\"\t\t\"user_two\"\r\n\t\t\"PersonaName\"\t\t\"  Padded \\\"Name\\\"  \"\r\n\t\t\"MostRecent\"\t\t\"0\"\r\n\t}\r\n}\r\n",
+      "keys": ["users","76561198000000001","PersonaName","deeper"],
+      "found": false,
+      "value": null
+    },
+    {
+      "text": "\"AppState\"\n{\n\t\"appid\"\t\t\"243730\"\n\t\"Universe\"\t\t\"1\"\n\t\"name\"\t\t\"Source SDK Base 2013 Multiplayer\"\n\t\"StateFlags\"\t\t\"4\"\n\t\"installdir\"\t\t\"Source SDK Base 2013 Multiplayer\"\n\t\"LastUpdated\"\t\t\"1700000000\"\n\t\"SizeOnDisk\"\t\t\"1234567890\"\n\t\"buildid\"\t\t\"1234567\"\n\t\"InstalledDepots\"\n\t{\n\t\t\"243731\"\n\t\t{\n\t\t\t\"manifest\"\t\t\"1234567890123456789\"\n\t\t\t\"size\"\t\t\"1234\"\n\t\t}\n\t}\n\t\"UserConfig\"\n\t{\n\t\t\"language\"\t\t\"russian\"\n\t}\n}\n",
+      "keys": ["appstate","INSTALLDIR"],
+      "found": true,
+      "value": "Source SDK Base 2013 Multiplayer"
+    },
+    {
+      "text": "\"AppState\"\n{\n\t\"appid\"\t\t\"243730\"\n\t\"Universe\"\t\t\"1\"\n\t\"name\"\t\t\"Source SDK Base 2013 Multiplayer\"\n\t\"StateFlags\"\t\t\"4\"\n\t\"installdir\"\t\t\"Source SDK Base 2013 Multiplayer\"\n\t\"LastUpdated\"\t\t\"1700000000\"\n\t\"SizeOnDisk\"\t\t\"1234567890\"\n\t\"buildid\"\t\t\"1234567\"\n\t\"InstalledDepots\"\n\t{\n\t\t\"243731\"\n\t\t{\n\t\t\t\"manifest\"\t\t\"1234567890123456789\"\n\t\t\t\"size\"\t\t\"1234\"\n\t\t}\n\t}\n\t\"UserConfig\"\n\t{\n\t\t\"language\"\t\t\"russian\"\n\t}\n}\n",
+      "keys": ["APPSTATE","appid"],
+      "found": true,
+      "value": "243730"
+    },
+    {
+      "text": "\"libraryfolders\"\r\n{\r\n\t\"0\"\r\n\t{\r\n\t\t\"path\"\t\t\"C:\\\\Program Files (x86)\\\\Steam\"\r\n\t\t\"label\"\t\t\"\"\r\n\t\t\"contentid\"\t\t\"1234567890123456789\"\r\n\t\t\"totalsize\"\t\t\"0\"\r\n\t\t\"update_clean_bytes_tally\"\t\t\"1234567\"\r\n\t\t\"time_last_update_corruption\"\t\t\"0\"\r\n\t\t\"apps\"\r\n\t\t{\r\n\t\t\t\"228980\"\t\t\"346178\"\r\n\t\t\t\"243730\"\t\t\"7800000\"\r\n\t\t}\r\n\t}\r\n\t\"1\"\r\n\t{\r\n\t\t\"path\"\t\t\"D:\\\\SteamLibrary\"\r\n\t\t\"label\"\t\t\"Игры\"\r\n\t\t\"apps\"\r\n\t\t{\r\n\t\t\t\"1136490\"\t\t\"5000\"\r\n\t\t}\r\n\t}\r\n}\r\n",
+      "keys": ["LIBRARYFOLDERS","1","PATH"],
+      "found": true,
+      "value": "D:\\SteamLibrary"
+    },
+    {"text":"\"LibraryFolders\"\n{\n\t\"TimeNextStatsReport\"\t\t\"1500000000\"\n\t\"ContentStatsID\"\t\t\"-1234567890123456789\"\n\t\"1\"\t\t\"D:\\\\Games\\\\Steam\"\n\t\"2\"\t\t\"E:\\\\Steam Library\"\n}\n","keys":["libraryfolders","2"],"found":true,"value":"E:\\Steam Library"},
+    {"text":"\"LibraryFolders\"\n{\n\t\"TimeNextStatsReport\"\t\t\"1500000000\"\n\t\"ContentStatsID\"\t\t\"-1234567890123456789\"\n\t\"1\"\t\t\"D:\\\\Games\\\\Steam\"\n\t\"2\"\t\t\"E:\\\\Steam Library\"\n}\n","keys":["LIBRARYFOLDERS","timenextstatsreport"],"found":true,"value":"1500000000"},
+    {"text":"\"A\" \"1\" \"a\" \"2\"","keys":["a"],"found":true,"value":"1"},
+    {"text":"\"a\" \"1\" \"A\" \"2\"","keys":["A"],"found":true,"value":"1"},
+    {"text":"\"İ\" \"1\"","keys":["i̇"],"found":true,"value":"1"},
+    {"text":"\"ß\" \"1\"","keys":["SS"],"found":false,"value":null},
+    {"text":"\"ΑΣ\" \"1\"","keys":["ας"],"found":true,"value":"1"},
+    {"text":"\"k\" \"1\"","keys":[""],"found":false,"value":null},
+    {"text":"\"\" \"e\"","keys":[""],"found":true,"value":"e"}
+  ],
+  "getInsensitiveOfNothing": [{"object":"null","result":true},{"object":"undefined","result":true},{"object":"string","result":true},{"object":"number","result":true}],
+  "maxDepth": 32
+}

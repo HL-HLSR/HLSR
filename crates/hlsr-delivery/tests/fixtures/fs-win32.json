@@ -1,0 +1,114 @@
+{
+  "electron": "44.5.1",
+  "acp": 1251,
+  "scenarios": [
+    {
+      "name": "open r+ занятого exe",
+      "code": "EBUSY",
+      "syscall": "open",
+      "message": "EBUSY: resource busy or locked, open '<work>\\Игры HLSR\\game\\hl.exe'"
+    },
+    {
+      "name": "copyFile поверх занятого exe",
+      "code": "EBUSY",
+      "syscall": "copyfile",
+      "message": "EBUSY: resource busy or locked, copyfile '<work>\\Игры HLSR\\source.txt' -> '<work>\\Игры HLSR\\game\\hl.exe'"
+    },
+    {
+      "name": "unlink занятого exe",
+      "code": "EBUSY",
+      "syscall": "unlink",
+      "message": "EBUSY: resource busy or locked, unlink '<work>\\Игры HLSR\\game\\hl.exe'"
+    },
+    {
+      "name": "rmSync обычного файла",
+      "ok": true
+    },
+    {
+      "name": "rmSync обычного каталога",
+      "ok": true
+    },
+    {
+      "name": "rmSync занятого exe",
+      "code": "EPERM",
+      "syscall": "rm",
+      "message": "EPERM, Permission denied: \\\\?\\<work>\\Èãðû HLSR\\game\\hl.exe '\\\\?\\<work>\\���� HLSR\\game\\hl.exe'"
+    },
+    {
+      "name": "rmSync каталога с занятым exe",
+      "code": "EPERM",
+      "syscall": "rm",
+      "message": "EPERM, Permission denied: \\\\?\\<work>\\Èãðû HLSR\\game '\\\\?\\<work>\\���� HLSR\\game'"
+    },
+    {
+      "name": "rmSync файла только для чтения",
+      "code": "EPERM",
+      "syscall": "rm",
+      "message": "EPERM, Permission denied: \\\\?\\<work>\\Èãðû HLSR\\readonly.txt '\\\\?\\<work>\\���� HLSR\\readonly.txt'"
+    },
+    {
+      "name": "rmSync каталога с файлом только для чтения",
+      "code": "EPERM",
+      "syscall": "rm",
+      "message": "EPERM, Permission denied: \\\\?\\<work>\\Èãðû HLSR\\rodir '\\\\?\\<work>\\���� HLSR\\rodir'"
+    },
+    {
+      "name": "rmSync непустого каталога без recursive",
+      "code": "ERR_FS_EISDIR",
+      "syscall": "rm",
+      "message": "Path is a directory: rm returned EISDIR (is a directory) <work>\\Игры HLSR\\full"
+    },
+    {
+      "name": "rmSync нет файла",
+      "ok": true
+    },
+    {
+      "name": "rmdir непустого каталога",
+      "code": "ENOTEMPTY",
+      "syscall": "rmdir",
+      "message": "ENOTEMPTY: directory not empty, rmdir '<work>\\Игры HLSR\\full'"
+    },
+    {
+      "name": "open нет каталога",
+      "code": "ENOENT",
+      "syscall": "open",
+      "message": "ENOENT: no such file or directory, open '<work>\\Игры HLSR\\missing\\x.txt'"
+    },
+    {
+      "name": "open недопустимое имя",
+      "code": "ENOENT",
+      "syscall": "open",
+      "message": "ENOENT: no such file or directory, open '<work>\\Игры HLSR\\bad<name>.txt'"
+    },
+    {
+      "name": "mkdir существующего",
+      "code": "EEXIST",
+      "syscall": "mkdir",
+      "message": "EEXIST: file already exists, mkdir '<work>\\Игры HLSR\\full'"
+    },
+    {
+      "name": "readFile каталога",
+      "code": "EISDIR",
+      "syscall": "read",
+      "message": "EISDIR: illegal operation on a directory, read"
+    }
+  ],
+  "existsAfter": {
+    "game/hl.exe": true,
+    "plain.txt": false,
+    "plaindir": false,
+    "readonly.txt": true,
+    "rodir/readonly.txt": true
+  },
+  "statfs": {
+    "folder": {
+      "ok": true
+    },
+    "file": {
+      "ok": true
+    },
+    "missing": {
+      "code": "ENOENT"
+    }
+  }
+}

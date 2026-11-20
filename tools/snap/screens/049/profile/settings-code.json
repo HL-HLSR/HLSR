@@ -1,0 +1,328 @@
+{
+  "id": "profile/settings-code",
+  "base": "profile/own",
+  "state": "Код выдан: поддержавший (сетка заготовок, подписка до 31.12.2026); «Привязать» Discord — код и срок, «Скопировать команду», открыты шаги «Как привязать» (4 шага); прокручено к Discord",
+  "themes": [
+    "hlsr"
+  ],
+  "invoke": {
+    "runner-state": {
+      "status": "signed-in",
+      "userCode": null,
+      "expiresAt": null,
+      "error": null,
+      "ban": null,
+      "mute": null,
+      "account": {
+        "signedIn": true,
+        "steamId64": "76561199155902676",
+        "steamId2": "STEAM_0:0:597818474",
+        "personaName": "Kanoyo",
+        "avatarDataUri": "https://avatars.steamstatic.com/0000000000000000000000000000000000000001_full.jpg",
+        "connection": "connected"
+      },
+      "firstRunAt": "2026-03-14T08:20:00.000Z",
+      "achievements": [],
+      "summary": {
+        "unlocked": 14,
+        "total": 39,
+        "percent": 36
+      },
+      "stats": {
+        "totalSeconds": 512340,
+        "gamesPlayed": 2,
+        "launches": 48,
+        "best": {
+          "gameId": "ghosting-renewed",
+          "seconds": 401220,
+          "launcherId": "218"
+        }
+      },
+      "streak": {
+        "days": 3,
+        "best": 12
+      },
+      "badges": [
+        "developer",
+        "bughunter",
+        "anniversary-3"
+      ],
+      "customBadges": [],
+      "nick": {
+        "style": "developer",
+        "css": null
+      },
+      "avatarFrame": null,
+      "subscriber": false,
+      "boosterSince": null,
+      "supporterSince": null,
+      "perks": {
+        "styles": true,
+        "subscriber": {
+          "active": true,
+          "until": "2026-12-31T12:00:00.000Z"
+        }
+      },
+      "stylePreset": null,
+      "telegram": {
+        "linked": false,
+        "username": null
+      },
+      "discordLink": {
+        "linked": false,
+        "username": null,
+        "boosterSince": null
+      },
+      "details": {
+        "status": "Бегу Ghosting по выходным",
+        "pronouns": "",
+        "country": "RU",
+        "hideSteamId": false,
+        "pinnedRun": null,
+        "speedrun": null,
+        "discord": "kanoyo",
+        "youtube": "https://www.youtube.com/@kanoyo",
+        "twitch": "https://www.twitch.tv/kanoyo"
+      },
+      "deletionAt": null,
+      "rating": {
+        "score": 14,
+        "likes": 15,
+        "dislikes": 1,
+        "dubious": false
+      },
+      "presence": {
+        "online": true,
+        "gameId": null,
+        "launcherId": null
+      }
+    },
+    "profile-get": {
+      "status": "signed-in",
+      "userCode": null,
+      "expiresAt": null,
+      "error": null,
+      "ban": null,
+      "mute": null,
+      "account": {
+        "signedIn": true,
+        "steamId64": "76561199155902676",
+        "steamId2": "STEAM_0:0:597818474",
+        "personaName": "Kanoyo",
+        "avatarDataUri": "https://avatars.steamstatic.com/0000000000000000000000000000000000000001_full.jpg",
+        "connection": "connected"
+      },
+      "firstRunAt": "2026-03-14T08:20:00.000Z",
+      "achievements": [],
+      "summary": {
+        "unlocked": 14,
+        "total": 39,
+        "percent": 36
+      },
+      "stats": {
+        "totalSeconds": 512340,
+        "gamesPlayed": 2,
+        "launches": 48,
+        "best": {
+          "gameId": "ghosting-renewed",
+          "seconds": 401220,
+          "launcherId": "218"
+        }
+      },
+      "streak": {
+        "days": 3,
+        "best": 12
+      },
+      "badges": [
+        "developer",
+        "bughunter",
+        "anniversary-3"
+      ],
+      "customBadges": [],
+      "nick": {
+        "style": "developer",
+        "css": null
+      },
+      "avatarFrame": null,
+      "subscriber": false,
+      "boosterSince": null,
+      "supporterSince": null,
+      "perks": {
+        "styles": true,
+        "subscriber": {
+          "active": true,
+          "until": "2026-12-31T12:00:00.000Z"
+        }
+      },
+      "stylePreset": null,
+      "telegram": {
+        "linked": false,
+        "username": null
+      },
+      "discordLink": {
+        "linked": false,
+        "username": null,
+        "boosterSince": null
+      },
+      "details": {
+        "status": "Бегу Ghosting по выходным",
+        "pronouns": "",
+        "country": "RU",
+        "hideSteamId": false,
+        "pinnedRun": null,
+        "speedrun": null,
+        "discord": "kanoyo",
+        "youtube": "https://www.youtube.com/@kanoyo",
+        "twitch": "https://www.twitch.tv/kanoyo"
+      },
+      "deletionAt": null,
+      "rating": {
+        "score": 14,
+        "likes": 15,
+        "dislikes": 1,
+        "dubious": false
+      },
+      "presence": {
+        "online": true,
+        "gameId": null,
+        "launcherId": null
+      }
+    },
+    "public-style-presets-get": {
+      "status": "ok",
+      "presets": [
+        {
+          "id": 1,
+          "title": "Бирюза",
+          "nick": {
+            "style": null,
+            "css": "color: #8af7e4; text-shadow: 0 0 8px rgba(138, 247, 228, 0.6)"
+          },
+          "frame": {
+            "css": "background: linear-gradient(90deg, #5ec8ff, #ff7ad9)"
+          }
+        },
+        {
+          "id": 2,
+          "title": "Золото",
+          "nick": {
+            "style": null,
+            "css": "color: #f5c542"
+          },
+          "frame": {
+            "css": "background: #f5c542"
+          }
+        },
+        {
+          "id": 3,
+          "title": "Только рамка",
+          "nick": {
+            "style": null,
+            "css": ""
+          },
+          "frame": {
+            "css": "background: linear-gradient(135deg, #ff5f6d, #ffc371)"
+          }
+        }
+      ]
+    },
+    "runner-discord-code": {
+      "status": "ok",
+      "code": "482913",
+      "expiresAt": 1795435800
+    }
+  },
+  "steps": [
+    {
+      "click": {
+        "css": ".account-menu__toggle",
+        "view": "account-toggle"
+      }
+    },
+    {
+      "wait": 300
+    },
+    {
+      "click": {
+        "css": ".account-menu__item",
+        "index": 0,
+        "view": "account-item-0"
+      }
+    },
+    {
+      "wait": 600
+    },
+    {
+      "click": {
+        "css": ".profile__tab",
+        "index": 2,
+        "view": "profile-tabs-2"
+      }
+    },
+    {
+      "wait": 600
+    },
+    {
+      "wheel": {
+        "css": ".profile__settings",
+        "view": "profile-body"
+      },
+      "deltaY": -515
+    },
+    {
+      "wheel": {
+        "css": ".profile__settings",
+        "view": "profile-body"
+      },
+      "deltaY": -515
+    },
+    {
+      "wheel": {
+        "css": ".profile__settings",
+        "view": "profile-body"
+      },
+      "deltaY": -515
+    },
+    {
+      "wait": 600
+    },
+    {
+      "click": {
+        "css": ".runner-settings__buttons.is-row .settings-btn",
+        "view": "rs-discord-link",
+        "index": 2
+      }
+    },
+    {
+      "wait": 400
+    },
+    {
+      "wheel": {
+        "css": ".profile__settings",
+        "view": "profile-body"
+      },
+      "deltaY": -120
+    },
+    {
+      "wait": 600
+    },
+    {
+      "click": {
+        "css": ".runner-settings__steps-title",
+        "view": "rs-discord-steps"
+      }
+    },
+    {
+      "wait": 400
+    },
+    {
+      "wait": 600
+    },
+    {
+      "move": [
+        800,
+        880
+      ]
+    }
+  ]
+}

@@ -1,0 +1,149 @@
+{
+  "$comment": "Сцены шапки и колонки значков (ПП5 5a.3, 5a.4): те же id и состояния, что tools/snap/screens/shell-*.json (эталон на настоящем DOM 0.4.7). hover — куда навести указатель: game:N, tool:N, footer:N (0 — переключатель, 1–4 — Discord, папка, журнал, настройки), tab:dx (от начала ряда вкладок), logo.",
+  "scenes": [
+    {
+      "id": "shell-rail-closed",
+      "kind": "shell",
+      "width": 1600,
+      "height": 900,
+      "group": "glyph",
+      "shell": {
+        "language": "ru",
+        "tools": true
+      }
+    },
+    {
+      "id": "shell-rail-open",
+      "kind": "shell",
+      "width": 1600,
+      "height": 900,
+      "group": "glyph",
+      "shell": {
+        "language": "ru",
+        "tools": true,
+        "railExpanded": true
+      }
+    },
+    {
+      "id": "shell-rail-tip",
+      "kind": "shell",
+      "width": 1600,
+      "height": 900,
+      "group": "glyph",
+      "shell": {
+        "language": "ru",
+        "tools": true,
+        "hover": "game:1"
+      }
+    },
+    {
+      "id": "shell-rail-footer-tip",
+      "kind": "shell",
+      "width": 1600,
+      "height": 900,
+      "group": "glyph",
+      "shell": {
+        "language": "ru",
+        "tools": true,
+        "hover": "footer:3"
+      }
+    },
+    {
+      "id": "shell-rail-tool",
+      "kind": "shell",
+      "width": 1600,
+      "height": 900,
+      "group": "glyph",
+      "shell": {
+        "language": "ru",
+        "tools": true,
+        "activeTab": "tools",
+        "selectedTool": "livesplit"
+      }
+    },
+    {
+      "id": "shell-header-home",
+      "kind": "shell",
+      "width": 1600,
+      "height": 900,
+      "group": "glyph",
+      "shell": {
+        "language": "ru",
+        "tools": true,
+        "section": "home"
+      }
+    },
+    {
+      "id": "shell-header-personal",
+      "kind": "shell",
+      "width": 1600,
+      "height": 900,
+      "group": "glyph",
+      "shell": {
+        "language": "ru",
+        "tools": true,
+        "section": "personal"
+      }
+    },
+    {
+      "id": "shell-header-tab-hover",
+      "kind": "shell",
+      "width": 1600,
+      "height": 900,
+      "group": "glyph",
+      "shell": {
+        "language": "ru",
+        "tools": true,
+        "hover": "tab:274"
+      }
+    },
+    {
+      "id": "shell-logo-hover",
+      "kind": "shell",
+      "width": 1600,
+      "height": 900,
+      "group": "glyph",
+      "shell": {
+        "language": "ru",
+        "tools": true,
+        "hover": "logo"
+      }
+    },
+    {
+      "id": "shell-narrow-open",
+      "kind": "shell",
+      "width": 1280,
+      "height": 720,
+      "group": "glyph",
+      "shell": {
+        "language": "ru",
+        "tools": true,
+        "railExpanded": true
+      }
+    },
+    {
+      "id": "shell-narrow-closed",
+      "kind": "shell",
+      "width": 1280,
+      "height": 720,
+      "group": "glyph",
+      "shell": {
+        "language": "ru",
+        "tools": true
+      }
+    },
+    {
+      "id": "shell-low",
+      "kind": "shell",
+      "width": 1152,
+      "height": 648,
+      "group": "glyph",
+      "shell": {
+        "language": "ru",
+        "tools": true,
+        "activeTab": "tools",
+        "selectedTool": "livesplit"
+      }
+    }
+  ]
+}

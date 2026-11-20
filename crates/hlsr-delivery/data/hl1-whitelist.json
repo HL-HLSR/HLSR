@@ -1,0 +1,4278 @@
+{
+  "commands": {
+    "+alt1": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "+attack": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "+attack2": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "+back": {
+      "note": "BANNED IN SCRIPTED SEQUENCES",
+      "rule": "no-script-seq"
+    },
+    "+break": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "+bxt_tas_autojump": {
+      "note": "ONLY ALLOWED IN SCRIPTED",
+      "rule": "scripted-only"
+    },
+    "+bxt_tas_ducktap": {
+      "note": "ONLY ALLOWED IN SCRIPTED",
+      "rule": "scripted-only"
+    },
+    "+bxt_tas_jumpbug": {
+      "note": "ONLY ALLOWED IN SCRIPTED",
+      "rule": "scripted-only"
+    },
+    "+bxt_triggers_place": {
+      "note": "",
+      "rule": "banned"
+    },
+    "+camdistance": {
+      "note": "",
+      "rule": "banned"
+    },
+    "+camin": {
+      "note": "",
+      "rule": "banned"
+    },
+    "+cammousemove": {
+      "note": "",
+      "rule": "banned"
+    },
+    "+camout": {
+      "note": "",
+      "rule": "banned"
+    },
+    "+campitchdown": {
+      "note": "",
+      "rule": "banned"
+    },
+    "+campitchup": {
+      "note": "",
+      "rule": "banned"
+    },
+    "+camyawleft": {
+      "note": "",
+      "rule": "banned"
+    },
+    "+camyawright": {
+      "note": "",
+      "rule": "banned"
+    },
+    "+commandmenu": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "+duck": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "+forward": {
+      "note": "BANNED IN SCRIPTED SEQUENCES",
+      "rule": "no-script-seq"
+    },
+    "+graph": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "+jlook": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "+jump": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "+klook": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "+left": {
+      "note": "BANNED IN SCRIPTED SEQUENCES",
+      "rule": "no-script-seq"
+    },
+    "+lookdown": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "+lookup": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "+mlook": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "+movedown": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "+moveleft": {
+      "note": "BANNED IN SCRIPTED SEQUENCES",
+      "rule": "no-script-seq"
+    },
+    "+moveright": {
+      "note": "BANNED IN SCRIPTED SEQUENCES",
+      "rule": "no-script-seq"
+    },
+    "+moveup": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "+reload": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "+right": {
+      "note": "BANNED IN SCRIPTED SEQUENCES",
+      "rule": "no-script-seq"
+    },
+    "+score": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "+showscores": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "+speed": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "+strafe": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "+use": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "+voicerecord": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "-alt1": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "-attack": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "-attack2": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "-back": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "-break": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "-commandmenu": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "-duck": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "-forward": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "-graph": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "-jlook": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "-jump": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "-klook": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "-left": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "-lookdown": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "-lookup": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "-mlook": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "-movedown": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "-moveleft": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "-moveright": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "-moveup": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "-reload": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "-right": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "-score": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "-showscores": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "-speed": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "-strafe": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "-use": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "-voicerecord": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "_bxt_interprocess_reset": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "_bxt_load": {
+      "note": "",
+      "rule": "banned"
+    },
+    "_bxt_map": {
+      "note": "",
+      "rule": "banned"
+    },
+    "_bxt_reset_frametime_remainder": {
+      "note": "",
+      "rule": "banned"
+    },
+    "_bxt_set_frametime_remainder": {
+      "note": "",
+      "rule": "banned"
+    },
+    "_careeraudio": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "_restart": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "_set_vid_level": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "_setaddons_folder": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "_setgamedir": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "_sethdmodels": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "_setrenderer": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "_setvideomode": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "addip": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "alias": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "appenddemo": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "autosave": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "banid": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "bind": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_append": {
+      "note": "ONLY ALLOWED IN SCRIPTED",
+      "rule": "scripted-only"
+    },
+    "bxt_autorecord": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_cam_clear": {
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_cam_fixed": {
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_cam_offset": {
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_ch_entity_set_health": {
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_ch_get_other_player_info": {
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_ch_get_pos": {
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_ch_get_velocity": {
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_ch_monster_set_origin": {
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_ch_set_armor": {
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_ch_set_health": {
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_ch_set_pos": {
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_ch_set_pos_offset": {
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_ch_set_vel": {
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_ch_set_vel_angles": {
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_ch_teleport_to_entity": {
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_freecam": {
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_get_server_time": {
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_print_entities_by_index": {
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_record": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_set_angles": {
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_split": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_splits_add_entity": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_splits_add_trigger": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_splits_clear": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_splits_delete": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_splits_export": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_splits_list": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_splits_print_times": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_splits_set_map": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_splits_set_name": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_splits_track_horizontal_speed": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_splits_track_vertical_speed": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_splits_track_x": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_splits_track_y": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_splits_track_z": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_taslog": {
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_timer_reset": {
+      "note": "ONLY ALLOWED FOR RUN-START-BIND",
+      "rule": "run-start"
+    },
+    "bxt_timer_start": {
+      "note": "ONLY ALLOWED FOR RUN-START-BIND",
+      "rule": "run-start"
+    },
+    "bxt_timer_stop": {
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_triggers_add": {
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_triggers_clear": {
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_triggers_delete": {
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_triggers_export": {
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_triggers_list": {
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_triggers_setcommand": {
+      "note": "BANNED IN INDIVIDUAL LEVELS",
+      "rule": "category"
+    },
+    "cancelselect": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "career": {
+      "note": "",
+      "rule": "banned"
+    },
+    "cd": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "centerview": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "changelevel": {
+      "note": "",
+      "rule": "banned"
+    },
+    "changelevel2": {
+      "note": "",
+      "rule": "banned"
+    },
+    "cl_messages": {
+      "note": "",
+      "rule": "banned"
+    },
+    "clear": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "cmd": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "cmdlist": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "commentator": {
+      "note": "",
+      "rule": "banned"
+    },
+    "condebug": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "condump": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "connect": {
+      "note": "",
+      "rule": "banned"
+    },
+    "contimes": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "cvarlist": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "delta_clear": {
+      "note": "",
+      "rule": "banned"
+    },
+    "delta_stats": {
+      "note": "",
+      "rule": "banned"
+    },
+    "dem_forcehltv": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "dem_jump": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "dem_pause": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "dem_save": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "dem_speed": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "dem_start": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "demos": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "disconnect": {
+      "note": "",
+      "rule": "banned"
+    },
+    "dlfile": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "dropclient": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "echo": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "endmovie": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "entities": {
+      "note": "",
+      "rule": "banned"
+    },
+    "envmap": {
+      "note": "",
+      "rule": "banned"
+    },
+    "escape": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "exec": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "exit": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "firstperson": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "flush": {
+      "note": "",
+      "rule": "banned"
+    },
+    "fly": {
+      "note": "",
+      "rule": "banned"
+    },
+    "force_centerview": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "forceclosecommandmenu": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "fullinfo": {
+      "note": "",
+      "rule": "banned"
+    },
+    "fullserverinfo": {
+      "note": "",
+      "rule": "banned"
+    },
+    "fullupdate": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "gamedir": {
+      "note": "",
+      "rule": "banned"
+    },
+    "gg": {
+      "note": "",
+      "rule": "banned"
+    },
+    "gl_dump": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "gl_texels": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "gl_texturemode": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "god": {
+      "note": "",
+      "rule": "banned"
+    },
+    "haiku": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "heartbeat": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "hideconsole": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "hpkextract": {
+      "note": "",
+      "rule": "banned"
+    },
+    "hpklist": {
+      "note": "",
+      "rule": "banned"
+    },
+    "hpkremove": {
+      "note": "",
+      "rule": "banned"
+    },
+    "hpkval": {
+      "note": "",
+      "rule": "banned"
+    },
+    "httpstop": {
+      "note": "",
+      "rule": "banned"
+    },
+    "impulse": {
+      "note": "100 (FLASHLIGHT) | 201 (SPRAY)",
+      "rule": "values",
+      "values": [
+        "100",
+        "201"
+      ]
+    },
+    "interp": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "invnext": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "invprev": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "joyadvancedupdate": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "kick": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "kill": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "lastinv": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "list": {
+      "note": "",
+      "rule": "banned"
+    },
+    "listdemo": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "listen": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "listid": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "listip": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "load": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "localinfo": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "log": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "logaddress": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "logaddress_add": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "logaddress_del": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "map": {
+      "note": "",
+      "rule": "banned"
+    },
+    "map c1a0": {
+      "note": "ONLY ALLOWED FOR RUN-START-BIND",
+      "rule": "run-start"
+    },
+    "maps": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "maxplayers": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "mcache": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "messagemode": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "messagemode2": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "motd": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "motd_write": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "mp3": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "new": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "noclip": {
+      "note": "",
+      "rule": "banned"
+    },
+    "notarget": {
+      "note": "",
+      "rule": "banned"
+    },
+    "pause": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "ping": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "pingservers": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "play": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "playdemo": {
+      "note": "",
+      "rule": "banned"
+    },
+    "playvol": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "pointfile": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "ppdemostart": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "quit": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "rcon": {
+      "note": "",
+      "rule": "banned"
+    },
+    "reconnect": {
+      "note": "",
+      "rule": "banned"
+    },
+    "record": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "reload": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "removedemo": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "removeid": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "removeip": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "resetrcon": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "restart": {
+      "note": "",
+      "rule": "banned"
+    },
+    "retry": {
+      "note": "",
+      "rule": "banned"
+    },
+    "save": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "say": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "say_team": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "screenshot": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "sendents": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "sendres": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "serverinfo": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "setdemoinfo": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "setinfo": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "setmaster": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "setpause": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "showinfo": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "shutdownserver": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "sizedown": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "sizeup": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "slist": {
+      "note": "",
+      "rule": "banned"
+    },
+    "slot1": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "slot10": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "slot2": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "slot3": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "slot4": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "slot5": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "slot6": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "slot7": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "slot8": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "slot9": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "snapshot": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "snapto": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "soundfade": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "soundinfo": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "soundlist": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "spawn": {
+      "note": "",
+      "rule": "banned"
+    },
+    "speak": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "spec_pos": {
+      "note": "",
+      "rule": "banned"
+    },
+    "special": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "spk": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "startdemos": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "startmovie": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "stat": {
+      "note": "",
+      "rule": "banned"
+    },
+    "stats": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "status": {
+      "note": "",
+      "rule": "banned"
+    },
+    "stop": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "stopdemo": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "stopsound": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "stuffcmds": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "swapdemo": {
+      "note": "",
+      "rule": "banned"
+    },
+    "tell": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "thirdperson": {
+      "note": "ONLY ALLOWED IN THIRDPERSON",
+      "rule": "thirdperson"
+    },
+    "timedemo": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "timerefresh": {
+      "note": "",
+      "rule": "banned"
+    },
+    "togglebrowser": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "toggleconsole": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "unbind": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "unbindall": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "unpause": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "upload": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "user": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "users": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "version": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "viewdemo": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "viewframe": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "viewmodel": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "viewnext": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "viewprev": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "w": {
+      "note": "ONLY ALLOWED IN SCRIPTED",
+      "rule": "scripted-only"
+    },
+    "wait": {
+      "note": "ONLY ALLOWED IN SCRIPTED",
+      "rule": "scripted-only"
+    },
+    "waveplaylen": {
+      "note": "",
+      "rule": "banned"
+    },
+    "writecfg": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "writeid": {
+      "note": "",
+      "rule": "allowed"
+    },
+    "writeip": {
+      "note": "",
+      "rule": "allowed"
+    }
+  },
+  "cvars": {
+    "_bxt_bunnysplit_time_update_frequency": {
+      "default": "41",
+      "note": "",
+      "rule": "allowed"
+    },
+    "_bxt_min_frametime": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "_bxt_norefresh": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "_bxt_save_runtime_data_in_demos": {
+      "default": "1",
+      "note": "",
+      "rule": "banned"
+    },
+    "_bxt_taslog": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "_snd_mixahead": {
+      "default": "0.1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "ambient_fade": {
+      "default": "100",
+      "note": "",
+      "rule": "allowed"
+    },
+    "ambient_level": {
+      "default": "0.3",
+      "note": "",
+      "rule": "allowed"
+    },
+    "ati_npatch": {
+      "default": "1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "bannedcfgfile": {
+      "default": "",
+      "note": "",
+      "rule": "allowed"
+    },
+    "bgmvolume": {
+      "default": "1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "bitmapfonts": {
+      "default": "1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "bottomcolor": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "brightness": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_autojump": {
+      "default": "0",
+      "note": "ONLY ALLOWED IN SCRIPTED",
+      "rule": "scripted-only"
+    },
+    "bxt_autojump_prediction": {
+      "default": "0",
+      "note": "ONLY ALLOWED IN SCRIPTED",
+      "rule": "scripted-only"
+    },
+    "bxt_autojump_priority": {
+      "default": "",
+      "note": "ONLY ALLOWED IN SCRIPTED",
+      "rule": "scripted-only"
+    },
+    "bxt_autopause": {
+      "default": "0",
+      "note": "ONLY ALLOWED IN SCRIPTED",
+      "rule": "scripted-only"
+    },
+    "bxt_bhopcap": {
+      "default": "0 WON 1 steam",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_clear_color": {
+      "default": "",
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_cof_disable_monsters_teleport_to_spawn_after_load": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_cof_disable_viewpunch_from_jump": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_collision_depth_map": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_collision_depth_map_colors": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_collision_depth_map_fov": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_collision_depth_map_hull": {
+      "default": "2",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_collision_depth_map_max_depth": {
+      "default": "1000",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_cross": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_cross_alpha": {
+      "default": "",
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_cross_bottom_line": {
+      "default": "1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_cross_circle_radius": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_cross_color": {
+      "default": "",
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_cross_dot_color": {
+      "default": "",
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_cross_dot_size": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_cross_gap": {
+      "default": "3",
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_cross_left_line": {
+      "default": "1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_cross_outline": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_cross_right_line": {
+      "default": "1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_cross_size": {
+      "default": "10",
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_cross_thickness": {
+      "default": "2",
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_cross_top_line": {
+      "default": "1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_disable_autosave": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_disable_brush_entities": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_disable_gamedir_check_in_demo": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_disable_hud": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_disable_nightvision_sprite": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_disable_particles": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_disable_player_corpses": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_disable_sprite_entities": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_disable_studio_entities": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_disable_vgui": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_disable_world": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_fade_remove": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_fire_on_button_command": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_fire_on_button_target": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_fire_on_mm_command": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_fire_on_mm_targetname": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_fire_on_stuck": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_fix_mouse_horizontal_limit": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_fix_widescreen_fov": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_force_clear": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_force_duck": {
+      "default": "0",
+      "note": "ONLY ALLOWED IN +DUCK% CATEGORY EXTENSION",
+      "rule": "category"
+    },
+    "bxt_force_fov": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_force_jumpless": {
+      "default": "0",
+      "note": "ONLY ALLOWED IN JUMPLESS CATEGORY EXTENSION",
+      "rule": "category"
+    },
+    "bxt_force_zmax": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_hide_other_players": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_hud": {
+      "default": "1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_hud_armor": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_hud_checkpoint": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_hud_color": {
+      "default": "",
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_hud_distance": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_hud_distance_anchor": {
+      "default": "",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_hud_distance_offset": {
+      "default": "",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_hud_entities": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_hud_entity_hp": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_hud_entity_hp_anchor": {
+      "default": "",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_hud_entity_hp_offset": {
+      "default": "",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_hud_entity_info": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_hud_game_alpha": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_hud_game_alpha_damage": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_hud_game_alpha_max_clientside": {
+      "default": "",
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_hud_game_color": {
+      "default": "",
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_hud_gonarch": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_hud_health": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_hud_health_override_in_demo": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_hud_incorrect_fps_indicator": {
+      "default": "1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_hud_jumpdistance": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_hud_jumpspeed": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_hud_jumpspeed_anchor": {
+      "default": "",
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_hud_jumpspeed_offset": {
+      "default": "",
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_hud_nihilanth": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_hud_origin": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_hud_origin_anchor": {
+      "default": "",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_hud_origin_offset": {
+      "default": "",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_hud_precision": {
+      "default": "6",
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_hud_quickgauss": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_hud_selfgauss": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_hud_selfgauss_anchor": {
+      "default": "",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_hud_selfgauss_offset": {
+      "default": "",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_hud_speedometer": {
+      "default": "1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_hud_speedometer_anchor": {
+      "default": "",
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_hud_speedometer_offset": {
+      "default": "",
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_hud_split": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_hud_split_anchor": {
+      "default": "",
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_hud_split_duration": {
+      "default": "1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_hud_split_fadeout": {
+      "default": "5",
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_hud_split_offset": {
+      "default": "",
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_hud_split_speed": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_hud_stamina": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_hud_timer": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_hud_timer_anchor": {
+      "default": "",
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_hud_timer_offset": {
+      "default": "",
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_hud_useables": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_hud_useables_radius": {
+      "default": "64",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_hud_velocity": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_hud_velocity_anchor": {
+      "default": "",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_hud_velocity_offset": {
+      "default": "",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_hud_viewangles": {
+      "default": "0",
+      "note": "BOTH 1 AND 2 ALLOWED",
+      "rule": "values",
+      "values": [
+        "1",
+        "2"
+      ]
+    },
+    "bxt_hud_viewangles_anchor": {
+      "default": "",
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_hud_viewangles_offset": {
+      "default": "",
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_hud_visible_landmarks": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_hud_visible_landmarks_anchor": {
+      "default": "",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_hud_visible_landmarks_offset": {
+      "default": "",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_hud_waterlevel": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_interprocess_enable": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_novis": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_remove_fps_limit": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_remove_punchangles": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_remove_stamina": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_remove_viewmodel": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_render_far_entities": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_shake_remove": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_show_bullets": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_show_bullets_enemies": {
+      "default": "",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_show_custom_triggers": {
+      "default": "1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_show_hidden_entities": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_show_hidden_entities_clientside": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_show_monster_bbox": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_show_nodes": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_show_only_players": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_show_only_viewmodel": {
+      "default": "",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_show_pickup_bbox": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_show_player_bbox": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_show_splits": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_show_triggers": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_show_triggers_legacy": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_skybox_remove": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_splits_end_on_last_split": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_splits_start_timer_on_first_split": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_stop_demo_on_changelevel": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_tas_ducktap_priority": {
+      "default": "",
+      "note": "ONLY ALLOWED IN SCRIPTED",
+      "rule": "scripted-only"
+    },
+    "bxt_taslog_filename": {
+      "default": "",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_timer_autostop": {
+      "default": "1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_viewmodel_bob_angled": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_viewmodel_disable_equip": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_viewmodel_disable_idle": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_viewmodel_fov": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_viewmodel_ofs_forward": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_viewmodel_ofs_right": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_viewmodel_ofs_up": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_viewmodel_semitransparent": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "bxt_wallhack": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_wallhack_additive": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_wallhack_alpha": {
+      "default": "0.6",
+      "note": "",
+      "rule": "banned"
+    },
+    "bxt_water_remove": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "c_maxdistance": {
+      "default": "200",
+      "note": "",
+      "rule": "banned"
+    },
+    "c_maxpitch": {
+      "default": "90",
+      "note": "",
+      "rule": "banned"
+    },
+    "c_maxyaw": {
+      "default": "135",
+      "note": "",
+      "rule": "banned"
+    },
+    "c_mindistance": {
+      "default": "30",
+      "note": "",
+      "rule": "banned"
+    },
+    "c_minpitch": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "c_minyaw": {
+      "default": "-135",
+      "note": "",
+      "rule": "banned"
+    },
+    "cam_command": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "cam_contain": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "cam_idealdist": {
+      "default": "64",
+      "note": "",
+      "rule": "banned"
+    },
+    "cam_idealpitch": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "cam_idealyaw": {
+      "default": "90",
+      "note": "ONLY ALLOWED IN THIRDPERSON",
+      "rule": "thirdperson"
+    },
+    "cam_snapto": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "chase_active": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "chase_back": {
+      "default": "100",
+      "note": "",
+      "rule": "banned"
+    },
+    "chase_right": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "chase_up": {
+      "default": "16",
+      "note": "",
+      "rule": "banned"
+    },
+    "cl_allowdownload": {
+      "default": "1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "cl_allowupload": {
+      "default": "1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "cl_anglespeedkey": {
+      "default": "0.67",
+      "note": "",
+      "rule": "banned"
+    },
+    "cl_backspeed": {
+      "default": "400",
+      "note": "",
+      "rule": "banned"
+    },
+    "cl_bob": {
+      "default": "0.01",
+      "note": "",
+      "rule": "allowed"
+    },
+    "cl_bobcycle": {
+      "default": "0.8",
+      "note": "",
+      "rule": "allowed"
+    },
+    "cl_bobup": {
+      "default": "0.5",
+      "note": "",
+      "rule": "allowed"
+    },
+    "cl_clockreset": {
+      "default": "0.1",
+      "note": "",
+      "rule": "banned"
+    },
+    "cl_cmdbackup": {
+      "default": "2",
+      "note": "",
+      "rule": "banned"
+    },
+    "cl_cmdrate": {
+      "default": "30 WON 60 steam",
+      "note": "",
+      "rule": "banned"
+    },
+    "cl_dlmax": {
+      "default": "128 WON / 512 steam",
+      "note": "",
+      "rule": "allowed"
+    },
+    "cl_download_ingame": {
+      "default": "1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "cl_filterstuffcmd": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "cl_fixtimerate": {
+      "default": "7.5",
+      "note": "",
+      "rule": "banned"
+    },
+    "cl_forwardspeed": {
+      "default": "400",
+      "note": "",
+      "rule": "banned"
+    },
+    "cl_gaitestimation": {
+      "default": "1",
+      "note": "",
+      "rule": "banned"
+    },
+    "cl_gg": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "cl_himodels": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "cl_idealpitchscale": {
+      "default": "0.8",
+      "note": "",
+      "rule": "banned"
+    },
+    "cl_lc": {
+      "default": "1",
+      "note": "",
+      "rule": "banned"
+    },
+    "cl_logocolor": {
+      "default": "",
+      "note": "",
+      "rule": "allowed"
+    },
+    "cl_logofile": {
+      "default": "",
+      "note": "",
+      "rule": "allowed"
+    },
+    "cl_lw": {
+      "default": "1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "cl_mousegrab": {
+      "default": "1",
+      "note": "",
+      "rule": "banned"
+    },
+    "cl_movespeedkey": {
+      "default": "0.3",
+      "note": "",
+      "rule": "banned"
+    },
+    "cl_needinstanced": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "cl_nosmooth": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "cl_pitchdown": {
+      "default": "89",
+      "note": "ONLY ALLOWED IN SCRIPTED",
+      "rule": "scripted-only"
+    },
+    "cl_pitchspeed": {
+      "default": "225",
+      "note": "",
+      "rule": "banned"
+    },
+    "cl_pitchup": {
+      "default": "89",
+      "note": "ONLY ALLOWED IN SCRIPTED",
+      "rule": "scripted-only"
+    },
+    "cl_resend": {
+      "default": "6",
+      "note": "",
+      "rule": "allowed"
+    },
+    "cl_righthand": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "cl_showerror": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "cl_showevents": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "cl_showfps": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "cl_showmessages": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "cl_shownet": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "cl_sidespeed": {
+      "default": "400",
+      "note": "",
+      "rule": "banned"
+    },
+    "cl_slist": {
+      "default": "10",
+      "note": "",
+      "rule": "banned"
+    },
+    "cl_smoothtime": {
+      "default": "0.1",
+      "note": "",
+      "rule": "banned"
+    },
+    "cl_solid_players": {
+      "default": "1",
+      "note": "",
+      "rule": "banned"
+    },
+    "cl_timeout": {
+      "default": "60",
+      "note": "",
+      "rule": "allowed"
+    },
+    "cl_updaterate": {
+      "default": "20 WON / 60 steam",
+      "note": "",
+      "rule": "allowed"
+    },
+    "cl_upspeed": {
+      "default": "320",
+      "note": "",
+      "rule": "banned"
+    },
+    "cl_vsmoothing": {
+      "default": "0.05",
+      "note": "",
+      "rule": "banned"
+    },
+    "cl_waterdist": {
+      "default": "4",
+      "note": "",
+      "rule": "banned"
+    },
+    "cl_weaponlistfix": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "cl_yawspeed": {
+      "default": "210",
+      "note": "",
+      "rule": "banned"
+    },
+    "clientport": {
+      "default": "27005",
+      "note": "",
+      "rule": "banned"
+    },
+    "clockwindow": {
+      "default": "0.5",
+      "note": "",
+      "rule": "allowed"
+    },
+    "con_color": {
+      "default": "",
+      "note": "",
+      "rule": "allowed"
+    },
+    "con_fastmode": {
+      "default": "1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "con_mono": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "con_notifytime": {
+      "default": "4",
+      "note": "",
+      "rule": "allowed"
+    },
+    "con_shifttoggleconsole": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "console": {
+      "default": "1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "coop": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "crosshair": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "d_spriteskip": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "deathmatch": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "decalfrequency": {
+      "default": "30",
+      "note": "",
+      "rule": "allowed"
+    },
+    "default_fov": {
+      "default": "90",
+      "note": "",
+      "rule": "allowed"
+    },
+    "dev_overview": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "developer": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "direct": {
+      "default": "0.9",
+      "note": "",
+      "rule": "banned"
+    },
+    "displaysoundlist": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "edgefriction": {
+      "default": "2",
+      "note": "",
+      "rule": "banned"
+    },
+    "ex_interp": {
+      "default": "0.1",
+      "note": "",
+      "rule": "banned"
+    },
+    "fakelag": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "fakeloss": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "fps_max": {
+      "default": "72 WON / 100 steam",
+      "note": "",
+      "rule": "allowed"
+    },
+    "fps_override": {
+      "default": "0",
+      "note": "ONLY ALLOWED ON STEAM VERSION",
+      "rule": "steam"
+    },
+    "fs_lazy_precache": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "fs_perf_warnings": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "fs_precache_timings": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "fs_startup_timings": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "gamma": {
+      "default": "2.5",
+      "note": "",
+      "rule": "allowed"
+    },
+    "gl_affinemodels": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "gl_alphamin": {
+      "default": "0.25",
+      "note": "",
+      "rule": "banned"
+    },
+    "gl_ansio": {
+      "default": "16",
+      "note": "",
+      "rule": "allowed"
+    },
+    "gl_clear": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "gl_cull": {
+      "default": "1",
+      "note": "",
+      "rule": "banned"
+    },
+    "gl_dither": {
+      "default": "1",
+      "note": "",
+      "rule": "banned"
+    },
+    "gl_flipmatrix": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "gl_fog": {
+      "default": "1",
+      "note": "",
+      "rule": "banned"
+    },
+    "gl_keeptjunctions": {
+      "default": "1",
+      "note": "",
+      "rule": "banned"
+    },
+    "gl_lightholes": {
+      "default": "1",
+      "note": "",
+      "rule": "banned"
+    },
+    "gl_max_size": {
+      "default": "512",
+      "note": "",
+      "rule": "allowed"
+    },
+    "gl_monolights": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "gl_overbright": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "gl_palette_tex": {
+      "default": "1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "gl_picmip": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "gl_polyoffset": {
+      "default": "0.1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "gl_round_down": {
+      "default": "3",
+      "note": "",
+      "rule": "allowed"
+    },
+    "gl_spriteblend": {
+      "default": "1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "gl_vsync": {
+      "default": "1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "gl_wateramp": {
+      "default": "0.3",
+      "note": "",
+      "rule": "allowed"
+    },
+    "gl_wireframe": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "gl_zmax": {
+      "default": "4096",
+      "note": "",
+      "rule": "allowed"
+    },
+    "gl_ztrick_old": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "graphheight": {
+      "default": "64",
+      "note": "",
+      "rule": "allowed"
+    },
+    "hisound": {
+      "default": "1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "host_framerate": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "host_limitlocal": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "host_profile": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "host_speeds": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "hostmap": {
+      "default": "",
+      "note": "",
+      "rule": "banned"
+    },
+    "hostname": {
+      "default": "",
+      "note": "",
+      "rule": "banned"
+    },
+    "hostport": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "hpk_maxsize": {
+      "default": "4",
+      "note": "",
+      "rule": "allowed"
+    },
+    "hud_capturemouse": {
+      "default": "1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "hud_centerid": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "hud_classautokill": {
+      "default": "1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "hud_deathnotice_time": {
+      "default": "6",
+      "note": "",
+      "rule": "allowed"
+    },
+    "hud_drawhistory_time": {
+      "default": "5",
+      "note": "",
+      "rule": "allowed"
+    },
+    "hud_fastswitch": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "hud_saytext_time": {
+      "default": "5",
+      "note": "",
+      "rule": "banned"
+    },
+    "hud_takesshots": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "ip": {
+      "default": "1",
+      "note": "",
+      "rule": "banned"
+    },
+    "ip_clientport": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "ip_hostport": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "ipx_clientport": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "ipx_hostport": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "joyadvanced": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "joyadvaxisr": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "joyadvaxisu": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "joyadvaxisv": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "joyadvaxisx": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "joyadvaxisy": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "joyadvaxisz": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "joyforwardsensitivity": {
+      "default": "-1",
+      "note": "",
+      "rule": "banned"
+    },
+    "joyforwardthreshold": {
+      "default": "0.15",
+      "note": "",
+      "rule": "banned"
+    },
+    "joyname": {
+      "default": "",
+      "note": "",
+      "rule": "banned"
+    },
+    "joypitchsensitivity": {
+      "default": "1",
+      "note": "",
+      "rule": "banned"
+    },
+    "joypitchthreshold": {
+      "default": "0.15",
+      "note": "",
+      "rule": "banned"
+    },
+    "joysidesensitivity": {
+      "default": "-1",
+      "note": "",
+      "rule": "banned"
+    },
+    "joysidethreshold": {
+      "default": "0.15",
+      "note": "",
+      "rule": "banned"
+    },
+    "joystick": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "joywwhack1": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "joywwhack2": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "joyyawsensitivity": {
+      "default": "-1",
+      "note": "",
+      "rule": "banned"
+    },
+    "joyyawthreshold": {
+      "default": "0.15",
+      "note": "",
+      "rule": "banned"
+    },
+    "lambert": {
+      "default": "1.5",
+      "note": "",
+      "rule": "banned"
+    },
+    "lightgamma": {
+      "default": "2.5",
+      "note": "",
+      "rule": "allowed"
+    },
+    "loadas8bit": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "logsdir": {
+      "default": "",
+      "note": "",
+      "rule": "banned"
+    },
+    "lookspring": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "lookstrafe": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "lservercfgfile": {
+      "default": "",
+      "note": "",
+      "rule": "banned"
+    },
+    "m_filter": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "m_forward": {
+      "default": "1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "m_pitch": {
+      "default": "0.022",
+      "note": "",
+      "rule": "allowed"
+    },
+    "m_rawinput": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "m_side": {
+      "default": "0.8",
+      "note": "",
+      "rule": "allowed"
+    },
+    "m_yaw": {
+      "default": "0.022",
+      "note": "",
+      "rule": "allowed"
+    },
+    "mapchangecfgfile": {
+      "default": "",
+      "note": "",
+      "rule": "banned"
+    },
+    "mapcyclefile": {
+      "default": "",
+      "note": "",
+      "rule": "banned"
+    },
+    "max_queries_sec": {
+      "default": "3",
+      "note": "",
+      "rule": "banned"
+    },
+    "max_queries_sec_global": {
+      "default": "30",
+      "note": "",
+      "rule": "banned"
+    },
+    "max_queries_window": {
+      "default": "60",
+      "note": "",
+      "rule": "banned"
+    },
+    "model": {
+      "default": "",
+      "note": "",
+      "rule": "allowed"
+    },
+    "motdfile": {
+      "default": "",
+      "note": "",
+      "rule": "banned"
+    },
+    "mp3fadetime": {
+      "default": "2",
+      "note": "",
+      "rule": "allowed"
+    },
+    "mp3volume": {
+      "default": "0.8",
+      "note": "",
+      "rule": "allowed"
+    },
+    "mp_allowmonsters": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "mp_autocrosshair": {
+      "default": "1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "mp_chattime": {
+      "default": "10",
+      "note": "",
+      "rule": "banned"
+    },
+    "mp_consistency": {
+      "default": "1",
+      "note": "",
+      "rule": "banned"
+    },
+    "mp_decals": {
+      "default": "300",
+      "note": "",
+      "rule": "allowed"
+    },
+    "mp_defaultteam": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "mp_falldamage": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "mp_flashlight": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "mp_footsteps": {
+      "default": "1",
+      "note": "",
+      "rule": "banned"
+    },
+    "mp_forcerespawn": {
+      "default": "1",
+      "note": "",
+      "rule": "banned"
+    },
+    "mp_fraglimit": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "mp_fragsleft": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "mp_friendlyfire": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "mp_logecho": {
+      "default": "1",
+      "note": "",
+      "rule": "banned"
+    },
+    "mp_logfile": {
+      "default": "1",
+      "note": "",
+      "rule": "banned"
+    },
+    "mp_teamlist": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "mp_teamoverride": {
+      "default": "1",
+      "note": "",
+      "rule": "banned"
+    },
+    "mp_teamplay": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "mp_timeleft": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "mp_timelimit": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "mp_weaponstay": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "multicastport": {
+      "default": "27025",
+      "note": "",
+      "rule": "banned"
+    },
+    "name": {
+      "default": "",
+      "note": "",
+      "rule": "allowed"
+    },
+    "net_address": {
+      "default": "",
+      "note": "",
+      "rule": "banned"
+    },
+    "net_chokeloop": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "net_drawslider": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "net_graph": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "net_graphpos": {
+      "default": "1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "net_graphwidth": {
+      "default": "150",
+      "note": "",
+      "rule": "allowed"
+    },
+    "net_log": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "net_scale": {
+      "default": "5",
+      "note": "",
+      "rule": "allowed"
+    },
+    "net_showdrop": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "net_showpackets": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "nosound": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "password": {
+      "default": "",
+      "note": "",
+      "rule": "allowed"
+    },
+    "pausable": {
+      "default": "1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "port": {
+      "default": "27015",
+      "note": "",
+      "rule": "allowed"
+    },
+    "r_bmodelinterp": {
+      "default": "1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "r_cachestudio": {
+      "default": "1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "r_cullsequencebox": {
+      "default": "1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "r_decals": {
+      "default": "4096",
+      "note": "",
+      "rule": "allowed"
+    },
+    "r_detailtextures": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "r_detailtexturessupported": {
+      "default": "1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "r_drawentities": {
+      "default": "1",
+      "note": "",
+      "rule": "banned"
+    },
+    "r_drawviewmodel": {
+      "default": "1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "r_dynamic": {
+      "default": "1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "r_fullbright": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "r_glowshellfreq": {
+      "default": "2.2",
+      "note": "",
+      "rule": "allowed"
+    },
+    "r_lightmap": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "r_mirroralpha": {
+      "default": "1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "r_mmx": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "r_norefresh": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "r_novis": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "r_speeds": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "r_traceglow": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "r_wadtextures": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "r_wateralpha": {
+      "default": "1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "rate": {
+      "default": "30000",
+      "note": "",
+      "rule": "allowed"
+    },
+    "rcon_address": {
+      "default": "",
+      "note": "",
+      "rule": "allowed"
+    },
+    "rcon_password": {
+      "default": "",
+      "note": "",
+      "rule": "allowed"
+    },
+    "rcon_port": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "room_delay": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "room_dlylp": {
+      "default": "2",
+      "note": "",
+      "rule": "allowed"
+    },
+    "room_feedback": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "room_left": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "room_lp": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "room_mod": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "room_off": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "room_refl": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "room_rvblp": {
+      "default": "1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "room_size": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "room_type": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "s_reflect": {
+      "default": "1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "s_reverb": {
+      "default": "1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "s_show": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "scr_centertime": {
+      "default": "2",
+      "note": "",
+      "rule": "banned"
+    },
+    "scr_connectmsg": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "scr_connectmsg1": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "scr_connectmsg2": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "scr_ofsx": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "scr_ofsy": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "scr_ofsz": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "scr_printspeed": {
+      "default": "8",
+      "note": "",
+      "rule": "banned"
+    },
+    "sdl_double_click_size": {
+      "default": "2",
+      "note": "",
+      "rule": "banned"
+    },
+    "sdl_double_click_time": {
+      "default": "400",
+      "note": "",
+      "rule": "banned"
+    },
+    "sensitivity": {
+      "default": "3",
+      "note": "",
+      "rule": "allowed"
+    },
+    "servercfgfile": {
+      "default": "",
+      "note": "",
+      "rule": "banned"
+    },
+    "showpause": {
+      "default": "1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "skill": {
+      "default": "1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "skin": {
+      "default": "",
+      "note": "",
+      "rule": "allowed"
+    },
+    "snd_noextraupdate": {
+      "default": "0 WON / 1 steam",
+      "note": "",
+      "rule": "allowed"
+    },
+    "snd_show": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "speak_enabled": {
+      "default": "1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "suitvolume": {
+      "default": "0.25",
+      "note": "",
+      "rule": "allowed"
+    },
+    "sv_accelerate": {
+      "default": "10",
+      "note": "",
+      "rule": "banned"
+    },
+    "sv_aim": {
+      "default": "1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "sv_airaccelerate": {
+      "default": "10",
+      "note": "",
+      "rule": "banned"
+    },
+    "sv_allow_dlfile": {
+      "default": "1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "sv_allowdownload": {
+      "default": "1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "sv_allowupload": {
+      "default": "1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "sv_bounce": {
+      "default": "1",
+      "note": "",
+      "rule": "banned"
+    },
+    "sv_cheats": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "sv_clienttrace": {
+      "default": "1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "sv_contact": {
+      "default": "",
+      "note": "",
+      "rule": "allowed"
+    },
+    "sv_downloadurl": {
+      "default": "",
+      "note": "",
+      "rule": "allowed"
+    },
+    "sv_enableoldqueries": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "sv_failuretime": {
+      "default": "0.5",
+      "note": "",
+      "rule": "allowed"
+    },
+    "sv_filetransfercompression": {
+      "default": "1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "sv_filetransfermaxsize": {
+      "default": "10485760",
+      "note": "",
+      "rule": "allowed"
+    },
+    "sv_filterban": {
+      "default": "1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "sv_friction": {
+      "default": "4",
+      "note": "",
+      "rule": "banned"
+    },
+    "sv_gravity": {
+      "default": "800",
+      "note": "",
+      "rule": "banned"
+    },
+    "sv_instancedbaseline": {
+      "default": "1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "sv_lan": {
+      "default": "1",
+      "note": "",
+      "rule": "banned"
+    },
+    "sv_lan_rate": {
+      "default": "20000",
+      "note": "",
+      "rule": "allowed"
+    },
+    "sv_log_onefile": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "sv_log_singleplayer": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "sv_logbans": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "sv_logblocks": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "sv_logrelay": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "sv_logsecret": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "sv_maxrate": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "sv_maxspeed": {
+      "default": "320",
+      "note": "",
+      "rule": "banned"
+    },
+    "sv_maxunlag": {
+      "default": "0.5",
+      "note": "",
+      "rule": "banned"
+    },
+    "sv_maxupdaterate": {
+      "default": "30",
+      "note": "",
+      "rule": "allowed"
+    },
+    "sv_maxvelocity": {
+      "default": "2000",
+      "note": "",
+      "rule": "banned"
+    },
+    "sv_minrate": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "sv_minupdaterate": {
+      "default": "10",
+      "note": "",
+      "rule": "allowed"
+    },
+    "sv_newunit": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "sv_outofdatetime": {
+      "default": "1800",
+      "note": "",
+      "rule": "allowed"
+    },
+    "sv_password": {
+      "default": "",
+      "note": "",
+      "rule": "allowed"
+    },
+    "sv_proxies": {
+      "default": "1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "sv_rcon_banpenalty": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "sv_rcon_maxfailures": {
+      "default": "10",
+      "note": "",
+      "rule": "banned"
+    },
+    "sv_rcon_minfailures": {
+      "default": "5",
+      "note": "",
+      "rule": "banned"
+    },
+    "sv_rcon_minfailuretime": {
+      "default": "30",
+      "note": "",
+      "rule": "banned"
+    },
+    "sv_send_logos": {
+      "default": "1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "sv_send_resources": {
+      "default": "1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "sv_skycolor_b": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "sv_skycolor_g": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "sv_skycolor_r": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "sv_skyname": {
+      "default": "",
+      "note": "",
+      "rule": "allowed"
+    },
+    "sv_skyvec_x": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "sv_skyvec_y": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "sv_skyvec_z": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "sv_spectatormaxspeed": {
+      "default": "500",
+      "note": "",
+      "rule": "banned"
+    },
+    "sv_stats": {
+      "default": "1",
+      "note": "",
+      "rule": "banned"
+    },
+    "sv_stepsize": {
+      "default": "18",
+      "note": "",
+      "rule": "banned"
+    },
+    "sv_stopspeed": {
+      "default": "100",
+      "note": "",
+      "rule": "banned"
+    },
+    "sv_timeout": {
+      "default": "60",
+      "note": "",
+      "rule": "allowed"
+    },
+    "sv_unlag": {
+      "default": "1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "sv_unlagpush": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "sv_unlagsamples": {
+      "default": "1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "sv_uploadmax": {
+      "default": "0.5",
+      "note": "",
+      "rule": "allowed"
+    },
+    "sv_version": {
+      "default": "",
+      "note": "",
+      "rule": "allowed"
+    },
+    "sv_visiblemaxplayers": {
+      "default": "-1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "sv_voiceenable": {
+      "default": "1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "sv_wateraccelerate": {
+      "default": "10",
+      "note": "",
+      "rule": "banned"
+    },
+    "sv_wateramp": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "sv_waterfriction": {
+      "default": "1",
+      "note": "",
+      "rule": "banned"
+    },
+    "sv_zmax": {
+      "default": "4096",
+      "note": "",
+      "rule": "allowed"
+    },
+    "sys_ticrate": {
+      "default": "100",
+      "note": "",
+      "rule": "banned"
+    },
+    "team": {
+      "default": "",
+      "note": "",
+      "rule": "allowed"
+    },
+    "texgamma": {
+      "default": "2",
+      "note": "",
+      "rule": "allowed"
+    },
+    "tfc_newmodels": {
+      "default": "1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "topcolor": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "traceralpha": {
+      "default": "0.5",
+      "note": "",
+      "rule": "allowed"
+    },
+    "tracerblue": {
+      "default": "0.4",
+      "note": "",
+      "rule": "allowed"
+    },
+    "tracergreen": {
+      "default": "0.8",
+      "note": "",
+      "rule": "allowed"
+    },
+    "tracerlength": {
+      "default": "0.8",
+      "note": "",
+      "rule": "allowed"
+    },
+    "traceroffset": {
+      "default": "30",
+      "note": "",
+      "rule": "allowed"
+    },
+    "tracerred": {
+      "default": "0.8",
+      "note": "",
+      "rule": "allowed"
+    },
+    "tracerspeed": {
+      "default": "6000",
+      "note": "",
+      "rule": "allowed"
+    },
+    "v_centermove": {
+      "default": "0.15",
+      "note": "",
+      "rule": "allowed"
+    },
+    "v_centerspeed": {
+      "default": "500",
+      "note": "",
+      "rule": "allowed"
+    },
+    "v_dark": {
+      "default": "0",
+      "note": "",
+      "rule": "banned"
+    },
+    "vgui_emulatemouse": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "viewsize": {
+      "default": "120",
+      "note": "",
+      "rule": "allowed"
+    },
+    "violence_ablood": {
+      "default": "1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "violence_agibs": {
+      "default": "1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "violence_hblood": {
+      "default": "1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "violence_hgibs": {
+      "default": "1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "voice_avggain": {
+      "default": "0.5",
+      "note": "",
+      "rule": "allowed"
+    },
+    "voice_dsound": {
+      "default": "1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "voice_enable": {
+      "default": "1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "voice_fadeouttime": {
+      "default": "0.1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "voice_forcemicrecord": {
+      "default": "1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "voice_inputfromfile": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "voice_loopback": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "voice_maxgain": {
+      "default": "5",
+      "note": "",
+      "rule": "allowed"
+    },
+    "voice_overdrive": {
+      "default": "2",
+      "note": "",
+      "rule": "allowed"
+    },
+    "voice_overdrivefadetime": {
+      "default": "0.4",
+      "note": "",
+      "rule": "allowed"
+    },
+    "voice_profile": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "voice_recordtofile": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "voice_scale": {
+      "default": "1",
+      "note": "",
+      "rule": "allowed"
+    },
+    "voice_showchannels": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "voice_showincoming": {
+      "default": "0",
+      "note": "",
+      "rule": "allowed"
+    },
+    "volume": {
+      "default": "0.7",
+      "note": "",
+      "rule": "allowed"
+    },
+    "waterroom_type": {
+      "default": "14",
+      "note": "",
+      "rule": "allowed"
+    },
+    "zoom_sensitivity_ratio": {
+      "default": "1.2",
+      "note": "",
+      "rule": "allowed"
+    }
+  },
+  "patterns": [
+    {
+      "kind": "commands",
+      "note": "",
+      "prefix": "-",
+      "rule": "allowed"
+    },
+    {
+      "kind": "commands",
+      "note": "BESIDES THE FOLLOWING THREE",
+      "prefix": "bxt_tas_",
+      "rule": "banned"
+    },
+    {
+      "kind": "commands",
+      "note": "",
+      "prefix": "weapon_",
+      "rule": "allowed"
+    },
+    {
+      "kind": "cvars",
+      "note": "",
+      "prefix": "_bxt_tas_",
+      "rule": "banned"
+    },
+    {
+      "kind": "cvars",
+      "note": "BESIDES ducktap_priority",
+      "prefix": "bxt_tas_",
+      "rule": "banned"
+    }
+  ],
+  "skill": {
+    "sk_12mm_bullet1": "8",
+    "sk_12mm_bullet2": "10",
+    "sk_12mm_bullet3": "10",
+    "sk_9mm_bullet1": "5",
+    "sk_9mm_bullet2": "5",
+    "sk_9mm_bullet3": "8",
+    "sk_9mmar_bullet1": "3",
+    "sk_9mmar_bullet2": "4",
+    "sk_9mmar_bullet3": "5",
+    "sk_agrunt_dmg_punch1": "10",
+    "sk_agrunt_dmg_punch2": "20",
+    "sk_agrunt_dmg_punch3": "20",
+    "sk_agrunt_health1": "60",
+    "sk_agrunt_health2": "90",
+    "sk_agrunt_health3": "120",
+    "sk_apache_health1": "150",
+    "sk_apache_health2": "250",
+    "sk_apache_health3": "400",
+    "sk_barney_health1": "35",
+    "sk_barney_health2": "35",
+    "sk_barney_health3": "35",
+    "sk_battery1": "15",
+    "sk_battery2": "15",
+    "sk_battery3": "10",
+    "sk_bigmomma_dmg_blast1": "100",
+    "sk_bigmomma_dmg_blast2": "120",
+    "sk_bigmomma_dmg_blast3": "160",
+    "sk_bigmomma_dmg_slash1": "50",
+    "sk_bigmomma_dmg_slash2": "60",
+    "sk_bigmomma_dmg_slash3": "70",
+    "sk_bigmomma_health_factor1": "1",
+    "sk_bigmomma_health_factor2": "1.5",
+    "sk_bigmomma_health_factor3": "2",
+    "sk_bigmomma_radius_blast1": "250",
+    "sk_bigmomma_radius_blast2": "250",
+    "sk_bigmomma_radius_blast3": "275",
+    "sk_bullsquid_dmg_bite1": "15",
+    "sk_bullsquid_dmg_bite2": "25",
+    "sk_bullsquid_dmg_bite3": "25",
+    "sk_bullsquid_dmg_spit1": "10",
+    "sk_bullsquid_dmg_spit2": "10",
+    "sk_bullsquid_dmg_spit3": "15",
+    "sk_bullsquid_dmg_whip1": "25",
+    "sk_bullsquid_dmg_whip2": "35",
+    "sk_bullsquid_dmg_whip3": "35",
+    "sk_bullsquid_health1": "40",
+    "sk_bullsquid_health2": "40",
+    "sk_bullsquid_health3": "120",
+    "sk_controller_dmgball1": "3",
+    "sk_controller_dmgball2": "4",
+    "sk_controller_dmgball3": "5",
+    "sk_controller_dmgzap1": "15",
+    "sk_controller_dmgzap2": "25",
+    "sk_controller_dmgzap3": "35",
+    "sk_controller_health1": "60",
+    "sk_controller_health2": "60",
+    "sk_controller_health3": "100",
+    "sk_controller_speedball1": "650",
+    "sk_controller_speedball2": "800",
+    "sk_controller_speedball3": "1000",
+    "sk_gargantua_dmg_fire1": "3",
+    "sk_gargantua_dmg_fire2": "5",
+    "sk_gargantua_dmg_fire3": "5",
+    "sk_gargantua_dmg_slash1": "10",
+    "sk_gargantua_dmg_slash2": "30",
+    "sk_gargantua_dmg_slash3": "30",
+    "sk_gargantua_dmg_stomp1": "50",
+    "sk_gargantua_dmg_stomp2": "100",
+    "sk_gargantua_dmg_stomp3": "100",
+    "sk_gargantua_health1": "800",
+    "sk_gargantua_health2": "800",
+    "sk_gargantua_health3": "1000",
+    "sk_hassassin_health1": "30",
+    "sk_hassassin_health2": "50",
+    "sk_hassassin_health3": "50",
+    "sk_headcrab_dmg_bite1": "5",
+    "sk_headcrab_dmg_bite2": "10",
+    "sk_headcrab_dmg_bite3": "10",
+    "sk_headcrab_health1": "10",
+    "sk_headcrab_health2": "10",
+    "sk_headcrab_health3": "20",
+    "sk_healthcharger1": "50",
+    "sk_healthcharger2": "40",
+    "sk_healthcharger3": "25",
+    "sk_healthkit1": "15",
+    "sk_healthkit2": "15",
+    "sk_healthkit3": "10",
+    "sk_hgrunt_gspeed1": "400",
+    "sk_hgrunt_gspeed2": "600",
+    "sk_hgrunt_gspeed3": "800",
+    "sk_hgrunt_health1": "50",
+    "sk_hgrunt_health2": "50",
+    "sk_hgrunt_health3": "80",
+    "sk_hgrunt_kick1": "5",
+    "sk_hgrunt_kick2": "10",
+    "sk_hgrunt_kick3": "10",
+    "sk_hgrunt_pellets1": "3",
+    "sk_hgrunt_pellets2": "5",
+    "sk_hgrunt_pellets3": "6",
+    "sk_hornet_dmg1": "4",
+    "sk_hornet_dmg2": "5",
+    "sk_hornet_dmg3": "8",
+    "sk_houndeye_dmg_blast1": "10",
+    "sk_houndeye_dmg_blast2": "15",
+    "sk_houndeye_dmg_blast3": "15",
+    "sk_houndeye_health1": "20",
+    "sk_houndeye_health2": "20",
+    "sk_houndeye_health3": "30",
+    "sk_ichthyosaur_health1": "200",
+    "sk_ichthyosaur_health2": "200",
+    "sk_ichthyosaur_health3": "400",
+    "sk_ichthyosaur_shake1": "20",
+    "sk_ichthyosaur_shake2": "35",
+    "sk_ichthyosaur_shake3": "50",
+    "sk_islave_dmg_claw1": "8",
+    "sk_islave_dmg_claw2": "10",
+    "sk_islave_dmg_claw3": "10",
+    "sk_islave_dmg_clawrake1": "25",
+    "sk_islave_dmg_clawrake2": "25",
+    "sk_islave_dmg_clawrake3": "25",
+    "sk_islave_dmg_zap1": "10",
+    "sk_islave_dmg_zap2": "10",
+    "sk_islave_dmg_zap3": "15",
+    "sk_islave_health1": "30",
+    "sk_islave_health2": "30",
+    "sk_islave_health3": "60",
+    "sk_leech_dmg_bite1": "2",
+    "sk_leech_dmg_bite2": "2",
+    "sk_leech_dmg_bite3": "2",
+    "sk_leech_health1": "2",
+    "sk_leech_health2": "2",
+    "sk_leech_health3": "2",
+    "sk_miniturret_health1": "40",
+    "sk_miniturret_health2": "40",
+    "sk_miniturret_health3": "50",
+    "sk_monster_arm1": "1",
+    "sk_monster_arm2": "1",
+    "sk_monster_arm3": "1",
+    "sk_monster_chest1": "1",
+    "sk_monster_chest2": "1",
+    "sk_monster_chest3": "1",
+    "sk_monster_head1": "3",
+    "sk_monster_head2": "3",
+    "sk_monster_head3": "3",
+    "sk_monster_leg1": "1",
+    "sk_monster_leg2": "1",
+    "sk_monster_leg3": "1",
+    "sk_monster_stomach1": "1",
+    "sk_monster_stomach2": "1",
+    "sk_monster_stomach3": "1",
+    "sk_nihilanth_health1": "800",
+    "sk_nihilanth_health2": "800",
+    "sk_nihilanth_health3": "1000",
+    "sk_nihilanth_zap1": "30",
+    "sk_nihilanth_zap2": "30",
+    "sk_nihilanth_zap3": "50",
+    "sk_player_arm1": "1",
+    "sk_player_arm2": "1",
+    "sk_player_arm3": "1",
+    "sk_player_chest1": "1",
+    "sk_player_chest2": "1",
+    "sk_player_chest3": "1",
+    "sk_player_head1": "3",
+    "sk_player_head2": "3",
+    "sk_player_head3": "3",
+    "sk_player_leg1": "1",
+    "sk_player_leg2": "1",
+    "sk_player_leg3": "1",
+    "sk_player_stomach1": "1",
+    "sk_player_stomach2": "1",
+    "sk_player_stomach3": "1",
+    "sk_plr_357_bullet1": "40",
+    "sk_plr_357_bullet2": "40",
+    "sk_plr_357_bullet3": "40",
+    "sk_plr_9mm_bullet1": "8",
+    "sk_plr_9mm_bullet2": "8",
+    "sk_plr_9mm_bullet3": "8",
+    "sk_plr_9mmar_bullet1": "5",
+    "sk_plr_9mmar_bullet2": "5",
+    "sk_plr_9mmar_bullet3": "5",
+    "sk_plr_9mmar_grenade1": "100",
+    "sk_plr_9mmar_grenade2": "100",
+    "sk_plr_9mmar_grenade3": "100",
+    "sk_plr_buckshot1": "5",
+    "sk_plr_buckshot2": "5",
+    "sk_plr_buckshot3": "5",
+    "sk_plr_crowbar1": "10",
+    "sk_plr_crowbar2": "10",
+    "sk_plr_crowbar3": "10",
+    "sk_plr_egon_narrow1": "6",
+    "sk_plr_egon_narrow2": "6",
+    "sk_plr_egon_narrow3": "6",
+    "sk_plr_egon_wide1": "14",
+    "sk_plr_egon_wide2": "14",
+    "sk_plr_egon_wide3": "14",
+    "sk_plr_gauss1": "20",
+    "sk_plr_gauss2": "20",
+    "sk_plr_gauss3": "20",
+    "sk_plr_hand_grenade1": "100",
+    "sk_plr_hand_grenade2": "100",
+    "sk_plr_hand_grenade3": "100",
+    "sk_plr_rpg1": "100",
+    "sk_plr_rpg2": "100",
+    "sk_plr_rpg3": "100",
+    "sk_plr_satchel1": "150",
+    "sk_plr_satchel2": "150",
+    "sk_plr_satchel3": "150",
+    "sk_plr_tripmine1": "150",
+    "sk_plr_tripmine2": "150",
+    "sk_plr_tripmine3": "150",
+    "sk_plr_xbow_bolt_client1": "10",
+    "sk_plr_xbow_bolt_client2": "10",
+    "sk_plr_xbow_bolt_client3": "10",
+    "sk_plr_xbow_bolt_monster1": "50",
+    "sk_plr_xbow_bolt_monster2": "50",
+    "sk_plr_xbow_bolt_monster3": "50",
+    "sk_scientist_heal1": "25",
+    "sk_scientist_heal2": "25",
+    "sk_scientist_heal3": "25",
+    "sk_scientist_health1": "20",
+    "sk_scientist_health2": "20",
+    "sk_scientist_health3": "20",
+    "sk_sentry_health1": "40",
+    "sk_sentry_health2": "40",
+    "sk_sentry_health3": "50",
+    "sk_snark_dmg_bite1": "10",
+    "sk_snark_dmg_bite2": "10",
+    "sk_snark_dmg_bite3": "10",
+    "sk_snark_dmg_pop1": "5",
+    "sk_snark_dmg_pop2": "5",
+    "sk_snark_dmg_pop3": "5",
+    "sk_snark_health1": "2",
+    "sk_snark_health2": "2",
+    "sk_snark_health3": "2",
+    "sk_suitcharger1": "75",
+    "sk_suitcharger2": "50",
+    "sk_suitcharger3": "35",
+    "sk_turret_health1": "50",
+    "sk_turret_health2": "50",
+    "sk_turret_health3": "60",
+    "sk_zombie_dmg_both_slash1": "25",
+    "sk_zombie_dmg_both_slash2": "40",
+    "sk_zombie_dmg_both_slash3": "40",
+    "sk_zombie_dmg_one_slash1": "10",
+    "sk_zombie_dmg_one_slash2": "20",
+    "sk_zombie_dmg_one_slash3": "20",
+    "sk_zombie_health1": "50",
+    "sk_zombie_health2": "50",
+    "sk_zombie_health3": "100"
+  },
+  "source": {
+    "fetchedAt": "2026-11-06T23:53:50.059Z",
+    "sheet": "1sbVfoW7LAOdwgXzZH3vcA7D-djr2Y8qAQ_c4WezwhRA",
+    "tabs": [
+      "Main",
+      "Skill"
+    ]
+  }
+}

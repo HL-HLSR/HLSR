@@ -1,0 +1,229 @@
+{
+  "schemaVersion": 1,
+  "gameId": "ghosting-renewed",
+  "channel": "stable",
+  "version": "1.0.9",
+  "versionStatus": "assigned",
+  "publishedAt": null,
+  "minimumLauncherVersion": "0.3.9",
+  "expectedInstalledSize": 5264953799,
+  "preservePaths": [
+    "ghostingmod/SAVE",
+    "ghostingmod/runs",
+    "ghostingmod/screenshots",
+    "ghostingmod/cfg",
+    "ghostingmod/custom",
+    "ghostingmod/synclogs",
+    "ghostingmod/DownloadLists",
+    "ghostingmod/download"
+  ],
+  "baseArchive": {
+    "filename": "ghosting-renewed-1.0.6.7z",
+    "size": 1945918366,
+    "sha256": "7bc9deab2dd2a4b6eeab8aabebe7250b83b10862813ead074c9dccfc437dcc75",
+    "rootPrefix": "Ghosting Mod Renewed",
+    "providers": [
+      {
+        "id": "hlsr-primary",
+        "type": "https-direct",
+        "status": "permanent",
+        "priority": 10,
+        "url": "https://hlsr.pro/downloads/ghosting-renewed/1.0.6/ghosting-renewed-1.0.6.7z"
+      },
+      {
+        "id": "github-fallback",
+        "type": "https-direct",
+        "status": "permanent",
+        "priority": 20,
+        "url": "https://github.com/HL-HLSR/Ghosting-Renewed-Releases/releases/download/game-ghosting-renewed-v1.0.6/ghosting-renewed-1.0.6.7z"
+      }
+    ],
+    "version": "1.0.6"
+  },
+  "buildMetadata": {
+    "path": "ghostingmod/hlsr-build.json",
+    "schemaVersion": 1,
+    "required": true,
+    "buildId": "1.0.9-858c0b4b",
+    "buildName": "HL1 Movement",
+    "builtAt": "2026-08-15T13:01:33.198Z",
+    "gitCommit": "858c0b4bc75ede0899dbb8865b7b792718992734",
+    "architecture": "x86"
+  },
+  "filesManifest": {
+    "requiredFiles": [
+      "hl2.exe",
+      "hl2/gameinfo.txt",
+      "ghostingmod/gameinfo.txt",
+      "steam_appid.txt"
+    ],
+    "maxEntries": 8000,
+    "maxUncompressedSize": 6000000000,
+    "entriesSha256": "4479c996c9ba63b91cda7de09662fbb8d8756736f51d559e1ff37c79a7d4b1a1"
+  },
+  "patches": [
+    {
+      "fromVersion": "1.0.2",
+      "toVersion": "1.0.9",
+      "publishedAt": "2026-08-15T13:03:39.885Z",
+      "archive": {
+        "filename": "ghosting-renewed-1.0.2-to-1.0.9.7z",
+        "size": 3244162,
+        "sha256": "cfb168c443f2353782e053883ac635581c39e49635f221a552b14ff984763f99",
+        "providers": [
+          {
+            "id": "timeweb-primary",
+            "type": "https-direct",
+            "status": "permanent",
+            "priority": 10,
+            "url": "https://hlsr.pro/downloads/ghosting-renewed/1.0.9/ghosting-renewed-1.0.2-to-1.0.9.7z"
+          }
+        ]
+      },
+      "changedFiles": 16,
+      "deletedFiles": 0,
+      "resultingFilesManifestSha256": "c9f979a652a361c3cd43671257714ca7e4d764609973975257326c9d485b3e65",
+      "resultingInstalledSize": 5264953799
+    },
+    {
+      "fromVersion": "1.0.3",
+      "toVersion": "1.0.9",
+      "publishedAt": "2026-08-15T13:03:39.889Z",
+      "archive": {
+        "filename": "ghosting-renewed-1.0.3-to-1.0.9.7z",
+        "size": 3244158,
+        "sha256": "bc362a289b48c1c00b1db1a84b7cf391cde77bf24751141a9feb7f831397b72f",
+        "providers": [
+          {
+            "id": "timeweb-primary",
+            "type": "https-direct",
+            "status": "permanent",
+            "priority": 10,
+            "url": "https://hlsr.pro/downloads/ghosting-renewed/1.0.9/ghosting-renewed-1.0.3-to-1.0.9.7z"
+          }
+        ]
+      },
+      "changedFiles": 16,
+      "deletedFiles": 0,
+      "resultingFilesManifestSha256": "c9f979a652a361c3cd43671257714ca7e4d764609973975257326c9d485b3e65",
+      "resultingInstalledSize": 5264953799
+    },
+    {
+      "fromVersion": "1.0.4",
+      "toVersion": "1.0.9",
+      "publishedAt": "2026-08-15T13:03:39.893Z",
+      "archive": {
+        "filename": "ghosting-renewed-1.0.4-to-1.0.9.7z",
+        "size": 3244165,
+        "sha256": "a26990df8dcb47f2bad6f8e4dc13833a815461b2f851b11af20b0186110fff65",
+        "providers": [
+          {
+            "id": "timeweb-primary",
+            "type": "https-direct",
+            "status": "permanent",
+            "priority": 10,
+            "url": "https://hlsr.pro/downloads/ghosting-renewed/1.0.9/ghosting-renewed-1.0.4-to-1.0.9.7z"
+          }
+        ]
+      },
+      "changedFiles": 16,
+      "deletedFiles": 0,
+      "resultingFilesManifestSha256": "c9f979a652a361c3cd43671257714ca7e4d764609973975257326c9d485b3e65",
+      "resultingInstalledSize": 5264953799
+    },
+    {
+      "fromVersion": "1.0.5",
+      "toVersion": "1.0.9",
+      "publishedAt": "2026-08-15T13:03:39.896Z",
+      "archive": {
+        "filename": "ghosting-renewed-1.0.5-to-1.0.9.7z",
+        "size": 3238877,
+        "sha256": "afd580d6a913c37a2e623da8688a24e3925f647239fa4e38f76d581d5f25275a",
+        "providers": [
+          {
+            "id": "timeweb-primary",
+            "type": "https-direct",
+            "status": "permanent",
+            "priority": 10,
+            "url": "https://hlsr.pro/downloads/ghosting-renewed/1.0.9/ghosting-renewed-1.0.5-to-1.0.9.7z"
+          }
+        ]
+      },
+      "changedFiles": 14,
+      "deletedFiles": 0,
+      "resultingFilesManifestSha256": "c9f979a652a361c3cd43671257714ca7e4d764609973975257326c9d485b3e65",
+      "resultingInstalledSize": 5264953799
+    },
+    {
+      "fromVersion": "1.0.6",
+      "toVersion": "1.0.9",
+      "publishedAt": "2026-08-15T13:03:39.900Z",
+      "archive": {
+        "filename": "ghosting-renewed-1.0.6-to-1.0.9.7z",
+        "size": 3238869,
+        "sha256": "dca6e9eb1e8a0bc0fc617fe6dc4ae83d7191277fdbcc71bf61bf807b3a0560e9",
+        "providers": [
+          {
+            "id": "timeweb-primary",
+            "type": "https-direct",
+            "status": "permanent",
+            "priority": 10,
+            "url": "https://hlsr.pro/downloads/ghosting-renewed/1.0.9/ghosting-renewed-1.0.6-to-1.0.9.7z"
+          }
+        ]
+      },
+      "changedFiles": 14,
+      "deletedFiles": 0,
+      "resultingFilesManifestSha256": "c9f979a652a361c3cd43671257714ca7e4d764609973975257326c9d485b3e65",
+      "resultingInstalledSize": 5264953799
+    },
+    {
+      "fromVersion": "1.0.7",
+      "toVersion": "1.0.9",
+      "publishedAt": "2026-08-15T13:03:39.904Z",
+      "archive": {
+        "filename": "ghosting-renewed-1.0.7-to-1.0.9.7z",
+        "size": 3238872,
+        "sha256": "b40f43e93a18a0108c6077adbdc3fcb387783661d649c4c464e9d34b6c16ffc1",
+        "providers": [
+          {
+            "id": "timeweb-primary",
+            "type": "https-direct",
+            "status": "permanent",
+            "priority": 10,
+            "url": "https://hlsr.pro/downloads/ghosting-renewed/1.0.9/ghosting-renewed-1.0.7-to-1.0.9.7z"
+          }
+        ]
+      },
+      "changedFiles": 14,
+      "deletedFiles": 0,
+      "resultingFilesManifestSha256": "c9f979a652a361c3cd43671257714ca7e4d764609973975257326c9d485b3e65",
+      "resultingInstalledSize": 5264953799
+    },
+    {
+      "fromVersion": "1.0.8",
+      "toVersion": "1.0.9",
+      "publishedAt": "2026-08-15T13:03:39.908Z",
+      "archive": {
+        "filename": "ghosting-renewed-1.0.8-to-1.0.9.7z",
+        "size": 3230960,
+        "sha256": "b0ae1ac7e77348e1a641af5c53aa40f5e37a01d4e2a5a801d6fe1065f13ef059",
+        "providers": [
+          {
+            "id": "timeweb-primary",
+            "type": "https-direct",
+            "status": "permanent",
+            "priority": 10,
+            "url": "https://hlsr.pro/downloads/ghosting-renewed/1.0.9/ghosting-renewed-1.0.8-to-1.0.9.7z"
+          }
+        ]
+      },
+      "changedFiles": 13,
+      "deletedFiles": 0,
+      "resultingFilesManifestSha256": "c9f979a652a361c3cd43671257714ca7e4d764609973975257326c9d485b3e65",
+      "resultingInstalledSize": 5264953799
+    }
+  ],
+  "enabled": true,
+  "notes": "1.0.8 — у окна игры появилась иконка: в панели задач и в Alt+Tab вместо пустого места видно значок. Файл resource/game.ico лежал только внутри пакета мода, а движок открывает его как обычный файл на диске и внутрь пакета попасть не может. Теперь он лежит рядом, распакованным. Больше в сборке не изменилось ничего: с 1.0.7 патч весит 8 КБ. Тем, кто ставит игру впервые, патч от базы 1.0.6 по-прежнему доносит и server.dll из 1.0.7."
+}

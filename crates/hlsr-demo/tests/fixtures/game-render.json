@@ -1,0 +1,1740 @@
+{
+  "now": "2026-11-18T09:30:00.125Z",
+  "fps": [
+    30,
+    60,
+    120
+  ],
+  "specs": {
+    "ghosting": {
+      "gameId": "ghosting-renewed",
+      "image": "hl2.exe",
+      "registryKey": "HKCU\\Software\\Valve\\Source\\ghostingmod\\Settings",
+      "marker": "ghosting-render.restore.json",
+      "regFile": "ghosting-render.settings.reg",
+      "unmutePending": "ghostingUnmutePending",
+      "label": "Ghosting",
+      "otherRunning": null,
+      "required": [
+        "hl2.exe",
+        "ghostingmod"
+      ],
+      "renderRoot": "ghostingmod/hlsr-render",
+      "caps": [
+        "keyhud",
+        "audio",
+        "integrity",
+        "ownConfig",
+        "ownHud"
+      ]
+    },
+    "hl1": {
+      "gameId": "hl1-won",
+      "image": "hl.exe",
+      "registryKey": "HKCU\\Software\\Valve\\Half-Life\\Settings",
+      "marker": "hl1-render.restore.json",
+      "regFile": "hl1-render.settings.reg",
+      "unmutePending": "hl1UnmutePending",
+      "label": "HL1",
+      "otherRunning": "GOLDSRC_RUNNING",
+      "required": [
+        "Half-Life/hl.exe",
+        "Bunnymod XT/Injector.exe"
+      ],
+      "renderRoot": "Half-Life/valve_WON/hlsr_render",
+      "caps": [
+        "keyhud",
+        "audio",
+        "hud",
+        "ownHud"
+      ]
+    }
+  },
+  "snapshot": [
+    {
+      "name": "ключ есть",
+      "spec": "ghosting",
+      "initial": {
+        "ScreenWidth": 2560,
+        "ScreenHeight": 1440,
+        "ScreenWindowed": 0
+      },
+      "staleReg": false,
+      "markerBefore": false,
+      "failExists": false,
+      "muted": false,
+      "extra": null,
+      "result": {
+        "out": null
+      },
+      "registry": true,
+      "calls": [
+        "exists HKCU\\Software\\Valve\\Source\\ghostingmod\\Settings",
+        "export HKCU\\Software\\Valve\\Source\\ghostingmod\\Settings ghosting-render.settings.reg"
+      ],
+      "marker": "{\n  \"version\": 1,\n  \"existed\": true,\n  \"at\": \"2026-11-18T09:30:00.125Z\",\n  \"muted\": false\n}\n",
+      "files": [
+        "ghosting-render.restore.json",
+        "ghosting-render.settings.reg"
+      ]
+    },
+    {
+      "name": "ключа нет, старый снимок убирается",
+      "spec": "ghosting",
+      "initial": null,
+      "staleReg": true,
+      "markerBefore": false,
+      "failExists": false,
+      "muted": false,
+      "extra": null,
+      "result": {
+        "out": null
+      },
+      "registry": true,
+      "calls": [
+        "exists HKCU\\Software\\Valve\\Source\\ghostingmod\\Settings"
+      ],
+      "marker": "{\n  \"version\": 1,\n  \"existed\": false,\n  \"at\": \"2026-11-18T09:30:00.125Z\",\n  \"muted\": false\n}\n",
+      "files": [
+        "ghosting-render.restore.json"
+      ]
+    },
+    {
+      "name": "mute и журналы HL1 в маркере",
+      "spec": "hl1",
+      "initial": {
+        "ScreenWidth": 2560,
+        "ScreenHeight": 1440,
+        "ScreenWindowed": 0
+      },
+      "staleReg": false,
+      "markerBefore": false,
+      "failExists": false,
+      "muted": true,
+      "extra": {
+        "logs": [
+          {
+            "file": "Half-Life/qconsole.log",
+            "backup": "hl1-render.qconsole.log.orig"
+          },
+          {
+            "file": "Half-Life/bxt-rs.log",
+            "backup": null
+          }
+        ]
+      },
+      "result": {
+        "out": null
+      },
+      "registry": true,
+      "calls": [
+        "exists HKCU\\Software\\Valve\\Half-Life\\Settings",
+        "export HKCU\\Software\\Valve\\Half-Life\\Settings hl1-render.settings.reg"
+      ],
+      "marker": "{\n  \"version\": 1,\n  \"existed\": true,\n  \"at\": \"2026-11-18T09:30:00.125Z\",\n  \"muted\": true,\n  \"logs\": [\n    {\n      \"file\": \"Half-Life/qconsole.log\",\n      \"backup\": \"hl1-render.qconsole.log.orig\"\n    },\n    {\n      \"file\": \"Half-Life/bxt-rs.log\",\n      \"backup\": null\n    }\n  ]\n}\n",
+      "files": [
+        "hl1-render.restore.json",
+        "hl1-render.settings.reg"
+      ]
+    },
+    {
+      "name": "прошлый снимок не возвращён",
+      "spec": "ghosting",
+      "initial": {
+        "ScreenWidth": 2560,
+        "ScreenHeight": 1440,
+        "ScreenWindowed": 0
+      },
+      "staleReg": false,
+      "markerBefore": true,
+      "failExists": false,
+      "muted": false,
+      "extra": null,
+      "result": {
+        "error": {
+          "code": "REGISTRY_FAILED",
+          "message": "Прошлый снимок реестра ещё не возвращён"
+        }
+      },
+      "registry": false,
+      "calls": [],
+      "marker": "{\n  \"version\": 1,\n  \"existed\": true,\n  \"at\": \"2026-11-11T10:00:00.000Z\",\n  \"muted\": false\n}\n",
+      "files": [
+        "ghosting-render.restore.json"
+      ]
+    },
+    {
+      "name": "реестр не читается",
+      "spec": "ghosting",
+      "initial": {
+        "ScreenWidth": 2560,
+        "ScreenHeight": 1440,
+        "ScreenWindowed": 0
+      },
+      "staleReg": false,
+      "markerBefore": false,
+      "failExists": true,
+      "muted": false,
+      "extra": null,
+      "result": {
+        "error": {
+          "code": "REGISTRY_FAILED",
+          "message": "reg query"
+        }
+      },
+      "registry": false,
+      "calls": [
+        "exists HKCU\\Software\\Valve\\Source\\ghostingmod\\Settings"
+      ],
+      "marker": null,
+      "files": []
+    }
+  ],
+  "recover": [
+    {
+      "name": "сбой с mute: реестр возвращён, флаг к снятию",
+      "spec": "ghosting",
+      "initial": {
+        "ScreenWidth": 1280,
+        "ScreenHeight": 720,
+        "ScreenWindowed": 1,
+        "Extra": 5
+      },
+      "failImport": false,
+      "noRoot": false,
+      "markerText": "{\n  \"version\": 1,\n  \"existed\": true,\n  \"at\": \"2026-11-11T10:00:00.000Z\",\n  \"muted\": true\n}\n",
+      "regText": "{\"ScreenWidth\":2560,\"ScreenHeight\":1440,\"ScreenWindowed\":0}",
+      "result": {
+        "out": {
+          "version": 1,
+          "existed": true,
+          "at": "2026-11-11T10:00:00.000Z",
+          "muted": true
+        }
+      },
+      "calls": [
+        "delete HKCU\\Software\\Valve\\Source\\ghostingmod\\Settings",
+        "import ghosting-render.settings.reg"
+      ],
+      "key": {
+        "ScreenWidth": 2560,
+        "ScreenHeight": 1440,
+        "ScreenWindowed": 0
+      },
+      "flag": true,
+      "logs": [
+        [
+          "warn",
+          "[demo] рендер Ghosting прерван сбоем (2026-11-11T10:00:00.000Z): реестр игры возвращён"
+        ]
+      ],
+      "files": []
+    },
+    {
+      "name": "сбой без mute, ключа не было",
+      "spec": "ghosting",
+      "initial": {
+        "ScreenWidth": 1280,
+        "ScreenHeight": 720,
+        "ScreenWindowed": 1,
+        "Extra": 5
+      },
+      "failImport": false,
+      "noRoot": false,
+      "markerText": "{\n  \"version\": 1,\n  \"existed\": false,\n  \"at\": \"2026-11-11T10:00:00.000Z\",\n  \"muted\": false\n}\n",
+      "regText": null,
+      "result": {
+        "out": {
+          "version": 1,
+          "existed": false,
+          "at": "2026-11-11T10:00:00.000Z",
+          "muted": false
+        }
+      },
+      "calls": [
+        "delete HKCU\\Software\\Valve\\Source\\ghostingmod\\Settings"
+      ],
+      "key": null,
+      "flag": null,
+      "logs": [
+        [
+          "warn",
+          "[demo] рендер Ghosting прерван сбоем (2026-11-11T10:00:00.000Z): реестр игры возвращён"
+        ]
+      ],
+      "files": []
+    },
+    {
+      "name": "реестр не вернулся: маркер ждёт, флаг всё равно",
+      "spec": "ghosting",
+      "initial": {
+        "ScreenWidth": 1280,
+        "ScreenHeight": 720,
+        "ScreenWindowed": 1,
+        "Extra": 5
+      },
+      "failImport": true,
+      "noRoot": false,
+      "markerText": "{\n  \"version\": 1,\n  \"existed\": true,\n  \"at\": \"2026-11-11T10:00:00.000Z\",\n  \"muted\": true\n}\n",
+      "regText": "{\"ScreenWidth\":2560,\"ScreenHeight\":1440,\"ScreenWindowed\":0}",
+      "result": {
+        "out": {
+          "version": 1,
+          "existed": true,
+          "at": "2026-11-11T10:00:00.000Z",
+          "muted": true
+        }
+      },
+      "calls": [
+        "delete HKCU\\Software\\Valve\\Source\\ghostingmod\\Settings",
+        "import ghosting-render.settings.reg"
+      ],
+      "key": null,
+      "flag": true,
+      "logs": [
+        [
+          "warn",
+          "[demo] реестр Ghosting после сбоя не возвращён (вернёт следующий рендер): reg import"
+        ]
+      ],
+      "files": [
+        "ghosting-render.restore.json",
+        "ghosting-render.settings.reg"
+      ]
+    },
+    {
+      "name": "снимка нет, а ключ был",
+      "spec": "hl1",
+      "initial": {
+        "ScreenWidth": 1280,
+        "ScreenHeight": 720,
+        "ScreenWindowed": 1,
+        "Extra": 5
+      },
+      "failImport": false,
+      "noRoot": false,
+      "markerText": "{\n  \"version\": 1,\n  \"existed\": true,\n  \"at\": \"2026-11-11T10:00:00.000Z\",\n  \"muted\": false\n}\n",
+      "regText": null,
+      "result": {
+        "out": {
+          "version": 1,
+          "existed": true,
+          "at": "2026-11-11T10:00:00.000Z",
+          "muted": false
+        }
+      },
+      "calls": [],
+      "key": {
+        "ScreenWidth": 1280,
+        "ScreenHeight": 720,
+        "ScreenWindowed": 1,
+        "Extra": 5
+      },
+      "flag": null,
+      "logs": [
+        [
+          "warn",
+          "[demo] реестр HL1 после сбоя не возвращён (вернёт следующий рендер): Нет снимка реестра"
+        ]
+      ],
+      "files": [
+        "hl1-render.restore.json"
+      ]
+    },
+    {
+      "name": "журналы HL1 в маркере",
+      "spec": "hl1",
+      "initial": {
+        "ScreenWidth": 1280,
+        "ScreenHeight": 720,
+        "ScreenWindowed": 1,
+        "Extra": 5
+      },
+      "failImport": false,
+      "noRoot": false,
+      "markerText": "{\n  \"version\": 1,\n  \"existed\": true,\n  \"at\": \"2026-11-11T10:00:00.000Z\",\n  \"muted\": true,\n  \"logs\": [\n    {\n      \"file\": \"x/Half-Life/qconsole.log\",\n      \"backup\": null\n    }\n  ]\n}\n",
+      "regText": "{\"ScreenWidth\":2560,\"ScreenHeight\":1440,\"ScreenWindowed\":0}",
+      "result": {
+        "out": {
+          "version": 1,
+          "existed": true,
+          "at": "2026-11-11T10:00:00.000Z",
+          "muted": true,
+          "logs": [
+            {
+              "file": "x/Half-Life/qconsole.log",
+              "backup": null
+            }
+          ]
+        }
+      },
+      "calls": [
+        "delete HKCU\\Software\\Valve\\Half-Life\\Settings",
+        "import hl1-render.settings.reg"
+      ],
+      "key": {
+        "ScreenWidth": 2560,
+        "ScreenHeight": 1440,
+        "ScreenWindowed": 0
+      },
+      "flag": true,
+      "logs": [
+        [
+          "warn",
+          "[demo] рендер HL1 прерван сбоем (2026-11-11T10:00:00.000Z): реестр игры возвращён"
+        ]
+      ],
+      "files": []
+    },
+    {
+      "name": "маркер другой версии",
+      "spec": "ghosting",
+      "initial": {
+        "ScreenWidth": 1280,
+        "ScreenHeight": 720,
+        "ScreenWindowed": 1,
+        "Extra": 5
+      },
+      "failImport": false,
+      "noRoot": false,
+      "markerText": "{\"version\":2,\"existed\":true,\"muted\":true}\n",
+      "regText": null,
+      "result": {
+        "out": null
+      },
+      "calls": [],
+      "key": {
+        "ScreenWidth": 1280,
+        "ScreenHeight": 720,
+        "ScreenWindowed": 1,
+        "Extra": 5
+      },
+      "flag": null,
+      "logs": [],
+      "files": [
+        "ghosting-render.restore.json"
+      ]
+    },
+    {
+      "name": "маркер не JSON",
+      "spec": "ghosting",
+      "initial": {
+        "ScreenWidth": 1280,
+        "ScreenHeight": 720,
+        "ScreenWindowed": 1,
+        "Extra": 5
+      },
+      "failImport": false,
+      "noRoot": false,
+      "markerText": "{oops",
+      "regText": null,
+      "result": {
+        "out": null
+      },
+      "calls": [],
+      "key": {
+        "ScreenWidth": 1280,
+        "ScreenHeight": 720,
+        "ScreenWindowed": 1,
+        "Extra": 5
+      },
+      "flag": null,
+      "logs": [],
+      "files": [
+        "ghosting-render.restore.json"
+      ]
+    },
+    {
+      "name": "маркера нет",
+      "spec": "ghosting",
+      "initial": {
+        "ScreenWidth": 1280,
+        "ScreenHeight": 720,
+        "ScreenWindowed": 1,
+        "Extra": 5
+      },
+      "failImport": false,
+      "noRoot": false,
+      "markerText": null,
+      "regText": null,
+      "result": {
+        "out": null
+      },
+      "calls": [],
+      "key": {
+        "ScreenWidth": 1280,
+        "ScreenHeight": 720,
+        "ScreenWindowed": 1,
+        "Extra": 5
+      },
+      "flag": null,
+      "logs": [],
+      "files": []
+    },
+    {
+      "name": "корня заданий нет",
+      "spec": "ghosting",
+      "initial": {
+        "ScreenWidth": 1280,
+        "ScreenHeight": 720,
+        "ScreenWindowed": 1,
+        "Extra": 5
+      },
+      "failImport": false,
+      "noRoot": true,
+      "markerText": null,
+      "regText": null,
+      "result": {
+        "out": null
+      },
+      "calls": [],
+      "key": {
+        "ScreenWidth": 1280,
+        "ScreenHeight": 720,
+        "ScreenWindowed": 1,
+        "Extra": 5
+      },
+      "flag": null,
+      "logs": [],
+      "files": []
+    }
+  ],
+  "finish": [
+    {
+      "name": "mute остался",
+      "muted": true,
+      "pendingBefore": false,
+      "flagBefore": null,
+      "registry": false,
+      "modJobDir": false,
+      "failImport": false,
+      "after": {
+        "registry": false,
+        "modJobDir": null
+      },
+      "flag": true,
+      "calls": [],
+      "key": {
+        "ScreenWidth": 2560,
+        "ScreenHeight": 1440,
+        "ScreenWindowed": 0
+      },
+      "logs": [],
+      "jobs": [],
+      "game": null
+    },
+    {
+      "name": "mute прошлого раза снят",
+      "muted": false,
+      "pendingBefore": true,
+      "flagBefore": null,
+      "registry": false,
+      "modJobDir": false,
+      "failImport": false,
+      "after": {
+        "registry": false,
+        "modJobDir": null
+      },
+      "flag": false,
+      "calls": [],
+      "key": {
+        "ScreenWidth": 2560,
+        "ScreenHeight": 1440,
+        "ScreenWindowed": 0
+      },
+      "logs": [],
+      "jobs": [],
+      "game": null
+    },
+    {
+      "name": "mute не было",
+      "muted": false,
+      "pendingBefore": false,
+      "flagBefore": null,
+      "registry": false,
+      "modJobDir": false,
+      "failImport": false,
+      "after": {
+        "registry": false,
+        "modJobDir": null
+      },
+      "flag": null,
+      "calls": [],
+      "key": {
+        "ScreenWidth": 2560,
+        "ScreenHeight": 1440,
+        "ScreenWindowed": 0
+      },
+      "logs": [],
+      "jobs": [],
+      "game": null
+    },
+    {
+      "name": "mute прошлого раза не снят",
+      "muted": true,
+      "pendingBefore": true,
+      "flagBefore": true,
+      "registry": false,
+      "modJobDir": false,
+      "failImport": false,
+      "after": {
+        "registry": false,
+        "modJobDir": null
+      },
+      "flag": true,
+      "calls": [],
+      "key": {
+        "ScreenWidth": 2560,
+        "ScreenHeight": 1440,
+        "ScreenWindowed": 0
+      },
+      "logs": [],
+      "jobs": [],
+      "game": null
+    },
+    {
+      "name": "реестр и папка в игре",
+      "muted": false,
+      "pendingBefore": false,
+      "flagBefore": null,
+      "registry": true,
+      "modJobDir": true,
+      "failImport": false,
+      "after": {
+        "registry": false,
+        "modJobDir": null
+      },
+      "flag": null,
+      "calls": [
+        "delete HKCU\\Software\\Valve\\Source\\ghostingmod\\Settings",
+        "import ghosting-render.settings.reg"
+      ],
+      "key": {
+        "ScreenWidth": 2560,
+        "ScreenHeight": 1440,
+        "ScreenWindowed": 0
+      },
+      "logs": [],
+      "jobs": [],
+      "game": [
+        "ghostingmod/"
+      ]
+    },
+    {
+      "name": "реестр не вернулся",
+      "muted": false,
+      "pendingBefore": false,
+      "flagBefore": null,
+      "registry": true,
+      "modJobDir": false,
+      "failImport": true,
+      "after": {
+        "registry": true,
+        "modJobDir": null
+      },
+      "flag": null,
+      "calls": [
+        "delete HKCU\\Software\\Valve\\Source\\ghostingmod\\Settings",
+        "import ghosting-render.settings.reg"
+      ],
+      "key": null,
+      "logs": [
+        [
+          "warn",
+          "[demo] реестр Ghosting не возвращён (вернётся при следующем запуске): reg import"
+        ]
+      ],
+      "jobs": [
+        "ghosting-render.restore.json",
+        "ghosting-render.settings.reg"
+      ],
+      "game": null
+    }
+  ],
+  "stopHost": [
+    {
+      "name": "сброс подтверждён",
+      "initMuted": false,
+      "unmuteAll": false,
+      "steam": {
+        "ok": true
+      },
+      "reset": true,
+      "startEvents": [
+        {
+          "event": "audio",
+          "action": "muted",
+          "pid": 4242,
+          "device": 0,
+          "was": false
+        }
+      ],
+      "stopEvents": [
+        {
+          "event": "audio-reset",
+          "ok": true
+        },
+        {
+          "event": "stopped",
+          "code": 0,
+          "alone": false,
+          "pending": false
+        }
+      ],
+      "afterStart": true,
+      "stop": [
+        true
+      ],
+      "muted": false,
+      "host": null,
+      "markerMuted": false
+    },
+    {
+      "name": "сброс не удался",
+      "initMuted": false,
+      "unmuteAll": false,
+      "steam": {
+        "ok": true
+      },
+      "reset": true,
+      "startEvents": [
+        {
+          "event": "audio",
+          "action": "muted",
+          "pid": 4242,
+          "device": 0,
+          "was": false
+        }
+      ],
+      "stopEvents": [
+        {
+          "event": "audio-reset",
+          "ok": false
+        },
+        {
+          "event": "stopped",
+          "code": 0,
+          "alone": false,
+          "pending": true
+        }
+      ],
+      "afterStart": true,
+      "stop": [
+        true
+      ],
+      "muted": true,
+      "host": null,
+      "markerMuted": true
+    },
+    {
+      "name": "без Steam сброса нет",
+      "initMuted": false,
+      "unmuteAll": false,
+      "steam": {
+        "ok": false,
+        "code": "STEAM_NOT_RUNNING"
+      },
+      "reset": true,
+      "startEvents": [
+        {
+          "event": "audio",
+          "action": "muted",
+          "pid": 4242,
+          "device": 0,
+          "was": false
+        }
+      ],
+      "stopEvents": [
+        {
+          "event": "stopped",
+          "code": 0,
+          "alone": false,
+          "pending": true
+        }
+      ],
+      "afterStart": true,
+      "stop": [
+        false
+      ],
+      "muted": true,
+      "host": null,
+      "markerMuted": true
+    },
+    {
+      "name": "между пачками",
+      "initMuted": false,
+      "unmuteAll": false,
+      "steam": {
+        "ok": true
+      },
+      "reset": false,
+      "startEvents": [
+        {
+          "event": "audio",
+          "action": "muted",
+          "pid": 4242,
+          "device": 0,
+          "was": false
+        }
+      ],
+      "stopEvents": [
+        {
+          "event": "stopped",
+          "code": 0,
+          "alone": false,
+          "pending": true
+        }
+      ],
+      "afterStart": true,
+      "stop": [
+        false
+      ],
+      "muted": true,
+      "host": null,
+      "markerMuted": true
+    },
+    {
+      "name": "сессию не видели",
+      "initMuted": true,
+      "unmuteAll": true,
+      "steam": {
+        "ok": true
+      },
+      "reset": true,
+      "startEvents": [],
+      "stopEvents": [
+        {
+          "event": "stopped",
+          "code": 0,
+          "alone": false,
+          "pending": true
+        }
+      ],
+      "afterStart": true,
+      "stop": [
+        true
+      ],
+      "muted": true,
+      "host": null,
+      "markerMuted": true
+    },
+    {
+      "name": "заглушённая до нас — своя",
+      "initMuted": false,
+      "unmuteAll": true,
+      "steam": {
+        "ok": true
+      },
+      "reset": true,
+      "startEvents": [
+        {
+          "event": "audio",
+          "action": "muted",
+          "pid": 4242,
+          "device": 0,
+          "was": true
+        }
+      ],
+      "stopEvents": [
+        {
+          "event": "stopped",
+          "code": 0,
+          "alone": false,
+          "pending": false
+        }
+      ],
+      "afterStart": true,
+      "stop": [
+        true
+      ],
+      "muted": true,
+      "host": null,
+      "markerMuted": true
+    },
+    {
+      "name": "заглушённая до нас — чужая",
+      "initMuted": false,
+      "unmuteAll": false,
+      "steam": {
+        "ok": true
+      },
+      "reset": true,
+      "startEvents": [
+        {
+          "event": "audio",
+          "action": "muted",
+          "pid": 4242,
+          "device": 0,
+          "was": true
+        }
+      ],
+      "stopEvents": [
+        {
+          "event": "stopped",
+          "code": 0,
+          "alone": false,
+          "pending": false
+        }
+      ],
+      "afterStart": false,
+      "stop": [
+        true
+      ],
+      "muted": false,
+      "host": null,
+      "markerMuted": false
+    },
+    {
+      "name": "помощник не сообщил",
+      "initMuted": true,
+      "unmuteAll": false,
+      "steam": {
+        "ok": true
+      },
+      "reset": true,
+      "startEvents": [],
+      "stopEvents": [],
+      "afterStart": true,
+      "stop": [
+        true
+      ],
+      "muted": true,
+      "host": null,
+      "markerMuted": true
+    },
+    {
+      "name": "сброс подтверждён, хотя pending",
+      "initMuted": false,
+      "unmuteAll": false,
+      "steam": {
+        "ok": true
+      },
+      "reset": true,
+      "startEvents": [
+        {
+          "event": "audio",
+          "action": "muted",
+          "pid": 4242,
+          "device": 0,
+          "was": false
+        }
+      ],
+      "stopEvents": [
+        {
+          "event": "audio-reset",
+          "ok": true
+        },
+        {
+          "event": "stopped",
+          "code": 0,
+          "alone": false,
+          "pending": true
+        }
+      ],
+      "afterStart": true,
+      "stop": [
+        true
+      ],
+      "muted": false,
+      "host": null,
+      "markerMuted": false
+    }
+  ],
+  "blocker": [
+    {
+      "name": "флага нет",
+      "flag": null,
+      "blocker": "no-flag"
+    },
+    {
+      "name": "флаг false",
+      "flag": false,
+      "blocker": "no-flag"
+    },
+    {
+      "name": "рендер идёт",
+      "active": true,
+      "blocker": "RENDER_ACTIVE"
+    },
+    {
+      "name": "не Windows",
+      "platform": "linux",
+      "blocker": "RENDER_NOT_READY"
+    },
+    {
+      "name": "игра не установлена",
+      "install": false,
+      "blocker": "GAME_NOT_INSTALLED"
+    },
+    {
+      "name": "игра запущена из лаунчера",
+      "gameRunning": true,
+      "blocker": "GAME_RUNNING"
+    },
+    {
+      "name": "игра занята",
+      "gameBusy": true,
+      "blocker": "GAME_RUNNING"
+    },
+    {
+      "name": "hl2.exe запущен не из лаунчера",
+      "running": [
+        {
+          "executablePath": "C:\\Other\\hl2.exe"
+        }
+      ],
+      "blocker": "GAME_RUNNING"
+    },
+    {
+      "name": "список процессов не получен",
+      "inspectorThrows": true,
+      "blocker": "GAME_RUNNING"
+    },
+    {
+      "name": "Steam не запущен",
+      "steam": {
+        "ok": false,
+        "code": "STEAM_NOT_RUNNING"
+      },
+      "blocker": "STEAM_NOT_RUNNING"
+    },
+    {
+      "name": "Steam от администратора",
+      "steam": {
+        "ok": false,
+        "code": "STEAM_ELEVATED"
+      },
+      "blocker": "STEAM_ELEVATED"
+    },
+    {
+      "name": "Steam не установлен",
+      "steam": {
+        "ok": false,
+        "code": "STEAM_NOT_INSTALLED"
+      },
+      "blocker": "STEAM_NOT_INSTALLED"
+    },
+    {
+      "name": "Steam: другой код",
+      "steam": {
+        "ok": false,
+        "code": "ENOENT"
+      },
+      "blocker": "STEAM_NOT_RUNNING"
+    },
+    {
+      "name": "Steam: сбой проверки",
+      "steamThrows": "STEAM_ELEVATED",
+      "blocker": "STEAM_ELEVATED"
+    },
+    {
+      "name": "Steam: сбой без кода",
+      "steamThrows": null,
+      "blocker": "STEAM_NOT_RUNNING"
+    },
+    {
+      "name": "можно",
+      "flag": true,
+      "blocker": null
+    }
+  ],
+  "resetMute": [
+    {
+      "name": "сброс подтверждён",
+      "flagBefore": true,
+      "failStart": false,
+      "markerBefore": false,
+      "failImport": false,
+      "stopEvents": [
+        {
+          "event": "audio-reset",
+          "ok": true
+        },
+        {
+          "event": "stopped",
+          "code": 0,
+          "alone": false,
+          "pending": false
+        }
+      ],
+      "result": true,
+      "record": [
+        {
+          "start": {
+            "resetOnly": true,
+            "exe": "<root>/s46/game/hl2.exe",
+            "cwd": "<root>/s46/game",
+            "commandLine": "\"<root>/s46/game/hl2.exe\" -game ghostingmod +volume 0",
+            "resetExe": "<root>/s46/game/hl2.exe",
+            "resetCommandLine": "\"<root>/s46/game/hl2.exe\" -game ghostingmod +volume 0",
+            "mute": false
+          }
+        },
+        {
+          "stop": true
+        }
+      ],
+      "calls": [
+        "exists HKCU\\Software\\Valve\\Source\\ghostingmod\\Settings",
+        "export HKCU\\Software\\Valve\\Source\\ghostingmod\\Settings ghosting-render.settings.reg",
+        "delete HKCU\\Software\\Valve\\Source\\ghostingmod\\Settings",
+        "import ghosting-render.settings.reg"
+      ],
+      "flag": false,
+      "active": false,
+      "logs": [
+        [
+          "info",
+          "[demo] сброс mute после игры: снят"
+        ],
+        [
+          "info",
+          "[demo] Ghosting: mute после рендера снят без нового экспорта"
+        ]
+      ],
+      "jobs": [],
+      "game": [
+        "ghostingmod/",
+        "hl2.exe"
+      ]
+    },
+    {
+      "name": "сброс не удался",
+      "flagBefore": true,
+      "failStart": false,
+      "markerBefore": false,
+      "failImport": false,
+      "stopEvents": [
+        {
+          "event": "audio-reset",
+          "ok": false
+        },
+        {
+          "event": "stopped",
+          "code": 0,
+          "alone": false,
+          "pending": true
+        }
+      ],
+      "result": false,
+      "record": [
+        {
+          "start": {
+            "resetOnly": true,
+            "exe": "<root>/s47/game/hl2.exe",
+            "cwd": "<root>/s47/game",
+            "commandLine": "\"<root>/s47/game/hl2.exe\" -game ghostingmod +volume 0",
+            "resetExe": "<root>/s47/game/hl2.exe",
+            "resetCommandLine": "\"<root>/s47/game/hl2.exe\" -game ghostingmod +volume 0",
+            "mute": false
+          }
+        },
+        {
+          "stop": true
+        }
+      ],
+      "calls": [
+        "exists HKCU\\Software\\Valve\\Source\\ghostingmod\\Settings",
+        "export HKCU\\Software\\Valve\\Source\\ghostingmod\\Settings ghosting-render.settings.reg",
+        "delete HKCU\\Software\\Valve\\Source\\ghostingmod\\Settings",
+        "import ghosting-render.settings.reg"
+      ],
+      "flag": true,
+      "active": false,
+      "logs": [
+        [
+          "info",
+          "[demo] сброс mute после игры: не удался"
+        ],
+        [
+          "info",
+          "[demo] Ghosting: mute после рендера не снят — попробуем позже"
+        ]
+      ],
+      "jobs": [],
+      "game": [
+        "ghostingmod/",
+        "hl2.exe"
+      ]
+    },
+    {
+      "name": "помощник не запустился",
+      "flagBefore": true,
+      "failStart": true,
+      "markerBefore": false,
+      "failImport": false,
+      "stopEvents": [],
+      "result": false,
+      "record": [
+        {
+          "start": {
+            "resetOnly": true,
+            "exe": "<root>/s48/game/hl2.exe",
+            "cwd": "<root>/s48/game",
+            "commandLine": "\"<root>/s48/game/hl2.exe\" -game ghostingmod +volume 0",
+            "resetExe": "<root>/s48/game/hl2.exe",
+            "resetCommandLine": "\"<root>/s48/game/hl2.exe\" -game ghostingmod +volume 0",
+            "mute": false
+          }
+        },
+        {
+          "stop": true
+        }
+      ],
+      "calls": [
+        "exists HKCU\\Software\\Valve\\Source\\ghostingmod\\Settings",
+        "export HKCU\\Software\\Valve\\Source\\ghostingmod\\Settings ghosting-render.settings.reg",
+        "delete HKCU\\Software\\Valve\\Source\\ghostingmod\\Settings",
+        "import ghosting-render.settings.reg"
+      ],
+      "flag": true,
+      "active": false,
+      "logs": [
+        [
+          "warn",
+          "[demo] Ghosting: сброс mute без рендера не удался: Помощник вышел"
+        ],
+        [
+          "info",
+          "[demo] Ghosting: mute после рендера не снят — попробуем позже"
+        ]
+      ],
+      "jobs": [],
+      "game": [
+        "ghostingmod/",
+        "hl2.exe"
+      ]
+    },
+    {
+      "name": "флага нет",
+      "flagBefore": false,
+      "failStart": false,
+      "markerBefore": false,
+      "failImport": false,
+      "stopEvents": [],
+      "result": false,
+      "record": [],
+      "calls": [],
+      "flag": false,
+      "active": false,
+      "logs": [],
+      "jobs": null,
+      "game": [
+        "ghostingmod/",
+        "hl2.exe"
+      ]
+    },
+    {
+      "name": "старый снимок не возвращается",
+      "flagBefore": true,
+      "failStart": false,
+      "markerBefore": true,
+      "failImport": true,
+      "stopEvents": [
+        {
+          "event": "audio-reset",
+          "ok": true
+        },
+        {
+          "event": "stopped",
+          "code": 0,
+          "alone": false,
+          "pending": false
+        }
+      ],
+      "result": false,
+      "record": [],
+      "calls": [
+        "delete HKCU\\Software\\Valve\\Source\\ghostingmod\\Settings",
+        "import ghosting-render.settings.reg"
+      ],
+      "flag": true,
+      "active": false,
+      "logs": [
+        [
+          "warn",
+          "[demo] Ghosting: сброс mute без рендера не удался: reg import"
+        ],
+        [
+          "info",
+          "[demo] Ghosting: mute после рендера не снят — попробуем позже"
+        ]
+      ],
+      "jobs": [
+        "ghosting-render.restore.json",
+        "ghosting-render.settings.reg"
+      ],
+      "game": [
+        "ghostingmod/",
+        "hl2.exe"
+      ]
+    }
+  ],
+  "preflight": [
+    {
+      "exe": "C:\\Games\\HLSR\\Half-Life\\hl.exe",
+      "name": "можно",
+      "spec": "ghosting",
+      "out": null
+    },
+    {
+      "exe": "C:\\Games\\HLSR\\Half-Life\\hl.exe",
+      "name": "игра запущена из лаунчера",
+      "spec": "ghosting",
+      "gameRunning": true,
+      "error": {
+        "code": "GAME_RUNNING",
+        "message": "GAME_RUNNING"
+      }
+    },
+    {
+      "exe": "C:\\Games\\HLSR\\Half-Life\\hl.exe",
+      "name": "игра занята",
+      "spec": "ghosting",
+      "gameBusy": true,
+      "error": {
+        "code": "GAME_BUSY",
+        "message": "GAME_BUSY"
+      }
+    },
+    {
+      "exe": "C:\\Games\\HLSR\\Half-Life\\hl.exe",
+      "name": "тот же exe запущен",
+      "spec": "hl1",
+      "running": [
+        {
+          "executablePath": "c:\\games\\hlsr\\half-life\\HL.EXE"
+        }
+      ],
+      "error": {
+        "code": "GAME_RUNNING",
+        "message": "GAME_RUNNING"
+      }
+    },
+    {
+      "exe": "C:\\Games\\HLSR\\Half-Life\\hl.exe",
+      "name": "другой hl.exe (HL1)",
+      "spec": "hl1",
+      "running": [
+        {
+          "executablePath": "C:\\Steam\\Half-Life\\hl.exe"
+        }
+      ],
+      "error": {
+        "code": "GOLDSRC_RUNNING",
+        "message": "GOLDSRC_RUNNING"
+      }
+    },
+    {
+      "exe": "C:\\Games\\HLSR\\Half-Life\\hl.exe",
+      "name": "hl.exe без пути (HL1)",
+      "spec": "hl1",
+      "running": [
+        {
+          "executablePath": null
+        }
+      ],
+      "error": {
+        "code": "GOLDSRC_RUNNING",
+        "message": "GOLDSRC_RUNNING"
+      }
+    },
+    {
+      "exe": "C:\\Games\\HLSR\\Half-Life\\hl.exe",
+      "name": "другой hl2.exe (Ghosting)",
+      "spec": "ghosting",
+      "running": [
+        {
+          "executablePath": "C:\\Steam\\hl2.exe"
+        }
+      ],
+      "out": null
+    },
+    {
+      "exe": "C:\\Games\\HLSR\\Half-Life\\hl.exe",
+      "name": "список процессов не получен",
+      "spec": "hl1",
+      "inspectorThrows": true,
+      "out": null
+    },
+    {
+      "exe": "C:\\Games\\HLSR\\Half-Life\\hl.exe",
+      "name": "Steam не запущен",
+      "spec": "ghosting",
+      "steam": {
+        "ok": false,
+        "code": "STEAM_NOT_RUNNING"
+      },
+      "error": {
+        "code": "STEAM_NOT_RUNNING",
+        "message": "STEAM_NOT_RUNNING"
+      }
+    },
+    {
+      "exe": "C:\\Games\\HLSR\\Half-Life\\hl.exe",
+      "name": "Steam от администратора",
+      "spec": "ghosting",
+      "steam": {
+        "ok": false,
+        "code": "STEAM_ELEVATED"
+      },
+      "error": {
+        "code": "STEAM_ELEVATED",
+        "message": "STEAM_ELEVATED"
+      }
+    },
+    {
+      "exe": "C:\\Games\\HLSR\\Half-Life\\hl.exe",
+      "name": "Steam: другой код",
+      "spec": "ghosting",
+      "steam": {
+        "ok": false
+      },
+      "error": {
+        "code": "STEAM_NOT_RUNNING",
+        "message": "STEAM_NOT_RUNNING"
+      }
+    }
+  ],
+  "capabilities": [
+    {
+      "spec": "ghosting",
+      "screen": {
+        "width": 2560,
+        "height": 1440
+      },
+      "capabilities": {
+        "maxHeight": 1440,
+        "fps": [
+          30,
+          60,
+          120
+        ],
+        "keyhud": true,
+        "audio": true,
+        "integrity": true,
+        "ownConfig": true,
+        "ownHud": true
+      }
+    },
+    {
+      "spec": "ghosting",
+      "screen": {
+        "width": 1920,
+        "height": 1080
+      },
+      "capabilities": {
+        "maxHeight": 1080,
+        "fps": [
+          30,
+          60,
+          120
+        ],
+        "keyhud": true,
+        "audio": true,
+        "integrity": true,
+        "ownConfig": true,
+        "ownHud": true
+      }
+    },
+    {
+      "spec": "ghosting",
+      "screen": {
+        "width": 3840,
+        "height": 2160
+      },
+      "capabilities": {
+        "maxHeight": 2160,
+        "fps": [
+          30,
+          60,
+          120
+        ],
+        "keyhud": true,
+        "audio": true,
+        "integrity": true,
+        "ownConfig": true,
+        "ownHud": true
+      }
+    },
+    {
+      "spec": "ghosting",
+      "screen": {
+        "width": 3440,
+        "height": 1440
+      },
+      "capabilities": {
+        "maxHeight": 1440,
+        "fps": [
+          30,
+          60,
+          120
+        ],
+        "keyhud": true,
+        "audio": true,
+        "integrity": true,
+        "ownConfig": true,
+        "ownHud": true
+      }
+    },
+    {
+      "spec": "ghosting",
+      "screen": {
+        "width": 1366,
+        "height": 768
+      },
+      "capabilities": {
+        "maxHeight": 720,
+        "fps": [
+          30,
+          60,
+          120
+        ],
+        "keyhud": true,
+        "audio": true,
+        "integrity": true,
+        "ownConfig": true,
+        "ownHud": true
+      }
+    },
+    {
+      "spec": "ghosting",
+      "screen": {
+        "width": 800,
+        "height": 600
+      },
+      "capabilities": {
+        "maxHeight": 720,
+        "fps": [
+          30,
+          60,
+          120
+        ],
+        "keyhud": true,
+        "audio": true,
+        "integrity": true,
+        "ownConfig": true,
+        "ownHud": true
+      }
+    },
+    {
+      "spec": "ghosting",
+      "screen": {
+        "width": 1920,
+        "height": 1200
+      },
+      "capabilities": {
+        "maxHeight": 1080,
+        "fps": [
+          30,
+          60,
+          120
+        ],
+        "keyhud": true,
+        "audio": true,
+        "integrity": true,
+        "ownConfig": true,
+        "ownHud": true
+      }
+    },
+    {
+      "spec": "ghosting",
+      "screen": null,
+      "capabilities": {
+        "maxHeight": 720,
+        "fps": [
+          30,
+          60,
+          120
+        ],
+        "keyhud": true,
+        "audio": true,
+        "integrity": true,
+        "ownConfig": true,
+        "ownHud": true
+      }
+    },
+    {
+      "spec": "ghosting",
+      "screen": "throws",
+      "capabilities": {
+        "maxHeight": 720,
+        "fps": [
+          30,
+          60,
+          120
+        ],
+        "keyhud": true,
+        "audio": true,
+        "integrity": true,
+        "ownConfig": true,
+        "ownHud": true
+      }
+    },
+    {
+      "spec": "hl1",
+      "screen": {
+        "width": 2560,
+        "height": 1440
+      },
+      "capabilities": {
+        "maxHeight": 1440,
+        "fps": [
+          30,
+          60,
+          120
+        ],
+        "keyhud": true,
+        "audio": true,
+        "hud": true,
+        "ownHud": true
+      }
+    },
+    {
+      "spec": "hl1",
+      "screen": {
+        "width": 1920,
+        "height": 1080
+      },
+      "capabilities": {
+        "maxHeight": 1080,
+        "fps": [
+          30,
+          60,
+          120
+        ],
+        "keyhud": true,
+        "audio": true,
+        "hud": true,
+        "ownHud": true
+      }
+    },
+    {
+      "spec": "hl1",
+      "screen": {
+        "width": 3840,
+        "height": 2160
+      },
+      "capabilities": {
+        "maxHeight": 2160,
+        "fps": [
+          30,
+          60,
+          120
+        ],
+        "keyhud": true,
+        "audio": true,
+        "hud": true,
+        "ownHud": true
+      }
+    },
+    {
+      "spec": "hl1",
+      "screen": {
+        "width": 3440,
+        "height": 1440
+      },
+      "capabilities": {
+        "maxHeight": 1440,
+        "fps": [
+          30,
+          60,
+          120
+        ],
+        "keyhud": true,
+        "audio": true,
+        "hud": true,
+        "ownHud": true
+      }
+    },
+    {
+      "spec": "hl1",
+      "screen": {
+        "width": 1366,
+        "height": 768
+      },
+      "capabilities": {
+        "maxHeight": 720,
+        "fps": [
+          30,
+          60,
+          120
+        ],
+        "keyhud": true,
+        "audio": true,
+        "hud": true,
+        "ownHud": true
+      }
+    },
+    {
+      "spec": "hl1",
+      "screen": {
+        "width": 800,
+        "height": 600
+      },
+      "capabilities": {
+        "maxHeight": 720,
+        "fps": [
+          30,
+          60,
+          120
+        ],
+        "keyhud": true,
+        "audio": true,
+        "hud": true,
+        "ownHud": true
+      }
+    },
+    {
+      "spec": "hl1",
+      "screen": {
+        "width": 1920,
+        "height": 1200
+      },
+      "capabilities": {
+        "maxHeight": 1080,
+        "fps": [
+          30,
+          60,
+          120
+        ],
+        "keyhud": true,
+        "audio": true,
+        "hud": true,
+        "ownHud": true
+      }
+    },
+    {
+      "spec": "hl1",
+      "screen": null,
+      "capabilities": {
+        "maxHeight": 720,
+        "fps": [
+          30,
+          60,
+          120
+        ],
+        "keyhud": true,
+        "audio": true,
+        "hud": true,
+        "ownHud": true
+      }
+    },
+    {
+      "spec": "hl1",
+      "screen": "throws",
+      "capabilities": {
+        "maxHeight": 720,
+        "fps": [
+          30,
+          60,
+          120
+        ],
+        "keyhud": true,
+        "audio": true,
+        "hud": true,
+        "ownHud": true
+      }
+    }
+  ]
+}

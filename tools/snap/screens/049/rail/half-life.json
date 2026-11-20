@@ -1,0 +1,9 @@
+{
+  "id": "rail/half-life",
+  "base": "rail/_base",
+  "state": "Щелчок по Half-Life: выбрана она, мышь уведена на страницу",
+  "steps": [
+    {"click": {"css": ".game-rail__list .rail-item:nth-child(3)", "view": "rail-game-70"}},
+    {"move": [900, 450]}
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "demo/order",
+  "state": "Добавленный набор HL1: рендер не готов, порядок файлов ↑↓, «Убрать»",
+  "base": "demo/_base",
+  "steps": [
+    {
+      "click": {
+        "css": ".game-rail .rail-item[aria-label=\"Демо\"]",
+        "view": "rail-demo"
+      }
+    },
+    {
+      "click": {
+        "css": ".dmp__list .dmp__group:nth-child(3) .dmp__item:nth-of-type(1)",
+        "view": "dmp-item-m-set"
+      }
+    },
+    {
+      "move": [
+        800,
+        880
+      ]
+    }
+  ]
+}

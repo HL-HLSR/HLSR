@@ -1,0 +1,3599 @@
+{
+  "renderDir": "hlsr_render",
+  "netProtocol": 47,
+  "captureVolume": 0.3,
+  "maxMarkers": 1000,
+  "keys": [
+    {
+      "label": "W",
+      "bit": 8,
+      "x": 1,
+      "y": 0,
+      "w": 1
+    },
+    {
+      "label": "A",
+      "bit": 512,
+      "x": 0,
+      "y": 1,
+      "w": 1
+    },
+    {
+      "label": "S",
+      "bit": 16,
+      "x": 1,
+      "y": 1,
+      "w": 1
+    },
+    {
+      "label": "D",
+      "bit": 1024,
+      "x": 2,
+      "y": 1,
+      "w": 1
+    },
+    {
+      "label": "DUCK",
+      "bit": 4,
+      "x": 0,
+      "y": 2,
+      "w": 1.5
+    },
+    {
+      "label": "JUMP",
+      "bit": 2,
+      "x": 1.5,
+      "y": 2,
+      "w": 1.5
+    },
+    {
+      "label": "USE",
+      "bit": 32,
+      "x": 0,
+      "y": 3,
+      "w": 1
+    },
+    {
+      "label": "ATK",
+      "bit": 1,
+      "x": 1,
+      "y": 3,
+      "w": 1
+    },
+    {
+      "label": "ATK2",
+      "bit": 2048,
+      "x": 2,
+      "y": 3,
+      "w": 1
+    }
+  ],
+  "spec": {
+    "gameId": "hl1-won",
+    "image": "hl.exe",
+    "registryKey": "HKCU\\Software\\Valve\\Half-Life\\Settings",
+    "marker": "hl1-render.restore.json",
+    "regFile": "hl1-render.settings.reg",
+    "unmutePending": "hl1UnmutePending",
+    "label": "HL1",
+    "otherRunning": "GOLDSRC_RUNNING",
+    "required": [
+      "Half-Life/hl.exe",
+      "Bunnymod XT/Injector.exe"
+    ],
+    "caps": {
+      "keyhud": true,
+      "audio": true,
+      "hud": true,
+      "ownHud": true
+    }
+  },
+  "plan": [
+    {
+      "durations": [
+        2,
+        0,
+        3,
+        4
+      ],
+      "range": null,
+      "picked": [
+        [
+          0,
+          0,
+          2,
+          2
+        ],
+        [
+          2,
+          2,
+          5,
+          3
+        ],
+        [
+          3,
+          5,
+          9,
+          4
+        ]
+      ],
+      "offset": 0
+    },
+    {
+      "durations": [
+        2,
+        0,
+        3,
+        4
+      ],
+      "range": {
+        "from": 2.5,
+        "to": 5.5
+      },
+      "picked": [
+        [
+          2,
+          2,
+          5,
+          3
+        ],
+        [
+          3,
+          5,
+          9,
+          4
+        ]
+      ],
+      "offset": 2
+    },
+    {
+      "durations": [
+        2,
+        0,
+        3,
+        4
+      ],
+      "range": {
+        "from": 0,
+        "to": 1
+      },
+      "picked": [
+        [
+          0,
+          0,
+          2,
+          2
+        ]
+      ],
+      "offset": 0
+    },
+    {
+      "durations": [
+        0
+      ],
+      "range": null,
+      "picked": [],
+      "offset": 0
+    },
+    {
+      "durations": [
+        0.1,
+        0.2,
+        0.3
+      ],
+      "range": null,
+      "picked": [
+        [
+          0,
+          0,
+          0.1,
+          0.1
+        ],
+        [
+          1,
+          0.1,
+          0.3,
+          0.2
+        ],
+        [
+          2,
+          0.3,
+          0.6,
+          0.3
+        ]
+      ],
+      "offset": 0
+    },
+    {
+      "durations": [
+        1.0005,
+        2.0004,
+        -1,
+        null,
+        3
+      ],
+      "range": {
+        "from": 1,
+        "to": 3.0009
+      },
+      "picked": [
+        [
+          0,
+          0,
+          1.001,
+          1.0005
+        ],
+        [
+          1,
+          1.001,
+          3.001,
+          2.0004
+        ]
+      ],
+      "offset": 0
+    },
+    {
+      "durations": [
+        2,
+        3
+      ],
+      "range": {
+        "from": 5,
+        "to": 6
+      },
+      "picked": [],
+      "offset": 5
+    }
+  ],
+  "jobConfig": [
+    {
+      "input": {
+        "fps": 30,
+        "dir": "hlsr_render/abcdef01"
+      },
+      "text": "bxt_cap_fps 30\nbxt_cap_volume 0.3\nbxt_cap_skip_non_gameplay_frames 1\n_bxt_cap_override_ffmpeg_args \"-c:v libx264 -preset ultrafast -crf 14 -pix_fmt yuv420p -c:a alac -progress valve_WON/hlsr_render/abcdef01/progress.txt -stats_period 0.5\"\nbxt_play_folder hlsr_render/abcdef01\nbxt_cap_separate_start valve_WON/hlsr_render/abcdef01/out\n"
+    },
+    {
+      "input": {
+        "fps": 60,
+        "dir": "hlsr_render/abcdef01"
+      },
+      "text": "bxt_cap_fps 60\nbxt_cap_volume 0.3\nbxt_cap_skip_non_gameplay_frames 1\n_bxt_cap_override_ffmpeg_args \"-c:v libx264 -preset ultrafast -crf 14 -pix_fmt yuv420p -c:a alac -progress valve_WON/hlsr_render/abcdef01/progress.txt -stats_period 0.5\"\nbxt_play_folder hlsr_render/abcdef01\nbxt_cap_separate_start valve_WON/hlsr_render/abcdef01/out\n"
+    },
+    {
+      "input": {
+        "fps": 120,
+        "dir": "hlsr_render/abcdef01"
+      },
+      "text": "bxt_cap_fps 120\nbxt_cap_volume 0.3\nbxt_cap_skip_non_gameplay_frames 1\n_bxt_cap_override_ffmpeg_args \"-c:v libx264 -preset ultrafast -crf 14 -pix_fmt yuv420p -c:a alac -progress valve_WON/hlsr_render/abcdef01/progress.txt -stats_period 0.5\"\nbxt_play_folder hlsr_render/abcdef01\nbxt_cap_separate_start valve_WON/hlsr_render/abcdef01/out\n"
+    },
+    {
+      "input": {
+        "fps": 60,
+        "dir": "hlsr_render/ab12cd34",
+        "hud": true,
+        "ownHud": true
+      },
+      "text": "bxt_cap_fps 60\nbxt_cap_volume 0.3\nbxt_cap_skip_non_gameplay_frames 1\n_bxt_cap_override_ffmpeg_args \"-c:v libx264 -preset ultrafast -crf 14 -pix_fmt yuv420p -c:a alac -progress valve_WON/hlsr_render/ab12cd34/progress.txt -stats_period 0.5\"\nbxt_play_folder hlsr_render/ab12cd34\nbxt_cap_separate_start valve_WON/hlsr_render/ab12cd34/out\n"
+    },
+    {
+      "input": {
+        "fps": 60,
+        "dir": "hlsr_render/ab12cd34",
+        "hud": true,
+        "ownHud": false
+      },
+      "text": "bxt_cap_fps 60\nbxt_cap_volume 0.3\nbxt_hud_game_color \"\"\nbxt_hud_game_alpha \"0\"\nbxt_hud_color \"\"\ncrosshair \"1\"\nbxt_cross \"0\"\nbxt_cross_color \"0 255 0\"\nbxt_cross_alpha \"255\"\nbxt_cross_thickness \"2\"\nbxt_cross_size \"10\"\nbxt_cross_gap \"3\"\nbxt_cross_outline \"0\"\nbxt_cross_circle_radius \"0\"\nbxt_cross_dot_color \"\"\nbxt_cross_dot_size \"0\"\nbxt_cross_top_line \"1\"\nbxt_cross_bottom_line \"1\"\nbxt_cross_left_line \"1\"\nbxt_cross_right_line \"1\"\nbxt_hud_timer \"0\"\nbxt_hud_timer_anchor \"0 0.5\"\nbxt_hud_speedometer \"1\"\nbxt_hud_speedometer_anchor \"0.5 1\"\nbxt_hud_jumpspeed \"0\"\nbxt_hud_jumpspeed_anchor \"0.5 1\"\nbxt_hud_viewangles \"0\"\nbxt_hud_viewangles_anchor \"1 0\"\nbxt_hud_jumpdistance \"0\"\nbxt_hud_precision \"6\"\nbxt_hud_incorrect_fps_indicator \"1\"\ndefault_fov \"90\"\nbxt_fix_widescreen_fov \"0\"\nbxt_viewmodel_fov \"0\"\nbxt_viewmodel_semitransparent \"0\"\nbxt_remove_viewmodel \"0\"\nbxt_viewmodel_ofs_forward \"0\"\nbxt_viewmodel_ofs_right \"0\"\nbxt_viewmodel_ofs_up \"0\"\nbxt_viewmodel_bob_angled \"0\"\nbxt_viewmodel_disable_idle \"0\"\nbxt_viewmodel_disable_equip \"0\"\nbxt_cap_skip_non_gameplay_frames 1\n_bxt_cap_override_ffmpeg_args \"-c:v libx264 -preset ultrafast -crf 14 -pix_fmt yuv420p -c:a alac -progress valve_WON/hlsr_render/ab12cd34/progress.txt -stats_period 0.5\"\nbxt_play_folder hlsr_render/ab12cd34\nbxt_cap_separate_start valve_WON/hlsr_render/ab12cd34/out\n"
+    },
+    {
+      "input": {
+        "fps": 60,
+        "dir": "hlsr_render/ab12cd34",
+        "hud": false,
+        "ownHud": true
+      },
+      "text": "bxt_cap_fps 60\nbxt_cap_volume 0.3\nbxt_disable_hud 1\nbxt_hud 0\nbxt_cross 0\ncrosshair 0\nbxt_cap_skip_non_gameplay_frames 1\n_bxt_cap_override_ffmpeg_args \"-c:v libx264 -preset ultrafast -crf 14 -pix_fmt yuv420p -c:a alac -progress valve_WON/hlsr_render/ab12cd34/progress.txt -stats_period 0.5\"\nbxt_play_folder hlsr_render/ab12cd34\nbxt_cap_separate_start valve_WON/hlsr_render/ab12cd34/out\n"
+    },
+    {
+      "input": {
+        "fps": 60,
+        "dir": "hlsr_render/ab12cd34",
+        "hud": false,
+        "ownHud": false
+      },
+      "text": "bxt_cap_fps 60\nbxt_cap_volume 0.3\nbxt_hud_game_color \"\"\nbxt_hud_game_alpha \"0\"\nbxt_hud_color \"\"\ncrosshair \"1\"\nbxt_cross \"0\"\nbxt_cross_color \"0 255 0\"\nbxt_cross_alpha \"255\"\nbxt_cross_thickness \"2\"\nbxt_cross_size \"10\"\nbxt_cross_gap \"3\"\nbxt_cross_outline \"0\"\nbxt_cross_circle_radius \"0\"\nbxt_cross_dot_color \"\"\nbxt_cross_dot_size \"0\"\nbxt_cross_top_line \"1\"\nbxt_cross_bottom_line \"1\"\nbxt_cross_left_line \"1\"\nbxt_cross_right_line \"1\"\nbxt_hud_timer \"0\"\nbxt_hud_timer_anchor \"0 0.5\"\nbxt_hud_speedometer \"1\"\nbxt_hud_speedometer_anchor \"0.5 1\"\nbxt_hud_jumpspeed \"0\"\nbxt_hud_jumpspeed_anchor \"0.5 1\"\nbxt_hud_viewangles \"0\"\nbxt_hud_viewangles_anchor \"1 0\"\nbxt_hud_jumpdistance \"0\"\nbxt_hud_precision \"6\"\nbxt_hud_incorrect_fps_indicator \"1\"\ndefault_fov \"90\"\nbxt_fix_widescreen_fov \"0\"\nbxt_viewmodel_fov \"0\"\nbxt_viewmodel_semitransparent \"0\"\nbxt_remove_viewmodel \"0\"\nbxt_viewmodel_ofs_forward \"0\"\nbxt_viewmodel_ofs_right \"0\"\nbxt_viewmodel_ofs_up \"0\"\nbxt_viewmodel_bob_angled \"0\"\nbxt_viewmodel_disable_idle \"0\"\nbxt_viewmodel_disable_equip \"0\"\nbxt_disable_hud 1\nbxt_hud 0\nbxt_cross 0\ncrosshair 0\nbxt_cap_skip_non_gameplay_frames 1\n_bxt_cap_override_ffmpeg_args \"-c:v libx264 -preset ultrafast -crf 14 -pix_fmt yuv420p -c:a alac -progress valve_WON/hlsr_render/ab12cd34/progress.txt -stats_period 0.5\"\nbxt_play_folder hlsr_render/ab12cd34\nbxt_cap_separate_start valve_WON/hlsr_render/ab12cd34/out\n"
+    }
+  ],
+  "arguments": {
+    "game": [
+      {
+        "width": 1920,
+        "height": 1080,
+        "dir": "hlsr_render/ab12cd34",
+        "args": [
+          "-steam",
+          "-gl",
+          "-32bpp",
+          "-game",
+          "valve_WON",
+          "-noforcemparms",
+          "-windowed",
+          "-w",
+          "1920",
+          "-h",
+          "1080",
+          "-condebug",
+          "+exec",
+          "hlsr_render/ab12cd34/job.cfg"
+        ]
+      },
+      {
+        "width": 1280,
+        "height": 720,
+        "dir": "hlsr_render/abcdef01",
+        "args": [
+          "-steam",
+          "-gl",
+          "-32bpp",
+          "-game",
+          "valve_WON",
+          "-noforcemparms",
+          "-windowed",
+          "-w",
+          "1280",
+          "-h",
+          "720",
+          "-condebug",
+          "+exec",
+          "hlsr_render/abcdef01/job.cfg"
+        ]
+      },
+      {
+        "width": 640,
+        "height": 480,
+        "dir": "x",
+        "args": [
+          "-steam",
+          "-gl",
+          "-32bpp",
+          "-game",
+          "valve_WON",
+          "-noforcemparms",
+          "-windowed",
+          "-w",
+          "640",
+          "-h",
+          "480",
+          "-condebug",
+          "+exec",
+          "x/job.cfg"
+        ]
+      }
+    ],
+    "reset": [
+      "-steam",
+      "-gl",
+      "-32bpp",
+      "-game",
+      "valve_WON",
+      "-noforcemparms",
+      "-windowed",
+      "-w",
+      "640",
+      "-h",
+      "480",
+      "+volume",
+      "0"
+    ]
+  },
+  "parseLogLine": [
+    {
+      "line": "Playing demo from hlsr_render/ab12cd34\\s002.dem.\r",
+      "parsed": {
+        "kind": "playing",
+        "index": 2
+      }
+    },
+    {
+      "line": "Playing demo from hlsr_render/ab12cd34/s010.dem.",
+      "parsed": {
+        "kind": "playing",
+        "index": 10
+      }
+    },
+    {
+      "line": "playing DEMO from S007.DEM",
+      "parsed": {
+        "kind": "playing",
+        "index": 7
+      }
+    },
+    {
+      "line": "Playing demo from s001.dem",
+      "parsed": {
+        "kind": "playing",
+        "index": 1
+      }
+    },
+    {
+      "line": "Playing demo from a/s001.dem/b/x.dem",
+      "parsed": {
+        "kind": "playing",
+        "index": 1
+      }
+    },
+    {
+      "line": "Playing demo from a/s123.dem.b/s456.dem",
+      "parsed": {
+        "kind": "playing",
+        "index": 456
+      }
+    },
+    {
+      "line": "Playing demo from x/s12.dem",
+      "parsed": null
+    },
+    {
+      "line": "Playing demo from s0001.dem",
+      "parsed": null
+    },
+    {
+      "line": "Playing demo from a\rb/s003.dem",
+      "parsed": null
+    },
+    {
+      "line": "Playing 3 demos.",
+      "parsed": null
+    },
+    {
+      "line": "Recording stopped.",
+      "parsed": {
+        "kind": "stopped"
+      }
+    },
+    {
+      "line": "Recording stopped. extra",
+      "parsed": {
+        "kind": "stopped"
+      }
+    },
+    {
+      "line": "recording stopped.",
+      "parsed": null
+    },
+    {
+      "line": "Recording into valve_WON/hlsr_render/x/out/s001.mp4.",
+      "parsed": null
+    },
+    {
+      "line": "Error initializing recording: could not start ffmpeg. Make sure you have ffmpeg.exe in the Half-Life folder.",
+      "parsed": {
+        "kind": "error",
+        "code": "FFMPEG_START_FAILED",
+        "text": "Error initializing recording: could not start ffmpeg. Make sure you have ffmpeg.exe in the Half-Life folder."
+      }
+    },
+    {
+      "line": "Error during recording: broken pipe",
+      "parsed": {
+        "kind": "error",
+        "code": "RENDER_FAILED",
+        "text": "Error during recording: broken pipe"
+      }
+    },
+    {
+      "line": "Resolution has changed",
+      "parsed": {
+        "kind": "error",
+        "code": "RENDER_FAILED",
+        "text": "Resolution has changed"
+      }
+    },
+    {
+      "line": "Unknown command: bxt_play_folder",
+      "parsed": {
+        "kind": "error",
+        "code": "BXTRS_FAILED",
+        "text": "Unknown command: bxt_play_folder"
+      }
+    },
+    {
+      "line": "Unknown command:bxt_cap_fps",
+      "parsed": {
+        "kind": "error",
+        "code": "BXTRS_FAILED",
+        "text": "Unknown command:bxt_cap_fps"
+      }
+    },
+    {
+      "line": "Unknown command:  bxt_cap_fps",
+      "parsed": null
+    },
+    {
+      "line": "unknown command: _BXT_CAP_OVERRIDE_FFMPEG_ARGS",
+      "parsed": {
+        "kind": "error",
+        "code": "BXTRS_FAILED",
+        "text": "unknown command: _BXT_CAP_OVERRIDE_FFMPEG_ARGS"
+      }
+    },
+    {
+      "line": "Unknown command: w300",
+      "parsed": null
+    },
+    {
+      "line": "Error: no demos found in hlsr_render/x",
+      "parsed": {
+        "kind": "error",
+        "code": "DEMO_OPEN_FAILED",
+        "text": "Error: no demos found in hlsr_render/x"
+      }
+    },
+    {
+      "line": "error: Could Not Open Directory x",
+      "parsed": {
+        "kind": "error",
+        "code": "DEMO_OPEN_FAILED",
+        "text": "error: Could Not Open Directory x"
+      }
+    },
+    {
+      "line": "ERROR: couldn't open hlsr_render/x/s001.dem",
+      "parsed": {
+        "kind": "error",
+        "code": "DEMO_OPEN_FAILED",
+        "text": "ERROR: couldn't open hlsr_render/x/s001.dem"
+      }
+    },
+    {
+      "line": "ERROR: ERROR: couldn't open",
+      "parsed": null
+    },
+    {
+      "line": "Demo file hlsr_render/x/s001.dem not found",
+      "parsed": {
+        "kind": "error",
+        "code": "DEMO_OPEN_FAILED",
+        "text": "Demo file hlsr_render/x/s001.dem not found"
+      }
+    },
+    {
+      "line": "Demo file  not found",
+      "parsed": {
+        "kind": "error",
+        "code": "DEMO_OPEN_FAILED",
+        "text": "Demo file  not found"
+      }
+    },
+    {
+      "line": "Demo file a b not found",
+      "parsed": null
+    },
+    {
+      "line": "WARNING: demo protocol outdated",
+      "parsed": {
+        "kind": "error",
+        "code": "DEMO_PROTOCOL_UNSUPPORTED",
+        "text": "WARNING: demo protocol outdated"
+      }
+    },
+    {
+      "line": "Server uses protocol 48, outdated",
+      "parsed": {
+        "kind": "error",
+        "code": "DEMO_PROTOCOL_UNSUPPORTED",
+        "text": "Server uses protocol 48, outdated"
+      }
+    },
+    {
+      "line": "protocol outdated",
+      "parsed": null
+    },
+    {
+      "line": "Couldn't find map maps/c1a0d.bsp, server will download the map",
+      "parsed": {
+        "kind": "error",
+        "code": "MAP_MISSING",
+        "text": "Couldn't find map maps/c1a0d.bsp, server will download the map"
+      }
+    },
+    {
+      "line": "Warning! File maps/c1a0d.bsp missing during demo playback.",
+      "parsed": {
+        "kind": "error",
+        "code": "MAP_MISSING",
+        "text": "Warning! File maps/c1a0d.bsp missing during demo playback."
+      }
+    },
+    {
+      "line": "Warning! File maps/a b.bsp missing during demo playback.",
+      "parsed": null
+    },
+    {
+      "line": "Cannot continue without model maps/c1a0d.bsp, disconnecting.",
+      "parsed": {
+        "kind": "error",
+        "code": "MAP_MISSING",
+        "text": "Cannot continue without model maps/c1a0d.bsp, disconnecting."
+      }
+    },
+    {
+      "line": "Cannot continue without model models/v_9mmhandgun.mdl, disconnecting.",
+      "parsed": {
+        "kind": "error",
+        "code": "GAME_ERROR",
+        "text": "Cannot continue without model models/v_9mmhandgun.mdl, disconnecting."
+      }
+    },
+    {
+      "line": "x Mod_NumForName: maps/c2a5.bsp not found",
+      "parsed": {
+        "kind": "error",
+        "code": "MAP_MISSING",
+        "text": "x Mod_NumForName: maps/c2a5.bsp not found"
+      }
+    },
+    {
+      "line": "x Mod_NumForName: maps/ not found",
+      "parsed": null
+    },
+    {
+      "line": "Host_Error: Mod_NumForName: maps/c2a5.bsp not found",
+      "parsed": {
+        "kind": "error",
+        "code": "MAP_MISSING",
+        "text": "Host_Error: Mod_NumForName: maps/c2a5.bsp not found"
+      }
+    },
+    {
+      "line": "Host_Error: something else",
+      "parsed": {
+        "kind": "error",
+        "code": "GAME_ERROR",
+        "text": "Host_Error: something else"
+      }
+    },
+    {
+      "line": "host_error:x",
+      "parsed": {
+        "kind": "error",
+        "code": "GAME_ERROR",
+        "text": "host_error:x"
+      }
+    },
+    {
+      "line": "Host_Error: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+      "parsed": {
+        "kind": "error",
+        "code": "GAME_ERROR",
+        "text": "Host_Error: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      }
+    },
+    {
+      "line": "Host_Error: éÿ ",
+      "parsed": {
+        "kind": "error",
+        "code": "GAME_ERROR",
+        "text": "Host_Error: éÿ "
+      }
+    },
+    {
+      "line": "",
+      "parsed": null
+    },
+    {
+      "line": "   ",
+      "parsed": null
+    },
+    {
+      "line": "\r",
+      "parsed": null
+    }
+  ],
+  "progressSeconds": [
+    {
+      "text": "frame=1\nout_time_us=1500000\nprogress=continue\nout_time_us=2500000\n",
+      "seconds": 2.5
+    },
+    {
+      "text": "",
+      "seconds": null
+    },
+    {
+      "text": "out_time_us=N/A\nout_time_us=12",
+      "seconds": 0.000012
+    },
+    {
+      "text": "out_time_us=99999999999999999999999",
+      "seconds": 99999999999999980
+    },
+    {
+      "text": "xout_time_us=7",
+      "seconds": 0.000007
+    },
+    {
+      "text": "out_time_us=\nout_time=00:00:01",
+      "seconds": null
+    }
+  ],
+  "lossCuts": [
+    {
+      "durations": [
+        2,
+        3
+      ],
+      "videos": [
+        1.95,
+        2.8
+      ],
+      "scans": [
+        {
+          "ok": true,
+          "broken": false,
+          "duration": 0,
+          "mapChanges": [
+            {
+              "t": 0,
+              "map": "c1a0",
+              "gap": 0
+            }
+          ],
+          "buttons": [],
+          "startGap": 0.07
+        },
+        {
+          "ok": true,
+          "broken": false,
+          "duration": 0,
+          "mapChanges": [
+            {
+              "t": 0,
+              "map": "c1a0",
+              "gap": 0
+            },
+            {
+              "t": 1,
+              "map": "c1a0d",
+              "gap": 0.18
+            }
+          ],
+          "buttons": [],
+          "startGap": 0.02
+        }
+      ],
+      "cuts": [
+        {
+          "from": 0,
+          "to": 0.05
+        },
+        {
+          "from": 2,
+          "to": 2.02
+        },
+        {
+          "from": 3,
+          "to": 3.18
+        }
+      ]
+    },
+    {
+      "durations": [
+        2,
+        3
+      ],
+      "videos": [
+        2,
+        3.01
+      ],
+      "scans": [
+        {
+          "ok": true,
+          "broken": false,
+          "duration": 0,
+          "mapChanges": [
+            {
+              "t": 0,
+              "map": "c1a0",
+              "gap": 0
+            }
+          ],
+          "buttons": [],
+          "startGap": 0.07
+        },
+        {
+          "ok": true,
+          "broken": false,
+          "duration": 0,
+          "mapChanges": [
+            {
+              "t": 0,
+              "map": "c1a0",
+              "gap": 0
+            },
+            {
+              "t": 1,
+              "map": "c1a0d",
+              "gap": 0.18
+            }
+          ],
+          "buttons": [],
+          "startGap": 0.02
+        }
+      ],
+      "cuts": []
+    },
+    {
+      "durations": [
+        2
+      ],
+      "videos": [
+        1.9
+      ],
+      "scans": [
+        null
+      ],
+      "cuts": [
+        {
+          "from": 0,
+          "to": 0.1
+        }
+      ]
+    },
+    {
+      "durations": [
+        2,
+        3,
+        4
+      ],
+      "videos": [
+        0,
+        2.5,
+        3.333
+      ],
+      "scans": [
+        null,
+        {
+          "ok": true,
+          "broken": false,
+          "duration": 0,
+          "mapChanges": [
+            {
+              "t": 0.5,
+              "map": "a",
+              "gap": 0.3
+            },
+            {
+              "t": 1,
+              "map": "b",
+              "gap": 0
+            },
+            {
+              "t": 2,
+              "map": "c",
+              "gap": 0.1
+            }
+          ],
+          "buttons": [],
+          "startGap": 0
+        },
+        {
+          "ok": true,
+          "broken": false,
+          "duration": 0,
+          "mapChanges": [],
+          "buttons": [],
+          "startGap": 0.5
+        }
+      ],
+      "cuts": [
+        {
+          "from": 0,
+          "to": 2.001
+        },
+        {
+          "from": 2.5,
+          "to": 2.874
+        },
+        {
+          "from": 4,
+          "to": 4.125
+        },
+        {
+          "from": 5,
+          "to": 5.667
+        }
+      ]
+    }
+  ],
+  "timeline": [
+    {
+      "durations": [
+        2,
+        3,
+        4
+      ],
+      "maps": [
+        "c1a0",
+        "c1a0",
+        "c1a1"
+      ],
+      "scans": [
+        {
+          "ok": true,
+          "broken": false,
+          "duration": 0,
+          "mapChanges": [
+            {
+              "t": 0,
+              "map": "c1a0",
+              "gap": 0
+            }
+          ],
+          "buttons": [],
+          "startGap": 0
+        },
+        {
+          "ok": true,
+          "broken": false,
+          "duration": 0,
+          "mapChanges": [
+            {
+              "t": 0,
+              "map": "c1a0",
+              "gap": 0
+            },
+            {
+              "t": 1.5,
+              "map": "c1a0d",
+              "gap": 0.2
+            }
+          ],
+          "buttons": [],
+          "startGap": 0
+        },
+        null
+      ],
+      "range": null,
+      "slice": null,
+      "markers": [
+        {
+          "t": 0,
+          "type": "map",
+          "label": "c1a0"
+        },
+        {
+          "t": 2,
+          "type": "saveload",
+          "label": "2"
+        },
+        {
+          "t": 3.5,
+          "type": "map",
+          "label": "c1a0d"
+        },
+        {
+          "t": 5,
+          "type": "map",
+          "label": "c1a1"
+        }
+      ]
+    },
+    {
+      "durations": [
+        2,
+        3,
+        4
+      ],
+      "maps": [
+        "c1a0",
+        "c1a0",
+        "c1a1"
+      ],
+      "scans": [
+        {
+          "ok": true,
+          "broken": false,
+          "duration": 0,
+          "mapChanges": [
+            {
+              "t": 0,
+              "map": "c1a0",
+              "gap": 0
+            }
+          ],
+          "buttons": [],
+          "startGap": 0
+        },
+        {
+          "ok": true,
+          "broken": false,
+          "duration": 0,
+          "mapChanges": [
+            {
+              "t": 0,
+              "map": "c1a0",
+              "gap": 0
+            },
+            {
+              "t": 1.5,
+              "map": "c1a0d",
+              "gap": 0.2
+            }
+          ],
+          "buttons": [],
+          "startGap": 0
+        },
+        null
+      ],
+      "range": {
+        "from": 1.25,
+        "to": 2
+      },
+      "slice": 1,
+      "markers": [
+        {
+          "t": 1.25,
+          "type": "map",
+          "label": "c1a0"
+        }
+      ]
+    },
+    {
+      "durations": [
+        2,
+        3
+      ],
+      "maps": [
+        "c1a0",
+        "c1a0"
+      ],
+      "scans": [
+        {
+          "ok": true,
+          "broken": false,
+          "duration": 0,
+          "mapChanges": [
+            {
+              "t": 0,
+              "map": "c1a0",
+              "gap": 0
+            },
+            {
+              "t": 1.5,
+              "map": "c1a0d",
+              "gap": 0.2
+            }
+          ],
+          "buttons": [],
+          "startGap": 0
+        }
+      ],
+      "range": {
+        "from": 3.5,
+        "to": 5
+      },
+      "slice": null,
+      "picks": {
+        "from": 3.5,
+        "to": 5
+      },
+      "markers": [
+        {
+          "t": 3.5,
+          "type": "map",
+          "label": "c1a0d"
+        }
+      ]
+    },
+    {
+      "durations": [
+        1,
+        1,
+        1
+      ],
+      "maps": [
+        "",
+        "",
+        "x"
+      ],
+      "scans": [
+        {
+          "ok": true,
+          "broken": false,
+          "duration": 0,
+          "mapChanges": [
+            {
+              "t": 0.5,
+              "map": "",
+              "gap": 0
+            }
+          ],
+          "buttons": [],
+          "startGap": 0
+        },
+        null,
+        {
+          "ok": true,
+          "broken": false,
+          "duration": 0,
+          "mapChanges": [
+            {
+              "t": 0.2,
+              "map": "x",
+              "gap": 0
+            },
+            {
+              "t": 0.4,
+              "map": "y",
+              "gap": 0
+            }
+          ],
+          "buttons": [],
+          "startGap": 0
+        }
+      ],
+      "range": null,
+      "slice": null,
+      "markers": [
+        {
+          "t": 0,
+          "type": "map",
+          "label": ""
+        },
+        {
+          "t": 0.5,
+          "type": "map",
+          "label": ""
+        },
+        {
+          "t": 1,
+          "type": "saveload",
+          "label": "2"
+        },
+        {
+          "t": 2,
+          "type": "saveload",
+          "label": "3"
+        },
+        {
+          "t": 2.4,
+          "type": "map",
+          "label": "y"
+        }
+      ]
+    },
+    {
+      "name": "предел",
+      "count": 1000,
+      "head": [
+        {
+          "t": 0,
+          "type": "map",
+          "label": "a"
+        },
+        {
+          "t": 0.01,
+          "type": "map",
+          "label": "b"
+        },
+        {
+          "t": 0.02,
+          "type": "map",
+          "label": "a"
+        }
+      ],
+      "tail": [
+        {
+          "t": 32.3,
+          "type": "map",
+          "label": "a"
+        },
+        {
+          "t": 32.31,
+          "type": "map",
+          "label": "b"
+        }
+      ]
+    }
+  ],
+  "assTime": [
+    {
+      "seconds": 0,
+      "text": "0:00:00.00"
+    },
+    {
+      "seconds": 0.004,
+      "text": "0:00:00.00"
+    },
+    {
+      "seconds": 0.005,
+      "text": "0:00:00.01"
+    },
+    {
+      "seconds": 0.015,
+      "text": "0:00:00.02"
+    },
+    {
+      "seconds": 3725.456,
+      "text": "1:02:05.46"
+    },
+    {
+      "seconds": 59.999,
+      "text": "0:01:00.00"
+    },
+    {
+      "seconds": 3600,
+      "text": "1:00:00.00"
+    },
+    {
+      "seconds": -5,
+      "text": "0:00:00.00"
+    },
+    {
+      "seconds": 0.285,
+      "text": "0:00:00.28"
+    },
+    {
+      "seconds": 1.005,
+      "text": "0:00:01.00"
+    },
+    {
+      "seconds": 100000.126,
+      "text": "27:46:40.13"
+    }
+  ],
+  "keyEvents": [
+    {
+      "durations": [
+        2,
+        3
+      ],
+      "scans": [
+        {
+          "ok": true,
+          "broken": false,
+          "duration": 0,
+          "mapChanges": [],
+          "buttons": [
+            {
+              "t": 0,
+              "buttons": 0
+            },
+            {
+              "t": 0.5,
+              "buttons": 12
+            },
+            {
+              "t": 1,
+              "buttons": 4
+            }
+          ],
+          "startGap": 0
+        },
+        {
+          "ok": true,
+          "broken": false,
+          "duration": 0,
+          "mapChanges": [],
+          "buttons": [
+            {
+              "t": 0,
+              "buttons": 0
+            },
+            {
+              "t": 2,
+              "buttons": 2
+            },
+            {
+              "t": 2.1,
+              "buttons": 0
+            },
+            {
+              "t": 9,
+              "buttons": 32
+            }
+          ],
+          "startGap": 0
+        }
+      ],
+      "timing": {
+        "offset": 0,
+        "cuts": [
+          {
+            "from": 0,
+            "to": 0.05
+          },
+          {
+            "from": 2,
+            "to": 2.2
+          }
+        ]
+      },
+      "events": [
+        {
+          "t": 0,
+          "buttons": 0
+        },
+        {
+          "t": 0.45,
+          "buttons": 12
+        },
+        {
+          "t": 0.95,
+          "buttons": 4
+        },
+        {
+          "t": 1.95,
+          "buttons": 0
+        },
+        {
+          "t": 1.95,
+          "buttons": 0
+        },
+        {
+          "t": 3.75,
+          "buttons": 2
+        },
+        {
+          "t": 3.8499999999999996,
+          "buttons": 0
+        },
+        {
+          "t": 4.75,
+          "buttons": 32
+        },
+        {
+          "t": 4.75,
+          "buttons": 0
+        }
+      ]
+    },
+    {
+      "durations": [
+        2,
+        3
+      ],
+      "scans": [
+        null,
+        {
+          "ok": true,
+          "broken": false,
+          "duration": 0,
+          "mapChanges": [],
+          "buttons": [
+            {
+              "t": 0,
+              "buttons": 0
+            },
+            {
+              "t": 2,
+              "buttons": 2
+            },
+            {
+              "t": 2.1,
+              "buttons": 0
+            },
+            {
+              "t": 9,
+              "buttons": 32
+            }
+          ],
+          "startGap": 0
+        }
+      ],
+      "timing": {
+        "offset": 2,
+        "cuts": []
+      },
+      "events": [
+        {
+          "t": 0,
+          "buttons": 0
+        },
+        {
+          "t": 0,
+          "buttons": 0
+        },
+        {
+          "t": 2,
+          "buttons": 2
+        },
+        {
+          "t": 2.0999999999999996,
+          "buttons": 0
+        },
+        {
+          "t": 3,
+          "buttons": 32
+        },
+        {
+          "t": 3,
+          "buttons": 0
+        }
+      ]
+    }
+  ],
+  "keyhud": [
+    {
+      "events": [
+        {
+          "t": 0,
+          "buttons": 0
+        },
+        {
+          "t": 0.45,
+          "buttons": 12
+        },
+        {
+          "t": 0.95,
+          "buttons": 4
+        },
+        {
+          "t": 1.95,
+          "buttons": 0
+        },
+        {
+          "t": 1.95,
+          "buttons": 0
+        },
+        {
+          "t": 3.75,
+          "buttons": 2
+        },
+        {
+          "t": 3.8499999999999996,
+          "buttons": 0
+        },
+        {
+          "t": 4.75,
+          "buttons": 32
+        },
+        {
+          "t": 4.75,
+          "buttons": 0
+        }
+      ],
+      "width": 1920,
+      "height": 1080,
+      "end": 4.75,
+      "text": "[Script Info]\n; KeyHUD HLSR: нажатия из usercmd демки\nScriptType: v4.00+\nPlayResX: 1920\nPlayResY: 1080\nScaledBorderAndShadow: yes\nWrapStyle: 2\n\n[V4+ Styles]\nFormat: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding\nStyle: K,Arial,19,&H00FFFFFF,&H00FFFFFF,&H00000000,&H00000000,1,0,0,0,100,100,0,0,1,1,0,5,0,0,0,1\n\n[Events]\nFormat: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text\nDialogue: 0,0:00:00.00,0:00:04.75,K,,0,0,0,,{\\an7\\pos(1783,670)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 44 0 44 44 0 44{\\p0}\nDialogue: 2,0:00:00.00,0:00:04.75,K,,0,0,0,,{\\an5\\pos(1805,692)}W\nDialogue: 0,0:00:00.00,0:00:04.75,K,,0,0,0,,{\\an7\\pos(1733,720)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 44 0 44 44 0 44{\\p0}\nDialogue: 2,0:00:00.00,0:00:04.75,K,,0,0,0,,{\\an5\\pos(1755,742)}A\nDialogue: 0,0:00:00.00,0:00:04.75,K,,0,0,0,,{\\an7\\pos(1783,720)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 44 0 44 44 0 44{\\p0}\nDialogue: 2,0:00:00.00,0:00:04.75,K,,0,0,0,,{\\an5\\pos(1805,742)}S\nDialogue: 0,0:00:00.00,0:00:04.75,K,,0,0,0,,{\\an7\\pos(1833,720)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 44 0 44 44 0 44{\\p0}\nDialogue: 2,0:00:00.00,0:00:04.75,K,,0,0,0,,{\\an5\\pos(1855,742)}D\nDialogue: 0,0:00:00.00,0:00:04.75,K,,0,0,0,,{\\an7\\pos(1733,770)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 69 0 69 44 0 44{\\p0}\nDialogue: 2,0:00:00.00,0:00:04.75,K,,0,0,0,,{\\an5\\pos(1768,792)}DUCK\nDialogue: 0,0:00:00.00,0:00:04.75,K,,0,0,0,,{\\an7\\pos(1808,770)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 69 0 69 44 0 44{\\p0}\nDialogue: 2,0:00:00.00,0:00:04.75,K,,0,0,0,,{\\an5\\pos(1843,792)}JUMP\nDialogue: 0,0:00:00.00,0:00:04.75,K,,0,0,0,,{\\an7\\pos(1733,820)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 44 0 44 44 0 44{\\p0}\nDialogue: 2,0:00:00.00,0:00:04.75,K,,0,0,0,,{\\an5\\pos(1755,842)}USE\nDialogue: 0,0:00:00.00,0:00:04.75,K,,0,0,0,,{\\an7\\pos(1783,820)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 44 0 44 44 0 44{\\p0}\nDialogue: 2,0:00:00.00,0:00:04.75,K,,0,0,0,,{\\an5\\pos(1805,842)}ATK\nDialogue: 0,0:00:00.00,0:00:04.75,K,,0,0,0,,{\\an7\\pos(1833,820)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 44 0 44 44 0 44{\\p0}\nDialogue: 2,0:00:00.00,0:00:04.75,K,,0,0,0,,{\\an5\\pos(1855,842)}ATK2\nDialogue: 1,0:00:00.45,0:00:00.95,K,,0,0,0,,{\\an7\\pos(1783,670)\\bord0\\shad0\\1c&H00A0FF&\\1a&H30&\\p1}m 0 0 l 44 0 44 44 0 44{\\p0}\nDialogue: 1,0:00:00.45,0:00:01.95,K,,0,0,0,,{\\an7\\pos(1733,770)\\bord0\\shad0\\1c&H00A0FF&\\1a&H30&\\p1}m 0 0 l 69 0 69 44 0 44{\\p0}\nDialogue: 1,0:00:03.75,0:00:03.85,K,,0,0,0,,{\\an7\\pos(1808,770)\\bord0\\shad0\\1c&H00A0FF&\\1a&H30&\\p1}m 0 0 l 69 0 69 44 0 44{\\p0}\n"
+    },
+    {
+      "events": [
+        {
+          "t": 0,
+          "buttons": 0
+        },
+        {
+          "t": 1,
+          "buttons": 8
+        },
+        {
+          "t": 2,
+          "buttons": 0
+        }
+      ],
+      "width": 640,
+      "height": 360,
+      "end": 4,
+      "text": "[Script Info]\n; KeyHUD HLSR: нажатия из usercmd демки\nScriptType: v4.00+\nPlayResX: 640\nPlayResY: 360\nScaledBorderAndShadow: yes\nWrapStyle: 2\n\n[V4+ Styles]\nFormat: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding\nStyle: K,Arial,6,&H00FFFFFF,&H00FFFFFF,&H00000000,&H00000000,1,0,0,0,100,100,0,0,1,1,0,5,0,0,0,1\n\n[Events]\nFormat: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text\nDialogue: 0,0:00:00.00,0:00:04.00,K,,0,0,0,,{\\an7\\pos(594,222)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 15 0 15 15 0 15{\\p0}\nDialogue: 2,0:00:00.00,0:00:04.00,K,,0,0,0,,{\\an5\\pos(602,230)}W\nDialogue: 0,0:00:00.00,0:00:04.00,K,,0,0,0,,{\\an7\\pos(577,239)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 15 0 15 15 0 15{\\p0}\nDialogue: 2,0:00:00.00,0:00:04.00,K,,0,0,0,,{\\an5\\pos(585,247)}A\nDialogue: 0,0:00:00.00,0:00:04.00,K,,0,0,0,,{\\an7\\pos(594,239)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 15 0 15 15 0 15{\\p0}\nDialogue: 2,0:00:00.00,0:00:04.00,K,,0,0,0,,{\\an5\\pos(602,247)}S\nDialogue: 0,0:00:00.00,0:00:04.00,K,,0,0,0,,{\\an7\\pos(611,239)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 15 0 15 15 0 15{\\p0}\nDialogue: 2,0:00:00.00,0:00:04.00,K,,0,0,0,,{\\an5\\pos(619,247)}D\nDialogue: 0,0:00:00.00,0:00:04.00,K,,0,0,0,,{\\an7\\pos(577,256)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 24 0 24 15 0 15{\\p0}\nDialogue: 2,0:00:00.00,0:00:04.00,K,,0,0,0,,{\\an5\\pos(589,264)}DUCK\nDialogue: 0,0:00:00.00,0:00:04.00,K,,0,0,0,,{\\an7\\pos(603,256)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 24 0 24 15 0 15{\\p0}\nDialogue: 2,0:00:00.00,0:00:04.00,K,,0,0,0,,{\\an5\\pos(615,264)}JUMP\nDialogue: 0,0:00:00.00,0:00:04.00,K,,0,0,0,,{\\an7\\pos(577,273)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 15 0 15 15 0 15{\\p0}\nDialogue: 2,0:00:00.00,0:00:04.00,K,,0,0,0,,{\\an5\\pos(585,281)}USE\nDialogue: 0,0:00:00.00,0:00:04.00,K,,0,0,0,,{\\an7\\pos(594,273)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 15 0 15 15 0 15{\\p0}\nDialogue: 2,0:00:00.00,0:00:04.00,K,,0,0,0,,{\\an5\\pos(602,281)}ATK\nDialogue: 0,0:00:00.00,0:00:04.00,K,,0,0,0,,{\\an7\\pos(611,273)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 15 0 15 15 0 15{\\p0}\nDialogue: 2,0:00:00.00,0:00:04.00,K,,0,0,0,,{\\an5\\pos(619,281)}ATK2\nDialogue: 1,0:00:01.00,0:00:02.00,K,,0,0,0,,{\\an7\\pos(594,222)\\bord0\\shad0\\1c&H00A0FF&\\1a&H30&\\p1}m 0 0 l 15 0 15 15 0 15{\\p0}\n"
+    },
+    {
+      "events": [],
+      "width": 1280,
+      "height": 720,
+      "end": 10,
+      "text": "[Script Info]\n; KeyHUD HLSR: нажатия из usercmd демки\nScriptType: v4.00+\nPlayResX: 1280\nPlayResY: 720\nScaledBorderAndShadow: yes\nWrapStyle: 2\n\n[V4+ Styles]\nFormat: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding\nStyle: K,Arial,13,&H00FFFFFF,&H00FFFFFF,&H00000000,&H00000000,1,0,0,0,100,100,0,0,1,1,0,5,0,0,0,1\n\n[Events]\nFormat: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text\nDialogue: 0,0:00:00.00,0:00:10.00,K,,0,0,0,,{\\an7\\pos(1189,448)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 29 0 29 29 0 29{\\p0}\nDialogue: 2,0:00:00.00,0:00:10.00,K,,0,0,0,,{\\an5\\pos(1204,463)}W\nDialogue: 0,0:00:00.00,0:00:10.00,K,,0,0,0,,{\\an7\\pos(1156,481)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 29 0 29 29 0 29{\\p0}\nDialogue: 2,0:00:00.00,0:00:10.00,K,,0,0,0,,{\\an5\\pos(1171,496)}A\nDialogue: 0,0:00:00.00,0:00:10.00,K,,0,0,0,,{\\an7\\pos(1189,481)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 29 0 29 29 0 29{\\p0}\nDialogue: 2,0:00:00.00,0:00:10.00,K,,0,0,0,,{\\an5\\pos(1204,496)}S\nDialogue: 0,0:00:00.00,0:00:10.00,K,,0,0,0,,{\\an7\\pos(1222,481)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 29 0 29 29 0 29{\\p0}\nDialogue: 2,0:00:00.00,0:00:10.00,K,,0,0,0,,{\\an5\\pos(1237,496)}D\nDialogue: 0,0:00:00.00,0:00:10.00,K,,0,0,0,,{\\an7\\pos(1156,514)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 46 0 46 29 0 29{\\p0}\nDialogue: 2,0:00:00.00,0:00:10.00,K,,0,0,0,,{\\an5\\pos(1179,529)}DUCK\nDialogue: 0,0:00:00.00,0:00:10.00,K,,0,0,0,,{\\an7\\pos(1206,514)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 46 0 46 29 0 29{\\p0}\nDialogue: 2,0:00:00.00,0:00:10.00,K,,0,0,0,,{\\an5\\pos(1229,529)}JUMP\nDialogue: 0,0:00:00.00,0:00:10.00,K,,0,0,0,,{\\an7\\pos(1156,547)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 29 0 29 29 0 29{\\p0}\nDialogue: 2,0:00:00.00,0:00:10.00,K,,0,0,0,,{\\an5\\pos(1171,562)}USE\nDialogue: 0,0:00:00.00,0:00:10.00,K,,0,0,0,,{\\an7\\pos(1189,547)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 29 0 29 29 0 29{\\p0}\nDialogue: 2,0:00:00.00,0:00:10.00,K,,0,0,0,,{\\an5\\pos(1204,562)}ATK\nDialogue: 0,0:00:00.00,0:00:10.00,K,,0,0,0,,{\\an7\\pos(1222,547)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 29 0 29 29 0 29{\\p0}\nDialogue: 2,0:00:00.00,0:00:10.00,K,,0,0,0,,{\\an5\\pos(1237,562)}ATK2\n"
+    },
+    {
+      "events": [
+        {
+          "t": 0.004,
+          "buttons": 3647
+        },
+        {
+          "t": 0.006,
+          "buttons": 0
+        },
+        {
+          "t": 3,
+          "buttons": 2048
+        },
+        {
+          "t": 12,
+          "buttons": 0
+        }
+      ],
+      "width": 3840,
+      "height": 2160,
+      "end": 5.555,
+      "text": "[Script Info]\n; KeyHUD HLSR: нажатия из usercmd демки\nScriptType: v4.00+\nPlayResX: 3840\nPlayResY: 2160\nScaledBorderAndShadow: yes\nWrapStyle: 2\n\n[V4+ Styles]\nFormat: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding\nStyle: K,Arial,38,&H00FFFFFF,&H00FFFFFF,&H00000000,&H00000000,1,0,0,0,100,100,0,0,1,2,0,5,0,0,0,1\n\n[Events]\nFormat: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text\nDialogue: 0,0:00:00.00,0:00:05.56,K,,0,0,0,,{\\an7\\pos(3566,1340)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 88 0 88 88 0 88{\\p0}\nDialogue: 2,0:00:00.00,0:00:05.56,K,,0,0,0,,{\\an5\\pos(3610,1384)}W\nDialogue: 0,0:00:00.00,0:00:05.56,K,,0,0,0,,{\\an7\\pos(3466,1440)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 88 0 88 88 0 88{\\p0}\nDialogue: 2,0:00:00.00,0:00:05.56,K,,0,0,0,,{\\an5\\pos(3510,1484)}A\nDialogue: 0,0:00:00.00,0:00:05.56,K,,0,0,0,,{\\an7\\pos(3566,1440)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 88 0 88 88 0 88{\\p0}\nDialogue: 2,0:00:00.00,0:00:05.56,K,,0,0,0,,{\\an5\\pos(3610,1484)}S\nDialogue: 0,0:00:00.00,0:00:05.56,K,,0,0,0,,{\\an7\\pos(3666,1440)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 88 0 88 88 0 88{\\p0}\nDialogue: 2,0:00:00.00,0:00:05.56,K,,0,0,0,,{\\an5\\pos(3710,1484)}D\nDialogue: 0,0:00:00.00,0:00:05.56,K,,0,0,0,,{\\an7\\pos(3466,1540)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 138 0 138 88 0 88{\\p0}\nDialogue: 2,0:00:00.00,0:00:05.56,K,,0,0,0,,{\\an5\\pos(3535,1584)}DUCK\nDialogue: 0,0:00:00.00,0:00:05.56,K,,0,0,0,,{\\an7\\pos(3616,1540)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 138 0 138 88 0 88{\\p0}\nDialogue: 2,0:00:00.00,0:00:05.56,K,,0,0,0,,{\\an5\\pos(3685,1584)}JUMP\nDialogue: 0,0:00:00.00,0:00:05.56,K,,0,0,0,,{\\an7\\pos(3466,1640)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 88 0 88 88 0 88{\\p0}\nDialogue: 2,0:00:00.00,0:00:05.56,K,,0,0,0,,{\\an5\\pos(3510,1684)}USE\nDialogue: 0,0:00:00.00,0:00:05.56,K,,0,0,0,,{\\an7\\pos(3566,1640)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 88 0 88 88 0 88{\\p0}\nDialogue: 2,0:00:00.00,0:00:05.56,K,,0,0,0,,{\\an5\\pos(3610,1684)}ATK\nDialogue: 0,0:00:00.00,0:00:05.56,K,,0,0,0,,{\\an7\\pos(3666,1640)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 88 0 88 88 0 88{\\p0}\nDialogue: 2,0:00:00.00,0:00:05.56,K,,0,0,0,,{\\an5\\pos(3710,1684)}ATK2\nDialogue: 1,0:00:00.00,0:00:00.01,K,,0,0,0,,{\\an7\\pos(3566,1340)\\bord0\\shad0\\1c&H00A0FF&\\1a&H30&\\p1}m 0 0 l 88 0 88 88 0 88{\\p0}\nDialogue: 1,0:00:00.00,0:00:00.01,K,,0,0,0,,{\\an7\\pos(3466,1440)\\bord0\\shad0\\1c&H00A0FF&\\1a&H30&\\p1}m 0 0 l 88 0 88 88 0 88{\\p0}\nDialogue: 1,0:00:00.00,0:00:00.01,K,,0,0,0,,{\\an7\\pos(3566,1440)\\bord0\\shad0\\1c&H00A0FF&\\1a&H30&\\p1}m 0 0 l 88 0 88 88 0 88{\\p0}\nDialogue: 1,0:00:00.00,0:00:00.01,K,,0,0,0,,{\\an7\\pos(3666,1440)\\bord0\\shad0\\1c&H00A0FF&\\1a&H30&\\p1}m 0 0 l 88 0 88 88 0 88{\\p0}\nDialogue: 1,0:00:00.00,0:00:00.01,K,,0,0,0,,{\\an7\\pos(3466,1540)\\bord0\\shad0\\1c&H00A0FF&\\1a&H30&\\p1}m 0 0 l 138 0 138 88 0 88{\\p0}\nDialogue: 1,0:00:00.00,0:00:00.01,K,,0,0,0,,{\\an7\\pos(3616,1540)\\bord0\\shad0\\1c&H00A0FF&\\1a&H30&\\p1}m 0 0 l 138 0 138 88 0 88{\\p0}\nDialogue: 1,0:00:00.00,0:00:00.01,K,,0,0,0,,{\\an7\\pos(3466,1640)\\bord0\\shad0\\1c&H00A0FF&\\1a&H30&\\p1}m 0 0 l 88 0 88 88 0 88{\\p0}\nDialogue: 1,0:00:00.00,0:00:00.01,K,,0,0,0,,{\\an7\\pos(3566,1640)\\bord0\\shad0\\1c&H00A0FF&\\1a&H30&\\p1}m 0 0 l 88 0 88 88 0 88{\\p0}\nDialogue: 1,0:00:00.00,0:00:00.01,K,,0,0,0,,{\\an7\\pos(3666,1640)\\bord0\\shad0\\1c&H00A0FF&\\1a&H30&\\p1}m 0 0 l 88 0 88 88 0 88{\\p0}\nDialogue: 1,0:00:03.00,0:00:05.56,K,,0,0,0,,{\\an7\\pos(3666,1640)\\bord0\\shad0\\1c&H00A0FF&\\1a&H30&\\p1}m 0 0 l 88 0 88 88 0 88{\\p0}\n"
+    },
+    {
+      "events": [
+        {
+          "t": 0,
+          "buttons": 2
+        }
+      ],
+      "width": 1,
+      "height": 1,
+      "end": 1,
+      "text": "[Script Info]\n; KeyHUD HLSR: нажатия из usercmd демки\nScriptType: v4.00+\nPlayResX: 1\nPlayResY: 1\nScaledBorderAndShadow: yes\nWrapStyle: 2\n\n[V4+ Styles]\nFormat: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding\nStyle: K,Arial,0,&H00FFFFFF,&H00FFFFFF,&H00000000,&H00000000,1,0,0,0,100,100,0,0,1,1,0,5,0,0,0,1\n\n[Events]\nFormat: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text\nDialogue: 0,0:00:00.00,0:00:01.00,K,,0,0,0,,{\\an7\\pos(-1,-5)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 0 0 0 0 0 0{\\p0}\nDialogue: 2,0:00:00.00,0:00:01.00,K,,0,0,0,,{\\an5\\pos(-1,-5)}W\nDialogue: 0,0:00:00.00,0:00:01.00,K,,0,0,0,,{\\an7\\pos(-3,-3)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 0 0 0 0 0 0{\\p0}\nDialogue: 2,0:00:00.00,0:00:01.00,K,,0,0,0,,{\\an5\\pos(-3,-3)}A\nDialogue: 0,0:00:00.00,0:00:01.00,K,,0,0,0,,{\\an7\\pos(-1,-3)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 0 0 0 0 0 0{\\p0}\nDialogue: 2,0:00:00.00,0:00:01.00,K,,0,0,0,,{\\an5\\pos(-1,-3)}S\nDialogue: 0,0:00:00.00,0:00:01.00,K,,0,0,0,,{\\an7\\pos(1,-3)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 0 0 0 0 0 0{\\p0}\nDialogue: 2,0:00:00.00,0:00:01.00,K,,0,0,0,,{\\an5\\pos(1,-3)}D\nDialogue: 0,0:00:00.00,0:00:01.00,K,,0,0,0,,{\\an7\\pos(-3,-1)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 1 0 1 0 0 0{\\p0}\nDialogue: 2,0:00:00.00,0:00:01.00,K,,0,0,0,,{\\an5\\pos(-2,-1)}DUCK\nDialogue: 0,0:00:00.00,0:00:01.00,K,,0,0,0,,{\\an7\\pos(0,-1)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 1 0 1 0 0 0{\\p0}\nDialogue: 2,0:00:00.00,0:00:01.00,K,,0,0,0,,{\\an5\\pos(1,-1)}JUMP\nDialogue: 0,0:00:00.00,0:00:01.00,K,,0,0,0,,{\\an7\\pos(-3,1)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 0 0 0 0 0 0{\\p0}\nDialogue: 2,0:00:00.00,0:00:01.00,K,,0,0,0,,{\\an5\\pos(-3,1)}USE\nDialogue: 0,0:00:00.00,0:00:01.00,K,,0,0,0,,{\\an7\\pos(-1,1)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 0 0 0 0 0 0{\\p0}\nDialogue: 2,0:00:00.00,0:00:01.00,K,,0,0,0,,{\\an5\\pos(-1,1)}ATK\nDialogue: 0,0:00:00.00,0:00:01.00,K,,0,0,0,,{\\an7\\pos(1,1)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 0 0 0 0 0 0{\\p0}\nDialogue: 2,0:00:00.00,0:00:01.00,K,,0,0,0,,{\\an5\\pos(1,1)}ATK2\nDialogue: 1,0:00:00.00,0:00:01.00,K,,0,0,0,,{\\an7\\pos(0,-1)\\bord0\\shad0\\1c&H00A0FF&\\1a&H30&\\p1}m 0 0 l 1 0 1 0 0 0{\\p0}\n"
+    },
+    {
+      "events": [
+        {
+          "t": 0.285,
+          "buttons": 1536
+        },
+        {
+          "t": 1.005,
+          "buttons": 512
+        }
+      ],
+      "width": 854,
+      "height": 480,
+      "end": 2,
+      "text": "[Script Info]\n; KeyHUD HLSR: нажатия из usercmd демки\nScriptType: v4.00+\nPlayResX: 854\nPlayResY: 480\nScaledBorderAndShadow: yes\nWrapStyle: 2\n\n[V4+ Styles]\nFormat: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding\nStyle: K,Arial,8,&H00FFFFFF,&H00FFFFFF,&H00000000,&H00000000,1,0,0,0,100,100,0,0,1,1,0,5,0,0,0,1\n\n[Events]\nFormat: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text\nDialogue: 0,0:00:00.00,0:00:02.00,K,,0,0,0,,{\\an7\\pos(792,295)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 20 0 20 20 0 20{\\p0}\nDialogue: 2,0:00:00.00,0:00:02.00,K,,0,0,0,,{\\an5\\pos(802,305)}W\nDialogue: 0,0:00:00.00,0:00:02.00,K,,0,0,0,,{\\an7\\pos(769,318)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 20 0 20 20 0 20{\\p0}\nDialogue: 2,0:00:00.00,0:00:02.00,K,,0,0,0,,{\\an5\\pos(779,328)}A\nDialogue: 0,0:00:00.00,0:00:02.00,K,,0,0,0,,{\\an7\\pos(792,318)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 20 0 20 20 0 20{\\p0}\nDialogue: 2,0:00:00.00,0:00:02.00,K,,0,0,0,,{\\an5\\pos(802,328)}S\nDialogue: 0,0:00:00.00,0:00:02.00,K,,0,0,0,,{\\an7\\pos(815,318)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 20 0 20 20 0 20{\\p0}\nDialogue: 2,0:00:00.00,0:00:02.00,K,,0,0,0,,{\\an5\\pos(825,328)}D\nDialogue: 0,0:00:00.00,0:00:02.00,K,,0,0,0,,{\\an7\\pos(769,341)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 32 0 32 20 0 20{\\p0}\nDialogue: 2,0:00:00.00,0:00:02.00,K,,0,0,0,,{\\an5\\pos(785,351)}DUCK\nDialogue: 0,0:00:00.00,0:00:02.00,K,,0,0,0,,{\\an7\\pos(804,341)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 32 0 32 20 0 20{\\p0}\nDialogue: 2,0:00:00.00,0:00:02.00,K,,0,0,0,,{\\an5\\pos(820,351)}JUMP\nDialogue: 0,0:00:00.00,0:00:02.00,K,,0,0,0,,{\\an7\\pos(769,364)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 20 0 20 20 0 20{\\p0}\nDialogue: 2,0:00:00.00,0:00:02.00,K,,0,0,0,,{\\an5\\pos(779,374)}USE\nDialogue: 0,0:00:00.00,0:00:02.00,K,,0,0,0,,{\\an7\\pos(792,364)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 20 0 20 20 0 20{\\p0}\nDialogue: 2,0:00:00.00,0:00:02.00,K,,0,0,0,,{\\an5\\pos(802,374)}ATK\nDialogue: 0,0:00:00.00,0:00:02.00,K,,0,0,0,,{\\an7\\pos(815,364)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 20 0 20 20 0 20{\\p0}\nDialogue: 2,0:00:00.00,0:00:02.00,K,,0,0,0,,{\\an5\\pos(825,374)}ATK2\nDialogue: 1,0:00:00.28,0:00:02.00,K,,0,0,0,,{\\an7\\pos(769,318)\\bord0\\shad0\\1c&H00A0FF&\\1a&H30&\\p1}m 0 0 l 20 0 20 20 0 20{\\p0}\nDialogue: 1,0:00:00.28,0:00:01.00,K,,0,0,0,,{\\an7\\pos(815,318)\\bord0\\shad0\\1c&H00A0FF&\\1a&H30&\\p1}m 0 0 l 20 0 20 20 0 20{\\p0}\n"
+    }
+  ],
+  "concatList": [
+    {
+      "files": [
+        "a'b.mp4"
+      ],
+      "durations": [
+        2
+      ],
+      "text": "file 'a'\\''b.mp4'\nduration 2.000000\noutpoint 2.000000\n"
+    },
+    {
+      "files": [
+        "C:\\x\\out\\s001.mp4",
+        "C:\\x\\out\\s002.mp4"
+      ],
+      "durations": [
+        1.95,
+        2.8
+      ],
+      "text": "file 'C:/x/out/s001.mp4'\nduration 1.950000\noutpoint 1.950000\nfile 'C:/x/out/s002.mp4'\nduration 2.800000\noutpoint 2.800000\n"
+    },
+    {
+      "files": [
+        "s.mp4"
+      ],
+      "durations": [
+        0.3333333333333333
+      ],
+      "text": "file 's.mp4'\nduration 0.333333\noutpoint 0.333333\n"
+    }
+  ],
+  "gameEnv": [
+    {
+      "env": [
+        [
+          "Path",
+          "C:\\Windows"
+        ],
+        [
+          "BXT_DISABLE_VSYNC",
+          "0"
+        ],
+        [
+          "HLSR_PRESENCE_PIPE",
+          "x"
+        ],
+        [
+          "SLINT_BACKEND",
+          "y"
+        ],
+        [
+          "SystemRoot",
+          "C:\\Windows"
+        ]
+      ],
+      "dir": "D:\\tools\\ffmpeg",
+      "out": [
+        [
+          "HLSR_PRESENCE_PIPE",
+          "x"
+        ],
+        [
+          "SLINT_BACKEND",
+          "y"
+        ],
+        [
+          "SystemRoot",
+          "C:\\Windows"
+        ],
+        [
+          "PATH",
+          "D:\\tools\\ffmpeg;C:\\Windows"
+        ],
+        [
+          "BXT_DISABLE_DISCORD_RPC",
+          "1"
+        ],
+        [
+          "BXT_DISABLE_VSYNC",
+          "1"
+        ]
+      ]
+    },
+    {
+      "env": [
+        [
+          "path",
+          "a"
+        ],
+        [
+          "PATH",
+          "b"
+        ],
+        [
+          "bxt_disable_discord_rpc",
+          "0"
+        ],
+        [
+          "Other",
+          "1"
+        ]
+      ],
+      "dir": "D",
+      "out": [
+        [
+          "Other",
+          "1"
+        ],
+        [
+          "PATH",
+          "D;b"
+        ],
+        [
+          "BXT_DISABLE_DISCORD_RPC",
+          "1"
+        ],
+        [
+          "BXT_DISABLE_VSYNC",
+          "1"
+        ]
+      ]
+    },
+    {
+      "env": [
+        [
+          "X",
+          "1"
+        ]
+      ],
+      "dir": "D",
+      "out": [
+        [
+          "X",
+          "1"
+        ],
+        [
+          "PATH",
+          "D"
+        ],
+        [
+          "BXT_DISABLE_DISCORD_RPC",
+          "1"
+        ],
+        [
+          "BXT_DISABLE_VSYNC",
+          "1"
+        ]
+      ]
+    },
+    {
+      "env": [
+        [
+          "Path",
+          ""
+        ]
+      ],
+      "dir": "D",
+      "out": [
+        [
+          "PATH",
+          "D"
+        ],
+        [
+          "BXT_DISABLE_DISCORD_RPC",
+          "1"
+        ],
+        [
+          "BXT_DISABLE_VSYNC",
+          "1"
+        ]
+      ]
+    }
+  ],
+  "run": [
+    {
+      "duration": 2,
+      "loading": [
+        {
+          "type": 0,
+          "time": 0,
+          "message": "\u000b....maps/c1a0.bsp\u0000...."
+        }
+      ],
+      "playback": [
+        {
+          "type": 1,
+          "time": 0,
+          "frame": 0
+        },
+        {
+          "type": 1,
+          "time": 0.05,
+          "frame": 5
+        },
+        {
+          "type": 1,
+          "time": 0.07,
+          "frame": 7
+        },
+        {
+          "type": 4,
+          "time": 0.07
+        },
+        {
+          "type": 1,
+          "time": 0.5,
+          "frame": 50,
+          "buttons": 8
+        },
+        {
+          "type": 1,
+          "time": 1,
+          "frame": 100
+        },
+        {
+          "type": 1,
+          "time": 2,
+          "frame": 200
+        }
+      ]
+    },
+    {
+      "duration": 3,
+      "loading": [
+        {
+          "type": 0,
+          "time": 0,
+          "message": "\u000b....maps/c1a0.bsp\u0000...."
+        }
+      ],
+      "playback": [
+        {
+          "type": 1,
+          "time": 0,
+          "frame": 0,
+          "viewmodel": 3
+        },
+        {
+          "type": 1,
+          "time": 0.08,
+          "frame": 8,
+          "viewmodel": 3
+        },
+        {
+          "type": 4,
+          "time": 0.08
+        },
+        {
+          "type": 1,
+          "time": 1,
+          "frame": 100,
+          "message": "\u000b....maps/c1a0d.bsp\u0000...."
+        },
+        {
+          "type": 3,
+          "time": 1.1
+        },
+        {
+          "type": 4,
+          "time": 1.2
+        },
+        {
+          "type": 1,
+          "time": 2,
+          "frame": 200,
+          "buttons": 2
+        },
+        {
+          "type": 1,
+          "time": 2.1,
+          "frame": 210
+        },
+        {
+          "type": 1,
+          "time": 3,
+          "frame": 300
+        }
+      ]
+    }
+  ],
+  "brokenSecond": {
+    "duration": 3,
+    "loading": [
+      {
+        "type": 0,
+        "time": 0,
+        "message": "\u000b....maps/c1a0.bsp\u0000...."
+      }
+    ],
+    "playback": [
+      {
+        "type": 1,
+        "time": 0,
+        "frame": 0,
+        "viewmodel": 3
+      },
+      {
+        "type": 1,
+        "time": 0.08,
+        "frame": 8,
+        "viewmodel": 3
+      },
+      {
+        "type": 4,
+        "time": 0.08
+      },
+      {
+        "type": 1,
+        "time": 1,
+        "frame": 100,
+        "message": "\u000b....maps/c1a0d.bsp\u0000...."
+      },
+      {
+        "type": 3,
+        "time": 1.1
+      },
+      {
+        "type": 4,
+        "time": 1.2
+      },
+      {
+        "type": 42,
+        "time": 1.5
+      }
+    ]
+  },
+  "adapter": [
+    {
+      "name": "ран целиком",
+      "options": {},
+      "duration": 5,
+      "launches": [
+        {
+          "exe": "<scenario>/jobs/abcdef0123456789/inject/Injector.exe",
+          "cwd": "<scenario>/game/Half-Life",
+          "commandLine": "<scenario>/jobs/abcdef0123456789/inject/Injector.exe <scenario>/game/Half-Life/hl.exe -steam -gl -32bpp -game valve_WON -noforcemparms -windowed -w 1280 -h 720 -condebug +exec hlsr_render/abcdef01/job.cfg",
+          "mute": true,
+          "unmuteAll": false,
+          "followJob": true,
+          "watchImage": "hl",
+          "resetExe": "<scenario>/game/Half-Life/hl.exe",
+          "resetCommandLine": "<scenario>/game/Half-Life/hl.exe -steam -gl -32bpp -game valve_WON -noforcemparms -windowed -w 640 -h 480 +volume 0"
+        }
+      ],
+      "env": {
+        "pathFirst": "<scenario>/ffmpeg",
+        "discord": "1",
+        "vsync": "1"
+      },
+      "cfg": "bxt_cap_fps 60\nbxt_cap_volume 0.3\nbxt_cap_skip_non_gameplay_frames 1\n_bxt_cap_override_ffmpeg_args \"-c:v libx264 -preset ultrafast -crf 14 -pix_fmt yuv420p -c:a alac -progress valve_WON/hlsr_render/abcdef01/progress.txt -stats_period 0.5\"\nbxt_play_folder hlsr_render/abcdef01\nbxt_cap_separate_start valve_WON/hlsr_render/abcdef01/out\n",
+      "injected": [
+        "BunnymodXT.dll",
+        "Injector.exe",
+        "bxt_rs.dll"
+      ],
+      "probes": [
+        [
+          "<scenario>/ffmpeg/ffprobe.exe",
+          "<scenario>/game/Half-Life/valve_WON/hlsr_render/abcdef01/out/s001.mp4"
+        ],
+        [
+          "<scenario>/ffmpeg/ffprobe.exe",
+          "<scenario>/game/Half-Life/valve_WON/hlsr_render/abcdef01/out/s002.mp4"
+        ]
+      ],
+      "ffmpeg": [
+        {
+          "exe": "<scenario>/ffmpeg/ffmpeg.exe",
+          "args": [
+            "-hide_banner",
+            "-nostdin",
+            "-y",
+            "-loglevel",
+            "error",
+            "-f",
+            "concat",
+            "-safe",
+            "0",
+            "-i",
+            "<scenario>/jobs/abcdef0123456789/segments.txt",
+            "-map",
+            "0:v:0",
+            "-map",
+            "0:a:0?",
+            "-c",
+            "copy",
+            "<scenario>/jobs/abcdef0123456789/material.mkv"
+          ],
+          "cwd": "<scenario>/jobs/abcdef0123456789"
+        }
+      ],
+      "segmentsTxt": "file '<scenario>/game/Half-Life/valve_WON/hlsr_render/abcdef01/out/s001.mp4'\nduration 1.950000\noutpoint 1.950000\nfile '<scenario>/game/Half-Life/valve_WON/hlsr_render/abcdef01/out/s002.mp4'\nduration 2.800000\noutpoint 2.800000\n",
+      "keyhud": "[Script Info]\n; KeyHUD HLSR: нажатия из usercmd демки\nScriptType: v4.00+\nPlayResX: 1280\nPlayResY: 720\nScaledBorderAndShadow: yes\nWrapStyle: 2\n\n[V4+ Styles]\nFormat: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding\nStyle: K,Arial,13,&H00FFFFFF,&H00FFFFFF,&H00000000,&H00000000,1,0,0,0,100,100,0,0,1,1,0,5,0,0,0,1\n\n[Events]\nFormat: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text\nDialogue: 0,0:00:00.00,0:00:04.75,K,,0,0,0,,{\\an7\\pos(1189,448)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 29 0 29 29 0 29{\\p0}\nDialogue: 2,0:00:00.00,0:00:04.75,K,,0,0,0,,{\\an5\\pos(1204,463)}W\nDialogue: 0,0:00:00.00,0:00:04.75,K,,0,0,0,,{\\an7\\pos(1156,481)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 29 0 29 29 0 29{\\p0}\nDialogue: 2,0:00:00.00,0:00:04.75,K,,0,0,0,,{\\an5\\pos(1171,496)}A\nDialogue: 0,0:00:00.00,0:00:04.75,K,,0,0,0,,{\\an7\\pos(1189,481)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 29 0 29 29 0 29{\\p0}\nDialogue: 2,0:00:00.00,0:00:04.75,K,,0,0,0,,{\\an5\\pos(1204,496)}S\nDialogue: 0,0:00:00.00,0:00:04.75,K,,0,0,0,,{\\an7\\pos(1222,481)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 29 0 29 29 0 29{\\p0}\nDialogue: 2,0:00:00.00,0:00:04.75,K,,0,0,0,,{\\an5\\pos(1237,496)}D\nDialogue: 0,0:00:00.00,0:00:04.75,K,,0,0,0,,{\\an7\\pos(1156,514)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 46 0 46 29 0 29{\\p0}\nDialogue: 2,0:00:00.00,0:00:04.75,K,,0,0,0,,{\\an5\\pos(1179,529)}DUCK\nDialogue: 0,0:00:00.00,0:00:04.75,K,,0,0,0,,{\\an7\\pos(1206,514)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 46 0 46 29 0 29{\\p0}\nDialogue: 2,0:00:00.00,0:00:04.75,K,,0,0,0,,{\\an5\\pos(1229,529)}JUMP\nDialogue: 0,0:00:00.00,0:00:04.75,K,,0,0,0,,{\\an7\\pos(1156,547)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 29 0 29 29 0 29{\\p0}\nDialogue: 2,0:00:00.00,0:00:04.75,K,,0,0,0,,{\\an5\\pos(1171,562)}USE\nDialogue: 0,0:00:00.00,0:00:04.75,K,,0,0,0,,{\\an7\\pos(1189,547)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 29 0 29 29 0 29{\\p0}\nDialogue: 2,0:00:00.00,0:00:04.75,K,,0,0,0,,{\\an5\\pos(1204,562)}ATK\nDialogue: 0,0:00:00.00,0:00:04.75,K,,0,0,0,,{\\an7\\pos(1222,547)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 29 0 29 29 0 29{\\p0}\nDialogue: 2,0:00:00.00,0:00:04.75,K,,0,0,0,,{\\an5\\pos(1237,562)}ATK2\nDialogue: 1,0:00:00.45,0:00:00.95,K,,0,0,0,,{\\an7\\pos(1189,448)\\bord0\\shad0\\1c&H00A0FF&\\1a&H30&\\p1}m 0 0 l 29 0 29 29 0 29{\\p0}\nDialogue: 1,0:00:03.75,0:00:03.85,K,,0,0,0,,{\\an7\\pos(1206,514)\\bord0\\shad0\\1c&H00A0FF&\\1a&H30&\\p1}m 0 0 l 46 0 46 29 0 29{\\p0}\n",
+      "result": {
+        "material": {
+          "video": "<scenario>/jobs/abcdef0123456789/material.mkv",
+          "audio": "<scenario>/jobs/abcdef0123456789/material.mkv",
+          "offset": 0,
+          "cuts": [
+            {
+              "from": 0,
+              "to": 0.05
+            },
+            {
+              "from": 2,
+              "to": 2.001
+            },
+            {
+              "from": 3,
+              "to": 3.199
+            }
+          ],
+          "timeline": [
+            {
+              "t": 0,
+              "type": "map",
+              "label": "c1a0"
+            },
+            {
+              "t": 2,
+              "type": "saveload",
+              "label": "2"
+            },
+            {
+              "t": 3,
+              "type": "map",
+              "label": "c1a0d"
+            }
+          ],
+          "overlay": "keyhud.ass",
+          "warnings": [],
+          "profile": "hl1",
+          "launches": 1,
+          "segments": 2,
+          "frames": 285
+        }
+      },
+      "resets": [
+        true
+      ],
+      "registry": {
+        "ScreenWidth": 2560
+      },
+      "qconsole": "player log\r\n",
+      "bxtLog": false,
+      "renderDir": false,
+      "bxtDir": [
+        "7za.exe",
+        "BunnymodXT.dll",
+        "Injector.exe",
+        "version"
+      ],
+      "jobsRoot": [
+        "abcdef0123456789"
+      ],
+      "jobFiles": [
+        "inject",
+        "keyhud.ass",
+        "material.mkv",
+        "segments.txt"
+      ],
+      "pending": null,
+      "logs": [
+        [
+          "info",
+          "[demo] HL1: Injector PID 4242, сегментов 2, 1280x720@60"
+        ],
+        [
+          "info",
+          "[demo] сброс mute после игры: снят"
+        ],
+        [
+          "info",
+          "[demo] HL1: рендер <N> с"
+        ],
+        [
+          "info",
+          "[demo] HL1: видео 4.750 с при демке 5.000 с, вырезано загрузок 3"
+        ]
+      ]
+    },
+    {
+      "name": "интервал со второго сегмента",
+      "options": {
+        "range": {
+          "from": 3.5,
+          "to": 5
+        }
+      },
+      "duration": 5,
+      "launches": [
+        {
+          "exe": "<scenario>/jobs/abcdef0123456789/inject/Injector.exe",
+          "cwd": "<scenario>/game/Half-Life",
+          "commandLine": "<scenario>/jobs/abcdef0123456789/inject/Injector.exe <scenario>/game/Half-Life/hl.exe -steam -gl -32bpp -game valve_WON -noforcemparms -windowed -w 1280 -h 720 -condebug +exec hlsr_render/abcdef01/job.cfg",
+          "mute": true,
+          "unmuteAll": false,
+          "followJob": true,
+          "watchImage": "hl",
+          "resetExe": "<scenario>/game/Half-Life/hl.exe",
+          "resetCommandLine": "<scenario>/game/Half-Life/hl.exe -steam -gl -32bpp -game valve_WON -noforcemparms -windowed -w 640 -h 480 +volume 0"
+        }
+      ],
+      "env": {
+        "pathFirst": "<scenario>/ffmpeg",
+        "discord": "1",
+        "vsync": "1"
+      },
+      "cfg": "bxt_cap_fps 60\nbxt_cap_volume 0.3\nbxt_cap_skip_non_gameplay_frames 1\n_bxt_cap_override_ffmpeg_args \"-c:v libx264 -preset ultrafast -crf 14 -pix_fmt yuv420p -c:a alac -progress valve_WON/hlsr_render/abcdef01/progress.txt -stats_period 0.5\"\nbxt_play_folder hlsr_render/abcdef01\nbxt_cap_separate_start valve_WON/hlsr_render/abcdef01/out\n",
+      "injected": [
+        "BunnymodXT.dll",
+        "Injector.exe",
+        "bxt_rs.dll"
+      ],
+      "probes": [
+        [
+          "<scenario>/ffmpeg/ffprobe.exe",
+          "<scenario>/game/Half-Life/valve_WON/hlsr_render/abcdef01/out/s001.mp4"
+        ]
+      ],
+      "ffmpeg": [
+        {
+          "exe": "<scenario>/ffmpeg/ffmpeg.exe",
+          "args": [
+            "-hide_banner",
+            "-nostdin",
+            "-y",
+            "-loglevel",
+            "error",
+            "-f",
+            "concat",
+            "-safe",
+            "0",
+            "-i",
+            "<scenario>/jobs/abcdef0123456789/segments.txt",
+            "-map",
+            "0:v:0",
+            "-map",
+            "0:a:0?",
+            "-c",
+            "copy",
+            "<scenario>/jobs/abcdef0123456789/material.mkv"
+          ],
+          "cwd": "<scenario>/jobs/abcdef0123456789"
+        }
+      ],
+      "segmentsTxt": "file '<scenario>/game/Half-Life/valve_WON/hlsr_render/abcdef01/out/s001.mp4'\nduration 1.950000\noutpoint 1.950000\n",
+      "keyhud": "[Script Info]\n; KeyHUD HLSR: нажатия из usercmd демки\nScriptType: v4.00+\nPlayResX: 1280\nPlayResY: 720\nScaledBorderAndShadow: yes\nWrapStyle: 2\n\n[V4+ Styles]\nFormat: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding\nStyle: K,Arial,13,&H00FFFFFF,&H00FFFFFF,&H00000000,&H00000000,1,0,0,0,100,100,0,0,1,1,0,5,0,0,0,1\n\n[Events]\nFormat: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text\nDialogue: 0,0:00:00.00,0:00:01.95,K,,0,0,0,,{\\an7\\pos(1189,448)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 29 0 29 29 0 29{\\p0}\nDialogue: 2,0:00:00.00,0:00:01.95,K,,0,0,0,,{\\an5\\pos(1204,463)}W\nDialogue: 0,0:00:00.00,0:00:01.95,K,,0,0,0,,{\\an7\\pos(1156,481)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 29 0 29 29 0 29{\\p0}\nDialogue: 2,0:00:00.00,0:00:01.95,K,,0,0,0,,{\\an5\\pos(1171,496)}A\nDialogue: 0,0:00:00.00,0:00:01.95,K,,0,0,0,,{\\an7\\pos(1189,481)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 29 0 29 29 0 29{\\p0}\nDialogue: 2,0:00:00.00,0:00:01.95,K,,0,0,0,,{\\an5\\pos(1204,496)}S\nDialogue: 0,0:00:00.00,0:00:01.95,K,,0,0,0,,{\\an7\\pos(1222,481)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 29 0 29 29 0 29{\\p0}\nDialogue: 2,0:00:00.00,0:00:01.95,K,,0,0,0,,{\\an5\\pos(1237,496)}D\nDialogue: 0,0:00:00.00,0:00:01.95,K,,0,0,0,,{\\an7\\pos(1156,514)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 46 0 46 29 0 29{\\p0}\nDialogue: 2,0:00:00.00,0:00:01.95,K,,0,0,0,,{\\an5\\pos(1179,529)}DUCK\nDialogue: 0,0:00:00.00,0:00:01.95,K,,0,0,0,,{\\an7\\pos(1206,514)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 46 0 46 29 0 29{\\p0}\nDialogue: 2,0:00:00.00,0:00:01.95,K,,0,0,0,,{\\an5\\pos(1229,529)}JUMP\nDialogue: 0,0:00:00.00,0:00:01.95,K,,0,0,0,,{\\an7\\pos(1156,547)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 29 0 29 29 0 29{\\p0}\nDialogue: 2,0:00:00.00,0:00:01.95,K,,0,0,0,,{\\an5\\pos(1171,562)}USE\nDialogue: 0,0:00:00.00,0:00:01.95,K,,0,0,0,,{\\an7\\pos(1189,547)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 29 0 29 29 0 29{\\p0}\nDialogue: 2,0:00:00.00,0:00:01.95,K,,0,0,0,,{\\an5\\pos(1204,562)}ATK\nDialogue: 0,0:00:00.00,0:00:01.95,K,,0,0,0,,{\\an7\\pos(1222,547)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 29 0 29 29 0 29{\\p0}\nDialogue: 2,0:00:00.00,0:00:01.95,K,,0,0,0,,{\\an5\\pos(1237,562)}ATK2\nDialogue: 1,0:00:01.00,0:00:01.05,K,,0,0,0,,{\\an7\\pos(1206,514)\\bord0\\shad0\\1c&H00A0FF&\\1a&H30&\\p1}m 0 0 l 46 0 46 29 0 29{\\p0}\n",
+      "result": {
+        "material": {
+          "video": "<scenario>/jobs/abcdef0123456789/material.mkv",
+          "audio": "<scenario>/jobs/abcdef0123456789/material.mkv",
+          "offset": 2,
+          "cuts": [
+            {
+              "from": 2,
+              "to": 2.005
+            },
+            {
+              "from": 3,
+              "to": 4.045
+            }
+          ],
+          "timeline": [
+            {
+              "t": 3.5,
+              "type": "map",
+              "label": "c1a0d"
+            }
+          ],
+          "overlay": "keyhud.ass",
+          "warnings": [],
+          "profile": "hl1",
+          "launches": 1,
+          "segments": 1,
+          "frames": 117
+        }
+      },
+      "resets": [
+        true
+      ],
+      "registry": {
+        "ScreenWidth": 2560
+      },
+      "qconsole": "player log\r\n",
+      "bxtLog": false,
+      "renderDir": false,
+      "bxtDir": [
+        "7za.exe",
+        "BunnymodXT.dll",
+        "Injector.exe",
+        "version"
+      ],
+      "jobsRoot": [
+        "abcdef0123456789"
+      ],
+      "jobFiles": [
+        "inject",
+        "keyhud.ass",
+        "material.mkv",
+        "segments.txt"
+      ],
+      "pending": null,
+      "logs": [
+        [
+          "info",
+          "[demo] HL1: Injector PID 4242, сегментов 1, 1280x720@60"
+        ],
+        [
+          "info",
+          "[demo] сброс mute после игры: снят"
+        ],
+        [
+          "info",
+          "[demo] HL1: рендер <N> с"
+        ],
+        [
+          "info",
+          "[demo] HL1: видео 1.950 с при демке 3.000 с, вырезано загрузок 2"
+        ]
+      ]
+    },
+    {
+      "name": "без KeyHUD и звука, без HUD, HUD стандартный",
+      "options": {
+        "request": {
+          "keyhud": false,
+          "audio": false,
+          "hud": false,
+          "ownHud": false
+        }
+      },
+      "duration": 5,
+      "launches": [
+        {
+          "exe": "<scenario>/jobs/abcdef0123456789/inject/Injector.exe",
+          "cwd": "<scenario>/game/Half-Life",
+          "commandLine": "<scenario>/jobs/abcdef0123456789/inject/Injector.exe <scenario>/game/Half-Life/hl.exe -steam -gl -32bpp -game valve_WON -noforcemparms -windowed -w 1280 -h 720 -condebug +exec hlsr_render/abcdef01/job.cfg",
+          "mute": true,
+          "unmuteAll": false,
+          "followJob": true,
+          "watchImage": "hl",
+          "resetExe": "<scenario>/game/Half-Life/hl.exe",
+          "resetCommandLine": "<scenario>/game/Half-Life/hl.exe -steam -gl -32bpp -game valve_WON -noforcemparms -windowed -w 640 -h 480 +volume 0"
+        }
+      ],
+      "env": {
+        "pathFirst": "<scenario>/ffmpeg",
+        "discord": "1",
+        "vsync": "1"
+      },
+      "cfg": "bxt_cap_fps 60\nbxt_cap_volume 0.3\nbxt_hud_game_color \"\"\nbxt_hud_game_alpha \"0\"\nbxt_hud_color \"\"\ncrosshair \"1\"\nbxt_cross \"0\"\nbxt_cross_color \"0 255 0\"\nbxt_cross_alpha \"255\"\nbxt_cross_thickness \"2\"\nbxt_cross_size \"10\"\nbxt_cross_gap \"3\"\nbxt_cross_outline \"0\"\nbxt_cross_circle_radius \"0\"\nbxt_cross_dot_color \"\"\nbxt_cross_dot_size \"0\"\nbxt_cross_top_line \"1\"\nbxt_cross_bottom_line \"1\"\nbxt_cross_left_line \"1\"\nbxt_cross_right_line \"1\"\nbxt_hud_timer \"0\"\nbxt_hud_timer_anchor \"0 0.5\"\nbxt_hud_speedometer \"1\"\nbxt_hud_speedometer_anchor \"0.5 1\"\nbxt_hud_jumpspeed \"0\"\nbxt_hud_jumpspeed_anchor \"0.5 1\"\nbxt_hud_viewangles \"0\"\nbxt_hud_viewangles_anchor \"1 0\"\nbxt_hud_jumpdistance \"0\"\nbxt_hud_precision \"6\"\nbxt_hud_incorrect_fps_indicator \"1\"\ndefault_fov \"90\"\nbxt_fix_widescreen_fov \"0\"\nbxt_viewmodel_fov \"0\"\nbxt_viewmodel_semitransparent \"0\"\nbxt_remove_viewmodel \"0\"\nbxt_viewmodel_ofs_forward \"0\"\nbxt_viewmodel_ofs_right \"0\"\nbxt_viewmodel_ofs_up \"0\"\nbxt_viewmodel_bob_angled \"0\"\nbxt_viewmodel_disable_idle \"0\"\nbxt_viewmodel_disable_equip \"0\"\nbxt_disable_hud 1\nbxt_hud 0\nbxt_cross 0\ncrosshair 0\nbxt_cap_skip_non_gameplay_frames 1\n_bxt_cap_override_ffmpeg_args \"-c:v libx264 -preset ultrafast -crf 14 -pix_fmt yuv420p -c:a alac -progress valve_WON/hlsr_render/abcdef01/progress.txt -stats_period 0.5\"\nbxt_play_folder hlsr_render/abcdef01\nbxt_cap_separate_start valve_WON/hlsr_render/abcdef01/out\n",
+      "injected": [
+        "BunnymodXT.dll",
+        "Injector.exe",
+        "bxt_rs.dll"
+      ],
+      "probes": [
+        [
+          "<scenario>/ffmpeg/ffprobe.exe",
+          "<scenario>/game/Half-Life/valve_WON/hlsr_render/abcdef01/out/s001.mp4"
+        ],
+        [
+          "<scenario>/ffmpeg/ffprobe.exe",
+          "<scenario>/game/Half-Life/valve_WON/hlsr_render/abcdef01/out/s002.mp4"
+        ]
+      ],
+      "ffmpeg": [
+        {
+          "exe": "<scenario>/ffmpeg/ffmpeg.exe",
+          "args": [
+            "-hide_banner",
+            "-nostdin",
+            "-y",
+            "-loglevel",
+            "error",
+            "-f",
+            "concat",
+            "-safe",
+            "0",
+            "-i",
+            "<scenario>/jobs/abcdef0123456789/segments.txt",
+            "-map",
+            "0:v:0",
+            "-map",
+            "0:a:0?",
+            "-c",
+            "copy",
+            "<scenario>/jobs/abcdef0123456789/material.mkv"
+          ],
+          "cwd": "<scenario>/jobs/abcdef0123456789"
+        }
+      ],
+      "segmentsTxt": "file '<scenario>/game/Half-Life/valve_WON/hlsr_render/abcdef01/out/s001.mp4'\nduration 1.950000\noutpoint 1.950000\nfile '<scenario>/game/Half-Life/valve_WON/hlsr_render/abcdef01/out/s002.mp4'\nduration 2.800000\noutpoint 2.800000\n",
+      "keyhud": null,
+      "result": {
+        "material": {
+          "video": "<scenario>/jobs/abcdef0123456789/material.mkv",
+          "audio": null,
+          "offset": 0,
+          "cuts": [
+            {
+              "from": 0,
+              "to": 0.05
+            },
+            {
+              "from": 2,
+              "to": 2.001
+            },
+            {
+              "from": 3,
+              "to": 3.199
+            }
+          ],
+          "timeline": [
+            {
+              "t": 0,
+              "type": "map",
+              "label": "c1a0"
+            },
+            {
+              "t": 2,
+              "type": "saveload",
+              "label": "2"
+            },
+            {
+              "t": 3,
+              "type": "map",
+              "label": "c1a0d"
+            }
+          ],
+          "overlay": null,
+          "warnings": [],
+          "profile": "hl1",
+          "launches": 1,
+          "segments": 2,
+          "frames": 285
+        }
+      },
+      "resets": [
+        true
+      ],
+      "registry": {
+        "ScreenWidth": 2560
+      },
+      "qconsole": "player log\r\n",
+      "bxtLog": false,
+      "renderDir": false,
+      "bxtDir": [
+        "7za.exe",
+        "BunnymodXT.dll",
+        "Injector.exe",
+        "version"
+      ],
+      "jobsRoot": [
+        "abcdef0123456789"
+      ],
+      "jobFiles": [
+        "inject",
+        "material.mkv",
+        "segments.txt"
+      ],
+      "pending": null,
+      "logs": [
+        [
+          "info",
+          "[demo] HL1: Injector PID 4242, сегментов 2, 1280x720@60"
+        ],
+        [
+          "info",
+          "[demo] сброс mute после игры: снят"
+        ],
+        [
+          "info",
+          "[demo] HL1: рендер <N> с"
+        ],
+        [
+          "info",
+          "[demo] HL1: видео 4.750 с при демке 5.000 с, вырезано загрузок 3"
+        ]
+      ]
+    },
+    {
+      "name": "вторая демка не разобрана до конца — KEYHUD_PARTIAL",
+      "options": {
+        "brokenSecond": true
+      },
+      "duration": 5,
+      "launches": [
+        {
+          "exe": "<scenario>/jobs/abcdef0123456789/inject/Injector.exe",
+          "cwd": "<scenario>/game/Half-Life",
+          "commandLine": "<scenario>/jobs/abcdef0123456789/inject/Injector.exe <scenario>/game/Half-Life/hl.exe -steam -gl -32bpp -game valve_WON -noforcemparms -windowed -w 1280 -h 720 -condebug +exec hlsr_render/abcdef01/job.cfg",
+          "mute": true,
+          "unmuteAll": false,
+          "followJob": true,
+          "watchImage": "hl",
+          "resetExe": "<scenario>/game/Half-Life/hl.exe",
+          "resetCommandLine": "<scenario>/game/Half-Life/hl.exe -steam -gl -32bpp -game valve_WON -noforcemparms -windowed -w 640 -h 480 +volume 0"
+        }
+      ],
+      "env": {
+        "pathFirst": "<scenario>/ffmpeg",
+        "discord": "1",
+        "vsync": "1"
+      },
+      "cfg": "bxt_cap_fps 60\nbxt_cap_volume 0.3\nbxt_cap_skip_non_gameplay_frames 1\n_bxt_cap_override_ffmpeg_args \"-c:v libx264 -preset ultrafast -crf 14 -pix_fmt yuv420p -c:a alac -progress valve_WON/hlsr_render/abcdef01/progress.txt -stats_period 0.5\"\nbxt_play_folder hlsr_render/abcdef01\nbxt_cap_separate_start valve_WON/hlsr_render/abcdef01/out\n",
+      "injected": [
+        "BunnymodXT.dll",
+        "Injector.exe",
+        "bxt_rs.dll"
+      ],
+      "probes": [
+        [
+          "<scenario>/ffmpeg/ffprobe.exe",
+          "<scenario>/game/Half-Life/valve_WON/hlsr_render/abcdef01/out/s001.mp4"
+        ],
+        [
+          "<scenario>/ffmpeg/ffprobe.exe",
+          "<scenario>/game/Half-Life/valve_WON/hlsr_render/abcdef01/out/s002.mp4"
+        ]
+      ],
+      "ffmpeg": [
+        {
+          "exe": "<scenario>/ffmpeg/ffmpeg.exe",
+          "args": [
+            "-hide_banner",
+            "-nostdin",
+            "-y",
+            "-loglevel",
+            "error",
+            "-f",
+            "concat",
+            "-safe",
+            "0",
+            "-i",
+            "<scenario>/jobs/abcdef0123456789/segments.txt",
+            "-map",
+            "0:v:0",
+            "-map",
+            "0:a:0?",
+            "-c",
+            "copy",
+            "<scenario>/jobs/abcdef0123456789/material.mkv"
+          ],
+          "cwd": "<scenario>/jobs/abcdef0123456789"
+        }
+      ],
+      "segmentsTxt": "file '<scenario>/game/Half-Life/valve_WON/hlsr_render/abcdef01/out/s001.mp4'\nduration 1.950000\noutpoint 1.950000\nfile '<scenario>/game/Half-Life/valve_WON/hlsr_render/abcdef01/out/s002.mp4'\nduration 2.800000\noutpoint 2.800000\n",
+      "keyhud": "[Script Info]\n; KeyHUD HLSR: нажатия из usercmd демки\nScriptType: v4.00+\nPlayResX: 1280\nPlayResY: 720\nScaledBorderAndShadow: yes\nWrapStyle: 2\n\n[V4+ Styles]\nFormat: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding\nStyle: K,Arial,13,&H00FFFFFF,&H00FFFFFF,&H00000000,&H00000000,1,0,0,0,100,100,0,0,1,1,0,5,0,0,0,1\n\n[Events]\nFormat: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text\nDialogue: 0,0:00:00.00,0:00:04.75,K,,0,0,0,,{\\an7\\pos(1189,448)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 29 0 29 29 0 29{\\p0}\nDialogue: 2,0:00:00.00,0:00:04.75,K,,0,0,0,,{\\an5\\pos(1204,463)}W\nDialogue: 0,0:00:00.00,0:00:04.75,K,,0,0,0,,{\\an7\\pos(1156,481)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 29 0 29 29 0 29{\\p0}\nDialogue: 2,0:00:00.00,0:00:04.75,K,,0,0,0,,{\\an5\\pos(1171,496)}A\nDialogue: 0,0:00:00.00,0:00:04.75,K,,0,0,0,,{\\an7\\pos(1189,481)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 29 0 29 29 0 29{\\p0}\nDialogue: 2,0:00:00.00,0:00:04.75,K,,0,0,0,,{\\an5\\pos(1204,496)}S\nDialogue: 0,0:00:00.00,0:00:04.75,K,,0,0,0,,{\\an7\\pos(1222,481)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 29 0 29 29 0 29{\\p0}\nDialogue: 2,0:00:00.00,0:00:04.75,K,,0,0,0,,{\\an5\\pos(1237,496)}D\nDialogue: 0,0:00:00.00,0:00:04.75,K,,0,0,0,,{\\an7\\pos(1156,514)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 46 0 46 29 0 29{\\p0}\nDialogue: 2,0:00:00.00,0:00:04.75,K,,0,0,0,,{\\an5\\pos(1179,529)}DUCK\nDialogue: 0,0:00:00.00,0:00:04.75,K,,0,0,0,,{\\an7\\pos(1206,514)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 46 0 46 29 0 29{\\p0}\nDialogue: 2,0:00:00.00,0:00:04.75,K,,0,0,0,,{\\an5\\pos(1229,529)}JUMP\nDialogue: 0,0:00:00.00,0:00:04.75,K,,0,0,0,,{\\an7\\pos(1156,547)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 29 0 29 29 0 29{\\p0}\nDialogue: 2,0:00:00.00,0:00:04.75,K,,0,0,0,,{\\an5\\pos(1171,562)}USE\nDialogue: 0,0:00:00.00,0:00:04.75,K,,0,0,0,,{\\an7\\pos(1189,547)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 29 0 29 29 0 29{\\p0}\nDialogue: 2,0:00:00.00,0:00:04.75,K,,0,0,0,,{\\an5\\pos(1204,562)}ATK\nDialogue: 0,0:00:00.00,0:00:04.75,K,,0,0,0,,{\\an7\\pos(1222,547)\\bord0\\shad0\\1c&H000000&\\1a&H70&\\p1}m 0 0 l 29 0 29 29 0 29{\\p0}\nDialogue: 2,0:00:00.00,0:00:04.75,K,,0,0,0,,{\\an5\\pos(1237,562)}ATK2\nDialogue: 1,0:00:00.45,0:00:00.95,K,,0,0,0,,{\\an7\\pos(1189,448)\\bord0\\shad0\\1c&H00A0FF&\\1a&H30&\\p1}m 0 0 l 29 0 29 29 0 29{\\p0}\n",
+      "result": {
+        "material": {
+          "video": "<scenario>/jobs/abcdef0123456789/material.mkv",
+          "audio": "<scenario>/jobs/abcdef0123456789/material.mkv",
+          "offset": 0,
+          "cuts": [
+            {
+              "from": 0,
+              "to": 0.05
+            },
+            {
+              "from": 2,
+              "to": 2.001
+            },
+            {
+              "from": 3,
+              "to": 3.199
+            }
+          ],
+          "timeline": [
+            {
+              "t": 0,
+              "type": "map",
+              "label": "c1a0"
+            },
+            {
+              "t": 2,
+              "type": "saveload",
+              "label": "2"
+            },
+            {
+              "t": 3,
+              "type": "map",
+              "label": "c1a0d"
+            }
+          ],
+          "overlay": "keyhud.ass",
+          "warnings": [
+            "KEYHUD_PARTIAL"
+          ],
+          "profile": "hl1",
+          "launches": 1,
+          "segments": 2,
+          "frames": 285
+        }
+      },
+      "resets": [
+        true
+      ],
+      "registry": {
+        "ScreenWidth": 2560
+      },
+      "qconsole": "player log\r\n",
+      "bxtLog": false,
+      "renderDir": false,
+      "bxtDir": [
+        "7za.exe",
+        "BunnymodXT.dll",
+        "Injector.exe",
+        "version"
+      ],
+      "jobsRoot": [
+        "abcdef0123456789"
+      ],
+      "jobFiles": [
+        "inject",
+        "keyhud.ass",
+        "material.mkv",
+        "segments.txt"
+      ],
+      "pending": null,
+      "logs": [
+        [
+          "info",
+          "[demo] HL1: Injector PID 4242, сегментов 2, 1280x720@60"
+        ],
+        [
+          "info",
+          "[demo] сброс mute после игры: снят"
+        ],
+        [
+          "info",
+          "[demo] HL1: рендер <N> с"
+        ],
+        [
+          "info",
+          "[demo] HL1: видео 4.750 с при демке 5.000 с, вырезано загрузок 3"
+        ]
+      ]
+    },
+    {
+      "name": "bxt-rs не встал: Unknown command",
+      "options": {
+        "unknown": true
+      },
+      "duration": 5,
+      "launches": [
+        {
+          "exe": "<scenario>/jobs/abcdef0123456789/inject/Injector.exe",
+          "cwd": "<scenario>/game/Half-Life",
+          "commandLine": "<scenario>/jobs/abcdef0123456789/inject/Injector.exe <scenario>/game/Half-Life/hl.exe -steam -gl -32bpp -game valve_WON -noforcemparms -windowed -w 1280 -h 720 -condebug +exec hlsr_render/abcdef01/job.cfg",
+          "mute": true,
+          "unmuteAll": false,
+          "followJob": true,
+          "watchImage": "hl",
+          "resetExe": "<scenario>/game/Half-Life/hl.exe",
+          "resetCommandLine": "<scenario>/game/Half-Life/hl.exe -steam -gl -32bpp -game valve_WON -noforcemparms -windowed -w 640 -h 480 +volume 0"
+        }
+      ],
+      "env": {
+        "pathFirst": "<scenario>/ffmpeg",
+        "discord": "1",
+        "vsync": "1"
+      },
+      "cfg": "bxt_cap_fps 60\nbxt_cap_volume 0.3\nbxt_cap_skip_non_gameplay_frames 1\n_bxt_cap_override_ffmpeg_args \"-c:v libx264 -preset ultrafast -crf 14 -pix_fmt yuv420p -c:a alac -progress valve_WON/hlsr_render/abcdef01/progress.txt -stats_period 0.5\"\nbxt_play_folder hlsr_render/abcdef01\nbxt_cap_separate_start valve_WON/hlsr_render/abcdef01/out\n",
+      "injected": [
+        "BunnymodXT.dll",
+        "Injector.exe",
+        "bxt_rs.dll"
+      ],
+      "probes": [],
+      "ffmpeg": [],
+      "segmentsTxt": null,
+      "keyhud": null,
+      "result": {
+        "error": {
+          "code": "BXTRS_FAILED",
+          "message": "Unknown command: bxt_play_folder",
+          "details": null
+        }
+      },
+      "resets": [
+        true
+      ],
+      "registry": {
+        "ScreenWidth": 2560
+      },
+      "qconsole": "player log\r\n",
+      "bxtLog": false,
+      "renderDir": false,
+      "bxtDir": [
+        "7za.exe",
+        "BunnymodXT.dll",
+        "Injector.exe",
+        "version"
+      ],
+      "jobsRoot": [
+        "abcdef0123456789"
+      ],
+      "jobFiles": [
+        "inject"
+      ],
+      "pending": null,
+      "logs": [
+        [
+          "info",
+          "[demo] HL1: Injector PID 4242, сегментов 2, 1280x720@60"
+        ],
+        [
+          "info",
+          "[demo] сброс mute после игры: снят"
+        ]
+      ]
+    },
+    {
+      "name": "подменённая bxt_rs.dll",
+      "options": {
+        "badSha": true
+      },
+      "duration": 5,
+      "launches": [],
+      "env": null,
+      "cfg": null,
+      "injected": null,
+      "probes": [],
+      "ffmpeg": [],
+      "segmentsTxt": null,
+      "keyhud": null,
+      "result": {
+        "error": {
+          "code": "BXTRS_BROKEN",
+          "message": "BXTRS_BROKEN",
+          "details": null
+        }
+      },
+      "resets": [],
+      "registry": {
+        "ScreenWidth": 2560
+      },
+      "qconsole": "player log\r\n",
+      "bxtLog": false,
+      "renderDir": false,
+      "bxtDir": [
+        "7za.exe",
+        "BunnymodXT.dll",
+        "Injector.exe",
+        "version"
+      ],
+      "jobsRoot": [
+        "abcdef0123456789"
+      ],
+      "jobFiles": [
+        "inject"
+      ],
+      "pending": null,
+      "logs": []
+    },
+    {
+      "name": "демка оборвалась: видео много короче",
+      "options": {
+        "probe": {
+          "s001.mp4": "0.500000",
+          "s002.mp4": "0.500000"
+        }
+      },
+      "duration": 5,
+      "launches": [
+        {
+          "exe": "<scenario>/jobs/abcdef0123456789/inject/Injector.exe",
+          "cwd": "<scenario>/game/Half-Life",
+          "commandLine": "<scenario>/jobs/abcdef0123456789/inject/Injector.exe <scenario>/game/Half-Life/hl.exe -steam -gl -32bpp -game valve_WON -noforcemparms -windowed -w 1280 -h 720 -condebug +exec hlsr_render/abcdef01/job.cfg",
+          "mute": true,
+          "unmuteAll": false,
+          "followJob": true,
+          "watchImage": "hl",
+          "resetExe": "<scenario>/game/Half-Life/hl.exe",
+          "resetCommandLine": "<scenario>/game/Half-Life/hl.exe -steam -gl -32bpp -game valve_WON -noforcemparms -windowed -w 640 -h 480 +volume 0"
+        }
+      ],
+      "env": {
+        "pathFirst": "<scenario>/ffmpeg",
+        "discord": "1",
+        "vsync": "1"
+      },
+      "cfg": "bxt_cap_fps 60\nbxt_cap_volume 0.3\nbxt_cap_skip_non_gameplay_frames 1\n_bxt_cap_override_ffmpeg_args \"-c:v libx264 -preset ultrafast -crf 14 -pix_fmt yuv420p -c:a alac -progress valve_WON/hlsr_render/abcdef01/progress.txt -stats_period 0.5\"\nbxt_play_folder hlsr_render/abcdef01\nbxt_cap_separate_start valve_WON/hlsr_render/abcdef01/out\n",
+      "injected": [
+        "BunnymodXT.dll",
+        "Injector.exe",
+        "bxt_rs.dll"
+      ],
+      "probes": [
+        [
+          "<scenario>/ffmpeg/ffprobe.exe",
+          "<scenario>/game/Half-Life/valve_WON/hlsr_render/abcdef01/out/s001.mp4"
+        ]
+      ],
+      "ffmpeg": [],
+      "segmentsTxt": null,
+      "keyhud": null,
+      "result": {
+        "error": {
+          "code": "RENDER_FAILED",
+          "message": "Сегмент 1: видео 0.5 с при демке 2 с",
+          "details": null
+        }
+      },
+      "resets": [
+        true
+      ],
+      "registry": {
+        "ScreenWidth": 2560
+      },
+      "qconsole": "player log\r\n",
+      "bxtLog": false,
+      "renderDir": false,
+      "bxtDir": [
+        "7za.exe",
+        "BunnymodXT.dll",
+        "Injector.exe",
+        "version"
+      ],
+      "jobsRoot": [
+        "abcdef0123456789"
+      ],
+      "jobFiles": [
+        "inject"
+      ],
+      "pending": null,
+      "logs": [
+        [
+          "info",
+          "[demo] HL1: Injector PID 4242, сегментов 2, 1280x720@60"
+        ],
+        [
+          "info",
+          "[demo] сброс mute после игры: снят"
+        ],
+        [
+          "info",
+          "[demo] HL1: рендер <N> с"
+        ]
+      ]
+    },
+    {
+      "name": "нет карты",
+      "options": {
+        "afterFirst": "mapMissing"
+      },
+      "duration": 5,
+      "launches": [
+        {
+          "exe": "<scenario>/jobs/abcdef0123456789/inject/Injector.exe",
+          "cwd": "<scenario>/game/Half-Life",
+          "commandLine": "<scenario>/jobs/abcdef0123456789/inject/Injector.exe <scenario>/game/Half-Life/hl.exe -steam -gl -32bpp -game valve_WON -noforcemparms -windowed -w 1280 -h 720 -condebug +exec hlsr_render/abcdef01/job.cfg",
+          "mute": true,
+          "unmuteAll": false,
+          "followJob": true,
+          "watchImage": "hl",
+          "resetExe": "<scenario>/game/Half-Life/hl.exe",
+          "resetCommandLine": "<scenario>/game/Half-Life/hl.exe -steam -gl -32bpp -game valve_WON -noforcemparms -windowed -w 640 -h 480 +volume 0"
+        }
+      ],
+      "env": {
+        "pathFirst": "<scenario>/ffmpeg",
+        "discord": "1",
+        "vsync": "1"
+      },
+      "cfg": "bxt_cap_fps 60\nbxt_cap_volume 0.3\nbxt_cap_skip_non_gameplay_frames 1\n_bxt_cap_override_ffmpeg_args \"-c:v libx264 -preset ultrafast -crf 14 -pix_fmt yuv420p -c:a alac -progress valve_WON/hlsr_render/abcdef01/progress.txt -stats_period 0.5\"\nbxt_play_folder hlsr_render/abcdef01\nbxt_cap_separate_start valve_WON/hlsr_render/abcdef01/out\n",
+      "injected": [
+        "BunnymodXT.dll",
+        "Injector.exe",
+        "bxt_rs.dll"
+      ],
+      "probes": [],
+      "ffmpeg": [],
+      "segmentsTxt": null,
+      "keyhud": null,
+      "result": {
+        "error": {
+          "code": "MAP_MISSING",
+          "message": "Couldn't find map maps/c1a0d.bsp, server will download the map",
+          "details": null
+        }
+      },
+      "resets": [
+        true
+      ],
+      "registry": {
+        "ScreenWidth": 2560
+      },
+      "qconsole": "player log\r\n",
+      "bxtLog": false,
+      "renderDir": false,
+      "bxtDir": [
+        "7za.exe",
+        "BunnymodXT.dll",
+        "Injector.exe",
+        "version"
+      ],
+      "jobsRoot": [
+        "abcdef0123456789"
+      ],
+      "jobFiles": [
+        "inject"
+      ],
+      "pending": null,
+      "logs": [
+        [
+          "info",
+          "[demo] HL1: Injector PID 4242, сегментов 2, 1280x720@60"
+        ],
+        [
+          "info",
+          "[demo] сброс mute после игры: снят"
+        ]
+      ]
+    },
+    {
+      "name": "чужой hl.exe посреди рендера",
+      "options": {
+        "afterFirst": "foreign"
+      },
+      "duration": 5,
+      "launches": [
+        {
+          "exe": "<scenario>/jobs/abcdef0123456789/inject/Injector.exe",
+          "cwd": "<scenario>/game/Half-Life",
+          "commandLine": "<scenario>/jobs/abcdef0123456789/inject/Injector.exe <scenario>/game/Half-Life/hl.exe -steam -gl -32bpp -game valve_WON -noforcemparms -windowed -w 1280 -h 720 -condebug +exec hlsr_render/abcdef01/job.cfg",
+          "mute": true,
+          "unmuteAll": false,
+          "followJob": true,
+          "watchImage": "hl",
+          "resetExe": "<scenario>/game/Half-Life/hl.exe",
+          "resetCommandLine": "<scenario>/game/Half-Life/hl.exe -steam -gl -32bpp -game valve_WON -noforcemparms -windowed -w 640 -h 480 +volume 0"
+        }
+      ],
+      "env": {
+        "pathFirst": "<scenario>/ffmpeg",
+        "discord": "1",
+        "vsync": "1"
+      },
+      "cfg": "bxt_cap_fps 60\nbxt_cap_volume 0.3\nbxt_cap_skip_non_gameplay_frames 1\n_bxt_cap_override_ffmpeg_args \"-c:v libx264 -preset ultrafast -crf 14 -pix_fmt yuv420p -c:a alac -progress valve_WON/hlsr_render/abcdef01/progress.txt -stats_period 0.5\"\nbxt_play_folder hlsr_render/abcdef01\nbxt_cap_separate_start valve_WON/hlsr_render/abcdef01/out\n",
+      "injected": [
+        "BunnymodXT.dll",
+        "Injector.exe",
+        "bxt_rs.dll"
+      ],
+      "probes": [],
+      "ffmpeg": [],
+      "segmentsTxt": null,
+      "keyhud": null,
+      "result": {
+        "error": {
+          "code": "GOLDSRC_RUNNING",
+          "message": "Запущен другой hl.exe (PID 991)",
+          "details": null
+        }
+      },
+      "resets": [
+        false
+      ],
+      "registry": {
+        "ScreenWidth": 2560
+      },
+      "qconsole": "player log\r\n",
+      "bxtLog": false,
+      "renderDir": false,
+      "bxtDir": [
+        "7za.exe",
+        "BunnymodXT.dll",
+        "Injector.exe",
+        "version"
+      ],
+      "jobsRoot": [
+        "abcdef0123456789"
+      ],
+      "jobFiles": [
+        "inject"
+      ],
+      "pending": true,
+      "logs": [
+        [
+          "info",
+          "[demo] HL1: Injector PID 4242, сегментов 2, 1280x720@60"
+        ]
+      ]
+    },
+    {
+      "name": "задание опустело",
+      "options": {
+        "afterFirst": "exited"
+      },
+      "duration": 5,
+      "launches": [
+        {
+          "exe": "<scenario>/jobs/abcdef0123456789/inject/Injector.exe",
+          "cwd": "<scenario>/game/Half-Life",
+          "commandLine": "<scenario>/jobs/abcdef0123456789/inject/Injector.exe <scenario>/game/Half-Life/hl.exe -steam -gl -32bpp -game valve_WON -noforcemparms -windowed -w 1280 -h 720 -condebug +exec hlsr_render/abcdef01/job.cfg",
+          "mute": true,
+          "unmuteAll": false,
+          "followJob": true,
+          "watchImage": "hl",
+          "resetExe": "<scenario>/game/Half-Life/hl.exe",
+          "resetCommandLine": "<scenario>/game/Half-Life/hl.exe -steam -gl -32bpp -game valve_WON -noforcemparms -windowed -w 640 -h 480 +volume 0"
+        }
+      ],
+      "env": {
+        "pathFirst": "<scenario>/ffmpeg",
+        "discord": "1",
+        "vsync": "1"
+      },
+      "cfg": "bxt_cap_fps 60\nbxt_cap_volume 0.3\nbxt_cap_skip_non_gameplay_frames 1\n_bxt_cap_override_ffmpeg_args \"-c:v libx264 -preset ultrafast -crf 14 -pix_fmt yuv420p -c:a alac -progress valve_WON/hlsr_render/abcdef01/progress.txt -stats_period 0.5\"\nbxt_play_folder hlsr_render/abcdef01\nbxt_cap_separate_start valve_WON/hlsr_render/abcdef01/out\n",
+      "injected": [
+        "BunnymodXT.dll",
+        "Injector.exe",
+        "bxt_rs.dll"
+      ],
+      "probes": [],
+      "ffmpeg": [],
+      "segmentsTxt": null,
+      "keyhud": null,
+      "result": {
+        "error": {
+          "code": "GAME_EXITED",
+          "message": "Задание опустело, код Injector 0",
+          "details": null
+        }
+      },
+      "resets": [
+        true
+      ],
+      "registry": {
+        "ScreenWidth": 2560
+      },
+      "qconsole": "player log\r\n",
+      "bxtLog": false,
+      "renderDir": false,
+      "bxtDir": [
+        "7za.exe",
+        "BunnymodXT.dll",
+        "Injector.exe",
+        "version"
+      ],
+      "jobsRoot": [
+        "abcdef0123456789"
+      ],
+      "jobFiles": [
+        "inject"
+      ],
+      "pending": null,
+      "logs": [
+        [
+          "info",
+          "[demo] HL1: Injector PID 4242, сегментов 2, 1280x720@60"
+        ],
+        [
+          "info",
+          "[demo] сброс mute после игры: снят"
+        ]
+      ]
+    },
+    {
+      "name": "помощник вышел",
+      "options": {
+        "afterFirst": "closed"
+      },
+      "duration": 5,
+      "launches": [
+        {
+          "exe": "<scenario>/jobs/abcdef0123456789/inject/Injector.exe",
+          "cwd": "<scenario>/game/Half-Life",
+          "commandLine": "<scenario>/jobs/abcdef0123456789/inject/Injector.exe <scenario>/game/Half-Life/hl.exe -steam -gl -32bpp -game valve_WON -noforcemparms -windowed -w 1280 -h 720 -condebug +exec hlsr_render/abcdef01/job.cfg",
+          "mute": true,
+          "unmuteAll": false,
+          "followJob": true,
+          "watchImage": "hl",
+          "resetExe": "<scenario>/game/Half-Life/hl.exe",
+          "resetCommandLine": "<scenario>/game/Half-Life/hl.exe -steam -gl -32bpp -game valve_WON -noforcemparms -windowed -w 640 -h 480 +volume 0"
+        }
+      ],
+      "env": {
+        "pathFirst": "<scenario>/ffmpeg",
+        "discord": "1",
+        "vsync": "1"
+      },
+      "cfg": "bxt_cap_fps 60\nbxt_cap_volume 0.3\nbxt_cap_skip_non_gameplay_frames 1\n_bxt_cap_override_ffmpeg_args \"-c:v libx264 -preset ultrafast -crf 14 -pix_fmt yuv420p -c:a alac -progress valve_WON/hlsr_render/abcdef01/progress.txt -stats_period 0.5\"\nbxt_play_folder hlsr_render/abcdef01\nbxt_cap_separate_start valve_WON/hlsr_render/abcdef01/out\n",
+      "injected": [
+        "BunnymodXT.dll",
+        "Injector.exe",
+        "bxt_rs.dll"
+      ],
+      "probes": [],
+      "ffmpeg": [],
+      "segmentsTxt": null,
+      "keyhud": null,
+      "result": {
+        "error": {
+          "code": "RENDER_HOST_FAILED",
+          "message": "Помощник вышел",
+          "details": null
+        }
+      },
+      "resets": [
+        true
+      ],
+      "registry": {
+        "ScreenWidth": 2560
+      },
+      "qconsole": "player log\r\n",
+      "bxtLog": false,
+      "renderDir": false,
+      "bxtDir": [
+        "7za.exe",
+        "BunnymodXT.dll",
+        "Injector.exe",
+        "version"
+      ],
+      "jobsRoot": [
+        "abcdef0123456789"
+      ],
+      "jobFiles": [
+        "inject"
+      ],
+      "pending": null,
+      "logs": [
+        [
+          "info",
+          "[demo] HL1: Injector PID 4242, сегментов 2, 1280x720@60"
+        ],
+        [
+          "info",
+          "[demo] сброс mute после игры: снят"
+        ]
+      ]
+    },
+    {
+      "name": "bxt-rs не нашёл движок",
+      "options": {
+        "noBxt": true,
+        "fast": true
+      },
+      "duration": 5,
+      "launches": [
+        {
+          "exe": "<scenario>/jobs/abcdef0123456789/inject/Injector.exe",
+          "cwd": "<scenario>/game/Half-Life",
+          "commandLine": "<scenario>/jobs/abcdef0123456789/inject/Injector.exe <scenario>/game/Half-Life/hl.exe -steam -gl -32bpp -game valve_WON -noforcemparms -windowed -w 1280 -h 720 -condebug +exec hlsr_render/abcdef01/job.cfg",
+          "mute": true,
+          "unmuteAll": false,
+          "followJob": true,
+          "watchImage": "hl",
+          "resetExe": "<scenario>/game/Half-Life/hl.exe",
+          "resetCommandLine": "<scenario>/game/Half-Life/hl.exe -steam -gl -32bpp -game valve_WON -noforcemparms -windowed -w 640 -h 480 +volume 0"
+        }
+      ],
+      "env": {
+        "pathFirst": "<scenario>/ffmpeg",
+        "discord": "1",
+        "vsync": "1"
+      },
+      "cfg": "bxt_cap_fps 60\nbxt_cap_volume 0.3\nbxt_cap_skip_non_gameplay_frames 1\n_bxt_cap_override_ffmpeg_args \"-c:v libx264 -preset ultrafast -crf 14 -pix_fmt yuv420p -c:a alac -progress valve_WON/hlsr_render/abcdef01/progress.txt -stats_period 0.5\"\nbxt_play_folder hlsr_render/abcdef01\nbxt_cap_separate_start valve_WON/hlsr_render/abcdef01/out\n",
+      "injected": [
+        "BunnymodXT.dll",
+        "Injector.exe",
+        "bxt_rs.dll"
+      ],
+      "probes": [],
+      "ffmpeg": [],
+      "segmentsTxt": null,
+      "keyhud": null,
+      "result": {
+        "error": {
+          "code": "BXTRS_FAILED",
+          "message": "BXTRS_FAILED",
+          "details": null
+        }
+      },
+      "resets": [
+        true
+      ],
+      "registry": {
+        "ScreenWidth": 2560
+      },
+      "qconsole": "player log\r\n",
+      "bxtLog": false,
+      "renderDir": false,
+      "bxtDir": [
+        "7za.exe",
+        "BunnymodXT.dll",
+        "Injector.exe",
+        "version"
+      ],
+      "jobsRoot": [
+        "abcdef0123456789"
+      ],
+      "jobFiles": [
+        "inject"
+      ],
+      "pending": null,
+      "logs": [
+        [
+          "info",
+          "[demo] HL1: Injector PID 4242, сегментов 2, 1280x720@60"
+        ],
+        [
+          "info",
+          "[demo] сброс mute после игры: снят"
+        ]
+      ]
+    },
+    {
+      "name": "игра молчит",
+      "options": {
+        "silent": true,
+        "fast": true
+      },
+      "duration": 5,
+      "launches": [
+        {
+          "exe": "<scenario>/jobs/abcdef0123456789/inject/Injector.exe",
+          "cwd": "<scenario>/game/Half-Life",
+          "commandLine": "<scenario>/jobs/abcdef0123456789/inject/Injector.exe <scenario>/game/Half-Life/hl.exe -steam -gl -32bpp -game valve_WON -noforcemparms -windowed -w 1280 -h 720 -condebug +exec hlsr_render/abcdef01/job.cfg",
+          "mute": true,
+          "unmuteAll": false,
+          "followJob": true,
+          "watchImage": "hl",
+          "resetExe": "<scenario>/game/Half-Life/hl.exe",
+          "resetCommandLine": "<scenario>/game/Half-Life/hl.exe -steam -gl -32bpp -game valve_WON -noforcemparms -windowed -w 640 -h 480 +volume 0"
+        }
+      ],
+      "env": {
+        "pathFirst": "<scenario>/ffmpeg",
+        "discord": "1",
+        "vsync": "1"
+      },
+      "cfg": "bxt_cap_fps 60\nbxt_cap_volume 0.3\nbxt_cap_skip_non_gameplay_frames 1\n_bxt_cap_override_ffmpeg_args \"-c:v libx264 -preset ultrafast -crf 14 -pix_fmt yuv420p -c:a alac -progress valve_WON/hlsr_render/abcdef01/progress.txt -stats_period 0.5\"\nbxt_play_folder hlsr_render/abcdef01\nbxt_cap_separate_start valve_WON/hlsr_render/abcdef01/out\n",
+      "injected": [
+        "BunnymodXT.dll",
+        "Injector.exe",
+        "bxt_rs.dll"
+      ],
+      "probes": [],
+      "ffmpeg": [],
+      "segmentsTxt": null,
+      "keyhud": null,
+      "result": {
+        "error": {
+          "code": "RENDER_TIMEOUT",
+          "message": "RENDER_TIMEOUT",
+          "details": null
+        }
+      },
+      "resets": [
+        true
+      ],
+      "registry": {
+        "ScreenWidth": 2560
+      },
+      "qconsole": "player log\r\n",
+      "bxtLog": false,
+      "renderDir": false,
+      "bxtDir": [
+        "7za.exe",
+        "BunnymodXT.dll",
+        "Injector.exe",
+        "version"
+      ],
+      "jobsRoot": [
+        "abcdef0123456789"
+      ],
+      "jobFiles": [
+        "inject"
+      ],
+      "pending": null,
+      "logs": [
+        [
+          "info",
+          "[demo] HL1: Injector PID 4242, сегментов 2, 1280x720@60"
+        ],
+        [
+          "info",
+          "[demo] сброс mute после игры: снят"
+        ]
+      ]
+    },
+    {
+      "name": "застой",
+      "options": {
+        "afterFirst": "stall",
+        "fast": true
+      },
+      "duration": 5,
+      "launches": [
+        {
+          "exe": "<scenario>/jobs/abcdef0123456789/inject/Injector.exe",
+          "cwd": "<scenario>/game/Half-Life",
+          "commandLine": "<scenario>/jobs/abcdef0123456789/inject/Injector.exe <scenario>/game/Half-Life/hl.exe -steam -gl -32bpp -game valve_WON -noforcemparms -windowed -w 1280 -h 720 -condebug +exec hlsr_render/abcdef01/job.cfg",
+          "mute": true,
+          "unmuteAll": false,
+          "followJob": true,
+          "watchImage": "hl",
+          "resetExe": "<scenario>/game/Half-Life/hl.exe",
+          "resetCommandLine": "<scenario>/game/Half-Life/hl.exe -steam -gl -32bpp -game valve_WON -noforcemparms -windowed -w 640 -h 480 +volume 0"
+        }
+      ],
+      "env": {
+        "pathFirst": "<scenario>/ffmpeg",
+        "discord": "1",
+        "vsync": "1"
+      },
+      "cfg": "bxt_cap_fps 60\nbxt_cap_volume 0.3\nbxt_cap_skip_non_gameplay_frames 1\n_bxt_cap_override_ffmpeg_args \"-c:v libx264 -preset ultrafast -crf 14 -pix_fmt yuv420p -c:a alac -progress valve_WON/hlsr_render/abcdef01/progress.txt -stats_period 0.5\"\nbxt_play_folder hlsr_render/abcdef01\nbxt_cap_separate_start valve_WON/hlsr_render/abcdef01/out\n",
+      "injected": [
+        "BunnymodXT.dll",
+        "Injector.exe",
+        "bxt_rs.dll"
+      ],
+      "probes": [],
+      "ffmpeg": [],
+      "segmentsTxt": null,
+      "keyhud": null,
+      "result": {
+        "error": {
+          "code": "RENDER_TIMEOUT",
+          "message": "RENDER_TIMEOUT",
+          "details": null
+        }
+      },
+      "resets": [
+        true
+      ],
+      "registry": {
+        "ScreenWidth": 2560
+      },
+      "qconsole": "player log\r\n",
+      "bxtLog": false,
+      "renderDir": false,
+      "bxtDir": [
+        "7za.exe",
+        "BunnymodXT.dll",
+        "Injector.exe",
+        "version"
+      ],
+      "jobsRoot": [
+        "abcdef0123456789"
+      ],
+      "jobFiles": [
+        "inject"
+      ],
+      "pending": null,
+      "logs": [
+        [
+          "info",
+          "[demo] HL1: Injector PID 4242, сегментов 2, 1280x720@60"
+        ],
+        [
+          "info",
+          "[demo] сброс mute после игры: снят"
+        ]
+      ]
+    },
+    {
+      "name": "сегмент пропал",
+      "options": {
+        "removeSecond": true
+      },
+      "duration": 5,
+      "launches": [],
+      "env": null,
+      "cfg": null,
+      "injected": null,
+      "probes": [],
+      "ffmpeg": [],
+      "segmentsTxt": null,
+      "keyhud": null,
+      "result": {
+        "error": {
+          "code": "SEGMENT_MISSING",
+          "message": "SEGMENT_MISSING",
+          "details": {
+            "segment": 2,
+            "name": "run_2.dem"
+          }
+        }
+      },
+      "resets": [],
+      "registry": {
+        "ScreenWidth": 2560
+      },
+      "qconsole": "player log\r\n",
+      "bxtLog": false,
+      "renderDir": false,
+      "bxtDir": [
+        "7za.exe",
+        "BunnymodXT.dll",
+        "Injector.exe",
+        "version"
+      ],
+      "jobsRoot": [
+        "abcdef0123456789"
+      ],
+      "jobFiles": [],
+      "pending": null,
+      "logs": []
+    },
+    {
+      "name": "сегмент заменён",
+      "options": {
+        "appendFirst": true
+      },
+      "duration": 5,
+      "launches": [],
+      "env": null,
+      "cfg": null,
+      "injected": null,
+      "probes": [],
+      "ffmpeg": [],
+      "segmentsTxt": null,
+      "keyhud": null,
+      "result": {
+        "error": {
+          "code": "SEGMENT_REPLACED",
+          "message": "SEGMENT_REPLACED",
+          "details": {
+            "segment": 1,
+            "name": "run_1.dem"
+          }
+        }
+      },
+      "resets": [],
+      "registry": {
+        "ScreenWidth": 2560
+      },
+      "qconsole": "player log\r\n",
+      "bxtLog": false,
+      "renderDir": false,
+      "bxtDir": [
+        "7za.exe",
+        "BunnymodXT.dll",
+        "Injector.exe",
+        "version"
+      ],
+      "jobsRoot": [
+        "abcdef0123456789"
+      ],
+      "jobFiles": [],
+      "pending": null,
+      "logs": []
+    },
+    {
+      "name": "ffmpeg.exe в папке игры",
+      "options": {
+        "ffmpegInGame": true
+      },
+      "duration": 5,
+      "launches": [],
+      "env": null,
+      "cfg": null,
+      "injected": null,
+      "probes": [],
+      "ffmpeg": [],
+      "segmentsTxt": null,
+      "keyhud": null,
+      "result": {
+        "error": {
+          "code": "FFMPEG_IN_GAME_DIR",
+          "message": "FFMPEG_IN_GAME_DIR",
+          "details": null
+        }
+      },
+      "resets": [],
+      "registry": {
+        "ScreenWidth": 2560
+      },
+      "qconsole": "player log\r\n",
+      "bxtLog": false,
+      "renderDir": false,
+      "bxtDir": [
+        "7za.exe",
+        "BunnymodXT.dll",
+        "Injector.exe",
+        "version"
+      ],
+      "jobsRoot": [
+        "abcdef0123456789"
+      ],
+      "jobFiles": [],
+      "pending": null,
+      "logs": []
+    },
+    {
+      "name": "другой hl.exe до запуска",
+      "options": {
+        "otherHl": true
+      },
+      "duration": 5,
+      "launches": [],
+      "env": null,
+      "cfg": null,
+      "injected": null,
+      "probes": [],
+      "ffmpeg": [],
+      "segmentsTxt": null,
+      "keyhud": null,
+      "result": {
+        "error": {
+          "code": "GOLDSRC_RUNNING",
+          "message": "GOLDSRC_RUNNING",
+          "details": null
+        }
+      },
+      "resets": [],
+      "registry": {
+        "ScreenWidth": 2560
+      },
+      "qconsole": "player log\r\n",
+      "bxtLog": false,
+      "renderDir": false,
+      "bxtDir": [
+        "7za.exe",
+        "BunnymodXT.dll",
+        "Injector.exe",
+        "version"
+      ],
+      "jobsRoot": [
+        "abcdef0123456789"
+      ],
+      "jobFiles": [],
+      "pending": null,
+      "logs": []
+    },
+    {
+      "name": "та же игра запущена из лаунчера",
+      "options": {
+        "gameRunning": true
+      },
+      "duration": 5,
+      "launches": [],
+      "env": null,
+      "cfg": null,
+      "injected": null,
+      "probes": [],
+      "ffmpeg": [],
+      "segmentsTxt": null,
+      "keyhud": null,
+      "result": {
+        "error": {
+          "code": "GAME_RUNNING",
+          "message": "GAME_RUNNING",
+          "details": null
+        }
+      },
+      "resets": [],
+      "registry": {
+        "ScreenWidth": 2560
+      },
+      "qconsole": "player log\r\n",
+      "bxtLog": false,
+      "renderDir": false,
+      "bxtDir": [
+        "7za.exe",
+        "BunnymodXT.dll",
+        "Injector.exe",
+        "version"
+      ],
+      "jobsRoot": [
+        "abcdef0123456789"
+      ],
+      "jobFiles": [],
+      "pending": null,
+      "logs": []
+    },
+    {
+      "name": "Steam не запущен",
+      "options": {
+        "steam": "STEAM_NOT_RUNNING"
+      },
+      "duration": 5,
+      "launches": [],
+      "env": null,
+      "cfg": null,
+      "injected": null,
+      "probes": [],
+      "ffmpeg": [],
+      "segmentsTxt": null,
+      "keyhud": null,
+      "result": {
+        "error": {
+          "code": "STEAM_NOT_RUNNING",
+          "message": "STEAM_NOT_RUNNING",
+          "details": null
+        }
+      },
+      "resets": [],
+      "registry": {
+        "ScreenWidth": 2560
+      },
+      "qconsole": "player log\r\n",
+      "bxtLog": false,
+      "renderDir": false,
+      "bxtDir": [
+        "7za.exe",
+        "BunnymodXT.dll",
+        "Injector.exe",
+        "version"
+      ],
+      "jobsRoot": [
+        "abcdef0123456789"
+      ],
+      "jobFiles": [],
+      "pending": null,
+      "logs": []
+    },
+    {
+      "name": "нет места",
+      "options": {
+        "noSpace": true
+      },
+      "duration": 5,
+      "launches": [],
+      "env": null,
+      "cfg": null,
+      "injected": null,
+      "probes": [],
+      "ffmpeg": [],
+      "segmentsTxt": null,
+      "keyhud": null,
+      "result": {
+        "error": {
+          "code": "NO_SPACE",
+          "message": "NO_SPACE",
+          "details": null
+        }
+      },
+      "resets": [],
+      "registry": {
+        "ScreenWidth": 2560
+      },
+      "qconsole": "player log\r\n",
+      "bxtLog": false,
+      "renderDir": false,
+      "bxtDir": [
+        "7za.exe",
+        "BunnymodXT.dll",
+        "Injector.exe",
+        "version"
+      ],
+      "jobsRoot": [
+        "abcdef0123456789"
+      ],
+      "jobFiles": [],
+      "pending": null,
+      "logs": []
+    }
+  ],
+  "resetMute": {
+    "blocker": null,
+    "ok": true,
+    "launch": {
+      "exe": "<scenario>/game/Half-Life/hl.exe",
+      "cwd": "<scenario>/game/Half-Life",
+      "commandLine": "<scenario>/game/Half-Life/hl.exe -steam -gl -32bpp -game valve_WON -noforcemparms -windowed -w 640 -h 480 +volume 0",
+      "resetExe": "<scenario>/game/Half-Life/hl.exe",
+      "resetCommandLine": "<scenario>/game/Half-Life/hl.exe -steam -gl -32bpp -game valve_WON -noforcemparms -windowed -w 640 -h 480 +volume 0",
+      "resetOnly": true
+    },
+    "pending": false,
+    "registry": {
+      "ScreenWidth": 2560
+    },
+    "renderDir": false,
+    "logs": [
+      [
+        "info",
+        "[demo] сброс mute после игры: снят"
+      ],
+      [
+        "info",
+        "[demo] HL1: mute после рендера снят без нового экспорта"
+      ]
+    ]
+  },
+  "recover": [
+    {
+      "regLost": false,
+      "marker": {
+        "version": 1,
+        "existed": true,
+        "at": "<at>",
+        "muted": true,
+        "logs": [
+          {
+            "file": "<scenario>/game/Half-Life/qconsole.log",
+            "backup": "<scenario>/jobs/hl1-render.qconsole.log.orig"
+          },
+          {
+            "file": "<scenario>/game/Half-Life/bxt-rs.log",
+            "backup": null
+          }
+        ]
+      },
+      "registry": {
+        "ScreenWidth": 1920,
+        "ScreenWindowed": 0
+      },
+      "pending": true,
+      "qconsole": "player log\r\n",
+      "bxtLog": false,
+      "markerAfter": null,
+      "root": [],
+      "logs": [
+        [
+          "warn",
+          "[demo] рендер HL1 прерван сбоем (<at>): реестр игры возвращён"
+        ]
+      ]
+    },
+    {
+      "regLost": true,
+      "marker": {
+        "version": 1,
+        "existed": true,
+        "at": "<at>",
+        "muted": true,
+        "logs": [
+          {
+            "file": "<scenario>/game/Half-Life/qconsole.log",
+            "backup": "<scenario>/jobs/hl1-render.qconsole.log.orig"
+          },
+          {
+            "file": "<scenario>/game/Half-Life/bxt-rs.log",
+            "backup": null
+          }
+        ]
+      },
+      "registry": {
+        "ScreenWidth": 800,
+        "ScreenWindowed": 1
+      },
+      "pending": true,
+      "qconsole": "player log\r\n",
+      "bxtLog": false,
+      "markerAfter": {
+        "version": 1,
+        "existed": true,
+        "at": "<at>",
+        "muted": true
+      },
+      "root": [
+        "hl1-render.restore.json"
+      ],
+      "logs": [
+        [
+          "warn",
+          "[demo] реестр HL1 после сбоя не возвращён (вернёт следующий рендер): Нет снимка реестра"
+        ]
+      ]
+    }
+  ]
+}

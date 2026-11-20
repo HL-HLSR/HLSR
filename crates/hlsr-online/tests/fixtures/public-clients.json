@@ -1,0 +1,1829 @@
+{
+  "config": {"cacheNewsMs":120000,"cacheSponsorsMs":300000,"online":{"pollMs":60000,"timeoutMs":8000,"staleAfterMs":300000}},
+  "start": 1792152000000,
+  "version": "0.5.0",
+  "scenarios": [
+    {
+      "name": "онлайн: ETag, 304, устаревание через 5 минут",
+      "client": "online",
+      "path": "/v1/public/online",
+      "dead": false,
+      "backend": true,
+      "compareJournal": true,
+      "routes": {
+        "/v1/public/online": [
+          {"json":{"schemaVersion":1,"launcherOnline":12,"games":{"hl1-won":{"online":3,"activeRuns":1},"hl2-4260":{"online":null,"activeRuns":null}}},"headers":[["ETag","\"v1\""]]},
+          {"status":304,"headers":[["ETag","\"v1\""]],"contentLength":0},
+          {"json":{"schemaVersion":1,"launcherOnline":15,"games":{"hl1-won":{"online":9,"activeRuns":2}}},"headers":[["ETag","\"v2\""]]},
+          {"json":{"schemaVersion":1,"launcherOnline":1,"games":{}}},
+          {"json":{"schemaVersion":1,"launcherOnline":2,"games":{}},"headers":[["ETag","W/\"weak\""]]},
+          {"status":304,"contentLength":0}
+        ]
+      },
+      "steps": [{"op":"snapshot"},{"op":"fetch"},{"op":"snapshot"},{"op":"advance","ms":60000},{"op":"snapshot"},{"op":"fetch"},{"op":"snapshot"},{"op":"advance","ms":300000},{"op":"snapshot"},{"op":"advance","ms":1},{"op":"snapshot"},{"op":"fetch"},{"op":"snapshot"},{"op":"fetch"},{"op":"snapshot"},{"op":"fetch"},{"op":"fetch"},{"op":"snapshot"}],
+      "results": [
+        {"result":{"status":"unknown","launcherOnline":null,"games":{},"updatedAt":null},"updates":[]},
+        {"result":{"ok":true,"value":{"launcherOnline":12,"games":{"hl1-won":{"online":3,"activeRuns":1},"hl2-4260":{"online":null,"activeRuns":null}}}},"updates":[{"status":"ok","launcherOnline":12,"games":{"hl1-won":{"online":3,"activeRuns":1},"hl2-4260":{"online":null,"activeRuns":null}},"updatedAt":"2026-10-16T12:00:00.000Z","ageMs":0}]},
+        {"result":{"status":"ok","launcherOnline":12,"games":{"hl1-won":{"online":3,"activeRuns":1},"hl2-4260":{"online":null,"activeRuns":null}},"updatedAt":"2026-10-16T12:00:00.000Z","ageMs":0},"updates":[]},
+        {"result":null,"updates":[]},
+        {"result":{"status":"ok","launcherOnline":12,"games":{"hl1-won":{"online":3,"activeRuns":1},"hl2-4260":{"online":null,"activeRuns":null}},"updatedAt":"2026-10-16T12:00:00.000Z","ageMs":60000},"updates":[]},
+        {"result":{"ok":true,"notModified":true},"updates":[{"status":"ok","launcherOnline":12,"games":{"hl1-won":{"online":3,"activeRuns":1},"hl2-4260":{"online":null,"activeRuns":null}},"updatedAt":"2026-10-16T12:01:00.000Z","ageMs":0}]},
+        {"result":{"status":"ok","launcherOnline":12,"games":{"hl1-won":{"online":3,"activeRuns":1},"hl2-4260":{"online":null,"activeRuns":null}},"updatedAt":"2026-10-16T12:01:00.000Z","ageMs":0},"updates":[]},
+        {"result":null,"updates":[]},
+        {"result":{"status":"ok","launcherOnline":12,"games":{"hl1-won":{"online":3,"activeRuns":1},"hl2-4260":{"online":null,"activeRuns":null}},"updatedAt":"2026-10-16T12:01:00.000Z","ageMs":300000},"updates":[]},
+        {"result":null,"updates":[]},
+        {"result":{"status":"stale","launcherOnline":12,"games":{"hl1-won":{"online":3,"activeRuns":1},"hl2-4260":{"online":null,"activeRuns":null}},"updatedAt":"2026-10-16T12:01:00.000Z","ageMs":300001},"updates":[]},
+        {"result":{"ok":true,"value":{"launcherOnline":15,"games":{"hl1-won":{"online":9,"activeRuns":2}}}},"updates":[{"status":"ok","launcherOnline":15,"games":{"hl1-won":{"online":9,"activeRuns":2}},"updatedAt":"2026-10-16T12:06:00.001Z","ageMs":0}]},
+        {"result":{"status":"ok","launcherOnline":15,"games":{"hl1-won":{"online":9,"activeRuns":2}},"updatedAt":"2026-10-16T12:06:00.001Z","ageMs":0},"updates":[]},
+        {"result":{"ok":true,"value":{"launcherOnline":1,"games":{}}},"updates":[{"status":"ok","launcherOnline":1,"games":{},"updatedAt":"2026-10-16T12:06:00.001Z","ageMs":0}]},
+        {"result":{"status":"ok","launcherOnline":1,"games":{},"updatedAt":"2026-10-16T12:06:00.001Z","ageMs":0},"updates":[]},
+        {"result":{"ok":true,"value":{"launcherOnline":2,"games":{}}},"updates":[{"status":"ok","launcherOnline":2,"games":{},"updatedAt":"2026-10-16T12:06:00.001Z","ageMs":0}]},
+        {"result":{"ok":true,"notModified":true},"updates":[{"status":"ok","launcherOnline":2,"games":{},"updatedAt":"2026-10-16T12:06:00.001Z","ageMs":0}]},
+        {"result":{"status":"ok","launcherOnline":2,"games":{},"updatedAt":"2026-10-16T12:06:00.001Z","ageMs":0},"updates":[]}
+      ],
+      "journal": [
+        {"server":"api","method":"GET","path":"/v1/public/online","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/online","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity","if-none-match":"\"v1\""},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/online","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity","if-none-match":"\"v1\""},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/online","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity","if-none-match":"\"v2\""},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/online","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity","if-none-match":"\"v2\""},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/online","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity","if-none-match":"W/\"weak\""},"body":null}
+      ]
+    },
+    {
+      "name": "онлайн: проверка ответа",
+      "client": "online",
+      "path": "/v1/public/online",
+      "dead": false,
+      "backend": true,
+      "compareJournal": true,
+      "routes": {
+        "/v1/public/online": [
+          {"body":"не json"},
+          {"body":"null"},
+          {"body":"[]"},
+          {"body":"5"},
+          {"json":[]},
+          {"json":"x"},
+          {"json":{}},
+          {"json":{"schemaVersion":2,"launcherOnline":1,"games":{}}},
+          {"json":{"schemaVersion":"1","launcherOnline":1,"games":{}}},
+          {"json":{"launcherOnline":1,"games":{}}},
+          {"json":{"schemaVersion":1,"launcherOnline":-1,"games":{}}},
+          {"json":{"schemaVersion":1,"launcherOnline":1.5,"games":{}}},
+          {"json":{"schemaVersion":1,"launcherOnline":"5","games":{}}},
+          {"json":{"schemaVersion":1,"launcherOnline":null,"games":{}}},
+          {"json":{"schemaVersion":1,"games":{}}},
+          {"json":{"schemaVersion":1,"launcherOnline":0,"games":{}}},
+          {"json":{"schemaVersion":1,"launcherOnline":1000,"games":{"hl1-won":{"online":3,"activeRuns":1},"hl2-4260":{"online":null,"activeRuns":null}}}},
+          {"json":{"schemaVersion":1,"launcherOnline":7}},
+          {"json":{"schemaVersion":1,"launcherOnline":7,"games":[]}},
+          {"json":{"schemaVersion":1,"launcherOnline":7,"games":null}},
+          {"json":{"schemaVersion":1,"launcherOnline":7,"games":"x"}},
+          {
+            "json": {
+              "schemaVersion": 1,
+              "launcherOnline": 7,
+              "games": {
+                "70": {"online":5},
+                "130": {"online":6,"activeRuns":1},
+                "hl1-won": {"online":2,"activeRuns":0},
+                "-x": {"online":1},
+                "a b": {"online":1},
+                "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa": {"online":1},
+                "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa": {"online":4,"activeRuns":2},
+                "Ä": {"online":1},
+                "x.y_z-1": {"online":0},
+                "": {"online":1},
+                "A": {"online":1},
+                "a": {"online":2},
+                "n1": null,
+                "n2": [],
+                "n3": 5,
+                "n4": "x",
+                "n5": {},
+                "n6": {"online":-1},
+                "n7": {"online":1.5},
+                "n8": {"online":"3"},
+                "n9": {},
+                "o1": {"online":null},
+                "o2": {"online":null,"activeRuns":4},
+                "o3": {"online":3,"activeRuns":-1},
+                "o4": {"online":3,"activeRuns":1.5},
+                "o5": {"online":3,"activeRuns":"x"},
+                "o6": {"online":3,"activeRuns":null},
+                "o7": {"online":3,"extra":1},
+                "o8": {"online":3,"activeRuns":2},
+                "o9": {"online":1000,"activeRuns":10}
+              }
+            }
+          }
+        ]
+      },
+      "steps": [
+        {"op":"fetch"},
+        {"op":"snapshot"},
+        {"op":"fetch"},
+        {"op":"snapshot"},
+        {"op":"fetch"},
+        {"op":"snapshot"},
+        {"op":"fetch"},
+        {"op":"snapshot"},
+        {"op":"fetch"},
+        {"op":"snapshot"},
+        {"op":"fetch"},
+        {"op":"snapshot"},
+        {"op":"fetch"},
+        {"op":"snapshot"},
+        {"op":"fetch"},
+        {"op":"snapshot"},
+        {"op":"fetch"},
+        {"op":"snapshot"},
+        {"op":"fetch"},
+        {"op":"snapshot"},
+        {"op":"fetch"},
+        {"op":"snapshot"},
+        {"op":"fetch"},
+        {"op":"snapshot"},
+        {"op":"fetch"},
+        {"op":"snapshot"},
+        {"op":"fetch"},
+        {"op":"snapshot"},
+        {"op":"fetch"},
+        {"op":"snapshot"},
+        {"op":"fetch"},
+        {"op":"snapshot"},
+        {"op":"fetch"},
+        {"op":"snapshot"},
+        {"op":"fetch"},
+        {"op":"snapshot"},
+        {"op":"fetch"},
+        {"op":"snapshot"},
+        {"op":"fetch"},
+        {"op":"snapshot"},
+        {"op":"fetch"},
+        {"op":"snapshot"},
+        {"op":"fetch"},
+        {"op":"snapshot"}
+      ],
+      "results": [
+        {"result":{"ok":false,"reason":"payload"},"updates":[{"status":"unknown","launcherOnline":null,"games":{},"updatedAt":null}]},
+        {"result":{"status":"unknown","launcherOnline":null,"games":{},"updatedAt":null},"updates":[]},
+        {"result":{"ok":false,"reason":"payload"},"updates":[{"status":"unknown","launcherOnline":null,"games":{},"updatedAt":null}]},
+        {"result":{"status":"unknown","launcherOnline":null,"games":{},"updatedAt":null},"updates":[]},
+        {"result":{"ok":false,"reason":"payload"},"updates":[{"status":"unknown","launcherOnline":null,"games":{},"updatedAt":null}]},
+        {"result":{"status":"unknown","launcherOnline":null,"games":{},"updatedAt":null},"updates":[]},
+        {"result":{"ok":false,"reason":"payload"},"updates":[{"status":"unknown","launcherOnline":null,"games":{},"updatedAt":null}]},
+        {"result":{"status":"unknown","launcherOnline":null,"games":{},"updatedAt":null},"updates":[]},
+        {"result":{"ok":false,"reason":"payload"},"updates":[{"status":"unknown","launcherOnline":null,"games":{},"updatedAt":null}]},
+        {"result":{"status":"unknown","launcherOnline":null,"games":{},"updatedAt":null},"updates":[]},
+        {"result":{"ok":false,"reason":"payload"},"updates":[{"status":"unknown","launcherOnline":null,"games":{},"updatedAt":null}]},
+        {"result":{"status":"unknown","launcherOnline":null,"games":{},"updatedAt":null},"updates":[]},
+        {"result":{"ok":false,"reason":"payload"},"updates":[{"status":"unknown","launcherOnline":null,"games":{},"updatedAt":null}]},
+        {"result":{"status":"unknown","launcherOnline":null,"games":{},"updatedAt":null},"updates":[]},
+        {"result":{"ok":false,"reason":"payload"},"updates":[{"status":"unknown","launcherOnline":null,"games":{},"updatedAt":null}]},
+        {"result":{"status":"unknown","launcherOnline":null,"games":{},"updatedAt":null},"updates":[]},
+        {"result":{"ok":false,"reason":"payload"},"updates":[{"status":"unknown","launcherOnline":null,"games":{},"updatedAt":null}]},
+        {"result":{"status":"unknown","launcherOnline":null,"games":{},"updatedAt":null},"updates":[]},
+        {"result":{"ok":false,"reason":"payload"},"updates":[{"status":"unknown","launcherOnline":null,"games":{},"updatedAt":null}]},
+        {"result":{"status":"unknown","launcherOnline":null,"games":{},"updatedAt":null},"updates":[]},
+        {"result":{"ok":false,"reason":"payload"},"updates":[{"status":"unknown","launcherOnline":null,"games":{},"updatedAt":null}]},
+        {"result":{"status":"unknown","launcherOnline":null,"games":{},"updatedAt":null},"updates":[]},
+        {"result":{"ok":false,"reason":"payload"},"updates":[{"status":"unknown","launcherOnline":null,"games":{},"updatedAt":null}]},
+        {"result":{"status":"unknown","launcherOnline":null,"games":{},"updatedAt":null},"updates":[]},
+        {"result":{"ok":false,"reason":"payload"},"updates":[{"status":"unknown","launcherOnline":null,"games":{},"updatedAt":null}]},
+        {"result":{"status":"unknown","launcherOnline":null,"games":{},"updatedAt":null},"updates":[]},
+        {"result":{"ok":false,"reason":"payload"},"updates":[{"status":"unknown","launcherOnline":null,"games":{},"updatedAt":null}]},
+        {"result":{"status":"unknown","launcherOnline":null,"games":{},"updatedAt":null},"updates":[]},
+        {"result":{"ok":false,"reason":"payload"},"updates":[{"status":"unknown","launcherOnline":null,"games":{},"updatedAt":null}]},
+        {"result":{"status":"unknown","launcherOnline":null,"games":{},"updatedAt":null},"updates":[]},
+        {"result":{"ok":true,"value":{"launcherOnline":0,"games":{}}},"updates":[{"status":"ok","launcherOnline":0,"games":{},"updatedAt":"2026-10-16T12:00:00.000Z","ageMs":0}]},
+        {"result":{"status":"ok","launcherOnline":0,"games":{},"updatedAt":"2026-10-16T12:00:00.000Z","ageMs":0},"updates":[]},
+        {"result":{"ok":true,"value":{"launcherOnline":1000,"games":{"hl1-won":{"online":3,"activeRuns":1},"hl2-4260":{"online":null,"activeRuns":null}}}},"updates":[{"status":"ok","launcherOnline":1000,"games":{"hl1-won":{"online":3,"activeRuns":1},"hl2-4260":{"online":null,"activeRuns":null}},"updatedAt":"2026-10-16T12:00:00.000Z","ageMs":0}]},
+        {"result":{"status":"ok","launcherOnline":1000,"games":{"hl1-won":{"online":3,"activeRuns":1},"hl2-4260":{"online":null,"activeRuns":null}},"updatedAt":"2026-10-16T12:00:00.000Z","ageMs":0},"updates":[]},
+        {"result":{"ok":true,"value":{"launcherOnline":7,"games":{}}},"updates":[{"status":"ok","launcherOnline":7,"games":{},"updatedAt":"2026-10-16T12:00:00.000Z","ageMs":0}]},
+        {"result":{"status":"ok","launcherOnline":7,"games":{},"updatedAt":"2026-10-16T12:00:00.000Z","ageMs":0},"updates":[]},
+        {"result":{"ok":true,"value":{"launcherOnline":7,"games":{}}},"updates":[{"status":"ok","launcherOnline":7,"games":{},"updatedAt":"2026-10-16T12:00:00.000Z","ageMs":0}]},
+        {"result":{"status":"ok","launcherOnline":7,"games":{},"updatedAt":"2026-10-16T12:00:00.000Z","ageMs":0},"updates":[]},
+        {"result":{"ok":true,"value":{"launcherOnline":7,"games":{}}},"updates":[{"status":"ok","launcherOnline":7,"games":{},"updatedAt":"2026-10-16T12:00:00.000Z","ageMs":0}]},
+        {"result":{"status":"ok","launcherOnline":7,"games":{},"updatedAt":"2026-10-16T12:00:00.000Z","ageMs":0},"updates":[]},
+        {"result":{"ok":true,"value":{"launcherOnline":7,"games":{}}},"updates":[{"status":"ok","launcherOnline":7,"games":{},"updatedAt":"2026-10-16T12:00:00.000Z","ageMs":0}]},
+        {"result":{"status":"ok","launcherOnline":7,"games":{},"updatedAt":"2026-10-16T12:00:00.000Z","ageMs":0},"updates":[]},
+        {
+          "result": {
+            "ok": true,
+            "value": {
+              "launcherOnline": 7,
+              "games": {
+                "70": {"online":5,"activeRuns":null},
+                "130": {"online":6,"activeRuns":1},
+                "hl1-won": {"online":2,"activeRuns":0},
+                "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa": {"online":4,"activeRuns":2},
+                "x.y_z-1": {"online":0,"activeRuns":null},
+                "A": {"online":1,"activeRuns":null},
+                "a": {"online":2,"activeRuns":null},
+                "o1": {"online":null,"activeRuns":null},
+                "o2": {"online":null,"activeRuns":4},
+                "o3": {"online":3,"activeRuns":null},
+                "o4": {"online":3,"activeRuns":null},
+                "o5": {"online":3,"activeRuns":null},
+                "o6": {"online":3,"activeRuns":null},
+                "o7": {"online":3,"activeRuns":null},
+                "o8": {"online":3,"activeRuns":2},
+                "o9": {"online":1000,"activeRuns":10}
+              }
+            }
+          },
+          "updates": [
+            {
+              "status": "ok",
+              "launcherOnline": 7,
+              "games": {
+                "70": {"online":5,"activeRuns":null},
+                "130": {"online":6,"activeRuns":1},
+                "hl1-won": {"online":2,"activeRuns":0},
+                "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa": {"online":4,"activeRuns":2},
+                "x.y_z-1": {"online":0,"activeRuns":null},
+                "A": {"online":1,"activeRuns":null},
+                "a": {"online":2,"activeRuns":null},
+                "o1": {"online":null,"activeRuns":null},
+                "o2": {"online":null,"activeRuns":4},
+                "o3": {"online":3,"activeRuns":null},
+                "o4": {"online":3,"activeRuns":null},
+                "o5": {"online":3,"activeRuns":null},
+                "o6": {"online":3,"activeRuns":null},
+                "o7": {"online":3,"activeRuns":null},
+                "o8": {"online":3,"activeRuns":2},
+                "o9": {"online":1000,"activeRuns":10}
+              },
+              "updatedAt": "2026-10-16T12:00:00.000Z",
+              "ageMs": 0
+            }
+          ]
+        },
+        {
+          "result": {
+            "status": "ok",
+            "launcherOnline": 7,
+            "games": {
+              "70": {"online":5,"activeRuns":null},
+              "130": {"online":6,"activeRuns":1},
+              "hl1-won": {"online":2,"activeRuns":0},
+              "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa": {"online":4,"activeRuns":2},
+              "x.y_z-1": {"online":0,"activeRuns":null},
+              "A": {"online":1,"activeRuns":null},
+              "a": {"online":2,"activeRuns":null},
+              "o1": {"online":null,"activeRuns":null},
+              "o2": {"online":null,"activeRuns":4},
+              "o3": {"online":3,"activeRuns":null},
+              "o4": {"online":3,"activeRuns":null},
+              "o5": {"online":3,"activeRuns":null},
+              "o6": {"online":3,"activeRuns":null},
+              "o7": {"online":3,"activeRuns":null},
+              "o8": {"online":3,"activeRuns":2},
+              "o9": {"online":1000,"activeRuns":10}
+            },
+            "updatedAt": "2026-10-16T12:00:00.000Z",
+            "ageMs": 0
+          },
+          "updates": []
+        }
+      ],
+      "journal": [
+        {"server":"api","method":"GET","path":"/v1/public/online","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/online","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/online","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/online","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/online","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/online","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/online","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/online","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/online","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/online","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/online","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/online","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/online","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/online","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/online","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/online","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/online","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/online","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/online","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/online","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/online","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/online","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null}
+      ]
+    },
+    {
+      "name": "онлайн: коды ответа и потеря связи после успеха",
+      "client": "online",
+      "path": "/v1/public/online",
+      "dead": false,
+      "backend": true,
+      "compareJournal": true,
+      "routes": {
+        "/v1/public/online": [
+          {"json":{"schemaVersion":1,"launcherOnline":3,"games":{"hl1-won":{"online":3,"activeRuns":1},"hl2-4260":{"online":null,"activeRuns":null}}},"headers":[["ETag","\"v1\""]]},
+          {"status":500,"body":"boom"},
+          {"status":404},
+          {"status":403,"json":{"error":"x"}},
+          {"status":301,"headers":[["Location","/v1/public/online"]]},
+          {"status":204,"contentLength":0},
+          {"hangUp":true},
+          {"status":200,"bodyHex":"ff7b7d"},
+          {"json":{"schemaVersion":1,"launcherOnline":4,"games":{"hl1-won":{"online":3,"activeRuns":1},"hl2-4260":{"online":null,"activeRuns":null}}},"headers":[["ETag","\"v2\""]]}
+        ]
+      },
+      "steps": [{"op":"fetch"},{"op":"advance","ms":1000},{"op":"fetch"},{"op":"snapshot"},{"op":"fetch"},{"op":"fetch"},{"op":"fetch"},{"op":"fetch"},{"op":"fetch"},{"op":"snapshot"},{"op":"fetch"},{"op":"snapshot"}],
+      "results": [
+        {"result":{"ok":true,"value":{"launcherOnline":3,"games":{"hl1-won":{"online":3,"activeRuns":1},"hl2-4260":{"online":null,"activeRuns":null}}}},"updates":[{"status":"ok","launcherOnline":3,"games":{"hl1-won":{"online":3,"activeRuns":1},"hl2-4260":{"online":null,"activeRuns":null}},"updatedAt":"2026-10-16T12:00:00.000Z","ageMs":0}]},
+        {"result":null,"updates":[]},
+        {"result":{"ok":false,"reason":"http","status":500},"updates":[{"status":"ok","launcherOnline":3,"games":{"hl1-won":{"online":3,"activeRuns":1},"hl2-4260":{"online":null,"activeRuns":null}},"updatedAt":"2026-10-16T12:00:00.000Z","ageMs":1000}]},
+        {"result":{"status":"ok","launcherOnline":3,"games":{"hl1-won":{"online":3,"activeRuns":1},"hl2-4260":{"online":null,"activeRuns":null}},"updatedAt":"2026-10-16T12:00:00.000Z","ageMs":1000},"updates":[]},
+        {"result":{"ok":false,"reason":"http","status":404},"updates":[{"status":"ok","launcherOnline":3,"games":{"hl1-won":{"online":3,"activeRuns":1},"hl2-4260":{"online":null,"activeRuns":null}},"updatedAt":"2026-10-16T12:00:00.000Z","ageMs":1000}]},
+        {"result":{"ok":false,"reason":"http","status":403},"updates":[{"status":"ok","launcherOnline":3,"games":{"hl1-won":{"online":3,"activeRuns":1},"hl2-4260":{"online":null,"activeRuns":null}},"updatedAt":"2026-10-16T12:00:00.000Z","ageMs":1000}]},
+        {"result":{"ok":false,"reason":"http","status":301},"updates":[{"status":"ok","launcherOnline":3,"games":{"hl1-won":{"online":3,"activeRuns":1},"hl2-4260":{"online":null,"activeRuns":null}},"updatedAt":"2026-10-16T12:00:00.000Z","ageMs":1000}]},
+        {"result":{"ok":false,"reason":"payload"},"updates":[{"status":"ok","launcherOnline":3,"games":{"hl1-won":{"online":3,"activeRuns":1},"hl2-4260":{"online":null,"activeRuns":null}},"updatedAt":"2026-10-16T12:00:00.000Z","ageMs":1000}]},
+        {"result":{"ok":false,"reason":"network"},"updates":[{"status":"ok","launcherOnline":3,"games":{"hl1-won":{"online":3,"activeRuns":1},"hl2-4260":{"online":null,"activeRuns":null}},"updatedAt":"2026-10-16T12:00:00.000Z","ageMs":1000}]},
+        {"result":{"status":"ok","launcherOnline":3,"games":{"hl1-won":{"online":3,"activeRuns":1},"hl2-4260":{"online":null,"activeRuns":null}},"updatedAt":"2026-10-16T12:00:00.000Z","ageMs":1000},"updates":[]},
+        {"result":{"ok":false,"reason":"payload"},"updates":[{"status":"ok","launcherOnline":3,"games":{"hl1-won":{"online":3,"activeRuns":1},"hl2-4260":{"online":null,"activeRuns":null}},"updatedAt":"2026-10-16T12:00:00.000Z","ageMs":1000}]},
+        {"result":{"status":"ok","launcherOnline":3,"games":{"hl1-won":{"online":3,"activeRuns":1},"hl2-4260":{"online":null,"activeRuns":null}},"updatedAt":"2026-10-16T12:00:00.000Z","ageMs":1000},"updates":[]}
+      ],
+      "journal": [
+        {"server":"api","method":"GET","path":"/v1/public/online","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/online","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity","if-none-match":"\"v1\""},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/online","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity","if-none-match":"\"v1\""},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/online","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity","if-none-match":"\"v1\""},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/online","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity","if-none-match":"\"v1\""},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/online","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity","if-none-match":"\"v1\""},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/online","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity","if-none-match":"\"v1\""},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/online","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity","if-none-match":"\"v1\""},"body":null}
+      ]
+    },
+    {
+      "name": "онлайн: окно скрыто, force",
+      "client": "online",
+      "path": "/v1/public/online",
+      "dead": false,
+      "backend": true,
+      "compareJournal": true,
+      "routes": {"/v1/public/online":[{"json":{"schemaVersion":1,"launcherOnline":1,"games":{}},"headers":[["ETag","\"v1\""]]},{"status":304,"contentLength":0}]},
+      "steps": [{"op":"visible","value":false},{"op":"fetch"},{"op":"snapshot"},{"op":"fetch","force":true},{"op":"snapshot"},{"op":"fetch"},{"op":"visible","value":true},{"op":"fetch"},{"op":"snapshot"}],
+      "results": [
+        {"result":null,"updates":[]},
+        {"result":{"skipped":"hidden"},"updates":[]},
+        {"result":{"status":"unknown","launcherOnline":null,"games":{},"updatedAt":null},"updates":[]},
+        {"result":{"ok":true,"value":{"launcherOnline":1,"games":{}}},"updates":[{"status":"ok","launcherOnline":1,"games":{},"updatedAt":"2026-10-16T12:00:00.000Z","ageMs":0}]},
+        {"result":{"status":"ok","launcherOnline":1,"games":{},"updatedAt":"2026-10-16T12:00:00.000Z","ageMs":0},"updates":[]},
+        {"result":{"skipped":"hidden"},"updates":[]},
+        {"result":null,"updates":[]},
+        {"result":{"ok":true,"notModified":true},"updates":[{"status":"ok","launcherOnline":1,"games":{},"updatedAt":"2026-10-16T12:00:00.000Z","ageMs":0}]},
+        {"result":{"status":"ok","launcherOnline":1,"games":{},"updatedAt":"2026-10-16T12:00:00.000Z","ageMs":0},"updates":[]}
+      ],
+      "journal": [
+        {"server":"api","method":"GET","path":"/v1/public/online","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/online","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity","if-none-match":"\"v1\""},"body":null}
+      ]
+    },
+    {
+      "name": "онлайн: бэкенд выключен",
+      "client": "online",
+      "path": "/v1/public/online",
+      "dead": false,
+      "backend": false,
+      "compareJournal": true,
+      "routes": {"/v1/public/online":[{"json":{"schemaVersion":1,"launcherOnline":1,"games":{}}}]},
+      "steps": [{"op":"fetch"},{"op":"fetch","force":true},{"op":"snapshot"}],
+      "results": [{"result":{"skipped":"backend-off"},"updates":[]},{"result":{"skipped":"backend-off"},"updates":[]},{"result":{"status":"unknown","launcherOnline":null,"games":{},"updatedAt":null},"updates":[]}],
+      "journal": []
+    },
+    {
+      "name": "онлайн: параллельные вызовы делят один запрос",
+      "client": "online",
+      "path": "/v1/public/online",
+      "dead": false,
+      "backend": true,
+      "compareJournal": true,
+      "routes": {"/v1/public/online":[{"json":{"schemaVersion":1,"launcherOnline":5,"games":{"hl1-won":{"online":3,"activeRuns":1},"hl2-4260":{"online":null,"activeRuns":null}}},"headers":[["ETag","\"v1\""]],"delayMs":200},{"status":304,"contentLength":0}]},
+      "steps": [{"op":"fetchMany","n":3},{"op":"snapshot"},{"op":"fetch"},{"op":"fetchMany","n":2,"force":true}],
+      "results": [
+        {"result":[{"ok":true,"value":{"launcherOnline":5,"games":{"hl1-won":{"online":3,"activeRuns":1},"hl2-4260":{"online":null,"activeRuns":null}}}},{"skipped":"in-flight"},{"skipped":"in-flight"}],"updates":[{"status":"ok","launcherOnline":5,"games":{"hl1-won":{"online":3,"activeRuns":1},"hl2-4260":{"online":null,"activeRuns":null}},"updatedAt":"2026-10-16T12:00:00.000Z","ageMs":0}]},
+        {"result":{"status":"ok","launcherOnline":5,"games":{"hl1-won":{"online":3,"activeRuns":1},"hl2-4260":{"online":null,"activeRuns":null}},"updatedAt":"2026-10-16T12:00:00.000Z","ageMs":0},"updates":[]},
+        {"result":{"ok":true,"notModified":true},"updates":[{"status":"ok","launcherOnline":5,"games":{"hl1-won":{"online":3,"activeRuns":1},"hl2-4260":{"online":null,"activeRuns":null}},"updatedAt":"2026-10-16T12:00:00.000Z","ageMs":0}]},
+        {"result":[{"ok":true,"notModified":true},{"skipped":"in-flight"}],"updates":[{"status":"ok","launcherOnline":5,"games":{"hl1-won":{"online":3,"activeRuns":1},"hl2-4260":{"online":null,"activeRuns":null}},"updatedAt":"2026-10-16T12:00:00.000Z","ageMs":0}]}
+      ],
+      "journal": [
+        {"server":"api","method":"GET","path":"/v1/public/online","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/online","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity","if-none-match":"\"v1\""},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/online","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity","if-none-match":"\"v1\""},"body":null}
+      ]
+    },
+    {
+      "name": "онлайн: сеть недоступна",
+      "client": "online",
+      "path": "/v1/public/online",
+      "dead": true,
+      "backend": true,
+      "compareJournal": true,
+      "routes": {},
+      "steps": [{"op":"fetch"},{"op":"snapshot"},{"op":"fetch"}],
+      "results": [{"result":{"ok":false,"reason":"network"},"updates":[{"status":"unknown","launcherOnline":null,"games":{},"updatedAt":null}]},{"result":{"status":"unknown","launcherOnline":null,"games":{},"updatedAt":null},"updates":[]},{"result":{"ok":false,"reason":"network"},"updates":[{"status":"unknown","launcherOnline":null,"games":{},"updatedAt":null}]}],
+      "journal": []
+    },
+    {
+      "name": "онлайн: ответ больше лимита 8 КиБ — Node зависает, Rust отвечает ошибкой сети",
+      "client": "online",
+      "path": "/v1/public/online",
+      "dead": false,
+      "backend": true,
+      "compareJournal": false,
+      "routes": {"/v1/public/online":[{"bodySize":20000,"pauseAfter":9000,"pauseMs":300},{"json":{"schemaVersion":1,"launcherOnline":2,"games":{"hl1-won":{"online":3,"activeRuns":1},"hl2-4260":{"online":null,"activeRuns":null}}},"headers":[["ETag","\"v1\""]]}]},
+      "steps": [
+        {"op":"fetch","race":1500,"fixed":{"ok":false,"reason":"network"}},
+        {"op":"fetch","race":1500,"fixed":{"ok":true,"value":{"launcherOnline":2,"games":{"hl1-won":{"online":3,"activeRuns":1},"hl2-4260":{"online":null,"activeRuns":null}}}}},
+        {"op":"snapshot","fixed":{"status":"ok","launcherOnline":2,"games":{"hl1-won":{"online":3,"activeRuns":1},"hl2-4260":{"online":null,"activeRuns":null}},"updatedAt":"2026-10-16T12:00:00.000Z","ageMs":0}}
+      ],
+      "results": [{"result":{"hang":true},"updates":[]},{"result":{"skipped":"in-flight"},"updates":[]},{"result":{"status":"unknown","launcherOnline":null,"games":{},"updatedAt":null},"updates":[]}],
+      "journal": [{"server":"api","method":"GET","path":"/v1/public/online","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null}]
+    },
+    {
+      "name": "лента: посты и рекорды, кеш 2 минуты",
+      "client": "news",
+      "path": "/v1/public/news",
+      "dead": false,
+      "backend": true,
+      "compareJournal": true,
+      "routes": {
+        "/v1/public/news": [
+          {"json":{"items":[{"kind":"post","id":"12","title":"Пост 12","body":"Текст 12\n\nАбзац","date":"2026-10-05T10:00:00+00:00"},{"kind":"record","id":"z16q06rm","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/runs/z16q06rm"}]}},
+          {"json":{"items":[{"kind":"record","id":"y24vkp5z","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl2/runs/y24vkp5z"}]}},
+          {"json":{"items":[{"kind":"post","id":"13","title":"Пост 13","body":"Текст 13\n\nАбзац","date":"2026-10-05T10:00:00+00:00"}]}}
+        ]
+      },
+      "steps": [{"op":"get"},{"op":"advance","ms":60000},{"op":"get"},{"op":"get","force":true},{"op":"advance","ms":119999},{"op":"get"},{"op":"advance","ms":1},{"op":"get"},{"op":"advance","ms":120000},{"op":"get"}],
+      "results": [
+        {
+          "result": {
+            "status": "ok",
+            "items": [
+              {"kind":"post","id":"12","title":"Пост 12","body":"Текст 12\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"record","id":"z16q06rm","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl2/runs/z16q06rm"}
+            ]
+          }
+        },
+        {"result":null},
+        {
+          "result": {
+            "status": "ok",
+            "items": [
+              {"kind":"post","id":"12","title":"Пост 12","body":"Текст 12\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"record","id":"z16q06rm","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl2/runs/z16q06rm"}
+            ]
+          }
+        },
+        {"result":{"status":"ok","items":[{"kind":"record","id":"y24vkp5z","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl2/runs/y24vkp5z"}]}},
+        {"result":null},
+        {"result":{"status":"ok","items":[{"kind":"record","id":"y24vkp5z","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl2/runs/y24vkp5z"}]}},
+        {"result":null},
+        {"result":{"status":"ok","items":[{"kind":"post","id":"13","title":"Пост 13","body":"Текст 13\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"}]}},
+        {"result":null},
+        {"result":{"status":"ok","items":[{"kind":"post","id":"13","title":"Пост 13","body":"Текст 13\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"}]}}
+      ],
+      "journal": [
+        {"server":"api","method":"GET","path":"/v1/public/news","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/news","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/news","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/news","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null}
+      ]
+    },
+    {
+      "name": "лента: records заменяют долю рекордов в items",
+      "client": "news",
+      "path": "/v1/public/news",
+      "dead": false,
+      "backend": true,
+      "compareJournal": true,
+      "routes": {
+        "/v1/public/news": [
+          {
+            "json": {
+              "items": [
+                {"kind":"post","id":"12","title":"Пост 12","body":"Текст 12\n\nАбзац","date":"2026-10-05T10:00:00+00:00"},
+                {"kind":"record","id":"run00000","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00000","subcategory":"Scriptless · RTA"},
+                {"kind":"record","id":"run00001","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00001","subcategory":"Scripted · SS"}
+              ],
+              "records": [
+                {"kind":"record","id":"run00000","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00000","subcategory":"Scriptless · RTA"},
+                {"kind":"record","id":"run00001","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00001","subcategory":"Scripted · SS"},
+                {"kind":"record","id":"run00002","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00002","subcategory":"Scriptless · RTA"},
+                {"kind":"record","id":"run00003","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00003","subcategory":"Scripted · SS"},
+                {"kind":"record","id":"run00004","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00004","subcategory":"Scriptless · RTA"},
+                {"kind":"record","id":"run00005","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00005","subcategory":"Scripted · SS"},
+                {"kind":"record","id":"run00006","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00006","subcategory":"Scriptless · RTA"},
+                {"kind":"record","id":"run00007","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00007","subcategory":"Scripted · SS"},
+                {"kind":"record","id":"run00008","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00008","subcategory":"Scriptless · RTA"},
+                {"kind":"record","id":"run00009","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00009","subcategory":"Scripted · SS"},
+                {"kind":"record","id":"run00010","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00010","subcategory":"Scriptless · RTA"},
+                {"kind":"record","id":"run00011","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00011","subcategory":"Scripted · SS"},
+                {"kind":"record","id":"run00012","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00012","subcategory":"Scriptless · RTA"},
+                {"kind":"record","id":"run00013","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00013","subcategory":"Scripted · SS"},
+                {"kind":"record","id":"run00014","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00014","subcategory":"Scriptless · RTA"},
+                {"kind":"record","id":"run00015","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00015","subcategory":"Scripted · SS"},
+                {"kind":"record","id":"run00016","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00016","subcategory":"Scriptless · RTA"},
+                {"kind":"record","id":"run00017","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00017","subcategory":"Scripted · SS"},
+                {"kind":"record","id":"run00018","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00018","subcategory":"Scriptless · RTA"},
+                {"kind":"record","id":"run00019","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00019","subcategory":"Scripted · SS"},
+                {"kind":"record","id":"run00020","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00020","subcategory":"Scriptless · RTA"},
+                {"kind":"record","id":"run00021","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00021","subcategory":"Scripted · SS"},
+                {"kind":"record","id":"run00022","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00022","subcategory":"Scriptless · RTA"},
+                {"kind":"record","id":"run00023","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00023","subcategory":"Scripted · SS"},
+                {"kind":"record","id":"run00024","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00024","subcategory":"Scriptless · RTA"},
+                {"kind":"record","id":"run00025","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00025","subcategory":"Scripted · SS"},
+                {"kind":"record","id":"run00026","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00026","subcategory":"Scriptless · RTA"},
+                {"kind":"record","id":"run00027","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00027","subcategory":"Scripted · SS"},
+                {"kind":"record","id":"run00028","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00028","subcategory":"Scriptless · RTA"},
+                {"kind":"record","id":"run00029","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00029","subcategory":"Scripted · SS"},
+                {"kind":"record","id":"run00030","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00030","subcategory":"Scriptless · RTA"},
+                {"kind":"record","id":"run00031","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00031","subcategory":"Scripted · SS"},
+                {"kind":"record","id":"run00032","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00032","subcategory":"Scriptless · RTA"},
+                {"kind":"record","id":"run00033","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00033","subcategory":"Scripted · SS"},
+                {"kind":"record","id":"run00034","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00034","subcategory":"Scriptless · RTA"},
+                {"kind":"record","id":"run00035","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00035","subcategory":"Scripted · SS"},
+                {"kind":"record","id":"run00036","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00036","subcategory":"Scriptless · RTA"},
+                {"kind":"record","id":"run00037","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00037","subcategory":"Scripted · SS"},
+                {"kind":"record","id":"run00038","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00038","subcategory":"Scriptless · RTA"},
+                {"kind":"record","id":"run00039","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00039","subcategory":"Scripted · SS"},
+                {"kind":"record","id":"run00040","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00040","subcategory":"Scriptless · RTA"},
+                {"kind":"record","id":"run00041","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00041","subcategory":"Scripted · SS"},
+                {"kind":"record","id":"run00042","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00042","subcategory":"Scriptless · RTA"},
+                {"kind":"record","id":"run00043","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00043","subcategory":"Scripted · SS"},
+                {"kind":"record","id":"run00044","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00044","subcategory":"Scriptless · RTA"},
+                {"kind":"record","id":"run00045","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00045","subcategory":"Scripted · SS"},
+                {"kind":"record","id":"run00046","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00046","subcategory":"Scriptless · RTA"},
+                {"kind":"record","id":"run00047","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00047","subcategory":"Scripted · SS"},
+                {"kind":"record","id":"run00048","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00048","subcategory":"Scriptless · RTA"},
+                {"kind":"record","id":"run00049","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00049","subcategory":"Scripted · SS"},
+                {"kind":"record","id":"run00050","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00050","subcategory":"Scriptless · RTA"},
+                {"kind":"record","id":"run00051","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00051","subcategory":"Scripted · SS"},
+                {"kind":"record","id":"run00052","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00052","subcategory":"Scriptless · RTA"},
+                {"kind":"record","id":"run00053","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00053","subcategory":"Scripted · SS"},
+                {"kind":"record","id":"run00054","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00054","subcategory":"Scriptless · RTA"},
+                {"kind":"record","id":"run00055","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00055","subcategory":"Scripted · SS"},
+                {"kind":"record","id":"run00056","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00056","subcategory":"Scriptless · RTA"},
+                {"kind":"record","id":"run00057","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00057","subcategory":"Scripted · SS"},
+                {"kind":"record","id":"run00058","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00058","subcategory":"Scriptless · RTA"},
+                {"kind":"record","id":"run00059","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00059","subcategory":"Scripted · SS"}
+              ]
+            }
+          },
+          {
+            "json": {
+              "items": [{"kind":"post","id":"12","title":"Пост 12","body":"Текст 12\n\nАбзац","date":"2026-10-05T10:00:00+00:00"},{"kind":"record","id":"run00000","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00000","subcategory":"Scriptless · RTA"}],
+              "records": {"not":"array"}
+            }
+          },
+          {
+            "json": {
+              "items": [
+                {"kind":"post","id":"1","title":"Пост 1","body":"Текст 1\n\nАбзац","date":"2026-10-05T10:00:00+00:00"},
+                null,
+                "x",
+                5,
+                {"kind":"record","id":"run00002","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00002","subcategory":"Scriptless · RTA"},
+                {"kind":"html"},
+                {"kind":"post","id":"2","title":"Пост 2","body":"Текст 2\n\nАбзац","date":"2026-10-05T10:00:00+00:00"}
+              ],
+              "records": [
+                {"kind":"record","id":"run00003","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00003","subcategory":"Scripted · SS"},
+                null,
+                "x",
+                {"kind":"record","id":"run00003","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00003","subcategory":"Scripted · SS"},
+                {"kind":"record","id":"z16q06rm","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/runs/z16q06rm"},
+                {"kind":"post","id":"run00004","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/hl1/runs/run00004","subcategory":"Scriptless · RTA"}
+              ]
+            }
+          },
+          {
+            "json": {
+              "items": [
+                {"kind":"post","id":"1","title":"Пост 1","body":"Текст 1\n\nАбзац","date":"2026-10-05T10:00:00+00:00"},
+                {"kind":"post","id":"1","title":"Пост 1","body":"Текст 1\n\nАбзац","date":"2026-10-05T10:00:00+00:00"},
+                {"kind":"post","id":"1","title":"Другой","body":"Текст 1\n\nАбзац","date":"2026-10-05T10:00:00+00:00"},
+                {"kind":"record","id":"z16q06rm","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/runs/z16q06rm"},
+                {"kind":"record","id":"z16q06rm","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":5,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/runs/z16q06rm"}
+              ]
+            }
+          },
+          {"json":{"items":[],"records":[]}},
+          {
+            "json": {
+              "items": [
+                {"kind":"post","id":"1","title":"Пост 1","body":"Текст 1\n\nАбзац","date":"2026-10-05T10:00:00+00:00"},
+                {"kind":"post","id":"2","title":"Пост 2","body":"Текст 2\n\nАбзац","date":"2026-10-05T10:00:00+00:00"},
+                {"kind":"post","id":"3","title":"Пост 3","body":"Текст 3\n\nАбзац","date":"2026-10-05T10:00:00+00:00"},
+                {"kind":"post","id":"4","title":"Пост 4","body":"Текст 4\n\nАбзац","date":"2026-10-05T10:00:00+00:00"},
+                {"kind":"post","id":"5","title":"Пост 5","body":"Текст 5\n\nАбзац","date":"2026-10-05T10:00:00+00:00"},
+                {"kind":"post","id":"6","title":"Пост 6","body":"Текст 6\n\nАбзац","date":"2026-10-05T10:00:00+00:00"},
+                {"kind":"post","id":"7","title":"Пост 7","body":"Текст 7\n\nАбзац","date":"2026-10-05T10:00:00+00:00"},
+                {"kind":"post","id":"8","title":"Пост 8","body":"Текст 8\n\nАбзац","date":"2026-10-05T10:00:00+00:00"},
+                {"kind":"post","id":"9","title":"Пост 9","body":"Текст 9\n\nАбзац","date":"2026-10-05T10:00:00+00:00"},
+                {"kind":"post","id":"10","title":"Пост 10","body":"Текст 10\n\nАбзац","date":"2026-10-05T10:00:00+00:00"},
+                {"kind":"post","id":"11","title":"Пост 11","body":"Текст 11\n\nАбзац","date":"2026-10-05T10:00:00+00:00"},
+                {"kind":"post","id":"12","title":"Пост 12","body":"Текст 12\n\nАбзац","date":"2026-10-05T10:00:00+00:00"},
+                {"kind":"post","id":"13","title":"Пост 13","body":"Текст 13\n\nАбзац","date":"2026-10-05T10:00:00+00:00"},
+                {"kind":"post","id":"14","title":"Пост 14","body":"Текст 14\n\nАбзац","date":"2026-10-05T10:00:00+00:00"},
+                {"kind":"post","id":"15","title":"Пост 15","body":"Текст 15\n\nАбзац","date":"2026-10-05T10:00:00+00:00"},
+                {"kind":"post","id":"16","title":"Пост 16","body":"Текст 16\n\nАбзац","date":"2026-10-05T10:00:00+00:00"},
+                {"kind":"post","id":"17","title":"Пост 17","body":"Текст 17\n\nАбзац","date":"2026-10-05T10:00:00+00:00"},
+                {"kind":"post","id":"18","title":"Пост 18","body":"Текст 18\n\nАбзац","date":"2026-10-05T10:00:00+00:00"},
+                {"kind":"post","id":"19","title":"Пост 19","body":"Текст 19\n\nАбзац","date":"2026-10-05T10:00:00+00:00"},
+                {"kind":"post","id":"20","title":"Пост 20","body":"Текст 20\n\nАбзац","date":"2026-10-05T10:00:00+00:00"},
+                {"kind":"post","id":"21","title":"Пост 21","body":"Текст 21\n\nАбзац","date":"2026-10-05T10:00:00+00:00"},
+                {"kind":"post","id":"22","title":"Пост 22","body":"Текст 22\n\nАбзац","date":"2026-10-05T10:00:00+00:00"},
+                {"kind":"post","id":"23","title":"Пост 23","body":"Текст 23\n\nАбзац","date":"2026-10-05T10:00:00+00:00"},
+                {"kind":"post","id":"24","title":"Пост 24","body":"Текст 24\n\nАбзац","date":"2026-10-05T10:00:00+00:00"},
+                {"kind":"post","id":"25","title":"Пост 25","body":"Текст 25\n\nАбзац","date":"2026-10-05T10:00:00+00:00"},
+                {"kind":"post","id":"26","title":"Пост 26","body":"Текст 26\n\nАбзац","date":"2026-10-05T10:00:00+00:00"},
+                {"kind":"post","id":"27","title":"Пост 27","body":"Текст 27\n\nАбзац","date":"2026-10-05T10:00:00+00:00"},
+                {"kind":"post","id":"28","title":"Пост 28","body":"Текст 28\n\nАбзац","date":"2026-10-05T10:00:00+00:00"},
+                {"kind":"post","id":"29","title":"Пост 29","body":"Текст 29\n\nАбзац","date":"2026-10-05T10:00:00+00:00"},
+                {"kind":"post","id":"30","title":"Пост 30","body":"Текст 30\n\nАбзац","date":"2026-10-05T10:00:00+00:00"},
+                {"kind":"post","id":"31","title":"Пост 31","body":"Текст 31\n\nАбзац","date":"2026-10-05T10:00:00+00:00"},
+                {"kind":"post","id":"32","title":"Пост 32","body":"Текст 32\n\nАбзац","date":"2026-10-05T10:00:00+00:00"},
+                {"kind":"post","id":"33","title":"Пост 33","body":"Текст 33\n\nАбзац","date":"2026-10-05T10:00:00+00:00"},
+                {"kind":"post","id":"34","title":"Пост 34","body":"Текст 34\n\nАбзац","date":"2026-10-05T10:00:00+00:00"},
+                {"kind":"post","id":"35","title":"Пост 35","body":"Текст 35\n\nАбзац","date":"2026-10-05T10:00:00+00:00"},
+                {"kind":"post","id":"36","title":"Пост 36","body":"Текст 36\n\nАбзац","date":"2026-10-05T10:00:00+00:00"},
+                {"kind":"post","id":"37","title":"Пост 37","body":"Текст 37\n\nАбзац","date":"2026-10-05T10:00:00+00:00"},
+                {"kind":"post","id":"38","title":"Пост 38","body":"Текст 38\n\nАбзац","date":"2026-10-05T10:00:00+00:00"},
+                {"kind":"post","id":"39","title":"Пост 39","body":"Текст 39\n\nАбзац","date":"2026-10-05T10:00:00+00:00"},
+                {"kind":"post","id":"40","title":"Пост 40","body":"Текст 40\n\nАбзац","date":"2026-10-05T10:00:00+00:00"},
+                {"kind":"post","id":"41","title":"Пост 41","body":"Текст 41\n\nАбзац","date":"2026-10-05T10:00:00+00:00"},
+                {"kind":"post","id":"42","title":"Пост 42","body":"Текст 42\n\nАбзац","date":"2026-10-05T10:00:00+00:00"},
+                {"kind":"post","id":"43","title":"Пост 43","body":"Текст 43\n\nАбзац","date":"2026-10-05T10:00:00+00:00"},
+                {"kind":"post","id":"44","title":"Пост 44","body":"Текст 44\n\nАбзац","date":"2026-10-05T10:00:00+00:00"},
+                {"kind":"post","id":"45","title":"Пост 45","body":"Текст 45\n\nАбзац","date":"2026-10-05T10:00:00+00:00"}
+              ]
+            }
+          },
+          {"json":{"items":[{"kind":"post","id":"1","title":"Пост 1","body":"Текст 1\n\nАбзац","date":"2026-10-05T10:00:00+00:00"}],"records":null}}
+        ]
+      },
+      "steps": [{"op":"get","force":true},{"op":"get","force":true},{"op":"get","force":true},{"op":"get","force":true},{"op":"get","force":true},{"op":"get","force":true},{"op":"get","force":true}],
+      "results": [
+        {
+          "result": {
+            "status": "ok",
+            "items": [
+              {"kind":"post","id":"12","title":"Пост 12","body":"Текст 12\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"record","id":"run00000","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"Scriptless · RTA","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl1/runs/run00000"},
+              {"kind":"record","id":"run00001","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"Scripted · SS","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl1/runs/run00001"},
+              {"kind":"record","id":"run00002","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"Scriptless · RTA","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl1/runs/run00002"},
+              {"kind":"record","id":"run00003","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"Scripted · SS","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl1/runs/run00003"},
+              {"kind":"record","id":"run00004","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"Scriptless · RTA","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl1/runs/run00004"},
+              {"kind":"record","id":"run00005","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"Scripted · SS","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl1/runs/run00005"},
+              {"kind":"record","id":"run00006","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"Scriptless · RTA","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl1/runs/run00006"},
+              {"kind":"record","id":"run00007","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"Scripted · SS","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl1/runs/run00007"},
+              {"kind":"record","id":"run00008","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"Scriptless · RTA","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl1/runs/run00008"},
+              {"kind":"record","id":"run00009","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"Scripted · SS","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl1/runs/run00009"},
+              {"kind":"record","id":"run00010","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"Scriptless · RTA","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl1/runs/run00010"},
+              {"kind":"record","id":"run00011","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"Scripted · SS","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl1/runs/run00011"},
+              {"kind":"record","id":"run00012","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"Scriptless · RTA","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl1/runs/run00012"},
+              {"kind":"record","id":"run00013","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"Scripted · SS","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl1/runs/run00013"},
+              {"kind":"record","id":"run00014","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"Scriptless · RTA","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl1/runs/run00014"},
+              {"kind":"record","id":"run00015","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"Scripted · SS","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl1/runs/run00015"},
+              {"kind":"record","id":"run00016","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"Scriptless · RTA","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl1/runs/run00016"},
+              {"kind":"record","id":"run00017","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"Scripted · SS","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl1/runs/run00017"},
+              {"kind":"record","id":"run00018","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"Scriptless · RTA","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl1/runs/run00018"},
+              {"kind":"record","id":"run00019","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"Scripted · SS","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl1/runs/run00019"},
+              {"kind":"record","id":"run00020","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"Scriptless · RTA","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl1/runs/run00020"},
+              {"kind":"record","id":"run00021","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"Scripted · SS","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl1/runs/run00021"},
+              {"kind":"record","id":"run00022","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"Scriptless · RTA","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl1/runs/run00022"},
+              {"kind":"record","id":"run00023","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"Scripted · SS","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl1/runs/run00023"},
+              {"kind":"record","id":"run00024","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"Scriptless · RTA","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl1/runs/run00024"},
+              {"kind":"record","id":"run00025","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"Scripted · SS","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl1/runs/run00025"},
+              {"kind":"record","id":"run00026","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"Scriptless · RTA","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl1/runs/run00026"},
+              {"kind":"record","id":"run00027","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"Scripted · SS","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl1/runs/run00027"},
+              {"kind":"record","id":"run00028","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"Scriptless · RTA","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl1/runs/run00028"},
+              {"kind":"record","id":"run00029","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"Scripted · SS","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl1/runs/run00029"},
+              {"kind":"record","id":"run00030","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"Scriptless · RTA","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl1/runs/run00030"},
+              {"kind":"record","id":"run00031","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"Scripted · SS","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl1/runs/run00031"},
+              {"kind":"record","id":"run00032","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"Scriptless · RTA","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl1/runs/run00032"},
+              {"kind":"record","id":"run00033","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"Scripted · SS","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl1/runs/run00033"},
+              {"kind":"record","id":"run00034","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"Scriptless · RTA","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl1/runs/run00034"},
+              {"kind":"record","id":"run00035","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"Scripted · SS","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl1/runs/run00035"},
+              {"kind":"record","id":"run00036","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"Scriptless · RTA","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl1/runs/run00036"},
+              {"kind":"record","id":"run00037","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"Scripted · SS","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl1/runs/run00037"},
+              {"kind":"record","id":"run00038","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"Scriptless · RTA","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl1/runs/run00038"},
+              {"kind":"record","id":"run00039","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"Scripted · SS","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl1/runs/run00039"},
+              {"kind":"record","id":"run00040","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"Scriptless · RTA","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl1/runs/run00040"},
+              {"kind":"record","id":"run00041","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"Scripted · SS","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl1/runs/run00041"},
+              {"kind":"record","id":"run00042","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"Scriptless · RTA","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl1/runs/run00042"},
+              {"kind":"record","id":"run00043","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"Scripted · SS","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl1/runs/run00043"},
+              {"kind":"record","id":"run00044","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"Scriptless · RTA","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl1/runs/run00044"},
+              {"kind":"record","id":"run00045","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"Scripted · SS","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl1/runs/run00045"},
+              {"kind":"record","id":"run00046","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"Scriptless · RTA","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl1/runs/run00046"},
+              {"kind":"record","id":"run00047","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"Scripted · SS","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl1/runs/run00047"},
+              {"kind":"record","id":"run00048","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"Scriptless · RTA","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl1/runs/run00048"},
+              {"kind":"record","id":"run00049","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"Scripted · SS","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl1/runs/run00049"},
+              {"kind":"record","id":"run00050","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"Scriptless · RTA","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl1/runs/run00050"},
+              {"kind":"record","id":"run00051","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"Scripted · SS","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl1/runs/run00051"},
+              {"kind":"record","id":"run00052","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"Scriptless · RTA","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl1/runs/run00052"},
+              {"kind":"record","id":"run00053","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"Scripted · SS","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl1/runs/run00053"},
+              {"kind":"record","id":"run00054","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"Scriptless · RTA","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl1/runs/run00054"},
+              {"kind":"record","id":"run00055","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"Scripted · SS","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl1/runs/run00055"},
+              {"kind":"record","id":"run00056","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"Scriptless · RTA","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl1/runs/run00056"},
+              {"kind":"record","id":"run00057","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"Scripted · SS","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl1/runs/run00057"},
+              {"kind":"record","id":"run00058","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"Scriptless · RTA","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl1/runs/run00058"},
+              {"kind":"record","id":"run00059","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"Scripted · SS","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl1/runs/run00059"}
+            ]
+          }
+        },
+        {
+          "result": {
+            "status": "ok",
+            "items": [
+              {"kind":"post","id":"12","title":"Пост 12","body":"Текст 12\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"record","id":"run00000","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"Scriptless · RTA","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl1/runs/run00000"}
+            ]
+          }
+        },
+        {
+          "result": {
+            "status": "ok",
+            "items": [
+              {"kind":"post","id":"1","title":"Пост 1","body":"Текст 1\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"post","id":"2","title":"Пост 2","body":"Текст 2\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"record","id":"run00003","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"Scripted · SS","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl1/runs/run00003"},
+              {"kind":"record","id":"z16q06rm","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl2/runs/z16q06rm"}
+            ]
+          }
+        },
+        {
+          "result": {
+            "status": "ok",
+            "items": [
+              {"kind":"post","id":"1","title":"Пост 1","body":"Текст 1\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"record","id":"z16q06rm","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl2/runs/z16q06rm"}
+            ]
+          }
+        },
+        {"result":{"status":"ok","items":[]}},
+        {
+          "result": {
+            "status": "ok",
+            "items": [
+              {"kind":"post","id":"1","title":"Пост 1","body":"Текст 1\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"post","id":"2","title":"Пост 2","body":"Текст 2\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"post","id":"3","title":"Пост 3","body":"Текст 3\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"post","id":"4","title":"Пост 4","body":"Текст 4\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"post","id":"5","title":"Пост 5","body":"Текст 5\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"post","id":"6","title":"Пост 6","body":"Текст 6\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"post","id":"7","title":"Пост 7","body":"Текст 7\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"post","id":"8","title":"Пост 8","body":"Текст 8\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"post","id":"9","title":"Пост 9","body":"Текст 9\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"post","id":"10","title":"Пост 10","body":"Текст 10\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"post","id":"11","title":"Пост 11","body":"Текст 11\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"post","id":"12","title":"Пост 12","body":"Текст 12\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"post","id":"13","title":"Пост 13","body":"Текст 13\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"post","id":"14","title":"Пост 14","body":"Текст 14\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"post","id":"15","title":"Пост 15","body":"Текст 15\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"post","id":"16","title":"Пост 16","body":"Текст 16\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"post","id":"17","title":"Пост 17","body":"Текст 17\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"post","id":"18","title":"Пост 18","body":"Текст 18\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"post","id":"19","title":"Пост 19","body":"Текст 19\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"post","id":"20","title":"Пост 20","body":"Текст 20\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"post","id":"21","title":"Пост 21","body":"Текст 21\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"post","id":"22","title":"Пост 22","body":"Текст 22\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"post","id":"23","title":"Пост 23","body":"Текст 23\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"post","id":"24","title":"Пост 24","body":"Текст 24\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"post","id":"25","title":"Пост 25","body":"Текст 25\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"post","id":"26","title":"Пост 26","body":"Текст 26\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"post","id":"27","title":"Пост 27","body":"Текст 27\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"post","id":"28","title":"Пост 28","body":"Текст 28\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"post","id":"29","title":"Пост 29","body":"Текст 29\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"post","id":"30","title":"Пост 30","body":"Текст 30\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"post","id":"31","title":"Пост 31","body":"Текст 31\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"post","id":"32","title":"Пост 32","body":"Текст 32\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"post","id":"33","title":"Пост 33","body":"Текст 33\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"post","id":"34","title":"Пост 34","body":"Текст 34\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"post","id":"35","title":"Пост 35","body":"Текст 35\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"post","id":"36","title":"Пост 36","body":"Текст 36\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"post","id":"37","title":"Пост 37","body":"Текст 37\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"post","id":"38","title":"Пост 38","body":"Текст 38\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"post","id":"39","title":"Пост 39","body":"Текст 39\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"post","id":"40","title":"Пост 40","body":"Текст 40\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"}
+            ]
+          }
+        },
+        {"result":{"status":"ok","items":[{"kind":"post","id":"1","title":"Пост 1","body":"Текст 1\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"}]}}
+      ],
+      "journal": [
+        {"server":"api","method":"GET","path":"/v1/public/news","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/news","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/news","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/news","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/news","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/news","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/news","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null}
+      ]
+    },
+    {
+      "name": "лента: сбои оставляют последнюю удачную ленту",
+      "client": "news",
+      "path": "/v1/public/news",
+      "dead": false,
+      "backend": true,
+      "compareJournal": true,
+      "routes": {
+        "/v1/public/news": [
+          {"status":503,"body":""},
+          {"hangUp":true},
+          {"body":"не json"},
+          {"json":{"items":"x"}},
+          {"json":{}},
+          {"body":"null"},
+          {"json":[]},
+          {"json":{"items":[{"kind":"post","id":"12","title":"Пост 12","body":"Текст 12\n\nАбзац","date":"2026-10-05T10:00:00+00:00"}]}},
+          {"status":503,"body":""},
+          {"hangUp":true},
+          {"body":"не json"},
+          {"json":{"items":"x"}},
+          {"json":{}},
+          {"body":"null"},
+          {"status":404},
+          {"status":301,"headers":[["Location","/v1/public/news"]]},
+          {"json":{"items":[{"kind":"post","id":"13","title":"Пост 13","body":"Текст 13\n\nАбзац","date":"2026-10-05T10:00:00+00:00"}]}}
+        ]
+      },
+      "steps": [
+        {"op":"get","force":true},
+        {"op":"get","force":true},
+        {"op":"get","force":true},
+        {"op":"get","force":true},
+        {"op":"get","force":true},
+        {"op":"get","force":true},
+        {"op":"get","force":true},
+        {"op":"get","force":true},
+        {"op":"get","force":true},
+        {"op":"get","force":true},
+        {"op":"get","force":true},
+        {"op":"get","force":true},
+        {"op":"get","force":true},
+        {"op":"get","force":true},
+        {"op":"get","force":true},
+        {"op":"get","force":true},
+        {"op":"get","force":true}
+      ],
+      "results": [
+        {"result":{"status":"error","items":[]}},
+        {"result":{"status":"error","items":[]}},
+        {"result":{"status":"error","items":[]}},
+        {"result":{"status":"error","items":[]}},
+        {"result":{"status":"error","items":[]}},
+        {"result":{"status":"error","items":[]}},
+        {"result":{"status":"error","items":[]}},
+        {"result":{"status":"ok","items":[{"kind":"post","id":"12","title":"Пост 12","body":"Текст 12\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"}]}},
+        {"result":{"status":"error","items":[{"kind":"post","id":"12","title":"Пост 12","body":"Текст 12\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"}]}},
+        {"result":{"status":"error","items":[{"kind":"post","id":"12","title":"Пост 12","body":"Текст 12\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"}]}},
+        {"result":{"status":"error","items":[{"kind":"post","id":"12","title":"Пост 12","body":"Текст 12\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"}]}},
+        {"result":{"status":"error","items":[{"kind":"post","id":"12","title":"Пост 12","body":"Текст 12\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"}]}},
+        {"result":{"status":"error","items":[{"kind":"post","id":"12","title":"Пост 12","body":"Текст 12\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"}]}},
+        {"result":{"status":"error","items":[{"kind":"post","id":"12","title":"Пост 12","body":"Текст 12\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"}]}},
+        {"result":{"status":"error","items":[{"kind":"post","id":"12","title":"Пост 12","body":"Текст 12\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"}]}},
+        {"result":{"status":"error","items":[{"kind":"post","id":"12","title":"Пост 12","body":"Текст 12\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"}]}},
+        {"result":{"status":"ok","items":[{"kind":"post","id":"13","title":"Пост 13","body":"Текст 13\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"}]}}
+      ],
+      "journal": [
+        {"server":"api","method":"GET","path":"/v1/public/news","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/news","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/news","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/news","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/news","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/news","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/news","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/news","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/news","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/news","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/news","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/news","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/news","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/news","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/news","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/news","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/news","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null}
+      ]
+    },
+    {
+      "name": "лента: одновременные вызовы делят один запрос",
+      "client": "news",
+      "path": "/v1/public/news",
+      "dead": false,
+      "backend": true,
+      "compareJournal": true,
+      "routes": {"/v1/public/news":[{"json":{"items":[{"kind":"post","id":"12","title":"Пост 12","body":"Текст 12\n\nАбзац","date":"2026-10-05T10:00:00+00:00"}]},"delayMs":200},{"json":{"items":[{"kind":"post","id":"13","title":"Пост 13","body":"Текст 13\n\nАбзац","date":"2026-10-05T10:00:00+00:00"}]}}]},
+      "steps": [{"op":"getMany","n":3},{"op":"get"},{"op":"getMany","n":2,"force":true},{"op":"getMany","n":2,"force":true}],
+      "results": [
+        {
+          "result": [
+            {"status":"ok","items":[{"kind":"post","id":"12","title":"Пост 12","body":"Текст 12\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"}]},
+            {"status":"ok","items":[{"kind":"post","id":"12","title":"Пост 12","body":"Текст 12\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"}]},
+            {"status":"ok","items":[{"kind":"post","id":"12","title":"Пост 12","body":"Текст 12\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"}]}
+          ]
+        },
+        {"result":{"status":"ok","items":[{"kind":"post","id":"12","title":"Пост 12","body":"Текст 12\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"}]}},
+        {
+          "result": [
+            {"status":"ok","items":[{"kind":"post","id":"13","title":"Пост 13","body":"Текст 13\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"}]},
+            {"status":"ok","items":[{"kind":"post","id":"13","title":"Пост 13","body":"Текст 13\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"}]}
+          ]
+        },
+        {
+          "result": [
+            {"status":"ok","items":[{"kind":"post","id":"13","title":"Пост 13","body":"Текст 13\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"}]},
+            {"status":"ok","items":[{"kind":"post","id":"13","title":"Пост 13","body":"Текст 13\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"}]}
+          ]
+        }
+      ],
+      "journal": [
+        {"server":"api","method":"GET","path":"/v1/public/news","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/news","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/news","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null}
+      ]
+    },
+    {
+      "name": "лента: свежие реакции поверх кеша",
+      "client": "news",
+      "path": "/v1/public/news",
+      "dead": false,
+      "backend": true,
+      "compareJournal": true,
+      "routes": {
+        "/v1/public/news": [
+          {
+            "json": {
+              "items": [
+                {"kind":"post","id":"12","title":"Пост 12","body":"Текст 12\n\nАбзац","date":"2026-10-05T10:00:00+00:00","reactions":{"like":0}},
+                {"kind":"post","id":"13","title":"Пост 13","body":"Текст 13\n\nАбзац","date":"2026-10-05T10:00:00+00:00","reactions":{"like":5}},
+                {"kind":"record","id":"z16q06rm","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46+00:00","url":"https://www.speedrun.com/runs/z16q06rm"}
+              ]
+            }
+          }
+        ]
+      },
+      "steps": [
+        {"op":"get"},
+        {"op":"react","id":"12","raw":{"like":1}},
+        {"op":"get"},
+        {"op":"get","force":true},
+        {"op":"advance","ms":119999},
+        {"op":"get","force":true},
+        {"op":"advance","ms":1},
+        {"op":"get"},
+        {"op":"get","force":true},
+        {"op":"react","id":"13","raw":{"like":9,"evil":3,"fire":"2","love":-1}},
+        {"op":"get"},
+        {"op":"react","id":"999","raw":{"like":3}},
+        {"op":"get"},
+        {"op":"react","id":"12","raw":{"like":2}},
+        {"op":"advance","ms":60000},
+        {"op":"react","id":"12","raw":{"like":3}},
+        {"op":"advance","ms":119999},
+        {"op":"get","force":true},
+        {"op":"advance","ms":1},
+        {"op":"get","force":true},
+        {"op":"react","id":"z16q06rm","raw":{"like":7}},
+        {"op":"get","force":true},
+        {"op":"react","id":"12","raw":null},
+        {"op":"get","force":true}
+      ],
+      "results": [
+        {
+          "result": {
+            "status": "ok",
+            "items": [
+              {"kind":"post","id":"12","title":"Пост 12","body":"Текст 12\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"post","id":"13","title":"Пост 13","body":"Текст 13\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":5,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"record","id":"z16q06rm","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl2/runs/z16q06rm"}
+            ]
+          }
+        },
+        {"result":null},
+        {
+          "result": {
+            "status": "ok",
+            "items": [
+              {"kind":"post","id":"12","title":"Пост 12","body":"Текст 12\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":1,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"post","id":"13","title":"Пост 13","body":"Текст 13\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":5,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"record","id":"z16q06rm","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl2/runs/z16q06rm"}
+            ]
+          }
+        },
+        {
+          "result": {
+            "status": "ok",
+            "items": [
+              {"kind":"post","id":"12","title":"Пост 12","body":"Текст 12\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":1,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"post","id":"13","title":"Пост 13","body":"Текст 13\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":5,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"record","id":"z16q06rm","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl2/runs/z16q06rm"}
+            ]
+          }
+        },
+        {"result":null},
+        {
+          "result": {
+            "status": "ok",
+            "items": [
+              {"kind":"post","id":"12","title":"Пост 12","body":"Текст 12\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":1,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"post","id":"13","title":"Пост 13","body":"Текст 13\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":5,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"record","id":"z16q06rm","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl2/runs/z16q06rm"}
+            ]
+          }
+        },
+        {"result":null},
+        {
+          "result": {
+            "status": "ok",
+            "items": [
+              {"kind":"post","id":"12","title":"Пост 12","body":"Текст 12\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":1,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"post","id":"13","title":"Пост 13","body":"Текст 13\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":5,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"record","id":"z16q06rm","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl2/runs/z16q06rm"}
+            ]
+          }
+        },
+        {
+          "result": {
+            "status": "ok",
+            "items": [
+              {"kind":"post","id":"12","title":"Пост 12","body":"Текст 12\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"post","id":"13","title":"Пост 13","body":"Текст 13\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":5,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"record","id":"z16q06rm","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl2/runs/z16q06rm"}
+            ]
+          }
+        },
+        {"result":null},
+        {
+          "result": {
+            "status": "ok",
+            "items": [
+              {"kind":"post","id":"12","title":"Пост 12","body":"Текст 12\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"post","id":"13","title":"Пост 13","body":"Текст 13\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":9,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"record","id":"z16q06rm","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl2/runs/z16q06rm"}
+            ]
+          }
+        },
+        {"result":null},
+        {
+          "result": {
+            "status": "ok",
+            "items": [
+              {"kind":"post","id":"12","title":"Пост 12","body":"Текст 12\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"post","id":"13","title":"Пост 13","body":"Текст 13\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":9,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"record","id":"z16q06rm","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl2/runs/z16q06rm"}
+            ]
+          }
+        },
+        {"result":null},
+        {"result":null},
+        {"result":null},
+        {"result":null},
+        {
+          "result": {
+            "status": "ok",
+            "items": [
+              {"kind":"post","id":"12","title":"Пост 12","body":"Текст 12\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":3,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"post","id":"13","title":"Пост 13","body":"Текст 13\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":5,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"record","id":"z16q06rm","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl2/runs/z16q06rm"}
+            ]
+          }
+        },
+        {"result":null},
+        {
+          "result": {
+            "status": "ok",
+            "items": [
+              {"kind":"post","id":"12","title":"Пост 12","body":"Текст 12\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"post","id":"13","title":"Пост 13","body":"Текст 13\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":5,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"record","id":"z16q06rm","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl2/runs/z16q06rm"}
+            ]
+          }
+        },
+        {"result":null},
+        {
+          "result": {
+            "status": "ok",
+            "items": [
+              {"kind":"post","id":"12","title":"Пост 12","body":"Текст 12\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"post","id":"13","title":"Пост 13","body":"Текст 13\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":5,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"record","id":"z16q06rm","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl2/runs/z16q06rm"}
+            ]
+          }
+        },
+        {"result":null},
+        {
+          "result": {
+            "status": "ok",
+            "items": [
+              {"kind":"post","id":"12","title":"Пост 12","body":"Текст 12\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"post","id":"13","title":"Пост 13","body":"Текст 13\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":5,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"},
+              {"kind":"record","id":"z16q06rm","game":"Half-Life 2","gameKey":"hl2","category":"New Engine","subcategory":"","runners":["Buster12"],"seconds":2190.285,"date":"2025-07-15T22:14:46.000Z","url":"https://www.speedrun.com/hl2/runs/z16q06rm"}
+            ]
+          }
+        }
+      ],
+      "journal": [
+        {"server":"api","method":"GET","path":"/v1/public/news","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/news","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/news","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/news","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/news","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/news","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/news","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/news","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null}
+      ]
+    },
+    {
+      "name": "лента: реакция до первой ленты",
+      "client": "news",
+      "path": "/v1/public/news",
+      "dead": false,
+      "backend": true,
+      "compareJournal": true,
+      "routes": {"/v1/public/news":[{"json":{"items":[{"kind":"post","id":"12","title":"Пост 12","body":"Текст 12\n\nАбзац","date":"2026-10-05T10:00:00+00:00","reactions":{"like":0}}]}}]},
+      "steps": [{"op":"react","id":"12","raw":{"like":4}},{"op":"get"},{"op":"advance","ms":121000},{"op":"get"}],
+      "results": [
+        {"result":null},
+        {"result":{"status":"ok","items":[{"kind":"post","id":"12","title":"Пост 12","body":"Текст 12\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":4,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"}]}},
+        {"result":null},
+        {"result":{"status":"ok","items":[{"kind":"post","id":"12","title":"Пост 12","body":"Текст 12\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"}]}}
+      ],
+      "journal": [{"server":"api","method":"GET","path":"/v1/public/news","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},{"server":"api","method":"GET","path":"/v1/public/news","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null}]
+    },
+    {
+      "name": "лента: картинки со своего адреса и автор",
+      "client": "news",
+      "path": "/v1/public/news",
+      "dead": false,
+      "backend": true,
+      "compareJournal": true,
+      "routes": {
+        "/v1/public/news": [
+          {
+            "json": {
+              "items": [
+                {
+                  "kind": "post",
+                  "id": "12",
+                  "title": "Пост 12",
+                  "body": "Текст 12\n\nАбзац",
+                  "date": "2026-10-05T10:00:00+00:00",
+                  "author": "Developer",
+                  "authorProfile": {"steamId64":"76561199155902676","personaName":"Kanoyo","avatarUrl":"https://avatars.steamstatic.com/bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb_full.jpg","nick":{"style":"developer","css":""}},
+                  "images": [
+                    {"url":"/v1/public/news/image/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.png","width":1600,"height":900},
+                    {"url":"http://{authority}/v1/public/news/image/bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.jpg","width":800,"height":600,"crop":{"x":0.25,"y":0.1,"w":0.5,"h":0.5}},
+                    {"url":"https://api.hlsr.pro/v1/public/news/image/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.png","width":1600,"height":900},
+                    {"url":"/v1/public/news/image/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.gif","width":1600,"height":900},
+                    {"url":"/v1/public/news/image/cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc.webp?x=1","width":1600,"height":900},
+                    {"url":"//evil.example/v1/public/news/image/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.png","width":1600,"height":900},
+                    {"url":"/v1/public/news/image/dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd.webp","width":8000,"height":4000,"crop":{"x":0,"y":0,"w":0.01,"h":1}}
+                  ],
+                  "reactions": {"like":2,"fire":1}
+                },
+                {"kind":"post","id":"13","title":"Пост 13","body":"Текст 13\n\nАбзац","date":"2026-10-05T10:00:00+00:00","author":"","images":[]}
+              ]
+            }
+          }
+        ]
+      },
+      "steps": [{"op":"get"}],
+      "results": [
+        {
+          "result": {
+            "status": "ok",
+            "items": [
+              {
+                "kind": "post",
+                "id": "12",
+                "title": "Пост 12",
+                "body": "Текст 12\n\nАбзац",
+                "author": "Developer",
+                "authorProfile": {"steamId64":"76561199155902676","personaName":"Kanoyo","avatarUrl":"https://avatars.steamstatic.com/bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb_full.jpg","nick":{"style":"developer","css":""},"avatarFrame":null},
+                "images": [{"url":"http://{authority}/v1/public/news/image/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.png","width":1600,"height":900},{"url":"http://{authority}/v1/public/news/image/bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.jpg","width":800,"height":600,"crop":{"x":0.25,"y":0.1,"w":0.5,"h":0.5}}],
+                "reactions": {"like":2,"love":0,"fire":1,"wow":0,"celebrate":0},
+                "date": "2026-10-05T10:00:00.000Z"
+              },
+              {"kind":"post","id":"13","title":"Пост 13","body":"Текст 13\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"}
+            ]
+          }
+        }
+      ],
+      "journal": [{"server":"api","method":"GET","path":"/v1/public/news","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null}]
+    },
+    {
+      "name": "лента: ответ больше лимита 2 МиБ — Node зависает, Rust отвечает ошибкой",
+      "client": "news",
+      "path": "/v1/public/news",
+      "dead": false,
+      "backend": true,
+      "compareJournal": false,
+      "routes": {"/v1/public/news":[{"bodySize":2300000,"pauseAfter":2200000,"pauseMs":300},{"json":{"items":[{"kind":"post","id":"12","title":"Пост 12","body":"Текст 12\n\nАбзац","date":"2026-10-05T10:00:00+00:00"}]}}]},
+      "steps": [{"op":"get","race":1500,"fixed":{"status":"error","items":[]}},{"op":"get","force":true,"race":1500,"fixed":{"status":"ok","items":[{"kind":"post","id":"12","title":"Пост 12","body":"Текст 12\n\nАбзац","author":"","authorProfile":null,"images":[],"reactions":{"like":0,"love":0,"fire":0,"wow":0,"celebrate":0},"date":"2026-10-05T10:00:00.000Z"}]}}],
+      "results": [{"result":{"hang":true}},{"result":{"hang":true}}],
+      "journal": [{"server":"api","method":"GET","path":"/v1/public/news","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null}]
+    },
+    {
+      "name": "спонсоры: сортировка, дубли, профиль, кеш 5 минут",
+      "client": "sponsors",
+      "path": "/v1/public/sponsors",
+      "dead": false,
+      "backend": true,
+      "compareJournal": true,
+      "routes": {
+        "/v1/public/sponsors": [
+          {
+            "json": {
+              "sponsors": [
+                {"id":"1","name":"Малый","amount":300,"note":""},
+                {"id":"2","name":"Крупный","amount":15000,"note":"спасибо","profile":{"steamId64":"76561199155902676","personaName":"Kanoyo","avatarUrl":"https://evil.example/a.png","nick":{"style":"developer","css":""}}},
+                {"id":"3","name":"","amount":100,"note":""},
+                {"id":"4","name":"Дробный","amount":1.5,"note":""},
+                {"id":"5","name":"Минус","amount":-1,"note":""},
+                {"id":"1 OR 1","name":"Инъекция","amount":1},
+                {"id":"1","name":"Повтор","amount":99999,"note":""},
+                {"id":"6","name":"Средний","amount":300,"note":"","profile":{"steamId64":"76561199155902676","personaName":"Kanoyo","avatarUrl":"https://avatars.steamstatic.com/bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb_full.jpg","nick":{"style":"developer","css":""}}},
+                {"id":"7","name":" Пробелы ","amount":15000,"note":" заметка "},
+                {"id":"8","name":"Ноль","amount":0,"note":""},
+                null,
+                "x",
+                5,
+                []
+              ]
+            }
+          },
+          {"json":{"sponsors":[{"id":"9","name":"Новый","amount":1,"note":""}]}}
+        ]
+      },
+      "steps": [{"op":"get"},{"op":"advance","ms":299999},{"op":"get"},{"op":"advance","ms":1},{"op":"get"},{"op":"get","force":true},{"op":"advance","ms":300000},{"op":"get"}],
+      "results": [
+        {
+          "result": {
+            "status": "ok",
+            "sponsors": [
+              {"id":"2","name":"Крупный","note":"спасибо","amount":15000,"profile":{"steamId64":"76561199155902676","personaName":"Kanoyo","avatarUrl":"","nick":{"style":"developer","css":""},"avatarFrame":null}},
+              {"id":"7","name":"Пробелы","note":"заметка","amount":15000,"profile":null},
+              {"id":"1","name":"Малый","note":"","amount":300,"profile":null},
+              {"id":"6","name":"Средний","note":"","amount":300,"profile":{"steamId64":"76561199155902676","personaName":"Kanoyo","avatarUrl":"https://avatars.steamstatic.com/bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb_full.jpg","nick":{"style":"developer","css":""},"avatarFrame":null}},
+              {"id":"8","name":"Ноль","note":"","amount":0,"profile":null}
+            ]
+          }
+        },
+        {"result":null},
+        {
+          "result": {
+            "status": "ok",
+            "sponsors": [
+              {"id":"2","name":"Крупный","note":"спасибо","amount":15000,"profile":{"steamId64":"76561199155902676","personaName":"Kanoyo","avatarUrl":"","nick":{"style":"developer","css":""},"avatarFrame":null}},
+              {"id":"7","name":"Пробелы","note":"заметка","amount":15000,"profile":null},
+              {"id":"1","name":"Малый","note":"","amount":300,"profile":null},
+              {"id":"6","name":"Средний","note":"","amount":300,"profile":{"steamId64":"76561199155902676","personaName":"Kanoyo","avatarUrl":"https://avatars.steamstatic.com/bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb_full.jpg","nick":{"style":"developer","css":""},"avatarFrame":null}},
+              {"id":"8","name":"Ноль","note":"","amount":0,"profile":null}
+            ]
+          }
+        },
+        {"result":null},
+        {"result":{"status":"ok","sponsors":[{"id":"9","name":"Новый","note":"","amount":1,"profile":null}]}},
+        {"result":{"status":"ok","sponsors":[{"id":"9","name":"Новый","note":"","amount":1,"profile":null}]}},
+        {"result":null},
+        {"result":{"status":"ok","sponsors":[{"id":"9","name":"Новый","note":"","amount":1,"profile":null}]}}
+      ],
+      "journal": [
+        {"server":"api","method":"GET","path":"/v1/public/sponsors","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/sponsors","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/sponsors","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/sponsors","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null}
+      ]
+    },
+    {
+      "name": "спонсоры: не больше 200 записей и устойчивая сортировка",
+      "client": "sponsors",
+      "path": "/v1/public/sponsors",
+      "dead": false,
+      "backend": true,
+      "compareJournal": true,
+      "routes": {
+        "/v1/public/sponsors": [
+          {
+            "json": {
+              "sponsors": [
+                {"id":"1","name":"Спонсор 1","amount":0,"note":""},
+                {"id":"2","name":"Спонсор 2","amount":200,"note":""},
+                {"id":"3","name":"Спонсор 3","amount":400,"note":""},
+                {"id":"4","name":"Спонсор 4","amount":100,"note":""},
+                {"id":"5","name":"Спонсор 5","amount":300,"note":""},
+                {"id":"6","name":"Спонсор 6","amount":0,"note":""},
+                {"id":"7","name":"Спонсор 7","amount":200,"note":""},
+                {"id":"8","name":"Спонсор 8","amount":400,"note":""},
+                {"id":"9","name":"Спонсор 9","amount":100,"note":""},
+                {"id":"10","name":"Спонсор 10","amount":300,"note":""},
+                {"id":"11","name":"Спонсор 11","amount":0,"note":""},
+                {"id":"12","name":"Спонсор 12","amount":200,"note":""},
+                {"id":"13","name":"Спонсор 13","amount":400,"note":""},
+                {"id":"14","name":"Спонсор 14","amount":100,"note":""},
+                {"id":"15","name":"Спонсор 15","amount":300,"note":""},
+                {"id":"16","name":"Спонсор 16","amount":0,"note":""},
+                {"id":"17","name":"Спонсор 17","amount":200,"note":""},
+                {"id":"18","name":"Спонсор 18","amount":400,"note":""},
+                {"id":"19","name":"Спонсор 19","amount":100,"note":""},
+                {"id":"20","name":"Спонсор 20","amount":300,"note":""},
+                {"id":"21","name":"Спонсор 21","amount":0,"note":""},
+                {"id":"22","name":"Спонсор 22","amount":200,"note":""},
+                {"id":"23","name":"Спонсор 23","amount":400,"note":""},
+                {"id":"24","name":"Спонсор 24","amount":100,"note":""},
+                {"id":"25","name":"Спонсор 25","amount":300,"note":""},
+                {"id":"26","name":"Спонсор 26","amount":0,"note":""},
+                {"id":"27","name":"Спонсор 27","amount":200,"note":""},
+                {"id":"28","name":"Спонсор 28","amount":400,"note":""},
+                {"id":"29","name":"Спонсор 29","amount":100,"note":""},
+                {"id":"30","name":"Спонсор 30","amount":300,"note":""},
+                {"id":"31","name":"Спонсор 31","amount":0,"note":""},
+                {"id":"32","name":"Спонсор 32","amount":200,"note":""},
+                {"id":"33","name":"Спонсор 33","amount":400,"note":""},
+                {"id":"34","name":"Спонсор 34","amount":100,"note":""},
+                {"id":"35","name":"Спонсор 35","amount":300,"note":""},
+                {"id":"36","name":"Спонсор 36","amount":0,"note":""},
+                {"id":"37","name":"Спонсор 37","amount":200,"note":""},
+                {"id":"38","name":"Спонсор 38","amount":400,"note":""},
+                {"id":"39","name":"Спонсор 39","amount":100,"note":""},
+                {"id":"40","name":"Спонсор 40","amount":300,"note":""},
+                {"id":"41","name":"Спонсор 41","amount":0,"note":""},
+                {"id":"42","name":"Спонсор 42","amount":200,"note":""},
+                {"id":"43","name":"Спонсор 43","amount":400,"note":""},
+                {"id":"44","name":"Спонсор 44","amount":100,"note":""},
+                {"id":"45","name":"Спонсор 45","amount":300,"note":""},
+                {"id":"46","name":"Спонсор 46","amount":0,"note":""},
+                {"id":"47","name":"Спонсор 47","amount":200,"note":""},
+                {"id":"48","name":"Спонсор 48","amount":400,"note":""},
+                {"id":"49","name":"Спонсор 49","amount":100,"note":""},
+                {"id":"50","name":"Спонсор 50","amount":300,"note":""},
+                {"id":"51","name":"Спонсор 51","amount":0,"note":""},
+                {"id":"52","name":"Спонсор 52","amount":200,"note":""},
+                {"id":"53","name":"Спонсор 53","amount":400,"note":""},
+                {"id":"54","name":"Спонсор 54","amount":100,"note":""},
+                {"id":"55","name":"Спонсор 55","amount":300,"note":""},
+                {"id":"56","name":"Спонсор 56","amount":0,"note":""},
+                {"id":"57","name":"Спонсор 57","amount":200,"note":""},
+                {"id":"58","name":"Спонсор 58","amount":400,"note":""},
+                {"id":"59","name":"Спонсор 59","amount":100,"note":""},
+                {"id":"60","name":"Спонсор 60","amount":300,"note":""},
+                {"id":"61","name":"Спонсор 61","amount":0,"note":""},
+                {"id":"62","name":"Спонсор 62","amount":200,"note":""},
+                {"id":"63","name":"Спонсор 63","amount":400,"note":""},
+                {"id":"64","name":"Спонсор 64","amount":100,"note":""},
+                {"id":"65","name":"Спонсор 65","amount":300,"note":""},
+                {"id":"66","name":"Спонсор 66","amount":0,"note":""},
+                {"id":"67","name":"Спонсор 67","amount":200,"note":""},
+                {"id":"68","name":"Спонсор 68","amount":400,"note":""},
+                {"id":"69","name":"Спонсор 69","amount":100,"note":""},
+                {"id":"70","name":"Спонсор 70","amount":300,"note":""},
+                {"id":"71","name":"Спонсор 71","amount":0,"note":""},
+                {"id":"72","name":"Спонсор 72","amount":200,"note":""},
+                {"id":"73","name":"Спонсор 73","amount":400,"note":""},
+                {"id":"74","name":"Спонсор 74","amount":100,"note":""},
+                {"id":"75","name":"Спонсор 75","amount":300,"note":""},
+                {"id":"76","name":"Спонсор 76","amount":0,"note":""},
+                {"id":"77","name":"Спонсор 77","amount":200,"note":""},
+                {"id":"78","name":"Спонсор 78","amount":400,"note":""},
+                {"id":"79","name":"Спонсор 79","amount":100,"note":""},
+                {"id":"80","name":"Спонсор 80","amount":300,"note":""},
+                {"id":"81","name":"Спонсор 81","amount":0,"note":""},
+                {"id":"82","name":"Спонсор 82","amount":200,"note":""},
+                {"id":"83","name":"Спонсор 83","amount":400,"note":""},
+                {"id":"84","name":"Спонсор 84","amount":100,"note":""},
+                {"id":"85","name":"Спонсор 85","amount":300,"note":""},
+                {"id":"86","name":"Спонсор 86","amount":0,"note":""},
+                {"id":"87","name":"Спонсор 87","amount":200,"note":""},
+                {"id":"88","name":"Спонсор 88","amount":400,"note":""},
+                {"id":"89","name":"Спонсор 89","amount":100,"note":""},
+                {"id":"90","name":"Спонсор 90","amount":300,"note":""},
+                {"id":"91","name":"Спонсор 91","amount":0,"note":""},
+                {"id":"92","name":"Спонсор 92","amount":200,"note":""},
+                {"id":"93","name":"Спонсор 93","amount":400,"note":""},
+                {"id":"94","name":"Спонсор 94","amount":100,"note":""},
+                {"id":"95","name":"Спонсор 95","amount":300,"note":""},
+                {"id":"96","name":"Спонсор 96","amount":0,"note":""},
+                {"id":"97","name":"Спонсор 97","amount":200,"note":""},
+                {"id":"98","name":"Спонсор 98","amount":400,"note":""},
+                {"id":"99","name":"Спонсор 99","amount":100,"note":""},
+                {"id":"100","name":"Спонсор 100","amount":300,"note":""},
+                {"id":"101","name":"Спонсор 101","amount":0,"note":""},
+                {"id":"102","name":"Спонсор 102","amount":200,"note":""},
+                {"id":"103","name":"Спонсор 103","amount":400,"note":""},
+                {"id":"104","name":"Спонсор 104","amount":100,"note":""},
+                {"id":"105","name":"Спонсор 105","amount":300,"note":""},
+                {"id":"106","name":"Спонсор 106","amount":0,"note":""},
+                {"id":"107","name":"Спонсор 107","amount":200,"note":""},
+                {"id":"108","name":"Спонсор 108","amount":400,"note":""},
+                {"id":"109","name":"Спонсор 109","amount":100,"note":""},
+                {"id":"110","name":"Спонсор 110","amount":300,"note":""},
+                {"id":"111","name":"Спонсор 111","amount":0,"note":""},
+                {"id":"112","name":"Спонсор 112","amount":200,"note":""},
+                {"id":"113","name":"Спонсор 113","amount":400,"note":""},
+                {"id":"114","name":"Спонсор 114","amount":100,"note":""},
+                {"id":"115","name":"Спонсор 115","amount":300,"note":""},
+                {"id":"116","name":"Спонсор 116","amount":0,"note":""},
+                {"id":"117","name":"Спонсор 117","amount":200,"note":""},
+                {"id":"118","name":"Спонсор 118","amount":400,"note":""},
+                {"id":"119","name":"Спонсор 119","amount":100,"note":""},
+                {"id":"120","name":"Спонсор 120","amount":300,"note":""},
+                {"id":"121","name":"Спонсор 121","amount":0,"note":""},
+                {"id":"122","name":"Спонсор 122","amount":200,"note":""},
+                {"id":"123","name":"Спонсор 123","amount":400,"note":""},
+                {"id":"124","name":"Спонсор 124","amount":100,"note":""},
+                {"id":"125","name":"Спонсор 125","amount":300,"note":""},
+                {"id":"126","name":"Спонсор 126","amount":0,"note":""},
+                {"id":"127","name":"Спонсор 127","amount":200,"note":""},
+                {"id":"128","name":"Спонсор 128","amount":400,"note":""},
+                {"id":"129","name":"Спонсор 129","amount":100,"note":""},
+                {"id":"130","name":"Спонсор 130","amount":300,"note":""},
+                {"id":"131","name":"Спонсор 131","amount":0,"note":""},
+                {"id":"132","name":"Спонсор 132","amount":200,"note":""},
+                {"id":"133","name":"Спонсор 133","amount":400,"note":""},
+                {"id":"134","name":"Спонсор 134","amount":100,"note":""},
+                {"id":"135","name":"Спонсор 135","amount":300,"note":""},
+                {"id":"136","name":"Спонсор 136","amount":0,"note":""},
+                {"id":"137","name":"Спонсор 137","amount":200,"note":""},
+                {"id":"138","name":"Спонсор 138","amount":400,"note":""},
+                {"id":"139","name":"Спонсор 139","amount":100,"note":""},
+                {"id":"140","name":"Спонсор 140","amount":300,"note":""},
+                {"id":"141","name":"Спонсор 141","amount":0,"note":""},
+                {"id":"142","name":"Спонсор 142","amount":200,"note":""},
+                {"id":"143","name":"Спонсор 143","amount":400,"note":""},
+                {"id":"144","name":"Спонсор 144","amount":100,"note":""},
+                {"id":"145","name":"Спонсор 145","amount":300,"note":""},
+                {"id":"146","name":"Спонсор 146","amount":0,"note":""},
+                {"id":"147","name":"Спонсор 147","amount":200,"note":""},
+                {"id":"148","name":"Спонсор 148","amount":400,"note":""},
+                {"id":"149","name":"Спонсор 149","amount":100,"note":""},
+                {"id":"150","name":"Спонсор 150","amount":300,"note":""},
+                {"id":"151","name":"Спонсор 151","amount":0,"note":""},
+                {"id":"152","name":"Спонсор 152","amount":200,"note":""},
+                {"id":"153","name":"Спонсор 153","amount":400,"note":""},
+                {"id":"154","name":"Спонсор 154","amount":100,"note":""},
+                {"id":"155","name":"Спонсор 155","amount":300,"note":""},
+                {"id":"156","name":"Спонсор 156","amount":0,"note":""},
+                {"id":"157","name":"Спонсор 157","amount":200,"note":""},
+                {"id":"158","name":"Спонсор 158","amount":400,"note":""},
+                {"id":"159","name":"Спонсор 159","amount":100,"note":""},
+                {"id":"160","name":"Спонсор 160","amount":300,"note":""},
+                {"id":"161","name":"Спонсор 161","amount":0,"note":""},
+                {"id":"162","name":"Спонсор 162","amount":200,"note":""},
+                {"id":"163","name":"Спонсор 163","amount":400,"note":""},
+                {"id":"164","name":"Спонсор 164","amount":100,"note":""},
+                {"id":"165","name":"Спонсор 165","amount":300,"note":""},
+                {"id":"166","name":"Спонсор 166","amount":0,"note":""},
+                {"id":"167","name":"Спонсор 167","amount":200,"note":""},
+                {"id":"168","name":"Спонсор 168","amount":400,"note":""},
+                {"id":"169","name":"Спонсор 169","amount":100,"note":""},
+                {"id":"170","name":"Спонсор 170","amount":300,"note":""},
+                {"id":"171","name":"Спонсор 171","amount":0,"note":""},
+                {"id":"172","name":"Спонсор 172","amount":200,"note":""},
+                {"id":"173","name":"Спонсор 173","amount":400,"note":""},
+                {"id":"174","name":"Спонсор 174","amount":100,"note":""},
+                {"id":"175","name":"Спонсор 175","amount":300,"note":""},
+                {"id":"176","name":"Спонсор 176","amount":0,"note":""},
+                {"id":"177","name":"Спонсор 177","amount":200,"note":""},
+                {"id":"178","name":"Спонсор 178","amount":400,"note":""},
+                {"id":"179","name":"Спонсор 179","amount":100,"note":""},
+                {"id":"180","name":"Спонсор 180","amount":300,"note":""},
+                {"id":"181","name":"Спонсор 181","amount":0,"note":""},
+                {"id":"182","name":"Спонсор 182","amount":200,"note":""},
+                {"id":"183","name":"Спонсор 183","amount":400,"note":""},
+                {"id":"184","name":"Спонсор 184","amount":100,"note":""},
+                {"id":"185","name":"Спонсор 185","amount":300,"note":""},
+                {"id":"186","name":"Спонсор 186","amount":0,"note":""},
+                {"id":"187","name":"Спонсор 187","amount":200,"note":""},
+                {"id":"188","name":"Спонсор 188","amount":400,"note":""},
+                {"id":"189","name":"Спонсор 189","amount":100,"note":""},
+                {"id":"190","name":"Спонсор 190","amount":300,"note":""},
+                {"id":"191","name":"Спонсор 191","amount":0,"note":""},
+                {"id":"192","name":"Спонсор 192","amount":200,"note":""},
+                {"id":"193","name":"Спонсор 193","amount":400,"note":""},
+                {"id":"194","name":"Спонсор 194","amount":100,"note":""},
+                {"id":"195","name":"Спонсор 195","amount":300,"note":""},
+                {"id":"196","name":"Спонсор 196","amount":0,"note":""},
+                {"id":"197","name":"Спонсор 197","amount":200,"note":""},
+                {"id":"198","name":"Спонсор 198","amount":400,"note":""},
+                {"id":"199","name":"Спонсор 199","amount":100,"note":""},
+                {"id":"200","name":"Спонсор 200","amount":300,"note":""},
+                {"id":"201","name":"Спонсор 201","amount":0,"note":""},
+                {"id":"202","name":"Спонсор 202","amount":200,"note":""},
+                {"id":"203","name":"Спонсор 203","amount":400,"note":""},
+                {"id":"204","name":"Спонсор 204","amount":100,"note":""},
+                {"id":"205","name":"Спонсор 205","amount":300,"note":""},
+                {"id":"206","name":"Спонсор 206","amount":0,"note":""},
+                {"id":"207","name":"Спонсор 207","amount":200,"note":""},
+                {"id":"208","name":"Спонсор 208","amount":400,"note":""},
+                {"id":"209","name":"Спонсор 209","amount":100,"note":""},
+                {"id":"210","name":"Спонсор 210","amount":300,"note":""},
+                {"id":"211","name":"Спонсор 211","amount":0,"note":""},
+                {"id":"212","name":"Спонсор 212","amount":200,"note":""},
+                {"id":"213","name":"Спонсор 213","amount":400,"note":""},
+                {"id":"214","name":"Спонсор 214","amount":100,"note":""},
+                {"id":"215","name":"Спонсор 215","amount":300,"note":""},
+                {"id":"216","name":"Спонсор 216","amount":0,"note":""},
+                {"id":"217","name":"Спонсор 217","amount":200,"note":""},
+                {"id":"218","name":"Спонсор 218","amount":400,"note":""},
+                {"id":"219","name":"Спонсор 219","amount":100,"note":""},
+                {"id":"220","name":"Спонсор 220","amount":300,"note":""},
+                {"id":"221","name":"Спонсор 221","amount":0,"note":""},
+                {"id":"222","name":"Спонсор 222","amount":200,"note":""},
+                {"id":"223","name":"Спонсор 223","amount":400,"note":""},
+                {"id":"224","name":"Спонсор 224","amount":100,"note":""},
+                {"id":"225","name":"Спонсор 225","amount":300,"note":""},
+                {"id":"226","name":"Спонсор 226","amount":0,"note":""},
+                {"id":"227","name":"Спонсор 227","amount":200,"note":""},
+                {"id":"228","name":"Спонсор 228","amount":400,"note":""},
+                {"id":"229","name":"Спонсор 229","amount":100,"note":""},
+                {"id":"230","name":"Спонсор 230","amount":300,"note":""}
+              ]
+            }
+          }
+        ]
+      },
+      "steps": [{"op":"get"}],
+      "results": [
+        {
+          "result": {
+            "status": "ok",
+            "sponsors": [
+              {"id":"3","name":"Спонсор 3","note":"","amount":400,"profile":null},
+              {"id":"8","name":"Спонсор 8","note":"","amount":400,"profile":null},
+              {"id":"13","name":"Спонсор 13","note":"","amount":400,"profile":null},
+              {"id":"18","name":"Спонсор 18","note":"","amount":400,"profile":null},
+              {"id":"23","name":"Спонсор 23","note":"","amount":400,"profile":null},
+              {"id":"28","name":"Спонсор 28","note":"","amount":400,"profile":null},
+              {"id":"33","name":"Спонсор 33","note":"","amount":400,"profile":null},
+              {"id":"38","name":"Спонсор 38","note":"","amount":400,"profile":null},
+              {"id":"43","name":"Спонсор 43","note":"","amount":400,"profile":null},
+              {"id":"48","name":"Спонсор 48","note":"","amount":400,"profile":null},
+              {"id":"53","name":"Спонсор 53","note":"","amount":400,"profile":null},
+              {"id":"58","name":"Спонсор 58","note":"","amount":400,"profile":null},
+              {"id":"63","name":"Спонсор 63","note":"","amount":400,"profile":null},
+              {"id":"68","name":"Спонсор 68","note":"","amount":400,"profile":null},
+              {"id":"73","name":"Спонсор 73","note":"","amount":400,"profile":null},
+              {"id":"78","name":"Спонсор 78","note":"","amount":400,"profile":null},
+              {"id":"83","name":"Спонсор 83","note":"","amount":400,"profile":null},
+              {"id":"88","name":"Спонсор 88","note":"","amount":400,"profile":null},
+              {"id":"93","name":"Спонсор 93","note":"","amount":400,"profile":null},
+              {"id":"98","name":"Спонсор 98","note":"","amount":400,"profile":null},
+              {"id":"103","name":"Спонсор 103","note":"","amount":400,"profile":null},
+              {"id":"108","name":"Спонсор 108","note":"","amount":400,"profile":null},
+              {"id":"113","name":"Спонсор 113","note":"","amount":400,"profile":null},
+              {"id":"118","name":"Спонсор 118","note":"","amount":400,"profile":null},
+              {"id":"123","name":"Спонсор 123","note":"","amount":400,"profile":null},
+              {"id":"128","name":"Спонсор 128","note":"","amount":400,"profile":null},
+              {"id":"133","name":"Спонсор 133","note":"","amount":400,"profile":null},
+              {"id":"138","name":"Спонсор 138","note":"","amount":400,"profile":null},
+              {"id":"143","name":"Спонсор 143","note":"","amount":400,"profile":null},
+              {"id":"148","name":"Спонсор 148","note":"","amount":400,"profile":null},
+              {"id":"153","name":"Спонсор 153","note":"","amount":400,"profile":null},
+              {"id":"158","name":"Спонсор 158","note":"","amount":400,"profile":null},
+              {"id":"163","name":"Спонсор 163","note":"","amount":400,"profile":null},
+              {"id":"168","name":"Спонсор 168","note":"","amount":400,"profile":null},
+              {"id":"173","name":"Спонсор 173","note":"","amount":400,"profile":null},
+              {"id":"178","name":"Спонсор 178","note":"","amount":400,"profile":null},
+              {"id":"183","name":"Спонсор 183","note":"","amount":400,"profile":null},
+              {"id":"188","name":"Спонсор 188","note":"","amount":400,"profile":null},
+              {"id":"193","name":"Спонсор 193","note":"","amount":400,"profile":null},
+              {"id":"198","name":"Спонсор 198","note":"","amount":400,"profile":null},
+              {"id":"5","name":"Спонсор 5","note":"","amount":300,"profile":null},
+              {"id":"10","name":"Спонсор 10","note":"","amount":300,"profile":null},
+              {"id":"15","name":"Спонсор 15","note":"","amount":300,"profile":null},
+              {"id":"20","name":"Спонсор 20","note":"","amount":300,"profile":null},
+              {"id":"25","name":"Спонсор 25","note":"","amount":300,"profile":null},
+              {"id":"30","name":"Спонсор 30","note":"","amount":300,"profile":null},
+              {"id":"35","name":"Спонсор 35","note":"","amount":300,"profile":null},
+              {"id":"40","name":"Спонсор 40","note":"","amount":300,"profile":null},
+              {"id":"45","name":"Спонсор 45","note":"","amount":300,"profile":null},
+              {"id":"50","name":"Спонсор 50","note":"","amount":300,"profile":null},
+              {"id":"55","name":"Спонсор 55","note":"","amount":300,"profile":null},
+              {"id":"60","name":"Спонсор 60","note":"","amount":300,"profile":null},
+              {"id":"65","name":"Спонсор 65","note":"","amount":300,"profile":null},
+              {"id":"70","name":"Спонсор 70","note":"","amount":300,"profile":null},
+              {"id":"75","name":"Спонсор 75","note":"","amount":300,"profile":null},
+              {"id":"80","name":"Спонсор 80","note":"","amount":300,"profile":null},
+              {"id":"85","name":"Спонсор 85","note":"","amount":300,"profile":null},
+              {"id":"90","name":"Спонсор 90","note":"","amount":300,"profile":null},
+              {"id":"95","name":"Спонсор 95","note":"","amount":300,"profile":null},
+              {"id":"100","name":"Спонсор 100","note":"","amount":300,"profile":null},
+              {"id":"105","name":"Спонсор 105","note":"","amount":300,"profile":null},
+              {"id":"110","name":"Спонсор 110","note":"","amount":300,"profile":null},
+              {"id":"115","name":"Спонсор 115","note":"","amount":300,"profile":null},
+              {"id":"120","name":"Спонсор 120","note":"","amount":300,"profile":null},
+              {"id":"125","name":"Спонсор 125","note":"","amount":300,"profile":null},
+              {"id":"130","name":"Спонсор 130","note":"","amount":300,"profile":null},
+              {"id":"135","name":"Спонсор 135","note":"","amount":300,"profile":null},
+              {"id":"140","name":"Спонсор 140","note":"","amount":300,"profile":null},
+              {"id":"145","name":"Спонсор 145","note":"","amount":300,"profile":null},
+              {"id":"150","name":"Спонсор 150","note":"","amount":300,"profile":null},
+              {"id":"155","name":"Спонсор 155","note":"","amount":300,"profile":null},
+              {"id":"160","name":"Спонсор 160","note":"","amount":300,"profile":null},
+              {"id":"165","name":"Спонсор 165","note":"","amount":300,"profile":null},
+              {"id":"170","name":"Спонсор 170","note":"","amount":300,"profile":null},
+              {"id":"175","name":"Спонсор 175","note":"","amount":300,"profile":null},
+              {"id":"180","name":"Спонсор 180","note":"","amount":300,"profile":null},
+              {"id":"185","name":"Спонсор 185","note":"","amount":300,"profile":null},
+              {"id":"190","name":"Спонсор 190","note":"","amount":300,"profile":null},
+              {"id":"195","name":"Спонсор 195","note":"","amount":300,"profile":null},
+              {"id":"200","name":"Спонсор 200","note":"","amount":300,"profile":null},
+              {"id":"2","name":"Спонсор 2","note":"","amount":200,"profile":null},
+              {"id":"7","name":"Спонсор 7","note":"","amount":200,"profile":null},
+              {"id":"12","name":"Спонсор 12","note":"","amount":200,"profile":null},
+              {"id":"17","name":"Спонсор 17","note":"","amount":200,"profile":null},
+              {"id":"22","name":"Спонсор 22","note":"","amount":200,"profile":null},
+              {"id":"27","name":"Спонсор 27","note":"","amount":200,"profile":null},
+              {"id":"32","name":"Спонсор 32","note":"","amount":200,"profile":null},
+              {"id":"37","name":"Спонсор 37","note":"","amount":200,"profile":null},
+              {"id":"42","name":"Спонсор 42","note":"","amount":200,"profile":null},
+              {"id":"47","name":"Спонсор 47","note":"","amount":200,"profile":null},
+              {"id":"52","name":"Спонсор 52","note":"","amount":200,"profile":null},
+              {"id":"57","name":"Спонсор 57","note":"","amount":200,"profile":null},
+              {"id":"62","name":"Спонсор 62","note":"","amount":200,"profile":null},
+              {"id":"67","name":"Спонсор 67","note":"","amount":200,"profile":null},
+              {"id":"72","name":"Спонсор 72","note":"","amount":200,"profile":null},
+              {"id":"77","name":"Спонсор 77","note":"","amount":200,"profile":null},
+              {"id":"82","name":"Спонсор 82","note":"","amount":200,"profile":null},
+              {"id":"87","name":"Спонсор 87","note":"","amount":200,"profile":null},
+              {"id":"92","name":"Спонсор 92","note":"","amount":200,"profile":null},
+              {"id":"97","name":"Спонсор 97","note":"","amount":200,"profile":null},
+              {"id":"102","name":"Спонсор 102","note":"","amount":200,"profile":null},
+              {"id":"107","name":"Спонсор 107","note":"","amount":200,"profile":null},
+              {"id":"112","name":"Спонсор 112","note":"","amount":200,"profile":null},
+              {"id":"117","name":"Спонсор 117","note":"","amount":200,"profile":null},
+              {"id":"122","name":"Спонсор 122","note":"","amount":200,"profile":null},
+              {"id":"127","name":"Спонсор 127","note":"","amount":200,"profile":null},
+              {"id":"132","name":"Спонсор 132","note":"","amount":200,"profile":null},
+              {"id":"137","name":"Спонсор 137","note":"","amount":200,"profile":null},
+              {"id":"142","name":"Спонсор 142","note":"","amount":200,"profile":null},
+              {"id":"147","name":"Спонсор 147","note":"","amount":200,"profile":null},
+              {"id":"152","name":"Спонсор 152","note":"","amount":200,"profile":null},
+              {"id":"157","name":"Спонсор 157","note":"","amount":200,"profile":null},
+              {"id":"162","name":"Спонсор 162","note":"","amount":200,"profile":null},
+              {"id":"167","name":"Спонсор 167","note":"","amount":200,"profile":null},
+              {"id":"172","name":"Спонсор 172","note":"","amount":200,"profile":null},
+              {"id":"177","name":"Спонсор 177","note":"","amount":200,"profile":null},
+              {"id":"182","name":"Спонсор 182","note":"","amount":200,"profile":null},
+              {"id":"187","name":"Спонсор 187","note":"","amount":200,"profile":null},
+              {"id":"192","name":"Спонсор 192","note":"","amount":200,"profile":null},
+              {"id":"197","name":"Спонсор 197","note":"","amount":200,"profile":null},
+              {"id":"4","name":"Спонсор 4","note":"","amount":100,"profile":null},
+              {"id":"9","name":"Спонсор 9","note":"","amount":100,"profile":null},
+              {"id":"14","name":"Спонсор 14","note":"","amount":100,"profile":null},
+              {"id":"19","name":"Спонсор 19","note":"","amount":100,"profile":null},
+              {"id":"24","name":"Спонсор 24","note":"","amount":100,"profile":null},
+              {"id":"29","name":"Спонсор 29","note":"","amount":100,"profile":null},
+              {"id":"34","name":"Спонсор 34","note":"","amount":100,"profile":null},
+              {"id":"39","name":"Спонсор 39","note":"","amount":100,"profile":null},
+              {"id":"44","name":"Спонсор 44","note":"","amount":100,"profile":null},
+              {"id":"49","name":"Спонсор 49","note":"","amount":100,"profile":null},
+              {"id":"54","name":"Спонсор 54","note":"","amount":100,"profile":null},
+              {"id":"59","name":"Спонсор 59","note":"","amount":100,"profile":null},
+              {"id":"64","name":"Спонсор 64","note":"","amount":100,"profile":null},
+              {"id":"69","name":"Спонсор 69","note":"","amount":100,"profile":null},
+              {"id":"74","name":"Спонсор 74","note":"","amount":100,"profile":null},
+              {"id":"79","name":"Спонсор 79","note":"","amount":100,"profile":null},
+              {"id":"84","name":"Спонсор 84","note":"","amount":100,"profile":null},
+              {"id":"89","name":"Спонсор 89","note":"","amount":100,"profile":null},
+              {"id":"94","name":"Спонсор 94","note":"","amount":100,"profile":null},
+              {"id":"99","name":"Спонсор 99","note":"","amount":100,"profile":null},
+              {"id":"104","name":"Спонсор 104","note":"","amount":100,"profile":null},
+              {"id":"109","name":"Спонсор 109","note":"","amount":100,"profile":null},
+              {"id":"114","name":"Спонсор 114","note":"","amount":100,"profile":null},
+              {"id":"119","name":"Спонсор 119","note":"","amount":100,"profile":null},
+              {"id":"124","name":"Спонсор 124","note":"","amount":100,"profile":null},
+              {"id":"129","name":"Спонсор 129","note":"","amount":100,"profile":null},
+              {"id":"134","name":"Спонсор 134","note":"","amount":100,"profile":null},
+              {"id":"139","name":"Спонсор 139","note":"","amount":100,"profile":null},
+              {"id":"144","name":"Спонсор 144","note":"","amount":100,"profile":null},
+              {"id":"149","name":"Спонсор 149","note":"","amount":100,"profile":null},
+              {"id":"154","name":"Спонсор 154","note":"","amount":100,"profile":null},
+              {"id":"159","name":"Спонсор 159","note":"","amount":100,"profile":null},
+              {"id":"164","name":"Спонсор 164","note":"","amount":100,"profile":null},
+              {"id":"169","name":"Спонсор 169","note":"","amount":100,"profile":null},
+              {"id":"174","name":"Спонсор 174","note":"","amount":100,"profile":null},
+              {"id":"179","name":"Спонсор 179","note":"","amount":100,"profile":null},
+              {"id":"184","name":"Спонсор 184","note":"","amount":100,"profile":null},
+              {"id":"189","name":"Спонсор 189","note":"","amount":100,"profile":null},
+              {"id":"194","name":"Спонсор 194","note":"","amount":100,"profile":null},
+              {"id":"199","name":"Спонсор 199","note":"","amount":100,"profile":null},
+              {"id":"1","name":"Спонсор 1","note":"","amount":0,"profile":null},
+              {"id":"6","name":"Спонсор 6","note":"","amount":0,"profile":null},
+              {"id":"11","name":"Спонсор 11","note":"","amount":0,"profile":null},
+              {"id":"16","name":"Спонсор 16","note":"","amount":0,"profile":null},
+              {"id":"21","name":"Спонсор 21","note":"","amount":0,"profile":null},
+              {"id":"26","name":"Спонсор 26","note":"","amount":0,"profile":null},
+              {"id":"31","name":"Спонсор 31","note":"","amount":0,"profile":null},
+              {"id":"36","name":"Спонсор 36","note":"","amount":0,"profile":null},
+              {"id":"41","name":"Спонсор 41","note":"","amount":0,"profile":null},
+              {"id":"46","name":"Спонсор 46","note":"","amount":0,"profile":null},
+              {"id":"51","name":"Спонсор 51","note":"","amount":0,"profile":null},
+              {"id":"56","name":"Спонсор 56","note":"","amount":0,"profile":null},
+              {"id":"61","name":"Спонсор 61","note":"","amount":0,"profile":null},
+              {"id":"66","name":"Спонсор 66","note":"","amount":0,"profile":null},
+              {"id":"71","name":"Спонсор 71","note":"","amount":0,"profile":null},
+              {"id":"76","name":"Спонсор 76","note":"","amount":0,"profile":null},
+              {"id":"81","name":"Спонсор 81","note":"","amount":0,"profile":null},
+              {"id":"86","name":"Спонсор 86","note":"","amount":0,"profile":null},
+              {"id":"91","name":"Спонсор 91","note":"","amount":0,"profile":null},
+              {"id":"96","name":"Спонсор 96","note":"","amount":0,"profile":null},
+              {"id":"101","name":"Спонсор 101","note":"","amount":0,"profile":null},
+              {"id":"106","name":"Спонсор 106","note":"","amount":0,"profile":null},
+              {"id":"111","name":"Спонсор 111","note":"","amount":0,"profile":null},
+              {"id":"116","name":"Спонсор 116","note":"","amount":0,"profile":null},
+              {"id":"121","name":"Спонсор 121","note":"","amount":0,"profile":null},
+              {"id":"126","name":"Спонсор 126","note":"","amount":0,"profile":null},
+              {"id":"131","name":"Спонсор 131","note":"","amount":0,"profile":null},
+              {"id":"136","name":"Спонсор 136","note":"","amount":0,"profile":null},
+              {"id":"141","name":"Спонсор 141","note":"","amount":0,"profile":null},
+              {"id":"146","name":"Спонсор 146","note":"","amount":0,"profile":null},
+              {"id":"151","name":"Спонсор 151","note":"","amount":0,"profile":null},
+              {"id":"156","name":"Спонсор 156","note":"","amount":0,"profile":null},
+              {"id":"161","name":"Спонсор 161","note":"","amount":0,"profile":null},
+              {"id":"166","name":"Спонсор 166","note":"","amount":0,"profile":null},
+              {"id":"171","name":"Спонсор 171","note":"","amount":0,"profile":null},
+              {"id":"176","name":"Спонсор 176","note":"","amount":0,"profile":null},
+              {"id":"181","name":"Спонсор 181","note":"","amount":0,"profile":null},
+              {"id":"186","name":"Спонсор 186","note":"","amount":0,"profile":null},
+              {"id":"191","name":"Спонсор 191","note":"","amount":0,"profile":null},
+              {"id":"196","name":"Спонсор 196","note":"","amount":0,"profile":null}
+            ]
+          }
+        }
+      ],
+      "journal": [{"server":"api","method":"GET","path":"/v1/public/sponsors","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null}]
+    },
+    {
+      "name": "спонсоры: сбои оставляют последний список",
+      "client": "sponsors",
+      "path": "/v1/public/sponsors",
+      "dead": false,
+      "backend": true,
+      "compareJournal": true,
+      "routes": {"/v1/public/sponsors":[{"status":503,"body":""},{"hangUp":true},{"body":"не json"},{"json":{"sponsors":{}}},{"json":{}},{"json":[]},{"json":{"sponsors":[{"id":"1","name":"Один","amount":10,"note":""}]}},{"status":503,"body":""},{"body":"null"},{"json":{"sponsors":"x"}}]},
+      "steps": [{"op":"get","force":true},{"op":"get","force":true},{"op":"get","force":true},{"op":"get","force":true},{"op":"get","force":true},{"op":"get","force":true},{"op":"get","force":true},{"op":"get","force":true},{"op":"get","force":true},{"op":"get","force":true}],
+      "results": [
+        {"result":{"status":"error","sponsors":[]}},
+        {"result":{"status":"error","sponsors":[]}},
+        {"result":{"status":"error","sponsors":[]}},
+        {"result":{"status":"error","sponsors":[]}},
+        {"result":{"status":"error","sponsors":[]}},
+        {"result":{"status":"error","sponsors":[]}},
+        {"result":{"status":"ok","sponsors":[{"id":"1","name":"Один","note":"","amount":10,"profile":null}]}},
+        {"result":{"status":"error","sponsors":[{"id":"1","name":"Один","note":"","amount":10,"profile":null}]}},
+        {"result":{"status":"error","sponsors":[{"id":"1","name":"Один","note":"","amount":10,"profile":null}]}},
+        {"result":{"status":"error","sponsors":[{"id":"1","name":"Один","note":"","amount":10,"profile":null}]}}
+      ],
+      "journal": [
+        {"server":"api","method":"GET","path":"/v1/public/sponsors","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/sponsors","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/sponsors","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/sponsors","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/sponsors","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/sponsors","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/sponsors","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/sponsors","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/sponsors","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/v1/public/sponsors","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null}
+      ]
+    },
+    {
+      "name": "спонсоры: одновременные вызовы делят один запрос",
+      "client": "sponsors",
+      "path": "/v1/public/sponsors",
+      "dead": false,
+      "backend": true,
+      "compareJournal": true,
+      "routes": {"/v1/public/sponsors":[{"json":{"sponsors":[{"id":"1","name":"Один","amount":10,"note":""}]},"delayMs":200},{"json":{"sponsors":[{"id":"2","name":"Два","amount":20,"note":""}]}}]},
+      "steps": [{"op":"getMany","n":3},{"op":"get"},{"op":"getMany","n":2,"force":true}],
+      "results": [
+        {"result":[{"status":"ok","sponsors":[{"id":"1","name":"Один","note":"","amount":10,"profile":null}]},{"status":"ok","sponsors":[{"id":"1","name":"Один","note":"","amount":10,"profile":null}]},{"status":"ok","sponsors":[{"id":"1","name":"Один","note":"","amount":10,"profile":null}]}]},
+        {"result":{"status":"ok","sponsors":[{"id":"1","name":"Один","note":"","amount":10,"profile":null}]}},
+        {"result":[{"status":"ok","sponsors":[{"id":"2","name":"Два","note":"","amount":20,"profile":null}]},{"status":"ok","sponsors":[{"id":"2","name":"Два","note":"","amount":20,"profile":null}]}]}
+      ],
+      "journal": [{"server":"api","method":"GET","path":"/v1/public/sponsors","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null},{"server":"api","method":"GET","path":"/v1/public/sponsors","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null}]
+    },
+    {
+      "name": "спонсоры: ответ больше лимита 512 КиБ — Node зависает, Rust отвечает ошибкой",
+      "client": "sponsors",
+      "path": "/v1/public/sponsors",
+      "dead": false,
+      "backend": true,
+      "compareJournal": false,
+      "routes": {"/v1/public/sponsors":[{"bodySize":700000,"pauseAfter":600000,"pauseMs":300},{"json":{"sponsors":[{"id":"1","name":"Один","amount":10,"note":""}]}}]},
+      "steps": [{"op":"get","race":1500,"fixed":{"status":"error","sponsors":[]}},{"op":"get","force":true,"race":1500,"fixed":{"status":"ok","sponsors":[{"id":"1","name":"Один","note":"","amount":10,"profile":null}]}}],
+      "results": [{"result":{"hang":true}},{"result":{"hang":true}}],
+      "journal": [{"server":"api","method":"GET","path":"/v1/public/sponsors","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity"},"body":null}]
+    }
+  ]
+}

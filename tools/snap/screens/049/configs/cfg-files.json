@@ -1,0 +1,43 @@
+{
+  "id": "configs/cfg-files",
+  "state": "HL1: «Файлы cfg» — основной файл игрока первым с меткой, открыт userconfig.cfg",
+  "base": "configs/_cfg",
+  "steps": [
+    {
+      "click": {
+        "css": ".launcher-topbar__tab:nth-child(3)",
+        "view": "topbar-tab-configs"
+      }
+    },
+    {
+      "click": {
+        "css": ".cfgp__game:nth-child(2)",
+        "view": "cfgp-game-70"
+      }
+    },
+    {
+      "click": {
+        "css": ".game-settings__tab[data-tour=\"gs-configs\"]",
+        "view": "gs-configs"
+      }
+    },
+    {
+      "click": {
+        "css": "#gc-tab-cfg-files",
+        "view": "gc-tab-cfg-files"
+      }
+    },
+    {
+      "click": {
+        "css": ".cf__files li:nth-child(1) .cf__file",
+        "view": "cf-file-0"
+      }
+    },
+    {
+      "move": [
+        800,
+        880
+      ]
+    }
+  ]
+}

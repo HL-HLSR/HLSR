@@ -1,0 +1,25 @@
+{
+  "id": "games/modal-crash-none",
+  "base": "games/_base",
+  "state": "Падение Ghosting без файла: просьба о файле диагностики, «Диагностика», Discord, «Закрыть»",
+  "steps": [
+    {
+      "emit": "game-crash-report",
+      "payload": {
+        "gameId": "ghosting-renewed",
+        "launcherId": "218",
+        "exitCode": 3,
+        "hasDump": false,
+        "archive": false,
+        "file": null,
+        "hint": null
+      }
+    },
+    {
+      "move": [
+        800,
+        880
+      ]
+    }
+  ]
+}

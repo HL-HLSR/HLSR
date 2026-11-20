@@ -1,0 +1,1554 @@
+{
+  "now": 1792152000000,
+  "registerCalls": ["discord-123"],
+  "paths": [
+    {"platform":"win32","env":{},"paths":["\\\\?\\pipe\\discord-ipc-0","\\\\?\\pipe\\discord-ipc-1","\\\\?\\pipe\\discord-ipc-2","\\\\?\\pipe\\discord-ipc-3","\\\\?\\pipe\\discord-ipc-4","\\\\?\\pipe\\discord-ipc-5","\\\\?\\pipe\\discord-ipc-6","\\\\?\\pipe\\discord-ipc-7","\\\\?\\pipe\\discord-ipc-8","\\\\?\\pipe\\discord-ipc-9","\\\\?\\pipe\\discord-ipc-10"]},
+    {"platform":"win32","env":{"XDG_RUNTIME_DIR":"/run/user/1000"},"paths":["\\\\?\\pipe\\discord-ipc-0","\\\\?\\pipe\\discord-ipc-1","\\\\?\\pipe\\discord-ipc-2","\\\\?\\pipe\\discord-ipc-3","\\\\?\\pipe\\discord-ipc-4","\\\\?\\pipe\\discord-ipc-5","\\\\?\\pipe\\discord-ipc-6","\\\\?\\pipe\\discord-ipc-7","\\\\?\\pipe\\discord-ipc-8","\\\\?\\pipe\\discord-ipc-9","\\\\?\\pipe\\discord-ipc-10"]},
+    {"platform":"win32","env":{"XDG_RUNTIME_DIR":"/run/user/1000/"},"paths":["\\\\?\\pipe\\discord-ipc-0","\\\\?\\pipe\\discord-ipc-1","\\\\?\\pipe\\discord-ipc-2","\\\\?\\pipe\\discord-ipc-3","\\\\?\\pipe\\discord-ipc-4","\\\\?\\pipe\\discord-ipc-5","\\\\?\\pipe\\discord-ipc-6","\\\\?\\pipe\\discord-ipc-7","\\\\?\\pipe\\discord-ipc-8","\\\\?\\pipe\\discord-ipc-9","\\\\?\\pipe\\discord-ipc-10"]},
+    {"platform":"win32","env":{"XDG_RUNTIME_DIR":"/run/user/1000//"},"paths":["\\\\?\\pipe\\discord-ipc-0","\\\\?\\pipe\\discord-ipc-1","\\\\?\\pipe\\discord-ipc-2","\\\\?\\pipe\\discord-ipc-3","\\\\?\\pipe\\discord-ipc-4","\\\\?\\pipe\\discord-ipc-5","\\\\?\\pipe\\discord-ipc-6","\\\\?\\pipe\\discord-ipc-7","\\\\?\\pipe\\discord-ipc-8","\\\\?\\pipe\\discord-ipc-9","\\\\?\\pipe\\discord-ipc-10"]},
+    {
+      "platform": "win32",
+      "env": {"XDG_RUNTIME_DIR":"","TMPDIR":"/var/tmp"},
+      "paths": ["\\\\?\\pipe\\discord-ipc-0","\\\\?\\pipe\\discord-ipc-1","\\\\?\\pipe\\discord-ipc-2","\\\\?\\pipe\\discord-ipc-3","\\\\?\\pipe\\discord-ipc-4","\\\\?\\pipe\\discord-ipc-5","\\\\?\\pipe\\discord-ipc-6","\\\\?\\pipe\\discord-ipc-7","\\\\?\\pipe\\discord-ipc-8","\\\\?\\pipe\\discord-ipc-9","\\\\?\\pipe\\discord-ipc-10"]
+    },
+    {"platform":"win32","env":{"TMPDIR":"/data/tmp/"},"paths":["\\\\?\\pipe\\discord-ipc-0","\\\\?\\pipe\\discord-ipc-1","\\\\?\\pipe\\discord-ipc-2","\\\\?\\pipe\\discord-ipc-3","\\\\?\\pipe\\discord-ipc-4","\\\\?\\pipe\\discord-ipc-5","\\\\?\\pipe\\discord-ipc-6","\\\\?\\pipe\\discord-ipc-7","\\\\?\\pipe\\discord-ipc-8","\\\\?\\pipe\\discord-ipc-9","\\\\?\\pipe\\discord-ipc-10"]},
+    {"platform":"win32","env":{"TMP":"/tmp/a","TEMP":"/tmp/b"},"paths":["\\\\?\\pipe\\discord-ipc-0","\\\\?\\pipe\\discord-ipc-1","\\\\?\\pipe\\discord-ipc-2","\\\\?\\pipe\\discord-ipc-3","\\\\?\\pipe\\discord-ipc-4","\\\\?\\pipe\\discord-ipc-5","\\\\?\\pipe\\discord-ipc-6","\\\\?\\pipe\\discord-ipc-7","\\\\?\\pipe\\discord-ipc-8","\\\\?\\pipe\\discord-ipc-9","\\\\?\\pipe\\discord-ipc-10"]},
+    {"platform":"win32","env":{"TEMP":"/tmp/b/"},"paths":["\\\\?\\pipe\\discord-ipc-0","\\\\?\\pipe\\discord-ipc-1","\\\\?\\pipe\\discord-ipc-2","\\\\?\\pipe\\discord-ipc-3","\\\\?\\pipe\\discord-ipc-4","\\\\?\\pipe\\discord-ipc-5","\\\\?\\pipe\\discord-ipc-6","\\\\?\\pipe\\discord-ipc-7","\\\\?\\pipe\\discord-ipc-8","\\\\?\\pipe\\discord-ipc-9","\\\\?\\pipe\\discord-ipc-10"]},
+    {"platform":"win32","env":{"XDG_RUNTIME_DIR":"/","TMPDIR":"/x"},"paths":["\\\\?\\pipe\\discord-ipc-0","\\\\?\\pipe\\discord-ipc-1","\\\\?\\pipe\\discord-ipc-2","\\\\?\\pipe\\discord-ipc-3","\\\\?\\pipe\\discord-ipc-4","\\\\?\\pipe\\discord-ipc-5","\\\\?\\pipe\\discord-ipc-6","\\\\?\\pipe\\discord-ipc-7","\\\\?\\pipe\\discord-ipc-8","\\\\?\\pipe\\discord-ipc-9","\\\\?\\pipe\\discord-ipc-10"]},
+    {
+      "platform": "win32",
+      "env": {"XDG_RUNTIME_DIR":"/run/пользователь/1000"},
+      "paths": ["\\\\?\\pipe\\discord-ipc-0","\\\\?\\pipe\\discord-ipc-1","\\\\?\\pipe\\discord-ipc-2","\\\\?\\pipe\\discord-ipc-3","\\\\?\\pipe\\discord-ipc-4","\\\\?\\pipe\\discord-ipc-5","\\\\?\\pipe\\discord-ipc-6","\\\\?\\pipe\\discord-ipc-7","\\\\?\\pipe\\discord-ipc-8","\\\\?\\pipe\\discord-ipc-9","\\\\?\\pipe\\discord-ipc-10"]
+    },
+    {"platform":"linux","env":{},"paths":["/tmp/discord-ipc-0","/tmp/discord-ipc-1","/tmp/discord-ipc-2","/tmp/discord-ipc-3","/tmp/discord-ipc-4","/tmp/discord-ipc-5","/tmp/discord-ipc-6","/tmp/discord-ipc-7","/tmp/discord-ipc-8","/tmp/discord-ipc-9","/tmp/discord-ipc-10"]},
+    {
+      "platform": "linux",
+      "env": {"XDG_RUNTIME_DIR":"/run/user/1000"},
+      "paths": ["/run/user/1000/discord-ipc-0","/run/user/1000/discord-ipc-1","/run/user/1000/discord-ipc-2","/run/user/1000/discord-ipc-3","/run/user/1000/discord-ipc-4","/run/user/1000/discord-ipc-5","/run/user/1000/discord-ipc-6","/run/user/1000/discord-ipc-7","/run/user/1000/discord-ipc-8","/run/user/1000/discord-ipc-9","/run/user/1000/discord-ipc-10"]
+    },
+    {
+      "platform": "linux",
+      "env": {"XDG_RUNTIME_DIR":"/run/user/1000/"},
+      "paths": ["/run/user/1000/discord-ipc-0","/run/user/1000/discord-ipc-1","/run/user/1000/discord-ipc-2","/run/user/1000/discord-ipc-3","/run/user/1000/discord-ipc-4","/run/user/1000/discord-ipc-5","/run/user/1000/discord-ipc-6","/run/user/1000/discord-ipc-7","/run/user/1000/discord-ipc-8","/run/user/1000/discord-ipc-9","/run/user/1000/discord-ipc-10"]
+    },
+    {
+      "platform": "linux",
+      "env": {"XDG_RUNTIME_DIR":"/run/user/1000//"},
+      "paths": ["/run/user/1000//discord-ipc-0","/run/user/1000//discord-ipc-1","/run/user/1000//discord-ipc-2","/run/user/1000//discord-ipc-3","/run/user/1000//discord-ipc-4","/run/user/1000//discord-ipc-5","/run/user/1000//discord-ipc-6","/run/user/1000//discord-ipc-7","/run/user/1000//discord-ipc-8","/run/user/1000//discord-ipc-9","/run/user/1000//discord-ipc-10"]
+    },
+    {"platform":"linux","env":{"XDG_RUNTIME_DIR":"","TMPDIR":"/var/tmp"},"paths":["/var/tmp/discord-ipc-0","/var/tmp/discord-ipc-1","/var/tmp/discord-ipc-2","/var/tmp/discord-ipc-3","/var/tmp/discord-ipc-4","/var/tmp/discord-ipc-5","/var/tmp/discord-ipc-6","/var/tmp/discord-ipc-7","/var/tmp/discord-ipc-8","/var/tmp/discord-ipc-9","/var/tmp/discord-ipc-10"]},
+    {"platform":"linux","env":{"TMPDIR":"/data/tmp/"},"paths":["/data/tmp/discord-ipc-0","/data/tmp/discord-ipc-1","/data/tmp/discord-ipc-2","/data/tmp/discord-ipc-3","/data/tmp/discord-ipc-4","/data/tmp/discord-ipc-5","/data/tmp/discord-ipc-6","/data/tmp/discord-ipc-7","/data/tmp/discord-ipc-8","/data/tmp/discord-ipc-9","/data/tmp/discord-ipc-10"]},
+    {"platform":"linux","env":{"TMP":"/tmp/a","TEMP":"/tmp/b"},"paths":["/tmp/a/discord-ipc-0","/tmp/a/discord-ipc-1","/tmp/a/discord-ipc-2","/tmp/a/discord-ipc-3","/tmp/a/discord-ipc-4","/tmp/a/discord-ipc-5","/tmp/a/discord-ipc-6","/tmp/a/discord-ipc-7","/tmp/a/discord-ipc-8","/tmp/a/discord-ipc-9","/tmp/a/discord-ipc-10"]},
+    {"platform":"linux","env":{"TEMP":"/tmp/b/"},"paths":["/tmp/b/discord-ipc-0","/tmp/b/discord-ipc-1","/tmp/b/discord-ipc-2","/tmp/b/discord-ipc-3","/tmp/b/discord-ipc-4","/tmp/b/discord-ipc-5","/tmp/b/discord-ipc-6","/tmp/b/discord-ipc-7","/tmp/b/discord-ipc-8","/tmp/b/discord-ipc-9","/tmp/b/discord-ipc-10"]},
+    {"platform":"linux","env":{"XDG_RUNTIME_DIR":"/","TMPDIR":"/x"},"paths":["/discord-ipc-0","/discord-ipc-1","/discord-ipc-2","/discord-ipc-3","/discord-ipc-4","/discord-ipc-5","/discord-ipc-6","/discord-ipc-7","/discord-ipc-8","/discord-ipc-9","/discord-ipc-10"]},
+    {
+      "platform": "linux",
+      "env": {"XDG_RUNTIME_DIR":"/run/пользователь/1000"},
+      "paths": [
+        "/run/пользователь/1000/discord-ipc-0",
+        "/run/пользователь/1000/discord-ipc-1",
+        "/run/пользователь/1000/discord-ipc-2",
+        "/run/пользователь/1000/discord-ipc-3",
+        "/run/пользователь/1000/discord-ipc-4",
+        "/run/пользователь/1000/discord-ipc-5",
+        "/run/пользователь/1000/discord-ipc-6",
+        "/run/пользователь/1000/discord-ipc-7",
+        "/run/пользователь/1000/discord-ipc-8",
+        "/run/пользователь/1000/discord-ipc-9",
+        "/run/пользователь/1000/discord-ipc-10"
+      ]
+    }
+  ],
+  "frames": [
+    {"op":0,"data":{},"hex":"00000000020000007b7d"},
+    {"op":0,"data":"x","hex":"0000000003000000227822"},
+    {"op":0,"data":null,"hex":"00000000040000006e756c6c"},
+    {"op":0,"data":0,"hex":"000000000100000030"},
+    {"op":1,"data":{},"hex":"01000000020000007b7d"},
+    {"op":1,"data":"x","hex":"0100000003000000227822"},
+    {"op":1,"data":null,"hex":"01000000040000006e756c6c"},
+    {"op":1,"data":0,"hex":"010000000100000030"},
+    {"op":2,"data":{},"hex":"02000000020000007b7d"},
+    {"op":2,"data":"x","hex":"0200000003000000227822"},
+    {"op":2,"data":null,"hex":"02000000040000006e756c6c"},
+    {"op":2,"data":0,"hex":"020000000100000030"},
+    {"op":3,"data":{},"hex":"03000000020000007b7d"},
+    {"op":3,"data":"x","hex":"0300000003000000227822"},
+    {"op":3,"data":null,"hex":"03000000040000006e756c6c"},
+    {"op":3,"data":0,"hex":"030000000100000030"},
+    {"op":4,"data":{},"hex":"04000000020000007b7d"},
+    {"op":4,"data":"x","hex":"0400000003000000227822"},
+    {"op":4,"data":null,"hex":"04000000040000006e756c6c"},
+    {"op":4,"data":0,"hex":"040000000100000030"},
+    {"op":1,"data":[1,"а"],"hex":"01000000080000005b312c22d0b0225d"},
+    {"op":1,"data":{"v":1,"client_id":"1531057982518071296"},"hex":"01000000290000007b2276223a312c22636c69656e745f6964223a2231353331303537393832353138303731323936227d"},
+    {"op":1,"data":"привет, мир","hex":"010000001600000022d0bfd180d0b8d0b2d0b5d1822c20d0bcd0b8d18022"},
+    {"op":1,"data":"😀","hex":"010000000600000022f09f988022"},
+    {"op":1,"data":{"a":"  "},"hex":"010000000e0000007b2261223a22e280a8e280a9227d"},
+    {"op":1,"data":{"cmd":"SET_ACTIVITY","args":{"pid":7},"nonce":"n"},"hex":"01000000330000007b22636d64223a225345545f4143544956495459222c2261726773223a7b22706964223a377d2c226e6f6e6365223a226e227d"},
+    {"op":1,"dataRepeat":["й",70000],"length":140010,"header":"01000000e2220200","sha256":"3230fc445bdc6c2bfc0dc5d4bdffcdb9cc8564da1a7ed2185318af867ba4c76e"}
+  ],
+  "uuid": [
+    {"random":[0],"uuid":["00000000-0000-4000-0000-000000000000","00000000-0000-4000-0000-000000000000"]},
+    {"random":[0.999999],"uuid":["ffffffff-ffff-4fff-3fff-ffffffffffff","ffffffff-ffff-4fff-3fff-ffffffffffff"]},
+    {"random":[0.5],"uuid":["88888888-8888-4888-0888-888888888888","88888888-8888-4888-0888-888888888888"]},
+    {"random":[0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9],"uuid":["134689bc-e134-4689-3ce1-34689bce1346","89bce134-689b-4ce1-3468-9bce134689bc"]},
+    {"random":[0.25,0.75],"uuid":["4c4c4c4c-4c4c-44c4-04c4-c4c4c4c4c4c4","c4c4c4c4-c4c4-4c4c-0c4c-4c4c4c4c4c4c"]},
+    {"random":[0.0625,0.9375,0.33333],"uuid":["1f51f51f-51f5-41f5-1f51-f51f51f51f51","f51f51f5-1f51-4f51-351f-51f51f51f51f"]}
+  ],
+  "clearFrame": {"data":{"cmd":"SET_ACTIVITY","args":{"pid":"<pid>"},"nonce":"<nonce>"}},
+  "activities": [
+    {
+      "state": {"kind":"launcher","sessionStartedAtMs":1760000000123},
+      "activity": {"details":"HLSR Launcher","state":"В лаунчере","largeImageKey":"hlsr","largeImageText":"HLSR v0.5.0","instance":false,"startTimestamp":1760000000123,"buttons":[{"label":"Сайт HLSR","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}]},
+      "frame": {"data":{"cmd":"SET_ACTIVITY","args":{"pid":"<pid>","activity":{"state":"В лаунчере","details":"HLSR Launcher","timestamps":{"start":1760000000123},"assets":{"large_image":"hlsr","large_text":"HLSR v0.5.0"},"buttons":[{"label":"Сайт HLSR","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}],"instance":false}},"nonce":"<nonce>"}}
+    },
+    {
+      "state": {"kind":"launcher","locale":"en","sessionStartedAtMs":1760000000123},
+      "activity": {"details":"HLSR Launcher","state":"In the launcher","largeImageKey":"hlsr","largeImageText":"HLSR v0.5.0","instance":false,"startTimestamp":1760000000123,"buttons":[{"label":"HLSR website","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}]},
+      "frame": {"data":{"cmd":"SET_ACTIVITY","args":{"pid":"<pid>","activity":{"state":"In the launcher","details":"HLSR Launcher","timestamps":{"start":1760000000123},"assets":{"large_image":"hlsr","large_text":"HLSR v0.5.0"},"buttons":[{"label":"HLSR website","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}],"instance":false}},"nonce":"<nonce>"}}
+    },
+    {
+      "state": {"kind":"launcher"},
+      "activity": {"details":"HLSR Launcher","state":"В лаунчере","largeImageKey":"hlsr","largeImageText":"HLSR v0.5.0","instance":false,"buttons":[{"label":"Сайт HLSR","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}]},
+      "frame": {"data":{"cmd":"SET_ACTIVITY","args":{"pid":"<pid>","activity":{"state":"В лаунчере","details":"HLSR Launcher","assets":{"large_image":"hlsr","large_text":"HLSR v0.5.0"},"buttons":[{"label":"Сайт HLSR","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}],"instance":false}},"nonce":"<nonce>"}}
+    },
+    {
+      "state": {"kind":"browsing","gameId":"ghosting-renewed","sessionStartedAtMs":1760000000123},
+      "activity": {"details":"Half-Life 2: Ghosting Mod: Renewed","state":"Выбирает сборку","largeImageKey":"hlsr","largeImageText":"HLSR v0.5.0","instance":false,"startTimestamp":1760000000123,"buttons":[{"label":"Сайт HLSR","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}]},
+      "frame": {
+        "data": {"cmd":"SET_ACTIVITY","args":{"pid":"<pid>","activity":{"state":"Выбирает сборку","details":"Half-Life 2: Ghosting Mod: Renewed","timestamps":{"start":1760000000123},"assets":{"large_image":"hlsr","large_text":"HLSR v0.5.0"},"buttons":[{"label":"Сайт HLSR","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}],"instance":false}},"nonce":"<nonce>"}
+      }
+    },
+    {
+      "state": {"kind":"browsing","gameId":"hl2-4260","locale":"en","sessionStartedAtMs":1760000000123},
+      "activity": {"details":"Half-Life 2 (4260)","state":"Selecting a build","largeImageKey":"hlsr","largeImageText":"HLSR v0.5.0","instance":false,"startTimestamp":1760000000123,"buttons":[{"label":"HLSR website","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}]},
+      "frame": {"data":{"cmd":"SET_ACTIVITY","args":{"pid":"<pid>","activity":{"state":"Selecting a build","details":"Half-Life 2 (4260)","timestamps":{"start":1760000000123},"assets":{"large_image":"hlsr","large_text":"HLSR v0.5.0"},"buttons":[{"label":"HLSR website","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}],"instance":false}},"nonce":"<nonce>"}}
+    },
+    {
+      "state": {"kind":"ready","gameId":"hl1-won","sessionStartedAtMs":1760000000123},
+      "activity": {"details":"Half-Life (WON)","state":"Готов к запуску","largeImageKey":"hlsr","largeImageText":"HLSR v0.5.0","instance":false,"startTimestamp":1760000000123,"buttons":[{"label":"Сайт HLSR","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}]},
+      "frame": {"data":{"cmd":"SET_ACTIVITY","args":{"pid":"<pid>","activity":{"state":"Готов к запуску","details":"Half-Life (WON)","timestamps":{"start":1760000000123},"assets":{"large_image":"hlsr","large_text":"HLSR v0.5.0"},"buttons":[{"label":"Сайт HLSR","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}],"instance":false}},"nonce":"<nonce>"}}
+    },
+    {
+      "state": {"kind":"installing","gameId":"hl2-2707","sessionStartedAtMs":1760000000123},
+      "activity": {"details":"Half-Life 2 (2707)","state":"Установка сборки","largeImageKey":"hlsr","largeImageText":"HLSR v0.5.0","instance":false,"startTimestamp":1760000000123,"buttons":[{"label":"Сайт HLSR","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}]},
+      "frame": {"data":{"cmd":"SET_ACTIVITY","args":{"pid":"<pid>","activity":{"state":"Установка сборки","details":"Half-Life 2 (2707)","timestamps":{"start":1760000000123},"assets":{"large_image":"hlsr","large_text":"HLSR v0.5.0"},"buttons":[{"label":"Сайт HLSR","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}],"instance":false}},"nonce":"<nonce>"}}
+    },
+    {
+      "state": {"kind":"updating","gameId":"hl2-5288","locale":"en","sessionStartedAtMs":1760000000123},
+      "activity": {"details":"Half-Life 2 (5288)","state":"Updating build","largeImageKey":"hlsr","largeImageText":"HLSR v0.5.0","instance":false,"startTimestamp":1760000000123,"buttons":[{"label":"HLSR website","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}]},
+      "frame": {"data":{"cmd":"SET_ACTIVITY","args":{"pid":"<pid>","activity":{"state":"Updating build","details":"Half-Life 2 (5288)","timestamps":{"start":1760000000123},"assets":{"large_image":"hlsr","large_text":"HLSR v0.5.0"},"buttons":[{"label":"HLSR website","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}],"instance":false}},"nonce":"<nonce>"}}
+    },
+    {
+      "state": {"kind":"repairing","gameId":"220","sessionStartedAtMs":1760000000123},
+      "activity": {"details":"Half-Life 2 (4260)","state":"Проверка файлов","largeImageKey":"hlsr","largeImageText":"HLSR v0.5.0","instance":false,"startTimestamp":1760000000123,"buttons":[{"label":"Сайт HLSR","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}]},
+      "frame": {"data":{"cmd":"SET_ACTIVITY","args":{"pid":"<pid>","activity":{"state":"Проверка файлов","details":"Half-Life 2 (4260)","timestamps":{"start":1760000000123},"assets":{"large_image":"hlsr","large_text":"HLSR v0.5.0"},"buttons":[{"label":"Сайт HLSR","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}],"instance":false}},"nonce":"<nonce>"}}
+    },
+    {
+      "state": {"kind":"playing","gameId":218,"sessionStartedAtMs":1760000000123},
+      "activity": {"details":"Half-Life 2: Ghosting Mod: Renewed","state":"В игре","largeImageKey":"hlsr","largeImageText":"HLSR v0.5.0","instance":false,"startTimestamp":1760000000123,"buttons":[{"label":"Сайт HLSR","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}]},
+      "frame": {"data":{"cmd":"SET_ACTIVITY","args":{"pid":"<pid>","activity":{"state":"В игре","details":"Half-Life 2: Ghosting Mod: Renewed","timestamps":{"start":1760000000123},"assets":{"large_image":"hlsr","large_text":"HLSR v0.5.0"},"buttons":[{"label":"Сайт HLSR","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}],"instance":false}},"nonce":"<nonce>"}}
+    },
+    {
+      "state": {"kind":"playing","gameId":"x","sessionStartedAtMs":1760000000123},
+      "activity": {"details":"HLSR Launcher","state":"В лаунчере","largeImageKey":"hlsr","largeImageText":"HLSR v0.5.0","instance":false,"startTimestamp":1760000000123,"buttons":[{"label":"Сайт HLSR","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}]},
+      "frame": {"data":{"cmd":"SET_ACTIVITY","args":{"pid":"<pid>","activity":{"state":"В лаунчере","details":"HLSR Launcher","timestamps":{"start":1760000000123},"assets":{"large_image":"hlsr","large_text":"HLSR v0.5.0"},"buttons":[{"label":"Сайт HLSR","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}],"instance":false}},"nonce":"<nonce>"}}
+    },
+    {
+      "state": {"kind":"game_menu","gameId":"ghosting-renewed","fps":144.4,"sessionStartedAtMs":1760000000123},
+      "activity": {"details":"Game: Ghosting Mod: Renewed","state":"In the menu | FPS: 144","largeImageKey":"background","largeImageText":"Ghosting Mod: Renewed","instance":false,"smallImageKey":"playing","smallImageText":"In the menu","startTimestamp":1760000000123,"buttons":[{"label":"Сайт HLSR","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}]},
+      "frame": {
+        "data": {
+          "cmd": "SET_ACTIVITY",
+          "args": {
+            "pid": "<pid>",
+            "activity": {"state":"In the menu | FPS: 144","details":"Game: Ghosting Mod: Renewed","timestamps":{"start":1760000000123},"assets":{"large_image":"background","large_text":"Ghosting Mod: Renewed","small_image":"playing","small_text":"In the menu"},"buttons":[{"label":"Сайт HLSR","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}],"instance":false}
+          },
+          "nonce": "<nonce>"
+        }
+      }
+    },
+    {
+      "state": {"kind":"game_menu","gameId":"ghosting-renewed","sessionStartedAtMs":1760000000123},
+      "activity": {"details":"Game: Ghosting Mod: Renewed","state":"In the menu","largeImageKey":"background","largeImageText":"Ghosting Mod: Renewed","instance":false,"smallImageKey":"playing","smallImageText":"In the menu","startTimestamp":1760000000123,"buttons":[{"label":"Сайт HLSR","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}]},
+      "frame": {
+        "data": {
+          "cmd": "SET_ACTIVITY",
+          "args": {
+            "pid": "<pid>",
+            "activity": {"state":"In the menu","details":"Game: Ghosting Mod: Renewed","timestamps":{"start":1760000000123},"assets":{"large_image":"background","large_text":"Ghosting Mod: Renewed","small_image":"playing","small_text":"In the menu"},"buttons":[{"label":"Сайт HLSR","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}],"instance":false}
+          },
+          "nonce": "<nonce>"
+        }
+      }
+    },
+    {
+      "state": {"kind":"game_map","gameId":"ghosting-renewed","map":"d1_canals_01","fps":60,"sessionStartedAtMs":1760000000123},
+      "activity": {"details":"d1_canals_01","state":"Playing | FPS: 60","largeImageKey":"d1_canals_01","largeImageText":"d1_canals_01","instance":false,"smallImageKey":"playing","smallImageText":"Playing","startTimestamp":1760000000123,"buttons":[{"label":"Сайт HLSR","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}]},
+      "frame": {
+        "data": {
+          "cmd": "SET_ACTIVITY",
+          "args": {"pid":"<pid>","activity":{"state":"Playing | FPS: 60","details":"d1_canals_01","timestamps":{"start":1760000000123},"assets":{"large_image":"d1_canals_01","large_text":"d1_canals_01","small_image":"playing","small_text":"Playing"},"buttons":[{"label":"Сайт HLSR","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}],"instance":false}},
+          "nonce": "<nonce>"
+        }
+      }
+    },
+    {
+      "state": {"kind":"game_map","gameId":"ghosting-renewed","map":"d3_breen_01","running":true,"runStartedAtMs":1760000000999,"fps":59.5,"sessionStartedAtMs":1760000000123},
+      "activity": {"details":"d3_breen_01","state":"Playing | FPS: 60","largeImageKey":"d3_breen_01","largeImageText":"d3_breen_01","instance":false,"smallImageKey":"running","smallImageText":"Run in progress","startTimestamp":1760000000123,"buttons":[{"label":"Сайт HLSR","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}]},
+      "frame": {
+        "data": {
+          "cmd": "SET_ACTIVITY",
+          "args": {"pid":"<pid>","activity":{"state":"Playing | FPS: 60","details":"d3_breen_01","timestamps":{"start":1760000000123},"assets":{"large_image":"d3_breen_01","large_text":"d3_breen_01","small_image":"running","small_text":"Run in progress"},"buttons":[{"label":"Сайт HLSR","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}],"instance":false}},
+          "nonce": "<nonce>"
+        }
+      }
+    },
+    {
+      "state": {"kind":"game_map","gameId":"ghosting-renewed","map":"d3_breen_01","finalTime":true,"sessionStartedAtMs":1760000000123},
+      "activity": {"details":"d3_breen_01","state":"Playing","largeImageKey":"d3_breen_01_finaltime","largeImageText":"d3_breen_01","instance":false,"smallImageKey":"playing","smallImageText":"Playing","startTimestamp":1760000000123,"buttons":[{"label":"Сайт HLSR","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}]},
+      "frame": {
+        "data": {
+          "cmd": "SET_ACTIVITY",
+          "args": {"pid":"<pid>","activity":{"state":"Playing","details":"d3_breen_01","timestamps":{"start":1760000000123},"assets":{"large_image":"d3_breen_01_finaltime","large_text":"d3_breen_01","small_image":"playing","small_text":"Playing"},"buttons":[{"label":"Сайт HLSR","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}],"instance":false}},
+          "nonce": "<nonce>"
+        }
+      }
+    },
+    {
+      "state": {"kind":"game_map","gameId":"ghosting-renewed","map":"no_such_map","fps":1000,"sessionStartedAtMs":1760000000123},
+      "activity": {"details":"no_such_map","state":"Playing | FPS: 1000","largeImageKey":"hlsr","largeImageText":"Ghosting Mod: Renewed","instance":false,"smallImageKey":"playing","smallImageText":"Playing","startTimestamp":1760000000123,"buttons":[{"label":"Сайт HLSR","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}]},
+      "frame": {
+        "data": {
+          "cmd": "SET_ACTIVITY",
+          "args": {"pid":"<pid>","activity":{"state":"Playing | FPS: 1000","details":"no_such_map","timestamps":{"start":1760000000123},"assets":{"large_image":"hlsr","large_text":"Ghosting Mod: Renewed","small_image":"playing","small_text":"Playing"},"buttons":[{"label":"Сайт HLSR","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}],"instance":false}},
+          "nonce": "<nonce>"
+        }
+      }
+    },
+    {
+      "state": {"kind":"game_map","gameId":"ghosting-renewed","map":"","sessionStartedAtMs":1760000000123},
+      "activity": {"details":"Game: Ghosting Mod: Renewed","state":"In the menu","largeImageKey":"background","largeImageText":"Ghosting Mod: Renewed","instance":false,"smallImageKey":"playing","smallImageText":"In the menu","startTimestamp":1760000000123,"buttons":[{"label":"Сайт HLSR","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}]},
+      "frame": {
+        "data": {
+          "cmd": "SET_ACTIVITY",
+          "args": {
+            "pid": "<pid>",
+            "activity": {"state":"In the menu","details":"Game: Ghosting Mod: Renewed","timestamps":{"start":1760000000123},"assets":{"large_image":"background","large_text":"Ghosting Mod: Renewed","small_image":"playing","small_text":"In the menu"},"buttons":[{"label":"Сайт HLSR","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}],"instance":false}
+          },
+          "nonce": "<nonce>"
+        }
+      }
+    },
+    {"activity":{"details":"d","state":"s","largeImageKey":"hlsr","largeImageText":"HLSR","instance":false,"startTimestamp":1760000000123},"frame":{"data":{"cmd":"SET_ACTIVITY","args":{"pid":"<pid>","activity":{"state":"s","details":"d","timestamps":{"start":1760000000123},"assets":{"large_image":"hlsr","large_text":"HLSR"},"instance":false}},"nonce":"<nonce>"}}},
+    {"activity":{"details":"d","largeImageKey":"hlsr","largeImageText":"HLSR","instance":false,"startTimestamp":2147483647000},"frame":{"data":{"cmd":"SET_ACTIVITY","args":{"pid":"<pid>","activity":{"details":"d","timestamps":{"start":2147483647000},"assets":{"large_image":"hlsr","large_text":"HLSR"},"instance":false}},"nonce":"<nonce>"}}},
+    {"activity":{"details":"d","largeImageKey":"hlsr","largeImageText":"HLSR","instance":false,"startTimestamp":2147483647001},"frame":{"throws":{"name":"RangeError","message":"timestamps.start must fit into a unix timestamp"}}},
+    {"activity":{"details":"d","largeImageKey":"hlsr","largeImageText":"HLSR","instance":false,"startTimestamp":1e+21},"frame":{"throws":{"name":"RangeError","message":"timestamps.start must fit into a unix timestamp"}}},
+    {"activity":{"details":"d","largeImageKey":"hlsr","largeImageText":"HLSR","instance":false,"startTimestamp":0},"frame":{"data":{"cmd":"SET_ACTIVITY","args":{"pid":"<pid>","activity":{"details":"d","assets":{"large_image":"hlsr","large_text":"HLSR"},"instance":false}},"nonce":"<nonce>"}}},
+    {"activity":{"details":"d","largeImageKey":"hlsr","largeImageText":"HLSR","instance":false},"frame":{"data":{"cmd":"SET_ACTIVITY","args":{"pid":"<pid>","activity":{"details":"d","assets":{"large_image":"hlsr","large_text":"HLSR"},"instance":false}},"nonce":"<nonce>"}}},
+    {
+      "activity": {"details":"d","state":"s","largeImageKey":"hlsr","largeImageText":"HLSR","smallImageKey":"running","smallImageText":"Run in progress","instance":false,"buttons":[{"label":"Сайт HLSR","url":"https://hlsr.pro"}]},
+      "frame": {"data":{"cmd":"SET_ACTIVITY","args":{"pid":"<pid>","activity":{"state":"s","details":"d","assets":{"large_image":"hlsr","large_text":"HLSR","small_image":"running","small_text":"Run in progress"},"buttons":[{"label":"Сайт HLSR","url":"https://hlsr.pro"}],"instance":false}},"nonce":"<nonce>"}}
+    }
+  ],
+  "retryDelays": [
+    [0,0,3750],
+    [0,0.5,5000],
+    [0,0.999999,6250],
+    [0,0.123456,4059],
+    [1,0,3750],
+    [1,0.5,5000],
+    [1,0.999999,6250],
+    [1,0.123456,4059],
+    [2,0,7500],
+    [2,0.5,10000],
+    [2,0.999999,12500],
+    [2,0.123456,8117],
+    [3,0,15000],
+    [3,0.5,20000],
+    [3,0.999999,25000],
+    [3,0.123456,16235],
+    [4,0,30000],
+    [4,0.5,40000],
+    [4,0.999999,50000],
+    [4,0.123456,32469],
+    [5,0,60000],
+    [5,0.5,80000],
+    [5,0.999999,100000],
+    [5,0.123456,64938],
+    [6,0,120000],
+    [6,0.5,160000],
+    [6,0.999999,200000],
+    [6,0.123456,129876],
+    [7,0,225000],
+    [7,0.5,300000],
+    [7,0.999999,375000],
+    [7,0.123456,243518],
+    [8,0,225000],
+    [8,0.5,300000],
+    [8,0.999999,375000],
+    [8,0.123456,243518],
+    [9,0,225000],
+    [9,0.5,300000],
+    [9,0.999999,375000],
+    [9,0.123456,243518],
+    [10,0,225000],
+    [10,0.5,300000],
+    [10,0.999999,375000],
+    [10,0.123456,243518],
+    [20,0,225000],
+    [20,0.5,300000],
+    [20,0.999999,375000],
+    [20,0.123456,243518],
+    [100,0,225000],
+    [100,0.5,300000],
+    [100,0.999999,375000],
+    [100,0.123456,243518]
+  ],
+  "scenarios": [
+    {
+      "name": "подключение, присутствие, выключение, включение, выход",
+      "double": {"listen":[0]},
+      "steps": [
+        {"op":"start","until":{"state":"connected","inDelta":2}},
+        {"op":"settle"},
+        {"op":"get"},
+        {"op":"fire","timer":"debounce"},
+        {"op":"settle"},
+        {"op":"signal","signal":{"type":"selected","gameId":"ghosting-renewed"}},
+        {"op":"fire","timer":"debounce","until":{"inDelta":1}},
+        {"op":"settle"},
+        {"op":"signal","signal":{"type":"status","gameId":"ghosting-renewed","state":"updating"}},
+        {"op":"fire","timer":"debounce","until":{"inDelta":1}},
+        {"op":"settle"},
+        {"op":"signal","signal":{"type":"running","gameId":"ghosting-renewed"}},
+        {"op":"fire","timer":"debounce","until":{"inDelta":1}},
+        {"op":"settle"},
+        {"op":"signal","signal":{"type":"status","gameId":"ghosting-renewed","state":"repairing"}},
+        {"op":"fire","timer":"debounce"},
+        {"op":"settle"},
+        {"op":"attachGame","diagnostics":{"listening":true,"connected":true,"rejected":2,"lifecycle":"menu","hasMap":false}},
+        {"op":"gameState","state":{"active":true,"lifecycle":"menu","fps":144.4}},
+        {"op":"fire","timer":"debounce","until":{"inDelta":1}},
+        {"op":"settle"},
+        {"op":"gameState","state":{"active":true,"lifecycle":"playing","map":"d1_canals_01","fps":60}},
+        {"op":"fire","timer":"debounce","until":{"inDelta":1}},
+        {"op":"settle"},
+        {"op":"gameState","state":{"active":true,"lifecycle":"playing","map":"d3_breen_01","fps":59.5,"running":true,"runStartedAtMs":1760000000999}},
+        {"op":"fire","timer":"debounce","until":{"inDelta":1}},
+        {"op":"settle"},
+        {"op":"gameState","state":{"active":true,"lifecycle":"playing","map":"d3_breen_01","finalTime":true}},
+        {"op":"fire","timer":"debounce","until":{"inDelta":1}},
+        {"op":"settle"},
+        {"op":"locale","value":"en"},
+        {"op":"version","value":"0.5.1"},
+        {"op":"gameState","state":{"active":true,"lifecycle":"playing","map":"d3_breen_01","finalTime":true}},
+        {"op":"fire","timer":"debounce","until":{"inDelta":1}},
+        {"op":"settle"},
+        {"op":"diagnostics"},
+        {"op":"gameState","state":{"active":false}},
+        {"op":"signal","signal":{"type":"stopped","gameId":"ghosting-renewed"}},
+        {"op":"fire","timer":"debounce","until":{"inDelta":1}},
+        {"op":"settle"},
+        {"op":"signal","signal":{"type":"unknown"}},
+        {"op":"signal","signal":null},
+        {"op":"signal","signal":5},
+        {"op":"settle"},
+        {"op":"set","enabled":false,"until":{"state":"disabled","inDelta":2}},
+        {"op":"settle"},
+        {"op":"get"},
+        {"op":"signal","signal":{"type":"status","gameId":"hl1-won","state":"installing"}},
+        {"op":"settle"},
+        {"op":"set","enabled":true,"until":{"state":"connected","inDelta":2}},
+        {"op":"settle"},
+        {"op":"set","enabled":true},
+        {"op":"settle"},
+        {"op":"advance","ms":61000},
+        {"op":"shutdown","until":{"state":"shutting_down","inDelta":2}},
+        {"op":"settle"},
+        {"op":"set","enabled":true},
+        {"op":"settle"},
+        {"op":"get"},
+        {"op":"diagnostics"}
+      ],
+      "results": [
+        {"op":"start"},
+        {
+          "op": "settle",
+          "state": {"state":"connected","code":"RPC_CONNECTED","lastConnectedAt":1792152000000,"attempt":0},
+          "connected": true,
+          "timers": [{"kind":"debounce"}],
+          "log": [["info","[discord-rpc] RPC_CONNECTING: включено пользователем"],["info","[discord-rpc] RPC_CONNECTED"]],
+          "double": [
+            {"conn":1,"event":"open","id":0},
+            {"conn":1,"in":{"op":0,"name":"HANDSHAKE","json":{"v":1,"client_id":"1531057982518071296"}}},
+            {
+              "conn": 1,
+              "in": {
+                "op": 1,
+                "name": "FRAME",
+                "json": {"cmd":"SET_ACTIVITY","args":{"pid":"<pid>","activity":{"state":"В лаунчере","details":"HLSR Launcher","timestamps":{"start":1792152000000},"assets":{"large_image":"hlsr","large_text":"HLSR v0.5.0"},"buttons":[{"label":"Сайт HLSR","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}],"instance":false}},"nonce":"<nonce:1>"}
+              }
+            }
+          ],
+          "register": ["discord-1531057982518071296"]
+        },
+        {"op":"get","result":{"enabled":true,"source":"default","state":"connected","code":"RPC_CONNECTED","lastConnectedAt":1792152000000}},
+        {"op":"fire","result":{"fired":true}},
+        {"op":"settle","state":{"state":"connected","code":"RPC_CONNECTED","lastConnectedAt":1792152000000,"attempt":0},"connected":true,"timers":[]},
+        {"op":"signal"},
+        {"op":"fire","result":{"fired":true}},
+        {
+          "op": "settle",
+          "state": {"state":"connected","code":"RPC_CONNECTED","lastConnectedAt":1792152000000,"attempt":0},
+          "connected": true,
+          "timers": [],
+          "double": [
+            {
+              "conn": 1,
+              "in": {
+                "op": 1,
+                "name": "FRAME",
+                "json": {
+                  "cmd": "SET_ACTIVITY",
+                  "args": {"pid":"<pid>","activity":{"state":"Выбирает сборку","details":"Half-Life 2: Ghosting Mod: Renewed","timestamps":{"start":1792152000000},"assets":{"large_image":"hlsr","large_text":"HLSR v0.5.0"},"buttons":[{"label":"Сайт HLSR","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}],"instance":false}},
+                  "nonce": "<nonce:2>"
+                }
+              }
+            }
+          ]
+        },
+        {"op":"signal"},
+        {"op":"fire","result":{"fired":true}},
+        {
+          "op": "settle",
+          "state": {"state":"connected","code":"RPC_CONNECTED","lastConnectedAt":1792152000000,"attempt":0},
+          "connected": true,
+          "timers": [],
+          "double": [
+            {
+              "conn": 1,
+              "in": {
+                "op": 1,
+                "name": "FRAME",
+                "json": {
+                  "cmd": "SET_ACTIVITY",
+                  "args": {"pid":"<pid>","activity":{"state":"Обновление сборки","details":"Half-Life 2: Ghosting Mod: Renewed","timestamps":{"start":1792152000000},"assets":{"large_image":"hlsr","large_text":"HLSR v0.5.0"},"buttons":[{"label":"Сайт HLSR","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}],"instance":false}},
+                  "nonce": "<nonce:3>"
+                }
+              }
+            }
+          ]
+        },
+        {"op":"signal"},
+        {"op":"fire","result":{"fired":true}},
+        {
+          "op": "settle",
+          "state": {"state":"connected","code":"RPC_CONNECTED","lastConnectedAt":1792152000000,"attempt":0},
+          "connected": true,
+          "timers": [],
+          "double": [
+            {
+              "conn": 1,
+              "in": {
+                "op": 1,
+                "name": "FRAME",
+                "json": {"cmd":"SET_ACTIVITY","args":{"pid":"<pid>","activity":{"state":"В игре","details":"Half-Life 2: Ghosting Mod: Renewed","timestamps":{"start":1792152000000},"assets":{"large_image":"hlsr","large_text":"HLSR v0.5.0"},"buttons":[{"label":"Сайт HLSR","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}],"instance":false}},"nonce":"<nonce:4>"}
+              }
+            }
+          ]
+        },
+        {"op":"signal"},
+        {"op":"fire","result":{"fired":false}},
+        {"op":"settle","state":{"state":"connected","code":"RPC_CONNECTED","lastConnectedAt":1792152000000,"attempt":0},"connected":true,"timers":[]},
+        {"op":"attachGame","result":true},
+        {"op":"gameState"},
+        {"op":"fire","result":{"fired":true}},
+        {
+          "op": "settle",
+          "state": {"state":"connected","code":"RPC_CONNECTED","lastConnectedAt":1792152000000,"attempt":0},
+          "connected": true,
+          "timers": [],
+          "double": [
+            {
+              "conn": 1,
+              "in": {
+                "op": 1,
+                "name": "FRAME",
+                "json": {
+                  "cmd": "SET_ACTIVITY",
+                  "args": {
+                    "pid": "<pid>",
+                    "activity": {"state":"In the menu | FPS: 144","details":"Game: Ghosting Mod: Renewed","timestamps":{"start":1792152000000},"assets":{"large_image":"background","large_text":"Ghosting Mod: Renewed","small_image":"playing","small_text":"In the menu"},"buttons":[{"label":"Сайт HLSR","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}],"instance":false}
+                  },
+                  "nonce": "<nonce:5>"
+                }
+              }
+            }
+          ],
+          "game": [["setDiscordConnected",true]]
+        },
+        {"op":"gameState"},
+        {"op":"fire","result":{"fired":true}},
+        {
+          "op": "settle",
+          "state": {"state":"connected","code":"RPC_CONNECTED","lastConnectedAt":1792152000000,"attempt":0},
+          "connected": true,
+          "timers": [],
+          "double": [
+            {
+              "conn": 1,
+              "in": {
+                "op": 1,
+                "name": "FRAME",
+                "json": {
+                  "cmd": "SET_ACTIVITY",
+                  "args": {"pid":"<pid>","activity":{"state":"Playing | FPS: 60","details":"d1_canals_01","timestamps":{"start":1792152000000},"assets":{"large_image":"d1_canals_01","large_text":"d1_canals_01","small_image":"playing","small_text":"Playing"},"buttons":[{"label":"Сайт HLSR","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}],"instance":false}},
+                  "nonce": "<nonce:6>"
+                }
+              }
+            }
+          ]
+        },
+        {"op":"gameState"},
+        {"op":"fire","result":{"fired":true}},
+        {
+          "op": "settle",
+          "state": {"state":"connected","code":"RPC_CONNECTED","lastConnectedAt":1792152000000,"attempt":0},
+          "connected": true,
+          "timers": [],
+          "double": [
+            {
+              "conn": 1,
+              "in": {
+                "op": 1,
+                "name": "FRAME",
+                "json": {
+                  "cmd": "SET_ACTIVITY",
+                  "args": {"pid":"<pid>","activity":{"state":"Playing | FPS: 60","details":"d3_breen_01","timestamps":{"start":1792152000000},"assets":{"large_image":"d3_breen_01","large_text":"d3_breen_01","small_image":"running","small_text":"Run in progress"},"buttons":[{"label":"Сайт HLSR","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}],"instance":false}},
+                  "nonce": "<nonce:7>"
+                }
+              }
+            }
+          ]
+        },
+        {"op":"gameState"},
+        {"op":"fire","result":{"fired":true}},
+        {
+          "op": "settle",
+          "state": {"state":"connected","code":"RPC_CONNECTED","lastConnectedAt":1792152000000,"attempt":0},
+          "connected": true,
+          "timers": [],
+          "double": [
+            {
+              "conn": 1,
+              "in": {
+                "op": 1,
+                "name": "FRAME",
+                "json": {
+                  "cmd": "SET_ACTIVITY",
+                  "args": {"pid":"<pid>","activity":{"state":"Playing","details":"d3_breen_01","timestamps":{"start":1792152000000},"assets":{"large_image":"d3_breen_01_finaltime","large_text":"d3_breen_01","small_image":"playing","small_text":"Playing"},"buttons":[{"label":"Сайт HLSR","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}],"instance":false}},
+                  "nonce": "<nonce:8>"
+                }
+              }
+            }
+          ]
+        },
+        {"op":"locale"},
+        {"op":"version"},
+        {"op":"gameState"},
+        {"op":"fire","result":{"fired":true}},
+        {
+          "op": "settle",
+          "state": {"state":"connected","code":"RPC_CONNECTED","lastConnectedAt":1792152000000,"attempt":0},
+          "connected": true,
+          "timers": [],
+          "double": [
+            {
+              "conn": 1,
+              "in": {
+                "op": 1,
+                "name": "FRAME",
+                "json": {
+                  "cmd": "SET_ACTIVITY",
+                  "args": {"pid":"<pid>","activity":{"state":"Playing","details":"d3_breen_01","timestamps":{"start":1792152000000},"assets":{"large_image":"d3_breen_01_finaltime","large_text":"d3_breen_01","small_image":"playing","small_text":"Playing"},"buttons":[{"label":"HLSR website","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}],"instance":false}},
+                  "nonce": "<nonce:9>"
+                }
+              }
+            }
+          ]
+        },
+        {"op":"diagnostics","result":{"enabled":true,"state":"connected","connected":true,"lastStableCode":"RPC_CONNECTED","reconnectPending":false,"lastConnectedAt":1792152000000,"gameBridge":{"listening":true,"connected":true,"rejected":2,"lifecycle":"menu","hasMap":false}}},
+        {"op":"gameState"},
+        {"op":"signal"},
+        {"op":"fire","result":{"fired":true}},
+        {
+          "op": "settle",
+          "state": {"state":"connected","code":"RPC_CONNECTED","lastConnectedAt":1792152000000,"attempt":0},
+          "connected": true,
+          "timers": [],
+          "double": [
+            {
+              "conn": 1,
+              "in": {
+                "op": 1,
+                "name": "FRAME",
+                "json": {
+                  "cmd": "SET_ACTIVITY",
+                  "args": {"pid":"<pid>","activity":{"state":"Ready to play","details":"Half-Life 2: Ghosting Mod: Renewed","timestamps":{"start":1792152000000},"assets":{"large_image":"hlsr","large_text":"HLSR v0.5.1"},"buttons":[{"label":"HLSR website","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}],"instance":false}},
+                  "nonce": "<nonce:10>"
+                }
+              }
+            }
+          ]
+        },
+        {"op":"signal"},
+        {"op":"signal"},
+        {"op":"signal"},
+        {"op":"settle","state":{"state":"connected","code":"RPC_CONNECTED","lastConnectedAt":1792152000000,"attempt":0},"connected":true,"timers":[]},
+        {"op":"set","result":{"enabled":false,"source":"user","state":"disabled","code":"RPC_DISABLED","lastConnectedAt":1792152000000}},
+        {
+          "op": "settle",
+          "state": {"state":"disabled","code":"RPC_DISABLED","lastConnectedAt":1792152000000,"attempt":0},
+          "connected": false,
+          "timers": [],
+          "log": [["info","[discord-rpc] RPC_DISABLED: выключено пользователем"]],
+          "double": [{"conn":1,"in":{"op":1,"name":"FRAME","json":{"cmd":"SET_ACTIVITY","args":{"pid":"<pid>"},"nonce":"<nonce:11>"}}},{"conn":1,"in":{"op":2,"name":"CLOSE","json":{}}},{"conn":1,"event":"eof"}],
+          "window": [["discord-rpc-state",{"enabled":false,"source":"user","state":"disabled","code":"RPC_DISABLED","lastConnectedAt":1792152000000}]],
+          "game": [["setDiscordConnected",false]]
+        },
+        {"op":"get","result":{"enabled":false,"source":"user","state":"disabled","code":"RPC_DISABLED","lastConnectedAt":1792152000000}},
+        {"op":"signal"},
+        {"op":"settle","state":{"state":"disabled","code":"RPC_DISABLED","lastConnectedAt":1792152000000,"attempt":0},"connected":false,"timers":[]},
+        {"op":"set","result":{"enabled":true,"source":"user","state":"connecting","code":"RPC_CONNECTING","lastConnectedAt":1792152000000}},
+        {
+          "op": "settle",
+          "state": {"state":"connected","code":"RPC_CONNECTED","lastConnectedAt":1792152000000,"attempt":0},
+          "connected": true,
+          "timers": [],
+          "log": [["info","[discord-rpc] RPC_CONNECTED"]],
+          "double": [
+            {"conn":2,"event":"open","id":0},
+            {"conn":2,"in":{"op":0,"name":"HANDSHAKE","json":{"v":1,"client_id":"1531057982518071296"}}},
+            {
+              "conn": 2,
+              "in": {
+                "op": 1,
+                "name": "FRAME",
+                "json": {"cmd":"SET_ACTIVITY","args":{"pid":"<pid>","activity":{"state":"Installing build","details":"Half-Life (WON)","timestamps":{"start":1792152000000},"assets":{"large_image":"hlsr","large_text":"HLSR v0.5.1"},"buttons":[{"label":"HLSR website","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}],"instance":false}},"nonce":"<nonce:12>"}
+              }
+            }
+          ],
+          "register": ["discord-1531057982518071296"],
+          "window": [["discord-rpc-state",{"enabled":true,"source":"user","state":"connecting","code":"RPC_CONNECTING","lastConnectedAt":1792152000000}]],
+          "game": [["setDiscordConnected",true]]
+        },
+        {"op":"set","result":{"enabled":true,"source":"user","state":"connected","code":"RPC_CONNECTED","lastConnectedAt":1792152000000}},
+        {"op":"settle","state":{"state":"connected","code":"RPC_CONNECTED","lastConnectedAt":1792152000000,"attempt":0},"connected":true,"timers":[],"window":[["discord-rpc-state",{"enabled":true,"source":"user","state":"connected","code":"RPC_CONNECTED","lastConnectedAt":1792152000000}]]},
+        {"op":"advance"},
+        {"op":"shutdown"},
+        {
+          "op": "settle",
+          "state": {"state":"shutting_down","code":"RPC_SHUTDOWN","lastConnectedAt":1792152000000,"attempt":0},
+          "connected": false,
+          "timers": [],
+          "log": [["info","[discord-rpc] RPC_SHUTDOWN"]],
+          "double": [{"conn":2,"in":{"op":1,"name":"FRAME","json":{"cmd":"SET_ACTIVITY","args":{"pid":"<pid>"},"nonce":"<nonce:13>"}}},{"conn":2,"in":{"op":2,"name":"CLOSE","json":{}}},{"conn":2,"event":"eof"}],
+          "game": [["setDiscordConnected",false]]
+        },
+        {"op":"set","result":{"enabled":true,"source":"user","state":"shutting_down","code":"RPC_SHUTDOWN","lastConnectedAt":1792152000000}},
+        {"op":"settle","state":{"state":"shutting_down","code":"RPC_SHUTDOWN","lastConnectedAt":1792152000000,"attempt":0},"connected":false,"timers":[],"window":[["discord-rpc-state",{"enabled":true,"source":"user","state":"shutting_down","code":"RPC_SHUTDOWN","lastConnectedAt":1792152000000}]]},
+        {"op":"get","result":{"enabled":true,"source":"user","state":"shutting_down","code":"RPC_SHUTDOWN","lastConnectedAt":1792152000000}},
+        {"op":"diagnostics","result":{"enabled":true,"state":"shutting_down","connected":false,"lastStableCode":"RPC_SHUTDOWN","reconnectPending":false,"lastConnectedAt":1792152000000,"gameBridge":{"listening":true,"connected":true,"rejected":2,"lifecycle":"menu","hasMap":false}}}
+      ]
+    },
+    {
+      "name": "Discord не запущен, затем запускается",
+      "double": {"listen":[]},
+      "steps": [
+        {"op":"start","until":{"attempt":1,"state":"retry_wait"}},
+        {"op":"settle"},
+        {"op":"fire","timer":"retry","until":{"attempt":2,"state":"retry_wait"}},
+        {"op":"advance","ms":30000},
+        {"op":"fire","timer":"retry","until":{"attempt":3,"state":"retry_wait"}},
+        {"op":"advance","ms":31000},
+        {"op":"fire","timer":"retry","until":{"attempt":4,"state":"retry_wait"}},
+        {"op":"fire","timer":"retry","until":{"attempt":5,"state":"retry_wait"}},
+        {"op":"fire","timer":"retry","until":{"attempt":6,"state":"retry_wait"}},
+        {"op":"fire","timer":"retry","until":{"attempt":7,"state":"retry_wait"}},
+        {"op":"fire","timer":"retry","until":{"attempt":8,"state":"retry_wait"}},
+        {"op":"fire","timer":"retry","until":{"attempt":9,"state":"retry_wait"}},
+        {"op":"fire","timer":"retry","until":{"attempt":10,"state":"retry_wait"}},
+        {"op":"advance","ms":70000},
+        {"op":"fire","timer":"retry","until":{"attempt":11,"state":"retry_wait"}},
+        {"op":"fire","timer":"retry","until":{"attempt":12,"state":"retry_wait"}},
+        {"op":"settle"},
+        {"op":"get"},
+        {"op":"double","action":"listen","ids":[2]},
+        {"op":"fire","timer":"retry","until":{"state":"connected","inDelta":2}},
+        {"op":"settle"},
+        {"op":"get"},
+        {"op":"signal","signal":{"type":"selected","gameId":"hl2-4260"}},
+        {"op":"fire","timer":"debounce","until":{"inDelta":1}},
+        {"op":"settle"},
+        {"op":"shutdown","until":{"inDelta":2}},
+        {"op":"settle"}
+      ],
+      "results": [
+        {"op":"start"},
+        {"op":"settle","state":{"state":"retry_wait","code":"RPC_DISCORD_UNAVAILABLE","lastConnectedAt":null,"attempt":1},"connected":false,"timers":[{"kind":"debounce"},{"kind":"retry","base":5000}],"log":[["info","[discord-rpc] RPC_CONNECTING: включено пользователем"],["info","[discord-rpc] RPC_DISCORD_UNAVAILABLE"]],"register":["discord-1531057982518071296"]},
+        {"op":"fire","result":{"fired":true}},
+        {"op":"advance"},
+        {"op":"fire","result":{"fired":true}},
+        {"op":"advance"},
+        {"op":"fire","result":{"fired":true}},
+        {"op":"fire","result":{"fired":true}},
+        {"op":"fire","result":{"fired":true}},
+        {"op":"fire","result":{"fired":true}},
+        {"op":"fire","result":{"fired":true}},
+        {"op":"fire","result":{"fired":true}},
+        {"op":"fire","result":{"fired":true}},
+        {"op":"advance"},
+        {"op":"fire","result":{"fired":true}},
+        {"op":"fire","result":{"fired":true}},
+        {
+          "op": "settle",
+          "state": {"state":"retry_wait","code":"RPC_DISCORD_UNAVAILABLE","lastConnectedAt":null,"attempt":12},
+          "connected": false,
+          "timers": [{"kind":"debounce"},{"kind":"retry","base":300000}],
+          "log": [["info","[discord-rpc] RPC_CONNECTING"],["info","[discord-rpc] RPC_DISCORD_UNAVAILABLE"],["info","[discord-rpc] RPC_CONNECTING"],["info","[discord-rpc] RPC_DISCORD_UNAVAILABLE"]],
+          "register": ["discord-1531057982518071296","discord-1531057982518071296","discord-1531057982518071296","discord-1531057982518071296","discord-1531057982518071296","discord-1531057982518071296","discord-1531057982518071296","discord-1531057982518071296","discord-1531057982518071296","discord-1531057982518071296","discord-1531057982518071296"]
+        },
+        {"op":"get","result":{"enabled":true,"source":"default","state":"retry_wait","code":"RPC_DISCORD_UNAVAILABLE","lastConnectedAt":null}},
+        {"op":"double"},
+        {"op":"fire","result":{"fired":true}},
+        {
+          "op": "settle",
+          "state": {"state":"connected","code":"RPC_CONNECTED","lastConnectedAt":1792152131000,"attempt":0},
+          "connected": true,
+          "timers": [{"kind":"debounce"}],
+          "log": [["info","[discord-rpc] RPC_CONNECTED"]],
+          "double": [
+            {"conn":1,"event":"open","id":2},
+            {"conn":1,"in":{"op":0,"name":"HANDSHAKE","json":{"v":1,"client_id":"1531057982518071296"}}},
+            {
+              "conn": 1,
+              "in": {
+                "op": 1,
+                "name": "FRAME",
+                "json": {"cmd":"SET_ACTIVITY","args":{"pid":"<pid>","activity":{"state":"В лаунчере","details":"HLSR Launcher","timestamps":{"start":1792152000000},"assets":{"large_image":"hlsr","large_text":"HLSR v0.5.0"},"buttons":[{"label":"Сайт HLSR","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}],"instance":false}},"nonce":"<nonce:1>"}
+              }
+            }
+          ],
+          "register": ["discord-1531057982518071296"]
+        },
+        {"op":"get","result":{"enabled":true,"source":"default","state":"connected","code":"RPC_CONNECTED","lastConnectedAt":1792152131000}},
+        {"op":"signal"},
+        {"op":"fire","result":{"fired":true}},
+        {
+          "op": "settle",
+          "state": {"state":"connected","code":"RPC_CONNECTED","lastConnectedAt":1792152131000,"attempt":0},
+          "connected": true,
+          "timers": [],
+          "double": [
+            {
+              "conn": 1,
+              "in": {
+                "op": 1,
+                "name": "FRAME",
+                "json": {"cmd":"SET_ACTIVITY","args":{"pid":"<pid>","activity":{"state":"Выбирает сборку","details":"Half-Life 2 (4260)","timestamps":{"start":1792152000000},"assets":{"large_image":"hlsr","large_text":"HLSR v0.5.0"},"buttons":[{"label":"Сайт HLSR","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}],"instance":false}},"nonce":"<nonce:2>"}
+              }
+            }
+          ]
+        },
+        {"op":"shutdown"},
+        {"op":"settle","state":{"state":"shutting_down","code":"RPC_SHUTDOWN","lastConnectedAt":1792152131000,"attempt":0},"connected":false,"timers":[],"log":[["info","[discord-rpc] RPC_SHUTDOWN"]],"double":[{"conn":1,"in":{"op":1,"name":"FRAME","json":{"cmd":"SET_ACTIVITY","args":{"pid":"<pid>"},"nonce":"<nonce:3>"}}},{"conn":1,"in":{"op":2,"name":"CLOSE","json":{}}},{"conn":1,"event":"eof"}]}
+      ]
+    },
+    {
+      "name": "обрыв и повторное подключение",
+      "double": {"listen":[0]},
+      "steps": [
+        {"op":"start","until":{"state":"connected","inDelta":2}},
+        {"op":"settle"},
+        {"op":"double","action":"close","conn":1,"until":{"state":"retry_wait"}},
+        {"op":"settle"},
+        {"op":"fire","timer":"retry","until":{"state":"connected","inDelta":2}},
+        {"op":"settle"},
+        {"op":"double","action":"close","conn":2,"polite":true,"until":{"state":"retry_wait"}},
+        {"op":"settle"},
+        {"op":"advance","ms":61000},
+        {"op":"fire","timer":"retry","until":{"state":"connected","inDelta":2}},
+        {"op":"settle"},
+        {"op":"signal","signal":{"type":"selected","gameId":"hl1-won"}},
+        {"op":"fire","timer":"debounce","until":{"inDelta":1}},
+        {"op":"settle"},
+        {"op":"set","enabled":false,"until":{"state":"disabled","inDelta":2}},
+        {"op":"settle"}
+      ],
+      "results": [
+        {"op":"start"},
+        {
+          "op": "settle",
+          "state": {"state":"connected","code":"RPC_CONNECTED","lastConnectedAt":1792152000000,"attempt":0},
+          "connected": true,
+          "timers": [{"kind":"debounce"}],
+          "log": [["info","[discord-rpc] RPC_CONNECTING: включено пользователем"],["info","[discord-rpc] RPC_CONNECTED"]],
+          "double": [
+            {"conn":1,"event":"open","id":0},
+            {"conn":1,"in":{"op":0,"name":"HANDSHAKE","json":{"v":1,"client_id":"1531057982518071296"}}},
+            {
+              "conn": 1,
+              "in": {
+                "op": 1,
+                "name": "FRAME",
+                "json": {"cmd":"SET_ACTIVITY","args":{"pid":"<pid>","activity":{"state":"В лаунчере","details":"HLSR Launcher","timestamps":{"start":1792152000000},"assets":{"large_image":"hlsr","large_text":"HLSR v0.5.0"},"buttons":[{"label":"Сайт HLSR","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}],"instance":false}},"nonce":"<nonce:1>"}
+              }
+            }
+          ],
+          "register": ["discord-1531057982518071296"]
+        },
+        {"op":"double"},
+        {"op":"settle","state":{"state":"retry_wait","code":"RPC_DISCONNECTED","lastConnectedAt":1792152000000,"attempt":0},"connected":false,"timers":[{"kind":"debounce"},{"kind":"retry","base":5000}],"log":[["info","[discord-rpc] RPC_DISCONNECTED"]]},
+        {"op":"fire","result":{"fired":true}},
+        {
+          "op": "settle",
+          "state": {"state":"connected","code":"RPC_CONNECTED","lastConnectedAt":1792152000000,"attempt":0},
+          "connected": true,
+          "timers": [{"kind":"debounce"}],
+          "log": [["info","[discord-rpc] RPC_CONNECTED"]],
+          "double": [
+            {"conn":2,"event":"open","id":0},
+            {"conn":2,"in":{"op":0,"name":"HANDSHAKE","json":{"v":1,"client_id":"1531057982518071296"}}},
+            {
+              "conn": 2,
+              "in": {
+                "op": 1,
+                "name": "FRAME",
+                "json": {"cmd":"SET_ACTIVITY","args":{"pid":"<pid>","activity":{"state":"В лаунчере","details":"HLSR Launcher","timestamps":{"start":1792152000000},"assets":{"large_image":"hlsr","large_text":"HLSR v0.5.0"},"buttons":[{"label":"Сайт HLSR","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}],"instance":false}},"nonce":"<nonce:2>"}
+              }
+            }
+          ],
+          "register": ["discord-1531057982518071296"]
+        },
+        {"op":"double"},
+        {"op":"settle","state":{"state":"retry_wait","code":"RPC_DISCONNECTED","lastConnectedAt":1792152000000,"attempt":0},"connected":false,"timers":[{"kind":"debounce"},{"kind":"retry","base":5000}],"double":[{"conn":2,"event":"eof"}]},
+        {"op":"advance"},
+        {"op":"fire","result":{"fired":true}},
+        {
+          "op": "settle",
+          "state": {"state":"connected","code":"RPC_CONNECTED","lastConnectedAt":1792152061000,"attempt":0},
+          "connected": true,
+          "timers": [{"kind":"debounce"}],
+          "log": [["info","[discord-rpc] RPC_CONNECTING"],["info","[discord-rpc] RPC_CONNECTED"]],
+          "double": [
+            {"conn":3,"event":"open","id":0},
+            {"conn":3,"in":{"op":0,"name":"HANDSHAKE","json":{"v":1,"client_id":"1531057982518071296"}}},
+            {
+              "conn": 3,
+              "in": {
+                "op": 1,
+                "name": "FRAME",
+                "json": {"cmd":"SET_ACTIVITY","args":{"pid":"<pid>","activity":{"state":"В лаунчере","details":"HLSR Launcher","timestamps":{"start":1792152000000},"assets":{"large_image":"hlsr","large_text":"HLSR v0.5.0"},"buttons":[{"label":"Сайт HLSR","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}],"instance":false}},"nonce":"<nonce:3>"}
+              }
+            }
+          ],
+          "register": ["discord-1531057982518071296"]
+        },
+        {"op":"signal"},
+        {"op":"fire","result":{"fired":true}},
+        {
+          "op": "settle",
+          "state": {"state":"connected","code":"RPC_CONNECTED","lastConnectedAt":1792152061000,"attempt":0},
+          "connected": true,
+          "timers": [],
+          "double": [
+            {
+              "conn": 3,
+              "in": {
+                "op": 1,
+                "name": "FRAME",
+                "json": {"cmd":"SET_ACTIVITY","args":{"pid":"<pid>","activity":{"state":"Выбирает сборку","details":"Half-Life (WON)","timestamps":{"start":1792152000000},"assets":{"large_image":"hlsr","large_text":"HLSR v0.5.0"},"buttons":[{"label":"Сайт HLSR","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}],"instance":false}},"nonce":"<nonce:4>"}
+              }
+            }
+          ]
+        },
+        {"op":"set","result":{"enabled":false,"source":"user","state":"disabled","code":"RPC_DISABLED","lastConnectedAt":1792152061000}},
+        {
+          "op": "settle",
+          "state": {"state":"disabled","code":"RPC_DISABLED","lastConnectedAt":1792152061000,"attempt":0},
+          "connected": false,
+          "timers": [],
+          "log": [["info","[discord-rpc] RPC_DISABLED: выключено пользователем"]],
+          "double": [{"conn":3,"in":{"op":1,"name":"FRAME","json":{"cmd":"SET_ACTIVITY","args":{"pid":"<pid>"},"nonce":"<nonce:5>"}}},{"conn":3,"in":{"op":2,"name":"CLOSE","json":{}}},{"conn":3,"event":"eof"}],
+          "window": [["discord-rpc-state",{"enabled":false,"source":"user","state":"disabled","code":"RPC_DISABLED","lastConnectedAt":1792152061000}]]
+        }
+      ]
+    },
+    {
+      "name": "тайм-аут подключения 10 с",
+      "shortConnectTimeout": true,
+      "double": {"listen":[0],"connections":[{"handshake":"silent"},{"handshake":"ready"}]},
+      "steps": [{"op":"start","until":{"inDelta":1}},{"op":"settle"},{"op":"wait","until":{"attempt":1,"state":"retry_wait","code":"RPC_DISCONNECTED","eventsDelta":2},"timeoutMs":20000,"minMs":9900},{"op":"settle"},{"op":"advance","ms":61000},{"op":"fire","timer":"retry","until":{"state":"connected","inDelta":2}},{"op":"settle"}],
+      "results": [
+        {"op":"start"},
+        {
+          "op": "settle",
+          "state": {"state":"connecting","code":"RPC_CONNECTING","lastConnectedAt":null,"attempt":1},
+          "connected": false,
+          "timers": [{"kind":"debounce"}],
+          "log": [["info","[discord-rpc] RPC_CONNECTING: включено пользователем"]],
+          "double": [{"conn":1,"event":"open","id":0},{"conn":1,"in":{"op":0,"name":"HANDSHAKE","json":{"v":1,"client_id":"1531057982518071296"}}}],
+          "register": ["discord-1531057982518071296"]
+        },
+        {"op":"wait"},
+        {"op":"settle","state":{"state":"retry_wait","code":"RPC_DISCONNECTED","lastConnectedAt":null,"attempt":1},"connected":false,"timers":[{"kind":"debounce"},{"kind":"retry","base":5000}],"log":[["info","[discord-rpc] RPC_DISCORD_UNAVAILABLE"],["info","[discord-rpc] RPC_DISCONNECTED"]],"double":[{"conn":1,"in":{"op":2,"name":"CLOSE","json":{}}},{"conn":1,"event":"eof"}]},
+        {"op":"advance"},
+        {"op":"fire","result":{"fired":true}},
+        {
+          "op": "settle",
+          "state": {"state":"connected","code":"RPC_CONNECTED","lastConnectedAt":1792152061000,"attempt":0},
+          "connected": true,
+          "timers": [{"kind":"debounce"}],
+          "log": [["info","[discord-rpc] RPC_CONNECTING"],["info","[discord-rpc] RPC_CONNECTED"]],
+          "double": [
+            {"conn":2,"event":"open","id":0},
+            {"conn":2,"in":{"op":0,"name":"HANDSHAKE","json":{"v":1,"client_id":"1531057982518071296"}}},
+            {
+              "conn": 2,
+              "in": {
+                "op": 1,
+                "name": "FRAME",
+                "json": {"cmd":"SET_ACTIVITY","args":{"pid":"<pid>","activity":{"state":"В лаунчере","details":"HLSR Launcher","timestamps":{"start":1792152000000},"assets":{"large_image":"hlsr","large_text":"HLSR v0.5.0"},"buttons":[{"label":"Сайт HLSR","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}],"instance":false}},"nonce":"<nonce:1>"}
+              }
+            }
+          ],
+          "register": ["discord-1531057982518071296"]
+        }
+      ]
+    },
+    {
+      "name": "выключение во время подключения",
+      "double": {"listen":[0],"connections":[{"handshake":{"hold":"g1"}},{"handshake":{"hold":"g2"}},{"handshake":{"hold":"g3"}},{"handshake":"ready"}]},
+      "steps": [
+        {"op":"start","until":{"inDelta":1}},
+        {"op":"settle"},
+        {"op":"get"},
+        {"op":"set","enabled":false},
+        {"op":"settle"},
+        {"op":"get"},
+        {"op":"double","action":"release","gate":"g1","until":{"eventsDelta":2}},
+        {"op":"settle"},
+        {"op":"set","enabled":true,"until":{"inDelta":1}},
+        {"op":"settle"},
+        {"op":"set","enabled":false},
+        {"op":"set","enabled":true,"until":{"inDelta":1}},
+        {"op":"settle"},
+        {"op":"double","action":"release","gate":"g3","until":{"state":"connected","inDelta":1}},
+        {"op":"settle"},
+        {"op":"double","action":"release","gate":"g2","until":{"eventsDelta":2}},
+        {"op":"settle"},
+        {"op":"shutdown","until":{"state":"shutting_down","inDelta":2}},
+        {"op":"settle"}
+      ],
+      "results": [
+        {"op":"start"},
+        {
+          "op": "settle",
+          "state": {"state":"connecting","code":"RPC_CONNECTING","lastConnectedAt":null,"attempt":1},
+          "connected": false,
+          "timers": [{"kind":"debounce"}],
+          "log": [["info","[discord-rpc] RPC_CONNECTING: включено пользователем"]],
+          "double": [{"conn":1,"event":"open","id":0},{"conn":1,"in":{"op":0,"name":"HANDSHAKE","json":{"v":1,"client_id":"1531057982518071296"}}}],
+          "register": ["discord-1531057982518071296"]
+        },
+        {"op":"get","result":{"enabled":true,"source":"default","state":"connecting","code":"RPC_CONNECTING","lastConnectedAt":null}},
+        {"op":"set","result":{"enabled":false,"source":"user","state":"disabled","code":"RPC_DISABLED","lastConnectedAt":null}},
+        {"op":"settle","state":{"state":"disabled","code":"RPC_DISABLED","lastConnectedAt":null,"attempt":0},"connected":false,"timers":[],"log":[["info","[discord-rpc] RPC_DISABLED: выключено пользователем"]],"window":[["discord-rpc-state",{"enabled":false,"source":"user","state":"disabled","code":"RPC_DISABLED","lastConnectedAt":null}]]},
+        {"op":"get","result":{"enabled":false,"source":"user","state":"disabled","code":"RPC_DISABLED","lastConnectedAt":null}},
+        {"op":"double"},
+        {"op":"settle","state":{"state":"disabled","code":"RPC_DISABLED","lastConnectedAt":null,"attempt":0},"connected":false,"timers":[],"double":[{"conn":1,"in":{"op":2,"name":"CLOSE","json":{}}},{"conn":1,"event":"eof"}]},
+        {"op":"set","result":{"enabled":true,"source":"user","state":"connecting","code":"RPC_CONNECTING","lastConnectedAt":null}},
+        {
+          "op": "settle",
+          "state": {"state":"connecting","code":"RPC_CONNECTING","lastConnectedAt":null,"attempt":1},
+          "connected": false,
+          "timers": [{"kind":"debounce"}],
+          "double": [{"conn":2,"event":"open","id":0},{"conn":2,"in":{"op":0,"name":"HANDSHAKE","json":{"v":1,"client_id":"1531057982518071296"}}}],
+          "register": ["discord-1531057982518071296"],
+          "window": [["discord-rpc-state",{"enabled":true,"source":"user","state":"connecting","code":"RPC_CONNECTING","lastConnectedAt":null}]]
+        },
+        {"op":"set","result":{"enabled":false,"source":"user","state":"disabled","code":"RPC_DISABLED","lastConnectedAt":null}},
+        {"op":"set","result":{"enabled":true,"source":"user","state":"connecting","code":"RPC_CONNECTING","lastConnectedAt":null}},
+        {
+          "op": "settle",
+          "state": {"state":"connecting","code":"RPC_CONNECTING","lastConnectedAt":null,"attempt":1},
+          "connected": false,
+          "timers": [{"kind":"debounce"}],
+          "double": [{"conn":3,"event":"open","id":0},{"conn":3,"in":{"op":0,"name":"HANDSHAKE","json":{"v":1,"client_id":"1531057982518071296"}}}],
+          "register": ["discord-1531057982518071296"],
+          "window": [["discord-rpc-state",{"enabled":false,"source":"user","state":"disabled","code":"RPC_DISABLED","lastConnectedAt":null}],["discord-rpc-state",{"enabled":true,"source":"user","state":"connecting","code":"RPC_CONNECTING","lastConnectedAt":null}]]
+        },
+        {"op":"double"},
+        {
+          "op": "settle",
+          "state": {"state":"connected","code":"RPC_CONNECTED","lastConnectedAt":1792152000000,"attempt":0},
+          "connected": true,
+          "timers": [{"kind":"debounce"}],
+          "log": [["info","[discord-rpc] RPC_CONNECTED"]],
+          "double": [
+            {
+              "conn": 3,
+              "in": {
+                "op": 1,
+                "name": "FRAME",
+                "json": {"cmd":"SET_ACTIVITY","args":{"pid":"<pid>","activity":{"state":"В лаунчере","details":"HLSR Launcher","timestamps":{"start":1792152000000},"assets":{"large_image":"hlsr","large_text":"HLSR v0.5.0"},"buttons":[{"label":"Сайт HLSR","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}],"instance":false}},"nonce":"<nonce:1>"}
+              }
+            }
+          ]
+        },
+        {"op":"double"},
+        {"op":"settle","state":{"state":"connected","code":"RPC_CONNECTED","lastConnectedAt":1792152000000,"attempt":0},"connected":true,"timers":[{"kind":"debounce"}],"double":[{"conn":2,"in":{"op":2,"name":"CLOSE","json":{}}},{"conn":2,"event":"eof"}]},
+        {"op":"shutdown"},
+        {"op":"settle","state":{"state":"shutting_down","code":"RPC_SHUTDOWN","lastConnectedAt":1792152000000,"attempt":0},"connected":false,"timers":[],"log":[["info","[discord-rpc] RPC_SHUTDOWN"]],"double":[{"conn":3,"in":{"op":1,"name":"FRAME","json":{"cmd":"SET_ACTIVITY","args":{"pid":"<pid>"},"nonce":"<nonce:2>"}}},{"conn":3,"in":{"op":2,"name":"CLOSE","json":{}}},{"conn":3,"event":"eof"}]}
+      ]
+    },
+    {
+      "name": "выход во время подключения",
+      "double": {"listen":[0],"connections":[{"handshake":{"hold":"h"}}]},
+      "steps": [{"op":"start","until":{"inDelta":1}},{"op":"settle"},{"op":"shutdown"},{"op":"settle"},{"op":"get"},{"op":"double","action":"release","gate":"h","until":{"eventsDelta":2}},{"op":"settle"},{"op":"get"}],
+      "results": [
+        {"op":"start"},
+        {
+          "op": "settle",
+          "state": {"state":"connecting","code":"RPC_CONNECTING","lastConnectedAt":null,"attempt":1},
+          "connected": false,
+          "timers": [{"kind":"debounce"}],
+          "log": [["info","[discord-rpc] RPC_CONNECTING: включено пользователем"]],
+          "double": [{"conn":1,"event":"open","id":0},{"conn":1,"in":{"op":0,"name":"HANDSHAKE","json":{"v":1,"client_id":"1531057982518071296"}}}],
+          "register": ["discord-1531057982518071296"]
+        },
+        {"op":"shutdown"},
+        {"op":"settle","state":{"state":"shutting_down","code":"RPC_SHUTDOWN","lastConnectedAt":null,"attempt":1},"connected":false,"timers":[],"log":[["info","[discord-rpc] RPC_SHUTDOWN"]]},
+        {"op":"get","result":{"enabled":true,"source":"default","state":"shutting_down","code":"RPC_SHUTDOWN","lastConnectedAt":null}},
+        {"op":"double"},
+        {"op":"settle","state":{"state":"shutting_down","code":"RPC_SHUTDOWN","lastConnectedAt":null,"attempt":1},"connected":false,"timers":[],"double":[{"conn":1,"in":{"op":2,"name":"CLOSE","json":{}}},{"conn":1,"event":"eof"}]},
+        {"op":"get","result":{"enabled":true,"source":"default","state":"shutting_down","code":"RPC_SHUTDOWN","lastConnectedAt":null}}
+      ]
+    },
+    {
+      "name": "отказы SET_ACTIVITY",
+      "double": {"listen":[0],"connections":[{"activity":{"error":{"code":4000,"message":"Invalid activity"}}},{"activity":"silent"},{}]},
+      "steps": [
+        {"op":"start","until":{"state":"connected","inDelta":2}},
+        {"op":"settle"},
+        {"op":"signal","signal":{"type":"selected","gameId":"ghosting-renewed"}},
+        {"op":"fire","timer":"debounce","until":{"inDelta":1}},
+        {"op":"settle"},
+        {"op":"advance","ms":30000},
+        {"op":"signal","signal":{"type":"selected","gameId":"hl1-won"}},
+        {"op":"fire","timer":"debounce","until":{"inDelta":1}},
+        {"op":"settle"},
+        {"op":"advance","ms":31000},
+        {"op":"signal","signal":{"type":"selected","gameId":"ghosting-renewed"}},
+        {"op":"fire","timer":"debounce","until":{"inDelta":1}},
+        {"op":"settle"},
+        {"op":"double","action":"behave","conn":1,"patch":{"activity":{"error":{"code":0,"message":"zero"}}}},
+        {"op":"advance","ms":61000},
+        {"op":"signal","signal":{"type":"selected","gameId":"hl1-won"}},
+        {"op":"fire","timer":"debounce","until":{"inDelta":1}},
+        {"op":"settle"},
+        {"op":"double","action":"behave","conn":1,"patch":{"activity":{"error":{"code":"E_BAD","message":"text"}}}},
+        {"op":"advance","ms":61000},
+        {"op":"signal","signal":{"type":"selected","gameId":"ghosting-renewed"}},
+        {"op":"fire","timer":"debounce","until":{"inDelta":1}},
+        {"op":"settle"},
+        {"op":"double","action":"behave","conn":1,"patch":{"activity":"ok"}},
+        {"op":"signal","signal":{"type":"selected","gameId":"hl1-won"}},
+        {"op":"fire","timer":"debounce","until":{"inDelta":1}},
+        {"op":"settle"},
+        {"op":"fire","timer":"debounce"},
+        {"op":"settle"},
+        {"op":"double","action":"close","conn":1,"until":{"state":"retry_wait"}},
+        {"op":"settle"},
+        {"op":"fire","timer":"retry","until":{"state":"connected","inDelta":2}},
+        {"op":"settle"},
+        {"op":"signal","signal":{"type":"selected","gameId":"ghosting-renewed"}},
+        {"op":"fire","timer":"debounce","until":{"inDelta":1}},
+        {"op":"settle"},
+        {"op":"double","action":"behave","conn":2,"patch":{"activity":"ok"}},
+        {"op":"signal","signal":{"type":"selected","gameId":"hl1-won"}},
+        {"op":"fire","timer":"debounce","until":{"inDelta":1}},
+        {"op":"settle"}
+      ],
+      "results": [
+        {"op":"start"},
+        {
+          "op": "settle",
+          "state": {"state":"connected","code":"RPC_UPDATE_FAILED","lastConnectedAt":1792152000000,"attempt":0},
+          "connected": true,
+          "timers": [{"kind":"debounce"}],
+          "log": [["info","[discord-rpc] RPC_CONNECTING: включено пользователем"],["info","[discord-rpc] RPC_CONNECTED"],["info","[discord-rpc] RPC_UPDATE_FAILED: 4000"]],
+          "double": [
+            {"conn":1,"event":"open","id":0},
+            {"conn":1,"in":{"op":0,"name":"HANDSHAKE","json":{"v":1,"client_id":"1531057982518071296"}}},
+            {
+              "conn": 1,
+              "in": {
+                "op": 1,
+                "name": "FRAME",
+                "json": {"cmd":"SET_ACTIVITY","args":{"pid":"<pid>","activity":{"state":"В лаунчере","details":"HLSR Launcher","timestamps":{"start":1792152000000},"assets":{"large_image":"hlsr","large_text":"HLSR v0.5.0"},"buttons":[{"label":"Сайт HLSR","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}],"instance":false}},"nonce":"<nonce:1>"}
+              }
+            }
+          ],
+          "register": ["discord-1531057982518071296"]
+        },
+        {"op":"signal"},
+        {"op":"fire","result":{"fired":true}},
+        {
+          "op": "settle",
+          "state": {"state":"connected","code":"RPC_UPDATE_FAILED","lastConnectedAt":1792152000000,"attempt":0},
+          "connected": true,
+          "timers": [],
+          "double": [
+            {
+              "conn": 1,
+              "in": {
+                "op": 1,
+                "name": "FRAME",
+                "json": {
+                  "cmd": "SET_ACTIVITY",
+                  "args": {"pid":"<pid>","activity":{"state":"Выбирает сборку","details":"Half-Life 2: Ghosting Mod: Renewed","timestamps":{"start":1792152000000},"assets":{"large_image":"hlsr","large_text":"HLSR v0.5.0"},"buttons":[{"label":"Сайт HLSR","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}],"instance":false}},
+                  "nonce": "<nonce:2>"
+                }
+              }
+            }
+          ]
+        },
+        {"op":"advance"},
+        {"op":"signal"},
+        {"op":"fire","result":{"fired":true}},
+        {
+          "op": "settle",
+          "state": {"state":"connected","code":"RPC_UPDATE_FAILED","lastConnectedAt":1792152000000,"attempt":0},
+          "connected": true,
+          "timers": [],
+          "double": [
+            {
+              "conn": 1,
+              "in": {
+                "op": 1,
+                "name": "FRAME",
+                "json": {"cmd":"SET_ACTIVITY","args":{"pid":"<pid>","activity":{"state":"Выбирает сборку","details":"Half-Life (WON)","timestamps":{"start":1792152000000},"assets":{"large_image":"hlsr","large_text":"HLSR v0.5.0"},"buttons":[{"label":"Сайт HLSR","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}],"instance":false}},"nonce":"<nonce:3>"}
+              }
+            }
+          ]
+        },
+        {"op":"advance"},
+        {"op":"signal"},
+        {"op":"fire","result":{"fired":true}},
+        {
+          "op": "settle",
+          "state": {"state":"connected","code":"RPC_UPDATE_FAILED","lastConnectedAt":1792152000000,"attempt":0},
+          "connected": true,
+          "timers": [],
+          "log": [["info","[discord-rpc] RPC_UPDATE_FAILED: 4000"]],
+          "double": [
+            {
+              "conn": 1,
+              "in": {
+                "op": 1,
+                "name": "FRAME",
+                "json": {
+                  "cmd": "SET_ACTIVITY",
+                  "args": {"pid":"<pid>","activity":{"state":"Выбирает сборку","details":"Half-Life 2: Ghosting Mod: Renewed","timestamps":{"start":1792152000000},"assets":{"large_image":"hlsr","large_text":"HLSR v0.5.0"},"buttons":[{"label":"Сайт HLSR","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}],"instance":false}},
+                  "nonce": "<nonce:4>"
+                }
+              }
+            }
+          ]
+        },
+        {"op":"double"},
+        {"op":"advance"},
+        {"op":"signal"},
+        {"op":"fire","result":{"fired":true}},
+        {
+          "op": "settle",
+          "state": {"state":"connected","code":"RPC_UPDATE_FAILED","lastConnectedAt":1792152000000,"attempt":0},
+          "connected": true,
+          "timers": [],
+          "log": [["info","[discord-rpc] RPC_UPDATE_FAILED"]],
+          "double": [
+            {
+              "conn": 1,
+              "in": {
+                "op": 1,
+                "name": "FRAME",
+                "json": {"cmd":"SET_ACTIVITY","args":{"pid":"<pid>","activity":{"state":"Выбирает сборку","details":"Half-Life (WON)","timestamps":{"start":1792152000000},"assets":{"large_image":"hlsr","large_text":"HLSR v0.5.0"},"buttons":[{"label":"Сайт HLSR","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}],"instance":false}},"nonce":"<nonce:5>"}
+              }
+            }
+          ]
+        },
+        {"op":"double"},
+        {"op":"advance"},
+        {"op":"signal"},
+        {"op":"fire","result":{"fired":true}},
+        {
+          "op": "settle",
+          "state": {"state":"connected","code":"RPC_UPDATE_FAILED","lastConnectedAt":1792152000000,"attempt":0},
+          "connected": true,
+          "timers": [],
+          "log": [["info","[discord-rpc] RPC_UPDATE_FAILED: E_BAD"]],
+          "double": [
+            {
+              "conn": 1,
+              "in": {
+                "op": 1,
+                "name": "FRAME",
+                "json": {
+                  "cmd": "SET_ACTIVITY",
+                  "args": {"pid":"<pid>","activity":{"state":"Выбирает сборку","details":"Half-Life 2: Ghosting Mod: Renewed","timestamps":{"start":1792152000000},"assets":{"large_image":"hlsr","large_text":"HLSR v0.5.0"},"buttons":[{"label":"Сайт HLSR","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}],"instance":false}},
+                  "nonce": "<nonce:6>"
+                }
+              }
+            }
+          ]
+        },
+        {"op":"double"},
+        {"op":"signal"},
+        {"op":"fire","result":{"fired":true}},
+        {
+          "op": "settle",
+          "state": {"state":"connected","code":"RPC_UPDATE_FAILED","lastConnectedAt":1792152000000,"attempt":0},
+          "connected": true,
+          "timers": [],
+          "double": [
+            {
+              "conn": 1,
+              "in": {
+                "op": 1,
+                "name": "FRAME",
+                "json": {"cmd":"SET_ACTIVITY","args":{"pid":"<pid>","activity":{"state":"Выбирает сборку","details":"Half-Life (WON)","timestamps":{"start":1792152000000},"assets":{"large_image":"hlsr","large_text":"HLSR v0.5.0"},"buttons":[{"label":"Сайт HLSR","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}],"instance":false}},"nonce":"<nonce:7>"}
+              }
+            }
+          ]
+        },
+        {"op":"fire","result":{"fired":false}},
+        {"op":"settle","state":{"state":"connected","code":"RPC_UPDATE_FAILED","lastConnectedAt":1792152000000,"attempt":0},"connected":true,"timers":[]},
+        {"op":"double"},
+        {"op":"settle","state":{"state":"retry_wait","code":"RPC_DISCONNECTED","lastConnectedAt":1792152000000,"attempt":0},"connected":false,"timers":[{"kind":"retry","base":5000}],"log":[["info","[discord-rpc] RPC_DISCONNECTED"]]},
+        {"op":"fire","result":{"fired":true}},
+        {
+          "op": "settle",
+          "state": {"state":"connected","code":"RPC_CONNECTED","lastConnectedAt":1792152183000,"attempt":0},
+          "connected": true,
+          "timers": [],
+          "log": [["info","[discord-rpc] RPC_CONNECTING"],["info","[discord-rpc] RPC_CONNECTED"]],
+          "double": [
+            {"conn":2,"event":"open","id":0},
+            {"conn":2,"in":{"op":0,"name":"HANDSHAKE","json":{"v":1,"client_id":"1531057982518071296"}}},
+            {
+              "conn": 2,
+              "in": {
+                "op": 1,
+                "name": "FRAME",
+                "json": {"cmd":"SET_ACTIVITY","args":{"pid":"<pid>","activity":{"state":"Выбирает сборку","details":"Half-Life (WON)","timestamps":{"start":1792152000000},"assets":{"large_image":"hlsr","large_text":"HLSR v0.5.0"},"buttons":[{"label":"Сайт HLSR","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}],"instance":false}},"nonce":"<nonce:8>"}
+              }
+            }
+          ],
+          "register": ["discord-1531057982518071296"]
+        },
+        {"op":"signal"},
+        {"op":"fire","result":{"fired":true}},
+        {
+          "op": "settle",
+          "state": {"state":"connected","code":"RPC_CONNECTED","lastConnectedAt":1792152183000,"attempt":0},
+          "connected": true,
+          "timers": [],
+          "double": [
+            {
+              "conn": 2,
+              "in": {
+                "op": 1,
+                "name": "FRAME",
+                "json": {
+                  "cmd": "SET_ACTIVITY",
+                  "args": {"pid":"<pid>","activity":{"state":"Выбирает сборку","details":"Half-Life 2: Ghosting Mod: Renewed","timestamps":{"start":1792152000000},"assets":{"large_image":"hlsr","large_text":"HLSR v0.5.0"},"buttons":[{"label":"Сайт HLSR","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}],"instance":false}},
+                  "nonce": "<nonce:9>"
+                }
+              }
+            }
+          ]
+        },
+        {"op":"double"},
+        {"op":"signal"},
+        {"op":"fire","result":{"fired":true}},
+        {
+          "op": "settle",
+          "state": {"state":"connected","code":"RPC_CONNECTED","lastConnectedAt":1792152183000,"attempt":0},
+          "connected": true,
+          "timers": [],
+          "double": [
+            {
+              "conn": 2,
+              "in": {
+                "op": 1,
+                "name": "FRAME",
+                "json": {"cmd":"SET_ACTIVITY","args":{"pid":"<pid>","activity":{"state":"Выбирает сборку","details":"Half-Life (WON)","timestamps":{"start":1792152000000},"assets":{"large_image":"hlsr","large_text":"HLSR v0.5.0"},"buttons":[{"label":"Сайт HLSR","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}],"instance":false}},"nonce":"<nonce:10>"}
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "рукопожатие отклонено или оборвано",
+      "double": {"listen":[0],"connections":[{"handshake":{"close":{"code":4000,"message":"Invalid Client ID"},"end":false}},{"handshake":"drop"},{"handshake":"ready"}]},
+      "steps": [{"op":"start","until":{"attempt":1,"state":"retry_wait","code":"RPC_DISCORD_UNAVAILABLE","eventsDelta":4}},{"op":"settle"},{"op":"fire","timer":"retry","until":{"attempt":2,"state":"retry_wait","eventsDelta":2}},{"op":"settle"},{"op":"advance","ms":61000},{"op":"fire","timer":"retry","until":{"state":"connected","inDelta":2}},{"op":"settle"}],
+      "results": [
+        {"op":"start"},
+        {
+          "op": "settle",
+          "state": {"state":"retry_wait","code":"RPC_DISCORD_UNAVAILABLE","lastConnectedAt":null,"attempt":1},
+          "connected": false,
+          "timers": [{"kind":"debounce"},{"kind":"retry","base":5000}],
+          "log": [["info","[discord-rpc] RPC_CONNECTING: включено пользователем"],["info","[discord-rpc] RPC_DISCONNECTED"],["info","[discord-rpc] RPC_DISCORD_UNAVAILABLE"]],
+          "double": [{"conn":1,"event":"open","id":0},{"conn":1,"in":{"op":0,"name":"HANDSHAKE","json":{"v":1,"client_id":"1531057982518071296"}}},{"conn":1,"in":{"op":2,"name":"CLOSE","json":{}}},{"conn":1,"event":"eof"}],
+          "register": ["discord-1531057982518071296"]
+        },
+        {"op":"fire","result":{"fired":true}},
+        {"op":"settle","state":{"state":"retry_wait","code":"RPC_DISCORD_UNAVAILABLE","lastConnectedAt":null,"attempt":2},"connected":false,"timers":[{"kind":"debounce"},{"kind":"retry","base":10000}],"double":[{"conn":2,"event":"open","id":0},{"conn":2,"in":{"op":0,"name":"HANDSHAKE","json":{"v":1,"client_id":"1531057982518071296"}}}],"register":["discord-1531057982518071296"]},
+        {"op":"advance"},
+        {"op":"fire","result":{"fired":true}},
+        {
+          "op": "settle",
+          "state": {"state":"connected","code":"RPC_CONNECTED","lastConnectedAt":1792152061000,"attempt":0},
+          "connected": true,
+          "timers": [{"kind":"debounce"}],
+          "log": [["info","[discord-rpc] RPC_CONNECTING"],["info","[discord-rpc] RPC_CONNECTED"]],
+          "double": [
+            {"conn":3,"event":"open","id":0},
+            {"conn":3,"in":{"op":0,"name":"HANDSHAKE","json":{"v":1,"client_id":"1531057982518071296"}}},
+            {
+              "conn": 3,
+              "in": {
+                "op": 1,
+                "name": "FRAME",
+                "json": {"cmd":"SET_ACTIVITY","args":{"pid":"<pid>","activity":{"state":"В лаунчере","details":"HLSR Launcher","timestamps":{"start":1792152000000},"assets":{"large_image":"hlsr","large_text":"HLSR v0.5.0"},"buttons":[{"label":"Сайт HLSR","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}],"instance":false}},"nonce":"<nonce:1>"}
+              }
+            }
+          ],
+          "register": ["discord-1531057982518071296"]
+        }
+      ]
+    },
+    {
+      "name": "PING, PONG и чужие кадры",
+      "double": {"listen":[0]},
+      "steps": [
+        {"op":"start","until":{"state":"connected","inDelta":2}},
+        {"op":"settle"},
+        {"op":"double","action":"send","conn":1,"frameOp":3,"data":"ping-1","until":{"inDelta":1}},
+        {"op":"double","action":"send","conn":1,"frameOp":3,"data":{"a":[1,2]},"until":{"inDelta":1}},
+        {"op":"double","action":"send","conn":1,"frameOp":1,"data":{"cmd":"DISPATCH","evt":"ACTIVITY_JOIN","data":{}}},
+        {"op":"settle"},
+        {"op":"double","action":"send","conn":1,"frameOp":1,"data":null},
+        {"op":"settle"},
+        {"op":"double","action":"send","conn":1,"frameOp":1,"data":{"cmd":"DISPATCH","evt":"READY","data":{"user":null}}},
+        {"op":"settle"},
+        {"op":"double","action":"send","conn":1,"frameOp":2,"data":{"code":4000,"message":"bye"},"until":{"state":"retry_wait"}},
+        {"op":"settle"},
+        {"op":"fire","timer":"retry","until":{"state":"connected","inDelta":2}},
+        {"op":"settle"}
+      ],
+      "results": [
+        {"op":"start"},
+        {
+          "op": "settle",
+          "state": {"state":"connected","code":"RPC_CONNECTED","lastConnectedAt":1792152000000,"attempt":0},
+          "connected": true,
+          "timers": [{"kind":"debounce"}],
+          "log": [["info","[discord-rpc] RPC_CONNECTING: включено пользователем"],["info","[discord-rpc] RPC_CONNECTED"]],
+          "double": [
+            {"conn":1,"event":"open","id":0},
+            {"conn":1,"in":{"op":0,"name":"HANDSHAKE","json":{"v":1,"client_id":"1531057982518071296"}}},
+            {
+              "conn": 1,
+              "in": {
+                "op": 1,
+                "name": "FRAME",
+                "json": {"cmd":"SET_ACTIVITY","args":{"pid":"<pid>","activity":{"state":"В лаунчере","details":"HLSR Launcher","timestamps":{"start":1792152000000},"assets":{"large_image":"hlsr","large_text":"HLSR v0.5.0"},"buttons":[{"label":"Сайт HLSR","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}],"instance":false}},"nonce":"<nonce:1>"}
+              }
+            }
+          ],
+          "register": ["discord-1531057982518071296"]
+        },
+        {"op":"double"},
+        {"op":"double"},
+        {"op":"double"},
+        {"op":"settle","state":{"state":"connected","code":"RPC_CONNECTED","lastConnectedAt":1792152000000,"attempt":0},"connected":true,"timers":[{"kind":"debounce"}],"double":[{"conn":1,"in":{"op":4,"name":"PONG","json":"ping-1"}},{"conn":1,"in":{"op":4,"name":"PONG","json":{"a":[1,2]}}}]},
+        {"op":"double"},
+        {"op":"settle","state":{"state":"connected","code":"RPC_CONNECTED","lastConnectedAt":1792152000000,"attempt":0},"connected":true,"timers":[{"kind":"debounce"}]},
+        {"op":"double"},
+        {"op":"settle","state":{"state":"connected","code":"RPC_CONNECTED","lastConnectedAt":1792152000000,"attempt":0},"connected":true,"timers":[{"kind":"debounce"}]},
+        {"op":"double"},
+        {"op":"settle","state":{"state":"retry_wait","code":"RPC_DISCONNECTED","lastConnectedAt":1792152000000,"attempt":0},"connected":false,"timers":[{"kind":"debounce"},{"kind":"retry","base":5000}],"log":[["info","[discord-rpc] RPC_DISCONNECTED"]]},
+        {"op":"fire","result":{"fired":true}},
+        {
+          "op": "settle",
+          "state": {"state":"connected","code":"RPC_CONNECTED","lastConnectedAt":1792152000000,"attempt":0},
+          "connected": true,
+          "timers": [{"kind":"debounce"}],
+          "log": [["info","[discord-rpc] RPC_CONNECTED"]],
+          "double": [
+            {"conn":2,"event":"open","id":0},
+            {"conn":2,"in":{"op":0,"name":"HANDSHAKE","json":{"v":1,"client_id":"1531057982518071296"}}},
+            {
+              "conn": 2,
+              "in": {
+                "op": 1,
+                "name": "FRAME",
+                "json": {"cmd":"SET_ACTIVITY","args":{"pid":"<pid>","activity":{"state":"В лаунчере","details":"HLSR Launcher","timestamps":{"start":1792152000000},"assets":{"large_image":"hlsr","large_text":"HLSR v0.5.0"},"buttons":[{"label":"Сайт HLSR","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}],"instance":false}},"nonce":"<nonce:2>"}
+              }
+            }
+          ],
+          "register": ["discord-1531057982518071296"]
+        }
+      ]
+    },
+    {
+      "name": "настройка и перенос из settings.json",
+      "setup": [{"file":"settings.json","utf8":"{\"config\":{\"rpc\":false,\"language\":\"en\"}}"}],
+      "double": {"listen":[1]},
+      "steps": [
+        {"op":"start"},
+        {"op":"settle"},
+        {"op":"get"},
+        {"op":"files"},
+        {"op":"signal","signal":{"type":"selected","gameId":"ghosting-renewed"}},
+        {"op":"settle"},
+        {"op":"set","enabled":"true"},
+        {"op":"get"},
+        {"op":"files"},
+        {"op":"set","enabled":true,"until":{"state":"connected","inDelta":2}},
+        {"op":"settle"},
+        {"op":"get"},
+        {"op":"files"},
+        {"op":"set","enabled":false,"until":{"state":"disabled","inDelta":2}},
+        {"op":"settle"},
+        {"op":"files"},
+        {"op":"attachGame","diagnostics":null},
+        {"op":"diagnostics"}
+      ],
+      "results": [
+        {"op":"start"},
+        {"op":"settle","state":{"state":"disabled","code":null,"lastConnectedAt":null,"attempt":0},"connected":false,"timers":[]},
+        {"op":"get","result":{"enabled":false,"source":"migrated","state":"disabled","code":null,"lastConnectedAt":null}},
+        {"op":"files","result":{"discord-rpc.json":"{\n  \"schemaVersion\": 2,\n  \"enabled\": false,\n  \"source\": \"migrated\",\n  \"migrated\": true,\n  \"updatedAt\": \"2026-10-16T12:00:00.000Z\",\n  \"legacyValue\": false\n}\n","settings.json":"{\"config\":{\"rpc\":false,\"language\":\"en\"}}"}},
+        {"op":"signal"},
+        {"op":"settle","state":{"state":"disabled","code":null,"lastConnectedAt":null,"attempt":0},"connected":false,"timers":[]},
+        {"op":"set","result":{"enabled":false,"source":"user","state":"disabled","code":null,"lastConnectedAt":null}},
+        {"op":"get","result":{"enabled":false,"source":"user","state":"disabled","code":null,"lastConnectedAt":null}},
+        {"op":"files","result":{"discord-rpc.json":"{\n  \"schemaVersion\": 2,\n  \"enabled\": false,\n  \"source\": \"user\",\n  \"migrated\": true,\n  \"updatedAt\": \"2026-10-16T12:00:00.000Z\",\n  \"legacyValue\": false\n}\n","settings.json":"{\"config\":{\"rpc\":false,\"language\":\"en\"}}"}},
+        {"op":"set","result":{"enabled":true,"source":"user","state":"connecting","code":"RPC_CONNECTING","lastConnectedAt":null}},
+        {
+          "op": "settle",
+          "state": {"state":"connected","code":"RPC_CONNECTED","lastConnectedAt":1792152000000,"attempt":0},
+          "connected": true,
+          "timers": [],
+          "log": [["info","[discord-rpc] RPC_CONNECTING: включено пользователем"],["info","[discord-rpc] RPC_CONNECTED"]],
+          "double": [
+            {"conn":1,"event":"open","id":1},
+            {"conn":1,"in":{"op":0,"name":"HANDSHAKE","json":{"v":1,"client_id":"1531057982518071296"}}},
+            {
+              "conn": 1,
+              "in": {
+                "op": 1,
+                "name": "FRAME",
+                "json": {
+                  "cmd": "SET_ACTIVITY",
+                  "args": {"pid":"<pid>","activity":{"state":"Выбирает сборку","details":"Half-Life 2: Ghosting Mod: Renewed","timestamps":{"start":1792152000000},"assets":{"large_image":"hlsr","large_text":"HLSR v0.5.0"},"buttons":[{"label":"Сайт HLSR","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}],"instance":false}},
+                  "nonce": "<nonce:1>"
+                }
+              }
+            }
+          ],
+          "register": ["discord-1531057982518071296"],
+          "window": [["discord-rpc-state",{"enabled":false,"source":"user","state":"disabled","code":null,"lastConnectedAt":null}],["discord-rpc-state",{"enabled":true,"source":"user","state":"connecting","code":"RPC_CONNECTING","lastConnectedAt":null}]]
+        },
+        {"op":"get","result":{"enabled":true,"source":"user","state":"connected","code":"RPC_CONNECTED","lastConnectedAt":1792152000000}},
+        {"op":"files","result":{"discord-rpc.json":"{\n  \"schemaVersion\": 2,\n  \"enabled\": true,\n  \"source\": \"user\",\n  \"migrated\": true,\n  \"updatedAt\": \"2026-10-16T12:00:00.000Z\",\n  \"legacyValue\": false\n}\n","settings.json":"{\"config\":{\"rpc\":false,\"language\":\"en\"}}"}},
+        {"op":"set","result":{"enabled":false,"source":"user","state":"disabled","code":"RPC_DISABLED","lastConnectedAt":1792152000000}},
+        {
+          "op": "settle",
+          "state": {"state":"disabled","code":"RPC_DISABLED","lastConnectedAt":1792152000000,"attempt":0},
+          "connected": false,
+          "timers": [],
+          "log": [["info","[discord-rpc] RPC_DISABLED: выключено пользователем"]],
+          "double": [{"conn":1,"in":{"op":1,"name":"FRAME","json":{"cmd":"SET_ACTIVITY","args":{"pid":"<pid>"},"nonce":"<nonce:2>"}}},{"conn":1,"in":{"op":2,"name":"CLOSE","json":{}}},{"conn":1,"event":"eof"}],
+          "window": [["discord-rpc-state",{"enabled":false,"source":"user","state":"disabled","code":"RPC_DISABLED","lastConnectedAt":1792152000000}]]
+        },
+        {"op":"files","result":{"discord-rpc.json":"{\n  \"schemaVersion\": 2,\n  \"enabled\": false,\n  \"source\": \"user\",\n  \"migrated\": true,\n  \"updatedAt\": \"2026-10-16T12:00:00.000Z\",\n  \"legacyValue\": false\n}\n","settings.json":"{\"config\":{\"rpc\":false,\"language\":\"en\"}}"}},
+        {"op":"attachGame","result":true},
+        {"op":"diagnostics","result":{"enabled":false,"state":"disabled","connected":false,"lastStableCode":"RPC_DISABLED","reconnectPending":false,"lastConnectedAt":null,"gameBridge":null}}
+      ]
+    },
+    {
+      "name": "устаревший ответ после выключения и включения",
+      "double": {"listen":[0],"connections":[{"handshake":{"hold":"a"}},{"handshake":"ready"}]},
+      "steps": [{"op":"start","until":{"inDelta":1}},{"op":"settle"},{"op":"set","enabled":false},{"op":"set","enabled":true,"until":{"state":"connected","inDelta":2}},{"op":"settle"},{"op":"double","action":"release","gate":"a","until":{"eventsDelta":2}},{"op":"settle"},{"op":"get"}],
+      "results": [
+        {"op":"start"},
+        {
+          "op": "settle",
+          "state": {"state":"connecting","code":"RPC_CONNECTING","lastConnectedAt":null,"attempt":1},
+          "connected": false,
+          "timers": [{"kind":"debounce"}],
+          "log": [["info","[discord-rpc] RPC_CONNECTING: включено пользователем"]],
+          "double": [{"conn":1,"event":"open","id":0},{"conn":1,"in":{"op":0,"name":"HANDSHAKE","json":{"v":1,"client_id":"1531057982518071296"}}}],
+          "register": ["discord-1531057982518071296"]
+        },
+        {"op":"set","result":{"enabled":false,"source":"user","state":"disabled","code":"RPC_DISABLED","lastConnectedAt":null}},
+        {"op":"set","result":{"enabled":true,"source":"user","state":"connecting","code":"RPC_CONNECTING","lastConnectedAt":null}},
+        {
+          "op": "settle",
+          "state": {"state":"connected","code":"RPC_CONNECTED","lastConnectedAt":1792152000000,"attempt":0},
+          "connected": true,
+          "timers": [{"kind":"debounce"}],
+          "log": [["info","[discord-rpc] RPC_DISABLED: выключено пользователем"],["info","[discord-rpc] RPC_CONNECTED"]],
+          "double": [
+            {"conn":2,"event":"open","id":0},
+            {"conn":2,"in":{"op":0,"name":"HANDSHAKE","json":{"v":1,"client_id":"1531057982518071296"}}},
+            {
+              "conn": 2,
+              "in": {
+                "op": 1,
+                "name": "FRAME",
+                "json": {"cmd":"SET_ACTIVITY","args":{"pid":"<pid>","activity":{"state":"В лаунчере","details":"HLSR Launcher","timestamps":{"start":1792152000000},"assets":{"large_image":"hlsr","large_text":"HLSR v0.5.0"},"buttons":[{"label":"Сайт HLSR","url":"https://hlsr.pro"},{"label":"Discord","url":"https://discord.com/invite/8Np6brWBuz"}],"instance":false}},"nonce":"<nonce:1>"}
+              }
+            }
+          ],
+          "register": ["discord-1531057982518071296"],
+          "window": [["discord-rpc-state",{"enabled":false,"source":"user","state":"disabled","code":"RPC_DISABLED","lastConnectedAt":null}],["discord-rpc-state",{"enabled":true,"source":"user","state":"connecting","code":"RPC_CONNECTING","lastConnectedAt":null}]]
+        },
+        {"op":"double"},
+        {"op":"settle","state":{"state":"connected","code":"RPC_CONNECTED","lastConnectedAt":1792152000000,"attempt":0},"connected":true,"timers":[{"kind":"debounce"}],"double":[{"conn":1,"in":{"op":2,"name":"CLOSE","json":{}}},{"conn":1,"event":"eof"}]},
+        {"op":"get","result":{"enabled":true,"source":"user","state":"connected","code":"RPC_CONNECTED","lastConnectedAt":1792152000000}}
+      ]
+    },
+    {
+      "name": "служба без фабрики клиента",
+      "double": {"listen":[0]},
+      "noFactory": true,
+      "steps": [{"op":"start"},{"op":"settle"},{"op":"get"},{"op":"signal","signal":{"type":"selected","gameId":"ghosting-renewed"}},{"op":"settle"}],
+      "results": [
+        {"op":"start"},
+        {"op":"settle","state":{"state":"unavailable","code":"RPC_DISCORD_UNAVAILABLE","lastConnectedAt":null,"attempt":0},"connected":false,"timers":[{"kind":"debounce"}],"log":[["info","[discord-rpc] RPC_CONNECTING: включено пользователем"],["info","[discord-rpc] RPC_DISCORD_UNAVAILABLE: клиент Discord недоступен в этой сборке"]]},
+        {"op":"get","result":{"enabled":true,"source":"default","state":"unavailable","code":"RPC_DISCORD_UNAVAILABLE","lastConnectedAt":null}},
+        {"op":"signal"},
+        {"op":"settle","state":{"state":"unavailable","code":"RPC_DISCORD_UNAVAILABLE","lastConnectedAt":null,"attempt":0},"connected":false,"timers":[{"kind":"debounce"}]}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "$comment": "Фон (S2, LauncherBackground.vue 0.4.9): в эталоне видно только .launcher-bg (остальное в .launcher-frame прозрачно, щелчки проходят), в GPUI — вид background (BackgroundProbe). Параллакс на нуле (scene.parallax), увеличение 1,05 остаётся. Журнал IPC у вида не сверяется (expect.ipcLog пуст в каждой сцене: база его не наследует): вызовов у фона нет, кроме good-memory.",
+  "screen": "background",
+  "view": "background",
+  "themes": [
+    "hlsr"
+  ],
+  "languages": [
+    "ru"
+  ],
+  "css": ".launcher-frame > :not(.launcher-bg) { opacity: 0 !important; }",
+  "settleMs": 4000
+}

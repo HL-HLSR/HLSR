@@ -1,0 +1,9 @@
+{
+  "id": "rail/livesplit",
+  "base": "rail/_base",
+  "state": "Щелчок по LiveSplit: выбран инструмент, мышь уведена на страницу",
+  "steps": [
+    {"click": {"css": ".game-rail__list .rail-item:nth-child(5)", "view": "rail-tool-livesplit"}},
+    {"move": [900, 450]}
+  ]
+}

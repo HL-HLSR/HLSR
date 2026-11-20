@@ -1,0 +1,10 @@
+{
+  "id": "configs/kb-ghosting",
+  "state": "Ghosting: «Клавиатура» Source — основной блок, бинды autoexec.cfg",
+  "base": "configs/_kb",
+  "steps": [
+    {"click": {"css": ".launcher-topbar__tab:nth-child(3)", "view": "topbar-tab-configs"}},
+    {"click": {"css": ".game-settings__tab[data-tour=\"gs-keyboard\"]", "view": "gs-keyboard"}},
+    {"move": [800, 880]}
+  ]
+}

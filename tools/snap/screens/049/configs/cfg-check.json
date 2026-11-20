@@ -1,0 +1,43 @@
+{
+  "id": "configs/cfg-check",
+  "state": "HL1: вкладка «Проверка» — итог, категория, группы, первая раскрыта",
+  "base": "configs/_cfg",
+  "steps": [
+    {
+      "click": {
+        "css": ".launcher-topbar__tab:nth-child(3)",
+        "view": "topbar-tab-configs"
+      }
+    },
+    {
+      "click": {
+        "css": ".cfgp__game:nth-child(2)",
+        "view": "cfgp-game-70"
+      }
+    },
+    {
+      "click": {
+        "css": ".game-settings__tab[data-tour=\"gs-configs\"]",
+        "view": "gs-configs"
+      }
+    },
+    {
+      "click": {
+        "css": "#gc-tab-cfg-check",
+        "view": "gc-tab-cfg-check"
+      }
+    },
+    {
+      "click": {
+        "css": ".hc__group:nth-child(1) .hc__row",
+        "view": "hc-row-0"
+      }
+    },
+    {
+      "move": [
+        800,
+        880
+      ]
+    }
+  ]
+}

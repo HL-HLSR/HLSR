@@ -1,0 +1,217 @@
+{
+  "id": "profile/foreign",
+  "base": "profile/_base",
+  "state": "Чужой профиль из поиска бегунов: играет в HL2, лайк/дизлайк, без закреплённого забега и вкладки настроек",
+  "invoke": {
+    "runner-state": {
+      "status": "signed-in",
+      "userCode": null,
+      "expiresAt": null,
+      "error": null,
+      "ban": null,
+      "mute": null,
+      "account": {
+        "signedIn": true,
+        "steamId64": "76561199155902676",
+        "steamId2": "STEAM_0:0:597818474",
+        "personaName": "Kanoyo",
+        "avatarDataUri": "https://avatars.steamstatic.com/0000000000000000000000000000000000000001_full.jpg",
+        "connection": "connected"
+      },
+      "firstRunAt": "2026-03-14T08:20:00.000Z",
+      "achievements": [],
+      "summary": {
+        "unlocked": 14,
+        "total": 39,
+        "percent": 36
+      },
+      "stats": {
+        "totalSeconds": 512340,
+        "gamesPlayed": 2,
+        "launches": 48,
+        "best": {
+          "gameId": "ghosting-renewed",
+          "seconds": 401220,
+          "launcherId": "218"
+        }
+      },
+      "streak": {
+        "days": 3,
+        "best": 12
+      },
+      "badges": [
+        "developer",
+        "bughunter",
+        "anniversary-3"
+      ],
+      "customBadges": [],
+      "nick": {
+        "style": "developer",
+        "css": null
+      },
+      "avatarFrame": null,
+      "subscriber": false,
+      "boosterSince": null,
+      "supporterSince": null,
+      "perks": {
+        "styles": false,
+        "subscriber": null
+      },
+      "stylePreset": null,
+      "telegram": {
+        "linked": false,
+        "username": null
+      },
+      "discordLink": {
+        "linked": false,
+        "username": null,
+        "boosterSince": null
+      },
+      "details": {
+        "status": "Бегу Ghosting по выходным",
+        "pronouns": "",
+        "country": "RU",
+        "hideSteamId": false,
+        "pinnedRun": {
+          "id": "abcd1234",
+          "seconds": 1648.285,
+          "game": "Half-Life",
+          "category": "Any% · Glitchless",
+          "place": 2,
+          "url": "https://www.speedrun.com/hl1/runs/abcd1234"
+        },
+        "speedrun": "kanoyo",
+        "discord": "kanoyo",
+        "youtube": "https://www.youtube.com/@kanoyo",
+        "twitch": "https://www.twitch.tv/kanoyo"
+      },
+      "deletionAt": null,
+      "rating": {
+        "score": 14,
+        "likes": 15,
+        "dislikes": 1,
+        "dubious": false
+      },
+      "presence": {
+        "online": true,
+        "gameId": null,
+        "launcherId": null
+      }
+    },
+    "runner-search": [
+      {
+        "steamId64": "76561199155902676",
+        "personaName": "Kanoyo",
+        "avatarFrame": null,
+        "nick": {
+          "style": "developer",
+          "css": null
+        },
+        "details": {
+          "avatarUrl": "https://avatars.steamstatic.com/0000000000000000000000000000000000000001_full.jpg",
+          "hideSteamId": false
+        }
+      },
+      {
+        "steamId64": "76561198000000002",
+        "personaName": "Kate",
+        "avatarFrame": null,
+        "nick": null,
+        "details": {
+          "avatarUrl": "https://avatars.steamstatic.com/0000000000000000000000000000000000000001_full.jpg",
+          "hideSteamId": false
+        }
+      }
+    ],
+    "runner-profile-view": {
+      "account": {
+        "signedIn": true,
+        "steamId64": "76561198000000002",
+        "steamId2": "STEAM_0:0:19",
+        "personaName": "Kate",
+        "avatarDataUri": "https://avatars.steamstatic.com/0000000000000000000000000000000000000001_full.jpg",
+        "connection": "connected"
+      },
+      "firstRunAt": "2026-05-02T19:00:00.000Z",
+      "achievements": [],
+      "summary": {
+        "unlocked": 9,
+        "total": 39,
+        "percent": 23
+      },
+      "stats": {
+        "totalSeconds": 253500,
+        "gamesPlayed": 3,
+        "launches": 21,
+        "best": {
+          "gameId": "hl2-4260",
+          "seconds": 180000,
+          "launcherId": "220"
+        }
+      },
+      "badges": [
+        "anniversary-1"
+      ],
+      "customBadges": [],
+      "nick": null,
+      "avatarFrame": null,
+      "subscriber": false,
+      "boosterSince": null,
+      "supporterSince": null,
+      "details": {
+        "status": "",
+        "pronouns": "she",
+        "country": "DE",
+        "hideSteamId": false,
+        "pinnedRun": null,
+        "speedrun": null
+      },
+      "deletionAt": null,
+      "rating": {
+        "score": -2,
+        "likes": 1,
+        "dislikes": 3,
+        "dubious": false
+      },
+      "vote": {
+        "value": 0,
+        "nextAt": null
+      },
+      "presence": {
+        "online": true,
+        "gameId": "hl2-4260",
+        "launcherId": "220"
+      }
+    }
+  },
+  "steps": [
+    {
+      "click": {
+        "css": ".runner-search input",
+        "view": "runner-search-input"
+      }
+    },
+    {
+      "type": "ka"
+    },
+    {
+      "wait": 500
+    },
+    {
+      "click": {
+        "css": ".runner-search__results button",
+        "index": 1,
+        "view": "runner-search-row-1"
+      }
+    },
+    {
+      "wait": 600
+    },
+    {
+      "move": [
+        800,
+        880
+      ]
+    }
+  ]
+}

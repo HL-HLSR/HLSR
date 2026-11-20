@@ -1,0 +1,31 @@
+{
+  "id": "configs/pz-hl1-packs",
+  "state": "HL1: подраздел «Паки» — выбор HUD и прицела во всю ширину, ссылка на ресурсы speedrun.com",
+  "base": "configs/_pz",
+  "steps": [
+    {
+      "click": {
+        "css": ".launcher-topbar__tab:nth-child(3)",
+        "view": "topbar-tab-configs"
+      }
+    },
+    {
+      "click": {
+        "css": ".cfgp__game:nth-child(2)",
+        "view": "cfgp-game-70"
+      }
+    },
+    {
+      "click": {
+        "css": "#gx-tab-hl1packs",
+        "view": "gx-tab-hl1packs"
+      }
+    },
+    {
+      "move": [
+        800,
+        880
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1633 @@
+{
+  "constants": {"AUTO":"auto","ENGLISH":"english","OVERLAY_DIR":"hlsr-language","REGISTRY_KEY":"HKCU\\Software\\Valve\\Source","REGISTRY_VALUE":"Language","FILE_SETS":[{"base":"gameui","sources":["mod","hl2"]},{"base":"hl2","sources":["hl2"]},{"base":"valve","sources":["hl2"]},{"base":"chat","sources":["hl2"]}]},
+  "samples": [
+    {"value":"","isLanguage":false,"normalizeChoice":"auto"},
+    {"value":"a","isLanguage":false,"normalizeChoice":"auto"},
+    {"value":"ab","isLanguage":true,"normalizeChoice":"ab"},
+    {"value":"russian","isLanguage":true,"normalizeChoice":"russian"},
+    {"value":"RUSSIAN","isLanguage":false,"normalizeChoice":"auto"},
+    {"value":"Russian","isLanguage":false,"normalizeChoice":"auto"},
+    {"value":"ru-RU","isLanguage":false,"normalizeChoice":"auto"},
+    {"value":"ru ru","isLanguage":false,"normalizeChoice":"auto"},
+    {"value":"xxxxxxxxxxxxxxxxxxxxxxxx","isLanguage":true,"normalizeChoice":"xxxxxxxxxxxxxxxxxxxxxxxx"},
+    {"value":"xxxxxxxxxxxxxxxxxxxxxxxxx","isLanguage":false,"normalizeChoice":"auto"},
+    {"value":"english","isLanguage":true,"normalizeChoice":"english"},
+    {"value":"auto","isLanguage":true,"normalizeChoice":"auto"},
+    {"value":"русский","isLanguage":false,"normalizeChoice":"auto"},
+    {"value":"ab\n","isLanguage":false,"normalizeChoice":"auto"},
+    {"value":"\nab","isLanguage":false,"normalizeChoice":"auto"},
+    {"value":"ab ","isLanguage":false,"normalizeChoice":"auto"},
+    {"value":" ab","isLanguage":false,"normalizeChoice":"auto"},
+    {"value":"kK","isLanguage":false,"normalizeChoice":"auto"},
+    {"value":"abſ","isLanguage":false,"normalizeChoice":"auto"},
+    {"value":"aı","isLanguage":false,"normalizeChoice":"auto"},
+    {"value":"abc\u0000","isLanguage":false,"normalizeChoice":"auto"},
+    {"value":5,"isLanguage":false,"normalizeChoice":"auto"},
+    {"value":0,"isLanguage":false,"normalizeChoice":"auto"},
+    {"value":null,"isLanguage":false,"normalizeChoice":"auto"},
+    {"value":true,"isLanguage":false,"normalizeChoice":"auto"},
+    {"value":false,"isLanguage":false,"normalizeChoice":"auto"},
+    {"value":[],"isLanguage":false,"normalizeChoice":"auto"},
+    {"value":["ru"],"isLanguage":false,"normalizeChoice":"auto"},
+    {"value":{},"isLanguage":false,"normalizeChoice":"auto"},
+    {"value":{"length":2},"isLanguage":false,"normalizeChoice":"auto"}
+  ],
+  "scenarios": [
+    {
+      "name": "наложение: русский поверх английского движка — файлы мода и hl2",
+      "setup": [
+        {"file":"game/mymod/resource/gameui_russian.txt","utf8":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"},
+        {"file":"game/hl2/resource/hl2_russian.txt","utf8":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+        {"file":"game/hl2/resource/valve_russian.txt","utf8":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+        {"file":"game/hl2/resource/chat_russian.txt","utf8":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+        {"file":"game/mymod/resource/gameui_english.txt","utf8":"\"lang\" { \"gameui\" \"mod english\" }\r\n"},
+        {"file":"game/hl2/resource/hl2_english.txt","utf8":"\"lang\" { \"hl2\" \"hl2 english\" }\r\n"},
+        {"file":"game/hl2/resource/valve_english.txt","utf8":"\"lang\" { \"valve\" \"hl2 english\" }\r\n"},
+        {"file":"game/hl2/resource/chat_english.txt","utf8":"\"lang\" { \"chat\" \"hl2 english\" }\r\n"}
+      ],
+      "steps": [{"op":"apply","choice":"russian","options":{"engineLanguage":"english"}},{"op":"tree"}],
+      "results": [
+        {"ok":{"ok":true,"applied":true,"language":"russian","engineLanguage":"english","files":["gameui_english.txt","hl2_english.txt","valve_english.txt","chat_english.txt"]}},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/hl2","kind":"dir"},
+            {"path":"game/hl2/resource","kind":"dir"},
+            {"path":"game/hl2/resource/chat_english.txt","kind":"file","size":33,"sha256":"bb5f687b8275f889f67ed5c51e8982a722b9ee6e2a38af5934e56d86b1d67203","latin1":"\"lang\" { \"chat\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/chat_russian.txt","kind":"file","size":33,"sha256":"2bbf741c8b823f73cee63bf1a8d1c8206a2f04f1aba91c0843fec392b0cf69b9","latin1":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+            {"path":"game/hl2/resource/hl2_english.txt","kind":"file","size":32,"sha256":"d525f9b46646ed43558318548a0ec2d114bd5f6778136777dadedafdf41080ac","latin1":"\"lang\" { \"hl2\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/hl2_russian.txt","kind":"file","size":32,"sha256":"05459b1f6ec48aa14be75f82acb8e7c878c83c2e39d74a9699122453ca5e4dab","latin1":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+            {"path":"game/hl2/resource/valve_english.txt","kind":"file","size":34,"sha256":"d790af48d3127691a96a6e8e98191b16eb32700febbf787381923b2fdb5f41ec","latin1":"\"lang\" { \"valve\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/valve_russian.txt","kind":"file","size":34,"sha256":"8d6ae4af083b81bd07fedf4be71edf68966c6cf38d2598aecba9abe6a6b9d42e","latin1":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod","kind":"dir"},
+            {"path":"game/mymod/custom","kind":"dir"},
+            {"path":"game/mymod/custom/hlsr-language","kind":"dir"},
+            {
+              "path": "game/mymod/custom/hlsr-language/README.txt",
+              "kind": "file",
+              "size": 502,
+              "sha256": "7c6f4a3df7b3452f0012fab562de80fc03a2583076d9b551bec0b12495c27923",
+              "latin1": "Ð­ÑÐ¾Ð¹ Ð¿Ð°Ð¿ÐºÐ¾Ð¹ ÑÐ°ÑÐ¿Ð¾ÑÑÐ¶Ð°ÐµÑÑÑ Ð»Ð°ÑÐ½ÑÐµÑ HLSR.\r\n\r\nÐÐ´ÐµÑÑ Ð»ÐµÐ¶Ð°Ñ ÑÐ·ÑÐºÐ¾Ð²ÑÐµ ÑÐ°Ð¹Ð»Ñ Ð²ÑÐ±ÑÐ°Ð½Ð½Ð¾Ð³Ð¾ Ð² Ð»Ð°ÑÐ½ÑÐµÑÐµ ÑÐ·ÑÐºÐ° Ð¸Ð³ÑÑ. ÐÐ°Ð¿ÐºÐ°\r\nÐ¿ÐµÑÐµÐ¿Ð¸ÑÑÐ²Ð°ÐµÑÑÑ Ð¿ÑÐ¸ ÐºÐ°Ð¶Ð´Ð¾Ð¼ Ð·Ð°Ð¿ÑÑÐºÐµ Ð¸ ÑÐ´Ð°Ð»ÑÐµÑÑÑ, ÐºÐ¾Ð³Ð´Ð° ÑÐ·ÑÐº Ð¿ÐµÑÐµÐºÐ»ÑÑÑÐ½\r\nÐ¾Ð±ÑÐ°ÑÐ½Ð¾ Ð½Ð° Â«ÐºÐ°Ðº Ð² SteamÂ». Ð¡Ð²Ð¾Ð¸ ÑÐ°Ð¹Ð»Ñ ÑÑÐ´Ð° ÐºÐ»Ð°ÑÑÑ Ð½Ðµ Ð½ÑÐ¶Ð½Ð¾ â Ð¿Ð¾Ð»Ð¾Ð¶Ð¸ Ð¸Ñ\r\nÐ² ÑÐ¾ÑÐµÐ´Ð½ÑÑ Ð¿Ð°Ð¿ÐºÑ Ð²Ð½ÑÑÑÐ¸ custom/.\r\n"
+            },
+            {"path":"game/mymod/custom/hlsr-language/resource","kind":"dir"},
+            {"path":"game/mymod/custom/hlsr-language/resource/chat_english.txt","kind":"file","size":33,"sha256":"2bbf741c8b823f73cee63bf1a8d1c8206a2f04f1aba91c0843fec392b0cf69b9","latin1":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod/custom/hlsr-language/resource/gameui_english.txt","kind":"file","size":35,"sha256":"aeab4ce53c90baf63aaee9c99caa022dbdf2a7f141f49efe5eee1a3ad9cd33a7","latin1":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"},
+            {"path":"game/mymod/custom/hlsr-language/resource/hl2_english.txt","kind":"file","size":32,"sha256":"05459b1f6ec48aa14be75f82acb8e7c878c83c2e39d74a9699122453ca5e4dab","latin1":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod/custom/hlsr-language/resource/valve_english.txt","kind":"file","size":34,"sha256":"8d6ae4af083b81bd07fedf4be71edf68966c6cf38d2598aecba9abe6a6b9d42e","latin1":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod/resource","kind":"dir"},
+            {"path":"game/mymod/resource/gameui_english.txt","kind":"file","size":35,"sha256":"0a6b5fbd124c074aabbfcbd68cf67d5341ac023ddcf96c2cd67b1f5d71d0097e","latin1":"\"lang\" { \"gameui\" \"mod english\" }\r\n"},
+            {"path":"game/mymod/resource/gameui_russian.txt","kind":"file","size":35,"sha256":"aeab4ce53c90baf63aaee9c99caa022dbdf2a7f141f49efe5eee1a3ad9cd33a7","latin1":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "наложение: только gameui из мода",
+      "setup": [{"file":"game/mymod/resource/gameui_russian.txt","utf8":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"}],
+      "steps": [{"op":"apply","choice":"russian","options":{"engineLanguage":"english"}},{"op":"tree"}],
+      "results": [
+        {"ok":{"ok":true,"applied":true,"language":"russian","engineLanguage":"english","files":["gameui_english.txt"]}},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/mymod","kind":"dir"},
+            {"path":"game/mymod/custom","kind":"dir"},
+            {"path":"game/mymod/custom/hlsr-language","kind":"dir"},
+            {
+              "path": "game/mymod/custom/hlsr-language/README.txt",
+              "kind": "file",
+              "size": 502,
+              "sha256": "7c6f4a3df7b3452f0012fab562de80fc03a2583076d9b551bec0b12495c27923",
+              "latin1": "Ð­ÑÐ¾Ð¹ Ð¿Ð°Ð¿ÐºÐ¾Ð¹ ÑÐ°ÑÐ¿Ð¾ÑÑÐ¶Ð°ÐµÑÑÑ Ð»Ð°ÑÐ½ÑÐµÑ HLSR.\r\n\r\nÐÐ´ÐµÑÑ Ð»ÐµÐ¶Ð°Ñ ÑÐ·ÑÐºÐ¾Ð²ÑÐµ ÑÐ°Ð¹Ð»Ñ Ð²ÑÐ±ÑÐ°Ð½Ð½Ð¾Ð³Ð¾ Ð² Ð»Ð°ÑÐ½ÑÐµÑÐµ ÑÐ·ÑÐºÐ° Ð¸Ð³ÑÑ. ÐÐ°Ð¿ÐºÐ°\r\nÐ¿ÐµÑÐµÐ¿Ð¸ÑÑÐ²Ð°ÐµÑÑÑ Ð¿ÑÐ¸ ÐºÐ°Ð¶Ð´Ð¾Ð¼ Ð·Ð°Ð¿ÑÑÐºÐµ Ð¸ ÑÐ´Ð°Ð»ÑÐµÑÑÑ, ÐºÐ¾Ð³Ð´Ð° ÑÐ·ÑÐº Ð¿ÐµÑÐµÐºÐ»ÑÑÑÐ½\r\nÐ¾Ð±ÑÐ°ÑÐ½Ð¾ Ð½Ð° Â«ÐºÐ°Ðº Ð² SteamÂ». Ð¡Ð²Ð¾Ð¸ ÑÐ°Ð¹Ð»Ñ ÑÑÐ´Ð° ÐºÐ»Ð°ÑÑÑ Ð½Ðµ Ð½ÑÐ¶Ð½Ð¾ â Ð¿Ð¾Ð»Ð¾Ð¶Ð¸ Ð¸Ñ\r\nÐ² ÑÐ¾ÑÐµÐ´Ð½ÑÑ Ð¿Ð°Ð¿ÐºÑ Ð²Ð½ÑÑÑÐ¸ custom/.\r\n"
+            },
+            {"path":"game/mymod/custom/hlsr-language/resource","kind":"dir"},
+            {"path":"game/mymod/custom/hlsr-language/resource/gameui_english.txt","kind":"file","size":35,"sha256":"aeab4ce53c90baf63aaee9c99caa022dbdf2a7f141f49efe5eee1a3ad9cd33a7","latin1":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"},
+            {"path":"game/mymod/resource","kind":"dir"},
+            {"path":"game/mymod/resource/gameui_russian.txt","kind":"file","size":35,"sha256":"aeab4ce53c90baf63aaee9c99caa022dbdf2a7f141f49efe5eee1a3ad9cd33a7","latin1":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "наложение: только hl2, valve и chat из hl2",
+      "setup": [{"file":"game/hl2/resource/hl2_russian.txt","utf8":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},{"file":"game/hl2/resource/valve_russian.txt","utf8":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},{"file":"game/hl2/resource/chat_russian.txt","utf8":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"}],
+      "steps": [{"op":"apply","choice":"russian","options":{"engineLanguage":"english"}},{"op":"tree"}],
+      "results": [
+        {"ok":{"ok":true,"applied":true,"language":"russian","engineLanguage":"english","files":["hl2_english.txt","valve_english.txt","chat_english.txt"]}},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/hl2","kind":"dir"},
+            {"path":"game/hl2/resource","kind":"dir"},
+            {"path":"game/hl2/resource/chat_russian.txt","kind":"file","size":33,"sha256":"2bbf741c8b823f73cee63bf1a8d1c8206a2f04f1aba91c0843fec392b0cf69b9","latin1":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+            {"path":"game/hl2/resource/hl2_russian.txt","kind":"file","size":32,"sha256":"05459b1f6ec48aa14be75f82acb8e7c878c83c2e39d74a9699122453ca5e4dab","latin1":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+            {"path":"game/hl2/resource/valve_russian.txt","kind":"file","size":34,"sha256":"8d6ae4af083b81bd07fedf4be71edf68966c6cf38d2598aecba9abe6a6b9d42e","latin1":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod","kind":"dir"},
+            {"path":"game/mymod/custom","kind":"dir"},
+            {"path":"game/mymod/custom/hlsr-language","kind":"dir"},
+            {
+              "path": "game/mymod/custom/hlsr-language/README.txt",
+              "kind": "file",
+              "size": 502,
+              "sha256": "7c6f4a3df7b3452f0012fab562de80fc03a2583076d9b551bec0b12495c27923",
+              "latin1": "Ð­ÑÐ¾Ð¹ Ð¿Ð°Ð¿ÐºÐ¾Ð¹ ÑÐ°ÑÐ¿Ð¾ÑÑÐ¶Ð°ÐµÑÑÑ Ð»Ð°ÑÐ½ÑÐµÑ HLSR.\r\n\r\nÐÐ´ÐµÑÑ Ð»ÐµÐ¶Ð°Ñ ÑÐ·ÑÐºÐ¾Ð²ÑÐµ ÑÐ°Ð¹Ð»Ñ Ð²ÑÐ±ÑÐ°Ð½Ð½Ð¾Ð³Ð¾ Ð² Ð»Ð°ÑÐ½ÑÐµÑÐµ ÑÐ·ÑÐºÐ° Ð¸Ð³ÑÑ. ÐÐ°Ð¿ÐºÐ°\r\nÐ¿ÐµÑÐµÐ¿Ð¸ÑÑÐ²Ð°ÐµÑÑÑ Ð¿ÑÐ¸ ÐºÐ°Ð¶Ð´Ð¾Ð¼ Ð·Ð°Ð¿ÑÑÐºÐµ Ð¸ ÑÐ´Ð°Ð»ÑÐµÑÑÑ, ÐºÐ¾Ð³Ð´Ð° ÑÐ·ÑÐº Ð¿ÐµÑÐµÐºÐ»ÑÑÑÐ½\r\nÐ¾Ð±ÑÐ°ÑÐ½Ð¾ Ð½Ð° Â«ÐºÐ°Ðº Ð² SteamÂ». Ð¡Ð²Ð¾Ð¸ ÑÐ°Ð¹Ð»Ñ ÑÑÐ´Ð° ÐºÐ»Ð°ÑÑÑ Ð½Ðµ Ð½ÑÐ¶Ð½Ð¾ â Ð¿Ð¾Ð»Ð¾Ð¶Ð¸ Ð¸Ñ\r\nÐ² ÑÐ¾ÑÐµÐ´Ð½ÑÑ Ð¿Ð°Ð¿ÐºÑ Ð²Ð½ÑÑÑÐ¸ custom/.\r\n"
+            },
+            {"path":"game/mymod/custom/hlsr-language/resource","kind":"dir"},
+            {"path":"game/mymod/custom/hlsr-language/resource/chat_english.txt","kind":"file","size":33,"sha256":"2bbf741c8b823f73cee63bf1a8d1c8206a2f04f1aba91c0843fec392b0cf69b9","latin1":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod/custom/hlsr-language/resource/hl2_english.txt","kind":"file","size":32,"sha256":"05459b1f6ec48aa14be75f82acb8e7c878c83c2e39d74a9699122453ca5e4dab","latin1":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod/custom/hlsr-language/resource/valve_english.txt","kind":"file","size":34,"sha256":"8d6ae4af083b81bd07fedf4be71edf68966c6cf38d2598aecba9abe6a6b9d42e","latin1":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "наложение: gameui есть и в моде, и в hl2 — берётся мод",
+      "setup": [{"file":"game/mymod/resource/gameui_russian.txt","utf8":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"},{"file":"game/hl2/resource/gameui_russian.txt","utf8":"hl2 gameui"}],
+      "steps": [{"op":"apply","choice":"russian","options":{"engineLanguage":"english"}},{"op":"tree"}],
+      "results": [
+        {"ok":{"ok":true,"applied":true,"language":"russian","engineLanguage":"english","files":["gameui_english.txt"]}},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/hl2","kind":"dir"},
+            {"path":"game/hl2/resource","kind":"dir"},
+            {"path":"game/hl2/resource/gameui_russian.txt","kind":"file","size":10,"sha256":"40d8f0e5e926982adedb13fe38ab65a4320e863c2534418e0dbb775f4b8024b5","latin1":"hl2 gameui"},
+            {"path":"game/mymod","kind":"dir"},
+            {"path":"game/mymod/custom","kind":"dir"},
+            {"path":"game/mymod/custom/hlsr-language","kind":"dir"},
+            {
+              "path": "game/mymod/custom/hlsr-language/README.txt",
+              "kind": "file",
+              "size": 502,
+              "sha256": "7c6f4a3df7b3452f0012fab562de80fc03a2583076d9b551bec0b12495c27923",
+              "latin1": "Ð­ÑÐ¾Ð¹ Ð¿Ð°Ð¿ÐºÐ¾Ð¹ ÑÐ°ÑÐ¿Ð¾ÑÑÐ¶Ð°ÐµÑÑÑ Ð»Ð°ÑÐ½ÑÐµÑ HLSR.\r\n\r\nÐÐ´ÐµÑÑ Ð»ÐµÐ¶Ð°Ñ ÑÐ·ÑÐºÐ¾Ð²ÑÐµ ÑÐ°Ð¹Ð»Ñ Ð²ÑÐ±ÑÐ°Ð½Ð½Ð¾Ð³Ð¾ Ð² Ð»Ð°ÑÐ½ÑÐµÑÐµ ÑÐ·ÑÐºÐ° Ð¸Ð³ÑÑ. ÐÐ°Ð¿ÐºÐ°\r\nÐ¿ÐµÑÐµÐ¿Ð¸ÑÑÐ²Ð°ÐµÑÑÑ Ð¿ÑÐ¸ ÐºÐ°Ð¶Ð´Ð¾Ð¼ Ð·Ð°Ð¿ÑÑÐºÐµ Ð¸ ÑÐ´Ð°Ð»ÑÐµÑÑÑ, ÐºÐ¾Ð³Ð´Ð° ÑÐ·ÑÐº Ð¿ÐµÑÐµÐºÐ»ÑÑÑÐ½\r\nÐ¾Ð±ÑÐ°ÑÐ½Ð¾ Ð½Ð° Â«ÐºÐ°Ðº Ð² SteamÂ». Ð¡Ð²Ð¾Ð¸ ÑÐ°Ð¹Ð»Ñ ÑÑÐ´Ð° ÐºÐ»Ð°ÑÑÑ Ð½Ðµ Ð½ÑÐ¶Ð½Ð¾ â Ð¿Ð¾Ð»Ð¾Ð¶Ð¸ Ð¸Ñ\r\nÐ² ÑÐ¾ÑÐµÐ´Ð½ÑÑ Ð¿Ð°Ð¿ÐºÑ Ð²Ð½ÑÑÑÐ¸ custom/.\r\n"
+            },
+            {"path":"game/mymod/custom/hlsr-language/resource","kind":"dir"},
+            {"path":"game/mymod/custom/hlsr-language/resource/gameui_english.txt","kind":"file","size":35,"sha256":"aeab4ce53c90baf63aaee9c99caa022dbdf2a7f141f49efe5eee1a3ad9cd33a7","latin1":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"},
+            {"path":"game/mymod/resource","kind":"dir"},
+            {"path":"game/mymod/resource/gameui_russian.txt","kind":"file","size":35,"sha256":"aeab4ce53c90baf63aaee9c99caa022dbdf2a7f141f49efe5eee1a3ad9cd33a7","latin1":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "наложение: gameui только в hl2",
+      "setup": [{"file":"game/hl2/resource/gameui_russian.txt","utf8":"hl2 gameui"}],
+      "steps": [{"op":"apply","choice":"russian","options":{"engineLanguage":"english"}},{"op":"tree"}],
+      "results": [
+        {"ok":{"ok":true,"applied":true,"language":"russian","engineLanguage":"english","files":["gameui_english.txt"]}},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/hl2","kind":"dir"},
+            {"path":"game/hl2/resource","kind":"dir"},
+            {"path":"game/hl2/resource/gameui_russian.txt","kind":"file","size":10,"sha256":"40d8f0e5e926982adedb13fe38ab65a4320e863c2534418e0dbb775f4b8024b5","latin1":"hl2 gameui"},
+            {"path":"game/mymod","kind":"dir"},
+            {"path":"game/mymod/custom","kind":"dir"},
+            {"path":"game/mymod/custom/hlsr-language","kind":"dir"},
+            {
+              "path": "game/mymod/custom/hlsr-language/README.txt",
+              "kind": "file",
+              "size": 502,
+              "sha256": "7c6f4a3df7b3452f0012fab562de80fc03a2583076d9b551bec0b12495c27923",
+              "latin1": "Ð­ÑÐ¾Ð¹ Ð¿Ð°Ð¿ÐºÐ¾Ð¹ ÑÐ°ÑÐ¿Ð¾ÑÑÐ¶Ð°ÐµÑÑÑ Ð»Ð°ÑÐ½ÑÐµÑ HLSR.\r\n\r\nÐÐ´ÐµÑÑ Ð»ÐµÐ¶Ð°Ñ ÑÐ·ÑÐºÐ¾Ð²ÑÐµ ÑÐ°Ð¹Ð»Ñ Ð²ÑÐ±ÑÐ°Ð½Ð½Ð¾Ð³Ð¾ Ð² Ð»Ð°ÑÐ½ÑÐµÑÐµ ÑÐ·ÑÐºÐ° Ð¸Ð³ÑÑ. ÐÐ°Ð¿ÐºÐ°\r\nÐ¿ÐµÑÐµÐ¿Ð¸ÑÑÐ²Ð°ÐµÑÑÑ Ð¿ÑÐ¸ ÐºÐ°Ð¶Ð´Ð¾Ð¼ Ð·Ð°Ð¿ÑÑÐºÐµ Ð¸ ÑÐ´Ð°Ð»ÑÐµÑÑÑ, ÐºÐ¾Ð³Ð´Ð° ÑÐ·ÑÐº Ð¿ÐµÑÐµÐºÐ»ÑÑÑÐ½\r\nÐ¾Ð±ÑÐ°ÑÐ½Ð¾ Ð½Ð° Â«ÐºÐ°Ðº Ð² SteamÂ». Ð¡Ð²Ð¾Ð¸ ÑÐ°Ð¹Ð»Ñ ÑÑÐ´Ð° ÐºÐ»Ð°ÑÑÑ Ð½Ðµ Ð½ÑÐ¶Ð½Ð¾ â Ð¿Ð¾Ð»Ð¾Ð¶Ð¸ Ð¸Ñ\r\nÐ² ÑÐ¾ÑÐµÐ´Ð½ÑÑ Ð¿Ð°Ð¿ÐºÑ Ð²Ð½ÑÑÑÐ¸ custom/.\r\n"
+            },
+            {"path":"game/mymod/custom/hlsr-language/resource","kind":"dir"},
+            {"path":"game/mymod/custom/hlsr-language/resource/gameui_english.txt","kind":"file","size":10,"sha256":"40d8f0e5e926982adedb13fe38ab65a4320e863c2534418e0dbb775f4b8024b5","latin1":"hl2 gameui"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "наложение: hl2_russian.txt в моде не ищется",
+      "setup": [{"file":"game/mymod/resource/hl2_russian.txt","utf8":"в моде"}],
+      "steps": [{"op":"apply","choice":"russian","options":{"engineLanguage":"english"}},{"op":"tree"}],
+      "results": [
+        {"ok":{"ok":true,"applied":false,"language":"russian","engineLanguage":"english","reason":"NO_SOURCE","files":[]}},
+        {"tree":[{"path":"game","kind":"dir"},{"path":"game/mymod","kind":"dir"},{"path":"game/mymod/resource","kind":"dir"},{"path":"game/mymod/resource/hl2_russian.txt","kind":"file","size":11,"sha256":"b36701c5e3f92fa6272a3ac918f26aec980d0167d05ff3e01026dffe616b91b4","latin1":"Ð² Ð¼Ð¾Ð´Ðµ"}]}
+      ]
+    },
+    {
+      "name": "наложение: имя файла для движка с другим языком",
+      "setup": [
+        {"file":"game/mymod/resource/gameui_russian.txt","utf8":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"},
+        {"file":"game/hl2/resource/hl2_russian.txt","utf8":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+        {"file":"game/hl2/resource/valve_russian.txt","utf8":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+        {"file":"game/hl2/resource/chat_russian.txt","utf8":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"}
+      ],
+      "steps": [{"op":"apply","choice":"russian","options":{"engineLanguage":"german"}},{"op":"tree"},{"op":"apply","choice":"russian","options":{"engineLanguage":"brazilian"}},{"op":"tree"}],
+      "results": [
+        {"ok":{"ok":true,"applied":true,"language":"russian","engineLanguage":"german","files":["gameui_german.txt","hl2_german.txt","valve_german.txt","chat_german.txt"]}},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/hl2","kind":"dir"},
+            {"path":"game/hl2/resource","kind":"dir"},
+            {"path":"game/hl2/resource/chat_russian.txt","kind":"file","size":33,"sha256":"2bbf741c8b823f73cee63bf1a8d1c8206a2f04f1aba91c0843fec392b0cf69b9","latin1":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+            {"path":"game/hl2/resource/hl2_russian.txt","kind":"file","size":32,"sha256":"05459b1f6ec48aa14be75f82acb8e7c878c83c2e39d74a9699122453ca5e4dab","latin1":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+            {"path":"game/hl2/resource/valve_russian.txt","kind":"file","size":34,"sha256":"8d6ae4af083b81bd07fedf4be71edf68966c6cf38d2598aecba9abe6a6b9d42e","latin1":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod","kind":"dir"},
+            {"path":"game/mymod/custom","kind":"dir"},
+            {"path":"game/mymod/custom/hlsr-language","kind":"dir"},
+            {
+              "path": "game/mymod/custom/hlsr-language/README.txt",
+              "kind": "file",
+              "size": 502,
+              "sha256": "7c6f4a3df7b3452f0012fab562de80fc03a2583076d9b551bec0b12495c27923",
+              "latin1": "Ð­ÑÐ¾Ð¹ Ð¿Ð°Ð¿ÐºÐ¾Ð¹ ÑÐ°ÑÐ¿Ð¾ÑÑÐ¶Ð°ÐµÑÑÑ Ð»Ð°ÑÐ½ÑÐµÑ HLSR.\r\n\r\nÐÐ´ÐµÑÑ Ð»ÐµÐ¶Ð°Ñ ÑÐ·ÑÐºÐ¾Ð²ÑÐµ ÑÐ°Ð¹Ð»Ñ Ð²ÑÐ±ÑÐ°Ð½Ð½Ð¾Ð³Ð¾ Ð² Ð»Ð°ÑÐ½ÑÐµÑÐµ ÑÐ·ÑÐºÐ° Ð¸Ð³ÑÑ. ÐÐ°Ð¿ÐºÐ°\r\nÐ¿ÐµÑÐµÐ¿Ð¸ÑÑÐ²Ð°ÐµÑÑÑ Ð¿ÑÐ¸ ÐºÐ°Ð¶Ð´Ð¾Ð¼ Ð·Ð°Ð¿ÑÑÐºÐµ Ð¸ ÑÐ´Ð°Ð»ÑÐµÑÑÑ, ÐºÐ¾Ð³Ð´Ð° ÑÐ·ÑÐº Ð¿ÐµÑÐµÐºÐ»ÑÑÑÐ½\r\nÐ¾Ð±ÑÐ°ÑÐ½Ð¾ Ð½Ð° Â«ÐºÐ°Ðº Ð² SteamÂ». Ð¡Ð²Ð¾Ð¸ ÑÐ°Ð¹Ð»Ñ ÑÑÐ´Ð° ÐºÐ»Ð°ÑÑÑ Ð½Ðµ Ð½ÑÐ¶Ð½Ð¾ â Ð¿Ð¾Ð»Ð¾Ð¶Ð¸ Ð¸Ñ\r\nÐ² ÑÐ¾ÑÐµÐ´Ð½ÑÑ Ð¿Ð°Ð¿ÐºÑ Ð²Ð½ÑÑÑÐ¸ custom/.\r\n"
+            },
+            {"path":"game/mymod/custom/hlsr-language/resource","kind":"dir"},
+            {"path":"game/mymod/custom/hlsr-language/resource/chat_german.txt","kind":"file","size":33,"sha256":"2bbf741c8b823f73cee63bf1a8d1c8206a2f04f1aba91c0843fec392b0cf69b9","latin1":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod/custom/hlsr-language/resource/gameui_german.txt","kind":"file","size":35,"sha256":"aeab4ce53c90baf63aaee9c99caa022dbdf2a7f141f49efe5eee1a3ad9cd33a7","latin1":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"},
+            {"path":"game/mymod/custom/hlsr-language/resource/hl2_german.txt","kind":"file","size":32,"sha256":"05459b1f6ec48aa14be75f82acb8e7c878c83c2e39d74a9699122453ca5e4dab","latin1":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod/custom/hlsr-language/resource/valve_german.txt","kind":"file","size":34,"sha256":"8d6ae4af083b81bd07fedf4be71edf68966c6cf38d2598aecba9abe6a6b9d42e","latin1":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod/resource","kind":"dir"},
+            {"path":"game/mymod/resource/gameui_russian.txt","kind":"file","size":35,"sha256":"aeab4ce53c90baf63aaee9c99caa022dbdf2a7f141f49efe5eee1a3ad9cd33a7","latin1":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"}
+          ]
+        },
+        {"ok":{"ok":true,"applied":true,"language":"russian","engineLanguage":"brazilian","files":["gameui_brazilian.txt","hl2_brazilian.txt","valve_brazilian.txt","chat_brazilian.txt"]}},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/hl2","kind":"dir"},
+            {"path":"game/hl2/resource","kind":"dir"},
+            {"path":"game/hl2/resource/chat_russian.txt","kind":"file","size":33,"sha256":"2bbf741c8b823f73cee63bf1a8d1c8206a2f04f1aba91c0843fec392b0cf69b9","latin1":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+            {"path":"game/hl2/resource/hl2_russian.txt","kind":"file","size":32,"sha256":"05459b1f6ec48aa14be75f82acb8e7c878c83c2e39d74a9699122453ca5e4dab","latin1":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+            {"path":"game/hl2/resource/valve_russian.txt","kind":"file","size":34,"sha256":"8d6ae4af083b81bd07fedf4be71edf68966c6cf38d2598aecba9abe6a6b9d42e","latin1":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod","kind":"dir"},
+            {"path":"game/mymod/custom","kind":"dir"},
+            {"path":"game/mymod/custom/hlsr-language","kind":"dir"},
+            {
+              "path": "game/mymod/custom/hlsr-language/README.txt",
+              "kind": "file",
+              "size": 502,
+              "sha256": "7c6f4a3df7b3452f0012fab562de80fc03a2583076d9b551bec0b12495c27923",
+              "latin1": "Ð­ÑÐ¾Ð¹ Ð¿Ð°Ð¿ÐºÐ¾Ð¹ ÑÐ°ÑÐ¿Ð¾ÑÑÐ¶Ð°ÐµÑÑÑ Ð»Ð°ÑÐ½ÑÐµÑ HLSR.\r\n\r\nÐÐ´ÐµÑÑ Ð»ÐµÐ¶Ð°Ñ ÑÐ·ÑÐºÐ¾Ð²ÑÐµ ÑÐ°Ð¹Ð»Ñ Ð²ÑÐ±ÑÐ°Ð½Ð½Ð¾Ð³Ð¾ Ð² Ð»Ð°ÑÐ½ÑÐµÑÐµ ÑÐ·ÑÐºÐ° Ð¸Ð³ÑÑ. ÐÐ°Ð¿ÐºÐ°\r\nÐ¿ÐµÑÐµÐ¿Ð¸ÑÑÐ²Ð°ÐµÑÑÑ Ð¿ÑÐ¸ ÐºÐ°Ð¶Ð´Ð¾Ð¼ Ð·Ð°Ð¿ÑÑÐºÐµ Ð¸ ÑÐ´Ð°Ð»ÑÐµÑÑÑ, ÐºÐ¾Ð³Ð´Ð° ÑÐ·ÑÐº Ð¿ÐµÑÐµÐºÐ»ÑÑÑÐ½\r\nÐ¾Ð±ÑÐ°ÑÐ½Ð¾ Ð½Ð° Â«ÐºÐ°Ðº Ð² SteamÂ». Ð¡Ð²Ð¾Ð¸ ÑÐ°Ð¹Ð»Ñ ÑÑÐ´Ð° ÐºÐ»Ð°ÑÑÑ Ð½Ðµ Ð½ÑÐ¶Ð½Ð¾ â Ð¿Ð¾Ð»Ð¾Ð¶Ð¸ Ð¸Ñ\r\nÐ² ÑÐ¾ÑÐµÐ´Ð½ÑÑ Ð¿Ð°Ð¿ÐºÑ Ð²Ð½ÑÑÑÐ¸ custom/.\r\n"
+            },
+            {"path":"game/mymod/custom/hlsr-language/resource","kind":"dir"},
+            {"path":"game/mymod/custom/hlsr-language/resource/chat_brazilian.txt","kind":"file","size":33,"sha256":"2bbf741c8b823f73cee63bf1a8d1c8206a2f04f1aba91c0843fec392b0cf69b9","latin1":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod/custom/hlsr-language/resource/gameui_brazilian.txt","kind":"file","size":35,"sha256":"aeab4ce53c90baf63aaee9c99caa022dbdf2a7f141f49efe5eee1a3ad9cd33a7","latin1":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"},
+            {"path":"game/mymod/custom/hlsr-language/resource/hl2_brazilian.txt","kind":"file","size":32,"sha256":"05459b1f6ec48aa14be75f82acb8e7c878c83c2e39d74a9699122453ca5e4dab","latin1":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod/custom/hlsr-language/resource/valve_brazilian.txt","kind":"file","size":34,"sha256":"8d6ae4af083b81bd07fedf4be71edf68966c6cf38d2598aecba9abe6a6b9d42e","latin1":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod/resource","kind":"dir"},
+            {"path":"game/mymod/resource/gameui_russian.txt","kind":"file","size":35,"sha256":"aeab4ce53c90baf63aaee9c99caa022dbdf2a7f141f49efe5eee1a3ad9cd33a7","latin1":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "наложение: прошлая подмена и чужие файлы в папке стираются",
+      "setup": [
+        {"file":"game/mymod/resource/gameui_russian.txt","utf8":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"},
+        {"file":"game/hl2/resource/hl2_russian.txt","utf8":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+        {"file":"game/hl2/resource/valve_russian.txt","utf8":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+        {"file":"game/hl2/resource/chat_russian.txt","utf8":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+        {"file":"game/mymod/resource/gameui_english.txt","utf8":"\"lang\" { \"gameui\" \"mod english\" }\r\n"},
+        {"file":"game/hl2/resource/hl2_english.txt","utf8":"\"lang\" { \"hl2\" \"hl2 english\" }\r\n"},
+        {"file":"game/hl2/resource/valve_english.txt","utf8":"\"lang\" { \"valve\" \"hl2 english\" }\r\n"},
+        {"file":"game/hl2/resource/chat_english.txt","utf8":"\"lang\" { \"chat\" \"hl2 english\" }\r\n"},
+        {"file":"game/mymod/custom/hlsr-language/resource/old_file.txt","utf8":"старый файл"},
+        {"file":"game/mymod/custom/hlsr-language/README.txt","utf8":"старый README"},
+        {"file":"game/mymod/custom/hlsr-language/свои.txt","utf8":"чужой файл"}
+      ],
+      "steps": [{"op":"apply","choice":"russian","options":{"engineLanguage":"english"}},{"op":"tree"}],
+      "results": [
+        {"ok":{"ok":true,"applied":true,"language":"russian","engineLanguage":"english","files":["gameui_english.txt","hl2_english.txt","valve_english.txt","chat_english.txt"]}},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/hl2","kind":"dir"},
+            {"path":"game/hl2/resource","kind":"dir"},
+            {"path":"game/hl2/resource/chat_english.txt","kind":"file","size":33,"sha256":"bb5f687b8275f889f67ed5c51e8982a722b9ee6e2a38af5934e56d86b1d67203","latin1":"\"lang\" { \"chat\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/chat_russian.txt","kind":"file","size":33,"sha256":"2bbf741c8b823f73cee63bf1a8d1c8206a2f04f1aba91c0843fec392b0cf69b9","latin1":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+            {"path":"game/hl2/resource/hl2_english.txt","kind":"file","size":32,"sha256":"d525f9b46646ed43558318548a0ec2d114bd5f6778136777dadedafdf41080ac","latin1":"\"lang\" { \"hl2\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/hl2_russian.txt","kind":"file","size":32,"sha256":"05459b1f6ec48aa14be75f82acb8e7c878c83c2e39d74a9699122453ca5e4dab","latin1":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+            {"path":"game/hl2/resource/valve_english.txt","kind":"file","size":34,"sha256":"d790af48d3127691a96a6e8e98191b16eb32700febbf787381923b2fdb5f41ec","latin1":"\"lang\" { \"valve\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/valve_russian.txt","kind":"file","size":34,"sha256":"8d6ae4af083b81bd07fedf4be71edf68966c6cf38d2598aecba9abe6a6b9d42e","latin1":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod","kind":"dir"},
+            {"path":"game/mymod/custom","kind":"dir"},
+            {"path":"game/mymod/custom/hlsr-language","kind":"dir"},
+            {
+              "path": "game/mymod/custom/hlsr-language/README.txt",
+              "kind": "file",
+              "size": 502,
+              "sha256": "7c6f4a3df7b3452f0012fab562de80fc03a2583076d9b551bec0b12495c27923",
+              "latin1": "Ð­ÑÐ¾Ð¹ Ð¿Ð°Ð¿ÐºÐ¾Ð¹ ÑÐ°ÑÐ¿Ð¾ÑÑÐ¶Ð°ÐµÑÑÑ Ð»Ð°ÑÐ½ÑÐµÑ HLSR.\r\n\r\nÐÐ´ÐµÑÑ Ð»ÐµÐ¶Ð°Ñ ÑÐ·ÑÐºÐ¾Ð²ÑÐµ ÑÐ°Ð¹Ð»Ñ Ð²ÑÐ±ÑÐ°Ð½Ð½Ð¾Ð³Ð¾ Ð² Ð»Ð°ÑÐ½ÑÐµÑÐµ ÑÐ·ÑÐºÐ° Ð¸Ð³ÑÑ. ÐÐ°Ð¿ÐºÐ°\r\nÐ¿ÐµÑÐµÐ¿Ð¸ÑÑÐ²Ð°ÐµÑÑÑ Ð¿ÑÐ¸ ÐºÐ°Ð¶Ð´Ð¾Ð¼ Ð·Ð°Ð¿ÑÑÐºÐµ Ð¸ ÑÐ´Ð°Ð»ÑÐµÑÑÑ, ÐºÐ¾Ð³Ð´Ð° ÑÐ·ÑÐº Ð¿ÐµÑÐµÐºÐ»ÑÑÑÐ½\r\nÐ¾Ð±ÑÐ°ÑÐ½Ð¾ Ð½Ð° Â«ÐºÐ°Ðº Ð² SteamÂ». Ð¡Ð²Ð¾Ð¸ ÑÐ°Ð¹Ð»Ñ ÑÑÐ´Ð° ÐºÐ»Ð°ÑÑÑ Ð½Ðµ Ð½ÑÐ¶Ð½Ð¾ â Ð¿Ð¾Ð»Ð¾Ð¶Ð¸ Ð¸Ñ\r\nÐ² ÑÐ¾ÑÐµÐ´Ð½ÑÑ Ð¿Ð°Ð¿ÐºÑ Ð²Ð½ÑÑÑÐ¸ custom/.\r\n"
+            },
+            {"path":"game/mymod/custom/hlsr-language/resource","kind":"dir"},
+            {"path":"game/mymod/custom/hlsr-language/resource/chat_english.txt","kind":"file","size":33,"sha256":"2bbf741c8b823f73cee63bf1a8d1c8206a2f04f1aba91c0843fec392b0cf69b9","latin1":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod/custom/hlsr-language/resource/gameui_english.txt","kind":"file","size":35,"sha256":"aeab4ce53c90baf63aaee9c99caa022dbdf2a7f141f49efe5eee1a3ad9cd33a7","latin1":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"},
+            {"path":"game/mymod/custom/hlsr-language/resource/hl2_english.txt","kind":"file","size":32,"sha256":"05459b1f6ec48aa14be75f82acb8e7c878c83c2e39d74a9699122453ca5e4dab","latin1":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod/custom/hlsr-language/resource/valve_english.txt","kind":"file","size":34,"sha256":"8d6ae4af083b81bd07fedf4be71edf68966c6cf38d2598aecba9abe6a6b9d42e","latin1":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod/resource","kind":"dir"},
+            {"path":"game/mymod/resource/gameui_english.txt","kind":"file","size":35,"sha256":"0a6b5fbd124c074aabbfcbd68cf67d5341ac023ddcf96c2cd67b1f5d71d0097e","latin1":"\"lang\" { \"gameui\" \"mod english\" }\r\n"},
+            {"path":"game/mymod/resource/gameui_russian.txt","kind":"file","size":35,"sha256":"aeab4ce53c90baf63aaee9c99caa022dbdf2a7f141f49efe5eee1a3ad9cd33a7","latin1":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "наложение: смена языка заменяет файлы",
+      "setup": [
+        {"file":"game/mymod/resource/gameui_russian.txt","utf8":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"},
+        {"file":"game/hl2/resource/hl2_russian.txt","utf8":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+        {"file":"game/hl2/resource/valve_russian.txt","utf8":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+        {"file":"game/hl2/resource/chat_russian.txt","utf8":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+        {"file":"game/mymod/resource/gameui_english.txt","utf8":"\"lang\" { \"gameui\" \"mod english\" }\r\n"},
+        {"file":"game/hl2/resource/hl2_english.txt","utf8":"\"lang\" { \"hl2\" \"hl2 english\" }\r\n"},
+        {"file":"game/hl2/resource/valve_english.txt","utf8":"\"lang\" { \"valve\" \"hl2 english\" }\r\n"},
+        {"file":"game/hl2/resource/chat_english.txt","utf8":"\"lang\" { \"chat\" \"hl2 english\" }\r\n"},
+        {"file":"game/mymod/resource/gameui_german.txt","utf8":"\"lang\" { \"gameui\" \"mod german\" }\r\n"}
+      ],
+      "steps": [{"op":"apply","choice":"russian","options":{"engineLanguage":"english"}},{"op":"apply","choice":"german","options":{"engineLanguage":"english"}},{"op":"tree"}],
+      "results": [
+        {"ok":{"ok":true,"applied":true,"language":"russian","engineLanguage":"english","files":["gameui_english.txt","hl2_english.txt","valve_english.txt","chat_english.txt"]}},
+        {"ok":{"ok":true,"applied":true,"language":"german","engineLanguage":"english","files":["gameui_english.txt"]}},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/hl2","kind":"dir"},
+            {"path":"game/hl2/resource","kind":"dir"},
+            {"path":"game/hl2/resource/chat_english.txt","kind":"file","size":33,"sha256":"bb5f687b8275f889f67ed5c51e8982a722b9ee6e2a38af5934e56d86b1d67203","latin1":"\"lang\" { \"chat\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/chat_russian.txt","kind":"file","size":33,"sha256":"2bbf741c8b823f73cee63bf1a8d1c8206a2f04f1aba91c0843fec392b0cf69b9","latin1":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+            {"path":"game/hl2/resource/hl2_english.txt","kind":"file","size":32,"sha256":"d525f9b46646ed43558318548a0ec2d114bd5f6778136777dadedafdf41080ac","latin1":"\"lang\" { \"hl2\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/hl2_russian.txt","kind":"file","size":32,"sha256":"05459b1f6ec48aa14be75f82acb8e7c878c83c2e39d74a9699122453ca5e4dab","latin1":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+            {"path":"game/hl2/resource/valve_english.txt","kind":"file","size":34,"sha256":"d790af48d3127691a96a6e8e98191b16eb32700febbf787381923b2fdb5f41ec","latin1":"\"lang\" { \"valve\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/valve_russian.txt","kind":"file","size":34,"sha256":"8d6ae4af083b81bd07fedf4be71edf68966c6cf38d2598aecba9abe6a6b9d42e","latin1":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod","kind":"dir"},
+            {"path":"game/mymod/custom","kind":"dir"},
+            {"path":"game/mymod/custom/hlsr-language","kind":"dir"},
+            {
+              "path": "game/mymod/custom/hlsr-language/README.txt",
+              "kind": "file",
+              "size": 502,
+              "sha256": "7c6f4a3df7b3452f0012fab562de80fc03a2583076d9b551bec0b12495c27923",
+              "latin1": "Ð­ÑÐ¾Ð¹ Ð¿Ð°Ð¿ÐºÐ¾Ð¹ ÑÐ°ÑÐ¿Ð¾ÑÑÐ¶Ð°ÐµÑÑÑ Ð»Ð°ÑÐ½ÑÐµÑ HLSR.\r\n\r\nÐÐ´ÐµÑÑ Ð»ÐµÐ¶Ð°Ñ ÑÐ·ÑÐºÐ¾Ð²ÑÐµ ÑÐ°Ð¹Ð»Ñ Ð²ÑÐ±ÑÐ°Ð½Ð½Ð¾Ð³Ð¾ Ð² Ð»Ð°ÑÐ½ÑÐµÑÐµ ÑÐ·ÑÐºÐ° Ð¸Ð³ÑÑ. ÐÐ°Ð¿ÐºÐ°\r\nÐ¿ÐµÑÐµÐ¿Ð¸ÑÑÐ²Ð°ÐµÑÑÑ Ð¿ÑÐ¸ ÐºÐ°Ð¶Ð´Ð¾Ð¼ Ð·Ð°Ð¿ÑÑÐºÐµ Ð¸ ÑÐ´Ð°Ð»ÑÐµÑÑÑ, ÐºÐ¾Ð³Ð´Ð° ÑÐ·ÑÐº Ð¿ÐµÑÐµÐºÐ»ÑÑÑÐ½\r\nÐ¾Ð±ÑÐ°ÑÐ½Ð¾ Ð½Ð° Â«ÐºÐ°Ðº Ð² SteamÂ». Ð¡Ð²Ð¾Ð¸ ÑÐ°Ð¹Ð»Ñ ÑÑÐ´Ð° ÐºÐ»Ð°ÑÑÑ Ð½Ðµ Ð½ÑÐ¶Ð½Ð¾ â Ð¿Ð¾Ð»Ð¾Ð¶Ð¸ Ð¸Ñ\r\nÐ² ÑÐ¾ÑÐµÐ´Ð½ÑÑ Ð¿Ð°Ð¿ÐºÑ Ð²Ð½ÑÑÑÐ¸ custom/.\r\n"
+            },
+            {"path":"game/mymod/custom/hlsr-language/resource","kind":"dir"},
+            {"path":"game/mymod/custom/hlsr-language/resource/gameui_english.txt","kind":"file","size":34,"sha256":"3807fd838e0b532ffa320733d02b640f5e25a8c254c23135c9d44f3f85ecc06c","latin1":"\"lang\" { \"gameui\" \"mod german\" }\r\n"},
+            {"path":"game/mymod/resource","kind":"dir"},
+            {"path":"game/mymod/resource/gameui_english.txt","kind":"file","size":35,"sha256":"0a6b5fbd124c074aabbfcbd68cf67d5341ac023ddcf96c2cd67b1f5d71d0097e","latin1":"\"lang\" { \"gameui\" \"mod english\" }\r\n"},
+            {"path":"game/mymod/resource/gameui_german.txt","kind":"file","size":34,"sha256":"3807fd838e0b532ffa320733d02b640f5e25a8c254c23135c9d44f3f85ecc06c","latin1":"\"lang\" { \"gameui\" \"mod german\" }\r\n"},
+            {"path":"game/mymod/resource/gameui_russian.txt","kind":"file","size":35,"sha256":"aeab4ce53c90baf63aaee9c99caa022dbdf2a7f141f49efe5eee1a3ad9cd33a7","latin1":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "наложение: игра во вложенной папке",
+      "setup": [{"file":"game/Half-Life/valve_WON/resource/gameui_russian.txt","utf8":"ru"},{"file":"game/hl2/resource/chat_russian.txt","utf8":"chat"}],
+      "steps": [{"op":"apply","choice":"russian","options":{"engineLanguage":"english"},"gameDirectory":"Half-Life/valve_WON"},{"op":"tree"}],
+      "results": [
+        {"ok":{"ok":true,"applied":true,"language":"russian","engineLanguage":"english","files":["gameui_english.txt","chat_english.txt"]}},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/Half-Life","kind":"dir"},
+            {"path":"game/Half-Life/valve_WON","kind":"dir"},
+            {"path":"game/Half-Life/valve_WON/custom","kind":"dir"},
+            {"path":"game/Half-Life/valve_WON/custom/hlsr-language","kind":"dir"},
+            {
+              "path": "game/Half-Life/valve_WON/custom/hlsr-language/README.txt",
+              "kind": "file",
+              "size": 502,
+              "sha256": "7c6f4a3df7b3452f0012fab562de80fc03a2583076d9b551bec0b12495c27923",
+              "latin1": "Ð­ÑÐ¾Ð¹ Ð¿Ð°Ð¿ÐºÐ¾Ð¹ ÑÐ°ÑÐ¿Ð¾ÑÑÐ¶Ð°ÐµÑÑÑ Ð»Ð°ÑÐ½ÑÐµÑ HLSR.\r\n\r\nÐÐ´ÐµÑÑ Ð»ÐµÐ¶Ð°Ñ ÑÐ·ÑÐºÐ¾Ð²ÑÐµ ÑÐ°Ð¹Ð»Ñ Ð²ÑÐ±ÑÐ°Ð½Ð½Ð¾Ð³Ð¾ Ð² Ð»Ð°ÑÐ½ÑÐµÑÐµ ÑÐ·ÑÐºÐ° Ð¸Ð³ÑÑ. ÐÐ°Ð¿ÐºÐ°\r\nÐ¿ÐµÑÐµÐ¿Ð¸ÑÑÐ²Ð°ÐµÑÑÑ Ð¿ÑÐ¸ ÐºÐ°Ð¶Ð´Ð¾Ð¼ Ð·Ð°Ð¿ÑÑÐºÐµ Ð¸ ÑÐ´Ð°Ð»ÑÐµÑÑÑ, ÐºÐ¾Ð³Ð´Ð° ÑÐ·ÑÐº Ð¿ÐµÑÐµÐºÐ»ÑÑÑÐ½\r\nÐ¾Ð±ÑÐ°ÑÐ½Ð¾ Ð½Ð° Â«ÐºÐ°Ðº Ð² SteamÂ». Ð¡Ð²Ð¾Ð¸ ÑÐ°Ð¹Ð»Ñ ÑÑÐ´Ð° ÐºÐ»Ð°ÑÑÑ Ð½Ðµ Ð½ÑÐ¶Ð½Ð¾ â Ð¿Ð¾Ð»Ð¾Ð¶Ð¸ Ð¸Ñ\r\nÐ² ÑÐ¾ÑÐµÐ´Ð½ÑÑ Ð¿Ð°Ð¿ÐºÑ Ð²Ð½ÑÑÑÐ¸ custom/.\r\n"
+            },
+            {"path":"game/Half-Life/valve_WON/custom/hlsr-language/resource","kind":"dir"},
+            {"path":"game/Half-Life/valve_WON/custom/hlsr-language/resource/chat_english.txt","kind":"file","size":4,"sha256":"31e06f7d89feb99a0e6c0affe198748c3bb5bef5e3cc92d95cb9e996197d3fc3","latin1":"chat"},
+            {"path":"game/Half-Life/valve_WON/custom/hlsr-language/resource/gameui_english.txt","kind":"file","size":2,"sha256":"ed5ad332c106043712705210b4f3d1179e49c5cf426520c74cb8ec48b22b1961","latin1":"ru"},
+            {"path":"game/Half-Life/valve_WON/resource","kind":"dir"},
+            {"path":"game/Half-Life/valve_WON/resource/gameui_russian.txt","kind":"file","size":2,"sha256":"ed5ad332c106043712705210b4f3d1179e49c5cf426520c74cb8ec48b22b1961","latin1":"ru"},
+            {"path":"game/hl2","kind":"dir"},
+            {"path":"game/hl2/resource","kind":"dir"},
+            {"path":"game/hl2/resource/chat_russian.txt","kind":"file","size":4,"sha256":"31e06f7d89feb99a0e6c0affe198748c3bb5bef5e3cc92d95cb9e996197d3fc3","latin1":"chat"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "наложение: путь установки с кириллицей и пробелами",
+      "setup": [{"file":"Моя игра/mymod/resource/gameui_russian.txt","utf8":"ru"}],
+      "steps": [{"op":"apply","choice":"russian","options":{"engineLanguage":"english"},"installDir":"Моя игра"},{"op":"tree"}],
+      "results": [
+        {"ok":{"ok":true,"applied":true,"language":"russian","engineLanguage":"english","files":["gameui_english.txt"]}},
+        {
+          "tree": [
+            {"path":"Моя игра","kind":"dir"},
+            {"path":"Моя игра/mymod","kind":"dir"},
+            {"path":"Моя игра/mymod/custom","kind":"dir"},
+            {"path":"Моя игра/mymod/custom/hlsr-language","kind":"dir"},
+            {
+              "path": "Моя игра/mymod/custom/hlsr-language/README.txt",
+              "kind": "file",
+              "size": 502,
+              "sha256": "7c6f4a3df7b3452f0012fab562de80fc03a2583076d9b551bec0b12495c27923",
+              "latin1": "Ð­ÑÐ¾Ð¹ Ð¿Ð°Ð¿ÐºÐ¾Ð¹ ÑÐ°ÑÐ¿Ð¾ÑÑÐ¶Ð°ÐµÑÑÑ Ð»Ð°ÑÐ½ÑÐµÑ HLSR.\r\n\r\nÐÐ´ÐµÑÑ Ð»ÐµÐ¶Ð°Ñ ÑÐ·ÑÐºÐ¾Ð²ÑÐµ ÑÐ°Ð¹Ð»Ñ Ð²ÑÐ±ÑÐ°Ð½Ð½Ð¾Ð³Ð¾ Ð² Ð»Ð°ÑÐ½ÑÐµÑÐµ ÑÐ·ÑÐºÐ° Ð¸Ð³ÑÑ. ÐÐ°Ð¿ÐºÐ°\r\nÐ¿ÐµÑÐµÐ¿Ð¸ÑÑÐ²Ð°ÐµÑÑÑ Ð¿ÑÐ¸ ÐºÐ°Ð¶Ð´Ð¾Ð¼ Ð·Ð°Ð¿ÑÑÐºÐµ Ð¸ ÑÐ´Ð°Ð»ÑÐµÑÑÑ, ÐºÐ¾Ð³Ð´Ð° ÑÐ·ÑÐº Ð¿ÐµÑÐµÐºÐ»ÑÑÑÐ½\r\nÐ¾Ð±ÑÐ°ÑÐ½Ð¾ Ð½Ð° Â«ÐºÐ°Ðº Ð² SteamÂ». Ð¡Ð²Ð¾Ð¸ ÑÐ°Ð¹Ð»Ñ ÑÑÐ´Ð° ÐºÐ»Ð°ÑÑÑ Ð½Ðµ Ð½ÑÐ¶Ð½Ð¾ â Ð¿Ð¾Ð»Ð¾Ð¶Ð¸ Ð¸Ñ\r\nÐ² ÑÐ¾ÑÐµÐ´Ð½ÑÑ Ð¿Ð°Ð¿ÐºÑ Ð²Ð½ÑÑÑÐ¸ custom/.\r\n"
+            },
+            {"path":"Моя игра/mymod/custom/hlsr-language/resource","kind":"dir"},
+            {"path":"Моя игра/mymod/custom/hlsr-language/resource/gameui_english.txt","kind":"file","size":2,"sha256":"ed5ad332c106043712705210b4f3d1179e49c5cf426520c74cb8ec48b22b1961","latin1":"ru"},
+            {"path":"Моя игра/mymod/resource","kind":"dir"},
+            {"path":"Моя игра/mymod/resource/gameui_russian.txt","kind":"file","size":2,"sha256":"ed5ad332c106043712705210b4f3d1179e49c5cf426520c74cb8ec48b22b1961","latin1":"ru"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "наложение: нет исходных файлов — NO_SOURCE и очистка",
+      "setup": [{"file":"game/mymod/custom/hlsr-language/resource/old_file.txt","utf8":"старый файл"},{"file":"game/mymod/custom/hlsr-language/README.txt","utf8":"старый README"},{"file":"game/mymod/custom/hlsr-language/свои.txt","utf8":"чужой файл"},{"file":"game/mymod/resource/gameui_german.txt","utf8":"\"lang\" { \"gameui\" \"mod german\" }\r\n"}],
+      "steps": [{"op":"apply","choice":"russian","options":{"engineLanguage":"english"}},{"op":"tree"}],
+      "results": [
+        {"ok":{"ok":true,"applied":false,"language":"russian","engineLanguage":"english","reason":"NO_SOURCE","files":[]}},
+        {"tree":[{"path":"game","kind":"dir"},{"path":"game/mymod","kind":"dir"},{"path":"game/mymod/custom","kind":"dir"},{"path":"game/mymod/resource","kind":"dir"},{"path":"game/mymod/resource/gameui_german.txt","kind":"file","size":34,"sha256":"3807fd838e0b532ffa320733d02b640f5e25a8c254c23135c9d44f3f85ecc06c","latin1":"\"lang\" { \"gameui\" \"mod german\" }\r\n"}]}
+      ]
+    },
+    {
+      "name": "наложение: язык равен языку движка — SAME_AS_ENGINE и очистка",
+      "setup": [
+        {"file":"game/mymod/resource/gameui_russian.txt","utf8":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"},
+        {"file":"game/hl2/resource/hl2_russian.txt","utf8":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+        {"file":"game/hl2/resource/valve_russian.txt","utf8":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+        {"file":"game/hl2/resource/chat_russian.txt","utf8":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+        {"file":"game/mymod/resource/gameui_english.txt","utf8":"\"lang\" { \"gameui\" \"mod english\" }\r\n"},
+        {"file":"game/hl2/resource/hl2_english.txt","utf8":"\"lang\" { \"hl2\" \"hl2 english\" }\r\n"},
+        {"file":"game/hl2/resource/valve_english.txt","utf8":"\"lang\" { \"valve\" \"hl2 english\" }\r\n"},
+        {"file":"game/hl2/resource/chat_english.txt","utf8":"\"lang\" { \"chat\" \"hl2 english\" }\r\n"},
+        {"file":"game/mymod/custom/hlsr-language/resource/old_file.txt","utf8":"старый файл"},
+        {"file":"game/mymod/custom/hlsr-language/README.txt","utf8":"старый README"},
+        {"file":"game/mymod/custom/hlsr-language/свои.txt","utf8":"чужой файл"}
+      ],
+      "steps": [{"op":"apply","choice":"russian","options":{"engineLanguage":"russian"}},{"op":"tree"}],
+      "results": [
+        {"ok":{"ok":true,"applied":false,"language":"russian","engineLanguage":"russian","reason":"SAME_AS_ENGINE","files":[]}},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/hl2","kind":"dir"},
+            {"path":"game/hl2/resource","kind":"dir"},
+            {"path":"game/hl2/resource/chat_english.txt","kind":"file","size":33,"sha256":"bb5f687b8275f889f67ed5c51e8982a722b9ee6e2a38af5934e56d86b1d67203","latin1":"\"lang\" { \"chat\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/chat_russian.txt","kind":"file","size":33,"sha256":"2bbf741c8b823f73cee63bf1a8d1c8206a2f04f1aba91c0843fec392b0cf69b9","latin1":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+            {"path":"game/hl2/resource/hl2_english.txt","kind":"file","size":32,"sha256":"d525f9b46646ed43558318548a0ec2d114bd5f6778136777dadedafdf41080ac","latin1":"\"lang\" { \"hl2\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/hl2_russian.txt","kind":"file","size":32,"sha256":"05459b1f6ec48aa14be75f82acb8e7c878c83c2e39d74a9699122453ca5e4dab","latin1":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+            {"path":"game/hl2/resource/valve_english.txt","kind":"file","size":34,"sha256":"d790af48d3127691a96a6e8e98191b16eb32700febbf787381923b2fdb5f41ec","latin1":"\"lang\" { \"valve\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/valve_russian.txt","kind":"file","size":34,"sha256":"8d6ae4af083b81bd07fedf4be71edf68966c6cf38d2598aecba9abe6a6b9d42e","latin1":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod","kind":"dir"},
+            {"path":"game/mymod/custom","kind":"dir"},
+            {"path":"game/mymod/resource","kind":"dir"},
+            {"path":"game/mymod/resource/gameui_english.txt","kind":"file","size":35,"sha256":"0a6b5fbd124c074aabbfcbd68cf67d5341ac023ddcf96c2cd67b1f5d71d0097e","latin1":"\"lang\" { \"gameui\" \"mod english\" }\r\n"},
+            {"path":"game/mymod/resource/gameui_russian.txt","kind":"file","size":35,"sha256":"aeab4ce53c90baf63aaee9c99caa022dbdf2a7f141f49efe5eee1a3ad9cd33a7","latin1":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "наложение: язык движка неизвестен — ENGINE_UNKNOWN и очистка",
+      "setup": [
+        {"file":"game/mymod/resource/gameui_russian.txt","utf8":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"},
+        {"file":"game/hl2/resource/hl2_russian.txt","utf8":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+        {"file":"game/hl2/resource/valve_russian.txt","utf8":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+        {"file":"game/hl2/resource/chat_russian.txt","utf8":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+        {"file":"game/mymod/resource/gameui_english.txt","utf8":"\"lang\" { \"gameui\" \"mod english\" }\r\n"},
+        {"file":"game/hl2/resource/hl2_english.txt","utf8":"\"lang\" { \"hl2\" \"hl2 english\" }\r\n"},
+        {"file":"game/hl2/resource/valve_english.txt","utf8":"\"lang\" { \"valve\" \"hl2 english\" }\r\n"},
+        {"file":"game/hl2/resource/chat_english.txt","utf8":"\"lang\" { \"chat\" \"hl2 english\" }\r\n"},
+        {"file":"game/mymod/custom/hlsr-language/resource/old_file.txt","utf8":"старый файл"},
+        {"file":"game/mymod/custom/hlsr-language/README.txt","utf8":"старый README"},
+        {"file":"game/mymod/custom/hlsr-language/свои.txt","utf8":"чужой файл"}
+      ],
+      "steps": [{"op":"apply","choice":"russian","options":{"engineLanguage":null}},{"op":"apply","choice":"russian","options":{"engineLanguage":"ru-RU"}},{"op":"apply","choice":"russian","options":{"engineLanguage":""}},{"op":"apply","choice":"russian","options":{"engineLanguage":5}},{"op":"apply","choice":"german","options":{"engineLanguage":"RUSSIAN"}},{"op":"tree"}],
+      "results": [
+        {"ok":{"ok":true,"applied":false,"language":"russian","engineLanguage":null,"reason":"ENGINE_UNKNOWN","files":[]}},
+        {"ok":{"ok":true,"applied":false,"language":"russian","engineLanguage":null,"reason":"ENGINE_UNKNOWN","files":[]}},
+        {"ok":{"ok":true,"applied":false,"language":"russian","engineLanguage":null,"reason":"ENGINE_UNKNOWN","files":[]}},
+        {"ok":{"ok":true,"applied":false,"language":"russian","engineLanguage":null,"reason":"ENGINE_UNKNOWN","files":[]}},
+        {"ok":{"ok":true,"applied":false,"language":"german","engineLanguage":null,"reason":"ENGINE_UNKNOWN","files":[]}},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/hl2","kind":"dir"},
+            {"path":"game/hl2/resource","kind":"dir"},
+            {"path":"game/hl2/resource/chat_english.txt","kind":"file","size":33,"sha256":"bb5f687b8275f889f67ed5c51e8982a722b9ee6e2a38af5934e56d86b1d67203","latin1":"\"lang\" { \"chat\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/chat_russian.txt","kind":"file","size":33,"sha256":"2bbf741c8b823f73cee63bf1a8d1c8206a2f04f1aba91c0843fec392b0cf69b9","latin1":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+            {"path":"game/hl2/resource/hl2_english.txt","kind":"file","size":32,"sha256":"d525f9b46646ed43558318548a0ec2d114bd5f6778136777dadedafdf41080ac","latin1":"\"lang\" { \"hl2\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/hl2_russian.txt","kind":"file","size":32,"sha256":"05459b1f6ec48aa14be75f82acb8e7c878c83c2e39d74a9699122453ca5e4dab","latin1":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+            {"path":"game/hl2/resource/valve_english.txt","kind":"file","size":34,"sha256":"d790af48d3127691a96a6e8e98191b16eb32700febbf787381923b2fdb5f41ec","latin1":"\"lang\" { \"valve\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/valve_russian.txt","kind":"file","size":34,"sha256":"8d6ae4af083b81bd07fedf4be71edf68966c6cf38d2598aecba9abe6a6b9d42e","latin1":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod","kind":"dir"},
+            {"path":"game/mymod/custom","kind":"dir"},
+            {"path":"game/mymod/resource","kind":"dir"},
+            {"path":"game/mymod/resource/gameui_english.txt","kind":"file","size":35,"sha256":"0a6b5fbd124c074aabbfcbd68cf67d5341ac023ddcf96c2cd67b1f5d71d0097e","latin1":"\"lang\" { \"gameui\" \"mod english\" }\r\n"},
+            {"path":"game/mymod/resource/gameui_russian.txt","kind":"file","size":35,"sha256":"aeab4ce53c90baf63aaee9c99caa022dbdf2a7f141f49efe5eee1a3ad9cd33a7","latin1":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "наложение: язык «auto» у движка — это язык",
+      "setup": [
+        {"file":"game/mymod/resource/gameui_russian.txt","utf8":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"},
+        {"file":"game/hl2/resource/hl2_russian.txt","utf8":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+        {"file":"game/hl2/resource/valve_russian.txt","utf8":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+        {"file":"game/hl2/resource/chat_russian.txt","utf8":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+        {"file":"game/mymod/resource/gameui_english.txt","utf8":"\"lang\" { \"gameui\" \"mod english\" }\r\n"},
+        {"file":"game/hl2/resource/hl2_english.txt","utf8":"\"lang\" { \"hl2\" \"hl2 english\" }\r\n"},
+        {"file":"game/hl2/resource/valve_english.txt","utf8":"\"lang\" { \"valve\" \"hl2 english\" }\r\n"},
+        {"file":"game/hl2/resource/chat_english.txt","utf8":"\"lang\" { \"chat\" \"hl2 english\" }\r\n"}
+      ],
+      "steps": [{"op":"apply","choice":"russian","options":{"engineLanguage":"auto"}},{"op":"tree"}],
+      "results": [
+        {"ok":{"ok":true,"applied":true,"language":"russian","engineLanguage":"auto","files":["gameui_auto.txt","hl2_auto.txt","valve_auto.txt","chat_auto.txt"]}},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/hl2","kind":"dir"},
+            {"path":"game/hl2/resource","kind":"dir"},
+            {"path":"game/hl2/resource/chat_english.txt","kind":"file","size":33,"sha256":"bb5f687b8275f889f67ed5c51e8982a722b9ee6e2a38af5934e56d86b1d67203","latin1":"\"lang\" { \"chat\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/chat_russian.txt","kind":"file","size":33,"sha256":"2bbf741c8b823f73cee63bf1a8d1c8206a2f04f1aba91c0843fec392b0cf69b9","latin1":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+            {"path":"game/hl2/resource/hl2_english.txt","kind":"file","size":32,"sha256":"d525f9b46646ed43558318548a0ec2d114bd5f6778136777dadedafdf41080ac","latin1":"\"lang\" { \"hl2\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/hl2_russian.txt","kind":"file","size":32,"sha256":"05459b1f6ec48aa14be75f82acb8e7c878c83c2e39d74a9699122453ca5e4dab","latin1":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+            {"path":"game/hl2/resource/valve_english.txt","kind":"file","size":34,"sha256":"d790af48d3127691a96a6e8e98191b16eb32700febbf787381923b2fdb5f41ec","latin1":"\"lang\" { \"valve\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/valve_russian.txt","kind":"file","size":34,"sha256":"8d6ae4af083b81bd07fedf4be71edf68966c6cf38d2598aecba9abe6a6b9d42e","latin1":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod","kind":"dir"},
+            {"path":"game/mymod/custom","kind":"dir"},
+            {"path":"game/mymod/custom/hlsr-language","kind":"dir"},
+            {
+              "path": "game/mymod/custom/hlsr-language/README.txt",
+              "kind": "file",
+              "size": 502,
+              "sha256": "7c6f4a3df7b3452f0012fab562de80fc03a2583076d9b551bec0b12495c27923",
+              "latin1": "Ð­ÑÐ¾Ð¹ Ð¿Ð°Ð¿ÐºÐ¾Ð¹ ÑÐ°ÑÐ¿Ð¾ÑÑÐ¶Ð°ÐµÑÑÑ Ð»Ð°ÑÐ½ÑÐµÑ HLSR.\r\n\r\nÐÐ´ÐµÑÑ Ð»ÐµÐ¶Ð°Ñ ÑÐ·ÑÐºÐ¾Ð²ÑÐµ ÑÐ°Ð¹Ð»Ñ Ð²ÑÐ±ÑÐ°Ð½Ð½Ð¾Ð³Ð¾ Ð² Ð»Ð°ÑÐ½ÑÐµÑÐµ ÑÐ·ÑÐºÐ° Ð¸Ð³ÑÑ. ÐÐ°Ð¿ÐºÐ°\r\nÐ¿ÐµÑÐµÐ¿Ð¸ÑÑÐ²Ð°ÐµÑÑÑ Ð¿ÑÐ¸ ÐºÐ°Ð¶Ð´Ð¾Ð¼ Ð·Ð°Ð¿ÑÑÐºÐµ Ð¸ ÑÐ´Ð°Ð»ÑÐµÑÑÑ, ÐºÐ¾Ð³Ð´Ð° ÑÐ·ÑÐº Ð¿ÐµÑÐµÐºÐ»ÑÑÑÐ½\r\nÐ¾Ð±ÑÐ°ÑÐ½Ð¾ Ð½Ð° Â«ÐºÐ°Ðº Ð² SteamÂ». Ð¡Ð²Ð¾Ð¸ ÑÐ°Ð¹Ð»Ñ ÑÑÐ´Ð° ÐºÐ»Ð°ÑÑÑ Ð½Ðµ Ð½ÑÐ¶Ð½Ð¾ â Ð¿Ð¾Ð»Ð¾Ð¶Ð¸ Ð¸Ñ\r\nÐ² ÑÐ¾ÑÐµÐ´Ð½ÑÑ Ð¿Ð°Ð¿ÐºÑ Ð²Ð½ÑÑÑÐ¸ custom/.\r\n"
+            },
+            {"path":"game/mymod/custom/hlsr-language/resource","kind":"dir"},
+            {"path":"game/mymod/custom/hlsr-language/resource/chat_auto.txt","kind":"file","size":33,"sha256":"2bbf741c8b823f73cee63bf1a8d1c8206a2f04f1aba91c0843fec392b0cf69b9","latin1":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod/custom/hlsr-language/resource/gameui_auto.txt","kind":"file","size":35,"sha256":"aeab4ce53c90baf63aaee9c99caa022dbdf2a7f141f49efe5eee1a3ad9cd33a7","latin1":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"},
+            {"path":"game/mymod/custom/hlsr-language/resource/hl2_auto.txt","kind":"file","size":32,"sha256":"05459b1f6ec48aa14be75f82acb8e7c878c83c2e39d74a9699122453ca5e4dab","latin1":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod/custom/hlsr-language/resource/valve_auto.txt","kind":"file","size":34,"sha256":"8d6ae4af083b81bd07fedf4be71edf68966c6cf38d2598aecba9abe6a6b9d42e","latin1":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod/resource","kind":"dir"},
+            {"path":"game/mymod/resource/gameui_english.txt","kind":"file","size":35,"sha256":"0a6b5fbd124c074aabbfcbd68cf67d5341ac023ddcf96c2cd67b1f5d71d0097e","latin1":"\"lang\" { \"gameui\" \"mod english\" }\r\n"},
+            {"path":"game/mymod/resource/gameui_russian.txt","kind":"file","size":35,"sha256":"aeab4ce53c90baf63aaee9c99caa022dbdf2a7f141f49efe5eee1a3ad9cd33a7","latin1":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "выбор «как в Steam» убирает подмену",
+      "setup": [
+        {"file":"game/mymod/resource/gameui_russian.txt","utf8":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"},
+        {"file":"game/hl2/resource/hl2_russian.txt","utf8":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+        {"file":"game/hl2/resource/valve_russian.txt","utf8":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+        {"file":"game/hl2/resource/chat_russian.txt","utf8":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+        {"file":"game/mymod/resource/gameui_english.txt","utf8":"\"lang\" { \"gameui\" \"mod english\" }\r\n"},
+        {"file":"game/hl2/resource/hl2_english.txt","utf8":"\"lang\" { \"hl2\" \"hl2 english\" }\r\n"},
+        {"file":"game/hl2/resource/valve_english.txt","utf8":"\"lang\" { \"valve\" \"hl2 english\" }\r\n"},
+        {"file":"game/hl2/resource/chat_english.txt","utf8":"\"lang\" { \"chat\" \"hl2 english\" }\r\n"},
+        {"file":"game/mymod/custom/hlsr-language/resource/old_file.txt","utf8":"старый файл"},
+        {"file":"game/mymod/custom/hlsr-language/README.txt","utf8":"старый README"},
+        {"file":"game/mymod/custom/hlsr-language/свои.txt","utf8":"чужой файл"}
+      ],
+      "steps": [{"op":"apply","choice":"auto","options":{"engineLanguage":"english"}},{"op":"tree"},{"op":"apply","choice":"auto","options":{"engineLanguage":"english"}},{"op":"tree"}],
+      "results": [
+        {"ok":{"ok":true,"applied":false,"language":"auto","engineLanguage":null,"reason":"AUTO","files":[]}},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/hl2","kind":"dir"},
+            {"path":"game/hl2/resource","kind":"dir"},
+            {"path":"game/hl2/resource/chat_english.txt","kind":"file","size":33,"sha256":"bb5f687b8275f889f67ed5c51e8982a722b9ee6e2a38af5934e56d86b1d67203","latin1":"\"lang\" { \"chat\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/chat_russian.txt","kind":"file","size":33,"sha256":"2bbf741c8b823f73cee63bf1a8d1c8206a2f04f1aba91c0843fec392b0cf69b9","latin1":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+            {"path":"game/hl2/resource/hl2_english.txt","kind":"file","size":32,"sha256":"d525f9b46646ed43558318548a0ec2d114bd5f6778136777dadedafdf41080ac","latin1":"\"lang\" { \"hl2\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/hl2_russian.txt","kind":"file","size":32,"sha256":"05459b1f6ec48aa14be75f82acb8e7c878c83c2e39d74a9699122453ca5e4dab","latin1":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+            {"path":"game/hl2/resource/valve_english.txt","kind":"file","size":34,"sha256":"d790af48d3127691a96a6e8e98191b16eb32700febbf787381923b2fdb5f41ec","latin1":"\"lang\" { \"valve\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/valve_russian.txt","kind":"file","size":34,"sha256":"8d6ae4af083b81bd07fedf4be71edf68966c6cf38d2598aecba9abe6a6b9d42e","latin1":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod","kind":"dir"},
+            {"path":"game/mymod/custom","kind":"dir"},
+            {"path":"game/mymod/resource","kind":"dir"},
+            {"path":"game/mymod/resource/gameui_english.txt","kind":"file","size":35,"sha256":"0a6b5fbd124c074aabbfcbd68cf67d5341ac023ddcf96c2cd67b1f5d71d0097e","latin1":"\"lang\" { \"gameui\" \"mod english\" }\r\n"},
+            {"path":"game/mymod/resource/gameui_russian.txt","kind":"file","size":35,"sha256":"aeab4ce53c90baf63aaee9c99caa022dbdf2a7f141f49efe5eee1a3ad9cd33a7","latin1":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"}
+          ]
+        },
+        {"ok":{"ok":true,"applied":false,"language":"auto","engineLanguage":null,"reason":"AUTO","files":[]}},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/hl2","kind":"dir"},
+            {"path":"game/hl2/resource","kind":"dir"},
+            {"path":"game/hl2/resource/chat_english.txt","kind":"file","size":33,"sha256":"bb5f687b8275f889f67ed5c51e8982a722b9ee6e2a38af5934e56d86b1d67203","latin1":"\"lang\" { \"chat\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/chat_russian.txt","kind":"file","size":33,"sha256":"2bbf741c8b823f73cee63bf1a8d1c8206a2f04f1aba91c0843fec392b0cf69b9","latin1":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+            {"path":"game/hl2/resource/hl2_english.txt","kind":"file","size":32,"sha256":"d525f9b46646ed43558318548a0ec2d114bd5f6778136777dadedafdf41080ac","latin1":"\"lang\" { \"hl2\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/hl2_russian.txt","kind":"file","size":32,"sha256":"05459b1f6ec48aa14be75f82acb8e7c878c83c2e39d74a9699122453ca5e4dab","latin1":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+            {"path":"game/hl2/resource/valve_english.txt","kind":"file","size":34,"sha256":"d790af48d3127691a96a6e8e98191b16eb32700febbf787381923b2fdb5f41ec","latin1":"\"lang\" { \"valve\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/valve_russian.txt","kind":"file","size":34,"sha256":"8d6ae4af083b81bd07fedf4be71edf68966c6cf38d2598aecba9abe6a6b9d42e","latin1":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod","kind":"dir"},
+            {"path":"game/mymod/custom","kind":"dir"},
+            {"path":"game/mymod/resource","kind":"dir"},
+            {"path":"game/mymod/resource/gameui_english.txt","kind":"file","size":35,"sha256":"0a6b5fbd124c074aabbfcbd68cf67d5341ac023ddcf96c2cd67b1f5d71d0097e","latin1":"\"lang\" { \"gameui\" \"mod english\" }\r\n"},
+            {"path":"game/mymod/resource/gameui_russian.txt","kind":"file","size":35,"sha256":"aeab4ce53c90baf63aaee9c99caa022dbdf2a7f141f49efe5eee1a3ad9cd33a7","latin1":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "выбор языка: всё, что не язык, — auto",
+      "setup": [
+        {"file":"game/mymod/resource/gameui_russian.txt","utf8":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"},
+        {"file":"game/hl2/resource/hl2_russian.txt","utf8":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+        {"file":"game/hl2/resource/valve_russian.txt","utf8":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+        {"file":"game/hl2/resource/chat_russian.txt","utf8":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+        {"file":"game/mymod/resource/gameui_english.txt","utf8":"\"lang\" { \"gameui\" \"mod english\" }\r\n"},
+        {"file":"game/hl2/resource/hl2_english.txt","utf8":"\"lang\" { \"hl2\" \"hl2 english\" }\r\n"},
+        {"file":"game/hl2/resource/valve_english.txt","utf8":"\"lang\" { \"valve\" \"hl2 english\" }\r\n"},
+        {"file":"game/hl2/resource/chat_english.txt","utf8":"\"lang\" { \"chat\" \"hl2 english\" }\r\n"},
+        {"file":"game/mymod/custom/hlsr-language/resource/old_file.txt","utf8":"старый файл"},
+        {"file":"game/mymod/custom/hlsr-language/README.txt","utf8":"старый README"},
+        {"file":"game/mymod/custom/hlsr-language/свои.txt","utf8":"чужой файл"}
+      ],
+      "steps": [
+        {"op":"apply","choice":"","options":{"engineLanguage":"english"}},
+        {"op":"apply","choice":"Russian","options":{"engineLanguage":"english"}},
+        {"op":"apply","choice":"r","options":{"engineLanguage":"english"}},
+        {"op":"apply","choice":"ru-RU","options":{"engineLanguage":"english"}},
+        {"op":"apply","choice":"ru ru","options":{"engineLanguage":"english"}},
+        {"op":"apply","choice":"aaaaaaaaaaaaaaaaaaaaaaaaa","options":{"engineLanguage":"english"}},
+        {"op":"apply","choice":"russian\n","options":{"engineLanguage":"english"}},
+        {"op":"apply","choice":5,"options":{"engineLanguage":"english"}},
+        {"op":"apply","choice":null,"options":{"engineLanguage":"english"}},
+        {"op":"apply","choice":["russian"],"options":{"engineLanguage":"english"}},
+        {"op":"apply","choice":{},"options":{"engineLanguage":"english"}},
+        {"op":"apply","choice":true,"options":{"engineLanguage":"english"}},
+        {"op":"apply","options":{"engineLanguage":"english"}},
+        {"op":"apply","choice":"ab","options":{"engineLanguage":"english"}},
+        {"op":"apply","choice":"aaaaaaaaaaaaaaaaaaaaaaaa","options":{"engineLanguage":"english"}},
+        {"op":"apply","choice":"RUSSIAN","options":{"engineLanguage":"english"}},
+        {"op":"tree"}
+      ],
+      "results": [
+        {"ok":{"ok":true,"applied":false,"language":"auto","engineLanguage":null,"reason":"AUTO","files":[]}},
+        {"ok":{"ok":true,"applied":false,"language":"auto","engineLanguage":null,"reason":"AUTO","files":[]}},
+        {"ok":{"ok":true,"applied":false,"language":"auto","engineLanguage":null,"reason":"AUTO","files":[]}},
+        {"ok":{"ok":true,"applied":false,"language":"auto","engineLanguage":null,"reason":"AUTO","files":[]}},
+        {"ok":{"ok":true,"applied":false,"language":"auto","engineLanguage":null,"reason":"AUTO","files":[]}},
+        {"ok":{"ok":true,"applied":false,"language":"auto","engineLanguage":null,"reason":"AUTO","files":[]}},
+        {"ok":{"ok":true,"applied":false,"language":"auto","engineLanguage":null,"reason":"AUTO","files":[]}},
+        {"ok":{"ok":true,"applied":false,"language":"auto","engineLanguage":null,"reason":"AUTO","files":[]}},
+        {"ok":{"ok":true,"applied":false,"language":"auto","engineLanguage":null,"reason":"AUTO","files":[]}},
+        {"ok":{"ok":true,"applied":false,"language":"auto","engineLanguage":null,"reason":"AUTO","files":[]}},
+        {"ok":{"ok":true,"applied":false,"language":"auto","engineLanguage":null,"reason":"AUTO","files":[]}},
+        {"ok":{"ok":true,"applied":false,"language":"auto","engineLanguage":null,"reason":"AUTO","files":[]}},
+        {"ok":{"ok":true,"applied":false,"language":"auto","engineLanguage":null,"reason":"AUTO","files":[]}},
+        {"ok":{"ok":true,"applied":false,"language":"ab","engineLanguage":"english","reason":"NO_SOURCE","files":[]}},
+        {"ok":{"ok":true,"applied":false,"language":"aaaaaaaaaaaaaaaaaaaaaaaa","engineLanguage":"english","reason":"NO_SOURCE","files":[]}},
+        {"ok":{"ok":true,"applied":false,"language":"auto","engineLanguage":null,"reason":"AUTO","files":[]}},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/hl2","kind":"dir"},
+            {"path":"game/hl2/resource","kind":"dir"},
+            {"path":"game/hl2/resource/chat_english.txt","kind":"file","size":33,"sha256":"bb5f687b8275f889f67ed5c51e8982a722b9ee6e2a38af5934e56d86b1d67203","latin1":"\"lang\" { \"chat\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/chat_russian.txt","kind":"file","size":33,"sha256":"2bbf741c8b823f73cee63bf1a8d1c8206a2f04f1aba91c0843fec392b0cf69b9","latin1":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+            {"path":"game/hl2/resource/hl2_english.txt","kind":"file","size":32,"sha256":"d525f9b46646ed43558318548a0ec2d114bd5f6778136777dadedafdf41080ac","latin1":"\"lang\" { \"hl2\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/hl2_russian.txt","kind":"file","size":32,"sha256":"05459b1f6ec48aa14be75f82acb8e7c878c83c2e39d74a9699122453ca5e4dab","latin1":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+            {"path":"game/hl2/resource/valve_english.txt","kind":"file","size":34,"sha256":"d790af48d3127691a96a6e8e98191b16eb32700febbf787381923b2fdb5f41ec","latin1":"\"lang\" { \"valve\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/valve_russian.txt","kind":"file","size":34,"sha256":"8d6ae4af083b81bd07fedf4be71edf68966c6cf38d2598aecba9abe6a6b9d42e","latin1":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod","kind":"dir"},
+            {"path":"game/mymod/custom","kind":"dir"},
+            {"path":"game/mymod/resource","kind":"dir"},
+            {"path":"game/mymod/resource/gameui_english.txt","kind":"file","size":35,"sha256":"0a6b5fbd124c074aabbfcbd68cf67d5341ac023ddcf96c2cd67b1f5d71d0097e","latin1":"\"lang\" { \"gameui\" \"mod english\" }\r\n"},
+            {"path":"game/mymod/resource/gameui_russian.txt","kind":"file","size":35,"sha256":"aeab4ce53c90baf63aaee9c99caa022dbdf2a7f141f49efe5eee1a3ad9cd33a7","latin1":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "выбор языка: две буквы и 24 буквы — допустимый язык",
+      "setup": [{"file":"game/hl2/resource/chat_ab.txt","utf8":"ab"},{"file":"game/hl2/resource/chat_aaaaaaaaaaaaaaaaaaaaaaaa.txt","utf8":"long"}],
+      "steps": [{"op":"apply","choice":"ab","options":{"engineLanguage":"english"}},{"op":"tree"},{"op":"apply","choice":"aaaaaaaaaaaaaaaaaaaaaaaa","options":{"engineLanguage":"english"}},{"op":"tree"}],
+      "results": [
+        {"ok":{"ok":true,"applied":true,"language":"ab","engineLanguage":"english","files":["chat_english.txt"]}},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/hl2","kind":"dir"},
+            {"path":"game/hl2/resource","kind":"dir"},
+            {"path":"game/hl2/resource/chat_aaaaaaaaaaaaaaaaaaaaaaaa.txt","kind":"file","size":4,"sha256":"fc66f021c67d064c1490a12b5a4d4d2f5167ca692a16ca12f1f3a4cda29a6fa9","latin1":"long"},
+            {"path":"game/hl2/resource/chat_ab.txt","kind":"file","size":2,"sha256":"fb8e20fc2e4c3f248c60c39bd652f3c1347298bb977b8b4d5903b85055620603","latin1":"ab"},
+            {"path":"game/mymod","kind":"dir"},
+            {"path":"game/mymod/custom","kind":"dir"},
+            {"path":"game/mymod/custom/hlsr-language","kind":"dir"},
+            {
+              "path": "game/mymod/custom/hlsr-language/README.txt",
+              "kind": "file",
+              "size": 502,
+              "sha256": "7c6f4a3df7b3452f0012fab562de80fc03a2583076d9b551bec0b12495c27923",
+              "latin1": "Ð­ÑÐ¾Ð¹ Ð¿Ð°Ð¿ÐºÐ¾Ð¹ ÑÐ°ÑÐ¿Ð¾ÑÑÐ¶Ð°ÐµÑÑÑ Ð»Ð°ÑÐ½ÑÐµÑ HLSR.\r\n\r\nÐÐ´ÐµÑÑ Ð»ÐµÐ¶Ð°Ñ ÑÐ·ÑÐºÐ¾Ð²ÑÐµ ÑÐ°Ð¹Ð»Ñ Ð²ÑÐ±ÑÐ°Ð½Ð½Ð¾Ð³Ð¾ Ð² Ð»Ð°ÑÐ½ÑÐµÑÐµ ÑÐ·ÑÐºÐ° Ð¸Ð³ÑÑ. ÐÐ°Ð¿ÐºÐ°\r\nÐ¿ÐµÑÐµÐ¿Ð¸ÑÑÐ²Ð°ÐµÑÑÑ Ð¿ÑÐ¸ ÐºÐ°Ð¶Ð´Ð¾Ð¼ Ð·Ð°Ð¿ÑÑÐºÐµ Ð¸ ÑÐ´Ð°Ð»ÑÐµÑÑÑ, ÐºÐ¾Ð³Ð´Ð° ÑÐ·ÑÐº Ð¿ÐµÑÐµÐºÐ»ÑÑÑÐ½\r\nÐ¾Ð±ÑÐ°ÑÐ½Ð¾ Ð½Ð° Â«ÐºÐ°Ðº Ð² SteamÂ». Ð¡Ð²Ð¾Ð¸ ÑÐ°Ð¹Ð»Ñ ÑÑÐ´Ð° ÐºÐ»Ð°ÑÑÑ Ð½Ðµ Ð½ÑÐ¶Ð½Ð¾ â Ð¿Ð¾Ð»Ð¾Ð¶Ð¸ Ð¸Ñ\r\nÐ² ÑÐ¾ÑÐµÐ´Ð½ÑÑ Ð¿Ð°Ð¿ÐºÑ Ð²Ð½ÑÑÑÐ¸ custom/.\r\n"
+            },
+            {"path":"game/mymod/custom/hlsr-language/resource","kind":"dir"},
+            {"path":"game/mymod/custom/hlsr-language/resource/chat_english.txt","kind":"file","size":2,"sha256":"fb8e20fc2e4c3f248c60c39bd652f3c1347298bb977b8b4d5903b85055620603","latin1":"ab"}
+          ]
+        },
+        {"ok":{"ok":true,"applied":true,"language":"aaaaaaaaaaaaaaaaaaaaaaaa","engineLanguage":"english","files":["chat_english.txt"]}},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/hl2","kind":"dir"},
+            {"path":"game/hl2/resource","kind":"dir"},
+            {"path":"game/hl2/resource/chat_aaaaaaaaaaaaaaaaaaaaaaaa.txt","kind":"file","size":4,"sha256":"fc66f021c67d064c1490a12b5a4d4d2f5167ca692a16ca12f1f3a4cda29a6fa9","latin1":"long"},
+            {"path":"game/hl2/resource/chat_ab.txt","kind":"file","size":2,"sha256":"fb8e20fc2e4c3f248c60c39bd652f3c1347298bb977b8b4d5903b85055620603","latin1":"ab"},
+            {"path":"game/mymod","kind":"dir"},
+            {"path":"game/mymod/custom","kind":"dir"},
+            {"path":"game/mymod/custom/hlsr-language","kind":"dir"},
+            {
+              "path": "game/mymod/custom/hlsr-language/README.txt",
+              "kind": "file",
+              "size": 502,
+              "sha256": "7c6f4a3df7b3452f0012fab562de80fc03a2583076d9b551bec0b12495c27923",
+              "latin1": "Ð­ÑÐ¾Ð¹ Ð¿Ð°Ð¿ÐºÐ¾Ð¹ ÑÐ°ÑÐ¿Ð¾ÑÑÐ¶Ð°ÐµÑÑÑ Ð»Ð°ÑÐ½ÑÐµÑ HLSR.\r\n\r\nÐÐ´ÐµÑÑ Ð»ÐµÐ¶Ð°Ñ ÑÐ·ÑÐºÐ¾Ð²ÑÐµ ÑÐ°Ð¹Ð»Ñ Ð²ÑÐ±ÑÐ°Ð½Ð½Ð¾Ð³Ð¾ Ð² Ð»Ð°ÑÐ½ÑÐµÑÐµ ÑÐ·ÑÐºÐ° Ð¸Ð³ÑÑ. ÐÐ°Ð¿ÐºÐ°\r\nÐ¿ÐµÑÐµÐ¿Ð¸ÑÑÐ²Ð°ÐµÑÑÑ Ð¿ÑÐ¸ ÐºÐ°Ð¶Ð´Ð¾Ð¼ Ð·Ð°Ð¿ÑÑÐºÐµ Ð¸ ÑÐ´Ð°Ð»ÑÐµÑÑÑ, ÐºÐ¾Ð³Ð´Ð° ÑÐ·ÑÐº Ð¿ÐµÑÐµÐºÐ»ÑÑÑÐ½\r\nÐ¾Ð±ÑÐ°ÑÐ½Ð¾ Ð½Ð° Â«ÐºÐ°Ðº Ð² SteamÂ». Ð¡Ð²Ð¾Ð¸ ÑÐ°Ð¹Ð»Ñ ÑÑÐ´Ð° ÐºÐ»Ð°ÑÑÑ Ð½Ðµ Ð½ÑÐ¶Ð½Ð¾ â Ð¿Ð¾Ð»Ð¾Ð¶Ð¸ Ð¸Ñ\r\nÐ² ÑÐ¾ÑÐµÐ´Ð½ÑÑ Ð¿Ð°Ð¿ÐºÑ Ð²Ð½ÑÑÑÐ¸ custom/.\r\n"
+            },
+            {"path":"game/mymod/custom/hlsr-language/resource","kind":"dir"},
+            {"path":"game/mymod/custom/hlsr-language/resource/chat_english.txt","kind":"file","size":4,"sha256":"fc66f021c67d064c1490a12b5a4d4d2f5167ca692a16ca12f1f3a4cda29a6fa9","latin1":"long"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "язык движка: Linux — по умолчанию английский или язык по умолчанию",
+      "setup": [
+        {"file":"game/mymod/resource/gameui_russian.txt","utf8":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"},
+        {"file":"game/hl2/resource/hl2_russian.txt","utf8":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+        {"file":"game/hl2/resource/valve_russian.txt","utf8":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+        {"file":"game/hl2/resource/chat_russian.txt","utf8":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+        {"file":"game/mymod/resource/gameui_english.txt","utf8":"\"lang\" { \"gameui\" \"mod english\" }\r\n"},
+        {"file":"game/hl2/resource/hl2_english.txt","utf8":"\"lang\" { \"hl2\" \"hl2 english\" }\r\n"},
+        {"file":"game/hl2/resource/valve_english.txt","utf8":"\"lang\" { \"valve\" \"hl2 english\" }\r\n"},
+        {"file":"game/hl2/resource/chat_english.txt","utf8":"\"lang\" { \"chat\" \"hl2 english\" }\r\n"}
+      ],
+      "steps": [
+        {"op":"apply","choice":"russian","options":{"platform":"linux"}},
+        {"op":"apply","choice":"russian","options":{"platform":"linux","defaultLanguage":"german"}},
+        {"op":"apply","choice":"english","options":{"platform":"linux"}},
+        {"op":"apply","choice":"russian","options":{"platform":"linux","defaultLanguage":"x"}},
+        {"op":"apply","choice":"russian","options":{"platform":"linux","defaultLanguage":"RUSSIAN"}},
+        {"op":"apply","choice":"russian","options":{"platform":"linux","defaultLanguage":5}},
+        {"op":"apply","choice":"russian","options":{"platform":"linux","defaultLanguage":null}},
+        {"op":"apply","choice":"russian","options":{"platform":"linux","defaultLanguage":"auto"}},
+        {"op":"tree"}
+      ],
+      "results": [
+        {"ok":{"ok":true,"applied":true,"language":"russian","engineLanguage":"english","files":["gameui_english.txt","hl2_english.txt","valve_english.txt","chat_english.txt"]}},
+        {"ok":{"ok":true,"applied":true,"language":"russian","engineLanguage":"german","files":["gameui_german.txt","hl2_german.txt","valve_german.txt","chat_german.txt"]}},
+        {"ok":{"ok":true,"applied":false,"language":"english","engineLanguage":"english","reason":"SAME_AS_ENGINE","files":[]}},
+        {"ok":{"ok":true,"applied":true,"language":"russian","engineLanguage":"english","files":["gameui_english.txt","hl2_english.txt","valve_english.txt","chat_english.txt"]}},
+        {"ok":{"ok":true,"applied":true,"language":"russian","engineLanguage":"english","files":["gameui_english.txt","hl2_english.txt","valve_english.txt","chat_english.txt"]}},
+        {"ok":{"ok":true,"applied":true,"language":"russian","engineLanguage":"english","files":["gameui_english.txt","hl2_english.txt","valve_english.txt","chat_english.txt"]}},
+        {"ok":{"ok":true,"applied":true,"language":"russian","engineLanguage":"english","files":["gameui_english.txt","hl2_english.txt","valve_english.txt","chat_english.txt"]}},
+        {"ok":{"ok":true,"applied":true,"language":"russian","engineLanguage":"auto","files":["gameui_auto.txt","hl2_auto.txt","valve_auto.txt","chat_auto.txt"]}},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/hl2","kind":"dir"},
+            {"path":"game/hl2/resource","kind":"dir"},
+            {"path":"game/hl2/resource/chat_english.txt","kind":"file","size":33,"sha256":"bb5f687b8275f889f67ed5c51e8982a722b9ee6e2a38af5934e56d86b1d67203","latin1":"\"lang\" { \"chat\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/chat_russian.txt","kind":"file","size":33,"sha256":"2bbf741c8b823f73cee63bf1a8d1c8206a2f04f1aba91c0843fec392b0cf69b9","latin1":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+            {"path":"game/hl2/resource/hl2_english.txt","kind":"file","size":32,"sha256":"d525f9b46646ed43558318548a0ec2d114bd5f6778136777dadedafdf41080ac","latin1":"\"lang\" { \"hl2\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/hl2_russian.txt","kind":"file","size":32,"sha256":"05459b1f6ec48aa14be75f82acb8e7c878c83c2e39d74a9699122453ca5e4dab","latin1":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+            {"path":"game/hl2/resource/valve_english.txt","kind":"file","size":34,"sha256":"d790af48d3127691a96a6e8e98191b16eb32700febbf787381923b2fdb5f41ec","latin1":"\"lang\" { \"valve\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/valve_russian.txt","kind":"file","size":34,"sha256":"8d6ae4af083b81bd07fedf4be71edf68966c6cf38d2598aecba9abe6a6b9d42e","latin1":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod","kind":"dir"},
+            {"path":"game/mymod/custom","kind":"dir"},
+            {"path":"game/mymod/custom/hlsr-language","kind":"dir"},
+            {
+              "path": "game/mymod/custom/hlsr-language/README.txt",
+              "kind": "file",
+              "size": 502,
+              "sha256": "7c6f4a3df7b3452f0012fab562de80fc03a2583076d9b551bec0b12495c27923",
+              "latin1": "Ð­ÑÐ¾Ð¹ Ð¿Ð°Ð¿ÐºÐ¾Ð¹ ÑÐ°ÑÐ¿Ð¾ÑÑÐ¶Ð°ÐµÑÑÑ Ð»Ð°ÑÐ½ÑÐµÑ HLSR.\r\n\r\nÐÐ´ÐµÑÑ Ð»ÐµÐ¶Ð°Ñ ÑÐ·ÑÐºÐ¾Ð²ÑÐµ ÑÐ°Ð¹Ð»Ñ Ð²ÑÐ±ÑÐ°Ð½Ð½Ð¾Ð³Ð¾ Ð² Ð»Ð°ÑÐ½ÑÐµÑÐµ ÑÐ·ÑÐºÐ° Ð¸Ð³ÑÑ. ÐÐ°Ð¿ÐºÐ°\r\nÐ¿ÐµÑÐµÐ¿Ð¸ÑÑÐ²Ð°ÐµÑÑÑ Ð¿ÑÐ¸ ÐºÐ°Ð¶Ð´Ð¾Ð¼ Ð·Ð°Ð¿ÑÑÐºÐµ Ð¸ ÑÐ´Ð°Ð»ÑÐµÑÑÑ, ÐºÐ¾Ð³Ð´Ð° ÑÐ·ÑÐº Ð¿ÐµÑÐµÐºÐ»ÑÑÑÐ½\r\nÐ¾Ð±ÑÐ°ÑÐ½Ð¾ Ð½Ð° Â«ÐºÐ°Ðº Ð² SteamÂ». Ð¡Ð²Ð¾Ð¸ ÑÐ°Ð¹Ð»Ñ ÑÑÐ´Ð° ÐºÐ»Ð°ÑÑÑ Ð½Ðµ Ð½ÑÐ¶Ð½Ð¾ â Ð¿Ð¾Ð»Ð¾Ð¶Ð¸ Ð¸Ñ\r\nÐ² ÑÐ¾ÑÐµÐ´Ð½ÑÑ Ð¿Ð°Ð¿ÐºÑ Ð²Ð½ÑÑÑÐ¸ custom/.\r\n"
+            },
+            {"path":"game/mymod/custom/hlsr-language/resource","kind":"dir"},
+            {"path":"game/mymod/custom/hlsr-language/resource/chat_auto.txt","kind":"file","size":33,"sha256":"2bbf741c8b823f73cee63bf1a8d1c8206a2f04f1aba91c0843fec392b0cf69b9","latin1":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod/custom/hlsr-language/resource/gameui_auto.txt","kind":"file","size":35,"sha256":"aeab4ce53c90baf63aaee9c99caa022dbdf2a7f141f49efe5eee1a3ad9cd33a7","latin1":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"},
+            {"path":"game/mymod/custom/hlsr-language/resource/hl2_auto.txt","kind":"file","size":32,"sha256":"05459b1f6ec48aa14be75f82acb8e7c878c83c2e39d74a9699122453ca5e4dab","latin1":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod/custom/hlsr-language/resource/valve_auto.txt","kind":"file","size":34,"sha256":"8d6ae4af083b81bd07fedf4be71edf68966c6cf38d2598aecba9abe6a6b9d42e","latin1":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod/resource","kind":"dir"},
+            {"path":"game/mymod/resource/gameui_english.txt","kind":"file","size":35,"sha256":"0a6b5fbd124c074aabbfcbd68cf67d5341ac023ddcf96c2cd67b1f5d71d0097e","latin1":"\"lang\" { \"gameui\" \"mod english\" }\r\n"},
+            {"path":"game/mymod/resource/gameui_russian.txt","kind":"file","size":35,"sha256":"aeab4ce53c90baf63aaee9c99caa022dbdf2a7f141f49efe5eee1a3ad9cd33a7","latin1":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "язык движка: Windows, REG_SZ english",
+      "setup": [
+        {"file":"game/mymod/resource/gameui_russian.txt","utf8":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"},
+        {"file":"game/hl2/resource/hl2_russian.txt","utf8":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+        {"file":"game/hl2/resource/valve_russian.txt","utf8":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+        {"file":"game/hl2/resource/chat_russian.txt","utf8":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+        {"file":"game/mymod/resource/gameui_english.txt","utf8":"\"lang\" { \"gameui\" \"mod english\" }\r\n"},
+        {"file":"game/hl2/resource/hl2_english.txt","utf8":"\"lang\" { \"hl2\" \"hl2 english\" }\r\n"},
+        {"file":"game/hl2/resource/valve_english.txt","utf8":"\"lang\" { \"valve\" \"hl2 english\" }\r\n"},
+        {"file":"game/hl2/resource/chat_english.txt","utf8":"\"lang\" { \"chat\" \"hl2 english\" }\r\n"}
+      ],
+      "steps": [{"op":"apply","choice":"russian","options":{"reg":{"type":"REG_SZ","data":"english"},"platform":"win32"}},{"op":"engine","options":{"reg":{"type":"REG_SZ","data":"english"},"platform":"win32"}},{"op":"tree"}],
+      "results": [
+        {"ok":{"ok":true,"applied":true,"language":"russian","engineLanguage":"english","files":["gameui_english.txt","hl2_english.txt","valve_english.txt","chat_english.txt"]}},
+        {"ok":"english"},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/hl2","kind":"dir"},
+            {"path":"game/hl2/resource","kind":"dir"},
+            {"path":"game/hl2/resource/chat_english.txt","kind":"file","size":33,"sha256":"bb5f687b8275f889f67ed5c51e8982a722b9ee6e2a38af5934e56d86b1d67203","latin1":"\"lang\" { \"chat\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/chat_russian.txt","kind":"file","size":33,"sha256":"2bbf741c8b823f73cee63bf1a8d1c8206a2f04f1aba91c0843fec392b0cf69b9","latin1":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+            {"path":"game/hl2/resource/hl2_english.txt","kind":"file","size":32,"sha256":"d525f9b46646ed43558318548a0ec2d114bd5f6778136777dadedafdf41080ac","latin1":"\"lang\" { \"hl2\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/hl2_russian.txt","kind":"file","size":32,"sha256":"05459b1f6ec48aa14be75f82acb8e7c878c83c2e39d74a9699122453ca5e4dab","latin1":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+            {"path":"game/hl2/resource/valve_english.txt","kind":"file","size":34,"sha256":"d790af48d3127691a96a6e8e98191b16eb32700febbf787381923b2fdb5f41ec","latin1":"\"lang\" { \"valve\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/valve_russian.txt","kind":"file","size":34,"sha256":"8d6ae4af083b81bd07fedf4be71edf68966c6cf38d2598aecba9abe6a6b9d42e","latin1":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod","kind":"dir"},
+            {"path":"game/mymod/custom","kind":"dir"},
+            {"path":"game/mymod/custom/hlsr-language","kind":"dir"},
+            {
+              "path": "game/mymod/custom/hlsr-language/README.txt",
+              "kind": "file",
+              "size": 502,
+              "sha256": "7c6f4a3df7b3452f0012fab562de80fc03a2583076d9b551bec0b12495c27923",
+              "latin1": "Ð­ÑÐ¾Ð¹ Ð¿Ð°Ð¿ÐºÐ¾Ð¹ ÑÐ°ÑÐ¿Ð¾ÑÑÐ¶Ð°ÐµÑÑÑ Ð»Ð°ÑÐ½ÑÐµÑ HLSR.\r\n\r\nÐÐ´ÐµÑÑ Ð»ÐµÐ¶Ð°Ñ ÑÐ·ÑÐºÐ¾Ð²ÑÐµ ÑÐ°Ð¹Ð»Ñ Ð²ÑÐ±ÑÐ°Ð½Ð½Ð¾Ð³Ð¾ Ð² Ð»Ð°ÑÐ½ÑÐµÑÐµ ÑÐ·ÑÐºÐ° Ð¸Ð³ÑÑ. ÐÐ°Ð¿ÐºÐ°\r\nÐ¿ÐµÑÐµÐ¿Ð¸ÑÑÐ²Ð°ÐµÑÑÑ Ð¿ÑÐ¸ ÐºÐ°Ð¶Ð´Ð¾Ð¼ Ð·Ð°Ð¿ÑÑÐºÐµ Ð¸ ÑÐ´Ð°Ð»ÑÐµÑÑÑ, ÐºÐ¾Ð³Ð´Ð° ÑÐ·ÑÐº Ð¿ÐµÑÐµÐºÐ»ÑÑÑÐ½\r\nÐ¾Ð±ÑÐ°ÑÐ½Ð¾ Ð½Ð° Â«ÐºÐ°Ðº Ð² SteamÂ». Ð¡Ð²Ð¾Ð¸ ÑÐ°Ð¹Ð»Ñ ÑÑÐ´Ð° ÐºÐ»Ð°ÑÑÑ Ð½Ðµ Ð½ÑÐ¶Ð½Ð¾ â Ð¿Ð¾Ð»Ð¾Ð¶Ð¸ Ð¸Ñ\r\nÐ² ÑÐ¾ÑÐµÐ´Ð½ÑÑ Ð¿Ð°Ð¿ÐºÑ Ð²Ð½ÑÑÑÐ¸ custom/.\r\n"
+            },
+            {"path":"game/mymod/custom/hlsr-language/resource","kind":"dir"},
+            {"path":"game/mymod/custom/hlsr-language/resource/chat_english.txt","kind":"file","size":33,"sha256":"2bbf741c8b823f73cee63bf1a8d1c8206a2f04f1aba91c0843fec392b0cf69b9","latin1":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod/custom/hlsr-language/resource/gameui_english.txt","kind":"file","size":35,"sha256":"aeab4ce53c90baf63aaee9c99caa022dbdf2a7f141f49efe5eee1a3ad9cd33a7","latin1":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"},
+            {"path":"game/mymod/custom/hlsr-language/resource/hl2_english.txt","kind":"file","size":32,"sha256":"05459b1f6ec48aa14be75f82acb8e7c878c83c2e39d74a9699122453ca5e4dab","latin1":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod/custom/hlsr-language/resource/valve_english.txt","kind":"file","size":34,"sha256":"8d6ae4af083b81bd07fedf4be71edf68966c6cf38d2598aecba9abe6a6b9d42e","latin1":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod/resource","kind":"dir"},
+            {"path":"game/mymod/resource/gameui_english.txt","kind":"file","size":35,"sha256":"0a6b5fbd124c074aabbfcbd68cf67d5341ac023ddcf96c2cd67b1f5d71d0097e","latin1":"\"lang\" { \"gameui\" \"mod english\" }\r\n"},
+            {"path":"game/mymod/resource/gameui_russian.txt","kind":"file","size":35,"sha256":"aeab4ce53c90baf63aaee9c99caa022dbdf2a7f141f49efe5eee1a3ad9cd33a7","latin1":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "язык движка: Windows, REG_SZ german",
+      "setup": [
+        {"file":"game/mymod/resource/gameui_russian.txt","utf8":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"},
+        {"file":"game/hl2/resource/hl2_russian.txt","utf8":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+        {"file":"game/hl2/resource/valve_russian.txt","utf8":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+        {"file":"game/hl2/resource/chat_russian.txt","utf8":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+        {"file":"game/mymod/resource/gameui_english.txt","utf8":"\"lang\" { \"gameui\" \"mod english\" }\r\n"},
+        {"file":"game/hl2/resource/hl2_english.txt","utf8":"\"lang\" { \"hl2\" \"hl2 english\" }\r\n"},
+        {"file":"game/hl2/resource/valve_english.txt","utf8":"\"lang\" { \"valve\" \"hl2 english\" }\r\n"},
+        {"file":"game/hl2/resource/chat_english.txt","utf8":"\"lang\" { \"chat\" \"hl2 english\" }\r\n"}
+      ],
+      "steps": [{"op":"apply","choice":"russian","options":{"reg":{"type":"REG_SZ","data":"german"},"platform":"win32"}},{"op":"engine","options":{"reg":{"type":"REG_SZ","data":"german"},"platform":"win32"}},{"op":"tree"}],
+      "results": [
+        {"ok":{"ok":true,"applied":true,"language":"russian","engineLanguage":"german","files":["gameui_german.txt","hl2_german.txt","valve_german.txt","chat_german.txt"]}},
+        {"ok":"german"},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/hl2","kind":"dir"},
+            {"path":"game/hl2/resource","kind":"dir"},
+            {"path":"game/hl2/resource/chat_english.txt","kind":"file","size":33,"sha256":"bb5f687b8275f889f67ed5c51e8982a722b9ee6e2a38af5934e56d86b1d67203","latin1":"\"lang\" { \"chat\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/chat_russian.txt","kind":"file","size":33,"sha256":"2bbf741c8b823f73cee63bf1a8d1c8206a2f04f1aba91c0843fec392b0cf69b9","latin1":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+            {"path":"game/hl2/resource/hl2_english.txt","kind":"file","size":32,"sha256":"d525f9b46646ed43558318548a0ec2d114bd5f6778136777dadedafdf41080ac","latin1":"\"lang\" { \"hl2\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/hl2_russian.txt","kind":"file","size":32,"sha256":"05459b1f6ec48aa14be75f82acb8e7c878c83c2e39d74a9699122453ca5e4dab","latin1":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+            {"path":"game/hl2/resource/valve_english.txt","kind":"file","size":34,"sha256":"d790af48d3127691a96a6e8e98191b16eb32700febbf787381923b2fdb5f41ec","latin1":"\"lang\" { \"valve\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/valve_russian.txt","kind":"file","size":34,"sha256":"8d6ae4af083b81bd07fedf4be71edf68966c6cf38d2598aecba9abe6a6b9d42e","latin1":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod","kind":"dir"},
+            {"path":"game/mymod/custom","kind":"dir"},
+            {"path":"game/mymod/custom/hlsr-language","kind":"dir"},
+            {
+              "path": "game/mymod/custom/hlsr-language/README.txt",
+              "kind": "file",
+              "size": 502,
+              "sha256": "7c6f4a3df7b3452f0012fab562de80fc03a2583076d9b551bec0b12495c27923",
+              "latin1": "Ð­ÑÐ¾Ð¹ Ð¿Ð°Ð¿ÐºÐ¾Ð¹ ÑÐ°ÑÐ¿Ð¾ÑÑÐ¶Ð°ÐµÑÑÑ Ð»Ð°ÑÐ½ÑÐµÑ HLSR.\r\n\r\nÐÐ´ÐµÑÑ Ð»ÐµÐ¶Ð°Ñ ÑÐ·ÑÐºÐ¾Ð²ÑÐµ ÑÐ°Ð¹Ð»Ñ Ð²ÑÐ±ÑÐ°Ð½Ð½Ð¾Ð³Ð¾ Ð² Ð»Ð°ÑÐ½ÑÐµÑÐµ ÑÐ·ÑÐºÐ° Ð¸Ð³ÑÑ. ÐÐ°Ð¿ÐºÐ°\r\nÐ¿ÐµÑÐµÐ¿Ð¸ÑÑÐ²Ð°ÐµÑÑÑ Ð¿ÑÐ¸ ÐºÐ°Ð¶Ð´Ð¾Ð¼ Ð·Ð°Ð¿ÑÑÐºÐµ Ð¸ ÑÐ´Ð°Ð»ÑÐµÑÑÑ, ÐºÐ¾Ð³Ð´Ð° ÑÐ·ÑÐº Ð¿ÐµÑÐµÐºÐ»ÑÑÑÐ½\r\nÐ¾Ð±ÑÐ°ÑÐ½Ð¾ Ð½Ð° Â«ÐºÐ°Ðº Ð² SteamÂ». Ð¡Ð²Ð¾Ð¸ ÑÐ°Ð¹Ð»Ñ ÑÑÐ´Ð° ÐºÐ»Ð°ÑÑÑ Ð½Ðµ Ð½ÑÐ¶Ð½Ð¾ â Ð¿Ð¾Ð»Ð¾Ð¶Ð¸ Ð¸Ñ\r\nÐ² ÑÐ¾ÑÐµÐ´Ð½ÑÑ Ð¿Ð°Ð¿ÐºÑ Ð²Ð½ÑÑÑÐ¸ custom/.\r\n"
+            },
+            {"path":"game/mymod/custom/hlsr-language/resource","kind":"dir"},
+            {"path":"game/mymod/custom/hlsr-language/resource/chat_german.txt","kind":"file","size":33,"sha256":"2bbf741c8b823f73cee63bf1a8d1c8206a2f04f1aba91c0843fec392b0cf69b9","latin1":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod/custom/hlsr-language/resource/gameui_german.txt","kind":"file","size":35,"sha256":"aeab4ce53c90baf63aaee9c99caa022dbdf2a7f141f49efe5eee1a3ad9cd33a7","latin1":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"},
+            {"path":"game/mymod/custom/hlsr-language/resource/hl2_german.txt","kind":"file","size":32,"sha256":"05459b1f6ec48aa14be75f82acb8e7c878c83c2e39d74a9699122453ca5e4dab","latin1":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod/custom/hlsr-language/resource/valve_german.txt","kind":"file","size":34,"sha256":"8d6ae4af083b81bd07fedf4be71edf68966c6cf38d2598aecba9abe6a6b9d42e","latin1":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod/resource","kind":"dir"},
+            {"path":"game/mymod/resource/gameui_english.txt","kind":"file","size":35,"sha256":"0a6b5fbd124c074aabbfcbd68cf67d5341ac023ddcf96c2cd67b1f5d71d0097e","latin1":"\"lang\" { \"gameui\" \"mod english\" }\r\n"},
+            {"path":"game/mymod/resource/gameui_russian.txt","kind":"file","size":35,"sha256":"aeab4ce53c90baf63aaee9c99caa022dbdf2a7f141f49efe5eee1a3ad9cd33a7","latin1":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "язык движка: Windows, REG_SZ в верхнем регистре",
+      "setup": [
+        {"file":"game/mymod/resource/gameui_russian.txt","utf8":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"},
+        {"file":"game/hl2/resource/hl2_russian.txt","utf8":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+        {"file":"game/hl2/resource/valve_russian.txt","utf8":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+        {"file":"game/hl2/resource/chat_russian.txt","utf8":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+        {"file":"game/mymod/resource/gameui_english.txt","utf8":"\"lang\" { \"gameui\" \"mod english\" }\r\n"},
+        {"file":"game/hl2/resource/hl2_english.txt","utf8":"\"lang\" { \"hl2\" \"hl2 english\" }\r\n"},
+        {"file":"game/hl2/resource/valve_english.txt","utf8":"\"lang\" { \"valve\" \"hl2 english\" }\r\n"},
+        {"file":"game/hl2/resource/chat_english.txt","utf8":"\"lang\" { \"chat\" \"hl2 english\" }\r\n"}
+      ],
+      "steps": [{"op":"apply","choice":"russian","options":{"reg":{"type":"REG_SZ","data":"GERMAN"},"platform":"win32"}},{"op":"engine","options":{"reg":{"type":"REG_SZ","data":"GERMAN"},"platform":"win32"}},{"op":"tree"}],
+      "results": [
+        {"ok":{"ok":true,"applied":true,"language":"russian","engineLanguage":"german","files":["gameui_german.txt","hl2_german.txt","valve_german.txt","chat_german.txt"]}},
+        {"ok":"german"},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/hl2","kind":"dir"},
+            {"path":"game/hl2/resource","kind":"dir"},
+            {"path":"game/hl2/resource/chat_english.txt","kind":"file","size":33,"sha256":"bb5f687b8275f889f67ed5c51e8982a722b9ee6e2a38af5934e56d86b1d67203","latin1":"\"lang\" { \"chat\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/chat_russian.txt","kind":"file","size":33,"sha256":"2bbf741c8b823f73cee63bf1a8d1c8206a2f04f1aba91c0843fec392b0cf69b9","latin1":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+            {"path":"game/hl2/resource/hl2_english.txt","kind":"file","size":32,"sha256":"d525f9b46646ed43558318548a0ec2d114bd5f6778136777dadedafdf41080ac","latin1":"\"lang\" { \"hl2\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/hl2_russian.txt","kind":"file","size":32,"sha256":"05459b1f6ec48aa14be75f82acb8e7c878c83c2e39d74a9699122453ca5e4dab","latin1":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+            {"path":"game/hl2/resource/valve_english.txt","kind":"file","size":34,"sha256":"d790af48d3127691a96a6e8e98191b16eb32700febbf787381923b2fdb5f41ec","latin1":"\"lang\" { \"valve\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/valve_russian.txt","kind":"file","size":34,"sha256":"8d6ae4af083b81bd07fedf4be71edf68966c6cf38d2598aecba9abe6a6b9d42e","latin1":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod","kind":"dir"},
+            {"path":"game/mymod/custom","kind":"dir"},
+            {"path":"game/mymod/custom/hlsr-language","kind":"dir"},
+            {
+              "path": "game/mymod/custom/hlsr-language/README.txt",
+              "kind": "file",
+              "size": 502,
+              "sha256": "7c6f4a3df7b3452f0012fab562de80fc03a2583076d9b551bec0b12495c27923",
+              "latin1": "Ð­ÑÐ¾Ð¹ Ð¿Ð°Ð¿ÐºÐ¾Ð¹ ÑÐ°ÑÐ¿Ð¾ÑÑÐ¶Ð°ÐµÑÑÑ Ð»Ð°ÑÐ½ÑÐµÑ HLSR.\r\n\r\nÐÐ´ÐµÑÑ Ð»ÐµÐ¶Ð°Ñ ÑÐ·ÑÐºÐ¾Ð²ÑÐµ ÑÐ°Ð¹Ð»Ñ Ð²ÑÐ±ÑÐ°Ð½Ð½Ð¾Ð³Ð¾ Ð² Ð»Ð°ÑÐ½ÑÐµÑÐµ ÑÐ·ÑÐºÐ° Ð¸Ð³ÑÑ. ÐÐ°Ð¿ÐºÐ°\r\nÐ¿ÐµÑÐµÐ¿Ð¸ÑÑÐ²Ð°ÐµÑÑÑ Ð¿ÑÐ¸ ÐºÐ°Ð¶Ð´Ð¾Ð¼ Ð·Ð°Ð¿ÑÑÐºÐµ Ð¸ ÑÐ´Ð°Ð»ÑÐµÑÑÑ, ÐºÐ¾Ð³Ð´Ð° ÑÐ·ÑÐº Ð¿ÐµÑÐµÐºÐ»ÑÑÑÐ½\r\nÐ¾Ð±ÑÐ°ÑÐ½Ð¾ Ð½Ð° Â«ÐºÐ°Ðº Ð² SteamÂ». Ð¡Ð²Ð¾Ð¸ ÑÐ°Ð¹Ð»Ñ ÑÑÐ´Ð° ÐºÐ»Ð°ÑÑÑ Ð½Ðµ Ð½ÑÐ¶Ð½Ð¾ â Ð¿Ð¾Ð»Ð¾Ð¶Ð¸ Ð¸Ñ\r\nÐ² ÑÐ¾ÑÐµÐ´Ð½ÑÑ Ð¿Ð°Ð¿ÐºÑ Ð²Ð½ÑÑÑÐ¸ custom/.\r\n"
+            },
+            {"path":"game/mymod/custom/hlsr-language/resource","kind":"dir"},
+            {"path":"game/mymod/custom/hlsr-language/resource/chat_german.txt","kind":"file","size":33,"sha256":"2bbf741c8b823f73cee63bf1a8d1c8206a2f04f1aba91c0843fec392b0cf69b9","latin1":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod/custom/hlsr-language/resource/gameui_german.txt","kind":"file","size":35,"sha256":"aeab4ce53c90baf63aaee9c99caa022dbdf2a7f141f49efe5eee1a3ad9cd33a7","latin1":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"},
+            {"path":"game/mymod/custom/hlsr-language/resource/hl2_german.txt","kind":"file","size":32,"sha256":"05459b1f6ec48aa14be75f82acb8e7c878c83c2e39d74a9699122453ca5e4dab","latin1":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod/custom/hlsr-language/resource/valve_german.txt","kind":"file","size":34,"sha256":"8d6ae4af083b81bd07fedf4be71edf68966c6cf38d2598aecba9abe6a6b9d42e","latin1":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod/resource","kind":"dir"},
+            {"path":"game/mymod/resource/gameui_english.txt","kind":"file","size":35,"sha256":"0a6b5fbd124c074aabbfcbd68cf67d5341ac023ddcf96c2cd67b1f5d71d0097e","latin1":"\"lang\" { \"gameui\" \"mod english\" }\r\n"},
+            {"path":"game/mymod/resource/gameui_russian.txt","kind":"file","size":35,"sha256":"aeab4ce53c90baf63aaee9c99caa022dbdf2a7f141f49efe5eee1a3ad9cd33a7","latin1":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "язык движка: Windows, REG_SZ с пробелом внутри",
+      "setup": [
+        {"file":"game/mymod/resource/gameui_russian.txt","utf8":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"},
+        {"file":"game/hl2/resource/hl2_russian.txt","utf8":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+        {"file":"game/hl2/resource/valve_russian.txt","utf8":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+        {"file":"game/hl2/resource/chat_russian.txt","utf8":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+        {"file":"game/mymod/resource/gameui_english.txt","utf8":"\"lang\" { \"gameui\" \"mod english\" }\r\n"},
+        {"file":"game/hl2/resource/hl2_english.txt","utf8":"\"lang\" { \"hl2\" \"hl2 english\" }\r\n"},
+        {"file":"game/hl2/resource/valve_english.txt","utf8":"\"lang\" { \"valve\" \"hl2 english\" }\r\n"},
+        {"file":"game/hl2/resource/chat_english.txt","utf8":"\"lang\" { \"chat\" \"hl2 english\" }\r\n"}
+      ],
+      "steps": [{"op":"apply","choice":"russian","options":{"reg":{"type":"REG_SZ","data":"brazilian portuguese"},"platform":"win32"}},{"op":"engine","options":{"reg":{"type":"REG_SZ","data":"brazilian portuguese"},"platform":"win32"}},{"op":"tree"}],
+      "results": [
+        {"ok":{"ok":true,"applied":true,"language":"russian","engineLanguage":"brazilian","files":["gameui_brazilian.txt","hl2_brazilian.txt","valve_brazilian.txt","chat_brazilian.txt"]}},
+        {"ok":"brazilian"},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/hl2","kind":"dir"},
+            {"path":"game/hl2/resource","kind":"dir"},
+            {"path":"game/hl2/resource/chat_english.txt","kind":"file","size":33,"sha256":"bb5f687b8275f889f67ed5c51e8982a722b9ee6e2a38af5934e56d86b1d67203","latin1":"\"lang\" { \"chat\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/chat_russian.txt","kind":"file","size":33,"sha256":"2bbf741c8b823f73cee63bf1a8d1c8206a2f04f1aba91c0843fec392b0cf69b9","latin1":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+            {"path":"game/hl2/resource/hl2_english.txt","kind":"file","size":32,"sha256":"d525f9b46646ed43558318548a0ec2d114bd5f6778136777dadedafdf41080ac","latin1":"\"lang\" { \"hl2\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/hl2_russian.txt","kind":"file","size":32,"sha256":"05459b1f6ec48aa14be75f82acb8e7c878c83c2e39d74a9699122453ca5e4dab","latin1":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+            {"path":"game/hl2/resource/valve_english.txt","kind":"file","size":34,"sha256":"d790af48d3127691a96a6e8e98191b16eb32700febbf787381923b2fdb5f41ec","latin1":"\"lang\" { \"valve\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/valve_russian.txt","kind":"file","size":34,"sha256":"8d6ae4af083b81bd07fedf4be71edf68966c6cf38d2598aecba9abe6a6b9d42e","latin1":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod","kind":"dir"},
+            {"path":"game/mymod/custom","kind":"dir"},
+            {"path":"game/mymod/custom/hlsr-language","kind":"dir"},
+            {
+              "path": "game/mymod/custom/hlsr-language/README.txt",
+              "kind": "file",
+              "size": 502,
+              "sha256": "7c6f4a3df7b3452f0012fab562de80fc03a2583076d9b551bec0b12495c27923",
+              "latin1": "Ð­ÑÐ¾Ð¹ Ð¿Ð°Ð¿ÐºÐ¾Ð¹ ÑÐ°ÑÐ¿Ð¾ÑÑÐ¶Ð°ÐµÑÑÑ Ð»Ð°ÑÐ½ÑÐµÑ HLSR.\r\n\r\nÐÐ´ÐµÑÑ Ð»ÐµÐ¶Ð°Ñ ÑÐ·ÑÐºÐ¾Ð²ÑÐµ ÑÐ°Ð¹Ð»Ñ Ð²ÑÐ±ÑÐ°Ð½Ð½Ð¾Ð³Ð¾ Ð² Ð»Ð°ÑÐ½ÑÐµÑÐµ ÑÐ·ÑÐºÐ° Ð¸Ð³ÑÑ. ÐÐ°Ð¿ÐºÐ°\r\nÐ¿ÐµÑÐµÐ¿Ð¸ÑÑÐ²Ð°ÐµÑÑÑ Ð¿ÑÐ¸ ÐºÐ°Ð¶Ð´Ð¾Ð¼ Ð·Ð°Ð¿ÑÑÐºÐµ Ð¸ ÑÐ´Ð°Ð»ÑÐµÑÑÑ, ÐºÐ¾Ð³Ð´Ð° ÑÐ·ÑÐº Ð¿ÐµÑÐµÐºÐ»ÑÑÑÐ½\r\nÐ¾Ð±ÑÐ°ÑÐ½Ð¾ Ð½Ð° Â«ÐºÐ°Ðº Ð² SteamÂ». Ð¡Ð²Ð¾Ð¸ ÑÐ°Ð¹Ð»Ñ ÑÑÐ´Ð° ÐºÐ»Ð°ÑÑÑ Ð½Ðµ Ð½ÑÐ¶Ð½Ð¾ â Ð¿Ð¾Ð»Ð¾Ð¶Ð¸ Ð¸Ñ\r\nÐ² ÑÐ¾ÑÐµÐ´Ð½ÑÑ Ð¿Ð°Ð¿ÐºÑ Ð²Ð½ÑÑÑÐ¸ custom/.\r\n"
+            },
+            {"path":"game/mymod/custom/hlsr-language/resource","kind":"dir"},
+            {"path":"game/mymod/custom/hlsr-language/resource/chat_brazilian.txt","kind":"file","size":33,"sha256":"2bbf741c8b823f73cee63bf1a8d1c8206a2f04f1aba91c0843fec392b0cf69b9","latin1":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod/custom/hlsr-language/resource/gameui_brazilian.txt","kind":"file","size":35,"sha256":"aeab4ce53c90baf63aaee9c99caa022dbdf2a7f141f49efe5eee1a3ad9cd33a7","latin1":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"},
+            {"path":"game/mymod/custom/hlsr-language/resource/hl2_brazilian.txt","kind":"file","size":32,"sha256":"05459b1f6ec48aa14be75f82acb8e7c878c83c2e39d74a9699122453ca5e4dab","latin1":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod/custom/hlsr-language/resource/valve_brazilian.txt","kind":"file","size":34,"sha256":"8d6ae4af083b81bd07fedf4be71edf68966c6cf38d2598aecba9abe6a6b9d42e","latin1":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod/resource","kind":"dir"},
+            {"path":"game/mymod/resource/gameui_english.txt","kind":"file","size":35,"sha256":"0a6b5fbd124c074aabbfcbd68cf67d5341ac023ddcf96c2cd67b1f5d71d0097e","latin1":"\"lang\" { \"gameui\" \"mod english\" }\r\n"},
+            {"path":"game/mymod/resource/gameui_russian.txt","kind":"file","size":35,"sha256":"aeab4ce53c90baf63aaee9c99caa022dbdf2a7f141f49efe5eee1a3ad9cd33a7","latin1":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "язык движка: Windows, REG_SZ с дефисом",
+      "setup": [
+        {"file":"game/mymod/resource/gameui_russian.txt","utf8":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"},
+        {"file":"game/hl2/resource/hl2_russian.txt","utf8":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+        {"file":"game/hl2/resource/valve_russian.txt","utf8":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+        {"file":"game/hl2/resource/chat_russian.txt","utf8":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+        {"file":"game/mymod/resource/gameui_english.txt","utf8":"\"lang\" { \"gameui\" \"mod english\" }\r\n"},
+        {"file":"game/hl2/resource/hl2_english.txt","utf8":"\"lang\" { \"hl2\" \"hl2 english\" }\r\n"},
+        {"file":"game/hl2/resource/valve_english.txt","utf8":"\"lang\" { \"valve\" \"hl2 english\" }\r\n"},
+        {"file":"game/hl2/resource/chat_english.txt","utf8":"\"lang\" { \"chat\" \"hl2 english\" }\r\n"}
+      ],
+      "steps": [{"op":"apply","choice":"russian","options":{"reg":{"type":"REG_SZ","data":"ru-RU"},"platform":"win32"}},{"op":"engine","options":{"reg":{"type":"REG_SZ","data":"ru-RU"},"platform":"win32"}},{"op":"tree"}],
+      "results": [
+        {"ok":{"ok":true,"applied":false,"language":"russian","engineLanguage":null,"reason":"ENGINE_UNKNOWN","files":[]}},
+        {"ok":null},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/hl2","kind":"dir"},
+            {"path":"game/hl2/resource","kind":"dir"},
+            {"path":"game/hl2/resource/chat_english.txt","kind":"file","size":33,"sha256":"bb5f687b8275f889f67ed5c51e8982a722b9ee6e2a38af5934e56d86b1d67203","latin1":"\"lang\" { \"chat\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/chat_russian.txt","kind":"file","size":33,"sha256":"2bbf741c8b823f73cee63bf1a8d1c8206a2f04f1aba91c0843fec392b0cf69b9","latin1":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+            {"path":"game/hl2/resource/hl2_english.txt","kind":"file","size":32,"sha256":"d525f9b46646ed43558318548a0ec2d114bd5f6778136777dadedafdf41080ac","latin1":"\"lang\" { \"hl2\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/hl2_russian.txt","kind":"file","size":32,"sha256":"05459b1f6ec48aa14be75f82acb8e7c878c83c2e39d74a9699122453ca5e4dab","latin1":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+            {"path":"game/hl2/resource/valve_english.txt","kind":"file","size":34,"sha256":"d790af48d3127691a96a6e8e98191b16eb32700febbf787381923b2fdb5f41ec","latin1":"\"lang\" { \"valve\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/valve_russian.txt","kind":"file","size":34,"sha256":"8d6ae4af083b81bd07fedf4be71edf68966c6cf38d2598aecba9abe6a6b9d42e","latin1":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod","kind":"dir"},
+            {"path":"game/mymod/resource","kind":"dir"},
+            {"path":"game/mymod/resource/gameui_english.txt","kind":"file","size":35,"sha256":"0a6b5fbd124c074aabbfcbd68cf67d5341ac023ddcf96c2cd67b1f5d71d0097e","latin1":"\"lang\" { \"gameui\" \"mod english\" }\r\n"},
+            {"path":"game/mymod/resource/gameui_russian.txt","kind":"file","size":35,"sha256":"aeab4ce53c90baf63aaee9c99caa022dbdf2a7f141f49efe5eee1a3ad9cd33a7","latin1":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "язык движка: Windows, REG_SZ пустой",
+      "setup": [
+        {"file":"game/mymod/resource/gameui_russian.txt","utf8":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"},
+        {"file":"game/hl2/resource/hl2_russian.txt","utf8":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+        {"file":"game/hl2/resource/valve_russian.txt","utf8":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+        {"file":"game/hl2/resource/chat_russian.txt","utf8":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+        {"file":"game/mymod/resource/gameui_english.txt","utf8":"\"lang\" { \"gameui\" \"mod english\" }\r\n"},
+        {"file":"game/hl2/resource/hl2_english.txt","utf8":"\"lang\" { \"hl2\" \"hl2 english\" }\r\n"},
+        {"file":"game/hl2/resource/valve_english.txt","utf8":"\"lang\" { \"valve\" \"hl2 english\" }\r\n"},
+        {"file":"game/hl2/resource/chat_english.txt","utf8":"\"lang\" { \"chat\" \"hl2 english\" }\r\n"}
+      ],
+      "steps": [{"op":"apply","choice":"russian","options":{"reg":{"type":"REG_SZ","data":""},"platform":"win32"}},{"op":"engine","options":{"reg":{"type":"REG_SZ","data":""},"platform":"win32"}},{"op":"tree"}],
+      "results": [
+        {"ok":{"ok":true,"applied":false,"language":"russian","engineLanguage":null,"reason":"ENGINE_UNKNOWN","files":[]}},
+        {"ok":null},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/hl2","kind":"dir"},
+            {"path":"game/hl2/resource","kind":"dir"},
+            {"path":"game/hl2/resource/chat_english.txt","kind":"file","size":33,"sha256":"bb5f687b8275f889f67ed5c51e8982a722b9ee6e2a38af5934e56d86b1d67203","latin1":"\"lang\" { \"chat\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/chat_russian.txt","kind":"file","size":33,"sha256":"2bbf741c8b823f73cee63bf1a8d1c8206a2f04f1aba91c0843fec392b0cf69b9","latin1":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+            {"path":"game/hl2/resource/hl2_english.txt","kind":"file","size":32,"sha256":"d525f9b46646ed43558318548a0ec2d114bd5f6778136777dadedafdf41080ac","latin1":"\"lang\" { \"hl2\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/hl2_russian.txt","kind":"file","size":32,"sha256":"05459b1f6ec48aa14be75f82acb8e7c878c83c2e39d74a9699122453ca5e4dab","latin1":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+            {"path":"game/hl2/resource/valve_english.txt","kind":"file","size":34,"sha256":"d790af48d3127691a96a6e8e98191b16eb32700febbf787381923b2fdb5f41ec","latin1":"\"lang\" { \"valve\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/valve_russian.txt","kind":"file","size":34,"sha256":"8d6ae4af083b81bd07fedf4be71edf68966c6cf38d2598aecba9abe6a6b9d42e","latin1":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod","kind":"dir"},
+            {"path":"game/mymod/resource","kind":"dir"},
+            {"path":"game/mymod/resource/gameui_english.txt","kind":"file","size":35,"sha256":"0a6b5fbd124c074aabbfcbd68cf67d5341ac023ddcf96c2cd67b1f5d71d0097e","latin1":"\"lang\" { \"gameui\" \"mod english\" }\r\n"},
+            {"path":"game/mymod/resource/gameui_russian.txt","kind":"file","size":35,"sha256":"aeab4ce53c90baf63aaee9c99caa022dbdf2a7f141f49efe5eee1a3ad9cd33a7","latin1":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "язык движка: Windows, REG_EXPAND_SZ",
+      "setup": [
+        {"file":"game/mymod/resource/gameui_russian.txt","utf8":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"},
+        {"file":"game/hl2/resource/hl2_russian.txt","utf8":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+        {"file":"game/hl2/resource/valve_russian.txt","utf8":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+        {"file":"game/hl2/resource/chat_russian.txt","utf8":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+        {"file":"game/mymod/resource/gameui_english.txt","utf8":"\"lang\" { \"gameui\" \"mod english\" }\r\n"},
+        {"file":"game/hl2/resource/hl2_english.txt","utf8":"\"lang\" { \"hl2\" \"hl2 english\" }\r\n"},
+        {"file":"game/hl2/resource/valve_english.txt","utf8":"\"lang\" { \"valve\" \"hl2 english\" }\r\n"},
+        {"file":"game/hl2/resource/chat_english.txt","utf8":"\"lang\" { \"chat\" \"hl2 english\" }\r\n"}
+      ],
+      "steps": [{"op":"apply","choice":"russian","options":{"reg":{"type":"REG_EXPAND_SZ","data":"german"},"platform":"win32"}},{"op":"engine","options":{"reg":{"type":"REG_EXPAND_SZ","data":"german"},"platform":"win32"}},{"op":"tree"}],
+      "results": [
+        {"ok":{"ok":true,"applied":false,"language":"russian","engineLanguage":null,"reason":"ENGINE_UNKNOWN","files":[]}},
+        {"ok":null},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/hl2","kind":"dir"},
+            {"path":"game/hl2/resource","kind":"dir"},
+            {"path":"game/hl2/resource/chat_english.txt","kind":"file","size":33,"sha256":"bb5f687b8275f889f67ed5c51e8982a722b9ee6e2a38af5934e56d86b1d67203","latin1":"\"lang\" { \"chat\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/chat_russian.txt","kind":"file","size":33,"sha256":"2bbf741c8b823f73cee63bf1a8d1c8206a2f04f1aba91c0843fec392b0cf69b9","latin1":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+            {"path":"game/hl2/resource/hl2_english.txt","kind":"file","size":32,"sha256":"d525f9b46646ed43558318548a0ec2d114bd5f6778136777dadedafdf41080ac","latin1":"\"lang\" { \"hl2\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/hl2_russian.txt","kind":"file","size":32,"sha256":"05459b1f6ec48aa14be75f82acb8e7c878c83c2e39d74a9699122453ca5e4dab","latin1":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+            {"path":"game/hl2/resource/valve_english.txt","kind":"file","size":34,"sha256":"d790af48d3127691a96a6e8e98191b16eb32700febbf787381923b2fdb5f41ec","latin1":"\"lang\" { \"valve\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/valve_russian.txt","kind":"file","size":34,"sha256":"8d6ae4af083b81bd07fedf4be71edf68966c6cf38d2598aecba9abe6a6b9d42e","latin1":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod","kind":"dir"},
+            {"path":"game/mymod/resource","kind":"dir"},
+            {"path":"game/mymod/resource/gameui_english.txt","kind":"file","size":35,"sha256":"0a6b5fbd124c074aabbfcbd68cf67d5341ac023ddcf96c2cd67b1f5d71d0097e","latin1":"\"lang\" { \"gameui\" \"mod english\" }\r\n"},
+            {"path":"game/mymod/resource/gameui_russian.txt","kind":"file","size":35,"sha256":"aeab4ce53c90baf63aaee9c99caa022dbdf2a7f141f49efe5eee1a3ad9cd33a7","latin1":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "язык движка: Windows, REG_DWORD",
+      "setup": [
+        {"file":"game/mymod/resource/gameui_russian.txt","utf8":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"},
+        {"file":"game/hl2/resource/hl2_russian.txt","utf8":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+        {"file":"game/hl2/resource/valve_russian.txt","utf8":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+        {"file":"game/hl2/resource/chat_russian.txt","utf8":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+        {"file":"game/mymod/resource/gameui_english.txt","utf8":"\"lang\" { \"gameui\" \"mod english\" }\r\n"},
+        {"file":"game/hl2/resource/hl2_english.txt","utf8":"\"lang\" { \"hl2\" \"hl2 english\" }\r\n"},
+        {"file":"game/hl2/resource/valve_english.txt","utf8":"\"lang\" { \"valve\" \"hl2 english\" }\r\n"},
+        {"file":"game/hl2/resource/chat_english.txt","utf8":"\"lang\" { \"chat\" \"hl2 english\" }\r\n"}
+      ],
+      "steps": [{"op":"apply","choice":"russian","options":{"reg":{"type":"REG_DWORD","data":"0x1"},"platform":"win32"}},{"op":"engine","options":{"reg":{"type":"REG_DWORD","data":"0x1"},"platform":"win32"}},{"op":"tree"}],
+      "results": [
+        {"ok":{"ok":true,"applied":false,"language":"russian","engineLanguage":null,"reason":"ENGINE_UNKNOWN","files":[]}},
+        {"ok":null},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/hl2","kind":"dir"},
+            {"path":"game/hl2/resource","kind":"dir"},
+            {"path":"game/hl2/resource/chat_english.txt","kind":"file","size":33,"sha256":"bb5f687b8275f889f67ed5c51e8982a722b9ee6e2a38af5934e56d86b1d67203","latin1":"\"lang\" { \"chat\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/chat_russian.txt","kind":"file","size":33,"sha256":"2bbf741c8b823f73cee63bf1a8d1c8206a2f04f1aba91c0843fec392b0cf69b9","latin1":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+            {"path":"game/hl2/resource/hl2_english.txt","kind":"file","size":32,"sha256":"d525f9b46646ed43558318548a0ec2d114bd5f6778136777dadedafdf41080ac","latin1":"\"lang\" { \"hl2\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/hl2_russian.txt","kind":"file","size":32,"sha256":"05459b1f6ec48aa14be75f82acb8e7c878c83c2e39d74a9699122453ca5e4dab","latin1":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+            {"path":"game/hl2/resource/valve_english.txt","kind":"file","size":34,"sha256":"d790af48d3127691a96a6e8e98191b16eb32700febbf787381923b2fdb5f41ec","latin1":"\"lang\" { \"valve\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/valve_russian.txt","kind":"file","size":34,"sha256":"8d6ae4af083b81bd07fedf4be71edf68966c6cf38d2598aecba9abe6a6b9d42e","latin1":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod","kind":"dir"},
+            {"path":"game/mymod/resource","kind":"dir"},
+            {"path":"game/mymod/resource/gameui_english.txt","kind":"file","size":35,"sha256":"0a6b5fbd124c074aabbfcbd68cf67d5341ac023ddcf96c2cd67b1f5d71d0097e","latin1":"\"lang\" { \"gameui\" \"mod english\" }\r\n"},
+            {"path":"game/mymod/resource/gameui_russian.txt","kind":"file","size":35,"sha256":"aeab4ce53c90baf63aaee9c99caa022dbdf2a7f141f49efe5eee1a3ad9cd33a7","latin1":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "язык движка: Windows, значения нет (reg.exe с ошибкой)",
+      "setup": [
+        {"file":"game/mymod/resource/gameui_russian.txt","utf8":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"},
+        {"file":"game/hl2/resource/hl2_russian.txt","utf8":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+        {"file":"game/hl2/resource/valve_russian.txt","utf8":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+        {"file":"game/hl2/resource/chat_russian.txt","utf8":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+        {"file":"game/mymod/resource/gameui_english.txt","utf8":"\"lang\" { \"gameui\" \"mod english\" }\r\n"},
+        {"file":"game/hl2/resource/hl2_english.txt","utf8":"\"lang\" { \"hl2\" \"hl2 english\" }\r\n"},
+        {"file":"game/hl2/resource/valve_english.txt","utf8":"\"lang\" { \"valve\" \"hl2 english\" }\r\n"},
+        {"file":"game/hl2/resource/chat_english.txt","utf8":"\"lang\" { \"chat\" \"hl2 english\" }\r\n"}
+      ],
+      "steps": [{"op":"apply","choice":"russian","options":{"reg":null,"platform":"win32"}},{"op":"engine","options":{"reg":null,"platform":"win32"}},{"op":"tree"}],
+      "results": [
+        {"ok":{"ok":true,"applied":false,"language":"russian","engineLanguage":null,"reason":"ENGINE_UNKNOWN","files":[]}},
+        {"ok":null},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/hl2","kind":"dir"},
+            {"path":"game/hl2/resource","kind":"dir"},
+            {"path":"game/hl2/resource/chat_english.txt","kind":"file","size":33,"sha256":"bb5f687b8275f889f67ed5c51e8982a722b9ee6e2a38af5934e56d86b1d67203","latin1":"\"lang\" { \"chat\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/chat_russian.txt","kind":"file","size":33,"sha256":"2bbf741c8b823f73cee63bf1a8d1c8206a2f04f1aba91c0843fec392b0cf69b9","latin1":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+            {"path":"game/hl2/resource/hl2_english.txt","kind":"file","size":32,"sha256":"d525f9b46646ed43558318548a0ec2d114bd5f6778136777dadedafdf41080ac","latin1":"\"lang\" { \"hl2\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/hl2_russian.txt","kind":"file","size":32,"sha256":"05459b1f6ec48aa14be75f82acb8e7c878c83c2e39d74a9699122453ca5e4dab","latin1":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+            {"path":"game/hl2/resource/valve_english.txt","kind":"file","size":34,"sha256":"d790af48d3127691a96a6e8e98191b16eb32700febbf787381923b2fdb5f41ec","latin1":"\"lang\" { \"valve\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/valve_russian.txt","kind":"file","size":34,"sha256":"8d6ae4af083b81bd07fedf4be71edf68966c6cf38d2598aecba9abe6a6b9d42e","latin1":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod","kind":"dir"},
+            {"path":"game/mymod/resource","kind":"dir"},
+            {"path":"game/mymod/resource/gameui_english.txt","kind":"file","size":35,"sha256":"0a6b5fbd124c074aabbfcbd68cf67d5341ac023ddcf96c2cd67b1f5d71d0097e","latin1":"\"lang\" { \"gameui\" \"mod english\" }\r\n"},
+            {"path":"game/mymod/resource/gameui_russian.txt","kind":"file","size":35,"sha256":"aeab4ce53c90baf63aaee9c99caa022dbdf2a7f141f49efe5eee1a3ad9cd33a7","latin1":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "язык движка: прямой вызов — Linux и умолчания",
+      "setup": [],
+      "steps": [{"op":"engine","options":{"platform":"linux"}},{"op":"engine","options":{"platform":"linux","defaultLanguage":"russian"}},{"op":"engine","options":{"platform":"linux","defaultLanguage":"Russian"}},{"op":"engine","options":{"platform":"linux","defaultLanguage":["russian"]}},{"op":"engine","options":{"platform":"linux","defaultLanguage":"russian\n"}},{"op":"engine"}],
+      "results": [{"ok":"english"},{"ok":"russian"},{"ok":"english"},{"ok":"english"},{"ok":"english"},{"ok":"english"}]
+    },
+    {
+      "name": "права: папка custom без записи — подмену стереть нельзя (REMOVE_FAILED)",
+      "unix": true,
+      "setup": [
+        {"file":"game/mymod/resource/gameui_russian.txt","utf8":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"},
+        {"file":"game/hl2/resource/hl2_russian.txt","utf8":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+        {"file":"game/hl2/resource/valve_russian.txt","utf8":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+        {"file":"game/hl2/resource/chat_russian.txt","utf8":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+        {"file":"game/mymod/resource/gameui_english.txt","utf8":"\"lang\" { \"gameui\" \"mod english\" }\r\n"},
+        {"file":"game/hl2/resource/hl2_english.txt","utf8":"\"lang\" { \"hl2\" \"hl2 english\" }\r\n"},
+        {"file":"game/hl2/resource/valve_english.txt","utf8":"\"lang\" { \"valve\" \"hl2 english\" }\r\n"},
+        {"file":"game/hl2/resource/chat_english.txt","utf8":"\"lang\" { \"chat\" \"hl2 english\" }\r\n"},
+        {"file":"game/mymod/custom/hlsr-language/resource/old_file.txt","utf8":"старый файл"},
+        {"file":"game/mymod/custom/hlsr-language/README.txt","utf8":"старый README"},
+        {"file":"game/mymod/custom/hlsr-language/свои.txt","utf8":"чужой файл"}
+      ],
+      "steps": [{"op":"chmod","file":"game/mymod/custom","mode":365},{"op":"apply","choice":"russian","options":{"engineLanguage":"english"}},{"op":"apply","choice":"auto","options":{"engineLanguage":"english"}},{"op":"clear"},{"op":"chmod","file":"game/mymod/custom","mode":493},{"op":"tree"}],
+      "results": [
+        null,
+        {"ok":{"ok":false,"applied":false,"language":"russian","engineLanguage":"english","reason":"REMOVE_FAILED","message":"EACCES, Permission denied: <root>/game/mymod/custom/hlsr-language '<root>/game/mymod/custom/hlsr-language'","files":[]}},
+        {"ok":{"ok":false,"applied":false,"language":"auto","engineLanguage":null,"reason":"REMOVE_FAILED","message":"EACCES, Permission denied: <root>/game/mymod/custom/hlsr-language '<root>/game/mymod/custom/hlsr-language'","files":[]}},
+        {"ok":{"ok":false,"removed":false,"message":"EACCES, Permission denied: <root>/game/mymod/custom/hlsr-language '<root>/game/mymod/custom/hlsr-language'"}},
+        null,
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/hl2","kind":"dir"},
+            {"path":"game/hl2/resource","kind":"dir"},
+            {"path":"game/hl2/resource/chat_english.txt","kind":"file","size":33,"sha256":"bb5f687b8275f889f67ed5c51e8982a722b9ee6e2a38af5934e56d86b1d67203","latin1":"\"lang\" { \"chat\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/chat_russian.txt","kind":"file","size":33,"sha256":"2bbf741c8b823f73cee63bf1a8d1c8206a2f04f1aba91c0843fec392b0cf69b9","latin1":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+            {"path":"game/hl2/resource/hl2_english.txt","kind":"file","size":32,"sha256":"d525f9b46646ed43558318548a0ec2d114bd5f6778136777dadedafdf41080ac","latin1":"\"lang\" { \"hl2\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/hl2_russian.txt","kind":"file","size":32,"sha256":"05459b1f6ec48aa14be75f82acb8e7c878c83c2e39d74a9699122453ca5e4dab","latin1":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+            {"path":"game/hl2/resource/valve_english.txt","kind":"file","size":34,"sha256":"d790af48d3127691a96a6e8e98191b16eb32700febbf787381923b2fdb5f41ec","latin1":"\"lang\" { \"valve\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/valve_russian.txt","kind":"file","size":34,"sha256":"8d6ae4af083b81bd07fedf4be71edf68966c6cf38d2598aecba9abe6a6b9d42e","latin1":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod","kind":"dir"},
+            {"path":"game/mymod/custom","kind":"dir"},
+            {"path":"game/mymod/custom/hlsr-language","kind":"dir"},
+            {"path":"game/mymod/resource","kind":"dir"},
+            {"path":"game/mymod/resource/gameui_english.txt","kind":"file","size":35,"sha256":"0a6b5fbd124c074aabbfcbd68cf67d5341ac023ddcf96c2cd67b1f5d71d0097e","latin1":"\"lang\" { \"gameui\" \"mod english\" }\r\n"},
+            {"path":"game/mymod/resource/gameui_russian.txt","kind":"file","size":35,"sha256":"aeab4ce53c90baf63aaee9c99caa022dbdf2a7f141f49efe5eee1a3ad9cd33a7","latin1":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "права: папка custom без записи, подмены нет — писать некуда (WRITE_FAILED)",
+      "unix": true,
+      "setup": [
+        {"file":"game/mymod/resource/gameui_russian.txt","utf8":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"},
+        {"file":"game/hl2/resource/hl2_russian.txt","utf8":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+        {"file":"game/hl2/resource/valve_russian.txt","utf8":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+        {"file":"game/hl2/resource/chat_russian.txt","utf8":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+        {"file":"game/mymod/resource/gameui_english.txt","utf8":"\"lang\" { \"gameui\" \"mod english\" }\r\n"},
+        {"file":"game/hl2/resource/hl2_english.txt","utf8":"\"lang\" { \"hl2\" \"hl2 english\" }\r\n"},
+        {"file":"game/hl2/resource/valve_english.txt","utf8":"\"lang\" { \"valve\" \"hl2 english\" }\r\n"},
+        {"file":"game/hl2/resource/chat_english.txt","utf8":"\"lang\" { \"chat\" \"hl2 english\" }\r\n"},
+        {"dir":"game/mymod/custom"}
+      ],
+      "steps": [{"op":"chmod","file":"game/mymod/custom","mode":365},{"op":"apply","choice":"russian","options":{"engineLanguage":"english"}},{"op":"apply","choice":"auto","options":{"engineLanguage":"english"}},{"op":"chmod","file":"game/mymod/custom","mode":493},{"op":"tree"}],
+      "results": [
+        null,
+        {"ok":{"ok":false,"applied":false,"language":"russian","engineLanguage":"english","reason":"WRITE_FAILED","message":"EACCES: permission denied, mkdir '<root>/game/mymod/custom/hlsr-language/resource'","files":[]}},
+        {"ok":{"ok":true,"applied":false,"language":"auto","engineLanguage":null,"reason":"AUTO","files":[]}},
+        null,
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/hl2","kind":"dir"},
+            {"path":"game/hl2/resource","kind":"dir"},
+            {"path":"game/hl2/resource/chat_english.txt","kind":"file","size":33,"sha256":"bb5f687b8275f889f67ed5c51e8982a722b9ee6e2a38af5934e56d86b1d67203","latin1":"\"lang\" { \"chat\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/chat_russian.txt","kind":"file","size":33,"sha256":"2bbf741c8b823f73cee63bf1a8d1c8206a2f04f1aba91c0843fec392b0cf69b9","latin1":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+            {"path":"game/hl2/resource/hl2_english.txt","kind":"file","size":32,"sha256":"d525f9b46646ed43558318548a0ec2d114bd5f6778136777dadedafdf41080ac","latin1":"\"lang\" { \"hl2\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/hl2_russian.txt","kind":"file","size":32,"sha256":"05459b1f6ec48aa14be75f82acb8e7c878c83c2e39d74a9699122453ca5e4dab","latin1":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+            {"path":"game/hl2/resource/valve_english.txt","kind":"file","size":34,"sha256":"d790af48d3127691a96a6e8e98191b16eb32700febbf787381923b2fdb5f41ec","latin1":"\"lang\" { \"valve\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/valve_russian.txt","kind":"file","size":34,"sha256":"8d6ae4af083b81bd07fedf4be71edf68966c6cf38d2598aecba9abe6a6b9d42e","latin1":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod","kind":"dir"},
+            {"path":"game/mymod/custom","kind":"dir"},
+            {"path":"game/mymod/resource","kind":"dir"},
+            {"path":"game/mymod/resource/gameui_english.txt","kind":"file","size":35,"sha256":"0a6b5fbd124c074aabbfcbd68cf67d5341ac023ddcf96c2cd67b1f5d71d0097e","latin1":"\"lang\" { \"gameui\" \"mod english\" }\r\n"},
+            {"path":"game/mymod/resource/gameui_russian.txt","kind":"file","size":35,"sha256":"aeab4ce53c90baf63aaee9c99caa022dbdf2a7f141f49efe5eee1a3ad9cd33a7","latin1":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "custom — файл: писать некуда (WRITE_FAILED)",
+      "setup": [
+        {"file":"game/mymod/resource/gameui_russian.txt","utf8":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"},
+        {"file":"game/hl2/resource/hl2_russian.txt","utf8":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+        {"file":"game/hl2/resource/valve_russian.txt","utf8":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+        {"file":"game/hl2/resource/chat_russian.txt","utf8":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+        {"file":"game/mymod/resource/gameui_english.txt","utf8":"\"lang\" { \"gameui\" \"mod english\" }\r\n"},
+        {"file":"game/hl2/resource/hl2_english.txt","utf8":"\"lang\" { \"hl2\" \"hl2 english\" }\r\n"},
+        {"file":"game/hl2/resource/valve_english.txt","utf8":"\"lang\" { \"valve\" \"hl2 english\" }\r\n"},
+        {"file":"game/hl2/resource/chat_english.txt","utf8":"\"lang\" { \"chat\" \"hl2 english\" }\r\n"},
+        {"file":"game/mymod/custom","utf8":"файл"}
+      ],
+      "steps": [{"op":"apply","choice":"russian","options":{"engineLanguage":"english"}},{"op":"apply","choice":"auto","options":{"engineLanguage":"english"}},{"op":"clear"},{"op":"tree"}],
+      "results": [
+        {"ok":{"ok":false,"applied":false,"language":"russian","engineLanguage":"english","reason":"WRITE_FAILED","message":"ENOTDIR: not a directory, mkdir '<root>/game/mymod/custom/hlsr-language/resource'","files":[]}},
+        {"ok":{"ok":true,"applied":false,"language":"auto","engineLanguage":null,"reason":"AUTO","files":[]}},
+        {"ok":{"ok":true,"removed":true}},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/hl2","kind":"dir"},
+            {"path":"game/hl2/resource","kind":"dir"},
+            {"path":"game/hl2/resource/chat_english.txt","kind":"file","size":33,"sha256":"bb5f687b8275f889f67ed5c51e8982a722b9ee6e2a38af5934e56d86b1d67203","latin1":"\"lang\" { \"chat\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/chat_russian.txt","kind":"file","size":33,"sha256":"2bbf741c8b823f73cee63bf1a8d1c8206a2f04f1aba91c0843fec392b0cf69b9","latin1":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+            {"path":"game/hl2/resource/hl2_english.txt","kind":"file","size":32,"sha256":"d525f9b46646ed43558318548a0ec2d114bd5f6778136777dadedafdf41080ac","latin1":"\"lang\" { \"hl2\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/hl2_russian.txt","kind":"file","size":32,"sha256":"05459b1f6ec48aa14be75f82acb8e7c878c83c2e39d74a9699122453ca5e4dab","latin1":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+            {"path":"game/hl2/resource/valve_english.txt","kind":"file","size":34,"sha256":"d790af48d3127691a96a6e8e98191b16eb32700febbf787381923b2fdb5f41ec","latin1":"\"lang\" { \"valve\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/valve_russian.txt","kind":"file","size":34,"sha256":"8d6ae4af083b81bd07fedf4be71edf68966c6cf38d2598aecba9abe6a6b9d42e","latin1":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod","kind":"dir"},
+            {"path":"game/mymod/custom","kind":"file","size":8,"sha256":"48d8c3e9ee0e826534a40dd53fd65b4ec3ebad0a1251f9dad935524952a525cf","latin1":"ÑÐ°Ð¹Ð»"},
+            {"path":"game/mymod/resource","kind":"dir"},
+            {"path":"game/mymod/resource/gameui_english.txt","kind":"file","size":35,"sha256":"0a6b5fbd124c074aabbfcbd68cf67d5341ac023ddcf96c2cd67b1f5d71d0097e","latin1":"\"lang\" { \"gameui\" \"mod english\" }\r\n"},
+            {"path":"game/mymod/resource/gameui_russian.txt","kind":"file","size":35,"sha256":"aeab4ce53c90baf63aaee9c99caa022dbdf2a7f141f49efe5eee1a3ad9cd33a7","latin1":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "папка подмены — файл: он заменяется папкой",
+      "setup": [
+        {"file":"game/mymod/resource/gameui_russian.txt","utf8":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"},
+        {"file":"game/hl2/resource/hl2_russian.txt","utf8":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+        {"file":"game/hl2/resource/valve_russian.txt","utf8":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+        {"file":"game/hl2/resource/chat_russian.txt","utf8":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+        {"file":"game/mymod/resource/gameui_english.txt","utf8":"\"lang\" { \"gameui\" \"mod english\" }\r\n"},
+        {"file":"game/hl2/resource/hl2_english.txt","utf8":"\"lang\" { \"hl2\" \"hl2 english\" }\r\n"},
+        {"file":"game/hl2/resource/valve_english.txt","utf8":"\"lang\" { \"valve\" \"hl2 english\" }\r\n"},
+        {"file":"game/hl2/resource/chat_english.txt","utf8":"\"lang\" { \"chat\" \"hl2 english\" }\r\n"},
+        {"file":"game/mymod/custom/hlsr-language","utf8":"файл"}
+      ],
+      "steps": [{"op":"apply","choice":"russian","options":{"engineLanguage":"english"}},{"op":"tree"}],
+      "results": [
+        {"ok":{"ok":true,"applied":true,"language":"russian","engineLanguage":"english","files":["gameui_english.txt","hl2_english.txt","valve_english.txt","chat_english.txt"]}},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/hl2","kind":"dir"},
+            {"path":"game/hl2/resource","kind":"dir"},
+            {"path":"game/hl2/resource/chat_english.txt","kind":"file","size":33,"sha256":"bb5f687b8275f889f67ed5c51e8982a722b9ee6e2a38af5934e56d86b1d67203","latin1":"\"lang\" { \"chat\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/chat_russian.txt","kind":"file","size":33,"sha256":"2bbf741c8b823f73cee63bf1a8d1c8206a2f04f1aba91c0843fec392b0cf69b9","latin1":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+            {"path":"game/hl2/resource/hl2_english.txt","kind":"file","size":32,"sha256":"d525f9b46646ed43558318548a0ec2d114bd5f6778136777dadedafdf41080ac","latin1":"\"lang\" { \"hl2\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/hl2_russian.txt","kind":"file","size":32,"sha256":"05459b1f6ec48aa14be75f82acb8e7c878c83c2e39d74a9699122453ca5e4dab","latin1":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+            {"path":"game/hl2/resource/valve_english.txt","kind":"file","size":34,"sha256":"d790af48d3127691a96a6e8e98191b16eb32700febbf787381923b2fdb5f41ec","latin1":"\"lang\" { \"valve\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/valve_russian.txt","kind":"file","size":34,"sha256":"8d6ae4af083b81bd07fedf4be71edf68966c6cf38d2598aecba9abe6a6b9d42e","latin1":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod","kind":"dir"},
+            {"path":"game/mymod/custom","kind":"dir"},
+            {"path":"game/mymod/custom/hlsr-language","kind":"dir"},
+            {
+              "path": "game/mymod/custom/hlsr-language/README.txt",
+              "kind": "file",
+              "size": 502,
+              "sha256": "7c6f4a3df7b3452f0012fab562de80fc03a2583076d9b551bec0b12495c27923",
+              "latin1": "Ð­ÑÐ¾Ð¹ Ð¿Ð°Ð¿ÐºÐ¾Ð¹ ÑÐ°ÑÐ¿Ð¾ÑÑÐ¶Ð°ÐµÑÑÑ Ð»Ð°ÑÐ½ÑÐµÑ HLSR.\r\n\r\nÐÐ´ÐµÑÑ Ð»ÐµÐ¶Ð°Ñ ÑÐ·ÑÐºÐ¾Ð²ÑÐµ ÑÐ°Ð¹Ð»Ñ Ð²ÑÐ±ÑÐ°Ð½Ð½Ð¾Ð³Ð¾ Ð² Ð»Ð°ÑÐ½ÑÐµÑÐµ ÑÐ·ÑÐºÐ° Ð¸Ð³ÑÑ. ÐÐ°Ð¿ÐºÐ°\r\nÐ¿ÐµÑÐµÐ¿Ð¸ÑÑÐ²Ð°ÐµÑÑÑ Ð¿ÑÐ¸ ÐºÐ°Ð¶Ð´Ð¾Ð¼ Ð·Ð°Ð¿ÑÑÐºÐµ Ð¸ ÑÐ´Ð°Ð»ÑÐµÑÑÑ, ÐºÐ¾Ð³Ð´Ð° ÑÐ·ÑÐº Ð¿ÐµÑÐµÐºÐ»ÑÑÑÐ½\r\nÐ¾Ð±ÑÐ°ÑÐ½Ð¾ Ð½Ð° Â«ÐºÐ°Ðº Ð² SteamÂ». Ð¡Ð²Ð¾Ð¸ ÑÐ°Ð¹Ð»Ñ ÑÑÐ´Ð° ÐºÐ»Ð°ÑÑÑ Ð½Ðµ Ð½ÑÐ¶Ð½Ð¾ â Ð¿Ð¾Ð»Ð¾Ð¶Ð¸ Ð¸Ñ\r\nÐ² ÑÐ¾ÑÐµÐ´Ð½ÑÑ Ð¿Ð°Ð¿ÐºÑ Ð²Ð½ÑÑÑÐ¸ custom/.\r\n"
+            },
+            {"path":"game/mymod/custom/hlsr-language/resource","kind":"dir"},
+            {"path":"game/mymod/custom/hlsr-language/resource/chat_english.txt","kind":"file","size":33,"sha256":"2bbf741c8b823f73cee63bf1a8d1c8206a2f04f1aba91c0843fec392b0cf69b9","latin1":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod/custom/hlsr-language/resource/gameui_english.txt","kind":"file","size":35,"sha256":"aeab4ce53c90baf63aaee9c99caa022dbdf2a7f141f49efe5eee1a3ad9cd33a7","latin1":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"},
+            {"path":"game/mymod/custom/hlsr-language/resource/hl2_english.txt","kind":"file","size":32,"sha256":"05459b1f6ec48aa14be75f82acb8e7c878c83c2e39d74a9699122453ca5e4dab","latin1":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod/custom/hlsr-language/resource/valve_english.txt","kind":"file","size":34,"sha256":"8d6ae4af083b81bd07fedf4be71edf68966c6cf38d2598aecba9abe6a6b9d42e","latin1":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod/resource","kind":"dir"},
+            {"path":"game/mymod/resource/gameui_english.txt","kind":"file","size":35,"sha256":"0a6b5fbd124c074aabbfcbd68cf67d5341ac023ddcf96c2cd67b1f5d71d0097e","latin1":"\"lang\" { \"gameui\" \"mod english\" }\r\n"},
+            {"path":"game/mymod/resource/gameui_russian.txt","kind":"file","size":35,"sha256":"aeab4ce53c90baf63aaee9c99caa022dbdf2a7f141f49efe5eee1a3ad9cd33a7","latin1":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "папка подмены — ссылка на чужую папку: стирается ссылка, не цель",
+      "unix": true,
+      "setup": [
+        {"file":"game/mymod/resource/gameui_russian.txt","utf8":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"},
+        {"file":"game/hl2/resource/hl2_russian.txt","utf8":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+        {"file":"game/hl2/resource/valve_russian.txt","utf8":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+        {"file":"game/hl2/resource/chat_russian.txt","utf8":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+        {"file":"game/mymod/resource/gameui_english.txt","utf8":"\"lang\" { \"gameui\" \"mod english\" }\r\n"},
+        {"file":"game/hl2/resource/hl2_english.txt","utf8":"\"lang\" { \"hl2\" \"hl2 english\" }\r\n"},
+        {"file":"game/hl2/resource/valve_english.txt","utf8":"\"lang\" { \"valve\" \"hl2 english\" }\r\n"},
+        {"file":"game/hl2/resource/chat_english.txt","utf8":"\"lang\" { \"chat\" \"hl2 english\" }\r\n"},
+        {"file":"outside/keep.txt","utf8":"чужое"},
+        {"symlink":"game/mymod/custom/hlsr-language","target":"<root>/outside"}
+      ],
+      "steps": [{"op":"apply","choice":"russian","options":{"engineLanguage":"english"}},{"op":"tree"},{"op":"apply","choice":"auto","options":{"engineLanguage":"english"}},{"op":"tree"}],
+      "results": [
+        {"ok":{"ok":true,"applied":true,"language":"russian","engineLanguage":"english","files":["gameui_english.txt","hl2_english.txt","valve_english.txt","chat_english.txt"]}},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/hl2","kind":"dir"},
+            {"path":"game/hl2/resource","kind":"dir"},
+            {"path":"game/hl2/resource/chat_english.txt","kind":"file","size":33,"sha256":"bb5f687b8275f889f67ed5c51e8982a722b9ee6e2a38af5934e56d86b1d67203","latin1":"\"lang\" { \"chat\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/chat_russian.txt","kind":"file","size":33,"sha256":"2bbf741c8b823f73cee63bf1a8d1c8206a2f04f1aba91c0843fec392b0cf69b9","latin1":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+            {"path":"game/hl2/resource/hl2_english.txt","kind":"file","size":32,"sha256":"d525f9b46646ed43558318548a0ec2d114bd5f6778136777dadedafdf41080ac","latin1":"\"lang\" { \"hl2\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/hl2_russian.txt","kind":"file","size":32,"sha256":"05459b1f6ec48aa14be75f82acb8e7c878c83c2e39d74a9699122453ca5e4dab","latin1":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+            {"path":"game/hl2/resource/valve_english.txt","kind":"file","size":34,"sha256":"d790af48d3127691a96a6e8e98191b16eb32700febbf787381923b2fdb5f41ec","latin1":"\"lang\" { \"valve\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/valve_russian.txt","kind":"file","size":34,"sha256":"8d6ae4af083b81bd07fedf4be71edf68966c6cf38d2598aecba9abe6a6b9d42e","latin1":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod","kind":"dir"},
+            {"path":"game/mymod/custom","kind":"dir"},
+            {"path":"game/mymod/custom/hlsr-language","kind":"dir"},
+            {
+              "path": "game/mymod/custom/hlsr-language/README.txt",
+              "kind": "file",
+              "size": 502,
+              "sha256": "7c6f4a3df7b3452f0012fab562de80fc03a2583076d9b551bec0b12495c27923",
+              "latin1": "Ð­ÑÐ¾Ð¹ Ð¿Ð°Ð¿ÐºÐ¾Ð¹ ÑÐ°ÑÐ¿Ð¾ÑÑÐ¶Ð°ÐµÑÑÑ Ð»Ð°ÑÐ½ÑÐµÑ HLSR.\r\n\r\nÐÐ´ÐµÑÑ Ð»ÐµÐ¶Ð°Ñ ÑÐ·ÑÐºÐ¾Ð²ÑÐµ ÑÐ°Ð¹Ð»Ñ Ð²ÑÐ±ÑÐ°Ð½Ð½Ð¾Ð³Ð¾ Ð² Ð»Ð°ÑÐ½ÑÐµÑÐµ ÑÐ·ÑÐºÐ° Ð¸Ð³ÑÑ. ÐÐ°Ð¿ÐºÐ°\r\nÐ¿ÐµÑÐµÐ¿Ð¸ÑÑÐ²Ð°ÐµÑÑÑ Ð¿ÑÐ¸ ÐºÐ°Ð¶Ð´Ð¾Ð¼ Ð·Ð°Ð¿ÑÑÐºÐµ Ð¸ ÑÐ´Ð°Ð»ÑÐµÑÑÑ, ÐºÐ¾Ð³Ð´Ð° ÑÐ·ÑÐº Ð¿ÐµÑÐµÐºÐ»ÑÑÑÐ½\r\nÐ¾Ð±ÑÐ°ÑÐ½Ð¾ Ð½Ð° Â«ÐºÐ°Ðº Ð² SteamÂ». Ð¡Ð²Ð¾Ð¸ ÑÐ°Ð¹Ð»Ñ ÑÑÐ´Ð° ÐºÐ»Ð°ÑÑÑ Ð½Ðµ Ð½ÑÐ¶Ð½Ð¾ â Ð¿Ð¾Ð»Ð¾Ð¶Ð¸ Ð¸Ñ\r\nÐ² ÑÐ¾ÑÐµÐ´Ð½ÑÑ Ð¿Ð°Ð¿ÐºÑ Ð²Ð½ÑÑÑÐ¸ custom/.\r\n"
+            },
+            {"path":"game/mymod/custom/hlsr-language/resource","kind":"dir"},
+            {"path":"game/mymod/custom/hlsr-language/resource/chat_english.txt","kind":"file","size":33,"sha256":"2bbf741c8b823f73cee63bf1a8d1c8206a2f04f1aba91c0843fec392b0cf69b9","latin1":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod/custom/hlsr-language/resource/gameui_english.txt","kind":"file","size":35,"sha256":"aeab4ce53c90baf63aaee9c99caa022dbdf2a7f141f49efe5eee1a3ad9cd33a7","latin1":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"},
+            {"path":"game/mymod/custom/hlsr-language/resource/hl2_english.txt","kind":"file","size":32,"sha256":"05459b1f6ec48aa14be75f82acb8e7c878c83c2e39d74a9699122453ca5e4dab","latin1":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod/custom/hlsr-language/resource/valve_english.txt","kind":"file","size":34,"sha256":"8d6ae4af083b81bd07fedf4be71edf68966c6cf38d2598aecba9abe6a6b9d42e","latin1":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod/resource","kind":"dir"},
+            {"path":"game/mymod/resource/gameui_english.txt","kind":"file","size":35,"sha256":"0a6b5fbd124c074aabbfcbd68cf67d5341ac023ddcf96c2cd67b1f5d71d0097e","latin1":"\"lang\" { \"gameui\" \"mod english\" }\r\n"},
+            {"path":"game/mymod/resource/gameui_russian.txt","kind":"file","size":35,"sha256":"aeab4ce53c90baf63aaee9c99caa022dbdf2a7f141f49efe5eee1a3ad9cd33a7","latin1":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"},
+            {"path":"outside","kind":"dir"},
+            {"path":"outside/keep.txt","kind":"file","size":10,"sha256":"553ffe213cfa2da7c6f473e187d00f5ecb7c0b84c86071552b77bf8f4d3bf9ac","latin1":"ÑÑÐ¶Ð¾Ðµ"}
+          ]
+        },
+        {"ok":{"ok":true,"applied":false,"language":"auto","engineLanguage":null,"reason":"AUTO","files":[]}},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/hl2","kind":"dir"},
+            {"path":"game/hl2/resource","kind":"dir"},
+            {"path":"game/hl2/resource/chat_english.txt","kind":"file","size":33,"sha256":"bb5f687b8275f889f67ed5c51e8982a722b9ee6e2a38af5934e56d86b1d67203","latin1":"\"lang\" { \"chat\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/chat_russian.txt","kind":"file","size":33,"sha256":"2bbf741c8b823f73cee63bf1a8d1c8206a2f04f1aba91c0843fec392b0cf69b9","latin1":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+            {"path":"game/hl2/resource/hl2_english.txt","kind":"file","size":32,"sha256":"d525f9b46646ed43558318548a0ec2d114bd5f6778136777dadedafdf41080ac","latin1":"\"lang\" { \"hl2\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/hl2_russian.txt","kind":"file","size":32,"sha256":"05459b1f6ec48aa14be75f82acb8e7c878c83c2e39d74a9699122453ca5e4dab","latin1":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+            {"path":"game/hl2/resource/valve_english.txt","kind":"file","size":34,"sha256":"d790af48d3127691a96a6e8e98191b16eb32700febbf787381923b2fdb5f41ec","latin1":"\"lang\" { \"valve\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/valve_russian.txt","kind":"file","size":34,"sha256":"8d6ae4af083b81bd07fedf4be71edf68966c6cf38d2598aecba9abe6a6b9d42e","latin1":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod","kind":"dir"},
+            {"path":"game/mymod/custom","kind":"dir"},
+            {"path":"game/mymod/resource","kind":"dir"},
+            {"path":"game/mymod/resource/gameui_english.txt","kind":"file","size":35,"sha256":"0a6b5fbd124c074aabbfcbd68cf67d5341ac023ddcf96c2cd67b1f5d71d0097e","latin1":"\"lang\" { \"gameui\" \"mod english\" }\r\n"},
+            {"path":"game/mymod/resource/gameui_russian.txt","kind":"file","size":35,"sha256":"aeab4ce53c90baf63aaee9c99caa022dbdf2a7f141f49efe5eee1a3ad9cd33a7","latin1":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"},
+            {"path":"outside","kind":"dir"},
+            {"path":"outside/keep.txt","kind":"file","size":10,"sha256":"553ffe213cfa2da7c6f473e187d00f5ecb7c0b84c86071552b77bf8f4d3bf9ac","latin1":"ÑÑÐ¶Ð¾Ðµ"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "папка игры выходит за установку — исключение",
+      "setup": [
+        {"file":"game/mymod/resource/gameui_russian.txt","utf8":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"},
+        {"file":"game/hl2/resource/hl2_russian.txt","utf8":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+        {"file":"game/hl2/resource/valve_russian.txt","utf8":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+        {"file":"game/hl2/resource/chat_russian.txt","utf8":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+        {"file":"game/mymod/resource/gameui_english.txt","utf8":"\"lang\" { \"gameui\" \"mod english\" }\r\n"},
+        {"file":"game/hl2/resource/hl2_english.txt","utf8":"\"lang\" { \"hl2\" \"hl2 english\" }\r\n"},
+        {"file":"game/hl2/resource/valve_english.txt","utf8":"\"lang\" { \"valve\" \"hl2 english\" }\r\n"},
+        {"file":"game/hl2/resource/chat_english.txt","utf8":"\"lang\" { \"chat\" \"hl2 english\" }\r\n"}
+      ],
+      "steps": [{"op":"apply","choice":"russian","options":{"engineLanguage":"english"},"gameDirectory":"../out"},{"op":"apply","choice":"auto","gameDirectory":"../out"},{"op":"clear","gameDirectory":"../out"},{"op":"root","gameDirectory":"../out"},{"op":"available","gameDirectory":"../out"},{"op":"tree"}],
+      "results": [
+        {"error":{"code":"PATH_INVALID","message":"Папка подмены языка выходит за пределы разрешённого каталога: <root>/out/custom/hlsr-language","details":null}},
+        {"error":{"code":"PATH_INVALID","message":"Папка подмены языка выходит за пределы разрешённого каталога: <root>/out/custom/hlsr-language","details":null}},
+        {"error":{"code":"PATH_INVALID","message":"Папка подмены языка выходит за пределы разрешённого каталога: <root>/out/custom/hlsr-language","details":null}},
+        {"error":{"code":"PATH_INVALID","message":"Папка подмены языка выходит за пределы разрешённого каталога: <root>/out/custom/hlsr-language","details":null}},
+        {"ok":[]},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/hl2","kind":"dir"},
+            {"path":"game/hl2/resource","kind":"dir"},
+            {"path":"game/hl2/resource/chat_english.txt","kind":"file","size":33,"sha256":"bb5f687b8275f889f67ed5c51e8982a722b9ee6e2a38af5934e56d86b1d67203","latin1":"\"lang\" { \"chat\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/chat_russian.txt","kind":"file","size":33,"sha256":"2bbf741c8b823f73cee63bf1a8d1c8206a2f04f1aba91c0843fec392b0cf69b9","latin1":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+            {"path":"game/hl2/resource/hl2_english.txt","kind":"file","size":32,"sha256":"d525f9b46646ed43558318548a0ec2d114bd5f6778136777dadedafdf41080ac","latin1":"\"lang\" { \"hl2\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/hl2_russian.txt","kind":"file","size":32,"sha256":"05459b1f6ec48aa14be75f82acb8e7c878c83c2e39d74a9699122453ca5e4dab","latin1":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+            {"path":"game/hl2/resource/valve_english.txt","kind":"file","size":34,"sha256":"d790af48d3127691a96a6e8e98191b16eb32700febbf787381923b2fdb5f41ec","latin1":"\"lang\" { \"valve\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/valve_russian.txt","kind":"file","size":34,"sha256":"8d6ae4af083b81bd07fedf4be71edf68966c6cf38d2598aecba9abe6a6b9d42e","latin1":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod","kind":"dir"},
+            {"path":"game/mymod/resource","kind":"dir"},
+            {"path":"game/mymod/resource/gameui_english.txt","kind":"file","size":35,"sha256":"0a6b5fbd124c074aabbfcbd68cf67d5341ac023ddcf96c2cd67b1f5d71d0097e","latin1":"\"lang\" { \"gameui\" \"mod english\" }\r\n"},
+            {"path":"game/mymod/resource/gameui_russian.txt","kind":"file","size":35,"sha256":"aeab4ce53c90baf63aaee9c99caa022dbdf2a7f141f49efe5eee1a3ad9cd33a7","latin1":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "overlayRoot: варианты папки игры",
+      "setup": [],
+      "steps": [
+        {"op":"root"},
+        {"op":"root","gameDirectory":"mymod/"},
+        {"op":"root","gameDirectory":"./mymod"},
+        {"op":"root","gameDirectory":"Half-Life/valve_WON"},
+        {"op":"root","gameDirectory":""},
+        {"op":"root","gameDirectory":"/abs/mod"},
+        {"op":"root","gameDirectory":"a/../../b"},
+        {"op":"root","gameDirectory":"a/../b"},
+        {"op":"root","gameDirectory":".."},
+        {"op":"root","gameDirectory":"."},
+        {"op":"root","gameDirectory":"мод с пробелом"},
+        {"op":"root","gameDirectory":"mymod\\sub"}
+      ],
+      "results": [
+        {"ok":"<root>/game/mymod/custom/hlsr-language"},
+        {"ok":"<root>/game/mymod/custom/hlsr-language"},
+        {"ok":"<root>/game/mymod/custom/hlsr-language"},
+        {"ok":"<root>/game/Half-Life/valve_WON/custom/hlsr-language"},
+        {"ok":"<root>/game/custom/hlsr-language"},
+        {"ok":"<root>/game/abs/mod/custom/hlsr-language"},
+        {"error":{"code":"PATH_INVALID","message":"Папка подмены языка выходит за пределы разрешённого каталога: <root>/b/custom/hlsr-language","details":null}},
+        {"ok":"<root>/game/b/custom/hlsr-language"},
+        {"error":{"code":"PATH_INVALID","message":"Папка подмены языка выходит за пределы разрешённого каталога: <root>/custom/hlsr-language","details":null}},
+        {"ok":"<root>/game/custom/hlsr-language"},
+        {"ok":"<root>/game/мод с пробелом/custom/hlsr-language"},
+        {"ok":"<root>/game/mymod/sub/custom/hlsr-language"}
+      ]
+    },
+    {
+      "name": "clear: подмена стирается целиком, повтор безопасен",
+      "setup": [
+        {"file":"game/mymod/resource/gameui_russian.txt","utf8":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"},
+        {"file":"game/hl2/resource/hl2_russian.txt","utf8":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+        {"file":"game/hl2/resource/valve_russian.txt","utf8":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+        {"file":"game/hl2/resource/chat_russian.txt","utf8":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+        {"file":"game/mymod/resource/gameui_english.txt","utf8":"\"lang\" { \"gameui\" \"mod english\" }\r\n"},
+        {"file":"game/hl2/resource/hl2_english.txt","utf8":"\"lang\" { \"hl2\" \"hl2 english\" }\r\n"},
+        {"file":"game/hl2/resource/valve_english.txt","utf8":"\"lang\" { \"valve\" \"hl2 english\" }\r\n"},
+        {"file":"game/hl2/resource/chat_english.txt","utf8":"\"lang\" { \"chat\" \"hl2 english\" }\r\n"},
+        {"file":"game/mymod/custom/hlsr-language/resource/old_file.txt","utf8":"старый файл"},
+        {"file":"game/mymod/custom/hlsr-language/README.txt","utf8":"старый README"},
+        {"file":"game/mymod/custom/hlsr-language/свои.txt","utf8":"чужой файл"}
+      ],
+      "steps": [{"op":"clear"},{"op":"tree"},{"op":"clear"},{"op":"clear","gameDirectory":"нет такой"},{"op":"tree"}],
+      "results": [
+        {"ok":{"ok":true,"removed":true}},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/hl2","kind":"dir"},
+            {"path":"game/hl2/resource","kind":"dir"},
+            {"path":"game/hl2/resource/chat_english.txt","kind":"file","size":33,"sha256":"bb5f687b8275f889f67ed5c51e8982a722b9ee6e2a38af5934e56d86b1d67203","latin1":"\"lang\" { \"chat\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/chat_russian.txt","kind":"file","size":33,"sha256":"2bbf741c8b823f73cee63bf1a8d1c8206a2f04f1aba91c0843fec392b0cf69b9","latin1":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+            {"path":"game/hl2/resource/hl2_english.txt","kind":"file","size":32,"sha256":"d525f9b46646ed43558318548a0ec2d114bd5f6778136777dadedafdf41080ac","latin1":"\"lang\" { \"hl2\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/hl2_russian.txt","kind":"file","size":32,"sha256":"05459b1f6ec48aa14be75f82acb8e7c878c83c2e39d74a9699122453ca5e4dab","latin1":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+            {"path":"game/hl2/resource/valve_english.txt","kind":"file","size":34,"sha256":"d790af48d3127691a96a6e8e98191b16eb32700febbf787381923b2fdb5f41ec","latin1":"\"lang\" { \"valve\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/valve_russian.txt","kind":"file","size":34,"sha256":"8d6ae4af083b81bd07fedf4be71edf68966c6cf38d2598aecba9abe6a6b9d42e","latin1":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod","kind":"dir"},
+            {"path":"game/mymod/custom","kind":"dir"},
+            {"path":"game/mymod/resource","kind":"dir"},
+            {"path":"game/mymod/resource/gameui_english.txt","kind":"file","size":35,"sha256":"0a6b5fbd124c074aabbfcbd68cf67d5341ac023ddcf96c2cd67b1f5d71d0097e","latin1":"\"lang\" { \"gameui\" \"mod english\" }\r\n"},
+            {"path":"game/mymod/resource/gameui_russian.txt","kind":"file","size":35,"sha256":"aeab4ce53c90baf63aaee9c99caa022dbdf2a7f141f49efe5eee1a3ad9cd33a7","latin1":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"}
+          ]
+        },
+        {"ok":{"ok":true,"removed":true}},
+        {"ok":{"ok":true,"removed":true}},
+        {
+          "tree": [
+            {"path":"game","kind":"dir"},
+            {"path":"game/hl2","kind":"dir"},
+            {"path":"game/hl2/resource","kind":"dir"},
+            {"path":"game/hl2/resource/chat_english.txt","kind":"file","size":33,"sha256":"bb5f687b8275f889f67ed5c51e8982a722b9ee6e2a38af5934e56d86b1d67203","latin1":"\"lang\" { \"chat\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/chat_russian.txt","kind":"file","size":33,"sha256":"2bbf741c8b823f73cee63bf1a8d1c8206a2f04f1aba91c0843fec392b0cf69b9","latin1":"\"lang\" { \"chat\" \"hl2 russian\" }\r\n"},
+            {"path":"game/hl2/resource/hl2_english.txt","kind":"file","size":32,"sha256":"d525f9b46646ed43558318548a0ec2d114bd5f6778136777dadedafdf41080ac","latin1":"\"lang\" { \"hl2\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/hl2_russian.txt","kind":"file","size":32,"sha256":"05459b1f6ec48aa14be75f82acb8e7c878c83c2e39d74a9699122453ca5e4dab","latin1":"\"lang\" { \"hl2\" \"hl2 russian\" }\r\n"},
+            {"path":"game/hl2/resource/valve_english.txt","kind":"file","size":34,"sha256":"d790af48d3127691a96a6e8e98191b16eb32700febbf787381923b2fdb5f41ec","latin1":"\"lang\" { \"valve\" \"hl2 english\" }\r\n"},
+            {"path":"game/hl2/resource/valve_russian.txt","kind":"file","size":34,"sha256":"8d6ae4af083b81bd07fedf4be71edf68966c6cf38d2598aecba9abe6a6b9d42e","latin1":"\"lang\" { \"valve\" \"hl2 russian\" }\r\n"},
+            {"path":"game/mymod","kind":"dir"},
+            {"path":"game/mymod/custom","kind":"dir"},
+            {"path":"game/mymod/resource","kind":"dir"},
+            {"path":"game/mymod/resource/gameui_english.txt","kind":"file","size":35,"sha256":"0a6b5fbd124c074aabbfcbd68cf67d5341ac023ddcf96c2cd67b1f5d71d0097e","latin1":"\"lang\" { \"gameui\" \"mod english\" }\r\n"},
+            {"path":"game/mymod/resource/gameui_russian.txt","kind":"file","size":35,"sha256":"aeab4ce53c90baf63aaee9c99caa022dbdf2a7f141f49efe5eee1a3ad9cd33a7","latin1":"\"lang\" { \"gameui\" \"mod russian\" }\r\n"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "доступные языки: custom подключён, имена файлов",
+      "setup": [
+        {"file":"game/mymod/gameinfo.txt","utf8":"\"GameInfo\"\r\n{\r\n\tgame\t\"Test\"\r\n\tFileSystem\r\n\t{\r\n\t\tSearchPaths\r\n\t\t{\r\n\t\t\tGame\t\t\t\tcustom/*\r\n\t\t}\r\n\t}\r\n}\r\n"},
+        {"file":"game/mymod/resource/gameui_russian.txt","utf8":"x"},
+        {"file":"game/mymod/resource/gameui_english.txt","utf8":"x"},
+        {"file":"game/mymod/resource/gameui_german.txt","utf8":"x"},
+        {"file":"game/mymod/resource/GameUI_French.TXT","utf8":"x"},
+        {"file":"game/mymod/resource/gameui_Spanish.txt","utf8":"x"},
+        {"file":"game/mymod/resource/gameui_russian.TXT","utf8":"x"},
+        {"file":"game/mymod/resource/gameui_ab.txt","utf8":"x"},
+        {"file":"game/mymod/resource/gameui_a.txt","utf8":"x"},
+        {"file":"game/mymod/resource/gameui_abcdefghijklmnopqrstuvwx.txt","utf8":"x"},
+        {"file":"game/mymod/resource/gameui_abcdefghijklmnopqrstuvwxy.txt","utf8":"x"},
+        {"file":"game/mymod/resource/gameui_rus1.txt","utf8":"x"},
+        {"file":"game/mymod/resource/gameui_ru-ru.txt","utf8":"x"},
+        {"file":"game/mymod/resource/xgameui_polish.txt","utf8":"x"},
+        {"file":"game/mymod/resource/gameui_polish.txt.bak","utf8":"x"},
+        {"file":"game/mymod/resource/gameui_русский.txt","utf8":"x"},
+        {"file":"game/mymod/resource/gameui_Kelvin.txt","utf8":"x"},
+        {"file":"game/mymod/resource/gameui_ſpanish.txt","utf8":"x"},
+        {"file":"game/mymod/resource/hl2_italian.txt","utf8":"x"},
+        {"file":"game/mymod/resource/gameui_.txt","utf8":"x"}
+      ],
+      "steps": [{"op":"available"}],
+      "results": [{"ok":["english","ab","abcdefghijklmnopqrstuvwx","french","german","russian","spanish"]}]
+    },
+    {
+      "name": "доступные языки: английский первым, остальные по алфавиту",
+      "setup": [
+        {"file":"game/mymod/gameinfo.txt","utf8":"\"GameInfo\"\r\n{\r\n\tgame\t\"Test\"\r\n\tFileSystem\r\n\t{\r\n\t\tSearchPaths\r\n\t\t{\r\n\t\t\tGame\t\t\t\tcustom/*\r\n\t\t}\r\n\t}\r\n}\r\n"},
+        {"file":"game/mymod/resource/gameui_zulu.txt","utf8":"x"},
+        {"file":"game/mymod/resource/gameui_english.txt","utf8":"x"},
+        {"file":"game/mymod/resource/gameui_arabic.txt","utf8":"x"},
+        {"file":"game/mymod/resource/gameui_Brazilian.txt","utf8":"x"}
+      ],
+      "steps": [{"op":"available"}],
+      "results": [{"ok":["english","arabic","brazilian","zulu"]}]
+    },
+    {
+      "name": "доступные языки: английского нет",
+      "setup": [{"file":"game/mymod/gameinfo.txt","utf8":"\"GameInfo\"\r\n{\r\n\tgame\t\"Test\"\r\n\tFileSystem\r\n\t{\r\n\t\tSearchPaths\r\n\t\t{\r\n\t\t\tGame\t\t\t\tcustom/*\r\n\t\t}\r\n\t}\r\n}\r\n"},{"file":"game/mymod/resource/gameui_zulu.txt","utf8":"x"},{"file":"game/mymod/resource/gameui_arabic.txt","utf8":"x"}],
+      "steps": [{"op":"available"}],
+      "results": [{"ok":["arabic","zulu"]}]
+    },
+    {"name":"доступные языки: папка — тоже имя в списке","setup":[{"file":"game/mymod/gameinfo.txt","utf8":"\"GameInfo\"\r\n{\r\n\tgame\t\"Test\"\r\n\tFileSystem\r\n\t{\r\n\t\tSearchPaths\r\n\t\t{\r\n\t\t\tGame\t\t\t\tcustom/*\r\n\t\t}\r\n\t}\r\n}\r\n"},{"dir":"game/mymod/resource/gameui_spanish.txt"}],"steps":[{"op":"available"}],"results":[{"ok":["spanish"]}]},
+    {"name":"доступные языки: нет папки resource","setup":[{"file":"game/mymod/gameinfo.txt","utf8":"\"GameInfo\"\r\n{\r\n\tgame\t\"Test\"\r\n\tFileSystem\r\n\t{\r\n\t\tSearchPaths\r\n\t\t{\r\n\t\t\tGame\t\t\t\tcustom/*\r\n\t\t}\r\n\t}\r\n}\r\n"}],"steps":[{"op":"available"}],"results":[{"ok":[]}]},
+    {"name":"доступные языки: resource — файл","setup":[{"file":"game/mymod/gameinfo.txt","utf8":"\"GameInfo\"\r\n{\r\n\tgame\t\"Test\"\r\n\tFileSystem\r\n\t{\r\n\t\tSearchPaths\r\n\t\t{\r\n\t\t\tGame\t\t\t\tcustom/*\r\n\t\t}\r\n\t}\r\n}\r\n"},{"file":"game/mymod/resource","utf8":"файл"}],"steps":[{"op":"available"}],"results":[{"ok":[]}]},
+    {"name":"доступные языки: custom не подключён","setup":[{"file":"game/mymod/gameinfo.txt","utf8":"\"GameInfo\"\r\n{\r\n\tgame\t\"Test\"\r\n\tFileSystem\r\n\t{\r\n\t\tSearchPaths\r\n\t\t{\r\n\t\t\tGame\t\t\t\t|gameinfo_path|.\r\n\t\t}\r\n\t}\r\n}\r\n"},{"file":"game/mymod/resource/gameui_russian.txt","utf8":"x"}],"steps":[{"op":"available"}],"results":[{"ok":[]}]},
+    {"name":"доступные языки: нет gameinfo.txt","setup":[{"file":"game/mymod/resource/gameui_russian.txt","utf8":"x"}],"steps":[{"op":"available"}],"results":[{"ok":[]}]},
+    {"name":"доступные языки: gameinfo.txt — папка","setup":[{"dir":"game/mymod/gameinfo.txt"},{"file":"game/mymod/resource/gameui_russian.txt","utf8":"x"}],"steps":[{"op":"available"}],"results":[{"ok":[]}]},
+    {"name":"доступные языки: только GameInfo.txt","unix":true,"setup":[{"file":"game/mymod/GameInfo.txt","utf8":"\"GameInfo\"\r\n{\r\n\tgame\t\"Test\"\r\n\tFileSystem\r\n\t{\r\n\t\tSearchPaths\r\n\t\t{\r\n\t\t\tGame\t\t\t\tcustom/*\r\n\t\t}\r\n\t}\r\n}\r\n"},{"file":"game/mymod/resource/gameui_russian.txt","utf8":"x"}],"steps":[{"op":"available"}],"results":[{"ok":["russian"]}]},
+    {"name":"gameinfo: Game custom/*","setup":[{"file":"game/mymod/gameinfo.txt","utf8":"Game custom/*\n"},{"file":"game/mymod/resource/gameui_russian.txt","utf8":"x"}],"steps":[{"op":"available"}],"results":[{"ok":["russian"]}]},
+    {"name":"gameinfo: GAME в верхнем регистре","setup":[{"file":"game/mymod/gameinfo.txt","utf8":"GAME CUSTOM/*\n"},{"file":"game/mymod/resource/gameui_russian.txt","utf8":"x"}],"steps":[{"op":"available"}],"results":[{"ok":["russian"]}]},
+    {"name":"gameinfo: с табуляцией","setup":[{"file":"game/mymod/gameinfo.txt","utf8":"\tGame\tcustom/*\n"},{"file":"game/mymod/resource/gameui_russian.txt","utf8":"x"}],"steps":[{"op":"available"}],"results":[{"ok":["russian"]}]},
+    {"name":"gameinfo: в кавычках","setup":[{"file":"game/mymod/gameinfo.txt","utf8":"Game \"custom/*\"\n"},{"file":"game/mymod/resource/gameui_russian.txt","utf8":"x"}],"steps":[{"op":"available"}],"results":[{"ok":["russian"]}]},
+    {"name":"gameinfo: закомментировано //","setup":[{"file":"game/mymod/gameinfo.txt","utf8":"// Game custom/*\n"},{"file":"game/mymod/resource/gameui_russian.txt","utf8":"x"}],"steps":[{"op":"available"}],"results":[{"ok":[]}]},
+    {"name":"gameinfo: путь с префиксом","setup":[{"file":"game/mymod/gameinfo.txt","utf8":"Game mods/custom/*\n"},{"file":"game/mymod/resource/gameui_russian.txt","utf8":"x"}],"steps":[{"op":"available"}],"results":[{"ok":["russian"]}]},
+    {"name":"gameinfo: слитно MyGame","setup":[{"file":"game/mymod/gameinfo.txt","utf8":"MyGame custom/*\n"},{"file":"game/mymod/resource/gameui_russian.txt","utf8":"x"}],"steps":[{"op":"available"}],"results":[{"ok":[]}]},
+    {"name":"gameinfo: custom без звёздочки","setup":[{"file":"game/mymod/gameinfo.txt","utf8":"Game custom/\n"},{"file":"game/mymod/resource/gameui_russian.txt","utf8":"x"}],"steps":[{"op":"available"}],"results":[{"ok":[]}]},
+    {"name":"gameinfo: перевод строки между","setup":[{"file":"game/mymod/gameinfo.txt","utf8":"Game\ncustom/*\n"},{"file":"game/mymod/resource/gameui_russian.txt","utf8":"x"}],"steps":[{"op":"available"}],"results":[{"ok":["russian"]}]},
+    {"name":"gameinfo: CRLF","setup":[{"file":"game/mymod/gameinfo.txt","utf8":"Game custom/*\r\n"},{"file":"game/mymod/resource/gameui_russian.txt","utf8":"x"}],"steps":[{"op":"available"}],"results":[{"ok":["russian"]}]},
+    {"name":"gameinfo: BOM в начале","setup":[{"file":"game/mymod/gameinfo.txt","utf8":"﻿Game custom/*\n"},{"file":"game/mymod/resource/gameui_russian.txt","utf8":"x"}],"steps":[{"op":"available"}],"results":[{"ok":["russian"]}]},
+    {"name":"gameinfo: |gameinfo_path| и custom в одной строке","setup":[{"file":"game/mymod/gameinfo.txt","utf8":"Game |gameinfo_path|. custom/*\n"},{"file":"game/mymod/resource/gameui_russian.txt","utf8":"x"}],"steps":[{"op":"available"}],"results":[{"ok":["russian"]}]},
+    {"name":"gameinfo: пусто","setup":[{"file":"game/mymod/gameinfo.txt","utf8":""},{"file":"game/mymod/resource/gameui_russian.txt","utf8":"x"}],"steps":[{"op":"available"}],"results":[{"ok":[]}]}
+  ]
+}

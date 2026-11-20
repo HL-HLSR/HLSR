@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "toolId": "livesplit",
+  "channel": "stable",
+  "version": "1.0.0",
+  "enabled": true,
+  "executable": "LiveSplit.exe",
+  "archive": {
+    "filename": "livesplit-1.0.0.7z",
+    "size": 8363929,
+    "sha256": "6c8e091766d8b5b9107c185e379c835380f601480293b3c0b3aa920ffe87071e",
+    "providers": [
+      {
+        "id": "hlsr-primary",
+        "type": "https-direct",
+        "status": "permanent",
+        "priority": 10,
+        "url": "https://hlsr.pro/downloads/tools/livesplit/1.0.0/livesplit-1.0.0.7z"
+      }
+    ]
+  }
+}

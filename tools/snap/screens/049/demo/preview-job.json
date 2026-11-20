@@ -1,0 +1,45 @@
+{
+  "id": "demo/preview-job",
+  "state": "Идёт предпросмотр: фаза, сегмент, процент, полоса, «Отмена»",
+  "base": "demo/_base",
+  "steps": [
+    {
+      "click": {
+        "css": ".game-rail .rail-item[aria-label=\"Демо\"]",
+        "view": "rail-demo"
+      }
+    },
+    {
+      "click": {
+        "css": ".dmp__list .dmp__group:nth-child(2) .dmp__item:nth-of-type(1)",
+        "view": "dmp-item-gh-run"
+      }
+    },
+    {
+      "click": {
+        "css": ".dmp__play",
+        "view": "dmp-play"
+      }
+    },
+    {
+      "emit": "demo-job-progress",
+      "payload": {
+        "jobId": "p1",
+        "kind": "preview",
+        "phase": "render",
+        "percent": 37,
+        "segment": {
+          "index": 2,
+          "count": 3
+        },
+        "message": null
+      }
+    },
+    {
+      "move": [
+        800,
+        880
+      ]
+    }
+  ]
+}

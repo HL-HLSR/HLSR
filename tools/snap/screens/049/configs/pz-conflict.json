@@ -1,0 +1,39 @@
+{
+  "id": "configs/pz-conflict",
+  "state": "Ghosting: цвет HUD изменён, «Сохранить» — файл игрока изменён вне лаунчера: заметка, «Перечитать» и «Отмена»",
+  "base": "configs/_pz",
+  "invoke": {
+    "game-settings-save": {
+      "status": "error",
+      "error": {
+        "code": "CONFIG_CHANGED"
+      }
+    }
+  },
+  "steps": [
+    {
+      "click": {
+        "css": ".launcher-topbar__tab:nth-child(3)",
+        "view": "topbar-tab-configs"
+      }
+    },
+    {
+      "click": {
+        "css": ".pers__swatches .pers__swatch:nth-child(2)",
+        "view": "pers-hud-white"
+      }
+    },
+    {
+      "click": {
+        "css": ".pz-btn.primary",
+        "view": "pz-save"
+      }
+    },
+    {
+      "move": [
+        800,
+        880
+      ]
+    }
+  ]
+}

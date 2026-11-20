@@ -1,0 +1,9 @@
+{
+  "id": "games/frame",
+  "base": "games/_base",
+  "state": "Ghosting при запуске: «HALF-LIFE 2» и «Ghosting Mod: Renewed», статистики нет (game-stats-get — available: false), темы hlsr и paper",
+  "themes": [
+    "hlsr",
+    "paper"
+  ]
+}

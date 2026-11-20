@@ -1,0 +1,15 @@
+{
+  "about": "Карточки тем «Настроек» 0.4.9: THEMES из launcher-themes.js — id, ключи названия и подсказки, swatch (фон, поверхность, акцент), accents (id, название, цвет; первый — по умолчанию). tools/reference/export-theme-swatches.js",
+  "default": "hlsr",
+  "themes": [
+    {"id":"hlsr","title":"#L_THEME_HLSR","hint":"#L_THEME_HLSR_HINT","swatch":["#0b0e13","#12161d","#00ABFF"]},
+    {"id":"lambda","title":"#L_THEME_LAMBDA","hint":"#L_THEME_LAMBDA_HINT","swatch":["#100b08","#1a1310","#FF7A1C"]},
+    {"id":"resonance","title":"#L_THEME_RESONANCE","hint":"#L_THEME_RESONANCE_HINT","swatch":["#08100b","#0f1912","#3EE07A"]},
+    {"id":"combine","title":"#L_THEME_COMBINE","hint":"#L_THEME_COMBINE_HINT","swatch":["#0a1014","#111a20","#5CD6E6"]},
+    {"id":"xen","title":"#L_THEME_XEN","hint":"#L_THEME_XEN_HINT","swatch":["#0e0a16","#171021","#B07CFF"]},
+    {"id":"steam2003","title":"#L_THEME_STEAM","hint":"#L_THEME_STEAM_HINT","swatch":["#3e4637","#4c5844","#C4B550"]},
+    {"id":"midnight","title":"#L_THEME_MIDNIGHT","hint":"#L_THEME_MIDNIGHT_HINT","swatch":["#000000","#0a0a0b","#E8ECF1"]},
+    {"id":"liquid-glass","title":"#L_THEME_GLASS","hint":"#L_THEME_GLASS_HINT","swatch":["#1b2330","rgba(255, 255, 255, 0.18)","#0A84FF"]},
+    {"id":"paper","title":"#L_THEME_PAPER","hint":"#L_THEME_PAPER_HINT","swatch":["#1e1417","#251a1c","#D5876D"],"accents":[{"id":"clay","title":"#L_THEME_PAPER_CLAY","color":"#D5876D"},{"id":"rose","title":"#L_THEME_PAPER_ROSE","color":"#D78AA8"},{"id":"amber","title":"#L_THEME_PAPER_AMBER","color":"#D5AA6B"},{"id":"sea","title":"#L_THEME_PAPER_SEA","color":"#80B2BA"}]}
+  ]
+}

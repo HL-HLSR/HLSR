@@ -1,0 +1,1108 @@
+{
+  "readBinds": [
+    {
+      "name": "selftest",
+      "files": {
+        "config.cfg": "unbindall\r\nbind \"w\" \"+forward\"\r\nbind \"SPACE\" \"+jump\" // комментарий\r\nbind \"q\" \"lastinv\"; bind \"E\" \"+use\"\r\nalias \"jb\" \"+jump;wait;-jump\"\r\nexec userconfig.cfg",
+        "userconfig.cfg": "bind \"mwheeldown\" \"jb\"\nunbind \"q\"\nexec scripts.cfg\nexec hlsr-binds.cfg\nexec config.cfg",
+        "scripts.cfg": "bind \"f\" \"bxt_append; +duck\"",
+        "hlsr-binds.cfg": "bind \"w\" \"+back\""
+      },
+      "roots": null,
+      "runtime": {}
+    },
+    {
+      "name": "nested",
+      "files": {
+        "config.cfg": "exec scripts\\jump.cfg\nexec Scripts/Jump.cfg\nexec a/b/c.cfg\nexec a/b/c/d.cfg\nexec ./x.cfg\nexec ../up.cfg\nexec \"sp ace.cfg\"\nexec UPPER.CFG\nexec upper.cfg\nexec noext\nexec a.CFG\nexec .cfg\nexec -dash_.cfg",
+        "scripts/jump.cfg": "bind \"f\" \"+jump\"\nexec deeper/more.cfg",
+        "Scripts/Jump.cfg": "bind \"g\" \"+duck\"",
+        "a/b/c.cfg": "bind h x",
+        "a/b/c/d.cfg": "bind i x",
+        "x.cfg": "bind j x",
+        "up.cfg": "bind k x",
+        "sp ace.cfg": "bind l x",
+        "UPPER.CFG": "bind m x",
+        "upper.cfg": "bind n x\nexec UPPER.CFG",
+        "a.CFG": "bind o x",
+        "-dash_.cfg": "bind p x",
+        "deeper/more.cfg": "bind q x"
+      },
+      "roots": null,
+      "runtime": {}
+    },
+    {
+      "name": "chain",
+      "files": {
+        "c0.cfg": "bind k0 x0\nexec c1.cfg",
+        "c1.cfg": "bind k1 x1\nexec c2.cfg",
+        "c2.cfg": "bind k2 x2\nexec c3.cfg",
+        "c3.cfg": "bind k3 x3\nexec c4.cfg",
+        "c4.cfg": "bind k4 x4\nexec c5.cfg",
+        "c5.cfg": "bind k5 x5\nexec c6.cfg",
+        "c6.cfg": "bind k6 x6\nexec c7.cfg",
+        "c7.cfg": "bind k7 x7\nexec c8.cfg",
+        "c8.cfg": "bind k8 x8\nexec c9.cfg",
+        "c9.cfg": "bind k9 x9\nexec c10.cfg",
+        "c10.cfg": "bind k10 x10\nexec c11.cfg",
+        "c11.cfg": "bind k11 x11\nexec c12.cfg"
+      },
+      "roots": null,
+      "runtime": {}
+    },
+    {"name":"unbinds","files":{"config.cfg":"bind a x\nbind 3 y\nbind 1 z\nbind b w\nunbind a\nunbind nosuchkey\nunbind\nunbind 3\nbind a again\nbind \"\" q\nbind  r\nbind SEMICOLON s\nbind \";\" t"},"roots":null,"runtime":{}},
+    {"name":"cvars","files":{"config.cfg":"sensitivity 2\nSENSITIVITY \"3\"\nm_pitch -0.022\nm_pitch\nsensitivity\nalias A first\nalias a second\nalias b\nalias"},"roots":null,"runtime":{}},
+    {"name":"unbindall","files":{"config.cfg":"bind a x\nunbindall\nbind b y\nexec userconfig.cfg","userconfig.cfg":"unbindall\nbind c z"},"roots":null,"runtime":{}},
+    {"name":"crlf","files":{"config.cfg":"bind \"w\" \"+forward\"\r\nbind \"s\" \"+back\" // c\r\nexec \"userconfig.cfg\"\r\n","userconfig.cfg":"bind \"a\" \"+moveleft\"\r\n"},"roots":null,"runtime":{}},
+    {"name":"source","files":{"config.cfg":"bind \"w\" \"+forward\"\r\nbind \"s\" \"+back\" // c\r\nexec \"userconfig.cfg\"\r\n","userconfig.cfg":"bind \"a\" \"+moveleft\"\r\n"},"roots":["config.cfg","autoexec.cfg"],"runtime":{}},
+    {
+      "name": "пустые корни",
+      "files": {
+        "config.cfg": "unbindall\r\nbind \"w\" \"+forward\"\r\nbind \"SPACE\" \"+jump\" // комментарий\r\nbind \"q\" \"lastinv\"; bind \"E\" \"+use\"\r\nalias \"jb\" \"+jump;wait;-jump\"\r\nexec userconfig.cfg",
+        "userconfig.cfg": "bind \"mwheeldown\" \"jb\"\nunbind \"q\"\nexec scripts.cfg\nexec hlsr-binds.cfg\nexec config.cfg",
+        "scripts.cfg": "bind \"f\" \"bxt_append; +duck\"",
+        "hlsr-binds.cfg": "bind \"w\" \"+back\""
+      },
+      "roots": [],
+      "runtime": {}
+    },
+    {
+      "name": "свой корень",
+      "files": {
+        "config.cfg": "exec scripts\\jump.cfg\nexec Scripts/Jump.cfg\nexec a/b/c.cfg\nexec a/b/c/d.cfg\nexec ./x.cfg\nexec ../up.cfg\nexec \"sp ace.cfg\"\nexec UPPER.CFG\nexec upper.cfg\nexec noext\nexec a.CFG\nexec .cfg\nexec -dash_.cfg",
+        "scripts/jump.cfg": "bind \"f\" \"+jump\"\nexec deeper/more.cfg",
+        "Scripts/Jump.cfg": "bind \"g\" \"+duck\"",
+        "a/b/c.cfg": "bind h x",
+        "a/b/c/d.cfg": "bind i x",
+        "x.cfg": "bind j x",
+        "up.cfg": "bind k x",
+        "sp ace.cfg": "bind l x",
+        "UPPER.CFG": "bind m x",
+        "upper.cfg": "bind n x\nexec UPPER.CFG",
+        "a.CFG": "bind o x",
+        "-dash_.cfg": "bind p x",
+        "deeper/more.cfg": "bind q x"
+      },
+      "roots": ["scripts/jump.cfg"],
+      "runtime": {}
+    },
+    {"name":"нет файлов","files":{},"roots":null,"runtime":{}},
+    {
+      "name": "случайный 0",
+      "files": {"config.cfg":"unbindall\r\nalias A \r\n// \t","a.cfg":"unbindall\r\nbind nokey \"+use\"\r\nexec Scripts\\C.cfg\r\nbind SPACE \"+use\"","scripts/b.cfg":"","autoexec.cfg":"m_pitch 1\nunbindall\nalias A z\nalias A \nexec Scripts\\C.cfg\nunbindall\n// Ïðèxexec","b.cfg":"// space\r\nm_pitch 1\r\nbind \"E\" \"+use\"","Scripts/C.cfg":"bind z x"},
+      "roots": null,
+      "runtime": {}
+    },
+    {"name":"случайный 1","files":{"config.cfg":"m_pitch\n\"","a.cfg":"sensitivity 1\nunbind 1\n// \nalias a z\nalias a z\n a b","autoexec.cfg":"exec b.cfg\nalias a \nbind F1 +forward\nm_pitch 1\nexec Scripts\\C.cfg\nunbind 1","hlsr-binds.cfg":"\nsensitivity \"-0.02\"\nexec Scripts\\C.cfg\nexec hlsr-binds.cfg\n//  ","Scripts/C.cfg":"bind z x"},"roots":null,"runtime":{}},
+    {"name":"случайный 2","files":{"userconfig.cfg":"","a.cfg":"unbindall\nexec scripts/b.cfg\nbind 1 x\nunbind 1\nbind \"E\" fps_max 20\nsensitivity\t//\nunbindall","autoexec.cfg":"alias b \"x y\"\r\n// \t😀\r\nexec Scripts\\C.cfg\r\n//  \r\nexec Scripts\\C.cfg","Scripts/C.cfg":"bind z x","b.cfg":"exec autoexec.cfg"},"roots":null,"runtime":{}},
+    {"name":"случайный 3","files":{"config.cfg":"bind ; \"+use\"\r\nexec b.cfg\r\n// \t//\r\nsensitivity 2.5","userconfig.cfg":"// w\r\r\nunbind 1\r\nalias a \r\nm_pitch 1\r\nbind nokey \"a b\"","a.cfg":"alias A \"x y\"\n// \rexec\nbind 1 +forward","scripts/b.cfg":"exec a.cfg","Scripts/C.cfg":"bind z x"},"roots":null,"runtime":{}},
+    {
+      "name": "случайный 4",
+      "files": {"config.cfg":"sensitivity \"-0.02\"\nexec scripts/b.cfg\nunbindall\nbind nokey \"a b\"","userconfig.cfg":"exec hlsr-binds.cfg\r\nm_pitch 1\r\n// ","a.cfg":"//  saybind\nsensitivity \"-0.02\"\nexec hlsr-binds.cfg","scripts/b.cfg":"alias A \"x y\"\r\nbind w x\r\nbind ; x","autoexec.cfg":"sensitivity 1","Scripts/C.cfg":"bind z x","b.cfg":"unbind x\r\nalias b z\r\nunbindall"},
+      "roots": null,
+      "runtime": {}
+    },
+    {"name":"случайный 5","files":{"config.cfg":"exec userconfig.cfg\nunbind x\nunbind SPACE\nbind w \"+use\"\n// \"😀","userconfig.cfg":"unbindall","a.cfg":"","scripts/b.cfg":"unbind e\r\nunbind w\r\nunbindall\r\nm_pitchёbindbind\r\nalias +c ","hlsr-binds.cfg":"","Scripts/C.cfg":"bind z x","b.cfg":"exec scripts/b.cfg\r\nunbind 1\r\nm_pitch 2.5\r\nbind nokey \"+use\""},"roots":null,"runtime":{}},
+    {
+      "name": "случайный 6",
+      "files": {"config.cfg":"exec config.cfg\r\nsensitivity \"-0.02\"\r\nbind 2 x\r\nexec autoexec.cfg\r\nunbindall\r\n// m_pitch\r\nunbind 1","userconfig.cfg":"unbind 1\n// //mouse1 \nunbind e\nm_pitch 1\nalias A \"x y\"\nexec config.cfg\nunbind 1","scripts/b.cfg":"m_pitch \"-0.02\"\r\nunbindall\r\nunbindall\r\nm_pitch \"-0.02\"","Scripts/C.cfg":"bind z x"},
+      "roots": null,
+      "runtime": {}
+    },
+    {"name":"случайный 7","files":{"config.cfg":"alias b \n// \nunbindall\nunbind x\nalias A z","userconfig.cfg":"","a.cfg":"unbind 1\r\nm_pitch \"-0.02\"","scripts/b.cfg":"alias a \"x y\"\nunbind e\nunbindall\nexec scripts/b.cfg\nunbind x","b.cfg":"unbind e\n😀 \"\nalias A \"x y\"","Scripts/C.cfg":"bind z x"},"roots":null,"runtime":{}},
+    {
+      "name": "случайный 8",
+      "files": {
+        "userconfig.cfg": "m_pitch 2.5\r\nunbind SPACE\r\nunbindall\r\nunbind 1\r\nexec scripts/b.cfg\r\nunbindall\r\nalias a \"x y\"",
+        "a.cfg": "// a b\r\nunbindall\r\n\r\nunbind 1\r\nunbindall\r\nexec scripts/b.cfg",
+        "scripts/b.cfg": "exec a.cfg\r\nunbind x\r\nm_pitch 2.5\r\nunbind SPACE\r\nbind nokey +forward",
+        "Scripts/C.cfg": "bind z x",
+        "b.cfg": "bind mouse1 fps_max 20\r\nexec userconfig.cfg\r\nm_pitch \"-0.02\"\r\n// .\r\nm_pitch 2.5\r\nё\r\nexec a.cfg"
+      },
+      "roots": null,
+      "runtime": {}
+    },
+    {"name":"случайный 9","files":{"config.cfg":"m_pitch 1\r\nbind 1 \"+use\"\r\n// \t\r\nexec userconfig.cfg\r\nunbind w","userconfig.cfg":"unbind e","a.cfg":"unbindall\nexec config.cfg","hlsr-binds.cfg":"m_pitch 1\nexec scripts/b.cfg","Scripts/C.cfg":"bind z x","b.cfg":"config.cfg\n//bind\nsensitivity 2.5\nsensitivity 1\nunbindall\n// \nunbindall"},"roots":null,"runtime":{}},
+    {
+      "name": "случайный 10",
+      "files": {
+        "config.cfg": "bind mouse1 +forward\r\n\"\n\r\nexec autoexec.cfg\r\nalias b z\r\n// ",
+        "userconfig.cfg": "unbind SPACE\nalias +c \nexec a.cfg\nunbind e\nunbind SPACE",
+        "a.cfg": "\"w m_pitchm_pitch\nunbind e\nalias +c \nbind F1 x\nunbind SPACE\n// \"space",
+        "scripts/b.cfg": "e\"",
+        "Scripts/C.cfg": "bind z x",
+        "b.cfg": "m_pitch \"-0.02\"\nsensitivity \"-0.02\"\nalias A \nalias +c \"x y\"\nalias +c z\nm_pitch."
+      },
+      "roots": null,
+      "runtime": {}
+    },
+    {
+      "name": "случайный 11",
+      "files": {"config.cfg":"unbind SPACE\r\nbind ; \"+use\"\r\nbind mouse1 fps_max 20\r\n;Ïðè+jump\r\nunbindall\r\n// \nbind","userconfig.cfg":"exec autoexec.cfg\nhlsr-binds.cfg\n// e\n// \"\nunbind e\n\n","a.cfg":"unbind SPACE\r\nexec a.cfg\r\nalias +c \r\n/","scripts/b.cfg":"exec userconfig.cfg\r\nunbind 1\r\nalias A ","autoexec.cfg":"exec config.cfg","Scripts/C.cfg":"bind z x","b.cfg":"m_pitch 2.5"},
+      "roots": null,
+      "runtime": {}
+    },
+    {
+      "name": "случайный 12",
+      "files": {
+        "config.cfg": "unbind SPACE\nunbind SPACE\nunbind x\nsensitivity 2.5",
+        "userconfig.cfg": "hlsr-binds.cfg\r\nalias b \"x y\"\r\neё\"Ïðè\r\n\r2.5\r\n// bindspace\r\nunbind",
+        "a.cfg": "mouse1\"spacemouse1",
+        "autoexec.cfg": "bind mouse1 +forward\r\n// 2.5hlsr-binds.cfg\r\nm_pitch 2.5\r\nunbindall\r\nexec userconfig.cfg\r\nunbind SPACE\r\nalias +c z",
+        "hlsr-binds.cfg": "bind mouse1 x\n/bind\nalias +c z\nm_pitch 2.5",
+        "Scripts/C.cfg": "bind z x",
+        "b.cfg": "sensitivity 1\nunbindall\n\nunbindall\nbind 1 \"a b\"\nexec b.cfg"
+      },
+      "roots": null,
+      "runtime": {}
+    },
+    {"name":"случайный 13","files":{"a.cfg":"bind nokey fps_max 20\nunbindall","scripts/b.cfg":"\"hlsr-binds.cfg-jumpÏðè\nalias b \nunbind SPACE","autoexec.cfg":"unbind e\r\nalias A \"x y\"\r\nalias b \"x y\"\r\nexec b.cfg\r\nF1 ","hlsr-binds.cfg":"exec a.cfg\r\nsensitivity \"-0.02\"\r\nalias A z\r\nalias A ","Scripts/C.cfg":"bind z x"},"roots":null,"runtime":{}},
+    {"name":"случайный 14","files":{"config.cfg":"\ra b\"\"alias\r\nexec autoexec.cfg\r\nalias A \"x y\"\r\nalias b ","a.cfg":"","scripts/b.cfg":"bind F1 fps_max 20\r\nunbindall","hlsr-binds.cfg":"bind ; \"+use\"\r\nunbind 1","Scripts/C.cfg":"bind z x"},"roots":null,"runtime":{}},
+    {
+      "name": "случайный 15",
+      "files": {"config.cfg":"m_pitch\r\nalias A \r\nbind SPACE x","userconfig.cfg":"x\n// ёalias \nexec b.cfg","scripts/b.cfg":"unbindall","autoexec.cfg":"m_pitch 2.5\n// \nexec config.cfg","hlsr-binds.cfg":"// \r\nalias +c \"x y\"\r\nm_pitch \"-0.02\"\r\n\r\n2.5unbindall mouse1ё\r\nunbindall\r\nalias a ","Scripts/C.cfg":"bind z x","b.cfg":"// \t;x\nbind w x\n// unbindx\nalias b z"},
+      "roots": null,
+      "runtime": {}
+    },
+    {"name":"случайный 16","files":{"a.cfg":"exec b.cfg\nunbindall\nunbind x\nalias b \nexec a.cfg\nalias A ","scripts/b.cfg":"m_pitch 2.5\r\nsensitivity \"-0.02\"","autoexec.cfg":"m_pitch 1\r\nÏðè\"exec\r\nunbindall\r\nalias +c \r\n// alias","hlsr-binds.cfg":"// \n\"unbind\r\n// \r\nunbind e\r\n// m_pitch","b.cfg":"unbindall\r\nunbindall","Scripts/C.cfg":"bind z x"},"roots":null,"runtime":{}},
+    {
+      "name": "случайный 17",
+      "files": {
+        "config.cfg": "",
+        "userconfig.cfg": "bind w \"+use\"\n\rsensitivity//\nm_pitch \"-0.02\"\nalias A \nalias b \nbind mouse1 fps_max 20\nunbind w",
+        "a.cfg": "unbind x\r\nsensitivity 2.5\r\nunbind 1\r\nexec a.cfg\r\nbind w \"a b\"\r\nbind 1 \"+use\"\r\nunbindall",
+        "scripts/b.cfg": "\t;",
+        "autoexec.cfg": "alias +c \n// F1\nm_pitch \"-0.02\"",
+        "hlsr-binds.cfg": "bind ; fps_max 20\r\nalias +c \r\n😀",
+        "Scripts/C.cfg": "bind z x",
+        "b.cfg": "unbindall\r\nalias +c z\r\nunbindall"
+      },
+      "roots": null,
+      "runtime": {}
+    },
+    {"name":"случайный 18","files":{"config.cfg":"bind unbindbindexec\r\n// mouse1/\r\nunbind x\r\nexec scripts/b.cfg\r\nalias A z\r\nalias a z","userconfig.cfg":"bind SPACE \"a b\"","scripts/b.cfg":"unbindall\n// ","Scripts/C.cfg":"bind z x","b.cfg":"exec userconfig.cfg"},"roots":null,"runtime":{}},
+    {
+      "name": "случайный 19",
+      "files": {"userconfig.cfg":"\"\r\nexec hlsr-binds.cfg","a.cfg":"","scripts/b.cfg":"unbind 1","autoexec.cfg":"sensitivity 1\nxÏðè","hlsr-binds.cfg":"exec scripts/b.cfg\nunbind 1\nunbindall\n\tx//\nalias b \"x y\"","b.cfg":"bind \r\n// \r\na bbindunbindspace\r\nbind ; fps_max 20\r\n// unbindallsay\r\nexec hlsr-binds.cfg","Scripts/C.cfg":"bind z x"},
+      "roots": null,
+      "runtime": {}
+    },
+    {"name":"случайный 20","files":{"userconfig.cfg":"unbindall\r\nunbind w\r\nalias +c \r\nbinda b\r\n// \"espace\r\nunbind e","a.cfg":"config.cfg\tunbindall","scripts/b.cfg":"","autoexec.cfg":"// ","hlsr-binds.cfg":"unbindall\nexec a.cfg\nalias A z\n// \"","Scripts/C.cfg":"bind z x","b.cfg":""},"roots":null,"runtime":{}},
+    {
+      "name": "случайный 21",
+      "files": {
+        "config.cfg": "",
+        "a.cfg": "alias A z\r\nexec userconfig.cfg\r\nalias b \"x y\"\r\nexec a.cfg\r\nsensitivity 1",
+        "scripts/b.cfg": "ё+jump\r\n ёconfig.cfg\r\nalias a \r\nunbindsensitivity\r\nexec a.cfg",
+        "autoexec.cfg": "// -jumpunbindsensitivity\nsensitivity 2.5\nm_pitch 2.5\nunbindall",
+        "hlsr-binds.cfg": "hlsr-binds.cfgÏðè\n\nunbindall\nexec config.cfg\n// bind\nunbind x\nsensitivity 2.5",
+        "Scripts/C.cfg": "bind z x",
+        "b.cfg": ""
+      },
+      "roots": null,
+      "runtime": {}
+    },
+    {
+      "name": "случайный 22",
+      "files": {
+        "config.cfg": "exec b.cfg\r\nunbindall",
+        "userconfig.cfg": "",
+        "a.cfg": "bind w \"+use\"\nexec config.cfg",
+        "scripts/b.cfg": "Ïðèsensitivity a b\nunbind 1\nexec autoexec.cfg\nbind w \"a b\"\n\nbind 1 +forward\nexec hlsr-binds.cfg",
+        "autoexec.cfg": "",
+        "hlsr-binds.cfg": "alias A \"x y\"\r\nexec a.cfg\r\nunbind SPACE\r\nexec autoexec.cfg\r\nunbind w",
+        "b.cfg": "exec userconfig.cfg\nexec scripts/b.cfg\n",
+        "Scripts/C.cfg": "bind z x"
+      },
+      "roots": null,
+      "runtime": {}
+    },
+    {
+      "name": "случайный 23",
+      "files": {"config.cfg":"bind F1 \"+use\"","userconfig.cfg":"😀2.5\"a b\r\nunbindall\r\n// hlsr-binds.cfgmouse1exec\r\nbind \"E\" \"+use\"","a.cfg":"unbind SPACE\nbind 1 fps_max 20\nunbindall","autoexec.cfg":"//  \r\nÏðèF1sensitivity;\r\nunbind w","hlsr-binds.cfg":"","b.cfg":"unbind x\r\nalias A \"x y\"\r\nalias a \r\nexec b.cfg\r\nalias +c z\r\n\"F1\r\nunbindall","Scripts/C.cfg":"bind z x"},
+      "roots": null,
+      "runtime": {}
+    },
+    {"name":"случайный 24","files":{"config.cfg":"sensitivity 1\r\nunbind x\r\nunbind w","a.cfg":"","scripts/b.cfg":"","autoexec.cfg":"alias +c \r\nm_pitch 2.5\r\nexec autoexec.cfg\r\nexec userconfig.cfg\r\nexec a.cfg\r\nunbind SPACE","hlsr-binds.cfg":"w//+jump😀x","b.cfg":"","Scripts/C.cfg":"bind z x"},"roots":null,"runtime":{}},
+    {
+      "name": "случайный 25",
+      "files": {
+        "config.cfg": "exec autoexec.cfg\r\n// ;m_pitch\r\n",
+        "a.cfg": "exec userconfig.cfg\r\nexec userconfig.cfg\r\n m_pitchw\"\r\n// \r\nsensitivity 1\r\n+jump",
+        "scripts/b.cfg": "m_pitch 1\nsensitivity \"-0.02\"\nunbindall",
+        "hlsr-binds.cfg": "alias a z\r\n// \r\nbind 2 \"+use\"\r\nunbind SPACE\r\nalias a z",
+        "Scripts/C.cfg": "bind z x",
+        "b.cfg": "exec b.cfg\r\nunbindall\r\nexec a.cfg\r\nalias b \r\nexec a.cfg\r\nm_pitch 1\r\nunbindall"
+      },
+      "roots": null,
+      "runtime": {}
+    },
+    {
+      "name": "случайный 26",
+      "files": {
+        "config.cfg": "\n\nё/;\r\nexec hlsr-binds.cfg\r\nexec userconfig.cfg\r\nalias a z\r\nbind nokey fps_max 20\r\nsensitivity \"-0.02\"\r\nbind nokey \"a b\"",
+        "userconfig.cfg": "unbindall\nbind SPACE +forward",
+        "a.cfg": "// unbind\nm_pitch 2.5\nunbindall\nbind \"E\" x\nunbind e",
+        "scripts/b.cfg": "",
+        "autoexec.cfg": "unbind x\nm_pitch 1\nalias A \"x y\"\nunbind 1\nunbind x\nm_pitch \"-0.02\"",
+        "hlsr-binds.cfg": "// \n \r\n\nunbinda bhlsr-binds.cfg\r\nalias A z\r\n\r\n// \n",
+        "b.cfg": "// \nunbindall\nunbindall\nbind F1 fps_max 20\nexec a.cfg\nm_pitch2.5\nbind 2 +forward",
+        "Scripts/C.cfg": "bind z x"
+      },
+      "roots": null,
+      "runtime": {}
+    },
+    {
+      "name": "случайный 27",
+      "files": {"config.cfg":"sensitivity 1\nalias A \n// \nunbind e\nbind \"E\" fps_max 20\nexec hlsr-binds.cfg\nalias +c ","userconfig.cfg":"","a.cfg":"alias a ","scripts/b.cfg":"alias +c \"x y\"","autoexec.cfg":"alias b \"x y\"\r\nexec scripts/b.cfg\r\nexec scripts/b.cfg\r\n\r\n","hlsr-binds.cfg":"exec Scripts\\C.cfg\r\nunbindall\r\n// \r\nalias A \r\nbind 2 fps_max 20","Scripts/C.cfg":"bind z x"},
+      "roots": null,
+      "runtime": {}
+    },
+    {
+      "name": "случайный 28",
+      "files": {"userconfig.cfg":"sensitivityalias//😀//","a.cfg":"exec userconfig.cfg\nunbindall\n// a bhlsr-binds.cfg+jump\n\"exec","scripts/b.cfg":"alias b z\r\nexec scripts/b.cfg\r\nunbindall","autoexec.cfg":"alias A \"x y\"\r\n\r\n// . \r\nm_pitche\r\n// \r\n// xF1","hlsr-binds.cfg":"// exec\nunbind SPACE\nsensitivity 2.5\n// \n\n\nsensitivity \"-0.02\"","Scripts/C.cfg":"bind z x"},
+      "roots": null,
+      "runtime": {}
+    },
+    {
+      "name": "случайный 29",
+      "files": {
+        "config.cfg": "unbindall\n// bindhlsr-binds.cfga b\nexec userconfig.cfg\nalias A \"x y\"\nalias a \"x y\"\nconfig.cfg alias\n",
+        "userconfig.cfg": "",
+        "a.cfg": "// \"\n \n////exec",
+        "scripts/b.cfg": "sensitivity \"-0.02\"",
+        "autoexec.cfg": "alias b \"x y\"\nunbindall\naliasbind\nalias +c ",
+        "hlsr-binds.cfg": "bind nokey x\r\nexec config.cfg\r\nbind 1 \"+use\"",
+        "b.cfg": "m_pitchaliase;x\nunbind 1\n// \n\"\n",
+        "Scripts/C.cfg": "bind z x"
+      },
+      "roots": null,
+      "runtime": {}
+    },
+    {"name":"случайный 30","files":{"userconfig.cfg":"unbind w\r\nm_pitch 2.5\r\nunbind 1\r\nunbind SPACE","a.cfg":"unbindall","autoexec.cfg":"// \"alias2.5\r\nalias a \"x y\"","hlsr-binds.cfg":"bind mouse1 x\n// exec\nexec Scripts\\C.cfg\nbind \"E\" +forward\nexec autoexec.cfg\n//  \nm_pitch \"-0.02\"","Scripts/C.cfg":"bind z x","b.cfg":"unbindall\r\nsensitivity 2.5"},"roots":null,"runtime":{}},
+    {
+      "name": "случайный 31",
+      "files": {"config.cfg":"alias b z\r\nm_pitch 2.5\r\nunbindall\r\nm_pitch 1\r\nexec autoexec.cfg","userconfig.cfg":"alias A \"x y\"\nalias A \n;bindsensitivity//bind\nsensitivity 1","scripts/b.cfg":"alias b \nexec userconfig.cfg\nbind ; \"a b\"\nsensitivity \"-0.02\"","hlsr-binds.cfg":"exec userconfig.cfg\r\n\r\nsensitivity 1\r\nalias A \r\nm_pitch.\"","Scripts/C.cfg":"bind z x"},
+      "roots": null,
+      "runtime": {}
+    },
+    {"name":"случайный 32","files":{"config.cfg":"exec hlsr-binds.cfg\r\nalias a \"x y\"","userconfig.cfg":"alias +c z\nunbind w","autoexec.cfg":"bind F1 x\r\nspace\r\nbind SPACE \"a b\"","hlsr-binds.cfg":"","Scripts/C.cfg":"bind z x"},"roots":null,"runtime":{}},
+    {"name":"случайный 33","files":{"config.cfg":"unbind 1","userconfig.cfg":"","a.cfg":"sensitivity \"-0.02\"\r\nbind ; x\r\nunbindall\r\nbind w x\r\nm_pitch 1\r\nexec b.cfg\r\nm_pitch 2.5","scripts/b.cfg":"m_pitch 1\r\nbind 1 \"+use\"\r\nbind ; +forward","hlsr-binds.cfg":"","Scripts/C.cfg":"bind z x","b.cfg":""},"roots":null,"runtime":{}},
+    {
+      "name": "случайный 34",
+      "files": {
+        "config.cfg": "",
+        "userconfig.cfg": "exec a.cfg\nF1\n// ёё\nsensitivity\n+jump//x\nbind 2 \"+use\"\nunbindall",
+        "a.cfg": "bind SPACE fps_max 20\r\nm_pitch \"-0.02\"\r\nalias b \r\n// \r\nsensitivity \"-0.02\"",
+        "scripts/b.cfg": "unbindall\r\nunbind e\r\nexec hlsr-binds.cfg\r\n// say\r\nunbindall\r\nalias2.5😀",
+        "hlsr-binds.cfg": "bind w \"+use\"\r\nsensitivity 2.5\r\n// w+jump\r\n// e\r\n// //hlsr-binds.cfg\r\n.",
+        "Scripts/C.cfg": "bind z x",
+        "b.cfg": "unbindall\r\nunbindall\r\n// a bbind😀\r\nunbind e\r\nunbindall\r\nsensitivity 2.5"
+      },
+      "roots": null,
+      "runtime": {}
+    },
+    {"name":"случайный 35","files":{"userconfig.cfg":"","scripts/b.cfg":"bind SPACE +forward","autoexec.cfg":"exec config.cfg\r\nsensitivity \"-0.02\"\r\nbind 1 \"+use\"\r\nunbind e\r\nalias +c z\r\nexec m_pitch.😀","Scripts/C.cfg":"bind z x","b.cfg":""},"roots":null,"runtime":{}},
+    {
+      "name": "случайный 36",
+      "files": {"config.cfg":"// \r/\nunbind w\n\"mouse1F1bind","userconfig.cfg":"","a.cfg":"// hlsr-binds.cfg/ \r\nunbindall\r\nexec hlsr-binds.cfg\r\naliasbindspace ё\r\nbind 2 fps_max 20\r\n// +jump\r\n-jumpexecsayexecF1","autoexec.cfg":"","hlsr-binds.cfg":"unbind w\r\nalias a \"x y\"\r\nexec hlsr-binds.cfg\r\nbind \"E\" fps_max 20\r\nexec hlsr-binds.cfg","Scripts/C.cfg":"bind z x"},
+      "roots": null,
+      "runtime": {}
+    },
+    {
+      "name": "случайный 37",
+      "files": {
+        "config.cfg": "exec hlsr-binds.cfg\nexec hlsr-binds.cfg\nunbindall",
+        "userconfig.cfg": "unbind e\r\nbind SPACE fps_max 20\r\n//  x",
+        "a.cfg": "alias a \"x y\"\r\nunbind SPACE\r\nunbindall",
+        "scripts/b.cfg": "unbindall\r\nalias +c \"x y\"\r\nsensitivity \"-0.02\"\r\nbind 1 \"+use\"\r\nunbind SPACE\r\nunbind SPACE",
+        "autoexec.cfg": "bind\"  \r\nexec Scripts\\C.cfg\r\nsensitivity \"-0.02\"\r\nalias A \r\nalias +c z\r\n",
+        "hlsr-binds.cfg": "",
+        "Scripts/C.cfg": "bind z x",
+        "b.cfg": "exec a.cfg\nexec Scripts\\C.cfg\nbind w fps_max 20\nsensitivity 1\nalias b z"
+      },
+      "roots": null,
+      "runtime": {}
+    },
+    {
+      "name": "случайный 38",
+      "files": {
+        "userconfig.cfg": "",
+        "a.cfg": "m_pitch 1\r\nalias A \r\nexec userconfig.cfg",
+        "scripts/b.cfg": "alias a \nunbind w\nunbindall\nunbindall\nunbindall\nsensitivity \"-0.02\"",
+        "autoexec.cfg": "",
+        "hlsr-binds.cfg": "// ё\nhlsr-binds.cfg/bindsensitivityexec\nunbindall\nunbindall\nunbind x\nunbind 1\nunbind SPACE",
+        "Scripts/C.cfg": "bind z x",
+        "b.cfg": "alias A \"x y\"\r\nunbindall\r\nunbind w\r\nunbindall\r\n// bindw\r\nsensitivity \"-0.02\"\r\nexec b.cfg"
+      },
+      "roots": null,
+      "runtime": {}
+    },
+    {
+      "name": "случайный 39",
+      "files": {
+        "config.cfg": "// \r \n\nbind/emouse1\n// -jumpsensitivity\nbind w \"+use\"\nalias a \nm_pitch \"-0.02\"\nalias b \"x y\"",
+        "a.cfg": "sensitivity 2.5\nexec Scripts\\C.cfg\n// \t\nsensitivityspace\nspaceunbindall",
+        "hlsr-binds.cfg": "exec scripts/b.cfg\nbind \"E\" x\nunbind x\nunbind e\nbind 2 fps_max 20",
+        "Scripts/C.cfg": "bind z x",
+        "b.cfg": "alias +c \"x y\"\r\nm_pitch \"-0.02\"\r\n// \"\"\r\nalias a \"x y\"\r\nexec Scripts\\C.cfg\r\nunbind e"
+      },
+      "roots": null,
+      "runtime": {}
+    },
+    {
+      "name": "конфиг владельца",
+      "files": {
+        "1.cfg": "name prolert\n\n\n\n//Gauss Boost 180Â°\n\nalias \"_taubo\" \"\"\nalias \"_taubofunc\" \"cl_pitchup 180;cl_pitchdown -180;-attack2;wait;cl_pitchup 89;cl_pitchdown 89;force_centerview\"\nalias \"+tau\" \"+attack2;alias _taubo _taubofunc\"\nalias \"-tau\" \"_taubo;alias _taubo\"\nbind \"mouse4\" \"save oarEnt; bind mouse4 +tau; speak fvox/beep; say TAO\"\n\n\n\n//Korobka Boost\n\nalias obboshoot \"+use;w 10;-use;+attack2;+jump;w;-attack2;-jump\"\nbind n \"obboshoot\"\n\n\n\n//RP\nalias lcboost \"fps_max 100; cl_pitchdown -20; cl_pitchup 20; +duck; +jump; w 5; -attack; w 15; -jump; cl_pitchup 89; cl_pitchdown 89; w 30; -duck; bind mouse2 +attack2\"\nbind j \"bind mouse2 lcboost; speak fvox/beep; say READY FOR BOOST\"\n\n\n\nalias st0 \"bxt_autojump 1; fps_max 100; alias stmove +forward; w 40; alias stskip st1\" // 1\nalias st1 \"weapon_gauss;+duck;w 146;-duck;-forward;alias stskip st2;alias stmove +moveright\" // 2+1\nalias st2 \"+attack2;w 150;-moveright;+use;w 2;-use;alias stskip st3;alias stmove +forward\" // 2+1\nalias st3 \"w 15;+jump;cl_pitchup 180;cl_pitchdown -180;-attack2;w;cl_pitchup 89;cl_pitchdown 89;force_centerview;-forward;w 60;alias stskip st4;alias stmove +moveright\" // 2+1\nalias st4 \"alias stmove +right; alias stskip st5\" // 2+1\nalias st5 \"alias stmove; w 26;-right;-moveright;w 30;-jump;cl_pitchup -89;cl_pitchdown 89;w 44;cl_pitchup 89;weapon_shotgun;alias stskip\" // 2+1\n\nalias stskip st0\nalias stmove\n\n\n// binds\nbind \";\" stskip\nbind \"'\" stmove\n\n//jorikgrozniy script\nbind = \"exec p2pv2.cfg;say exec truba\"\nbind - \"exec 1.cfg;say RESET CFG\"\n\n\n\n//Basic Binds\n\nalias \"start_run\" \"sv_cheats 0; exec autoexec.cfg; exec 1.cfg; bxt_hud_timer 0; map c1a0; switch_to_save; bxt_timer_reset; bxt_timer_start; bxt_autorecord myrun\"\nalias \"show_crosshair\" \"load crosshair\"\nbind \"p\" \"start_run;exec 1.cfg;bxt_hud_timer 0\"\nbind \"[\" \"show_crosshair\"\nalias fix \"-jump;-duck;-bxt_tas_jumpbug;+mlook;-moveleft;-moveright;-forward;-back;-left;-right;-speed;-attack;-attack2;-lookup;-lookdown;-use;-moveup;-movedown; cl_pitchup 89; cl_pitchdown 89; fps_max 100\"\nbind backspace \"fix\"\n\ngl_texturemode \"GL_NEAREST_MIPMAP_NEAREST\"\n\nbind z \"fps_max 20\"\nbind x \"fps_max 100;volume 0.02\"\n\nbxt_autojump 1\nbxt_hud_viewangles 1\ndefault_fov 110\ncl_bob 0\nbrightness 2\nlightgamma 2.5\ngamma 3\nbind mwheeldown +duck\nbind mwheelup +duck\nbind y \"save x;load x\"\n\ncrosshair 0\nbxt_cross 1\nbxt_cross_color \"255 255 255\"\nbxt_cross_gap \"-4\"\nbxt_cross_size \"7\"\nbxt_viewmodel_ofs_up -2 \nbxt_viewmodel_ofs_forward 2\n\nbind capslock \"weapon_crowbar\"\nbind 1 \"weapon_9mmhandgun\"\nbind 2 \"weapon_357\"\nbind 3 \"weapon_9mmAR\"\nbind 4 \"weapon_shotgun\"\nbind 5 \"weapon_handgrenade\"\nbind g \"weapon_gauss\"\nbind 7 \"weapon_tripmine\"\nbind 8 \"weapon_hornetgun\"\nbind 6 \"weapon_satchel\"\nbind c \"save quick\"\nbind v \"load quick\"\nbind t \"impulse 100\"\nbind [ \"exec tc_n.cfg;say exec telega\"\nbind mouse5 \"+bxt_tas_jumpbug\"\nbind m \"fps_max 10\"\nbind o \"fps_max 4\"\n\n\n//SCRIPTS BIND\nalias puskip_d \"fps_max 100; save autosave;weapon_shotgun;-jump;-moveright;-moveleft;w 300;+use;w 7;-use;+jump;wait;-jump;+attack2;wait;-attack2;+duck;w 35;-duck;weapon_tripmine\"\nbind h \"puskip_d\"\n\n\n//FAF \nalias \"faf_f\" \"cl_pitchup 89.999;fps_max 100;save autosave;weapon_crowbar;+attack;w 100;-moveleft;-moveright;w 180;-attack;force_centerview;weapon_9mmAR;cl_pitchdown 180;cl_pitchup -179;w 40;cl_pitchup 89;cl_pitchdown 89;w 30;+jump;+duck;w;cl_pitchdown 136;cl_pitchup -135;-forward;+attack2;w 30;-attack2;cl_pitchup 89;cl_pitchdown 89;force_centerview;-jump;-duck;w 10;+duck;w 16;-duck;weapon_hornetgun\"\nbind u \"faf_f\"\n\n\n//NADE BOOST script\nalias lb1 \"fps_max 100; sensitivity 0; cl_pitchdown 86.5; cl_pitchup -86.5; w 50; +attack; alias labo2 lb2; alias labo2mv +back\" // 2\nalias lb2 \"w 25; -attack; w 4; +duck; w 13; -back; weapon_9mmAR; w 35; cl_pitchdown 127; cl_pitchup -127; alias labo2mv +forward; alias labo2 lb3\" // 12\nalias lb3 \"w 15; +attack2; w 4; -attack2; alias labo2mv +moveleft; alias labo2 lb4\" // 12\nalias lb4 \"alias labo2; alias labo2mv; w 40; -moveleft; -forward; -duck; cl_pitchdown 89; cl_pitchup 89; w 20; fps_max 4; w; fps_max 100; labosens\" // 12\n\nalias labo2 lb1\nalias labo2mv\n\n\n// settings\nalias labosens \"sensitivity 3\"\n\n// binds\nbind f8 labo2\nbind f7 labo2mv\n\n\n\n\n//SALO SKIP\nalias mtg mtg1\nalias mtg1 \"fps_max 100;+duck;w 50;alias mtg mtg2\"\nalias mtg2 \"+use;w 18;-use;w 60;-duck;alias mtg mtg1\"\n\n\n//OBBO\nalias \"obbo2000\" \"+use;w 12;-use;+jump;wait;-jump\"\nalias \"obbo1000\" \"+use;w 8;-use;+jump;wait;-jump\"\n\n\n\n//REBINDS\nalias fps4 \"fps_max 4; w; fps_max 100\"\n\n\nalias re4 \"re41\"\nalias re41 \"bind f fps4; say 4fps_script; alias re4 re42\"\nalias re42 \"bind f obbo1000; say obbo1000; alias re4 re44\"\nalias re44 \"bind f obbo2000; say obbo2000; alias re4 re45\"\nalias re45 \"bind f mtg; say meatboost; alias re4 re41\" \n\nalias jumpbg \"fps_max 90.90909\"\nalias fps666 \"fps_max 66.66666\"\nalias fps5 \"fps_max 55.55555\"\n\n\nalias re5 \"re51\"\nalias re51 \"bind tab fps5; say FPS 5555555; alias re5 re52\"\nalias re52 \"bind tab jumpbg; say SOILDER; alias re5 re53\"\nalias re53 \"bind tab fps666; say fps XEN; alias re5 re51\"\n\n\nbind alt \"re4\"\nbind b \"re5\"\nbind mouse3 \"+bxt_tas_ducktap\"\n\nbind tab \"fps666\"\nbind f \"fps4\"\n\n\n\nalias +usespam \"alias _zspecial @use;@use1\"\nalias -usespam \"alias _zspecial;-use\"\nalias @use1 \"+use;alias @use @use2;bxt_append _zspecial\"\nalias @use2 \"w;alias @use @use3;bxt_append _zspecial\"\nalias @use3 \"-use;alias @use @use4;bxt_append _zspecial\"\nalias @use4 \"w;alias @use @use1;bxt_append _zspecial\"\n\nbind e \"+use\"\n\n\n\n//GEM SKIPS\nalias load_bp \"load bpEnt\"\nalias load_qe1 \"load qe1Ent\"\nalias load_oar \"load oarEnt\"\nalias load_qe2 \"load qe2Ent\"\nalias load_rp \"load rpEnt\"\n\nalias all_save_bp \"save bpEnt\"\nalias all_save_qe1 \"save qe1Ent\"\nalias all_save_oar \"save oarEnt\"\nalias all_save_qe2 \"save qe2Ent\"\n\nalias switch_to_load \"bind f1 load_bp; bind f2 load_qe1; bind f3 load_oar; bind f4 load_qe2; bind f5 load_rp\"\nalias save_rp_and_switch \"save rpEnt; say CHANGED BINDS; switch_to_load\"\nalias switch_to_save \"bind f1 all_save_bp; bind f2 all_save_qe1; bind f3 all_save_oar; bind f4 all_save_qe2; bind f5 save_rp_and_switch\"\n\nbind f1 \"save bpEnt\"\nbind f2 \"save qe1Ent\"\n//bind f3 \"save oarEnt\"\nbind f4 \"save qe2Ent\"\nbind f5 \"save rpEnt; say BINDS CHANGED; switch_to_load\"\nbind f6 \"save reshetka; say BIND CHANGED; bind f6 oshmetki\"\n\nalias oshmetki \"load reshetka; bind mwheelup +jump\"\n\n//GONARCH AGRO\nalias _saveload2 \"alias auto_alias; w 27; save quick; fps_max 100; load quick; w 25; speak fvox/beep; say GO; w 90; alias gonch gonch1; alias gonchmv +forward\"\n\nalias gonch1 \"weapon_gauss; w 30; +attack2; w 80; +jump; w 45; cl_pitchup 180; cl_pitchdown -180; -attack2; w; cl_pitchup 89; cl_pitchdown 89; force_centerview; w 150; -jump; w 80; alias gonchmv +right; alias gonch gonch2\"\nalias gonch2 \"w 5; -right; w 95; -forward; weapon_9mmAR; save quick; alias gonch; alias gonchmv\"\n\nalias gonch\nalias gonchmv\n\nbind leftarrow \"alias auto_alias _saveload2\"\nbind downarrow gonchmv\nbind rightarrow gonch\n\necho EXECED",
+        "WON.cfg": "// Don't mess with this (your run won't be legit otherwise)!\r\n\r\nclockwindow 0 // Removes \"stutter\" after loadings which aren't present in original engine\r\nfps_max 100 // Replicates 100FPS cap present in original engine",
+        "autoexec.cfg": "",
+        "p2pv2.cfg": "alias p2ptau \"cl_pitchup 180;cl_pitchdown -180;-attack2;w;cl_pitchup 89;cl_pitchdown 89;force_centerview\"\r\nalias p2pre \"say reset_script; p2pbind1; p2pbind2; -forward; -moveleft; -moveright; -right; -left; -back; -duck; -jump; fps_max 100; cl_pitchdown 89; cl_pitchup 89; p2psens; alias p2p p2p1; alias p2pmv\"\r\n\r\nalias p2p1 \"fps_max 100; bxt_disable_autosave 1; save autosave; -moveright; -forward; -back; -moveleft; sensitivity 0; p2pdelay; alias p2pmv +forward; alias p2p p2p2\" // 2\r\nalias p2p2 \"alias p2pmv +moveleft; alias p2p p2p3\" // 1 2\r\nalias p2p3 \"+attack2; w 52; -forward; -moveleft; +jump; alias p2pmv +moveright; alias p2p p2p4\" // 1 2\r\nalias p2p4 \"+duck; w 70; -moveright; alias p2pmv +moveleft; alias p2p p2p5\" // 1 2\r\nalias p2p5 \"-jump; w 20; -moveleft; -duck; alias p2pmv +right; alias p2p p2p6\" // 1 2\r\nalias p2p6 \"w 38; -right; w 10; alias p2pmv +moveleft; alias p2p p2p7\" // 1 2\r\nalias p2p7 \"w 18; -moveleft; w 10; force_centerview; alias p2pmv +forward; alias p2p p2p8\" // 1 2\r\nalias p2p8 \"w 16; p2ptau; w; -forward; alias p2pmv +moveright; alias p2p p2p9\" // 1 2\r\nalias p2p9 \"w 6; +attack2; w 62; alias p2pmv +moveright; alias p2p p2p10\" // 1 2\r\nalias p2p10 \"w 8; alias p2pmv +right; alias p2p p2p11\" // 1 2\r\nalias p2p11 \"w 3; -right; w 13; alias p2p p2p12\" // 1 2\r\nalias p2p12 \"w 3; -right; w 13; alias p2p p2p13\" // 1 2\r\nalias p2p13 \"w 3; -right; +jump; w 30; -moveright; alias p2pmv +moveleft; alias p2p p2p14\" // 1 2\r\nalias p2p14 \"alias p2pmv +left; alias p2p p2p15\" // 1 2\r\nalias p2p15 \"w 3; -left; w 3; alias p2p p2p16\" // 1 2\r\nalias p2p16 \"w 3; -left; w 3; alias p2p p2p17\" // 1 2\r\nalias p2p17 \"w 8; -left; w 24; p2ptau; w 10; alias p2p p2p18\" // 1 2\r\nalias p2p18 \"w 3; -left; -moveleft; w 10; alias p2pmv +moveright; alias p2p p2p19\" // 1 2\r\nalias p2p19 \"alias p2pmv +right; alias p2p p2p20\" // 1 2\r\nalias p2p20 \"w 8; -right; w 6; alias p2p p2p21\" // 1 2\r\nalias p2p21 \"w 6; -right; w 14; alias p2p p2p22\" // 1 2\r\nalias p2p22 \"w 5; -right; w 4; alias p2p p2p23\" // 1 2\r\nalias p2p23 \"w 8; -right; w; alias p2p p2p24\" // 1 2\r\nalias p2p24 \"w 8; +duck; -right; fps_max 20; w 12; -moveright; -duck; -jump; fps_max 100; alias p2p; alias p2pmv; p2psens; bxt_disable_autosave 0; defbind1; defbind2\" // 1 2\r\n\r\nalias p2p p2p1\r\nalias p2pmv\r\n\r\n\r\n\r\n// settings\r\nalias p2pdelay \"w 100\"\r\nalias p2psens \"sensitivity 3\"\r\n\r\n\r\n// script binds\r\nalias p2pbind1 \"bind , p2pmv\"\r\nalias p2pbind2 \"bind . p2p\"\r\n\r\np2pbind1; p2pbind2\r\n\r\n// default binds for the same keys\r\nalias defbind1 \"bind 1 weapon_crowbar\"\r\nalias defbind2 \"bind 2 slot2\"\r\n\r\nbind - p2pre\r\n",
+        "tc_n.cfg": "alias testchamber \"tc1\"\r\nalias move\r\nalias testchamber_reset \"alias testchamber tc1; alias move; say tc_script_reset\"\r\n\r\nalias tc1 \"w 160;alias testchamber tc2;alias move +moveright\" //0+9\r\nalias tc2 \"alias testchamber tc3;alias move +back\" //0+9\r\nalias tc3 \"w 30;+use;wait;-moveright;wait;wait;wait;-use;alias testchamber tc4;alias move +moveright\" //0+9\r\nalias tc4 \"w 70;cl_pitchup -89;+use;w 10;wait;wait;wait;wait;-use;cl_pitchup 89;-moveright;-back;cl_pitchdown 30;w 50;+use;alias testchamber tc5\" //0+9\r\nalias tc5 \"w 10;wait;wait;wait;wait;-use;w 10;-moveright;w 30;cl_pitchdown 89;alias testchamber tc6;alias move +forward\" //0+9\r\nalias tc6 \"cl_pitchdown 180;cl_pitchup -170;w 9;cl_pitchup 89;cl_pitchdown 40;wait;cl_pitchdown 89;-forward;w 63;alias testchamber tc7;alias move +moveleft\" //0+9\r\nalias tc7 \"alias testchamber tc8;alias move +left\" //0+9\r\nalias tc8 \"w 50;-moveleft;w 100;-left;fps_max 40;w 11;fps_max 100;alias testchamber tc9;alias move +forward\" //0+9\r\nalias tc9 \"w 40; -forward; alias move +moveleft; alias testchamber tc10\" //0+9\r\nalias tc10 \"+duck; w 85; -duck; alias move +left; alias testchamber tc11\" //0+9\r\nalias tc11 \"w 30; fps_max 4; w; fps_max 100; w 5; -moveleft; -left; alias testchamber; alias move\" //0\r\n\r\n\r\nbind 9 move\r\nbind 0 testchamber \r\nbind - testchamber_reset\r\n\r\n//136.45 - 136.51 YAW\r\n//30.0 - 40.0 pitch",
+        "userconfig.cfg": "exec WON.cfg // Don't remove this\r\nbxt_hud_incorrect_fps_indicator 0"
+      },
+      "roots": ["1.cfg"],
+      "runtime": {
+        "0": [{"command":"testchamber","file":"tc_n.cfg","trigger":"["}],
+        "9": [{"command":"move","file":"tc_n.cfg","trigger":"["}],
+        "MOUSE4": [{"command":"+tau","file":null,"trigger":"MOUSE4"}],
+        "MOUSE2": [{"command":"lcboost","file":null,"trigger":"j"}],
+        ",": [{"command":"p2pmv","file":"p2pv2.cfg","trigger":"="}],
+        ".": [{"command":"p2p","file":"p2pv2.cfg","trigger":"="}],
+        "-": [{"command":"p2pre","file":"p2pv2.cfg","trigger":"="},{"command":"testchamber_reset","file":"tc_n.cfg","trigger":"["}],
+        "F1": [{"command":"all_save_bp","file":null,"trigger":"p"},{"command":"load_bp","file":null,"trigger":"F5"}],
+        "F2": [{"command":"all_save_qe1","file":null,"trigger":"p"},{"command":"load_qe1","file":null,"trigger":"F5"}],
+        "F3": [{"command":"all_save_oar","file":null,"trigger":"p"},{"command":"load_oar","file":null,"trigger":"F5"}],
+        "F4": [{"command":"all_save_qe2","file":null,"trigger":"p"},{"command":"load_qe2","file":null,"trigger":"F5"}],
+        "F5": [{"command":"save_rp_and_switch","file":null,"trigger":"p"},{"command":"load_rp","file":null,"trigger":"F5"}],
+        "TAB": [{"command":"fps5","file":null,"trigger":"b"}],
+        "F6": [{"command":"oshmetki","file":null,"trigger":"F6"}]
+      }
+    },
+    {
+      "name": "глубина 8",
+      "files": {
+        "config.cfg": "bind k \"exec d0.cfg\"\n",
+        "d0.cfg": "bind F1 \"say 0\"\nexec d1.cfg\n",
+        "d1.cfg": "bind F2 \"say 1\"\nexec d2.cfg\n",
+        "d2.cfg": "bind F3 \"say 2\"\nexec d3.cfg\n",
+        "d3.cfg": "bind F4 \"say 3\"\nexec d4.cfg\n",
+        "d4.cfg": "bind F5 \"say 4\"\nexec d5.cfg\n",
+        "d5.cfg": "bind F6 \"say 5\"\nexec d6.cfg\n",
+        "d6.cfg": "bind F7 \"say 6\"\nexec d7.cfg\n",
+        "d7.cfg": "bind F8 \"say 7\"\nexec d8.cfg\n",
+        "d8.cfg": "bind F9 \"say 8\"\nexec d9.cfg\n",
+        "d9.cfg": "bind F10 \"say 9\"\nexec d10.cfg\n",
+        "d10.cfg": "bind F11 \"say 10\"\nexec d11.cfg\n",
+        "d11.cfg": "bind F12 \"say 11\"\nexec d12.cfg\n"
+      },
+      "roots": null,
+      "runtime": {
+        "F1": [{"command":"say 0","file":"d0.cfg","trigger":"k"}],
+        "F2": [{"command":"say 1","file":"d1.cfg","trigger":"k"}],
+        "F3": [{"command":"say 2","file":"d2.cfg","trigger":"k"}],
+        "F4": [{"command":"say 3","file":"d3.cfg","trigger":"k"}],
+        "F5": [{"command":"say 4","file":"d4.cfg","trigger":"k"}],
+        "F6": [{"command":"say 5","file":"d5.cfg","trigger":"k"}],
+        "F7": [{"command":"say 6","file":"d6.cfg","trigger":"k"}],
+        "F8": [{"command":"say 7","file":"d7.cfg","trigger":"k"}]
+      }
+    },
+    {
+      "name": "до четырёх записей на клавишу",
+      "files": {
+        "config.cfg": "bind 1 \"exec m0.cfg\"\nbind 2 \"exec m1.cfg\"\nbind 3 \"exec m2.cfg\"\nbind 4 \"exec m3.cfg\"\nbind 5 \"exec m4.cfg\"\nbind 6 \"exec m5.cfg\"\n",
+        "m0.cfg": "bind x \"say 0\"\nbind x \"say 0\"\nbind X \"say 0\"\n",
+        "m1.cfg": "bind x \"say 1\"\nbind x \"say 1\"\nbind X \"say 1\"\n",
+        "m2.cfg": "bind x \"say 2\"\nbind x \"say 2\"\nbind X \"say 2\"\n",
+        "m3.cfg": "bind x \"say 3\"\nbind x \"say 3\"\nbind X \"say 3\"\n",
+        "m4.cfg": "bind x \"say 4\"\nbind x \"say 4\"\nbind X \"say 4\"\n",
+        "m5.cfg": "bind x \"say 5\"\nbind x \"say 5\"\nbind X \"say 5\"\n"
+      },
+      "roots": null,
+      "runtime": {"x":[{"command":"say 0","file":"m0.cfg","trigger":"1"},{"command":"say 1","file":"m1.cfg","trigger":"2"},{"command":"say 2","file":"m2.cfg","trigger":"3"},{"command":"say 3","file":"m3.cfg","trigger":"4"}]}
+    },
+    {
+      "name": "бюджет 5000 команд",
+      "files": {
+        "config.cfg": "bind a \"exec big.cfg\"\nbind b \"exec big.cfg\"\nbind c \"exec big.cfg\"\nbind d \"exec big.cfg\"\nbind e \"exec big.cfg\"\nbind f \"exec big.cfg\"\nbind g \"exec big.cfg\"\nbind h \"exec big.cfg\"\nbind i \"exec big.cfg\"\nbind j \"exec big.cfg\"\nbind k \"exec big.cfg\"\nbind l \"exec big.cfg\"\nbind m \"exec big.cfg\"\nbind n \"exec big.cfg\"\nbind o \"exec big.cfg\"\nbind p \"exec big.cfg\"\nbind q \"exec big.cfg\"\nbind r \"exec big.cfg\"\nbind s \"exec big.cfg\"\nbind t \"exec big.cfg\"\nbind u \"exec big.cfg\"\nbind v \"exec big.cfg\"\nbind w \"exec big.cfg\"\nbind x \"exec big.cfg\"\nbind y \"exec big.cfg\"\nbind z \"exec big.cfg\"\nbind 0 \"exec big.cfg\"\nbind 1 \"exec big.cfg\"\nbind 2 \"exec big.cfg\"\nbind 3 \"exec big.cfg\"\nbind 4 \"exec big.cfg\"\nbind 5 \"exec big.cfg\"\nbind 6 \"exec big.cfg\"\nbind 7 \"exec big.cfg\"\nbind 8 \"exec big.cfg\"\nbind 9 \"exec big.cfg\"\nbind F1 \"exec big.cfg\"\nbind F2 \"exec big.cfg\"\nbind F3 \"exec big.cfg\"\nbind F4 \"exec big.cfg\"\nbind F5 \"exec big.cfg\"\nbind F6 \"exec big.cfg\"\nbind F7 \"exec big.cfg\"\nbind F8 \"exec big.cfg\"\nbind F9 \"exec big.cfg\"\nbind F10 \"exec big.cfg\"\nbind F11 \"exec big.cfg\"\nbind F12 \"exec big.cfg\"\nbind F13 \"exec big.cfg\"\nbind F14 \"exec big.cfg\"\nbind F15 \"exec big.cfg\"\nbind F16 \"exec big.cfg\"\nbind F17 \"exec big.cfg\"\nbind F18 \"exec big.cfg\"\nbind F19 \"exec big.cfg\"\nbind F20 \"exec big.cfg\"\nbind F21 \"exec big.cfg\"\nbind F22 \"exec big.cfg\"\nbind F23 \"exec big.cfg\"\nbind F24 \"exec big.cfg\"\n",
+        "big.cfg": "bind a \"say big 0\"\nbind b \"say big 1\"\nbind c \"say big 2\"\nbind d \"say big 3\"\nbind e \"say big 4\"\nbind f \"say big 5\"\nbind a \"say big 6\"\nbind b \"say big 7\"\nbind c \"say big 8\"\nbind d \"say big 9\"\nbind e \"say big 10\"\nbind f \"say big 11\"\nbind a \"say big 12\"\nbind b \"say big 13\"\nbind c \"say big 14\"\nbind d \"say big 15\"\nbind e \"say big 16\"\nbind f \"say big 17\"\nbind a \"say big 18\"\nbind b \"say big 19\"\nbind c \"say big 20\"\nbind d \"say big 21\"\nbind e \"say big 22\"\nbind f \"say big 23\"\nbind a \"say big 24\"\nbind b \"say big 25\"\nbind c \"say big 26\"\nbind d \"say big 27\"\nbind e \"say big 28\"\nbind f \"say big 29\"\nbind a \"say big 30\"\nbind b \"say big 31\"\nbind c \"say big 32\"\nbind d \"say big 33\"\nbind e \"say big 34\"\nbind f \"say big 35\"\nbind a \"say big 36\"\nbind b \"say big 37\"\nbind c \"say big 38\"\nbind d \"say big 39\"\nbind e \"say big 40\"\nbind f \"say big 41\"\nbind a \"say big 42\"\nbind b \"say big 43\"\nbind c \"say big 44\"\nbind d \"say big 45\"\nbind e \"say big 46\"\nbind f \"say big 47\"\nbind a \"say big 48\"\nbind b \"say big 49\"\nbind c \"say big 50\"\nbind d \"say big 51\"\nbind e \"say big 52\"\nbind f \"say big 53\"\nbind a \"say big 54\"\nbind b \"say big 55\"\nbind c \"say big 56\"\nbind d \"say big 57\"\nbind e \"say big 58\"\nbind f \"say big 59\"\nbind a \"say big 60\"\nbind b \"say big 61\"\nbind c \"say big 62\"\nbind d \"say big 63\"\nbind e \"say big 64\"\nbind f \"say big 65\"\nbind a \"say big 66\"\nbind b \"say big 67\"\nbind c \"say big 68\"\nbind d \"say big 69\"\nbind e \"say big 70\"\nbind f \"say big 71\"\nbind a \"say big 72\"\nbind b \"say big 73\"\nbind c \"say big 74\"\nbind d \"say big 75\"\nbind e \"say big 76\"\nbind f \"say big 77\"\nbind a \"say big 78\"\nbind b \"say big 79\"\nbind c \"say big 80\"\nbind d \"say big 81\"\nbind e \"say big 82\"\nbind f \"say big 83\"\nbind a \"say big 84\"\nbind b \"say big 85\"\nbind c \"say big 86\"\nbind d \"say big 87\"\nbind e \"say big 88\"\nbind f \"say big 89\"\nbind a \"say big 90\"\nbind b \"say big 91\"\nbind c \"say big 92\"\nbind d \"say big 93\"\nbind e \"say big 94\"\nbind f \"say big 95\"\nbind a \"say big 96\"\nbind b \"say big 97\"\nbind c \"say big 98\"\nbind d \"say big 99\"\n"
+      },
+      "roots": null,
+      "runtime": {
+        "a": [{"command":"say big 0","file":"big.cfg","trigger":"0"},{"command":"say big 6","file":"big.cfg","trigger":"0"},{"command":"say big 12","file":"big.cfg","trigger":"0"},{"command":"say big 18","file":"big.cfg","trigger":"0"}],
+        "b": [{"command":"say big 1","file":"big.cfg","trigger":"0"},{"command":"say big 7","file":"big.cfg","trigger":"0"},{"command":"say big 13","file":"big.cfg","trigger":"0"},{"command":"say big 19","file":"big.cfg","trigger":"0"}],
+        "c": [{"command":"say big 2","file":"big.cfg","trigger":"0"},{"command":"say big 8","file":"big.cfg","trigger":"0"},{"command":"say big 14","file":"big.cfg","trigger":"0"},{"command":"say big 20","file":"big.cfg","trigger":"0"}],
+        "d": [{"command":"say big 3","file":"big.cfg","trigger":"0"},{"command":"say big 9","file":"big.cfg","trigger":"0"},{"command":"say big 15","file":"big.cfg","trigger":"0"},{"command":"say big 21","file":"big.cfg","trigger":"0"}],
+        "e": [{"command":"say big 4","file":"big.cfg","trigger":"0"},{"command":"say big 10","file":"big.cfg","trigger":"0"},{"command":"say big 16","file":"big.cfg","trigger":"0"},{"command":"say big 22","file":"big.cfg","trigger":"0"}],
+        "f": [{"command":"say big 5","file":"big.cfg","trigger":"0"},{"command":"say big 11","file":"big.cfg","trigger":"0"},{"command":"say big 17","file":"big.cfg","trigger":"0"},{"command":"say big 23","file":"big.cfg","trigger":"0"}]
+      }
+    },
+    {
+      "name": "alias, exec и стартовые файлы",
+      "files": {
+        "config.cfg": "alias go \"exec run.cfg\"\nalias Twice \"exec run.cfg; exec other.cfg\"\nbind g go\nbind t twice\nbind u \"exec userconfig.cfg\"\nbind b \"exec hlsr-binds.cfg\"\nbind e \"exec ../x.cfg\"\nbind r \"exec x.rc\"\nbind c \"exec X.CFG\"\nbind s \"exec sub\\\\s.cfg\"\nbind w \"bind q +use; bind SPACE +jump; bind ; say semi; bind NOSUCHKEY x\"\nbind q +use\nbind l \"loop\"\nalias loop \"a1\"\nalias a1 \"a2\"\nalias a2 \"loop; bind z say looped\"\nexec userconfig.cfg\nbind 9 \"exec nine.cfg\"\nbind 10 \"exec nine.cfg\"\nbind MOUSE1 \"exec run.cfg\"",
+        "userconfig.cfg": "bind y +duck\nalias late \"bind v say late\"\n",
+        "run.cfg": "bind 1 slot1\nalias inner \"bind 2 slot2\"\ninner\ninner\nlate\nexec other.cfg\n",
+        "other.cfg": "inner\nbind 3 slot3\nalias inner \"bind 4 slot4\"\ninner\n",
+        "hlsr-binds.cfg": "bind h say launcher\n",
+        "X.CFG": "bind xx say upper\n",
+        "sub/s.cfg": "bind 5 slot5\n",
+        "nine.cfg": "bind 0 slot10\nbind 7 slot7\n"
+      },
+      "roots": null,
+      "runtime": {
+        "0": [{"command":"slot10","file":"nine.cfg","trigger":"9"}],
+        "1": [{"command":"slot1","file":"run.cfg","trigger":"g"},{"command":"slot1","file":"run.cfg","trigger":"t"},{"command":"slot1","file":"run.cfg","trigger":"MOUSE1"}],
+        "2": [{"command":"slot2","file":"run.cfg","trigger":"g"},{"command":"slot2","file":"run.cfg","trigger":"t"},{"command":"slot2","file":"run.cfg","trigger":"MOUSE1"}],
+        "3": [{"command":"slot3","file":"other.cfg","trigger":"g"},{"command":"slot3","file":"other.cfg","trigger":"t"},{"command":"slot3","file":"other.cfg","trigger":"MOUSE1"}],
+        "7": [{"command":"slot7","file":"nine.cfg","trigger":"9"}],
+        "v": [{"command":"say late","file":"run.cfg","trigger":"g"},{"command":"say late","file":"run.cfg","trigger":"t"},{"command":"say late","file":"run.cfg","trigger":"MOUSE1"}],
+        "SPACE": [{"command":"+jump","file":null,"trigger":"w"}],
+        "z": [{"command":"say looped","file":null,"trigger":"l"}]
+      }
+    },
+    {"name":"пустой и без биндов","files":{"config.cfg":"alias a b\n","userconfig.cfg":""},"roots":null,"runtime":{}}
+  ],
+  "withImport": [
+    {
+      "name": "конфиг владельца",
+      "text": "",
+      "imported": null,
+      "runtime": {
+        "0": [{"command":"testchamber","file":"tc_n.cfg","trigger":"["}],
+        "9": [{"command":"move","file":"tc_n.cfg","trigger":"["}],
+        "MOUSE4": [{"command":"+tau","file":null,"trigger":"MOUSE4"}],
+        "MOUSE2": [{"command":"lcboost","file":null,"trigger":"j"}],
+        ",": [{"command":"p2pmv","file":"p2pv2.cfg","trigger":"="}],
+        ".": [{"command":"p2p","file":"p2pv2.cfg","trigger":"="}],
+        "-": [{"command":"p2pre","file":"p2pv2.cfg","trigger":"="},{"command":"testchamber_reset","file":"tc_n.cfg","trigger":"["}],
+        "F1": [{"command":"all_save_bp","file":null,"trigger":"p"},{"command":"load_bp","file":null,"trigger":"F5"}],
+        "F2": [{"command":"all_save_qe1","file":null,"trigger":"p"},{"command":"load_qe1","file":null,"trigger":"F5"}],
+        "F3": [{"command":"all_save_oar","file":null,"trigger":"p"},{"command":"load_oar","file":null,"trigger":"F5"}],
+        "F4": [{"command":"all_save_qe2","file":null,"trigger":"p"},{"command":"load_qe2","file":null,"trigger":"F5"}],
+        "F5": [{"command":"save_rp_and_switch","file":null,"trigger":"p"},{"command":"load_rp","file":null,"trigger":"F5"}],
+        "TAB": [{"command":"fps5","file":null,"trigger":"b"}],
+        "F6": [{"command":"oshmetki","file":null,"trigger":"F6"}]
+      }
+    },
+    {
+      "name": "конфиг владельца",
+      "text": "",
+      "imported": ["run.cfg"],
+      "runtime": {
+        "0": [{"command":"testchamber","file":"tc_n.cfg","trigger":"["}],
+        "9": [{"command":"move","file":"tc_n.cfg","trigger":"["}],
+        "MOUSE4": [{"command":"+tau","file":null,"trigger":"MOUSE4"}],
+        "MOUSE2": [{"command":"lcboost","file":null,"trigger":"j"}],
+        ",": [{"command":"p2pmv","file":"p2pv2.cfg","trigger":"="}],
+        ".": [{"command":"p2p","file":"p2pv2.cfg","trigger":"="}],
+        "-": [{"command":"p2pre","file":"p2pv2.cfg","trigger":"="},{"command":"testchamber_reset","file":"tc_n.cfg","trigger":"["}],
+        "F1": [{"command":"all_save_bp","file":null,"trigger":"p"},{"command":"load_bp","file":null,"trigger":"F5"}],
+        "F2": [{"command":"all_save_qe1","file":null,"trigger":"p"},{"command":"load_qe1","file":null,"trigger":"F5"}],
+        "F3": [{"command":"all_save_oar","file":null,"trigger":"p"},{"command":"load_oar","file":null,"trigger":"F5"}],
+        "F4": [{"command":"all_save_qe2","file":null,"trigger":"p"},{"command":"load_qe2","file":null,"trigger":"F5"}],
+        "F5": [{"command":"save_rp_and_switch","file":null,"trigger":"p"},{"command":"load_rp","file":null,"trigger":"F5"}],
+        "TAB": [{"command":"fps5","file":null,"trigger":"b"}],
+        "F6": [{"command":"oshmetki","file":null,"trigger":"F6"}]
+      }
+    },
+    {
+      "name": "конфиг владельца",
+      "text": "bind k +jump\n",
+      "imported": null,
+      "runtime": {
+        "0": [{"command":"testchamber","file":"tc_n.cfg","trigger":"["}],
+        "9": [{"command":"move","file":"tc_n.cfg","trigger":"["}],
+        "MOUSE4": [{"command":"+tau","file":null,"trigger":"MOUSE4"}],
+        "MOUSE2": [{"command":"lcboost","file":null,"trigger":"j"}],
+        ",": [{"command":"p2pmv","file":"p2pv2.cfg","trigger":"="}],
+        ".": [{"command":"p2p","file":"p2pv2.cfg","trigger":"="}],
+        "-": [{"command":"p2pre","file":"p2pv2.cfg","trigger":"="},{"command":"testchamber_reset","file":"tc_n.cfg","trigger":"["}],
+        "F1": [{"command":"all_save_bp","file":null,"trigger":"p"},{"command":"load_bp","file":null,"trigger":"F5"}],
+        "F2": [{"command":"all_save_qe1","file":null,"trigger":"p"},{"command":"load_qe1","file":null,"trigger":"F5"}],
+        "F3": [{"command":"all_save_oar","file":null,"trigger":"p"},{"command":"load_oar","file":null,"trigger":"F5"}],
+        "F4": [{"command":"all_save_qe2","file":null,"trigger":"p"},{"command":"load_qe2","file":null,"trigger":"F5"}],
+        "F5": [{"command":"save_rp_and_switch","file":null,"trigger":"p"},{"command":"load_rp","file":null,"trigger":"F5"}],
+        "TAB": [{"command":"fps5","file":null,"trigger":"b"}],
+        "F6": [{"command":"oshmetki","file":null,"trigger":"F6"}]
+      }
+    },
+    {
+      "name": "конфиг владельца",
+      "text": "bind k +jump\n",
+      "imported": ["run.cfg"],
+      "runtime": {
+        "0": [{"command":"testchamber","file":"tc_n.cfg","trigger":"["}],
+        "9": [{"command":"move","file":"tc_n.cfg","trigger":"["}],
+        "MOUSE4": [{"command":"+tau","file":null,"trigger":"MOUSE4"}],
+        "MOUSE2": [{"command":"lcboost","file":null,"trigger":"j"}],
+        ",": [{"command":"p2pmv","file":"p2pv2.cfg","trigger":"="}],
+        ".": [{"command":"p2p","file":"p2pv2.cfg","trigger":"="}],
+        "-": [{"command":"p2pre","file":"p2pv2.cfg","trigger":"="},{"command":"testchamber_reset","file":"tc_n.cfg","trigger":"["}],
+        "F1": [{"command":"all_save_bp","file":null,"trigger":"p"},{"command":"load_bp","file":null,"trigger":"F5"}],
+        "F2": [{"command":"all_save_qe1","file":null,"trigger":"p"},{"command":"load_qe1","file":null,"trigger":"F5"}],
+        "F3": [{"command":"all_save_oar","file":null,"trigger":"p"},{"command":"load_oar","file":null,"trigger":"F5"}],
+        "F4": [{"command":"all_save_qe2","file":null,"trigger":"p"},{"command":"load_qe2","file":null,"trigger":"F5"}],
+        "F5": [{"command":"save_rp_and_switch","file":null,"trigger":"p"},{"command":"load_rp","file":null,"trigger":"F5"}],
+        "TAB": [{"command":"fps5","file":null,"trigger":"b"}],
+        "F6": [{"command":"oshmetki","file":null,"trigger":"F6"}]
+      }
+    },
+    {"name":"конфиг владельца","text":"unbindall\n","imported":null,"runtime":{}},
+    {"name":"конфиг владельца","text":"unbindall\n","imported":["run.cfg"],"runtime":{}},
+    {
+      "name": "конфиг владельца",
+      "text": "bind 1 slot1\nbind [ \"exec tc_n.cfg;say exec telega\"\n",
+      "imported": null,
+      "runtime": {
+        "0": [{"command":"testchamber","file":"tc_n.cfg","trigger":"["}],
+        "9": [{"command":"move","file":"tc_n.cfg","trigger":"["}],
+        "MOUSE4": [{"command":"+tau","file":null,"trigger":"MOUSE4"}],
+        "MOUSE2": [{"command":"lcboost","file":null,"trigger":"j"}],
+        ",": [{"command":"p2pmv","file":"p2pv2.cfg","trigger":"="}],
+        ".": [{"command":"p2p","file":"p2pv2.cfg","trigger":"="}],
+        "-": [{"command":"p2pre","file":"p2pv2.cfg","trigger":"="},{"command":"testchamber_reset","file":"tc_n.cfg","trigger":"["}],
+        "F1": [{"command":"all_save_bp","file":null,"trigger":"p"},{"command":"load_bp","file":null,"trigger":"F5"}],
+        "F2": [{"command":"all_save_qe1","file":null,"trigger":"p"},{"command":"load_qe1","file":null,"trigger":"F5"}],
+        "F3": [{"command":"all_save_oar","file":null,"trigger":"p"},{"command":"load_oar","file":null,"trigger":"F5"}],
+        "F4": [{"command":"all_save_qe2","file":null,"trigger":"p"},{"command":"load_qe2","file":null,"trigger":"F5"}],
+        "F5": [{"command":"save_rp_and_switch","file":null,"trigger":"p"},{"command":"load_rp","file":null,"trigger":"F5"}],
+        "TAB": [{"command":"fps5","file":null,"trigger":"b"}],
+        "F6": [{"command":"oshmetki","file":null,"trigger":"F6"}]
+      }
+    },
+    {
+      "name": "конфиг владельца",
+      "text": "bind 1 slot1\nbind [ \"exec tc_n.cfg;say exec telega\"\n",
+      "imported": ["run.cfg"],
+      "runtime": {
+        "0": [{"command":"testchamber","file":"tc_n.cfg","trigger":"["}],
+        "9": [{"command":"move","file":"tc_n.cfg","trigger":"["}],
+        "MOUSE4": [{"command":"+tau","file":null,"trigger":"MOUSE4"}],
+        "MOUSE2": [{"command":"lcboost","file":null,"trigger":"j"}],
+        ",": [{"command":"p2pmv","file":"p2pv2.cfg","trigger":"="}],
+        ".": [{"command":"p2p","file":"p2pv2.cfg","trigger":"="}],
+        "-": [{"command":"p2pre","file":"p2pv2.cfg","trigger":"="},{"command":"testchamber_reset","file":"tc_n.cfg","trigger":"["}],
+        "F1": [{"command":"all_save_bp","file":null,"trigger":"p"},{"command":"load_bp","file":null,"trigger":"F5"}],
+        "F2": [{"command":"all_save_qe1","file":null,"trigger":"p"},{"command":"load_qe1","file":null,"trigger":"F5"}],
+        "F3": [{"command":"all_save_oar","file":null,"trigger":"p"},{"command":"load_oar","file":null,"trigger":"F5"}],
+        "F4": [{"command":"all_save_qe2","file":null,"trigger":"p"},{"command":"load_qe2","file":null,"trigger":"F5"}],
+        "F5": [{"command":"save_rp_and_switch","file":null,"trigger":"p"},{"command":"load_rp","file":null,"trigger":"F5"}],
+        "TAB": [{"command":"fps5","file":null,"trigger":"b"}],
+        "F6": [{"command":"oshmetki","file":null,"trigger":"F6"}]
+      }
+    },
+    {
+      "name": "конфиг владельца",
+      "text": "unbind t\nbind g go\n",
+      "imported": null,
+      "runtime": {
+        "0": [{"command":"testchamber","file":"tc_n.cfg","trigger":"["}],
+        "9": [{"command":"move","file":"tc_n.cfg","trigger":"["}],
+        "MOUSE4": [{"command":"+tau","file":null,"trigger":"MOUSE4"}],
+        "MOUSE2": [{"command":"lcboost","file":null,"trigger":"j"}],
+        ",": [{"command":"p2pmv","file":"p2pv2.cfg","trigger":"="}],
+        ".": [{"command":"p2p","file":"p2pv2.cfg","trigger":"="}],
+        "-": [{"command":"p2pre","file":"p2pv2.cfg","trigger":"="},{"command":"testchamber_reset","file":"tc_n.cfg","trigger":"["}],
+        "F1": [{"command":"all_save_bp","file":null,"trigger":"p"},{"command":"load_bp","file":null,"trigger":"F5"}],
+        "F2": [{"command":"all_save_qe1","file":null,"trigger":"p"},{"command":"load_qe1","file":null,"trigger":"F5"}],
+        "F3": [{"command":"all_save_oar","file":null,"trigger":"p"},{"command":"load_oar","file":null,"trigger":"F5"}],
+        "F4": [{"command":"all_save_qe2","file":null,"trigger":"p"},{"command":"load_qe2","file":null,"trigger":"F5"}],
+        "F5": [{"command":"save_rp_and_switch","file":null,"trigger":"p"},{"command":"load_rp","file":null,"trigger":"F5"}],
+        "TAB": [{"command":"fps5","file":null,"trigger":"b"}],
+        "F6": [{"command":"oshmetki","file":null,"trigger":"F6"}]
+      }
+    },
+    {
+      "name": "конфиг владельца",
+      "text": "unbind t\nbind g go\n",
+      "imported": ["run.cfg"],
+      "runtime": {
+        "0": [{"command":"testchamber","file":"tc_n.cfg","trigger":"["}],
+        "9": [{"command":"move","file":"tc_n.cfg","trigger":"["}],
+        "MOUSE4": [{"command":"+tau","file":null,"trigger":"MOUSE4"}],
+        "MOUSE2": [{"command":"lcboost","file":null,"trigger":"j"}],
+        ",": [{"command":"p2pmv","file":"p2pv2.cfg","trigger":"="}],
+        ".": [{"command":"p2p","file":"p2pv2.cfg","trigger":"="}],
+        "-": [{"command":"p2pre","file":"p2pv2.cfg","trigger":"="},{"command":"testchamber_reset","file":"tc_n.cfg","trigger":"["}],
+        "F1": [{"command":"all_save_bp","file":null,"trigger":"p"},{"command":"load_bp","file":null,"trigger":"F5"}],
+        "F2": [{"command":"all_save_qe1","file":null,"trigger":"p"},{"command":"load_qe1","file":null,"trigger":"F5"}],
+        "F3": [{"command":"all_save_oar","file":null,"trigger":"p"},{"command":"load_oar","file":null,"trigger":"F5"}],
+        "F4": [{"command":"all_save_qe2","file":null,"trigger":"p"},{"command":"load_qe2","file":null,"trigger":"F5"}],
+        "F5": [{"command":"save_rp_and_switch","file":null,"trigger":"p"},{"command":"load_rp","file":null,"trigger":"F5"}],
+        "TAB": [{"command":"fps5","file":null,"trigger":"b"}],
+        "F6": [{"command":"oshmetki","file":null,"trigger":"F6"}]
+      }
+    },
+    {
+      "name": "конфиг владельца",
+      "text": "bind = +use\n",
+      "imported": null,
+      "runtime": {
+        "0": [{"command":"testchamber","file":"tc_n.cfg","trigger":"["}],
+        "9": [{"command":"move","file":"tc_n.cfg","trigger":"["}],
+        "MOUSE4": [{"command":"+tau","file":null,"trigger":"MOUSE4"}],
+        "MOUSE2": [{"command":"lcboost","file":null,"trigger":"j"}],
+        "-": [{"command":"testchamber_reset","file":"tc_n.cfg","trigger":"["}],
+        "F1": [{"command":"all_save_bp","file":null,"trigger":"p"},{"command":"load_bp","file":null,"trigger":"F5"}],
+        "F2": [{"command":"all_save_qe1","file":null,"trigger":"p"},{"command":"load_qe1","file":null,"trigger":"F5"}],
+        "F3": [{"command":"all_save_oar","file":null,"trigger":"p"},{"command":"load_oar","file":null,"trigger":"F5"}],
+        "F4": [{"command":"all_save_qe2","file":null,"trigger":"p"},{"command":"load_qe2","file":null,"trigger":"F5"}],
+        "F5": [{"command":"save_rp_and_switch","file":null,"trigger":"p"},{"command":"load_rp","file":null,"trigger":"F5"}],
+        "TAB": [{"command":"fps5","file":null,"trigger":"b"}],
+        "F6": [{"command":"oshmetki","file":null,"trigger":"F6"}]
+      }
+    },
+    {
+      "name": "конфиг владельца",
+      "text": "bind = +use\n",
+      "imported": ["run.cfg"],
+      "runtime": {
+        "0": [{"command":"testchamber","file":"tc_n.cfg","trigger":"["}],
+        "9": [{"command":"move","file":"tc_n.cfg","trigger":"["}],
+        "MOUSE4": [{"command":"+tau","file":null,"trigger":"MOUSE4"}],
+        "MOUSE2": [{"command":"lcboost","file":null,"trigger":"j"}],
+        "-": [{"command":"testchamber_reset","file":"tc_n.cfg","trigger":"["}],
+        "F1": [{"command":"all_save_bp","file":null,"trigger":"p"},{"command":"load_bp","file":null,"trigger":"F5"}],
+        "F2": [{"command":"all_save_qe1","file":null,"trigger":"p"},{"command":"load_qe1","file":null,"trigger":"F5"}],
+        "F3": [{"command":"all_save_oar","file":null,"trigger":"p"},{"command":"load_oar","file":null,"trigger":"F5"}],
+        "F4": [{"command":"all_save_qe2","file":null,"trigger":"p"},{"command":"load_qe2","file":null,"trigger":"F5"}],
+        "F5": [{"command":"save_rp_and_switch","file":null,"trigger":"p"},{"command":"load_rp","file":null,"trigger":"F5"}],
+        "TAB": [{"command":"fps5","file":null,"trigger":"b"}],
+        "F6": [{"command":"oshmetki","file":null,"trigger":"F6"}]
+      }
+    },
+    {
+      "name": "глубина 8",
+      "text": "",
+      "imported": null,
+      "runtime": {
+        "F1": [{"command":"say 0","file":"d0.cfg","trigger":"k"}],
+        "F2": [{"command":"say 1","file":"d1.cfg","trigger":"k"}],
+        "F3": [{"command":"say 2","file":"d2.cfg","trigger":"k"}],
+        "F4": [{"command":"say 3","file":"d3.cfg","trigger":"k"}],
+        "F5": [{"command":"say 4","file":"d4.cfg","trigger":"k"}],
+        "F6": [{"command":"say 5","file":"d5.cfg","trigger":"k"}],
+        "F7": [{"command":"say 6","file":"d6.cfg","trigger":"k"}],
+        "F8": [{"command":"say 7","file":"d7.cfg","trigger":"k"}]
+      }
+    },
+    {
+      "name": "глубина 8",
+      "text": "",
+      "imported": ["run.cfg"],
+      "runtime": {
+        "F1": [{"command":"say 0","file":"d0.cfg","trigger":"k"}],
+        "F2": [{"command":"say 1","file":"d1.cfg","trigger":"k"}],
+        "F3": [{"command":"say 2","file":"d2.cfg","trigger":"k"}],
+        "F4": [{"command":"say 3","file":"d3.cfg","trigger":"k"}],
+        "F5": [{"command":"say 4","file":"d4.cfg","trigger":"k"}],
+        "F6": [{"command":"say 5","file":"d5.cfg","trigger":"k"}],
+        "F7": [{"command":"say 6","file":"d6.cfg","trigger":"k"}],
+        "F8": [{"command":"say 7","file":"d7.cfg","trigger":"k"}]
+      }
+    },
+    {"name":"глубина 8","text":"bind k +jump\n","imported":null,"runtime":{}},
+    {"name":"глубина 8","text":"bind k +jump\n","imported":["run.cfg"],"runtime":{}},
+    {"name":"глубина 8","text":"unbindall\n","imported":null,"runtime":{}},
+    {"name":"глубина 8","text":"unbindall\n","imported":["run.cfg"],"runtime":{}},
+    {
+      "name": "глубина 8",
+      "text": "bind 1 slot1\nbind [ \"exec tc_n.cfg;say exec telega\"\n",
+      "imported": null,
+      "runtime": {
+        "F1": [{"command":"say 0","file":"d0.cfg","trigger":"k"}],
+        "F2": [{"command":"say 1","file":"d1.cfg","trigger":"k"}],
+        "F3": [{"command":"say 2","file":"d2.cfg","trigger":"k"}],
+        "F4": [{"command":"say 3","file":"d3.cfg","trigger":"k"}],
+        "F5": [{"command":"say 4","file":"d4.cfg","trigger":"k"}],
+        "F6": [{"command":"say 5","file":"d5.cfg","trigger":"k"}],
+        "F7": [{"command":"say 6","file":"d6.cfg","trigger":"k"}],
+        "F8": [{"command":"say 7","file":"d7.cfg","trigger":"k"}]
+      }
+    },
+    {
+      "name": "глубина 8",
+      "text": "bind 1 slot1\nbind [ \"exec tc_n.cfg;say exec telega\"\n",
+      "imported": ["run.cfg"],
+      "runtime": {
+        "F1": [{"command":"say 0","file":"d0.cfg","trigger":"k"}],
+        "F2": [{"command":"say 1","file":"d1.cfg","trigger":"k"}],
+        "F3": [{"command":"say 2","file":"d2.cfg","trigger":"k"}],
+        "F4": [{"command":"say 3","file":"d3.cfg","trigger":"k"}],
+        "F5": [{"command":"say 4","file":"d4.cfg","trigger":"k"}],
+        "F6": [{"command":"say 5","file":"d5.cfg","trigger":"k"}],
+        "F7": [{"command":"say 6","file":"d6.cfg","trigger":"k"}],
+        "F8": [{"command":"say 7","file":"d7.cfg","trigger":"k"}]
+      }
+    },
+    {
+      "name": "глубина 8",
+      "text": "unbind t\nbind g go\n",
+      "imported": null,
+      "runtime": {
+        "F1": [{"command":"say 0","file":"d0.cfg","trigger":"k"}],
+        "F2": [{"command":"say 1","file":"d1.cfg","trigger":"k"}],
+        "F3": [{"command":"say 2","file":"d2.cfg","trigger":"k"}],
+        "F4": [{"command":"say 3","file":"d3.cfg","trigger":"k"}],
+        "F5": [{"command":"say 4","file":"d4.cfg","trigger":"k"}],
+        "F6": [{"command":"say 5","file":"d5.cfg","trigger":"k"}],
+        "F7": [{"command":"say 6","file":"d6.cfg","trigger":"k"}],
+        "F8": [{"command":"say 7","file":"d7.cfg","trigger":"k"}]
+      }
+    },
+    {
+      "name": "глубина 8",
+      "text": "unbind t\nbind g go\n",
+      "imported": ["run.cfg"],
+      "runtime": {
+        "F1": [{"command":"say 0","file":"d0.cfg","trigger":"k"}],
+        "F2": [{"command":"say 1","file":"d1.cfg","trigger":"k"}],
+        "F3": [{"command":"say 2","file":"d2.cfg","trigger":"k"}],
+        "F4": [{"command":"say 3","file":"d3.cfg","trigger":"k"}],
+        "F5": [{"command":"say 4","file":"d4.cfg","trigger":"k"}],
+        "F6": [{"command":"say 5","file":"d5.cfg","trigger":"k"}],
+        "F7": [{"command":"say 6","file":"d6.cfg","trigger":"k"}],
+        "F8": [{"command":"say 7","file":"d7.cfg","trigger":"k"}]
+      }
+    },
+    {
+      "name": "глубина 8",
+      "text": "bind = +use\n",
+      "imported": null,
+      "runtime": {
+        "F1": [{"command":"say 0","file":"d0.cfg","trigger":"k"}],
+        "F2": [{"command":"say 1","file":"d1.cfg","trigger":"k"}],
+        "F3": [{"command":"say 2","file":"d2.cfg","trigger":"k"}],
+        "F4": [{"command":"say 3","file":"d3.cfg","trigger":"k"}],
+        "F5": [{"command":"say 4","file":"d4.cfg","trigger":"k"}],
+        "F6": [{"command":"say 5","file":"d5.cfg","trigger":"k"}],
+        "F7": [{"command":"say 6","file":"d6.cfg","trigger":"k"}],
+        "F8": [{"command":"say 7","file":"d7.cfg","trigger":"k"}]
+      }
+    },
+    {
+      "name": "глубина 8",
+      "text": "bind = +use\n",
+      "imported": ["run.cfg"],
+      "runtime": {
+        "F1": [{"command":"say 0","file":"d0.cfg","trigger":"k"}],
+        "F2": [{"command":"say 1","file":"d1.cfg","trigger":"k"}],
+        "F3": [{"command":"say 2","file":"d2.cfg","trigger":"k"}],
+        "F4": [{"command":"say 3","file":"d3.cfg","trigger":"k"}],
+        "F5": [{"command":"say 4","file":"d4.cfg","trigger":"k"}],
+        "F6": [{"command":"say 5","file":"d5.cfg","trigger":"k"}],
+        "F7": [{"command":"say 6","file":"d6.cfg","trigger":"k"}],
+        "F8": [{"command":"say 7","file":"d7.cfg","trigger":"k"}]
+      }
+    },
+    {"name":"до четырёх записей на клавишу","text":"","imported":null,"runtime":{"x":[{"command":"say 0","file":"m0.cfg","trigger":"1"},{"command":"say 1","file":"m1.cfg","trigger":"2"},{"command":"say 2","file":"m2.cfg","trigger":"3"},{"command":"say 3","file":"m3.cfg","trigger":"4"}]}},
+    {"name":"до четырёх записей на клавишу","text":"","imported":["run.cfg"],"runtime":{"x":[{"command":"say 0","file":"m0.cfg","trigger":"1"},{"command":"say 1","file":"m1.cfg","trigger":"2"},{"command":"say 2","file":"m2.cfg","trigger":"3"},{"command":"say 3","file":"m3.cfg","trigger":"4"}]}},
+    {"name":"до четырёх записей на клавишу","text":"bind k +jump\n","imported":null,"runtime":{"x":[{"command":"say 0","file":"m0.cfg","trigger":"1"},{"command":"say 1","file":"m1.cfg","trigger":"2"},{"command":"say 2","file":"m2.cfg","trigger":"3"},{"command":"say 3","file":"m3.cfg","trigger":"4"}]}},
+    {"name":"до четырёх записей на клавишу","text":"bind k +jump\n","imported":["run.cfg"],"runtime":{"x":[{"command":"say 0","file":"m0.cfg","trigger":"1"},{"command":"say 1","file":"m1.cfg","trigger":"2"},{"command":"say 2","file":"m2.cfg","trigger":"3"},{"command":"say 3","file":"m3.cfg","trigger":"4"}]}},
+    {"name":"до четырёх записей на клавишу","text":"unbindall\n","imported":null,"runtime":{}},
+    {"name":"до четырёх записей на клавишу","text":"unbindall\n","imported":["run.cfg"],"runtime":{}},
+    {"name":"до четырёх записей на клавишу","text":"bind 1 slot1\nbind [ \"exec tc_n.cfg;say exec telega\"\n","imported":null,"runtime":{"x":[{"command":"say 1","file":"m1.cfg","trigger":"2"},{"command":"say 2","file":"m2.cfg","trigger":"3"},{"command":"say 3","file":"m3.cfg","trigger":"4"}]}},
+    {"name":"до четырёх записей на клавишу","text":"bind 1 slot1\nbind [ \"exec tc_n.cfg;say exec telega\"\n","imported":["run.cfg"],"runtime":{"x":[{"command":"say 1","file":"m1.cfg","trigger":"2"},{"command":"say 2","file":"m2.cfg","trigger":"3"},{"command":"say 3","file":"m3.cfg","trigger":"4"}]}},
+    {"name":"до четырёх записей на клавишу","text":"unbind t\nbind g go\n","imported":null,"runtime":{"x":[{"command":"say 0","file":"m0.cfg","trigger":"1"},{"command":"say 1","file":"m1.cfg","trigger":"2"},{"command":"say 2","file":"m2.cfg","trigger":"3"},{"command":"say 3","file":"m3.cfg","trigger":"4"}]}},
+    {"name":"до четырёх записей на клавишу","text":"unbind t\nbind g go\n","imported":["run.cfg"],"runtime":{"x":[{"command":"say 0","file":"m0.cfg","trigger":"1"},{"command":"say 1","file":"m1.cfg","trigger":"2"},{"command":"say 2","file":"m2.cfg","trigger":"3"},{"command":"say 3","file":"m3.cfg","trigger":"4"}]}},
+    {"name":"до четырёх записей на клавишу","text":"bind = +use\n","imported":null,"runtime":{"x":[{"command":"say 0","file":"m0.cfg","trigger":"1"},{"command":"say 1","file":"m1.cfg","trigger":"2"},{"command":"say 2","file":"m2.cfg","trigger":"3"},{"command":"say 3","file":"m3.cfg","trigger":"4"}]}},
+    {"name":"до четырёх записей на клавишу","text":"bind = +use\n","imported":["run.cfg"],"runtime":{"x":[{"command":"say 0","file":"m0.cfg","trigger":"1"},{"command":"say 1","file":"m1.cfg","trigger":"2"},{"command":"say 2","file":"m2.cfg","trigger":"3"},{"command":"say 3","file":"m3.cfg","trigger":"4"}]}},
+    {
+      "name": "бюджет 5000 команд",
+      "text": "",
+      "imported": null,
+      "runtime": {
+        "a": [{"command":"say big 0","file":"big.cfg","trigger":"0"},{"command":"say big 6","file":"big.cfg","trigger":"0"},{"command":"say big 12","file":"big.cfg","trigger":"0"},{"command":"say big 18","file":"big.cfg","trigger":"0"}],
+        "b": [{"command":"say big 1","file":"big.cfg","trigger":"0"},{"command":"say big 7","file":"big.cfg","trigger":"0"},{"command":"say big 13","file":"big.cfg","trigger":"0"},{"command":"say big 19","file":"big.cfg","trigger":"0"}],
+        "c": [{"command":"say big 2","file":"big.cfg","trigger":"0"},{"command":"say big 8","file":"big.cfg","trigger":"0"},{"command":"say big 14","file":"big.cfg","trigger":"0"},{"command":"say big 20","file":"big.cfg","trigger":"0"}],
+        "d": [{"command":"say big 3","file":"big.cfg","trigger":"0"},{"command":"say big 9","file":"big.cfg","trigger":"0"},{"command":"say big 15","file":"big.cfg","trigger":"0"},{"command":"say big 21","file":"big.cfg","trigger":"0"}],
+        "e": [{"command":"say big 4","file":"big.cfg","trigger":"0"},{"command":"say big 10","file":"big.cfg","trigger":"0"},{"command":"say big 16","file":"big.cfg","trigger":"0"},{"command":"say big 22","file":"big.cfg","trigger":"0"}],
+        "f": [{"command":"say big 5","file":"big.cfg","trigger":"0"},{"command":"say big 11","file":"big.cfg","trigger":"0"},{"command":"say big 17","file":"big.cfg","trigger":"0"},{"command":"say big 23","file":"big.cfg","trigger":"0"}]
+      }
+    },
+    {
+      "name": "бюджет 5000 команд",
+      "text": "",
+      "imported": ["run.cfg"],
+      "runtime": {
+        "a": [{"command":"say big 0","file":"big.cfg","trigger":"0"},{"command":"say big 6","file":"big.cfg","trigger":"0"},{"command":"say big 12","file":"big.cfg","trigger":"0"},{"command":"say big 18","file":"big.cfg","trigger":"0"}],
+        "b": [{"command":"say big 1","file":"big.cfg","trigger":"0"},{"command":"say big 7","file":"big.cfg","trigger":"0"},{"command":"say big 13","file":"big.cfg","trigger":"0"},{"command":"say big 19","file":"big.cfg","trigger":"0"}],
+        "c": [{"command":"say big 2","file":"big.cfg","trigger":"0"},{"command":"say big 8","file":"big.cfg","trigger":"0"},{"command":"say big 14","file":"big.cfg","trigger":"0"},{"command":"say big 20","file":"big.cfg","trigger":"0"}],
+        "d": [{"command":"say big 3","file":"big.cfg","trigger":"0"},{"command":"say big 9","file":"big.cfg","trigger":"0"},{"command":"say big 15","file":"big.cfg","trigger":"0"},{"command":"say big 21","file":"big.cfg","trigger":"0"}],
+        "e": [{"command":"say big 4","file":"big.cfg","trigger":"0"},{"command":"say big 10","file":"big.cfg","trigger":"0"},{"command":"say big 16","file":"big.cfg","trigger":"0"},{"command":"say big 22","file":"big.cfg","trigger":"0"}],
+        "f": [{"command":"say big 5","file":"big.cfg","trigger":"0"},{"command":"say big 11","file":"big.cfg","trigger":"0"},{"command":"say big 17","file":"big.cfg","trigger":"0"},{"command":"say big 23","file":"big.cfg","trigger":"0"}]
+      }
+    },
+    {
+      "name": "бюджет 5000 команд",
+      "text": "bind k +jump\n",
+      "imported": null,
+      "runtime": {
+        "a": [{"command":"say big 0","file":"big.cfg","trigger":"0"},{"command":"say big 6","file":"big.cfg","trigger":"0"},{"command":"say big 12","file":"big.cfg","trigger":"0"},{"command":"say big 18","file":"big.cfg","trigger":"0"}],
+        "b": [{"command":"say big 1","file":"big.cfg","trigger":"0"},{"command":"say big 7","file":"big.cfg","trigger":"0"},{"command":"say big 13","file":"big.cfg","trigger":"0"},{"command":"say big 19","file":"big.cfg","trigger":"0"}],
+        "c": [{"command":"say big 2","file":"big.cfg","trigger":"0"},{"command":"say big 8","file":"big.cfg","trigger":"0"},{"command":"say big 14","file":"big.cfg","trigger":"0"},{"command":"say big 20","file":"big.cfg","trigger":"0"}],
+        "d": [{"command":"say big 3","file":"big.cfg","trigger":"0"},{"command":"say big 9","file":"big.cfg","trigger":"0"},{"command":"say big 15","file":"big.cfg","trigger":"0"},{"command":"say big 21","file":"big.cfg","trigger":"0"}],
+        "e": [{"command":"say big 4","file":"big.cfg","trigger":"0"},{"command":"say big 10","file":"big.cfg","trigger":"0"},{"command":"say big 16","file":"big.cfg","trigger":"0"},{"command":"say big 22","file":"big.cfg","trigger":"0"}],
+        "f": [{"command":"say big 5","file":"big.cfg","trigger":"0"},{"command":"say big 11","file":"big.cfg","trigger":"0"},{"command":"say big 17","file":"big.cfg","trigger":"0"},{"command":"say big 23","file":"big.cfg","trigger":"0"}]
+      }
+    },
+    {
+      "name": "бюджет 5000 команд",
+      "text": "bind k +jump\n",
+      "imported": ["run.cfg"],
+      "runtime": {
+        "a": [{"command":"say big 0","file":"big.cfg","trigger":"0"},{"command":"say big 6","file":"big.cfg","trigger":"0"},{"command":"say big 12","file":"big.cfg","trigger":"0"},{"command":"say big 18","file":"big.cfg","trigger":"0"}],
+        "b": [{"command":"say big 1","file":"big.cfg","trigger":"0"},{"command":"say big 7","file":"big.cfg","trigger":"0"},{"command":"say big 13","file":"big.cfg","trigger":"0"},{"command":"say big 19","file":"big.cfg","trigger":"0"}],
+        "c": [{"command":"say big 2","file":"big.cfg","trigger":"0"},{"command":"say big 8","file":"big.cfg","trigger":"0"},{"command":"say big 14","file":"big.cfg","trigger":"0"},{"command":"say big 20","file":"big.cfg","trigger":"0"}],
+        "d": [{"command":"say big 3","file":"big.cfg","trigger":"0"},{"command":"say big 9","file":"big.cfg","trigger":"0"},{"command":"say big 15","file":"big.cfg","trigger":"0"},{"command":"say big 21","file":"big.cfg","trigger":"0"}],
+        "e": [{"command":"say big 4","file":"big.cfg","trigger":"0"},{"command":"say big 10","file":"big.cfg","trigger":"0"},{"command":"say big 16","file":"big.cfg","trigger":"0"},{"command":"say big 22","file":"big.cfg","trigger":"0"}],
+        "f": [{"command":"say big 5","file":"big.cfg","trigger":"0"},{"command":"say big 11","file":"big.cfg","trigger":"0"},{"command":"say big 17","file":"big.cfg","trigger":"0"},{"command":"say big 23","file":"big.cfg","trigger":"0"}]
+      }
+    },
+    {"name":"бюджет 5000 команд","text":"unbindall\n","imported":null,"runtime":{}},
+    {"name":"бюджет 5000 команд","text":"unbindall\n","imported":["run.cfg"],"runtime":{}},
+    {
+      "name": "бюджет 5000 команд",
+      "text": "bind 1 slot1\nbind [ \"exec tc_n.cfg;say exec telega\"\n",
+      "imported": null,
+      "runtime": {
+        "a": [{"command":"say big 0","file":"big.cfg","trigger":"0"},{"command":"say big 6","file":"big.cfg","trigger":"0"},{"command":"say big 12","file":"big.cfg","trigger":"0"},{"command":"say big 18","file":"big.cfg","trigger":"0"}],
+        "b": [{"command":"say big 1","file":"big.cfg","trigger":"0"},{"command":"say big 7","file":"big.cfg","trigger":"0"},{"command":"say big 13","file":"big.cfg","trigger":"0"},{"command":"say big 19","file":"big.cfg","trigger":"0"}],
+        "c": [{"command":"say big 2","file":"big.cfg","trigger":"0"},{"command":"say big 8","file":"big.cfg","trigger":"0"},{"command":"say big 14","file":"big.cfg","trigger":"0"},{"command":"say big 20","file":"big.cfg","trigger":"0"}],
+        "d": [{"command":"say big 3","file":"big.cfg","trigger":"0"},{"command":"say big 9","file":"big.cfg","trigger":"0"},{"command":"say big 15","file":"big.cfg","trigger":"0"},{"command":"say big 21","file":"big.cfg","trigger":"0"}],
+        "e": [{"command":"say big 4","file":"big.cfg","trigger":"0"},{"command":"say big 10","file":"big.cfg","trigger":"0"},{"command":"say big 16","file":"big.cfg","trigger":"0"},{"command":"say big 22","file":"big.cfg","trigger":"0"}],
+        "f": [{"command":"say big 5","file":"big.cfg","trigger":"0"},{"command":"say big 11","file":"big.cfg","trigger":"0"},{"command":"say big 17","file":"big.cfg","trigger":"0"},{"command":"say big 23","file":"big.cfg","trigger":"0"}]
+      }
+    },
+    {
+      "name": "бюджет 5000 команд",
+      "text": "bind 1 slot1\nbind [ \"exec tc_n.cfg;say exec telega\"\n",
+      "imported": ["run.cfg"],
+      "runtime": {
+        "a": [{"command":"say big 0","file":"big.cfg","trigger":"0"},{"command":"say big 6","file":"big.cfg","trigger":"0"},{"command":"say big 12","file":"big.cfg","trigger":"0"},{"command":"say big 18","file":"big.cfg","trigger":"0"}],
+        "b": [{"command":"say big 1","file":"big.cfg","trigger":"0"},{"command":"say big 7","file":"big.cfg","trigger":"0"},{"command":"say big 13","file":"big.cfg","trigger":"0"},{"command":"say big 19","file":"big.cfg","trigger":"0"}],
+        "c": [{"command":"say big 2","file":"big.cfg","trigger":"0"},{"command":"say big 8","file":"big.cfg","trigger":"0"},{"command":"say big 14","file":"big.cfg","trigger":"0"},{"command":"say big 20","file":"big.cfg","trigger":"0"}],
+        "d": [{"command":"say big 3","file":"big.cfg","trigger":"0"},{"command":"say big 9","file":"big.cfg","trigger":"0"},{"command":"say big 15","file":"big.cfg","trigger":"0"},{"command":"say big 21","file":"big.cfg","trigger":"0"}],
+        "e": [{"command":"say big 4","file":"big.cfg","trigger":"0"},{"command":"say big 10","file":"big.cfg","trigger":"0"},{"command":"say big 16","file":"big.cfg","trigger":"0"},{"command":"say big 22","file":"big.cfg","trigger":"0"}],
+        "f": [{"command":"say big 5","file":"big.cfg","trigger":"0"},{"command":"say big 11","file":"big.cfg","trigger":"0"},{"command":"say big 17","file":"big.cfg","trigger":"0"},{"command":"say big 23","file":"big.cfg","trigger":"0"}]
+      }
+    },
+    {
+      "name": "бюджет 5000 команд",
+      "text": "unbind t\nbind g go\n",
+      "imported": null,
+      "runtime": {
+        "a": [{"command":"say big 0","file":"big.cfg","trigger":"0"},{"command":"say big 6","file":"big.cfg","trigger":"0"},{"command":"say big 12","file":"big.cfg","trigger":"0"},{"command":"say big 18","file":"big.cfg","trigger":"0"}],
+        "b": [{"command":"say big 1","file":"big.cfg","trigger":"0"},{"command":"say big 7","file":"big.cfg","trigger":"0"},{"command":"say big 13","file":"big.cfg","trigger":"0"},{"command":"say big 19","file":"big.cfg","trigger":"0"}],
+        "c": [{"command":"say big 2","file":"big.cfg","trigger":"0"},{"command":"say big 8","file":"big.cfg","trigger":"0"},{"command":"say big 14","file":"big.cfg","trigger":"0"},{"command":"say big 20","file":"big.cfg","trigger":"0"}],
+        "d": [{"command":"say big 3","file":"big.cfg","trigger":"0"},{"command":"say big 9","file":"big.cfg","trigger":"0"},{"command":"say big 15","file":"big.cfg","trigger":"0"},{"command":"say big 21","file":"big.cfg","trigger":"0"}],
+        "e": [{"command":"say big 4","file":"big.cfg","trigger":"0"},{"command":"say big 10","file":"big.cfg","trigger":"0"},{"command":"say big 16","file":"big.cfg","trigger":"0"},{"command":"say big 22","file":"big.cfg","trigger":"0"}],
+        "f": [{"command":"say big 5","file":"big.cfg","trigger":"0"},{"command":"say big 11","file":"big.cfg","trigger":"0"},{"command":"say big 17","file":"big.cfg","trigger":"0"},{"command":"say big 23","file":"big.cfg","trigger":"0"}]
+      }
+    },
+    {
+      "name": "бюджет 5000 команд",
+      "text": "unbind t\nbind g go\n",
+      "imported": ["run.cfg"],
+      "runtime": {
+        "a": [{"command":"say big 0","file":"big.cfg","trigger":"0"},{"command":"say big 6","file":"big.cfg","trigger":"0"},{"command":"say big 12","file":"big.cfg","trigger":"0"},{"command":"say big 18","file":"big.cfg","trigger":"0"}],
+        "b": [{"command":"say big 1","file":"big.cfg","trigger":"0"},{"command":"say big 7","file":"big.cfg","trigger":"0"},{"command":"say big 13","file":"big.cfg","trigger":"0"},{"command":"say big 19","file":"big.cfg","trigger":"0"}],
+        "c": [{"command":"say big 2","file":"big.cfg","trigger":"0"},{"command":"say big 8","file":"big.cfg","trigger":"0"},{"command":"say big 14","file":"big.cfg","trigger":"0"},{"command":"say big 20","file":"big.cfg","trigger":"0"}],
+        "d": [{"command":"say big 3","file":"big.cfg","trigger":"0"},{"command":"say big 9","file":"big.cfg","trigger":"0"},{"command":"say big 15","file":"big.cfg","trigger":"0"},{"command":"say big 21","file":"big.cfg","trigger":"0"}],
+        "e": [{"command":"say big 4","file":"big.cfg","trigger":"0"},{"command":"say big 10","file":"big.cfg","trigger":"0"},{"command":"say big 16","file":"big.cfg","trigger":"0"},{"command":"say big 22","file":"big.cfg","trigger":"0"}],
+        "f": [{"command":"say big 5","file":"big.cfg","trigger":"0"},{"command":"say big 11","file":"big.cfg","trigger":"0"},{"command":"say big 17","file":"big.cfg","trigger":"0"},{"command":"say big 23","file":"big.cfg","trigger":"0"}]
+      }
+    },
+    {
+      "name": "бюджет 5000 команд",
+      "text": "bind = +use\n",
+      "imported": null,
+      "runtime": {
+        "a": [{"command":"say big 0","file":"big.cfg","trigger":"0"},{"command":"say big 6","file":"big.cfg","trigger":"0"},{"command":"say big 12","file":"big.cfg","trigger":"0"},{"command":"say big 18","file":"big.cfg","trigger":"0"}],
+        "b": [{"command":"say big 1","file":"big.cfg","trigger":"0"},{"command":"say big 7","file":"big.cfg","trigger":"0"},{"command":"say big 13","file":"big.cfg","trigger":"0"},{"command":"say big 19","file":"big.cfg","trigger":"0"}],
+        "c": [{"command":"say big 2","file":"big.cfg","trigger":"0"},{"command":"say big 8","file":"big.cfg","trigger":"0"},{"command":"say big 14","file":"big.cfg","trigger":"0"},{"command":"say big 20","file":"big.cfg","trigger":"0"}],
+        "d": [{"command":"say big 3","file":"big.cfg","trigger":"0"},{"command":"say big 9","file":"big.cfg","trigger":"0"},{"command":"say big 15","file":"big.cfg","trigger":"0"},{"command":"say big 21","file":"big.cfg","trigger":"0"}],
+        "e": [{"command":"say big 4","file":"big.cfg","trigger":"0"},{"command":"say big 10","file":"big.cfg","trigger":"0"},{"command":"say big 16","file":"big.cfg","trigger":"0"},{"command":"say big 22","file":"big.cfg","trigger":"0"}],
+        "f": [{"command":"say big 5","file":"big.cfg","trigger":"0"},{"command":"say big 11","file":"big.cfg","trigger":"0"},{"command":"say big 17","file":"big.cfg","trigger":"0"},{"command":"say big 23","file":"big.cfg","trigger":"0"}]
+      }
+    },
+    {
+      "name": "бюджет 5000 команд",
+      "text": "bind = +use\n",
+      "imported": ["run.cfg"],
+      "runtime": {
+        "a": [{"command":"say big 0","file":"big.cfg","trigger":"0"},{"command":"say big 6","file":"big.cfg","trigger":"0"},{"command":"say big 12","file":"big.cfg","trigger":"0"},{"command":"say big 18","file":"big.cfg","trigger":"0"}],
+        "b": [{"command":"say big 1","file":"big.cfg","trigger":"0"},{"command":"say big 7","file":"big.cfg","trigger":"0"},{"command":"say big 13","file":"big.cfg","trigger":"0"},{"command":"say big 19","file":"big.cfg","trigger":"0"}],
+        "c": [{"command":"say big 2","file":"big.cfg","trigger":"0"},{"command":"say big 8","file":"big.cfg","trigger":"0"},{"command":"say big 14","file":"big.cfg","trigger":"0"},{"command":"say big 20","file":"big.cfg","trigger":"0"}],
+        "d": [{"command":"say big 3","file":"big.cfg","trigger":"0"},{"command":"say big 9","file":"big.cfg","trigger":"0"},{"command":"say big 15","file":"big.cfg","trigger":"0"},{"command":"say big 21","file":"big.cfg","trigger":"0"}],
+        "e": [{"command":"say big 4","file":"big.cfg","trigger":"0"},{"command":"say big 10","file":"big.cfg","trigger":"0"},{"command":"say big 16","file":"big.cfg","trigger":"0"},{"command":"say big 22","file":"big.cfg","trigger":"0"}],
+        "f": [{"command":"say big 5","file":"big.cfg","trigger":"0"},{"command":"say big 11","file":"big.cfg","trigger":"0"},{"command":"say big 17","file":"big.cfg","trigger":"0"},{"command":"say big 23","file":"big.cfg","trigger":"0"}]
+      }
+    },
+    {
+      "name": "alias, exec и стартовые файлы",
+      "text": "",
+      "imported": null,
+      "runtime": {
+        "0": [{"command":"slot10","file":"nine.cfg","trigger":"9"}],
+        "1": [{"command":"slot1","file":"run.cfg","trigger":"g"},{"command":"slot1","file":"run.cfg","trigger":"t"},{"command":"slot1","file":"run.cfg","trigger":"MOUSE1"}],
+        "2": [{"command":"slot2","file":"run.cfg","trigger":"g"},{"command":"slot2","file":"run.cfg","trigger":"t"},{"command":"slot2","file":"run.cfg","trigger":"MOUSE1"}],
+        "3": [{"command":"slot3","file":"other.cfg","trigger":"g"},{"command":"slot3","file":"other.cfg","trigger":"t"},{"command":"slot3","file":"other.cfg","trigger":"MOUSE1"}],
+        "7": [{"command":"slot7","file":"nine.cfg","trigger":"9"}],
+        "v": [{"command":"say late","file":"run.cfg","trigger":"g"},{"command":"say late","file":"run.cfg","trigger":"t"},{"command":"say late","file":"run.cfg","trigger":"MOUSE1"}],
+        "SPACE": [{"command":"+jump","file":null,"trigger":"w"}],
+        "z": [{"command":"say looped","file":null,"trigger":"l"}]
+      }
+    },
+    {
+      "name": "alias, exec и стартовые файлы",
+      "text": "",
+      "imported": ["run.cfg"],
+      "runtime": {
+        "0": [{"command":"slot10","file":"nine.cfg","trigger":"9"}],
+        "1": [{"command":"slot1","file":"run.cfg","trigger":"g"},{"command":"slot1","file":"run.cfg","trigger":"t"},{"command":"slot1","file":"run.cfg","trigger":"MOUSE1"}],
+        "2": [{"command":"slot2","file":"run.cfg","trigger":"g"},{"command":"slot2","file":"run.cfg","trigger":"t"},{"command":"slot2","file":"run.cfg","trigger":"MOUSE1"}],
+        "3": [{"command":"slot3","file":"other.cfg","trigger":"g"},{"command":"slot3","file":"other.cfg","trigger":"t"},{"command":"slot3","file":"other.cfg","trigger":"MOUSE1"}],
+        "7": [{"command":"slot7","file":"nine.cfg","trigger":"9"}],
+        "v": [{"command":"say late","file":"run.cfg","trigger":"g"},{"command":"say late","file":"run.cfg","trigger":"t"},{"command":"say late","file":"run.cfg","trigger":"MOUSE1"}],
+        "SPACE": [{"command":"+jump","file":null,"trigger":"w"}],
+        "z": [{"command":"say looped","file":null,"trigger":"l"}]
+      }
+    },
+    {
+      "name": "alias, exec и стартовые файлы",
+      "text": "bind k +jump\n",
+      "imported": null,
+      "runtime": {
+        "0": [{"command":"slot10","file":"nine.cfg","trigger":"9"}],
+        "1": [{"command":"slot1","file":"run.cfg","trigger":"g"},{"command":"slot1","file":"run.cfg","trigger":"t"},{"command":"slot1","file":"run.cfg","trigger":"MOUSE1"}],
+        "2": [{"command":"slot2","file":"run.cfg","trigger":"g"},{"command":"slot2","file":"run.cfg","trigger":"t"},{"command":"slot2","file":"run.cfg","trigger":"MOUSE1"}],
+        "3": [{"command":"slot3","file":"other.cfg","trigger":"g"},{"command":"slot3","file":"other.cfg","trigger":"t"},{"command":"slot3","file":"other.cfg","trigger":"MOUSE1"}],
+        "7": [{"command":"slot7","file":"nine.cfg","trigger":"9"}],
+        "v": [{"command":"say late","file":"run.cfg","trigger":"g"},{"command":"say late","file":"run.cfg","trigger":"t"},{"command":"say late","file":"run.cfg","trigger":"MOUSE1"}],
+        "SPACE": [{"command":"+jump","file":null,"trigger":"w"}],
+        "z": [{"command":"say looped","file":null,"trigger":"l"}]
+      }
+    },
+    {
+      "name": "alias, exec и стартовые файлы",
+      "text": "bind k +jump\n",
+      "imported": ["run.cfg"],
+      "runtime": {
+        "0": [{"command":"slot10","file":"nine.cfg","trigger":"9"}],
+        "1": [{"command":"slot1","file":"run.cfg","trigger":"g"},{"command":"slot1","file":"run.cfg","trigger":"t"},{"command":"slot1","file":"run.cfg","trigger":"MOUSE1"}],
+        "2": [{"command":"slot2","file":"run.cfg","trigger":"g"},{"command":"slot2","file":"run.cfg","trigger":"t"},{"command":"slot2","file":"run.cfg","trigger":"MOUSE1"}],
+        "3": [{"command":"slot3","file":"other.cfg","trigger":"g"},{"command":"slot3","file":"other.cfg","trigger":"t"},{"command":"slot3","file":"other.cfg","trigger":"MOUSE1"}],
+        "7": [{"command":"slot7","file":"nine.cfg","trigger":"9"}],
+        "v": [{"command":"say late","file":"run.cfg","trigger":"g"},{"command":"say late","file":"run.cfg","trigger":"t"},{"command":"say late","file":"run.cfg","trigger":"MOUSE1"}],
+        "SPACE": [{"command":"+jump","file":null,"trigger":"w"}],
+        "z": [{"command":"say looped","file":null,"trigger":"l"}]
+      }
+    },
+    {"name":"alias, exec и стартовые файлы","text":"unbindall\n","imported":null,"runtime":{}},
+    {"name":"alias, exec и стартовые файлы","text":"unbindall\n","imported":["run.cfg"],"runtime":{}},
+    {
+      "name": "alias, exec и стартовые файлы",
+      "text": "bind 1 slot1\nbind [ \"exec tc_n.cfg;say exec telega\"\n",
+      "imported": null,
+      "runtime": {
+        "0": [{"command":"slot10","file":"nine.cfg","trigger":"9"}],
+        "1": [{"command":"slot1","file":"run.cfg","trigger":"g"},{"command":"slot1","file":"run.cfg","trigger":"t"},{"command":"slot1","file":"run.cfg","trigger":"MOUSE1"}],
+        "2": [{"command":"slot2","file":"run.cfg","trigger":"g"},{"command":"slot2","file":"run.cfg","trigger":"t"},{"command":"slot2","file":"run.cfg","trigger":"MOUSE1"}],
+        "3": [{"command":"slot3","file":"other.cfg","trigger":"g"},{"command":"slot3","file":"other.cfg","trigger":"t"},{"command":"slot3","file":"other.cfg","trigger":"MOUSE1"}],
+        "7": [{"command":"slot7","file":"nine.cfg","trigger":"9"}],
+        "v": [{"command":"say late","file":"run.cfg","trigger":"g"},{"command":"say late","file":"run.cfg","trigger":"t"},{"command":"say late","file":"run.cfg","trigger":"MOUSE1"}],
+        "SPACE": [{"command":"+jump","file":null,"trigger":"w"}],
+        "z": [{"command":"say looped","file":null,"trigger":"l"}]
+      }
+    },
+    {
+      "name": "alias, exec и стартовые файлы",
+      "text": "bind 1 slot1\nbind [ \"exec tc_n.cfg;say exec telega\"\n",
+      "imported": ["run.cfg"],
+      "runtime": {
+        "0": [{"command":"slot10","file":"nine.cfg","trigger":"9"}],
+        "1": [{"command":"slot1","file":"run.cfg","trigger":"g"},{"command":"slot1","file":"run.cfg","trigger":"t"},{"command":"slot1","file":"run.cfg","trigger":"MOUSE1"}],
+        "2": [{"command":"slot2","file":"run.cfg","trigger":"g"},{"command":"slot2","file":"run.cfg","trigger":"t"},{"command":"slot2","file":"run.cfg","trigger":"MOUSE1"}],
+        "3": [{"command":"slot3","file":"other.cfg","trigger":"g"},{"command":"slot3","file":"other.cfg","trigger":"t"},{"command":"slot3","file":"other.cfg","trigger":"MOUSE1"}],
+        "7": [{"command":"slot7","file":"nine.cfg","trigger":"9"}],
+        "v": [{"command":"say late","file":"run.cfg","trigger":"g"},{"command":"say late","file":"run.cfg","trigger":"t"},{"command":"say late","file":"run.cfg","trigger":"MOUSE1"}],
+        "SPACE": [{"command":"+jump","file":null,"trigger":"w"}],
+        "z": [{"command":"say looped","file":null,"trigger":"l"}]
+      }
+    },
+    {
+      "name": "alias, exec и стартовые файлы",
+      "text": "unbind t\nbind g go\n",
+      "imported": null,
+      "runtime": {
+        "0": [{"command":"slot10","file":"nine.cfg","trigger":"9"}],
+        "1": [{"command":"slot1","file":"run.cfg","trigger":"g"},{"command":"slot1","file":"run.cfg","trigger":"MOUSE1"}],
+        "2": [{"command":"slot2","file":"run.cfg","trigger":"g"},{"command":"slot2","file":"run.cfg","trigger":"MOUSE1"}],
+        "3": [{"command":"slot3","file":"other.cfg","trigger":"g"},{"command":"slot3","file":"other.cfg","trigger":"MOUSE1"}],
+        "7": [{"command":"slot7","file":"nine.cfg","trigger":"9"}],
+        "v": [{"command":"say late","file":"run.cfg","trigger":"g"},{"command":"say late","file":"run.cfg","trigger":"MOUSE1"}],
+        "SPACE": [{"command":"+jump","file":null,"trigger":"w"}],
+        "z": [{"command":"say looped","file":null,"trigger":"l"}]
+      }
+    },
+    {
+      "name": "alias, exec и стартовые файлы",
+      "text": "unbind t\nbind g go\n",
+      "imported": ["run.cfg"],
+      "runtime": {
+        "0": [{"command":"slot10","file":"nine.cfg","trigger":"9"}],
+        "1": [{"command":"slot1","file":"run.cfg","trigger":"g"},{"command":"slot1","file":"run.cfg","trigger":"MOUSE1"}],
+        "2": [{"command":"slot2","file":"run.cfg","trigger":"g"},{"command":"slot2","file":"run.cfg","trigger":"MOUSE1"}],
+        "3": [{"command":"slot3","file":"other.cfg","trigger":"g"},{"command":"slot3","file":"other.cfg","trigger":"MOUSE1"}],
+        "7": [{"command":"slot7","file":"nine.cfg","trigger":"9"}],
+        "v": [{"command":"say late","file":"run.cfg","trigger":"g"},{"command":"say late","file":"run.cfg","trigger":"MOUSE1"}],
+        "SPACE": [{"command":"+jump","file":null,"trigger":"w"}],
+        "z": [{"command":"say looped","file":null,"trigger":"l"}]
+      }
+    },
+    {
+      "name": "alias, exec и стартовые файлы",
+      "text": "bind = +use\n",
+      "imported": null,
+      "runtime": {
+        "0": [{"command":"slot10","file":"nine.cfg","trigger":"9"}],
+        "1": [{"command":"slot1","file":"run.cfg","trigger":"g"},{"command":"slot1","file":"run.cfg","trigger":"t"},{"command":"slot1","file":"run.cfg","trigger":"MOUSE1"}],
+        "2": [{"command":"slot2","file":"run.cfg","trigger":"g"},{"command":"slot2","file":"run.cfg","trigger":"t"},{"command":"slot2","file":"run.cfg","trigger":"MOUSE1"}],
+        "3": [{"command":"slot3","file":"other.cfg","trigger":"g"},{"command":"slot3","file":"other.cfg","trigger":"t"},{"command":"slot3","file":"other.cfg","trigger":"MOUSE1"}],
+        "7": [{"command":"slot7","file":"nine.cfg","trigger":"9"}],
+        "v": [{"command":"say late","file":"run.cfg","trigger":"g"},{"command":"say late","file":"run.cfg","trigger":"t"},{"command":"say late","file":"run.cfg","trigger":"MOUSE1"}],
+        "SPACE": [{"command":"+jump","file":null,"trigger":"w"}],
+        "z": [{"command":"say looped","file":null,"trigger":"l"}]
+      }
+    },
+    {
+      "name": "alias, exec и стартовые файлы",
+      "text": "bind = +use\n",
+      "imported": ["run.cfg"],
+      "runtime": {
+        "0": [{"command":"slot10","file":"nine.cfg","trigger":"9"}],
+        "1": [{"command":"slot1","file":"run.cfg","trigger":"g"},{"command":"slot1","file":"run.cfg","trigger":"t"},{"command":"slot1","file":"run.cfg","trigger":"MOUSE1"}],
+        "2": [{"command":"slot2","file":"run.cfg","trigger":"g"},{"command":"slot2","file":"run.cfg","trigger":"t"},{"command":"slot2","file":"run.cfg","trigger":"MOUSE1"}],
+        "3": [{"command":"slot3","file":"other.cfg","trigger":"g"},{"command":"slot3","file":"other.cfg","trigger":"t"},{"command":"slot3","file":"other.cfg","trigger":"MOUSE1"}],
+        "7": [{"command":"slot7","file":"nine.cfg","trigger":"9"}],
+        "v": [{"command":"say late","file":"run.cfg","trigger":"g"},{"command":"say late","file":"run.cfg","trigger":"t"},{"command":"say late","file":"run.cfg","trigger":"MOUSE1"}],
+        "SPACE": [{"command":"+jump","file":null,"trigger":"w"}],
+        "z": [{"command":"say looped","file":null,"trigger":"l"}]
+      }
+    },
+    {"name":"пустой и без биндов","text":"","imported":null,"runtime":{}},
+    {"name":"пустой и без биндов","text":"","imported":["run.cfg"],"runtime":{}},
+    {"name":"пустой и без биндов","text":"bind k +jump\n","imported":null,"runtime":{}},
+    {"name":"пустой и без биндов","text":"bind k +jump\n","imported":["run.cfg"],"runtime":{}},
+    {"name":"пустой и без биндов","text":"unbindall\n","imported":null,"runtime":{}},
+    {"name":"пустой и без биндов","text":"unbindall\n","imported":["run.cfg"],"runtime":{}},
+    {"name":"пустой и без биндов","text":"bind 1 slot1\nbind [ \"exec tc_n.cfg;say exec telega\"\n","imported":null,"runtime":{}},
+    {"name":"пустой и без биндов","text":"bind 1 slot1\nbind [ \"exec tc_n.cfg;say exec telega\"\n","imported":["run.cfg"],"runtime":{}},
+    {"name":"пустой и без биндов","text":"unbind t\nbind g go\n","imported":null,"runtime":{}},
+    {"name":"пустой и без биндов","text":"unbind t\nbind g go\n","imported":["run.cfg"],"runtime":{}},
+    {"name":"пустой и без биндов","text":"bind = +use\n","imported":null,"runtime":{}},
+    {"name":"пустой и без биндов","text":"bind = +use\n","imported":["run.cfg"],"runtime":{}}
+  ]
+}

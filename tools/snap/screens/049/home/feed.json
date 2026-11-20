@@ -1,0 +1,7 @@
+{
+  "id": "home/feed",
+  "base": "home/_base",
+  "state": "Пост автора с профилем (ник, значок подписчика), Markdown, три скриншота; пост без профиля",
+  "rails": ["closed", "open"],
+  "invoke": {"public-news-get": {"status": "ok", "items": [{"kind": "post", "id": "41", "title": "HLSR 0.4.9", "body": "Скриншоты нового окна.\n\n**Что нового:**\n- лента на GPUI\n- просмотр картинок\n\nПодробности — [на сайте](https://hlsr.pro).", "author": "HLSR", "authorProfile": {"steamId64": "76561199155902676", "personaName": "Kanoyo", "avatarUrl": "https://avatars.steamstatic.com/0000000000000000000000000000000000000001_full.jpg", "nick": {"style": "developer", "css": null}, "avatarFrame": null, "subscriber": true}, "images": [{"url": "https://api.hlsr.pro/news/images/1.png", "width": 480, "height": 270}, {"url": "https://api.hlsr.pro/news/images/2.png", "width": 520, "height": 270}, {"url": "https://api.hlsr.pro/news/images/3.png", "width": 560, "height": 270}], "reactions": {"like": 12, "love": 4, "fire": 7, "wow": 0, "celebrate": 2}, "date": "2026-11-14T09:30:00.000Z"}, {"kind": "post", "id": "40", "title": "Сервер рекордов", "body": "Рекорды speedrun.com теперь видны прямо на «Главной».", "author": "HLSR", "authorProfile": null, "images": [], "reactions": {"like": 12, "love": 4, "fire": 7, "wow": 0, "celebrate": 2}, "date": "2026-11-10T18:05:00.000Z"}]}}
+}

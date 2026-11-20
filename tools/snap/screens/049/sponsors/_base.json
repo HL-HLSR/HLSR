@@ -1,0 +1,39 @@
+{
+  "$comment": "Окно «Спонсорство» и «Спасибо за поддержку» (S12, SponsorsModal/SupportThanksModal 0.4.9). Окно открывается сердцем в шапке (.sponsors__btn). Указатель уводится на подложку под окном. Ники без бесконечных анимаций (эталон ставит их на t = 0).",
+  "screen": "sponsors",
+  "themes": [
+    "hlsr"
+  ],
+  "languages": [
+    "ru"
+  ],
+  "prefs": {
+    "configTourSeen": true
+  },
+  "https": {
+    "https://avatars.steamstatic.com/0000000000000000000000000000000000000001_full.jpg": "../assets/avatar.png"
+  },
+  "settleMs": 1500,
+  "invoke": {
+    "runner-sync": null,
+    "runner-speedrun-bests": null,
+    "friends-avatars": {}
+  },
+  "steps": [
+    {
+      "click": {
+        "css": ".sponsors__btn",
+        "view": "sponsors-btn"
+      }
+    },
+    {
+      "wait": 600
+    },
+    {
+      "move": [
+        800,
+        880
+      ]
+    }
+  ]
+}

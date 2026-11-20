@@ -1,0 +1,33 @@
+{
+  "id": "settings/downloads",
+  "base": "settings/_base",
+  "state": "«Загрузки»: папка установки и лимит скорости",
+  "steps": [
+    {
+      "click": {
+        "css": ".game-rail__footer .game-rail__tool",
+        "index": 4,
+        "view": "rail-settings"
+      }
+    },
+    {
+      "wait": 600
+    },
+    {
+      "click": {
+        "css": ".settings-modal__tab",
+        "index": 1,
+        "view": "settings-tabs-1"
+      }
+    },
+    {
+      "wait": 600
+    },
+    {
+      "move": [
+        800,
+        880
+      ]
+    }
+  ]
+}

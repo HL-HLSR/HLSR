@@ -1,0 +1,12 @@
+{
+  "id": "shell/egg-pony",
+  "screen": "shell",
+  "state": "Три щелчка по логотипу: пони снизу посередине, достижение back-to-past (двойной щелчок внутри тройного перекрашивает логотип случайным цветом)",
+  "themes": ["hlsr"],
+  "languages": ["ru"],
+  "prefs": {"configTourSeen": true},
+  "rails": ["closed", "open"],
+  "steps": [
+    {"click": {"css": ".launcher-topbar__logo-mark", "view": "topbar-logo"}, "count": 3}
+  ]
+}

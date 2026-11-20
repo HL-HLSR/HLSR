@@ -1,0 +1,24 @@
+{
+  "id": "header/notif-error",
+  "screen": "header",
+  "state": "Ошибки и предупреждение 0.4.9 (PRESERVE_FAILED, RENDER_ACTIVE, прокси), наведение на первый пункт",
+  "themes": ["hlsr"],
+  "languages": ["ru"],
+  "prefs": {"configTourSeen": true},
+  "invoke": {
+    "notifications-list": {
+      "items": [
+        {"id": 3, "code": "PRESERVE_FAILED", "level": "error", "read": false, "ts": 1794915600000, "count": 1,
+         "detail": "EBUSY: resource busy or locked", "meta": {}},
+        {"id": 2, "code": "RENDER_ACTIVE", "level": "warning", "read": false, "ts": 1794915000000, "count": 1, "detail": null, "meta": {}},
+        {"id": 1, "code": "MANIFEST_UNAVAILABLE", "level": "error", "read": true, "ts": 1794852300000, "count": 2,
+         "detail": "net::ERR_TUNNEL_CONNECTION_FAILED", "meta": {}}
+      ],
+      "unread": 2
+    }
+  },
+  "steps": [
+    {"click": {"css": ".notif__btn", "view": "notif-bell"}},
+    {"hover": {"css": ".notif__item:nth-child(1)", "view": "notif-item-3"}}
+  ]
+}

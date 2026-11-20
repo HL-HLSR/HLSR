@@ -1,0 +1,26 @@
+{
+  "id": "demo/export-loading",
+  "state": "Окно экспорта: проверка кодировщиков (demo-options ещё не ответил)",
+  "base": "demo/_base",
+  "steps": [
+    {"click": {"css": ".game-rail .rail-item[aria-label=\"Демо\"]", "view": "rail-demo"}},
+    {"click": {"css": ".dmp__list .dmp__group:nth-child(2) .dmp__item:nth-of-type(1)", "view": "dmp-item-gh-run"}},
+    {"click": {"css": ".dmp__head-btn", "view": "dmp-export"}},
+    {"wait": 600}
+  ],
+  "invoke": {
+    "demo-options": {"$pending": true},
+    "demo-settings-get": {"status": "ok", "outputDir": "C:\\Users\\Runner\\Videos\\HLSR",
+      "preview": {"keyhud": true, "hud": true, "ownConfig": true, "ownHud": false}},
+    "demo-estimate": {"status": "ok", "threshold": 60, "items": [{"seconds": 95}, {"seconds": 130}]},
+    "demo-export-start": {"status": "ok", "jobId": "e1"},
+    "demo-cancel": {"status": "ok", "cancelled": true},
+    "demo-output-pick": {"status": "cancelled"},
+    "demo-reveal": {"status": "ok"},
+    "demo-plan": {"status": "ok", "plan": {"preset": "quality", "width": 1920, "height": 1080, "fps": 60,
+      "speed": 1, "range": {"from": 0, "to": 144.46}, "audio": true, "keyhud": true, "encoder": "h264_nvenc",
+      "outputDuration": 144.46, "warnings": [], "mode": "quality", "videoBps": null, "audioBps": 160000,
+      "twoPass": false, "limitBytes": null, "estimatedBytes": 157286400},
+      "render": {"ok": true, "code": null}}
+  }
+}

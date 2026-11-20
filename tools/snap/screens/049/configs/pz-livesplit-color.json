@@ -1,0 +1,43 @@
+{
+  "id": "configs/pz-livesplit-color",
+  "state": "Ghosting: оверлей LiveSplit (G10) — маска «Цвет»: цвет ключа, «Фон LiveSplit» (без снимка — недоступна), сходство и сглаживание; окно LiveSplit не найдено",
+  "base": "configs/_pz",
+  "invoke": {
+    "livesplit-overlay-capture": {
+      "status": "no-window"
+    }
+  },
+  "steps": [
+    {
+      "click": {
+        "css": ".launcher-topbar__tab:nth-child(3)",
+        "view": "topbar-tab-configs"
+      }
+    },
+    {
+      "click": {
+        "css": "#gx-tab-livesplit",
+        "view": "gx-tab-livesplit"
+      }
+    },
+    {
+      "wheel": {
+        "css": ".lso .gx-fields",
+        "view": "lso-fields"
+      },
+      "deltaY": 6000
+    },
+    {
+      "click": {
+        "css": ".lso-seg__item:nth-child(2)",
+        "view": "lso-key-color"
+      }
+    },
+    {
+      "move": [
+        800,
+        880
+      ]
+    }
+  ]
+}

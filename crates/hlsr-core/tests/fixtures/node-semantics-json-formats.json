@@ -1,0 +1,93 @@
+{
+  "texts": [
+    {"text":"{}","compact":"{}","pretty2":"{}","jsonlLine":"{}\n"},
+    {"text":"[]","compact":"[]","pretty2":"[]","jsonlLine":"[]\n"},
+    {"text":"null","compact":"null","pretty2":"null","jsonlLine":"null\n"},
+    {"text":"true","compact":"true","pretty2":"true","jsonlLine":"true\n"},
+    {"text":"0","compact":"0","pretty2":"0","jsonlLine":"0\n"},
+    {"text":"-0","compact":"0","pretty2":"0","jsonlLine":"0\n"},
+    {"text":"1.5","compact":"1.5","pretty2":"1.5","jsonlLine":"1.5\n"},
+    {"text":"\"текст\"","compact":"\"текст\"","pretty2":"\"текст\"","jsonlLine":"\"текст\"\n"},
+    {"text":"\"a\\u2028b\\n\\t\\\"\\\\\\u0001\\u007f\"","compact":"\"a b\\n\\t\\\"\\\\\\u0001\"","pretty2":"\"a b\\n\\t\\\"\\\\\\u0001\"","jsonlLine":"\"a b\\n\\t\\\"\\\\\\u0001\"\n"},
+    {"text":"{\"a\":1}","compact":"{\"a\":1}","pretty2":"{\n  \"a\": 1\n}","jsonlLine":"{\"a\":1}\n"},
+    {"text":"{\"a\":[1,2,{\"b\":null}],\"c\":\"d\"}","compact":"{\"a\":[1,2,{\"b\":null}],\"c\":\"d\"}","pretty2":"{\n  \"a\": [\n    1,\n    2,\n    {\n      \"b\": null\n    }\n  ],\n  \"c\": \"d\"\n}","jsonlLine":"{\"a\":[1,2,{\"b\":null}],\"c\":\"d\"}\n"},
+    {"text":"[1.0,1.50,-0,1e21,1e-7,0.1,123456789012345680000,1e400,-1e400,5e-324]","compact":"[1,1.5,0,1e+21,1e-7,0.1,123456789012345680000,null,null,5e-324]","pretty2":"[\n  1,\n  1.5,\n  0,\n  1e+21,\n  1e-7,\n  0.1,\n  123456789012345680000,\n  null,\n  null,\n  5e-324\n]","jsonlLine":"[1,1.5,0,1e+21,1e-7,0.1,123456789012345680000,null,null,5e-324]\n"},
+    {
+      "text": "{\"b\":1,\"2\":\"x\",\"a\":2,\"1\":\"y\",\"-1\":0,\"01\":0,\"4294967295\":0,\"4294967294\":0}",
+      "compact": "{\"1\":\"y\",\"2\":\"x\",\"4294967294\":0,\"b\":1,\"a\":2,\"-1\":0,\"01\":0,\"4294967295\":0}",
+      "pretty2": "{\n  \"1\": \"y\",\n  \"2\": \"x\",\n  \"4294967294\": 0,\n  \"b\": 1,\n  \"a\": 2,\n  \"-1\": 0,\n  \"01\": 0,\n  \"4294967295\": 0\n}",
+      "jsonlLine": "{\"1\":\"y\",\"2\":\"x\",\"4294967294\":0,\"b\":1,\"a\":2,\"-1\":0,\"01\":0,\"4294967295\":0}\n"
+    },
+    {"text":"{\"nested\":{\"deep\":{\"deeper\":[]}},\"e\":{}}","compact":"{\"nested\":{\"deep\":{\"deeper\":[]}},\"e\":{}}","pretty2":"{\n  \"nested\": {\n    \"deep\": {\n      \"deeper\": []\n    }\n  },\n  \"e\": {}\n}","jsonlLine":"{\"nested\":{\"deep\":{\"deeper\":[]}},\"e\":{}}\n"},
+    {"text":"[[],[[]],{}]","compact":"[[],[[]],{}]","pretty2":"[\n  [],\n  [\n    []\n  ],\n  {}\n]","jsonlLine":"[[],[[]],{}]\n"},
+    {"text":"{\"emoji\":\"😀\",\"cyr\":\"привет\"}","compact":"{\"emoji\":\"😀\",\"cyr\":\"привет\"}","pretty2":"{\n  \"emoji\": \"😀\",\n  \"cyr\": \"привет\"\n}","jsonlLine":"{\"emoji\":\"😀\",\"cyr\":\"привет\"}\n"},
+    {
+      "text": "{\"schemaVersion\":1,\"enabled\":true,\"source\":\"user\",\"updatedAt\":\"2026-10-16T12:00:00.000Z\"}",
+      "compact": "{\"schemaVersion\":1,\"enabled\":true,\"source\":\"user\",\"updatedAt\":\"2026-10-16T12:00:00.000Z\"}",
+      "pretty2": "{\n  \"schemaVersion\": 1,\n  \"enabled\": true,\n  \"source\": \"user\",\n  \"updatedAt\": \"2026-10-16T12:00:00.000Z\"\n}",
+      "jsonlLine": "{\"schemaVersion\":1,\"enabled\":true,\"source\":\"user\",\"updatedAt\":\"2026-10-16T12:00:00.000Z\"}\n"
+    },
+    {"text":"[\"full-set\",\"a\",\"b\"]","compact":"[\"full-set\",\"a\",\"b\"]","pretty2":"[\n  \"full-set\",\n  \"a\",\n  \"b\"\n]","jsonlLine":"[\"full-set\",\"a\",\"b\"]\n"},
+    {"text":"{\"version\":1,\"plain\":{\"token\":\"x\",\"profile\":{\"id\":1}}}","compact":"{\"version\":1,\"plain\":{\"token\":\"x\",\"profile\":{\"id\":1}}}","pretty2":"{\n  \"version\": 1,\n  \"plain\": {\n    \"token\": \"x\",\n    \"profile\": {\n      \"id\": 1\n    }\n  }\n}","jsonlLine":"{\"version\":1,\"plain\":{\"token\":\"x\",\"profile\":{\"id\":1}}}\n"},
+    {"text":"{\"seen\":{\"CODE:1.0\":1760000000000},\"receipt\":null,\"schemaVersion\":1}","compact":"{\"seen\":{\"CODE:1.0\":1760000000000},\"receipt\":null,\"schemaVersion\":1}","pretty2":"{\n  \"seen\": {\n    \"CODE:1.0\": 1760000000000\n  },\n  \"receipt\": null,\n  \"schemaVersion\": 1\n}","jsonlLine":"{\"seen\":{\"CODE:1.0\":1760000000000},\"receipt\":null,\"schemaVersion\":1}\n"}
+  ],
+  "scenarios": [
+    {
+      "name": "Pretty2: каталоги создаются, содержимое без перевода строки",
+      "setup": [],
+      "steps": [{"op":"pretty2","file":"a/b/telemetry.json","value":{"schemaVersion":1,"enabled":true,"source":"user","updatedAt":"2026-10-16T12:00:00.000Z"}},{"op":"pretty2","file":"x.json","value":[]}],
+      "results": [{"ok":null},{"ok":null}],
+      "files": {"a":"dir","a/b":"dir","a/b/telemetry.json":{"latin1":"{\n  \"schemaVersion\": 1,\n  \"enabled\": true,\n  \"source\": \"user\",\n  \"updatedAt\": \"2026-10-16T12:00:00.000Z\"\n}","mode":"default"},"x.json":{"latin1":"[]","mode":"default"}}
+    },
+    {
+      "name": "Pretty2: короткое поверх длинного",
+      "setup": [
+        {
+          "file": "telemetry.json",
+          "utf8": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+        }
+      ],
+      "steps": [{"op":"pretty2","file":"telemetry.json","value":{"enabled":false}}],
+      "results": [{"ok":null}],
+      "files": {"telemetry.json":{"latin1":"{\n  \"enabled\": false\n}","mode":"default"}}
+    },
+    {"name":"Pretty2: на месте файла каталог","setup":[{"dir":"telemetry.json"}],"steps":[{"op":"pretty2","file":"telemetry.json","value":{"schemaVersion":1,"enabled":true,"source":"user","updatedAt":"2026-10-16T12:00:00.000Z"}}],"results":[{"error":{"code":"EISDIR","message":"EISDIR: illegal operation on a directory, open '<root>/telemetry.json'"}}],"files":{"telemetry.json":"dir"}},
+    {
+      "name": "Pretty2: предок — файл",
+      "setup": [{"file":"a","utf8":"x"}],
+      "steps": [{"op":"pretty2","file":"a/b/c.json","value":{"schemaVersion":1,"enabled":true,"source":"user","updatedAt":"2026-10-16T12:00:00.000Z"}},{"op":"pretty2","file":"a/c.json","value":{"schemaVersion":1,"enabled":true,"source":"user","updatedAt":"2026-10-16T12:00:00.000Z"}}],
+      "results": [{"error":{"code":"ENOTDIR","message":"ENOTDIR: not a directory, mkdir '<root>/a/b'"}},{"error":{"code":"EEXIST","message":"EEXIST: file already exists, mkdir '<root>/a'"}}],
+      "files": {"a":{"latin1":"x","mode":"default"}}
+    },
+    {"name":"Compact: через .tmp, права по умолчанию","setup":[],"steps":[{"op":"compactTmp","file":"d/state.json","value":{"last":"2026-10-16","streak":3}},{"op":"compactTmp","file":"d/state.json","value":{"last":"2026-10-17","streak":4}}],"results":[{"ok":null},{"ok":null}],"files":{"d":"dir","d/state.json":{"latin1":"{\"last\":\"2026-10-17\",\"streak\":4}","mode":"default"}}},
+    {
+      "name": "Compact: личные права 0600, остаток .tmp убирается и не убирается",
+      "setup": [{"file":"stale.json.tmp","utf8":"остаток"},{"file":"keep.json.tmp","utf8":"остаток"}],
+      "steps": [{"op":"compactTmp","file":"new.json","value":{"version":1,"plain":{"token":"x"}},"private":true,"clearStale":true},{"op":"compactTmp","file":"stale.json","value":[1,2],"private":true,"clearStale":true},{"op":"compactTmp","file":"keep.json","value":[1,2],"private":true,"clearStale":false}],
+      "results": [{"ok":null},{"ok":null},{"ok":null}],
+      "files": {"keep.json":{"latin1":"[1,2]","mode":"default"},"new.json":{"latin1":"{\"version\":1,\"plain\":{\"token\":\"x\"}}","mode":384},"stale.json":{"latin1":"[1,2]","mode":384}}
+    },
+    {
+      "name": "Compact: на месте файла непустой каталог — сбой переименования, .tmp остаётся",
+      "setup": [{"file":"x.json/inner.txt","utf8":"1"}],
+      "steps": [{"op":"compactTmp","file":"x.json","value":{"a":1}}],
+      "results": [{"error":{"code":"EISDIR","message":"EISDIR: illegal operation on a directory, rename '<root>/x.json.tmp' -> '<root>/x.json'"}}],
+      "files": {"x.json":"dir","x.json.tmp":{"latin1":"{\"a\":1}","mode":"default"},"x.json/inner.txt":{"latin1":"1","mode":"default"}}
+    },
+    {"name":"Compact: на месте .tmp каталог","setup":[{"dir":"x.json.tmp"}],"steps":[{"op":"compactTmp","file":"x.json","value":{"a":1},"private":true}],"results":[{"error":{"code":"EISDIR","message":"EISDIR: illegal operation on a directory, open '<root>/x.json.tmp'"}}],"files":{"x.json.tmp":"dir"}},
+    {"name":"JSONL: дописывание","setup":[],"steps":[{"op":"appendJsonl","file":"q/queue.jsonl","value":{"type":"a","n":1}},{"op":"appendJsonl","file":"q/queue.jsonl","value":{"type":"б","n":[1,2]}}],"results":[{"ok":null},{"ok":null}],"files":{"q":"dir","q/queue.jsonl":{"latin1":"{\"type\":\"a\",\"n\":1}\n{\"type\":\"Ð±\",\"n\":[1,2]}\n","mode":"default"}}},
+    {"name":"JSONL: дописывание в каталог","setup":[{"dir":"queue.jsonl"}],"steps":[{"op":"appendJsonl","file":"queue.jsonl","value":{"a":1}}],"results":[{"error":{"code":"EISDIR","message":"EISDIR: illegal operation on a directory, open '<root>/queue.jsonl'"}}],"files":{"queue.jsonl":"dir"}},
+    {"name":"JSONL: перезапись 1 строк","setup":[{"file":"queue.jsonl","utf8":"{\"old\":1}\n"}],"steps":[{"op":"rewriteJsonl","file":"queue.jsonl","lines":["{\"a\":1}"]}],"results":[{"ok":null}],"files":{"queue.jsonl":{"latin1":"{\"a\":1}\n","mode":"default"}}},
+    {"name":"JSONL: перезапись 3 строк","setup":[{"file":"queue.jsonl","utf8":"{\"old\":1}\n"}],"steps":[{"op":"rewriteJsonl","file":"queue.jsonl","lines":["{\"a\":1}","{\"b\":[2,3]}","{\"c\":\"текст\"}"]}],"results":[{"ok":null}],"files":{"queue.jsonl":{"latin1":"{\"a\":1}\n{\"b\":[2,3]}\n{\"c\":\"ÑÐµÐºÑÑ\"}\n","mode":"default"}}},
+    {"name":"JSONL: перезапись 0 строк","setup":[{"file":"queue.jsonl","utf8":"{\"old\":1}\n"}],"steps":[{"op":"rewriteJsonl","file":"queue.jsonl","lines":[]}],"results":[{"ok":null}],"files":{"queue.jsonl":{"latin1":"","mode":"default"}}},
+    {"name":"JSONL: перезапись, где файла не было","setup":[],"steps":[{"op":"rewriteJsonl","file":"new.jsonl","lines":["{\"a\":1}"]}],"results":[{"ok":null}],"files":{"new.jsonl":{"latin1":"{\"a\":1}\n","mode":"default"}}},
+    {
+      "name": "JSONL: перезапись поверх каталога — временный файл убирается",
+      "setup": [{"file":"queue.jsonl/inner.txt","utf8":"1"}],
+      "steps": [{"op":"rewriteJsonl","file":"queue.jsonl","lines":["{\"a\":1}"]}],
+      "results": [{"error":{"code":"EISDIR","message":"EISDIR: illegal operation on a directory, rename '<root>/queue.jsonl.<pid>.tmp' -> '<root>/queue.jsonl'"}}],
+      "files": {"queue.jsonl":"dir","queue.jsonl/inner.txt":{"latin1":"1","mode":"default"}}
+    },
+    {"name":"JSONL: перезапись, предок — файл","setup":[{"file":"q","utf8":"x"}],"steps":[{"op":"rewriteJsonl","file":"q/queue.jsonl","lines":["{\"a\":1}"]}],"results":[{"error":{"code":"ENOTDIR","message":"ENOTDIR: not a directory, open '<root>/q/queue.jsonl.<pid>.tmp'"}}],"files":{"q":{"latin1":"x","mode":"default"}}}
+  ]
+}

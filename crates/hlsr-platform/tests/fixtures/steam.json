@@ -1,0 +1,1422 @@
+[
+  {
+    "name": "locate: SteamPath and SteamExe with forward slashes",
+    "world": {
+      "name": "locate: SteamPath and SteamExe with forward slashes",
+      "platform": "win32",
+      "tree": {"C:\\Program Files (x86)\\Steam\\steam.exe":""},
+      "registry": [{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},{"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"}],
+      "ops": [{"op":"locate"},{"op":"steam-only"}]
+    },
+    "results": [{"op":"locate","ok":{"installPath":"c:\\program files (x86)\\steam","steamExe":"c:\\program files (x86)\\steam\\steam.exe"}},{"op":"steam-only","ok":{"ok":false,"code":"STEAM_NOT_RUNNING","message":"Steam не запущен (в реестре нет активного процесса)"}}]
+  },
+  {
+    "name": "locate: SteamPath only",
+    "world": {"name":"locate: SteamPath only","platform":"win32","tree":{"C:\\Program Files (x86)\\Steam\\steam.exe":""},"registry":[{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"}],"ops":[{"op":"locate"},{"op":"steam-only"}]},
+    "results": [{"op":"locate","ok":{"installPath":"c:\\program files (x86)\\steam","steamExe":"c:\\program files (x86)\\steam\\steam.exe"}},{"op":"steam-only","ok":{"ok":false,"code":"STEAM_NOT_RUNNING","message":"Steam не запущен (в реестре нет активного процесса)"}}]
+  },
+  {
+    "name": "locate: SteamExe only",
+    "world": {"name":"locate: SteamExe only","platform":"win32","tree":{"C:\\Program Files (x86)\\Steam\\steam.exe":""},"registry":[{"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"}],"ops":[{"op":"locate"},{"op":"steam-only"}]},
+    "results": [{"op":"locate","ok":{"installPath":"c:\\program files (x86)\\steam","steamExe":"c:\\program files (x86)\\steam\\steam.exe"}},{"op":"steam-only","ok":{"ok":false,"code":"STEAM_NOT_RUNNING","message":"Steam не запущен (в реестре нет активного процесса)"}}]
+  },
+  {
+    "name": "locate: SteamExe elsewhere than SteamPath",
+    "world": {"name":"locate: SteamExe elsewhere than SteamPath","platform":"win32","tree":{"D:\\Other\\steam.exe":""},"registry":[{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},{"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"D:\\Other\\steam.exe"}],"ops":[{"op":"locate"},{"op":"steam-only"}]},
+    "results": [{"op":"locate","ok":{"installPath":"c:\\program files (x86)\\steam","steamExe":"D:\\Other\\steam.exe"}},{"op":"steam-only","ok":{"ok":false,"code":"STEAM_NOT_RUNNING","message":"Steam не запущен (в реестре нет активного процесса)"}}]
+  },
+  {
+    "name": "locate: nothing in the registry",
+    "world": {"name":"locate: nothing in the registry","platform":"win32","tree":{"C:\\Program Files (x86)\\Steam\\steam.exe":""},"registry":[],"ops":[{"op":"locate"},{"op":"steam-only"}]},
+    "results": [{"op":"locate","error":{"code":"STEAM_NOT_INSTALLED","message":"Steam не найден в реестре текущего пользователя","details":null}},{"op":"steam-only","ok":{"ok":false,"code":"STEAM_NOT_INSTALLED","message":"Steam не найден в реестре текущего пользователя"}}]
+  },
+  {
+    "name": "locate: steam.exe is missing",
+    "world": {"name":"locate: steam.exe is missing","platform":"win32","tree":{},"registry":[{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},{"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"}],"ops":[{"op":"locate"},{"op":"steam-only"}]},
+    "results": [{"op":"locate","error":{"code":"STEAM_NOT_INSTALLED","message":"Файл Steam не найден: c:\\program files (x86)\\steam\\steam.exe","details":null}},{"op":"steam-only","ok":{"ok":false,"code":"STEAM_NOT_INSTALLED","message":"Файл Steam не найден: c:\\program files (x86)\\steam\\steam.exe"}}]
+  },
+  {
+    "name": "locate: empty strings",
+    "world": {"name":"locate: empty strings","platform":"win32","tree":{},"registry":[{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":""},{"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":""}],"ops":[{"op":"locate"},{"op":"steam-only"}]},
+    "results": [{"op":"locate","error":{"code":"STEAM_NOT_INSTALLED","message":"Steam не найден в реестре текущего пользователя","details":null}},{"op":"steam-only","ok":{"ok":false,"code":"STEAM_NOT_INSTALLED","message":"Steam не найден в реестре текущего пользователя"}}]
+  },
+  {
+    "name": "locate: only a space around",
+    "world": {"name":"locate: only a space around","platform":"win32","tree":{"C:\\Program Files (x86)\\Steam\\steam.exe":""},"registry":[{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"  c:/program files (x86)/steam  "}],"ops":[{"op":"locate"},{"op":"steam-only"}]},
+    "results": [{"op":"locate","ok":{"installPath":"c:\\program files (x86)\\steam","steamExe":"c:\\program files (x86)\\steam\\steam.exe"}},{"op":"steam-only","ok":{"ok":false,"code":"STEAM_NOT_RUNNING","message":"Steam не запущен (в реестре нет активного процесса)"}}]
+  },
+  {
+    "name": "locate: REG_EXPAND_SZ is not expanded",
+    "world": {"name":"locate: REG_EXPAND_SZ is not expanded","platform":"win32","tree":{},"registry":[{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_EXPAND_SZ","data":"%ProgramFiles(x86)%\\Steam"}],"ops":[{"op":"locate"},{"op":"steam-only"}]},
+    "results": [{"op":"locate","error":{"code":"STEAM_NOT_INSTALLED","message":"Файл Steam не найден: %ProgramFiles(x86)%\\Steam\\steam.exe","details":null}},{"op":"steam-only","ok":{"ok":false,"code":"STEAM_NOT_INSTALLED","message":"Файл Steam не найден: %ProgramFiles(x86)%\\Steam\\steam.exe"}}]
+  },
+  {
+    "name": "locate: REG_DWORD where a path is expected",
+    "world": {"name":"locate: REG_DWORD where a path is expected","platform":"win32","tree":{},"registry":[{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_DWORD","data":5}],"ops":[{"op":"locate"},{"op":"steam-only"}]},
+    "results": [{"op":"locate","error":{"code":"STEAM_NOT_INSTALLED","message":"Файл Steam не найден: 5\\steam.exe","details":null}},{"op":"steam-only","ok":{"ok":false,"code":"STEAM_NOT_INSTALLED","message":"Файл Steam не найден: 5\\steam.exe"}}]
+  },
+  {
+    "name": "locate: Cyrillic path",
+    "world": {"name":"locate: Cyrillic path","platform":"win32","tree":{"C:\\Игры\\Steam\\steam.exe":""},"registry":[{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"C:\\Игры\\Steam"}],"ops":[{"op":"locate"},{"op":"steam-only"}]},
+    "results": [{"op":"locate","ok":{"installPath":"C:\\Игры\\Steam","steamExe":"C:\\Игры\\Steam\\steam.exe"}},{"op":"steam-only","ok":{"ok":false,"code":"STEAM_NOT_RUNNING","message":"Steam не запущен (в реестре нет активного процесса)"}}]
+  },
+  {
+    "name": "locate: path with dots and double separators",
+    "world": {"name":"locate: path with dots and double separators","platform":"win32","tree":{"C:\\Program Files (x86)\\Steam\\steam.exe":""},"registry":[{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"C:\\Program Files (x86)\\\\Steam\\.\\x\\.."}],"ops":[{"op":"locate"},{"op":"steam-only"}]},
+    "results": [{"op":"locate","ok":{"installPath":"C:\\Program Files (x86)\\Steam","steamExe":"C:\\Program Files (x86)\\Steam\\steam.exe"}},{"op":"steam-only","ok":{"ok":false,"code":"STEAM_NOT_RUNNING","message":"Steam не запущен (в реестре нет активного процесса)"}}]
+  },
+  {
+    "name": "locate: registry names ignore case",
+    "world": {"name":"locate: registry names ignore case","platform":"win32","tree":{"C:\\Program Files (x86)\\Steam\\steam.exe":""},"registry":[{"key":"Software\\Valve\\Steam","name":"STEAMPATH","type":"REG_SZ","data":"c:/program files (x86)/steam"}],"ops":[{"op":"locate"},{"op":"steam-only"}]},
+    "results": [{"op":"locate","ok":{"installPath":"c:\\program files (x86)\\steam","steamExe":"c:\\program files (x86)\\steam\\steam.exe"}},{"op":"steam-only","ok":{"ok":false,"code":"STEAM_NOT_RUNNING","message":"Steam не запущен (в реестре нет активного процесса)"}}]
+  },
+  {
+    "name": "locate: the first answer is remembered",
+    "world": {
+      "name": "locate: the first answer is remembered",
+      "platform": "win32",
+      "tree": {"C:\\Program Files (x86)\\Steam\\steam.exe":"","D:\\Other\\steam.exe":""},
+      "registry": [{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},{"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"}],
+      "ops": [{"op":"locate"},{"op":"registry","entries":[{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"D:\\Other"}]},{"op":"locate"}]
+    },
+    "results": [{"op":"locate","ok":{"installPath":"c:\\program files (x86)\\steam","steamExe":"c:\\program files (x86)\\steam\\steam.exe"}},{"op":"registry"},{"op":"locate","ok":{"installPath":"c:\\program files (x86)\\steam","steamExe":"c:\\program files (x86)\\steam\\steam.exe"}}]
+  },
+  {
+    "name": "locate: a miss is not remembered",
+    "world": {
+      "name": "locate: a miss is not remembered",
+      "platform": "win32",
+      "tree": {},
+      "registry": [],
+      "ops": [{"op":"locate"},{"op":"registry","entries":[{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},{"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"}]},{"op":"set-file","path":"C:\\Program Files (x86)\\Steam\\steam.exe","text":""},{"op":"locate"}]
+    },
+    "results": [{"op":"locate","error":{"code":"STEAM_NOT_INSTALLED","message":"Steam не найден в реестре текущего пользователя","details":null}},{"op":"registry"},{"op":"set-file"},{"op":"locate","ok":{"installPath":"c:\\program files (x86)\\steam","steamExe":"c:\\program files (x86)\\steam\\steam.exe"}}]
+  },
+  {
+    "name": "locate: not on Windows",
+    "world": {
+      "name": "locate: not on Windows",
+      "platform": "win32",
+      "locatorPlatform": "linux",
+      "tree": {"C:\\Program Files (x86)\\Steam\\steam.exe":""},
+      "registry": [{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},{"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"}],
+      "ops": [{"op":"locate"},{"op":"steam-only"},{"op":"availability"}]
+    },
+    "results": [{"op":"locate","error":{"code":"STEAM_NOT_INSTALLED","message":"Запуск через Steam поддерживается только в Windows","details":null}},{"op":"steam-only","ok":{"ok":false,"code":"STEAM_NOT_INSTALLED","message":"Запуск через Steam поддерживается только в Windows"}},{"op":"availability","ok":{"ok":false,"code":"STEAM_NOT_INSTALLED","message":"Запуск через Steam поддерживается только в Windows"}}]
+  },
+  {
+    "name": "running: the process from the registry is Steam",
+    "world": {
+      "name": "running: the process from the registry is Steam",
+      "platform": "win32",
+      "tree": {"C:\\Program Files (x86)\\Steam\\steam.exe":""},
+      "registry": [{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},{"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"},{"key":"Software\\Valve\\Steam\\ActiveProcess","name":"pid","type":"REG_DWORD","data":7440}],
+      "alive": [7440],
+      "inspect": {"7440":{"pid":7440,"executablePath":"C:\\Program Files (x86)\\Steam\\steam.exe","name":"steam.exe","startedAt":"2026-10-16T12:00:00.000Z","source":"winapi"}},
+      "ops": [{"op":"running"},{"op":"inspect","map":{"7440":null}},{"op":"running"},{"op":"steam-only"},{"op":"availability"}]
+    },
+    "results": [
+      {"op":"running","ok":{"pid":7440,"executablePath":"C:\\Program Files (x86)\\Steam\\steam.exe","startedAt":"2026-10-16T12:00:00.000Z","source":"registry"}},
+      {"op":"inspect"},
+      {"op":"running","ok":{"pid":7440,"executablePath":"C:\\Program Files (x86)\\Steam\\steam.exe","startedAt":"2026-10-16T12:00:00.000Z","source":"registry"}},
+      {"op":"steam-only","ok":{"ok":true,"code":null,"steam":{"installPath":"c:\\program files (x86)\\steam","steamExe":"c:\\program files (x86)\\steam\\steam.exe","pid":7440,"source":"registry"},"app":null}},
+      {"op":"availability","ok":{"ok":false,"code":"SOURCE_SDK_NOT_INSTALLED","message":"Приложение Steam 243730 не установлено ни в одной библиотеке"}}
+    ]
+  },
+  {
+    "name": "running: path differs only in case",
+    "world": {
+      "name": "running: path differs only in case",
+      "platform": "win32",
+      "tree": {"C:\\Program Files (x86)\\Steam\\steam.exe":""},
+      "registry": [{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},{"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"},{"key":"Software\\Valve\\Steam\\ActiveProcess","name":"pid","type":"REG_DWORD","data":7440}],
+      "alive": [7440],
+      "inspect": {"7440":{"pid":7440,"executablePath":"c:\\PROGRAM FILES (x86)\\steam\\STEAM.EXE","name":"steam.exe","startedAt":"2026-10-16T12:00:00.000Z","source":"winapi"}},
+      "ops": [{"op":"running"}]
+    },
+    "results": [{"op":"running","ok":{"pid":7440,"executablePath":"c:\\PROGRAM FILES (x86)\\steam\\STEAM.EXE","startedAt":"2026-10-16T12:00:00.000Z","source":"registry"}}]
+  },
+  {
+    "name": "running: only the image name is known (tasklist): accepted by name",
+    "world": {
+      "name": "running: only the image name is known (tasklist): accepted by name",
+      "platform": "win32",
+      "tree": {"C:\\Program Files (x86)\\Steam\\steam.exe":""},
+      "registry": [{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},{"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"},{"key":"Software\\Valve\\Steam\\ActiveProcess","name":"pid","type":"REG_DWORD","data":7440}],
+      "alive": [7440],
+      "failure": "winapi: Доступ запрещён",
+      "inspect": {"7440":{"pid":7440,"executablePath":null,"name":"steam.exe","startedAt":null,"source":"tasklist"}},
+      "ops": [{"op":"running"},{"op":"inspect","map":{}},{"op":"running"}]
+    },
+    "results": [
+      {"op":"running","ok":{"pid":7440,"executablePath":"c:\\program files (x86)\\steam\\steam.exe","startedAt":null,"source":"registry-name"},"logs":[{"level":"warn","message":"[steam] путь процесса 7440 недоступен (winapi: Доступ запрещён); принимаю Steam по имени образа"}]},
+      {"op":"inspect"},
+      {"op":"running","ok":{"pid":7440,"executablePath":"c:\\program files (x86)\\steam\\steam.exe","startedAt":null,"source":"registry-name"}}
+    ]
+  },
+  {
+    "name": "running: only the image name is known and no failure text",
+    "world": {
+      "name": "running: only the image name is known and no failure text",
+      "platform": "win32",
+      "tree": {"C:\\Program Files (x86)\\Steam\\steam.exe":""},
+      "registry": [{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},{"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"},{"key":"Software\\Valve\\Steam\\ActiveProcess","name":"pid","type":"REG_DWORD","data":7440}],
+      "alive": [7440],
+      "inspect": {"7440":{"pid":7440,"executablePath":null,"name":"STEAM.EXE","startedAt":null,"source":"tasklist"}},
+      "ops": [{"op":"running"}]
+    },
+    "results": [{"op":"running","ok":{"pid":7440,"executablePath":"c:\\program files (x86)\\steam\\steam.exe","startedAt":null,"source":"registry-name"},"logs":[{"level":"warn","message":"[steam] путь процесса 7440 недоступен (нет данных); принимаю Steam по имени образа"}]}]
+  },
+  {
+    "name": "running: a foreign process under the registry PID",
+    "world": {
+      "name": "running: a foreign process under the registry PID",
+      "platform": "win32",
+      "tree": {"C:\\Program Files (x86)\\Steam\\steam.exe":""},
+      "registry": [{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},{"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"},{"key":"Software\\Valve\\Steam\\ActiveProcess","name":"pid","type":"REG_DWORD","data":7440}],
+      "alive": [7440],
+      "failure": "winapi: WMI недоступен",
+      "inspect": {"7440":{"pid":7440,"executablePath":null,"name":"chrome.exe","startedAt":null,"source":"tasklist"}},
+      "ops": [{"op":"running"},{"op":"steam-only"}]
+    },
+    "results": [{"op":"running","error":{"code":"STEAM_NOT_RUNNING","message":"Steam не запущен (процесс 7440 из реестра не удалось опознать: winapi: WMI недоступен)","details":null}},{"op":"steam-only","ok":{"ok":false,"code":"STEAM_NOT_RUNNING","message":"Steam не запущен (процесс 7440 из реестра не удалось опознать: winapi: WMI недоступен)"}}]
+  },
+  {
+    "name": "running: tasklist sees steam.exe without a path: not Steam with other rights",
+    "world": {
+      "name": "running: tasklist sees steam.exe without a path: not Steam with other rights",
+      "platform": "win32",
+      "tree": {"C:\\Program Files (x86)\\Steam\\steam.exe":""},
+      "registry": [{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},{"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"},{"key":"Software\\Valve\\Steam\\ActiveProcess","name":"pid","type":"REG_DWORD","data":7440}],
+      "alive": [7440],
+      "failure": "winapi: WMI недоступен",
+      "inspect": {"7440":{"pid":7440,"executablePath":null,"name":"chrome.exe","startedAt":null,"source":"tasklist"}},
+      "find": {"steam.exe":[{"pid":812,"executablePath":null,"name":"steam.exe","startedAt":null,"source":"tasklist"}]},
+      "ops": [{"op":"running"}]
+    },
+    "results": [{"op":"running","error":{"code":"STEAM_NOT_RUNNING","message":"Steam не запущен (процесс 7440 из реестра не удалось опознать: winapi: WMI недоступен)","details":null}}]
+  },
+  {
+    "name": "running: the path of the process is not the path of Steam",
+    "world": {
+      "name": "running: the path of the process is not the path of Steam",
+      "platform": "win32",
+      "tree": {"C:\\Program Files (x86)\\Steam\\steam.exe":""},
+      "registry": [{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},{"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"},{"key":"Software\\Valve\\Steam\\ActiveProcess","name":"pid","type":"REG_DWORD","data":7440}],
+      "alive": [7440],
+      "inspect": {"7440":{"pid":7440,"executablePath":"D:\\Other\\steam.exe","name":"steam.exe","startedAt":"2026-10-16T12:00:00.000Z","source":"winapi"}},
+      "ops": [{"op":"running"}]
+    },
+    "results": [{"op":"running","error":{"code":"STEAM_NOT_RUNNING","message":"Steam не запущен (процесс 7440 из реестра — не Steam: D:\\Other\\steam.exe)","details":null}}]
+  },
+  {
+    "name": "running: the process could not be identified",
+    "world": {
+      "name": "running: the process could not be identified",
+      "platform": "win32",
+      "tree": {"C:\\Program Files (x86)\\Steam\\steam.exe":""},
+      "registry": [{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},{"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"},{"key":"Software\\Valve\\Steam\\ActiveProcess","name":"pid","type":"REG_DWORD","data":7440}],
+      "alive": [7440],
+      "inspect": {"7440":null},
+      "failure": "winapi: OpenProcess(7440): код ошибки 5",
+      "ops": [{"op":"running"}]
+    },
+    "results": [{"op":"running","error":{"code":"STEAM_NOT_RUNNING","message":"Steam не запущен (процесс 7440 из реестра не удалось опознать: winapi: OpenProcess(7440): код ошибки 5)","details":null}}]
+  },
+  {
+    "name": "running: the process from the registry is dead",
+    "world": {
+      "name": "running: the process from the registry is dead",
+      "platform": "win32",
+      "tree": {"C:\\Program Files (x86)\\Steam\\steam.exe":""},
+      "registry": [{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},{"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"},{"key":"Software\\Valve\\Steam\\ActiveProcess","name":"pid","type":"REG_DWORD","data":7440}],
+      "alive": [],
+      "ops": [{"op":"running"}]
+    },
+    "results": [{"op":"running","error":{"code":"STEAM_NOT_RUNNING","message":"Steam не запущен (процесс 7440 из реестра мёртв)","details":null}}]
+  },
+  {
+    "name": "running: dead PID, Steam found by path",
+    "world": {
+      "name": "running: dead PID, Steam found by path",
+      "platform": "win32",
+      "tree": {"C:\\Program Files (x86)\\Steam\\steam.exe":""},
+      "registry": [{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},{"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"},{"key":"Software\\Valve\\Steam\\ActiveProcess","name":"pid","type":"REG_DWORD","data":7440}],
+      "alive": [812],
+      "find": {"steam.exe":[{"pid":812,"executablePath":"C:\\Program Files (x86)\\Steam\\steam.exe","name":"steam.exe","startedAt":"2026-10-16T12:00:00.000Z","source":"winapi"}]},
+      "ops": [{"op":"running"},{"op":"steam-only"}]
+    },
+    "results": [
+      {"op":"running","ok":{"pid":812,"executablePath":"C:\\Program Files (x86)\\Steam\\steam.exe","startedAt":"2026-10-16T12:00:00.000Z","source":"scan"},"logs":[{"level":"warn","message":"[steam] процесс 7440 из реестра мёртв; нашёл работающий Steam по пути: PID 812"}]},
+      {"op":"steam-only","ok":{"ok":true,"code":null,"steam":{"installPath":"c:\\program files (x86)\\steam","steamExe":"c:\\program files (x86)\\steam\\steam.exe","pid":812,"source":"scan"},"app":null},"logs":[{"level":"warn","message":"[steam] процесс 7440 из реестра мёртв; нашёл работающий Steam по пути: PID 812"}]}
+    ]
+  },
+  {
+    "name": "running: dead PID, only other steam.exe processes",
+    "world": {
+      "name": "running: dead PID, only other steam.exe processes",
+      "platform": "win32",
+      "tree": {"C:\\Program Files (x86)\\Steam\\steam.exe":""},
+      "registry": [{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},{"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"},{"key":"Software\\Valve\\Steam\\ActiveProcess","name":"pid","type":"REG_DWORD","data":7440}],
+      "alive": [],
+      "find": {"steam.exe":[{"pid":812,"executablePath":"D:\\Other\\steam.exe","name":"steam.exe","startedAt":"2026-10-16T12:00:00.000Z","source":"winapi"}]},
+      "ops": [{"op":"running"}]
+    },
+    "results": [{"op":"running","error":{"code":"STEAM_NOT_RUNNING","message":"Steam не запущен (процесс 7440 из реестра мёртв)","details":null}}]
+  },
+  {
+    "name": "running: elevated Steam: processes without a path",
+    "world": {
+      "name": "running: elevated Steam: processes without a path",
+      "platform": "win32",
+      "tree": {"C:\\Program Files (x86)\\Steam\\steam.exe":""},
+      "registry": [{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},{"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"},{"key":"Software\\Valve\\Steam\\ActiveProcess","name":"pid","type":"REG_DWORD","data":7440}],
+      "alive": [7440],
+      "inspect": {"7440":{"pid":7440,"executablePath":null,"name":"steam.exe","startedAt":null,"source":"winapi"}},
+      "find": {"steam.exe":[{"pid":7440,"executablePath":null,"name":"steam.exe","startedAt":null,"source":"winapi"},{"pid":7441,"executablePath":null,"name":"steam.exe","startedAt":null,"source":"winapi"},{"pid":7442,"executablePath":null,"name":"steam.exe","startedAt":null,"source":"tasklist"}]},
+      "ops": [{"op":"running"},{"op":"steam-only"},{"op":"refresh"}]
+    },
+    "results": [
+      {"op":"running","error":{"code":"STEAM_ELEVATED","message":"Steam запущен с другими правами: процесс 7440 из реестра не удалось опознать, процессов steam.exe без доступа к пути: 2","details":null}},
+      {"op":"steam-only","ok":{"ok":false,"code":"STEAM_ELEVATED","message":"Steam запущен с другими правами: процесс 7440 из реестра не удалось опознать, процессов steam.exe без доступа к пути: 2"}},
+      {"op":"refresh","ok":"elevated"}
+    ]
+  },
+  {
+    "name": "running: no active process in the registry",
+    "world": {
+      "name": "running: no active process in the registry",
+      "platform": "win32",
+      "tree": {"C:\\Program Files (x86)\\Steam\\steam.exe":""},
+      "registry": [{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},{"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"}],
+      "find": {},
+      "ops": [{"op":"running"},{"op":"find","map":{"steam.exe":[{"pid":900,"executablePath":"C:\\Program Files (x86)\\Steam\\steam.exe","name":"steam.exe","startedAt":"2026-10-16T12:00:00.000Z","source":"winapi"}]}},{"op":"running"}]
+    },
+    "results": [{"op":"running","error":{"code":"STEAM_NOT_RUNNING","message":"Steam не запущен (в реестре нет активного процесса)","details":null}},{"op":"find"},{"op":"running","error":{"code":"STEAM_NOT_RUNNING","message":"Steam не запущен (в реестре нет активного процесса)","details":null}}]
+  },
+  {
+    "name": "running: PID in the registry is a string",
+    "world": {
+      "name": "running: PID in the registry is a string",
+      "platform": "win32",
+      "tree": {"C:\\Program Files (x86)\\Steam\\steam.exe":""},
+      "registry": [{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},{"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"},{"key":"Software\\Valve\\Steam\\ActiveProcess","name":"pid","type":"REG_SZ","data":"7440"}],
+      "alive": [7440],
+      "inspect": {"7440":{"pid":7440,"executablePath":"C:\\Program Files (x86)\\Steam\\steam.exe","name":"steam.exe","startedAt":"2026-10-16T12:00:00.000Z","source":"winapi"}},
+      "ops": [{"op":"running"}]
+    },
+    "results": [{"op":"running","error":{"code":"STEAM_NOT_RUNNING","message":"Steam не запущен (в реестре нет активного процесса)","details":null}}]
+  },
+  {
+    "name": "running: PID in the registry is zero",
+    "world": {
+      "name": "running: PID in the registry is zero",
+      "platform": "win32",
+      "tree": {"C:\\Program Files (x86)\\Steam\\steam.exe":""},
+      "registry": [{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},{"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"},{"key":"Software\\Valve\\Steam\\ActiveProcess","name":"pid","type":"REG_DWORD","data":0}],
+      "alive": [0],
+      "ops": [{"op":"running"}]
+    },
+    "results": [{"op":"running","error":{"code":"STEAM_NOT_RUNNING","message":"Steam не запущен (в реестре нет активного процесса)","details":null}}]
+  },
+  {
+    "name": "running: a miss is remembered for 8 seconds",
+    "world": {
+      "name": "running: a miss is remembered for 8 seconds",
+      "platform": "win32",
+      "tree": {"C:\\Program Files (x86)\\Steam\\steam.exe":""},
+      "registry": [{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},{"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"},{"key":"Software\\Valve\\Steam\\ActiveProcess","name":"pid","type":"REG_DWORD","data":7440}],
+      "alive": [],
+      "find": {},
+      "ops": [{"op":"running"},{"op":"find","map":{"steam.exe":[{"pid":812,"executablePath":"C:\\Program Files (x86)\\Steam\\steam.exe","name":"steam.exe","startedAt":"2026-10-16T12:00:00.000Z","source":"winapi"}]}},{"op":"running"},{"op":"clock","ms":1792152007999},{"op":"running"},{"op":"clock","ms":1792152008000},{"op":"running"}]
+    },
+    "results": [
+      {"op":"running","error":{"code":"STEAM_NOT_RUNNING","message":"Steam не запущен (процесс 7440 из реестра мёртв)","details":null}},
+      {"op":"find"},
+      {"op":"running","error":{"code":"STEAM_NOT_RUNNING","message":"Steam не запущен (процесс 7440 из реестра мёртв)","details":null}},
+      {"op":"clock"},
+      {"op":"running","error":{"code":"STEAM_NOT_RUNNING","message":"Steam не запущен (процесс 7440 из реестра мёртв)","details":null}},
+      {"op":"clock"},
+      {"op":"running","ok":{"pid":812,"executablePath":"C:\\Program Files (x86)\\Steam\\steam.exe","startedAt":"2026-10-16T12:00:00.000Z","source":"scan"},"logs":[{"level":"warn","message":"[steam] процесс 7440 из реестра мёртв; нашёл работающий Steam по пути: PID 812"}]}
+    ]
+  },
+  {
+    "name": "running: a miss is not reused for another registry PID or another Steam",
+    "world": {
+      "name": "running: a miss is not reused for another registry PID or another Steam",
+      "platform": "win32",
+      "tree": {"C:\\Program Files (x86)\\Steam\\steam.exe":""},
+      "registry": [{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},{"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"},{"key":"Software\\Valve\\Steam\\ActiveProcess","name":"pid","type":"REG_DWORD","data":7440}],
+      "alive": [],
+      "find": {},
+      "ops": [{"op":"running"},{"op":"registry","entries":[{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},{"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"},{"key":"Software\\Valve\\Steam\\ActiveProcess","name":"pid","type":"REG_DWORD","data":7441}]},{"op":"running"}]
+    },
+    "results": [{"op":"running","error":{"code":"STEAM_NOT_RUNNING","message":"Steam не запущен (процесс 7440 из реестра мёртв)","details":null}},{"op":"registry"},{"op":"running","error":{"code":"STEAM_NOT_RUNNING","message":"Steam не запущен (процесс 7441 из реестра мёртв)","details":null}}]
+  },
+  {
+    "name": "running: own miss time-to-live",
+    "world": {
+      "name": "running: own miss time-to-live",
+      "platform": "win32",
+      "tree": {"C:\\Program Files (x86)\\Steam\\steam.exe":""},
+      "registry": [{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},{"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"},{"key":"Software\\Valve\\Steam\\ActiveProcess","name":"pid","type":"REG_DWORD","data":7440}],
+      "missTtlMs": 100,
+      "alive": [],
+      "find": {},
+      "ops": [{"op":"running"},{"op":"clock","ms":1792152000099},{"op":"find","map":{"steam.exe":[{"pid":812,"executablePath":"C:\\Program Files (x86)\\Steam\\steam.exe","name":"steam.exe","startedAt":"2026-10-16T12:00:00.000Z","source":"winapi"}]}},{"op":"running"},{"op":"clock","ms":1792152000100},{"op":"running"}]
+    },
+    "results": [
+      {"op":"running","error":{"code":"STEAM_NOT_RUNNING","message":"Steam не запущен (процесс 7440 из реестра мёртв)","details":null}},
+      {"op":"clock"},
+      {"op":"find"},
+      {"op":"running","error":{"code":"STEAM_NOT_RUNNING","message":"Steam не запущен (процесс 7440 из реестра мёртв)","details":null}},
+      {"op":"clock"},
+      {"op":"running","ok":{"pid":812,"executablePath":"C:\\Program Files (x86)\\Steam\\steam.exe","startedAt":"2026-10-16T12:00:00.000Z","source":"scan"},"logs":[{"level":"warn","message":"[steam] процесс 7440 из реестра мёртв; нашёл работающий Steam по пути: PID 812"}]}
+    ]
+  },
+  {
+    "name": "running: a found process is remembered",
+    "world": {
+      "name": "running: a found process is remembered",
+      "platform": "win32",
+      "tree": {"C:\\Program Files (x86)\\Steam\\steam.exe":""},
+      "registry": [{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},{"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"},{"key":"Software\\Valve\\Steam\\ActiveProcess","name":"pid","type":"REG_DWORD","data":7440}],
+      "alive": [7440],
+      "inspect": {"7440":{"pid":7440,"executablePath":"C:\\Program Files (x86)\\Steam\\steam.exe","name":"steam.exe","startedAt":"2026-10-16T12:00:00.000Z","source":"winapi"}},
+      "ops": [{"op":"running"},{"op":"alive","pids":[]},{"op":"running"}]
+    },
+    "results": [{"op":"running","ok":{"pid":7440,"executablePath":"C:\\Program Files (x86)\\Steam\\steam.exe","startedAt":"2026-10-16T12:00:00.000Z","source":"registry"}},{"op":"alive"},{"op":"running","error":{"code":"STEAM_NOT_RUNNING","message":"Steam не запущен (процесс 7440 из реестра мёртв)","details":null}}]
+  },
+  {
+    "name": "apps: libraries from libraryfolders.vdf: paths are resolved, duplicates by case dropped",
+    "world": {
+      "name": "apps: libraries from libraryfolders.vdf: paths are resolved, duplicates by case dropped",
+      "platform": "win32",
+      "registry": [{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},{"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"}],
+      "tree": {
+        "C:\\Program Files (x86)\\Steam\\steam.exe": "",
+        "C:\\Program Files (x86)\\Steam\\steamapps\\libraryfolders.vdf": "\"libraryfolders\"\r\n{\r\n\t\"0\"\r\n\t{\r\n\t\t\"path\"\t\t\"C:\\\\Program Files (x86)\\\\Steam\"\r\n\t\t\"label\"\t\t\"\"\r\n\t}\r\n\t\"1\"\r\n\t{\r\n\t\t\"path\"\t\t\"D:\\\\SteamLibrary\"\r\n\t}\r\n\t\"2\"\r\n\t{\r\n\t\t\"path\"\t\t\"d:\\\\steamlibrary\\\\\"\r\n\t}\r\n\t\"3\"\r\n\t{\r\n\t\t\"path\"\t\t\"E:\\\\Игры\\\\Steam\"\r\n\t}\r\n}\r\n"
+      },
+      "ops": [{"op":"libraries"}]
+    },
+    "results": [{"op":"libraries","ok":["c:\\program files (x86)\\steam","D:\\SteamLibrary","E:\\Игры\\Steam"]}]
+  },
+  {
+    "name": "apps: old libraryfolders.vdf format",
+    "world": {
+      "name": "apps: old libraryfolders.vdf format",
+      "platform": "win32",
+      "registry": [{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},{"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"}],
+      "tree": {"C:\\Program Files (x86)\\Steam\\steam.exe":"","C:\\Program Files (x86)\\Steam\\steamapps\\libraryfolders.vdf":"\"LibraryFolders\"\n{\n\t\"TimeNextStatsReport\"\t\"1500000000\"\n\t\"1\"\t\"D:\\\\Games\\\\Steam\"\n\t\"2\"\t\"E:\\\\Steam Library\"\n}\n"},
+      "ops": [{"op":"libraries"}]
+    },
+    "results": [{"op":"libraries","ok":["c:\\program files (x86)\\steam","D:\\Games\\Steam","E:\\Steam Library"]}]
+  },
+  {
+    "name": "apps: keys of libraryfolders.vdf: only digits, numeric order",
+    "world": {
+      "name": "apps: keys of libraryfolders.vdf: only digits, numeric order",
+      "platform": "win32",
+      "registry": [{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},{"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"}],
+      "tree": {"C:\\Program Files (x86)\\Steam\\steam.exe":"","C:\\Program Files (x86)\\Steam\\steamapps\\libraryfolders.vdf":"\"libraryfolders\" { \"10\" { \"path\" \"J:\\\\ten\" } \"x\" { \"path\" \"X:\\\\letter\" } \"2\" { \"path\" \"B:\\\\two\" } \"07\" \"G:\\\\seven\" \"3\" { \"label\" \"no path\" } }"},
+      "ops": [{"op":"libraries"}]
+    },
+    "results": [{"op":"libraries","ok":["c:\\program files (x86)\\steam","B:\\two","J:\\ten","G:\\seven"]}]
+  },
+  {
+    "name": "apps: no libraryfolders.vdf",
+    "world": {"name":"apps: no libraryfolders.vdf","platform":"win32","registry":[{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},{"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"}],"tree":{"C:\\Program Files (x86)\\Steam\\steam.exe":""},"ops":[{"op":"libraries"}]},
+    "results": [{"op":"libraries","ok":["c:\\program files (x86)\\steam"]}]
+  },
+  {
+    "name": "apps: broken libraryfolders.vdf is only logged",
+    "world": {
+      "name": "apps: broken libraryfolders.vdf is only logged",
+      "platform": "win32",
+      "registry": [{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},{"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"}],
+      "tree": {"C:\\Program Files (x86)\\Steam\\steam.exe":"","C:\\Program Files (x86)\\Steam\\steamapps\\libraryfolders.vdf":"\"libraryfolders\" {"},
+      "ops": [{"op":"libraries"}]
+    },
+    "results": [{"op":"libraries","ok":["c:\\program files (x86)\\steam"],"logs":[{"level":"warn","message":"[steam-locator] libraryfolders.vdf не разобран: VDF, строка ?: неожиданный конец файла: не хватает }"}]}]
+  },
+  {
+    "name": "apps: libraryfolders.vdf without the libraryfolders section",
+    "world": {
+      "name": "apps: libraryfolders.vdf without the libraryfolders section",
+      "platform": "win32",
+      "registry": [{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},{"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"}],
+      "tree": {"C:\\Program Files (x86)\\Steam\\steam.exe":"","C:\\Program Files (x86)\\Steam\\steamapps\\libraryfolders.vdf":"\"other\" { \"0\" { \"path\" \"D:\\\\x\" } }"},
+      "ops": [{"op":"libraries"}]
+    },
+    "results": [{"op":"libraries","ok":["c:\\program files (x86)\\steam"]}]
+  },
+  {
+    "name": "apps: libraryfolders.vdf section name ignores case",
+    "world": {
+      "name": "apps: libraryfolders.vdf section name ignores case",
+      "platform": "win32",
+      "registry": [{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},{"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"}],
+      "tree": {"C:\\Program Files (x86)\\Steam\\steam.exe":"","C:\\Program Files (x86)\\Steam\\steamapps\\libraryfolders.vdf":"\"LIBRARYFOLDERS\" { \"0\" { \"PATH\" \"D:\\\\SteamLibrary\" } }"},
+      "ops": [{"op":"libraries"}]
+    },
+    "results": [{"op":"libraries","ok":["c:\\program files (x86)\\steam","D:\\SteamLibrary"]}]
+  },
+  {
+    "name": "apps: Source SDK Base in the Steam folder",
+    "world": {
+      "name": "apps: Source SDK Base in the Steam folder",
+      "platform": "win32",
+      "registry": [{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},{"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"}],
+      "tree": {
+        "C:\\Program Files (x86)\\Steam\\steam.exe": "",
+        "C:\\Program Files (x86)\\Steam\\steamapps\\appmanifest_243730.acf": "\"AppState\"\r\n{\r\n\t\"appid\"\t\t\"243730\"\r\n\t\"name\"\t\t\"Source SDK Base 2013 Multiplayer\"\r\n\t\"StateFlags\"\t\t\"4\"\r\n\t\"installdir\"\t\t\"Source SDK Base 2013 Multiplayer\"\r\n}\r\n",
+        "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Source SDK Base 2013 Multiplayer\\hl2.exe": "",
+        "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Source SDK Base 2013 Multiplayer\\hl2": {"dir":true},
+        "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Source SDK Base 2013 Multiplayer\\bin": {"dir":true},
+        "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Source SDK Base 2013 Multiplayer\\platform": {"dir":true}
+      },
+      "ops": [{"op":"find-app","appId":243730},{"op":"sdk","appId":243730}]
+    },
+    "results": [{"op":"find-app","ok":{"appId":243730,"library":"c:\\program files (x86)\\steam","manifestPath":"c:\\program files (x86)\\steam\\steamapps\\appmanifest_243730.acf","installdir":"Source SDK Base 2013 Multiplayer","appPath":"c:\\program files (x86)\\steam\\steamapps\\common\\Source SDK Base 2013 Multiplayer","stateFlags":4,"name":"Source SDK Base 2013 Multiplayer"}},{"op":"sdk","ok":true}]
+  },
+  {
+    "name": "apps: Source SDK Base in a second library",
+    "world": {
+      "name": "apps: Source SDK Base in a second library",
+      "platform": "win32",
+      "registry": [{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},{"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"}],
+      "tree": {
+        "C:\\Program Files (x86)\\Steam\\steam.exe": "",
+        "C:\\Program Files (x86)\\Steam\\steamapps\\libraryfolders.vdf": "\"libraryfolders\"\r\n{\r\n\t\"0\"\r\n\t{\r\n\t\t\"path\"\t\t\"C:\\\\Program Files (x86)\\\\Steam\"\r\n\t\t\"label\"\t\t\"\"\r\n\t}\r\n\t\"1\"\r\n\t{\r\n\t\t\"path\"\t\t\"D:\\\\SteamLibrary\"\r\n\t}\r\n\t\"2\"\r\n\t{\r\n\t\t\"path\"\t\t\"d:\\\\steamlibrary\\\\\"\r\n\t}\r\n\t\"3\"\r\n\t{\r\n\t\t\"path\"\t\t\"E:\\\\Игры\\\\Steam\"\r\n\t}\r\n}\r\n",
+        "D:\\SteamLibrary\\steamapps\\appmanifest_243730.acf": "\"AppState\"\r\n{\r\n\t\"appid\"\t\t\"243730\"\r\n\t\"name\"\t\t\"Source SDK Base 2013 Multiplayer\"\r\n\t\"StateFlags\"\t\t\"4\"\r\n\t\"installdir\"\t\t\"Source SDK Base 2013 Multiplayer\"\r\n}\r\n",
+        "D:\\SteamLibrary\\steamapps\\common\\Source SDK Base 2013 Multiplayer\\hl2.exe": "",
+        "D:\\SteamLibrary\\steamapps\\common\\Source SDK Base 2013 Multiplayer\\hl2": {"dir":true},
+        "D:\\SteamLibrary\\steamapps\\common\\Source SDK Base 2013 Multiplayer\\bin": {"dir":true},
+        "D:\\SteamLibrary\\steamapps\\common\\Source SDK Base 2013 Multiplayer\\platform": {"dir":true}
+      },
+      "ops": [{"op":"find-app","appId":243730},{"op":"sdk","appId":243730}]
+    },
+    "results": [{"op":"find-app","ok":{"appId":243730,"library":"D:\\SteamLibrary","manifestPath":"D:\\SteamLibrary\\steamapps\\appmanifest_243730.acf","installdir":"Source SDK Base 2013 Multiplayer","appPath":"D:\\SteamLibrary\\steamapps\\common\\Source SDK Base 2013 Multiplayer","stateFlags":4,"name":"Source SDK Base 2013 Multiplayer"}},{"op":"sdk","ok":true}]
+  },
+  {
+    "name": "apps: Source SDK Base nowhere",
+    "world": {
+      "name": "apps: Source SDK Base nowhere",
+      "platform": "win32",
+      "registry": [{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},{"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"}],
+      "tree": {
+        "C:\\Program Files (x86)\\Steam\\steam.exe": "",
+        "C:\\Program Files (x86)\\Steam\\steamapps\\libraryfolders.vdf": "\"libraryfolders\"\r\n{\r\n\t\"0\"\r\n\t{\r\n\t\t\"path\"\t\t\"C:\\\\Program Files (x86)\\\\Steam\"\r\n\t\t\"label\"\t\t\"\"\r\n\t}\r\n\t\"1\"\r\n\t{\r\n\t\t\"path\"\t\t\"D:\\\\SteamLibrary\"\r\n\t}\r\n\t\"2\"\r\n\t{\r\n\t\t\"path\"\t\t\"d:\\\\steamlibrary\\\\\"\r\n\t}\r\n\t\"3\"\r\n\t{\r\n\t\t\"path\"\t\t\"E:\\\\Игры\\\\Steam\"\r\n\t}\r\n}\r\n"
+      },
+      "ops": [{"op":"find-app","appId":243730}]
+    },
+    "results": [{"op":"find-app","error":{"code":"SOURCE_SDK_NOT_INSTALLED","message":"Приложение Steam 243730 не установлено ни в одной библиотеке","details":{"appId":243730,"libraries":["c:\\program files (x86)\\steam","D:\\SteamLibrary","E:\\Игры\\Steam"]}}}]
+  },
+  {
+    "name": "apps: app manifest declares another AppID",
+    "world": {
+      "name": "apps: app manifest declares another AppID",
+      "platform": "win32",
+      "registry": [{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},{"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"}],
+      "tree": {"C:\\Program Files (x86)\\Steam\\steam.exe":"","C:\\Program Files (x86)\\Steam\\steamapps\\appmanifest_243730.acf":"\"AppState\"\r\n{\r\n\t\"appid\"\t\t\"220\"\r\n\t\"name\"\t\t\"Source SDK Base 2013 Multiplayer\"\r\n\t\"StateFlags\"\t\t\"4\"\r\n\t\"installdir\"\t\t\"Source SDK Base 2013 Multiplayer\"\r\n}\r\n"},
+      "ops": [{"op":"find-app","appId":243730}]
+    },
+    "results": [{"op":"find-app","error":{"code":"STEAM_APP_ID_MISMATCH","message":"appmanifest_243730.acf объявляет AppID 220","details":{"manifestPath":"c:\\program files (x86)\\steam\\steamapps\\appmanifest_243730.acf","expected":243730,"actual":220}}}]
+  },
+  {
+    "name": "apps: app manifest without appid",
+    "world": {
+      "name": "apps: app manifest without appid",
+      "platform": "win32",
+      "registry": [{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},{"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"}],
+      "tree": {"C:\\Program Files (x86)\\Steam\\steam.exe":"","C:\\Program Files (x86)\\Steam\\steamapps\\appmanifest_243730.acf":"\"AppState\" { \"installdir\" \"x\" }"},
+      "ops": [{"op":"find-app","appId":243730}]
+    },
+    "results": [{"op":"find-app","error":{"code":"STEAM_APP_ID_MISMATCH","message":"appmanifest_243730.acf объявляет AppID NaN","details":{"manifestPath":"c:\\program files (x86)\\steam\\steamapps\\appmanifest_243730.acf","expected":243730,"actual":null}}}]
+  },
+  {
+    "name": "apps: app manifest appid with spaces and a plus sign",
+    "world": {
+      "name": "apps: app manifest appid with spaces and a plus sign",
+      "platform": "win32",
+      "registry": [{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},{"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"}],
+      "tree": {"C:\\Program Files (x86)\\Steam\\steam.exe":"","C:\\Program Files (x86)\\Steam\\steamapps\\appmanifest_243730.acf":"\"AppState\" { \"appid\" \" 243730 \" \"installdir\" \"x\" }","C:\\Program Files (x86)\\Steam\\steamapps\\common\\x":{"dir":true}},
+      "ops": [{"op":"find-app","appId":243730}]
+    },
+    "results": [{"op":"find-app","ok":{"appId":243730,"library":"c:\\program files (x86)\\steam","manifestPath":"c:\\program files (x86)\\steam\\steamapps\\appmanifest_243730.acf","installdir":"x","appPath":"c:\\program files (x86)\\steam\\steamapps\\common\\x","stateFlags":null,"name":null}}]
+  },
+  {
+    "name": "apps: app manifest installdir with a separator or dots",
+    "world": {
+      "name": "apps: app manifest installdir with a separator or dots",
+      "platform": "win32",
+      "registry": [{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},{"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"}],
+      "tree": {
+        "C:\\Program Files (x86)\\Steam\\steam.exe": "",
+        "C:\\Program Files (x86)\\Steam\\steamapps\\appmanifest_243730.acf": "\"AppState\"\r\n{\r\n\t\"appid\"\t\t\"243730\"\r\n\t\"name\"\t\t\"Source SDK Base 2013 Multiplayer\"\r\n\t\"StateFlags\"\t\t\"4\"\r\n\t\"installdir\"\t\t\"..\\evil\"\r\n}\r\n",
+        "C:\\Program Files (x86)\\Steam\\steamapps\\appmanifest_220.acf": "\"AppState\"\r\n{\r\n\t\"appid\"\t\t\"220\"\r\n\t\"name\"\t\t\"Source SDK Base 2013 Multiplayer\"\r\n\t\"StateFlags\"\t\t\"4\"\r\n\t\"installdir\"\t\t\"a/b\"\r\n}\r\n",
+        "C:\\Program Files (x86)\\Steam\\steamapps\\appmanifest_70.acf": "\"AppState\"\r\n{\r\n\t\"appid\"\t\t\"70\"\r\n\t\"name\"\t\t\"Source SDK Base 2013 Multiplayer\"\r\n\t\"StateFlags\"\t\t\"4\"\r\n\t\"installdir\"\t\t\"a..b\"\r\n}\r\n",
+        "C:\\Program Files (x86)\\Steam\\steamapps\\appmanifest_50.acf": "\"AppState\" { \"appid\" \"50\" }"
+      },
+      "ops": [{"op":"find-app","appId":243730},{"op":"find-app","appId":220},{"op":"find-app","appId":70},{"op":"find-app","appId":50}]
+    },
+    "results": [
+      {"op":"find-app","error":{"code":"SOURCE_SDK_INCOMPLETE","message":"Недопустимый installdir в appmanifest: ..\\evil","details":{"manifestPath":"c:\\program files (x86)\\steam\\steamapps\\appmanifest_243730.acf"}}},
+      {"op":"find-app","error":{"code":"SOURCE_SDK_INCOMPLETE","message":"Недопустимый installdir в appmanifest: a/b","details":{"manifestPath":"c:\\program files (x86)\\steam\\steamapps\\appmanifest_220.acf"}}},
+      {"op":"find-app","error":{"code":"SOURCE_SDK_INCOMPLETE","message":"Недопустимый installdir в appmanifest: a..b","details":{"manifestPath":"c:\\program files (x86)\\steam\\steamapps\\appmanifest_70.acf"}}},
+      {"op":"find-app","error":{"code":"SOURCE_SDK_INCOMPLETE","message":"Недопустимый installdir в appmanifest: undefined","details":{"manifestPath":"c:\\program files (x86)\\steam\\steamapps\\appmanifest_50.acf"}}}
+    ]
+  },
+  {
+    "name": "apps: app folder of the manifest is missing",
+    "world": {
+      "name": "apps: app folder of the manifest is missing",
+      "platform": "win32",
+      "registry": [{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},{"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"}],
+      "tree": {"C:\\Program Files (x86)\\Steam\\steam.exe":"","C:\\Program Files (x86)\\Steam\\steamapps\\appmanifest_243730.acf":"\"AppState\"\r\n{\r\n\t\"appid\"\t\t\"243730\"\r\n\t\"name\"\t\t\"Source SDK Base 2013 Multiplayer\"\r\n\t\"StateFlags\"\t\t\"4\"\r\n\t\"installdir\"\t\t\"Source SDK Base 2013 Multiplayer\"\r\n}\r\n"},
+      "ops": [{"op":"find-app","appId":243730},{"op":"sdk","appId":243730}]
+    },
+    "results": [
+      {"op":"find-app","error":{"code":"SOURCE_SDK_INCOMPLETE","message":"Каталог приложения из appmanifest не найден: c:\\program files (x86)\\steam\\steamapps\\common\\Source SDK Base 2013 Multiplayer","details":{"manifestPath":"c:\\program files (x86)\\steam\\steamapps\\appmanifest_243730.acf","appPath":"c:\\program files (x86)\\steam\\steamapps\\common\\Source SDK Base 2013 Multiplayer"}}},
+      {"op":"sdk","error":{"code":"SOURCE_SDK_INCOMPLETE","message":"Каталог приложения из appmanifest не найден: c:\\program files (x86)\\steam\\steamapps\\common\\Source SDK Base 2013 Multiplayer","details":{"manifestPath":"c:\\program files (x86)\\steam\\steamapps\\appmanifest_243730.acf","appPath":"c:\\program files (x86)\\steam\\steamapps\\common\\Source SDK Base 2013 Multiplayer"}}}
+    ]
+  },
+  {
+    "name": "apps: app manifest is damaged",
+    "world": {
+      "name": "apps: app manifest is damaged",
+      "platform": "win32",
+      "registry": [{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},{"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"}],
+      "tree": {"C:\\Program Files (x86)\\Steam\\steam.exe":"","C:\\Program Files (x86)\\Steam\\steamapps\\appmanifest_243730.acf":"\"AppState\" {"},
+      "ops": [{"op":"find-app","appId":243730}]
+    },
+    "results": [{"op":"find-app","error":{"code":"SOURCE_SDK_INCOMPLETE","message":"appmanifest повреждён: VDF, строка ?: неожиданный конец файла: не хватает }","details":{"manifestPath":"c:\\program files (x86)\\steam\\steamapps\\appmanifest_243730.acf"}}}]
+  },
+  {
+    "name": "apps: app manifest without AppState",
+    "world": {
+      "name": "apps: app manifest without AppState",
+      "platform": "win32",
+      "registry": [{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},{"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"}],
+      "tree": {"C:\\Program Files (x86)\\Steam\\steam.exe":"","C:\\Program Files (x86)\\Steam\\steamapps\\appmanifest_243730.acf":"\"Other\" { \"appid\" \"243730\" }"},
+      "ops": [{"op":"find-app","appId":243730}]
+    },
+    "results": [{"op":"find-app","error":{"code":"SOURCE_SDK_INCOMPLETE","message":"appmanifest повреждён: нет секции AppState","details":{"manifestPath":"c:\\program files (x86)\\steam\\steamapps\\appmanifest_243730.acf"}}}]
+  },
+  {
+    "name": "apps: damaged manifest in the first library, good one in the second",
+    "world": {
+      "name": "apps: damaged manifest in the first library, good one in the second",
+      "platform": "win32",
+      "registry": [{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},{"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"}],
+      "tree": {
+        "C:\\Program Files (x86)\\Steam\\steam.exe": "",
+        "C:\\Program Files (x86)\\Steam\\steamapps\\libraryfolders.vdf": "\"libraryfolders\"\r\n{\r\n\t\"0\"\r\n\t{\r\n\t\t\"path\"\t\t\"C:\\\\Program Files (x86)\\\\Steam\"\r\n\t\t\"label\"\t\t\"\"\r\n\t}\r\n\t\"1\"\r\n\t{\r\n\t\t\"path\"\t\t\"D:\\\\SteamLibrary\"\r\n\t}\r\n\t\"2\"\r\n\t{\r\n\t\t\"path\"\t\t\"d:\\\\steamlibrary\\\\\"\r\n\t}\r\n\t\"3\"\r\n\t{\r\n\t\t\"path\"\t\t\"E:\\\\Игры\\\\Steam\"\r\n\t}\r\n}\r\n",
+        "C:\\Program Files (x86)\\Steam\\steamapps\\appmanifest_243730.acf": "\"AppState\" {",
+        "D:\\SteamLibrary\\steamapps\\appmanifest_243730.acf": "\"AppState\"\r\n{\r\n\t\"appid\"\t\t\"243730\"\r\n\t\"name\"\t\t\"Source SDK Base 2013 Multiplayer\"\r\n\t\"StateFlags\"\t\t\"4\"\r\n\t\"installdir\"\t\t\"Source SDK Base 2013 Multiplayer\"\r\n}\r\n",
+        "D:\\SteamLibrary\\steamapps\\common\\Source SDK Base 2013 Multiplayer\\hl2.exe": "",
+        "D:\\SteamLibrary\\steamapps\\common\\Source SDK Base 2013 Multiplayer\\hl2": {"dir":true},
+        "D:\\SteamLibrary\\steamapps\\common\\Source SDK Base 2013 Multiplayer\\bin": {"dir":true},
+        "D:\\SteamLibrary\\steamapps\\common\\Source SDK Base 2013 Multiplayer\\platform": {"dir":true}
+      },
+      "ops": [{"op":"find-app","appId":243730}]
+    },
+    "results": [{"op":"find-app","ok":{"appId":243730,"library":"D:\\SteamLibrary","manifestPath":"D:\\SteamLibrary\\steamapps\\appmanifest_243730.acf","installdir":"Source SDK Base 2013 Multiplayer","appPath":"D:\\SteamLibrary\\steamapps\\common\\Source SDK Base 2013 Multiplayer","stateFlags":4,"name":"Source SDK Base 2013 Multiplayer"}}]
+  },
+  {
+    "name": "apps: StateFlags and name of the app",
+    "world": {
+      "name": "apps: StateFlags and name of the app",
+      "platform": "win32",
+      "registry": [{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},{"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"}],
+      "tree": {
+        "C:\\Program Files (x86)\\Steam\\steam.exe": "",
+        "C:\\Program Files (x86)\\Steam\\steamapps\\appmanifest_70.acf": "\"AppState\" { \"appid\" \"70\" \"installdir\" \"Half-Life\" \"StateFlags\" \"0\" \"name\" \"\" }",
+        "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Half-Life": {"dir":true},
+        "C:\\Program Files (x86)\\Steam\\steamapps\\appmanifest_220.acf": "\"AppState\" { \"appid\" \"220\" \"installdir\" \"Half-Life 2\" \"StateFlags\" \"1026\" \"name\" \"Half-Life 2\" }",
+        "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Half-Life 2": {"dir":true}
+      },
+      "ops": [{"op":"find-app","appId":70},{"op":"find-app","appId":220}]
+    },
+    "results": [
+      {"op":"find-app","ok":{"appId":70,"library":"c:\\program files (x86)\\steam","manifestPath":"c:\\program files (x86)\\steam\\steamapps\\appmanifest_70.acf","installdir":"Half-Life","appPath":"c:\\program files (x86)\\steam\\steamapps\\common\\Half-Life","stateFlags":null,"name":null}},
+      {"op":"find-app","ok":{"appId":220,"library":"c:\\program files (x86)\\steam","manifestPath":"c:\\program files (x86)\\steam\\steamapps\\appmanifest_220.acf","installdir":"Half-Life 2","appPath":"c:\\program files (x86)\\steam\\steamapps\\common\\Half-Life 2","stateFlags":1026,"name":"Half-Life 2"}}
+    ]
+  },
+  {
+    "name": "apps: Source SDK Base is incomplete",
+    "world": {
+      "name": "apps: Source SDK Base is incomplete",
+      "platform": "win32",
+      "registry": [{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},{"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"}],
+      "tree": {
+        "C:\\Program Files (x86)\\Steam\\steam.exe": "",
+        "C:\\Program Files (x86)\\Steam\\steamapps\\appmanifest_243730.acf": "\"AppState\"\r\n{\r\n\t\"appid\"\t\t\"243730\"\r\n\t\"name\"\t\t\"Source SDK Base 2013 Multiplayer\"\r\n\t\"StateFlags\"\t\t\"4\"\r\n\t\"installdir\"\t\t\"Source SDK Base 2013 Multiplayer\"\r\n}\r\n",
+        "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Source SDK Base 2013 Multiplayer\\bin": "not a directory",
+        "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Source SDK Base 2013 Multiplayer\\hl2": {"dir":true}
+      },
+      "ops": [{"op":"sdk","appId":243730}]
+    },
+    "results": [{"op":"sdk","error":{"code":"SOURCE_SDK_INCOMPLETE","message":"Установка Source SDK Base неполная: нет hl2.exe, bin\\, platform\\","details":{"appPath":"c:\\program files (x86)\\steam\\steamapps\\common\\Source SDK Base 2013 Multiplayer","missing":["hl2.exe","bin\\","platform\\"]}}}]
+  },
+  {
+    "name": "preflight: everything in place",
+    "world": {
+      "name": "preflight: everything in place",
+      "platform": "win32",
+      "registry": [{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},{"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"},{"key":"Software\\Valve\\Steam\\ActiveProcess","name":"pid","type":"REG_DWORD","data":7440}],
+      "alive": [7440],
+      "inspect": {"7440":{"pid":7440,"executablePath":"C:\\Program Files (x86)\\Steam\\steam.exe","name":"steam.exe","startedAt":"2026-10-16T12:00:00.000Z","source":"winapi"}},
+      "tree": {
+        "C:\\Program Files (x86)\\Steam\\steam.exe": "",
+        "C:\\Program Files (x86)\\Steam\\steamapps\\appmanifest_243730.acf": "\"AppState\"\r\n{\r\n\t\"appid\"\t\t\"243730\"\r\n\t\"name\"\t\t\"Source SDK Base 2013 Multiplayer\"\r\n\t\"StateFlags\"\t\t\"4\"\r\n\t\"installdir\"\t\t\"Source SDK Base 2013 Multiplayer\"\r\n}\r\n",
+        "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Source SDK Base 2013 Multiplayer\\hl2.exe": "",
+        "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Source SDK Base 2013 Multiplayer\\hl2": {"dir":true},
+        "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Source SDK Base 2013 Multiplayer\\bin": {"dir":true},
+        "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Source SDK Base 2013 Multiplayer\\platform": {"dir":true}
+      },
+      "ops": [{"op":"preflight"},{"op":"preflight","appId":243730},{"op":"availability"},{"op":"availability","appId":220},{"op":"steam-only"}]
+    },
+    "results": [
+      {
+        "op": "preflight",
+        "ok": {
+          "steam": {"installPath":"c:\\program files (x86)\\steam","steamExe":"c:\\program files (x86)\\steam\\steam.exe","pid":7440,"source":"registry"},
+          "app": {"appId":243730,"library":"c:\\program files (x86)\\steam","manifestPath":"c:\\program files (x86)\\steam\\steamapps\\appmanifest_243730.acf","installdir":"Source SDK Base 2013 Multiplayer","appPath":"c:\\program files (x86)\\steam\\steamapps\\common\\Source SDK Base 2013 Multiplayer"}
+        }
+      },
+      {
+        "op": "preflight",
+        "ok": {
+          "steam": {"installPath":"c:\\program files (x86)\\steam","steamExe":"c:\\program files (x86)\\steam\\steam.exe","pid":7440,"source":"registry"},
+          "app": {"appId":243730,"library":"c:\\program files (x86)\\steam","manifestPath":"c:\\program files (x86)\\steam\\steamapps\\appmanifest_243730.acf","installdir":"Source SDK Base 2013 Multiplayer","appPath":"c:\\program files (x86)\\steam\\steamapps\\common\\Source SDK Base 2013 Multiplayer"}
+        }
+      },
+      {
+        "op": "availability",
+        "ok": {
+          "ok": true,
+          "code": null,
+          "steam": {"installPath":"c:\\program files (x86)\\steam","steamExe":"c:\\program files (x86)\\steam\\steam.exe","pid":7440,"source":"registry"},
+          "app": {"appId":243730,"library":"c:\\program files (x86)\\steam","manifestPath":"c:\\program files (x86)\\steam\\steamapps\\appmanifest_243730.acf","installdir":"Source SDK Base 2013 Multiplayer","appPath":"c:\\program files (x86)\\steam\\steamapps\\common\\Source SDK Base 2013 Multiplayer"}
+        }
+      },
+      {"op":"availability","ok":{"ok":false,"code":"SOURCE_SDK_NOT_INSTALLED","message":"Приложение Steam 220 не установлено ни в одной библиотеке"}},
+      {"op":"steam-only","ok":{"ok":true,"code":null,"steam":{"installPath":"c:\\program files (x86)\\steam","steamExe":"c:\\program files (x86)\\steam\\steam.exe","pid":7440,"source":"registry"},"app":null}}
+    ]
+  },
+  {
+    "name": "preflight: Steam is not running",
+    "world": {
+      "name": "preflight: Steam is not running",
+      "platform": "win32",
+      "registry": [{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},{"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"},{"key":"Software\\Valve\\Steam\\ActiveProcess","name":"pid","type":"REG_DWORD","data":7440}],
+      "alive": [],
+      "inspect": {},
+      "tree": {
+        "C:\\Program Files (x86)\\Steam\\steam.exe": "",
+        "C:\\Program Files (x86)\\Steam\\steamapps\\appmanifest_243730.acf": "\"AppState\"\r\n{\r\n\t\"appid\"\t\t\"243730\"\r\n\t\"name\"\t\t\"Source SDK Base 2013 Multiplayer\"\r\n\t\"StateFlags\"\t\t\"4\"\r\n\t\"installdir\"\t\t\"Source SDK Base 2013 Multiplayer\"\r\n}\r\n",
+        "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Source SDK Base 2013 Multiplayer\\hl2.exe": "",
+        "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Source SDK Base 2013 Multiplayer\\hl2": {"dir":true},
+        "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Source SDK Base 2013 Multiplayer\\bin": {"dir":true},
+        "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Source SDK Base 2013 Multiplayer\\platform": {"dir":true}
+      },
+      "ops": [{"op":"preflight"},{"op":"availability"},{"op":"steam-only"}]
+    },
+    "results": [{"op":"preflight","error":{"code":"STEAM_NOT_RUNNING","message":"Steam не запущен (процесс 7440 из реестра мёртв)","details":null}},{"op":"availability","ok":{"ok":false,"code":"STEAM_NOT_RUNNING","message":"Steam не запущен (процесс 7440 из реестра мёртв)"}},{"op":"steam-only","ok":{"ok":false,"code":"STEAM_NOT_RUNNING","message":"Steam не запущен (процесс 7440 из реестра мёртв)"}}]
+  },
+  {
+    "name": "preflight: Source SDK Base is incomplete",
+    "world": {
+      "name": "preflight: Source SDK Base is incomplete",
+      "platform": "win32",
+      "registry": [{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},{"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"},{"key":"Software\\Valve\\Steam\\ActiveProcess","name":"pid","type":"REG_DWORD","data":7440}],
+      "alive": [7440],
+      "inspect": {"7440":{"pid":7440,"executablePath":"C:\\Program Files (x86)\\Steam\\steam.exe","name":"steam.exe","startedAt":"2026-10-16T12:00:00.000Z","source":"winapi"}},
+      "tree": {
+        "C:\\Program Files (x86)\\Steam\\steam.exe": "",
+        "C:\\Program Files (x86)\\Steam\\steamapps\\appmanifest_243730.acf": "\"AppState\"\r\n{\r\n\t\"appid\"\t\t\"243730\"\r\n\t\"name\"\t\t\"Source SDK Base 2013 Multiplayer\"\r\n\t\"StateFlags\"\t\t\"4\"\r\n\t\"installdir\"\t\t\"Source SDK Base 2013 Multiplayer\"\r\n}\r\n",
+        "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Source SDK Base 2013 Multiplayer\\hl2.exe": ""
+      },
+      "ops": [{"op":"preflight"},{"op":"availability"},{"op":"steam-only"}]
+    },
+    "results": [
+      {"op":"preflight","error":{"code":"SOURCE_SDK_INCOMPLETE","message":"Установка Source SDK Base неполная: нет hl2\\, bin\\, platform\\","details":{"appPath":"c:\\program files (x86)\\steam\\steamapps\\common\\Source SDK Base 2013 Multiplayer","missing":["hl2\\","bin\\","platform\\"]}}},
+      {"op":"availability","ok":{"ok":false,"code":"SOURCE_SDK_INCOMPLETE","message":"Установка Source SDK Base неполная: нет hl2\\, bin\\, platform\\"}},
+      {"op":"steam-only","ok":{"ok":true,"code":null,"steam":{"installPath":"c:\\program files (x86)\\steam","steamExe":"c:\\program files (x86)\\steam\\steam.exe","pid":7440,"source":"registry"},"app":null}}
+    ]
+  },
+  {
+    "name": "preflight: Steam is not installed",
+    "world": {"name":"preflight: Steam is not installed","platform":"win32","registry":[],"alive":[7440],"inspect":{"7440":{"pid":7440,"executablePath":"C:\\Program Files (x86)\\Steam\\steam.exe","name":"steam.exe","startedAt":"2026-10-16T12:00:00.000Z","source":"winapi"}},"tree":{},"ops":[{"op":"preflight"},{"op":"availability"},{"op":"steam-only"}]},
+    "results": [{"op":"preflight","error":{"code":"STEAM_NOT_INSTALLED","message":"Steam не найден в реестре текущего пользователя","details":null}},{"op":"availability","ok":{"ok":false,"code":"STEAM_NOT_INSTALLED","message":"Steam не найден в реестре текущего пользователя"}},{"op":"steam-only","ok":{"ok":false,"code":"STEAM_NOT_INSTALLED","message":"Steam не найден в реестре текущего пользователя"}}]
+  },
+  {
+    "name": "account: signed in with name and avatar",
+    "world": {
+      "name": "account: signed in with name and avatar",
+      "platform": "win32",
+      "registry": [
+        {"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},
+        {"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"},
+        {"key":"Software\\Valve\\Steam\\ActiveProcess","name":"pid","type":"REG_DWORD","data":7440},
+        {"key":"Software\\Valve\\Steam\\ActiveProcess","name":"ActiveUser","type":"REG_DWORD","data":42}
+      ],
+      "alive": [7440],
+      "inspect": {"7440":{"pid":7440,"executablePath":"C:\\Program Files (x86)\\Steam\\steam.exe","name":"steam.exe","startedAt":"2026-10-16T12:00:00.000Z","source":"winapi"}},
+      "tree": {"C:\\Program Files (x86)\\Steam\\steam.exe":"","C:\\Program Files (x86)\\Steam\\config\\loginusers.vdf":"\"users\"\r\n{\r\n\t\"76561197960265770\"\r\n\t{\r\n\t\t\"AccountName\"\t\t\"a770\"\r\n\t\t\"PersonaName\"\t\t\"  Игрок  \"\r\n\t\t\"MostRecent\"\t\t\"1\"\r\n\t}\r\n}\r\n","C:\\Program Files (x86)\\Steam\\config\\avatarcache\\76561197960265770.png":{"png":26}},
+      "ops": [{"op":"account"},{"op":"refresh"},{"op":"account"},{"op":"active-id"}]
+    },
+    "results": [
+      {"op":"account","ok":{"signedIn":true,"steamId64":"76561197960265770","steamId2":"STEAM_0:0:21","personaName":"Игрок","avatarDataUri":"data:image/png;base64,iVBORw0KGgpmYWtlIGltYWdlIGRhdGEgAP8=","connection":"checking"}},
+      {"op":"refresh","ok":"connected"},
+      {"op":"account","ok":{"signedIn":true,"steamId64":"76561197960265770","steamId2":"STEAM_0:0:21","personaName":"Игрок","avatarDataUri":"data:image/png;base64,iVBORw0KGgpmYWtlIGltYWdlIGRhdGEgAP8=","connection":"connected"}},
+      {"op":"active-id","ok":42}
+    ]
+  },
+  {
+    "name": "account: avatar is carried over while the file is gone",
+    "world": {
+      "name": "account: avatar is carried over while the file is gone",
+      "platform": "win32",
+      "registry": [
+        {"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},
+        {"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"},
+        {"key":"Software\\Valve\\Steam\\ActiveProcess","name":"pid","type":"REG_DWORD","data":7440},
+        {"key":"Software\\Valve\\Steam\\ActiveProcess","name":"ActiveUser","type":"REG_DWORD","data":42}
+      ],
+      "alive": [7440],
+      "inspect": {"7440":{"pid":7440,"executablePath":"C:\\Program Files (x86)\\Steam\\steam.exe","name":"steam.exe","startedAt":"2026-10-16T12:00:00.000Z","source":"winapi"}},
+      "tree": {"C:\\Program Files (x86)\\Steam\\steam.exe":"","C:\\Program Files (x86)\\Steam\\config\\loginusers.vdf":"\"users\"\r\n{\r\n\t\"76561197960265770\"\r\n\t{\r\n\t\t\"AccountName\"\t\t\"a770\"\r\n\t\t\"PersonaName\"\t\t\"Игрок\"\r\n\t\t\"MostRecent\"\t\t\"1\"\r\n\t}\r\n}\r\n","C:\\Program Files (x86)\\Steam\\config\\avatarcache\\76561197960265770.png":{"png":26}},
+      "ops": [
+        {"op":"account"},
+        {"op":"remove","path":"C:\\Program Files (x86)\\Steam\\config\\avatarcache\\76561197960265770.png"},
+        {"op":"account"},
+        {
+          "op": "registry",
+          "entries": [
+            {"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},
+            {"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"},
+            {"key":"Software\\Valve\\Steam\\ActiveProcess","name":"pid","type":"REG_DWORD","data":7440},
+            {"key":"Software\\Valve\\Steam\\ActiveProcess","name":"ActiveUser","type":"REG_DWORD","data":43}
+          ]
+        },
+        {"op":"account"},
+        {
+          "op": "registry",
+          "entries": [
+            {"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},
+            {"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"},
+            {"key":"Software\\Valve\\Steam\\ActiveProcess","name":"pid","type":"REG_DWORD","data":7440},
+            {"key":"Software\\Valve\\Steam\\ActiveProcess","name":"ActiveUser","type":"REG_DWORD","data":42}
+          ]
+        },
+        {"op":"account"}
+      ]
+    },
+    "results": [
+      {"op":"account","ok":{"signedIn":true,"steamId64":"76561197960265770","steamId2":"STEAM_0:0:21","personaName":"Игрок","avatarDataUri":"data:image/png;base64,iVBORw0KGgpmYWtlIGltYWdlIGRhdGEgAP8=","connection":"checking"}},
+      {"op":"remove"},
+      {"op":"account","ok":{"signedIn":true,"steamId64":"76561197960265770","steamId2":"STEAM_0:0:21","personaName":"Игрок","avatarDataUri":"data:image/png;base64,iVBORw0KGgpmYWtlIGltYWdlIGRhdGEgAP8=","connection":"checking"}},
+      {"op":"registry"},
+      {"op":"account","ok":{"signedIn":true,"steamId64":"76561197960265771","steamId2":"STEAM_0:1:21","personaName":null,"avatarDataUri":null,"connection":"checking"}},
+      {"op":"registry"},
+      {"op":"account","ok":{"signedIn":true,"steamId64":"76561197960265770","steamId2":"STEAM_0:0:21","personaName":"Игрок","avatarDataUri":null,"connection":"checking"}}
+    ]
+  },
+  {
+    "name": "account: no active user",
+    "world": {
+      "name": "account: no active user",
+      "platform": "win32",
+      "registry": [{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},{"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"},{"key":"Software\\Valve\\Steam\\ActiveProcess","name":"pid","type":"REG_DWORD","data":7440}],
+      "alive": [7440],
+      "inspect": {"7440":{"pid":7440,"executablePath":"C:\\Program Files (x86)\\Steam\\steam.exe","name":"steam.exe","startedAt":"2026-10-16T12:00:00.000Z","source":"winapi"}},
+      "tree": {"C:\\Program Files (x86)\\Steam\\steam.exe":""},
+      "ops": [{"op":"account"},{"op":"active-id"}]
+    },
+    "results": [{"op":"account","ok":{"signedIn":false,"steamId64":null,"steamId2":null,"personaName":null,"avatarDataUri":null,"connection":"checking"}},{"op":"active-id","ok":null}]
+  },
+  {
+    "name": "account: ActiveUser forms",
+    "world": {
+      "name": "account: ActiveUser forms",
+      "platform": "win32",
+      "registry": [
+        {"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},
+        {"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"},
+        {"key":"Software\\Valve\\Steam\\ActiveProcess","name":"pid","type":"REG_DWORD","data":7440},
+        {"key":"Software\\Valve\\Steam\\ActiveProcess","name":"ActiveUser","type":"REG_DWORD","data":42}
+      ],
+      "alive": [7440],
+      "inspect": {"7440":{"pid":7440,"executablePath":"C:\\Program Files (x86)\\Steam\\steam.exe","name":"steam.exe","startedAt":"2026-10-16T12:00:00.000Z","source":"winapi"}},
+      "tree": {"C:\\Program Files (x86)\\Steam\\steam.exe":""},
+      "ops": [
+        {"op":"active-id"},
+        {"op":"registry","entries":[{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},{"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"},{"key":"Software\\Valve\\Steam\\ActiveProcess","name":"ActiveUser","type":"REG_DWORD","data":0}]},
+        {"op":"active-id"},
+        {"op":"registry","entries":[{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},{"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"},{"key":"Software\\Valve\\Steam\\ActiveProcess","name":"ActiveUser","type":"REG_SZ","data":"77"}]},
+        {"op":"active-id"},
+        {"op":"registry","entries":[{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},{"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"},{"key":"Software\\Valve\\Steam\\ActiveProcess","name":"ActiveUser","type":"REG_SZ","data":"0x10"}]},
+        {"op":"active-id"},
+        {"op":"registry","entries":[{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},{"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"},{"key":"Software\\Valve\\Steam\\ActiveProcess","name":"ActiveUser","type":"REG_SZ","data":"abc"}]},
+        {"op":"active-id"},
+        {"op":"registry","entries":[{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},{"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"},{"key":"Software\\Valve\\Steam\\ActiveProcess","name":"ActiveUser","type":"REG_SZ","data":"1.5"}]},
+        {"op":"active-id"},
+        {"op":"registry","entries":[{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},{"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"},{"key":"Software\\Valve\\Steam\\ActiveProcess","name":"ActiveUser","type":"REG_SZ","data":"-5"}]},
+        {"op":"active-id"},
+        {"op":"registry","entries":[{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},{"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"},{"key":"Software\\Valve\\Steam\\ActiveProcess","name":"ActiveUser","type":"REG_DWORD","data":4294967295}]},
+        {"op":"account"},
+        {"op":"registry","entries":[{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},{"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"},{"key":"Software\\Valve\\Steam\\ActiveProcess","name":"ActiveUser","type":"REG_DWORD","data":1}]},
+        {"op":"account"},
+        {"op":"registry","entries":[{"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},{"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"},{"key":"Software\\Valve\\Steam\\ActiveProcess","name":"ActiveUser","type":"REG_DWORD","data":2147483648}]},
+        {"op":"account"}
+      ]
+    },
+    "results": [
+      {"op":"active-id","ok":42},
+      {"op":"registry"},
+      {"op":"active-id","ok":null},
+      {"op":"registry"},
+      {"op":"active-id","ok":77},
+      {"op":"registry"},
+      {"op":"active-id","ok":16},
+      {"op":"registry"},
+      {"op":"active-id","ok":null},
+      {"op":"registry"},
+      {"op":"active-id","ok":null},
+      {"op":"registry"},
+      {"op":"active-id","ok":null},
+      {"op":"registry"},
+      {"op":"account","ok":{"signedIn":true,"steamId64":"76561202255233023","steamId2":"STEAM_0:1:2147483647","personaName":null,"avatarDataUri":null,"connection":"checking"}},
+      {"op":"registry"},
+      {"op":"account","ok":{"signedIn":true,"steamId64":"76561197960265729","steamId2":"STEAM_0:1:0","personaName":null,"avatarDataUri":null,"connection":"checking"}},
+      {"op":"registry"},
+      {"op":"account","ok":{"signedIn":true,"steamId64":"76561200107749376","steamId2":"STEAM_0:0:1073741824","personaName":null,"avatarDataUri":null,"connection":"checking"}}
+    ]
+  },
+  {
+    "name": "account: persona name forms",
+    "world": {
+      "name": "account: persona name forms",
+      "platform": "win32",
+      "registry": [
+        {"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},
+        {"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"},
+        {"key":"Software\\Valve\\Steam\\ActiveProcess","name":"pid","type":"REG_DWORD","data":7440},
+        {"key":"Software\\Valve\\Steam\\ActiveProcess","name":"ActiveUser","type":"REG_DWORD","data":42}
+      ],
+      "alive": [7440],
+      "inspect": {"7440":{"pid":7440,"executablePath":"C:\\Program Files (x86)\\Steam\\steam.exe","name":"steam.exe","startedAt":"2026-10-16T12:00:00.000Z","source":"winapi"}},
+      "tree": {"C:\\Program Files (x86)\\Steam\\steam.exe":"","C:\\Program Files (x86)\\Steam\\config\\loginusers.vdf":"\"users\" {\r\n\"76561197960265770\" { \"PersonaName\" \"   \" }\r\n}\r\n"},
+      "ops": [
+        {"op":"account"},
+        {"op":"set-file","path":"C:\\Program Files (x86)\\Steam\\config\\loginusers.vdf","text":"\"users\" { \"76561197960265770\" { \"AccountName\" \"x\" } }"},
+        {"op":"account"},
+        {"op":"set-file","path":"C:\\Program Files (x86)\\Steam\\config\\loginusers.vdf","text":"\"USERS\" { \"76561197960265770\" { \"personaname\" \"\\tТаб\\t\" } }"},
+        {"op":"account"},
+        {"op":"set-file","path":"C:\\Program Files (x86)\\Steam\\config\\loginusers.vdf","text":"\"users\" {"},
+        {"op":"account"},
+        {"op":"set-file","path":"C:\\Program Files (x86)\\Steam\\config\\loginusers.vdf","text":"\"users\" { \"76561197960265770\" \"string, not a section\" }"},
+        {"op":"account"},
+        {"op":"set-file","path":"C:\\Program Files (x86)\\Steam\\config\\loginusers.vdf","text":"\"other\" { }"},
+        {"op":"account"},
+        {"op":"remove","path":"C:\\Program Files (x86)\\Steam\\config\\loginusers.vdf"},
+        {"op":"account"}
+      ]
+    },
+    "results": [
+      {"op":"account","ok":{"signedIn":true,"steamId64":"76561197960265770","steamId2":"STEAM_0:0:21","personaName":null,"avatarDataUri":null,"connection":"checking"}},
+      {"op":"set-file"},
+      {"op":"account","ok":{"signedIn":true,"steamId64":"76561197960265770","steamId2":"STEAM_0:0:21","personaName":null,"avatarDataUri":null,"connection":"checking"}},
+      {"op":"set-file"},
+      {"op":"account","ok":{"signedIn":true,"steamId64":"76561197960265770","steamId2":"STEAM_0:0:21","personaName":"Таб","avatarDataUri":null,"connection":"checking"}},
+      {"op":"set-file"},
+      {"op":"account","ok":{"signedIn":true,"steamId64":"76561197960265770","steamId2":"STEAM_0:0:21","personaName":null,"avatarDataUri":null,"connection":"checking"},"logs":[{"level":"warn","message":"[steam] loginusers.vdf не разобран: VDF, строка ?: неожиданный конец файла: не хватает }"}]},
+      {"op":"set-file"},
+      {"op":"account","ok":{"signedIn":true,"steamId64":"76561197960265770","steamId2":"STEAM_0:0:21","personaName":null,"avatarDataUri":null,"connection":"checking"}},
+      {"op":"set-file"},
+      {"op":"account","ok":{"signedIn":true,"steamId64":"76561197960265770","steamId2":"STEAM_0:0:21","personaName":null,"avatarDataUri":null,"connection":"checking"}},
+      {"op":"remove"},
+      {"op":"account","ok":{"signedIn":true,"steamId64":"76561197960265770","steamId2":"STEAM_0:0:21","personaName":null,"avatarDataUri":null,"connection":"checking"}}
+    ]
+  },
+  {
+    "name": "account: avatar files",
+    "world": {
+      "name": "account: avatar files",
+      "platform": "win32",
+      "registry": [
+        {"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},
+        {"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"},
+        {"key":"Software\\Valve\\Steam\\ActiveProcess","name":"pid","type":"REG_DWORD","data":7440},
+        {"key":"Software\\Valve\\Steam\\ActiveProcess","name":"ActiveUser","type":"REG_DWORD","data":42}
+      ],
+      "alive": [7440],
+      "inspect": {"7440":{"pid":7440,"executablePath":"C:\\Program Files (x86)\\Steam\\steam.exe","name":"steam.exe","startedAt":"2026-10-16T12:00:00.000Z","source":"winapi"}},
+      "tree": {"C:\\Program Files (x86)\\Steam\\steam.exe":""},
+      "ops": [
+        {"op":"set-file","path":"C:\\Program Files (x86)\\Steam\\config\\avatarcache\\76561197960265770.png","base64":""},
+        {"op":"account"},
+        {"op":"set-file","path":"C:\\Program Files (x86)\\Steam\\config\\avatarcache\\76561197960265770.png","text":"not a png at all"},
+        {"op":"account"},
+        {"op":"set-file","path":"C:\\Program Files (x86)\\Steam\\config\\avatarcache\\76561197960265770.png","base64":"iVBORw0K"},
+        {"op":"account"},
+        {"op":"set-file","path":"C:\\Program Files (x86)\\Steam\\config\\avatarcache\\76561197960265770.png","png":26},
+        {"op":"account"},
+        {"op":"set-file","path":"C:\\Program Files (x86)\\Steam\\config\\avatarcache\\76561197960265770.png","png":524288},
+        {"op":"account"},
+        {"op":"set-file","path":"C:\\Program Files (x86)\\Steam\\config\\avatarcache\\76561197960265770.png","png":524289},
+        {"op":"account"},
+        {"op":"remove","path":"C:\\Program Files (x86)\\Steam\\config\\avatarcache\\76561197960265770.png"},
+        {"op":"set-file","path":"C:\\Program Files (x86)\\Steam\\config\\avatarcache\\76561197960265770.png\\inner","text":"a directory instead of a file"},
+        {"op":"account"}
+      ]
+    },
+    "results": [
+      {"op":"set-file"},
+      {"op":"account","ok":{"signedIn":true,"steamId64":"76561197960265770","steamId2":"STEAM_0:0:21","personaName":null,"avatarDataUri":null,"connection":"checking"}},
+      {"op":"set-file"},
+      {"op":"account","ok":{"signedIn":true,"steamId64":"76561197960265770","steamId2":"STEAM_0:0:21","personaName":null,"avatarDataUri":null,"connection":"checking"}},
+      {"op":"set-file"},
+      {"op":"account","ok":{"signedIn":true,"steamId64":"76561197960265770","steamId2":"STEAM_0:0:21","personaName":null,"avatarDataUri":null,"connection":"checking"}},
+      {"op":"set-file"},
+      {"op":"account","ok":{"signedIn":true,"steamId64":"76561197960265770","steamId2":"STEAM_0:0:21","personaName":null,"avatarDataUri":"data:image/png;base64,iVBORw0KGgpmYWtlIGltYWdlIGRhdGEgAP8=","connection":"checking"}},
+      {"op":"set-file"},
+      {"op":"account","ok":{"signedIn":true,"steamId64":"76561197960265770","steamId2":"STEAM_0:0:21","personaName":null,"avatarDataUri":{"length":699074,"sha256":"3f348f7c2cfc2aeb5b6f4e06219d3ba6db786975e844e699dfd9665b6762e517"},"connection":"checking"}},
+      {"op":"set-file"},
+      {"op":"account","ok":{"signedIn":true,"steamId64":"76561197960265770","steamId2":"STEAM_0:0:21","personaName":null,"avatarDataUri":{"length":699074,"sha256":"3f348f7c2cfc2aeb5b6f4e06219d3ba6db786975e844e699dfd9665b6762e517"},"connection":"checking"}},
+      {"op":"remove"},
+      {"op":"set-file"},
+      {"op":"account","ok":{"signedIn":true,"steamId64":"76561197960265770","steamId2":"STEAM_0:0:21","personaName":null,"avatarDataUri":{"length":699074,"sha256":"3f348f7c2cfc2aeb5b6f4e06219d3ba6db786975e844e699dfd9665b6762e517"},"connection":"checking"}}
+    ]
+  },
+  {
+    "name": "account: Steam is not installed",
+    "world": {"name":"account: Steam is not installed","platform":"win32","registry":[],"alive":[7440],"inspect":{"7440":{"pid":7440,"executablePath":"C:\\Program Files (x86)\\Steam\\steam.exe","name":"steam.exe","startedAt":"2026-10-16T12:00:00.000Z","source":"winapi"}},"tree":{},"ops":[{"op":"account"},{"op":"refresh"},{"op":"account"}]},
+    "results": [{"op":"account","ok":{"signedIn":false,"steamId64":null,"steamId2":null,"personaName":null,"avatarDataUri":null,"connection":"checking"}},{"op":"refresh","ok":"offline"},{"op":"account","ok":{"signedIn":false,"steamId64":null,"steamId2":null,"personaName":null,"avatarDataUri":null,"connection":"offline"}}]
+  },
+  {
+    "name": "account: connection states",
+    "world": {
+      "name": "account: connection states",
+      "platform": "win32",
+      "registry": [
+        {"key":"Software\\Valve\\Steam","name":"SteamPath","type":"REG_SZ","data":"c:/program files (x86)/steam"},
+        {"key":"Software\\Valve\\Steam","name":"SteamExe","type":"REG_SZ","data":"c:/program files (x86)/steam/steam.exe"},
+        {"key":"Software\\Valve\\Steam\\ActiveProcess","name":"pid","type":"REG_DWORD","data":7440},
+        {"key":"Software\\Valve\\Steam\\ActiveProcess","name":"ActiveUser","type":"REG_DWORD","data":42}
+      ],
+      "alive": [7440],
+      "inspect": {"7440":{"pid":7440,"executablePath":"C:\\Program Files (x86)\\Steam\\steam.exe","name":"steam.exe","startedAt":"2026-10-16T12:00:00.000Z","source":"winapi"}},
+      "tree": {"C:\\Program Files (x86)\\Steam\\steam.exe":""},
+      "ops": [
+        {"op":"account"},
+        {"op":"refresh"},
+        {"op":"account"},
+        {"op":"alive","pids":[]},
+        {"op":"inspect","map":{}},
+        {"op":"refresh"},
+        {"op":"account"},
+        {"op":"alive","pids":[7440]},
+        {"op":"inspect","map":{"7440":{"pid":7440,"executablePath":null,"name":"steam.exe","startedAt":null,"source":"winapi"}}},
+        {"op":"find","map":{"steam.exe":[{"pid":7440,"executablePath":null,"name":"steam.exe","startedAt":null,"source":"winapi"}]}},
+        {"op":"refresh"},
+        {"op":"account"}
+      ]
+    },
+    "results": [
+      {"op":"account","ok":{"signedIn":true,"steamId64":"76561197960265770","steamId2":"STEAM_0:0:21","personaName":null,"avatarDataUri":null,"connection":"checking"}},
+      {"op":"refresh","ok":"connected"},
+      {"op":"account","ok":{"signedIn":true,"steamId64":"76561197960265770","steamId2":"STEAM_0:0:21","personaName":null,"avatarDataUri":null,"connection":"connected"}},
+      {"op":"alive"},
+      {"op":"inspect"},
+      {"op":"refresh","ok":"offline"},
+      {"op":"account","ok":{"signedIn":true,"steamId64":"76561197960265770","steamId2":"STEAM_0:0:21","personaName":null,"avatarDataUri":null,"connection":"offline"}},
+      {"op":"alive"},
+      {"op":"inspect"},
+      {"op":"find"},
+      {"op":"refresh","ok":"offline"},
+      {"op":"account","ok":{"signedIn":true,"steamId64":"76561197960265770","steamId2":"STEAM_0:0:21","personaName":null,"avatarDataUri":null,"connection":"offline"}}
+    ]
+  },
+  {
+    "name": "linux: no Steam installed",
+    "world": {"name":"linux: no Steam installed","platform":"linux","home":"/home/tester","tree":{},"ops":[{"op":"locate"},{"op":"steam-only"},{"op":"availability"}]},
+    "results": [{"op":"locate","error":{"code":"STEAM_NOT_INSTALLED","message":"Steam не найден в домашнем каталоге пользователя","details":null}},{"op":"steam-only","ok":{"ok":false,"code":"STEAM_NOT_INSTALLED","message":"Steam не найден в домашнем каталоге пользователя"}},{"op":"availability","ok":{"ok":false,"code":"STEAM_NOT_INSTALLED","message":"Steam не найден в домашнем каталоге пользователя"}}]
+  },
+  {"name":"linux: Steam in ~/.local/share/Steam","world":{"name":"linux: Steam in ~/.local/share/Steam","platform":"linux","home":"/home/tester","tree":{"/home/tester/.local/share/Steam/steamapps":{"dir":true}},"ops":[{"op":"locate"}]},"results":[{"op":"locate","ok":{"installPath":"/home/tester/.local/share/Steam","steamExe":"steam","steamArgs":[]}}]},
+  {
+    "name": "linux: Steam through the ~/.steam/root link",
+    "world": {"name":"linux: Steam through the ~/.steam/root link","platform":"linux","home":"/home/tester","tree":{"/home/tester/.local/share/Steam/steamapps":{"dir":true},"/home/tester/.steam/root":{"link":"/home/tester/.local/share/Steam"}},"ops":[{"op":"locate"}]},
+    "results": [{"op":"locate","ok":{"installPath":"/home/tester/.local/share/Steam","steamExe":"steam","steamArgs":[]}}]
+  },
+  {"name":"linux: only ~/.steam/steam, a link to another folder","world":{"name":"linux: only ~/.steam/steam, a link to another folder","platform":"linux","home":"/home/tester","tree":{"/data/steam/steamapps":{"dir":true},"/home/tester/.steam/steam":{"link":"/data/steam"}},"ops":[{"op":"locate"}]},"results":[{"op":"locate","ok":{"installPath":"/data/steam","steamExe":"steam","steamArgs":[]}}]},
+  {"name":"linux: a link to nowhere","world":{"name":"linux: a link to nowhere","platform":"linux","home":"/home/tester","tree":{"/home/tester/.steam/root":{"link":"/nowhere"}},"ops":[{"op":"locate"}]},"results":[{"op":"locate","error":{"code":"STEAM_NOT_INSTALLED","message":"Steam не найден в домашнем каталоге пользователя","details":null}}]},
+  {"name":"linux: a folder without steamapps","world":{"name":"linux: a folder without steamapps","platform":"linux","home":"/home/tester","tree":{"/home/tester/.local/share/Steam/other":{"dir":true}},"ops":[{"op":"locate"}]},"results":[{"op":"locate","error":{"code":"STEAM_NOT_INSTALLED","message":"Steam не найден в домашнем каталоге пользователя","details":null}}]},
+  {"name":"linux: steamapps is a file","world":{"name":"linux: steamapps is a file","platform":"linux","home":"/home/tester","tree":{"/home/tester/.local/share/Steam/steamapps":"file"},"ops":[{"op":"locate"}]},"results":[{"op":"locate","error":{"code":"STEAM_NOT_INSTALLED","message":"Steam не найден в домашнем каталоге пользователя","details":null}}]},
+  {
+    "name": "linux: steam.sh found",
+    "world": {"name":"linux: steam.sh found","platform":"linux","home":"/home/tester","tree":{"/home/tester/.local/share/Steam/steamapps":{"dir":true},"/home/tester/.local/share/Steam/steam.sh":"#!/bin/sh"},"ops":[{"op":"locate"}]},
+    "results": [{"op":"locate","ok":{"installPath":"/home/tester/.local/share/Steam","steamExe":"/home/tester/.local/share/Steam/steam.sh","steamArgs":[]}}]
+  },
+  {
+    "name": "linux: /usr/bin/steam found",
+    "world": {"name":"linux: /usr/bin/steam found","platform":"linux","home":"/home/tester","tree":{"/home/tester/.local/share/Steam/steamapps":{"dir":true},"/usr/bin/steam":"","/home/tester/.local/share/Steam/steam.sh":""},"ops":[{"op":"locate"}]},
+    "results": [{"op":"locate","ok":{"installPath":"/home/tester/.local/share/Steam","steamExe":"/usr/bin/steam","steamArgs":[]}}]
+  },
+  {
+    "name": "linux: Flatpak Steam",
+    "world": {"name":"linux: Flatpak Steam","platform":"linux","home":"/home/tester","tree":{"/home/tester/.var/app/com.valvesoftware.Steam/data/Steam/steamapps":{"dir":true}},"ops":[{"op":"locate"},{"op":"steam-only"}]},
+    "results": [{"op":"locate","ok":{"installPath":"/home/tester/.var/app/com.valvesoftware.Steam/data/Steam","steamExe":"/usr/bin/flatpak","steamArgs":["run","com.valvesoftware.Steam"]}},{"op":"steam-only","ok":{"ok":false,"code":"STEAM_NOT_RUNNING","message":"Steam не запущен"}}]
+  },
+  {
+    "name": "linux: Flatpak Steam with steam.sh",
+    "world": {"name":"linux: Flatpak Steam with steam.sh","platform":"linux","home":"/home/tester","tree":{"/home/tester/.var/app/com.valvesoftware.Steam/data/Steam/steamapps":{"dir":true},"/home/tester/.var/app/com.valvesoftware.Steam/data/Steam/steam.sh":""},"ops":[{"op":"locate"}]},
+    "results": [{"op":"locate","ok":{"installPath":"/home/tester/.var/app/com.valvesoftware.Steam/data/Steam","steamExe":"/home/tester/.var/app/com.valvesoftware.Steam/data/Steam/steam.sh","steamArgs":[]}}]
+  },
+  {
+    "name": "linux: native Steam before Flatpak",
+    "world": {"name":"linux: native Steam before Flatpak","platform":"linux","home":"/home/tester","tree":{"/home/tester/.local/share/Steam/steamapps":{"dir":true},"/home/tester/.var/app/com.valvesoftware.Steam/data/Steam/steamapps":{"dir":true}},"ops":[{"op":"locate"}]},
+    "results": [{"op":"locate","ok":{"installPath":"/home/tester/.local/share/Steam","steamExe":"steam","steamArgs":[]}}]
+  },
+  {
+    "name": "linux: Flatpak through a link",
+    "world": {"name":"linux: Flatpak through a link","platform":"linux","home":"/home/tester","tree":{"/flat/Steam/steamapps":{"dir":true},"/home/tester/.var/app/com.valvesoftware.Steam/data/Steam":{"link":"/flat/Steam"}},"ops":[{"op":"locate"}]},
+    "results": [{"op":"locate","ok":{"installPath":"/flat/Steam","steamExe":"/usr/bin/flatpak","steamArgs":["run","com.valvesoftware.Steam"]}}]
+  },
+  {
+    "name": "linux: Steam is not running",
+    "world": {"name":"linux: Steam is not running","platform":"linux","home":"/home/tester","tree":{"/home/tester/.local/share/Steam/steamapps":{"dir":true}},"ops":[{"op":"running"},{"op":"steam-only"},{"op":"availability"}]},
+    "results": [{"op":"running","error":{"code":"STEAM_NOT_RUNNING","message":"Steam не запущен","details":null}},{"op":"steam-only","ok":{"ok":false,"code":"STEAM_NOT_RUNNING","message":"Steam не запущен"}},{"op":"availability","ok":{"ok":false,"code":"STEAM_NOT_RUNNING","message":"Steam не запущен"}}]
+  },
+  {
+    "name": "linux: Steam is running",
+    "world": {
+      "name": "linux: Steam is running",
+      "platform": "linux",
+      "home": "/home/tester",
+      "tree": {"/home/tester/.local/share/Steam/steamapps":{"dir":true},"/proc/100":{"dir":true,"uid":1000},"/proc/100/comm":"bash\n","/proc/200":{"dir":true,"uid":1000},"/proc/200/comm":"steam\n","/proc/300":{"dir":true,"uid":1000},"/proc/300/comm":"steamwebhelper\n","/proc/self":{"dir":true,"uid":1000},"/proc/cpuinfo":"x"},
+      "ops": [{"op":"running"},{"op":"steam-only"}]
+    },
+    "results": [{"op":"running","ok":{"pid":200,"source":"proc"}},{"op":"steam-only","ok":{"ok":true,"code":null,"steam":{"installPath":"/home/tester/.local/share/Steam","steamExe":"steam","steamArgs":[],"pid":200,"source":"proc"}}}]
+  },
+  {"name":"linux: only the web helper is running","world":{"name":"linux: only the web helper is running","platform":"linux","home":"/home/tester","tree":{"/proc/300":{"dir":true,"uid":1000},"/proc/300/comm":"steamwebhelper\n"},"ops":[{"op":"running"}]},"results":[{"op":"running","ok":{"pid":300,"source":"proc"}}]},
+  {
+    "name": "linux: Steam of another user",
+    "world": {"name":"linux: Steam of another user","platform":"linux","home":"/home/tester","tree":{"/proc/200":{"dir":true,"uid":1001},"/proc/200/comm":"steam\n","/proc/300":{"dir":true,"uid":0},"/proc/300/comm":"steamwebhelper\n"},"ops":[{"op":"running"}]},
+    "results": [{"op":"running","error":{"code":"STEAM_NOT_RUNNING","message":"Steam не запущен","details":null}}]
+  },
+  {"name":"linux: process names with spaces and newlines","world":{"name":"linux: process names with spaces and newlines","platform":"linux","home":"/home/tester","tree":{"/proc/200":{"dir":true,"uid":1000},"/proc/200/comm":"steam-runtime\n","/proc/300":{"dir":true,"uid":1000},"/proc/300/comm":"steam \n"},"ops":[{"op":"running"}]},"results":[{"op":"running","ok":{"pid":300,"source":"proc"}}]},
+  {"name":"linux: process without comm","world":{"name":"linux: process without comm","platform":"linux","home":"/home/tester","tree":{"/proc/200":{"dir":true,"uid":1000},"/proc/300":{"dir":true,"uid":1000},"/proc/300/comm":"steam\n"},"ops":[{"op":"running"}]},"results":[{"op":"running","ok":{"pid":300,"source":"proc"}}]},
+  {
+    "name": "linux: PIDs are taken in the order of the listing",
+    "world": {"name":"linux: PIDs are taken in the order of the listing","platform":"linux","home":"/home/tester","tree":{"/proc/20":{"dir":true,"uid":1000},"/proc/20/comm":"steam\n","/proc/3":{"dir":true,"uid":1000},"/proc/3/comm":"steam\n","/proc/100":{"dir":true,"uid":1000},"/proc/100/comm":"steam\n"},"ops":[{"op":"running"}]},
+    "results": [{"op":"running","ok":{"pid":100,"source":"proc"}}]
+  },
+  {"name":"linux: no /proc","world":{"name":"linux: no /proc","platform":"linux","home":"/home/tester","tree":{},"ops":[{"op":"running"}]},"results":[{"op":"running","error":{"code":"STEAM_NOT_RUNNING","message":"Steam не запущен","details":null}}]},
+  {
+    "name": "linux: libraries",
+    "world": {
+      "name": "linux: libraries",
+      "platform": "linux",
+      "home": "/home/tester",
+      "tree": {"/home/tester/.local/share/Steam/steamapps":{"dir":true},"/home/tester/.local/share/Steam/steamapps/libraryfolders.vdf":"\"libraryfolders\" { \"0\" { \"path\" \"/home/tester/.local/share/Steam\" } \"1\" { \"path\" \"/mnt/games/SteamLibrary\" } \"2\" { \"path\" \"relative/path\" } \"3\" \"/mnt/other\" \"4\" { \"path\" \"/mnt/games/SteamLibrary\" } \"5\" { \"label\" \"none\" } }"},
+      "ops": [{"op":"libraries"}]
+    },
+    "results": [{"op":"libraries","ok":["/home/tester/.local/share/Steam","/mnt/games/SteamLibrary","/mnt/other"]}]
+  },
+  {
+    "name": "linux: libraries: no file, broken file, no section",
+    "world": {
+      "name": "linux: libraries: no file, broken file, no section",
+      "platform": "linux",
+      "home": "/home/tester",
+      "tree": {"/home/tester/.local/share/Steam/steamapps":{"dir":true}},
+      "ops": [
+        {"op":"libraries"},
+        {"op":"set-file","path":"/home/tester/.local/share/Steam/steamapps/libraryfolders.vdf","text":"\"libraryfolders\" {"},
+        {"op":"libraries"},
+        {"op":"set-file","path":"/home/tester/.local/share/Steam/steamapps/libraryfolders.vdf","text":"\"other\" { \"0\" { \"path\" \"/x\" } }"},
+        {"op":"libraries"},
+        {"op":"set-file","path":"/home/tester/.local/share/Steam/steamapps/libraryfolders.vdf","text":"\"LibraryFolders\" { \"1\" \"/old/format\" }"},
+        {"op":"libraries"}
+      ]
+    },
+    "results": [{"op":"libraries","ok":["/home/tester/.local/share/Steam"]},{"op":"set-file"},{"op":"libraries","ok":["/home/tester/.local/share/Steam"]},{"op":"set-file"},{"op":"libraries","ok":["/home/tester/.local/share/Steam"]},{"op":"set-file"},{"op":"libraries","ok":["/home/tester/.local/share/Steam","/old/format"]}]
+  },
+  {
+    "name": "linux: apps: Source SDK Base in the Steam folder",
+    "world": {
+      "name": "linux: apps: Source SDK Base in the Steam folder",
+      "platform": "linux",
+      "home": "/home/tester",
+      "tree": {
+        "/home/tester/.local/share/Steam/steamapps": {"dir":true},
+        "/home/tester/.local/share/Steam/steamapps/appmanifest_243730.acf": "\"AppState\"\r\n{\r\n\t\"appid\"\t\t\"243730\"\r\n\t\"name\"\t\t\"Source SDK Base 2013 Multiplayer\"\r\n\t\"StateFlags\"\t\t\"4\"\r\n\t\"installdir\"\t\t\"Source SDK Base 2013 Multiplayer\"\r\n}\r\n",
+        "/home/tester/.local/share/Steam/steamapps/common/Source SDK Base 2013 Multiplayer/hl2.exe": ""
+      },
+      "ops": [{"op":"find-app","appId":243730},{"op":"find-app","appId":220}]
+    },
+    "results": [
+      {"op":"find-app","ok":{"appId":243730,"library":"/home/tester/.local/share/Steam","manifestPath":"/home/tester/.local/share/Steam/steamapps/appmanifest_243730.acf","installdir":"Source SDK Base 2013 Multiplayer","appPath":"/home/tester/.local/share/Steam/steamapps/common/Source SDK Base 2013 Multiplayer"}},
+      {"op":"find-app","error":{"code":"SOURCE_SDK_NOT_INSTALLED","message":"Приложение Steam 220 не установлено","details":null}}
+    ]
+  },
+  {
+    "name": "linux: apps: in the second library",
+    "world": {
+      "name": "linux: apps: in the second library",
+      "platform": "linux",
+      "home": "/home/tester",
+      "tree": {
+        "/home/tester/.local/share/Steam/steamapps": {"dir":true},
+        "/home/tester/.local/share/Steam/steamapps/libraryfolders.vdf": "\"libraryfolders\" { \"0\" { \"path\" \"/home/tester/.local/share/Steam\" } \"1\" { \"path\" \"/mnt/games/SteamLibrary\" } \"2\" { \"path\" \"relative/path\" } \"3\" \"/mnt/other\" \"4\" { \"path\" \"/mnt/games/SteamLibrary\" } \"5\" { \"label\" \"none\" } }",
+        "/mnt/games/SteamLibrary/steamapps/appmanifest_243730.acf": "\"AppState\"\r\n{\r\n\t\"appid\"\t\t\"243730\"\r\n\t\"name\"\t\t\"Source SDK Base 2013 Multiplayer\"\r\n\t\"StateFlags\"\t\t\"4\"\r\n\t\"installdir\"\t\t\"Source SDK Base 2013 Multiplayer\"\r\n}\r\n",
+        "/mnt/games/SteamLibrary/steamapps/common/Source SDK Base 2013 Multiplayer/hl2.exe": ""
+      },
+      "ops": [{"op":"find-app","appId":243730}]
+    },
+    "results": [{"op":"find-app","ok":{"appId":243730,"library":"/mnt/games/SteamLibrary","manifestPath":"/mnt/games/SteamLibrary/steamapps/appmanifest_243730.acf","installdir":"Source SDK Base 2013 Multiplayer","appPath":"/mnt/games/SteamLibrary/steamapps/common/Source SDK Base 2013 Multiplayer"}}]
+  },
+  {
+    "name": "linux: apps: nowhere, damaged, other AppID, unsafe installdir, missing folder",
+    "world": {
+      "name": "linux: apps: nowhere, damaged, other AppID, unsafe installdir, missing folder",
+      "platform": "linux",
+      "home": "/home/tester",
+      "tree": {
+        "/home/tester/.local/share/Steam/steamapps": {"dir":true},
+        "/home/tester/.local/share/Steam/steamapps/appmanifest_1.acf": "\"AppState\" {",
+        "/home/tester/.local/share/Steam/steamapps/appmanifest_2.acf": "\"AppState\"\r\n{\r\n\t\"appid\"\t\t\"3\"\r\n\t\"name\"\t\t\"Source SDK Base 2013 Multiplayer\"\r\n\t\"StateFlags\"\t\t\"4\"\r\n\t\"installdir\"\t\t\"x\"\r\n}\r\n",
+        "/home/tester/.local/share/Steam/steamapps/appmanifest_4.acf": "\"AppState\"\r\n{\r\n\t\"appid\"\t\t\"4\"\r\n\t\"name\"\t\t\"Source SDK Base 2013 Multiplayer\"\r\n\t\"StateFlags\"\t\t\"4\"\r\n\t\"installdir\"\t\t\"a/b\"\r\n}\r\n",
+        "/home/tester/.local/share/Steam/steamapps/appmanifest_5.acf": "\"AppState\"\r\n{\r\n\t\"appid\"\t\t\"5\"\r\n\t\"name\"\t\t\"Source SDK Base 2013 Multiplayer\"\r\n\t\"StateFlags\"\t\t\"4\"\r\n\t\"installdir\"\t\t\"Missing\"\r\n}\r\n",
+        "/home/tester/.local/share/Steam/steamapps/appmanifest_6.acf": "\"Other\" { }",
+        "/home/tester/.local/share/Steam/steamapps/appmanifest_7.acf": "\"AppState\"\r\n{\r\n\t\"appid\"\t\t\"7\"\r\n\t\"name\"\t\t\"Source SDK Base 2013 Multiplayer\"\r\n\t\"StateFlags\"\t\t\"4\"\r\n\t\"installdir\"\t\t\"\"\r\n}\r\n"
+      },
+      "ops": [{"op":"find-app","appId":1},{"op":"find-app","appId":2},{"op":"find-app","appId":4},{"op":"find-app","appId":5},{"op":"find-app","appId":6},{"op":"find-app","appId":7},{"op":"find-app","appId":8}]
+    },
+    "results": [
+      {"op":"find-app","error":{"code":"SOURCE_SDK_NOT_INSTALLED","message":"Приложение Steam 1 не установлено","details":null}},
+      {"op":"find-app","error":{"code":"SOURCE_SDK_NOT_INSTALLED","message":"Приложение Steam 2 не установлено","details":null}},
+      {"op":"find-app","error":{"code":"SOURCE_SDK_NOT_INSTALLED","message":"Приложение Steam 4 не установлено","details":null}},
+      {"op":"find-app","error":{"code":"SOURCE_SDK_NOT_INSTALLED","message":"Приложение Steam 5 не установлено","details":null}},
+      {"op":"find-app","error":{"code":"SOURCE_SDK_NOT_INSTALLED","message":"Приложение Steam 6 не установлено","details":null}},
+      {"op":"find-app","error":{"code":"SOURCE_SDK_NOT_INSTALLED","message":"Приложение Steam 7 не установлено","details":null}},
+      {"op":"find-app","error":{"code":"SOURCE_SDK_NOT_INSTALLED","message":"Приложение Steam 8 не установлено","details":null}}
+    ]
+  },
+  {
+    "name": "linux: preflight and availability",
+    "world": {
+      "name": "linux: preflight and availability",
+      "platform": "linux",
+      "home": "/home/tester",
+      "tree": {
+        "/home/tester/.local/share/Steam/steamapps": {"dir":true},
+        "/home/tester/.local/share/Steam/steam.sh": "",
+        "/home/tester/.local/share/Steam/steamapps/appmanifest_243730.acf": "\"AppState\"\r\n{\r\n\t\"appid\"\t\t\"243730\"\r\n\t\"name\"\t\t\"Source SDK Base 2013 Multiplayer\"\r\n\t\"StateFlags\"\t\t\"4\"\r\n\t\"installdir\"\t\t\"Source SDK Base 2013 Multiplayer\"\r\n}\r\n",
+        "/home/tester/.local/share/Steam/steamapps/common/Source SDK Base 2013 Multiplayer/hl2.exe": "",
+        "/proc/200": {"dir":true,"uid":1000},
+        "/proc/200/comm": "steam\n"
+      },
+      "ops": [{"op":"preflight"},{"op":"availability"},{"op":"availability","appId":220},{"op":"steam-only"}]
+    },
+    "results": [
+      {
+        "op": "preflight",
+        "ok": {
+          "steam": {"installPath":"/home/tester/.local/share/Steam","steamExe":"/home/tester/.local/share/Steam/steam.sh","steamArgs":[],"pid":200,"source":"proc"},
+          "app": {"appId":243730,"library":"/home/tester/.local/share/Steam","manifestPath":"/home/tester/.local/share/Steam/steamapps/appmanifest_243730.acf","installdir":"Source SDK Base 2013 Multiplayer","appPath":"/home/tester/.local/share/Steam/steamapps/common/Source SDK Base 2013 Multiplayer"}
+        }
+      },
+      {
+        "op": "availability",
+        "ok": {
+          "ok": true,
+          "code": null,
+          "steam": {"installPath":"/home/tester/.local/share/Steam","steamExe":"/home/tester/.local/share/Steam/steam.sh","steamArgs":[],"pid":200,"source":"proc"},
+          "app": {"appId":243730,"library":"/home/tester/.local/share/Steam","manifestPath":"/home/tester/.local/share/Steam/steamapps/appmanifest_243730.acf","installdir":"Source SDK Base 2013 Multiplayer","appPath":"/home/tester/.local/share/Steam/steamapps/common/Source SDK Base 2013 Multiplayer"}
+        }
+      },
+      {"op":"availability","ok":{"ok":false,"code":"SOURCE_SDK_NOT_INSTALLED","message":"Приложение Steam 220 не установлено"}},
+      {"op":"steam-only","ok":{"ok":true,"code":null,"steam":{"installPath":"/home/tester/.local/share/Steam","steamExe":"/home/tester/.local/share/Steam/steam.sh","steamArgs":[],"pid":200,"source":"proc"}}}
+    ]
+  },
+  {
+    "name": "linux: preflight: Flatpak",
+    "world": {
+      "name": "linux: preflight: Flatpak",
+      "platform": "linux",
+      "home": "/home/tester",
+      "tree": {
+        "/home/tester/.var/app/com.valvesoftware.Steam/data/Steam/steamapps": {"dir":true},
+        "/home/tester/.var/app/com.valvesoftware.Steam/data/Steam/steamapps/appmanifest_243730.acf": "\"AppState\"\r\n{\r\n\t\"appid\"\t\t\"243730\"\r\n\t\"name\"\t\t\"Source SDK Base 2013 Multiplayer\"\r\n\t\"StateFlags\"\t\t\"4\"\r\n\t\"installdir\"\t\t\"Source SDK Base 2013 Multiplayer\"\r\n}\r\n",
+        "/home/tester/.var/app/com.valvesoftware.Steam/data/Steam/steamapps/common/Source SDK Base 2013 Multiplayer/hl2.exe": "",
+        "/proc/200": {"dir":true,"uid":1000},
+        "/proc/200/comm": "steam\n"
+      },
+      "ops": [{"op":"preflight"},{"op":"availability"}]
+    },
+    "results": [
+      {
+        "op": "preflight",
+        "ok": {
+          "steam": {"installPath":"/home/tester/.var/app/com.valvesoftware.Steam/data/Steam","steamExe":"/usr/bin/flatpak","steamArgs":["run","com.valvesoftware.Steam"],"pid":200,"source":"proc"},
+          "app": {"appId":243730,"library":"/home/tester/.var/app/com.valvesoftware.Steam/data/Steam","manifestPath":"/home/tester/.var/app/com.valvesoftware.Steam/data/Steam/steamapps/appmanifest_243730.acf","installdir":"Source SDK Base 2013 Multiplayer","appPath":"/home/tester/.var/app/com.valvesoftware.Steam/data/Steam/steamapps/common/Source SDK Base 2013 Multiplayer"}
+        }
+      },
+      {
+        "op": "availability",
+        "ok": {
+          "ok": true,
+          "code": null,
+          "steam": {"installPath":"/home/tester/.var/app/com.valvesoftware.Steam/data/Steam","steamExe":"/usr/bin/flatpak","steamArgs":["run","com.valvesoftware.Steam"],"pid":200,"source":"proc"},
+          "app": {"appId":243730,"library":"/home/tester/.var/app/com.valvesoftware.Steam/data/Steam","manifestPath":"/home/tester/.var/app/com.valvesoftware.Steam/data/Steam/steamapps/appmanifest_243730.acf","installdir":"Source SDK Base 2013 Multiplayer","appPath":"/home/tester/.var/app/com.valvesoftware.Steam/data/Steam/steamapps/common/Source SDK Base 2013 Multiplayer"}
+        }
+      }
+    ]
+  },
+  {
+    "name": "linux: account",
+    "world": {
+      "name": "linux: account",
+      "platform": "linux",
+      "home": "/home/tester",
+      "tree": {
+        "/home/tester/.local/share/Steam/steamapps": {"dir":true},
+        "/home/tester/.local/share/Steam/config/loginusers.vdf": "\"users\"\r\n{\r\n\t\"76561197960265770\" { \"PersonaName\" \"First\" \"MostRecent\" \"0\" }\r\n\t\"76561197960265771\" { \"PersonaName\" \"Second\" \"MostRecent\" \"1\" }\r\n\t\"12345\" { \"PersonaName\" \"Not a SteamID64\" \"MostRecent\" \"1\" }\r\n}\r\n",
+        "/home/tester/.local/share/Steam/config/avatarcache/76561197960265771.png": {"png":26},
+        "/proc/200": {"dir":true,"uid":1000},
+        "/proc/200/comm": "steam\n"
+      },
+      "ops": [{"op":"account"},{"op":"refresh"},{"op":"account"},{"op":"active-id"}]
+    },
+    "results": [
+      {"op":"account","ok":{"signedIn":false,"steamId64":"76561197960265771","steamId2":"STEAM_0:1:21","personaName":"Second","avatarDataUri":"data:image/png;base64,iVBORw0KGgpmYWtlIGltYWdlIGRhdGEgAP8=","connection":"checking"}},
+      {"op":"refresh","ok":"connected"},
+      {"op":"account","ok":{"signedIn":true,"steamId64":"76561197960265771","steamId2":"STEAM_0:1:21","personaName":"Second","avatarDataUri":"data:image/png;base64,iVBORw0KGgpmYWtlIGltYWdlIGRhdGEgAP8=","connection":"connected"}},
+      {"op":"active-id","ok":43}
+    ]
+  },
+  {
+    "name": "linux: account: the first one when nobody is most recent",
+    "world": {
+      "name": "linux: account: the first one when nobody is most recent",
+      "platform": "linux",
+      "home": "/home/tester",
+      "tree": {"/home/tester/.local/share/Steam/steamapps":{"dir":true},"/home/tester/.local/share/Steam/config/loginusers.vdf":"\"users\" { \"76561197960265770\" { \"PersonaName\" \"First\" } \"76561197960265771\" { \"PersonaName\" \"Second\" \"MostRecent\" \"0\" } }"},
+      "ops": [{"op":"account"},{"op":"refresh"},{"op":"account"}]
+    },
+    "results": [{"op":"account","ok":{"signedIn":false,"steamId64":"76561197960265770","steamId2":"STEAM_0:0:21","personaName":"First","avatarDataUri":null,"connection":"checking"}},{"op":"refresh","ok":"offline"},{"op":"account","ok":{"signedIn":false,"steamId64":"76561197960265770","steamId2":"STEAM_0:0:21","personaName":"First","avatarDataUri":null,"connection":"offline"}}]
+  },
+  {
+    "name": "linux: account: SteamID64 below the base",
+    "world": {"name":"linux: account: SteamID64 below the base","platform":"linux","home":"/home/tester","tree":{"/home/tester/.local/share/Steam/steamapps":{"dir":true},"/home/tester/.local/share/Steam/config/loginusers.vdf":"\"users\" { \"76561190000000001\" { \"PersonaName\" \"Low\" \"MostRecent\" \"1\" } }"},"ops":[{"op":"account"},{"op":"active-id"}]},
+    "results": [{"op":"account","ok":{"signedIn":false,"steamId64":"76561190000000001","steamId2":"STEAM_0:-1:-3980132863","personaName":"Low","avatarDataUri":null,"connection":"checking"}},{"op":"active-id","ok":-7960265727}]
+  },
+  {
+    "name": "linux: account: odd and even IDs",
+    "world": {
+      "name": "linux: account: odd and even IDs",
+      "platform": "linux",
+      "home": "/home/tester",
+      "tree": {"/home/tester/.local/share/Steam/steamapps":{"dir":true},"/home/tester/.local/share/Steam/config/loginusers.vdf":"\"users\" { \"76561202255233023\" { \"MostRecent\" \"1\" } }"},
+      "ops": [{"op":"account"},{"op":"active-id"},{"op":"set-file","path":"/home/tester/.local/share/Steam/config/loginusers.vdf","text":"\"users\" { \"76561197960265728\" { } }"},{"op":"account"},{"op":"active-id"}]
+    },
+    "results": [{"op":"account","ok":{"signedIn":false,"steamId64":null,"steamId2":null,"personaName":null,"avatarDataUri":null,"connection":"checking"}},{"op":"active-id","ok":null},{"op":"set-file"},{"op":"account","ok":{"signedIn":false,"steamId64":"76561197960265728","steamId2":"STEAM_0:0:0","personaName":null,"avatarDataUri":null,"connection":"checking"}},{"op":"active-id","ok":0}]
+  },
+  {
+    "name": "linux: account: no users, broken file, no Steam",
+    "world": {
+      "name": "linux: account: no users, broken file, no Steam",
+      "platform": "linux",
+      "home": "/home/tester",
+      "tree": {"/home/tester/.local/share/Steam/steamapps":{"dir":true}},
+      "ops": [{"op":"account"},{"op":"set-file","path":"/home/tester/.local/share/Steam/config/loginusers.vdf","text":"\"users\" {"},{"op":"account"},{"op":"set-file","path":"/home/tester/.local/share/Steam/config/loginusers.vdf","text":"\"users\" { }"},{"op":"account"},{"op":"active-id"}]
+    },
+    "results": [
+      {"op":"account","ok":{"signedIn":false,"steamId64":null,"steamId2":null,"personaName":null,"avatarDataUri":null,"connection":"checking"}},
+      {"op":"set-file"},
+      {"op":"account","ok":{"signedIn":false,"steamId64":null,"steamId2":null,"personaName":null,"avatarDataUri":null,"connection":"checking"}},
+      {"op":"set-file"},
+      {"op":"account","ok":{"signedIn":false,"steamId64":null,"steamId2":null,"personaName":null,"avatarDataUri":null,"connection":"checking"}},
+      {"op":"active-id","ok":null}
+    ]
+  },
+  {
+    "name": "linux: account: no Steam",
+    "world": {"name":"linux: account: no Steam","platform":"linux","home":"/home/tester","tree":{},"ops":[{"op":"account"},{"op":"refresh"},{"op":"account"},{"op":"active-id"}]},
+    "results": [{"op":"account","ok":{"signedIn":false,"steamId64":null,"steamId2":null,"personaName":null,"avatarDataUri":null,"connection":"checking"}},{"op":"refresh","ok":"offline"},{"op":"account","ok":{"signedIn":false,"steamId64":null,"steamId2":null,"personaName":null,"avatarDataUri":null,"connection":"offline"}},{"op":"active-id","ok":null}]
+  },
+  {
+    "name": "linux: account: avatars",
+    "world": {
+      "name": "linux: account: avatars",
+      "platform": "linux",
+      "home": "/home/tester",
+      "tree": {"/home/tester/.local/share/Steam/steamapps":{"dir":true},"/home/tester/.local/share/Steam/config/loginusers.vdf":"\"users\" { \"76561197960265770\" { \"MostRecent\" \"1\" } }"},
+      "ops": [
+        {"op":"account"},
+        {"op":"set-file","path":"/home/tester/.local/share/Steam/config/avatarcache/76561197960265770.png","base64":""},
+        {"op":"account"},
+        {"op":"set-file","path":"/home/tester/.local/share/Steam/config/avatarcache/76561197960265770.png","text":"not a png"},
+        {"op":"account"},
+        {"op":"set-file","path":"/home/tester/.local/share/Steam/config/avatarcache/76561197960265770.png","png":26},
+        {"op":"account"},
+        {"op":"set-file","path":"/home/tester/.local/share/Steam/config/avatarcache/76561197960265770.png","png":524289},
+        {"op":"set-file","path":"/home/tester/.local/share/Steam/config/avatarcache/76561197960265770.png","png":524288},
+        {"op":"account"},
+        {"op":"account"}
+      ]
+    },
+    "results": [
+      {"op":"account","ok":{"signedIn":false,"steamId64":"76561197960265770","steamId2":"STEAM_0:0:21","personaName":null,"avatarDataUri":null,"connection":"checking"}},
+      {"op":"set-file"},
+      {"op":"account","ok":{"signedIn":false,"steamId64":"76561197960265770","steamId2":"STEAM_0:0:21","personaName":null,"avatarDataUri":null,"connection":"checking"}},
+      {"op":"set-file"},
+      {"op":"account","ok":{"signedIn":false,"steamId64":"76561197960265770","steamId2":"STEAM_0:0:21","personaName":null,"avatarDataUri":null,"connection":"checking"}},
+      {"op":"set-file"},
+      {"op":"account","ok":{"signedIn":false,"steamId64":"76561197960265770","steamId2":"STEAM_0:0:21","personaName":null,"avatarDataUri":"data:image/png;base64,iVBORw0KGgpmYWtlIGltYWdlIGRhdGEgAP8=","connection":"checking"}},
+      {"op":"set-file"},
+      {"op":"set-file"},
+      {"op":"account","ok":{"signedIn":false,"steamId64":"76561197960265770","steamId2":"STEAM_0:0:21","personaName":null,"avatarDataUri":{"length":699074,"sha256":"3f348f7c2cfc2aeb5b6f4e06219d3ba6db786975e844e699dfd9665b6762e517"},"connection":"checking"}},
+      {"op":"account","ok":{"signedIn":false,"steamId64":"76561197960265770","steamId2":"STEAM_0:0:21","personaName":null,"avatarDataUri":{"length":699074,"sha256":"3f348f7c2cfc2aeb5b6f4e06219d3ba6db786975e844e699dfd9665b6762e517"},"connection":"checking"}}
+    ]
+  },
+  {
+    "name": "path-case: no twins",
+    "world": {"name":"path-case: no twins","platform":"linux","home":"/home/tester","tree":{"/home/u/Games/HLSR/Games/ghosting-renewed":{"dir":true}},"ops":[{"op":"case-conflict","target":"/home/u/Games/HLSR/Games/ghosting-renewed"},{"op":"case-conflict","target":"/home/u/Games"},{"op":"case-conflict","target":"/"},{"op":"case-conflict","target":"/home/u/Games/HLSR/Games/ghosting-renewed/../.."}]},
+    "results": [{"op":"case-conflict","ok":null},{"op":"case-conflict","ok":null},{"op":"case-conflict","ok":null},{"op":"case-conflict","ok":null}]
+  },
+  {
+    "name": "path-case: a twin of a folder on the path",
+    "world": {"name":"path-case: a twin of a folder on the path","platform":"linux","home":"/home/tester","tree":{"/home/u/Games/HLSR/Games/ghosting-renewed":{"dir":true},"/home/u/Games/hlsr":{"dir":true}},"ops":[{"op":"case-conflict","target":"/home/u/Games/HLSR/Games/ghosting-renewed"},{"op":"case-conflict","target":"/home/u/Games/hlsr"},{"op":"case-conflict","target":"/home/u/Games/HLSR"}]},
+    "results": [{"op":"case-conflict","ok":{"folder":"/home/u/Games/HLSR","twin":"/home/u/Games/hlsr"}},{"op":"case-conflict","ok":{"folder":"/home/u/Games/hlsr","twin":"/home/u/Games/HLSR"}},{"op":"case-conflict","ok":{"folder":"/home/u/Games/HLSR","twin":"/home/u/Games/hlsr"}}]
+  },
+  {
+    "name": "path-case: the topmost twin is reported",
+    "world": {"name":"path-case: the topmost twin is reported","platform":"linux","home":"/home/tester","tree":{"/home/u/Games/HLSR/Games":{"dir":true},"/home/u/games":{"dir":true},"/home/u/Games/hlsr":{"dir":true}},"ops":[{"op":"case-conflict","target":"/home/u/Games/HLSR/Games"}]},
+    "results": [{"op":"case-conflict","ok":{"folder":"/home/u/Games","twin":"/home/u/games"}}]
+  },
+  {
+    "name": "path-case: a twin of the target itself and a file twin",
+    "world": {"name":"path-case: a twin of the target itself and a file twin","platform":"linux","home":"/home/tester","tree":{"/data/Library":{"dir":true},"/data/library":"file","/other/dir":{"dir":true},"/other/DIR":"file"},"ops":[{"op":"case-conflict","target":"/data/Library"},{"op":"case-conflict","target":"/data/library"},{"op":"case-conflict","target":"/other/dir"}]},
+    "results": [{"op":"case-conflict","ok":{"folder":"/data/Library","twin":"/data/library"}},{"op":"case-conflict","ok":{"folder":"/data/library","twin":"/data/Library"}},{"op":"case-conflict","ok":{"folder":"/other/dir","twin":"/other/DIR"}}]
+  },
+  {
+    "name": "path-case: several twins: the first in the listing",
+    "world": {"name":"path-case: several twins: the first in the listing","platform":"linux","home":"/home/tester","tree":{"/x/Abc":{"dir":true},"/x/ABC":{"dir":true},"/x/abc":{"dir":true}},"ops":[{"op":"case-conflict","target":"/x/Abc"},{"op":"case-conflict","target":"/x/abc"},{"op":"case-conflict","target":"/x/ABC"}]},
+    "results": [{"op":"case-conflict","ok":{"folder":"/x/Abc","twin":"/x/ABC"}},{"op":"case-conflict","ok":{"folder":"/x/abc","twin":"/x/ABC"}},{"op":"case-conflict","ok":{"folder":"/x/ABC","twin":"/x/Abc"}}]
+  },
+  {
+    "name": "path-case: a folder that cannot be listed is skipped",
+    "world": {"name":"path-case: a folder that cannot be listed is skipped","platform":"linux","home":"/home/tester","tree":{"/a/File":"file","/a/FILE":"file"},"ops":[{"op":"case-conflict","target":"/a/File/inner"},{"op":"case-conflict","target":"/missing/Dir"}]},
+    "results": [{"op":"case-conflict","ok":{"folder":"/a/File","twin":"/a/FILE"}},{"op":"case-conflict","ok":null}]
+  },
+  {
+    "name": "path-case: Cyrillic and special characters",
+    "world": {"name":"path-case: Cyrillic and special characters","platform":"linux","home":"/home/tester","tree":{"/home/u/Игры/Библиотека":{"dir":true},"/home/u/игры":{"dir":true},"/home/u/İ":{"dir":true},"/home/u/i̇":{"dir":true}},"ops":[{"op":"case-conflict","target":"/home/u/Игры/Библиотека"},{"op":"case-conflict","target":"/home/u/İ"}]},
+    "results": [{"op":"case-conflict","ok":{"folder":"/home/u/Игры","twin":"/home/u/игры"}},{"op":"case-conflict","ok":{"folder":"/home/u/İ","twin":"/home/u/i̇"}}]
+  }
+]

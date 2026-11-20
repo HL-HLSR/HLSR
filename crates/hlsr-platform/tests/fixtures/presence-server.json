@@ -1,0 +1,938 @@
+{
+  "defaults": {"handshakeTimeoutMs":5000,"idleTimeoutMs":30000,"maxMessagesPerSecond":20,"maxLineBytes":2048},
+  "scenarios": [
+    {
+      "platform": "linux",
+      "name": "рукопожатие",
+      "limits": null,
+      "steps": [
+        {"step":{"op":"start"},"result":"pipeName","events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {
+          "step": {"op":"inspect"},
+          "result": {"environment":{"HLSR_PRESENCE_PIPE":"<pipe>","HLSR_PRESENCE_TOKEN":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","HLSR_PRESENCE_PORT":"<port>"},"endpointKeys":["pipeName","token","port"],"hasPort":true,"port":"number"},
+          "events": [],
+          "clients": {},
+          "logs": [],
+          "diagnostics": {"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}
+        },
+        {"step":{"op":"connect","client":"a"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"send","client":"a","line":{"v":1,"type":"hello","token":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","session":"0123abcd"}},"events":[{"kind":"ready"}],"clients":{"a":{"received":[{"v":1,"type":"discord","connected":false}],"closed":false}},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {
+          "step": {"op":"inspect"},
+          "result": {"environment":{"HLSR_PRESENCE_PIPE":"<pipe>","HLSR_PRESENCE_TOKEN":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","HLSR_PRESENCE_PORT":"<port>"},"endpointKeys":["pipeName","token","port"],"hasPort":true,"port":"number"},
+          "events": [],
+          "clients": {},
+          "logs": [],
+          "diagnostics": {"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":0,"dropped":0}
+        }
+      ]
+    },
+    {
+      "platform": "linux",
+      "name": "неверный токен",
+      "limits": null,
+      "steps": [
+        {"step":{"op":"start"},"result":"pipeName","events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"connect","client":"a"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"send","client":"a","line":{"v":1,"type":"hello","token":"ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff","session":"0123abcd"}},"events":[{"kind":"gone","reason":"BAD_TOKEN"}],"clients":{"a":{"received":[],"closed":true}},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":1,"messages":0,"dropped":0}},
+        {"step":{"op":"connect","client":"b"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":1,"messages":0,"dropped":0}},
+        {"step":{"op":"send","client":"b","line":{"v":1,"type":"hello","token":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","session":"0123abcd"}},"events":[{"kind":"ready"}],"clients":{"b":{"received":[{"v":1,"type":"discord","connected":false}],"closed":false}},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":1,"messages":0,"dropped":0}}
+      ]
+    },
+    {
+      "platform": "linux",
+      "name": "без рукопожатия",
+      "limits": null,
+      "steps": [
+        {"step":{"op":"start"},"result":"pipeName","events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"connect","client":"a"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {
+          "step": {"op":"send","client":"a","line":{"v":1,"type":"state","session":"0123abcd","seq":1,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"timerElapsedMilliseconds":null}},
+          "events": [{"kind":"gone","reason":"NO_HANDSHAKE"}],
+          "clients": {"a":{"received":[],"closed":true}},
+          "logs": [],
+          "diagnostics": {"listening":true,"connected":false,"accepted":0,"rejected":1,"messages":0,"dropped":0}
+        },
+        {"step":{"op":"connect","client":"b"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":1,"messages":0,"dropped":0}},
+        {"step":{"op":"send","client":"b","text":"не json\n"},"events":[{"kind":"gone","reason":"NOT_JSON"}],"clients":{"b":{"received":[],"closed":true}},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":2,"messages":0,"dropped":0}},
+        {"step":{"op":"connect","client":"c"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":2,"messages":0,"dropped":0}},
+        {"step":{"op":"send","client":"c","line":{"v":1,"type":"nope"}},"events":[{"kind":"gone","reason":"UNKNOWN_TYPE"}],"clients":{"c":{"received":[],"closed":true}},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":3,"messages":0,"dropped":0}},
+        {"step":{"op":"connect","client":"d"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":3,"messages":0,"dropped":0}},
+        {"step":{"op":"send","client":"d","line":{"v":1,"type":"hello","token":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","session":"0123abcd","extra":1}},"events":[{"kind":"gone","reason":"UNKNOWN_FIELD:extra"}],"clients":{"d":{"received":[],"closed":true}},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":4,"messages":0,"dropped":0}}
+      ]
+    },
+    {
+      "platform": "linux",
+      "name": "слишком длинная строка",
+      "limits": null,
+      "steps": [
+        {"step":{"op":"start"},"result":"pipeName","events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"connect","client":"a"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"send","client":"a","line":{"v":1,"type":"hello","token":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","session":"0123abcd"}},"events":[{"kind":"ready"}],"clients":{"a":{"received":[{"v":1,"type":"discord","connected":false}],"closed":false}},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {
+          "step": {
+            "op": "send",
+            "client": "a",
+            "text": "{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":1,\"lifecycle\":\"menu\",\"mapName\":null,\"fps\":60,\"timerRunning\":false,\"timerCompleted\":false,\"timerElapsedMilliseconds\":null,\"extra\":\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"}\n"
+          },
+          "events": [{"kind":"gone","reason":"TOO_LONG"}],
+          "clients": {"a":{"received":[],"closed":true}},
+          "logs": ["info: [game-presence] соединение закрыто: TOO_LONG"],
+          "diagnostics": {"listening":true,"connected":false,"accepted":1,"rejected":0,"messages":0,"dropped":0}
+        },
+        {"step":{"op":"connect","client":"b"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"send","client":"b","line":{"v":1,"type":"hello","token":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","session":"0123abcd"}},"events":[{"kind":"ready"}],"clients":{"b":{"received":[{"v":1,"type":"discord","connected":false}],"closed":false}},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":2,"rejected":0,"messages":0,"dropped":0}},
+        {
+          "step": {
+            "op": "send",
+            "client": "b",
+            "text": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+          },
+          "events": [{"kind":"gone","reason":"LINE_TOO_LONG"}],
+          "clients": {"b":{"received":[],"closed":true}},
+          "logs": ["info: [game-presence] соединение закрыто: LINE_TOO_LONG"],
+          "diagnostics": {"listening":true,"connected":false,"accepted":2,"rejected":0,"messages":0,"dropped":0}
+        },
+        {"step":{"op":"connect","client":"c"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":2,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"send","client":"c","line":{"v":1,"type":"hello","token":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","session":"0123abcd"}},"events":[{"kind":"ready"}],"clients":{"c":{"received":[{"v":1,"type":"discord","connected":false}],"closed":false}},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":3,"rejected":0,"messages":0,"dropped":0}},
+        {
+          "step": {
+            "op": "send",
+            "client": "c",
+            "text": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+          },
+          "events": [],
+          "clients": {},
+          "logs": [],
+          "diagnostics": {"listening":true,"connected":true,"accepted":3,"rejected":0,"messages":0,"dropped":0}
+        },
+        {"step":{"op":"send","client":"c","text":"x"},"events":[{"kind":"gone","reason":"LINE_TOO_LONG"}],"clients":{"c":{"received":[],"closed":true}},"logs":["info: [game-presence] соединение закрыто: LINE_TOO_LONG"],"diagnostics":{"listening":true,"connected":false,"accepted":3,"rejected":0,"messages":0,"dropped":0}}
+      ]
+    },
+    {
+      "platform": "linux",
+      "name": "повторное рукопожатие",
+      "limits": null,
+      "steps": [
+        {"step":{"op":"start"},"result":"pipeName","events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"connect","client":"a"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"send","client":"a","line":{"v":1,"type":"hello","token":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","session":"0123abcd"}},"events":[{"kind":"ready"}],"clients":{"a":{"received":[{"v":1,"type":"discord","connected":false}],"closed":false}},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {
+          "step": {"op":"send","client":"a","line":{"v":1,"type":"hello","token":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","session":"0123abcd"}},
+          "events": [{"kind":"gone","reason":"DUPLICATE_HANDSHAKE"}],
+          "clients": {"a":{"received":[],"closed":true}},
+          "logs": ["info: [game-presence] соединение закрыто: DUPLICATE_HANDSHAKE"],
+          "diagnostics": {"listening":true,"connected":false,"accepted":1,"rejected":0,"messages":0,"dropped":0}
+        }
+      ]
+    },
+    {
+      "platform": "linux",
+      "name": "сообщения игры",
+      "limits": null,
+      "steps": [
+        {"step":{"op":"start"},"result":"pipeName","events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"connect","client":"a"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"send","client":"a","line":{"v":1,"type":"hello","token":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","session":"0123abcd"}},"events":[{"kind":"ready"}],"clients":{"a":{"received":[{"v":1,"type":"discord","connected":false}],"closed":false}},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {
+          "step": {"op":"send","client":"a","line":{"v":1,"type":"state","session":"0123abcd","seq":1,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"timerElapsedMilliseconds":null}},
+          "events": [{"kind":"state","message":{"type":"state","session":"0123abcd","seq":1,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}}],
+          "clients": {},
+          "logs": [],
+          "diagnostics": {"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":1,"dropped":0}
+        },
+        {
+          "step": {"op":"send","client":"a","line":{"v":1,"type":"state","session":"0123abcd","seq":2,"lifecycle":"playing","mapName":"d1_canals_01","fps":60,"timerRunning":true,"timerCompleted":false,"timerElapsedMilliseconds":1500}},
+          "events": [{"kind":"state","message":{"type":"state","session":"0123abcd","seq":2,"lifecycle":"playing","mapName":"d1_canals_01","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":1500}}],
+          "clients": {},
+          "logs": [],
+          "diagnostics": {"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":2,"dropped":0}
+        },
+        {"step":{"op":"send","client":"a","line":{"v":1,"type":"chat.subscribe","session":"0123abcd","platform":"twitch","id":"12345"}},"events":[{"kind":"chat","message":{"type":"chat.subscribe","session":"0123abcd","platform":"twitch","id":"12345"}}],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":3,"dropped":0}},
+        {"step":{"op":"send","client":"a","line":{"v":1,"type":"emote.set","session":"0123abcd","roomId":"set:abc"}},"events":[{"kind":"chat","message":{"type":"emote.set","session":"0123abcd","roomId":"set:abc"}}],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":4,"dropped":0}},
+        {"step":{"op":"send","client":"a","line":{"v":1,"type":"emote.resolve","session":"0123abcd","name":"Kappa","px":28}},"events":[{"kind":"chat","message":{"type":"emote.resolve","session":"0123abcd","name":"Kappa","px":28}}],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":5,"dropped":0}},
+        {"step":{"op":"send","client":"a","line":{"v":1,"type":"chat.unsubscribe","session":"0123abcd"}},"events":[{"kind":"chat","message":{"type":"chat.unsubscribe","session":"0123abcd"}}],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":6,"dropped":0}},
+        {"step":{"op":"send","client":"a","line":{"v":1,"type":"state","session":"deadbeef","seq":3,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"timerElapsedMilliseconds":null}},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":6,"dropped":1}},
+        {"step":{"op":"send","client":"a","line":{"v":1,"type":"chat.subscribe","session":"deadbeef","platform":"twitch","id":"12345"}},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":6,"dropped":2}},
+        {
+          "step": {"op":"inspect"},
+          "result": {"environment":{"HLSR_PRESENCE_PIPE":"<pipe>","HLSR_PRESENCE_TOKEN":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","HLSR_PRESENCE_PORT":"<port>"},"endpointKeys":["pipeName","token","port"],"hasPort":true,"port":"number"},
+          "events": [],
+          "clients": {},
+          "logs": [],
+          "diagnostics": {"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":6,"dropped":2}
+        }
+      ]
+    },
+    {
+      "platform": "linux",
+      "name": "неверное сообщение закрывает связь",
+      "limits": null,
+      "steps": [
+        {"step":{"op":"start"},"result":"pipeName","events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"connect","client":"a"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"send","client":"a","line":{"v":1,"type":"hello","token":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","session":"0123abcd"}},"events":[{"kind":"ready"}],"clients":{"a":{"received":[{"v":1,"type":"discord","connected":false}],"closed":false}},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {
+          "step": {"op":"send","client":"a","line":{"v":1,"type":"state","session":"0123abcd","seq":1,"lifecycle":"menu","mapName":null,"fps":"быстро","timerRunning":false,"timerCompleted":false,"timerElapsedMilliseconds":null}},
+          "events": [{"kind":"gone","reason":"BAD_FPS"}],
+          "clients": {"a":{"received":[],"closed":true}},
+          "logs": ["info: [game-presence] соединение закрыто: BAD_FPS"],
+          "diagnostics": {"listening":true,"connected":false,"accepted":1,"rejected":0,"messages":0,"dropped":0}
+        },
+        {"step":{"op":"connect","client":"b"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"send","client":"b","line":{"v":1,"type":"hello","token":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","session":"0123abcd"}},"events":[{"kind":"ready"}],"clients":{"b":{"received":[{"v":1,"type":"discord","connected":false}],"closed":false}},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":2,"rejected":0,"messages":0,"dropped":0}},
+        {
+          "step": {"op":"send","client":"b","line":{"v":1,"type":"state","session":"0123abcd","seq":1,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"timerElapsedMilliseconds":null,"extra":1}},
+          "events": [{"kind":"gone","reason":"UNKNOWN_FIELD:extra"}],
+          "clients": {"b":{"received":[],"closed":true}},
+          "logs": ["info: [game-presence] соединение закрыто: UNKNOWN_FIELD:extra"],
+          "diagnostics": {"listening":true,"connected":false,"accepted":2,"rejected":0,"messages":0,"dropped":0}
+        }
+      ]
+    },
+    {
+      "platform": "linux",
+      "name": "не больше 20 сообщений в секунду",
+      "limits": null,
+      "steps": [
+        {"step":{"op":"start"},"result":"pipeName","events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"connect","client":"a"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"send","client":"a","line":{"v":1,"type":"hello","token":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","session":"0123abcd"}},"events":[{"kind":"ready"}],"clients":{"a":{"received":[{"v":1,"type":"discord","connected":false}],"closed":false}},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {
+          "step": {"op":"burst","client":"a","count":19,"make":"state"},
+          "events": [
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":1,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":2,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":3,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":4,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":5,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":6,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":7,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":8,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":9,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":10,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":11,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":12,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":13,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":14,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":15,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":16,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":17,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":18,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":19,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}}
+          ],
+          "clients": {},
+          "logs": [],
+          "diagnostics": {"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":19,"dropped":0}
+        },
+        {
+          "step": {"op":"send","client":"a","line":{"v":1,"type":"state","session":"0123abcd","seq":100,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"timerElapsedMilliseconds":null}},
+          "events": [{"kind":"gone","reason":"RATE_LIMIT"}],
+          "clients": {"a":{"received":[],"closed":true}},
+          "logs": ["info: [game-presence] соединение закрыто: RATE_LIMIT"],
+          "diagnostics": {"listening":true,"connected":false,"accepted":1,"rejected":0,"messages":19,"dropped":0}
+        },
+        {"step":{"op":"connect","client":"b"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":1,"rejected":0,"messages":19,"dropped":0}},
+        {"step":{"op":"send","client":"b","line":{"v":1,"type":"hello","token":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","session":"0123abcd"}},"events":[{"kind":"ready"}],"clients":{"b":{"received":[{"v":1,"type":"discord","connected":false}],"closed":false}},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":2,"rejected":0,"messages":19,"dropped":0}},
+        {
+          "step": {"op":"burst","client":"b","count":19,"make":"state"},
+          "events": [
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":1,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":2,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":3,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":4,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":5,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":6,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":7,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":8,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":9,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":10,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":11,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":12,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":13,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":14,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":15,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":16,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":17,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":18,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":19,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}}
+          ],
+          "clients": {},
+          "logs": [],
+          "diagnostics": {"listening":true,"connected":true,"accepted":2,"rejected":0,"messages":38,"dropped":0}
+        },
+        {"step":{"op":"clock","add":999},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":2,"rejected":0,"messages":38,"dropped":0}},
+        {
+          "step": {"op":"send","client":"b","line":{"v":1,"type":"state","session":"0123abcd","seq":100,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"timerElapsedMilliseconds":null}},
+          "events": [{"kind":"gone","reason":"RATE_LIMIT"}],
+          "clients": {"b":{"received":[],"closed":true}},
+          "logs": ["info: [game-presence] соединение закрыто: RATE_LIMIT"],
+          "diagnostics": {"listening":true,"connected":false,"accepted":2,"rejected":0,"messages":38,"dropped":0}
+        },
+        {"step":{"op":"clock","add":1},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":2,"rejected":0,"messages":38,"dropped":0}},
+        {"step":{"op":"burst","client":"b","count":20,"make":"state","from":200},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":2,"rejected":0,"messages":38,"dropped":0}},
+        {"step":{"op":"send","client":"b","line":{"v":1,"type":"state","session":"0123abcd","seq":300,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"timerElapsedMilliseconds":null}},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":2,"rejected":0,"messages":38,"dropped":0}}
+      ]
+    },
+    {
+      "platform": "linux",
+      "name": "пустые строки, CRLF и несколько строк в одном куске",
+      "limits": null,
+      "steps": [
+        {"step":{"op":"start"},"result":"pipeName","events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"connect","client":"a"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {
+          "step": {"op":"send","client":"a","text":"\n\r\n{\"v\":1,\"type\":\"hello\",\"token\":\"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef\",\"session\":\"0123abcd\"}\r\n"},
+          "events": [{"kind":"ready"}],
+          "clients": {"a":{"received":[{"v":1,"type":"discord","connected":false}],"closed":false}},
+          "logs": [],
+          "diagnostics": {"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":0,"dropped":0}
+        },
+        {
+          "step": {
+            "op": "send",
+            "client": "a",
+            "text": "{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":1,\"lifecycle\":\"menu\",\"mapName\":null,\"fps\":60,\"timerRunning\":false,\"timerCompleted\":false,\"timerElapsedMilliseconds\":null}\n\n{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":2,\"lifecycle\":\"menu\",\"mapName\":null,\"fps\":60,\"timerRunning\":false,\"timerCompleted\":false,\"timerElapsedMilliseconds\":null}\r\n{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"menu\",\"mapName\":null,\"fps\":60,\"timerRunning\":false,\"timerCompleted\":false,\"timerElapsedMilliseconds\":null}"
+          },
+          "events": [{"kind":"state","message":{"type":"state","session":"0123abcd","seq":1,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},{"kind":"state","message":{"type":"state","session":"0123abcd","seq":2,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}}],
+          "clients": {},
+          "logs": [],
+          "diagnostics": {"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":2,"dropped":0}
+        },
+        {"step":{"op":"send","client":"a","text":"\n"},"events":[{"kind":"state","message":{"type":"state","session":"0123abcd","seq":3,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}}],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":3,"dropped":0}}
+      ]
+    },
+    {
+      "platform": "linux",
+      "name": "строка по частям, многобайтный знак пополам",
+      "limits": null,
+      "steps": [
+        {"step":{"op":"start"},"result":"pipeName","events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"connect","client":"a"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"send","client":"a","text":"{\"v\":1,\"type\":\"hello"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"send","client":"a","text":"\",\"token\":\"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef\",\"session\":\"0123abcd\"}\n"},"events":[{"kind":"ready"}],"clients":{"a":{"received":[{"v":1,"type":"discord","connected":false}],"closed":false}},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"sendBytes","client":"a","base64":"eyJ2IjoxLCJ0eXBlIjoic3RhdGUiLCJzZXNzaW9uIjoiMDEyM2FiY2QiLCJzZXEiOjEsImxpZmVjeWNsZSI6Im1lbnUiLCJtYXBOYW1lIjpudWxsLCJmcHMiOm51bGwsInRpbWVyUnVubmluZyI6ZmFsc2UsInRpbWVyQ29tcGxldGVkIjpmYWxzZSw="},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"sendBytes","client":"a","base64":"IngiOiLRjyJ9Cg=="},"events":[{"kind":"gone","reason":"UNKNOWN_FIELD:x"}],"clients":{"a":{"received":[],"closed":true}},"logs":["info: [game-presence] соединение закрыто: UNKNOWN_FIELD:x"],"diagnostics":{"listening":true,"connected":false,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"send","client":"a","line":{"v":1,"type":"state","session":"0123abcd","seq":2,"lifecycle":"menu","mapName":null,"fps":61,"timerRunning":false,"timerCompleted":false,"timerElapsedMilliseconds":null}},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":1,"rejected":0,"messages":0,"dropped":0}}
+      ]
+    },
+    {
+      "platform": "linux",
+      "name": "рукопожатие не пришло вовремя",
+      "limits": {"handshakeTimeoutMs":400},
+      "steps": [
+        {"step":{"op":"start"},"result":"pipeName","events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"connect","client":"a"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"wait","ms":600},"events":[{"kind":"gone","reason":"HANDSHAKE_TIMEOUT"}],"clients":{"a":{"received":[],"closed":true}},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":1,"messages":0,"dropped":0}},
+        {"step":{"op":"connect","client":"b"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":1,"messages":0,"dropped":0}},
+        {"step":{"op":"send","client":"b","line":{"v":1,"type":"hello","token":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","session":"0123abcd"}},"events":[{"kind":"ready"}],"clients":{"b":{"received":[{"v":1,"type":"discord","connected":false}],"closed":false}},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":1,"messages":0,"dropped":0}},
+        {"step":{"op":"wait","ms":500},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":1,"messages":0,"dropped":0}},
+        {"step":{"op":"connect","client":"c"},"events":[],"clients":{"c":{"received":[],"closed":true}},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":2,"messages":0,"dropped":0}},
+        {"step":{"op":"send","client":"c","line":{"v":1,"type":"state","session":"0123abcd","seq":1,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"timerElapsedMilliseconds":null}},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":2,"messages":0,"dropped":0}}
+      ]
+    },
+    {
+      "platform": "linux",
+      "name": "простой связи",
+      "limits": {"idleTimeoutMs":500},
+      "steps": [
+        {"step":{"op":"start"},"result":"pipeName","events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"connect","client":"a"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"send","client":"a","line":{"v":1,"type":"hello","token":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","session":"0123abcd"}},"events":[{"kind":"ready"}],"clients":{"a":{"received":[{"v":1,"type":"discord","connected":false}],"closed":false}},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"wait","ms":200},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {
+          "step": {"op":"send","client":"a","line":{"v":1,"type":"state","session":"0123abcd","seq":1,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"timerElapsedMilliseconds":null}},
+          "events": [{"kind":"state","message":{"type":"state","session":"0123abcd","seq":1,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}}],
+          "clients": {},
+          "logs": [],
+          "diagnostics": {"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":1,"dropped":0}
+        },
+        {"step":{"op":"wait","ms":200},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":1,"dropped":0}},
+        {
+          "step": {"op":"send","client":"a","line":{"v":1,"type":"state","session":"0123abcd","seq":2,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"timerElapsedMilliseconds":null}},
+          "events": [{"kind":"state","message":{"type":"state","session":"0123abcd","seq":2,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}}],
+          "clients": {},
+          "logs": [],
+          "diagnostics": {"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":2,"dropped":0}
+        },
+        {"step":{"op":"wait","ms":800},"events":[{"kind":"gone","reason":"IDLE_TIMEOUT"}],"clients":{"a":{"received":[],"closed":true}},"logs":["info: [game-presence] соединение закрыто: IDLE_TIMEOUT"],"diagnostics":{"listening":true,"connected":false,"accepted":1,"rejected":0,"messages":2,"dropped":0}},
+        {"step":{"op":"connect","client":"b"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":1,"rejected":0,"messages":2,"dropped":0}},
+        {"step":{"op":"send","client":"b","line":{"v":1,"type":"hello","token":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","session":"0123abcd"}},"events":[{"kind":"ready"}],"clients":{"b":{"received":[{"v":1,"type":"discord","connected":false}],"closed":false}},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":2,"rejected":0,"messages":2,"dropped":0}},
+        {"step":{"op":"wait","ms":200},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":2,"rejected":0,"messages":2,"dropped":0}},
+        {"step":{"op":"send","client":"b","line":{"v":1,"type":"state","session":"deadbeef","seq":1,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"timerElapsedMilliseconds":null}},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":2,"rejected":0,"messages":2,"dropped":1}},
+        {"step":{"op":"wait","ms":350},"events":[{"kind":"gone","reason":"IDLE_TIMEOUT"}],"clients":{"b":{"received":[],"closed":true}},"logs":["info: [game-presence] соединение закрыто: IDLE_TIMEOUT"],"diagnostics":{"listening":true,"connected":false,"accepted":2,"rejected":0,"messages":2,"dropped":1}}
+      ]
+    },
+    {
+      "platform": "linux",
+      "name": "второе соединение",
+      "limits": null,
+      "steps": [
+        {"step":{"op":"start"},"result":"pipeName","events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"connect","client":"a"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"send","client":"a","line":{"v":1,"type":"hello","token":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","session":"0123abcd"}},"events":[{"kind":"ready"}],"clients":{"a":{"received":[{"v":1,"type":"discord","connected":false}],"closed":false}},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"connect","client":"b"},"events":[],"clients":{"b":{"received":[],"closed":true}},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":1,"messages":0,"dropped":0}},
+        {"step":{"op":"send","client":"b","line":{"v":1,"type":"hello","token":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","session":"deadbeef"}},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":1,"messages":0,"dropped":0}},
+        {
+          "step": {"op":"send","client":"a","line":{"v":1,"type":"state","session":"0123abcd","seq":1,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"timerElapsedMilliseconds":null}},
+          "events": [{"kind":"state","message":{"type":"state","session":"0123abcd","seq":1,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}}],
+          "clients": {},
+          "logs": [],
+          "diagnostics": {"listening":true,"connected":true,"accepted":1,"rejected":1,"messages":1,"dropped":0}
+        },
+        {"step":{"op":"send","client":"b","line":{"v":1,"type":"state","session":"deadbeef","seq":1,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"timerElapsedMilliseconds":null}},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":1,"messages":1,"dropped":0}},
+        {
+          "step": {"op":"inspect"},
+          "result": {"environment":{"HLSR_PRESENCE_PIPE":"<pipe>","HLSR_PRESENCE_TOKEN":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","HLSR_PRESENCE_PORT":"<port>"},"endpointKeys":["pipeName","token","port"],"hasPort":true,"port":"number"},
+          "events": [],
+          "clients": {},
+          "logs": [],
+          "diagnostics": {"listening":true,"connected":true,"accepted":1,"rejected":1,"messages":1,"dropped":0}
+        }
+      ]
+    },
+    {
+      "platform": "linux",
+      "name": "второе соединение вместо несостоявшегося рукопожатия",
+      "limits": null,
+      "steps": [
+        {"step":{"op":"start"},"result":"pipeName","events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"connect","client":"a"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"connect","client":"b"},"events":[{"kind":"gone","reason":"REPLACED"}],"clients":{"a":{"received":[],"closed":true}},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"send","client":"b","line":{"v":1,"type":"hello","token":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","session":"0123abcd"}},"events":[{"kind":"ready"}],"clients":{"b":{"received":[{"v":1,"type":"discord","connected":false}],"closed":false}},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"send","client":"a","line":{"v":1,"type":"hello","token":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","session":"0123abcd"}},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":0,"dropped":0}}
+      ]
+    },
+    {
+      "platform": "linux",
+      "name": "Discord",
+      "limits": null,
+      "steps": [
+        {"step":{"op":"start"},"result":"pipeName","events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"discord","value":true},"result":true,"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"discord","value":true},"result":false,"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"connect","client":"a"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"send","client":"a","line":{"v":1,"type":"hello","token":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","session":"0123abcd"}},"events":[{"kind":"ready"}],"clients":{"a":{"received":[{"v":1,"type":"discord","connected":true}],"closed":false}},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"discord","value":false},"result":true,"events":[],"clients":{"a":{"received":[{"v":1,"type":"discord","connected":false}],"closed":false}},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"discord","value":"yes"},"result":false,"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"discord","value":false},"result":false,"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"discord","value":true},"result":true,"events":[],"clients":{"a":{"received":[{"v":1,"type":"discord","connected":true}],"closed":false}},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"close","client":"a"},"events":[{"kind":"gone","reason":"CLOSED"}],"clients":{"a":{"received":[],"closed":true}},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"discord","value":false},"result":true,"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"connect","client":"b"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"send","client":"b","line":{"v":1,"type":"hello","token":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","session":"0123abcd"}},"events":[{"kind":"ready"}],"clients":{"b":{"received":[{"v":1,"type":"discord","connected":false}],"closed":false}},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":2,"rejected":0,"messages":0,"dropped":0}}
+      ]
+    },
+    {
+      "platform": "linux",
+      "name": "клиент закрыл связь",
+      "limits": null,
+      "steps": [
+        {"step":{"op":"start"},"result":"pipeName","events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"connect","client":"a"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"send","client":"a","line":{"v":1,"type":"hello","token":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","session":"0123abcd"}},"events":[{"kind":"ready"}],"clients":{"a":{"received":[{"v":1,"type":"discord","connected":false}],"closed":false}},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"close","client":"a"},"events":[{"kind":"gone","reason":"CLOSED"}],"clients":{"a":{"received":[],"closed":true}},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"connect","client":"b"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"close","client":"b"},"events":[{"kind":"gone","reason":"CLOSED"}],"clients":{"b":{"received":[],"closed":true}},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"connect","client":"c"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"send","client":"c","line":{"v":1,"type":"hello","token":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","session":"0123abcd"}},"events":[{"kind":"ready"}],"clients":{"c":{"received":[{"v":1,"type":"discord","connected":false}],"closed":false}},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":2,"rejected":0,"messages":0,"dropped":0}},
+        {
+          "step": {"op":"inspect"},
+          "result": {"environment":{"HLSR_PRESENCE_PIPE":"<pipe>","HLSR_PRESENCE_TOKEN":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","HLSR_PRESENCE_PORT":"<port>"},"endpointKeys":["pipeName","token","port"],"hasPort":true,"port":"number"},
+          "events": [],
+          "clients": {},
+          "logs": [],
+          "diagnostics": {"listening":true,"connected":true,"accepted":2,"rejected":0,"messages":0,"dropped":0}
+        }
+      ]
+    },
+    {
+      "platform": "linux",
+      "name": "остановка и повторный запуск",
+      "limits": null,
+      "steps": [
+        {"step":{"op":"inspect"},"result":{"environment":{},"endpointKeys":["pipeName","token","port"],"hasPort":false,"port":"object"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":false,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"start"},"result":"pipeName","events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"start"},"result":"pipeName","events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"connect","client":"a"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"send","client":"a","line":{"v":1,"type":"hello","token":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","session":"0123abcd"}},"events":[{"kind":"ready"}],"clients":{"a":{"received":[{"v":1,"type":"discord","connected":false}],"closed":false}},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"stop"},"events":[{"kind":"gone","reason":"SHUTDOWN"}],"clients":{"a":{"received":[],"closed":true}},"logs":[],"diagnostics":{"listening":false,"connected":false,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"inspect"},"result":{"environment":{},"endpointKeys":["pipeName","token","port"],"hasPort":false,"port":"object"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":false,"connected":false,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"stop"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":false,"connected":false,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"start"},"result":"pipeName","events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"connect","client":"b"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"send","client":"b","line":{"v":1,"type":"hello","token":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","session":"0123abcd"}},"events":[{"kind":"ready"}],"clients":{"b":{"received":[{"v":1,"type":"discord","connected":false}],"closed":false}},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":2,"rejected":0,"messages":0,"dropped":0}},
+        {
+          "step": {"op":"inspect"},
+          "result": {"environment":{"HLSR_PRESENCE_PIPE":"<pipe>","HLSR_PRESENCE_TOKEN":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","HLSR_PRESENCE_PORT":"<port>"},"endpointKeys":["pipeName","token","port"],"hasPort":true,"port":"number"},
+          "events": [],
+          "clients": {},
+          "logs": [],
+          "diagnostics": {"listening":true,"connected":true,"accepted":2,"rejected":0,"messages":0,"dropped":0}
+        }
+      ]
+    },
+    {
+      "platform": "linux",
+      "name": "окружение и канал",
+      "limits": null,
+      "steps": [
+        {"step":{"op":"inspect"},"result":{"environment":{},"endpointKeys":["pipeName","token","port"],"hasPort":false,"port":"object"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":false,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"start"},"result":"pipeName","events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {
+          "step": {"op":"inspect"},
+          "result": {"environment":{"HLSR_PRESENCE_PIPE":"<pipe>","HLSR_PRESENCE_TOKEN":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","HLSR_PRESENCE_PORT":"<port>"},"endpointKeys":["pipeName","token","port"],"hasPort":true,"port":"number"},
+          "events": [],
+          "clients": {},
+          "logs": [],
+          "diagnostics": {"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}
+        }
+      ]
+    },
+    {
+      "platform": "win32",
+      "name": "рукопожатие",
+      "limits": null,
+      "steps": [
+        {"step":{"op":"start"},"result":"pipeName","events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"inspect"},"result":{"environment":{"HLSR_PRESENCE_PIPE":"<pipe>","HLSR_PRESENCE_TOKEN":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef"},"endpointKeys":["pipeName","token","port"],"hasPort":false,"port":null},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"connect","client":"a"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"send","client":"a","line":{"v":1,"type":"hello","token":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","session":"0123abcd"}},"events":[{"kind":"ready"}],"clients":{"a":{"received":[{"v":1,"type":"discord","connected":false}],"closed":false}},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"inspect"},"result":{"environment":{"HLSR_PRESENCE_PIPE":"<pipe>","HLSR_PRESENCE_TOKEN":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef"},"endpointKeys":["pipeName","token","port"],"hasPort":false,"port":null},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":0,"dropped":0}}
+      ]
+    },
+    {
+      "platform": "win32",
+      "name": "неверный токен",
+      "limits": null,
+      "steps": [
+        {"step":{"op":"start"},"result":"pipeName","events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"connect","client":"a"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"send","client":"a","line":{"v":1,"type":"hello","token":"ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff","session":"0123abcd"}},"events":[{"kind":"gone","reason":"BAD_TOKEN"}],"clients":{"a":{"received":[],"closed":true}},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":1,"messages":0,"dropped":0}},
+        {"step":{"op":"connect","client":"b"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":1,"messages":0,"dropped":0}},
+        {"step":{"op":"send","client":"b","line":{"v":1,"type":"hello","token":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","session":"0123abcd"}},"events":[{"kind":"ready"}],"clients":{"b":{"received":[{"v":1,"type":"discord","connected":false}],"closed":false}},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":1,"messages":0,"dropped":0}}
+      ]
+    },
+    {
+      "platform": "win32",
+      "name": "без рукопожатия",
+      "limits": null,
+      "steps": [
+        {"step":{"op":"start"},"result":"pipeName","events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"connect","client":"a"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {
+          "step": {"op":"send","client":"a","line":{"v":1,"type":"state","session":"0123abcd","seq":1,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"timerElapsedMilliseconds":null}},
+          "events": [{"kind":"gone","reason":"NO_HANDSHAKE"}],
+          "clients": {"a":{"received":[],"closed":true}},
+          "logs": [],
+          "diagnostics": {"listening":true,"connected":false,"accepted":0,"rejected":1,"messages":0,"dropped":0}
+        },
+        {"step":{"op":"connect","client":"b"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":1,"messages":0,"dropped":0}},
+        {"step":{"op":"send","client":"b","text":"не json\n"},"events":[{"kind":"gone","reason":"NOT_JSON"}],"clients":{"b":{"received":[],"closed":true}},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":2,"messages":0,"dropped":0}},
+        {"step":{"op":"connect","client":"c"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":2,"messages":0,"dropped":0}},
+        {"step":{"op":"send","client":"c","line":{"v":1,"type":"nope"}},"events":[{"kind":"gone","reason":"UNKNOWN_TYPE"}],"clients":{"c":{"received":[],"closed":true}},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":3,"messages":0,"dropped":0}},
+        {"step":{"op":"connect","client":"d"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":3,"messages":0,"dropped":0}},
+        {"step":{"op":"send","client":"d","line":{"v":1,"type":"hello","token":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","session":"0123abcd","extra":1}},"events":[{"kind":"gone","reason":"UNKNOWN_FIELD:extra"}],"clients":{"d":{"received":[],"closed":true}},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":4,"messages":0,"dropped":0}}
+      ]
+    },
+    {
+      "platform": "win32",
+      "name": "слишком длинная строка",
+      "limits": null,
+      "steps": [
+        {"step":{"op":"start"},"result":"pipeName","events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"connect","client":"a"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"send","client":"a","line":{"v":1,"type":"hello","token":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","session":"0123abcd"}},"events":[{"kind":"ready"}],"clients":{"a":{"received":[{"v":1,"type":"discord","connected":false}],"closed":false}},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {
+          "step": {
+            "op": "send",
+            "client": "a",
+            "text": "{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":1,\"lifecycle\":\"menu\",\"mapName\":null,\"fps\":60,\"timerRunning\":false,\"timerCompleted\":false,\"timerElapsedMilliseconds\":null,\"extra\":\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"}\n"
+          },
+          "events": [{"kind":"gone","reason":"TOO_LONG"}],
+          "clients": {"a":{"received":[],"closed":true}},
+          "logs": ["info: [game-presence] соединение закрыто: TOO_LONG"],
+          "diagnostics": {"listening":true,"connected":false,"accepted":1,"rejected":0,"messages":0,"dropped":0}
+        },
+        {"step":{"op":"connect","client":"b"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"send","client":"b","line":{"v":1,"type":"hello","token":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","session":"0123abcd"}},"events":[{"kind":"ready"}],"clients":{"b":{"received":[{"v":1,"type":"discord","connected":false}],"closed":false}},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":2,"rejected":0,"messages":0,"dropped":0}},
+        {
+          "step": {
+            "op": "send",
+            "client": "b",
+            "text": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+          },
+          "events": [{"kind":"gone","reason":"LINE_TOO_LONG"}],
+          "clients": {"b":{"received":[],"closed":true}},
+          "logs": ["info: [game-presence] соединение закрыто: LINE_TOO_LONG"],
+          "diagnostics": {"listening":true,"connected":false,"accepted":2,"rejected":0,"messages":0,"dropped":0}
+        },
+        {"step":{"op":"connect","client":"c"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":2,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"send","client":"c","line":{"v":1,"type":"hello","token":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","session":"0123abcd"}},"events":[{"kind":"ready"}],"clients":{"c":{"received":[{"v":1,"type":"discord","connected":false}],"closed":false}},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":3,"rejected":0,"messages":0,"dropped":0}},
+        {
+          "step": {
+            "op": "send",
+            "client": "c",
+            "text": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+          },
+          "events": [],
+          "clients": {},
+          "logs": [],
+          "diagnostics": {"listening":true,"connected":true,"accepted":3,"rejected":0,"messages":0,"dropped":0}
+        },
+        {"step":{"op":"send","client":"c","text":"x"},"events":[{"kind":"gone","reason":"LINE_TOO_LONG"}],"clients":{"c":{"received":[],"closed":true}},"logs":["info: [game-presence] соединение закрыто: LINE_TOO_LONG"],"diagnostics":{"listening":true,"connected":false,"accepted":3,"rejected":0,"messages":0,"dropped":0}}
+      ]
+    },
+    {
+      "platform": "win32",
+      "name": "повторное рукопожатие",
+      "limits": null,
+      "steps": [
+        {"step":{"op":"start"},"result":"pipeName","events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"connect","client":"a"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"send","client":"a","line":{"v":1,"type":"hello","token":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","session":"0123abcd"}},"events":[{"kind":"ready"}],"clients":{"a":{"received":[{"v":1,"type":"discord","connected":false}],"closed":false}},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {
+          "step": {"op":"send","client":"a","line":{"v":1,"type":"hello","token":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","session":"0123abcd"}},
+          "events": [{"kind":"gone","reason":"DUPLICATE_HANDSHAKE"}],
+          "clients": {"a":{"received":[],"closed":true}},
+          "logs": ["info: [game-presence] соединение закрыто: DUPLICATE_HANDSHAKE"],
+          "diagnostics": {"listening":true,"connected":false,"accepted":1,"rejected":0,"messages":0,"dropped":0}
+        }
+      ]
+    },
+    {
+      "platform": "win32",
+      "name": "сообщения игры",
+      "limits": null,
+      "steps": [
+        {"step":{"op":"start"},"result":"pipeName","events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"connect","client":"a"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"send","client":"a","line":{"v":1,"type":"hello","token":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","session":"0123abcd"}},"events":[{"kind":"ready"}],"clients":{"a":{"received":[{"v":1,"type":"discord","connected":false}],"closed":false}},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {
+          "step": {"op":"send","client":"a","line":{"v":1,"type":"state","session":"0123abcd","seq":1,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"timerElapsedMilliseconds":null}},
+          "events": [{"kind":"state","message":{"type":"state","session":"0123abcd","seq":1,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}}],
+          "clients": {},
+          "logs": [],
+          "diagnostics": {"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":1,"dropped":0}
+        },
+        {
+          "step": {"op":"send","client":"a","line":{"v":1,"type":"state","session":"0123abcd","seq":2,"lifecycle":"playing","mapName":"d1_canals_01","fps":60,"timerRunning":true,"timerCompleted":false,"timerElapsedMilliseconds":1500}},
+          "events": [{"kind":"state","message":{"type":"state","session":"0123abcd","seq":2,"lifecycle":"playing","mapName":"d1_canals_01","fps":60,"timerRunning":true,"timerCompleted":false,"elapsedMs":1500}}],
+          "clients": {},
+          "logs": [],
+          "diagnostics": {"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":2,"dropped":0}
+        },
+        {"step":{"op":"send","client":"a","line":{"v":1,"type":"chat.subscribe","session":"0123abcd","platform":"twitch","id":"12345"}},"events":[{"kind":"chat","message":{"type":"chat.subscribe","session":"0123abcd","platform":"twitch","id":"12345"}}],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":3,"dropped":0}},
+        {"step":{"op":"send","client":"a","line":{"v":1,"type":"emote.set","session":"0123abcd","roomId":"set:abc"}},"events":[{"kind":"chat","message":{"type":"emote.set","session":"0123abcd","roomId":"set:abc"}}],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":4,"dropped":0}},
+        {"step":{"op":"send","client":"a","line":{"v":1,"type":"emote.resolve","session":"0123abcd","name":"Kappa","px":28}},"events":[{"kind":"chat","message":{"type":"emote.resolve","session":"0123abcd","name":"Kappa","px":28}}],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":5,"dropped":0}},
+        {"step":{"op":"send","client":"a","line":{"v":1,"type":"chat.unsubscribe","session":"0123abcd"}},"events":[{"kind":"chat","message":{"type":"chat.unsubscribe","session":"0123abcd"}}],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":6,"dropped":0}},
+        {"step":{"op":"send","client":"a","line":{"v":1,"type":"state","session":"deadbeef","seq":3,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"timerElapsedMilliseconds":null}},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":6,"dropped":1}},
+        {"step":{"op":"send","client":"a","line":{"v":1,"type":"chat.subscribe","session":"deadbeef","platform":"twitch","id":"12345"}},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":6,"dropped":2}},
+        {"step":{"op":"inspect"},"result":{"environment":{"HLSR_PRESENCE_PIPE":"<pipe>","HLSR_PRESENCE_TOKEN":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef"},"endpointKeys":["pipeName","token","port"],"hasPort":false,"port":null},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":6,"dropped":2}}
+      ]
+    },
+    {
+      "platform": "win32",
+      "name": "неверное сообщение закрывает связь",
+      "limits": null,
+      "steps": [
+        {"step":{"op":"start"},"result":"pipeName","events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"connect","client":"a"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"send","client":"a","line":{"v":1,"type":"hello","token":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","session":"0123abcd"}},"events":[{"kind":"ready"}],"clients":{"a":{"received":[{"v":1,"type":"discord","connected":false}],"closed":false}},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {
+          "step": {"op":"send","client":"a","line":{"v":1,"type":"state","session":"0123abcd","seq":1,"lifecycle":"menu","mapName":null,"fps":"быстро","timerRunning":false,"timerCompleted":false,"timerElapsedMilliseconds":null}},
+          "events": [{"kind":"gone","reason":"BAD_FPS"}],
+          "clients": {"a":{"received":[],"closed":true}},
+          "logs": ["info: [game-presence] соединение закрыто: BAD_FPS"],
+          "diagnostics": {"listening":true,"connected":false,"accepted":1,"rejected":0,"messages":0,"dropped":0}
+        },
+        {"step":{"op":"connect","client":"b"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"send","client":"b","line":{"v":1,"type":"hello","token":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","session":"0123abcd"}},"events":[{"kind":"ready"}],"clients":{"b":{"received":[{"v":1,"type":"discord","connected":false}],"closed":false}},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":2,"rejected":0,"messages":0,"dropped":0}},
+        {
+          "step": {"op":"send","client":"b","line":{"v":1,"type":"state","session":"0123abcd","seq":1,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"timerElapsedMilliseconds":null,"extra":1}},
+          "events": [{"kind":"gone","reason":"UNKNOWN_FIELD:extra"}],
+          "clients": {"b":{"received":[],"closed":true}},
+          "logs": ["info: [game-presence] соединение закрыто: UNKNOWN_FIELD:extra"],
+          "diagnostics": {"listening":true,"connected":false,"accepted":2,"rejected":0,"messages":0,"dropped":0}
+        }
+      ]
+    },
+    {
+      "platform": "win32",
+      "name": "не больше 20 сообщений в секунду",
+      "limits": null,
+      "steps": [
+        {"step":{"op":"start"},"result":"pipeName","events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"connect","client":"a"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"send","client":"a","line":{"v":1,"type":"hello","token":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","session":"0123abcd"}},"events":[{"kind":"ready"}],"clients":{"a":{"received":[{"v":1,"type":"discord","connected":false}],"closed":false}},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {
+          "step": {"op":"burst","client":"a","count":19,"make":"state"},
+          "events": [
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":1,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":2,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":3,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":4,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":5,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":6,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":7,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":8,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":9,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":10,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":11,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":12,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":13,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":14,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":15,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":16,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":17,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":18,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":19,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}}
+          ],
+          "clients": {},
+          "logs": [],
+          "diagnostics": {"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":19,"dropped":0}
+        },
+        {
+          "step": {"op":"send","client":"a","line":{"v":1,"type":"state","session":"0123abcd","seq":100,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"timerElapsedMilliseconds":null}},
+          "events": [{"kind":"gone","reason":"RATE_LIMIT"}],
+          "clients": {"a":{"received":[],"closed":true}},
+          "logs": ["info: [game-presence] соединение закрыто: RATE_LIMIT"],
+          "diagnostics": {"listening":true,"connected":false,"accepted":1,"rejected":0,"messages":19,"dropped":0}
+        },
+        {"step":{"op":"connect","client":"b"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":1,"rejected":0,"messages":19,"dropped":0}},
+        {"step":{"op":"send","client":"b","line":{"v":1,"type":"hello","token":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","session":"0123abcd"}},"events":[{"kind":"ready"}],"clients":{"b":{"received":[{"v":1,"type":"discord","connected":false}],"closed":false}},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":2,"rejected":0,"messages":19,"dropped":0}},
+        {
+          "step": {"op":"burst","client":"b","count":19,"make":"state"},
+          "events": [
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":1,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":2,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":3,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":4,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":5,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":6,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":7,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":8,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":9,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":10,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":11,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":12,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":13,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":14,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":15,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":16,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":17,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":18,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},
+            {"kind":"state","message":{"type":"state","session":"0123abcd","seq":19,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}}
+          ],
+          "clients": {},
+          "logs": [],
+          "diagnostics": {"listening":true,"connected":true,"accepted":2,"rejected":0,"messages":38,"dropped":0}
+        },
+        {"step":{"op":"clock","add":999},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":2,"rejected":0,"messages":38,"dropped":0}},
+        {
+          "step": {"op":"send","client":"b","line":{"v":1,"type":"state","session":"0123abcd","seq":100,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"timerElapsedMilliseconds":null}},
+          "events": [{"kind":"gone","reason":"RATE_LIMIT"}],
+          "clients": {"b":{"received":[],"closed":true}},
+          "logs": ["info: [game-presence] соединение закрыто: RATE_LIMIT"],
+          "diagnostics": {"listening":true,"connected":false,"accepted":2,"rejected":0,"messages":38,"dropped":0}
+        },
+        {"step":{"op":"clock","add":1},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":2,"rejected":0,"messages":38,"dropped":0}},
+        {"step":{"op":"burst","client":"b","count":20,"make":"state","from":200},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":2,"rejected":0,"messages":38,"dropped":0}},
+        {"step":{"op":"send","client":"b","line":{"v":1,"type":"state","session":"0123abcd","seq":300,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"timerElapsedMilliseconds":null}},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":2,"rejected":0,"messages":38,"dropped":0}}
+      ]
+    },
+    {
+      "platform": "win32",
+      "name": "пустые строки, CRLF и несколько строк в одном куске",
+      "limits": null,
+      "steps": [
+        {"step":{"op":"start"},"result":"pipeName","events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"connect","client":"a"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {
+          "step": {"op":"send","client":"a","text":"\n\r\n{\"v\":1,\"type\":\"hello\",\"token\":\"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef\",\"session\":\"0123abcd\"}\r\n"},
+          "events": [{"kind":"ready"}],
+          "clients": {"a":{"received":[{"v":1,"type":"discord","connected":false}],"closed":false}},
+          "logs": [],
+          "diagnostics": {"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":0,"dropped":0}
+        },
+        {
+          "step": {
+            "op": "send",
+            "client": "a",
+            "text": "{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":1,\"lifecycle\":\"menu\",\"mapName\":null,\"fps\":60,\"timerRunning\":false,\"timerCompleted\":false,\"timerElapsedMilliseconds\":null}\n\n{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":2,\"lifecycle\":\"menu\",\"mapName\":null,\"fps\":60,\"timerRunning\":false,\"timerCompleted\":false,\"timerElapsedMilliseconds\":null}\r\n{\"v\":1,\"type\":\"state\",\"session\":\"0123abcd\",\"seq\":3,\"lifecycle\":\"menu\",\"mapName\":null,\"fps\":60,\"timerRunning\":false,\"timerCompleted\":false,\"timerElapsedMilliseconds\":null}"
+          },
+          "events": [{"kind":"state","message":{"type":"state","session":"0123abcd","seq":1,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}},{"kind":"state","message":{"type":"state","session":"0123abcd","seq":2,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}}],
+          "clients": {},
+          "logs": [],
+          "diagnostics": {"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":2,"dropped":0}
+        },
+        {"step":{"op":"send","client":"a","text":"\n"},"events":[{"kind":"state","message":{"type":"state","session":"0123abcd","seq":3,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}}],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":3,"dropped":0}}
+      ]
+    },
+    {
+      "platform": "win32",
+      "name": "строка по частям, многобайтный знак пополам",
+      "limits": null,
+      "steps": [
+        {"step":{"op":"start"},"result":"pipeName","events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"connect","client":"a"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"send","client":"a","text":"{\"v\":1,\"type\":\"hello"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"send","client":"a","text":"\",\"token\":\"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef\",\"session\":\"0123abcd\"}\n"},"events":[{"kind":"ready"}],"clients":{"a":{"received":[{"v":1,"type":"discord","connected":false}],"closed":false}},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"sendBytes","client":"a","base64":"eyJ2IjoxLCJ0eXBlIjoic3RhdGUiLCJzZXNzaW9uIjoiMDEyM2FiY2QiLCJzZXEiOjEsImxpZmVjeWNsZSI6Im1lbnUiLCJtYXBOYW1lIjpudWxsLCJmcHMiOm51bGwsInRpbWVyUnVubmluZyI6ZmFsc2UsInRpbWVyQ29tcGxldGVkIjpmYWxzZSw="},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"sendBytes","client":"a","base64":"IngiOiLRjyJ9Cg=="},"events":[{"kind":"gone","reason":"UNKNOWN_FIELD:x"}],"clients":{"a":{"received":[],"closed":true}},"logs":["info: [game-presence] соединение закрыто: UNKNOWN_FIELD:x"],"diagnostics":{"listening":true,"connected":false,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"send","client":"a","line":{"v":1,"type":"state","session":"0123abcd","seq":2,"lifecycle":"menu","mapName":null,"fps":61,"timerRunning":false,"timerCompleted":false,"timerElapsedMilliseconds":null}},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":1,"rejected":0,"messages":0,"dropped":0}}
+      ]
+    },
+    {
+      "platform": "win32",
+      "name": "рукопожатие не пришло вовремя",
+      "limits": {"handshakeTimeoutMs":400},
+      "steps": [
+        {"step":{"op":"start"},"result":"pipeName","events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"connect","client":"a"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"wait","ms":600},"events":[{"kind":"gone","reason":"HANDSHAKE_TIMEOUT"}],"clients":{"a":{"received":[],"closed":true}},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":1,"messages":0,"dropped":0}},
+        {"step":{"op":"connect","client":"b"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":1,"messages":0,"dropped":0}},
+        {"step":{"op":"send","client":"b","line":{"v":1,"type":"hello","token":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","session":"0123abcd"}},"events":[{"kind":"ready"}],"clients":{"b":{"received":[{"v":1,"type":"discord","connected":false}],"closed":false}},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":1,"messages":0,"dropped":0}},
+        {"step":{"op":"wait","ms":500},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":1,"messages":0,"dropped":0}},
+        {"step":{"op":"connect","client":"c"},"events":[{"kind":"gone","reason":"REPLACED"}],"clients":{"b":{"received":[],"closed":true}},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":1,"rejected":1,"messages":0,"dropped":0}},
+        {
+          "step": {"op":"send","client":"c","line":{"v":1,"type":"state","session":"0123abcd","seq":1,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"timerElapsedMilliseconds":null}},
+          "events": [{"kind":"gone","reason":"NO_HANDSHAKE"}],
+          "clients": {"c":{"received":[],"closed":true}},
+          "logs": [],
+          "diagnostics": {"listening":true,"connected":false,"accepted":1,"rejected":2,"messages":0,"dropped":0}
+        }
+      ]
+    },
+    {
+      "platform": "win32",
+      "name": "простой связи",
+      "limits": {"idleTimeoutMs":500},
+      "steps": [
+        {"step":{"op":"start"},"result":"pipeName","events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"connect","client":"a"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"send","client":"a","line":{"v":1,"type":"hello","token":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","session":"0123abcd"}},"events":[{"kind":"ready"}],"clients":{"a":{"received":[{"v":1,"type":"discord","connected":false}],"closed":false}},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"wait","ms":200},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {
+          "step": {"op":"send","client":"a","line":{"v":1,"type":"state","session":"0123abcd","seq":1,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"timerElapsedMilliseconds":null}},
+          "events": [{"kind":"state","message":{"type":"state","session":"0123abcd","seq":1,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}}],
+          "clients": {},
+          "logs": [],
+          "diagnostics": {"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":1,"dropped":0}
+        },
+        {"step":{"op":"wait","ms":200},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":1,"dropped":0}},
+        {
+          "step": {"op":"send","client":"a","line":{"v":1,"type":"state","session":"0123abcd","seq":2,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"timerElapsedMilliseconds":null}},
+          "events": [{"kind":"state","message":{"type":"state","session":"0123abcd","seq":2,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}}],
+          "clients": {},
+          "logs": [],
+          "diagnostics": {"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":2,"dropped":0}
+        },
+        {"step":{"op":"wait","ms":800},"events":[{"kind":"gone","reason":"IDLE_TIMEOUT"}],"clients":{"a":{"received":[],"closed":true}},"logs":["info: [game-presence] соединение закрыто: IDLE_TIMEOUT"],"diagnostics":{"listening":true,"connected":false,"accepted":1,"rejected":0,"messages":2,"dropped":0}},
+        {"step":{"op":"connect","client":"b"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":1,"rejected":0,"messages":2,"dropped":0}},
+        {"step":{"op":"send","client":"b","line":{"v":1,"type":"hello","token":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","session":"0123abcd"}},"events":[{"kind":"ready"}],"clients":{"b":{"received":[{"v":1,"type":"discord","connected":false}],"closed":false}},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":2,"rejected":0,"messages":2,"dropped":0}},
+        {"step":{"op":"wait","ms":200},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":2,"rejected":0,"messages":2,"dropped":0}},
+        {"step":{"op":"send","client":"b","line":{"v":1,"type":"state","session":"deadbeef","seq":1,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"timerElapsedMilliseconds":null}},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":2,"rejected":0,"messages":2,"dropped":1}},
+        {"step":{"op":"wait","ms":350},"events":[{"kind":"gone","reason":"IDLE_TIMEOUT"}],"clients":{"b":{"received":[],"closed":true}},"logs":["info: [game-presence] соединение закрыто: IDLE_TIMEOUT"],"diagnostics":{"listening":true,"connected":false,"accepted":2,"rejected":0,"messages":2,"dropped":1}}
+      ]
+    },
+    {
+      "platform": "win32",
+      "name": "второе соединение",
+      "limits": null,
+      "steps": [
+        {"step":{"op":"start"},"result":"pipeName","events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"connect","client":"a"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"send","client":"a","line":{"v":1,"type":"hello","token":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","session":"0123abcd"}},"events":[{"kind":"ready"}],"clients":{"a":{"received":[{"v":1,"type":"discord","connected":false}],"closed":false}},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"connect","client":"b"},"events":[{"kind":"gone","reason":"REPLACED"}],"clients":{"a":{"received":[],"closed":true}},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"send","client":"b","line":{"v":1,"type":"hello","token":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","session":"deadbeef"}},"events":[{"kind":"ready"}],"clients":{"b":{"received":[{"v":1,"type":"discord","connected":false}],"closed":false}},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":2,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"send","client":"a","line":{"v":1,"type":"state","session":"0123abcd","seq":1,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"timerElapsedMilliseconds":null}},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":2,"rejected":0,"messages":0,"dropped":0}},
+        {
+          "step": {"op":"send","client":"b","line":{"v":1,"type":"state","session":"deadbeef","seq":1,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"timerElapsedMilliseconds":null}},
+          "events": [{"kind":"state","message":{"type":"state","session":"deadbeef","seq":1,"lifecycle":"menu","mapName":null,"fps":60,"timerRunning":false,"timerCompleted":false,"elapsedMs":null}}],
+          "clients": {},
+          "logs": [],
+          "diagnostics": {"listening":true,"connected":true,"accepted":2,"rejected":0,"messages":1,"dropped":0}
+        },
+        {"step":{"op":"inspect"},"result":{"environment":{"HLSR_PRESENCE_PIPE":"<pipe>","HLSR_PRESENCE_TOKEN":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef"},"endpointKeys":["pipeName","token","port"],"hasPort":false,"port":null},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":2,"rejected":0,"messages":1,"dropped":0}}
+      ]
+    },
+    {
+      "platform": "win32",
+      "name": "второе соединение вместо несостоявшегося рукопожатия",
+      "limits": null,
+      "steps": [
+        {"step":{"op":"start"},"result":"pipeName","events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"connect","client":"a"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"connect","client":"b"},"events":[{"kind":"gone","reason":"REPLACED"}],"clients":{"a":{"received":[],"closed":true}},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"send","client":"b","line":{"v":1,"type":"hello","token":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","session":"0123abcd"}},"events":[{"kind":"ready"}],"clients":{"b":{"received":[{"v":1,"type":"discord","connected":false}],"closed":false}},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"send","client":"a","line":{"v":1,"type":"hello","token":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","session":"0123abcd"}},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":0,"dropped":0}}
+      ]
+    },
+    {
+      "platform": "win32",
+      "name": "Discord",
+      "limits": null,
+      "steps": [
+        {"step":{"op":"start"},"result":"pipeName","events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"discord","value":true},"result":true,"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"discord","value":true},"result":false,"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"connect","client":"a"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"send","client":"a","line":{"v":1,"type":"hello","token":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","session":"0123abcd"}},"events":[{"kind":"ready"}],"clients":{"a":{"received":[{"v":1,"type":"discord","connected":true}],"closed":false}},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"discord","value":false},"result":true,"events":[],"clients":{"a":{"received":[{"v":1,"type":"discord","connected":false}],"closed":false}},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"discord","value":"yes"},"result":false,"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"discord","value":false},"result":false,"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"discord","value":true},"result":true,"events":[],"clients":{"a":{"received":[{"v":1,"type":"discord","connected":true}],"closed":false}},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"close","client":"a"},"events":[{"kind":"gone","reason":"CLOSED"}],"clients":{"a":{"received":[],"closed":true}},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"discord","value":false},"result":true,"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"connect","client":"b"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"send","client":"b","line":{"v":1,"type":"hello","token":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","session":"0123abcd"}},"events":[{"kind":"ready"}],"clients":{"b":{"received":[{"v":1,"type":"discord","connected":false}],"closed":false}},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":2,"rejected":0,"messages":0,"dropped":0}}
+      ]
+    },
+    {
+      "platform": "win32",
+      "name": "клиент закрыл связь",
+      "limits": null,
+      "steps": [
+        {"step":{"op":"start"},"result":"pipeName","events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"connect","client":"a"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"send","client":"a","line":{"v":1,"type":"hello","token":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","session":"0123abcd"}},"events":[{"kind":"ready"}],"clients":{"a":{"received":[{"v":1,"type":"discord","connected":false}],"closed":false}},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"close","client":"a"},"events":[{"kind":"gone","reason":"CLOSED"}],"clients":{"a":{"received":[],"closed":true}},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"connect","client":"b"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"close","client":"b"},"events":[{"kind":"gone","reason":"CLOSED"}],"clients":{"b":{"received":[],"closed":true}},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"connect","client":"c"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"send","client":"c","line":{"v":1,"type":"hello","token":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","session":"0123abcd"}},"events":[{"kind":"ready"}],"clients":{"c":{"received":[{"v":1,"type":"discord","connected":false}],"closed":false}},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":2,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"inspect"},"result":{"environment":{"HLSR_PRESENCE_PIPE":"<pipe>","HLSR_PRESENCE_TOKEN":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef"},"endpointKeys":["pipeName","token","port"],"hasPort":false,"port":null},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":2,"rejected":0,"messages":0,"dropped":0}}
+      ]
+    },
+    {
+      "platform": "win32",
+      "name": "остановка и повторный запуск",
+      "limits": null,
+      "steps": [
+        {"step":{"op":"inspect"},"result":{"environment":{},"endpointKeys":["pipeName","token","port"],"hasPort":false,"port":null},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":false,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"start"},"result":"pipeName","events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"start"},"result":"pipeName","events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"connect","client":"a"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"send","client":"a","line":{"v":1,"type":"hello","token":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","session":"0123abcd"}},"events":[{"kind":"ready"}],"clients":{"a":{"received":[{"v":1,"type":"discord","connected":false}],"closed":false}},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"stop"},"events":[{"kind":"gone","reason":"SHUTDOWN"}],"clients":{"a":{"received":[],"closed":true}},"logs":[],"diagnostics":{"listening":false,"connected":false,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"inspect"},"result":{"environment":{},"endpointKeys":["pipeName","token","port"],"hasPort":false,"port":null},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":false,"connected":false,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"stop"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":false,"connected":false,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"start"},"result":"pipeName","events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"connect","client":"b"},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":1,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"send","client":"b","line":{"v":1,"type":"hello","token":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef","session":"0123abcd"}},"events":[{"kind":"ready"}],"clients":{"b":{"received":[{"v":1,"type":"discord","connected":false}],"closed":false}},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":2,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"inspect"},"result":{"environment":{"HLSR_PRESENCE_PIPE":"<pipe>","HLSR_PRESENCE_TOKEN":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef"},"endpointKeys":["pipeName","token","port"],"hasPort":false,"port":null},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":true,"accepted":2,"rejected":0,"messages":0,"dropped":0}}
+      ]
+    },
+    {
+      "platform": "win32",
+      "name": "окружение и канал",
+      "limits": null,
+      "steps": [
+        {"step":{"op":"inspect"},"result":{"environment":{},"endpointKeys":["pipeName","token","port"],"hasPort":false,"port":null},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":false,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"start"},"result":"pipeName","events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}},
+        {"step":{"op":"inspect"},"result":{"environment":{"HLSR_PRESENCE_PIPE":"<pipe>","HLSR_PRESENCE_TOKEN":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef"},"endpointKeys":["pipeName","token","port"],"hasPort":false,"port":null},"events":[],"clients":{},"logs":[],"diagnostics":{"listening":true,"connected":false,"accepted":0,"rejected":0,"messages":0,"dropped":0}}
+      ]
+    }
+  ]
+}

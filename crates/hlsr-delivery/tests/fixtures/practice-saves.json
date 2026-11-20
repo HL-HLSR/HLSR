@@ -1,0 +1,1400 @@
+{
+  "timeouts": [300000],
+  "archives": {
+    "good": {"file":"saves/good.7z","size":294,"sha256":"75dc91d53117c73f3675897c3140a8b11ec6645c4cb15b8df0f2db70b973345b"},
+    "missing": {"file":"saves/missing.7z","size":193,"sha256":"dcd783c124766cd85eb2b1d83c8e8c03ad3a54714cc04a37397e4a9dcc4a60a5"},
+    "nested": {"file":"saves/nested.7z","size":227,"sha256":"56f4a18c358dfad4da242fc5c558737960035b3f625489f40e90203ff88e1334"},
+    "garbage": {
+      "file": null,
+      "hex": "d18dd182d0be20d0bdd0b520d0b0d180d185d0b8d0b220377a2c20d0b020d0bfd180d0bed181d182d0be20d182d0b5d0bad181d18220d18dd182d0be20d0bdd0b520d0b0d180d185d0b8d0b220377a2c20d0b020d0bfd180d0bed181d182d0be20d182d0b5d0bad181d18220d18dd182d0be20d0bdd0b520d0b0d180d185d0b8d0b220377a2c20d0b020d0bfd180d0bed181d182d0be20d182d0b5d0bad181d18220d18dd182d0be20d0bdd0b520d0b0d180d185d0b8d0b220377a2c20d0b020d0bfd180d0bed181d182d0be20d182d0b5d0bad181d18220",
+      "size": 216,
+      "sha256": "715e113f9fabd6d4736ab5ded4e338d2cdd4173ed9852baf5f92e27b35a9b810"
+    }
+  },
+  "packs": {
+    "good": {
+      "packId": "test-saves",
+      "gameIds": ["hl1-won"],
+      "target": "Half-Life/valve_WON/SAVE",
+      "files": [{"name":"e1.sav","size":7,"sha256":"b5edd06e40409447dc8fd410ed71deca06c6e814a6217aea84de9891d03c06e6"},{"name":"e2.sav","size":7,"sha256":"39c4cecb0c1246274a7ddc0a56533fd06b7bee7ae3046e0e5b76aab82925babf"},{"name":"e14-protopipe.sav","size":10,"sha256":"e53929d384c5234e828caceedaf0519f714c224bbd45ec13061f285909909750"}],
+      "archive": {"filename":"test-saves.7z","size":294,"sha256":"75dc91d53117c73f3675897c3140a8b11ec6645c4cb15b8df0f2db70b973345b","providers":[{"id":"test","url":"http://{a}/saves.7z"}]}
+    },
+    "twoSources": {
+      "packId": "test-saves",
+      "gameIds": ["hl1-won"],
+      "target": "Half-Life/valve_WON/SAVE",
+      "files": [{"name":"e1.sav","size":7,"sha256":"b5edd06e40409447dc8fd410ed71deca06c6e814a6217aea84de9891d03c06e6"},{"name":"e2.sav","size":7,"sha256":"39c4cecb0c1246274a7ddc0a56533fd06b7bee7ae3046e0e5b76aab82925babf"},{"name":"e14-protopipe.sav","size":10,"sha256":"e53929d384c5234e828caceedaf0519f714c224bbd45ec13061f285909909750"}],
+      "archive": {"filename":"test-saves.7z","size":294,"sha256":"75dc91d53117c73f3675897c3140a8b11ec6645c4cb15b8df0f2db70b973345b","providers":[{"id":"hlsr-primary","url":"http://{a}/primary/saves.7z"},{"id":"github-fallback","url":"http://{a}/fallback/saves.7z"}]}
+    },
+    "noSources": {
+      "packId": "test-saves",
+      "gameIds": ["hl1-won"],
+      "target": "Half-Life/valve_WON/SAVE",
+      "files": [{"name":"e1.sav","size":7,"sha256":"b5edd06e40409447dc8fd410ed71deca06c6e814a6217aea84de9891d03c06e6"},{"name":"e2.sav","size":7,"sha256":"39c4cecb0c1246274a7ddc0a56533fd06b7bee7ae3046e0e5b76aab82925babf"},{"name":"e14-protopipe.sav","size":10,"sha256":"e53929d384c5234e828caceedaf0519f714c224bbd45ec13061f285909909750"}],
+      "archive": {"filename":"test-saves.7z","size":294,"sha256":"75dc91d53117c73f3675897c3140a8b11ec6645c4cb15b8df0f2db70b973345b","providers":[]}
+    },
+    "missingSources": {
+      "packId": "test-saves",
+      "gameIds": ["hl1-won"],
+      "target": "Half-Life/valve_WON/SAVE",
+      "files": [{"name":"e1.sav","size":7,"sha256":"b5edd06e40409447dc8fd410ed71deca06c6e814a6217aea84de9891d03c06e6"},{"name":"e2.sav","size":7,"sha256":"39c4cecb0c1246274a7ddc0a56533fd06b7bee7ae3046e0e5b76aab82925babf"},{"name":"e14-protopipe.sav","size":10,"sha256":"e53929d384c5234e828caceedaf0519f714c224bbd45ec13061f285909909750"}],
+      "archive": {"filename":"test-saves.7z","size":294,"sha256":"75dc91d53117c73f3675897c3140a8b11ec6645c4cb15b8df0f2db70b973345b"}
+    },
+    "deadSource": {
+      "packId": "test-saves",
+      "gameIds": ["hl1-won"],
+      "target": "Half-Life/valve_WON/SAVE",
+      "files": [{"name":"e1.sav","size":7,"sha256":"b5edd06e40409447dc8fd410ed71deca06c6e814a6217aea84de9891d03c06e6"},{"name":"e2.sav","size":7,"sha256":"39c4cecb0c1246274a7ddc0a56533fd06b7bee7ae3046e0e5b76aab82925babf"},{"name":"e14-protopipe.sav","size":10,"sha256":"e53929d384c5234e828caceedaf0519f714c224bbd45ec13061f285909909750"}],
+      "archive": {"filename":"test-saves.7z","size":294,"sha256":"75dc91d53117c73f3675897c3140a8b11ec6645c4cb15b8df0f2db70b973345b","providers":[{"id":"dead","url":"http://{dead}/saves.7z"}]}
+    },
+    "sizeZero": {
+      "packId": "test-saves",
+      "gameIds": ["hl1-won"],
+      "target": "Half-Life/valve_WON/SAVE",
+      "files": [{"name":"e1.sav","size":7,"sha256":"b5edd06e40409447dc8fd410ed71deca06c6e814a6217aea84de9891d03c06e6"},{"name":"e2.sav","size":7,"sha256":"39c4cecb0c1246274a7ddc0a56533fd06b7bee7ae3046e0e5b76aab82925babf"},{"name":"e14-protopipe.sav","size":10,"sha256":"e53929d384c5234e828caceedaf0519f714c224bbd45ec13061f285909909750"}],
+      "archive": {"filename":"test-saves.7z","size":0,"sha256":"75dc91d53117c73f3675897c3140a8b11ec6645c4cb15b8df0f2db70b973345b","providers":[{"id":"test","url":"http://{a}/saves.7z"}]}
+    },
+    "sizeTooBig": {
+      "packId": "test-saves",
+      "gameIds": ["hl1-won"],
+      "target": "Half-Life/valve_WON/SAVE",
+      "files": [{"name":"e1.sav","size":7,"sha256":"b5edd06e40409447dc8fd410ed71deca06c6e814a6217aea84de9891d03c06e6"},{"name":"e2.sav","size":7,"sha256":"39c4cecb0c1246274a7ddc0a56533fd06b7bee7ae3046e0e5b76aab82925babf"},{"name":"e14-protopipe.sav","size":10,"sha256":"e53929d384c5234e828caceedaf0519f714c224bbd45ec13061f285909909750"}],
+      "archive": {"filename":"test-saves.7z","size":67108865,"sha256":"75dc91d53117c73f3675897c3140a8b11ec6645c4cb15b8df0f2db70b973345b","providers":[{"id":"test","url":"http://{a}/saves.7z"}]}
+    },
+    "sizeAtLimit": {
+      "packId": "test-saves",
+      "gameIds": ["hl1-won"],
+      "target": "Half-Life/valve_WON/SAVE",
+      "files": [{"name":"e1.sav","size":7,"sha256":"b5edd06e40409447dc8fd410ed71deca06c6e814a6217aea84de9891d03c06e6"},{"name":"e2.sav","size":7,"sha256":"39c4cecb0c1246274a7ddc0a56533fd06b7bee7ae3046e0e5b76aab82925babf"},{"name":"e14-protopipe.sav","size":10,"sha256":"e53929d384c5234e828caceedaf0519f714c224bbd45ec13061f285909909750"}],
+      "archive": {"filename":"test-saves.7z","size":67108864,"sha256":"75dc91d53117c73f3675897c3140a8b11ec6645c4cb15b8df0f2db70b973345b","providers":[{"id":"test","url":"http://{a}/saves.7z"}]}
+    },
+    "shaUpper": {
+      "packId": "test-saves",
+      "gameIds": ["hl1-won"],
+      "target": "Half-Life/valve_WON/SAVE",
+      "files": [{"name":"e1.sav","size":7,"sha256":"b5edd06e40409447dc8fd410ed71deca06c6e814a6217aea84de9891d03c06e6"},{"name":"e2.sav","size":7,"sha256":"39c4cecb0c1246274a7ddc0a56533fd06b7bee7ae3046e0e5b76aab82925babf"},{"name":"e14-protopipe.sav","size":10,"sha256":"e53929d384c5234e828caceedaf0519f714c224bbd45ec13061f285909909750"}],
+      "archive": {"filename":"test-saves.7z","size":294,"sha256":"75DC91D53117C73F3675897C3140A8B11EC6645C4CB15B8DF0F2DB70B973345B","providers":[{"id":"test","url":"http://{a}/saves.7z"}]}
+    },
+    "shaWrong": {
+      "packId": "test-saves",
+      "gameIds": ["hl1-won"],
+      "target": "Half-Life/valve_WON/SAVE",
+      "files": [{"name":"e1.sav","size":7,"sha256":"b5edd06e40409447dc8fd410ed71deca06c6e814a6217aea84de9891d03c06e6"},{"name":"e2.sav","size":7,"sha256":"39c4cecb0c1246274a7ddc0a56533fd06b7bee7ae3046e0e5b76aab82925babf"},{"name":"e14-protopipe.sav","size":10,"sha256":"e53929d384c5234e828caceedaf0519f714c224bbd45ec13061f285909909750"}],
+      "archive": {"filename":"test-saves.7z","size":294,"sha256":"0000000000000000000000000000000000000000000000000000000000000000","providers":[{"id":"test","url":"http://{a}/saves.7z"}]}
+    },
+    "garbage": {
+      "packId": "test-saves",
+      "gameIds": ["hl1-won"],
+      "target": "Half-Life/valve_WON/SAVE",
+      "files": [{"name":"e1.sav","size":7,"sha256":"b5edd06e40409447dc8fd410ed71deca06c6e814a6217aea84de9891d03c06e6"},{"name":"e2.sav","size":7,"sha256":"39c4cecb0c1246274a7ddc0a56533fd06b7bee7ae3046e0e5b76aab82925babf"},{"name":"e14-protopipe.sav","size":10,"sha256":"e53929d384c5234e828caceedaf0519f714c224bbd45ec13061f285909909750"}],
+      "archive": {"filename":"test-saves.7z","size":216,"sha256":"715e113f9fabd6d4736ab5ded4e338d2cdd4173ed9852baf5f92e27b35a9b810","providers":[{"id":"test","url":"http://{a}/saves.7z"}]}
+    },
+    "missing": {
+      "packId": "test-saves",
+      "gameIds": ["hl1-won"],
+      "target": "Half-Life/valve_WON/SAVE",
+      "files": [{"name":"e1.sav","size":7,"sha256":"b5edd06e40409447dc8fd410ed71deca06c6e814a6217aea84de9891d03c06e6"},{"name":"e2.sav","size":7,"sha256":"39c4cecb0c1246274a7ddc0a56533fd06b7bee7ae3046e0e5b76aab82925babf"},{"name":"e14-protopipe.sav","size":10,"sha256":"e53929d384c5234e828caceedaf0519f714c224bbd45ec13061f285909909750"}],
+      "archive": {"filename":"test-saves.7z","size":193,"sha256":"dcd783c124766cd85eb2b1d83c8e8c03ad3a54714cc04a37397e4a9dcc4a60a5","providers":[{"id":"test","url":"http://{a}/saves.7z"}]}
+    },
+    "nested": {
+      "packId": "test-saves",
+      "gameIds": ["hl1-won"],
+      "target": "Half-Life/valve_WON/SAVE",
+      "files": [{"name":"e1.sav","size":7,"sha256":"b5edd06e40409447dc8fd410ed71deca06c6e814a6217aea84de9891d03c06e6"},{"name":"e2.sav","size":7,"sha256":"39c4cecb0c1246274a7ddc0a56533fd06b7bee7ae3046e0e5b76aab82925babf"},{"name":"e14-protopipe.sav","size":10,"sha256":"e53929d384c5234e828caceedaf0519f714c224bbd45ec13061f285909909750"}],
+      "archive": {"filename":"test-saves.7z","size":227,"sha256":"56f4a18c358dfad4da242fc5c558737960035b3f625489f40e90203ff88e1334","providers":[{"id":"test","url":"http://{a}/saves.7z"}]}
+    },
+    "sizeOneLess": {
+      "packId": "test-saves",
+      "gameIds": ["hl1-won"],
+      "target": "Half-Life/valve_WON/SAVE",
+      "files": [{"name":"e1.sav","size":7,"sha256":"b5edd06e40409447dc8fd410ed71deca06c6e814a6217aea84de9891d03c06e6"},{"name":"e2.sav","size":7,"sha256":"39c4cecb0c1246274a7ddc0a56533fd06b7bee7ae3046e0e5b76aab82925babf"},{"name":"e14-protopipe.sav","size":10,"sha256":"e53929d384c5234e828caceedaf0519f714c224bbd45ec13061f285909909750"}],
+      "archive": {"filename":"test-saves.7z","size":293,"sha256":"75dc91d53117c73f3675897c3140a8b11ec6645c4cb15b8df0f2db70b973345b","providers":[{"id":"test","url":"http://{a}/saves.7z"}]}
+    },
+    "oddNames": {
+      "packId": "test-saves",
+      "gameIds": ["hl1-won"],
+      "target": "Half-Life/valve_WON/SAVE",
+      "files": [
+        {"name":"e1.sav","size":7,"sha256":"b5edd06e40409447dc8fd410ed71deca06c6e814a6217aea84de9891d03c06e6"},
+        {"name":"e2.sav","size":7,"sha256":"39c4cecb0c1246274a7ddc0a56533fd06b7bee7ae3046e0e5b76aab82925babf"},
+        {"name":"e14-protopipe.sav","size":10,"sha256":"e53929d384c5234e828caceedaf0519f714c224bbd45ec13061f285909909750"},
+        {"name":"bad name.sav","size":1,"sha256":"0000000000000000000000000000000000000000000000000000000000000000"},
+        {"name":"E5.SAV","size":1,"sha256":"0000000000000000000000000000000000000000000000000000000000000000"},
+        {"name":"e6.txt","size":1,"sha256":"0000000000000000000000000000000000000000000000000000000000000000"},
+        {"name":"../evil.sav","size":1,"sha256":"0000000000000000000000000000000000000000000000000000000000000000"},
+        {"name":"e1.sav","size":7,"sha256":"b5edd06e40409447dc8fd410ed71deca06c6e814a6217aea84de9891d03c06e6"}
+      ],
+      "archive": {"filename":"test-saves.7z","size":294,"sha256":"75dc91d53117c73f3675897c3140a8b11ec6645c4cb15b8df0f2db70b973345b","providers":[{"id":"test","url":"http://{a}/saves.7z"}]}
+    },
+    "escaping": {
+      "packId": "test-saves",
+      "gameIds": ["hl1-won"],
+      "target": "../escape/SAVE",
+      "files": [{"name":"e1.sav","size":7,"sha256":"b5edd06e40409447dc8fd410ed71deca06c6e814a6217aea84de9891d03c06e6"},{"name":"e2.sav","size":7,"sha256":"39c4cecb0c1246274a7ddc0a56533fd06b7bee7ae3046e0e5b76aab82925babf"},{"name":"e14-protopipe.sav","size":10,"sha256":"e53929d384c5234e828caceedaf0519f714c224bbd45ec13061f285909909750"}],
+      "archive": {"filename":"test-saves.7z","size":294,"sha256":"75dc91d53117c73f3675897c3140a8b11ec6645c4cb15b8df0f2db70b973345b","providers":[{"id":"test","url":"http://{a}/saves.7z"}]}
+    },
+    "flat": {
+      "packId": "test-saves",
+      "gameIds": ["hl1-won"],
+      "target": "SAVE",
+      "files": [{"name":"e1.sav","size":7,"sha256":"b5edd06e40409447dc8fd410ed71deca06c6e814a6217aea84de9891d03c06e6"},{"name":"e2.sav","size":7,"sha256":"39c4cecb0c1246274a7ddc0a56533fd06b7bee7ae3046e0e5b76aab82925babf"},{"name":"e14-protopipe.sav","size":10,"sha256":"e53929d384c5234e828caceedaf0519f714c224bbd45ec13061f285909909750"}],
+      "archive": {"filename":"test-saves.7z","size":294,"sha256":"75dc91d53117c73f3675897c3140a8b11ec6645c4cb15b8df0f2db70b973345b","providers":[{"id":"test","url":"http://{a}/saves.7z"}]}
+    },
+    "other": {
+      "packId": "other-saves",
+      "gameIds": ["hl2-4260","hl2-2707"],
+      "target": "Half-Life/valve_WON/SAVE",
+      "files": [{"name":"e1.sav","size":7,"sha256":"b5edd06e40409447dc8fd410ed71deca06c6e814a6217aea84de9891d03c06e6"},{"name":"e2.sav","size":7,"sha256":"39c4cecb0c1246274a7ddc0a56533fd06b7bee7ae3046e0e5b76aab82925babf"},{"name":"e14-protopipe.sav","size":10,"sha256":"e53929d384c5234e828caceedaf0519f714c224bbd45ec13061f285909909750"}],
+      "archive": {"filename":"test-saves.7z","size":294,"sha256":"75dc91d53117c73f3675897c3140a8b11ec6645c4cb15b8df0f2db70b973345b","providers":[{"id":"test","url":"http://{a}/saves.7z"}]}
+    }
+  },
+  "scenarios": [
+    {
+      "name": "все сейвы на месте (имена в другом регистре) — сеть не трогается",
+      "setup": [{"file":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/E1.SAV","utf8":"x"},{"file":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/E2.SAV","utf8":"x"},{"file":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/E14-PROTOPIPE.SAV","utf8":"x"}],
+      "steps": [{"op":"ensure"},{"op":"requests"},{"op":"tree"}],
+      "servers": {"a":{"/saves.7z":[{"bodyFile":"good"}]}},
+      "results": [
+        {"ok":{"status":"present","added":0},"logs":[]},
+        {"requests":[]},
+        {
+          "tree": [
+            {"path":"lib","kind":"dir"},
+            {"path":"lib/Games","kind":"dir"},
+            {"path":"lib/Games/hl1-won","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/E1.SAV","kind":"file","size":1,"sha256":"2d711642b726b04401627ca9fbac32f5c8530fb1903cc4db02258717921a4881","latin1":"x"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/E14-PROTOPIPE.SAV","kind":"file","size":1,"sha256":"2d711642b726b04401627ca9fbac32f5c8530fb1903cc4db02258717921a4881","latin1":"x"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/E2.SAV","kind":"file","size":1,"sha256":"2d711642b726b04401627ca9fbac32f5c8530fb1903cc4db02258717921a4881","latin1":"x"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "недостающие докачиваются, свои сейвы игрока не перезаписываются",
+      "setup": [{"file":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e1.sav","utf8":"mine"}],
+      "steps": [{"op":"ensure"},{"op":"tree"},{"op":"requests"}],
+      "servers": {"a":{"/saves.7z":[{"bodyFile":"good"}]}},
+      "results": [
+        {"ok":{"status":"installed","added":2},"logs":[["info","[saves] не хватает тренировочных сейвов: 2 в Half-Life/valve_WON/SAVE"],["info","[saves] добавлено тренировочных сейвов: 2 → Half-Life/valve_WON/SAVE"]]},
+        {
+          "tree": [
+            {"path":"lib","kind":"dir"},
+            {"path":"lib/.hlsr","kind":"dir"},
+            {"path":"lib/.hlsr/staging","kind":"dir"},
+            {"path":"lib/Downloads","kind":"dir"},
+            {"path":"lib/Games","kind":"dir"},
+            {"path":"lib/Games/hl1-won","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e1.sav","kind":"file","size":4,"sha256":"3fd30542fe3f61b14bd4a4b2dc0b6fb30fa6f63ebce52dd1778aaa8c4dc02cff","latin1":"mine"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e14-protopipe.sav","kind":"file","size":10,"sha256":"e53929d384c5234e828caceedaf0519f714c224bbd45ec13061f285909909750","latin1":"pack-proto"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e2.sav","kind":"file","size":7,"sha256":"39c4cecb0c1246274a7ddc0a56533fd06b7bee7ae3046e0e5b76aab82925babf","latin1":"pack-e2"}
+          ]
+        },
+        {"requests":[{"method":"GET","url":"/saves.7z","headers":{"user-agent":"HLSR-Launcher"}}]}
+      ]
+    },
+    {
+      "name": "папки SAVE нет — создаётся и заполняется",
+      "setup": [{"dir":"lib/Games/hl1-won/Half-Life/valve_WON"}],
+      "steps": [{"op":"ensure"},{"op":"tree"}],
+      "servers": {"a":{"/saves.7z":[{"bodyFile":"good"}]}},
+      "results": [
+        {"ok":{"status":"installed","added":3},"logs":[["info","[saves] не хватает тренировочных сейвов: 3 в Half-Life/valve_WON/SAVE"],["info","[saves] добавлено тренировочных сейвов: 3 → Half-Life/valve_WON/SAVE"]]},
+        {
+          "tree": [
+            {"path":"lib","kind":"dir"},
+            {"path":"lib/.hlsr","kind":"dir"},
+            {"path":"lib/.hlsr/staging","kind":"dir"},
+            {"path":"lib/Downloads","kind":"dir"},
+            {"path":"lib/Games","kind":"dir"},
+            {"path":"lib/Games/hl1-won","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e1.sav","kind":"file","size":7,"sha256":"b5edd06e40409447dc8fd410ed71deca06c6e814a6217aea84de9891d03c06e6","latin1":"pack-e1"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e14-protopipe.sav","kind":"file","size":10,"sha256":"e53929d384c5234e828caceedaf0519f714c224bbd45ec13061f285909909750","latin1":"pack-proto"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e2.sav","kind":"file","size":7,"sha256":"39c4cecb0c1246274a7ddc0a56533fd06b7bee7ae3046e0e5b76aab82925babf","latin1":"pack-e2"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "папка save в другом регистре — сейвы кладутся в неё, вторая не создаётся",
+      "setup": [{"dir":"lib/Games/hl1-won/Half-Life/valve_WON/save"}],
+      "steps": [{"op":"ensure"},{"op":"tree"}],
+      "servers": {"a":{"/saves.7z":[{"bodyFile":"good"}]}},
+      "results": [
+        {"ok":{"status":"installed","added":3},"logs":[["info","[saves] не хватает тренировочных сейвов: 3 в Half-Life/valve_WON/save"],["info","[saves] добавлено тренировочных сейвов: 3 → Half-Life/valve_WON/save"]]},
+        {
+          "tree": [
+            {"path":"lib","kind":"dir"},
+            {"path":"lib/.hlsr","kind":"dir"},
+            {"path":"lib/.hlsr/staging","kind":"dir"},
+            {"path":"lib/Downloads","kind":"dir"},
+            {"path":"lib/Games","kind":"dir"},
+            {"path":"lib/Games/hl1-won","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/save","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/save/e1.sav","kind":"file","size":7,"sha256":"b5edd06e40409447dc8fd410ed71deca06c6e814a6217aea84de9891d03c06e6","latin1":"pack-e1"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/save/e14-protopipe.sav","kind":"file","size":10,"sha256":"e53929d384c5234e828caceedaf0519f714c224bbd45ec13061f285909909750","latin1":"pack-proto"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/save/e2.sav","kind":"file","size":7,"sha256":"39c4cecb0c1246274a7ddc0a56533fd06b7bee7ae3046e0e5b76aab82925babf","latin1":"pack-e2"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "русская папка мода — сейвы ложатся и в valve_WON, и в valve_WON_russian",
+      "setup": [{"dir":"lib/Games/hl1-won/Half-Life/valve_WON_russian"},{"dir":"lib/Games/hl1-won/Half-Life/valve_WON"}],
+      "steps": [{"op":"ensure"},{"op":"tree"},{"op":"requests"},{"op":"ensure"},{"op":"requests"}],
+      "servers": {"a":{"/saves.7z":[{"bodyFile":"good"}]}},
+      "results": [
+        {"ok":{"status":"installed","added":6},"logs":[["info","[saves] не хватает тренировочных сейвов: 6 в Half-Life/valve_WON/SAVE, Half-Life/valve_WON_russian/SAVE"],["info","[saves] добавлено тренировочных сейвов: 6 → Half-Life/valve_WON/SAVE, Half-Life/valve_WON_russian/SAVE"]]},
+        {
+          "tree": [
+            {"path":"lib","kind":"dir"},
+            {"path":"lib/.hlsr","kind":"dir"},
+            {"path":"lib/.hlsr/staging","kind":"dir"},
+            {"path":"lib/Downloads","kind":"dir"},
+            {"path":"lib/Games","kind":"dir"},
+            {"path":"lib/Games/hl1-won","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e1.sav","kind":"file","size":7,"sha256":"b5edd06e40409447dc8fd410ed71deca06c6e814a6217aea84de9891d03c06e6","latin1":"pack-e1"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e14-protopipe.sav","kind":"file","size":10,"sha256":"e53929d384c5234e828caceedaf0519f714c224bbd45ec13061f285909909750","latin1":"pack-proto"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e2.sav","kind":"file","size":7,"sha256":"39c4cecb0c1246274a7ddc0a56533fd06b7bee7ae3046e0e5b76aab82925babf","latin1":"pack-e2"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON_russian","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON_russian/SAVE","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON_russian/SAVE/e1.sav","kind":"file","size":7,"sha256":"b5edd06e40409447dc8fd410ed71deca06c6e814a6217aea84de9891d03c06e6","latin1":"pack-e1"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON_russian/SAVE/e14-protopipe.sav","kind":"file","size":10,"sha256":"e53929d384c5234e828caceedaf0519f714c224bbd45ec13061f285909909750","latin1":"pack-proto"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON_russian/SAVE/e2.sav","kind":"file","size":7,"sha256":"39c4cecb0c1246274a7ddc0a56533fd06b7bee7ae3046e0e5b76aab82925babf","latin1":"pack-e2"}
+          ]
+        },
+        {"requests":[{"method":"GET","url":"/saves.7z","headers":{"user-agent":"HLSR-Launcher"}}]},
+        {"ok":{"status":"present","added":0},"logs":[]},
+        {"requests":[]}
+      ]
+    },
+    {
+      "name": "русская папка появилась после установки — сейвы копируются из valve_WON без загрузки",
+      "setup": [{"file":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e1.sav","utf8":"pack-e1"},{"file":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e2.sav","utf8":"pack-e2"},{"file":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e14-protopipe.sav","utf8":"pack-proto"},{"dir":"lib/Games/hl1-won/Half-Life/valve_WON_russian/SAVE"}],
+      "steps": [{"op":"ensure"},{"op":"tree"},{"op":"requests"}],
+      "servers": {"a":{"/saves.7z":[{"bodyFile":"good"}]}},
+      "results": [
+        {"ok":{"status":"installed","added":3},"logs":[["info","[saves] не хватает тренировочных сейвов: 3 в Half-Life/valve_WON_russian/SAVE"],["info","[saves] добавлено тренировочных сейвов: 3 → Half-Life/valve_WON_russian/SAVE"]]},
+        {
+          "tree": [
+            {"path":"lib","kind":"dir"},
+            {"path":"lib/Games","kind":"dir"},
+            {"path":"lib/Games/hl1-won","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e1.sav","kind":"file","size":7,"sha256":"b5edd06e40409447dc8fd410ed71deca06c6e814a6217aea84de9891d03c06e6","latin1":"pack-e1"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e14-protopipe.sav","kind":"file","size":10,"sha256":"e53929d384c5234e828caceedaf0519f714c224bbd45ec13061f285909909750","latin1":"pack-proto"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e2.sav","kind":"file","size":7,"sha256":"39c4cecb0c1246274a7ddc0a56533fd06b7bee7ae3046e0e5b76aab82925babf","latin1":"pack-e2"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON_russian","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON_russian/SAVE","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON_russian/SAVE/e1.sav","kind":"file","size":7,"sha256":"b5edd06e40409447dc8fd410ed71deca06c6e814a6217aea84de9891d03c06e6","latin1":"pack-e1"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON_russian/SAVE/e14-protopipe.sav","kind":"file","size":10,"sha256":"e53929d384c5234e828caceedaf0519f714c224bbd45ec13061f285909909750","latin1":"pack-proto"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON_russian/SAVE/e2.sav","kind":"file","size":7,"sha256":"39c4cecb0c1246274a7ddc0a56533fd06b7bee7ae3046e0e5b76aab82925babf","latin1":"pack-e2"}
+          ]
+        },
+        {"requests":[]}
+      ]
+    },
+    {
+      "name": "свой сейв игрока в valve_WON не перекрывается сейвом набора из русской папки",
+      "setup": [{"file":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/E1.SAV","utf8":"mine"},{"dir":"lib/Games/hl1-won/Half-Life/valve_WON_russian"}],
+      "steps": [{"op":"ensure"},{"op":"tree"},{"op":"requests"},{"op":"ensure"},{"op":"requests"}],
+      "servers": {"a":{"/saves.7z":[{"bodyFile":"good"}]}},
+      "results": [
+        {"ok":{"status":"installed","added":4},"logs":[["info","[saves] не хватает тренировочных сейвов: 4 в Half-Life/valve_WON/SAVE, Half-Life/valve_WON_russian/SAVE"],["info","[saves] добавлено тренировочных сейвов: 4 → Half-Life/valve_WON/SAVE, Half-Life/valve_WON_russian/SAVE"]]},
+        {
+          "tree": [
+            {"path":"lib","kind":"dir"},
+            {"path":"lib/.hlsr","kind":"dir"},
+            {"path":"lib/.hlsr/staging","kind":"dir"},
+            {"path":"lib/Downloads","kind":"dir"},
+            {"path":"lib/Games","kind":"dir"},
+            {"path":"lib/Games/hl1-won","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/E1.SAV","kind":"file","size":4,"sha256":"3fd30542fe3f61b14bd4a4b2dc0b6fb30fa6f63ebce52dd1778aaa8c4dc02cff","latin1":"mine"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e14-protopipe.sav","kind":"file","size":10,"sha256":"e53929d384c5234e828caceedaf0519f714c224bbd45ec13061f285909909750","latin1":"pack-proto"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e2.sav","kind":"file","size":7,"sha256":"39c4cecb0c1246274a7ddc0a56533fd06b7bee7ae3046e0e5b76aab82925babf","latin1":"pack-e2"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON_russian","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON_russian/SAVE","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON_russian/SAVE/e14-protopipe.sav","kind":"file","size":10,"sha256":"e53929d384c5234e828caceedaf0519f714c224bbd45ec13061f285909909750","latin1":"pack-proto"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON_russian/SAVE/e2.sav","kind":"file","size":7,"sha256":"39c4cecb0c1246274a7ddc0a56533fd06b7bee7ae3046e0e5b76aab82925babf","latin1":"pack-e2"}
+          ]
+        },
+        {"requests":[{"method":"GET","url":"/saves.7z","headers":{"user-agent":"HLSR-Launcher"}}]},
+        {"ok":{"status":"present","added":0},"logs":[]},
+        {"requests":[]}
+      ]
+    },
+    {
+      "name": "свой сейв в русской папке не перезаписывается",
+      "setup": [{"file":"lib/Games/hl1-won/Half-Life/valve_WON_russian/SAVE/e2.sav","utf8":"mine-ru"},{"dir":"lib/Games/hl1-won/Half-Life/valve_WON"}],
+      "steps": [{"op":"ensure"},{"op":"tree"}],
+      "servers": {"a":{"/saves.7z":[{"bodyFile":"good"}]}},
+      "results": [
+        {"ok":{"status":"installed","added":5},"logs":[["info","[saves] не хватает тренировочных сейвов: 5 в Half-Life/valve_WON/SAVE, Half-Life/valve_WON_russian/SAVE"],["info","[saves] добавлено тренировочных сейвов: 5 → Half-Life/valve_WON/SAVE, Half-Life/valve_WON_russian/SAVE"]]},
+        {
+          "tree": [
+            {"path":"lib","kind":"dir"},
+            {"path":"lib/.hlsr","kind":"dir"},
+            {"path":"lib/.hlsr/staging","kind":"dir"},
+            {"path":"lib/Downloads","kind":"dir"},
+            {"path":"lib/Games","kind":"dir"},
+            {"path":"lib/Games/hl1-won","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e1.sav","kind":"file","size":7,"sha256":"b5edd06e40409447dc8fd410ed71deca06c6e814a6217aea84de9891d03c06e6","latin1":"pack-e1"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e14-protopipe.sav","kind":"file","size":10,"sha256":"e53929d384c5234e828caceedaf0519f714c224bbd45ec13061f285909909750","latin1":"pack-proto"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e2.sav","kind":"file","size":7,"sha256":"39c4cecb0c1246274a7ddc0a56533fd06b7bee7ae3046e0e5b76aab82925babf","latin1":"pack-e2"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON_russian","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON_russian/SAVE","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON_russian/SAVE/e1.sav","kind":"file","size":7,"sha256":"b5edd06e40409447dc8fd410ed71deca06c6e814a6217aea84de9891d03c06e6","latin1":"pack-e1"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON_russian/SAVE/e14-protopipe.sav","kind":"file","size":10,"sha256":"e53929d384c5234e828caceedaf0519f714c224bbd45ec13061f285909909750","latin1":"pack-proto"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON_russian/SAVE/e2.sav","kind":"file","size":7,"sha256":"7126887035d89784c7ca5a36de07d16953bd6dd6aca9d2cfa2d2f089c0ef0f08","latin1":"mine-ru"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "папки valve_WON_hd, valve_WON_downloads и прочие не языковые — не трогаются",
+      "setup": [{"dir":"lib/Games/hl1-won/Half-Life/valve_WON_hd"},{"dir":"lib/Games/hl1-won/Half-Life/valve_WON_downloads"},{"dir":"lib/Games/hl1-won/Half-Life/valve_WON_backup"},{"dir":"lib/Games/hl1-won/Half-Life/valve_WON"}],
+      "steps": [{"op":"ensure"},{"op":"tree"}],
+      "servers": {"a":{"/saves.7z":[{"bodyFile":"good"}]}},
+      "results": [
+        {"ok":{"status":"installed","added":3},"logs":[["info","[saves] не хватает тренировочных сейвов: 3 в Half-Life/valve_WON/SAVE"],["info","[saves] добавлено тренировочных сейвов: 3 → Half-Life/valve_WON/SAVE"]]},
+        {
+          "tree": [
+            {"path":"lib","kind":"dir"},
+            {"path":"lib/.hlsr","kind":"dir"},
+            {"path":"lib/.hlsr/staging","kind":"dir"},
+            {"path":"lib/Downloads","kind":"dir"},
+            {"path":"lib/Games","kind":"dir"},
+            {"path":"lib/Games/hl1-won","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e1.sav","kind":"file","size":7,"sha256":"b5edd06e40409447dc8fd410ed71deca06c6e814a6217aea84de9891d03c06e6","latin1":"pack-e1"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e14-protopipe.sav","kind":"file","size":10,"sha256":"e53929d384c5234e828caceedaf0519f714c224bbd45ec13061f285909909750","latin1":"pack-proto"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e2.sav","kind":"file","size":7,"sha256":"39c4cecb0c1246274a7ddc0a56533fd06b7bee7ae3046e0e5b76aab82925babf","latin1":"pack-e2"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON_backup","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON_downloads","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON_hd","kind":"dir"}
+          ]
+        }
+      ]
+    },
+    {"name":"игра не установлена (нет папки мода) — ничего не качается и не создаётся","setup":[],"steps":[{"op":"ensure"},{"op":"tree"},{"op":"requests"}],"servers":{"a":{"/saves.7z":[{"bodyFile":"good"}]}},"results":[{"ok":{"status":"not-installed","added":0},"logs":[]},{"tree":[]},{"requests":[]}]},
+    {
+      "name": "чужая игра, другой регистр id, пустой путь установки — not-applicable",
+      "setup": [{"dir":"lib/Games/hl1-won/Half-Life/valve_WON"}],
+      "steps": [{"op":"ensure","gameId":"hl2-4260"},{"op":"ensure","gameId":"HL1-WON"},{"op":"ensure","gameId":""},{"op":"ensure","installDir":""},{"op":"requests"},{"op":"tree"}],
+      "servers": {"a":{"/saves.7z":[{"bodyFile":"good"}]}},
+      "results": [
+        {"ok":{"status":"not-applicable","added":0},"logs":[]},
+        {"ok":{"status":"not-applicable","added":0},"logs":[]},
+        {"ok":{"status":"not-applicable","added":0},"logs":[]},
+        {"ok":{"status":"not-applicable","added":0},"logs":[]},
+        {"requests":[]},
+        {"tree":[{"path":"lib","kind":"dir"},{"path":"lib/Games","kind":"dir"},{"path":"lib/Games/hl1-won","kind":"dir"},{"path":"lib/Games/hl1-won/Half-Life","kind":"dir"},{"path":"lib/Games/hl1-won/Half-Life/valve_WON","kind":"dir"}]}
+      ]
+    },
+    {
+      "name": "SHA-256 не совпал — отказ, сейвы не появились, .part удалён",
+      "servers": {"a":{"/saves.7z":[{"bodyFile":"good","mutate":"flipLast"}]}},
+      "setup": [{"dir":"lib/Games/hl1-won/Half-Life/valve_WON"}],
+      "steps": [{"op":"ensure"},{"op":"tree"},{"op":"requests"}],
+      "results": [
+        {"error":{"code":"CHECKSUM_MISMATCH","message":"SHA-256 архива сейвов не совпал с объявленным","details":null},"logs":[["info","[saves] не хватает тренировочных сейвов: 3 в Half-Life/valve_WON/SAVE"],["warn","[saves] источник test не сработал: SHA-256 архива сейвов не совпал с объявленным"]]},
+        {"tree":[{"path":"lib","kind":"dir"},{"path":"lib/Downloads","kind":"dir"},{"path":"lib/Games","kind":"dir"},{"path":"lib/Games/hl1-won","kind":"dir"},{"path":"lib/Games/hl1-won/Half-Life","kind":"dir"},{"path":"lib/Games/hl1-won/Half-Life/valve_WON","kind":"dir"}]},
+        {"requests":[{"method":"GET","url":"/saves.7z","headers":{"user-agent":"HLSR-Launcher"}}]}
+      ]
+    },
+    {
+      "name": "ответ длиннее объявленного — отказ по размеру",
+      "servers": {"a":{"/saves.7z":[{"bodyFile":"good","mutate":"append"}]}},
+      "setup": [{"dir":"lib/Games/hl1-won/Half-Life/valve_WON"}],
+      "steps": [{"op":"ensure"},{"op":"tree"}],
+      "results": [
+        {"error":{"code":"SIZE_MISMATCH","message":"Архив сейвов длиннее объявленного","details":null},"logs":[["info","[saves] не хватает тренировочных сейвов: 3 в Half-Life/valve_WON/SAVE"],["warn","[saves] источник test не сработал: Архив сейвов длиннее объявленного"]]},
+        {"tree":[{"path":"lib","kind":"dir"},{"path":"lib/Downloads","kind":"dir"},{"path":"lib/Games","kind":"dir"},{"path":"lib/Games/hl1-won","kind":"dir"},{"path":"lib/Games/hl1-won/Half-Life","kind":"dir"},{"path":"lib/Games/hl1-won/Half-Life/valve_WON","kind":"dir"}]}
+      ]
+    },
+    {
+      "name": "одновременные вызовы — одна загрузка",
+      "servers": {"a":{"/saves.7z":[{"bodyFile":"good","delayMs":150}]}},
+      "setup": [{"dir":"lib/Games/hl1-won/Half-Life/valve_WON"}],
+      "steps": [{"op":"parallel"},{"op":"requests"},{"op":"tree"}],
+      "results": [
+        {"results":[{"ok":{"status":"installed","added":3}},{"ok":{"status":"installed","added":3}}],"jobs":0,"logs":[["info","[saves] не хватает тренировочных сейвов: 3 в Half-Life/valve_WON/SAVE"],["info","[saves] добавлено тренировочных сейвов: 3 → Half-Life/valve_WON/SAVE"]]},
+        {"requests":[{"method":"GET","url":"/saves.7z","headers":{"user-agent":"HLSR-Launcher"}}]},
+        {
+          "tree": [
+            {"path":"lib","kind":"dir"},
+            {"path":"lib/.hlsr","kind":"dir"},
+            {"path":"lib/.hlsr/staging","kind":"dir"},
+            {"path":"lib/Downloads","kind":"dir"},
+            {"path":"lib/Games","kind":"dir"},
+            {"path":"lib/Games/hl1-won","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e1.sav","kind":"file","size":7,"sha256":"b5edd06e40409447dc8fd410ed71deca06c6e814a6217aea84de9891d03c06e6","latin1":"pack-e1"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e14-protopipe.sav","kind":"file","size":10,"sha256":"e53929d384c5234e828caceedaf0519f714c224bbd45ec13061f285909909750","latin1":"pack-proto"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e2.sav","kind":"file","size":7,"sha256":"39c4cecb0c1246274a7ddc0a56533fd06b7bee7ae3046e0e5b76aab82925babf","latin1":"pack-e2"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "второй источник подхватывает, если первый не ответил",
+      "pack": "twoSources",
+      "servers": {"a":{"/primary/saves.7z":[{"status":404}],"/fallback/saves.7z":[{"bodyFile":"good"}]}},
+      "setup": [{"dir":"lib/Games/hl1-won/Half-Life/valve_WON"}],
+      "steps": [{"op":"ensure"},{"op":"requests"},{"op":"tree"}],
+      "results": [
+        {"ok":{"status":"installed","added":3},"logs":[["info","[saves] не хватает тренировочных сейвов: 3 в Half-Life/valve_WON/SAVE"],["warn","[saves] источник hlsr-primary не сработал: Источник ответил 404"],["info","[saves] добавлено тренировочных сейвов: 3 → Half-Life/valve_WON/SAVE"]]},
+        {"requests":[{"method":"GET","url":"/primary/saves.7z","headers":{"user-agent":"HLSR-Launcher"}},{"method":"GET","url":"/fallback/saves.7z","headers":{"user-agent":"HLSR-Launcher"}}]},
+        {
+          "tree": [
+            {"path":"lib","kind":"dir"},
+            {"path":"lib/.hlsr","kind":"dir"},
+            {"path":"lib/.hlsr/staging","kind":"dir"},
+            {"path":"lib/Downloads","kind":"dir"},
+            {"path":"lib/Games","kind":"dir"},
+            {"path":"lib/Games/hl1-won","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e1.sav","kind":"file","size":7,"sha256":"b5edd06e40409447dc8fd410ed71deca06c6e814a6217aea84de9891d03c06e6","latin1":"pack-e1"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e14-protopipe.sav","kind":"file","size":10,"sha256":"e53929d384c5234e828caceedaf0519f714c224bbd45ec13061f285909909750","latin1":"pack-proto"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e2.sav","kind":"file","size":7,"sha256":"39c4cecb0c1246274a7ddc0a56533fd06b7bee7ae3046e0e5b76aab82925babf","latin1":"pack-e2"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "оба источника не ответили — ошибка последнего",
+      "pack": "twoSources",
+      "servers": {"a":{"/primary/saves.7z":[{"status":500}],"/fallback/saves.7z":[{"status":503,"body":"занят"}]}},
+      "setup": [{"dir":"lib/Games/hl1-won/Half-Life/valve_WON"}],
+      "steps": [{"op":"ensure"},{"op":"requests"},{"op":"tree"}],
+      "results": [
+        {"error":{"code":"NETWORK_ERROR","message":"Источник ответил 503","details":null},"logs":[["info","[saves] не хватает тренировочных сейвов: 3 в Half-Life/valve_WON/SAVE"],["warn","[saves] источник hlsr-primary не сработал: Источник ответил 500"],["warn","[saves] источник github-fallback не сработал: Источник ответил 503"]]},
+        {"requests":[{"method":"GET","url":"/primary/saves.7z","headers":{"user-agent":"HLSR-Launcher"}},{"method":"GET","url":"/fallback/saves.7z","headers":{"user-agent":"HLSR-Launcher"}}]},
+        {"tree":[{"path":"lib","kind":"dir"},{"path":"lib/Downloads","kind":"dir"},{"path":"lib/Games","kind":"dir"},{"path":"lib/Games/hl1-won","kind":"dir"},{"path":"lib/Games/hl1-won/Half-Life","kind":"dir"},{"path":"lib/Games/hl1-won/Half-Life/valve_WON","kind":"dir"}]}
+      ]
+    },
+    {
+      "name": "у набора нет источников",
+      "pack": "noSources",
+      "setup": [{"dir":"lib/Games/hl1-won/Half-Life/valve_WON"}],
+      "steps": [{"op":"ensure"},{"op":"requests"},{"op":"tree"}],
+      "servers": {"a":{"/saves.7z":[{"bodyFile":"good"}]}},
+      "results": [
+        {"error":{"code":"MANIFEST_INVALID","message":"У архива сейвов нет ни одного источника","details":null},"logs":[["info","[saves] не хватает тренировочных сейвов: 3 в Half-Life/valve_WON/SAVE"]]},
+        {"requests":[]},
+        {"tree":[{"path":"lib","kind":"dir"},{"path":"lib/Downloads","kind":"dir"},{"path":"lib/Games","kind":"dir"},{"path":"lib/Games/hl1-won","kind":"dir"},{"path":"lib/Games/hl1-won/Half-Life","kind":"dir"},{"path":"lib/Games/hl1-won/Half-Life/valve_WON","kind":"dir"}]}
+      ]
+    },
+    {
+      "name": "у набора нет поля providers",
+      "pack": "missingSources",
+      "setup": [{"dir":"lib/Games/hl1-won/Half-Life/valve_WON"}],
+      "steps": [{"op":"ensure"},{"op":"tree"}],
+      "servers": {"a":{"/saves.7z":[{"bodyFile":"good"}]}},
+      "results": [
+        {"error":{"code":"MANIFEST_INVALID","message":"У архива сейвов нет ни одного источника","details":null},"logs":[["info","[saves] не хватает тренировочных сейвов: 3 в Half-Life/valve_WON/SAVE"]]},
+        {"tree":[{"path":"lib","kind":"dir"},{"path":"lib/Downloads","kind":"dir"},{"path":"lib/Games","kind":"dir"},{"path":"lib/Games/hl1-won","kind":"dir"},{"path":"lib/Games/hl1-won/Half-Life","kind":"dir"},{"path":"lib/Games/hl1-won/Half-Life/valve_WON","kind":"dir"}]}
+      ]
+    },
+    {
+      "name": "описание архива неверно (размер 0) — отказ до запроса",
+      "pack": "sizeZero",
+      "setup": [{"dir":"lib/Games/hl1-won/Half-Life/valve_WON"}],
+      "steps": [{"op":"ensure"},{"op":"requests"},{"op":"tree"}],
+      "servers": {"a":{"/saves.7z":[{"bodyFile":"good"}]}},
+      "results": [
+        {"error":{"code":"MANIFEST_INVALID","message":"У архива сейвов неверный размер или SHA-256","details":null},"logs":[["info","[saves] не хватает тренировочных сейвов: 3 в Half-Life/valve_WON/SAVE"],["warn","[saves] источник test не сработал: У архива сейвов неверный размер или SHA-256"]]},
+        {"requests":[]},
+        {"tree":[{"path":"lib","kind":"dir"},{"path":"lib/Downloads","kind":"dir"},{"path":"lib/Games","kind":"dir"},{"path":"lib/Games/hl1-won","kind":"dir"},{"path":"lib/Games/hl1-won/Half-Life","kind":"dir"},{"path":"lib/Games/hl1-won/Half-Life/valve_WON","kind":"dir"}]}
+      ]
+    },
+    {
+      "name": "описание архива неверно (размер больше 64 МБ) — отказ до запроса",
+      "pack": "sizeTooBig",
+      "setup": [{"dir":"lib/Games/hl1-won/Half-Life/valve_WON"}],
+      "steps": [{"op":"ensure"},{"op":"requests"},{"op":"tree"}],
+      "servers": {"a":{"/saves.7z":[{"bodyFile":"good"}]}},
+      "results": [
+        {"error":{"code":"MANIFEST_INVALID","message":"У архива сейвов неверный размер или SHA-256","details":null},"logs":[["info","[saves] не хватает тренировочных сейвов: 3 в Half-Life/valve_WON/SAVE"],["warn","[saves] источник test не сработал: У архива сейвов неверный размер или SHA-256"]]},
+        {"requests":[]},
+        {"tree":[{"path":"lib","kind":"dir"},{"path":"lib/Downloads","kind":"dir"},{"path":"lib/Games","kind":"dir"},{"path":"lib/Games/hl1-won","kind":"dir"},{"path":"lib/Games/hl1-won/Half-Life","kind":"dir"},{"path":"lib/Games/hl1-won/Half-Life/valve_WON","kind":"dir"}]}
+      ]
+    },
+    {
+      "name": "описание архива неверно (SHA-256 заглавными) — отказ до запроса",
+      "pack": "shaUpper",
+      "setup": [{"dir":"lib/Games/hl1-won/Half-Life/valve_WON"}],
+      "steps": [{"op":"ensure"},{"op":"requests"},{"op":"tree"}],
+      "servers": {"a":{"/saves.7z":[{"bodyFile":"good"}]}},
+      "results": [
+        {"error":{"code":"MANIFEST_INVALID","message":"У архива сейвов неверный размер или SHA-256","details":null},"logs":[["info","[saves] не хватает тренировочных сейвов: 3 в Half-Life/valve_WON/SAVE"],["warn","[saves] источник test не сработал: У архива сейвов неверный размер или SHA-256"]]},
+        {"requests":[]},
+        {"tree":[{"path":"lib","kind":"dir"},{"path":"lib/Downloads","kind":"dir"},{"path":"lib/Games","kind":"dir"},{"path":"lib/Games/hl1-won","kind":"dir"},{"path":"lib/Games/hl1-won/Half-Life","kind":"dir"},{"path":"lib/Games/hl1-won/Half-Life/valve_WON","kind":"dir"}]}
+      ]
+    },
+    {
+      "name": "размер ровно 64 МБ допустим по описанию, но тело не совпадает с ним",
+      "pack": "sizeAtLimit",
+      "setup": [{"dir":"lib/Games/hl1-won/Half-Life/valve_WON"}],
+      "steps": [{"op":"ensure"},{"op":"requests"},{"op":"tree"}],
+      "servers": {"a":{"/saves.7z":[{"bodyFile":"good"}]}},
+      "results": [
+        {"error":{"code":"SIZE_MISMATCH","message":"Размер архива сейвов не совпал: 294 вместо 67108864","details":null},"logs":[["info","[saves] не хватает тренировочных сейвов: 3 в Half-Life/valve_WON/SAVE"],["warn","[saves] источник test не сработал: Размер архива сейвов не совпал: 294 вместо 67108864"]]},
+        {"requests":[{"method":"GET","url":"/saves.7z","headers":{"user-agent":"HLSR-Launcher"}}]},
+        {"tree":[{"path":"lib","kind":"dir"},{"path":"lib/Downloads","kind":"dir"},{"path":"lib/Games","kind":"dir"},{"path":"lib/Games/hl1-won","kind":"dir"},{"path":"lib/Games/hl1-won/Half-Life","kind":"dir"},{"path":"lib/Games/hl1-won/Half-Life/valve_WON","kind":"dir"}]}
+      ]
+    },
+    {
+      "name": "в описании чужой SHA-256 — хеш не совпал",
+      "pack": "shaWrong",
+      "setup": [{"dir":"lib/Games/hl1-won/Half-Life/valve_WON"}],
+      "steps": [{"op":"ensure"},{"op":"tree"}],
+      "servers": {"a":{"/saves.7z":[{"bodyFile":"good"}]}},
+      "results": [
+        {"error":{"code":"CHECKSUM_MISMATCH","message":"SHA-256 архива сейвов не совпал с объявленным","details":null},"logs":[["info","[saves] не хватает тренировочных сейвов: 3 в Half-Life/valve_WON/SAVE"],["warn","[saves] источник test не сработал: SHA-256 архива сейвов не совпал с объявленным"]]},
+        {"tree":[{"path":"lib","kind":"dir"},{"path":"lib/Downloads","kind":"dir"},{"path":"lib/Games","kind":"dir"},{"path":"lib/Games/hl1-won","kind":"dir"},{"path":"lib/Games/hl1-won/Half-Life","kind":"dir"},{"path":"lib/Games/hl1-won/Half-Life/valve_WON","kind":"dir"}]}
+      ]
+    },
+    {
+      "name": "в описании размер на 1 меньше — ответ длиннее объявленного",
+      "pack": "sizeOneLess",
+      "setup": [{"dir":"lib/Games/hl1-won/Half-Life/valve_WON"}],
+      "steps": [{"op":"ensure"},{"op":"tree"}],
+      "servers": {"a":{"/saves.7z":[{"bodyFile":"good"}]}},
+      "results": [
+        {"error":{"code":"SIZE_MISMATCH","message":"Архив сейвов длиннее объявленного","details":null},"logs":[["info","[saves] не хватает тренировочных сейвов: 3 в Half-Life/valve_WON/SAVE"],["warn","[saves] источник test не сработал: Архив сейвов длиннее объявленного"]]},
+        {"tree":[{"path":"lib","kind":"dir"},{"path":"lib/Downloads","kind":"dir"},{"path":"lib/Games","kind":"dir"},{"path":"lib/Games/hl1-won","kind":"dir"},{"path":"lib/Games/hl1-won/Half-Life","kind":"dir"},{"path":"lib/Games/hl1-won/Half-Life/valve_WON","kind":"dir"}]}
+      ]
+    },
+    {
+      "name": "источник отвергает соединение",
+      "pack": "deadSource",
+      "servers": {},
+      "setup": [{"dir":"lib/Games/hl1-won/Half-Life/valve_WON"}],
+      "steps": [{"op":"ensure"},{"op":"tree"}],
+      "results": [
+        {"error":{"code":"NETWORK_ERROR","message":"Сетевая ошибка: connect ECONNREFUSED {dead}","details":null},"logs":[["info","[saves] не хватает тренировочных сейвов: 3 в Half-Life/valve_WON/SAVE"],["warn","[saves] источник dead не сработал: Сетевая ошибка: connect ECONNREFUSED {dead}"]]},
+        {"tree":[{"path":"lib","kind":"dir"},{"path":"lib/Downloads","kind":"dir"},{"path":"lib/Games","kind":"dir"},{"path":"lib/Games/hl1-won","kind":"dir"},{"path":"lib/Games/hl1-won/Half-Life","kind":"dir"},{"path":"lib/Games/hl1-won/Half-Life/valve_WON","kind":"dir"}]}
+      ]
+    },
+    {
+      "name": "сервер: 404",
+      "servers": {"a":{"/saves.7z":[{"status":404,"body":"нет"}]}},
+      "setup": [{"dir":"lib/Games/hl1-won/Half-Life/valve_WON"}],
+      "steps": [{"op":"ensure"},{"op":"tree"},{"op":"requests"}],
+      "results": [
+        {"error":{"code":"NETWORK_ERROR","message":"Источник ответил 404","details":null},"logs":[["info","[saves] не хватает тренировочных сейвов: 3 в Half-Life/valve_WON/SAVE"],["warn","[saves] источник test не сработал: Источник ответил 404"]]},
+        {"tree":[{"path":"lib","kind":"dir"},{"path":"lib/Downloads","kind":"dir"},{"path":"lib/Games","kind":"dir"},{"path":"lib/Games/hl1-won","kind":"dir"},{"path":"lib/Games/hl1-won/Half-Life","kind":"dir"},{"path":"lib/Games/hl1-won/Half-Life/valve_WON","kind":"dir"}]},
+        {"requests":[{"method":"GET","url":"/saves.7z","headers":{"user-agent":"HLSR-Launcher"}}]}
+      ]
+    },
+    {
+      "name": "сервер: 500",
+      "servers": {"a":{"/saves.7z":[{"status":500,"body":"ошибка"}]}},
+      "setup": [{"dir":"lib/Games/hl1-won/Half-Life/valve_WON"}],
+      "steps": [{"op":"ensure"},{"op":"tree"},{"op":"requests"}],
+      "results": [
+        {"error":{"code":"NETWORK_ERROR","message":"Источник ответил 500","details":null},"logs":[["info","[saves] не хватает тренировочных сейвов: 3 в Half-Life/valve_WON/SAVE"],["warn","[saves] источник test не сработал: Источник ответил 500"]]},
+        {"tree":[{"path":"lib","kind":"dir"},{"path":"lib/Downloads","kind":"dir"},{"path":"lib/Games","kind":"dir"},{"path":"lib/Games/hl1-won","kind":"dir"},{"path":"lib/Games/hl1-won/Half-Life","kind":"dir"},{"path":"lib/Games/hl1-won/Half-Life/valve_WON","kind":"dir"}]},
+        {"requests":[{"method":"GET","url":"/saves.7z","headers":{"user-agent":"HLSR-Launcher"}}]}
+      ]
+    },
+    {
+      "name": "сервер: 429 с Retry-After — повтора нет",
+      "servers": {"a":{"/saves.7z":[{"status":429,"headers":[["Retry-After","5"]],"body":""}]}},
+      "setup": [{"dir":"lib/Games/hl1-won/Half-Life/valve_WON"}],
+      "steps": [{"op":"ensure"},{"op":"tree"},{"op":"requests"}],
+      "results": [
+        {"error":{"code":"NETWORK_ERROR","message":"Источник ответил 429","details":null},"logs":[["info","[saves] не хватает тренировочных сейвов: 3 в Half-Life/valve_WON/SAVE"],["warn","[saves] источник test не сработал: Источник ответил 429"]]},
+        {"tree":[{"path":"lib","kind":"dir"},{"path":"lib/Downloads","kind":"dir"},{"path":"lib/Games","kind":"dir"},{"path":"lib/Games/hl1-won","kind":"dir"},{"path":"lib/Games/hl1-won/Half-Life","kind":"dir"},{"path":"lib/Games/hl1-won/Half-Life/valve_WON","kind":"dir"}]},
+        {"requests":[{"method":"GET","url":"/saves.7z","headers":{"user-agent":"HLSR-Launcher"}}]}
+      ]
+    },
+    {
+      "name": "сервер: 204 без тела",
+      "servers": {"a":{"/saves.7z":[{"status":204}]}},
+      "setup": [{"dir":"lib/Games/hl1-won/Half-Life/valve_WON"}],
+      "steps": [{"op":"ensure"},{"op":"tree"},{"op":"requests"}],
+      "results": [
+        {"error":{"code":"NETWORK_ERROR","message":"Источник ответил 204","details":null},"logs":[["info","[saves] не хватает тренировочных сейвов: 3 в Half-Life/valve_WON/SAVE"],["warn","[saves] источник test не сработал: Источник ответил 204"]]},
+        {"tree":[{"path":"lib","kind":"dir"},{"path":"lib/Downloads","kind":"dir"},{"path":"lib/Games","kind":"dir"},{"path":"lib/Games/hl1-won","kind":"dir"},{"path":"lib/Games/hl1-won/Half-Life","kind":"dir"},{"path":"lib/Games/hl1-won/Half-Life/valve_WON","kind":"dir"}]},
+        {"requests":[{"method":"GET","url":"/saves.7z","headers":{"user-agent":"HLSR-Launcher"}}]}
+      ]
+    },
+    {
+      "name": "сервер: страница HTML вместо файла",
+      "servers": {"a":{"/saves.7z":[{"body":"<html><body>файл удалён</body></html>"}]}},
+      "setup": [{"dir":"lib/Games/hl1-won/Half-Life/valve_WON"}],
+      "steps": [{"op":"ensure"},{"op":"tree"},{"op":"requests"}],
+      "results": [
+        {"error":{"code":"SIZE_MISMATCH","message":"Размер архива сейвов не совпал: 47 вместо 294","details":null},"logs":[["info","[saves] не хватает тренировочных сейвов: 3 в Half-Life/valve_WON/SAVE"],["warn","[saves] источник test не сработал: Размер архива сейвов не совпал: 47 вместо 294"]]},
+        {"tree":[{"path":"lib","kind":"dir"},{"path":"lib/Downloads","kind":"dir"},{"path":"lib/Games","kind":"dir"},{"path":"lib/Games/hl1-won","kind":"dir"},{"path":"lib/Games/hl1-won/Half-Life","kind":"dir"},{"path":"lib/Games/hl1-won/Half-Life/valve_WON","kind":"dir"}]},
+        {"requests":[{"method":"GET","url":"/saves.7z","headers":{"user-agent":"HLSR-Launcher"}}]}
+      ]
+    },
+    {
+      "name": "сервер: пустое тело",
+      "servers": {"a":{"/saves.7z":[{"body":""}]}},
+      "setup": [{"dir":"lib/Games/hl1-won/Half-Life/valve_WON"}],
+      "steps": [{"op":"ensure"},{"op":"tree"},{"op":"requests"}],
+      "results": [
+        {"error":{"code":"SIZE_MISMATCH","message":"Размер архива сейвов не совпал: 0 вместо 294","details":null},"logs":[["info","[saves] не хватает тренировочных сейвов: 3 в Half-Life/valve_WON/SAVE"],["warn","[saves] источник test не сработал: Размер архива сейвов не совпал: 0 вместо 294"]]},
+        {"tree":[{"path":"lib","kind":"dir"},{"path":"lib/Downloads","kind":"dir"},{"path":"lib/Games","kind":"dir"},{"path":"lib/Games/hl1-won","kind":"dir"},{"path":"lib/Games/hl1-won/Half-Life","kind":"dir"},{"path":"lib/Games/hl1-won/Half-Life/valve_WON","kind":"dir"}]},
+        {"requests":[{"method":"GET","url":"/saves.7z","headers":{"user-agent":"HLSR-Launcher"}}]}
+      ]
+    },
+    {
+      "name": "сервер: тело на байт короче",
+      "servers": {"a":{"/saves.7z":[{"bodyFile":"good","mutate":"truncate"}]}},
+      "setup": [{"dir":"lib/Games/hl1-won/Half-Life/valve_WON"}],
+      "steps": [{"op":"ensure"},{"op":"tree"},{"op":"requests"}],
+      "results": [
+        {"error":{"code":"SIZE_MISMATCH","message":"Размер архива сейвов не совпал: 293 вместо 294","details":null},"logs":[["info","[saves] не хватает тренировочных сейвов: 3 в Half-Life/valve_WON/SAVE"],["warn","[saves] источник test не сработал: Размер архива сейвов не совпал: 293 вместо 294"]]},
+        {"tree":[{"path":"lib","kind":"dir"},{"path":"lib/Downloads","kind":"dir"},{"path":"lib/Games","kind":"dir"},{"path":"lib/Games/hl1-won","kind":"dir"},{"path":"lib/Games/hl1-won/Half-Life","kind":"dir"},{"path":"lib/Games/hl1-won/Half-Life/valve_WON","kind":"dir"}]},
+        {"requests":[{"method":"GET","url":"/saves.7z","headers":{"user-agent":"HLSR-Launcher"}}]}
+      ]
+    },
+    {
+      "name": "сервер: обрыв посреди тела",
+      "servers": {"a":{"/saves.7z":[{"bodyFile":"good","cutAfter":50}]}},
+      "setup": [{"dir":"lib/Games/hl1-won/Half-Life/valve_WON"}],
+      "steps": [{"op":"ensure"},{"op":"tree"},{"op":"requests"}],
+      "results": [
+        {"error":{"code":"NETWORK_ERROR","message":"aborted","details":null},"logs":[["info","[saves] не хватает тренировочных сейвов: 3 в Half-Life/valve_WON/SAVE"],["warn","[saves] источник test не сработал: aborted"]]},
+        {"tree":[{"path":"lib","kind":"dir"},{"path":"lib/Downloads","kind":"dir"},{"path":"lib/Games","kind":"dir"},{"path":"lib/Games/hl1-won","kind":"dir"},{"path":"lib/Games/hl1-won/Half-Life","kind":"dir"},{"path":"lib/Games/hl1-won/Half-Life/valve_WON","kind":"dir"}]},
+        {"requests":[{"method":"GET","url":"/saves.7z","headers":{"user-agent":"HLSR-Launcher"}}]}
+      ]
+    },
+    {
+      "name": "сервер: Content-Length больше тела и обрыв",
+      "servers": {"a":{"/saves.7z":[{"bodyFile":"good","contentLength":100000,"cutAfter":50}]}},
+      "setup": [{"dir":"lib/Games/hl1-won/Half-Life/valve_WON"}],
+      "steps": [{"op":"ensure"},{"op":"tree"},{"op":"requests"}],
+      "results": [
+        {"error":{"code":"NETWORK_ERROR","message":"aborted","details":null},"logs":[["info","[saves] не хватает тренировочных сейвов: 3 в Half-Life/valve_WON/SAVE"],["warn","[saves] источник test не сработал: aborted"]]},
+        {"tree":[{"path":"lib","kind":"dir"},{"path":"lib/Downloads","kind":"dir"},{"path":"lib/Games","kind":"dir"},{"path":"lib/Games/hl1-won","kind":"dir"},{"path":"lib/Games/hl1-won/Half-Life","kind":"dir"},{"path":"lib/Games/hl1-won/Half-Life/valve_WON","kind":"dir"}]},
+        {"requests":[{"method":"GET","url":"/saves.7z","headers":{"user-agent":"HLSR-Launcher"}}]}
+      ]
+    },
+    {
+      "name": "сервер: соединение разорвано без ответа",
+      "servers": {"a":{"/saves.7z":[{"hangUp":true}]}},
+      "setup": [{"dir":"lib/Games/hl1-won/Half-Life/valve_WON"}],
+      "steps": [{"op":"ensure"},{"op":"tree"},{"op":"requests"}],
+      "results": [
+        {"error":{"code":"NETWORK_ERROR","message":"Сетевая ошибка: socket hang up","details":null},"logs":[["info","[saves] не хватает тренировочных сейвов: 3 в Half-Life/valve_WON/SAVE"],["warn","[saves] источник test не сработал: Сетевая ошибка: socket hang up"]]},
+        {"tree":[{"path":"lib","kind":"dir"},{"path":"lib/Downloads","kind":"dir"},{"path":"lib/Games","kind":"dir"},{"path":"lib/Games/hl1-won","kind":"dir"},{"path":"lib/Games/hl1-won/Half-Life","kind":"dir"},{"path":"lib/Games/hl1-won/Half-Life/valve_WON","kind":"dir"}]},
+        {"requests":[{"method":"GET","url":"/saves.7z","headers":{"user-agent":"HLSR-Launcher"}}]}
+      ]
+    },
+    {
+      "name": "сервер: тело без Content-Length",
+      "servers": {"a":{"/saves.7z":[{"bodyFile":"good","contentLength":null}]}},
+      "setup": [{"dir":"lib/Games/hl1-won/Half-Life/valve_WON"}],
+      "steps": [{"op":"ensure"},{"op":"tree"},{"op":"requests"}],
+      "results": [
+        {"ok":{"status":"installed","added":3},"logs":[["info","[saves] не хватает тренировочных сейвов: 3 в Half-Life/valve_WON/SAVE"],["info","[saves] добавлено тренировочных сейвов: 3 → Half-Life/valve_WON/SAVE"]]},
+        {
+          "tree": [
+            {"path":"lib","kind":"dir"},
+            {"path":"lib/.hlsr","kind":"dir"},
+            {"path":"lib/.hlsr/staging","kind":"dir"},
+            {"path":"lib/Downloads","kind":"dir"},
+            {"path":"lib/Games","kind":"dir"},
+            {"path":"lib/Games/hl1-won","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e1.sav","kind":"file","size":7,"sha256":"b5edd06e40409447dc8fd410ed71deca06c6e814a6217aea84de9891d03c06e6","latin1":"pack-e1"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e14-protopipe.sav","kind":"file","size":10,"sha256":"e53929d384c5234e828caceedaf0519f714c224bbd45ec13061f285909909750","latin1":"pack-proto"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e2.sav","kind":"file","size":7,"sha256":"39c4cecb0c1246274a7ddc0a56533fd06b7bee7ae3046e0e5b76aab82925babf","latin1":"pack-e2"}
+          ]
+        },
+        {"requests":[{"method":"GET","url":"/saves.7z","headers":{"user-agent":"HLSR-Launcher"}}]}
+      ]
+    },
+    {
+      "name": "сервер: редирект 302 на тот же архив",
+      "servers": {"a":{"/saves.7z":[{"status":302,"headers":[["Location","http://{a}/moved/saves.7z"]]}],"/moved/saves.7z":[{"bodyFile":"good"}]}},
+      "setup": [{"dir":"lib/Games/hl1-won/Half-Life/valve_WON"}],
+      "steps": [{"op":"ensure"},{"op":"tree"},{"op":"requests"}],
+      "results": [
+        {"ok":{"status":"installed","added":3},"logs":[["info","[saves] не хватает тренировочных сейвов: 3 в Half-Life/valve_WON/SAVE"],["info","[saves] добавлено тренировочных сейвов: 3 → Half-Life/valve_WON/SAVE"]]},
+        {
+          "tree": [
+            {"path":"lib","kind":"dir"},
+            {"path":"lib/.hlsr","kind":"dir"},
+            {"path":"lib/.hlsr/staging","kind":"dir"},
+            {"path":"lib/Downloads","kind":"dir"},
+            {"path":"lib/Games","kind":"dir"},
+            {"path":"lib/Games/hl1-won","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e1.sav","kind":"file","size":7,"sha256":"b5edd06e40409447dc8fd410ed71deca06c6e814a6217aea84de9891d03c06e6","latin1":"pack-e1"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e14-protopipe.sav","kind":"file","size":10,"sha256":"e53929d384c5234e828caceedaf0519f714c224bbd45ec13061f285909909750","latin1":"pack-proto"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e2.sav","kind":"file","size":7,"sha256":"39c4cecb0c1246274a7ddc0a56533fd06b7bee7ae3046e0e5b76aab82925babf","latin1":"pack-e2"}
+          ]
+        },
+        {"requests":[{"method":"GET","url":"/saves.7z","headers":{"user-agent":"HLSR-Launcher"}},{"method":"GET","url":"/moved/saves.7z","headers":{"user-agent":"HLSR-Launcher"}}]}
+      ]
+    },
+    {
+      "name": "сервер: относительный редирект",
+      "servers": {"a":{"/saves.7z":[{"status":301,"headers":[["Location","/moved/saves.7z"]]}],"/moved/saves.7z":[{"bodyFile":"good"}]}},
+      "setup": [{"dir":"lib/Games/hl1-won/Half-Life/valve_WON"}],
+      "steps": [{"op":"ensure"},{"op":"tree"},{"op":"requests"}],
+      "results": [
+        {"ok":{"status":"installed","added":3},"logs":[["info","[saves] не хватает тренировочных сейвов: 3 в Half-Life/valve_WON/SAVE"],["info","[saves] добавлено тренировочных сейвов: 3 → Half-Life/valve_WON/SAVE"]]},
+        {
+          "tree": [
+            {"path":"lib","kind":"dir"},
+            {"path":"lib/.hlsr","kind":"dir"},
+            {"path":"lib/.hlsr/staging","kind":"dir"},
+            {"path":"lib/Downloads","kind":"dir"},
+            {"path":"lib/Games","kind":"dir"},
+            {"path":"lib/Games/hl1-won","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e1.sav","kind":"file","size":7,"sha256":"b5edd06e40409447dc8fd410ed71deca06c6e814a6217aea84de9891d03c06e6","latin1":"pack-e1"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e14-protopipe.sav","kind":"file","size":10,"sha256":"e53929d384c5234e828caceedaf0519f714c224bbd45ec13061f285909909750","latin1":"pack-proto"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e2.sav","kind":"file","size":7,"sha256":"39c4cecb0c1246274a7ddc0a56533fd06b7bee7ae3046e0e5b76aab82925babf","latin1":"pack-e2"}
+          ]
+        },
+        {"requests":[{"method":"GET","url":"/saves.7z","headers":{"user-agent":"HLSR-Launcher"}},{"method":"GET","url":"/moved/saves.7z","headers":{"user-agent":"HLSR-Launcher"}}]}
+      ]
+    },
+    {
+      "name": "сервер: бесконечные редиректы",
+      "servers": {"a":{"/saves.7z":[{"status":302,"headers":[["Location","/saves.7z"]]}]}},
+      "setup": [{"dir":"lib/Games/hl1-won/Half-Life/valve_WON"}],
+      "steps": [{"op":"ensure"},{"op":"tree"},{"op":"requests"}],
+      "results": [
+        {"error":{"code":"TOO_MANY_REDIRECTS","message":"Слишком много редиректов: http://{a}/saves.7z","details":null},"logs":[["info","[saves] не хватает тренировочных сейвов: 3 в Half-Life/valve_WON/SAVE"],["warn","[saves] источник test не сработал: Слишком много редиректов: http://{a}/saves.7z"]]},
+        {"tree":[{"path":"lib","kind":"dir"},{"path":"lib/Downloads","kind":"dir"},{"path":"lib/Games","kind":"dir"},{"path":"lib/Games/hl1-won","kind":"dir"},{"path":"lib/Games/hl1-won/Half-Life","kind":"dir"},{"path":"lib/Games/hl1-won/Half-Life/valve_WON","kind":"dir"}]},
+        {
+          "requests": [
+            {"method":"GET","url":"/saves.7z","headers":{"user-agent":"HLSR-Launcher"}},
+            {"method":"GET","url":"/saves.7z","headers":{"user-agent":"HLSR-Launcher"}},
+            {"method":"GET","url":"/saves.7z","headers":{"user-agent":"HLSR-Launcher"}},
+            {"method":"GET","url":"/saves.7z","headers":{"user-agent":"HLSR-Launcher"}},
+            {"method":"GET","url":"/saves.7z","headers":{"user-agent":"HLSR-Launcher"}},
+            {"method":"GET","url":"/saves.7z","headers":{"user-agent":"HLSR-Launcher"}}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "сервер: редирект на недопустимую схему",
+      "servers": {"a":{"/saves.7z":[{"status":302,"headers":[["Location","ftp://example.com/saves.7z"]]}]}},
+      "setup": [{"dir":"lib/Games/hl1-won/Half-Life/valve_WON"}],
+      "steps": [{"op":"ensure"},{"op":"tree"},{"op":"requests"}],
+      "results": [
+        {"error":{"code":"INSECURE_REDIRECT","message":"Редирект на недопустимую схему: ftp:","details":null},"logs":[["info","[saves] не хватает тренировочных сейвов: 3 в Half-Life/valve_WON/SAVE"],["warn","[saves] источник test не сработал: Редирект на недопустимую схему: ftp:"]]},
+        {"tree":[{"path":"lib","kind":"dir"},{"path":"lib/Downloads","kind":"dir"},{"path":"lib/Games","kind":"dir"},{"path":"lib/Games/hl1-won","kind":"dir"},{"path":"lib/Games/hl1-won/Half-Life","kind":"dir"},{"path":"lib/Games/hl1-won/Half-Life/valve_WON","kind":"dir"}]},
+        {"requests":[{"method":"GET","url":"/saves.7z","headers":{"user-agent":"HLSR-Launcher"}}]}
+      ]
+    },
+    {
+      "name": "сервер: нет маршрута (404 по умолчанию)",
+      "servers": {"a":{}},
+      "setup": [{"dir":"lib/Games/hl1-won/Half-Life/valve_WON"}],
+      "steps": [{"op":"ensure"},{"op":"requests"},{"op":"tree"}],
+      "results": [
+        {"error":{"code":"NETWORK_ERROR","message":"Источник ответил 404","details":null},"logs":[["info","[saves] не хватает тренировочных сейвов: 3 в Half-Life/valve_WON/SAVE"],["warn","[saves] источник test не сработал: Источник ответил 404"]]},
+        {"requests":[{"method":"GET","url":"/saves.7z","headers":{"user-agent":"HLSR-Launcher"}}]},
+        {"tree":[{"path":"lib","kind":"dir"},{"path":"lib/Downloads","kind":"dir"},{"path":"lib/Games","kind":"dir"},{"path":"lib/Games/hl1-won","kind":"dir"},{"path":"lib/Games/hl1-won/Half-Life","kind":"dir"},{"path":"lib/Games/hl1-won/Half-Life/valve_WON","kind":"dir"}]}
+      ]
+    },
+    {
+      "name": "лимит скорости загрузки не мешает",
+      "setup": [{"dir":"lib/Games/hl1-won/Half-Life/valve_WON"}],
+      "steps": [{"op":"ensure","limiter":104857600},{"op":"tree"}],
+      "servers": {"a":{"/saves.7z":[{"bodyFile":"good"}]}},
+      "results": [
+        {"ok":{"status":"installed","added":3},"logs":[["info","[saves] не хватает тренировочных сейвов: 3 в Half-Life/valve_WON/SAVE"],["info","[saves] добавлено тренировочных сейвов: 3 → Half-Life/valve_WON/SAVE"]]},
+        {
+          "tree": [
+            {"path":"lib","kind":"dir"},
+            {"path":"lib/.hlsr","kind":"dir"},
+            {"path":"lib/.hlsr/staging","kind":"dir"},
+            {"path":"lib/Downloads","kind":"dir"},
+            {"path":"lib/Games","kind":"dir"},
+            {"path":"lib/Games/hl1-won","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e1.sav","kind":"file","size":7,"sha256":"b5edd06e40409447dc8fd410ed71deca06c6e814a6217aea84de9891d03c06e6","latin1":"pack-e1"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e14-protopipe.sav","kind":"file","size":10,"sha256":"e53929d384c5234e828caceedaf0519f714c224bbd45ec13061f285909909750","latin1":"pack-proto"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e2.sav","kind":"file","size":7,"sha256":"39c4cecb0c1246274a7ddc0a56533fd06b7bee7ae3046e0e5b76aab82925babf","latin1":"pack-e2"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "архив не распаковывается (хеш верный, содержимое — не 7z)",
+      "pack": "garbage",
+      "servers": {"a":{"/saves.7z":[{"bodyFile":"garbage"}]}},
+      "setup": [{"dir":"lib/Games/hl1-won/Half-Life/valve_WON"}],
+      "steps": [{"op":"ensure"},{"op":"tree"}],
+      "results": [
+        {"error":{"code":"EXTRACT_FAILED","message":"Ошибка распаковки: ERROR: <root>/lib/Downloads/test-saves.7","details":null},"logs":[["info","[saves] не хватает тренировочных сейвов: 3 в Half-Life/valve_WON/SAVE"]]},
+        {"tree":[{"path":"lib","kind":"dir"},{"path":"lib/.hlsr","kind":"dir"},{"path":"lib/.hlsr/staging","kind":"dir"},{"path":"lib/Downloads","kind":"dir"},{"path":"lib/Games","kind":"dir"},{"path":"lib/Games/hl1-won","kind":"dir"},{"path":"lib/Games/hl1-won/Half-Life","kind":"dir"},{"path":"lib/Games/hl1-won/Half-Life/valve_WON","kind":"dir"}]}
+      ]
+    },
+    {
+      "name": "в архиве нет одного из сейвов — уже скопированные остаются",
+      "pack": "missing",
+      "servers": {"a":{"/saves.7z":[{"bodyFile":"missing"}]}},
+      "setup": [{"dir":"lib/Games/hl1-won/Half-Life/valve_WON"}],
+      "steps": [{"op":"ensure"},{"op":"tree"}],
+      "results": [
+        {"error":{"code":"EXTRACT_FAILED","message":"В архиве сейвов нет e2.sav","details":null},"logs":[["info","[saves] не хватает тренировочных сейвов: 3 в Half-Life/valve_WON/SAVE"]]},
+        {
+          "tree": [
+            {"path":"lib","kind":"dir"},
+            {"path":"lib/.hlsr","kind":"dir"},
+            {"path":"lib/.hlsr/staging","kind":"dir"},
+            {"path":"lib/Downloads","kind":"dir"},
+            {"path":"lib/Games","kind":"dir"},
+            {"path":"lib/Games/hl1-won","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e1.sav","kind":"file","size":7,"sha256":"b5edd06e40409447dc8fd410ed71deca06c6e814a6217aea84de9891d03c06e6","latin1":"pack-e1"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "сейвы в архиве лежат во вложенной папке — в корне их нет",
+      "pack": "nested",
+      "servers": {"a":{"/saves.7z":[{"bodyFile":"nested"}]}},
+      "setup": [{"dir":"lib/Games/hl1-won/Half-Life/valve_WON"}],
+      "steps": [{"op":"ensure"},{"op":"tree"}],
+      "results": [
+        {"error":{"code":"EXTRACT_FAILED","message":"В архиве сейвов нет e1.sav","details":null},"logs":[["info","[saves] не хватает тренировочных сейвов: 3 в Half-Life/valve_WON/SAVE"]]},
+        {"tree":[{"path":"lib","kind":"dir"},{"path":"lib/.hlsr","kind":"dir"},{"path":"lib/.hlsr/staging","kind":"dir"},{"path":"lib/Downloads","kind":"dir"},{"path":"lib/Games","kind":"dir"},{"path":"lib/Games/hl1-won","kind":"dir"},{"path":"lib/Games/hl1-won/Half-Life","kind":"dir"},{"path":"lib/Games/hl1-won/Half-Life/valve_WON","kind":"dir"}]}
+      ]
+    },
+    {
+      "name": "нет распаковщика: архив скачан, но не распакован; следы убраны",
+      "setup": [{"dir":"lib/Games/hl1-won/Half-Life/valve_WON"}],
+      "steps": [{"op":"ensure","archive":false},{"op":"tree"},{"op":"requests"}],
+      "servers": {"a":{"/saves.7z":[{"bodyFile":"good"}]}},
+      "results": [
+        {"error":{"code":"EXTRACT_FAILED","message":"Распаковщик не подключён","details":null},"logs":[["info","[saves] не хватает тренировочных сейвов: 3 в Half-Life/valve_WON/SAVE"]]},
+        {"tree":[{"path":"lib","kind":"dir"},{"path":"lib/.hlsr","kind":"dir"},{"path":"lib/.hlsr/staging","kind":"dir"},{"path":"lib/Downloads","kind":"dir"},{"path":"lib/Games","kind":"dir"},{"path":"lib/Games/hl1-won","kind":"dir"},{"path":"lib/Games/hl1-won/Half-Life","kind":"dir"},{"path":"lib/Games/hl1-won/Half-Life/valve_WON","kind":"dir"}]},
+        {"requests":[{"method":"GET","url":"/saves.7z","headers":{"user-agent":"HLSR-Launcher"}}]}
+      ]
+    },
+    {
+      "name": "после неудачи следующий запуск докачивает",
+      "servers": {"a":{"/saves.7z":[{"status":500}]}},
+      "setup": [{"dir":"lib/Games/hl1-won/Half-Life/valve_WON"}],
+      "steps": [{"op":"ensure"},{"op":"tree"},{"op":"routes","routes":{"/saves.7z":[{"bodyFile":"good"}]}},{"op":"ensure"},{"op":"tree"},{"op":"requests"}],
+      "results": [
+        {"error":{"code":"NETWORK_ERROR","message":"Источник ответил 500","details":null},"logs":[["info","[saves] не хватает тренировочных сейвов: 3 в Half-Life/valve_WON/SAVE"],["warn","[saves] источник test не сработал: Источник ответил 500"]]},
+        {"tree":[{"path":"lib","kind":"dir"},{"path":"lib/Downloads","kind":"dir"},{"path":"lib/Games","kind":"dir"},{"path":"lib/Games/hl1-won","kind":"dir"},{"path":"lib/Games/hl1-won/Half-Life","kind":"dir"},{"path":"lib/Games/hl1-won/Half-Life/valve_WON","kind":"dir"}]},
+        null,
+        {"ok":{"status":"installed","added":3},"logs":[["info","[saves] не хватает тренировочных сейвов: 3 в Half-Life/valve_WON/SAVE"],["info","[saves] добавлено тренировочных сейвов: 3 → Half-Life/valve_WON/SAVE"]]},
+        {
+          "tree": [
+            {"path":"lib","kind":"dir"},
+            {"path":"lib/.hlsr","kind":"dir"},
+            {"path":"lib/.hlsr/staging","kind":"dir"},
+            {"path":"lib/Downloads","kind":"dir"},
+            {"path":"lib/Games","kind":"dir"},
+            {"path":"lib/Games/hl1-won","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e1.sav","kind":"file","size":7,"sha256":"b5edd06e40409447dc8fd410ed71deca06c6e814a6217aea84de9891d03c06e6","latin1":"pack-e1"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e14-protopipe.sav","kind":"file","size":10,"sha256":"e53929d384c5234e828caceedaf0519f714c224bbd45ec13061f285909909750","latin1":"pack-proto"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e2.sav","kind":"file","size":7,"sha256":"39c4cecb0c1246274a7ddc0a56533fd06b7bee7ae3046e0e5b76aab82925babf","latin1":"pack-e2"}
+          ]
+        },
+        {"requests":[{"method":"GET","url":"/saves.7z","headers":{"user-agent":"HLSR-Launcher"}},{"method":"GET","url":"/saves.7z","headers":{"user-agent":"HLSR-Launcher"}}]}
+      ]
+    },
+    {
+      "name": "остатки прошлого запуска (архив, .part, staging) не мешают и убираются",
+      "setup": [{"dir":"lib/Games/hl1-won/Half-Life/valve_WON"},{"file":"lib/Downloads/test-saves.7z","utf8":"старый архив"},{"file":"lib/Downloads/test-saves.7z.part","utf8":"обрывок"},{"file":"lib/.hlsr/staging/saves-test-saves/e1.sav","utf8":"ОСТАТОК"},{"file":"lib/.hlsr/staging/saves-test-saves/чужой.txt","utf8":"x"}],
+      "steps": [{"op":"ensure"},{"op":"tree"}],
+      "servers": {"a":{"/saves.7z":[{"bodyFile":"good"}]}},
+      "results": [
+        {"ok":{"status":"installed","added":3},"logs":[["info","[saves] не хватает тренировочных сейвов: 3 в Half-Life/valve_WON/SAVE"],["info","[saves] добавлено тренировочных сейвов: 3 → Half-Life/valve_WON/SAVE"]]},
+        {
+          "tree": [
+            {"path":"lib","kind":"dir"},
+            {"path":"lib/.hlsr","kind":"dir"},
+            {"path":"lib/.hlsr/staging","kind":"dir"},
+            {"path":"lib/Downloads","kind":"dir"},
+            {"path":"lib/Games","kind":"dir"},
+            {"path":"lib/Games/hl1-won","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e1.sav","kind":"file","size":7,"sha256":"b5edd06e40409447dc8fd410ed71deca06c6e814a6217aea84de9891d03c06e6","latin1":"pack-e1"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e14-protopipe.sav","kind":"file","size":10,"sha256":"e53929d384c5234e828caceedaf0519f714c224bbd45ec13061f285909909750","latin1":"pack-proto"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e2.sav","kind":"file","size":7,"sha256":"39c4cecb0c1246274a7ddc0a56533fd06b7bee7ae3046e0e5b76aab82925babf","latin1":"pack-e2"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "игру удалили, пока шла загрузка — раскладка считается заново: not-installed",
+      "servers": {"a":{"/saves.7z":[{"bodyFile":"good","gates":[{"at":10,"name":"go"}]}]}},
+      "setup": [{"dir":"lib/Games/hl1-won/Half-Life/valve_WON"}],
+      "steps": [{"op":"ensure","during":[{"op":"remove","file":"lib/Games/hl1-won/Half-Life"}],"release":["go"]},{"op":"tree"}],
+      "results": [{"ok":{"status":"not-installed","added":0},"logs":[["info","[saves] не хватает тренировочных сейвов: 3 в Half-Life/valve_WON/SAVE"]]},{"tree":[{"path":"lib","kind":"dir"},{"path":"lib/.hlsr","kind":"dir"},{"path":"lib/.hlsr/staging","kind":"dir"},{"path":"lib/Downloads","kind":"dir"},{"path":"lib/Games","kind":"dir"},{"path":"lib/Games/hl1-won","kind":"dir"}]}]
+    },
+    {
+      "name": "игрок сохранился, пока шла загрузка — его сейв остаётся, добавляются остальные",
+      "servers": {"a":{"/saves.7z":[{"bodyFile":"good","gates":[{"at":10,"name":"go"}]}]}},
+      "setup": [{"dir":"lib/Games/hl1-won/Half-Life/valve_WON"}],
+      "steps": [{"op":"ensure","during":[{"op":"write","file":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e2.sav","utf8":"сейв игрока"}],"release":["go"]},{"op":"tree"}],
+      "results": [
+        {"ok":{"status":"installed","added":2},"logs":[["info","[saves] не хватает тренировочных сейвов: 3 в Half-Life/valve_WON/SAVE"],["info","[saves] добавлено тренировочных сейвов: 2 → Half-Life/valve_WON/SAVE"]]},
+        {
+          "tree": [
+            {"path":"lib","kind":"dir"},
+            {"path":"lib/.hlsr","kind":"dir"},
+            {"path":"lib/.hlsr/staging","kind":"dir"},
+            {"path":"lib/Downloads","kind":"dir"},
+            {"path":"lib/Games","kind":"dir"},
+            {"path":"lib/Games/hl1-won","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e1.sav","kind":"file","size":7,"sha256":"b5edd06e40409447dc8fd410ed71deca06c6e814a6217aea84de9891d03c06e6","latin1":"pack-e1"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e14-protopipe.sav","kind":"file","size":10,"sha256":"e53929d384c5234e828caceedaf0519f714c224bbd45ec13061f285909909750","latin1":"pack-proto"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e2.sav","kind":"file","size":21,"sha256":"dcf2ad3f33fda851151112df095ddfff00aa739ceb2c0ae66175b3fb00d55071","latin1":"ÑÐµÐ¹Ð² Ð¸Ð³ÑÐ¾ÐºÐ°"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "игрок удалил папку SAVE, пока шла загрузка — папка создаётся заново",
+      "servers": {"a":{"/saves.7z":[{"bodyFile":"good","gates":[{"at":10,"name":"go"}]}]}},
+      "setup": [{"dir":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE"}],
+      "steps": [{"op":"ensure","during":[{"op":"remove","file":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE"}],"release":["go"]},{"op":"tree"}],
+      "results": [
+        {"ok":{"status":"installed","added":3},"logs":[["info","[saves] не хватает тренировочных сейвов: 3 в Half-Life/valve_WON/SAVE"],["info","[saves] добавлено тренировочных сейвов: 3 → Half-Life/valve_WON/SAVE"]]},
+        {
+          "tree": [
+            {"path":"lib","kind":"dir"},
+            {"path":"lib/.hlsr","kind":"dir"},
+            {"path":"lib/.hlsr/staging","kind":"dir"},
+            {"path":"lib/Downloads","kind":"dir"},
+            {"path":"lib/Games","kind":"dir"},
+            {"path":"lib/Games/hl1-won","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e1.sav","kind":"file","size":7,"sha256":"b5edd06e40409447dc8fd410ed71deca06c6e814a6217aea84de9891d03c06e6","latin1":"pack-e1"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e14-protopipe.sav","kind":"file","size":10,"sha256":"e53929d384c5234e828caceedaf0519f714c224bbd45ec13061f285909909750","latin1":"pack-proto"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e2.sav","kind":"file","size":7,"sha256":"39c4cecb0c1246274a7ddc0a56533fd06b7bee7ae3046e0e5b76aab82925babf","latin1":"pack-e2"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "появилась русская папка, пока шла загрузка — сейвы идут и в неё",
+      "servers": {"a":{"/saves.7z":[{"bodyFile":"good","gates":[{"at":10,"name":"go"}]}]}},
+      "setup": [{"dir":"lib/Games/hl1-won/Half-Life/valve_WON"}],
+      "steps": [{"op":"ensure","during":[{"op":"mkdir","dir":"lib/Games/hl1-won/Half-Life/valve_WON_russian"}],"release":["go"]},{"op":"tree"}],
+      "results": [
+        {"ok":{"status":"installed","added":6},"logs":[["info","[saves] не хватает тренировочных сейвов: 3 в Half-Life/valve_WON/SAVE"],["info","[saves] добавлено тренировочных сейвов: 6 → Half-Life/valve_WON/SAVE, Half-Life/valve_WON_russian/SAVE"]]},
+        {
+          "tree": [
+            {"path":"lib","kind":"dir"},
+            {"path":"lib/.hlsr","kind":"dir"},
+            {"path":"lib/.hlsr/staging","kind":"dir"},
+            {"path":"lib/Downloads","kind":"dir"},
+            {"path":"lib/Games","kind":"dir"},
+            {"path":"lib/Games/hl1-won","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e1.sav","kind":"file","size":7,"sha256":"b5edd06e40409447dc8fd410ed71deca06c6e814a6217aea84de9891d03c06e6","latin1":"pack-e1"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e14-protopipe.sav","kind":"file","size":10,"sha256":"e53929d384c5234e828caceedaf0519f714c224bbd45ec13061f285909909750","latin1":"pack-proto"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e2.sav","kind":"file","size":7,"sha256":"39c4cecb0c1246274a7ddc0a56533fd06b7bee7ae3046e0e5b76aab82925babf","latin1":"pack-e2"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON_russian","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON_russian/SAVE","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON_russian/SAVE/e1.sav","kind":"file","size":7,"sha256":"b5edd06e40409447dc8fd410ed71deca06c6e814a6217aea84de9891d03c06e6","latin1":"pack-e1"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON_russian/SAVE/e14-protopipe.sav","kind":"file","size":10,"sha256":"e53929d384c5234e828caceedaf0519f714c224bbd45ec13061f285909909750","latin1":"pack-proto"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON_russian/SAVE/e2.sav","kind":"file","size":7,"sha256":"39c4cecb0c1246274a7ddc0a56533fd06b7bee7ae3046e0e5b76aab82925babf","latin1":"pack-e2"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "язык: папка в другом регистре (VALVE_WON_RUSSIAN) со своим save",
+      "setup": [{"dir":"lib/Games/hl1-won/Half-Life/VALVE_WON_RUSSIAN/save"},{"dir":"lib/Games/hl1-won/Half-Life/valve_WON"}],
+      "steps": [{"op":"ensure"},{"op":"tree"},{"op":"requests"}],
+      "servers": {"a":{"/saves.7z":[{"bodyFile":"good"}]}},
+      "results": [
+        {"ok":{"status":"installed","added":6},"logs":[["info","[saves] не хватает тренировочных сейвов: 6 в Half-Life/valve_WON/SAVE, Half-Life/VALVE_WON_RUSSIAN/save"],["info","[saves] добавлено тренировочных сейвов: 6 → Half-Life/valve_WON/SAVE, Half-Life/VALVE_WON_RUSSIAN/save"]]},
+        {
+          "tree": [
+            {"path":"lib","kind":"dir"},
+            {"path":"lib/.hlsr","kind":"dir"},
+            {"path":"lib/.hlsr/staging","kind":"dir"},
+            {"path":"lib/Downloads","kind":"dir"},
+            {"path":"lib/Games","kind":"dir"},
+            {"path":"lib/Games/hl1-won","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/VALVE_WON_RUSSIAN","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/VALVE_WON_RUSSIAN/save","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/VALVE_WON_RUSSIAN/save/e1.sav","kind":"file","size":7,"sha256":"b5edd06e40409447dc8fd410ed71deca06c6e814a6217aea84de9891d03c06e6","latin1":"pack-e1"},
+            {"path":"lib/Games/hl1-won/Half-Life/VALVE_WON_RUSSIAN/save/e14-protopipe.sav","kind":"file","size":10,"sha256":"e53929d384c5234e828caceedaf0519f714c224bbd45ec13061f285909909750","latin1":"pack-proto"},
+            {"path":"lib/Games/hl1-won/Half-Life/VALVE_WON_RUSSIAN/save/e2.sav","kind":"file","size":7,"sha256":"39c4cecb0c1246274a7ddc0a56533fd06b7bee7ae3046e0e5b76aab82925babf","latin1":"pack-e2"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e1.sav","kind":"file","size":7,"sha256":"b5edd06e40409447dc8fd410ed71deca06c6e814a6217aea84de9891d03c06e6","latin1":"pack-e1"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e14-protopipe.sav","kind":"file","size":10,"sha256":"e53929d384c5234e828caceedaf0519f714c224bbd45ec13061f285909909750","latin1":"pack-proto"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e2.sav","kind":"file","size":7,"sha256":"39c4cecb0c1246274a7ddc0a56533fd06b7bee7ae3046e0e5b76aab82925babf","latin1":"pack-e2"}
+          ]
+        },
+        {"requests":[{"method":"GET","url":"/saves.7z","headers":{"user-agent":"HLSR-Launcher"}}]}
+      ]
+    },
+    {
+      "name": "язык: несколько языков; в одной уже есть часть сейвов набора",
+      "setup": [{"dir":"lib/Games/hl1-won/Half-Life/valve_WON"},{"dir":"lib/Games/hl1-won/Half-Life/valve_WON_german/SAVE"},{"dir":"lib/Games/hl1-won/Half-Life/valve_WON_french"},{"file":"lib/Games/hl1-won/Half-Life/valve_WON_german/SAVE/E2.SAV","utf8":"german-mine"}],
+      "steps": [{"op":"ensure"},{"op":"tree"},{"op":"requests"}],
+      "servers": {"a":{"/saves.7z":[{"bodyFile":"good"}]}},
+      "results": [
+        {"ok":{"status":"installed","added":8},"logs":[["info","[saves] не хватает тренировочных сейвов: 8 в Half-Life/valve_WON/SAVE, Half-Life/valve_WON_french/SAVE, Half-Life/valve_WON_german/SAVE"],["info","[saves] добавлено тренировочных сейвов: 8 → Half-Life/valve_WON/SAVE, Half-Life/valve_WON_french/SAVE, Half-Life/valve_WON_german/SAVE"]]},
+        {
+          "tree": [
+            {"path":"lib","kind":"dir"},
+            {"path":"lib/.hlsr","kind":"dir"},
+            {"path":"lib/.hlsr/staging","kind":"dir"},
+            {"path":"lib/Downloads","kind":"dir"},
+            {"path":"lib/Games","kind":"dir"},
+            {"path":"lib/Games/hl1-won","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e1.sav","kind":"file","size":7,"sha256":"b5edd06e40409447dc8fd410ed71deca06c6e814a6217aea84de9891d03c06e6","latin1":"pack-e1"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e14-protopipe.sav","kind":"file","size":10,"sha256":"e53929d384c5234e828caceedaf0519f714c224bbd45ec13061f285909909750","latin1":"pack-proto"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e2.sav","kind":"file","size":7,"sha256":"39c4cecb0c1246274a7ddc0a56533fd06b7bee7ae3046e0e5b76aab82925babf","latin1":"pack-e2"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON_french","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON_french/SAVE","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON_french/SAVE/e1.sav","kind":"file","size":7,"sha256":"b5edd06e40409447dc8fd410ed71deca06c6e814a6217aea84de9891d03c06e6","latin1":"pack-e1"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON_french/SAVE/e14-protopipe.sav","kind":"file","size":10,"sha256":"e53929d384c5234e828caceedaf0519f714c224bbd45ec13061f285909909750","latin1":"pack-proto"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON_french/SAVE/e2.sav","kind":"file","size":7,"sha256":"39c4cecb0c1246274a7ddc0a56533fd06b7bee7ae3046e0e5b76aab82925babf","latin1":"pack-e2"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON_german","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON_german/SAVE","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON_german/SAVE/E2.SAV","kind":"file","size":11,"sha256":"9082f6ad0acb9207dd652043baa832b71c5334b37b7d390d248cf2ee5c65fcd5","latin1":"german-mine"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON_german/SAVE/e1.sav","kind":"file","size":7,"sha256":"b5edd06e40409447dc8fd410ed71deca06c6e814a6217aea84de9891d03c06e6","latin1":"pack-e1"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON_german/SAVE/e14-protopipe.sav","kind":"file","size":10,"sha256":"e53929d384c5234e828caceedaf0519f714c224bbd45ec13061f285909909750","latin1":"pack-proto"}
+          ]
+        },
+        {"requests":[{"method":"GET","url":"/saves.7z","headers":{"user-agent":"HLSR-Launcher"}}]}
+      ]
+    },
+    {
+      "name": "язык: valve_WON_russian — файл, а не папка",
+      "setup": [{"dir":"lib/Games/hl1-won/Half-Life/valve_WON"},{"file":"lib/Games/hl1-won/Half-Life/valve_WON_russian","utf8":"файл"}],
+      "steps": [{"op":"ensure"},{"op":"tree"}],
+      "servers": {"a":{"/saves.7z":[{"bodyFile":"good"}]}},
+      "results": [
+        {"ok":{"status":"installed","added":3},"logs":[["info","[saves] не хватает тренировочных сейвов: 3 в Half-Life/valve_WON/SAVE"],["info","[saves] добавлено тренировочных сейвов: 3 → Half-Life/valve_WON/SAVE"]]},
+        {
+          "tree": [
+            {"path":"lib","kind":"dir"},
+            {"path":"lib/.hlsr","kind":"dir"},
+            {"path":"lib/.hlsr/staging","kind":"dir"},
+            {"path":"lib/Downloads","kind":"dir"},
+            {"path":"lib/Games","kind":"dir"},
+            {"path":"lib/Games/hl1-won","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e1.sav","kind":"file","size":7,"sha256":"b5edd06e40409447dc8fd410ed71deca06c6e814a6217aea84de9891d03c06e6","latin1":"pack-e1"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e14-protopipe.sav","kind":"file","size":10,"sha256":"e53929d384c5234e828caceedaf0519f714c224bbd45ec13061f285909909750","latin1":"pack-proto"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e2.sav","kind":"file","size":7,"sha256":"39c4cecb0c1246274a7ddc0a56533fd06b7bee7ae3046e0e5b76aab82925babf","latin1":"pack-e2"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON_russian","kind":"file","size":8,"sha256":"48d8c3e9ee0e826534a40dd53fd65b4ec3ebad0a1251f9dad935524952a525cf","latin1":"ÑÐ°Ð¹Ð»"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "язык: сейвы набора уже в моде (идентичные), языковая папка пуста, не хватает одного — качается весь набор",
+      "setup": [{"file":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e1.sav","utf8":"pack-e1"},{"file":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/E2.SAV","utf8":"pack-e2"},{"dir":"lib/Games/hl1-won/Half-Life/valve_WON_russian/SAVE"}],
+      "steps": [{"op":"ensure"},{"op":"tree"},{"op":"requests"}],
+      "servers": {"a":{"/saves.7z":[{"bodyFile":"good"}]}},
+      "results": [
+        {"ok":{"status":"installed","added":4},"logs":[["info","[saves] не хватает тренировочных сейвов: 4 в Half-Life/valve_WON_russian/SAVE, Half-Life/valve_WON/SAVE"],["info","[saves] добавлено тренировочных сейвов: 4 → Half-Life/valve_WON_russian/SAVE, Half-Life/valve_WON/SAVE"]]},
+        {
+          "tree": [
+            {"path":"lib","kind":"dir"},
+            {"path":"lib/.hlsr","kind":"dir"},
+            {"path":"lib/.hlsr/staging","kind":"dir"},
+            {"path":"lib/Downloads","kind":"dir"},
+            {"path":"lib/Games","kind":"dir"},
+            {"path":"lib/Games/hl1-won","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/E2.SAV","kind":"file","size":7,"sha256":"39c4cecb0c1246274a7ddc0a56533fd06b7bee7ae3046e0e5b76aab82925babf","latin1":"pack-e2"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e1.sav","kind":"file","size":7,"sha256":"b5edd06e40409447dc8fd410ed71deca06c6e814a6217aea84de9891d03c06e6","latin1":"pack-e1"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e14-protopipe.sav","kind":"file","size":10,"sha256":"e53929d384c5234e828caceedaf0519f714c224bbd45ec13061f285909909750","latin1":"pack-proto"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON_russian","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON_russian/SAVE","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON_russian/SAVE/e1.sav","kind":"file","size":7,"sha256":"b5edd06e40409447dc8fd410ed71deca06c6e814a6217aea84de9891d03c06e6","latin1":"pack-e1"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON_russian/SAVE/e14-protopipe.sav","kind":"file","size":10,"sha256":"e53929d384c5234e828caceedaf0519f714c224bbd45ec13061f285909909750","latin1":"pack-proto"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON_russian/SAVE/e2.sav","kind":"file","size":7,"sha256":"39c4cecb0c1246274a7ddc0a56533fd06b7bee7ae3046e0e5b76aab82925babf","latin1":"pack-e2"}
+          ]
+        },
+        {"requests":[{"method":"GET","url":"/saves.7z","headers":{"user-agent":"HLSR-Launcher"}}]}
+      ]
+    },
+    {
+      "name": "язык: в моде все сейвы набора, языковая папка пуста — копирование из мода с их настоящими именами",
+      "setup": [{"file":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/E1.SAV","utf8":"pack-e1"},{"file":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e2.sav","utf8":"pack-e2"},{"file":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/E14-PROTOPIPE.SAV","utf8":"pack-proto"},{"dir":"lib/Games/hl1-won/Half-Life/valve_WON_russian"}],
+      "steps": [{"op":"ensure"},{"op":"tree"},{"op":"requests"}],
+      "servers": {"a":{"/saves.7z":[{"bodyFile":"good"}]}},
+      "results": [
+        {"ok":{"status":"installed","added":3},"logs":[["info","[saves] не хватает тренировочных сейвов: 3 в Half-Life/valve_WON_russian/SAVE"],["info","[saves] добавлено тренировочных сейвов: 3 → Half-Life/valve_WON_russian/SAVE"]]},
+        {
+          "tree": [
+            {"path":"lib","kind":"dir"},
+            {"path":"lib/Games","kind":"dir"},
+            {"path":"lib/Games/hl1-won","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/E1.SAV","kind":"file","size":7,"sha256":"b5edd06e40409447dc8fd410ed71deca06c6e814a6217aea84de9891d03c06e6","latin1":"pack-e1"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/E14-PROTOPIPE.SAV","kind":"file","size":10,"sha256":"e53929d384c5234e828caceedaf0519f714c224bbd45ec13061f285909909750","latin1":"pack-proto"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e2.sav","kind":"file","size":7,"sha256":"39c4cecb0c1246274a7ddc0a56533fd06b7bee7ae3046e0e5b76aab82925babf","latin1":"pack-e2"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON_russian","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON_russian/SAVE","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON_russian/SAVE/e1.sav","kind":"file","size":7,"sha256":"b5edd06e40409447dc8fd410ed71deca06c6e814a6217aea84de9891d03c06e6","latin1":"pack-e1"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON_russian/SAVE/e14-protopipe.sav","kind":"file","size":10,"sha256":"e53929d384c5234e828caceedaf0519f714c224bbd45ec13061f285909909750","latin1":"pack-proto"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON_russian/SAVE/e2.sav","kind":"file","size":7,"sha256":"39c4cecb0c1246274a7ddc0a56533fd06b7bee7ae3046e0e5b76aab82925babf","latin1":"pack-e2"}
+          ]
+        },
+        {"requests":[]}
+      ]
+    },
+    {
+      "name": "язык: сейв в моде другого содержания — в языковую не копируется, запросов нет",
+      "setup": [{"file":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e1.sav","utf8":"другой"},{"file":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e2.sav","utf8":"pack-e2"},{"file":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e14-protopipe.sav","utf8":"pack-proto"},{"dir":"lib/Games/hl1-won/Half-Life/valve_WON_russian/SAVE"}],
+      "steps": [{"op":"ensure"},{"op":"tree"},{"op":"requests"}],
+      "servers": {"a":{"/saves.7z":[{"bodyFile":"good"}]}},
+      "results": [
+        {"ok":{"status":"installed","added":2},"logs":[["info","[saves] не хватает тренировочных сейвов: 2 в Half-Life/valve_WON_russian/SAVE"],["info","[saves] добавлено тренировочных сейвов: 2 → Half-Life/valve_WON_russian/SAVE"]]},
+        {
+          "tree": [
+            {"path":"lib","kind":"dir"},
+            {"path":"lib/Games","kind":"dir"},
+            {"path":"lib/Games/hl1-won","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e1.sav","kind":"file","size":12,"sha256":"63b0bbeb9c0f1550e2a09474d0ed626fcca9a3da160b87b4f82bb8a39d6fbfa9","latin1":"Ð´ÑÑÐ³Ð¾Ð¹"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e14-protopipe.sav","kind":"file","size":10,"sha256":"e53929d384c5234e828caceedaf0519f714c224bbd45ec13061f285909909750","latin1":"pack-proto"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e2.sav","kind":"file","size":7,"sha256":"39c4cecb0c1246274a7ddc0a56533fd06b7bee7ae3046e0e5b76aab82925babf","latin1":"pack-e2"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON_russian","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON_russian/SAVE","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON_russian/SAVE/e14-protopipe.sav","kind":"file","size":10,"sha256":"e53929d384c5234e828caceedaf0519f714c224bbd45ec13061f285909909750","latin1":"pack-proto"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON_russian/SAVE/e2.sav","kind":"file","size":7,"sha256":"39c4cecb0c1246274a7ddc0a56533fd06b7bee7ae3046e0e5b76aab82925babf","latin1":"pack-e2"}
+          ]
+        },
+        {"requests":[]}
+      ]
+    },
+    {
+      "name": "имена в списке набора: непригодные пропускаются, повтор копируется один раз",
+      "pack": "oddNames",
+      "setup": [{"dir":"lib/Games/hl1-won/Half-Life/valve_WON"}],
+      "steps": [{"op":"ensure"},{"op":"tree"}],
+      "servers": {"a":{"/saves.7z":[{"bodyFile":"good"}]}},
+      "results": [
+        {"ok":{"status":"installed","added":3},"logs":[["info","[saves] не хватает тренировочных сейвов: 4 в Half-Life/valve_WON/SAVE"],["info","[saves] добавлено тренировочных сейвов: 3 → Half-Life/valve_WON/SAVE"]]},
+        {
+          "tree": [
+            {"path":"lib","kind":"dir"},
+            {"path":"lib/.hlsr","kind":"dir"},
+            {"path":"lib/.hlsr/staging","kind":"dir"},
+            {"path":"lib/Downloads","kind":"dir"},
+            {"path":"lib/Games","kind":"dir"},
+            {"path":"lib/Games/hl1-won","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e1.sav","kind":"file","size":7,"sha256":"b5edd06e40409447dc8fd410ed71deca06c6e814a6217aea84de9891d03c06e6","latin1":"pack-e1"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e14-protopipe.sav","kind":"file","size":10,"sha256":"e53929d384c5234e828caceedaf0519f714c224bbd45ec13061f285909909750","latin1":"pack-proto"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e2.sav","kind":"file","size":7,"sha256":"39c4cecb0c1246274a7ddc0a56533fd06b7bee7ae3046e0e5b76aab82925babf","latin1":"pack-e2"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "целевая папка выходит за пределы установки — PATH_INVALID",
+      "pack": "escaping",
+      "setup": [{"dir":"lib/Games/hl1-won/Half-Life/valve_WON"}],
+      "steps": [{"op":"ensure"},{"op":"tree"},{"op":"requests"}],
+      "servers": {"a":{"/saves.7z":[{"bodyFile":"good"}]}},
+      "results": [
+        {"error":{"code":"PATH_INVALID","message":"Папка сейвов выходит за пределы разрешённого каталога: <root>/lib/Games/escape/SAVE","details":null},"logs":[]},
+        {"tree":[{"path":"lib","kind":"dir"},{"path":"lib/Games","kind":"dir"},{"path":"lib/Games/hl1-won","kind":"dir"},{"path":"lib/Games/hl1-won/Half-Life","kind":"dir"},{"path":"lib/Games/hl1-won/Half-Life/valve_WON","kind":"dir"}]},
+        {"requests":[]}
+      ]
+    },
+    {
+      "name": "целевая папка без родителя (SAVE в корне установки)",
+      "pack": "flat",
+      "setup": [{"dir":"lib/Games/hl1-won/."}],
+      "steps": [{"op":"ensure"},{"op":"tree"}],
+      "servers": {"a":{"/saves.7z":[{"bodyFile":"good"}]}},
+      "results": [
+        {"ok":{"status":"installed","added":3},"logs":[["info","[saves] не хватает тренировочных сейвов: 3 в SAVE"],["info","[saves] добавлено тренировочных сейвов: 3 → SAVE"]]},
+        {
+          "tree": [
+            {"path":"lib","kind":"dir"},
+            {"path":"lib/.hlsr","kind":"dir"},
+            {"path":"lib/.hlsr/staging","kind":"dir"},
+            {"path":"lib/Downloads","kind":"dir"},
+            {"path":"lib/Games","kind":"dir"},
+            {"path":"lib/Games/hl1-won","kind":"dir"},
+            {"path":"lib/Games/hl1-won/SAVE","kind":"dir"},
+            {"path":"lib/Games/hl1-won/SAVE/e1.sav","kind":"file","size":7,"sha256":"b5edd06e40409447dc8fd410ed71deca06c6e814a6217aea84de9891d03c06e6","latin1":"pack-e1"},
+            {"path":"lib/Games/hl1-won/SAVE/e14-protopipe.sav","kind":"file","size":10,"sha256":"e53929d384c5234e828caceedaf0519f714c224bbd45ec13061f285909909750","latin1":"pack-proto"},
+            {"path":"lib/Games/hl1-won/SAVE/e2.sav","kind":"file","size":7,"sha256":"39c4cecb0c1246274a7ddc0a56533fd06b7bee7ae3046e0e5b76aab82925babf","latin1":"pack-e2"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "набор для других игр",
+      "pack": "other",
+      "setup": [{"dir":"lib/Games/hl1-won/Half-Life/valve_WON"}],
+      "steps": [{"op":"ensure"},{"op":"ensure","gameId":"hl2-4260"},{"op":"requests"}],
+      "servers": {"a":{"/saves.7z":[{"bodyFile":"good"}]}},
+      "results": [{"ok":{"status":"not-applicable","added":0},"logs":[]},{"ok":{"status":"installed","added":3},"logs":[["info","[saves] не хватает тренировочных сейвов: 3 в Half-Life/valve_WON/SAVE"],["info","[saves] добавлено тренировочных сейвов: 3 → Half-Life/valve_WON/SAVE"]]},{"requests":[{"method":"GET","url":"/saves.7z","headers":{"user-agent":"HLSR-Launcher"}}]}]
+    },
+    {
+      "name": "кириллица и пробелы в пути установки",
+      "setup": [],
+      "steps": [{"op":"mkdir","dir":"Моя игра/Half-Life/valve_WON"},{"op":"ensure","installDir":"Моя игра"},{"op":"tree"}],
+      "servers": {"a":{"/saves.7z":[{"bodyFile":"good"}]}},
+      "results": [
+        null,
+        {"ok":{"status":"installed","added":3},"logs":[["info","[saves] не хватает тренировочных сейвов: 3 в Half-Life/valve_WON/SAVE"],["info","[saves] добавлено тренировочных сейвов: 3 → Half-Life/valve_WON/SAVE"]]},
+        {
+          "tree": [
+            {"path":"lib","kind":"dir"},
+            {"path":"lib/.hlsr","kind":"dir"},
+            {"path":"lib/.hlsr/staging","kind":"dir"},
+            {"path":"lib/Downloads","kind":"dir"},
+            {"path":"Моя игра","kind":"dir"},
+            {"path":"Моя игра/Half-Life","kind":"dir"},
+            {"path":"Моя игра/Half-Life/valve_WON","kind":"dir"},
+            {"path":"Моя игра/Half-Life/valve_WON/SAVE","kind":"dir"},
+            {"path":"Моя игра/Half-Life/valve_WON/SAVE/e1.sav","kind":"file","size":7,"sha256":"b5edd06e40409447dc8fd410ed71deca06c6e814a6217aea84de9891d03c06e6","latin1":"pack-e1"},
+            {"path":"Моя игра/Half-Life/valve_WON/SAVE/e14-protopipe.sav","kind":"file","size":10,"sha256":"e53929d384c5234e828caceedaf0519f714c224bbd45ec13061f285909909750","latin1":"pack-proto"},
+            {"path":"Моя игра/Half-Life/valve_WON/SAVE/e2.sav","kind":"file","size":7,"sha256":"39c4cecb0c1246274a7ddc0a56533fd06b7bee7ae3046e0e5b76aab82925babf","latin1":"pack-e2"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ссылка: SAVE — ссылка на папку, сейвы идут в цель",
+      "unix": true,
+      "setup": [{"dir":"lib/Games/hl1-won/Half-Life/valve_WON"},{"dir":"outside"},{"symlink":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE","target":"<root>/outside"}],
+      "steps": [{"op":"ensure"},{"op":"tree"}],
+      "servers": {"a":{"/saves.7z":[{"bodyFile":"good"}]}},
+      "results": [
+        {"ok":{"status":"installed","added":3},"logs":[["info","[saves] не хватает тренировочных сейвов: 3 в Half-Life/valve_WON/SAVE"],["info","[saves] добавлено тренировочных сейвов: 3 → Half-Life/valve_WON/SAVE"]]},
+        {
+          "tree": [
+            {"path":"lib","kind":"dir"},
+            {"path":"lib/.hlsr","kind":"dir"},
+            {"path":"lib/.hlsr/staging","kind":"dir"},
+            {"path":"lib/Downloads","kind":"dir"},
+            {"path":"lib/Games","kind":"dir"},
+            {"path":"lib/Games/hl1-won","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE","kind":"symlink","target":"<root>/outside"},
+            {"path":"outside","kind":"dir"},
+            {"path":"outside/e1.sav","kind":"file","size":7,"sha256":"b5edd06e40409447dc8fd410ed71deca06c6e814a6217aea84de9891d03c06e6","latin1":"pack-e1"},
+            {"path":"outside/e14-protopipe.sav","kind":"file","size":10,"sha256":"e53929d384c5234e828caceedaf0519f714c224bbd45ec13061f285909909750","latin1":"pack-proto"},
+            {"path":"outside/e2.sav","kind":"file","size":7,"sha256":"39c4cecb0c1246274a7ddc0a56533fd06b7bee7ae3046e0e5b76aab82925babf","latin1":"pack-e2"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "права: папка Downloads без записи — .part не создаётся",
+      "unix": true,
+      "setup": [{"dir":"lib/Games/hl1-won/Half-Life/valve_WON"},{"dir":"lib/Downloads"}],
+      "steps": [{"op":"chmod","file":"lib/Downloads","mode":365},{"op":"ensure"},{"op":"chmod","file":"lib/Downloads","mode":493},{"op":"tree"}],
+      "servers": {"a":{"/saves.7z":[{"bodyFile":"good"}]}},
+      "results": [
+        null,
+        {"error":{"code":"NETWORK_ERROR","message":"EACCES: permission denied, open '<root>/lib/Downloads/test-saves.7z.part'","details":null},"logs":[["info","[saves] не хватает тренировочных сейвов: 3 в Half-Life/valve_WON/SAVE"],["warn","[saves] источник test не сработал: EACCES: permission denied, open '<root>/lib/Downloads/test-saves.7z.part'"]]},
+        null,
+        {"tree":[{"path":"lib","kind":"dir"},{"path":"lib/Downloads","kind":"dir"},{"path":"lib/Games","kind":"dir"},{"path":"lib/Games/hl1-won","kind":"dir"},{"path":"lib/Games/hl1-won/Half-Life","kind":"dir"},{"path":"lib/Games/hl1-won/Half-Life/valve_WON","kind":"dir"}]}
+      ]
+    },
+    {
+      "name": "права: папка SAVE без записи — копирование падает, архив и staging убраны",
+      "unix": true,
+      "setup": [{"dir":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE"}],
+      "steps": [{"op":"chmod","file":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE","mode":365},{"op":"ensure"},{"op":"chmod","file":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE","mode":493},{"op":"tree"}],
+      "servers": {"a":{"/saves.7z":[{"bodyFile":"good"}]}},
+      "results": [
+        null,
+        {"raw":{"code":"EACCES","message":"EACCES: permission denied, copyfile '<root>/lib/.hlsr/staging/saves-test-saves/e1.sav' -> '<root>/lib/Games/hl1-won/Half-Life/valve_WON/SAVE/e1.sav'"},"logs":[["info","[saves] не хватает тренировочных сейвов: 3 в Half-Life/valve_WON/SAVE"]]},
+        null,
+        {
+          "tree": [
+            {"path":"lib","kind":"dir"},
+            {"path":"lib/.hlsr","kind":"dir"},
+            {"path":"lib/.hlsr/staging","kind":"dir"},
+            {"path":"lib/Downloads","kind":"dir"},
+            {"path":"lib/Games","kind":"dir"},
+            {"path":"lib/Games/hl1-won","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON","kind":"dir"},
+            {"path":"lib/Games/hl1-won/Half-Life/valve_WON/SAVE","kind":"dir"}
+          ]
+        }
+      ]
+    }
+  ]
+}

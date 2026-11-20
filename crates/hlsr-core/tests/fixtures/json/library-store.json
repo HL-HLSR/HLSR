@@ -1,0 +1,52 @@
+{
+	"installed": {
+		"70": {
+			"path": "C:\\Users\\Иван\\HLSR"
+		}
+	},
+	"lastLaunched": "hl1-won",
+	"libraryConfirmed": false,
+	"config": {
+		"50": {
+			"steam": false,
+			"bxt": true,
+			"rinput": true,
+			"livesplit": false,
+			"args": "",
+			"inGameTime": 0
+		},
+		"70": {
+			"steam": false,
+			"edited_dll": false,
+			"bxt": true,
+			"rinput": true,
+			"livesplit": false,
+			"args": "",
+			"inGameTime": 0
+		},
+		"130": {
+			"steam": true,
+			"bxt": true,
+			"rinput": true,
+			"livesplit": false,
+			"args": "",
+			"inGameTime": 0
+		},
+		"218": {
+			"steam": false,
+			"bxt": false,
+			"rinput": false,
+			"livesplit": true,
+			"args": "",
+			"inGameTime": 0
+		},
+		"220": {
+			"steam": true,
+			"bxt": false,
+			"rinput": true,
+			"livesplit": true,
+			"args": "",
+			"inGameTime": 0
+		}
+	}
+}

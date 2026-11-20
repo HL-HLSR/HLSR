@@ -1,0 +1,25 @@
+{
+  "id": "demo/unsupported",
+  "state": "Битая демка: «не поддерживается» в списке и на экране",
+  "base": "demo/_base",
+  "steps": [
+    {
+      "click": {
+        "css": ".game-rail .rail-item[aria-label=\"Демо\"]",
+        "view": "rail-demo"
+      }
+    },
+    {
+      "click": {
+        "css": ".dmp__list .dmp__group:nth-child(1) .dmp__item:nth-of-type(2)",
+        "view": "dmp-item-hl1-bad"
+      }
+    },
+    {
+      "move": [
+        800,
+        880
+      ]
+    }
+  ]
+}

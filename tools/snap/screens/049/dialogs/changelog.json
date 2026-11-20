@@ -1,0 +1,20 @@
+{
+  "id": "dialogs/changelog",
+  "screen": "dialogs",
+  "state": "Список изменений из колонки: выпуски 0.4.9 (текущий) и старше, вкладки «Лаунчер»/«Игры» (пришли заметки сборок).",
+  "themes": ["hlsr", "paper"],
+  "languages": ["ru"],
+  "prefs": {"configTourSeen": true},
+  "invoke": {
+    "game-release-notes-all": [
+      {"gameId": "ghosting-renewed", "launcherId": "218", "versions": [
+        {"version": "1.0.13", "items": ["HL1 Movement 4.3", "Эпизоды Ghosting"]},
+        {"version": "1.0.12", "items": ["HL1 Movement 4.2"]}
+      ]}
+    ]
+  },
+  "steps": [
+    {"click": {"css": ".game-rail__tool[aria-label=\"Список изменений\"]", "view": "rail-changelog"}},
+    {"move": [800, 880]}
+  ]
+}

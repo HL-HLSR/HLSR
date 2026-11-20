@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "gameId": "hl2-2707",
+  "channel": "stable",
+  "version": "1.0.0",
+  "versionStatus": "assigned",
+  "publishedAt": null,
+  "minimumLauncherVersion": "0.3.9",
+  "expectedInstalledSize": 3825409938,
+  "preservePaths": [
+    "hl2/SAVE",
+    "hl2/screenshots",
+    "hl2/cfg",
+    "hl2/custom",
+    "hl2/download",
+    "hl2/DownloadLists",
+    "lostcoast/SAVE",
+    "lostcoast/cfg",
+    "lostcoast/custom",
+    "hl2_russian/SAVE",
+    "hl2_russian/cfg"
+  ],
+  "baseArchive": {
+    "filename": "hl2-2707-1.0.0.7z",
+    "size": 1702334824,
+    "sha256": "5357a610c03d761c57f49c57be2f1eeb3823dcbf0619ba4ad5b7f113dd1b5206",
+    "rootPrefix": "hl2_2707",
+    "providers": [
+      {
+        "id": "hlsr-primary",
+        "type": "https-direct",
+        "status": "permanent",
+        "priority": 10,
+        "url": "https://hlsr.pro/downloads/hl2-2707/1.0.0/hl2-2707-1.0.0.7z"
+      }
+    ]
+  },
+  "filesManifest": {
+    "requiredFiles": [
+      "hl2.exe",
+      "hl2/GameInfo.txt",
+      "steam_appid.txt"
+    ],
+    "maxEntries": 8000,
+    "maxUncompressedSize": 6000000000,
+    "entriesSha256": "d9032a0e439e3dfe4e41f9051e907e3cadd4c0787ee8ad53ee62e83847276477"
+  },
+  "patches": [],
+  "enabled": true,
+  "notes": "Half-Life 2 build 2707 — спидран-сборка с примонтированными VPK. Движок 2707, в комплекте Lost Coast, русская локализация и RInput. Запускается через Steam под AppID 220: игра должна быть на аккаунте."
+}

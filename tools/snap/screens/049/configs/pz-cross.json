@@ -1,0 +1,31 @@
+{
+  "id": "configs/pz-cross",
+  "state": "Ghosting: «Цвет и прицел» — вкладка «Прицел», пресет «Классический»: цвет, ползунки, «Тонкая настройка»; подвал «Сохранить»",
+  "base": "configs/_pz",
+  "steps": [
+    {
+      "click": {
+        "css": ".launcher-topbar__tab:nth-child(3)",
+        "view": "topbar-tab-configs"
+      }
+    },
+    {
+      "click": {
+        "css": ".pers__tabs button:nth-child(2)",
+        "view": "pers-tab-cross"
+      }
+    },
+    {
+      "click": {
+        "css": ".pers__presets .pers__preset:nth-child(3)",
+        "view": "pers-preset-classic"
+      }
+    },
+    {
+      "move": [
+        800,
+        880
+      ]
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "id": "header/notif-unread",
+  "screen": "header",
+  "state": "Два непрочитанных (счётчик, точки): обновление лаунчера с «Что нового» и «Обновить», сбой игры с кнопками; прочитанные — прокси (×3) и «Спасибо за поддержку»",
+  "themes": ["hlsr", "paper", "liquid-glass"],
+  "languages": ["ru"],
+  "prefs": {"configTourSeen": true},
+  "rails": ["closed", "open"],
+  "invoke": {
+    "notifications-list": {
+      "items": [
+        {"id": 4, "code": "LAUNCHER_UPDATE_AVAILABLE", "level": "info", "read": false, "ts": 1794915600000, "count": 1, "detail": null,
+         "meta": {"target": "launcher", "oldVersion": "0.4.9", "newVersion": "0.4.10", "hasReleaseNotes": true}},
+        {"id": 3, "code": "GAME_CRASHED", "level": "error", "read": false, "ts": 1794914400000, "count": 1, "detail": null,
+         "meta": {"hasDump": true, "gameId": "half-life-won", "launcherId": "70", "exitCode": -1073741819}},
+        {"id": 2, "code": "NETWORK_ERROR", "level": "warning", "read": true, "ts": 1794852300000, "count": 3,
+         "detail": "net::ERR_PROXY_CONNECTION_FAILED", "meta": {}},
+        {"id": 1, "code": "SUPPORT_THANKS", "level": "info", "read": true, "ts": 1794852000000, "count": 1, "detail": null, "meta": {}}
+      ],
+      "unread": 2
+    }
+  },
+  "steps": [
+    {"click": {"css": ".notif__btn", "view": "notif-bell"}},
+    {"move": [800, 600]}
+  ]
+}

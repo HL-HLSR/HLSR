@@ -1,0 +1,6 @@
+{
+  "id": "home/stale",
+  "base": "home/_base",
+  "state": "Лента не обновилась, показан прежний список: заметка «устарело»",
+  "invoke": {"public-news-get": {"status": "stale", "items": [{"kind": "post", "id": "41", "title": "HLSR 0.4.9", "body": "Новая версия лаунчера.", "author": "HLSR", "authorProfile": {"steamId64": "76561199155902676", "personaName": "Kanoyo", "avatarUrl": "https://avatars.steamstatic.com/0000000000000000000000000000000000000001_full.jpg", "nick": {"style": "developer", "css": null}, "avatarFrame": null, "subscriber": true}, "images": [], "reactions": {"like": 12, "love": 4, "fire": 7, "wow": 0, "celebrate": 2}, "date": "2026-11-14T09:30:00.000Z"}]}}
+}

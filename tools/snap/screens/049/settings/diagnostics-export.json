@@ -1,0 +1,51 @@
+{
+  "id": "settings/diagnostics-export",
+  "base": "settings/_base",
+  "state": "«Диагностика»: панель выгрузки с флажком crash dump (есть дамп)",
+  "themes": [
+    "hlsr"
+  ],
+  "invoke": {
+    "game-crash-info": {
+      "dumpPath": "C:\\HLSR\\crash\\hl2.mdmp",
+      "gameId": "218"
+    }
+  },
+  "steps": [
+    {
+      "click": {
+        "css": ".game-rail__footer .game-rail__tool",
+        "index": 4,
+        "view": "rail-settings"
+      }
+    },
+    {
+      "wait": 600
+    },
+    {
+      "click": {
+        "css": ".settings-modal__tab",
+        "index": 3,
+        "view": "settings-tabs-3"
+      }
+    },
+    {
+      "wait": 600
+    },
+    {
+      "click": {
+        "css": ".diag__toolbar .settings-btn.ghost",
+        "view": "diag-export"
+      }
+    },
+    {
+      "wait": 800
+    },
+    {
+      "move": [
+        800,
+        880
+      ]
+    }
+  ]
+}

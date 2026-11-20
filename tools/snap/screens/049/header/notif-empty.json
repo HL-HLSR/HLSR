@@ -1,0 +1,12 @@
+{
+  "id": "header/notif-empty",
+  "screen": "header",
+  "state": "Колокольчик открыт, уведомлений нет: шапка без кнопок, пусто",
+  "themes": ["hlsr", "paper"],
+  "languages": ["ru"],
+  "prefs": {"configTourSeen": true},
+  "steps": [
+    {"click": {"css": ".notif__btn", "view": "notif-bell"}},
+    {"move": [800, 600]}
+  ]
+}

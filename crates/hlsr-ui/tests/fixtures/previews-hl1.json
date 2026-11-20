@@ -1,0 +1,21 @@
+{
+  "about": "FNV-1a 64 по байтам RGB кадров превью HL1 из Electron 0.4.9 (tools/reference/snap-previews.js, canvas на ЦП без текста — от ОС не зависит; снято на Windows 2026-11-18, HLSR_PREVIEWS_REHASH=1). Только случаи exact из tools/snap/previews/cases.json.",
+  "hl1-default": "6b1ac0df796a861a",
+  "hl1-hud-color": "df7c4b2f8a007b11",
+  "hl1-hud-plain": "c203092c1dc0ddec",
+  "hl1-angles-wide": "11fa76befa0cecb4",
+  "hl1-cross-full": "422cad19af9103a8",
+  "hl1-cross-thin": "b5a5e8dc85766c15",
+  "hl1-cross-dot": "fcfbdcc2156b9301",
+  "hl1-pack-ag": "510d0abd7c77ca89",
+  "hl1-pack-changer": "72cd2558995399cb",
+  "hl1-pack-hidden": "93201310fbf36465",
+  "hl1-semi": "186f77ac867eac39",
+  "hl1-noweapon": "27024d9677279314",
+  "hl1-fov100": "dbf5ed66e28f2f06",
+  "hl1-fov80-vm70": "5bfbf1dc5d5d3d5c",
+  "hl1-forward10": "3c5aa35c166996e6",
+  "hl1-forward20-semi": "412734a2dd51a574",
+  "hl1-back10-fov110": "12ccb0130b786c6e",
+  "hl1-back20-hidden": "f90d06cd943e0494"
+}

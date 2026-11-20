@@ -1,0 +1,12 @@
+{
+  "id": "boot/downloading",
+  "screen": "boot",
+  "state": "Заставка: загрузка обязательного обновления — 37 %, размер и скорость на языке окна (file-format.js 0.4.9)",
+  "route": "/",
+  "themes": ["hlsr"],
+  "languages": ["ru", "en"],
+  "invoke": {"boot-gate-run": {"$pending": true}},
+  "steps": [
+    {"emit": "updater-state", "payload": {"state": "downloading", "version": "0.4.10", "progress": {"percent": 37, "transferred": 12582912, "total": 33554432, "bytesPerSecond": 1572864}}}
+  ]
+}

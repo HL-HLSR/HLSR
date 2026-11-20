@@ -1,0 +1,10 @@
+{
+  "id": "configs/setup",
+  "state": "Опрос перед первым запуском Ghosting без конфига: «Играть» → «Настройка конфига», фокус на «Пропустить»",
+  "base": "games/_base",
+  "invoke": {"player-config-setup-state": {"needed": true, "gameId": "ghosting-renewed"}},
+  "steps": [
+    {"click": {"css": ".download-bar__play", "view": "download-play"}},
+    {"move": [800, 880]}
+  ]
+}

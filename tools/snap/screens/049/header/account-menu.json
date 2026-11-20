@@ -1,0 +1,73 @@
+{
+  "themes": ["hlsr", "liquid-glass"],
+  "id": "header/account-menu",
+  "base": "header/_base",
+  "state": "Вошёл, меню аккаунта: «Открыть профиль», «Настройки профиля», «Друзья»",
+  "invoke": {
+    "runner-state": {
+      "status": "signed-in",
+      "userCode": null,
+      "expiresAt": null,
+      "error": null,
+      "ban": null,
+      "mute": null,
+      "account": {
+        "signedIn": true,
+        "steamId64": "76561199155902676",
+        "steamId2": "STEAM_0:0:597818474",
+        "personaName": "Kanoyo",
+        "avatarDataUri": "https://avatars.steamstatic.com/0000000000000000000000000000000000000001_full.jpg",
+        "connection": "connected"
+      },
+      "firstRunAt": "2026-03-14T08:20:00.000Z",
+      "achievements": [],
+      "summary": {
+        "unlocked": 0,
+        "total": 39,
+        "percent": 0
+      },
+      "stats": {
+        "totalSeconds": 0,
+        "gamesPlayed": 0,
+        "launches": 0,
+        "best": null
+      },
+      "badges": [],
+      "customBadges": [],
+      "nick": null,
+      "avatarFrame": null,
+      "subscriber": true,
+      "supporterSince": 1760000000,
+      "details": {},
+      "deletionAt": null,
+      "rating": {
+        "score": 0,
+        "likes": 0,
+        "dislikes": 0,
+        "dubious": false
+      },
+      "presence": {
+        "online": true,
+        "gameId": "ghosting-renewed",
+        "launcherId": "218"
+      }
+    }
+  },
+  "steps": [
+    {
+      "click": {
+        "css": ".account-menu__toggle",
+        "view": "account-toggle"
+      }
+    },
+    {
+      "wait": 600
+    },
+    {
+      "move": [
+        800,
+        880
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2854 @@
+{
+ "scales": [
+  1,
+  1.25
+ ],
+ "background": "#0b0e13",
+ "scenes": [
+  {
+   "id": "gs-cfg-controls",
+   "game": "218",
+   "state": "Ghosting: «Конфиги», раздел «Управление» (подсветки в списке нет, пока ничего не нажато)",
+   "width": 1440,
+   "height": 860,
+   "steps": [],
+   "themes": [
+    "hlsr",
+    "lambda",
+    "resonance",
+    "combine",
+    "xen",
+    "steam2003",
+    "midnight",
+    "liquid-glass"
+   ],
+   "languages": [
+    "en",
+    "ru"
+   ]
+  },
+  {
+   "id": "gs-cfg-video",
+   "game": "218",
+   "state": "Ghosting: «Конфиги», «Изображение»",
+   "width": 1440,
+   "height": 860,
+   "steps": [
+    {
+     "click": {
+      "css": ".gx-nav__item",
+      "index": 2,
+      "label": {
+       "en": "Video",
+       "ru": "Изображение"
+      },
+      "role": "tab"
+     }
+    }
+   ],
+   "languages": [
+    "en",
+    "ru"
+   ]
+  },
+  {
+   "id": "gs-cfg-audio",
+   "game": "218",
+   "state": "Ghosting: «Конфиги», «Звук»",
+   "width": 1440,
+   "height": 860,
+   "steps": [
+    {
+     "click": {
+      "css": ".gx-nav__item",
+      "index": 3,
+      "label": {
+       "en": "Audio",
+       "ru": "Звук"
+      },
+      "role": "tab"
+     }
+    }
+   ],
+   "languages": [
+    "en",
+    "ru"
+   ]
+  },
+  {
+   "id": "gs-cfg-game",
+   "game": "218",
+   "state": "Ghosting: «Конфиги», «Игра»",
+   "width": 1440,
+   "height": 860,
+   "steps": [
+    {
+     "click": {
+      "css": ".gx-nav__item",
+      "index": 4,
+      "label": {
+       "en": "Game",
+       "ru": "Игра"
+      },
+      "role": "tab"
+     }
+    }
+   ],
+   "languages": [
+    "en",
+    "ru"
+   ]
+  },
+  {
+   "id": "gs-cfg-controls-nav",
+   "game": "218",
+   "state": "Ghosting: «Управление» нажато — подсвечено",
+   "width": 1440,
+   "height": 860,
+   "steps": [
+    {
+     "click": {
+      "css": ".gx-nav__item",
+      "index": 1,
+      "label": {
+       "en": "Controls",
+       "ru": "Управление"
+      },
+      "role": "tab"
+     }
+    }
+   ],
+   "languages": [
+    "en",
+    "ru"
+   ]
+  },
+  {
+   "id": "gs-cfg-hl1",
+   "game": "70",
+   "state": "HL1: «Конфиги», «Управление» (GoldSrc)",
+   "width": 1440,
+   "height": 860,
+   "steps": [],
+   "languages": [
+    "en",
+    "ru"
+   ]
+  },
+  {
+   "id": "gs-cfg-hl1-video",
+   "game": "70",
+   "state": "HL1: «Изображение» с подсказками и подписями ползунков",
+   "width": 1440,
+   "height": 860,
+   "steps": [
+    {
+     "click": {
+      "css": ".gx-nav__item",
+      "index": 2,
+      "label": {
+       "en": "Video",
+       "ru": "Изображение"
+      },
+      "role": "tab"
+     }
+    }
+   ],
+   "languages": [
+    "en",
+    "ru"
+   ]
+  },
+  {
+   "id": "gs-cfg-edited",
+   "game": "218",
+   "state": "Ghosting: две правки — метка слева, точка в списке, «вернуть» доступна",
+   "width": 1440,
+   "height": 860,
+   "steps": [
+    {
+     "click": {
+      "css": "#game-cfg-m_pitch",
+      "label": {
+       "en": "Invert mouse",
+       "ru": "Инверсия мыши"
+      },
+      "role": "checkbox"
+     }
+    },
+    {
+     "click": {
+      "css": "#game-cfg-m_filter",
+      "label": {
+       "en": "Mouse smoothing",
+       "ru": "Сглаживание мыши"
+      },
+      "role": "checkbox"
+     }
+    }
+   ],
+   "themes": [
+    "hlsr",
+    "lambda",
+    "resonance",
+    "combine",
+    "xen",
+    "steam2003",
+    "midnight",
+    "liquid-glass"
+   ],
+   "languages": [
+    "en",
+    "ru"
+   ]
+  },
+  {
+   "id": "gs-cfg-running",
+   "game": "218",
+   "state": "Ghosting: игра запущена — плашка и недоступные поля",
+   "width": 1440,
+   "height": 860,
+   "steps": [],
+   "replies": {
+    "game-config-read": {
+     "$args": [
+      [
+       [
+        "218",
+        null
+       ],
+       {
+        "status": "ok",
+        "gameId": "ghosting-renewed",
+        "engine": "source",
+        "running": true,
+        "values": {
+         "sensitivity": "3",
+         "fps_max": "999",
+         "volume": "0.2"
+        },
+        "sources": {
+         "sensitivity": "autoexec.cfg",
+         "fps_max": "autoexec.cfg",
+         "volume": "autoexec.cfg"
+        }
+       }
+      ]
+     ],
+     "$else": {
+      "status": "ok",
+      "gameId": "ghosting-renewed",
+      "engine": "source",
+      "running": true,
+      "values": {
+       "sensitivity": "3",
+       "fps_max": "999",
+       "volume": "0.2"
+      },
+      "sources": {
+       "sensitivity": "autoexec.cfg",
+       "fps_max": "autoexec.cfg",
+       "volume": "autoexec.cfg"
+      }
+     }
+    }
+   },
+   "languages": [
+    "en",
+    "ru"
+   ]
+  },
+  {
+   "id": "gs-cfg-missing",
+   "game": "220",
+   "state": "HL2: не установлена — пустое состояние",
+   "width": 1440,
+   "height": 860,
+   "steps": [],
+   "replies": {
+    "game-settings-get": {
+     "$args": [
+      [
+       [
+        "220"
+       ],
+       {
+        "status": "ok",
+        "settings": {
+         "console": false,
+         "novid": false,
+         "borderless": false,
+         "dx9": false,
+         "nocrashdialog": false,
+         "noasync": false,
+         "noaafonts": false,
+         "high": false,
+         "excludeCpu0": false,
+         "startTimer": false,
+         "language": "auto",
+         "rinput": true,
+         "rinputMenuFix": false,
+         "windowed": false,
+         "developer": false,
+         "condebug": false,
+         "nojoy": false,
+         "width": 0,
+         "height": 0,
+         "refreshRate": 0,
+         "packs": {
+          "hud": "default",
+          "crosshair": "default",
+          "changerShape": "Default",
+          "changerColor": "green"
+         },
+         "bxt": {
+          "timer": false,
+          "timerX": 0,
+          "timerY": 50,
+          "speedometer": true,
+          "speedometerX": 50,
+          "speedometerY": 100,
+          "jumpspeed": false,
+          "jumpspeedX": 50,
+          "jumpspeedY": 100,
+          "viewangles": false,
+          "viewanglesX": 100,
+          "viewanglesY": 0,
+          "jumpdistance": false,
+          "precision": 6,
+          "incorrectFps": true,
+          "fov": 90,
+          "fixWidescreenFov": false,
+          "viewmodelFov": 0,
+          "viewmodelSemitransparent": false,
+          "removeViewmodel": false,
+          "viewmodelForward": 0,
+          "viewmodelRight": 0,
+          "viewmodelUp": 0,
+          "viewmodelBobAngled": false,
+          "viewmodelNoIdle": false,
+          "viewmodelNoEquip": false,
+          "hideCrosshair": false
+         },
+         "binds": {},
+         "personalization": {
+          "hudEnabled": false,
+          "hudColor": {
+           "r": 255,
+           "g": 220,
+           "b": 0
+          },
+          "hudAlpha": -1,
+          "hudAffectsCrosshair": false,
+          "hideQuickInfo": false,
+          "crossPreset": "custom",
+          "crossEnabled": false,
+          "crossColor": {
+           "r": 0,
+           "g": 255,
+           "b": 0
+          },
+          "crossAlpha": 255,
+          "crossThickness": 2,
+          "crossSize": 10,
+          "crossGap": 3,
+          "crossOutline": false,
+          "crossOutlineThickness": 1,
+          "crossCircleRadius": 0,
+          "crossDotColor": null,
+          "crossDotSize": 0,
+          "crossTopLine": true,
+          "crossBottomLine": true,
+          "crossLeftLine": true,
+          "crossRightLine": true,
+          "crossHideDefault": true,
+          "extra": {
+           "viewmodel_fov": 76
+          }
+         },
+         "liveSplitOverlay": {
+          "enabled": false,
+          "x": 100,
+          "y": 50,
+          "height": 45,
+          "opacity": 100,
+          "key": "none",
+          "keyColor": {
+           "r": 0,
+           "g": 255,
+           "b": 0
+          },
+          "similarity": 400,
+          "smoothness": 80,
+          "lumaMin": 0.1,
+          "lumaMinSmooth": 0.05,
+          "lumaMax": 1,
+          "lumaMaxSmooth": 0,
+          "crop": {
+           "top": 0,
+           "right": 0,
+           "bottom": 0,
+           "left": 0
+          }
+         },
+         "launchArgs": "",
+         "protonOptions": ""
+        },
+        "languages": [],
+        "personalizationImported": true,
+        "bindsGameId": "hl2-4260",
+        "keyBinds": {
+         "binds": {
+          "0": {
+           "command": "sv_cheats 0",
+           "source": "autoexec.cfg"
+          },
+          "1": {
+           "command": "use weapon_crowbar",
+           "source": "autoexec.cfg"
+          },
+          "2": {
+           "command": "use weapon_pistol",
+           "source": "autoexec.cfg"
+          },
+          "3": {
+           "command": "use weapon_smg1",
+           "source": "autoexec.cfg"
+          },
+          "4": {
+           "command": "use weapon_shotgun",
+           "source": "autoexec.cfg"
+          },
+          "5": {
+           "command": "use weapon_frag",
+           "source": "autoexec.cfg"
+          },
+          "6": {
+           "command": "use weapon_rpg",
+           "source": "autoexec.cfg"
+          },
+          "SPACE": {
+           "command": "+jump",
+           "source": "config.cfg"
+          },
+          "MOUSE4": {
+           "command": "save quick",
+           "source": "autoexec.cfg"
+          },
+          "MOUSE5": {
+           "command": "load quick",
+           "source": "autoexec.cfg"
+          },
+          "x": {
+           "command": "save x; load x",
+           "source": "autoexec.cfg"
+          },
+          "i": {
+           "command": "load autosave",
+           "source": "autoexec.cfg"
+          },
+          "k": {
+           "command": "load quick01",
+           "source": "autoexec.cfg"
+          },
+          "h": {
+           "command": "save /; reload",
+           "source": "autoexec.cfg"
+          },
+          "u": {
+           "command": "exec autoexec",
+           "source": "autoexec.cfg"
+          },
+          "]": {
+           "command": "r_portalsopenall 1",
+           "source": "autoexec.cfg"
+          },
+          "p": {
+           "command": "load start;sv_cheats 0",
+           "source": "autoexec.cfg"
+          },
+          "t": {
+           "command": "bind mwheeldown +duck; bind mwheelup +duck",
+           "source": "autoexec.cfg"
+          },
+          "y": {
+           "command": "bind mwheeldown pause; bind mwheelup pause",
+           "source": "autoexec.cfg"
+          },
+          "n": {
+           "command": "bind mwheeldown +use; bind mwheelup +use",
+           "source": "autoexec.cfg"
+          }
+         },
+         "aliases": {},
+         "cvars": {
+          "sensitivity": "3"
+         },
+         "files": [
+          "config.cfg",
+          "autoexec.cfg"
+         ]
+        }
+       }
+      ]
+     ]
+    },
+    "game-config-read": {
+     "$args": [],
+     "$else": {
+      "status": "not-installed",
+      "gameId": "hl2-4260",
+      "engine": "source"
+     }
+    },
+    "game-cfg-files-list": {
+     "$args": [],
+     "$else": {
+      "status": "error",
+      "code": "NOT_INSTALLED"
+     }
+    }
+   },
+   "languages": [
+    "en",
+    "ru"
+   ]
+  },
+  {
+   "id": "gs-cfg-build",
+   "game": "220",
+   "state": "HL2: три сборки, выбрана 4260 — кнопка сборки и пути",
+   "width": 1440,
+   "height": 860,
+   "steps": [],
+   "replies": {
+    "game-settings-get": {
+     "$args": [
+      [
+       [
+        "220"
+       ],
+       {
+        "status": "ok",
+        "settings": {
+         "console": false,
+         "novid": false,
+         "borderless": false,
+         "dx9": false,
+         "nocrashdialog": false,
+         "noasync": false,
+         "noaafonts": false,
+         "high": false,
+         "excludeCpu0": false,
+         "startTimer": false,
+         "language": "auto",
+         "rinput": true,
+         "rinputMenuFix": false,
+         "windowed": false,
+         "developer": false,
+         "condebug": false,
+         "nojoy": false,
+         "width": 0,
+         "height": 0,
+         "refreshRate": 0,
+         "packs": {
+          "hud": "default",
+          "crosshair": "default",
+          "changerShape": "Default",
+          "changerColor": "green"
+         },
+         "bxt": {
+          "timer": false,
+          "timerX": 0,
+          "timerY": 50,
+          "speedometer": true,
+          "speedometerX": 50,
+          "speedometerY": 100,
+          "jumpspeed": false,
+          "jumpspeedX": 50,
+          "jumpspeedY": 100,
+          "viewangles": false,
+          "viewanglesX": 100,
+          "viewanglesY": 0,
+          "jumpdistance": false,
+          "precision": 6,
+          "incorrectFps": true,
+          "fov": 90,
+          "fixWidescreenFov": false,
+          "viewmodelFov": 0,
+          "viewmodelSemitransparent": false,
+          "removeViewmodel": false,
+          "viewmodelForward": 0,
+          "viewmodelRight": 0,
+          "viewmodelUp": 0,
+          "viewmodelBobAngled": false,
+          "viewmodelNoIdle": false,
+          "viewmodelNoEquip": false,
+          "hideCrosshair": false
+         },
+         "binds": {},
+         "personalization": {
+          "hudEnabled": false,
+          "hudColor": {
+           "r": 255,
+           "g": 220,
+           "b": 0
+          },
+          "hudAlpha": -1,
+          "hudAffectsCrosshair": false,
+          "hideQuickInfo": false,
+          "crossPreset": "custom",
+          "crossEnabled": false,
+          "crossColor": {
+           "r": 0,
+           "g": 255,
+           "b": 0
+          },
+          "crossAlpha": 255,
+          "crossThickness": 2,
+          "crossSize": 10,
+          "crossGap": 3,
+          "crossOutline": false,
+          "crossOutlineThickness": 1,
+          "crossCircleRadius": 0,
+          "crossDotColor": null,
+          "crossDotSize": 0,
+          "crossTopLine": true,
+          "crossBottomLine": true,
+          "crossLeftLine": true,
+          "crossRightLine": true,
+          "crossHideDefault": true,
+          "extra": {
+           "viewmodel_fov": 76
+          }
+         },
+         "liveSplitOverlay": {
+          "enabled": false,
+          "x": 100,
+          "y": 50,
+          "height": 45,
+          "opacity": 100,
+          "key": "none",
+          "keyColor": {
+           "r": 0,
+           "g": 255,
+           "b": 0
+          },
+          "similarity": 400,
+          "smoothness": 80,
+          "lumaMin": 0.1,
+          "lumaMinSmooth": 0.05,
+          "lumaMax": 1,
+          "lumaMaxSmooth": 0,
+          "crop": {
+           "top": 0,
+           "right": 0,
+           "bottom": 0,
+           "left": 0
+          }
+         },
+         "launchArgs": "",
+         "protonOptions": ""
+        },
+        "languages": [],
+        "personalizationImported": true,
+        "bindsGameId": "hl2-4260",
+        "keyBinds": {
+         "binds": {
+          "0": {
+           "command": "sv_cheats 0",
+           "source": "autoexec.cfg"
+          },
+          "1": {
+           "command": "use weapon_crowbar",
+           "source": "autoexec.cfg"
+          },
+          "2": {
+           "command": "use weapon_pistol",
+           "source": "autoexec.cfg"
+          },
+          "3": {
+           "command": "use weapon_smg1",
+           "source": "autoexec.cfg"
+          },
+          "4": {
+           "command": "use weapon_shotgun",
+           "source": "autoexec.cfg"
+          },
+          "5": {
+           "command": "use weapon_frag",
+           "source": "autoexec.cfg"
+          },
+          "6": {
+           "command": "use weapon_rpg",
+           "source": "autoexec.cfg"
+          },
+          "SPACE": {
+           "command": "+jump",
+           "source": "config.cfg"
+          },
+          "MOUSE4": {
+           "command": "save quick",
+           "source": "autoexec.cfg"
+          },
+          "MOUSE5": {
+           "command": "load quick",
+           "source": "autoexec.cfg"
+          },
+          "x": {
+           "command": "save x; load x",
+           "source": "autoexec.cfg"
+          },
+          "i": {
+           "command": "load autosave",
+           "source": "autoexec.cfg"
+          },
+          "k": {
+           "command": "load quick01",
+           "source": "autoexec.cfg"
+          },
+          "h": {
+           "command": "save /; reload",
+           "source": "autoexec.cfg"
+          },
+          "u": {
+           "command": "exec autoexec",
+           "source": "autoexec.cfg"
+          },
+          "]": {
+           "command": "r_portalsopenall 1",
+           "source": "autoexec.cfg"
+          },
+          "p": {
+           "command": "load start;sv_cheats 0",
+           "source": "autoexec.cfg"
+          },
+          "t": {
+           "command": "bind mwheeldown +duck; bind mwheelup +duck",
+           "source": "autoexec.cfg"
+          },
+          "y": {
+           "command": "bind mwheeldown pause; bind mwheelup pause",
+           "source": "autoexec.cfg"
+          },
+          "n": {
+           "command": "bind mwheeldown +use; bind mwheelup +use",
+           "source": "autoexec.cfg"
+          }
+         },
+         "aliases": {},
+         "cvars": {
+          "sensitivity": "3"
+         },
+         "files": [
+          "config.cfg",
+          "autoexec.cfg"
+         ]
+        }
+       }
+      ]
+     ]
+    },
+    "game-config-read": {
+     "$args": [],
+     "$else": {
+      "status": "ok",
+      "gameId": "hl2-4260",
+      "engine": "source",
+      "running": false,
+      "values": {
+       "sensitivity": "3.5"
+      },
+      "sources": {
+       "sensitivity": "config.cfg"
+      }
+     }
+    },
+    "game-cfg-files-list": {
+     "$args": [],
+     "$else": {
+      "status": "ok",
+      "gameId": "hl2-4260",
+      "running": false,
+      "files": [
+       {
+        "path": "hl2/cfg/config.cfg",
+        "size": 120,
+        "mtime": "2026-10-12T18:40:00.000Z"
+       }
+      ],
+      "truncated": false
+     }
+    },
+    "game-config-info": {
+     "$args": [
+      [
+       [
+        "220",
+        null
+       ],
+       {
+        "status": "ok",
+        "exists": true,
+        "build": "4260",
+        "builds": [
+         {
+          "build": "4260",
+          "installed": true
+         },
+         {
+          "build": "2707",
+          "installed": false
+         }
+        ],
+        "path": "C:\\HLSR\\hl2-4260\\hl2\\cfg"
+       }
+      ]
+     ],
+     "$else": {
+      "status": "ok",
+      "exists": true,
+      "build": "4260",
+      "builds": [
+       {
+        "build": "4260",
+        "installed": true
+       },
+       {
+        "build": "2707",
+        "installed": false
+       }
+      ],
+      "path": "C:\\HLSR\\hl2-4260\\hl2\\cfg"
+     }
+    }
+   },
+   "languages": [
+    "en",
+    "ru"
+   ]
+  },
+  {
+   "id": "gs-cfg-build-open",
+   "game": "220",
+   "state": "HL2: список сборок открыт",
+   "width": 1440,
+   "height": 860,
+   "steps": [
+    {
+     "click": {
+      "css": ".game-settings__cfg-bar .ui-dropdown__toggle",
+      "label": {
+       "en": "Build",
+       "ru": "Сборка"
+      },
+      "role": "combobox"
+     }
+    }
+   ],
+   "replies": {
+    "game-settings-get": {
+     "$args": [
+      [
+       [
+        "220"
+       ],
+       {
+        "status": "ok",
+        "settings": {
+         "console": false,
+         "novid": false,
+         "borderless": false,
+         "dx9": false,
+         "nocrashdialog": false,
+         "noasync": false,
+         "noaafonts": false,
+         "high": false,
+         "excludeCpu0": false,
+         "startTimer": false,
+         "language": "auto",
+         "rinput": true,
+         "rinputMenuFix": false,
+         "windowed": false,
+         "developer": false,
+         "condebug": false,
+         "nojoy": false,
+         "width": 0,
+         "height": 0,
+         "refreshRate": 0,
+         "packs": {
+          "hud": "default",
+          "crosshair": "default",
+          "changerShape": "Default",
+          "changerColor": "green"
+         },
+         "bxt": {
+          "timer": false,
+          "timerX": 0,
+          "timerY": 50,
+          "speedometer": true,
+          "speedometerX": 50,
+          "speedometerY": 100,
+          "jumpspeed": false,
+          "jumpspeedX": 50,
+          "jumpspeedY": 100,
+          "viewangles": false,
+          "viewanglesX": 100,
+          "viewanglesY": 0,
+          "jumpdistance": false,
+          "precision": 6,
+          "incorrectFps": true,
+          "fov": 90,
+          "fixWidescreenFov": false,
+          "viewmodelFov": 0,
+          "viewmodelSemitransparent": false,
+          "removeViewmodel": false,
+          "viewmodelForward": 0,
+          "viewmodelRight": 0,
+          "viewmodelUp": 0,
+          "viewmodelBobAngled": false,
+          "viewmodelNoIdle": false,
+          "viewmodelNoEquip": false,
+          "hideCrosshair": false
+         },
+         "binds": {},
+         "personalization": {
+          "hudEnabled": false,
+          "hudColor": {
+           "r": 255,
+           "g": 220,
+           "b": 0
+          },
+          "hudAlpha": -1,
+          "hudAffectsCrosshair": false,
+          "hideQuickInfo": false,
+          "crossPreset": "custom",
+          "crossEnabled": false,
+          "crossColor": {
+           "r": 0,
+           "g": 255,
+           "b": 0
+          },
+          "crossAlpha": 255,
+          "crossThickness": 2,
+          "crossSize": 10,
+          "crossGap": 3,
+          "crossOutline": false,
+          "crossOutlineThickness": 1,
+          "crossCircleRadius": 0,
+          "crossDotColor": null,
+          "crossDotSize": 0,
+          "crossTopLine": true,
+          "crossBottomLine": true,
+          "crossLeftLine": true,
+          "crossRightLine": true,
+          "crossHideDefault": true,
+          "extra": {
+           "viewmodel_fov": 76
+          }
+         },
+         "liveSplitOverlay": {
+          "enabled": false,
+          "x": 100,
+          "y": 50,
+          "height": 45,
+          "opacity": 100,
+          "key": "none",
+          "keyColor": {
+           "r": 0,
+           "g": 255,
+           "b": 0
+          },
+          "similarity": 400,
+          "smoothness": 80,
+          "lumaMin": 0.1,
+          "lumaMinSmooth": 0.05,
+          "lumaMax": 1,
+          "lumaMaxSmooth": 0,
+          "crop": {
+           "top": 0,
+           "right": 0,
+           "bottom": 0,
+           "left": 0
+          }
+         },
+         "launchArgs": "",
+         "protonOptions": ""
+        },
+        "languages": [],
+        "personalizationImported": true,
+        "bindsGameId": "hl2-4260",
+        "keyBinds": {
+         "binds": {
+          "0": {
+           "command": "sv_cheats 0",
+           "source": "autoexec.cfg"
+          },
+          "1": {
+           "command": "use weapon_crowbar",
+           "source": "autoexec.cfg"
+          },
+          "2": {
+           "command": "use weapon_pistol",
+           "source": "autoexec.cfg"
+          },
+          "3": {
+           "command": "use weapon_smg1",
+           "source": "autoexec.cfg"
+          },
+          "4": {
+           "command": "use weapon_shotgun",
+           "source": "autoexec.cfg"
+          },
+          "5": {
+           "command": "use weapon_frag",
+           "source": "autoexec.cfg"
+          },
+          "6": {
+           "command": "use weapon_rpg",
+           "source": "autoexec.cfg"
+          },
+          "SPACE": {
+           "command": "+jump",
+           "source": "config.cfg"
+          },
+          "MOUSE4": {
+           "command": "save quick",
+           "source": "autoexec.cfg"
+          },
+          "MOUSE5": {
+           "command": "load quick",
+           "source": "autoexec.cfg"
+          },
+          "x": {
+           "command": "save x; load x",
+           "source": "autoexec.cfg"
+          },
+          "i": {
+           "command": "load autosave",
+           "source": "autoexec.cfg"
+          },
+          "k": {
+           "command": "load quick01",
+           "source": "autoexec.cfg"
+          },
+          "h": {
+           "command": "save /; reload",
+           "source": "autoexec.cfg"
+          },
+          "u": {
+           "command": "exec autoexec",
+           "source": "autoexec.cfg"
+          },
+          "]": {
+           "command": "r_portalsopenall 1",
+           "source": "autoexec.cfg"
+          },
+          "p": {
+           "command": "load start;sv_cheats 0",
+           "source": "autoexec.cfg"
+          },
+          "t": {
+           "command": "bind mwheeldown +duck; bind mwheelup +duck",
+           "source": "autoexec.cfg"
+          },
+          "y": {
+           "command": "bind mwheeldown pause; bind mwheelup pause",
+           "source": "autoexec.cfg"
+          },
+          "n": {
+           "command": "bind mwheeldown +use; bind mwheelup +use",
+           "source": "autoexec.cfg"
+          }
+         },
+         "aliases": {},
+         "cvars": {
+          "sensitivity": "3"
+         },
+         "files": [
+          "config.cfg",
+          "autoexec.cfg"
+         ]
+        }
+       }
+      ]
+     ]
+    },
+    "game-config-read": {
+     "$args": [],
+     "$else": {
+      "status": "ok",
+      "gameId": "hl2-4260",
+      "engine": "source",
+      "running": false,
+      "values": {
+       "sensitivity": "3.5"
+      },
+      "sources": {
+       "sensitivity": "config.cfg"
+      }
+     }
+    },
+    "game-cfg-files-list": {
+     "$args": [],
+     "$else": {
+      "status": "ok",
+      "gameId": "hl2-4260",
+      "running": false,
+      "files": [
+       {
+        "path": "hl2/cfg/config.cfg",
+        "size": 120,
+        "mtime": "2026-10-12T18:40:00.000Z"
+       }
+      ],
+      "truncated": false
+     }
+    },
+    "game-config-info": {
+     "$args": [
+      [
+       [
+        "220",
+        null
+       ],
+       {
+        "status": "ok",
+        "exists": true,
+        "build": "4260",
+        "builds": [
+         {
+          "build": "4260",
+          "installed": true
+         },
+         {
+          "build": "2707",
+          "installed": false
+         }
+        ],
+        "path": "C:\\HLSR\\hl2-4260\\hl2\\cfg"
+       }
+      ]
+     ],
+     "$else": {
+      "status": "ok",
+      "exists": true,
+      "build": "4260",
+      "builds": [
+       {
+        "build": "4260",
+        "installed": true
+       },
+       {
+        "build": "2707",
+        "installed": false
+       }
+      ],
+      "path": "C:\\HLSR\\hl2-4260\\hl2\\cfg"
+     }
+    }
+   },
+   "languages": [
+    "en",
+    "ru"
+   ]
+  },
+  {
+   "id": "gs-cfg-narrow",
+   "game": "218",
+   "state": "Ghosting: наименьшее окно лаунчера, строки уже",
+   "width": 1152,
+   "height": 648,
+   "steps": [],
+   "languages": [
+    "en",
+    "ru"
+   ]
+  },
+  {
+   "id": "gs-cfg-hover",
+   "game": "218",
+   "state": "Ghosting: указатель над переключателем строки — светлеет фон строки",
+   "width": 1440,
+   "height": 860,
+   "steps": [
+    {
+     "hover": {
+      "css": "#game-cfg-m_filter",
+      "label": {
+       "en": "Mouse smoothing",
+       "ru": "Сглаживание мыши"
+      },
+      "role": "checkbox"
+     }
+    }
+   ],
+   "languages": [
+    "en",
+    "ru"
+   ]
+  },
+  {
+   "id": "gs-cfg-focus",
+   "game": "218",
+   "state": "Ghosting: Tab с крестика на вкладку и в список разделов — рамка фокуса только с клавиатуры",
+   "width": 1440,
+   "height": 860,
+   "steps": [
+    {
+     "key": "Tab"
+    },
+    {
+     "key": "Tab"
+    },
+    {
+     "key": "Tab"
+    }
+   ],
+   "languages": [
+    "en",
+    "ru"
+   ]
+  },
+  {
+   "id": "gs-launch-ghosting",
+   "game": "218",
+   "state": "Ghosting: «Параметры запуска»",
+   "width": 1440,
+   "height": 860,
+   "steps": [
+    {
+     "click": {
+      "css": ".game-settings__tab",
+      "index": 1,
+      "label": "#L_GS_S_LAUNCH",
+      "role": "tab"
+     }
+    },
+    {
+     "wait": 450
+    }
+   ],
+   "themes": [
+    "hlsr",
+    "lambda",
+    "resonance",
+    "combine",
+    "xen",
+    "steam2003",
+    "midnight",
+    "liquid-glass"
+   ],
+   "languages": [
+    "en",
+    "ru"
+   ]
+  },
+  {
+   "id": "gs-launch-hover",
+   "game": "218",
+   "state": "Ghosting: указатель над переключателем «Запуска» — светлеет дорожка, бегунок пружинит",
+   "width": 1440,
+   "height": 860,
+   "steps": [
+    {
+     "click": {
+      "css": ".game-settings__tab",
+      "index": 1,
+      "label": "#L_GS_S_LAUNCH",
+      "role": "tab"
+     }
+    },
+    {
+     "wait": 450
+    },
+    {
+     "hover": {
+      "css": ".settings-switch",
+      "index": 1,
+      "label": {
+       "en": "Skip intro videos",
+       "ru": "Пропустить вступительные ролики"
+      },
+      "role": "checkbox"
+     }
+    }
+   ],
+   "languages": [
+    "en",
+    "ru"
+   ]
+  },
+  {
+   "id": "gs-launch-ghosting-end",
+   "game": "218",
+   "state": "Ghosting: «Параметры запуска» прокручены до конца",
+   "width": 1440,
+   "height": 860,
+   "steps": [
+    {
+     "click": {
+      "css": ".game-settings__tab",
+      "index": 1,
+      "label": "#L_GS_S_LAUNCH",
+      "role": "tab"
+     }
+    },
+    {
+     "wait": 450
+    },
+    {
+     "wheel": {
+      "css": ".game-settings__body",
+      "index": 0,
+      "label": "#L_GS_S_LAUNCH",
+      "role": "tab-panel"
+     },
+     "deltaY": -6000
+    },
+    {
+     "wait": 900
+    },
+    {
+     "wheel": {
+      "css": ".game-settings__body",
+      "index": 0,
+      "label": "#L_GS_S_LAUNCH",
+      "role": "tab-panel"
+     },
+     "deltaY": -6000
+    },
+    {
+     "wait": 900
+    }
+   ],
+   "languages": [
+    "en",
+    "ru"
+   ]
+  },
+  {
+   "id": "gs-launch-hl1",
+   "game": "70",
+   "state": "HL1: «Параметры запуска» (RInput, разрешение, частота)",
+   "width": 1440,
+   "height": 860,
+   "steps": [
+    {
+     "click": {
+      "css": ".game-settings__tab",
+      "index": 1,
+      "label": "#L_GS_S_LAUNCH",
+      "role": "tab"
+     }
+    },
+    {
+     "wait": 450
+    }
+   ],
+   "languages": [
+    "en",
+    "ru"
+   ]
+  },
+  {
+   "id": "gs-launch-hl2",
+   "game": "220",
+   "state": "HL2: «Параметры запуска»",
+   "width": 1440,
+   "height": 860,
+   "steps": [
+    {
+     "click": {
+      "css": ".game-settings__tab",
+      "index": 1,
+      "label": "#L_GS_S_LAUNCH",
+      "role": "tab"
+     }
+    },
+    {
+     "wait": 450
+    }
+   ],
+   "replies": {
+    "game-settings-get": {
+     "$args": [
+      [
+       [
+        "220"
+       ],
+       {
+        "status": "ok",
+        "settings": {
+         "console": false,
+         "novid": false,
+         "borderless": false,
+         "dx9": false,
+         "nocrashdialog": false,
+         "noasync": false,
+         "noaafonts": false,
+         "high": false,
+         "excludeCpu0": false,
+         "startTimer": false,
+         "language": "auto",
+         "rinput": true,
+         "rinputMenuFix": false,
+         "windowed": false,
+         "developer": false,
+         "condebug": false,
+         "nojoy": false,
+         "width": 0,
+         "height": 0,
+         "refreshRate": 0,
+         "packs": {
+          "hud": "default",
+          "crosshair": "default",
+          "changerShape": "Default",
+          "changerColor": "green"
+         },
+         "bxt": {
+          "timer": false,
+          "timerX": 0,
+          "timerY": 50,
+          "speedometer": true,
+          "speedometerX": 50,
+          "speedometerY": 100,
+          "jumpspeed": false,
+          "jumpspeedX": 50,
+          "jumpspeedY": 100,
+          "viewangles": false,
+          "viewanglesX": 100,
+          "viewanglesY": 0,
+          "jumpdistance": false,
+          "precision": 6,
+          "incorrectFps": true,
+          "fov": 90,
+          "fixWidescreenFov": false,
+          "viewmodelFov": 0,
+          "viewmodelSemitransparent": false,
+          "removeViewmodel": false,
+          "viewmodelForward": 0,
+          "viewmodelRight": 0,
+          "viewmodelUp": 0,
+          "viewmodelBobAngled": false,
+          "viewmodelNoIdle": false,
+          "viewmodelNoEquip": false,
+          "hideCrosshair": false
+         },
+         "binds": {},
+         "personalization": {
+          "hudEnabled": false,
+          "hudColor": {
+           "r": 255,
+           "g": 220,
+           "b": 0
+          },
+          "hudAlpha": -1,
+          "hudAffectsCrosshair": false,
+          "hideQuickInfo": false,
+          "crossPreset": "custom",
+          "crossEnabled": false,
+          "crossColor": {
+           "r": 0,
+           "g": 255,
+           "b": 0
+          },
+          "crossAlpha": 255,
+          "crossThickness": 2,
+          "crossSize": 10,
+          "crossGap": 3,
+          "crossOutline": false,
+          "crossOutlineThickness": 1,
+          "crossCircleRadius": 0,
+          "crossDotColor": null,
+          "crossDotSize": 0,
+          "crossTopLine": true,
+          "crossBottomLine": true,
+          "crossLeftLine": true,
+          "crossRightLine": true,
+          "crossHideDefault": true,
+          "extra": {
+           "viewmodel_fov": 76
+          }
+         },
+         "liveSplitOverlay": {
+          "enabled": false,
+          "x": 100,
+          "y": 50,
+          "height": 45,
+          "opacity": 100,
+          "key": "none",
+          "keyColor": {
+           "r": 0,
+           "g": 255,
+           "b": 0
+          },
+          "similarity": 400,
+          "smoothness": 80,
+          "lumaMin": 0.1,
+          "lumaMinSmooth": 0.05,
+          "lumaMax": 1,
+          "lumaMaxSmooth": 0,
+          "crop": {
+           "top": 0,
+           "right": 0,
+           "bottom": 0,
+           "left": 0
+          }
+         },
+         "launchArgs": "",
+         "protonOptions": ""
+        },
+        "languages": [],
+        "personalizationImported": true,
+        "bindsGameId": "hl2-4260",
+        "keyBinds": {
+         "binds": {
+          "0": {
+           "command": "sv_cheats 0",
+           "source": "autoexec.cfg"
+          },
+          "1": {
+           "command": "use weapon_crowbar",
+           "source": "autoexec.cfg"
+          },
+          "2": {
+           "command": "use weapon_pistol",
+           "source": "autoexec.cfg"
+          },
+          "3": {
+           "command": "use weapon_smg1",
+           "source": "autoexec.cfg"
+          },
+          "4": {
+           "command": "use weapon_shotgun",
+           "source": "autoexec.cfg"
+          },
+          "5": {
+           "command": "use weapon_frag",
+           "source": "autoexec.cfg"
+          },
+          "6": {
+           "command": "use weapon_rpg",
+           "source": "autoexec.cfg"
+          },
+          "SPACE": {
+           "command": "+jump",
+           "source": "config.cfg"
+          },
+          "MOUSE4": {
+           "command": "save quick",
+           "source": "autoexec.cfg"
+          },
+          "MOUSE5": {
+           "command": "load quick",
+           "source": "autoexec.cfg"
+          },
+          "x": {
+           "command": "save x; load x",
+           "source": "autoexec.cfg"
+          },
+          "i": {
+           "command": "load autosave",
+           "source": "autoexec.cfg"
+          },
+          "k": {
+           "command": "load quick01",
+           "source": "autoexec.cfg"
+          },
+          "h": {
+           "command": "save /; reload",
+           "source": "autoexec.cfg"
+          },
+          "u": {
+           "command": "exec autoexec",
+           "source": "autoexec.cfg"
+          },
+          "]": {
+           "command": "r_portalsopenall 1",
+           "source": "autoexec.cfg"
+          },
+          "p": {
+           "command": "load start;sv_cheats 0",
+           "source": "autoexec.cfg"
+          },
+          "t": {
+           "command": "bind mwheeldown +duck; bind mwheelup +duck",
+           "source": "autoexec.cfg"
+          },
+          "y": {
+           "command": "bind mwheeldown pause; bind mwheelup pause",
+           "source": "autoexec.cfg"
+          },
+          "n": {
+           "command": "bind mwheeldown +use; bind mwheelup +use",
+           "source": "autoexec.cfg"
+          }
+         },
+         "aliases": {},
+         "cvars": {
+          "sensitivity": "3"
+         },
+         "files": [
+          "config.cfg",
+          "autoexec.cfg"
+         ]
+        }
+       }
+      ]
+     ]
+    },
+    "game-config-read": {
+     "$args": [],
+     "$else": {
+      "status": "not-installed",
+      "gameId": "hl2-4260",
+      "engine": "source"
+     }
+    },
+    "game-cfg-files-list": {
+     "$args": [],
+     "$else": {
+      "status": "error",
+      "code": "NOT_INSTALLED"
+     }
+    }
+   },
+   "languages": [
+    "en",
+    "ru"
+   ]
+  },
+  {
+   "id": "gs-launch-linux",
+   "game": "218",
+   "state": "Ghosting на Linux: ещё и параметры Proton",
+   "width": 1440,
+   "height": 860,
+   "steps": [
+    {
+     "click": {
+      "css": ".game-settings__tab",
+      "index": 1,
+      "label": "#L_GS_S_LAUNCH",
+      "role": "tab"
+     }
+    },
+    {
+     "wait": 450
+    }
+   ],
+   "languages": [
+    "en",
+    "ru"
+   ],
+   "platform": "linux"
+  },
+  {
+   "id": "gs-launch-lang",
+   "game": "218",
+   "state": "Ghosting: язык игры (есть языковые файлы)",
+   "width": 1440,
+   "height": 860,
+   "steps": [
+    {
+     "click": {
+      "css": ".game-settings__tab",
+      "index": 1,
+      "label": "#L_GS_S_LAUNCH",
+      "role": "tab"
+     }
+    },
+    {
+     "wait": 450
+    }
+   ],
+   "replies": {
+    "game-settings-get": {
+     "$args": [
+      [
+       [
+        "218"
+       ],
+       {
+        "status": "ok",
+        "settings": {
+         "console": false,
+         "novid": false,
+         "borderless": false,
+         "dx9": false,
+         "nocrashdialog": false,
+         "noasync": false,
+         "noaafonts": false,
+         "high": false,
+         "excludeCpu0": false,
+         "startTimer": false,
+         "language": "auto",
+         "rinput": true,
+         "rinputMenuFix": false,
+         "windowed": false,
+         "developer": false,
+         "condebug": false,
+         "nojoy": false,
+         "width": 0,
+         "height": 0,
+         "refreshRate": 0,
+         "packs": {
+          "hud": "default",
+          "crosshair": "default",
+          "changerShape": "Default",
+          "changerColor": "green"
+         },
+         "bxt": {
+          "timer": false,
+          "timerX": 0,
+          "timerY": 50,
+          "speedometer": true,
+          "speedometerX": 50,
+          "speedometerY": 100,
+          "jumpspeed": false,
+          "jumpspeedX": 50,
+          "jumpspeedY": 100,
+          "viewangles": false,
+          "viewanglesX": 100,
+          "viewanglesY": 0,
+          "jumpdistance": false,
+          "precision": 6,
+          "incorrectFps": true,
+          "fov": 90,
+          "fixWidescreenFov": false,
+          "viewmodelFov": 0,
+          "viewmodelSemitransparent": false,
+          "removeViewmodel": false,
+          "viewmodelForward": 0,
+          "viewmodelRight": 0,
+          "viewmodelUp": 0,
+          "viewmodelBobAngled": false,
+          "viewmodelNoIdle": false,
+          "viewmodelNoEquip": false,
+          "hideCrosshair": false
+         },
+         "binds": {},
+         "personalization": {
+          "hudEnabled": false,
+          "hudColor": {
+           "r": 255,
+           "g": 220,
+           "b": 0
+          },
+          "hudAlpha": -1,
+          "hudAffectsCrosshair": false,
+          "hideQuickInfo": false,
+          "crossPreset": "custom",
+          "crossEnabled": false,
+          "crossColor": {
+           "r": 0,
+           "g": 255,
+           "b": 0
+          },
+          "crossAlpha": 255,
+          "crossThickness": 2,
+          "crossSize": 10,
+          "crossGap": 3,
+          "crossOutline": false,
+          "crossOutlineThickness": 1,
+          "crossCircleRadius": 0,
+          "crossDotColor": null,
+          "crossDotSize": 0,
+          "crossTopLine": true,
+          "crossBottomLine": true,
+          "crossLeftLine": true,
+          "crossRightLine": true,
+          "crossHideDefault": true,
+          "extra": {
+           "viewmodel_fov": 76
+          }
+         },
+         "liveSplitOverlay": {
+          "enabled": false,
+          "x": 100,
+          "y": 50,
+          "height": 45,
+          "opacity": 100,
+          "key": "none",
+          "keyColor": {
+           "r": 0,
+           "g": 255,
+           "b": 0
+          },
+          "similarity": 400,
+          "smoothness": 80,
+          "lumaMin": 0.1,
+          "lumaMinSmooth": 0.05,
+          "lumaMax": 1,
+          "lumaMaxSmooth": 0,
+          "crop": {
+           "top": 0,
+           "right": 0,
+           "bottom": 0,
+           "left": 0
+          }
+         },
+         "launchArgs": "",
+         "protonOptions": ""
+        },
+        "languages": [
+         "english",
+         "russian"
+        ],
+        "personalizationImported": true,
+        "bindsGameId": "ghosting-renewed",
+        "keyBinds": {
+         "binds": {
+          "0": {
+           "command": "sv_cheats 0",
+           "source": "autoexec.cfg"
+          },
+          "1": {
+           "command": "use weapon_crowbar",
+           "source": "autoexec.cfg"
+          },
+          "2": {
+           "command": "use weapon_pistol",
+           "source": "autoexec.cfg"
+          },
+          "3": {
+           "command": "use weapon_smg1",
+           "source": "autoexec.cfg"
+          },
+          "4": {
+           "command": "use weapon_shotgun",
+           "source": "autoexec.cfg"
+          },
+          "5": {
+           "command": "use weapon_frag",
+           "source": "autoexec.cfg"
+          },
+          "6": {
+           "command": "use weapon_rpg",
+           "source": "autoexec.cfg"
+          },
+          "SPACE": {
+           "command": "+jump",
+           "source": "config.cfg"
+          },
+          "MOUSE4": {
+           "command": "save quick",
+           "source": "autoexec.cfg"
+          },
+          "MOUSE5": {
+           "command": "load quick",
+           "source": "autoexec.cfg"
+          },
+          "x": {
+           "command": "save x; load x",
+           "source": "autoexec.cfg"
+          },
+          "i": {
+           "command": "load autosave",
+           "source": "autoexec.cfg"
+          },
+          "k": {
+           "command": "load quick01",
+           "source": "autoexec.cfg"
+          },
+          "h": {
+           "command": "save /; reload",
+           "source": "autoexec.cfg"
+          },
+          "u": {
+           "command": "exec autoexec",
+           "source": "autoexec.cfg"
+          },
+          "]": {
+           "command": "r_portalsopenall 1",
+           "source": "autoexec.cfg"
+          },
+          "p": {
+           "command": "load start;sv_cheats 0",
+           "source": "autoexec.cfg"
+          },
+          "t": {
+           "command": "bind mwheeldown +duck; bind mwheelup +duck",
+           "source": "autoexec.cfg"
+          },
+          "y": {
+           "command": "bind mwheeldown pause; bind mwheelup pause",
+           "source": "autoexec.cfg"
+          },
+          "n": {
+           "command": "bind mwheeldown +use; bind mwheelup +use",
+           "source": "autoexec.cfg"
+          }
+         },
+         "aliases": {},
+         "cvars": {
+          "sensitivity": "3"
+         },
+         "files": [
+          "config.cfg",
+          "autoexec.cfg"
+         ]
+        }
+       }
+      ]
+     ]
+    }
+   },
+   "languages": [
+    "en",
+    "ru"
+   ]
+  },
+  {
+   "id": "gs-launch-error",
+   "game": "218",
+   "state": "Ghosting: параметр отклонён при сохранении — ошибка под полем",
+   "width": 1440,
+   "height": 860,
+   "steps": [
+    {
+     "click": {
+      "css": ".game-settings__tab",
+      "index": 1,
+      "label": "#L_GS_S_LAUNCH",
+      "role": "tab"
+     }
+    },
+    {
+     "wait": 450
+    },
+    {
+     "wheel": {
+      "css": ".game-settings__body",
+      "index": 0,
+      "label": "#L_GS_S_LAUNCH",
+      "role": "tab-panel"
+     },
+     "deltaY": -6000
+    },
+    {
+     "wait": 900
+    },
+    {
+     "wheel": {
+      "css": ".game-settings__body",
+      "index": 0,
+      "label": "#L_GS_S_LAUNCH",
+      "role": "tab-panel"
+     },
+     "deltaY": -6000
+    },
+    {
+     "wait": 900
+    },
+    {
+     "click": {
+      "css": ".game-settings__args",
+      "index": 0,
+      "label": {
+       "en": "Additional launch options",
+       "ru": "Дополнительные параметры запуска"
+      },
+      "role": "text-input"
+     }
+    },
+    {
+     "type": "-steam"
+    },
+    {
+     "click": {
+      "css": ".game-settings__footer .settings-btn.primary",
+      "label": "#L_SAVE",
+      "role": "button"
+     }
+    }
+   ],
+   "replies": {
+    "game-settings-save": {
+     "status": "error",
+     "error": {
+      "code": "FORBIDDEN_PARAM",
+      "param": "-steam"
+     }
+    }
+   },
+   "languages": [
+    "en",
+    "ru"
+   ]
+  },
+  {
+   "id": "gs-launch-dropdown",
+   "game": "70",
+   "state": "HL1: список языков игры открыт (страница прокручена до конца)",
+   "width": 1440,
+   "height": 860,
+   "steps": [
+    {
+     "click": {
+      "css": ".game-settings__tab",
+      "index": 1,
+      "label": "#L_GS_S_LAUNCH",
+      "role": "tab"
+     }
+    },
+    {
+     "wait": 450
+    },
+    {
+     "wheel": {
+      "css": ".game-settings__body",
+      "index": 0,
+      "label": "#L_GS_S_LAUNCH",
+      "role": "tab-panel"
+     },
+     "deltaY": -6000
+    },
+    {
+     "wait": 900
+    },
+    {
+     "wheel": {
+      "css": ".game-settings__body",
+      "index": 0,
+      "label": "#L_GS_S_LAUNCH",
+      "role": "tab-panel"
+     },
+     "deltaY": -6000
+    },
+    {
+     "wait": 900
+    },
+    {
+     "click": {
+      "css": ".settings-select",
+      "index": 2,
+      "label": {
+       "en": "Game language",
+       "ru": "Язык игры"
+      },
+      "role": "combobox"
+     }
+    }
+   ],
+   "replies": {
+    "game-settings-get": {
+     "$args": [
+      [
+       [
+        "70"
+       ],
+       {
+        "status": "ok",
+        "settings": {
+         "console": false,
+         "novid": false,
+         "borderless": false,
+         "dx9": false,
+         "nocrashdialog": false,
+         "noasync": false,
+         "noaafonts": false,
+         "high": false,
+         "excludeCpu0": false,
+         "startTimer": false,
+         "language": "auto",
+         "rinput": true,
+         "rinputMenuFix": false,
+         "windowed": false,
+         "developer": false,
+         "condebug": false,
+         "nojoy": false,
+         "width": 0,
+         "height": 0,
+         "refreshRate": 0,
+         "packs": {
+          "hud": "default",
+          "crosshair": "default",
+          "changerShape": "Default",
+          "changerColor": "green"
+         },
+         "bxt": {
+          "timer": false,
+          "timerX": 0,
+          "timerY": 50,
+          "speedometer": true,
+          "speedometerX": 50,
+          "speedometerY": 100,
+          "jumpspeed": false,
+          "jumpspeedX": 50,
+          "jumpspeedY": 100,
+          "viewangles": false,
+          "viewanglesX": 100,
+          "viewanglesY": 0,
+          "jumpdistance": false,
+          "precision": 6,
+          "incorrectFps": true,
+          "fov": 90,
+          "fixWidescreenFov": false,
+          "viewmodelFov": 0,
+          "viewmodelSemitransparent": false,
+          "removeViewmodel": false,
+          "viewmodelForward": 0,
+          "viewmodelRight": 0,
+          "viewmodelUp": 0,
+          "viewmodelBobAngled": false,
+          "viewmodelNoIdle": false,
+          "viewmodelNoEquip": false,
+          "hideCrosshair": false
+         },
+         "binds": {},
+         "personalization": {
+          "hudEnabled": false,
+          "hudColor": {
+           "r": 255,
+           "g": 220,
+           "b": 0
+          },
+          "hudAlpha": -1,
+          "hudAffectsCrosshair": false,
+          "hideQuickInfo": false,
+          "crossPreset": "standard",
+          "crossEnabled": false,
+          "crossColor": {
+           "r": 0,
+           "g": 255,
+           "b": 0
+          },
+          "crossAlpha": 255,
+          "crossThickness": 2,
+          "crossSize": 10,
+          "crossGap": 3,
+          "crossOutline": false,
+          "crossOutlineThickness": 1,
+          "crossCircleRadius": 0,
+          "crossDotColor": null,
+          "crossDotSize": 0,
+          "crossTopLine": true,
+          "crossBottomLine": true,
+          "crossLeftLine": true,
+          "crossRightLine": true,
+          "crossHideDefault": true,
+          "extra": {}
+         },
+         "liveSplitOverlay": {
+          "enabled": false,
+          "x": 100,
+          "y": 50,
+          "height": 45,
+          "opacity": 100,
+          "key": "none",
+          "keyColor": {
+           "r": 0,
+           "g": 255,
+           "b": 0
+          },
+          "similarity": 400,
+          "smoothness": 80,
+          "lumaMin": 0.1,
+          "lumaMinSmooth": 0.05,
+          "lumaMax": 1,
+          "lumaMaxSmooth": 0,
+          "crop": {
+           "top": 0,
+           "right": 0,
+           "bottom": 0,
+           "left": 0
+          }
+         },
+         "launchArgs": "",
+         "protonOptions": ""
+        },
+        "languages": [
+         "english",
+         "russian"
+        ],
+        "packs": {
+         "sourcePage": "https://www.speedrun.com/hl1/resources",
+         "packs": [
+          {
+           "id": "ag-hud",
+           "kind": "hud",
+           "title": "Big AG HUD",
+           "author": "execut4ble"
+          },
+          {
+           "id": "execut4ble-crosshair",
+           "kind": "crosshair",
+           "title": "Crosshair by execut4ble",
+           "author": "execut4ble"
+          },
+          {
+           "id": "crosshair-changer",
+           "kind": "crosshair",
+           "title": "Half-Life Crosshair Changer",
+           "author": "aarongeorge"
+          }
+         ],
+         "changerShapes": [
+          "Default",
+          "1px",
+          "3px",
+          "Small Circle",
+          "Medium Circle",
+          "Large Circle",
+          "Small Circle with 1px",
+          "Medium Circle with 1px",
+          "Large Circle with 1px"
+         ],
+         "changerColors": [
+          "green",
+          "red",
+          "blue",
+          "lightblue",
+          "orange",
+          "pink",
+          "yellow"
+         ]
+        },
+        "bindsGameId": "hl1-won",
+        "keyBinds": {
+         "binds": {
+          "w": {
+           "command": "+forward",
+           "source": "config.cfg"
+          }
+         },
+         "aliases": {},
+         "cvars": {
+          "sensitivity": "3"
+         },
+         "files": [
+          "config.cfg"
+         ]
+        }
+       }
+      ]
+     ]
+    }
+   },
+   "languages": [
+    "en",
+    "ru"
+   ]
+  },
+  {
+   "id": "gs-launch-hl1-low",
+   "game": "70",
+   "state": "HL1: «Параметры запуска», окно ниже 760 — прокрутка",
+   "width": 1280,
+   "height": 720,
+   "steps": [
+    {
+     "click": {
+      "css": ".game-settings__tab",
+      "index": 1,
+      "label": "#L_GS_S_LAUNCH",
+      "role": "tab"
+     }
+    },
+    {
+     "wait": 450
+    }
+   ],
+   "languages": [
+    "en",
+    "ru"
+   ]
+  },
+  {
+   "id": "gs-runs-ghosts",
+   "game": "218",
+   "state": "Ghosting: «Призраки» — две записи",
+   "width": 1440,
+   "height": 860,
+   "steps": [
+    {
+     "click": {
+      "css": ".game-settings__tab",
+      "index": 3,
+      "label": "#L_GS_S_GHOSTS",
+      "role": "tab"
+     }
+    },
+    {
+     "wait": 450
+    }
+   ],
+   "languages": [
+    "en",
+    "ru"
+   ]
+  },
+  {
+   "id": "gs-runs-confirm",
+   "game": "218",
+   "state": "Ghosting: вопрос об удалении в строке",
+   "width": 1440,
+   "height": 860,
+   "steps": [
+    {
+     "click": {
+      "css": ".game-settings__tab",
+      "index": 3,
+      "label": "#L_GS_S_GHOSTS",
+      "role": "tab"
+     }
+    },
+    {
+     "wait": 450
+    },
+    {
+     "click": {
+      "css": ".game-settings__run:nth-child(1) .game-settings__run-delete",
+      "label": {
+       "en": "Delete ghost: two.run",
+       "ru": "Удалить призрака: two.run"
+      },
+      "role": "button"
+     }
+    }
+   ],
+   "themes": [
+    "hlsr",
+    "lambda",
+    "resonance",
+    "combine",
+    "xen",
+    "steam2003",
+    "midnight",
+    "liquid-glass"
+   ],
+   "languages": [
+    "en",
+    "ru"
+   ]
+  },
+  {
+   "id": "gs-runs-hl1",
+   "game": "70",
+   "state": "HL1: «Демо» — запись с командой",
+   "width": 1440,
+   "height": 860,
+   "steps": [
+    {
+     "click": {
+      "css": ".game-settings__tab",
+      "index": 4,
+      "label": "#L_GS_S_DEMOS",
+      "role": "tab"
+     }
+    },
+    {
+     "wait": 450
+    }
+   ],
+   "languages": [
+    "en",
+    "ru"
+   ]
+  },
+  {
+   "id": "gs-runs-empty",
+   "game": "218",
+   "state": "Ghosting: записей нет",
+   "width": 1440,
+   "height": 860,
+   "steps": [
+    {
+     "click": {
+      "css": ".game-settings__tab",
+      "index": 3,
+      "label": "#L_GS_S_GHOSTS",
+      "role": "tab"
+     }
+    },
+    {
+     "wait": 450
+    }
+   ],
+   "replies": {
+    "game-runs-list": {
+     "$args": [
+      [
+       [
+        "218"
+       ],
+       {
+        "status": "ok",
+        "path": "C:\\HLSR\\ghosting-renewed\\ghostingmod\\runs",
+        "items": [],
+        "truncated": false
+       }
+      ]
+     ]
+    }
+   },
+   "languages": [
+    "en",
+    "ru"
+   ]
+  },
+  {
+   "id": "gs-runs-error",
+   "game": "218",
+   "state": "Ghosting: не установлена — сообщение вместо списка",
+   "width": 1440,
+   "height": 860,
+   "steps": [
+    {
+     "click": {
+      "css": ".game-settings__tab",
+      "index": 3,
+      "label": "#L_GS_S_GHOSTS",
+      "role": "tab"
+     }
+    },
+    {
+     "wait": 450
+    }
+   ],
+   "replies": {
+    "game-runs-list": {
+     "$args": [
+      [
+       [
+        "218"
+       ],
+       {
+        "status": "not-installed",
+        "items": []
+       }
+      ]
+     ]
+    }
+   },
+   "languages": [
+    "en",
+    "ru"
+   ]
+  },
+  {
+   "id": "gs-version",
+   "game": "218",
+   "state": "Ghosting: «Версия» — сведения без метаданных",
+   "width": 1440,
+   "height": 860,
+   "steps": [
+    {
+     "click": {
+      "css": ".game-settings__tab",
+      "index": 4,
+      "label": "#L_GS_S_VERSION",
+      "role": "tab"
+     }
+    },
+    {
+     "wait": 450
+    }
+   ],
+   "languages": [
+    "en",
+    "ru"
+   ]
+  },
+  {
+   "id": "gs-version-meta",
+   "game": "218",
+   "state": "Ghosting: «Версия» — сборка с подписанными метаданными",
+   "width": 1440,
+   "height": 860,
+   "steps": [
+    {
+     "click": {
+      "css": ".game-settings__tab",
+      "index": 4,
+      "label": "#L_GS_S_VERSION",
+      "role": "tab"
+     }
+    },
+    {
+     "wait": 450
+    }
+   ],
+   "replies": {
+    "game-delivery-get-status": {
+     "$args": [
+      [
+       [
+        null
+       ],
+       [
+        {
+         "gameId": "ghosting-renewed",
+         "launcherId": "218",
+         "state": "ready",
+         "percent": 100,
+         "bytesDownloaded": 0,
+         "totalBytes": 1945918366,
+         "speedBps": 0,
+         "etaSeconds": null,
+         "version": "1.0.9",
+         "installedVersion": "1.0.9",
+         "installedAt": "2026-10-01T09:30:00.000Z",
+         "buildMetadata": {
+          "buildName": "Ghosting Renewed 1.0.9",
+          "buildId": "gr-1.0.9-2026-09-30",
+          "minimumLauncherVersion": "0.4.7"
+         },
+         "buildDate": "2026-09-30T10:00:00.000Z",
+         "buildDateSource": "metadata",
+         "metadataState": "trusted",
+         "metadataIssue": null,
+         "installable": true,
+         "reasons": [],
+         "unavailableReason": null,
+         "error": null,
+         "pending": null,
+         "phase": null,
+         "checked": 0,
+         "totalChecked": 0,
+         "integrity": null,
+         "updatePlan": null,
+         "source": "http",
+         "operation": null,
+         "chain": null,
+         "process": {
+          "gameId": "ghosting-renewed",
+          "state": "not-running",
+          "running": false,
+          "since": null,
+          "startedAt": null,
+          "exitCode": null,
+          "lastExit": null
+         },
+         "update": {
+          "installedVersion": "1.0.9",
+          "availableVersion": "1.0.9",
+          "upToDate": true,
+          "updateAvailable": false,
+          "updateRequired": false,
+          "kind": null,
+          "totalSize": 0,
+          "steps": [],
+          "source": null,
+          "checkedAt": "2026-10-16T12:00:00.000Z",
+          "stale": false,
+          "unknown": false,
+          "error": null
+         },
+         "mainButton": {
+          "state": "ready",
+          "action": "play",
+          "enabled": true,
+          "spinner": false,
+          "progress": false
+         },
+         "requiresLicense": false
+        },
+        {
+         "gameId": "hl2-4260",
+         "launcherId": "220",
+         "state": "not-installed",
+         "totalBytes": 1704734880,
+         "version": "1.0.0",
+         "installedVersion": null,
+         "installedAt": null,
+         "buildMetadata": null,
+         "buildDate": null,
+         "buildDateSource": null,
+         "metadataState": "not-installed",
+         "metadataIssue": null,
+         "installable": true,
+         "reasons": [],
+         "unavailableReason": null,
+         "error": null,
+         "pending": null,
+         "phase": null,
+         "integrity": null,
+         "updatePlan": null,
+         "source": "http",
+         "operation": null,
+         "chain": null,
+         "process": {
+          "gameId": "hl2-4260",
+          "state": "not-running",
+          "running": false,
+          "since": null,
+          "startedAt": null,
+          "exitCode": null,
+          "lastExit": null
+         },
+         "update": null,
+         "mainButton": {
+          "state": "not-installed",
+          "action": "install",
+          "enabled": true,
+          "spinner": false,
+          "progress": false
+         },
+         "requiresLicense": true
+        },
+        {
+         "gameId": "hl1-won",
+         "launcherId": "70",
+         "state": "ready",
+         "percent": 100,
+         "bytesDownloaded": 0,
+         "totalBytes": 162457024,
+         "speedBps": 0,
+         "etaSeconds": null,
+         "version": "1.0.0",
+         "installedVersion": "1.0.0",
+         "installedAt": "2026-09-20T18:00:00.000Z",
+         "buildMetadata": null,
+         "buildDate": null,
+         "buildDateSource": null,
+         "metadataState": "legacy",
+         "metadataIssue": null,
+         "installable": true,
+         "reasons": [],
+         "unavailableReason": null,
+         "error": null,
+         "pending": null,
+         "phase": null,
+         "checked": 0,
+         "totalChecked": 0,
+         "integrity": null,
+         "updatePlan": null,
+         "source": "http",
+         "operation": null,
+         "chain": null,
+         "process": {
+          "gameId": "hl1-won",
+          "state": "not-running",
+          "running": false,
+          "since": null,
+          "startedAt": null,
+          "exitCode": null,
+          "lastExit": null
+         },
+         "update": null,
+         "mainButton": {
+          "state": "ready",
+          "action": "play",
+          "enabled": true,
+          "spinner": false,
+          "progress": false
+         },
+         "requiresLicense": true
+        }
+       ]
+      ],
+      [
+       [
+        "ghosting-renewed"
+       ],
+       {
+        "gameId": "ghosting-renewed",
+        "launcherId": "218",
+        "state": "ready",
+        "percent": 100,
+        "bytesDownloaded": 0,
+        "totalBytes": 1945918366,
+        "speedBps": 0,
+        "etaSeconds": null,
+        "version": "1.0.9",
+        "installedVersion": "1.0.9",
+        "installedAt": "2026-10-01T09:30:00.000Z",
+        "buildMetadata": {
+         "buildName": "Ghosting Renewed 1.0.9",
+         "buildId": "gr-1.0.9-2026-09-30",
+         "minimumLauncherVersion": "0.4.7"
+        },
+        "buildDate": "2026-09-30T10:00:00.000Z",
+        "buildDateSource": "metadata",
+        "metadataState": "trusted",
+        "metadataIssue": null,
+        "installable": true,
+        "reasons": [],
+        "unavailableReason": null,
+        "error": null,
+        "pending": null,
+        "phase": null,
+        "checked": 0,
+        "totalChecked": 0,
+        "integrity": null,
+        "updatePlan": null,
+        "source": "http",
+        "operation": null,
+        "chain": null,
+        "process": {
+         "gameId": "ghosting-renewed",
+         "state": "not-running",
+         "running": false,
+         "since": null,
+         "startedAt": null,
+         "exitCode": null,
+         "lastExit": null
+        },
+        "update": {
+         "installedVersion": "1.0.9",
+         "availableVersion": "1.0.9",
+         "upToDate": true,
+         "updateAvailable": false,
+         "updateRequired": false,
+         "kind": null,
+         "totalSize": 0,
+         "steps": [],
+         "source": null,
+         "checkedAt": "2026-10-16T12:00:00.000Z",
+         "stale": false,
+         "unknown": false,
+         "error": null
+        },
+        "mainButton": {
+         "state": "ready",
+         "action": "play",
+         "enabled": true,
+         "spinner": false,
+         "progress": false
+        },
+        "requiresLicense": false
+       }
+      ],
+      [
+       [
+        "218"
+       ],
+       {
+        "gameId": "ghosting-renewed",
+        "launcherId": "218",
+        "state": "ready",
+        "percent": 100,
+        "bytesDownloaded": 0,
+        "totalBytes": 1945918366,
+        "speedBps": 0,
+        "etaSeconds": null,
+        "version": "1.0.9",
+        "installedVersion": "1.0.9",
+        "installedAt": "2026-10-01T09:30:00.000Z",
+        "buildMetadata": {
+         "buildName": "Ghosting Renewed 1.0.9",
+         "buildId": "gr-1.0.9-2026-09-30",
+         "minimumLauncherVersion": "0.4.7"
+        },
+        "buildDate": "2026-09-30T10:00:00.000Z",
+        "buildDateSource": "metadata",
+        "metadataState": "trusted",
+        "metadataIssue": null,
+        "installable": true,
+        "reasons": [],
+        "unavailableReason": null,
+        "error": null,
+        "pending": null,
+        "phase": null,
+        "checked": 0,
+        "totalChecked": 0,
+        "integrity": null,
+        "updatePlan": null,
+        "source": "http",
+        "operation": null,
+        "chain": null,
+        "process": {
+         "gameId": "ghosting-renewed",
+         "state": "not-running",
+         "running": false,
+         "since": null,
+         "startedAt": null,
+         "exitCode": null,
+         "lastExit": null
+        },
+        "update": {
+         "installedVersion": "1.0.9",
+         "availableVersion": "1.0.9",
+         "upToDate": true,
+         "updateAvailable": false,
+         "updateRequired": false,
+         "kind": null,
+         "totalSize": 0,
+         "steps": [],
+         "source": null,
+         "checkedAt": "2026-10-16T12:00:00.000Z",
+         "stale": false,
+         "unknown": false,
+         "error": null
+        },
+        "mainButton": {
+         "state": "ready",
+         "action": "play",
+         "enabled": true,
+         "spinner": false,
+         "progress": false
+        },
+        "requiresLicense": false
+       }
+      ]
+     ]
+    }
+   },
+   "themes": [
+    "hlsr",
+    "lambda",
+    "resonance",
+    "combine",
+    "xen",
+    "steam2003",
+    "midnight",
+    "liquid-glass"
+   ],
+   "languages": [
+    "en",
+    "ru"
+   ]
+  },
+  {
+   "id": "gs-cfg-import",
+   "game": "218",
+   "state": "Ghosting: импорт из cfg — правки и отчёт в подвале",
+   "width": 1440,
+   "height": 860,
+   "steps": [
+    {
+     "click": {
+      "css": ".game-settings__footer .settings-btn.ghost:nth-child(2)",
+      "label": {
+       "en": "Import from cfg",
+       "ru": "Импорт из cfg"
+      },
+      "role": "button"
+     }
+    }
+   ],
+   "replies": {
+    "game-binds-import-pick": {
+     "$seq": [
+      {
+       "status": "ok",
+       "name": "config.cfg",
+       "dir": "D:/cfgs",
+       "text": "sensitivity \"4\"\nvolume \"0.5\"\nfps_max \"250\"\nexec extras.cfg\n",
+       "files": [
+        {
+         "name": "config.cfg",
+         "dir": "D:/cfgs",
+         "text": "sensitivity \"4\"\nvolume \"0.5\"\nfps_max \"250\"\nexec extras.cfg\n"
+        }
+       ]
+      },
+      {
+       "status": "ok",
+       "name": "extras.cfg",
+       "dir": "D:/cfgs",
+       "text": "sensitivity \"5\"\n"
+      }
+     ]
+    }
+   },
+   "languages": [
+    "en",
+    "ru"
+   ]
+  }
+ ]
+}

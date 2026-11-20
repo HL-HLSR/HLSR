@@ -1,0 +1,55 @@
+[package]
+name = "hlsr-core"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+
+[features]
+# Отладочные возможности (HLSR_DATA_DIR, HLSR_LOGS_DIR…) в сборке выпуска.
+dev-hooks = []
+
+[dependencies]
+thiserror.workspace = true
+serde_json.workspace = true
+ryu-js.workspace = true
+chrono.workspace = true
+tracing.workspace = true
+tracing-subscriber = { workspace = true, features = ["std", "registry"] }
+tracing-log.workspace = true
+tokio = { workspace = true, features = ["rt", "net", "io-util", "time", "sync"] }
+sys-locale.workspace = true
+icu_collator.workspace = true
+icu_locale_core.workspace = true
+regex.workspace = true
+sha2.workspace = true
+# Подпись Ed25519 (manifest_signing) и общий построитель клиента HTTP (http), Р7 подпроекта 6.
+base64.workspace = true
+ed25519-dalek.workspace = true
+getrandom.workspace = true
+reqwest.workspace = true
+rustls.workspace = true
+webpki-roots.workspace = true
+rusty-leveldb.workspace = true
+tempfile.workspace = true
+
+[target.'cfg(unix)'.dependencies]
+rustix = { workspace = true, features = ["process", "system"] }
+
+[target.'cfg(windows)'.dependencies]
+windows-sys = { workspace = true, features = [
+    "Win32_Foundation",
+    "Win32_Globalization",
+    "Win32_Security",
+    "Win32_Storage_FileSystem",
+    "Win32_System_Pipes",
+    "Win32_System_Registry",
+    "Win32_System_SystemInformation",
+    "Win32_System_Threading",
+] }
+
+[dev-dependencies]
+tempfile.workspace = true
+tracing-subscriber = { workspace = true, features = ["fmt"] }
+log.workspace = true
+tokio = { workspace = true, features = ["rt-multi-thread", "macros"] }

@@ -1,0 +1,11 @@
+{
+  "id": "configs/scripts",
+  "state": "HL1: «Скрипты» — первый скрипт гайда, список по главам, клавиши действий",
+  "base": "configs/_kb",
+  "steps": [
+    {"click": {"css": ".launcher-topbar__tab:nth-child(3)", "view": "topbar-tab-configs"}},
+    {"click": {"css": ".cfgp__game:nth-child(2)", "view": "cfgp-game-70"}},
+    {"click": {"css": ".game-settings__tab[data-tour=\"gs-scripts\"]", "view": "gs-scripts"}},
+    {"move": [800, 880]}
+  ]
+}

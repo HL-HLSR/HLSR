@@ -1,0 +1,9 @@
+{
+  "id": "shell/games",
+  "screen": "shell",
+  "state": "Корень оболочки: «Игры», шапка (логотип, вкладки, кнопки окна), колонка свёрнута и выдвинута",
+  "themes": ["hlsr", "paper", "liquid-glass"],
+  "languages": ["ru"],
+  "prefs": {"configTourSeen": true},
+  "rails": ["closed", "open"]
+}

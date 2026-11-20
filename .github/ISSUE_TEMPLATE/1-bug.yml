@@ -1,0 +1,71 @@
+name: Ошибка / Bug report
+description: Лаунчер работает не так, как должен / The launcher does not work as expected
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Уязвимость? Не пишите сюда — см. SECURITY.md. / A vulnerability? Do not file it here — see SECURITY.md.
+  - type: checkboxes
+    id: search
+    attributes:
+      label: Проверка / Check
+      options:
+        - label: Я поискал(а) похожие issue / I searched the existing issues
+          required: true
+  - type: input
+    id: version
+    attributes:
+      label: Версия HLSR / HLSR version
+      description: Настройки → О программе / Settings → About
+      placeholder: "0.5.0"
+    validations:
+      required: true
+  - type: dropdown
+    id: os
+    attributes:
+      label: Система / OS
+      options:
+        - Windows 11
+        - Windows 10
+        - Linux
+    validations:
+      required: true
+  - type: input
+    id: os-details
+    attributes:
+      label: Подробнее о системе / OS details
+      description: Для Linux — дистрибутив, X11 или Wayland, видеокарта / For Linux — distribution, X11 or Wayland, GPU
+  - type: dropdown
+    id: game
+    attributes:
+      label: Игра / Game
+      options:
+        - Не относится к игре / Not game-specific
+        - Half-Life (WON)
+        - Half-Life 2 (2707)
+        - Half-Life 2 (4260)
+        - Ghosting Renewed
+  - type: textarea
+    id: what
+    attributes:
+      label: Что случилось / What happened
+      description: Что вы делали, что ожидали и что получили / What you did, what you expected, what you got
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Как повторить / Steps to reproduce
+      placeholder: |
+        1.
+        2.
+        3.
+  - type: textarea
+    id: logs
+    attributes:
+      label: Журнал / Log
+      description: |
+        Настройки → Диагностика, или файл main.log. Перед отправкой проверьте, что в нём нет личных данных.
+        Settings → Diagnostics, or main.log. Check it for personal data before posting.
+      render: text

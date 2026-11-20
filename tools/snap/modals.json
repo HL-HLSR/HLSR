@@ -1,0 +1,249 @@
+{
+  "$comment": "Сцены окон доставки оболочки (ПП5 5a.7): hlsr-snap modals (tools/snap/src/modals.rs) снимает ShellWindowsProbe со сценариями ShellFlows на ответах файла сцены tools/snap/screens/<id>.json; эталон — тот же файл сцены в snap-screens.js (его пишет tools/reference/lib/make-shell-window-scenes.js из этого файла). game — игра оболочки (library.lastLaunched); button — mainButton её статуса доставки поверх _base.json; invoke — ответы каналов поверх _base.json; steps — ввод эталона (именованные цели генератора); calls — те же действия сценариями оболочки (методы LauncherShell.vue); clicks — щелчки в окне Slint по подписи (ключ перевода) после calls.",
+  "scales": [1, 1.25],
+  "background": "#0b0e13",
+  "scenes": [
+    {
+      "id": "modal-confirm-uninstall",
+      "state": "подтверждение удаления: опасное, с примечанием (меню игры → «Удалить»)",
+      "game": "218",
+      "invoke": {"game-menu-uninstall": {"status": "confirmation-required", "totalBytes": 1945918366}},
+      "steps": ["menu", "menu-uninstall"],
+      "calls": [{"call": "onMenuAction", "args": ["uninstall"]}]
+    },
+    {
+      "id": "modal-confirm-uninstall-ru",
+      "state": "подтверждение удаления по-русски",
+      "language": "ru",
+      "game": "218",
+      "invoke": {"game-menu-uninstall": {"status": "confirmation-required", "totalBytes": 1945918366}},
+      "steps": ["menu", "menu-uninstall"],
+      "calls": [{"call": "onMenuAction", "args": ["uninstall"]}]
+    },
+    {
+      "id": "modal-confirm-uninstall-lg",
+      "state": "подтверждение удаления в теме Liquid Glass",
+      "theme": "liquid-glass",
+      "game": "218",
+      "invoke": {"game-menu-uninstall": {"status": "confirmation-required", "totalBytes": 1945918366}},
+      "steps": ["menu", "menu-uninstall"],
+      "calls": [{"call": "onMenuAction", "args": ["uninstall"]}]
+    },
+    {
+      "id": "modal-confirm-repair",
+      "state": "подтверждение ремонта: список файлов с прокруткой и примечание о зеркале",
+      "theme": "xen",
+      "game": "218",
+      "repairEnabled": true,
+      "invoke": {"game-menu-repair": {"status": "confirmation-required", "damaged": 8, "files": ["bin/client.dll", "bin/server.dll", "hl2/gameinfo.txt", "hl2/bin/client.dll", "hl2/cfg/config_default.cfg", "hl2/scripts/weapon_crowbar.txt", "platform/steam.inf", "hl2.exe"], "sourceKind": "mirror", "downloadBytes": 100663296}},
+      "steps": ["menu", "menu-repair"],
+      "calls": [{"call": "onMenuAction", "args": ["repair"]}]
+    },
+    {
+      "id": "modal-confirm-license",
+      "state": "нет лицензии Steam при запуске: подтверждение без примечания",
+      "theme": "lambda",
+      "game": "218",
+      "invoke": {"game-process-launch": {"status": "error", "error": {"code": "STEAM_APP_NOT_OWNED"}}},
+      "steps": ["play"],
+      "calls": [{"call": "onPlay"}]
+    },
+    {
+      "id": "modal-unavailable-steam",
+      "state": "«Недоступно»: Steam не запущен (главная кнопка «Недоступно»)",
+      "game": "70",
+      "button": {"state": "unavailable", "action": "explain", "enabled": true, "spinner": false, "progress": false, "reason": "STEAM_NOT_RUNNING"},
+      "steps": ["play"],
+      "calls": [{"call": "explain"}]
+    },
+    {
+      "id": "modal-unavailable-details-ru",
+      "state": "«Недоступно» по-русски, подробности раскрыты (код причины)",
+      "language": "ru",
+      "game": "70",
+      "button": {"state": "unavailable", "action": "explain", "enabled": true, "spinner": false, "progress": false, "reason": "LICENSE_CHECK_UNAVAILABLE"},
+      "steps": ["play", "details"],
+      "calls": [{"call": "explain"}],
+      "clicks": ["#L_UA_DETAILS"]
+    },
+    {
+      "id": "modal-unavailable-launcher",
+      "state": "«Недоступно»: сборка требует новой версии лаунчера, тема midnight",
+      "theme": "midnight",
+      "game": "70",
+      "button": {"state": "unavailable", "action": "explain", "enabled": true, "spinner": false, "progress": false, "reason": "BUILD_REQUIRES_NEWER_LAUNCHER"},
+      "steps": ["play"],
+      "calls": [{"call": "explain"}]
+    },
+    {
+      "id": "modal-unavailable-lg",
+      "state": "«Недоступно» в теме Liquid Glass (.settings-modal__window — стекло окна), подробности раскрыты",
+      "theme": "liquid-glass",
+      "game": "70",
+      "button": {"state": "unavailable", "action": "explain", "enabled": true, "spinner": false, "progress": false, "reason": "LICENSE_CHECK_UNAVAILABLE"},
+      "steps": ["play", "details"],
+      "calls": [{"call": "explain"}],
+      "clicks": ["#L_UA_DETAILS"]
+    },
+    {
+      "id": "modal-library",
+      "state": "первый запуск: выбор папки библиотеки, свободное место",
+      "game": "218",
+      "invoke": {
+        "get-library-path": {"path": "D:\\Games\\HLSR", "confirmed": false},
+        "validate-install-path": {"ok": true, "path": "D:\\Games\\HLSR", "error": null, "freeSpaceMb": 52428.8, "hasCyrillic": false}
+      },
+      "steps": [],
+      "calls": []
+    },
+    {
+      "id": "modal-library-cyrillic-ru",
+      "state": "выбор папки библиотеки по-русски: кириллица в пути",
+      "language": "ru",
+      "game": "218",
+      "invoke": {
+        "get-library-path": {"path": "D:\\Игры\\HLSR", "confirmed": false},
+        "validate-install-path": {"ok": true, "path": "D:\\Игры\\HLSR", "error": null, "freeSpaceMb": 1023, "hasCyrillic": true}
+      },
+      "steps": [],
+      "calls": []
+    },
+    {
+      "id": "modal-library-error",
+      "state": "выбор папки библиотеки: нет доступа, «Подтвердить» выключена, тема resonance",
+      "theme": "resonance",
+      "game": "218",
+      "invoke": {
+        "get-library-path": {"path": "C:\\Program Files\\HLSR", "confirmed": false},
+        "validate-install-path": {"ok": false, "error": "no-access"}
+      },
+      "steps": [],
+      "calls": []
+    },
+    {
+      "id": "modal-livesplit",
+      "state": "запуск LiveSplit: игры и сплиты (сетка), Windows",
+      "game": "218",
+      "toolReady": true,
+      "invoke": {
+        "tool-splits-presets": [
+          {"id": "70", "gameId": "hl1-won", "presets": [{"id": "hl1-any", "kind": "chapters", "category": "Any%"}, {"id": "hl1-100", "kind": "maps", "category": "100%"}, {"id": "hl1-maps", "kind": "maps", "category": null}]},
+          {"id": "218", "gameId": "ghosting-renewed", "presets": [{"id": "chapters", "kind": "chapters", "category": null}, {"id": "maps", "kind": "maps", "category": null}]}
+        ]
+      },
+      "steps": ["rail-tool", "tool-action"],
+      "calls": [{"call": "onSelectTool", "args": ["livesplit"]}, {"call": "onToolLaunch", "args": ["livesplit"]}]
+    },
+    {
+      "id": "modal-livesplit-linux-ru",
+      "state": "запуск LiveSplit по-русски на Linux: игра без сплитов",
+      "language": "ru",
+      "platform": "linux",
+      "game": "220",
+      "toolReady": true,
+      "invoke": {
+        "tool-splits-presets": [
+          {"id": "218", "gameId": "ghosting-renewed", "presets": [{"id": "chapters", "kind": "chapters", "category": null}]}
+        ]
+      },
+      "steps": ["rail-tool", "tool-action"],
+      "calls": [{"call": "onSelectTool", "args": ["livesplit"]}, {"call": "onToolLaunch", "args": ["livesplit"]}]
+    },
+    {
+      "id": "modal-livesplit-lg",
+      "state": "запуск LiveSplit в теме Liquid Glass (.ls-launch__window — стекло окна)",
+      "theme": "liquid-glass",
+      "game": "218",
+      "toolReady": true,
+      "invoke": {
+        "tool-splits-presets": [
+          {"id": "70", "gameId": "hl1-won", "presets": [{"id": "hl1-any", "kind": "chapters", "category": "Any%"}, {"id": "hl1-100", "kind": "maps", "category": "100%"}, {"id": "hl1-maps", "kind": "maps", "category": null}]},
+          {"id": "218", "gameId": "ghosting-renewed", "presets": [{"id": "chapters", "kind": "chapters", "category": null}, {"id": "maps", "kind": "maps", "category": null}]}
+        ]
+      },
+      "steps": ["rail-tool", "tool-action"],
+      "calls": [{"call": "onSelectTool", "args": ["livesplit"]}, {"call": "onToolLaunch", "args": ["livesplit"]}]
+    },
+    {
+      "id": "modal-changelog",
+      "state": "журнал изменений с вкладками (пришли заметки сборок игр)",
+      "game": "218",
+      "invoke": {
+        "game-release-notes-all": [
+          {"gameId": "ghosting-renewed", "launcherId": "218", "versions": [{"version": "1.0.9", "items": ["Исправлен вылет при загрузке d1_trainstation_05", "Новый HUD таймера"]}, {"version": "1.0.8", "items": ["Первая сборка канала"]}]},
+          {"gameId": "hl1-won", "launcherId": "70", "versions": [{"version": "1.0.0", "items": ["Bunnymod XT 2.0"]}]}
+        ]
+      },
+      "steps": ["rail-changelog"],
+      "calls": [{"call": "onTool", "args": ["changelog"]}]
+    },
+    {
+      "id": "modal-changelog-ru",
+      "state": "журнал изменений по-русски без заметок игр (без вкладок), тема combine",
+      "language": "ru",
+      "theme": "combine",
+      "game": "218",
+      "invoke": {"game-release-notes-all": null},
+      "steps": ["rail-changelog"],
+      "calls": [{"call": "onTool", "args": ["changelog"]}]
+    },
+    {
+      "id": "modal-changelog-games",
+      "state": "журнал изменений: вкладка «Игры», тема steam2003",
+      "theme": "steam2003",
+      "game": "218",
+      "invoke": {
+        "game-release-notes-all": [
+          {"gameId": "ghosting-renewed", "launcherId": "218", "versions": [{"version": "1.0.9", "items": ["Исправлен вылет при загрузке d1_trainstation_05", "Новый HUD таймера"]}, {"version": "1.0.8", "items": ["Первая сборка канала"]}]},
+          {"gameId": "hl1-won", "launcherId": "70", "versions": [{"version": "1.0.0", "items": ["Bunnymod XT 2.0"]}]}
+        ]
+      },
+      "steps": ["rail-changelog", "changelog-games"],
+      "calls": [{"call": "onTool", "args": ["changelog"]}],
+      "clicks": ["#L_CL_TAB_GAMES"]
+    },
+    {
+      "id": "modal-changelog-lg",
+      "state": "журнал изменений с вкладками в теме Liquid Glass (.settings-modal__window — стекло окна)",
+      "theme": "liquid-glass",
+      "game": "218",
+      "invoke": {
+        "game-release-notes-all": [
+          {"gameId": "ghosting-renewed", "launcherId": "218", "versions": [{"version": "1.0.9", "items": ["Исправлен вылет при загрузке d1_trainstation_05", "Новый HUD таймера"]}, {"version": "1.0.8", "items": ["Первая сборка канала"]}]},
+          {"gameId": "hl1-won", "launcherId": "70", "versions": [{"version": "1.0.0", "items": ["Bunnymod XT 2.0"]}]}
+        ]
+      },
+      "steps": ["rail-changelog"],
+      "calls": [{"call": "onTool", "args": ["changelog"]}]
+    },
+    {
+      "id": "modal-game-notes",
+      "state": "заметки версии игры (колокольчик → «Что нового»)",
+      "game": "218",
+      "notes": {"gameId": "ghosting-renewed", "version": "1.0.9"},
+      "invoke": {"game-release-notes": {"version": "1.0.9", "items": ["Исправлен вылет при загрузке d1_trainstation_05", "Новый HUD таймера: время сегмента и лучший сплит", "Призрак не пропадает после смены уровня"]}},
+      "steps": ["bell", "whats-new"],
+      "calls": [{"call": "onWhatsNew", "args": [{"target": "game", "gameId": "ghosting-renewed", "version": "1.0.9"}]}]
+    },
+    {
+      "id": "modal-game-notes-empty-ru",
+      "state": "заметки версии по-русски: заметок нет",
+      "language": "ru",
+      "game": "218",
+      "notes": {"gameId": "ghosting-renewed", "version": "1.0.9"},
+      "invoke": {"game-release-notes": null},
+      "steps": ["bell", "whats-new"],
+      "calls": [{"call": "onWhatsNew", "args": [{"target": "game", "gameId": "ghosting-renewed", "version": "1.0.9"}]}]
+    },
+    {
+      "id": "modal-game-notes-lg",
+      "state": "заметки версии игры в теме Liquid Glass (.settings-modal__window — стекло окна)",
+      "theme": "liquid-glass",
+      "game": "218",
+      "notes": {"gameId": "ghosting-renewed", "version": "1.0.9"},
+      "invoke": {"game-release-notes": {"version": "1.0.9", "items": ["Исправлен вылет при загрузке d1_trainstation_05", "Новый HUD таймера: время сегмента и лучший сплит", "Призрак не пропадает после смены уровня"]}},
+      "steps": ["bell", "whats-new"],
+      "calls": [{"call": "onWhatsNew", "args": [{"target": "game", "gameId": "ghosting-renewed", "version": "1.0.9"}]}]
+    }
+  ]
+}

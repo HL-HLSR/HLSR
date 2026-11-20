@@ -1,0 +1,13 @@
+{
+  "id": "shell/toasts",
+  "screen": "shell",
+  "state": "Три тоста трёх тонов (успех, предупреждение, ошибка) — поздравления achievement-unlocked с разными значками",
+  "themes": ["hlsr", "paper", "liquid-glass"],
+  "languages": ["ru"],
+  "prefs": {"configTourSeen": true},
+  "steps": [
+    {"emit": "achievement-unlocked", "payload": {"title": "#L_ACH_HESOYAM_TITLE", "icon": "fas fa-check"}},
+    {"emit": "achievement-unlocked", "payload": {"title": "#L_ACH_HESOYAM_TITLE", "icon": "fas fa-lock"}},
+    {"emit": "achievement-unlocked", "payload": {"title": "#L_ACH_HESOYAM_TITLE", "icon": "fas fa-times-circle"}}
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "id": "games/modal-notes",
+  "base": "games/_base",
+  "state": "Колокольчик → «Что нового» у уведомления «Ghosting обновлён до 1.0.9» → окно заметок версии. В GPUI колокольчик — цель notif-bell (S5), «Что нового» — точка стенда snap-whats-new (у кнопки уведомления цели нет)",
+  "invoke": {
+    "notifications-list": {
+      "items": [
+        {
+          "id": "n1",
+          "code": "GAME_UPDATED",
+          "level": "success",
+          "ts": 1763370000000,
+          "read": true,
+          "count": 1,
+          "meta": {
+            "gameId": "ghosting-renewed",
+            "launcherId": "218",
+            "target": "game",
+            "newVersion": "1.0.9",
+            "hasReleaseNotes": true
+          }
+        }
+      ],
+      "unread": 0
+    },
+    "game-release-notes": {
+      "version": "1.0.9",
+      "items": [
+        "Эпизоды Ghosting: Episode One и Episode Two скачиваются отдельно и запускаются из той же сборки.",
+        "Полный экран и Full HD: интерфейс подстраивается под окно 1152 × 648.",
+        "Призраки показывают место в рекордах; модель призрака можно выбрать в персонализации.",
+        "Исправлено: после выхода из игры статистика времени иногда не обновлялась до перезапуска лаунчера."
+      ]
+    }
+  },
+  "steps": [
+    {
+      "click": {
+        "css": ".notif__btn",
+        "view": "notif-bell"
+      }
+    },
+    {
+      "click": {
+        "css": ".notif__crash-btn",
+        "view": "snap-whats-new"
+      }
+    },
+    {
+      "move": [
+        800,
+        880
+      ]
+    }
+  ]
+}

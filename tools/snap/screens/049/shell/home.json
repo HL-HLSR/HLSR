@@ -1,0 +1,13 @@
+{
+  "id": "shell/home",
+  "screen": "shell",
+  "state": "Вкладка «Главная» щелчком: раздел сменился, полоса под вкладкой",
+  "themes": ["hlsr", "liquid-glass"],
+  "languages": ["ru"],
+  "prefs": {"configTourSeen": true},
+  "rails": ["closed", "open"],
+  "steps": [
+    {"click": {"css": ".launcher-topbar__tab:nth-child(1)", "view": "topbar-tab-home"}},
+    {"move": [800, 600]}
+  ]
+}

@@ -1,0 +1,1402 @@
+{
+  "constants": {"FILE_NAME":"game-stats.json","SCHEMA_VERSION":1,"HEARTBEAT_MS":30000},
+  "t0": 1772359200000,
+  "scenarios": [
+    {
+      "name": "первая сессия с нуля",
+      "initial": null,
+      "heartbeatMs": null,
+      "blocked": false,
+      "throwingNotifications": false,
+      "noNotifications": false,
+      "steps": [
+        {"step":{"op":"create"},"result":null,"file":null,"files":{},"logs":[],"notes":[],"timer":false,"active":[]},
+        {"step":{"op":"summary","gameId":"hl2-5288"},"result":{"available":false,"gameId":"hl2-5288"},"file":null,"files":{},"logs":[],"notes":[],"timer":false,"active":[]},
+        {
+          "step": {"op":"sessionStart","gameId":"hl2-5288"},
+          "result": null,
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl2-5288\": {\n      \"gameId\": \"hl2-5288\",\n      \"totalPlaySeconds\": 0,\n      \"lastLaunchAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastExitAt\": null,\n      \"lastSessionSeconds\": null,\n      \"launchCount\": 1,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T10:00:00.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T10:00:00.000Z\",\n        \"heartbeatSeconds\": 0,\n        \"pid\": null\n      }\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:00.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": true,
+          "active": ["hl2-5288"]
+        },
+        {
+          "step": {"op":"summary","gameId":"hl2-5288"},
+          "result": {"available":true,"gameId":"hl2-5288","totalPlaySeconds":0,"lastLaunchAt":"2026-03-01T10:00:00.000Z","lastExitAt":null,"lastSessionSeconds":null,"launchCount":1,"sessionActive":true},
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl2-5288\": {\n      \"gameId\": \"hl2-5288\",\n      \"totalPlaySeconds\": 0,\n      \"lastLaunchAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastExitAt\": null,\n      \"lastSessionSeconds\": null,\n      \"launchCount\": 1,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T10:00:00.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T10:00:00.000Z\",\n        \"heartbeatSeconds\": 0,\n        \"pid\": null\n      }\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:00.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": true,
+          "active": ["hl2-5288"]
+        },
+        {
+          "step": {"op":"tick","ms":5000,"mono":5},
+          "result": null,
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl2-5288\": {\n      \"gameId\": \"hl2-5288\",\n      \"totalPlaySeconds\": 0,\n      \"lastLaunchAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastExitAt\": null,\n      \"lastSessionSeconds\": null,\n      \"launchCount\": 1,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T10:00:00.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T10:00:00.000Z\",\n        \"heartbeatSeconds\": 0,\n        \"pid\": null\n      }\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:00.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": true,
+          "active": ["hl2-5288"]
+        },
+        {
+          "step": {"op":"sessionEnd","gameId":"hl2-5288"},
+          "result": {"gameId":"hl2-5288","seconds":5,"totalPlaySeconds":5},
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl2-5288\": {\n      \"gameId\": \"hl2-5288\",\n      \"totalPlaySeconds\": 5,\n      \"lastLaunchAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastExitAt\": \"2026-03-01T10:00:05.000Z\",\n      \"lastSessionSeconds\": 5,\n      \"launchCount\": 1,\n      \"currentSession\": null\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:05.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": false,
+          "active": []
+        },
+        {
+          "step": {"op":"summary","gameId":"hl2-5288"},
+          "result": {"available":true,"gameId":"hl2-5288","totalPlaySeconds":5,"lastLaunchAt":"2026-03-01T10:00:00.000Z","lastExitAt":"2026-03-01T10:00:05.000Z","lastSessionSeconds":5,"launchCount":1,"sessionActive":false},
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl2-5288\": {\n      \"gameId\": \"hl2-5288\",\n      \"totalPlaySeconds\": 5,\n      \"lastLaunchAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastExitAt\": \"2026-03-01T10:00:05.000Z\",\n      \"lastSessionSeconds\": 5,\n      \"launchCount\": 1,\n      \"currentSession\": null\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:05.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": false,
+          "active": []
+        },
+        {
+          "step": {"op":"sessionEnd","gameId":"hl2-5288"},
+          "result": null,
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl2-5288\": {\n      \"gameId\": \"hl2-5288\",\n      \"totalPlaySeconds\": 5,\n      \"lastLaunchAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastExitAt\": \"2026-03-01T10:00:05.000Z\",\n      \"lastSessionSeconds\": 5,\n      \"launchCount\": 1,\n      \"currentSession\": null\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:05.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": false,
+          "active": []
+        }
+      ]
+    },
+    {
+      "name": "несколько игр и повторные запуски",
+      "initial": null,
+      "heartbeatMs": null,
+      "blocked": false,
+      "throwingNotifications": false,
+      "noNotifications": false,
+      "steps": [
+        {"step":{"op":"create"},"result":null,"file":null,"files":{},"logs":[],"notes":[],"timer":false,"active":[]},
+        {
+          "step": {"op":"sessionStart","gameId":"hl1-won"},
+          "result": null,
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 0,\n      \"lastLaunchAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastExitAt\": null,\n      \"lastSessionSeconds\": null,\n      \"launchCount\": 1,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T10:00:00.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T10:00:00.000Z\",\n        \"heartbeatSeconds\": 0,\n        \"pid\": null\n      }\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:00.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": true,
+          "active": ["hl1-won"]
+        },
+        {
+          "step": {"op":"tick","ms":1000,"mono":3},
+          "result": null,
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 0,\n      \"lastLaunchAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastExitAt\": null,\n      \"lastSessionSeconds\": null,\n      \"launchCount\": 1,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T10:00:00.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T10:00:00.000Z\",\n        \"heartbeatSeconds\": 0,\n        \"pid\": null\n      }\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:00.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": true,
+          "active": ["hl1-won"]
+        },
+        {
+          "step": {"op":"sessionStart","gameId":"ghosting-renewed","info":{"pid":4242}},
+          "result": null,
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 0,\n      \"lastLaunchAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastExitAt\": null,\n      \"lastSessionSeconds\": null,\n      \"launchCount\": 1,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T10:00:00.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T10:00:00.000Z\",\n        \"heartbeatSeconds\": 0,\n        \"pid\": null\n      }\n    },\n    \"ghosting-renewed\": {\n      \"gameId\": \"ghosting-renewed\",\n      \"totalPlaySeconds\": 0,\n      \"lastLaunchAt\": \"2026-03-01T10:00:01.000Z\",\n      \"lastExitAt\": null,\n      \"lastSessionSeconds\": null,\n      \"launchCount\": 1,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T10:00:01.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T10:00:01.000Z\",\n        \"heartbeatSeconds\": 0,\n        \"pid\": 4242\n      }\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:01.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": true,
+          "active": ["hl1-won","ghosting-renewed"]
+        },
+        {
+          "step": {"op":"tick","ms":61000,"mono":61},
+          "result": null,
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 0,\n      \"lastLaunchAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastExitAt\": null,\n      \"lastSessionSeconds\": null,\n      \"launchCount\": 1,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T10:00:00.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T10:00:00.000Z\",\n        \"heartbeatSeconds\": 0,\n        \"pid\": null\n      }\n    },\n    \"ghosting-renewed\": {\n      \"gameId\": \"ghosting-renewed\",\n      \"totalPlaySeconds\": 0,\n      \"lastLaunchAt\": \"2026-03-01T10:00:01.000Z\",\n      \"lastExitAt\": null,\n      \"lastSessionSeconds\": null,\n      \"launchCount\": 1,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T10:00:01.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T10:00:01.000Z\",\n        \"heartbeatSeconds\": 0,\n        \"pid\": 4242\n      }\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:01.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": true,
+          "active": ["hl1-won","ghosting-renewed"]
+        },
+        {
+          "step": {"op":"heartbeat"},
+          "result": null,
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 0,\n      \"lastLaunchAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastExitAt\": null,\n      \"lastSessionSeconds\": null,\n      \"launchCount\": 1,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T10:00:00.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T10:01:02.000Z\",\n        \"heartbeatSeconds\": 64,\n        \"pid\": null\n      }\n    },\n    \"ghosting-renewed\": {\n      \"gameId\": \"ghosting-renewed\",\n      \"totalPlaySeconds\": 0,\n      \"lastLaunchAt\": \"2026-03-01T10:00:01.000Z\",\n      \"lastExitAt\": null,\n      \"lastSessionSeconds\": null,\n      \"launchCount\": 1,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T10:00:01.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T10:01:02.000Z\",\n        \"heartbeatSeconds\": 61,\n        \"pid\": 4242\n      }\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:01:02.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": true,
+          "active": ["hl1-won","ghosting-renewed"]
+        },
+        {
+          "step": {"op":"sessionEnd","gameId":"hl1-won"},
+          "result": {"gameId":"hl1-won","seconds":64,"totalPlaySeconds":64},
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 64,\n      \"lastLaunchAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastExitAt\": \"2026-03-01T10:01:02.000Z\",\n      \"lastSessionSeconds\": 64,\n      \"launchCount\": 1,\n      \"currentSession\": null\n    },\n    \"ghosting-renewed\": {\n      \"gameId\": \"ghosting-renewed\",\n      \"totalPlaySeconds\": 0,\n      \"lastLaunchAt\": \"2026-03-01T10:00:01.000Z\",\n      \"lastExitAt\": null,\n      \"lastSessionSeconds\": null,\n      \"launchCount\": 1,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T10:00:01.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T10:01:02.000Z\",\n        \"heartbeatSeconds\": 61,\n        \"pid\": 4242\n      }\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:01:02.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": true,
+          "active": ["ghosting-renewed"]
+        },
+        {
+          "step": {"op":"tick","ms":1000,"mono":2},
+          "result": null,
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 64,\n      \"lastLaunchAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastExitAt\": \"2026-03-01T10:01:02.000Z\",\n      \"lastSessionSeconds\": 64,\n      \"launchCount\": 1,\n      \"currentSession\": null\n    },\n    \"ghosting-renewed\": {\n      \"gameId\": \"ghosting-renewed\",\n      \"totalPlaySeconds\": 0,\n      \"lastLaunchAt\": \"2026-03-01T10:00:01.000Z\",\n      \"lastExitAt\": null,\n      \"lastSessionSeconds\": null,\n      \"launchCount\": 1,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T10:00:01.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T10:01:02.000Z\",\n        \"heartbeatSeconds\": 61,\n        \"pid\": 4242\n      }\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:01:02.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": true,
+          "active": ["ghosting-renewed"]
+        },
+        {
+          "step": {"op":"sessionEnd","gameId":"ghosting-renewed"},
+          "result": {"gameId":"ghosting-renewed","seconds":63,"totalPlaySeconds":63},
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 64,\n      \"lastLaunchAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastExitAt\": \"2026-03-01T10:01:02.000Z\",\n      \"lastSessionSeconds\": 64,\n      \"launchCount\": 1,\n      \"currentSession\": null\n    },\n    \"ghosting-renewed\": {\n      \"gameId\": \"ghosting-renewed\",\n      \"totalPlaySeconds\": 63,\n      \"lastLaunchAt\": \"2026-03-01T10:00:01.000Z\",\n      \"lastExitAt\": \"2026-03-01T10:01:03.000Z\",\n      \"lastSessionSeconds\": 63,\n      \"launchCount\": 1,\n      \"currentSession\": null\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:01:03.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": false,
+          "active": []
+        },
+        {
+          "step": {"op":"sessionStart","gameId":"hl1-won","info":{"pid":0}},
+          "result": null,
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 64,\n      \"lastLaunchAt\": \"2026-03-01T10:01:03.000Z\",\n      \"lastExitAt\": \"2026-03-01T10:01:02.000Z\",\n      \"lastSessionSeconds\": 64,\n      \"launchCount\": 2,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T10:01:03.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T10:01:03.000Z\",\n        \"heartbeatSeconds\": 0,\n        \"pid\": null\n      }\n    },\n    \"ghosting-renewed\": {\n      \"gameId\": \"ghosting-renewed\",\n      \"totalPlaySeconds\": 63,\n      \"lastLaunchAt\": \"2026-03-01T10:00:01.000Z\",\n      \"lastExitAt\": \"2026-03-01T10:01:03.000Z\",\n      \"lastSessionSeconds\": 63,\n      \"launchCount\": 1,\n      \"currentSession\": null\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:01:03.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": true,
+          "active": ["hl1-won"]
+        },
+        {
+          "step": {"op":"sessionStart","gameId":"hl1-won","info":null},
+          "result": null,
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 64,\n      \"lastLaunchAt\": \"2026-03-01T10:01:03.000Z\",\n      \"lastExitAt\": \"2026-03-01T10:01:02.000Z\",\n      \"lastSessionSeconds\": 64,\n      \"launchCount\": 3,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T10:01:03.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T10:01:03.000Z\",\n        \"heartbeatSeconds\": 0,\n        \"pid\": null\n      }\n    },\n    \"ghosting-renewed\": {\n      \"gameId\": \"ghosting-renewed\",\n      \"totalPlaySeconds\": 63,\n      \"lastLaunchAt\": \"2026-03-01T10:00:01.000Z\",\n      \"lastExitAt\": \"2026-03-01T10:01:03.000Z\",\n      \"lastSessionSeconds\": 63,\n      \"launchCount\": 1,\n      \"currentSession\": null\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:01:03.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": true,
+          "active": ["hl1-won"]
+        },
+        {
+          "step": {"op":"tick","ms":100,"mono":0},
+          "result": null,
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 64,\n      \"lastLaunchAt\": \"2026-03-01T10:01:03.000Z\",\n      \"lastExitAt\": \"2026-03-01T10:01:02.000Z\",\n      \"lastSessionSeconds\": 64,\n      \"launchCount\": 3,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T10:01:03.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T10:01:03.000Z\",\n        \"heartbeatSeconds\": 0,\n        \"pid\": null\n      }\n    },\n    \"ghosting-renewed\": {\n      \"gameId\": \"ghosting-renewed\",\n      \"totalPlaySeconds\": 63,\n      \"lastLaunchAt\": \"2026-03-01T10:00:01.000Z\",\n      \"lastExitAt\": \"2026-03-01T10:01:03.000Z\",\n      \"lastSessionSeconds\": 63,\n      \"launchCount\": 1,\n      \"currentSession\": null\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:01:03.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": true,
+          "active": ["hl1-won"]
+        },
+        {
+          "step": {"op":"sessionEnd","gameId":"hl1-won"},
+          "result": {"gameId":"hl1-won","seconds":0,"totalPlaySeconds":64},
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 64,\n      \"lastLaunchAt\": \"2026-03-01T10:01:03.000Z\",\n      \"lastExitAt\": \"2026-03-01T10:01:03.100Z\",\n      \"lastSessionSeconds\": 0,\n      \"launchCount\": 3,\n      \"currentSession\": null\n    },\n    \"ghosting-renewed\": {\n      \"gameId\": \"ghosting-renewed\",\n      \"totalPlaySeconds\": 63,\n      \"lastLaunchAt\": \"2026-03-01T10:00:01.000Z\",\n      \"lastExitAt\": \"2026-03-01T10:01:03.000Z\",\n      \"lastSessionSeconds\": 63,\n      \"launchCount\": 1,\n      \"currentSession\": null\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:01:03.100Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": false,
+          "active": []
+        },
+        {
+          "step": {"op":"summary","gameId":"ghosting-renewed"},
+          "result": {"available":true,"gameId":"ghosting-renewed","totalPlaySeconds":63,"lastLaunchAt":"2026-03-01T10:00:01.000Z","lastExitAt":"2026-03-01T10:01:03.000Z","lastSessionSeconds":63,"launchCount":1,"sessionActive":false},
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 64,\n      \"lastLaunchAt\": \"2026-03-01T10:01:03.000Z\",\n      \"lastExitAt\": \"2026-03-01T10:01:03.100Z\",\n      \"lastSessionSeconds\": 0,\n      \"launchCount\": 3,\n      \"currentSession\": null\n    },\n    \"ghosting-renewed\": {\n      \"gameId\": \"ghosting-renewed\",\n      \"totalPlaySeconds\": 63,\n      \"lastLaunchAt\": \"2026-03-01T10:00:01.000Z\",\n      \"lastExitAt\": \"2026-03-01T10:01:03.000Z\",\n      \"lastSessionSeconds\": 63,\n      \"launchCount\": 1,\n      \"currentSession\": null\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:01:03.100Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": false,
+          "active": []
+        },
+        {
+          "step": {"op":"summary","gameId":"никого"},
+          "result": {"available":false,"gameId":"никого"},
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 64,\n      \"lastLaunchAt\": \"2026-03-01T10:01:03.000Z\",\n      \"lastExitAt\": \"2026-03-01T10:01:03.100Z\",\n      \"lastSessionSeconds\": 0,\n      \"launchCount\": 3,\n      \"currentSession\": null\n    },\n    \"ghosting-renewed\": {\n      \"gameId\": \"ghosting-renewed\",\n      \"totalPlaySeconds\": 63,\n      \"lastLaunchAt\": \"2026-03-01T10:00:01.000Z\",\n      \"lastExitAt\": \"2026-03-01T10:01:03.000Z\",\n      \"lastSessionSeconds\": 63,\n      \"launchCount\": 1,\n      \"currentSession\": null\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:01:03.100Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": false,
+          "active": []
+        }
+      ]
+    },
+    {
+      "name": "heartbeat вручную",
+      "initial": null,
+      "heartbeatMs": null,
+      "blocked": false,
+      "throwingNotifications": false,
+      "noNotifications": false,
+      "steps": [
+        {"step":{"op":"create"},"result":null,"file":null,"files":{},"logs":[],"notes":[],"timer":false,"active":[]},
+        {"step":{"op":"heartbeat"},"result":null,"file":null,"files":{},"logs":[],"notes":[],"timer":false,"active":[]},
+        {
+          "step": {"op":"sessionStart","gameId":"hl1-won"},
+          "result": null,
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 0,\n      \"lastLaunchAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastExitAt\": null,\n      \"lastSessionSeconds\": null,\n      \"launchCount\": 1,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T10:00:00.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T10:00:00.000Z\",\n        \"heartbeatSeconds\": 0,\n        \"pid\": null\n      }\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:00.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": true,
+          "active": ["hl1-won"]
+        },
+        {
+          "step": {"op":"tick","ms":20000,"mono":20},
+          "result": null,
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 0,\n      \"lastLaunchAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastExitAt\": null,\n      \"lastSessionSeconds\": null,\n      \"launchCount\": 1,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T10:00:00.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T10:00:00.000Z\",\n        \"heartbeatSeconds\": 0,\n        \"pid\": null\n      }\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:00.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": true,
+          "active": ["hl1-won"]
+        },
+        {
+          "step": {"op":"heartbeat"},
+          "result": null,
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 0,\n      \"lastLaunchAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastExitAt\": null,\n      \"lastSessionSeconds\": null,\n      \"launchCount\": 1,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T10:00:00.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T10:00:20.000Z\",\n        \"heartbeatSeconds\": 20,\n        \"pid\": null\n      }\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:20.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": true,
+          "active": ["hl1-won"]
+        },
+        {
+          "step": {"op":"tick","ms":20000,"mono":20},
+          "result": null,
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 0,\n      \"lastLaunchAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastExitAt\": null,\n      \"lastSessionSeconds\": null,\n      \"launchCount\": 1,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T10:00:00.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T10:00:20.000Z\",\n        \"heartbeatSeconds\": 20,\n        \"pid\": null\n      }\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:20.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": true,
+          "active": ["hl1-won"]
+        },
+        {
+          "step": {"op":"heartbeat"},
+          "result": null,
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 0,\n      \"lastLaunchAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastExitAt\": null,\n      \"lastSessionSeconds\": null,\n      \"launchCount\": 1,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T10:00:00.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T10:00:40.000Z\",\n        \"heartbeatSeconds\": 40,\n        \"pid\": null\n      }\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:40.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": true,
+          "active": ["hl1-won"]
+        },
+        {
+          "step": {"op":"summary","gameId":"hl1-won"},
+          "result": {"available":true,"gameId":"hl1-won","totalPlaySeconds":0,"lastLaunchAt":"2026-03-01T10:00:00.000Z","lastExitAt":null,"lastSessionSeconds":null,"launchCount":1,"sessionActive":true},
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 0,\n      \"lastLaunchAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastExitAt\": null,\n      \"lastSessionSeconds\": null,\n      \"launchCount\": 1,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T10:00:00.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T10:00:40.000Z\",\n        \"heartbeatSeconds\": 40,\n        \"pid\": null\n      }\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:40.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": true,
+          "active": ["hl1-won"]
+        },
+        {
+          "step": {"op":"sessionEnd","gameId":"hl1-won"},
+          "result": {"gameId":"hl1-won","seconds":40,"totalPlaySeconds":40},
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 40,\n      \"lastLaunchAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastExitAt\": \"2026-03-01T10:00:40.000Z\",\n      \"lastSessionSeconds\": 40,\n      \"launchCount\": 1,\n      \"currentSession\": null\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:40.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": false,
+          "active": []
+        },
+        {
+          "step": {"op":"heartbeat"},
+          "result": null,
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 40,\n      \"lastLaunchAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastExitAt\": \"2026-03-01T10:00:40.000Z\",\n      \"lastSessionSeconds\": 40,\n      \"launchCount\": 1,\n      \"currentSession\": null\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:40.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": false,
+          "active": []
+        }
+      ]
+    },
+    {
+      "name": "перезапуск лаунчера посреди сессии",
+      "initial": null,
+      "heartbeatMs": null,
+      "blocked": false,
+      "throwingNotifications": false,
+      "noNotifications": false,
+      "steps": [
+        {"step":{"op":"create"},"result":null,"file":null,"files":{},"logs":[],"notes":[],"timer":false,"active":[]},
+        {
+          "step": {"op":"sessionStart","gameId":"hl1-won"},
+          "result": null,
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 0,\n      \"lastLaunchAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastExitAt\": null,\n      \"lastSessionSeconds\": null,\n      \"launchCount\": 1,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T10:00:00.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T10:00:00.000Z\",\n        \"heartbeatSeconds\": 0,\n        \"pid\": null\n      }\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:00.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": true,
+          "active": ["hl1-won"]
+        },
+        {
+          "step": {"op":"tick","ms":31000,"mono":31},
+          "result": null,
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 0,\n      \"lastLaunchAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastExitAt\": null,\n      \"lastSessionSeconds\": null,\n      \"launchCount\": 1,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T10:00:00.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T10:00:00.000Z\",\n        \"heartbeatSeconds\": 0,\n        \"pid\": null\n      }\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:00.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": true,
+          "active": ["hl1-won"]
+        },
+        {
+          "step": {"op":"heartbeat"},
+          "result": null,
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 0,\n      \"lastLaunchAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastExitAt\": null,\n      \"lastSessionSeconds\": null,\n      \"launchCount\": 1,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T10:00:00.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T10:00:31.000Z\",\n        \"heartbeatSeconds\": 31,\n        \"pid\": null\n      }\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:31.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": true,
+          "active": ["hl1-won"]
+        },
+        {
+          "step": {"op":"tick","ms":9000,"mono":9},
+          "result": null,
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 0,\n      \"lastLaunchAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastExitAt\": null,\n      \"lastSessionSeconds\": null,\n      \"launchCount\": 1,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T10:00:00.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T10:00:31.000Z\",\n        \"heartbeatSeconds\": 31,\n        \"pid\": null\n      }\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:31.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": true,
+          "active": ["hl1-won"]
+        },
+        {
+          "step": {"op":"construct"},
+          "result": null,
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 31,\n      \"lastLaunchAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastExitAt\": \"2026-03-01T10:00:31.000Z\",\n      \"lastSessionSeconds\": 31,\n      \"launchCount\": 1,\n      \"currentSession\": null\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:40.000Z\"\n}\n",
+          "files": {},
+          "logs": ["warn: [game-stats] незакрытая сессия hl1-won восстановлена по heartbeat: +31 c"],
+          "notes": [],
+          "timer": false,
+          "active": []
+        },
+        {
+          "step": {"op":"summary","gameId":"hl1-won"},
+          "result": {"available":true,"gameId":"hl1-won","totalPlaySeconds":31,"lastLaunchAt":"2026-03-01T10:00:00.000Z","lastExitAt":"2026-03-01T10:00:31.000Z","lastSessionSeconds":31,"launchCount":1,"sessionActive":false},
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 31,\n      \"lastLaunchAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastExitAt\": \"2026-03-01T10:00:31.000Z\",\n      \"lastSessionSeconds\": 31,\n      \"launchCount\": 1,\n      \"currentSession\": null\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:40.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": false,
+          "active": []
+        },
+        {
+          "step": {"op":"sessionEnd","gameId":"hl1-won"},
+          "result": null,
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 31,\n      \"lastLaunchAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastExitAt\": \"2026-03-01T10:00:31.000Z\",\n      \"lastSessionSeconds\": 31,\n      \"launchCount\": 1,\n      \"currentSession\": null\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:40.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": false,
+          "active": []
+        },
+        {
+          "step": {"op":"sessionStart","gameId":"hl1-won"},
+          "result": null,
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 31,\n      \"lastLaunchAt\": \"2026-03-01T10:00:40.000Z\",\n      \"lastExitAt\": \"2026-03-01T10:00:31.000Z\",\n      \"lastSessionSeconds\": 31,\n      \"launchCount\": 2,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T10:00:40.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T10:00:40.000Z\",\n        \"heartbeatSeconds\": 0,\n        \"pid\": null\n      }\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:40.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": true,
+          "active": ["hl1-won"]
+        },
+        {
+          "step": {"op":"construct"},
+          "result": null,
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 31,\n      \"lastLaunchAt\": \"2026-03-01T10:00:40.000Z\",\n      \"lastExitAt\": \"2026-03-01T10:00:40.000Z\",\n      \"lastSessionSeconds\": 0,\n      \"launchCount\": 2,\n      \"currentSession\": null\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:40.000Z\"\n}\n",
+          "files": {},
+          "logs": ["warn: [game-stats] незакрытая сессия hl1-won восстановлена по heartbeat: +0 c"],
+          "notes": [],
+          "timer": false,
+          "active": []
+        },
+        {
+          "step": {"op":"summary","gameId":"hl1-won"},
+          "result": {"available":true,"gameId":"hl1-won","totalPlaySeconds":31,"lastLaunchAt":"2026-03-01T10:00:40.000Z","lastExitAt":"2026-03-01T10:00:40.000Z","lastSessionSeconds":0,"launchCount":2,"sessionActive":false},
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 31,\n      \"lastLaunchAt\": \"2026-03-01T10:00:40.000Z\",\n      \"lastExitAt\": \"2026-03-01T10:00:40.000Z\",\n      \"lastSessionSeconds\": 0,\n      \"launchCount\": 2,\n      \"currentSession\": null\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:40.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": false,
+          "active": []
+        }
+      ]
+    },
+    {
+      "name": "монотонные часы: ноль и назад",
+      "initial": null,
+      "heartbeatMs": null,
+      "blocked": false,
+      "throwingNotifications": false,
+      "noNotifications": false,
+      "steps": [
+        {"step":{"op":"create"},"result":null,"file":null,"files":{},"logs":[],"notes":[],"timer":false,"active":[]},
+        {"step":{"op":"monotonic","value":100},"result":null,"file":null,"files":{},"logs":[],"notes":[],"timer":false,"active":[]},
+        {
+          "step": {"op":"sessionStart","gameId":"hl1-won"},
+          "result": null,
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 0,\n      \"lastLaunchAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastExitAt\": null,\n      \"lastSessionSeconds\": null,\n      \"launchCount\": 1,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T10:00:00.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T10:00:00.000Z\",\n        \"heartbeatSeconds\": 0,\n        \"pid\": null\n      }\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:00.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": true,
+          "active": ["hl1-won"]
+        },
+        {
+          "step": {"op":"monotonic","value":100},
+          "result": null,
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 0,\n      \"lastLaunchAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastExitAt\": null,\n      \"lastSessionSeconds\": null,\n      \"launchCount\": 1,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T10:00:00.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T10:00:00.000Z\",\n        \"heartbeatSeconds\": 0,\n        \"pid\": null\n      }\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:00.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": true,
+          "active": ["hl1-won"]
+        },
+        {
+          "step": {"op":"sessionEnd","gameId":"hl1-won"},
+          "result": {"gameId":"hl1-won","seconds":0,"totalPlaySeconds":0},
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 0,\n      \"lastLaunchAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastExitAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastSessionSeconds\": 0,\n      \"launchCount\": 1,\n      \"currentSession\": null\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:00.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": false,
+          "active": []
+        },
+        {
+          "step": {"op":"monotonic","value":200},
+          "result": null,
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 0,\n      \"lastLaunchAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastExitAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastSessionSeconds\": 0,\n      \"launchCount\": 1,\n      \"currentSession\": null\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:00.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": false,
+          "active": []
+        },
+        {
+          "step": {"op":"sessionStart","gameId":"hl1-won"},
+          "result": null,
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 0,\n      \"lastLaunchAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastExitAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastSessionSeconds\": 0,\n      \"launchCount\": 2,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T10:00:00.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T10:00:00.000Z\",\n        \"heartbeatSeconds\": 0,\n        \"pid\": null\n      }\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:00.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": true,
+          "active": ["hl1-won"]
+        },
+        {
+          "step": {"op":"monotonic","value":190},
+          "result": null,
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 0,\n      \"lastLaunchAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastExitAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastSessionSeconds\": 0,\n      \"launchCount\": 2,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T10:00:00.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T10:00:00.000Z\",\n        \"heartbeatSeconds\": 0,\n        \"pid\": null\n      }\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:00.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": true,
+          "active": ["hl1-won"]
+        },
+        {
+          "step": {"op":"sessionEnd","gameId":"hl1-won"},
+          "result": {"gameId":"hl1-won","seconds":0,"totalPlaySeconds":0},
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 0,\n      \"lastLaunchAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastExitAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastSessionSeconds\": 0,\n      \"launchCount\": 2,\n      \"currentSession\": null\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:00.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": false,
+          "active": []
+        }
+      ]
+    },
+    {
+      "name": "таймер heartbeat",
+      "initial": null,
+      "heartbeatMs": 40,
+      "blocked": false,
+      "throwingNotifications": false,
+      "noNotifications": false,
+      "steps": [
+        {"step":{"op":"create"},"result":null,"file":null,"files":{},"logs":[],"notes":[],"timer":false,"active":[]},
+        {
+          "step": {"op":"sessionStart","gameId":"hl1-won"},
+          "result": null,
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 0,\n      \"lastLaunchAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastExitAt\": null,\n      \"lastSessionSeconds\": null,\n      \"launchCount\": 1,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T10:00:00.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T10:00:00.000Z\",\n        \"heartbeatSeconds\": 0,\n        \"pid\": null\n      }\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:00.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": true,
+          "active": ["hl1-won"]
+        },
+        {
+          "step": {"op":"tick","ms":3000,"mono":4},
+          "result": null,
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 0,\n      \"lastLaunchAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastExitAt\": null,\n      \"lastSessionSeconds\": null,\n      \"launchCount\": 1,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T10:00:00.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T10:00:00.000Z\",\n        \"heartbeatSeconds\": 0,\n        \"pid\": null\n      }\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:00.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": true,
+          "active": ["hl1-won"]
+        },
+        {
+          "step": {"op":"wait","ms":130},
+          "result": null,
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 0,\n      \"lastLaunchAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastExitAt\": null,\n      \"lastSessionSeconds\": null,\n      \"launchCount\": 1,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T10:00:00.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T10:00:03.000Z\",\n        \"heartbeatSeconds\": 4,\n        \"pid\": null\n      }\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:03.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": true,
+          "active": ["hl1-won"]
+        },
+        {
+          "step": {"op":"sessionStart","gameId":"hl2-5288"},
+          "result": null,
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 0,\n      \"lastLaunchAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastExitAt\": null,\n      \"lastSessionSeconds\": null,\n      \"launchCount\": 1,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T10:00:00.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T10:00:03.000Z\",\n        \"heartbeatSeconds\": 4,\n        \"pid\": null\n      }\n    },\n    \"hl2-5288\": {\n      \"gameId\": \"hl2-5288\",\n      \"totalPlaySeconds\": 0,\n      \"lastLaunchAt\": \"2026-03-01T10:00:03.000Z\",\n      \"lastExitAt\": null,\n      \"lastSessionSeconds\": null,\n      \"launchCount\": 1,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T10:00:03.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T10:00:03.000Z\",\n        \"heartbeatSeconds\": 0,\n        \"pid\": null\n      }\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:03.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": true,
+          "active": ["hl1-won","hl2-5288"]
+        },
+        {
+          "step": {"op":"tick","ms":1000,"mono":2},
+          "result": null,
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 0,\n      \"lastLaunchAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastExitAt\": null,\n      \"lastSessionSeconds\": null,\n      \"launchCount\": 1,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T10:00:00.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T10:00:03.000Z\",\n        \"heartbeatSeconds\": 4,\n        \"pid\": null\n      }\n    },\n    \"hl2-5288\": {\n      \"gameId\": \"hl2-5288\",\n      \"totalPlaySeconds\": 0,\n      \"lastLaunchAt\": \"2026-03-01T10:00:03.000Z\",\n      \"lastExitAt\": null,\n      \"lastSessionSeconds\": null,\n      \"launchCount\": 1,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T10:00:03.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T10:00:03.000Z\",\n        \"heartbeatSeconds\": 0,\n        \"pid\": null\n      }\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:03.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": true,
+          "active": ["hl1-won","hl2-5288"]
+        },
+        {
+          "step": {"op":"wait","ms":130},
+          "result": null,
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 0,\n      \"lastLaunchAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastExitAt\": null,\n      \"lastSessionSeconds\": null,\n      \"launchCount\": 1,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T10:00:00.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T10:00:04.000Z\",\n        \"heartbeatSeconds\": 6,\n        \"pid\": null\n      }\n    },\n    \"hl2-5288\": {\n      \"gameId\": \"hl2-5288\",\n      \"totalPlaySeconds\": 0,\n      \"lastLaunchAt\": \"2026-03-01T10:00:03.000Z\",\n      \"lastExitAt\": null,\n      \"lastSessionSeconds\": null,\n      \"launchCount\": 1,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T10:00:03.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T10:00:04.000Z\",\n        \"heartbeatSeconds\": 2,\n        \"pid\": null\n      }\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:04.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": true,
+          "active": ["hl1-won","hl2-5288"]
+        },
+        {
+          "step": {"op":"sessionEnd","gameId":"hl1-won"},
+          "result": {"gameId":"hl1-won","seconds":6,"totalPlaySeconds":6},
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 6,\n      \"lastLaunchAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastExitAt\": \"2026-03-01T10:00:04.000Z\",\n      \"lastSessionSeconds\": 6,\n      \"launchCount\": 1,\n      \"currentSession\": null\n    },\n    \"hl2-5288\": {\n      \"gameId\": \"hl2-5288\",\n      \"totalPlaySeconds\": 0,\n      \"lastLaunchAt\": \"2026-03-01T10:00:03.000Z\",\n      \"lastExitAt\": null,\n      \"lastSessionSeconds\": null,\n      \"launchCount\": 1,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T10:00:03.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T10:00:04.000Z\",\n        \"heartbeatSeconds\": 2,\n        \"pid\": null\n      }\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:04.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": true,
+          "active": ["hl2-5288"]
+        },
+        {
+          "step": {"op":"wait","ms":100},
+          "result": null,
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 6,\n      \"lastLaunchAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastExitAt\": \"2026-03-01T10:00:04.000Z\",\n      \"lastSessionSeconds\": 6,\n      \"launchCount\": 1,\n      \"currentSession\": null\n    },\n    \"hl2-5288\": {\n      \"gameId\": \"hl2-5288\",\n      \"totalPlaySeconds\": 0,\n      \"lastLaunchAt\": \"2026-03-01T10:00:03.000Z\",\n      \"lastExitAt\": null,\n      \"lastSessionSeconds\": null,\n      \"launchCount\": 1,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T10:00:03.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T10:00:04.000Z\",\n        \"heartbeatSeconds\": 2,\n        \"pid\": null\n      }\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:04.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": true,
+          "active": ["hl2-5288"]
+        },
+        {
+          "step": {"op":"sessionEnd","gameId":"hl2-5288"},
+          "result": {"gameId":"hl2-5288","seconds":2,"totalPlaySeconds":2},
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 6,\n      \"lastLaunchAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastExitAt\": \"2026-03-01T10:00:04.000Z\",\n      \"lastSessionSeconds\": 6,\n      \"launchCount\": 1,\n      \"currentSession\": null\n    },\n    \"hl2-5288\": {\n      \"gameId\": \"hl2-5288\",\n      \"totalPlaySeconds\": 2,\n      \"lastLaunchAt\": \"2026-03-01T10:00:03.000Z\",\n      \"lastExitAt\": \"2026-03-01T10:00:04.000Z\",\n      \"lastSessionSeconds\": 2,\n      \"launchCount\": 1,\n      \"currentSession\": null\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:04.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": false,
+          "active": []
+        },
+        {
+          "step": {"op":"wait","ms":100},
+          "result": null,
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 6,\n      \"lastLaunchAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastExitAt\": \"2026-03-01T10:00:04.000Z\",\n      \"lastSessionSeconds\": 6,\n      \"launchCount\": 1,\n      \"currentSession\": null\n    },\n    \"hl2-5288\": {\n      \"gameId\": \"hl2-5288\",\n      \"totalPlaySeconds\": 2,\n      \"lastLaunchAt\": \"2026-03-01T10:00:03.000Z\",\n      \"lastExitAt\": \"2026-03-01T10:00:04.000Z\",\n      \"lastSessionSeconds\": 2,\n      \"launchCount\": 1,\n      \"currentSession\": null\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:04.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": false,
+          "active": []
+        },
+        {
+          "step": {"op":"sessionStart","gameId":"hl1-won"},
+          "result": null,
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 6,\n      \"lastLaunchAt\": \"2026-03-01T10:00:04.000Z\",\n      \"lastExitAt\": \"2026-03-01T10:00:04.000Z\",\n      \"lastSessionSeconds\": 6,\n      \"launchCount\": 2,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T10:00:04.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T10:00:04.000Z\",\n        \"heartbeatSeconds\": 0,\n        \"pid\": null\n      }\n    },\n    \"hl2-5288\": {\n      \"gameId\": \"hl2-5288\",\n      \"totalPlaySeconds\": 2,\n      \"lastLaunchAt\": \"2026-03-01T10:00:03.000Z\",\n      \"lastExitAt\": \"2026-03-01T10:00:04.000Z\",\n      \"lastSessionSeconds\": 2,\n      \"launchCount\": 1,\n      \"currentSession\": null\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:04.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": true,
+          "active": ["hl1-won"]
+        },
+        {
+          "step": {"op":"dispose"},
+          "result": null,
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 6,\n      \"lastLaunchAt\": \"2026-03-01T10:00:04.000Z\",\n      \"lastExitAt\": \"2026-03-01T10:00:04.000Z\",\n      \"lastSessionSeconds\": 6,\n      \"launchCount\": 2,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T10:00:04.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T10:00:04.000Z\",\n        \"heartbeatSeconds\": 0,\n        \"pid\": null\n      }\n    },\n    \"hl2-5288\": {\n      \"gameId\": \"hl2-5288\",\n      \"totalPlaySeconds\": 2,\n      \"lastLaunchAt\": \"2026-03-01T10:00:03.000Z\",\n      \"lastExitAt\": \"2026-03-01T10:00:04.000Z\",\n      \"lastSessionSeconds\": 2,\n      \"launchCount\": 1,\n      \"currentSession\": null\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:04.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": false,
+          "active": ["hl1-won"]
+        },
+        {
+          "step": {"op":"tick","ms":1000,"mono":9},
+          "result": null,
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 6,\n      \"lastLaunchAt\": \"2026-03-01T10:00:04.000Z\",\n      \"lastExitAt\": \"2026-03-01T10:00:04.000Z\",\n      \"lastSessionSeconds\": 6,\n      \"launchCount\": 2,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T10:00:04.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T10:00:04.000Z\",\n        \"heartbeatSeconds\": 0,\n        \"pid\": null\n      }\n    },\n    \"hl2-5288\": {\n      \"gameId\": \"hl2-5288\",\n      \"totalPlaySeconds\": 2,\n      \"lastLaunchAt\": \"2026-03-01T10:00:03.000Z\",\n      \"lastExitAt\": \"2026-03-01T10:00:04.000Z\",\n      \"lastSessionSeconds\": 2,\n      \"launchCount\": 1,\n      \"currentSession\": null\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:04.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": false,
+          "active": ["hl1-won"]
+        },
+        {
+          "step": {"op":"wait","ms":130},
+          "result": null,
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 6,\n      \"lastLaunchAt\": \"2026-03-01T10:00:04.000Z\",\n      \"lastExitAt\": \"2026-03-01T10:00:04.000Z\",\n      \"lastSessionSeconds\": 6,\n      \"launchCount\": 2,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T10:00:04.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T10:00:04.000Z\",\n        \"heartbeatSeconds\": 0,\n        \"pid\": null\n      }\n    },\n    \"hl2-5288\": {\n      \"gameId\": \"hl2-5288\",\n      \"totalPlaySeconds\": 2,\n      \"lastLaunchAt\": \"2026-03-01T10:00:03.000Z\",\n      \"lastExitAt\": \"2026-03-01T10:00:04.000Z\",\n      \"lastSessionSeconds\": 2,\n      \"launchCount\": 1,\n      \"currentSession\": null\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:04.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": false,
+          "active": ["hl1-won"]
+        }
+      ]
+    },
+    {
+      "name": "незакрытая сессия восстанавливается при создании",
+      "initial": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 100,\n      \"lastLaunchAt\": \"2026-03-01T09:58:30.000Z\",\n      \"lastExitAt\": \"2026-03-01T09:58:40.000Z\",\n      \"lastSessionSeconds\": 10,\n      \"launchCount\": 3,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T09:59:00.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T09:59:30.000Z\",\n        \"heartbeatSeconds\": 30,\n        \"pid\": 123\n      }\n    },\n    \"hl2-5288\": {\n      \"gameId\": \"hl2-5288\",\n      \"totalPlaySeconds\": 100,\n      \"lastLaunchAt\": \"2026-03-01T09:58:30.000Z\",\n      \"lastExitAt\": \"2026-03-01T09:58:40.000Z\",\n      \"lastSessionSeconds\": 10,\n      \"launchCount\": 3,\n      \"currentSession\": null\n    }\n  },\n  \"updatedAt\": \"2026-03-01T09:59:59.000Z\"\n}\n",
+      "heartbeatMs": null,
+      "blocked": false,
+      "throwingNotifications": false,
+      "noNotifications": false,
+      "steps": [
+        {
+          "step": {"op":"create"},
+          "result": null,
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 130,\n      \"lastLaunchAt\": \"2026-03-01T09:58:30.000Z\",\n      \"lastExitAt\": \"2026-03-01T09:59:30.000Z\",\n      \"lastSessionSeconds\": 30,\n      \"launchCount\": 3,\n      \"currentSession\": null\n    },\n    \"hl2-5288\": {\n      \"gameId\": \"hl2-5288\",\n      \"totalPlaySeconds\": 100,\n      \"lastLaunchAt\": \"2026-03-01T09:58:30.000Z\",\n      \"lastExitAt\": \"2026-03-01T09:58:40.000Z\",\n      \"lastSessionSeconds\": 10,\n      \"launchCount\": 3,\n      \"currentSession\": null\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:00.000Z\"\n}\n",
+          "files": {},
+          "logs": ["warn: [game-stats] незакрытая сессия hl1-won восстановлена по heartbeat: +30 c"],
+          "notes": [],
+          "timer": false,
+          "active": []
+        },
+        {
+          "step": {"op":"summary","gameId":"hl1-won"},
+          "result": {"available":true,"gameId":"hl1-won","totalPlaySeconds":130,"lastLaunchAt":"2026-03-01T09:58:30.000Z","lastExitAt":"2026-03-01T09:59:30.000Z","lastSessionSeconds":30,"launchCount":3,"sessionActive":false},
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 130,\n      \"lastLaunchAt\": \"2026-03-01T09:58:30.000Z\",\n      \"lastExitAt\": \"2026-03-01T09:59:30.000Z\",\n      \"lastSessionSeconds\": 30,\n      \"launchCount\": 3,\n      \"currentSession\": null\n    },\n    \"hl2-5288\": {\n      \"gameId\": \"hl2-5288\",\n      \"totalPlaySeconds\": 100,\n      \"lastLaunchAt\": \"2026-03-01T09:58:30.000Z\",\n      \"lastExitAt\": \"2026-03-01T09:58:40.000Z\",\n      \"lastSessionSeconds\": 10,\n      \"launchCount\": 3,\n      \"currentSession\": null\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:00.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": false,
+          "active": []
+        },
+        {
+          "step": {"op":"summary","gameId":"hl2-5288"},
+          "result": {"available":true,"gameId":"hl2-5288","totalPlaySeconds":100,"lastLaunchAt":"2026-03-01T09:58:30.000Z","lastExitAt":"2026-03-01T09:58:40.000Z","lastSessionSeconds":10,"launchCount":3,"sessionActive":false},
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 130,\n      \"lastLaunchAt\": \"2026-03-01T09:58:30.000Z\",\n      \"lastExitAt\": \"2026-03-01T09:59:30.000Z\",\n      \"lastSessionSeconds\": 30,\n      \"launchCount\": 3,\n      \"currentSession\": null\n    },\n    \"hl2-5288\": {\n      \"gameId\": \"hl2-5288\",\n      \"totalPlaySeconds\": 100,\n      \"lastLaunchAt\": \"2026-03-01T09:58:30.000Z\",\n      \"lastExitAt\": \"2026-03-01T09:58:40.000Z\",\n      \"lastSessionSeconds\": 10,\n      \"launchCount\": 3,\n      \"currentSession\": null\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:00.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": false,
+          "active": []
+        },
+        {
+          "step": {"op":"sessionEnd","gameId":"hl1-won"},
+          "result": null,
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 130,\n      \"lastLaunchAt\": \"2026-03-01T09:58:30.000Z\",\n      \"lastExitAt\": \"2026-03-01T09:59:30.000Z\",\n      \"lastSessionSeconds\": 30,\n      \"launchCount\": 3,\n      \"currentSession\": null\n    },\n    \"hl2-5288\": {\n      \"gameId\": \"hl2-5288\",\n      \"totalPlaySeconds\": 100,\n      \"lastLaunchAt\": \"2026-03-01T09:58:30.000Z\",\n      \"lastExitAt\": \"2026-03-01T09:58:40.000Z\",\n      \"lastSessionSeconds\": 10,\n      \"launchCount\": 3,\n      \"currentSession\": null\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:00.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": false,
+          "active": []
+        }
+      ]
+    },
+    {
+      "name": "восстановление: нет heartbeat, дробные и странные секунды",
+      "initial": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"a\": {\n      \"gameId\": \"a\",\n      \"totalPlaySeconds\": 100,\n      \"lastLaunchAt\": \"2026-03-01T09:58:30.000Z\",\n      \"lastExitAt\": \"2026-03-01T09:58:40.000Z\",\n      \"lastSessionSeconds\": 10,\n      \"launchCount\": 3,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T09:59:00.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T09:59:30.000Z\",\n        \"heartbeatSeconds\": 5.7,\n        \"pid\": 123\n      }\n    },\n    \"b\": {\n      \"gameId\": \"b\",\n      \"totalPlaySeconds\": 100,\n      \"lastLaunchAt\": \"2026-03-01T09:58:30.000Z\",\n      \"lastExitAt\": \"2026-03-01T09:58:40.000Z\",\n      \"lastSessionSeconds\": 10,\n      \"launchCount\": 3,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T09:59:00.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T09:59:30.000Z\",\n        \"heartbeatSeconds\": -3,\n        \"pid\": 123\n      }\n    },\n    \"c\": {\n      \"gameId\": \"c\",\n      \"totalPlaySeconds\": 100,\n      \"lastLaunchAt\": \"2026-03-01T09:58:30.000Z\",\n      \"lastExitAt\": \"2026-03-01T09:58:40.000Z\",\n      \"lastSessionSeconds\": 10,\n      \"launchCount\": 3,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T09:59:00.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T09:59:30.000Z\",\n        \"heartbeatSeconds\": \"12\",\n        \"pid\": 123\n      }\n    },\n    \"d\": {\n      \"gameId\": \"d\",\n      \"totalPlaySeconds\": 100,\n      \"lastLaunchAt\": \"2026-03-01T09:58:30.000Z\",\n      \"lastExitAt\": \"2026-03-01T09:58:40.000Z\",\n      \"lastSessionSeconds\": 10,\n      \"launchCount\": 3,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T09:59:00.000Z\",\n        \"lastHeartbeatAt\": null,\n        \"heartbeatSeconds\": null,\n        \"pid\": 123\n      }\n    },\n    \"e\": {\n      \"gameId\": \"e\",\n      \"totalPlaySeconds\": 100,\n      \"lastLaunchAt\": \"2026-03-01T09:58:30.000Z\",\n      \"lastExitAt\": \"2026-03-01T09:58:40.000Z\",\n      \"lastSessionSeconds\": 10,\n      \"launchCount\": 3,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T09:59:55.000Z\"\n      }\n    },\n    \"f\": {\n      \"gameId\": \"f\",\n      \"totalPlaySeconds\": 100,\n      \"lastLaunchAt\": \"2026-03-01T09:58:30.000Z\",\n      \"lastExitAt\": \"2026-03-01T09:58:40.000Z\",\n      \"lastSessionSeconds\": 10,\n      \"launchCount\": 3,\n      \"currentSession\": {}\n    },\n    \"g\": {\n      \"gameId\": \"g\",\n      \"totalPlaySeconds\": 100,\n      \"lastLaunchAt\": \"2026-03-01T09:58:30.000Z\",\n      \"lastExitAt\": \"2026-03-01T09:58:40.000Z\",\n      \"lastSessionSeconds\": 10,\n      \"launchCount\": 3,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T09:59:00.000Z\",\n        \"lastHeartbeatAt\": \"\",\n        \"heartbeatSeconds\": 7,\n        \"pid\": 123\n      }\n    }\n  },\n  \"updatedAt\": \"2026-03-01T09:59:59.000Z\"\n}\n",
+      "heartbeatMs": null,
+      "blocked": false,
+      "throwingNotifications": false,
+      "noNotifications": false,
+      "steps": [
+        {
+          "step": {"op":"create"},
+          "result": null,
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"a\": {\n      \"gameId\": \"a\",\n      \"totalPlaySeconds\": 105,\n      \"lastLaunchAt\": \"2026-03-01T09:58:30.000Z\",\n      \"lastExitAt\": \"2026-03-01T09:59:30.000Z\",\n      \"lastSessionSeconds\": 5,\n      \"launchCount\": 3,\n      \"currentSession\": null\n    },\n    \"b\": {\n      \"gameId\": \"b\",\n      \"totalPlaySeconds\": 100,\n      \"lastLaunchAt\": \"2026-03-01T09:58:30.000Z\",\n      \"lastExitAt\": \"2026-03-01T09:59:30.000Z\",\n      \"lastSessionSeconds\": 0,\n      \"launchCount\": 3,\n      \"currentSession\": null\n    },\n    \"c\": {\n      \"gameId\": \"c\",\n      \"totalPlaySeconds\": 112,\n      \"lastLaunchAt\": \"2026-03-01T09:58:30.000Z\",\n      \"lastExitAt\": \"2026-03-01T09:59:30.000Z\",\n      \"lastSessionSeconds\": 12,\n      \"launchCount\": 3,\n      \"currentSession\": null\n    },\n    \"d\": {\n      \"gameId\": \"d\",\n      \"totalPlaySeconds\": 100,\n      \"lastLaunchAt\": \"2026-03-01T09:58:30.000Z\",\n      \"lastExitAt\": \"2026-03-01T09:59:00.000Z\",\n      \"lastSessionSeconds\": 0,\n      \"launchCount\": 3,\n      \"currentSession\": null\n    },\n    \"e\": {\n      \"gameId\": \"e\",\n      \"totalPlaySeconds\": 100,\n      \"lastLaunchAt\": \"2026-03-01T09:58:30.000Z\",\n      \"lastExitAt\": \"2026-03-01T09:59:55.000Z\",\n      \"lastSessionSeconds\": 0,\n      \"launchCount\": 3,\n      \"currentSession\": null\n    },\n    \"f\": {\n      \"gameId\": \"f\",\n      \"totalPlaySeconds\": 100,\n      \"lastLaunchAt\": \"2026-03-01T09:58:30.000Z\",\n      \"lastExitAt\": null,\n      \"lastSessionSeconds\": 0,\n      \"launchCount\": 3,\n      \"currentSession\": null\n    },\n    \"g\": {\n      \"gameId\": \"g\",\n      \"totalPlaySeconds\": 107,\n      \"lastLaunchAt\": \"2026-03-01T09:58:30.000Z\",\n      \"lastExitAt\": \"2026-03-01T09:59:00.000Z\",\n      \"lastSessionSeconds\": 7,\n      \"launchCount\": 3,\n      \"currentSession\": null\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:00.000Z\"\n}\n",
+          "files": {},
+          "logs": [
+            "warn: [game-stats] незакрытая сессия a восстановлена по heartbeat: +5 c",
+            "warn: [game-stats] незакрытая сессия b восстановлена по heartbeat: +0 c",
+            "warn: [game-stats] незакрытая сессия c восстановлена по heartbeat: +12 c",
+            "warn: [game-stats] незакрытая сессия d восстановлена по heartbeat: +0 c",
+            "warn: [game-stats] незакрытая сессия e восстановлена по heartbeat: +0 c",
+            "warn: [game-stats] незакрытая сессия f восстановлена по heartbeat: +0 c",
+            "warn: [game-stats] незакрытая сессия g восстановлена по heartbeat: +7 c"
+          ],
+          "notes": [],
+          "timer": false,
+          "active": []
+        },
+        {
+          "step": {"op":"summary","gameId":"a"},
+          "result": {"available":true,"gameId":"a","totalPlaySeconds":105,"lastLaunchAt":"2026-03-01T09:58:30.000Z","lastExitAt":"2026-03-01T09:59:30.000Z","lastSessionSeconds":5,"launchCount":3,"sessionActive":false},
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"a\": {\n      \"gameId\": \"a\",\n      \"totalPlaySeconds\": 105,\n      \"lastLaunchAt\": \"2026-03-01T09:58:30.000Z\",\n      \"lastExitAt\": \"2026-03-01T09:59:30.000Z\",\n      \"lastSessionSeconds\": 5,\n      \"launchCount\": 3,\n      \"currentSession\": null\n    },\n    \"b\": {\n      \"gameId\": \"b\",\n      \"totalPlaySeconds\": 100,\n      \"lastLaunchAt\": \"2026-03-01T09:58:30.000Z\",\n      \"lastExitAt\": \"2026-03-01T09:59:30.000Z\",\n      \"lastSessionSeconds\": 0,\n      \"launchCount\": 3,\n      \"currentSession\": null\n    },\n    \"c\": {\n      \"gameId\": \"c\",\n      \"totalPlaySeconds\": 112,\n      \"lastLaunchAt\": \"2026-03-01T09:58:30.000Z\",\n      \"lastExitAt\": \"2026-03-01T09:59:30.000Z\",\n      \"lastSessionSeconds\": 12,\n      \"launchCount\": 3,\n      \"currentSession\": null\n    },\n    \"d\": {\n      \"gameId\": \"d\",\n      \"totalPlaySeconds\": 100,\n      \"lastLaunchAt\": \"2026-03-01T09:58:30.000Z\",\n      \"lastExitAt\": \"2026-03-01T09:59:00.000Z\",\n      \"lastSessionSeconds\": 0,\n      \"launchCount\": 3,\n      \"currentSession\": null\n    },\n    \"e\": {\n      \"gameId\": \"e\",\n      \"totalPlaySeconds\": 100,\n      \"lastLaunchAt\": \"2026-03-01T09:58:30.000Z\",\n      \"lastExitAt\": \"2026-03-01T09:59:55.000Z\",\n      \"lastSessionSeconds\": 0,\n      \"launchCount\": 3,\n      \"currentSession\": null\n    },\n    \"f\": {\n      \"gameId\": \"f\",\n      \"totalPlaySeconds\": 100,\n      \"lastLaunchAt\": \"2026-03-01T09:58:30.000Z\",\n      \"lastExitAt\": null,\n      \"lastSessionSeconds\": 0,\n      \"launchCount\": 3,\n      \"currentSession\": null\n    },\n    \"g\": {\n      \"gameId\": \"g\",\n      \"totalPlaySeconds\": 107,\n      \"lastLaunchAt\": \"2026-03-01T09:58:30.000Z\",\n      \"lastExitAt\": \"2026-03-01T09:59:00.000Z\",\n      \"lastSessionSeconds\": 7,\n      \"launchCount\": 3,\n      \"currentSession\": null\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:00.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": false,
+          "active": []
+        },
+        {
+          "step": {"op":"summary","gameId":"g"},
+          "result": {"available":true,"gameId":"g","totalPlaySeconds":107,"lastLaunchAt":"2026-03-01T09:58:30.000Z","lastExitAt":"2026-03-01T09:59:00.000Z","lastSessionSeconds":7,"launchCount":3,"sessionActive":false},
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"a\": {\n      \"gameId\": \"a\",\n      \"totalPlaySeconds\": 105,\n      \"lastLaunchAt\": \"2026-03-01T09:58:30.000Z\",\n      \"lastExitAt\": \"2026-03-01T09:59:30.000Z\",\n      \"lastSessionSeconds\": 5,\n      \"launchCount\": 3,\n      \"currentSession\": null\n    },\n    \"b\": {\n      \"gameId\": \"b\",\n      \"totalPlaySeconds\": 100,\n      \"lastLaunchAt\": \"2026-03-01T09:58:30.000Z\",\n      \"lastExitAt\": \"2026-03-01T09:59:30.000Z\",\n      \"lastSessionSeconds\": 0,\n      \"launchCount\": 3,\n      \"currentSession\": null\n    },\n    \"c\": {\n      \"gameId\": \"c\",\n      \"totalPlaySeconds\": 112,\n      \"lastLaunchAt\": \"2026-03-01T09:58:30.000Z\",\n      \"lastExitAt\": \"2026-03-01T09:59:30.000Z\",\n      \"lastSessionSeconds\": 12,\n      \"launchCount\": 3,\n      \"currentSession\": null\n    },\n    \"d\": {\n      \"gameId\": \"d\",\n      \"totalPlaySeconds\": 100,\n      \"lastLaunchAt\": \"2026-03-01T09:58:30.000Z\",\n      \"lastExitAt\": \"2026-03-01T09:59:00.000Z\",\n      \"lastSessionSeconds\": 0,\n      \"launchCount\": 3,\n      \"currentSession\": null\n    },\n    \"e\": {\n      \"gameId\": \"e\",\n      \"totalPlaySeconds\": 100,\n      \"lastLaunchAt\": \"2026-03-01T09:58:30.000Z\",\n      \"lastExitAt\": \"2026-03-01T09:59:55.000Z\",\n      \"lastSessionSeconds\": 0,\n      \"launchCount\": 3,\n      \"currentSession\": null\n    },\n    \"f\": {\n      \"gameId\": \"f\",\n      \"totalPlaySeconds\": 100,\n      \"lastLaunchAt\": \"2026-03-01T09:58:30.000Z\",\n      \"lastExitAt\": null,\n      \"lastSessionSeconds\": 0,\n      \"launchCount\": 3,\n      \"currentSession\": null\n    },\n    \"g\": {\n      \"gameId\": \"g\",\n      \"totalPlaySeconds\": 107,\n      \"lastLaunchAt\": \"2026-03-01T09:58:30.000Z\",\n      \"lastExitAt\": \"2026-03-01T09:59:00.000Z\",\n      \"lastSessionSeconds\": 7,\n      \"launchCount\": 3,\n      \"currentSession\": null\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:00.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": false,
+          "active": []
+        }
+      ]
+    },
+    {
+      "name": "сессия без записи в active закрывается по heartbeat из файла",
+      "initial": null,
+      "heartbeatMs": null,
+      "blocked": false,
+      "throwingNotifications": false,
+      "noNotifications": false,
+      "steps": [
+        {"step":{"op":"create"},"result":null,"file":null,"files":{},"logs":[],"notes":[],"timer":false,"active":[]},
+        {
+          "step": {
+            "op": "write",
+            "text": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 100,\n      \"lastLaunchAt\": \"2026-03-01T09:58:30.000Z\",\n      \"lastExitAt\": \"2026-03-01T09:58:40.000Z\",\n      \"lastSessionSeconds\": 10,\n      \"launchCount\": 3,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T09:59:00.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T09:59:30.000Z\",\n        \"heartbeatSeconds\": 42,\n        \"pid\": 123\n      }\n    }\n  },\n  \"updatedAt\": \"2026-03-01T09:59:59.000Z\"\n}\n"
+          },
+          "result": null,
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 100,\n      \"lastLaunchAt\": \"2026-03-01T09:58:30.000Z\",\n      \"lastExitAt\": \"2026-03-01T09:58:40.000Z\",\n      \"lastSessionSeconds\": 10,\n      \"launchCount\": 3,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T09:59:00.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T09:59:30.000Z\",\n        \"heartbeatSeconds\": 42,\n        \"pid\": 123\n      }\n    }\n  },\n  \"updatedAt\": \"2026-03-01T09:59:59.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": false,
+          "active": []
+        },
+        {
+          "step": {"op":"sessionEnd","gameId":"hl1-won"},
+          "result": {"gameId":"hl1-won","seconds":42,"totalPlaySeconds":142},
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 142,\n      \"lastLaunchAt\": \"2026-03-01T09:58:30.000Z\",\n      \"lastExitAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastSessionSeconds\": 42,\n      \"launchCount\": 3,\n      \"currentSession\": null\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:00.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": false,
+          "active": []
+        },
+        {
+          "step": {"op":"sessionEnd","gameId":"hl1-won"},
+          "result": null,
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 142,\n      \"lastLaunchAt\": \"2026-03-01T09:58:30.000Z\",\n      \"lastExitAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastSessionSeconds\": 42,\n      \"launchCount\": 3,\n      \"currentSession\": null\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:00.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": false,
+          "active": []
+        },
+        {
+          "step": {
+            "op": "write",
+            "text": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 100,\n      \"lastLaunchAt\": \"2026-03-01T09:58:30.000Z\",\n      \"lastExitAt\": \"2026-03-01T09:58:40.000Z\",\n      \"lastSessionSeconds\": 10,\n      \"launchCount\": 3,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T09:59:00.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T09:59:30.000Z\",\n        \"heartbeatSeconds\": 9.9,\n        \"pid\": 123\n      }\n    }\n  },\n  \"updatedAt\": \"2026-03-01T09:59:59.000Z\"\n}\n"
+          },
+          "result": null,
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 100,\n      \"lastLaunchAt\": \"2026-03-01T09:58:30.000Z\",\n      \"lastExitAt\": \"2026-03-01T09:58:40.000Z\",\n      \"lastSessionSeconds\": 10,\n      \"launchCount\": 3,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T09:59:00.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T09:59:30.000Z\",\n        \"heartbeatSeconds\": 9.9,\n        \"pid\": 123\n      }\n    }\n  },\n  \"updatedAt\": \"2026-03-01T09:59:59.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": false,
+          "active": []
+        },
+        {
+          "step": {"op":"summary","gameId":"hl1-won"},
+          "result": {"available":true,"gameId":"hl1-won","totalPlaySeconds":100,"lastLaunchAt":"2026-03-01T09:58:30.000Z","lastExitAt":"2026-03-01T09:58:40.000Z","lastSessionSeconds":10,"launchCount":3,"sessionActive":true},
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 100,\n      \"lastLaunchAt\": \"2026-03-01T09:58:30.000Z\",\n      \"lastExitAt\": \"2026-03-01T09:58:40.000Z\",\n      \"lastSessionSeconds\": 10,\n      \"launchCount\": 3,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T09:59:00.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T09:59:30.000Z\",\n        \"heartbeatSeconds\": 9.9,\n        \"pid\": 123\n      }\n    }\n  },\n  \"updatedAt\": \"2026-03-01T09:59:59.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": false,
+          "active": []
+        },
+        {
+          "step": {"op":"sessionEnd","gameId":"hl1-won"},
+          "result": {"gameId":"hl1-won","seconds":9,"totalPlaySeconds":109},
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 109,\n      \"lastLaunchAt\": \"2026-03-01T09:58:30.000Z\",\n      \"lastExitAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastSessionSeconds\": 9,\n      \"launchCount\": 3,\n      \"currentSession\": null\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:00.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": false,
+          "active": []
+        }
+      ]
+    },
+    {
+      "name": "файл не тронут, пока нечего менять",
+      "initial": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 100,\n      \"lastLaunchAt\": \"2026-03-01T09:58:30.000Z\",\n      \"lastExitAt\": \"2026-03-01T09:58:40.000Z\",\n      \"lastSessionSeconds\": 10,\n      \"launchCount\": 3,\n      \"currentSession\": null\n    }\n  },\n  \"updatedAt\": \"2026-03-01T09:59:59.000Z\"\n}\n",
+      "heartbeatMs": null,
+      "blocked": false,
+      "throwingNotifications": false,
+      "noNotifications": false,
+      "steps": [
+        {
+          "step": {"op":"create"},
+          "result": null,
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 100,\n      \"lastLaunchAt\": \"2026-03-01T09:58:30.000Z\",\n      \"lastExitAt\": \"2026-03-01T09:58:40.000Z\",\n      \"lastSessionSeconds\": 10,\n      \"launchCount\": 3,\n      \"currentSession\": null\n    }\n  },\n  \"updatedAt\": \"2026-03-01T09:59:59.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": false,
+          "active": []
+        },
+        {
+          "step": {"op":"summary","gameId":"hl1-won"},
+          "result": {"available":true,"gameId":"hl1-won","totalPlaySeconds":100,"lastLaunchAt":"2026-03-01T09:58:30.000Z","lastExitAt":"2026-03-01T09:58:40.000Z","lastSessionSeconds":10,"launchCount":3,"sessionActive":false},
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 100,\n      \"lastLaunchAt\": \"2026-03-01T09:58:30.000Z\",\n      \"lastExitAt\": \"2026-03-01T09:58:40.000Z\",\n      \"lastSessionSeconds\": 10,\n      \"launchCount\": 3,\n      \"currentSession\": null\n    }\n  },\n  \"updatedAt\": \"2026-03-01T09:59:59.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": false,
+          "active": []
+        },
+        {
+          "step": {"op":"heartbeat"},
+          "result": null,
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 100,\n      \"lastLaunchAt\": \"2026-03-01T09:58:30.000Z\",\n      \"lastExitAt\": \"2026-03-01T09:58:40.000Z\",\n      \"lastSessionSeconds\": 10,\n      \"launchCount\": 3,\n      \"currentSession\": null\n    }\n  },\n  \"updatedAt\": \"2026-03-01T09:59:59.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": false,
+          "active": []
+        },
+        {
+          "step": {"op":"sessionEnd","gameId":"hl2-5288"},
+          "result": null,
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 100,\n      \"lastLaunchAt\": \"2026-03-01T09:58:30.000Z\",\n      \"lastExitAt\": \"2026-03-01T09:58:40.000Z\",\n      \"lastSessionSeconds\": 10,\n      \"launchCount\": 3,\n      \"currentSession\": null\n    }\n  },\n  \"updatedAt\": \"2026-03-01T09:59:59.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": false,
+          "active": []
+        },
+        {
+          "step": {"op":"summary","gameId":"hl2-5288"},
+          "result": {"available":false,"gameId":"hl2-5288"},
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 100,\n      \"lastLaunchAt\": \"2026-03-01T09:58:30.000Z\",\n      \"lastExitAt\": \"2026-03-01T09:58:40.000Z\",\n      \"lastSessionSeconds\": 10,\n      \"launchCount\": 3,\n      \"currentSession\": null\n    }\n  },\n  \"updatedAt\": \"2026-03-01T09:59:59.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": false,
+          "active": []
+        }
+      ]
+    },
+    {
+      "name": "лишние поля и порядок ключей сохраняются",
+      "initial": "{\n  \"games\": {\n    \"hl1-won\": {\n      \"launchCount\": 1,\n      \"extra\": {\n        \"a\": 1\n      },\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 5,\n      \"currentSession\": null\n    }\n  },\n  \"schemaVersion\": 1,\n  \"updatedAt\": \"старое\",\n  \"note\": \"x\"\n}\n",
+      "heartbeatMs": null,
+      "blocked": false,
+      "throwingNotifications": false,
+      "noNotifications": false,
+      "steps": [
+        {
+          "step": {"op":"create"},
+          "result": null,
+          "file": "{\n  \"games\": {\n    \"hl1-won\": {\n      \"launchCount\": 1,\n      \"extra\": {\n        \"a\": 1\n      },\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 5,\n      \"currentSession\": null\n    }\n  },\n  \"schemaVersion\": 1,\n  \"updatedAt\": \"старое\",\n  \"note\": \"x\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": false,
+          "active": []
+        },
+        {
+          "step": {"op":"sessionStart","gameId":"hl1-won"},
+          "result": null,
+          "file": "{\n  \"games\": {\n    \"hl1-won\": {\n      \"launchCount\": 2,\n      \"extra\": {\n        \"a\": 1\n      },\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 5,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T10:00:00.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T10:00:00.000Z\",\n        \"heartbeatSeconds\": 0,\n        \"pid\": null\n      },\n      \"lastLaunchAt\": \"2026-03-01T10:00:00.000Z\"\n    }\n  },\n  \"schemaVersion\": 1,\n  \"updatedAt\": \"2026-03-01T10:00:00.000Z\",\n  \"note\": \"x\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": true,
+          "active": ["hl1-won"]
+        },
+        {
+          "step": {"op":"tick","ms":1000,"mono":8},
+          "result": null,
+          "file": "{\n  \"games\": {\n    \"hl1-won\": {\n      \"launchCount\": 2,\n      \"extra\": {\n        \"a\": 1\n      },\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 5,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T10:00:00.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T10:00:00.000Z\",\n        \"heartbeatSeconds\": 0,\n        \"pid\": null\n      },\n      \"lastLaunchAt\": \"2026-03-01T10:00:00.000Z\"\n    }\n  },\n  \"schemaVersion\": 1,\n  \"updatedAt\": \"2026-03-01T10:00:00.000Z\",\n  \"note\": \"x\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": true,
+          "active": ["hl1-won"]
+        },
+        {
+          "step": {"op":"sessionEnd","gameId":"hl1-won"},
+          "result": {"gameId":"hl1-won","seconds":8,"totalPlaySeconds":13},
+          "file": "{\n  \"games\": {\n    \"hl1-won\": {\n      \"launchCount\": 2,\n      \"extra\": {\n        \"a\": 1\n      },\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 13,\n      \"currentSession\": null,\n      \"lastLaunchAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastSessionSeconds\": 8,\n      \"lastExitAt\": \"2026-03-01T10:00:01.000Z\"\n    }\n  },\n  \"schemaVersion\": 1,\n  \"updatedAt\": \"2026-03-01T10:00:01.000Z\",\n  \"note\": \"x\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": false,
+          "active": []
+        },
+        {
+          "step": {"op":"summary","gameId":"hl1-won"},
+          "result": {"available":true,"gameId":"hl1-won","totalPlaySeconds":13,"lastLaunchAt":"2026-03-01T10:00:00.000Z","lastExitAt":"2026-03-01T10:00:01.000Z","lastSessionSeconds":8,"launchCount":2,"sessionActive":false},
+          "file": "{\n  \"games\": {\n    \"hl1-won\": {\n      \"launchCount\": 2,\n      \"extra\": {\n        \"a\": 1\n      },\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 13,\n      \"currentSession\": null,\n      \"lastLaunchAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastSessionSeconds\": 8,\n      \"lastExitAt\": \"2026-03-01T10:00:01.000Z\"\n    }\n  },\n  \"schemaVersion\": 1,\n  \"updatedAt\": \"2026-03-01T10:00:01.000Z\",\n  \"note\": \"x\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": false,
+          "active": []
+        }
+      ]
+    },
+    {
+      "name": "запись игры без полей получает поля",
+      "initial": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"launchCount\": 1\n    },\n    \"x\": 0,\n    \"y\": \"\"\n  },\n  \"updatedAt\": \"2026-03-01T09:59:59.000Z\"\n}\n",
+      "heartbeatMs": null,
+      "blocked": false,
+      "throwingNotifications": false,
+      "noNotifications": false,
+      "steps": [
+        {"step":{"op":"create"},"result":null,"file":"{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"launchCount\": 1\n    },\n    \"x\": 0,\n    \"y\": \"\"\n  },\n  \"updatedAt\": \"2026-03-01T09:59:59.000Z\"\n}\n","files":{},"logs":[],"notes":[],"timer":false,"active":[]},
+        {
+          "step": {"op":"summary","gameId":"hl1-won"},
+          "result": {"available":true,"gameId":"hl1-won","launchCount":1,"sessionActive":false},
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"launchCount\": 1\n    },\n    \"x\": 0,\n    \"y\": \"\"\n  },\n  \"updatedAt\": \"2026-03-01T09:59:59.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": false,
+          "active": []
+        },
+        {
+          "step": {"op":"sessionStart","gameId":"x"},
+          "result": null,
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"launchCount\": 1\n    },\n    \"x\": {\n      \"gameId\": \"x\",\n      \"totalPlaySeconds\": 0,\n      \"lastLaunchAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastExitAt\": null,\n      \"lastSessionSeconds\": null,\n      \"launchCount\": 1,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T10:00:00.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T10:00:00.000Z\",\n        \"heartbeatSeconds\": 0,\n        \"pid\": null\n      }\n    },\n    \"y\": \"\"\n  },\n  \"updatedAt\": \"2026-03-01T10:00:00.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": true,
+          "active": ["x"]
+        },
+        {
+          "step": {"op":"sessionStart","gameId":"y"},
+          "result": null,
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"launchCount\": 1\n    },\n    \"x\": {\n      \"gameId\": \"x\",\n      \"totalPlaySeconds\": 0,\n      \"lastLaunchAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastExitAt\": null,\n      \"lastSessionSeconds\": null,\n      \"launchCount\": 1,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T10:00:00.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T10:00:00.000Z\",\n        \"heartbeatSeconds\": 0,\n        \"pid\": null\n      }\n    },\n    \"y\": {\n      \"gameId\": \"y\",\n      \"totalPlaySeconds\": 0,\n      \"lastLaunchAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastExitAt\": null,\n      \"lastSessionSeconds\": null,\n      \"launchCount\": 1,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T10:00:00.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T10:00:00.000Z\",\n        \"heartbeatSeconds\": 0,\n        \"pid\": null\n      }\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:00.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": true,
+          "active": ["x","y"]
+        },
+        {
+          "step": {"op":"tick","ms":10,"mono":1},
+          "result": null,
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"launchCount\": 1\n    },\n    \"x\": {\n      \"gameId\": \"x\",\n      \"totalPlaySeconds\": 0,\n      \"lastLaunchAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastExitAt\": null,\n      \"lastSessionSeconds\": null,\n      \"launchCount\": 1,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T10:00:00.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T10:00:00.000Z\",\n        \"heartbeatSeconds\": 0,\n        \"pid\": null\n      }\n    },\n    \"y\": {\n      \"gameId\": \"y\",\n      \"totalPlaySeconds\": 0,\n      \"lastLaunchAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastExitAt\": null,\n      \"lastSessionSeconds\": null,\n      \"launchCount\": 1,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T10:00:00.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T10:00:00.000Z\",\n        \"heartbeatSeconds\": 0,\n        \"pid\": null\n      }\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:00.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": true,
+          "active": ["x","y"]
+        },
+        {
+          "step": {"op":"sessionEnd","gameId":"x"},
+          "result": {"gameId":"x","seconds":1,"totalPlaySeconds":1},
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"launchCount\": 1\n    },\n    \"x\": {\n      \"gameId\": \"x\",\n      \"totalPlaySeconds\": 1,\n      \"lastLaunchAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastExitAt\": \"2026-03-01T10:00:00.010Z\",\n      \"lastSessionSeconds\": 1,\n      \"launchCount\": 1,\n      \"currentSession\": null\n    },\n    \"y\": {\n      \"gameId\": \"y\",\n      \"totalPlaySeconds\": 0,\n      \"lastLaunchAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastExitAt\": null,\n      \"lastSessionSeconds\": null,\n      \"launchCount\": 1,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T10:00:00.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T10:00:00.000Z\",\n        \"heartbeatSeconds\": 0,\n        \"pid\": null\n      }\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:00.010Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": true,
+          "active": ["y"]
+        },
+        {
+          "step": {"op":"sessionEnd","gameId":"y"},
+          "result": {"gameId":"y","seconds":1,"totalPlaySeconds":1},
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"launchCount\": 1\n    },\n    \"x\": {\n      \"gameId\": \"x\",\n      \"totalPlaySeconds\": 1,\n      \"lastLaunchAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastExitAt\": \"2026-03-01T10:00:00.010Z\",\n      \"lastSessionSeconds\": 1,\n      \"launchCount\": 1,\n      \"currentSession\": null\n    },\n    \"y\": {\n      \"gameId\": \"y\",\n      \"totalPlaySeconds\": 1,\n      \"lastLaunchAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastExitAt\": \"2026-03-01T10:00:00.010Z\",\n      \"lastSessionSeconds\": 1,\n      \"launchCount\": 1,\n      \"currentSession\": null\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:00.010Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": false,
+          "active": []
+        }
+      ]
+    },
+    {
+      "name": "BOM в начале файла",
+      "initial": "﻿{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 100,\n      \"lastLaunchAt\": \"2026-03-01T09:58:30.000Z\",\n      \"lastExitAt\": \"2026-03-01T09:58:40.000Z\",\n      \"lastSessionSeconds\": 10,\n      \"launchCount\": 3,\n      \"currentSession\": null\n    }\n  },\n  \"updatedAt\": \"2026-03-01T09:59:59.000Z\"\n}\n",
+      "heartbeatMs": null,
+      "blocked": false,
+      "throwingNotifications": false,
+      "noNotifications": false,
+      "steps": [
+        {
+          "step": {"op":"create"},
+          "result": null,
+          "file": "﻿{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 100,\n      \"lastLaunchAt\": \"2026-03-01T09:58:30.000Z\",\n      \"lastExitAt\": \"2026-03-01T09:58:40.000Z\",\n      \"lastSessionSeconds\": 10,\n      \"launchCount\": 3,\n      \"currentSession\": null\n    }\n  },\n  \"updatedAt\": \"2026-03-01T09:59:59.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": false,
+          "active": []
+        },
+        {
+          "step": {"op":"summary","gameId":"hl1-won"},
+          "result": {"available":true,"gameId":"hl1-won","totalPlaySeconds":100,"lastLaunchAt":"2026-03-01T09:58:30.000Z","lastExitAt":"2026-03-01T09:58:40.000Z","lastSessionSeconds":10,"launchCount":3,"sessionActive":false},
+          "file": "﻿{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 100,\n      \"lastLaunchAt\": \"2026-03-01T09:58:30.000Z\",\n      \"lastExitAt\": \"2026-03-01T09:58:40.000Z\",\n      \"lastSessionSeconds\": 10,\n      \"launchCount\": 3,\n      \"currentSession\": null\n    }\n  },\n  \"updatedAt\": \"2026-03-01T09:59:59.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": false,
+          "active": []
+        },
+        {
+          "step": {"op":"sessionStart","gameId":"hl1-won"},
+          "result": null,
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 100,\n      \"lastLaunchAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastExitAt\": \"2026-03-01T09:58:40.000Z\",\n      \"lastSessionSeconds\": 10,\n      \"launchCount\": 4,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T10:00:00.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T10:00:00.000Z\",\n        \"heartbeatSeconds\": 0,\n        \"pid\": null\n      }\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:00.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": true,
+          "active": ["hl1-won"]
+        }
+      ]
+    },
+    {
+      "name": "пустой файл",
+      "initial": "",
+      "heartbeatMs": null,
+      "blocked": false,
+      "throwingNotifications": false,
+      "noNotifications": false,
+      "steps": [
+        {"step":{"op":"create"},"result":null,"file":null,"files":{"game-stats.json.corrupt-mm7kwn40":""},"logs":["warn: [game-stats] повреждённый файл карантинирован: game-stats.json.corrupt-mm7kwn40"],"notes":[{"level":"warning","code":"GAME_STATS_CORRUPT","detail":"статистика игры сброшена из-за повреждения файла"}],"timer":false,"active":[]},
+        {"step":{"op":"summary","gameId":"hl1-won"},"result":{"available":false,"gameId":"hl1-won"},"file":null,"files":{"game-stats.json.corrupt-mm7kwn40":""},"logs":[],"notes":[],"timer":false,"active":[]},
+        {
+          "step": {"op":"sessionStart","gameId":"hl1-won"},
+          "result": null,
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 0,\n      \"lastLaunchAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastExitAt\": null,\n      \"lastSessionSeconds\": null,\n      \"launchCount\": 1,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T10:00:00.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T10:00:00.000Z\",\n        \"heartbeatSeconds\": 0,\n        \"pid\": null\n      }\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:00.000Z\"\n}\n",
+          "files": {"game-stats.json.corrupt-mm7kwn40":""},
+          "logs": [],
+          "notes": [],
+          "timer": true,
+          "active": ["hl1-won"]
+        }
+      ]
+    },
+    {
+      "name": "не JSON",
+      "initial": "{ не json",
+      "heartbeatMs": null,
+      "blocked": false,
+      "throwingNotifications": false,
+      "noNotifications": false,
+      "steps": [
+        {"step":{"op":"create"},"result":null,"file":null,"files":{"game-stats.json.corrupt-mm7kwn40":"{ не json"},"logs":["warn: [game-stats] повреждённый файл карантинирован: game-stats.json.corrupt-mm7kwn40"],"notes":[{"level":"warning","code":"GAME_STATS_CORRUPT","detail":"статистика игры сброшена из-за повреждения файла"}],"timer":false,"active":[]},
+        {"step":{"op":"summary","gameId":"hl1-won"},"result":{"available":false,"gameId":"hl1-won"},"file":null,"files":{"game-stats.json.corrupt-mm7kwn40":"{ не json"},"logs":[],"notes":[],"timer":false,"active":[]},
+        {
+          "step": {"op":"sessionStart","gameId":"hl1-won"},
+          "result": null,
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 0,\n      \"lastLaunchAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastExitAt\": null,\n      \"lastSessionSeconds\": null,\n      \"launchCount\": 1,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T10:00:00.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T10:00:00.000Z\",\n        \"heartbeatSeconds\": 0,\n        \"pid\": null\n      }\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:00.000Z\"\n}\n",
+          "files": {"game-stats.json.corrupt-mm7kwn40":"{ не json"},
+          "logs": [],
+          "notes": [],
+          "timer": true,
+          "active": ["hl1-won"]
+        },
+        {
+          "step": {"op":"sessionEnd","gameId":"hl1-won"},
+          "result": {"gameId":"hl1-won","seconds":0,"totalPlaySeconds":0},
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 0,\n      \"lastLaunchAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastExitAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastSessionSeconds\": 0,\n      \"launchCount\": 1,\n      \"currentSession\": null\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:00.000Z\"\n}\n",
+          "files": {"game-stats.json.corrupt-mm7kwn40":"{ не json"},
+          "logs": [],
+          "notes": [],
+          "timer": false,
+          "active": []
+        }
+      ]
+    },
+    {
+      "name": "корень — не объект",
+      "initial": "[1,2,3]",
+      "heartbeatMs": null,
+      "blocked": false,
+      "throwingNotifications": false,
+      "noNotifications": false,
+      "steps": [
+        {"step":{"op":"create"},"result":null,"file":null,"files":{"game-stats.json.corrupt-mm7kwn40":"[1,2,3]"},"logs":["warn: [game-stats] повреждённый файл карантинирован: game-stats.json.corrupt-mm7kwn40"],"notes":[{"level":"warning","code":"GAME_STATS_CORRUPT","detail":"статистика игры сброшена из-за повреждения файла"}],"timer":false,"active":[]},
+        {"step":{"op":"summary","gameId":"hl1-won"},"result":{"available":false,"gameId":"hl1-won"},"file":null,"files":{"game-stats.json.corrupt-mm7kwn40":"[1,2,3]"},"logs":[],"notes":[],"timer":false,"active":[]}
+      ]
+    },
+    {
+      "name": "корень — число",
+      "initial": "5",
+      "heartbeatMs": null,
+      "blocked": false,
+      "throwingNotifications": false,
+      "noNotifications": false,
+      "steps": [
+        {"step":{"op":"create"},"result":null,"file":null,"files":{"game-stats.json.corrupt-mm7kwn40":"5"},"logs":["warn: [game-stats] повреждённый файл карантинирован: game-stats.json.corrupt-mm7kwn40"],"notes":[{"level":"warning","code":"GAME_STATS_CORRUPT","detail":"статистика игры сброшена из-за повреждения файла"}],"timer":false,"active":[]},
+        {"step":{"op":"summary","gameId":"hl1-won"},"result":{"available":false,"gameId":"hl1-won"},"file":null,"files":{"game-stats.json.corrupt-mm7kwn40":"5"},"logs":[],"notes":[],"timer":false,"active":[]}
+      ]
+    },
+    {
+      "name": "корень — null",
+      "initial": "null",
+      "heartbeatMs": null,
+      "blocked": false,
+      "throwingNotifications": false,
+      "noNotifications": false,
+      "steps": [
+        {"step":{"op":"create"},"result":null,"file":null,"files":{"game-stats.json.corrupt-mm7kwn40":"null"},"logs":["warn: [game-stats] повреждённый файл карантинирован: game-stats.json.corrupt-mm7kwn40"],"notes":[{"level":"warning","code":"GAME_STATS_CORRUPT","detail":"статистика игры сброшена из-за повреждения файла"}],"timer":false,"active":[]},
+        {"step":{"op":"summary","gameId":"hl1-won"},"result":{"available":false,"gameId":"hl1-won"},"file":null,"files":{"game-stats.json.corrupt-mm7kwn40":"null"},"logs":[],"notes":[],"timer":false,"active":[]}
+      ]
+    },
+    {
+      "name": "другая версия схемы",
+      "initial": "{\"schemaVersion\":2,\"games\":{\"a\":{\"gameId\":\"a\",\"totalPlaySeconds\":100,\"lastLaunchAt\":\"2026-03-01T09:58:30.000Z\",\"lastExitAt\":\"2026-03-01T09:58:40.000Z\",\"lastSessionSeconds\":10,\"launchCount\":3,\"currentSession\":null}}}",
+      "heartbeatMs": null,
+      "blocked": false,
+      "throwingNotifications": false,
+      "noNotifications": false,
+      "steps": [
+        {
+          "step": {"op":"create"},
+          "result": null,
+          "file": null,
+          "files": {"game-stats.json.corrupt-mm7kwn40":"{\"schemaVersion\":2,\"games\":{\"a\":{\"gameId\":\"a\",\"totalPlaySeconds\":100,\"lastLaunchAt\":\"2026-03-01T09:58:30.000Z\",\"lastExitAt\":\"2026-03-01T09:58:40.000Z\",\"lastSessionSeconds\":10,\"launchCount\":3,\"currentSession\":null}}}"},
+          "logs": ["warn: [game-stats] повреждённый файл карантинирован: game-stats.json.corrupt-mm7kwn40"],
+          "notes": [{"level":"warning","code":"GAME_STATS_CORRUPT","detail":"статистика игры сброшена из-за повреждения файла"}],
+          "timer": false,
+          "active": []
+        },
+        {
+          "step": {"op":"summary","gameId":"a"},
+          "result": {"available":false,"gameId":"a"},
+          "file": null,
+          "files": {"game-stats.json.corrupt-mm7kwn40":"{\"schemaVersion\":2,\"games\":{\"a\":{\"gameId\":\"a\",\"totalPlaySeconds\":100,\"lastLaunchAt\":\"2026-03-01T09:58:30.000Z\",\"lastExitAt\":\"2026-03-01T09:58:40.000Z\",\"lastSessionSeconds\":10,\"launchCount\":3,\"currentSession\":null}}}"},
+          "logs": [],
+          "notes": [],
+          "timer": false,
+          "active": []
+        },
+        {
+          "step": {"op":"sessionStart","gameId":"a"},
+          "result": null,
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"a\": {\n      \"gameId\": \"a\",\n      \"totalPlaySeconds\": 0,\n      \"lastLaunchAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastExitAt\": null,\n      \"lastSessionSeconds\": null,\n      \"launchCount\": 1,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T10:00:00.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T10:00:00.000Z\",\n        \"heartbeatSeconds\": 0,\n        \"pid\": null\n      }\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:00.000Z\"\n}\n",
+          "files": {"game-stats.json.corrupt-mm7kwn40":"{\"schemaVersion\":2,\"games\":{\"a\":{\"gameId\":\"a\",\"totalPlaySeconds\":100,\"lastLaunchAt\":\"2026-03-01T09:58:30.000Z\",\"lastExitAt\":\"2026-03-01T09:58:40.000Z\",\"lastSessionSeconds\":10,\"launchCount\":3,\"currentSession\":null}}}"},
+          "logs": [],
+          "notes": [],
+          "timer": true,
+          "active": ["a"]
+        }
+      ]
+    },
+    {
+      "name": "схема строкой",
+      "initial": "{\"schemaVersion\":\"1\",\"games\":{}}",
+      "heartbeatMs": null,
+      "blocked": false,
+      "throwingNotifications": false,
+      "noNotifications": false,
+      "steps": [
+        {"step":{"op":"create"},"result":null,"file":null,"files":{"game-stats.json.corrupt-mm7kwn40":"{\"schemaVersion\":\"1\",\"games\":{}}"},"logs":["warn: [game-stats] повреждённый файл карантинирован: game-stats.json.corrupt-mm7kwn40"],"notes":[{"level":"warning","code":"GAME_STATS_CORRUPT","detail":"статистика игры сброшена из-за повреждения файла"}],"timer":false,"active":[]},
+        {"step":{"op":"summary","gameId":"a"},"result":{"available":false,"gameId":"a"},"file":null,"files":{"game-stats.json.corrupt-mm7kwn40":"{\"schemaVersion\":\"1\",\"games\":{}}"},"logs":[],"notes":[],"timer":false,"active":[]}
+      ]
+    },
+    {
+      "name": "схема 1.0",
+      "initial": "{\"schemaVersion\":1.0,\"games\":{}}",
+      "heartbeatMs": null,
+      "blocked": false,
+      "throwingNotifications": false,
+      "noNotifications": false,
+      "steps": [
+        {"step":{"op":"create"},"result":null,"file":"{\"schemaVersion\":1.0,\"games\":{}}","files":{},"logs":[],"notes":[],"timer":false,"active":[]},
+        {"step":{"op":"summary","gameId":"a"},"result":{"available":false,"gameId":"a"},"file":"{\"schemaVersion\":1.0,\"games\":{}}","files":{},"logs":[],"notes":[],"timer":false,"active":[]},
+        {
+          "step": {"op":"sessionStart","gameId":"a"},
+          "result": null,
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"a\": {\n      \"gameId\": \"a\",\n      \"totalPlaySeconds\": 0,\n      \"lastLaunchAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastExitAt\": null,\n      \"lastSessionSeconds\": null,\n      \"launchCount\": 1,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T10:00:00.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T10:00:00.000Z\",\n        \"heartbeatSeconds\": 0,\n        \"pid\": null\n      }\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:00.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": true,
+          "active": ["a"]
+        }
+      ]
+    },
+    {
+      "name": "нет games",
+      "initial": "{\"schemaVersion\":1}",
+      "heartbeatMs": null,
+      "blocked": false,
+      "throwingNotifications": false,
+      "noNotifications": false,
+      "steps": [
+        {"step":{"op":"create"},"result":null,"file":null,"files":{"game-stats.json.corrupt-mm7kwn40":"{\"schemaVersion\":1}"},"logs":["warn: [game-stats] повреждённый файл карантинирован: game-stats.json.corrupt-mm7kwn40"],"notes":[{"level":"warning","code":"GAME_STATS_CORRUPT","detail":"статистика игры сброшена из-за повреждения файла"}],"timer":false,"active":[]},
+        {"step":{"op":"summary","gameId":"a"},"result":{"available":false,"gameId":"a"},"file":null,"files":{"game-stats.json.corrupt-mm7kwn40":"{\"schemaVersion\":1}"},"logs":[],"notes":[],"timer":false,"active":[]}
+      ]
+    },
+    {
+      "name": "games — null",
+      "initial": "{\"schemaVersion\":1,\"games\":null}",
+      "heartbeatMs": null,
+      "blocked": false,
+      "throwingNotifications": false,
+      "noNotifications": false,
+      "steps": [
+        {"step":{"op":"create"},"result":null,"file":null,"files":{"game-stats.json.corrupt-mm7kwn40":"{\"schemaVersion\":1,\"games\":null}"},"logs":["warn: [game-stats] повреждённый файл карантинирован: game-stats.json.corrupt-mm7kwn40"],"notes":[{"level":"warning","code":"GAME_STATS_CORRUPT","detail":"статистика игры сброшена из-за повреждения файла"}],"timer":false,"active":[]},
+        {"step":{"op":"summary","gameId":"a"},"result":{"available":false,"gameId":"a"},"file":null,"files":{"game-stats.json.corrupt-mm7kwn40":"{\"schemaVersion\":1,\"games\":null}"},"logs":[],"notes":[],"timer":false,"active":[]}
+      ]
+    },
+    {
+      "name": "games — число",
+      "initial": "{\"schemaVersion\":1,\"games\":5}",
+      "heartbeatMs": null,
+      "blocked": false,
+      "throwingNotifications": false,
+      "noNotifications": false,
+      "steps": [
+        {"step":{"op":"create"},"result":null,"file":null,"files":{"game-stats.json.corrupt-mm7kwn40":"{\"schemaVersion\":1,\"games\":5}"},"logs":["warn: [game-stats] повреждённый файл карантинирован: game-stats.json.corrupt-mm7kwn40"],"notes":[{"level":"warning","code":"GAME_STATS_CORRUPT","detail":"статистика игры сброшена из-за повреждения файла"}],"timer":false,"active":[]},
+        {"step":{"op":"summary","gameId":"a"},"result":{"available":false,"gameId":"a"},"file":null,"files":{"game-stats.json.corrupt-mm7kwn40":"{\"schemaVersion\":1,\"games\":5}"},"logs":[],"notes":[],"timer":false,"active":[]}
+      ]
+    },
+    {
+      "name": "games — строка",
+      "initial": "{\"schemaVersion\":1,\"games\":\"x\"}",
+      "heartbeatMs": null,
+      "blocked": false,
+      "throwingNotifications": false,
+      "noNotifications": false,
+      "steps": [
+        {"step":{"op":"create"},"result":null,"file":null,"files":{"game-stats.json.corrupt-mm7kwn40":"{\"schemaVersion\":1,\"games\":\"x\"}"},"logs":["warn: [game-stats] повреждённый файл карантинирован: game-stats.json.corrupt-mm7kwn40"],"notes":[{"level":"warning","code":"GAME_STATS_CORRUPT","detail":"статистика игры сброшена из-за повреждения файла"}],"timer":false,"active":[]},
+        {"step":{"op":"summary","gameId":"a"},"result":{"available":false,"gameId":"a"},"file":null,"files":{"game-stats.json.corrupt-mm7kwn40":"{\"schemaVersion\":1,\"games\":\"x\"}"},"logs":[],"notes":[],"timer":false,"active":[]}
+      ]
+    },
+    {
+      "name": "карантин один раз за жизнь хранилища",
+      "initial": "{ не json",
+      "heartbeatMs": null,
+      "blocked": false,
+      "throwingNotifications": false,
+      "noNotifications": false,
+      "steps": [
+        {"step":{"op":"create"},"result":null,"file":null,"files":{"game-stats.json.corrupt-mm7kwn40":"{ не json"},"logs":["warn: [game-stats] повреждённый файл карантинирован: game-stats.json.corrupt-mm7kwn40"],"notes":[{"level":"warning","code":"GAME_STATS_CORRUPT","detail":"статистика игры сброшена из-за повреждения файла"}],"timer":false,"active":[]},
+        {"step":{"op":"summary","gameId":"a"},"result":{"available":false,"gameId":"a"},"file":null,"files":{"game-stats.json.corrupt-mm7kwn40":"{ не json"},"logs":[],"notes":[],"timer":false,"active":[]},
+        {"step":{"op":"write","text":"ещё раз не json"},"result":null,"file":"ещё раз не json","files":{"game-stats.json.corrupt-mm7kwn40":"{ не json"},"logs":[],"notes":[],"timer":false,"active":[]},
+        {"step":{"op":"tick","ms":7777,"mono":0},"result":null,"file":"ещё раз не json","files":{"game-stats.json.corrupt-mm7kwn40":"{ не json"},"logs":[],"notes":[],"timer":false,"active":[]},
+        {"step":{"op":"summary","gameId":"a"},"result":{"available":false,"gameId":"a"},"file":"ещё раз не json","files":{"game-stats.json.corrupt-mm7kwn40":"{ не json"},"logs":[],"notes":[],"timer":false,"active":[]},
+        {
+          "step": {"op":"sessionStart","gameId":"a"},
+          "result": null,
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"a\": {\n      \"gameId\": \"a\",\n      \"totalPlaySeconds\": 0,\n      \"lastLaunchAt\": \"2026-03-01T10:00:07.777Z\",\n      \"lastExitAt\": null,\n      \"lastSessionSeconds\": null,\n      \"launchCount\": 1,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T10:00:07.777Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T10:00:07.777Z\",\n        \"heartbeatSeconds\": 0,\n        \"pid\": null\n      }\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:07.777Z\"\n}\n",
+          "files": {"game-stats.json.corrupt-mm7kwn40":"{ не json"},
+          "logs": [],
+          "notes": [],
+          "timer": true,
+          "active": ["a"]
+        },
+        {"step":{"op":"write","text":"[]"},"result":null,"file":"[]","files":{"game-stats.json.corrupt-mm7kwn40":"{ не json"},"logs":[],"notes":[],"timer":true,"active":["a"]},
+        {"step":{"op":"summary","gameId":"a"},"result":{"available":false,"gameId":"a"},"file":"[]","files":{"game-stats.json.corrupt-mm7kwn40":"{ не json"},"logs":[],"notes":[],"timer":true,"active":["a"]},
+        {"step":{"op":"construct"},"result":null,"file":null,"files":{"game-stats.json.corrupt-mm7kwn40":"{ не json","game-stats.json.corrupt-mm7kwt41":"[]"},"logs":["warn: [game-stats] повреждённый файл карантинирован: game-stats.json.corrupt-mm7kwt41"],"notes":[{"level":"warning","code":"GAME_STATS_CORRUPT","detail":"статистика игры сброшена из-за повреждения файла"}],"timer":false,"active":[]},
+        {"step":{"op":"summary","gameId":"a"},"result":{"available":false,"gameId":"a"},"file":null,"files":{"game-stats.json.corrupt-mm7kwn40":"{ не json","game-stats.json.corrupt-mm7kwt41":"[]"},"logs":[],"notes":[],"timer":false,"active":[]},
+        {"step":{"op":"write","text":"[]"},"result":null,"file":"[]","files":{"game-stats.json.corrupt-mm7kwn40":"{ не json","game-stats.json.corrupt-mm7kwt41":"[]"},"logs":[],"notes":[],"timer":false,"active":[]},
+        {"step":{"op":"tick","ms":100000,"mono":0},"result":null,"file":"[]","files":{"game-stats.json.corrupt-mm7kwn40":"{ не json","game-stats.json.corrupt-mm7kwt41":"[]"},"logs":[],"notes":[],"timer":false,"active":[]},
+        {"step":{"op":"summary","gameId":"a"},"result":{"available":false,"gameId":"a"},"file":"[]","files":{"game-stats.json.corrupt-mm7kwn40":"{ не json","game-stats.json.corrupt-mm7kwt41":"[]"},"logs":[],"notes":[],"timer":false,"active":[]}
+      ]
+    },
+    {
+      "name": "карантин при создании и неудачное уведомление",
+      "initial": "битый",
+      "heartbeatMs": null,
+      "blocked": false,
+      "throwingNotifications": true,
+      "noNotifications": false,
+      "steps": [
+        {"step":{"op":"create"},"result":null,"file":null,"files":{"game-stats.json.corrupt-mm7kwn40":"битый"},"logs":["warn: [game-stats] повреждённый файл карантинирован: game-stats.json.corrupt-mm7kwn40"],"notes":[{"level":"warning","code":"GAME_STATS_CORRUPT","detail":"статистика игры сброшена из-за повреждения файла"}],"timer":false,"active":[]},
+        {"step":{"op":"summary","gameId":"a"},"result":{"available":false,"gameId":"a"},"file":null,"files":{"game-stats.json.corrupt-mm7kwn40":"битый"},"logs":[],"notes":[],"timer":false,"active":[]}
+      ]
+    },
+    {
+      "name": "карантин без уведомлений",
+      "initial": "битый",
+      "heartbeatMs": null,
+      "blocked": false,
+      "throwingNotifications": false,
+      "noNotifications": true,
+      "steps": [
+        {"step":{"op":"create"},"result":null,"file":null,"files":{"game-stats.json.corrupt-mm7kwn40":"битый"},"logs":["warn: [game-stats] повреждённый файл карантинирован: game-stats.json.corrupt-mm7kwn40"],"notes":[],"timer":false,"active":[]},
+        {"step":{"op":"summary","gameId":"a"},"result":{"available":false,"gameId":"a"},"file":null,"files":{"game-stats.json.corrupt-mm7kwn40":"битый"},"logs":[],"notes":[],"timer":false,"active":[]}
+      ]
+    },
+    {
+      "name": "карантин не удался",
+      "initial": null,
+      "heartbeatMs": null,
+      "blocked": false,
+      "throwingNotifications": false,
+      "noNotifications": false,
+      "steps": [
+        {"step":{"op":"create"},"result":null,"file":null,"files":{},"logs":[],"notes":[],"timer":false,"active":[]},
+        {"step":{"op":"write","text":"битый"},"result":null,"file":"битый","files":{},"logs":[],"notes":[],"timer":false,"active":[]},
+        {"step":{"op":"lockQuarantine"},"result":null,"file":"битый","files":{"game-stats.json.corrupt-mm7kwn40":null},"logs":[],"notes":[],"timer":false,"active":[]},
+        {"step":{"op":"summary","gameId":"a"},"result":{"available":false,"gameId":"a"},"file":"битый","files":{"game-stats.json.corrupt-mm7kwn40":null},"logs":["warn: [game-stats] карантин не удался: <opaque>"],"notes":[{"level":"warning","code":"GAME_STATS_CORRUPT","detail":"статистика игры сброшена из-за повреждения файла"}],"timer":false,"active":[]},
+        {"step":{"op":"summary","gameId":"a"},"result":{"available":false,"gameId":"a"},"file":"битый","files":{"game-stats.json.corrupt-mm7kwn40":null},"logs":[],"notes":[],"timer":false,"active":[]}
+      ]
+    },
+    {
+      "name": "удалённый файл посреди работы",
+      "initial": null,
+      "heartbeatMs": null,
+      "blocked": false,
+      "throwingNotifications": false,
+      "noNotifications": false,
+      "steps": [
+        {"step":{"op":"create"},"result":null,"file":null,"files":{},"logs":[],"notes":[],"timer":false,"active":[]},
+        {
+          "step": {"op":"sessionStart","gameId":"hl1-won"},
+          "result": null,
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 0,\n      \"lastLaunchAt\": \"2026-03-01T10:00:00.000Z\",\n      \"lastExitAt\": null,\n      \"lastSessionSeconds\": null,\n      \"launchCount\": 1,\n      \"currentSession\": {\n        \"startedAt\": \"2026-03-01T10:00:00.000Z\",\n        \"lastHeartbeatAt\": \"2026-03-01T10:00:00.000Z\",\n        \"heartbeatSeconds\": 0,\n        \"pid\": null\n      }\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:00.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": true,
+          "active": ["hl1-won"]
+        },
+        {"step":{"op":"remove"},"result":null,"file":null,"files":{},"logs":[],"notes":[],"timer":true,"active":["hl1-won"]},
+        {"step":{"op":"tick","ms":3000,"mono":3},"result":null,"file":null,"files":{},"logs":[],"notes":[],"timer":true,"active":["hl1-won"]},
+        {"step":{"op":"heartbeat"},"result":null,"file":null,"files":{},"logs":[],"notes":[],"timer":true,"active":["hl1-won"]},
+        {
+          "step": {"op":"sessionEnd","gameId":"hl1-won"},
+          "result": {"gameId":"hl1-won","seconds":3,"totalPlaySeconds":3},
+          "file": "{\n  \"schemaVersion\": 1,\n  \"games\": {\n    \"hl1-won\": {\n      \"gameId\": \"hl1-won\",\n      \"totalPlaySeconds\": 3,\n      \"lastLaunchAt\": null,\n      \"lastExitAt\": \"2026-03-01T10:00:03.000Z\",\n      \"lastSessionSeconds\": 3,\n      \"launchCount\": 0,\n      \"currentSession\": null\n    }\n  },\n  \"updatedAt\": \"2026-03-01T10:00:03.000Z\"\n}\n",
+          "files": {},
+          "logs": [],
+          "notes": [],
+          "timer": false,
+          "active": []
+        }
+      ]
+    },
+    {
+      "name": "путь, который не создать",
+      "initial": null,
+      "heartbeatMs": null,
+      "blocked": true,
+      "throwingNotifications": false,
+      "noNotifications": false,
+      "steps": [
+        {"step":{"op":"create"},"result":null,"file":null,"files":{},"logs":[],"notes":[],"timer":false,"active":[]},
+        {"step":{"op":"summary","gameId":"a"},"result":{"available":false,"gameId":"a"},"file":null,"files":{},"logs":[],"notes":[],"timer":false,"active":[]},
+        {"step":{"op":"sessionStart","gameId":"a"},"result":null,"threw":true,"file":null,"files":{},"logs":[],"notes":[],"timer":false,"active":["a"]},
+        {"step":{"op":"sessionEnd","gameId":"a"},"result":null,"threw":true,"file":null,"files":{},"logs":[],"notes":[],"timer":false,"active":[]}
+      ]
+    }
+  ]
+}

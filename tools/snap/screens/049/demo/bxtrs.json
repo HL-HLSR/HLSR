@@ -1,0 +1,19 @@
+{
+  "id": "demo/bxtrs",
+  "state": "HL1: серия из папки игры без bxt-rs — карточка bxt-rs (ссылки), «Файлы серии», факты с пропусками",
+  "base": "demo/_base",
+  "steps": [
+    {
+      "click": {
+        "css": ".game-rail .rail-item[aria-label=\"Демо\"]",
+        "view": "rail-demo"
+      }
+    },
+    {
+      "move": [
+        800,
+        880
+      ]
+    }
+  ]
+}

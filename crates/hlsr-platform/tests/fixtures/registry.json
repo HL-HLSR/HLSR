@@ -1,0 +1,32 @@
+{
+  "cases": [
+    {"type":"REG_SZ","name":"SteamPath","data":"C:\\Program Files (x86)\\Steam","result":"C:\\Program Files (x86)\\Steam"},
+    {"type":"REG_SZ","name":"SteamPath","data":"c:/program files (x86)/steam","result":"c:/program files (x86)/steam"},
+    {"type":"REG_SZ","name":"SteamPath","data":"","result":""},
+    {"type":"REG_SZ","name":"SteamPath","data":" ","result":""},
+    {"type":"REG_SZ","name":"SteamPath","data":"  padded  ","result":"padded"},
+    {"type":"REG_SZ","name":"SteamPath","data":"\tтаб\t","result":"таб"},
+    {"type":"REG_SZ","name":"SteamPath","data":"two  spaces   inside","result":"two  spaces   inside"},
+    {"type":"REG_SZ","name":"SteamPath","data":"C:\\Игры\\Steam","result":"C:\\Игры\\Steam"},
+    {"type":"REG_SZ","name":"SteamPath","data":"7440","result":"7440"},
+    {"type":"REG_SZ","name":"SteamPath","data":"0x10","result":"0x10"},
+    {"type":"REG_SZ","name":"SteamPath","data":"REG_SZ    looks like a type","result":"REG_SZ    looks like a type"},
+    {
+      "type": "REG_SZ",
+      "name": "SteamPath",
+      "data": "C:\\a\\bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "result": "C:\\a\\bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    },
+    {"type":"REG_EXPAND_SZ","name":"SteamPath","data":"%ProgramFiles(x86)%\\Steam","result":"%ProgramFiles(x86)%\\Steam"},
+    {"type":"REG_EXPAND_SZ","name":"SteamPath","data":"","result":""},
+    {"type":"REG_EXPAND_SZ","name":"SteamPath","data":" %SystemRoot%\\x ","result":"%SystemRoot%\\x"},
+    {"type":"REG_DWORD","name":"SteamPath","data":0,"result":0},
+    {"type":"REG_DWORD","name":"SteamPath","data":1,"result":1},
+    {"type":"REG_DWORD","name":"SteamPath","data":7440,"result":7440},
+    {"type":"REG_DWORD","name":"SteamPath","data":255,"result":255},
+    {"type":"REG_DWORD","name":"SteamPath","data":2147483648,"result":2147483648},
+    {"type":"REG_DWORD","name":"SteamPath","data":4294967295,"result":4294967295},
+    {"type":"REG_DWORD","name":"ActiveUser","data":42,"result":42}
+  ],
+  "names": [{"asked":"SteamPath","result":"value"},{"asked":"steampath","result":"value"},{"asked":"STEAMPATH","result":"value"},{"asked":"SteamPat","result":null},{"asked":"SteamPathX","result":null},{"asked":"Other","result":null},{"asked":"","result":null},{"asked":"SteamPath","otherKey":true,"result":null},{"asked":"SteamPath","upperKey":true,"result":"value"}]
+}

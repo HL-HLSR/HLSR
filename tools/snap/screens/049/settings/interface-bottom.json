@@ -1,0 +1,46 @@
+{
+  "id": "settings/interface-bottom",
+  "base": "settings/_base",
+  "state": "«Интерфейс» прокручен вниз: третий ряд тем, акценты «Бумаги», масштаб, кнопка полного экрана, анимации",
+  "prefs": {
+    "paperAccent": "sea"
+  },
+  "steps": [
+    {
+      "click": {
+        "css": ".game-rail__footer .game-rail__tool",
+        "index": 4,
+        "view": "rail-settings"
+      }
+    },
+    {
+      "wait": 600
+    },
+    {
+      "click": {
+        "css": ".settings-modal__tab",
+        "index": 2,
+        "view": "settings-tabs-2"
+      }
+    },
+    {
+      "wait": 600
+    },
+    {
+      "wheel": {
+        "css": ".settings-modal__section",
+        "view": "settings-body"
+      },
+      "deltaY": -6000
+    },
+    {
+      "wait": 600
+    },
+    {
+      "move": [
+        800,
+        880
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1044 @@
+{
+  "constants": {"BUNNYSPLIT":"LiveSplit.BunnySplit.dll","COMPONENTS_DIRECTORY":"livesplit-components","FIXES_DIRECTORY":"livesplit-fixes","LIVESPLIT_FIXES":[{"target":"Components/LiveSplit.SourceSplit.dll","source":"LiveSplit.SourceSplit.dll","original":"f8461b811571dbede634c9bd048d6fc05a64d5e949a52e2ec339bc27149871e8","fixed":"a02c1a2b545b0b17b889a795f7fd5ddc44807398d9ad4c683292aa2a558a20f1"}]},
+  "describe": [
+    ["ghosting-renewed",[{"id":"chapters","kind":"chapters","category":null},{"id":"maps","kind":"maps","category":null}]],
+    ["hl1-won",[{"id":"scripted","kind":"chapters","category":"Scripted"},{"id":"scriptless","kind":"chapters","category":"Scriptless"}]],
+    ["hl2-2707",[{"id":"scripts-chapters","kind":"chapters","category":"With Scripts"},{"id":"scriptless-chapters","kind":"chapters","category":"Scriptless"},{"id":"scripts-maps","kind":"maps","category":"With Scripts"},{"id":"scriptless-maps","kind":"maps","category":"Scriptless"}]],
+    ["hl2-4260",[{"id":"scripts-chapters","kind":"chapters","category":"With Scripts"},{"id":"scriptless-chapters","kind":"chapters","category":"Scriptless"},{"id":"scripts-maps","kind":"maps","category":"With Scripts"},{"id":"scriptless-maps","kind":"maps","category":"Scriptless"}]],
+    ["hl2-5288",[{"id":"any-chapters","kind":"chapters","category":"Any%"},{"id":"novoidclip-chapters","kind":"chapters","category":"Any% No Voidclip"},{"id":"any-maps","kind":"maps","category":"Any%"},{"id":"novoidclip-maps","kind":"maps","category":"Any% No Voidclip"}]],
+    ["unknown-game",[]],
+    ["",[]],
+    ["constructor",[]]
+  ],
+  "presetOf": [
+    ["ghosting-renewed",null,"chapters"],
+    ["ghosting-renewed","","chapters"],
+    ["ghosting-renewed","maps","maps"],
+    ["ghosting-renewed","scripted","chapters"],
+    ["ghosting-renewed","scriptless-maps","chapters"],
+    ["ghosting-renewed","novoidclip-chapters","chapters"],
+    ["ghosting-renewed","unknown","chapters"],
+    ["ghosting-renewed","constructor","chapters"],
+    ["hl1-won",null,"scripted"],
+    ["hl1-won","","scripted"],
+    ["hl1-won","maps","scripted"],
+    ["hl1-won","scripted","scripted"],
+    ["hl1-won","scriptless-maps","scripted"],
+    ["hl1-won","novoidclip-chapters","scripted"],
+    ["hl1-won","unknown","scripted"],
+    ["hl1-won","constructor","scripted"],
+    ["hl2-4260",null,"scripts-chapters"],
+    ["hl2-4260","","scripts-chapters"],
+    ["hl2-4260","maps","scripts-chapters"],
+    ["hl2-4260","scripted","scripts-chapters"],
+    ["hl2-4260","scriptless-maps","scriptless-maps"],
+    ["hl2-4260","novoidclip-chapters","scripts-chapters"],
+    ["hl2-4260","unknown","scripts-chapters"],
+    ["hl2-4260","constructor","scripts-chapters"],
+    ["unknown-game",null,null],
+    ["unknown-game","",null],
+    ["unknown-game","maps",null],
+    ["unknown-game","scripted",null],
+    ["unknown-game","scriptless-maps",null],
+    ["unknown-game","novoidclip-chapters",null],
+    ["unknown-game","unknown",null],
+    ["unknown-game","constructor",null],
+    ["constructor",null,null],
+    ["constructor","",null],
+    ["constructor","maps",null],
+    ["constructor","scripted",null],
+    ["constructor","scriptless-maps",null],
+    ["constructor","novoidclip-chapters",null],
+    ["constructor","unknown",null],
+    ["constructor","constructor",null]
+  ],
+  "files": [
+    ["ghosting-renewed","chapters",{"splits":"splits/chapters/chapters.lss","layout":"splits/chapters/chapters.lsl"}],
+    ["ghosting-renewed","maps",{"splits":"splits/maps/maps.lss","layout":"splits/maps/maps.lsl"}],
+    ["hl1-won","scripted",{"splits":"splits/hlsr/hl1-won/scripted.lss","layout":"splits/hlsr/hl1-won/scripted.lsl"}],
+    ["hl1-won","scriptless",{"splits":"splits/hlsr/hl1-won/scriptless.lss","layout":"splits/hlsr/hl1-won/scriptless.lsl"}],
+    ["hl2-2707","scripts-chapters",{"splits":"splits/hlsr/hl2-2707/scripts-chapters.lss","layout":"splits/hlsr/hl2-2707/scripts-chapters.lsl"}],
+    ["hl2-2707","scriptless-chapters",{"splits":"splits/hlsr/hl2-2707/scriptless-chapters.lss","layout":"splits/hlsr/hl2-2707/scriptless-chapters.lsl"}],
+    ["hl2-2707","scripts-maps",{"splits":"splits/hlsr/hl2-2707/scripts-maps.lss","layout":"splits/hlsr/hl2-2707/scripts-maps.lsl"}],
+    ["hl2-2707","scriptless-maps",{"splits":"splits/hlsr/hl2-2707/scriptless-maps.lss","layout":"splits/hlsr/hl2-2707/scriptless-maps.lsl"}],
+    ["hl2-4260","scripts-chapters",{"splits":"splits/hlsr/hl2-4260/scripts-chapters.lss","layout":"splits/hlsr/hl2-4260/scripts-chapters.lsl"}],
+    ["hl2-4260","scriptless-chapters",{"splits":"splits/hlsr/hl2-4260/scriptless-chapters.lss","layout":"splits/hlsr/hl2-4260/scriptless-chapters.lsl"}],
+    ["hl2-4260","scripts-maps",{"splits":"splits/hlsr/hl2-4260/scripts-maps.lss","layout":"splits/hlsr/hl2-4260/scripts-maps.lsl"}],
+    ["hl2-4260","scriptless-maps",{"splits":"splits/hlsr/hl2-4260/scriptless-maps.lss","layout":"splits/hlsr/hl2-4260/scriptless-maps.lsl"}],
+    ["hl2-5288","any-chapters",{"splits":"splits/hlsr/hl2-5288/any-chapters.lss","layout":"splits/hlsr/hl2-5288/any-chapters.lsl"}],
+    ["hl2-5288","novoidclip-chapters",{"splits":"splits/hlsr/hl2-5288/novoidclip-chapters.lss","layout":"splits/hlsr/hl2-5288/novoidclip-chapters.lsl"}],
+    ["hl2-5288","any-maps",{"splits":"splits/hlsr/hl2-5288/any-maps.lss","layout":"splits/hlsr/hl2-5288/any-maps.lsl"}],
+    ["hl2-5288","novoidclip-maps",{"splits":"splits/hlsr/hl2-5288/novoidclip-maps.lss","layout":"splits/hlsr/hl2-5288/novoidclip-maps.lsl"}]
+  ],
+  "splitsXml": [
+    ["hl1-won","scripted",{"length":4355,"sha256":"8a22d8fa8d13b072e7e9a1c662a034abb8f869df2e35728ea3dc948fe44925c0"}],
+    ["hl1-won","scriptless",{"length":4357,"sha256":"c6e4675e68ffd90471cd6f4a1057783f0ee1322d743a4d137bd789ca5b611f5a"}],
+    ["hl2-2707","scripts-chapters",{"length":5736,"sha256":"55fe0cf8d538ac281ba97bb8ee467b3a261276daeb4f925aa87c6a4bad0ad1c9"}],
+    ["hl2-2707","scriptless-chapters",{"length":5734,"sha256":"ceeffb9d5d9438040aa003c3fbc0b341194cf5555f414a66eb85a821c5ab3315"}],
+    ["hl2-2707","scripts-maps",{"length":17007,"sha256":"e5dbeb3fd0353b07076c72bc3005d2b49656c27223206d8bb0ce188c9ce1c177"}],
+    ["hl2-2707","scriptless-maps",{"length":17005,"sha256":"b3b55d49ea354b5538838f80b8e259fac60f1fcd27ce3ee97cd4a172cc43ad21"}],
+    ["hl2-4260","scripts-chapters",{"length":5741,"sha256":"b0980defe6071b11afa4c49a74a05a4b911c3b85760765dda8b142a02a8c0a01"}],
+    ["hl2-4260","scriptless-chapters",{"length":5739,"sha256":"454172500bc9122d14fde01fdcf02acb22f9ecb103d07f810b0fb08660ccc719"}],
+    ["hl2-4260","scripts-maps",{"length":17012,"sha256":"886ca1fafa2e4ad4b50e7ff6c774770e2853e1f9da075cc3c9a0ce1c5ff90fad"}],
+    ["hl2-4260","scriptless-maps",{"length":17010,"sha256":"aea8e1e9e8d3394f927feff0e65f9df7ac2bae838ee4dd4553d34d64d2da5dc6"}],
+    ["hl2-5288","any-chapters",{"length":5742,"sha256":"83af914a597c1ad14c9f514e8bbaf0fbb772b1f9fa1304430cbb77d348a222ba"}],
+    ["hl2-5288","novoidclip-chapters",{"length":5754,"sha256":"3ba1bd1a9bcc69a63ee8b4c89c8d73cba7d36809c9d89474d291bfe017b18ad1"}],
+    ["hl2-5288","any-maps",{"length":17013,"sha256":"05bf2ecd97ea7e8349bfd6284f54d1b7dea2e3cc32a4b7855704a44eaaf3bb29"}],
+    ["hl2-5288","novoidclip-maps",{"length":17025,"sha256":"50e8d2747ccbf89efebe48c97d4813f25285ea2cd60d27e4b9a40199248af222"}]
+  ],
+  "layoutBases": {
+    "crlf": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n",
+    "lf": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Layout version=\"1.6.1\">\n  <Components>\n    <Component>\n      <Path>LiveSplit.Splits.dll</Path>\n    </Component>\n  </Components>\n</Layout>\n",
+    "без Components": "<?xml version=\"1.0\"?>\r\n<Layout />\r\n",
+    "два Components": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n",
+    "одна строка": "<Layout><Components></Components></Layout>",
+    "пустая": ""
+  },
+  "layoutXml": [
+    [
+      "crlf",
+      "hl1-won",
+      "scripted",
+      {
+        "text": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n    <Component>\r\n      <Path>LiveSplit.BunnySplit.dll</Path>\r\n      <Settings>\r\n        <Version>2.0.2.0</Version>\r\n        <EnableAutoSplit>True</EnableAutoSplit>\r\n        <SplitOnGameEnd>True</SplitOnGameEnd>\r\n        <SplitOnHL1Chapters>True</SplitOnHL1Chapters>\r\n        <SplitOnOP4Chapters>False</SplitOnOP4Chapters>\r\n        <SplitOnBSChapters>False</SplitOnBSChapters>\r\n        <SplitOnGMCChapters>False</SplitOnGMCChapters>\r\n        <SplitOnMaps>False</SplitOnMaps>\r\n        <EnableAutoReset>True</EnableAutoReset>\r\n        <EnableAutoStart>True</EnableAutoStart>\r\n      </Settings>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"
+      }
+    ],
+    ["crlf","hl2-4260","scripts-maps",{"text":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"}],
+    ["crlf","ghosting-renewed","maps",{"text":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"}],
+    [
+      "lf",
+      "hl1-won",
+      "scripted",
+      {
+        "text": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Layout version=\"1.6.1\">\n  <Components>\n    <Component>\n      <Path>LiveSplit.Splits.dll</Path>\n    </Component>\n    <Component>\r\n      <Path>LiveSplit.BunnySplit.dll</Path>\r\n      <Settings>\r\n        <Version>2.0.2.0</Version>\r\n        <EnableAutoSplit>True</EnableAutoSplit>\r\n        <SplitOnGameEnd>True</SplitOnGameEnd>\r\n        <SplitOnHL1Chapters>True</SplitOnHL1Chapters>\r\n        <SplitOnOP4Chapters>False</SplitOnOP4Chapters>\r\n        <SplitOnBSChapters>False</SplitOnBSChapters>\r\n        <SplitOnGMCChapters>False</SplitOnGMCChapters>\r\n        <SplitOnMaps>False</SplitOnMaps>\r\n        <EnableAutoReset>True</EnableAutoReset>\r\n        <EnableAutoStart>True</EnableAutoStart>\r\n      </Settings>\r\n    </Component>\r\n  </Components>\n</Layout>\n"
+      }
+    ],
+    ["lf","hl2-4260","scripts-maps",{"text":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Layout version=\"1.6.1\">\n  <Components>\n    <Component>\n      <Path>LiveSplit.Splits.dll</Path>\n    </Component>\n  </Components>\n</Layout>\n"}],
+    ["lf","ghosting-renewed","maps",{"text":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Layout version=\"1.6.1\">\n  <Components>\n    <Component>\n      <Path>LiveSplit.Splits.dll</Path>\n    </Component>\n  </Components>\n</Layout>\n"}],
+    ["без Components","hl1-won","scripted",null],
+    ["без Components","hl2-4260","scripts-maps",{"text":"<?xml version=\"1.0\"?>\r\n<Layout />\r\n"}],
+    ["без Components","ghosting-renewed","maps",{"text":"<?xml version=\"1.0\"?>\r\n<Layout />\r\n"}],
+    [
+      "два Components",
+      "hl1-won",
+      "scripted",
+      {
+        "text": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n    <Component>\r\n      <Path>LiveSplit.BunnySplit.dll</Path>\r\n      <Settings>\r\n        <Version>2.0.2.0</Version>\r\n        <EnableAutoSplit>True</EnableAutoSplit>\r\n        <SplitOnGameEnd>True</SplitOnGameEnd>\r\n        <SplitOnHL1Chapters>True</SplitOnHL1Chapters>\r\n        <SplitOnOP4Chapters>False</SplitOnOP4Chapters>\r\n        <SplitOnBSChapters>False</SplitOnBSChapters>\r\n        <SplitOnGMCChapters>False</SplitOnGMCChapters>\r\n        <SplitOnMaps>False</SplitOnMaps>\r\n        <EnableAutoReset>True</EnableAutoReset>\r\n        <EnableAutoStart>True</EnableAutoStart>\r\n      </Settings>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"
+      }
+    ],
+    [
+      "два Components",
+      "hl2-4260",
+      "scripts-maps",
+      {
+        "text": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"
+      }
+    ],
+    [
+      "два Components",
+      "ghosting-renewed",
+      "maps",
+      {
+        "text": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"
+      }
+    ],
+    [
+      "одна строка",
+      "hl1-won",
+      "scripted",
+      {
+        "text": "    <Component>\r\n      <Path>LiveSplit.BunnySplit.dll</Path>\r\n      <Settings>\r\n        <Version>2.0.2.0</Version>\r\n        <EnableAutoSplit>True</EnableAutoSplit>\r\n        <SplitOnGameEnd>True</SplitOnGameEnd>\r\n        <SplitOnHL1Chapters>True</SplitOnHL1Chapters>\r\n        <SplitOnOP4Chapters>False</SplitOnOP4Chapters>\r\n        <SplitOnBSChapters>False</SplitOnBSChapters>\r\n        <SplitOnGMCChapters>False</SplitOnGMCChapters>\r\n        <SplitOnMaps>False</SplitOnMaps>\r\n        <EnableAutoReset>True</EnableAutoReset>\r\n        <EnableAutoStart>True</EnableAutoStart>\r\n      </Settings>\r\n    </Component>\r\n  </Components></Layout>"
+      }
+    ],
+    ["одна строка","hl2-4260","scripts-maps",{"text":"<Layout><Components></Components></Layout>"}],
+    ["одна строка","ghosting-renewed","maps",{"text":"<Layout><Components></Components></Layout>"}],
+    ["пустая","hl1-won","scripted",null],
+    ["пустая","hl2-4260","scripts-maps",{"text":""}],
+    ["пустая","ghosting-renewed","maps",{"text":""}]
+  ],
+  "scenarios": [
+    {
+      "name": "Ghosting: сплиты из архива LiveSplit не пишутся",
+      "setup": [
+        {"file":"ls/splits/chapters/chapters.lsl","utf8":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"},
+        {"file":"ls/splits/chapters/chapters.lss","utf8":"<Run />"},
+        {"file":"ls/splits/maps/maps.lsl","utf8":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"},
+        {"file":"ls/splits/maps/maps.lss","utf8":"<Run />"},
+        {"dir":"ls/Components"},
+        {"file":"ls/settings.cfg","utf8":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Settings>\r\n  <RecentSplits />\r\n  <ActiveAutoSplitters />\r\n</Settings>\r\n"}
+      ],
+      "steps": [
+        {"op":"prepare","gameId":"ghosting-renewed","presetId":"maps"},
+        {"op":"prepare","gameId":"ghosting-renewed"},
+        {"op":"prepare","gameId":"ghosting-renewed","presetId":"чужой"},
+        {"op":"tree"},
+        {"op":"remove","file":"ls/splits/maps/maps.lss"},
+        {"op":"prepare","gameId":"ghosting-renewed","presetId":"maps"},
+        {"op":"remove","file":"ls/splits/chapters/chapters.lsl"},
+        {"op":"prepare","gameId":"ghosting-renewed","presetId":"chapters"}
+      ],
+      "results": [
+        {"outcome":{"ok":{"args":["-s","splits\\maps\\maps.lss","-l","splits\\maps\\maps.lsl"],"preset":{"id":"maps","kind":"maps","category":null}}},"timeline":[]},
+        {"outcome":{"ok":{"args":["-s","splits\\chapters\\chapters.lss","-l","splits\\chapters\\chapters.lsl"],"preset":{"id":"chapters","kind":"chapters","category":null}}},"timeline":[]},
+        {"outcome":{"ok":{"args":["-s","splits\\chapters\\chapters.lss","-l","splits\\chapters\\chapters.lsl"],"preset":{"id":"chapters","kind":"chapters","category":null}}},"timeline":[]},
+        {
+          "tree": [
+            {"path":"ls","kind":"dir"},
+            {"path":"ls/Components","kind":"dir"},
+            {"path":"ls/settings.cfg","kind":"file","size":112,"sha256":"8e97f7d6fb08318d2abec0b1a1c1239e95ac8b39cb3cc2c456686f39f84eacd1","latin1":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Settings>\r\n  <RecentSplits />\r\n  <ActiveAutoSplitters />\r\n</Settings>\r\n"},
+            {"path":"ls/splits","kind":"dir"},
+            {"path":"ls/splits/chapters","kind":"dir"},
+            {"path":"ls/splits/chapters/chapters.lsl","kind":"file","size":186,"sha256":"f149363d70a8082dd7ff3e9a80cbc81253424eb725ee2feae574cea2295079da","latin1":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"},
+            {"path":"ls/splits/chapters/chapters.lss","kind":"file","size":7,"sha256":"5a13158c298fa7dfb64b6d126ee9eebf80b8ed2f420dd263a88755ff34128ad0","latin1":"<Run />"},
+            {"path":"ls/splits/maps","kind":"dir"},
+            {"path":"ls/splits/maps/maps.lsl","kind":"file","size":186,"sha256":"f149363d70a8082dd7ff3e9a80cbc81253424eb725ee2feae574cea2295079da","latin1":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"},
+            {"path":"ls/splits/maps/maps.lss","kind":"file","size":7,"sha256":"5a13158c298fa7dfb64b6d126ee9eebf80b8ed2f420dd263a88755ff34128ad0","latin1":"<Run />"}
+          ]
+        },
+        null,
+        {"outcome":{"ok":{"args":[],"preset":{"id":"maps","kind":"maps","category":null}}},"timeline":[{"log":"warn","message":"[tools] livesplit: сплиты splits/maps/maps.lss не найдены"}]},
+        null,
+        {"outcome":{"ok":{"args":["-s","splits\\chapters\\chapters.lss"],"preset":{"id":"chapters","kind":"chapters","category":null}}},"timeline":[]}
+      ]
+    },
+    {
+      "name": "неизвестная игра и пустой набор",
+      "setup": [
+        {"file":"ls/splits/chapters/chapters.lsl","utf8":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"},
+        {"file":"ls/splits/chapters/chapters.lss","utf8":"<Run />"},
+        {"file":"ls/splits/maps/maps.lsl","utf8":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"},
+        {"file":"ls/splits/maps/maps.lss","utf8":"<Run />"},
+        {"dir":"ls/Components"},
+        {"file":"ls/settings.cfg","utf8":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Settings>\r\n  <RecentSplits />\r\n  <ActiveAutoSplitters />\r\n</Settings>\r\n"}
+      ],
+      "steps": [{"op":"prepare","gameId":"unknown-game"},{"op":"prepare","gameId":""},{"op":"prepare","gameId":"constructor","presetId":"maps"},{"op":"tree"}],
+      "results": [
+        {"outcome":{"ok":{"args":[],"preset":null}},"timeline":[]},
+        {"outcome":{"ok":{"args":[],"preset":null}},"timeline":[]},
+        {"outcome":{"ok":{"args":[],"preset":null}},"timeline":[]},
+        {
+          "tree": [
+            {"path":"ls","kind":"dir"},
+            {"path":"ls/Components","kind":"dir"},
+            {"path":"ls/settings.cfg","kind":"file","size":112,"sha256":"8e97f7d6fb08318d2abec0b1a1c1239e95ac8b39cb3cc2c456686f39f84eacd1","latin1":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Settings>\r\n  <RecentSplits />\r\n  <ActiveAutoSplitters />\r\n</Settings>\r\n"},
+            {"path":"ls/splits","kind":"dir"},
+            {"path":"ls/splits/chapters","kind":"dir"},
+            {"path":"ls/splits/chapters/chapters.lsl","kind":"file","size":186,"sha256":"f149363d70a8082dd7ff3e9a80cbc81253424eb725ee2feae574cea2295079da","latin1":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"},
+            {"path":"ls/splits/chapters/chapters.lss","kind":"file","size":7,"sha256":"5a13158c298fa7dfb64b6d126ee9eebf80b8ed2f420dd263a88755ff34128ad0","latin1":"<Run />"},
+            {"path":"ls/splits/maps","kind":"dir"},
+            {"path":"ls/splits/maps/maps.lsl","kind":"file","size":186,"sha256":"f149363d70a8082dd7ff3e9a80cbc81253424eb725ee2feae574cea2295079da","latin1":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"},
+            {"path":"ls/splits/maps/maps.lss","kind":"file","size":7,"sha256":"5a13158c298fa7dfb64b6d126ee9eebf80b8ed2f420dd263a88755ff34128ad0","latin1":"<Run />"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "HL2: сплиты с SourceSplit пишутся один раз и попадают в settings.cfg",
+      "setup": [
+        {"file":"ls/splits/chapters/chapters.lsl","utf8":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"},
+        {"file":"ls/splits/chapters/chapters.lss","utf8":"<Run />"},
+        {"file":"ls/splits/maps/maps.lsl","utf8":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"},
+        {"file":"ls/splits/maps/maps.lss","utf8":"<Run />"},
+        {"dir":"ls/Components"},
+        {"file":"ls/settings.cfg","utf8":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Settings>\r\n  <RecentSplits />\r\n  <ActiveAutoSplitters />\r\n</Settings>\r\n"}
+      ],
+      "steps": [
+        {"op":"prepare","gameId":"hl2-4260","presetId":"scriptless-chapters"},
+        {"op":"tree"},
+        {"op":"write","file":"ls/splits/hlsr/hl2-4260/scriptless-chapters.lss","utf8":"PB"},
+        {"op":"prepare","gameId":"hl2-4260","presetId":"scriptless-chapters"},
+        {"op":"tree"},
+        {"op":"prepare","gameId":"hl2-4260","presetId":"scripts-maps"},
+        {"op":"prepare","gameId":"hl2-4260"},
+        {"op":"prepare","gameId":"hl2-4260","presetId":"чужой"},
+        {"op":"text","file":"ls/settings.cfg"}
+      ],
+      "results": [
+        {"outcome":{"ok":{"args":["-s","splits\\hlsr\\hl2-4260\\scriptless-chapters.lss","-l","splits\\hlsr\\hl2-4260\\scriptless-chapters.lsl"],"preset":{"id":"scriptless-chapters","kind":"chapters","category":"Scriptless"}}},"timeline":[{"log":"info","message":"[tools] livesplit: созданы сплиты splits/hlsr/hl2-4260/scriptless-chapters.lss"}]},
+        {
+          "tree": [
+            {"path":"ls","kind":"dir"},
+            {"path":"ls/Components","kind":"dir"},
+            {
+              "path": "ls/settings.cfg",
+              "kind": "file",
+              "size": 379,
+              "sha256": "4af68eeb67d07fbaa585e3f556ad73b118453cebc6c6ba1d3709ca54c9daaa97",
+              "latin1": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Settings>\r\n  <RecentSplits>\r\n    <SplitsFile gameName=\"Half-Life 2\" categoryName=\"Old Engine\" lastTimingMethod=\"GameTime\" lastHotkeyProfile=\"Default\">splits\\hlsr\\hl2-4260\\scriptless-chapters.lss</SplitsFile>\r\n  </RecentSplits>\r\n  <ActiveAutoSplitters>\r\n    <AutoSplitter>Half-Life 2</AutoSplitter>\r\n  </ActiveAutoSplitters>\r\n</Settings>\r\n"
+            },
+            {"path":"ls/splits","kind":"dir"},
+            {"path":"ls/splits/chapters","kind":"dir"},
+            {"path":"ls/splits/chapters/chapters.lsl","kind":"file","size":186,"sha256":"f149363d70a8082dd7ff3e9a80cbc81253424eb725ee2feae574cea2295079da","latin1":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"},
+            {"path":"ls/splits/chapters/chapters.lss","kind":"file","size":7,"sha256":"5a13158c298fa7dfb64b6d126ee9eebf80b8ed2f420dd263a88755ff34128ad0","latin1":"<Run />"},
+            {"path":"ls/splits/hlsr","kind":"dir"},
+            {"path":"ls/splits/hlsr/hl2-4260","kind":"dir"},
+            {"path":"ls/splits/hlsr/hl2-4260/scriptless-chapters.lsl","kind":"file","size":186,"sha256":"f149363d70a8082dd7ff3e9a80cbc81253424eb725ee2feae574cea2295079da","latin1":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"},
+            {
+              "path": "ls/splits/hlsr/hl2-4260/scriptless-chapters.lss",
+              "kind": "file",
+              "size": 5739,
+              "sha256": "454172500bc9122d14fde01fdcf02acb22f9ecb103d07f810b0fb08660ccc719",
+              "latin1": "ï»¿<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Run version=\"1.7.0\">\r\n  <GameIcon />\r\n  <GameName>Half-Life 2</GameName>\r\n  <CategoryName>Old Engine</CategoryName>\r\n  <LayoutPath>\r\n  </LayoutPath>\r\n  <Metadata>\r\n    <Run id=\"\" />\r\n    <Platform usesEmulator=\"False\">PC</Platform>\r\n    <Region>\r\n    </Region>\r\n    <Variables>\r\n      <Variable name=\"Scripts\">Scriptless</Variable>\r\n      <Variable name=\"Build\">4231-4260</Variable>\r\n    </Variables>\r\n    <CustomVariables />\r\n  </Metadata>\r\n  <Offset>00:00:00</Offset>\r\n  <AttemptCount>0</AttemptCount>\r\n  <AttemptHistory />\r\n  <Segments>\r\n    <Segment>\r\n      <Name>Point Insertion</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>A Red Letter Day</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Route Kanal</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Water Hazard</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Black Mesa East</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>We Don't Go To Ravenholm</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Highway 17</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Sandtraps</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Nova Prospekt</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Entanglement</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Anticitizen One</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Follow Freeman!</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Our Benefactors</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Dark Energy</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n  </Segments>\r\n  <AutoSplitterSettings>\r\n    <Version>3.3.4.6</Version>\r\n    <AutoSplitEnabled>True</AutoSplitEnabled>\r\n    <SplitInterval>1</SplitInterval>\r\n    <UseSplitInterval>True</UseSplitInterval>\r\n    <UseMTL>True</UseMTL>\r\n    <MTLModeSetting>Allow</MTLModeSetting>\r\n    <AutoSplitOnLevelTrans>True</AutoSplitOnLevelTrans>\r\n    <AutoSplitOnGenericMap>False</AutoSplitOnGenericMap>\r\n    <AutoSplitOnSpecial>True</AutoSplitOnSpecial>\r\n    <AutoStartEnabled>True</AutoStartEnabled>\r\n    <AutoStopEnabled>True</AutoStopEnabled>\r\n    <AutoResetEnabled>True</AutoResetEnabled>\r\n    <FirstMapAutoReset>True</FirstMapAutoReset>\r\n    <StartMap>\r\n    </StartMap>\r\n    <AddAutoStartType>NewGame</AddAutoStartType>\r\n    <AllowAdditionalAutoStart>False</AllowAdditionalAutoStart>\r\n    <ShowGameTime>True</ShowGameTime>\r\n    <ShowAltTime>False</ShowAltTime>\r\n    <ShowTickCount>False</ShowTickCount>\r\n    <ShowCurDemo>False</ShowCurDemo>\r\n    <GameTimeDecimalPlaces>6</GameTimeDecimalPlaces>\r\n    <HoldUntilPause>True</HoldUntilPause>\r\n    <RTAStartOffset>True</RTAStartOffset>\r\n    <ServerInitialTicks>False</ServerInitialTicks>\r\n    <SLPenalty>1</SLPenalty>\r\n    <SplitInstead>False</SplitInstead>\r\n    <ResetMapTransitions>False</ResetMapTransitions>\r\n    <CountEngineTicks>True</CountEngineTicks>\r\n    <CountPauses>True</CountPauses>\r\n    <CountDisconnects>False</CountDisconnects>\r\n    <CountInactive>False</CountInactive>\r\n    <CountAutomatic>True</CountAutomatic>\r\n    <CountDemoInterop>False</CountDemoInterop>\r\n    <PrintDemoInfo>False</PrintDemoInfo>\r\n    <DemoParserPath>\r\n    </DemoParserPath>\r\n    <SetGameTimeOnLaunch>True</SetGameTimeOnLaunch>\r\n    <MapTransitionList>d1_trainstation_06,d1_canals_01|d1_trainstation_04,d1_trainstation_05|d1_canals_05,d1_canals_06|d1_canals_13,d1_eli_01|d1_eli_02,d1_town_01|d1_town_05,d2_coast_01|d2_coast_07,d2_coast_09|d2_prison_01,d2_prison_02|d3_c17_01,d3_c17_02|d2_prison_05,d2_prison_06|d3_c17_08,d3_c17_09|d3_c17_13,d3_citadel_01|d3_citadel_05,d3_breen_01</MapTransitionList>\r\n    <Misc />\r\n  </AutoSplitterSettings>\r\n</Run>\r\n"
+            },
+            {"path":"ls/splits/maps","kind":"dir"},
+            {"path":"ls/splits/maps/maps.lsl","kind":"file","size":186,"sha256":"f149363d70a8082dd7ff3e9a80cbc81253424eb725ee2feae574cea2295079da","latin1":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"},
+            {"path":"ls/splits/maps/maps.lss","kind":"file","size":7,"sha256":"5a13158c298fa7dfb64b6d126ee9eebf80b8ed2f420dd263a88755ff34128ad0","latin1":"<Run />"}
+          ]
+        },
+        null,
+        {"outcome":{"ok":{"args":["-s","splits\\hlsr\\hl2-4260\\scriptless-chapters.lss","-l","splits\\hlsr\\hl2-4260\\scriptless-chapters.lsl"],"preset":{"id":"scriptless-chapters","kind":"chapters","category":"Scriptless"}}},"timeline":[]},
+        {
+          "tree": [
+            {"path":"ls","kind":"dir"},
+            {"path":"ls/Components","kind":"dir"},
+            {
+              "path": "ls/settings.cfg",
+              "kind": "file",
+              "size": 379,
+              "sha256": "4af68eeb67d07fbaa585e3f556ad73b118453cebc6c6ba1d3709ca54c9daaa97",
+              "latin1": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Settings>\r\n  <RecentSplits>\r\n    <SplitsFile gameName=\"Half-Life 2\" categoryName=\"Old Engine\" lastTimingMethod=\"GameTime\" lastHotkeyProfile=\"Default\">splits\\hlsr\\hl2-4260\\scriptless-chapters.lss</SplitsFile>\r\n  </RecentSplits>\r\n  <ActiveAutoSplitters>\r\n    <AutoSplitter>Half-Life 2</AutoSplitter>\r\n  </ActiveAutoSplitters>\r\n</Settings>\r\n"
+            },
+            {"path":"ls/splits","kind":"dir"},
+            {"path":"ls/splits/chapters","kind":"dir"},
+            {"path":"ls/splits/chapters/chapters.lsl","kind":"file","size":186,"sha256":"f149363d70a8082dd7ff3e9a80cbc81253424eb725ee2feae574cea2295079da","latin1":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"},
+            {"path":"ls/splits/chapters/chapters.lss","kind":"file","size":7,"sha256":"5a13158c298fa7dfb64b6d126ee9eebf80b8ed2f420dd263a88755ff34128ad0","latin1":"<Run />"},
+            {"path":"ls/splits/hlsr","kind":"dir"},
+            {"path":"ls/splits/hlsr/hl2-4260","kind":"dir"},
+            {"path":"ls/splits/hlsr/hl2-4260/scriptless-chapters.lsl","kind":"file","size":186,"sha256":"f149363d70a8082dd7ff3e9a80cbc81253424eb725ee2feae574cea2295079da","latin1":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"},
+            {"path":"ls/splits/hlsr/hl2-4260/scriptless-chapters.lss","kind":"file","size":2,"sha256":"f9085bf3a4e33576e4e0c0d46bcbff81eb47265d015846a96edea91b2bd4445b","latin1":"PB"},
+            {"path":"ls/splits/maps","kind":"dir"},
+            {"path":"ls/splits/maps/maps.lsl","kind":"file","size":186,"sha256":"f149363d70a8082dd7ff3e9a80cbc81253424eb725ee2feae574cea2295079da","latin1":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"},
+            {"path":"ls/splits/maps/maps.lss","kind":"file","size":7,"sha256":"5a13158c298fa7dfb64b6d126ee9eebf80b8ed2f420dd263a88755ff34128ad0","latin1":"<Run />"}
+          ]
+        },
+        {"outcome":{"ok":{"args":["-s","splits\\hlsr\\hl2-4260\\scripts-maps.lss","-l","splits\\hlsr\\hl2-4260\\scripts-maps.lsl"],"preset":{"id":"scripts-maps","kind":"maps","category":"With Scripts"}}},"timeline":[{"log":"info","message":"[tools] livesplit: созданы сплиты splits/hlsr/hl2-4260/scripts-maps.lss"}]},
+        {"outcome":{"ok":{"args":["-s","splits\\hlsr\\hl2-4260\\scripts-chapters.lss","-l","splits\\hlsr\\hl2-4260\\scripts-chapters.lsl"],"preset":{"id":"scripts-chapters","kind":"chapters","category":"With Scripts"}}},"timeline":[{"log":"info","message":"[tools] livesplit: созданы сплиты splits/hlsr/hl2-4260/scripts-chapters.lss"}]},
+        {"outcome":{"ok":{"args":["-s","splits\\hlsr\\hl2-4260\\scripts-chapters.lss","-l","splits\\hlsr\\hl2-4260\\scripts-chapters.lsl"],"preset":{"id":"scripts-chapters","kind":"chapters","category":"With Scripts"}}},"timeline":[]},
+        {
+          "text": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Settings>\r\n  <RecentSplits>\r\n    <SplitsFile gameName=\"Half-Life 2\" categoryName=\"Old Engine\" lastTimingMethod=\"GameTime\" lastHotkeyProfile=\"Default\">splits\\hlsr\\hl2-4260\\scripts-chapters.lss</SplitsFile>\r\n    <SplitsFile gameName=\"Half-Life 2\" categoryName=\"Old Engine\" lastTimingMethod=\"GameTime\" lastHotkeyProfile=\"Default\">splits\\hlsr\\hl2-4260\\scripts-maps.lss</SplitsFile>\r\n    <SplitsFile gameName=\"Half-Life 2\" categoryName=\"Old Engine\" lastTimingMethod=\"GameTime\" lastHotkeyProfile=\"Default\">splits\\hlsr\\hl2-4260\\scriptless-chapters.lss</SplitsFile>\r\n  </RecentSplits>\r\n  <ActiveAutoSplitters>\r\n    <AutoSplitter>Half-Life 2</AutoSplitter>\r\n  </ActiveAutoSplitters>\r\n</Settings>\r\n"
+        }
+      ]
+    },
+    {
+      "name": "HL2: наборы разных сборок",
+      "setup": [
+        {"file":"ls/splits/chapters/chapters.lsl","utf8":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"},
+        {"file":"ls/splits/chapters/chapters.lss","utf8":"<Run />"},
+        {"file":"ls/splits/maps/maps.lsl","utf8":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"},
+        {"file":"ls/splits/maps/maps.lss","utf8":"<Run />"},
+        {"dir":"ls/Components"},
+        {"file":"ls/settings.cfg","utf8":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Settings>\r\n  <RecentSplits />\r\n  <ActiveAutoSplitters />\r\n</Settings>\r\n"}
+      ],
+      "steps": [{"op":"prepare","gameId":"hl2-2707","presetId":"scripts-chapters"},{"op":"prepare","gameId":"hl2-5288","presetId":"novoidclip-maps"},{"op":"prepare","gameId":"hl2-5288","presetId":"any-chapters"},{"op":"tree"}],
+      "results": [
+        {"outcome":{"ok":{"args":["-s","splits\\hlsr\\hl2-2707\\scripts-chapters.lss","-l","splits\\hlsr\\hl2-2707\\scripts-chapters.lsl"],"preset":{"id":"scripts-chapters","kind":"chapters","category":"With Scripts"}}},"timeline":[{"log":"info","message":"[tools] livesplit: созданы сплиты splits/hlsr/hl2-2707/scripts-chapters.lss"}]},
+        {"outcome":{"ok":{"args":["-s","splits\\hlsr\\hl2-5288\\novoidclip-maps.lss","-l","splits\\hlsr\\hl2-5288\\novoidclip-maps.lsl"],"preset":{"id":"novoidclip-maps","kind":"maps","category":"Any% No Voidclip"}}},"timeline":[{"log":"info","message":"[tools] livesplit: созданы сплиты splits/hlsr/hl2-5288/novoidclip-maps.lss"}]},
+        {"outcome":{"ok":{"args":["-s","splits\\hlsr\\hl2-5288\\any-chapters.lss","-l","splits\\hlsr\\hl2-5288\\any-chapters.lsl"],"preset":{"id":"any-chapters","kind":"chapters","category":"Any%"}}},"timeline":[{"log":"info","message":"[tools] livesplit: созданы сплиты splits/hlsr/hl2-5288/any-chapters.lss"}]},
+        {
+          "tree": [
+            {"path":"ls","kind":"dir"},
+            {"path":"ls/Components","kind":"dir"},
+            {
+              "path": "ls/settings.cfg",
+              "kind": "file",
+              "size": 725,
+              "sha256": "d5dad0315ca0565f81e7c7e0ae7d5c8b52df2323f10029d468485cbb593b0f0d",
+              "latin1": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Settings>\r\n  <RecentSplits>\r\n    <SplitsFile gameName=\"Half-Life 2\" categoryName=\"New Engine\" lastTimingMethod=\"GameTime\" lastHotkeyProfile=\"Default\">splits\\hlsr\\hl2-5288\\any-chapters.lss</SplitsFile>\r\n    <SplitsFile gameName=\"Half-Life 2\" categoryName=\"New Engine\" lastTimingMethod=\"GameTime\" lastHotkeyProfile=\"Default\">splits\\hlsr\\hl2-5288\\novoidclip-maps.lss</SplitsFile>\r\n    <SplitsFile gameName=\"Half-Life 2\" categoryName=\"Old Engine\" lastTimingMethod=\"GameTime\" lastHotkeyProfile=\"Default\">splits\\hlsr\\hl2-2707\\scripts-chapters.lss</SplitsFile>\r\n  </RecentSplits>\r\n  <ActiveAutoSplitters>\r\n    <AutoSplitter>Half-Life 2</AutoSplitter>\r\n  </ActiveAutoSplitters>\r\n</Settings>\r\n"
+            },
+            {"path":"ls/splits","kind":"dir"},
+            {"path":"ls/splits/chapters","kind":"dir"},
+            {"path":"ls/splits/chapters/chapters.lsl","kind":"file","size":186,"sha256":"f149363d70a8082dd7ff3e9a80cbc81253424eb725ee2feae574cea2295079da","latin1":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"},
+            {"path":"ls/splits/chapters/chapters.lss","kind":"file","size":7,"sha256":"5a13158c298fa7dfb64b6d126ee9eebf80b8ed2f420dd263a88755ff34128ad0","latin1":"<Run />"},
+            {"path":"ls/splits/hlsr","kind":"dir"},
+            {"path":"ls/splits/hlsr/hl2-2707","kind":"dir"},
+            {"path":"ls/splits/hlsr/hl2-2707/scripts-chapters.lsl","kind":"file","size":186,"sha256":"f149363d70a8082dd7ff3e9a80cbc81253424eb725ee2feae574cea2295079da","latin1":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"},
+            {
+              "path": "ls/splits/hlsr/hl2-2707/scripts-chapters.lss",
+              "kind": "file",
+              "size": 5736,
+              "sha256": "55fe0cf8d538ac281ba97bb8ee467b3a261276daeb4f925aa87c6a4bad0ad1c9",
+              "latin1": "ï»¿<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Run version=\"1.7.0\">\r\n  <GameIcon />\r\n  <GameName>Half-Life 2</GameName>\r\n  <CategoryName>Old Engine</CategoryName>\r\n  <LayoutPath>\r\n  </LayoutPath>\r\n  <Metadata>\r\n    <Run id=\"\" />\r\n    <Platform usesEmulator=\"False\">PC</Platform>\r\n    <Region>\r\n    </Region>\r\n    <Variables>\r\n      <Variable name=\"Scripts\">With Scripts</Variable>\r\n      <Variable name=\"Build\">2707</Variable>\r\n    </Variables>\r\n    <CustomVariables />\r\n  </Metadata>\r\n  <Offset>00:00:00</Offset>\r\n  <AttemptCount>0</AttemptCount>\r\n  <AttemptHistory />\r\n  <Segments>\r\n    <Segment>\r\n      <Name>Point Insertion</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>A Red Letter Day</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Route Kanal</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Water Hazard</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Black Mesa East</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>We Don't Go To Ravenholm</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Highway 17</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Sandtraps</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Nova Prospekt</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Entanglement</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Anticitizen One</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Follow Freeman!</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Our Benefactors</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Dark Energy</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n  </Segments>\r\n  <AutoSplitterSettings>\r\n    <Version>3.3.4.6</Version>\r\n    <AutoSplitEnabled>True</AutoSplitEnabled>\r\n    <SplitInterval>1</SplitInterval>\r\n    <UseSplitInterval>True</UseSplitInterval>\r\n    <UseMTL>True</UseMTL>\r\n    <MTLModeSetting>Allow</MTLModeSetting>\r\n    <AutoSplitOnLevelTrans>True</AutoSplitOnLevelTrans>\r\n    <AutoSplitOnGenericMap>False</AutoSplitOnGenericMap>\r\n    <AutoSplitOnSpecial>True</AutoSplitOnSpecial>\r\n    <AutoStartEnabled>True</AutoStartEnabled>\r\n    <AutoStopEnabled>True</AutoStopEnabled>\r\n    <AutoResetEnabled>True</AutoResetEnabled>\r\n    <FirstMapAutoReset>True</FirstMapAutoReset>\r\n    <StartMap>\r\n    </StartMap>\r\n    <AddAutoStartType>NewGame</AddAutoStartType>\r\n    <AllowAdditionalAutoStart>False</AllowAdditionalAutoStart>\r\n    <ShowGameTime>True</ShowGameTime>\r\n    <ShowAltTime>False</ShowAltTime>\r\n    <ShowTickCount>False</ShowTickCount>\r\n    <ShowCurDemo>False</ShowCurDemo>\r\n    <GameTimeDecimalPlaces>6</GameTimeDecimalPlaces>\r\n    <HoldUntilPause>True</HoldUntilPause>\r\n    <RTAStartOffset>True</RTAStartOffset>\r\n    <ServerInitialTicks>False</ServerInitialTicks>\r\n    <SLPenalty>1</SLPenalty>\r\n    <SplitInstead>False</SplitInstead>\r\n    <ResetMapTransitions>False</ResetMapTransitions>\r\n    <CountEngineTicks>True</CountEngineTicks>\r\n    <CountPauses>True</CountPauses>\r\n    <CountDisconnects>False</CountDisconnects>\r\n    <CountInactive>False</CountInactive>\r\n    <CountAutomatic>True</CountAutomatic>\r\n    <CountDemoInterop>False</CountDemoInterop>\r\n    <PrintDemoInfo>False</PrintDemoInfo>\r\n    <DemoParserPath>\r\n    </DemoParserPath>\r\n    <SetGameTimeOnLaunch>True</SetGameTimeOnLaunch>\r\n    <MapTransitionList>d1_trainstation_06,d1_canals_01|d1_trainstation_04,d1_trainstation_05|d1_canals_05,d1_canals_06|d1_canals_13,d1_eli_01|d1_eli_02,d1_town_01|d1_town_05,d2_coast_01|d2_coast_07,d2_coast_09|d2_prison_01,d2_prison_02|d3_c17_01,d3_c17_02|d2_prison_05,d2_prison_06|d3_c17_08,d3_c17_09|d3_c17_13,d3_citadel_01|d3_citadel_05,d3_breen_01</MapTransitionList>\r\n    <Misc />\r\n  </AutoSplitterSettings>\r\n</Run>\r\n"
+            },
+            {"path":"ls/splits/hlsr/hl2-5288","kind":"dir"},
+            {"path":"ls/splits/hlsr/hl2-5288/any-chapters.lsl","kind":"file","size":186,"sha256":"f149363d70a8082dd7ff3e9a80cbc81253424eb725ee2feae574cea2295079da","latin1":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"},
+            {
+              "path": "ls/splits/hlsr/hl2-5288/any-chapters.lss",
+              "kind": "file",
+              "size": 5742,
+              "sha256": "83af914a597c1ad14c9f514e8bbaf0fbb772b1f9fa1304430cbb77d348a222ba",
+              "latin1": "ï»¿<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Run version=\"1.7.0\">\r\n  <GameIcon />\r\n  <GameName>Half-Life 2</GameName>\r\n  <CategoryName>New Engine</CategoryName>\r\n  <LayoutPath>\r\n  </LayoutPath>\r\n  <Metadata>\r\n    <Run id=\"\" />\r\n    <Platform usesEmulator=\"False\">PC</Platform>\r\n    <Region>\r\n    </Region>\r\n    <Variables>\r\n      <Variable name=\"With/Without Voidclip\">Any%</Variable>\r\n      <Variable name=\"Build\">5288</Variable>\r\n    </Variables>\r\n    <CustomVariables />\r\n  </Metadata>\r\n  <Offset>00:00:00</Offset>\r\n  <AttemptCount>0</AttemptCount>\r\n  <AttemptHistory />\r\n  <Segments>\r\n    <Segment>\r\n      <Name>Point Insertion</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>A Red Letter Day</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Route Kanal</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Water Hazard</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Black Mesa East</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>We Don't Go To Ravenholm</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Highway 17</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Sandtraps</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Nova Prospekt</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Entanglement</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Anticitizen One</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Follow Freeman!</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Our Benefactors</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Dark Energy</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n  </Segments>\r\n  <AutoSplitterSettings>\r\n    <Version>3.3.4.6</Version>\r\n    <AutoSplitEnabled>True</AutoSplitEnabled>\r\n    <SplitInterval>1</SplitInterval>\r\n    <UseSplitInterval>True</UseSplitInterval>\r\n    <UseMTL>True</UseMTL>\r\n    <MTLModeSetting>Allow</MTLModeSetting>\r\n    <AutoSplitOnLevelTrans>True</AutoSplitOnLevelTrans>\r\n    <AutoSplitOnGenericMap>False</AutoSplitOnGenericMap>\r\n    <AutoSplitOnSpecial>True</AutoSplitOnSpecial>\r\n    <AutoStartEnabled>True</AutoStartEnabled>\r\n    <AutoStopEnabled>True</AutoStopEnabled>\r\n    <AutoResetEnabled>True</AutoResetEnabled>\r\n    <FirstMapAutoReset>True</FirstMapAutoReset>\r\n    <StartMap>\r\n    </StartMap>\r\n    <AddAutoStartType>NewGame</AddAutoStartType>\r\n    <AllowAdditionalAutoStart>False</AllowAdditionalAutoStart>\r\n    <ShowGameTime>True</ShowGameTime>\r\n    <ShowAltTime>False</ShowAltTime>\r\n    <ShowTickCount>False</ShowTickCount>\r\n    <ShowCurDemo>False</ShowCurDemo>\r\n    <GameTimeDecimalPlaces>6</GameTimeDecimalPlaces>\r\n    <HoldUntilPause>True</HoldUntilPause>\r\n    <RTAStartOffset>True</RTAStartOffset>\r\n    <ServerInitialTicks>False</ServerInitialTicks>\r\n    <SLPenalty>1</SLPenalty>\r\n    <SplitInstead>False</SplitInstead>\r\n    <ResetMapTransitions>False</ResetMapTransitions>\r\n    <CountEngineTicks>True</CountEngineTicks>\r\n    <CountPauses>True</CountPauses>\r\n    <CountDisconnects>False</CountDisconnects>\r\n    <CountInactive>False</CountInactive>\r\n    <CountAutomatic>True</CountAutomatic>\r\n    <CountDemoInterop>False</CountDemoInterop>\r\n    <PrintDemoInfo>False</PrintDemoInfo>\r\n    <DemoParserPath>\r\n    </DemoParserPath>\r\n    <SetGameTimeOnLaunch>True</SetGameTimeOnLaunch>\r\n    <MapTransitionList>d1_trainstation_06,d1_canals_01|d1_trainstation_04,d1_trainstation_05|d1_canals_05,d1_canals_06|d1_canals_13,d1_eli_01|d1_eli_02,d1_town_01|d1_town_05,d2_coast_01|d2_coast_07,d2_coast_09|d2_prison_01,d2_prison_02|d3_c17_01,d3_c17_02|d2_prison_05,d2_prison_06|d3_c17_08,d3_c17_09|d3_c17_13,d3_citadel_01|d3_citadel_05,d3_breen_01</MapTransitionList>\r\n    <Misc />\r\n  </AutoSplitterSettings>\r\n</Run>\r\n"
+            },
+            {"path":"ls/splits/hlsr/hl2-5288/novoidclip-maps.lsl","kind":"file","size":186,"sha256":"f149363d70a8082dd7ff3e9a80cbc81253424eb725ee2feae574cea2295079da","latin1":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"},
+            {"path":"ls/splits/hlsr/hl2-5288/novoidclip-maps.lss","kind":"file","size":17025,"sha256":"50e8d2747ccbf89efebe48c97d4813f25285ea2cd60d27e4b9a40199248af222"},
+            {"path":"ls/splits/maps","kind":"dir"},
+            {"path":"ls/splits/maps/maps.lsl","kind":"file","size":186,"sha256":"f149363d70a8082dd7ff3e9a80cbc81253424eb725ee2feae574cea2295079da","latin1":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"},
+            {"path":"ls/splits/maps/maps.lss","kind":"file","size":7,"sha256":"5a13158c298fa7dfb64b6d126ee9eebf80b8ed2f420dd263a88755ff34128ad0","latin1":"<Run />"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "HL1: раскладка с BunnySplit, компонент кладётся в Components",
+      "setup": [
+        {"file":"ls/splits/chapters/chapters.lsl","utf8":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"},
+        {"file":"ls/splits/chapters/chapters.lss","utf8":"<Run />"},
+        {"file":"ls/splits/maps/maps.lsl","utf8":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"},
+        {"file":"ls/splits/maps/maps.lss","utf8":"<Run />"},
+        {"dir":"ls/Components"},
+        {"file":"ls/settings.cfg","utf8":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Settings>\r\n  <RecentSplits />\r\n  <ActiveAutoSplitters />\r\n</Settings>\r\n"},
+        {"file":"res/livesplit-components/LiveSplit.BunnySplit.dll","utf8":"dll"}
+      ],
+      "steps": [{"op":"prepare","gameId":"hl1-won","presetId":"scriptless"},{"op":"tree"},{"op":"prepare","gameId":"hl1-won","presetId":"scripted"},{"op":"prepare","gameId":"hl1-won"},{"op":"tree"}],
+      "results": [
+        {
+          "outcome": {"ok":{"args":["-s","splits\\hlsr\\hl1-won\\scriptless.lss","-l","splits\\hlsr\\hl1-won\\scriptless.lsl"],"preset":{"id":"scriptless","kind":"chapters","category":"Scriptless"}}},
+          "timeline": [{"log":"info","message":"[tools] livesplit: созданы сплиты splits/hlsr/hl1-won/scriptless.lss"},{"log":"info","message":"[tools] livesplit: установлен LiveSplit.BunnySplit.dll (0343b13708cd)"}]
+        },
+        {
+          "tree": [
+            {"path":"ls","kind":"dir"},
+            {"path":"ls/Components","kind":"dir"},
+            {"path":"ls/Components/LiveSplit.BunnySplit.dll","kind":"file","size":3,"sha256":"0343b13708cd52d33ecbb1043b5ae145e73a532bdccf7de6925db5cce6054fd3","latin1":"dll"},
+            {
+              "path": "ls/settings.cfg",
+              "kind": "file",
+              "size": 290,
+              "sha256": "82d14de23138ac45eedbaaa883f274423d594b9f1e54a27f8186a6527c9f3df2",
+              "latin1": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Settings>\r\n  <RecentSplits>\r\n    <SplitsFile gameName=\"Half-Life\" categoryName=\"WON\" lastTimingMethod=\"GameTime\" lastHotkeyProfile=\"Default\">splits\\hlsr\\hl1-won\\scriptless.lss</SplitsFile>\r\n  </RecentSplits>\r\n  <ActiveAutoSplitters />\r\n</Settings>\r\n"
+            },
+            {"path":"ls/splits","kind":"dir"},
+            {"path":"ls/splits/chapters","kind":"dir"},
+            {"path":"ls/splits/chapters/chapters.lsl","kind":"file","size":186,"sha256":"f149363d70a8082dd7ff3e9a80cbc81253424eb725ee2feae574cea2295079da","latin1":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"},
+            {"path":"ls/splits/chapters/chapters.lss","kind":"file","size":7,"sha256":"5a13158c298fa7dfb64b6d126ee9eebf80b8ed2f420dd263a88755ff34128ad0","latin1":"<Run />"},
+            {"path":"ls/splits/hlsr","kind":"dir"},
+            {"path":"ls/splits/hlsr/hl1-won","kind":"dir"},
+            {
+              "path": "ls/splits/hlsr/hl1-won/scriptless.lsl",
+              "kind": "file",
+              "size": 796,
+              "sha256": "ed5c46c7e0a28bbe1933d2443dd09cbfa5e1e388a2d73f6d1e8d90c488cdeb07",
+              "latin1": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n    <Component>\r\n      <Path>LiveSplit.BunnySplit.dll</Path>\r\n      <Settings>\r\n        <Version>2.0.2.0</Version>\r\n        <EnableAutoSplit>True</EnableAutoSplit>\r\n        <SplitOnGameEnd>True</SplitOnGameEnd>\r\n        <SplitOnHL1Chapters>True</SplitOnHL1Chapters>\r\n        <SplitOnOP4Chapters>False</SplitOnOP4Chapters>\r\n        <SplitOnBSChapters>False</SplitOnBSChapters>\r\n        <SplitOnGMCChapters>False</SplitOnGMCChapters>\r\n        <SplitOnMaps>False</SplitOnMaps>\r\n        <EnableAutoReset>True</EnableAutoReset>\r\n        <EnableAutoStart>True</EnableAutoStart>\r\n      </Settings>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"
+            },
+            {
+              "path": "ls/splits/hlsr/hl1-won/scriptless.lss",
+              "kind": "file",
+              "size": 4357,
+              "sha256": "c6e4675e68ffd90471cd6f4a1057783f0ee1322d743a4d137bd789ca5b611f5a",
+              "latin1": "ï»¿<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Run version=\"1.7.0\">\r\n  <GameIcon />\r\n  <GameName>Half-Life</GameName>\r\n  <CategoryName>WON</CategoryName>\r\n  <LayoutPath>\r\n  </LayoutPath>\r\n  <Metadata>\r\n    <Run id=\"\" />\r\n    <Platform usesEmulator=\"False\">PC</Platform>\r\n    <Region>\r\n    </Region>\r\n    <Variables>\r\n      <Variable name=\"Scripts\">Scriptless</Variable>\r\n      <Variable name=\"Segments\">RTA</Variable>\r\n    </Variables>\r\n    <CustomVariables />\r\n  </Metadata>\r\n  <Offset>00:00:00</Offset>\r\n  <AttemptCount>0</AttemptCount>\r\n  <AttemptHistory />\r\n  <Segments>\r\n    <Segment>\r\n      <Name>Anomalous Materials</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Unforeseen Consequences</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Office Complex</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>We've Got Hostiles</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Blast Pit</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Power Up</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>On A Rail</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Apprehension</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Residue Processing</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Questionable Ethics</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Surface Tension</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Forget About Freeman</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Lambda Core</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Xen</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Gonarch's Lair</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Interloper</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Nihilanth</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n  </Segments>\r\n  <AutoSplitterSettings />\r\n</Run>\r\n"
+            },
+            {"path":"ls/splits/maps","kind":"dir"},
+            {"path":"ls/splits/maps/maps.lsl","kind":"file","size":186,"sha256":"f149363d70a8082dd7ff3e9a80cbc81253424eb725ee2feae574cea2295079da","latin1":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"},
+            {"path":"ls/splits/maps/maps.lss","kind":"file","size":7,"sha256":"5a13158c298fa7dfb64b6d126ee9eebf80b8ed2f420dd263a88755ff34128ad0","latin1":"<Run />"},
+            {"path":"res","kind":"dir"},
+            {"path":"res/livesplit-components","kind":"dir"},
+            {"path":"res/livesplit-components/LiveSplit.BunnySplit.dll","kind":"file","size":3,"sha256":"0343b13708cd52d33ecbb1043b5ae145e73a532bdccf7de6925db5cce6054fd3","latin1":"dll"}
+          ]
+        },
+        {"outcome":{"ok":{"args":["-s","splits\\hlsr\\hl1-won\\scripted.lss","-l","splits\\hlsr\\hl1-won\\scripted.lsl"],"preset":{"id":"scripted","kind":"chapters","category":"Scripted"}}},"timeline":[{"log":"info","message":"[tools] livesplit: созданы сплиты splits/hlsr/hl1-won/scripted.lss"}]},
+        {"outcome":{"ok":{"args":["-s","splits\\hlsr\\hl1-won\\scripted.lss","-l","splits\\hlsr\\hl1-won\\scripted.lsl"],"preset":{"id":"scripted","kind":"chapters","category":"Scripted"}}},"timeline":[]},
+        {
+          "tree": [
+            {"path":"ls","kind":"dir"},
+            {"path":"ls/Components","kind":"dir"},
+            {"path":"ls/Components/LiveSplit.BunnySplit.dll","kind":"file","size":3,"sha256":"0343b13708cd52d33ecbb1043b5ae145e73a532bdccf7de6925db5cce6054fd3","latin1":"dll"},
+            {
+              "path": "ls/settings.cfg",
+              "kind": "file",
+              "size": 449,
+              "sha256": "1809536106d5a79f245525470f6012f3e9a49f2d45cde8cf810b9cb6202158d7",
+              "latin1": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Settings>\r\n  <RecentSplits>\r\n    <SplitsFile gameName=\"Half-Life\" categoryName=\"WON\" lastTimingMethod=\"GameTime\" lastHotkeyProfile=\"Default\">splits\\hlsr\\hl1-won\\scripted.lss</SplitsFile>\r\n    <SplitsFile gameName=\"Half-Life\" categoryName=\"WON\" lastTimingMethod=\"GameTime\" lastHotkeyProfile=\"Default\">splits\\hlsr\\hl1-won\\scriptless.lss</SplitsFile>\r\n  </RecentSplits>\r\n  <ActiveAutoSplitters />\r\n</Settings>\r\n"
+            },
+            {"path":"ls/splits","kind":"dir"},
+            {"path":"ls/splits/chapters","kind":"dir"},
+            {"path":"ls/splits/chapters/chapters.lsl","kind":"file","size":186,"sha256":"f149363d70a8082dd7ff3e9a80cbc81253424eb725ee2feae574cea2295079da","latin1":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"},
+            {"path":"ls/splits/chapters/chapters.lss","kind":"file","size":7,"sha256":"5a13158c298fa7dfb64b6d126ee9eebf80b8ed2f420dd263a88755ff34128ad0","latin1":"<Run />"},
+            {"path":"ls/splits/hlsr","kind":"dir"},
+            {"path":"ls/splits/hlsr/hl1-won","kind":"dir"},
+            {
+              "path": "ls/splits/hlsr/hl1-won/scripted.lsl",
+              "kind": "file",
+              "size": 796,
+              "sha256": "ed5c46c7e0a28bbe1933d2443dd09cbfa5e1e388a2d73f6d1e8d90c488cdeb07",
+              "latin1": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n    <Component>\r\n      <Path>LiveSplit.BunnySplit.dll</Path>\r\n      <Settings>\r\n        <Version>2.0.2.0</Version>\r\n        <EnableAutoSplit>True</EnableAutoSplit>\r\n        <SplitOnGameEnd>True</SplitOnGameEnd>\r\n        <SplitOnHL1Chapters>True</SplitOnHL1Chapters>\r\n        <SplitOnOP4Chapters>False</SplitOnOP4Chapters>\r\n        <SplitOnBSChapters>False</SplitOnBSChapters>\r\n        <SplitOnGMCChapters>False</SplitOnGMCChapters>\r\n        <SplitOnMaps>False</SplitOnMaps>\r\n        <EnableAutoReset>True</EnableAutoReset>\r\n        <EnableAutoStart>True</EnableAutoStart>\r\n      </Settings>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"
+            },
+            {
+              "path": "ls/splits/hlsr/hl1-won/scripted.lss",
+              "kind": "file",
+              "size": 4355,
+              "sha256": "8a22d8fa8d13b072e7e9a1c662a034abb8f869df2e35728ea3dc948fe44925c0",
+              "latin1": "ï»¿<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Run version=\"1.7.0\">\r\n  <GameIcon />\r\n  <GameName>Half-Life</GameName>\r\n  <CategoryName>WON</CategoryName>\r\n  <LayoutPath>\r\n  </LayoutPath>\r\n  <Metadata>\r\n    <Run id=\"\" />\r\n    <Platform usesEmulator=\"False\">PC</Platform>\r\n    <Region>\r\n    </Region>\r\n    <Variables>\r\n      <Variable name=\"Scripts\">Scripted</Variable>\r\n      <Variable name=\"Segments\">RTA</Variable>\r\n    </Variables>\r\n    <CustomVariables />\r\n  </Metadata>\r\n  <Offset>00:00:00</Offset>\r\n  <AttemptCount>0</AttemptCount>\r\n  <AttemptHistory />\r\n  <Segments>\r\n    <Segment>\r\n      <Name>Anomalous Materials</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Unforeseen Consequences</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Office Complex</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>We've Got Hostiles</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Blast Pit</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Power Up</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>On A Rail</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Apprehension</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Residue Processing</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Questionable Ethics</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Surface Tension</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Forget About Freeman</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Lambda Core</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Xen</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Gonarch's Lair</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Interloper</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Nihilanth</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n  </Segments>\r\n  <AutoSplitterSettings />\r\n</Run>\r\n"
+            },
+            {
+              "path": "ls/splits/hlsr/hl1-won/scriptless.lsl",
+              "kind": "file",
+              "size": 796,
+              "sha256": "ed5c46c7e0a28bbe1933d2443dd09cbfa5e1e388a2d73f6d1e8d90c488cdeb07",
+              "latin1": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n    <Component>\r\n      <Path>LiveSplit.BunnySplit.dll</Path>\r\n      <Settings>\r\n        <Version>2.0.2.0</Version>\r\n        <EnableAutoSplit>True</EnableAutoSplit>\r\n        <SplitOnGameEnd>True</SplitOnGameEnd>\r\n        <SplitOnHL1Chapters>True</SplitOnHL1Chapters>\r\n        <SplitOnOP4Chapters>False</SplitOnOP4Chapters>\r\n        <SplitOnBSChapters>False</SplitOnBSChapters>\r\n        <SplitOnGMCChapters>False</SplitOnGMCChapters>\r\n        <SplitOnMaps>False</SplitOnMaps>\r\n        <EnableAutoReset>True</EnableAutoReset>\r\n        <EnableAutoStart>True</EnableAutoStart>\r\n      </Settings>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"
+            },
+            {
+              "path": "ls/splits/hlsr/hl1-won/scriptless.lss",
+              "kind": "file",
+              "size": 4357,
+              "sha256": "c6e4675e68ffd90471cd6f4a1057783f0ee1322d743a4d137bd789ca5b611f5a",
+              "latin1": "ï»¿<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Run version=\"1.7.0\">\r\n  <GameIcon />\r\n  <GameName>Half-Life</GameName>\r\n  <CategoryName>WON</CategoryName>\r\n  <LayoutPath>\r\n  </LayoutPath>\r\n  <Metadata>\r\n    <Run id=\"\" />\r\n    <Platform usesEmulator=\"False\">PC</Platform>\r\n    <Region>\r\n    </Region>\r\n    <Variables>\r\n      <Variable name=\"Scripts\">Scriptless</Variable>\r\n      <Variable name=\"Segments\">RTA</Variable>\r\n    </Variables>\r\n    <CustomVariables />\r\n  </Metadata>\r\n  <Offset>00:00:00</Offset>\r\n  <AttemptCount>0</AttemptCount>\r\n  <AttemptHistory />\r\n  <Segments>\r\n    <Segment>\r\n      <Name>Anomalous Materials</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Unforeseen Consequences</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Office Complex</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>We've Got Hostiles</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Blast Pit</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Power Up</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>On A Rail</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Apprehension</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Residue Processing</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Questionable Ethics</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Surface Tension</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Forget About Freeman</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Lambda Core</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Xen</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Gonarch's Lair</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Interloper</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Nihilanth</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n  </Segments>\r\n  <AutoSplitterSettings />\r\n</Run>\r\n"
+            },
+            {"path":"ls/splits/maps","kind":"dir"},
+            {"path":"ls/splits/maps/maps.lsl","kind":"file","size":186,"sha256":"f149363d70a8082dd7ff3e9a80cbc81253424eb725ee2feae574cea2295079da","latin1":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"},
+            {"path":"ls/splits/maps/maps.lss","kind":"file","size":7,"sha256":"5a13158c298fa7dfb64b6d126ee9eebf80b8ed2f420dd263a88755ff34128ad0","latin1":"<Run />"},
+            {"path":"res","kind":"dir"},
+            {"path":"res/livesplit-components","kind":"dir"},
+            {"path":"res/livesplit-components/LiveSplit.BunnySplit.dll","kind":"file","size":3,"sha256":"0343b13708cd52d33ecbb1043b5ae145e73a532bdccf7de6925db5cce6054fd3","latin1":"dll"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "HL1: компонент и раскладка пользователя не трогаются",
+      "setup": [
+        {"file":"ls/splits/chapters/chapters.lsl","utf8":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"},
+        {"file":"ls/splits/chapters/chapters.lss","utf8":"<Run />"},
+        {"file":"ls/splits/maps/maps.lsl","utf8":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"},
+        {"file":"ls/splits/maps/maps.lss","utf8":"<Run />"},
+        {"dir":"ls/Components"},
+        {"file":"ls/settings.cfg","utf8":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Settings>\r\n  <RecentSplits />\r\n  <ActiveAutoSplitters />\r\n</Settings>\r\n"},
+        {"file":"res/livesplit-components/LiveSplit.BunnySplit.dll","utf8":"dll"},
+        {"file":"ls/Components/LiveSplit.BunnySplit.dll","utf8":"версия пользователя"},
+        {"file":"ls/splits/hlsr/hl1-won/scripted.lsl","utf8":"своя раскладка"}
+      ],
+      "steps": [{"op":"prepare","gameId":"hl1-won","presetId":"scripted"},{"op":"tree"}],
+      "results": [
+        {"outcome":{"ok":{"args":["-s","splits\\hlsr\\hl1-won\\scripted.lss","-l","splits\\hlsr\\hl1-won\\scripted.lsl"],"preset":{"id":"scripted","kind":"chapters","category":"Scripted"}}},"timeline":[{"log":"info","message":"[tools] livesplit: созданы сплиты splits/hlsr/hl1-won/scripted.lss"}]},
+        {
+          "tree": [
+            {"path":"ls","kind":"dir"},
+            {"path":"ls/Components","kind":"dir"},
+            {"path":"ls/Components/LiveSplit.BunnySplit.dll","kind":"file","size":37,"sha256":"e5dea432f309730062350cb04a058471a687baef00c986194d0e8029f7c0420d","latin1":"Ð²ÐµÑÑÐ¸Ñ Ð¿Ð¾Ð»ÑÐ·Ð¾Ð²Ð°ÑÐµÐ»Ñ"},
+            {
+              "path": "ls/settings.cfg",
+              "kind": "file",
+              "size": 288,
+              "sha256": "071620534206c667a14fde2ffe6cecd08ecb4231aca2915d98a7c0558f1d3aaa",
+              "latin1": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Settings>\r\n  <RecentSplits>\r\n    <SplitsFile gameName=\"Half-Life\" categoryName=\"WON\" lastTimingMethod=\"GameTime\" lastHotkeyProfile=\"Default\">splits\\hlsr\\hl1-won\\scripted.lss</SplitsFile>\r\n  </RecentSplits>\r\n  <ActiveAutoSplitters />\r\n</Settings>\r\n"
+            },
+            {"path":"ls/splits","kind":"dir"},
+            {"path":"ls/splits/chapters","kind":"dir"},
+            {"path":"ls/splits/chapters/chapters.lsl","kind":"file","size":186,"sha256":"f149363d70a8082dd7ff3e9a80cbc81253424eb725ee2feae574cea2295079da","latin1":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"},
+            {"path":"ls/splits/chapters/chapters.lss","kind":"file","size":7,"sha256":"5a13158c298fa7dfb64b6d126ee9eebf80b8ed2f420dd263a88755ff34128ad0","latin1":"<Run />"},
+            {"path":"ls/splits/hlsr","kind":"dir"},
+            {"path":"ls/splits/hlsr/hl1-won","kind":"dir"},
+            {"path":"ls/splits/hlsr/hl1-won/scripted.lsl","kind":"file","size":27,"sha256":"cbbd1598961af4f3920811cecfa6c564029ae0cc2dd931b18a9c9b2a4b82e411","latin1":"ÑÐ²Ð¾Ñ ÑÐ°ÑÐºÐ»Ð°Ð´ÐºÐ°"},
+            {
+              "path": "ls/splits/hlsr/hl1-won/scripted.lss",
+              "kind": "file",
+              "size": 4355,
+              "sha256": "8a22d8fa8d13b072e7e9a1c662a034abb8f869df2e35728ea3dc948fe44925c0",
+              "latin1": "ï»¿<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Run version=\"1.7.0\">\r\n  <GameIcon />\r\n  <GameName>Half-Life</GameName>\r\n  <CategoryName>WON</CategoryName>\r\n  <LayoutPath>\r\n  </LayoutPath>\r\n  <Metadata>\r\n    <Run id=\"\" />\r\n    <Platform usesEmulator=\"False\">PC</Platform>\r\n    <Region>\r\n    </Region>\r\n    <Variables>\r\n      <Variable name=\"Scripts\">Scripted</Variable>\r\n      <Variable name=\"Segments\">RTA</Variable>\r\n    </Variables>\r\n    <CustomVariables />\r\n  </Metadata>\r\n  <Offset>00:00:00</Offset>\r\n  <AttemptCount>0</AttemptCount>\r\n  <AttemptHistory />\r\n  <Segments>\r\n    <Segment>\r\n      <Name>Anomalous Materials</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Unforeseen Consequences</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Office Complex</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>We've Got Hostiles</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Blast Pit</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Power Up</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>On A Rail</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Apprehension</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Residue Processing</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Questionable Ethics</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Surface Tension</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Forget About Freeman</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Lambda Core</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Xen</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Gonarch's Lair</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Interloper</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Nihilanth</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n  </Segments>\r\n  <AutoSplitterSettings />\r\n</Run>\r\n"
+            },
+            {"path":"ls/splits/maps","kind":"dir"},
+            {"path":"ls/splits/maps/maps.lsl","kind":"file","size":186,"sha256":"f149363d70a8082dd7ff3e9a80cbc81253424eb725ee2feae574cea2295079da","latin1":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"},
+            {"path":"ls/splits/maps/maps.lss","kind":"file","size":7,"sha256":"5a13158c298fa7dfb64b6d126ee9eebf80b8ed2f420dd263a88755ff34128ad0","latin1":"<Run />"},
+            {"path":"res","kind":"dir"},
+            {"path":"res/livesplit-components","kind":"dir"},
+            {"path":"res/livesplit-components/LiveSplit.BunnySplit.dll","kind":"file","size":3,"sha256":"0343b13708cd52d33ecbb1043b5ae145e73a532bdccf7de6925db5cce6054fd3","latin1":"dll"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "HL1: BunnySplit нет в ресурсах",
+      "setup": [
+        {"file":"ls/splits/chapters/chapters.lsl","utf8":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"},
+        {"file":"ls/splits/chapters/chapters.lss","utf8":"<Run />"},
+        {"file":"ls/splits/maps/maps.lsl","utf8":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"},
+        {"file":"ls/splits/maps/maps.lss","utf8":"<Run />"},
+        {"dir":"ls/Components"},
+        {"file":"ls/settings.cfg","utf8":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Settings>\r\n  <RecentSplits />\r\n  <ActiveAutoSplitters />\r\n</Settings>\r\n"}
+      ],
+      "steps": [{"op":"prepare","gameId":"hl1-won","presetId":"scripted"},{"op":"tree"}],
+      "results": [
+        {"outcome":{"raw":{"code":null,"message":"LiveSplit.BunnySplit.dll не найден в ресурсах лаунчера"}},"timeline":[{"log":"info","message":"[tools] livesplit: созданы сплиты splits/hlsr/hl1-won/scripted.lss"}]},
+        {
+          "tree": [
+            {"path":"ls","kind":"dir"},
+            {"path":"ls/Components","kind":"dir"},
+            {"path":"ls/settings.cfg","kind":"file","size":112,"sha256":"8e97f7d6fb08318d2abec0b1a1c1239e95ac8b39cb3cc2c456686f39f84eacd1","latin1":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Settings>\r\n  <RecentSplits />\r\n  <ActiveAutoSplitters />\r\n</Settings>\r\n"},
+            {"path":"ls/splits","kind":"dir"},
+            {"path":"ls/splits/chapters","kind":"dir"},
+            {"path":"ls/splits/chapters/chapters.lsl","kind":"file","size":186,"sha256":"f149363d70a8082dd7ff3e9a80cbc81253424eb725ee2feae574cea2295079da","latin1":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"},
+            {"path":"ls/splits/chapters/chapters.lss","kind":"file","size":7,"sha256":"5a13158c298fa7dfb64b6d126ee9eebf80b8ed2f420dd263a88755ff34128ad0","latin1":"<Run />"},
+            {"path":"ls/splits/hlsr","kind":"dir"},
+            {"path":"ls/splits/hlsr/hl1-won","kind":"dir"},
+            {
+              "path": "ls/splits/hlsr/hl1-won/scripted.lsl",
+              "kind": "file",
+              "size": 796,
+              "sha256": "ed5c46c7e0a28bbe1933d2443dd09cbfa5e1e388a2d73f6d1e8d90c488cdeb07",
+              "latin1": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n    <Component>\r\n      <Path>LiveSplit.BunnySplit.dll</Path>\r\n      <Settings>\r\n        <Version>2.0.2.0</Version>\r\n        <EnableAutoSplit>True</EnableAutoSplit>\r\n        <SplitOnGameEnd>True</SplitOnGameEnd>\r\n        <SplitOnHL1Chapters>True</SplitOnHL1Chapters>\r\n        <SplitOnOP4Chapters>False</SplitOnOP4Chapters>\r\n        <SplitOnBSChapters>False</SplitOnBSChapters>\r\n        <SplitOnGMCChapters>False</SplitOnGMCChapters>\r\n        <SplitOnMaps>False</SplitOnMaps>\r\n        <EnableAutoReset>True</EnableAutoReset>\r\n        <EnableAutoStart>True</EnableAutoStart>\r\n      </Settings>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"
+            },
+            {
+              "path": "ls/splits/hlsr/hl1-won/scripted.lss",
+              "kind": "file",
+              "size": 4355,
+              "sha256": "8a22d8fa8d13b072e7e9a1c662a034abb8f869df2e35728ea3dc948fe44925c0",
+              "latin1": "ï»¿<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Run version=\"1.7.0\">\r\n  <GameIcon />\r\n  <GameName>Half-Life</GameName>\r\n  <CategoryName>WON</CategoryName>\r\n  <LayoutPath>\r\n  </LayoutPath>\r\n  <Metadata>\r\n    <Run id=\"\" />\r\n    <Platform usesEmulator=\"False\">PC</Platform>\r\n    <Region>\r\n    </Region>\r\n    <Variables>\r\n      <Variable name=\"Scripts\">Scripted</Variable>\r\n      <Variable name=\"Segments\">RTA</Variable>\r\n    </Variables>\r\n    <CustomVariables />\r\n  </Metadata>\r\n  <Offset>00:00:00</Offset>\r\n  <AttemptCount>0</AttemptCount>\r\n  <AttemptHistory />\r\n  <Segments>\r\n    <Segment>\r\n      <Name>Anomalous Materials</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Unforeseen Consequences</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Office Complex</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>We've Got Hostiles</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Blast Pit</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Power Up</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>On A Rail</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Apprehension</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Residue Processing</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Questionable Ethics</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Surface Tension</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Forget About Freeman</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Lambda Core</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Xen</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Gonarch's Lair</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Interloper</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Nihilanth</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n  </Segments>\r\n  <AutoSplitterSettings />\r\n</Run>\r\n"
+            },
+            {"path":"ls/splits/maps","kind":"dir"},
+            {"path":"ls/splits/maps/maps.lsl","kind":"file","size":186,"sha256":"f149363d70a8082dd7ff3e9a80cbc81253424eb725ee2feae574cea2295079da","latin1":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"},
+            {"path":"ls/splits/maps/maps.lss","kind":"file","size":7,"sha256":"5a13158c298fa7dfb64b6d126ee9eebf80b8ed2f420dd263a88755ff34128ad0","latin1":"<Run />"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "раскладка: базовой нет, существующая, HL1 поверх базовой без Components",
+      "setup": [
+        {"file":"ls/splits/chapters/chapters.lsl","utf8":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"},
+        {"file":"ls/splits/chapters/chapters.lss","utf8":"<Run />"},
+        {"file":"ls/splits/maps/maps.lsl","utf8":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"},
+        {"file":"ls/splits/maps/maps.lss","utf8":"<Run />"},
+        {"dir":"ls/Components"},
+        {"file":"ls/settings.cfg","utf8":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Settings>\r\n  <RecentSplits />\r\n  <ActiveAutoSplitters />\r\n</Settings>\r\n"},
+        {"file":"res/livesplit-components/LiveSplit.BunnySplit.dll","utf8":"dll"}
+      ],
+      "steps": [
+        {"op":"remove","file":"ls/splits/chapters/chapters.lsl"},
+        {"op":"prepare","gameId":"hl2-4260","presetId":"scripts-chapters"},
+        {"op":"tree"},
+        {"op":"write","file":"ls/splits/hlsr/hl2-2707/scripts-maps.lsl","utf8":"своя"},
+        {"op":"prepare","gameId":"hl2-2707","presetId":"scripts-maps"},
+        {"op":"write","file":"ls/splits/chapters/chapters.lsl","utf8":"<Layout />"},
+        {"op":"prepare","gameId":"hl1-won","presetId":"scripted"},
+        {"op":"tree"}
+      ],
+      "results": [
+        null,
+        {"outcome":{"ok":{"args":["-s","splits\\hlsr\\hl2-4260\\scripts-chapters.lss"],"preset":{"id":"scripts-chapters","kind":"chapters","category":"With Scripts"}}},"timeline":[{"log":"info","message":"[tools] livesplit: созданы сплиты splits/hlsr/hl2-4260/scripts-chapters.lss"},{"log":"warn","message":"[tools] livesplit: нет раскладки splits/chapters/chapters.lsl"}]},
+        {
+          "tree": [
+            {"path":"ls","kind":"dir"},
+            {"path":"ls/Components","kind":"dir"},
+            {
+              "path": "ls/settings.cfg",
+              "kind": "file",
+              "size": 376,
+              "sha256": "59573e01217b01b7d1c632f0acdbc75780b05a4d05b79ad65889f2a71b692cb0",
+              "latin1": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Settings>\r\n  <RecentSplits>\r\n    <SplitsFile gameName=\"Half-Life 2\" categoryName=\"Old Engine\" lastTimingMethod=\"GameTime\" lastHotkeyProfile=\"Default\">splits\\hlsr\\hl2-4260\\scripts-chapters.lss</SplitsFile>\r\n  </RecentSplits>\r\n  <ActiveAutoSplitters>\r\n    <AutoSplitter>Half-Life 2</AutoSplitter>\r\n  </ActiveAutoSplitters>\r\n</Settings>\r\n"
+            },
+            {"path":"ls/splits","kind":"dir"},
+            {"path":"ls/splits/chapters","kind":"dir"},
+            {"path":"ls/splits/chapters/chapters.lss","kind":"file","size":7,"sha256":"5a13158c298fa7dfb64b6d126ee9eebf80b8ed2f420dd263a88755ff34128ad0","latin1":"<Run />"},
+            {"path":"ls/splits/hlsr","kind":"dir"},
+            {"path":"ls/splits/hlsr/hl2-4260","kind":"dir"},
+            {
+              "path": "ls/splits/hlsr/hl2-4260/scripts-chapters.lss",
+              "kind": "file",
+              "size": 5741,
+              "sha256": "b0980defe6071b11afa4c49a74a05a4b911c3b85760765dda8b142a02a8c0a01",
+              "latin1": "ï»¿<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Run version=\"1.7.0\">\r\n  <GameIcon />\r\n  <GameName>Half-Life 2</GameName>\r\n  <CategoryName>Old Engine</CategoryName>\r\n  <LayoutPath>\r\n  </LayoutPath>\r\n  <Metadata>\r\n    <Run id=\"\" />\r\n    <Platform usesEmulator=\"False\">PC</Platform>\r\n    <Region>\r\n    </Region>\r\n    <Variables>\r\n      <Variable name=\"Scripts\">With Scripts</Variable>\r\n      <Variable name=\"Build\">4231-4260</Variable>\r\n    </Variables>\r\n    <CustomVariables />\r\n  </Metadata>\r\n  <Offset>00:00:00</Offset>\r\n  <AttemptCount>0</AttemptCount>\r\n  <AttemptHistory />\r\n  <Segments>\r\n    <Segment>\r\n      <Name>Point Insertion</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>A Red Letter Day</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Route Kanal</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Water Hazard</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Black Mesa East</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>We Don't Go To Ravenholm</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Highway 17</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Sandtraps</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Nova Prospekt</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Entanglement</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Anticitizen One</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Follow Freeman!</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Our Benefactors</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Dark Energy</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n  </Segments>\r\n  <AutoSplitterSettings>\r\n    <Version>3.3.4.6</Version>\r\n    <AutoSplitEnabled>True</AutoSplitEnabled>\r\n    <SplitInterval>1</SplitInterval>\r\n    <UseSplitInterval>True</UseSplitInterval>\r\n    <UseMTL>True</UseMTL>\r\n    <MTLModeSetting>Allow</MTLModeSetting>\r\n    <AutoSplitOnLevelTrans>True</AutoSplitOnLevelTrans>\r\n    <AutoSplitOnGenericMap>False</AutoSplitOnGenericMap>\r\n    <AutoSplitOnSpecial>True</AutoSplitOnSpecial>\r\n    <AutoStartEnabled>True</AutoStartEnabled>\r\n    <AutoStopEnabled>True</AutoStopEnabled>\r\n    <AutoResetEnabled>True</AutoResetEnabled>\r\n    <FirstMapAutoReset>True</FirstMapAutoReset>\r\n    <StartMap>\r\n    </StartMap>\r\n    <AddAutoStartType>NewGame</AddAutoStartType>\r\n    <AllowAdditionalAutoStart>False</AllowAdditionalAutoStart>\r\n    <ShowGameTime>True</ShowGameTime>\r\n    <ShowAltTime>False</ShowAltTime>\r\n    <ShowTickCount>False</ShowTickCount>\r\n    <ShowCurDemo>False</ShowCurDemo>\r\n    <GameTimeDecimalPlaces>6</GameTimeDecimalPlaces>\r\n    <HoldUntilPause>True</HoldUntilPause>\r\n    <RTAStartOffset>True</RTAStartOffset>\r\n    <ServerInitialTicks>False</ServerInitialTicks>\r\n    <SLPenalty>1</SLPenalty>\r\n    <SplitInstead>False</SplitInstead>\r\n    <ResetMapTransitions>False</ResetMapTransitions>\r\n    <CountEngineTicks>True</CountEngineTicks>\r\n    <CountPauses>True</CountPauses>\r\n    <CountDisconnects>False</CountDisconnects>\r\n    <CountInactive>False</CountInactive>\r\n    <CountAutomatic>True</CountAutomatic>\r\n    <CountDemoInterop>False</CountDemoInterop>\r\n    <PrintDemoInfo>False</PrintDemoInfo>\r\n    <DemoParserPath>\r\n    </DemoParserPath>\r\n    <SetGameTimeOnLaunch>True</SetGameTimeOnLaunch>\r\n    <MapTransitionList>d1_trainstation_06,d1_canals_01|d1_trainstation_04,d1_trainstation_05|d1_canals_05,d1_canals_06|d1_canals_13,d1_eli_01|d1_eli_02,d1_town_01|d1_town_05,d2_coast_01|d2_coast_07,d2_coast_09|d2_prison_01,d2_prison_02|d3_c17_01,d3_c17_02|d2_prison_05,d2_prison_06|d3_c17_08,d3_c17_09|d3_c17_13,d3_citadel_01|d3_citadel_05,d3_breen_01</MapTransitionList>\r\n    <Misc />\r\n  </AutoSplitterSettings>\r\n</Run>\r\n"
+            },
+            {"path":"ls/splits/maps","kind":"dir"},
+            {"path":"ls/splits/maps/maps.lsl","kind":"file","size":186,"sha256":"f149363d70a8082dd7ff3e9a80cbc81253424eb725ee2feae574cea2295079da","latin1":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"},
+            {"path":"ls/splits/maps/maps.lss","kind":"file","size":7,"sha256":"5a13158c298fa7dfb64b6d126ee9eebf80b8ed2f420dd263a88755ff34128ad0","latin1":"<Run />"},
+            {"path":"res","kind":"dir"},
+            {"path":"res/livesplit-components","kind":"dir"},
+            {"path":"res/livesplit-components/LiveSplit.BunnySplit.dll","kind":"file","size":3,"sha256":"0343b13708cd52d33ecbb1043b5ae145e73a532bdccf7de6925db5cce6054fd3","latin1":"dll"}
+          ]
+        },
+        null,
+        {"outcome":{"ok":{"args":["-s","splits\\hlsr\\hl2-2707\\scripts-maps.lss","-l","splits\\hlsr\\hl2-2707\\scripts-maps.lsl"],"preset":{"id":"scripts-maps","kind":"maps","category":"With Scripts"}}},"timeline":[{"log":"info","message":"[tools] livesplit: созданы сплиты splits/hlsr/hl2-2707/scripts-maps.lss"}]},
+        null,
+        {"outcome":{"ok":{"args":["-s","splits\\hlsr\\hl1-won\\scripted.lss"],"preset":{"id":"scripted","kind":"chapters","category":"Scripted"}}},"timeline":[{"log":"info","message":"[tools] livesplit: созданы сплиты splits/hlsr/hl1-won/scripted.lss"},{"log":"info","message":"[tools] livesplit: установлен LiveSplit.BunnySplit.dll (0343b13708cd)"}]},
+        {
+          "tree": [
+            {"path":"ls","kind":"dir"},
+            {"path":"ls/Components","kind":"dir"},
+            {"path":"ls/Components/LiveSplit.BunnySplit.dll","kind":"file","size":3,"sha256":"0343b13708cd52d33ecbb1043b5ae145e73a532bdccf7de6925db5cce6054fd3","latin1":"dll"},
+            {
+              "path": "ls/settings.cfg",
+              "kind": "file",
+              "size": 708,
+              "sha256": "3161bc837f9a724bd7998b097c0228501f151341972b1bbebf34c6600d12e7f1",
+              "latin1": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Settings>\r\n  <RecentSplits>\r\n    <SplitsFile gameName=\"Half-Life\" categoryName=\"WON\" lastTimingMethod=\"GameTime\" lastHotkeyProfile=\"Default\">splits\\hlsr\\hl1-won\\scripted.lss</SplitsFile>\r\n    <SplitsFile gameName=\"Half-Life 2\" categoryName=\"Old Engine\" lastTimingMethod=\"GameTime\" lastHotkeyProfile=\"Default\">splits\\hlsr\\hl2-2707\\scripts-maps.lss</SplitsFile>\r\n    <SplitsFile gameName=\"Half-Life 2\" categoryName=\"Old Engine\" lastTimingMethod=\"GameTime\" lastHotkeyProfile=\"Default\">splits\\hlsr\\hl2-4260\\scripts-chapters.lss</SplitsFile>\r\n  </RecentSplits>\r\n  <ActiveAutoSplitters>\r\n    <AutoSplitter>Half-Life 2</AutoSplitter>\r\n  </ActiveAutoSplitters>\r\n</Settings>\r\n"
+            },
+            {"path":"ls/splits","kind":"dir"},
+            {"path":"ls/splits/chapters","kind":"dir"},
+            {"path":"ls/splits/chapters/chapters.lsl","kind":"file","size":10,"sha256":"fb65ece9583c4c9eab22c8849a7eb6ac4c505b5e1a06180382e4e48c65485f8f","latin1":"<Layout />"},
+            {"path":"ls/splits/chapters/chapters.lss","kind":"file","size":7,"sha256":"5a13158c298fa7dfb64b6d126ee9eebf80b8ed2f420dd263a88755ff34128ad0","latin1":"<Run />"},
+            {"path":"ls/splits/hlsr","kind":"dir"},
+            {"path":"ls/splits/hlsr/hl1-won","kind":"dir"},
+            {
+              "path": "ls/splits/hlsr/hl1-won/scripted.lss",
+              "kind": "file",
+              "size": 4355,
+              "sha256": "8a22d8fa8d13b072e7e9a1c662a034abb8f869df2e35728ea3dc948fe44925c0",
+              "latin1": "ï»¿<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Run version=\"1.7.0\">\r\n  <GameIcon />\r\n  <GameName>Half-Life</GameName>\r\n  <CategoryName>WON</CategoryName>\r\n  <LayoutPath>\r\n  </LayoutPath>\r\n  <Metadata>\r\n    <Run id=\"\" />\r\n    <Platform usesEmulator=\"False\">PC</Platform>\r\n    <Region>\r\n    </Region>\r\n    <Variables>\r\n      <Variable name=\"Scripts\">Scripted</Variable>\r\n      <Variable name=\"Segments\">RTA</Variable>\r\n    </Variables>\r\n    <CustomVariables />\r\n  </Metadata>\r\n  <Offset>00:00:00</Offset>\r\n  <AttemptCount>0</AttemptCount>\r\n  <AttemptHistory />\r\n  <Segments>\r\n    <Segment>\r\n      <Name>Anomalous Materials</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Unforeseen Consequences</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Office Complex</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>We've Got Hostiles</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Blast Pit</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Power Up</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>On A Rail</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Apprehension</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Residue Processing</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Questionable Ethics</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Surface Tension</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Forget About Freeman</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Lambda Core</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Xen</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Gonarch's Lair</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Interloper</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Nihilanth</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n  </Segments>\r\n  <AutoSplitterSettings />\r\n</Run>\r\n"
+            },
+            {"path":"ls/splits/hlsr/hl2-2707","kind":"dir"},
+            {"path":"ls/splits/hlsr/hl2-2707/scripts-maps.lsl","kind":"file","size":8,"sha256":"fefc2728a72aacdf4f490a828148d3ccf7e12d3ff2bfdc98df8f6f52d80439bd","latin1":"ÑÐ²Ð¾Ñ"},
+            {"path":"ls/splits/hlsr/hl2-2707/scripts-maps.lss","kind":"file","size":17007,"sha256":"e5dbeb3fd0353b07076c72bc3005d2b49656c27223206d8bb0ce188c9ce1c177"},
+            {"path":"ls/splits/hlsr/hl2-4260","kind":"dir"},
+            {
+              "path": "ls/splits/hlsr/hl2-4260/scripts-chapters.lss",
+              "kind": "file",
+              "size": 5741,
+              "sha256": "b0980defe6071b11afa4c49a74a05a4b911c3b85760765dda8b142a02a8c0a01",
+              "latin1": "ï»¿<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Run version=\"1.7.0\">\r\n  <GameIcon />\r\n  <GameName>Half-Life 2</GameName>\r\n  <CategoryName>Old Engine</CategoryName>\r\n  <LayoutPath>\r\n  </LayoutPath>\r\n  <Metadata>\r\n    <Run id=\"\" />\r\n    <Platform usesEmulator=\"False\">PC</Platform>\r\n    <Region>\r\n    </Region>\r\n    <Variables>\r\n      <Variable name=\"Scripts\">With Scripts</Variable>\r\n      <Variable name=\"Build\">4231-4260</Variable>\r\n    </Variables>\r\n    <CustomVariables />\r\n  </Metadata>\r\n  <Offset>00:00:00</Offset>\r\n  <AttemptCount>0</AttemptCount>\r\n  <AttemptHistory />\r\n  <Segments>\r\n    <Segment>\r\n      <Name>Point Insertion</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>A Red Letter Day</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Route Kanal</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Water Hazard</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Black Mesa East</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>We Don't Go To Ravenholm</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Highway 17</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Sandtraps</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Nova Prospekt</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Entanglement</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Anticitizen One</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Follow Freeman!</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Our Benefactors</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Dark Energy</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n  </Segments>\r\n  <AutoSplitterSettings>\r\n    <Version>3.3.4.6</Version>\r\n    <AutoSplitEnabled>True</AutoSplitEnabled>\r\n    <SplitInterval>1</SplitInterval>\r\n    <UseSplitInterval>True</UseSplitInterval>\r\n    <UseMTL>True</UseMTL>\r\n    <MTLModeSetting>Allow</MTLModeSetting>\r\n    <AutoSplitOnLevelTrans>True</AutoSplitOnLevelTrans>\r\n    <AutoSplitOnGenericMap>False</AutoSplitOnGenericMap>\r\n    <AutoSplitOnSpecial>True</AutoSplitOnSpecial>\r\n    <AutoStartEnabled>True</AutoStartEnabled>\r\n    <AutoStopEnabled>True</AutoStopEnabled>\r\n    <AutoResetEnabled>True</AutoResetEnabled>\r\n    <FirstMapAutoReset>True</FirstMapAutoReset>\r\n    <StartMap>\r\n    </StartMap>\r\n    <AddAutoStartType>NewGame</AddAutoStartType>\r\n    <AllowAdditionalAutoStart>False</AllowAdditionalAutoStart>\r\n    <ShowGameTime>True</ShowGameTime>\r\n    <ShowAltTime>False</ShowAltTime>\r\n    <ShowTickCount>False</ShowTickCount>\r\n    <ShowCurDemo>False</ShowCurDemo>\r\n    <GameTimeDecimalPlaces>6</GameTimeDecimalPlaces>\r\n    <HoldUntilPause>True</HoldUntilPause>\r\n    <RTAStartOffset>True</RTAStartOffset>\r\n    <ServerInitialTicks>False</ServerInitialTicks>\r\n    <SLPenalty>1</SLPenalty>\r\n    <SplitInstead>False</SplitInstead>\r\n    <ResetMapTransitions>False</ResetMapTransitions>\r\n    <CountEngineTicks>True</CountEngineTicks>\r\n    <CountPauses>True</CountPauses>\r\n    <CountDisconnects>False</CountDisconnects>\r\n    <CountInactive>False</CountInactive>\r\n    <CountAutomatic>True</CountAutomatic>\r\n    <CountDemoInterop>False</CountDemoInterop>\r\n    <PrintDemoInfo>False</PrintDemoInfo>\r\n    <DemoParserPath>\r\n    </DemoParserPath>\r\n    <SetGameTimeOnLaunch>True</SetGameTimeOnLaunch>\r\n    <MapTransitionList>d1_trainstation_06,d1_canals_01|d1_trainstation_04,d1_trainstation_05|d1_canals_05,d1_canals_06|d1_canals_13,d1_eli_01|d1_eli_02,d1_town_01|d1_town_05,d2_coast_01|d2_coast_07,d2_coast_09|d2_prison_01,d2_prison_02|d3_c17_01,d3_c17_02|d2_prison_05,d2_prison_06|d3_c17_08,d3_c17_09|d3_c17_13,d3_citadel_01|d3_citadel_05,d3_breen_01</MapTransitionList>\r\n    <Misc />\r\n  </AutoSplitterSettings>\r\n</Run>\r\n"
+            },
+            {"path":"ls/splits/maps","kind":"dir"},
+            {"path":"ls/splits/maps/maps.lsl","kind":"file","size":186,"sha256":"f149363d70a8082dd7ff3e9a80cbc81253424eb725ee2feae574cea2295079da","latin1":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"},
+            {"path":"ls/splits/maps/maps.lss","kind":"file","size":7,"sha256":"5a13158c298fa7dfb64b6d126ee9eebf80b8ed2f420dd263a88755ff34128ad0","latin1":"<Run />"},
+            {"path":"res","kind":"dir"},
+            {"path":"res/livesplit-components","kind":"dir"},
+            {"path":"res/livesplit-components/LiveSplit.BunnySplit.dll","kind":"file","size":3,"sha256":"0343b13708cd52d33ecbb1043b5ae145e73a532bdccf7de6925db5cce6054fd3","latin1":"dll"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "settings.cfg: RecentSplits и автосплиттеры",
+      "setup": [
+        {"file":"ls/splits/chapters/chapters.lsl","utf8":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"},
+        {"file":"ls/splits/chapters/chapters.lss","utf8":"<Run />"},
+        {"file":"ls/splits/maps/maps.lsl","utf8":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"},
+        {"file":"ls/splits/maps/maps.lss","utf8":"<Run />"},
+        {"dir":"ls/Components"},
+        {"file":"ls/settings.cfg","utf8":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Settings>\r\n  <RecentSplits />\r\n  <ActiveAutoSplitters />\r\n</Settings>\r\n"},
+        {"file":"res/livesplit-components/LiveSplit.BunnySplit.dll","utf8":"dll"}
+      ],
+      "steps": [
+        {"op":"remove","file":"ls/settings.cfg"},
+        {"op":"prepare","gameId":"hl2-2707","presetId":"scripts-chapters"},
+        {"op":"tree"},
+        {"op":"write","file":"ls/settings.cfg","utf8":"<Settings>\r\n  <RecentSplits/>\r\n</Settings>\r\n"},
+        {"op":"prepare","gameId":"hl2-2707","presetId":"scripts-chapters"},
+        {"op":"text","file":"ls/settings.cfg"},
+        {"op":"write","file":"ls/settings.cfg","utf8":"<Settings>\r\n  <RecentSplits>\r\n    <SplitsFile>old.lss</SplitsFile>\r\n  </RecentSplits>\r\n</Settings>\r\n"},
+        {"op":"prepare","gameId":"hl2-2707","presetId":"scripts-chapters"},
+        {"op":"text","file":"ls/settings.cfg"},
+        {"op":"write","file":"ls/settings.cfg","utf8":"<Settings>\r\n  <Other />\r\n</Settings>\r\n"},
+        {"op":"prepare","gameId":"hl2-2707","presetId":"scripts-chapters"},
+        {"op":"text","file":"ls/settings.cfg"},
+        {"op":"write","file":"ls/settings.cfg","utf8":"<Settings>\r\n  <RecentSplits>\r\n    <SplitsFile>splits\\hlsr\\hl2-2707\\scripts-chapters.lss</SplitsFile>\r\n  </RecentSplits>\r\n  <ActiveAutoSplitters />\r\n</Settings>\r\n"},
+        {"op":"prepare","gameId":"hl2-2707","presetId":"scripts-chapters"},
+        {"op":"text","file":"ls/settings.cfg"},
+        {"op":"write","file":"ls/settings.cfg","utf8":"<Settings>\r\n  <RecentSplits />\r\n  <ActiveAutoSplitters>\r\n    <AutoSplitter>Other</AutoSplitter>\r\n  </ActiveAutoSplitters>\r\n</Settings>\r\n"},
+        {"op":"prepare","gameId":"hl2-2707","presetId":"scripts-maps"},
+        {"op":"text","file":"ls/settings.cfg"},
+        {"op":"write","file":"ls/settings.cfg","utf8":"<Settings>\r\n  <RecentSplits />\r\n  <ActiveAutoSplitters>\r\n    <AutoSplitter>Half-Life 2</AutoSplitter>\r\n  </ActiveAutoSplitters>\r\n</Settings>\r\n"},
+        {"op":"prepare","gameId":"hl2-2707","presetId":"scriptless-maps"},
+        {"op":"text","file":"ls/settings.cfg"},
+        {"op":"write","file":"ls/settings.cfg","utf8":"<Settings>\r\n  <RecentSplits />\r\n</Settings>\r\n"},
+        {"op":"prepare","gameId":"hl1-won","presetId":"scripted"},
+        {"op":"text","file":"ls/settings.cfg"},
+        {"op":"write","file":"ls/settings.cfg","utf8":"﻿<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Settings>\r\n  <RecentSplits />\r\n  <ActiveAutoSplitters />\r\n</Settings>\r\n"},
+        {"op":"prepare","gameId":"hl2-5288","presetId":"any-chapters"},
+        {"op":"text","file":"ls/settings.cfg"}
+      ],
+      "results": [
+        null,
+        {"outcome":{"ok":{"args":["-s","splits\\hlsr\\hl2-2707\\scripts-chapters.lss","-l","splits\\hlsr\\hl2-2707\\scripts-chapters.lsl"],"preset":{"id":"scripts-chapters","kind":"chapters","category":"With Scripts"}}},"timeline":[{"log":"info","message":"[tools] livesplit: созданы сплиты splits/hlsr/hl2-2707/scripts-chapters.lss"}]},
+        {
+          "tree": [
+            {"path":"ls","kind":"dir"},
+            {"path":"ls/Components","kind":"dir"},
+            {"path":"ls/splits","kind":"dir"},
+            {"path":"ls/splits/chapters","kind":"dir"},
+            {"path":"ls/splits/chapters/chapters.lsl","kind":"file","size":186,"sha256":"f149363d70a8082dd7ff3e9a80cbc81253424eb725ee2feae574cea2295079da","latin1":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"},
+            {"path":"ls/splits/chapters/chapters.lss","kind":"file","size":7,"sha256":"5a13158c298fa7dfb64b6d126ee9eebf80b8ed2f420dd263a88755ff34128ad0","latin1":"<Run />"},
+            {"path":"ls/splits/hlsr","kind":"dir"},
+            {"path":"ls/splits/hlsr/hl2-2707","kind":"dir"},
+            {"path":"ls/splits/hlsr/hl2-2707/scripts-chapters.lsl","kind":"file","size":186,"sha256":"f149363d70a8082dd7ff3e9a80cbc81253424eb725ee2feae574cea2295079da","latin1":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"},
+            {
+              "path": "ls/splits/hlsr/hl2-2707/scripts-chapters.lss",
+              "kind": "file",
+              "size": 5736,
+              "sha256": "55fe0cf8d538ac281ba97bb8ee467b3a261276daeb4f925aa87c6a4bad0ad1c9",
+              "latin1": "ï»¿<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Run version=\"1.7.0\">\r\n  <GameIcon />\r\n  <GameName>Half-Life 2</GameName>\r\n  <CategoryName>Old Engine</CategoryName>\r\n  <LayoutPath>\r\n  </LayoutPath>\r\n  <Metadata>\r\n    <Run id=\"\" />\r\n    <Platform usesEmulator=\"False\">PC</Platform>\r\n    <Region>\r\n    </Region>\r\n    <Variables>\r\n      <Variable name=\"Scripts\">With Scripts</Variable>\r\n      <Variable name=\"Build\">2707</Variable>\r\n    </Variables>\r\n    <CustomVariables />\r\n  </Metadata>\r\n  <Offset>00:00:00</Offset>\r\n  <AttemptCount>0</AttemptCount>\r\n  <AttemptHistory />\r\n  <Segments>\r\n    <Segment>\r\n      <Name>Point Insertion</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>A Red Letter Day</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Route Kanal</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Water Hazard</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Black Mesa East</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>We Don't Go To Ravenholm</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Highway 17</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Sandtraps</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Nova Prospekt</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Entanglement</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Anticitizen One</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Follow Freeman!</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Our Benefactors</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n    <Segment>\r\n      <Name>Dark Energy</Name>\r\n      <Icon />\r\n      <SplitTimes>\r\n        <SplitTime name=\"Personal Best\" />\r\n      </SplitTimes>\r\n      <BestSegmentTime />\r\n      <SegmentHistory />\r\n    </Segment>\r\n  </Segments>\r\n  <AutoSplitterSettings>\r\n    <Version>3.3.4.6</Version>\r\n    <AutoSplitEnabled>True</AutoSplitEnabled>\r\n    <SplitInterval>1</SplitInterval>\r\n    <UseSplitInterval>True</UseSplitInterval>\r\n    <UseMTL>True</UseMTL>\r\n    <MTLModeSetting>Allow</MTLModeSetting>\r\n    <AutoSplitOnLevelTrans>True</AutoSplitOnLevelTrans>\r\n    <AutoSplitOnGenericMap>False</AutoSplitOnGenericMap>\r\n    <AutoSplitOnSpecial>True</AutoSplitOnSpecial>\r\n    <AutoStartEnabled>True</AutoStartEnabled>\r\n    <AutoStopEnabled>True</AutoStopEnabled>\r\n    <AutoResetEnabled>True</AutoResetEnabled>\r\n    <FirstMapAutoReset>True</FirstMapAutoReset>\r\n    <StartMap>\r\n    </StartMap>\r\n    <AddAutoStartType>NewGame</AddAutoStartType>\r\n    <AllowAdditionalAutoStart>False</AllowAdditionalAutoStart>\r\n    <ShowGameTime>True</ShowGameTime>\r\n    <ShowAltTime>False</ShowAltTime>\r\n    <ShowTickCount>False</ShowTickCount>\r\n    <ShowCurDemo>False</ShowCurDemo>\r\n    <GameTimeDecimalPlaces>6</GameTimeDecimalPlaces>\r\n    <HoldUntilPause>True</HoldUntilPause>\r\n    <RTAStartOffset>True</RTAStartOffset>\r\n    <ServerInitialTicks>False</ServerInitialTicks>\r\n    <SLPenalty>1</SLPenalty>\r\n    <SplitInstead>False</SplitInstead>\r\n    <ResetMapTransitions>False</ResetMapTransitions>\r\n    <CountEngineTicks>True</CountEngineTicks>\r\n    <CountPauses>True</CountPauses>\r\n    <CountDisconnects>False</CountDisconnects>\r\n    <CountInactive>False</CountInactive>\r\n    <CountAutomatic>True</CountAutomatic>\r\n    <CountDemoInterop>False</CountDemoInterop>\r\n    <PrintDemoInfo>False</PrintDemoInfo>\r\n    <DemoParserPath>\r\n    </DemoParserPath>\r\n    <SetGameTimeOnLaunch>True</SetGameTimeOnLaunch>\r\n    <MapTransitionList>d1_trainstation_06,d1_canals_01|d1_trainstation_04,d1_trainstation_05|d1_canals_05,d1_canals_06|d1_canals_13,d1_eli_01|d1_eli_02,d1_town_01|d1_town_05,d2_coast_01|d2_coast_07,d2_coast_09|d2_prison_01,d2_prison_02|d3_c17_01,d3_c17_02|d2_prison_05,d2_prison_06|d3_c17_08,d3_c17_09|d3_c17_13,d3_citadel_01|d3_citadel_05,d3_breen_01</MapTransitionList>\r\n    <Misc />\r\n  </AutoSplitterSettings>\r\n</Run>\r\n"
+            },
+            {"path":"ls/splits/maps","kind":"dir"},
+            {"path":"ls/splits/maps/maps.lsl","kind":"file","size":186,"sha256":"f149363d70a8082dd7ff3e9a80cbc81253424eb725ee2feae574cea2295079da","latin1":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"},
+            {"path":"ls/splits/maps/maps.lss","kind":"file","size":7,"sha256":"5a13158c298fa7dfb64b6d126ee9eebf80b8ed2f420dd263a88755ff34128ad0","latin1":"<Run />"},
+            {"path":"res","kind":"dir"},
+            {"path":"res/livesplit-components","kind":"dir"},
+            {"path":"res/livesplit-components/LiveSplit.BunnySplit.dll","kind":"file","size":3,"sha256":"0343b13708cd52d33ecbb1043b5ae145e73a532bdccf7de6925db5cce6054fd3","latin1":"dll"}
+          ]
+        },
+        null,
+        {"outcome":{"ok":{"args":["-s","splits\\hlsr\\hl2-2707\\scripts-chapters.lss","-l","splits\\hlsr\\hl2-2707\\scripts-chapters.lsl"],"preset":{"id":"scripts-chapters","kind":"chapters","category":"With Scripts"}}},"timeline":[]},
+        {"text":"<Settings>\r\n  <RecentSplits>\r\n    <SplitsFile gameName=\"Half-Life 2\" categoryName=\"Old Engine\" lastTimingMethod=\"GameTime\" lastHotkeyProfile=\"Default\">splits\\hlsr\\hl2-2707\\scripts-chapters.lss</SplitsFile>\r\n  </RecentSplits>\r\n</Settings>\r\n"},
+        null,
+        {"outcome":{"ok":{"args":["-s","splits\\hlsr\\hl2-2707\\scripts-chapters.lss","-l","splits\\hlsr\\hl2-2707\\scripts-chapters.lsl"],"preset":{"id":"scripts-chapters","kind":"chapters","category":"With Scripts"}}},"timeline":[]},
+        {"text":"<Settings>\r\n  <RecentSplits>\r\n    <SplitsFile gameName=\"Half-Life 2\" categoryName=\"Old Engine\" lastTimingMethod=\"GameTime\" lastHotkeyProfile=\"Default\">splits\\hlsr\\hl2-2707\\scripts-chapters.lss</SplitsFile>\r\n    <SplitsFile>old.lss</SplitsFile>\r\n  </RecentSplits>\r\n</Settings>\r\n"},
+        null,
+        {"outcome":{"ok":{"args":["-s","splits\\hlsr\\hl2-2707\\scripts-chapters.lss","-l","splits\\hlsr\\hl2-2707\\scripts-chapters.lsl"],"preset":{"id":"scripts-chapters","kind":"chapters","category":"With Scripts"}}},"timeline":[]},
+        {"text":"<Settings>\r\n  <Other />\r\n</Settings>\r\n"},
+        null,
+        {"outcome":{"ok":{"args":["-s","splits\\hlsr\\hl2-2707\\scripts-chapters.lss","-l","splits\\hlsr\\hl2-2707\\scripts-chapters.lsl"],"preset":{"id":"scripts-chapters","kind":"chapters","category":"With Scripts"}}},"timeline":[]},
+        {"text":"<Settings>\r\n  <RecentSplits>\r\n    <SplitsFile>splits\\hlsr\\hl2-2707\\scripts-chapters.lss</SplitsFile>\r\n  </RecentSplits>\r\n  <ActiveAutoSplitters>\r\n    <AutoSplitter>Half-Life 2</AutoSplitter>\r\n  </ActiveAutoSplitters>\r\n</Settings>\r\n"},
+        null,
+        {"outcome":{"ok":{"args":["-s","splits\\hlsr\\hl2-2707\\scripts-maps.lss","-l","splits\\hlsr\\hl2-2707\\scripts-maps.lsl"],"preset":{"id":"scripts-maps","kind":"maps","category":"With Scripts"}}},"timeline":[{"log":"info","message":"[tools] livesplit: созданы сплиты splits/hlsr/hl2-2707/scripts-maps.lss"}]},
+        {
+          "text": "<Settings>\r\n  <RecentSplits>\r\n    <SplitsFile gameName=\"Half-Life 2\" categoryName=\"Old Engine\" lastTimingMethod=\"GameTime\" lastHotkeyProfile=\"Default\">splits\\hlsr\\hl2-2707\\scripts-maps.lss</SplitsFile>\r\n  </RecentSplits>\r\n  <ActiveAutoSplitters>\r\n    <AutoSplitter>Half-Life 2</AutoSplitter>\r\n    <AutoSplitter>Other</AutoSplitter>\r\n  </ActiveAutoSplitters>\r\n</Settings>\r\n"
+        },
+        null,
+        {"outcome":{"ok":{"args":["-s","splits\\hlsr\\hl2-2707\\scriptless-maps.lss","-l","splits\\hlsr\\hl2-2707\\scriptless-maps.lsl"],"preset":{"id":"scriptless-maps","kind":"maps","category":"Scriptless"}}},"timeline":[{"log":"info","message":"[tools] livesplit: созданы сплиты splits/hlsr/hl2-2707/scriptless-maps.lss"}]},
+        {"text":"<Settings>\r\n  <RecentSplits>\r\n    <SplitsFile gameName=\"Half-Life 2\" categoryName=\"Old Engine\" lastTimingMethod=\"GameTime\" lastHotkeyProfile=\"Default\">splits\\hlsr\\hl2-2707\\scriptless-maps.lss</SplitsFile>\r\n  </RecentSplits>\r\n  <ActiveAutoSplitters>\r\n    <AutoSplitter>Half-Life 2</AutoSplitter>\r\n  </ActiveAutoSplitters>\r\n</Settings>\r\n"},
+        null,
+        {"outcome":{"ok":{"args":["-s","splits\\hlsr\\hl1-won\\scripted.lss","-l","splits\\hlsr\\hl1-won\\scripted.lsl"],"preset":{"id":"scripted","kind":"chapters","category":"Scripted"}}},"timeline":[{"log":"info","message":"[tools] livesplit: созданы сплиты splits/hlsr/hl1-won/scripted.lss"},{"log":"info","message":"[tools] livesplit: установлен LiveSplit.BunnySplit.dll (0343b13708cd)"}]},
+        {"text":"<Settings>\r\n  <RecentSplits>\r\n    <SplitsFile gameName=\"Half-Life\" categoryName=\"WON\" lastTimingMethod=\"GameTime\" lastHotkeyProfile=\"Default\">splits\\hlsr\\hl1-won\\scripted.lss</SplitsFile>\r\n  </RecentSplits>\r\n</Settings>\r\n"},
+        null,
+        {"outcome":{"ok":{"args":["-s","splits\\hlsr\\hl2-5288\\any-chapters.lss","-l","splits\\hlsr\\hl2-5288\\any-chapters.lsl"],"preset":{"id":"any-chapters","kind":"chapters","category":"Any%"}}},"timeline":[{"log":"info","message":"[tools] livesplit: созданы сплиты splits/hlsr/hl2-5288/any-chapters.lss"}]},
+        {
+          "text": "ï»¿<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Settings>\r\n  <RecentSplits>\r\n    <SplitsFile gameName=\"Half-Life 2\" categoryName=\"New Engine\" lastTimingMethod=\"GameTime\" lastHotkeyProfile=\"Default\">splits\\hlsr\\hl2-5288\\any-chapters.lss</SplitsFile>\r\n  </RecentSplits>\r\n  <ActiveAutoSplitters>\r\n    <AutoSplitter>Half-Life 2</AutoSplitter>\r\n  </ActiveAutoSplitters>\r\n</Settings>\r\n"
+        }
+      ]
+    },
+    {
+      "name": "TCP-сервер: порт и старт",
+      "setup": [
+        {"file":"ls/splits/chapters/chapters.lsl","utf8":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"},
+        {"file":"ls/splits/chapters/chapters.lss","utf8":"<Run />"},
+        {"file":"ls/splits/maps/maps.lsl","utf8":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"},
+        {"file":"ls/splits/maps/maps.lss","utf8":"<Run />"},
+        {"dir":"ls/Components"},
+        {"file":"ls/settings.cfg","utf8":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Settings>\r\n  <RecentSplits />\r\n  <ActiveAutoSplitters />\r\n</Settings>\r\n"}
+      ],
+      "steps": [
+        {"op":"write","file":"ls/settings.cfg","utf8":"<Settings>\r\n  <ServerPort>16834</ServerPort>\r\n  <ServerStartup>0</ServerStartup>\r\n  <ServerState>0</ServerState>\r\n</Settings>\r\n"},
+        {"op":"enableServer","port":17000},
+        {"op":"text","file":"ls/settings.cfg"},
+        {"op":"enableServer","port":17000},
+        {"op":"write","file":"ls/settings.cfg","utf8":"<Settings>\r\n  <ServerPort>16834</ServerPort>\r\n  <ServerStartup>3</ServerStartup>\r\n  <ServerState>1</ServerState>\r\n</Settings>\r\n"},
+        {"op":"enableServer","port":16834},
+        {"op":"text","file":"ls/settings.cfg"},
+        {"op":"write","file":"ls/settings.cfg","utf8":"<Settings>\r\n  <ServerPort>16834</ServerPort>\r\n  <ServerStartup>3</ServerStartup>\r\n  <ServerState>0</ServerState>\r\n</Settings>\r\n"},
+        {"op":"enableServer","port":16834},
+        {"op":"text","file":"ls/settings.cfg"},
+        {"op":"write","file":"ls/settings.cfg","utf8":"<Settings>\r\n  <ServerPort>16834</ServerPort>\r\n  <ServerStartup>2</ServerStartup>\r\n  <ServerState>1</ServerState>\r\n</Settings>\r\n"},
+        {"op":"enableServer","port":16834},
+        {"op":"text","file":"ls/settings.cfg"},
+        {"op":"write","file":"ls/settings.cfg","utf8":"<Settings>\r\n  <ServerPort>16834</ServerPort>\r\n  <ServerStartup>1</ServerStartup>\r\n  <ServerState>0</ServerState>\r\n</Settings>\r\n"},
+        {"op":"enableServer","port":20000},
+        {"op":"text","file":"ls/settings.cfg"},
+        {"op":"write","file":"ls/settings.cfg","utf8":"<Settings>\r\n  <ServerPort></ServerPort>\r\n  <ServerStartup>3</ServerStartup>\r\n  <ServerState>1</ServerState>\r\n</Settings>\r\n"},
+        {"op":"enableServer","port":16834},
+        {"op":"text","file":"ls/settings.cfg"}
+      ],
+      "results": [
+        null,
+        {"outcome":{"ok":true},"timeline":[{"log":"info","message":"[tools] livesplit: TCP-сервер включён на порту 17000 (время из LiveSplit в Ghosting)"}]},
+        {"text":"<Settings>\r\n  <ServerPort>17000</ServerPort>\r\n  <ServerStartup>1</ServerStartup>\r\n  <ServerState>0</ServerState>\r\n</Settings>\r\n"},
+        {"outcome":{"ok":false},"timeline":[]},
+        null,
+        {"outcome":{"ok":false},"timeline":[]},
+        {"text":"<Settings>\r\n  <ServerPort>16834</ServerPort>\r\n  <ServerStartup>3</ServerStartup>\r\n  <ServerState>1</ServerState>\r\n</Settings>\r\n"},
+        null,
+        {"outcome":{"ok":true},"timeline":[{"log":"info","message":"[tools] livesplit: TCP-сервер включён на порту 16834 (время из LiveSplit в Ghosting)"}]},
+        {"text":"<Settings>\r\n  <ServerPort>16834</ServerPort>\r\n  <ServerStartup>1</ServerStartup>\r\n  <ServerState>0</ServerState>\r\n</Settings>\r\n"},
+        null,
+        {"outcome":{"ok":true},"timeline":[{"log":"info","message":"[tools] livesplit: TCP-сервер включён на порту 16834 (время из LiveSplit в Ghosting)"}]},
+        {"text":"<Settings>\r\n  <ServerPort>16834</ServerPort>\r\n  <ServerStartup>1</ServerStartup>\r\n  <ServerState>1</ServerState>\r\n</Settings>\r\n"},
+        null,
+        {"outcome":{"ok":true},"timeline":[{"log":"info","message":"[tools] livesplit: TCP-сервер включён на порту 20000 (время из LiveSplit в Ghosting)"}]},
+        {"text":"<Settings>\r\n  <ServerPort>20000</ServerPort>\r\n  <ServerStartup>1</ServerStartup>\r\n  <ServerState>0</ServerState>\r\n</Settings>\r\n"},
+        null,
+        {"outcome":{"ok":true},"timeline":[{"log":"info","message":"[tools] livesplit: TCP-сервер включён на порту 16834 (время из LiveSplit в Ghosting)"}]},
+        {"text":"<Settings>\r\n  <ServerPort>16834</ServerPort>\r\n  <ServerStartup>3</ServerStartup>\r\n  <ServerState>1</ServerState>\r\n</Settings>\r\n"}
+      ]
+    },
+    {
+      "name": "TCP-сервер: файл без тегов, без закрытия, без файла",
+      "setup": [
+        {"file":"ls/splits/chapters/chapters.lsl","utf8":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"},
+        {"file":"ls/splits/chapters/chapters.lss","utf8":"<Run />"},
+        {"file":"ls/splits/maps/maps.lsl","utf8":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"},
+        {"file":"ls/splits/maps/maps.lss","utf8":"<Run />"},
+        {"dir":"ls/Components"},
+        {"file":"ls/settings.cfg","utf8":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Settings>\r\n  <RecentSplits />\r\n  <ActiveAutoSplitters />\r\n</Settings>\r\n"}
+      ],
+      "steps": [
+        {"op":"write","file":"ls/settings.cfg","utf8":"<Settings>\r\n  <RefreshRate>40</RefreshRate>\r\n</Settings>\r\n"},
+        {"op":"enableServer","port":16834},
+        {"op":"text","file":"ls/settings.cfg"},
+        {"op":"write","file":"ls/settings.cfg","utf8":"<Settings>\r\n  <RefreshRate>40</RefreshRate>\r\n</Settings>   \r\n\r\n"},
+        {"op":"enableServer","port":16834},
+        {"op":"text","file":"ls/settings.cfg"},
+        {"op":"write","file":"ls/settings.cfg","utf8":"<Settings>\r\n  <RefreshRate>40</RefreshRate>\r\n"},
+        {"op":"enableServer","port":16834},
+        {"op":"text","file":"ls/settings.cfg"},
+        {"op":"write","file":"ls/settings.cfg","utf8":"<Settings>\r\n  <ServerStartup>2</ServerStartup>\r\n</Settings>\r\n"},
+        {"op":"enableServer","port":0},
+        {"op":"text","file":"ls/settings.cfg"},
+        {"op":"remove","file":"ls/settings.cfg"},
+        {"op":"enableServer","port":16834},
+        {"op":"tree"}
+      ],
+      "results": [
+        null,
+        {"outcome":{"ok":true},"timeline":[{"log":"info","message":"[tools] livesplit: TCP-сервер включён на порту 16834 (время из LiveSplit в Ghosting)"}]},
+        {"text":"<Settings>\r\n  <RefreshRate>40</RefreshRate>\r\n  <ServerStartup>1</ServerStartup>\r\n  <ServerPort>16834</ServerPort>\r\n</Settings>\r\n"},
+        null,
+        {"outcome":{"ok":true},"timeline":[{"log":"info","message":"[tools] livesplit: TCP-сервер включён на порту 16834 (время из LiveSplit в Ghosting)"}]},
+        {"text":"<Settings>\r\n  <RefreshRate>40</RefreshRate>\r\n  <ServerStartup>1</ServerStartup>\r\n  <ServerPort>16834</ServerPort>\r\n</Settings>\r\n"},
+        null,
+        {"outcome":{"ok":false},"timeline":[]},
+        {"text":"<Settings>\r\n  <RefreshRate>40</RefreshRate>\r\n"},
+        null,
+        {"outcome":{"ok":true},"timeline":[{"log":"info","message":"[tools] livesplit: TCP-сервер включён на порту 0 (время из LiveSplit в Ghosting)"}]},
+        {"text":"<Settings>\r\n  <ServerStartup>1</ServerStartup>\r\n  <ServerPort>0</ServerPort>\r\n</Settings>\r\n"},
+        null,
+        {"outcome":{"ok":false},"timeline":[]},
+        {
+          "tree": [
+            {"path":"ls","kind":"dir"},
+            {"path":"ls/Components","kind":"dir"},
+            {"path":"ls/splits","kind":"dir"},
+            {"path":"ls/splits/chapters","kind":"dir"},
+            {"path":"ls/splits/chapters/chapters.lsl","kind":"file","size":186,"sha256":"f149363d70a8082dd7ff3e9a80cbc81253424eb725ee2feae574cea2295079da","latin1":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"},
+            {"path":"ls/splits/chapters/chapters.lss","kind":"file","size":7,"sha256":"5a13158c298fa7dfb64b6d126ee9eebf80b8ed2f420dd263a88755ff34128ad0","latin1":"<Run />"},
+            {"path":"ls/splits/maps","kind":"dir"},
+            {"path":"ls/splits/maps/maps.lsl","kind":"file","size":186,"sha256":"f149363d70a8082dd7ff3e9a80cbc81253424eb725ee2feae574cea2295079da","latin1":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"},
+            {"path":"ls/splits/maps/maps.lss","kind":"file","size":7,"sha256":"5a13158c298fa7dfb64b6d126ee9eebf80b8ed2f420dd263a88755ff34128ad0","latin1":"<Run />"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "BunnySplit: установка отдельно",
+      "setup": [
+        {"file":"ls/splits/chapters/chapters.lsl","utf8":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"},
+        {"file":"ls/splits/chapters/chapters.lss","utf8":"<Run />"},
+        {"file":"ls/splits/maps/maps.lsl","utf8":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"},
+        {"file":"ls/splits/maps/maps.lss","utf8":"<Run />"},
+        {"dir":"ls/Components"},
+        {"file":"ls/settings.cfg","utf8":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Settings>\r\n  <RecentSplits />\r\n  <ActiveAutoSplitters />\r\n</Settings>\r\n"},
+        {"file":"res/livesplit-components/LiveSplit.BunnySplit.dll","utf8":"dll"}
+      ],
+      "steps": [{"op":"installBunnySplit"},{"op":"installBunnySplit"},{"op":"tree"},{"op":"remove","file":"res/livesplit-components/LiveSplit.BunnySplit.dll"},{"op":"remove","file":"ls/Components/LiveSplit.BunnySplit.dll"},{"op":"installBunnySplit"},{"op":"tree"}],
+      "results": [
+        {"outcome":{"ok":true},"timeline":[{"log":"info","message":"[tools] livesplit: установлен LiveSplit.BunnySplit.dll (0343b13708cd)"}]},
+        {"outcome":{"ok":false},"timeline":[]},
+        {
+          "tree": [
+            {"path":"ls","kind":"dir"},
+            {"path":"ls/Components","kind":"dir"},
+            {"path":"ls/Components/LiveSplit.BunnySplit.dll","kind":"file","size":3,"sha256":"0343b13708cd52d33ecbb1043b5ae145e73a532bdccf7de6925db5cce6054fd3","latin1":"dll"},
+            {"path":"ls/settings.cfg","kind":"file","size":112,"sha256":"8e97f7d6fb08318d2abec0b1a1c1239e95ac8b39cb3cc2c456686f39f84eacd1","latin1":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Settings>\r\n  <RecentSplits />\r\n  <ActiveAutoSplitters />\r\n</Settings>\r\n"},
+            {"path":"ls/splits","kind":"dir"},
+            {"path":"ls/splits/chapters","kind":"dir"},
+            {"path":"ls/splits/chapters/chapters.lsl","kind":"file","size":186,"sha256":"f149363d70a8082dd7ff3e9a80cbc81253424eb725ee2feae574cea2295079da","latin1":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"},
+            {"path":"ls/splits/chapters/chapters.lss","kind":"file","size":7,"sha256":"5a13158c298fa7dfb64b6d126ee9eebf80b8ed2f420dd263a88755ff34128ad0","latin1":"<Run />"},
+            {"path":"ls/splits/maps","kind":"dir"},
+            {"path":"ls/splits/maps/maps.lsl","kind":"file","size":186,"sha256":"f149363d70a8082dd7ff3e9a80cbc81253424eb725ee2feae574cea2295079da","latin1":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"},
+            {"path":"ls/splits/maps/maps.lss","kind":"file","size":7,"sha256":"5a13158c298fa7dfb64b6d126ee9eebf80b8ed2f420dd263a88755ff34128ad0","latin1":"<Run />"},
+            {"path":"res","kind":"dir"},
+            {"path":"res/livesplit-components","kind":"dir"},
+            {"path":"res/livesplit-components/LiveSplit.BunnySplit.dll","kind":"file","size":3,"sha256":"0343b13708cd52d33ecbb1043b5ae145e73a532bdccf7de6925db5cce6054fd3","latin1":"dll"}
+          ]
+        },
+        null,
+        null,
+        {"outcome":{"raw":{"code":null,"message":"LiveSplit.BunnySplit.dll не найден в ресурсах лаунчера"}},"timeline":[]},
+        {
+          "tree": [
+            {"path":"ls","kind":"dir"},
+            {"path":"ls/Components","kind":"dir"},
+            {"path":"ls/settings.cfg","kind":"file","size":112,"sha256":"8e97f7d6fb08318d2abec0b1a1c1239e95ac8b39cb3cc2c456686f39f84eacd1","latin1":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Settings>\r\n  <RecentSplits />\r\n  <ActiveAutoSplitters />\r\n</Settings>\r\n"},
+            {"path":"ls/splits","kind":"dir"},
+            {"path":"ls/splits/chapters","kind":"dir"},
+            {"path":"ls/splits/chapters/chapters.lsl","kind":"file","size":186,"sha256":"f149363d70a8082dd7ff3e9a80cbc81253424eb725ee2feae574cea2295079da","latin1":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"},
+            {"path":"ls/splits/chapters/chapters.lss","kind":"file","size":7,"sha256":"5a13158c298fa7dfb64b6d126ee9eebf80b8ed2f420dd263a88755ff34128ad0","latin1":"<Run />"},
+            {"path":"ls/splits/maps","kind":"dir"},
+            {"path":"ls/splits/maps/maps.lsl","kind":"file","size":186,"sha256":"f149363d70a8082dd7ff3e9a80cbc81253424eb725ee2feae574cea2295079da","latin1":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Layout version=\"1.6.1\">\r\n  <Components>\r\n    <Component>\r\n      <Path>LiveSplit.Splits.dll</Path>\r\n    </Component>\r\n  </Components>\r\n</Layout>\r\n"},
+            {"path":"ls/splits/maps/maps.lss","kind":"file","size":7,"sha256":"5a13158c298fa7dfb64b6d126ee9eebf80b8ed2f420dd263a88755ff34128ad0","latin1":"<Run />"},
+            {"path":"res","kind":"dir"},
+            {"path":"res/livesplit-components","kind":"dir"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "исправления: заменяется только известная сборка",
+      "setup": [{"dir":"ls/Components"},{"file":"res/livesplit-fixes/Split.dll","utf8":"исправленный"}],
+      "steps": [
+        {"op":"fixes","table":[{"target":"Components/Split.dll","source":"Split.dll","originalText":"исходный","fixedText":"исправленный"}]},
+        {"op":"write","file":"ls/Components/Split.dll","utf8":"исходный"},
+        {"op":"fixes","table":[{"target":"Components/Split.dll","source":"Split.dll","originalText":"исходный","fixedText":"исправленный"}]},
+        {"op":"tree"},
+        {"op":"fixes","table":[{"target":"Components/Split.dll","source":"Split.dll","originalText":"исходный","fixedText":"исправленный"}]},
+        {"op":"write","file":"ls/Components/Split.dll","utf8":"обновлён пользователем"},
+        {"op":"fixes","table":[{"target":"Components/Split.dll","source":"Split.dll","originalText":"исходный","fixedText":"исправленный"}]},
+        {"op":"tree"}
+      ],
+      "results": [
+        {"outcome":{"ok":[]},"timeline":[]},
+        null,
+        {"outcome":{"ok":["Components/Split.dll"]},"timeline":[]},
+        {
+          "tree": [
+            {"path":"ls","kind":"dir"},
+            {"path":"ls/Components","kind":"dir"},
+            {"path":"ls/Components/Split.dll","kind":"file","size":24,"sha256":"c79b92332879e51d66911faf7d0deb66cbdfdd25bb8e2ffcc3c1e3b7f6869099","latin1":"Ð¸ÑÐ¿ÑÐ°Ð²Ð»ÐµÐ½Ð½ÑÐ¹"},
+            {"path":"res","kind":"dir"},
+            {"path":"res/livesplit-fixes","kind":"dir"},
+            {"path":"res/livesplit-fixes/Split.dll","kind":"file","size":24,"sha256":"c79b92332879e51d66911faf7d0deb66cbdfdd25bb8e2ffcc3c1e3b7f6869099","latin1":"Ð¸ÑÐ¿ÑÐ°Ð²Ð»ÐµÐ½Ð½ÑÐ¹"}
+          ]
+        },
+        {"outcome":{"ok":[]},"timeline":[]},
+        null,
+        {"outcome":{"ok":[]},"timeline":[]},
+        {
+          "tree": [
+            {"path":"ls","kind":"dir"},
+            {"path":"ls/Components","kind":"dir"},
+            {"path":"ls/Components/Split.dll","kind":"file","size":43,"sha256":"e907a818fbdb2ec88e832430b9475b797c2212f918343941139f298ccad74c0e","latin1":"Ð¾Ð±Ð½Ð¾Ð²Ð»ÑÐ½ Ð¿Ð¾Ð»ÑÐ·Ð¾Ð²Ð°ÑÐµÐ»ÐµÐ¼"},
+            {"path":"res","kind":"dir"},
+            {"path":"res/livesplit-fixes","kind":"dir"},
+            {"path":"res/livesplit-fixes/Split.dll","kind":"file","size":24,"sha256":"c79b92332879e51d66911faf7d0deb66cbdfdd25bb8e2ffcc3c1e3b7f6869099","latin1":"Ð¸ÑÐ¿ÑÐ°Ð²Ð»ÐµÐ½Ð½ÑÐ¹"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "исправления: битое исправление и нет исправления",
+      "setup": [{"dir":"ls/Components"},{"file":"res/livesplit-fixes/Split.dll","utf8":"битый"},{"file":"ls/Components/Split.dll","utf8":"исходный"}],
+      "steps": [{"op":"fixes","table":[{"target":"Components/Split.dll","source":"Split.dll","originalText":"исходный","fixedText":"исправленный"}]},{"op":"tree"},{"op":"remove","file":"res/livesplit-fixes/Split.dll"},{"op":"fixes","table":[{"target":"Components/Split.dll","source":"Split.dll","originalText":"исходный","fixedText":"исправленный"}]},{"op":"tree"}],
+      "results": [
+        {"outcome":{"raw":{"code":null,"message":"Исправление LiveSplit повреждено: Split.dll"}},"timeline":[]},
+        {
+          "tree": [
+            {"path":"ls","kind":"dir"},
+            {"path":"ls/Components","kind":"dir"},
+            {"path":"ls/Components/Split.dll","kind":"file","size":16,"sha256":"12168cc2f0447ce97d01b7dcf4738466a1831ad1afd2a30237e74dc3a4decad9","latin1":"Ð¸ÑÑÐ¾Ð´Ð½ÑÐ¹"},
+            {"path":"res","kind":"dir"},
+            {"path":"res/livesplit-fixes","kind":"dir"},
+            {"path":"res/livesplit-fixes/Split.dll","kind":"file","size":10,"sha256":"f9a290a05bca80add983ae804c065e3def066a00f02ee2c4957d130ab883cefe","latin1":"Ð±Ð¸ÑÑÐ¹"}
+          ]
+        },
+        null,
+        {"outcome":{"raw":{"code":"ENOENT","message":"ENOENT: no such file or directory, open '<root>/res/livesplit-fixes/Split.dll'"}},"timeline":[]},
+        {"tree":[{"path":"ls","kind":"dir"},{"path":"ls/Components","kind":"dir"},{"path":"ls/Components/Split.dll","kind":"file","size":16,"sha256":"12168cc2f0447ce97d01b7dcf4738466a1831ad1afd2a30237e74dc3a4decad9","latin1":"Ð¸ÑÑÐ¾Ð´Ð½ÑÐ¹"},{"path":"res","kind":"dir"},{"path":"res/livesplit-fixes","kind":"dir"}]}
+      ]
+    },
+    {
+      "name": "исправления: несколько записей",
+      "setup": [{"dir":"ls/Components"},{"file":"res/livesplit-fixes/Split.dll","utf8":"исправленный"},{"file":"res/livesplit-fixes/Other.dll","utf8":"второе"},{"file":"ls/Components/Split.dll","utf8":"исходный"},{"file":"ls/Components/Other.dll","utf8":"иное"}],
+      "steps": [{"op":"fixes","table":[{"target":"Components/Split.dll","source":"Split.dll","originalText":"исходный","fixedText":"исправленный"},{"target":"Components/Other.dll","source":"Other.dll","originalText":"иное","fixedText":"второе"},{"target":"Components/Missing.dll","source":"Split.dll","originalText":"x","fixedText":"исправленный"}]},{"op":"tree"}],
+      "results": [
+        {"outcome":{"ok":["Components/Split.dll","Components/Other.dll"]},"timeline":[]},
+        {
+          "tree": [
+            {"path":"ls","kind":"dir"},
+            {"path":"ls/Components","kind":"dir"},
+            {"path":"ls/Components/Other.dll","kind":"file","size":12,"sha256":"ade0a95812ccd4357f75c358b4dd996f32285f666ee8e252301b2fb924cd5532","latin1":"Ð²ÑÐ¾ÑÐ¾Ðµ"},
+            {"path":"ls/Components/Split.dll","kind":"file","size":24,"sha256":"c79b92332879e51d66911faf7d0deb66cbdfdd25bb8e2ffcc3c1e3b7f6869099","latin1":"Ð¸ÑÐ¿ÑÐ°Ð²Ð»ÐµÐ½Ð½ÑÐ¹"},
+            {"path":"res","kind":"dir"},
+            {"path":"res/livesplit-fixes","kind":"dir"},
+            {"path":"res/livesplit-fixes/Other.dll","kind":"file","size":12,"sha256":"ade0a95812ccd4357f75c358b4dd996f32285f666ee8e252301b2fb924cd5532","latin1":"Ð²ÑÐ¾ÑÐ¾Ðµ"},
+            {"path":"res/livesplit-fixes/Split.dll","kind":"file","size":24,"sha256":"c79b92332879e51d66911faf7d0deb66cbdfdd25bb8e2ffcc3c1e3b7f6869099","latin1":"Ð¸ÑÐ¿ÑÐ°Ð²Ð»ÐµÐ½Ð½ÑÐ¹"}
+          ]
+        }
+      ]
+    }
+  ]
+}

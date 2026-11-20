@@ -1,0 +1,33 @@
+{
+  "id": "settings/about",
+  "base": "settings/_base",
+  "state": "«О программе»: логотип, версия, ссылки, команда HLSR (без AboutSlint)",
+  "steps": [
+    {
+      "click": {
+        "css": ".game-rail__footer .game-rail__tool",
+        "index": 4,
+        "view": "rail-settings"
+      }
+    },
+    {
+      "wait": 600
+    },
+    {
+      "click": {
+        "css": ".settings-modal__tab",
+        "index": 4,
+        "view": "settings-tabs-4"
+      }
+    },
+    {
+      "wait": 600
+    },
+    {
+      "move": [
+        800,
+        880
+      ]
+    }
+  ]
+}

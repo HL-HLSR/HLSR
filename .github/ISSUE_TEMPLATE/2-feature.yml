@@ -1,0 +1,40 @@
+name: Предложение / Feature request
+description: Идея для лаунчера / An idea for the launcher
+labels: ["enhancement"]
+body:
+  - type: checkboxes
+    id: search
+    attributes:
+      label: Проверка / Check
+      options:
+        - label: Я поискал(а) похожие issue / I searched the existing issues
+          required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Какую задачу это решает / What problem does it solve
+      description: Опишите задачу, а не только решение / Describe the problem, not only the solution
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Как это могло бы выглядеть / What it could look like
+  - type: dropdown
+    id: area
+    attributes:
+      label: Область / Area
+      options:
+        - Интерфейс / UI
+        - Установка и обновление игр / Game install and update
+        - Запуск игр / Game launch
+        - Linux / Proton
+        - Демо / Demo tool
+        - Онлайн и профиль / Online and profile
+        - Другое / Other
+  - type: checkboxes
+    id: contribute
+    attributes:
+      label: Участие / Contribution
+      options:
+        - label: Готов(а) сделать pull request / I can make a pull request

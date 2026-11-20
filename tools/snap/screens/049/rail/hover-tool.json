@@ -1,0 +1,8 @@
+{
+  "id": "rail/hover-tool",
+  "base": "rail/_base",
+  "state": "Наведение на Discord внизу: у свёрнутой — подсказка в одну строку, у выдвинутой — подсветка кнопки",
+  "steps": [
+    {"hover": {"css": ".game-rail__footer .game-rail__tool:nth-child(3)", "view": "rail-discord"}}
+  ]
+}

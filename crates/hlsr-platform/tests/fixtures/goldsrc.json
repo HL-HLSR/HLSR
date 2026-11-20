@@ -1,0 +1,107 @@
+{
+  "pure": {
+    "toggles": {"console":["-console"],"windowed":["-windowed"],"developer":["-dev"],"condebug":["-condebug"],"nojoy":["-nojoy"],"noaafonts":["-noaafonts"]},
+    "bxtLogFile": "bxt.log",
+    "isGoldSrc": [{"engine":"goldsrc","result":true},{"engine":null,"result":false},{"engine":"GoldSrc","result":false},{"engine":null,"result":false}],
+    "mergeArguments": [
+      {"arguments":["-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms"],"settings":null,"result":["-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms"]},
+      {"arguments":["-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms"],"settings":{},"result":["-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms"]},
+      {
+        "arguments": ["-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms"],
+        "settings": {"windowed":true,"console":true,"developer":true,"condebug":true,"nojoy":true,"noaafonts":true,"novid":true,"dx9":true,"high":true,"borderless":true,"width":1280,"height":960,"refreshRate":144},
+        "result": ["-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms","-console","-windowed","-dev","-condebug","-nojoy","-noaafonts","-w","1280","-h","960","-freq","144"]
+      },
+      {"arguments":["-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms"],"settings":{"width":1280,"height":960,"refreshRate":144,"launchArgs":"-w 800 -h 600 -freq 60"},"result":["-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms","-w","800","-h","600","-freq","60"]},
+      {"arguments":["-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms"],"settings":{"width":1280,"height":960,"launchArgs":"-h 600"},"result":["-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms","-h","600"]},
+      {"arguments":["-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms"],"settings":{"width":1280,"height":960,"launchArgs":"-W 800"},"result":["-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms","-W","800"]},
+      {"arguments":["-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms"],"settings":{"width":1280,"height":960,"refreshRate":144,"launchArgs":"--freq=75"},"result":["-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms","-w","1280","-h","960","--freq=75"]},
+      {"arguments":["-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms"],"settings":{"width":1920},"result":["-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms"]},
+      {"arguments":["-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms"],"settings":{"height":1080},"result":["-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms"]},
+      {"arguments":["-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms"],"settings":{"width":100,"height":100},"result":["-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms"]},
+      {"arguments":["-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms"],"settings":{"width":7680,"height":4320,"refreshRate":540},"result":["-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms","-w","7680","-h","4320","-freq","540"]},
+      {"arguments":["-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms"],"settings":{"width":"1600","height":"900","refreshRate":"75"},"result":["-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms","-w","1600","-h","900","-freq","75"]},
+      {"arguments":["-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms"],"settings":{"refreshRate":7},"result":["-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms"]},
+      {"arguments":["-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms"],"settings":{"refreshRate":23.5},"result":["-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms"]},
+      {"arguments":["-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms"],"settings":{"console":true,"launchArgs":"-console -CONSOLE +map c1a0"},"result":["-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms","-console","+map","c1a0"]},
+      {"arguments":["-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms"],"settings":{"windowed":true,"launchArgs":"-WINDOWED -dev"},"result":["-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms","-windowed","-dev"]},
+      {"arguments":["-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms"],"settings":{"launchArgs":"-gl -32BPP +sv_cheats 1 -nofbo"},"result":["-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms","+sv_cheats","1","-nofbo"]},
+      {"arguments":["-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms"],"settings":{"launchArgs":"+exec \"my cfg.cfg\" -num_edicts 4096"},"result":["-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms","+exec","my cfg.cfg","-num_edicts","4096"]},
+      {"arguments":["-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms"],"settings":{"launchArgs":"-game cstrike"},"result":["-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms"]},
+      {"arguments":["-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms"],"settings":{"launchArgs":"-steam"},"result":["-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms"]},
+      {
+        "arguments": ["-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms"],
+        "settings": {
+          "launchArgs": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+        },
+        "result": ["-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms"]
+      },
+      {"arguments":["-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms"],"settings":{"launchArgs":42,"windowed":true},"result":["-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms","-windowed"]},
+      {"arguments":["-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms"],"settings":{"launchArgs":"  -dev   -condebug  "},"result":["-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms","-dev","-condebug"]},
+      {"arguments":["-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms"],"settings":{"developer":true,"launchArgs":"-dev +developer 2"},"result":["-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms","-dev","+developer","2"]},
+      {"arguments":["-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms"],"settings":{"nojoy":true,"noaafonts":true,"launchArgs":"-noaafonts -nojoy"},"result":["-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms","-nojoy","-noaafonts"]},
+      {"arguments":["-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms"],"settings":{"width":1280,"height":960,"launchArgs":"-w"},"result":["-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms","-w"]},
+      {"arguments":["-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms"],"settings":{"width":1280,"height":960,"launchArgs":"/w 800"},"result":["-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms","/w","800"]},
+      {"arguments":["-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms"],"settings":{"width":1280,"height":960,"launchArgs":"+w 800"},"result":["-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms","+w","800"]},
+      {"arguments":["-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms"],"settings":"строка","result":["-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms"]},
+      {"arguments":["-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms"],"settings":{"windowed":true,"launchArgs":"-w 640 -h 480"},"result":["-steam","-gl","-32bpp","-game","valve_WON","-noforcemparms","-windowed","-w","640","-h","480"]},
+      {"arguments":["-game","valve_WON","-console"],"settings":{"console":true,"windowed":true,"launchArgs":"-Console -windowed"},"result":["-game","valve_WON","-console","-windowed"]},
+      {"arguments":["-game","valve_WON","-console"],"settings":{"width":640,"height":480,"launchArgs":"-w 1024 -w 2048"},"result":["-game","valve_WON","-console","-w","1024","2048"]},
+      {"arguments":[],"settings":{"condebug":true,"refreshRate":60},"result":["-condebug","-freq","60"]}
+    ],
+    "environmentOf": [
+      {"environment":{"BXT_DISABLE_VSYNC":"1","PROTON_ENABLE_WAYLAND":"0","__GL_SYNC_TO_VBLANK":"0"},"result":{"BXT_DISABLE_VSYNC":"1","PROTON_ENABLE_WAYLAND":"0","__GL_SYNC_TO_VBLANK":"0"}},
+      {"environment":null,"result":{}},
+      {"environment":{},"result":{}},
+      {"environment":{"_FOO":"1","lower":"x","A1":"y","1A":"z","__GL_SYNC":"0","A-B":"q","Z":"","Mixed":"m","A_B_C9":"ok","_":"u"},"result":{"_FOO":"1","A1":"y","__GL_SYNC":"0","Z":"","A_B_C9":"ok"}},
+      {"environment":{"PROTON_ENABLE_WAYLAND":"0","BXT_DISABLE_VSYNC":"1","ÄBC":"x","A B":"y"},"result":{"PROTON_ENABLE_WAYLAND":"0","BXT_DISABLE_VSYNC":"1"}}
+    ]
+  },
+  "files": {
+    "resolveFiles": [
+      {"name":"complete","layout":[{"file":"Half-Life/hl.exe","utf8":"MZ"},{"file":"Half-Life/valve_WON/liblist.gam","utf8":"game \"Half-Life\"\n"},{"file":"Bunnymod XT/Injector.exe","utf8":"MZ"}],"config":null,"result":{"ok":{"executable":"<root>/Half-Life/hl.exe","gameDirectory":"<root>/Half-Life/valve_WON","injector":"<root>/Bunnymod XT/Injector.exe"}}},
+      {"name":"no-exe","layout":[{"file":"Half-Life/valve_WON/liblist.gam","utf8":"game \"Half-Life\"\n"},{"file":"Bunnymod XT/Injector.exe","utf8":"MZ"}],"config":null,"result":{"error":{"code":"GAME_EXECUTABLE_MISSING","message":"В установленной сборке нет Half-Life/hl.exe","details":{"executable":"<root>/Half-Life/hl.exe"}}}},
+      {"name":"no-liblist","layout":[{"file":"Half-Life/hl.exe","utf8":"MZ"},{"file":"Bunnymod XT/Injector.exe","utf8":"MZ"}],"config":null,"result":{"error":{"code":"GAME_DIRECTORY_MISSING","message":"В каталоге Half-Life/valve_WON нет liblist.gam","details":{"gameDirectory":"<root>/Half-Life/valve_WON"}}}},
+      {"name":"no-injector","layout":[{"file":"Half-Life/hl.exe","utf8":"MZ"},{"file":"Half-Life/valve_WON/liblist.gam","utf8":"game \"Half-Life\"\n"}],"config":null,"result":{"error":{"code":"GAME_EXECUTABLE_MISSING","message":"В установленной сборке нет Bunnymod XT/Injector.exe","details":{"injector":"<root>/Bunnymod XT/Injector.exe"}}}},
+      {"name":"exe-is-dir","layout":[{"dir":"Half-Life/hl.exe"},{"file":"Half-Life/valve_WON/liblist.gam","utf8":"game \"Half-Life\"\n"},{"file":"Bunnymod XT/Injector.exe","utf8":"MZ"}],"config":null,"result":{"ok":{"executable":"<root>/Half-Life/hl.exe","gameDirectory":"<root>/Half-Life/valve_WON","injector":"<root>/Bunnymod XT/Injector.exe"}}},
+      {"name":"escape","layout":[{"file":"Half-Life/hl.exe","utf8":"MZ"},{"file":"Half-Life/valve_WON/liblist.gam","utf8":"game \"Half-Life\"\n"},{"file":"Bunnymod XT/Injector.exe","utf8":"MZ"}],"config":{"executable":"../outside/hl.exe"},"result":{"error":{"code":"PATH_INVALID","message":"Исполняемый файл игры выходит за пределы разрешённого каталога: <tmp>/outside/hl.exe","details":null}}},
+      {"name":"no-injector-in-config","layout":[{"file":"Half-Life/hl.exe","utf8":"MZ"},{"file":"Half-Life/valve_WON/liblist.gam","utf8":"game \"Half-Life\"\n"},{"file":"Bunnymod XT/Injector.exe","utf8":"MZ"}],"config":{"injector":null},"result":{"error":{"code":"GAME_EXECUTABLE_MISSING","message":"В установленной сборке нет undefined","details":{"injector":"<root>/undefined"}}}}
+    ],
+    "enforceSteamAppIdFile": [
+      {"name":"missing","layout":[],"config":null,"opaque":false,"result":{"error":{"code":"STEAM_APP_ID_MISMATCH","message":"Не удалось записать steam_appid.txt: ENOENT: no such file or directory, open '<root>/Half-Life/steam_appid.txt'","details":{"file":"<root>/Half-Life/steam_appid.txt"}}},"logs":[],"tree":[]},
+      {"name":"same","layout":[{"file":"Half-Life/steam_appid.txt","utf8":"70"}],"config":null,"opaque":false,"result":{"ok":"<root>/Half-Life/steam_appid.txt"},"logs":[],"tree":[{"path":"Half-Life","kind":"dir"},{"path":"Half-Life/steam_appid.txt","kind":"file","hex":"3730"}]},
+      {"name":"same-newline","layout":[{"file":"Half-Life/steam_appid.txt","utf8":"70\r\n"}],"config":null,"opaque":false,"result":{"ok":"<root>/Half-Life/steam_appid.txt"},"logs":[],"tree":[{"path":"Half-Life","kind":"dir"},{"path":"Half-Life/steam_appid.txt","kind":"file","hex":"37300d0a"}]},
+      {"name":"bom","layout":[{"file":"Half-Life/steam_appid.txt","hex":"efbbbf3730"}],"config":null,"opaque":false,"result":{"ok":"<root>/Half-Life/steam_appid.txt"},"logs":[],"tree":[{"path":"Half-Life","kind":"dir"},{"path":"Half-Life/steam_appid.txt","kind":"file","hex":"efbbbf3730"}]},
+      {"name":"spaces","layout":[{"file":"Half-Life/steam_appid.txt","utf8":"  70 \n\n"}],"config":null,"opaque":false,"result":{"ok":"<root>/Half-Life/steam_appid.txt"},"logs":[],"tree":[{"path":"Half-Life","kind":"dir"},{"path":"Half-Life/steam_appid.txt","kind":"file","hex":"20203730200a0a"}]},
+      {"name":"other","layout":[{"file":"Half-Life/steam_appid.txt","utf8":"220\n"}],"config":null,"opaque":false,"result":{"ok":"<root>/Half-Life/steam_appid.txt"},"logs":[{"level":"info","message":"[launch] Half-Life/steam_appid.txt приведён к 70"}],"tree":[{"path":"Half-Life","kind":"dir"},{"path":"Half-Life/steam_appid.txt","kind":"file","hex":"37300a"}]},
+      {"name":"nul","layout":[{"file":"Half-Life/steam_appid.txt","hex":"37300a00"}],"config":null,"opaque":false,"result":{"ok":"<root>/Half-Life/steam_appid.txt"},"logs":[{"level":"info","message":"[launch] Half-Life/steam_appid.txt приведён к 70"}],"tree":[{"path":"Half-Life","kind":"dir"},{"path":"Half-Life/steam_appid.txt","kind":"file","hex":"37300a"}]},
+      {"name":"empty","layout":[{"file":"Half-Life/steam_appid.txt","utf8":""}],"config":null,"opaque":false,"result":{"ok":"<root>/Half-Life/steam_appid.txt"},"logs":[{"level":"info","message":"[launch] Half-Life/steam_appid.txt приведён к 70"}],"tree":[{"path":"Half-Life","kind":"dir"},{"path":"Half-Life/steam_appid.txt","kind":"file","hex":"37300a"}]},
+      {
+        "name": "dir",
+        "layout": [{"dir":"Half-Life/steam_appid.txt"}],
+        "config": null,
+        "opaque": true,
+        "result": {"error":{"code":"STEAM_APP_ID_MISMATCH","message":"Не удалось записать steam_appid.txt: EISDIR: illegal operation on a directory, open '<root>/Half-Life/steam_appid.txt'","details":{"file":"<root>/Half-Life/steam_appid.txt"}}},
+        "logs": [],
+        "tree": [{"path":"Half-Life","kind":"dir"},{"path":"Half-Life/steam_appid.txt","kind":"dir"}]
+      },
+      {"name":"no-folder","layout":[],"config":{"steamAppIdFile":"Missing/steam_appid.txt"},"opaque":false,"result":{"error":{"code":"STEAM_APP_ID_MISMATCH","message":"Не удалось записать steam_appid.txt: ENOENT: no such file or directory, open '<root>/Missing/steam_appid.txt'","details":{"file":"<root>/Missing/steam_appid.txt"}}},"logs":[],"tree":[]},
+      {"name":"escape","layout":[],"config":{"steamAppIdFile":"../steam_appid.txt"},"opaque":false,"result":{"error":{"code":"PATH_INVALID","message":"steam_appid.txt выходит за пределы разрешённого каталога: <tmp>/steam_appid.txt","details":null}},"logs":[],"tree":[]}
+    ],
+    "resolveRInput": [
+      {"name":"default","layout":[{"file":"RInput/RInput.exe","utf8":"MZ"}],"config":null,"settings":null,"result":{"ok":{"executable":"<root>/RInput/RInput.exe","processName":"hl.exe","missing":false}}},
+      {"name":"on","layout":[{"file":"RInput/RInput.exe","utf8":"MZ"}],"config":null,"settings":{"rinput":true},"result":{"ok":{"executable":"<root>/RInput/RInput.exe","processName":"hl.exe","missing":false}}},
+      {"name":"off","layout":[{"file":"RInput/RInput.exe","utf8":"MZ"}],"config":null,"settings":{"rinput":false},"result":{"ok":null}},
+      {"name":"missing","layout":[],"config":null,"settings":{},"result":{"ok":{"executable":"<root>/RInput/RInput.exe","processName":"hl.exe","missing":true}}},
+      {"name":"no-config","layout":[],"config":{"rinput":null},"settings":null,"result":{"ok":null}},
+      {"name":"escape","layout":[],"config":{"rinput":{"executable":"../RInput.exe"}},"settings":null,"result":{"error":{"code":"PATH_INVALID","message":"RInput выходит за пределы разрешённого каталога: <tmp>/RInput.exe","details":null}}},
+      {"name":"nested-exe","layout":[{"file":"RInput/RInput.exe","utf8":"MZ"}],"config":{"executable":"a/b/HL.EXE"},"settings":null,"result":{"ok":{"executable":"<root>/RInput/RInput.exe","processName":"HL.EXE","missing":false}}}
+    ],
+    "prepareBxtLog": [
+      {"name":"no-dir","logsDir":null,"layout":[],"opaque":false,"result":{"ok":null},"logs":[],"tree":[]},
+      {"name":"new-dir","logsDir":"logs/deep","layout":[],"opaque":false,"result":{"ok":"<root>/logs/deep/bxt.log"},"logs":[{"level":"info","message":"[launch] лог BXT: <root>/logs/deep/bxt.log"}],"tree":[{"path":"logs","kind":"dir"},{"path":"logs/deep","kind":"dir"}]},
+      {"name":"old-log","logsDir":"logs","layout":[{"file":"logs/bxt.log","utf8":"old"},{"file":"logs/main.log","utf8":"keep"}],"opaque":false,"result":{"ok":"<root>/logs/bxt.log"},"logs":[{"level":"info","message":"[launch] лог BXT: <root>/logs/bxt.log"}],"tree":[{"path":"logs","kind":"dir"},{"path":"logs/main.log","kind":"file","hex":"6b656570"}]},
+      {"name":"log-is-dir","logsDir":"logs","layout":[{"dir":"logs/bxt.log"}],"opaque":true,"result":{"ok":null},"logs":[{"level":"warn","message":"[launch] лог BXT не подготовлен: Path is a directory: rm returned EISDIR (is a directory) <root>/logs/bxt.log"}],"tree":[{"path":"logs","kind":"dir"},{"path":"logs/bxt.log","kind":"dir"}]},
+      {"name":"logs-is-file","logsDir":"logs","layout":[{"file":"logs","utf8":"file"}],"opaque":true,"result":{"ok":null},"logs":[{"level":"warn","message":"[launch] лог BXT не подготовлен: EEXIST: file already exists, mkdir '<root>/logs'"}],"tree":[{"path":"logs","kind":"file","hex":"66696c65"}]}
+    ]
+  }
+}

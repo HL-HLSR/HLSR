@@ -1,0 +1,262 @@
+{
+  "handler": ["{\"n\":0,\"path\":\"/dyn\",\"query\":\"x=1\",\"echo\":\"{\\\"a\\\":1}\"}","{\"n\":1,\"path\":\"/dyn\",\"query\":\"x=1\",\"echo\":\"{\\\"b\\\":2}\"}"],
+  "config": {
+    "BACKEND_CONFIGURED": true,
+    "API_HOST": "api.hlsr.pro",
+    "API_BASE": "https://api.hlsr.pro",
+    "ENDPOINTS": {"batch":"https://api.hlsr.pro/v1/telemetry/batch","online":"https://api.hlsr.pro/v1/public/online"},
+    "SCHEMA_VERSION": 1,
+    "QUEUE": {"fileName":"telemetry-queue.jsonl","maxEvents":1000,"maxBytes":1048576,"batchSize":50,"maxBatchBytes":65536},
+    "TRANSPORT": {"timeoutMs":15000,"backoffBaseMs":30000,"backoffMaxMs":1800000,"jitterRatio":0.25,"maxConsecutiveFailures":10,"flushIntervalMs":60000},
+    "HEARTBEAT": {"launcherMs":120000,"gameMs":60000,"jitterRatio":0.2},
+    "ONLINE": {"pollMs":60000,"timeoutMs":8000,"staleAfterMs":300000}
+  },
+  "maxResponseBytes": 8192,
+  "userAgent": [[null,"HLSR-Launcher/0.0.0"],["","HLSR-Launcher/0.0.0"],["0.5.0","HLSR-Launcher/0.5.0"],["1.2.3-beta.4","HLSR-Launcher/1.2.3-beta.4"]],
+  "retryAfter": [
+    {"headers":{},"nowMs":1000,"ms":null},
+    {"headers":{"retry-after":""},"nowMs":1000,"ms":null},
+    {"headers":{"retry-after":"5"},"nowMs":1000,"ms":5000},
+    {"headers":{"retry-after":"0"},"nowMs":1000,"ms":0},
+    {"headers":{"retry-after":"3600"},"nowMs":1000,"ms":3600000},
+    {"headers":{"retry-after":"3601"},"nowMs":1000,"ms":3600000},
+    {"headers":{"retry-after":"-1"},"nowMs":1000,"ms":3600000},
+    {"headers":{"retry-after":" 7 "},"nowMs":1000,"ms":7000},
+    {"headers":{"retry-after":"1.5"},"nowMs":1000,"ms":1500},
+    {"headers":{"retry-after":"abc"},"nowMs":1000,"ms":null},
+    {"headers":{"Retry-After":"5"},"nowMs":1000,"ms":null},
+    {"headers":{"retry-after":"Wed, 21 Oct 2015 07:28:00 GMT"},"nowMs":1445412420000,"ms":60000},
+    {"headers":{"retry-after":"Wed, 21 Oct 2015 07:28:00 GMT"},"nowMs":1445412480000,"ms":0},
+    {"headers":{"retry-after":"Wed, 21 Oct 2015 07:28:00 GMT"},"nowMs":1445412540000,"ms":0},
+    {"headers":{"retry-after":"Wed, 21 Oct 2015 07:28:00 GMT"},"nowMs":1445405220000,"ms":3600000},
+    {"headers":{"retry-after":"2015-10-21T07:28:00Z"},"nowMs":1445412450000,"ms":30000},
+    {"headers":{"retry-after":"Fri, 31 Dec 9999 23:59:59 GMT"},"nowMs":0,"ms":3600000},
+    {"headers":{"retry-after":"Thu, 01 Jan 1970 00:00:01 GMT"},"nowMs":0,"ms":0}
+  ],
+  "scenarios": [
+    {
+      "name": "GET: тело, заголовки ответа, запрос с query",
+      "routes": {"/ok":[{"json":{"a":1,"b":[true,null,"я"]},"headers":[["X-Dup","a"],["x-dup","b"],["X-One","1"],["Retry-After","7"],["retry-after","9"],["ETag","\"v1\""]]}],"/query":[{"body":"путь"}]},
+      "calls": [{"url":"http://{authority}/ok"},{"url":"http://{authority}/query?x=1&y=%D0%B6"},{"url":"http://{authority}/ok?empty=&=v&a=b=c#fragment"},{"url":"http://{authority}/a b/ж?q=ж ж"}],
+      "results": [
+        {"ok":{"status":200,"headers":{"x-dup":"a, b","x-one":"1","retry-after":"7","etag":"\"v1\"","content-type":"application/json","content-length":"28"},"body":{"text":"{\"a\":1,\"b\":[true,null,\"я\"]}"}}},
+        {"ok":{"status":200,"headers":{"content-length":"8"},"body":{"text":"путь"}}},
+        {"ok":{"status":200,"headers":{"x-dup":"a, b","x-one":"1","retry-after":"7","etag":"\"v1\"","content-type":"application/json","content-length":"28"},"body":{"text":"{\"a\":1,\"b\":[true,null,\"я\"]}"}}},
+        {"ok":{"status":404,"headers":{"content-length":"0"},"body":{"text":""}}}
+      ],
+      "journal": [
+        {"server":"api","method":"GET","path":"/ok","query":"","headers":{"user-agent":"HLSR-Launcher/0.0.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/query","query":"x=1&y=%D0%B6","headers":{"user-agent":"HLSR-Launcher/0.0.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/ok","query":"empty=&=v&a=b=c","headers":{"user-agent":"HLSR-Launcher/0.0.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/a%20b/%D0%B6","query":"q=%D0%B6%20%D0%B6","headers":{"user-agent":"HLSR-Launcher/0.0.0","accept":"application/json","accept-encoding":"identity"},"body":null}
+      ]
+    },
+    {
+      "name": "POST и прочие методы: заголовки транспорта, тело, билет",
+      "routes": {"POST /v1/telemetry/batch":[{"status":200,"json":{"accepted":2}}],"/echo":[{"body":""}]},
+      "calls": [
+        {"url":"http://{authority}/v1/telemetry/batch","options":{"method":"POST","body":"{\"events\":[]}","headers":{"x-hlsr-build":"linux/0.5.0/abc","x-hlsr-ticket":"ticket-1","authorization":"Bearer t0k3n"},"launcherVersion":"0.5.0"}},
+        {"url":"http://{authority}/v1/telemetry/batch","options":{"method":"post","body":"{\"текст\":\"я\"}","headers":{"X-HLSR-Ticket":"ticket-2"}}},
+        {"url":"http://{authority}/echo","options":{"method":"POST","body":""}},
+        {"url":"http://{authority}/echo","options":{"method":"POST"}},
+        {"url":"http://{authority}/echo","options":{"body":"{}"}},
+        {"url":"http://{authority}/echo","options":{"method":"PUT","body":"[1]"}},
+        {"url":"http://{authority}/echo","options":{"method":"DELETE"}},
+        {"url":"http://{authority}/echo","options":{"method":"HEAD"}},
+        {
+          "url": "http://{authority}/echo",
+          "options": {
+            "method": "POST",
+            "body": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+          }
+        }
+      ],
+      "results": [
+        {"ok":{"status":200,"headers":{"content-type":"application/json","content-length":"14"},"body":{"text":"{\"accepted\":2}"}}},
+        {"ok":{"status":200,"headers":{"content-type":"application/json","content-length":"14"},"body":{"text":"{\"accepted\":2}"}}},
+        {"ok":{"status":200,"headers":{"content-length":"0"},"body":{"text":""}}},
+        {"ok":{"status":200,"headers":{"content-length":"0"},"body":{"text":""}}},
+        {"ok":{"status":200,"headers":{"content-length":"0"},"body":{"text":""}}},
+        {"ok":{"status":200,"headers":{"content-length":"0"},"body":{"text":""}}},
+        {"ok":{"status":200,"headers":{"content-length":"0"},"body":{"text":""}}},
+        {"ok":{"status":200,"headers":{"content-length":"0"},"body":{"text":""}}},
+        {"ok":{"status":200,"headers":{"content-length":"0"},"body":{"text":""}}}
+      ],
+      "journal": [
+        {"server":"api","method":"POST","path":"/v1/telemetry/batch","query":"","headers":{"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity","x-hlsr-build":"linux/0.5.0/abc","x-hlsr-ticket":"<ticket>","authorization":"Bearer t0k3n","content-type":"application/json","content-length":"13"},"body":"{\"events\":[]}"},
+        {"server":"api","method":"POST","path":"/v1/telemetry/batch","query":"","headers":{"user-agent":"HLSR-Launcher/0.0.0","accept":"application/json","accept-encoding":"identity","x-hlsr-ticket":"<ticket>","content-type":"application/json","content-length":"19"},"body":"{\"текст\":\"я\"}"},
+        {"server":"api","method":"POST","path":"/echo","query":"","headers":{"user-agent":"HLSR-Launcher/0.0.0","accept":"application/json","accept-encoding":"identity","content-type":"application/json","content-length":"0"},"body":""},
+        {"server":"api","method":"POST","path":"/echo","query":"","headers":{"user-agent":"HLSR-Launcher/0.0.0","accept":"application/json","accept-encoding":"identity","content-length":"0"},"body":""},
+        {"server":"api","method":"GET","path":"/echo","query":"","headers":{"user-agent":"HLSR-Launcher/0.0.0","accept":"application/json","accept-encoding":"identity","content-type":"application/json","content-length":"2"},"body":"{}"},
+        {"server":"api","method":"PUT","path":"/echo","query":"","headers":{"user-agent":"HLSR-Launcher/0.0.0","accept":"application/json","accept-encoding":"identity","content-type":"application/json","content-length":"3"},"body":"[1]"},
+        {"server":"api","method":"DELETE","path":"/echo","query":"","headers":{"user-agent":"HLSR-Launcher/0.0.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"HEAD","path":"/echo","query":"","headers":{"user-agent":"HLSR-Launcher/0.0.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {
+          "server": "api",
+          "method": "POST",
+          "path": "/echo",
+          "query": "",
+          "headers": {"user-agent":"HLSR-Launcher/0.0.0","accept":"application/json","accept-encoding":"identity","content-type":"application/json","content-length":"1500"},
+          "body": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+        }
+      ]
+    },
+    {
+      "name": "Заголовки: переопределение, версия лаунчера",
+      "routes": {"/h":[{"body":"h"}]},
+      "calls": [{"url":"http://{authority}/h","options":{"headers":{"User-Agent":"Custom/1","Accept":"text/plain"}}},{"url":"http://{authority}/h","options":{"body":"{}","headers":{"Content-Type":"text/plain","content-length":"99"}}},{"url":"http://{authority}/h","options":{"launcherVersion":"1.2.3"}},{"url":"http://{authority}/h","options":{"launcherVersion":""}}],
+      "results": [{"ok":{"status":200,"headers":{"content-length":"1"},"body":{"text":"h"}}},{"ok":{"status":200,"headers":{"content-length":"1"},"body":{"text":"h"}}},{"ok":{"status":200,"headers":{"content-length":"1"},"body":{"text":"h"}}},{"ok":{"status":200,"headers":{"content-length":"1"},"body":{"text":"h"}}}],
+      "journal": [
+        {"server":"api","method":"GET","path":"/h","query":"","headers":{"user-agent":"Custom/1","accept":"text/plain","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/h","query":"","headers":{"user-agent":"HLSR-Launcher/0.0.0","accept":"application/json","accept-encoding":"identity","content-type":"application/json","content-length":"2"},"body":"{}"},
+        {"server":"api","method":"GET","path":"/h","query":"","headers":{"user-agent":"HLSR-Launcher/1.2.3","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/h","query":"","headers":{"user-agent":"HLSR-Launcher/0.0.0","accept":"application/json","accept-encoding":"identity"},"body":null}
+      ]
+    },
+    {
+      "name": "Коды ответа возвращаются как есть, редиректы не выполняются",
+      "routes": {"/s204":[{"status":204,"contentLength":0}],"/s301":[{"status":301,"headers":[["Location","/ok"]],"body":"moved"}],"/s401":[{"status":401,"json":{"error":"unauthorized"}}],"/s429":[{"status":429,"headers":[["Retry-After","120"]],"json":{"error":"RATE"}}],"/s503":[{"status":503,"headers":[["Retry-After","Wed, 21 Oct 2015 07:28:00 GMT"]],"body":""}]},
+      "calls": [{"url":"http://{authority}/s204"},{"url":"http://{authority}/s301"},{"url":"http://{authority}/s401"},{"url":"http://{authority}/s429"},{"url":"http://{authority}/s503"},{"url":"http://{authority}/none"}],
+      "results": [
+        {"ok":{"status":204,"headers":{"content-length":"0"},"body":{"text":""}}},
+        {"ok":{"status":301,"headers":{"location":"/ok","content-length":"5"},"body":{"text":"moved"}}},
+        {"ok":{"status":401,"headers":{"content-type":"application/json","content-length":"24"},"body":{"text":"{\"error\":\"unauthorized\"}"}}},
+        {"ok":{"status":429,"headers":{"retry-after":"120","content-type":"application/json","content-length":"16"},"body":{"text":"{\"error\":\"RATE\"}"}}},
+        {"ok":{"status":503,"headers":{"retry-after":"Wed, 21 Oct 2015 07:28:00 GMT","content-length":"0"},"body":{"text":""}}},
+        {"ok":{"status":404,"headers":{"content-length":"0"},"body":{"text":""}}}
+      ],
+      "journal": [
+        {"server":"api","method":"GET","path":"/s204","query":"","headers":{"user-agent":"HLSR-Launcher/0.0.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/s301","query":"","headers":{"user-agent":"HLSR-Launcher/0.0.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/s401","query":"","headers":{"user-agent":"HLSR-Launcher/0.0.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/s429","query":"","headers":{"user-agent":"HLSR-Launcher/0.0.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/s503","query":"","headers":{"user-agent":"HLSR-Launcher/0.0.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/none","query":"","headers":{"user-agent":"HLSR-Launcher/0.0.0","accept":"application/json","accept-encoding":"identity"},"body":null}
+      ]
+    },
+    {
+      "name": "Тело: кодировка и пределы",
+      "routes": {"/bad-utf8":[{"bodyHex":"ff6162c3"}],"/exact":[{"bodySize":8192}],"/over":[{"bodySize":8193}],"/over-slow":[{"bodySize":20000,"pauseAfter":9000,"pauseMs":300}],"/mid":[{"bodySize":15000}],"/two-mib":[{"bodySize":2097152}],"/two-mib-plus":[{"bodySize":2097153}],"/chunked":[{"body":"кусками","contentLength":null}]},
+      "calls": [
+        {"url":"http://{authority}/bad-utf8"},
+        {"url":"http://{authority}/exact"},
+        {"url":"http://{authority}/over","overLimit":true},
+        {"url":"http://{authority}/over","options":{"maxResponseBytes":100},"overLimit":true},
+        {"url":"http://{authority}/over-slow","options":{"maxResponseBytes":20000}},
+        {"url":"http://{authority}/over-slow"},
+        {"url":"http://{authority}/mid","options":{"maxResponseBytes":20000}},
+        {"url":"http://{authority}/mid","options":{"maxResponseBytes":14999},"overLimit":true},
+        {"url":"http://{authority}/two-mib","options":{"maxResponseBytes":104857600}},
+        {"url":"http://{authority}/two-mib-plus","options":{"maxResponseBytes":104857600},"overLimit":true},
+        {"url":"http://{authority}/chunked"}
+      ],
+      "results": [
+        {"ok":{"status":200,"headers":{"content-length":"4"},"body":{"text":"�ab�"}}},
+        {"ok":{"status":200,"headers":{"content-length":"8192"},"body":{"length":16128,"sha256":"ec440843d0b167f98bdb11e0909343096546aa4ada0151b9e3d88188497b1a91"}}},
+        {"overLimit":true},
+        {"overLimit":true},
+        {"ok":{"status":200,"headers":{"content-length":"20000"},"body":{"length":39520,"sha256":"1610fe0eab53f3bc3e761d269c24f84ad9d32b53f15cb82fb45650a5ebbbcd56"}}},
+        {"hang":true},
+        {"ok":{"status":200,"headers":{"content-length":"15000"},"body":{"length":29640,"sha256":"c9364c512c1b191becdf3854a20bb42127029d933a28308ef94d250e1c946857"}}},
+        {"overLimit":true},
+        {"ok":{"status":200,"headers":{"content-length":"2097152"},"body":{"length":4152482,"sha256":"c57770bb10006306e299f0e7159f9da513a4a505a7622259055af8013df52073"}}},
+        {"overLimit":true},
+        {"ok":{"status":200,"headers":{"transfer-encoding":"chunked"},"body":{"text":"кусками"}}}
+      ],
+      "journal": [
+        {"server":"api","method":"GET","path":"/bad-utf8","query":"","headers":{"user-agent":"HLSR-Launcher/0.0.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/exact","query":"","headers":{"user-agent":"HLSR-Launcher/0.0.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/over","query":"","headers":{"user-agent":"HLSR-Launcher/0.0.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/over","query":"","headers":{"user-agent":"HLSR-Launcher/0.0.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/over-slow","query":"","headers":{"user-agent":"HLSR-Launcher/0.0.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/over-slow","query":"","headers":{"user-agent":"HLSR-Launcher/0.0.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/mid","query":"","headers":{"user-agent":"HLSR-Launcher/0.0.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/mid","query":"","headers":{"user-agent":"HLSR-Launcher/0.0.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/two-mib","query":"","headers":{"user-agent":"HLSR-Launcher/0.0.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/two-mib-plus","query":"","headers":{"user-agent":"HLSR-Launcher/0.0.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/chunked","query":"","headers":{"user-agent":"HLSR-Launcher/0.0.0","accept":"application/json","accept-encoding":"identity"},"body":null}
+      ]
+    },
+    {
+      "name": "Тайм-ауты и обрывы",
+      "routes": {"/slow":[{"delayMs":1000,"body":"late"}],"/quick":[{"delayMs":100,"body":"in time"}],"/pause":[{"bodySize":200,"pauseAfter":100,"pauseMs":1000}],"/hangup":[{"hangUp":true}],"/cut":[{"bodySize":5000,"cutAfter":100}]},
+      "calls": [
+        {"url":"http://{authority}/slow","options":{"timeoutMs":200}},
+        {"url":"http://{authority}/quick","options":{"timeoutMs":700}},
+        {"url":"http://{authority}/pause","options":{"timeoutMs":200}},
+        {"url":"http://{authority}/pause","options":{"timeoutMs":3000}},
+        {"url":"http://{authority}/hangup"},
+        {"url":"http://{authority}/cut"},
+        {"url":"http://127.0.0.1:{dead}/ok"},
+        {"url":"https://127.0.0.1:{dead}/ok"}
+      ],
+      "results": [
+        {"error":{"message":"TELEMETRY_TIMEOUT","code":null}},
+        {"ok":{"status":200,"headers":{"content-length":"7"},"body":{"text":"in time"}}},
+        {"error":{"message":"TELEMETRY_TIMEOUT","code":null}},
+        {"ok":{"status":200,"headers":{"content-length":"200"},"body":{"length":344,"sha256":"e162d41de565a124256227b82dcff7e24d07275535a6f32b00ab55823794b1dd"}}},
+        {"error":{"message":"TELEMETRY_NETWORK","code":null}},
+        {"error":{"message":"TELEMETRY_NETWORK","code":null}},
+        {"error":{"message":"TELEMETRY_NETWORK","code":null}},
+        {"error":{"message":"TELEMETRY_NETWORK","code":null}}
+      ],
+      "journal": [
+        {"server":"api","method":"GET","path":"/slow","query":"","headers":{"user-agent":"HLSR-Launcher/0.0.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/quick","query":"","headers":{"user-agent":"HLSR-Launcher/0.0.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/pause","query":"","headers":{"user-agent":"HLSR-Launcher/0.0.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/pause","query":"","headers":{"user-agent":"HLSR-Launcher/0.0.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/hangup","query":"","headers":{"user-agent":"HLSR-Launcher/0.0.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/cut","query":"","headers":{"user-agent":"HLSR-Launcher/0.0.0","accept":"application/json","accept-encoding":"identity"},"body":null}
+      ]
+    },
+    {
+      "name": "Адрес: схема, loopback, неверный адрес",
+      "routes": {"/ok":[{"body":"ok"}]},
+      "calls": [{"url":"not a url"},{"url":"/ok"},{"url":"ftp://127.0.0.1/ok"},{"url":"file:///etc/passwd"},{"url":"http://example.test/ok"},{"url":"http://127.0.0.2:9/ok"},{"url":"http://localhost:{port}/ok"}],
+      "results": [
+        {"error":{"message":"Invalid URL","code":"ERR_INVALID_URL"}},
+        {"error":{"message":"Invalid URL","code":"ERR_INVALID_URL"}},
+        {"error":{"message":"TELEMETRY_BAD_SCHEME","code":null}},
+        {"error":{"message":"TELEMETRY_BAD_SCHEME","code":null}},
+        {"error":{"message":"TELEMETRY_INSECURE","code":null}},
+        {"error":{"message":"TELEMETRY_INSECURE","code":null}},
+        {"ok":{"status":200,"headers":{"content-length":"2"},"body":{"text":"ok"}}}
+      ],
+      "journal": [{"server":"api","method":"GET","path":"/ok","query":"","headers":{"user-agent":"HLSR-Launcher/0.0.0","accept":"application/json","accept-encoding":"identity"},"body":null}]
+    },
+    {
+      "name": "Двойник: ключи маршрутов и очередь шагов",
+      "routes": {"POST /r?q=1":[{"body":"POST /r?q=1"}],"/r?q=1":[{"body":"/r?q=1"}],"POST /r":[{"body":"POST /r"}],"/r":[{"body":"/r"}],"/seq":[{"body":"1"},{"status":500,"body":"2"},{"body":"3"}],"/empty-list":[]},
+      "calls": [{"url":"http://{authority}/r?q=1","options":{"method":"POST","body":"{}"}},{"url":"http://{authority}/r?q=1"},{"url":"http://{authority}/r?q=2","options":{"method":"POST","body":"{}"}},{"url":"http://{authority}/r?q=2"},{"url":"http://{authority}/seq"},{"url":"http://{authority}/seq"},{"url":"http://{authority}/seq"},{"url":"http://{authority}/seq"},{"url":"http://{authority}/empty-list"}],
+      "results": [
+        {"ok":{"status":200,"headers":{"content-length":"11"},"body":{"text":"POST /r?q=1"}}},
+        {"ok":{"status":200,"headers":{"content-length":"6"},"body":{"text":"/r?q=1"}}},
+        {"ok":{"status":200,"headers":{"content-length":"7"},"body":{"text":"POST /r"}}},
+        {"ok":{"status":200,"headers":{"content-length":"2"},"body":{"text":"/r"}}},
+        {"ok":{"status":200,"headers":{"content-length":"1"},"body":{"text":"1"}}},
+        {"ok":{"status":500,"headers":{"content-length":"1"},"body":{"text":"2"}}},
+        {"ok":{"status":200,"headers":{"content-length":"1"},"body":{"text":"3"}}},
+        {"ok":{"status":200,"headers":{"content-length":"1"},"body":{"text":"3"}}},
+        {"ok":{"status":404,"headers":{"content-length":"0"},"body":{"text":""}}}
+      ],
+      "journal": [
+        {"server":"api","method":"POST","path":"/r","query":"q=1","headers":{"user-agent":"HLSR-Launcher/0.0.0","accept":"application/json","accept-encoding":"identity","content-type":"application/json","content-length":"2"},"body":"{}"},
+        {"server":"api","method":"GET","path":"/r","query":"q=1","headers":{"user-agent":"HLSR-Launcher/0.0.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"POST","path":"/r","query":"q=2","headers":{"user-agent":"HLSR-Launcher/0.0.0","accept":"application/json","accept-encoding":"identity","content-type":"application/json","content-length":"2"},"body":"{}"},
+        {"server":"api","method":"GET","path":"/r","query":"q=2","headers":{"user-agent":"HLSR-Launcher/0.0.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/seq","query":"","headers":{"user-agent":"HLSR-Launcher/0.0.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/seq","query":"","headers":{"user-agent":"HLSR-Launcher/0.0.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/seq","query":"","headers":{"user-agent":"HLSR-Launcher/0.0.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/seq","query":"","headers":{"user-agent":"HLSR-Launcher/0.0.0","accept":"application/json","accept-encoding":"identity"},"body":null},
+        {"server":"api","method":"GET","path":"/empty-list","query":"","headers":{"user-agent":"HLSR-Launcher/0.0.0","accept":"application/json","accept-encoding":"identity"},"body":null}
+      ]
+    },
+    {
+      "name": "Двойник: ворота hold и release",
+      "routes": {"/gate":[{"hold":"g1","body":"released"}]},
+      "calls": [{"url":"http://{authority}/gate","options":{"timeoutMs":3000},"release":{"name":"g1","afterMs":300}},{"url":"http://{authority}/gate","options":{"timeoutMs":3000}}],
+      "results": [{"ok":{"status":200,"headers":{"content-length":"8"},"body":{"text":"released"}}},{"ok":{"status":200,"headers":{"content-length":"8"},"body":{"text":"released"}}}],
+      "journal": [{"server":"api","method":"GET","path":"/gate","query":"","headers":{"user-agent":"HLSR-Launcher/0.0.0","accept":"application/json","accept-encoding":"identity"},"body":null},{"server":"api","method":"GET","path":"/gate","query":"","headers":{"user-agent":"HLSR-Launcher/0.0.0","accept":"application/json","accept-encoding":"identity"},"body":null}]
+    }
+  ]
+}

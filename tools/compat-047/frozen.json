@@ -1,0 +1,52 @@
+{
+  "note": "Дословные копии модулей обновлялки HLSR по наборам: 0.4.7 (src/; она же у 0.4.8 — в этих файлах 0.4.8 = 0.4.7: git diff 62d0647 26ba6fe (выпуск 0.4.8) по files пуст) и 0.4.9 (src-049/). Не править: обновлялка у пользователей не меняется, и каждый выпуск 0.5.x обязан проходить её проверки как есть. bases — версия у пользователя → набор. Список files общий; его читают freeze.js, lib/load-as.js и tests/compat.test.js.",
+  "sets": {
+    "0.4.7": {
+      "dir": "src",
+      "reference": "62d0647",
+      "env": "HLSR_ELECTRON",
+      "home": "HLSR-electron"
+    },
+    "0.4.9": {
+      "dir": "src-049",
+      "reference": "v0.4.9",
+      "env": "HLSR_ELECTRON_049",
+      "home": "HLSR-electron-049"
+    }
+  },
+  "bases": {
+    "0.4.7": "0.4.7",
+    "0.4.8": "0.4.7",
+    "0.4.9": "0.4.9"
+  },
+  "files": [
+    "main/game-delivery/atomic.js",
+    "main/game-delivery/errors.js",
+    "main/game-delivery/free-space.js",
+    "main/game-delivery/manifest-signing.js",
+    "main/launcher-update/ArchiveInstall.js",
+    "main/launcher-update/LauncherUpdateGate.js",
+    "main/launcher-update/archive.js",
+    "main/launcher-update/chunks.js",
+    "main/launcher-update/embedded-payload.js",
+    "main/launcher-update/fs-compat.js",
+    "main/launcher-update/launcher-channel.js",
+    "main/windows-install/file-list.js",
+    "main/windows-install/layout.js",
+    "shared/delivery-endpoints.js",
+    "updater/core/download.js",
+    "updater/core/errors.js",
+    "updater/core/install.js",
+    "updater/core/plan.js",
+    "updater/core/process-wait.js",
+    "updater/core/receipt.js",
+    "updater/core/session.js",
+    "updater/shared/game-delivery/atomic.js",
+    "updater/shared/game-delivery/errors.js",
+    "updater/shared/game-delivery/free-space.js",
+    "updater/shared/game-delivery/manifest-signing.js",
+    "updater/shared/launcher-update/chunks.js",
+    "updater/shared/launcher-update/fs-compat.js",
+    "updater/shared/launcher-update/launcher-channel.js"
+  ]
+}

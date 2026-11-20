@@ -1,0 +1,9 @@
+{
+  "about": "Оформление ника 0.4.7: presets — .nick--<id> из launcher.css; custom — свой CSS, выданный админкой (выгрузка с сервера — у владельца). tools/reference/export-nick-styles.js",
+  "presets": {
+    "developer": "background: linear-gradient(90deg, #5ec8ff 0%, #a26bff 25%, #ff7ad9 50%, #a26bff 75%, #5ec8ff 100%); background-size: 200% auto; -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; filter: drop-shadow(0 0 0.35em rgba(162, 107, 255, 0.45)); animation: nick-shift 6s linear infinite",
+    "gold": "background: linear-gradient(100deg, #c9932a 0%, #ffd76a 35%, #fff6cf 50%, #ffd76a 65%, #c9932a 100%); background-size: 200% auto; -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; filter: drop-shadow(0 0 0.3em rgba(255, 196, 80, 0.35)); animation: nick-shift 5s ease-in-out infinite alternate",
+    "ghost": "color: #8af7e4; text-shadow: 0 0 0.3em rgba(110, 240, 215, 0.6), 0 0 0.8em rgba(110, 240, 215, 0.3); animation: nick-pulse 3.2s ease-in-out infinite"
+  },
+  "custom": []
+}

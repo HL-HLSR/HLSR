@@ -1,0 +1,41 @@
+{
+  "id": "settings/path-error",
+  "base": "settings/_base",
+  "state": "«Сохранить» с папкой без прав: окно переходит на «Загрузки», рамка поля красная, ошибка под ним; окно не закрывается",
+  "themes": [
+    "hlsr"
+  ],
+  "invoke": {
+    "validate-install-path": {
+      "ok": false,
+      "error": "no-access"
+    }
+  },
+  "steps": [
+    {
+      "click": {
+        "css": ".game-rail__footer .game-rail__tool",
+        "index": 4,
+        "view": "rail-settings"
+      }
+    },
+    {
+      "wait": 600
+    },
+    {
+      "click": {
+        "css": ".settings-modal__footer .settings-btn.primary",
+        "view": "settings-save"
+      }
+    },
+    {
+      "wait": 800
+    },
+    {
+      "move": [
+        800,
+        880
+      ]
+    }
+  ]
+}

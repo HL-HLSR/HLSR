@@ -1,0 +1,29 @@
+{
+  "id": "header/update-error",
+  "base": "header/_base",
+  "state": "Карточка: ошибка проверки вручную (NETWORK), «Повторить», крестик",
+  "invoke": {
+    "updater-get-state": {
+      "state": "error",
+      "enabled": true,
+      "currentVersion": "0.4.9",
+      "version": "0.5.0",
+      "releaseNotes": null,
+      "progress": null,
+      "error": "net",
+      "errorCode": "NETWORK",
+      "checkSource": "manual"
+    }
+  },
+  "steps": [
+    {
+      "wait": 600
+    },
+    {
+      "move": [
+        800,
+        880
+      ]
+    }
+  ]
+}

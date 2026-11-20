@@ -1,0 +1,31 @@
+{
+  "id": "configs/demos",
+  "state": "HL1: «Демо» — галочки, дата и размер, команда, удаление, упаковка",
+  "base": "configs/_base",
+  "steps": [
+    {
+      "click": {
+        "css": ".launcher-topbar__tab:nth-child(3)",
+        "view": "topbar-tab-configs"
+      }
+    },
+    {
+      "click": {
+        "css": ".cfgp__game:nth-child(2)",
+        "view": "cfgp-game-70"
+      }
+    },
+    {
+      "click": {
+        "css": ".game-settings__tab[data-tour=\"gs-demos\"]",
+        "view": "gs-demos"
+      }
+    },
+    {
+      "move": [
+        800,
+        880
+      ]
+    }
+  ]
+}

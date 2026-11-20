@@ -1,0 +1,25 @@
+{
+  "id": "demo/empty",
+  "state": "Демок нет: пустой список, «Демки не найдены», карточка-подсказка",
+  "base": "demo/_base",
+  "steps": [
+    {
+      "click": {
+        "css": ".game-rail .rail-item[aria-label=\"Демо\"]",
+        "view": "rail-demo"
+      }
+    },
+    {
+      "move": [
+        800,
+        880
+      ]
+    }
+  ],
+  "invoke": {
+    "demo-list": {
+      "status": "ok",
+      "items": []
+    }
+  }
+}

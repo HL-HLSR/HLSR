@@ -1,0 +1,139 @@
+{
+  "id": "demo/notice",
+  "state": "«Выбрать файлы…»: ничего не добавлено, отклонённые файлы списком",
+  "base": "demo/_base",
+  "steps": [
+    {
+      "click": {
+        "css": ".game-rail .rail-item[aria-label=\"Демо\"]",
+        "view": "rail-demo"
+      }
+    },
+    {
+      "click": {
+        "css": ".dmp__head .dmp__btn",
+        "view": "dmp-add"
+      }
+    },
+    {
+      "move": [
+        800,
+        880
+      ]
+    }
+  ],
+  "invoke": {
+    "demo-pick-files": {
+      "status": "ok",
+      "added": [],
+      "items": [
+        {
+          "id": "hl1-series",
+          "name": "hlsrrun",
+          "source": "game",
+          "gameId": "hl1-won",
+          "game": "hl1",
+          "kind": "segments",
+          "map": "c1a0",
+          "duration": 1325.4,
+          "segmentCount": 12,
+          "mtimeMs": 1763373600000,
+          "size": 25165824,
+          "supported": true,
+          "path": "C:\\demos\\hl1-series.dem",
+          "series": true,
+          "missing": [
+            4
+          ],
+          "maps": [
+            "c1a0",
+            "c1a0d",
+            "c1a1"
+          ],
+          "runTime": 1310.2
+        },
+        {
+          "id": "hl1-bad",
+          "name": "broken.dem",
+          "source": "game",
+          "gameId": "hl1-won",
+          "game": "hl1",
+          "kind": "demo",
+          "map": "c1a2",
+          "duration": 0,
+          "segmentCount": 1,
+          "mtimeMs": 1763380200000,
+          "size": 2048,
+          "supported": false,
+          "path": "C:\\demos\\hl1-bad.dem",
+          "reason": "DEMO_TRUNCATED"
+        },
+        {
+          "id": "gh-run",
+          "name": "myrun",
+          "source": "game",
+          "gameId": "ghosting-renewed",
+          "game": "ghosting",
+          "kind": "playlist",
+          "map": "d1_trainstation_01",
+          "duration": 144.46,
+          "segmentCount": 3,
+          "mtimeMs": 1763379000000,
+          "size": 3145728,
+          "supported": true,
+          "path": "C:\\demos\\gh-run.dem",
+          "maps": [
+            "d1_trainstation_01",
+            "d1_trainstation_02",
+            "d1_trainstation_03"
+          ],
+          "runTime": 140.1
+        },
+        {
+          "id": "gh-one",
+          "name": "test.dem",
+          "source": "game",
+          "gameId": "ghosting-renewed",
+          "game": "ghosting",
+          "kind": "demo",
+          "map": "d1_canals_01",
+          "duration": 52.31,
+          "segmentCount": 1,
+          "mtimeMs": 1763294400000,
+          "size": 1048576,
+          "supported": true,
+          "path": "C:\\demos\\gh-one.dem"
+        },
+        {
+          "id": "m-set",
+          "name": "c1a0.dem",
+          "source": "manual",
+          "gameId": "hl1-won",
+          "game": "hl1",
+          "kind": "segments",
+          "map": "c1a0",
+          "duration": 212.9,
+          "segmentCount": 2,
+          "mtimeMs": 1763208000000,
+          "size": 4194304,
+          "supported": true,
+          "path": "C:\\demos\\m-set.dem",
+          "maps": [
+            "c1a0",
+            "c1a0d"
+          ]
+        }
+      ],
+      "rejected": [
+        {
+          "name": "lobby.dem",
+          "code": "DEMO_PROTOCOL_UNSUPPORTED"
+        },
+        {
+          "name": "notes.txt",
+          "code": "FILE_TYPE_UNSUPPORTED"
+        }
+      ]
+    }
+  }
+}

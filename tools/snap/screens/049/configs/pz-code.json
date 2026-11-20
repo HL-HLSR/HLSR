@@ -1,0 +1,25 @@
+{
+  "id": "configs/pz-code",
+  "state": "Ghosting: «Код настроек» — свой код и импорт, заметки о модах и файлах",
+  "base": "configs/_pz",
+  "steps": [
+    {
+      "click": {
+        "css": ".launcher-topbar__tab:nth-child(3)",
+        "view": "topbar-tab-configs"
+      }
+    },
+    {
+      "click": {
+        "css": "#gx-tab-settings-code",
+        "view": "gx-tab-settings-code"
+      }
+    },
+    {
+      "move": [
+        800,
+        880
+      ]
+    }
+  ]
+}

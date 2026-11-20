@@ -1,0 +1,12 @@
+{
+  "id": "dialogs/welcome",
+  "screen": "dialogs",
+  "state": "«HLSR — Новая эра!» (welcomeSeen нет, вход не выполнен): согласие отмечено щелчком — «Войти через Steam» доступна",
+  "themes": ["hlsr", "paper"],
+  "languages": ["ru"],
+  "prefs": {"welcomeSeen": false},
+  "steps": [
+    {"click": {"css": ".welcome__consent input", "view": "welcome-consent"}},
+    {"move": [800, 880]}
+  ]
+}

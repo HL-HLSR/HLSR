@@ -1,0 +1,6 @@
+{
+  "id": "rail/ghosting",
+  "base": "rail/_base",
+  "state": "Выбрана HL2 Ghosting (по умолчанию): игры с онлайном, линия, LiveSplit, «Демо», кнопки внизу",
+  "themes": ["hlsr", "paper"]
+}

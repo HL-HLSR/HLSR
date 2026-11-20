@@ -1,0 +1,19 @@
+[package]
+name = "hlsr-snap"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+
+# Сверочный стенд (docs/gpui/00-plan.md, §2): сцены tools/snap/screens/049 в окне `hlsr`
+# (dev-hooks) против Electron 0.4.9. В выпуск не входит.
+
+[[bin]]
+name = "hlsr-snap"
+path = "src/main.rs"
+
+[dependencies]
+hlsr-ui = { path = "../../crates/hlsr-ui" }
+image = { workspace = true, features = ["png"] }
+serde = { workspace = true }
+serde_json.workspace = true

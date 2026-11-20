@@ -1,0 +1,52 @@
+{
+  "$comment": "Окно профиля и панель друзей (S9, ProfileModal/FriendsPanel 0.4.9). Открываются как у человека: меню аккаунта → «Открыть профиль» (гость — «Войти через Steam»), «Друзья»; чужой профиль — поиск бегунов.. Указатель уводится на подложку под окном.",
+  "screen": "profile",
+  "themes": [
+    "hlsr"
+  ],
+  "languages": [
+    "ru"
+  ],
+  "prefs": {
+    "configTourSeen": true
+  },
+  "https": {
+    "https://avatars.steamstatic.com/0000000000000000000000000000000000000001_full.jpg": "../assets/avatar.png"
+  },
+  "settleMs": 1500,
+  "invoke": {
+    "runner-sync": null,
+    "runner-speedrun-bests": null,
+    "friends-avatars": {},
+    "public-style-presets-get": {
+      "presets": []
+    }
+  },
+  "steps": [
+    {
+      "click": {
+        "css": ".account-menu__toggle",
+        "view": "account-toggle"
+      }
+    },
+    {
+      "wait": 300
+    },
+    {
+      "click": {
+        "css": ".account-menu__item",
+        "index": 0,
+        "view": "account-item-0"
+      }
+    },
+    {
+      "wait": 600
+    },
+    {
+      "move": [
+        800,
+        880
+      ]
+    }
+  ]
+}

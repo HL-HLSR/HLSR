@@ -1,0 +1,55 @@
+[package]
+name = "hlsr-demo"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+
+# Инструмент «Демо» без интерфейса: то же, что src/main/demo-tool 0.4.9.
+
+[features]
+# Подмена FFmpeg (HLSR_DEMO_FFMPEG) в выпуске — как dev-hooks остальных крейтов.
+dev-hooks = ["hlsr-core/dev-hooks", "hlsr-delivery/dev-hooks"]
+
+[dependencies]
+hlsr-core.workspace = true
+hlsr-delivery.workspace = true
+# id заданий и токены hlsr-media:// (crypto.randomBytes).
+getrandom.workspace = true
+icu_collator.workspace = true
+icu_locale_core.workspace = true
+icu_normalizer.workspace = true
+regex.workspace = true
+serde_json.workspace = true
+sha2.workspace = true
+thiserror.workspace = true
+# Фасад (api): тяжёлое — в spawn_blocking, события — broadcast, фоновый сброс mute — таймер.
+tokio = { workspace = true, features = ["rt", "sync", "time"] }
+
+[target.'cfg(unix)'.dependencies]
+rustix = { workspace = true, features = ["process"] }
+
+# Помощник рендера: скрытый стол, задание, процессы, реестр (windows-sys) и звуковые сессии
+# через COM (windows: IAudioSessionManager2, ISimpleAudioVolume).
+[target.'cfg(windows)'.dependencies]
+windows-sys = { workspace = true, features = [
+    "Win32_Foundation",
+    "Win32_Graphics_Gdi",
+    "Win32_Security",
+    "Win32_System_Diagnostics_ToolHelp",
+    "Win32_System_JobObjects",
+    "Win32_System_Registry",
+    "Win32_System_RemoteDesktop",
+    "Win32_System_StationsAndDesktops",
+    "Win32_System_Threading",
+] }
+windows = { version = "0.62.2", features = [
+    "Win32_Media_Audio",
+    "Win32_System_Com",
+    "Win32_System_Com_StructuredStorage",
+    "Win32_System_Variant",
+] }
+
+[dev-dependencies]
+tempfile.workspace = true
+tokio = { workspace = true, features = ["macros", "rt-multi-thread"] }

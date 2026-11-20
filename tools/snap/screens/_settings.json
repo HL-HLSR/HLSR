@@ -1,0 +1,6 @@
+{
+  "$comment": "Слой сцен окна настроек лаунчера (5b.1, 5b.2; tools/reference/lib/make-settings-scenes.js): в эталоне всё, кроме окна, прозрачно (opacity 0 — кнопка колонки принимает щелчок), корень залит ровным цветом; в Slint — SettingsProbe (поле probe) с тем же цветом.",
+  "css": ".launcher-frame > :not(.settings-modal) { opacity: 0 !important; }\n.launcher-root { background: #0b0e13 !important; }\n",
+  "probe": "settings",
+  "journalFrom": {"kind":"sendSync","channel":"app-version","args":[]}
+}

@@ -1,0 +1,55 @@
+{
+  "id": "demo/player-error",
+  "state": "Видео не открылось (адрес без файла): экран ошибки видео в «Отрендеренных»",
+  "base": "demo/_base",
+  "steps": [
+    {
+      "click": {
+        "css": ".game-rail .rail-item[aria-label=\"Демо\"]",
+        "view": "rail-demo"
+      }
+    },
+    {
+      "click": {
+        "css": ".dmp__tab:nth-child(2)",
+        "view": "dmp-tab-rendered"
+      }
+    },
+    {
+      "click": {
+        "css": "aside[aria-label=\"Отрендеренные\"] .dmp__item",
+        "view": "dmp-video-0"
+      }
+    },
+    {
+      "move": [
+        800,
+        880
+      ]
+    }
+  ],
+  "invoke": {
+    "demo-rendered-open": {
+      "status": "ok",
+      "name": "myrun.mp4",
+      "url": "hlsr-media://media/00000000000000000000000000000000",
+      "video": {
+        "duration": 140.2,
+        "width": 1920,
+        "height": 1080,
+        "fps": 60,
+        "speed": 1,
+        "range": {
+          "from": 0,
+          "to": 140.2
+        }
+      },
+      "source": {
+        "game": "ghosting",
+        "map": "d1_trainstation_01"
+      },
+      "markers": [],
+      "sourceId": "gh-run"
+    }
+  }
+}

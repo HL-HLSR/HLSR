@@ -1,0 +1,5871 @@
+{
+ "scales": [
+  1,
+  1.25
+ ],
+ "background": "#0b0e13",
+ "scenes": [
+  {
+   "id": "games-hero-hl1-fresh",
+   "width": 1600,
+   "height": 900,
+   "game": "70",
+   "delivery": {
+    "gameId": "hl1-won",
+    "launcherId": "70",
+    "state": "ready",
+    "percent": 100,
+    "bytesDownloaded": 0,
+    "totalBytes": 162457024,
+    "speedBps": 0,
+    "etaSeconds": null,
+    "version": "1.0.0",
+    "installedVersion": "1.0.0",
+    "installedAt": "2026-09-20T18:00:00.000Z",
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "legacy",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": null,
+    "checked": 0,
+    "totalChecked": 0,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "hl1-won",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": null,
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": false,
+     "state": "ready",
+     "action": "play"
+    },
+    "requiresLicense": true
+   },
+   "stats": {
+    "available": false
+   }
+  },
+  {
+   "id": "games-hero-hl1-played",
+   "width": 1600,
+   "height": 900,
+   "game": "70",
+   "delivery": {
+    "gameId": "hl1-won",
+    "launcherId": "70",
+    "state": "ready",
+    "percent": 100,
+    "bytesDownloaded": 0,
+    "totalBytes": 162457024,
+    "speedBps": 0,
+    "etaSeconds": null,
+    "version": "1.0.0",
+    "installedVersion": "1.0.0",
+    "installedAt": "2026-09-20T18:00:00.000Z",
+    "buildMetadata": null,
+    "buildDate": "2025-01-17T12:44:00.000Z",
+    "buildDateSource": null,
+    "metadataState": "legacy",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": null,
+    "checked": 0,
+    "totalChecked": 0,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "hl1-won",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": null,
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": false,
+     "state": "ready",
+     "action": "play"
+    },
+    "requiresLicense": true
+   },
+   "stats": {
+    "available": true,
+    "gameId": "hl1-won",
+    "lastLaunchAt": "2026-10-14T09:00:00.000Z",
+    "totalPlaySeconds": 133200,
+    "launchCount": 12,
+    "sessionActive": false
+   }
+  },
+  {
+   "id": "games-hero-hl2-fresh",
+   "width": 1600,
+   "height": 900,
+   "game": "220",
+   "delivery": {
+    "gameId": "hl2-4260",
+    "launcherId": "220",
+    "state": "ready",
+    "totalBytes": 1704734880,
+    "version": "1.0.0",
+    "installedVersion": "1.0.0",
+    "installedAt": "2026-09-20T18:00:00.000Z",
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "not-installed",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": null,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "hl2-4260",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": {
+     "installedVersion": "1.0.0",
+     "availableVersion": "1.0.0",
+     "upToDate": true,
+     "updateAvailable": false,
+     "updateRequired": false,
+     "kind": null,
+     "totalSize": 0,
+     "steps": [],
+     "source": null,
+     "checkedAt": "2026-10-16T12:00:00.000Z",
+     "stale": false,
+     "unknown": false,
+     "error": null
+    },
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": false,
+     "state": "ready",
+     "action": "play"
+    },
+    "requiresLicense": true,
+    "percent": 100
+   },
+   "stats": {
+    "available": false
+   }
+  },
+  {
+   "id": "games-hero-hl2-played",
+   "width": 1600,
+   "height": 900,
+   "game": "220",
+   "delivery": {
+    "gameId": "hl2-4260",
+    "launcherId": "220",
+    "state": "ready",
+    "totalBytes": 1704734880,
+    "version": "1.0.0",
+    "installedVersion": "1.0.0",
+    "installedAt": "2026-09-20T18:00:00.000Z",
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "not-installed",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": null,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "hl2-4260",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": {
+     "installedVersion": "1.0.0",
+     "availableVersion": "1.0.0",
+     "upToDate": true,
+     "updateAvailable": false,
+     "updateRequired": false,
+     "kind": null,
+     "totalSize": 0,
+     "steps": [],
+     "source": null,
+     "checkedAt": "2026-10-16T12:00:00.000Z",
+     "stale": false,
+     "unknown": false,
+     "error": null
+    },
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": false,
+     "state": "ready",
+     "action": "play"
+    },
+    "requiresLicense": true,
+    "percent": 100
+   },
+   "stats": {
+    "available": true,
+    "gameId": "hl2-4260",
+    "lastLaunchAt": "2026-10-16T08:00:00.000Z",
+    "totalPlaySeconds": 3725,
+    "launchCount": 3,
+    "sessionActive": false
+   }
+  },
+  {
+   "id": "games-hero-ghosting-fresh",
+   "width": 1600,
+   "height": 900,
+   "game": "218",
+   "delivery": {
+    "gameId": "ghosting-renewed",
+    "launcherId": "218",
+    "state": "ready",
+    "percent": 100,
+    "bytesDownloaded": 0,
+    "totalBytes": 1945918366,
+    "speedBps": 0,
+    "etaSeconds": null,
+    "version": "1.0.9",
+    "installedVersion": "1.0.9",
+    "installedAt": "2026-10-01T09:30:00.000Z",
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "legacy",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": null,
+    "checked": 0,
+    "totalChecked": 0,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "ghosting-renewed",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": {
+     "installedVersion": "1.0.9",
+     "availableVersion": "1.0.9",
+     "upToDate": true,
+     "updateAvailable": false,
+     "updateRequired": false,
+     "kind": null,
+     "totalSize": 0,
+     "steps": [],
+     "source": null,
+     "checkedAt": "2026-10-16T12:00:00.000Z",
+     "stale": false,
+     "unknown": false,
+     "error": null
+    },
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": false,
+     "state": "ready",
+     "action": "play"
+    },
+    "requiresLicense": false
+   },
+   "stats": {
+    "available": false
+   }
+  },
+  {
+   "id": "games-hero-ghosting-played",
+   "width": 1600,
+   "height": 900,
+   "game": "218",
+   "delivery": {
+    "gameId": "ghosting-renewed",
+    "launcherId": "218",
+    "state": "ready",
+    "percent": 100,
+    "bytesDownloaded": 0,
+    "totalBytes": 1945918366,
+    "speedBps": 0,
+    "etaSeconds": null,
+    "version": "1.0.9",
+    "installedVersion": "1.0.9",
+    "installedAt": "2026-10-01T09:30:00.000Z",
+    "buildMetadata": null,
+    "buildDate": "2026-09-30T20:30:00.000Z",
+    "buildDateSource": null,
+    "metadataState": "legacy",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": null,
+    "checked": 0,
+    "totalChecked": 0,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "ghosting-renewed",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": {
+     "installedVersion": "1.0.9",
+     "availableVersion": "1.0.9",
+     "upToDate": true,
+     "updateAvailable": false,
+     "updateRequired": false,
+     "kind": null,
+     "totalSize": 0,
+     "steps": [],
+     "source": null,
+     "checkedAt": "2026-10-16T12:00:00.000Z",
+     "stale": false,
+     "unknown": false,
+     "error": null
+    },
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": false,
+     "state": "ready",
+     "action": "play"
+    },
+    "requiresLicense": false
+   },
+   "stats": {
+    "available": true,
+    "gameId": "ghosting-renewed",
+    "lastLaunchAt": "2026-10-11T17:20:00.000Z",
+    "totalPlaySeconds": 7380,
+    "launchCount": 5,
+    "sessionActive": false
+   }
+  },
+  {
+   "id": "games-hero-ghosting-ru",
+   "width": 1600,
+   "height": 900,
+   "game": "218",
+   "delivery": {
+    "gameId": "ghosting-renewed",
+    "launcherId": "218",
+    "state": "ready",
+    "percent": 100,
+    "bytesDownloaded": 0,
+    "totalBytes": 1945918366,
+    "speedBps": 0,
+    "etaSeconds": null,
+    "version": "1.0.9",
+    "installedVersion": "1.0.9",
+    "installedAt": "2026-10-01T09:30:00.000Z",
+    "buildMetadata": null,
+    "buildDate": "2026-09-30T20:30:00.000Z",
+    "buildDateSource": null,
+    "metadataState": "legacy",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": null,
+    "checked": 0,
+    "totalChecked": 0,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "ghosting-renewed",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": {
+     "installedVersion": "1.0.9",
+     "availableVersion": "1.0.9",
+     "upToDate": true,
+     "updateAvailable": false,
+     "updateRequired": false,
+     "kind": null,
+     "totalSize": 0,
+     "steps": [],
+     "source": null,
+     "checkedAt": "2026-10-16T12:00:00.000Z",
+     "stale": false,
+     "unknown": false,
+     "error": null
+    },
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": false,
+     "state": "ready",
+     "action": "play"
+    },
+    "requiresLicense": false
+   },
+   "stats": {
+    "available": true,
+    "gameId": "ghosting-renewed",
+    "lastLaunchAt": "2026-10-15T17:20:00.000Z",
+    "totalPlaySeconds": 7380,
+    "launchCount": 5,
+    "sessionActive": false
+   },
+   "language": "ru"
+  },
+  {
+   "id": "games-hero-compact",
+   "width": 1200,
+   "height": 676,
+   "game": "218",
+   "delivery": {
+    "gameId": "ghosting-renewed",
+    "launcherId": "218",
+    "state": "ready",
+    "percent": 100,
+    "bytesDownloaded": 0,
+    "totalBytes": 1945918366,
+    "speedBps": 0,
+    "etaSeconds": null,
+    "version": "1.0.9",
+    "installedVersion": "1.0.9",
+    "installedAt": "2026-10-01T09:30:00.000Z",
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "legacy",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": null,
+    "checked": 0,
+    "totalChecked": 0,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "ghosting-renewed",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": {
+     "installedVersion": "1.0.9",
+     "availableVersion": "1.0.9",
+     "upToDate": true,
+     "updateAvailable": false,
+     "updateRequired": false,
+     "kind": null,
+     "totalSize": 0,
+     "steps": [],
+     "source": null,
+     "checkedAt": "2026-10-16T12:00:00.000Z",
+     "stale": false,
+     "unknown": false,
+     "error": null
+    },
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": false,
+     "state": "ready",
+     "action": "play"
+    },
+    "requiresLicense": false
+   },
+   "stats": {
+    "available": false
+   }
+  },
+  {
+   "id": "games-bar-ready",
+   "width": 1600,
+   "height": 900,
+   "game": "218",
+   "delivery": {
+    "gameId": "ghosting-renewed",
+    "launcherId": "218",
+    "state": "ready",
+    "percent": 100,
+    "bytesDownloaded": 0,
+    "totalBytes": 1945918366,
+    "speedBps": 0,
+    "etaSeconds": null,
+    "version": "1.0.9",
+    "installedVersion": "1.0.9",
+    "installedAt": "2026-10-01T09:30:00.000Z",
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "legacy",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": null,
+    "checked": 0,
+    "totalChecked": 0,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "ghosting-renewed",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": {
+     "installedVersion": "1.0.9",
+     "availableVersion": "1.0.9",
+     "upToDate": true,
+     "updateAvailable": false,
+     "updateRequired": false,
+     "kind": null,
+     "totalSize": 0,
+     "steps": [],
+     "source": null,
+     "checkedAt": "2026-10-16T12:00:00.000Z",
+     "stale": false,
+     "unknown": false,
+     "error": null
+    },
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": false,
+     "state": "ready",
+     "action": "play"
+    },
+    "requiresLicense": false
+   },
+   "stats": {
+    "available": false
+   }
+  },
+  {
+   "id": "games-bar-ready-hover",
+   "width": 1600,
+   "height": 900,
+   "game": "218",
+   "delivery": {
+    "gameId": "ghosting-renewed",
+    "launcherId": "218",
+    "state": "ready",
+    "percent": 100,
+    "bytesDownloaded": 0,
+    "totalBytes": 1945918366,
+    "speedBps": 0,
+    "etaSeconds": null,
+    "version": "1.0.9",
+    "installedVersion": "1.0.9",
+    "installedAt": "2026-10-01T09:30:00.000Z",
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "legacy",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": null,
+    "checked": 0,
+    "totalChecked": 0,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "ghosting-renewed",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": {
+     "installedVersion": "1.0.9",
+     "availableVersion": "1.0.9",
+     "upToDate": true,
+     "updateAvailable": false,
+     "updateRequired": false,
+     "kind": null,
+     "totalSize": 0,
+     "steps": [],
+     "source": null,
+     "checkedAt": "2026-10-16T12:00:00.000Z",
+     "stale": false,
+     "unknown": false,
+     "error": null
+    },
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": false,
+     "state": "ready",
+     "action": "play"
+    },
+    "requiresLicense": false
+   },
+   "steps": [
+    {
+     "hover": "play"
+    }
+   ]
+  },
+  {
+   "id": "games-bar-ready-ru",
+   "width": 1600,
+   "height": 900,
+   "game": "218",
+   "delivery": {
+    "gameId": "ghosting-renewed",
+    "launcherId": "218",
+    "state": "ready",
+    "percent": 100,
+    "bytesDownloaded": 0,
+    "totalBytes": 1945918366,
+    "speedBps": 0,
+    "etaSeconds": null,
+    "version": "1.0.9",
+    "installedVersion": "1.0.9",
+    "installedAt": "2026-10-01T09:30:00.000Z",
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "legacy",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": null,
+    "checked": 0,
+    "totalChecked": 0,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "ghosting-renewed",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": {
+     "installedVersion": "1.0.9",
+     "availableVersion": "1.0.9",
+     "upToDate": true,
+     "updateAvailable": false,
+     "updateRequired": false,
+     "kind": null,
+     "totalSize": 0,
+     "steps": [],
+     "source": null,
+     "checkedAt": "2026-10-16T12:00:00.000Z",
+     "stale": false,
+     "unknown": false,
+     "error": null
+    },
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": false,
+     "state": "ready",
+     "action": "play"
+    },
+    "requiresLicense": false
+   },
+   "language": "ru"
+  },
+  {
+   "id": "games-bar-not-installed",
+   "width": 1600,
+   "height": 900,
+   "game": "220",
+   "delivery": {
+    "gameId": "hl2-4260",
+    "launcherId": "220",
+    "state": "not-installed",
+    "totalBytes": 1704734880,
+    "version": "1.0.0",
+    "installedVersion": null,
+    "installedAt": null,
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "not-installed",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": null,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "hl2-4260",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": null,
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": false,
+     "state": "not-installed",
+     "action": "install"
+    },
+    "requiresLicense": true
+   }
+  },
+  {
+   "id": "games-bar-unavailable",
+   "width": 1600,
+   "height": 900,
+   "game": "220",
+   "delivery": {
+    "gameId": "hl2-4260",
+    "launcherId": "220",
+    "state": "not-installed",
+    "totalBytes": 1704734880,
+    "version": "1.0.0",
+    "installedVersion": null,
+    "installedAt": null,
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "not-installed",
+    "metadataIssue": null,
+    "installable": false,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": null,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "hl2-4260",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": null,
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": false,
+     "state": "unavailable",
+     "action": "explain",
+     "reason": "UNKNOWN_UNAVAILABLE"
+    },
+    "requiresLicense": true
+   }
+  },
+  {
+   "id": "games-bar-downloading",
+   "width": 1600,
+   "height": 900,
+   "game": "220",
+   "delivery": {
+    "gameId": "hl2-4260",
+    "launcherId": "220",
+    "state": "downloading",
+    "totalBytes": 1945918366,
+    "version": "1.0.0",
+    "installedVersion": null,
+    "installedAt": null,
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "not-installed",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": "download",
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "hl2-4260",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": null,
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": true,
+     "state": "downloading",
+     "action": "pause"
+    },
+    "requiresLicense": true,
+    "percent": 33.5,
+    "bytesDownloaded": 524288000,
+    "speedBps": 5242880,
+    "etaSeconds": 600
+   }
+  },
+  {
+   "id": "games-bar-downloading-ru",
+   "width": 1600,
+   "height": 900,
+   "game": "220",
+   "delivery": {
+    "gameId": "hl2-4260",
+    "launcherId": "220",
+    "state": "downloading",
+    "totalBytes": 1945918366,
+    "version": "1.0.0",
+    "installedVersion": null,
+    "installedAt": null,
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "not-installed",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": "download",
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "hl2-4260",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": null,
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": true,
+     "state": "downloading",
+     "action": "pause"
+    },
+    "requiresLicense": true,
+    "percent": 33.5,
+    "bytesDownloaded": 524288000,
+    "speedBps": 5242880,
+    "etaSeconds": 45
+   },
+   "language": "ru"
+  },
+  {
+   "id": "games-bar-paused",
+   "width": 1600,
+   "height": 900,
+   "game": "220",
+   "delivery": {
+    "gameId": "hl2-4260",
+    "launcherId": "220",
+    "state": "paused",
+    "totalBytes": 1704734880,
+    "version": "1.0.0",
+    "installedVersion": null,
+    "installedAt": null,
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "not-installed",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": null,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "hl2-4260",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": null,
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": true,
+     "state": "download-paused",
+     "action": "resume"
+    },
+    "requiresLicense": true,
+    "percent": 41,
+    "bytesDownloaded": 734003200
+   }
+  },
+  {
+   "id": "games-bar-installing",
+   "width": 1600,
+   "height": 900,
+   "game": "220",
+   "delivery": {
+    "gameId": "hl2-4260",
+    "launcherId": "220",
+    "state": "extracting",
+    "totalBytes": 1704734880,
+    "version": "1.0.0",
+    "installedVersion": null,
+    "installedAt": null,
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "not-installed",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": null,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "hl2-4260",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": null,
+    "mainButton": {
+     "enabled": false,
+     "spinner": true,
+     "progress": true,
+     "state": "installing",
+     "action": "none"
+    },
+    "requiresLicense": true,
+    "percent": 72,
+    "bytesDownloaded": 1704734880
+   }
+  },
+  {
+   "id": "games-bar-busy",
+   "width": 1600,
+   "height": 900,
+   "game": "218",
+   "delivery": {
+    "gameId": "ghosting-renewed",
+    "launcherId": "218",
+    "state": "checking-files",
+    "percent": 27,
+    "bytesDownloaded": 0,
+    "totalBytes": 1945918366,
+    "speedBps": 0,
+    "etaSeconds": null,
+    "version": "1.0.9",
+    "installedVersion": "1.0.9",
+    "installedAt": "2026-10-01T09:30:00.000Z",
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "legacy",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": null,
+    "checked": 120,
+    "totalChecked": 450,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "ghosting-renewed",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": {
+     "installedVersion": "1.0.9",
+     "availableVersion": "1.0.9",
+     "upToDate": true,
+     "updateAvailable": false,
+     "updateRequired": false,
+     "kind": null,
+     "totalSize": 0,
+     "steps": [],
+     "source": null,
+     "checkedAt": "2026-10-16T12:00:00.000Z",
+     "stale": false,
+     "unknown": false,
+     "error": null
+    },
+    "mainButton": {
+     "enabled": false,
+     "spinner": true,
+     "progress": true,
+     "state": "busy",
+     "action": "none"
+    },
+    "requiresLicense": false
+   }
+  },
+  {
+   "id": "games-bar-error",
+   "width": 1600,
+   "height": 900,
+   "game": "220",
+   "delivery": {
+    "gameId": "hl2-4260",
+    "launcherId": "220",
+    "state": "error",
+    "totalBytes": 1704734880,
+    "version": "1.0.0",
+    "installedVersion": null,
+    "installedAt": null,
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "not-installed",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": {
+     "code": "NO_SPACE",
+     "details": {}
+    },
+    "pending": null,
+    "phase": null,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "hl2-4260",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": null,
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": false,
+     "state": "error",
+     "action": "retry"
+    },
+    "requiresLicense": true
+   }
+  },
+  {
+   "id": "games-bar-update-available",
+   "width": 1600,
+   "height": 900,
+   "game": "218",
+   "delivery": {
+    "gameId": "ghosting-renewed",
+    "launcherId": "218",
+    "state": "ready",
+    "percent": 100,
+    "bytesDownloaded": 0,
+    "totalBytes": 1945918366,
+    "speedBps": 0,
+    "etaSeconds": null,
+    "version": "1.0.9",
+    "installedVersion": "1.0.9",
+    "installedAt": "2026-10-01T09:30:00.000Z",
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "legacy",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": null,
+    "checked": 0,
+    "totalChecked": 0,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "ghosting-renewed",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": {
+     "installedVersion": "1.0.9",
+     "availableVersion": "1.1.0",
+     "upToDate": false,
+     "updateAvailable": true,
+     "updateRequired": false,
+     "kind": "patch",
+     "totalSize": 52428800,
+     "steps": [],
+     "source": "http",
+     "checkedAt": "2026-10-16T12:00:00.000Z",
+     "stale": false,
+     "unknown": false,
+     "error": null
+    },
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": false,
+     "state": "update-available",
+     "action": "update",
+     "required": false,
+     "availableVersion": "1.1.0"
+    },
+    "requiresLicense": false
+   }
+  },
+  {
+   "id": "games-bar-update-chain",
+   "width": 1600,
+   "height": 900,
+   "game": "218",
+   "delivery": {
+    "gameId": "ghosting-renewed",
+    "launcherId": "218",
+    "state": "downloading",
+    "percent": 45,
+    "bytesDownloaded": 31457280,
+    "totalBytes": 104857600,
+    "speedBps": 2621440,
+    "etaSeconds": 28,
+    "version": "1.0.9",
+    "installedVersion": "1.0.9",
+    "installedAt": "2026-10-01T09:30:00.000Z",
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "legacy",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": null,
+    "checked": 0,
+    "totalChecked": 0,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": "update",
+    "chain": {
+     "step": 2,
+     "steps": 3,
+     "toVersion": "1.1.0",
+     "doneBytes": 125829120,
+     "totalBytes": 419430400
+    },
+    "process": {
+     "gameId": "ghosting-renewed",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": {
+     "installedVersion": "1.0.9",
+     "availableVersion": "1.0.9",
+     "upToDate": true,
+     "updateAvailable": false,
+     "updateRequired": false,
+     "kind": null,
+     "totalSize": 0,
+     "steps": [],
+     "source": null,
+     "checkedAt": "2026-10-16T12:00:00.000Z",
+     "stale": false,
+     "unknown": false,
+     "error": null
+    },
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": true,
+     "state": "downloading-update",
+     "action": "pause"
+    },
+    "requiresLicense": false
+   }
+  },
+  {
+   "id": "games-bar-update-paused",
+   "width": 1600,
+   "height": 900,
+   "game": "218",
+   "delivery": {
+    "gameId": "ghosting-renewed",
+    "launcherId": "218",
+    "state": "paused",
+    "percent": 45,
+    "bytesDownloaded": 31457280,
+    "totalBytes": 104857600,
+    "speedBps": 0,
+    "etaSeconds": null,
+    "version": "1.0.9",
+    "installedVersion": "1.0.9",
+    "installedAt": "2026-10-01T09:30:00.000Z",
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "legacy",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": null,
+    "checked": 0,
+    "totalChecked": 0,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": "update",
+    "chain": {
+     "step": 1,
+     "steps": 1,
+     "toVersion": "1.1.0",
+     "doneBytes": 0,
+     "totalBytes": 104857600
+    },
+    "process": {
+     "gameId": "ghosting-renewed",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": {
+     "installedVersion": "1.0.9",
+     "availableVersion": "1.0.9",
+     "upToDate": true,
+     "updateAvailable": false,
+     "updateRequired": false,
+     "kind": null,
+     "totalSize": 0,
+     "steps": [],
+     "source": null,
+     "checkedAt": "2026-10-16T12:00:00.000Z",
+     "stale": false,
+     "unknown": false,
+     "error": null
+    },
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": true,
+     "state": "update-paused",
+     "action": "resume"
+    },
+    "requiresLicense": false
+   }
+  },
+  {
+   "id": "games-bar-update-verifying",
+   "width": 1600,
+   "height": 900,
+   "game": "218",
+   "delivery": {
+    "gameId": "ghosting-renewed",
+    "launcherId": "218",
+    "state": "verifying",
+    "percent": 100,
+    "bytesDownloaded": 104857600,
+    "totalBytes": 104857600,
+    "speedBps": 0,
+    "etaSeconds": null,
+    "version": "1.0.9",
+    "installedVersion": "1.0.9",
+    "installedAt": "2026-10-01T09:30:00.000Z",
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "legacy",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": null,
+    "checked": 0,
+    "totalChecked": 0,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": "update",
+    "chain": null,
+    "process": {
+     "gameId": "ghosting-renewed",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": {
+     "installedVersion": "1.0.9",
+     "availableVersion": "1.0.9",
+     "upToDate": true,
+     "updateAvailable": false,
+     "updateRequired": false,
+     "kind": null,
+     "totalSize": 0,
+     "steps": [],
+     "source": null,
+     "checkedAt": "2026-10-16T12:00:00.000Z",
+     "stale": false,
+     "unknown": false,
+     "error": null
+    },
+    "mainButton": {
+     "enabled": false,
+     "spinner": true,
+     "progress": true,
+     "state": "verifying-update",
+     "action": "none"
+    },
+    "requiresLicense": false
+   }
+  },
+  {
+   "id": "games-bar-update-applying",
+   "width": 1600,
+   "height": 900,
+   "game": "218",
+   "delivery": {
+    "gameId": "ghosting-renewed",
+    "launcherId": "218",
+    "state": "applying-update",
+    "percent": 90,
+    "bytesDownloaded": 104857600,
+    "totalBytes": 104857600,
+    "speedBps": 0,
+    "etaSeconds": null,
+    "version": "1.0.9",
+    "installedVersion": "1.0.9",
+    "installedAt": "2026-10-01T09:30:00.000Z",
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "legacy",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": null,
+    "checked": 0,
+    "totalChecked": 0,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": "update",
+    "chain": null,
+    "process": {
+     "gameId": "ghosting-renewed",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": {
+     "installedVersion": "1.0.9",
+     "availableVersion": "1.0.9",
+     "upToDate": true,
+     "updateAvailable": false,
+     "updateRequired": false,
+     "kind": null,
+     "totalSize": 0,
+     "steps": [],
+     "source": null,
+     "checkedAt": "2026-10-16T12:00:00.000Z",
+     "stale": false,
+     "unknown": false,
+     "error": null
+    },
+    "mainButton": {
+     "enabled": false,
+     "spinner": true,
+     "progress": true,
+     "state": "applying-update",
+     "action": "none"
+    },
+    "requiresLicense": false
+   }
+  },
+  {
+   "id": "games-bar-update-error",
+   "width": 1600,
+   "height": 900,
+   "game": "218",
+   "delivery": {
+    "gameId": "ghosting-renewed",
+    "launcherId": "218",
+    "state": "error",
+    "percent": 100,
+    "bytesDownloaded": 0,
+    "totalBytes": 1945918366,
+    "speedBps": 0,
+    "etaSeconds": null,
+    "version": "1.0.9",
+    "installedVersion": "1.0.9",
+    "installedAt": "2026-10-01T09:30:00.000Z",
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "legacy",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": {
+     "code": "NETWORK_ERROR",
+     "details": {}
+    },
+    "pending": null,
+    "phase": null,
+    "checked": 0,
+    "totalChecked": 0,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": "update",
+    "chain": null,
+    "process": {
+     "gameId": "ghosting-renewed",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": {
+     "installedVersion": "1.0.9",
+     "availableVersion": "1.0.9",
+     "upToDate": true,
+     "updateAvailable": false,
+     "updateRequired": false,
+     "kind": null,
+     "totalSize": 0,
+     "steps": [],
+     "source": null,
+     "checkedAt": "2026-10-16T12:00:00.000Z",
+     "stale": false,
+     "unknown": false,
+     "error": null
+    },
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": false,
+     "state": "update-error",
+     "action": "retry"
+    },
+    "requiresLicense": false
+   }
+  },
+  {
+   "id": "games-bar-game-running",
+   "width": 1600,
+   "height": 900,
+   "game": "218",
+   "delivery": {
+    "gameId": "ghosting-renewed",
+    "launcherId": "218",
+    "state": "ready",
+    "percent": 100,
+    "bytesDownloaded": 0,
+    "totalBytes": 1945918366,
+    "speedBps": 0,
+    "etaSeconds": null,
+    "version": "1.0.9",
+    "installedVersion": "1.0.9",
+    "installedAt": "2026-10-01T09:30:00.000Z",
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "legacy",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": null,
+    "checked": 0,
+    "totalChecked": 0,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "ghosting-renewed",
+     "state": "running",
+     "running": true,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": {
+     "installedVersion": "1.0.9",
+     "availableVersion": "1.0.9",
+     "upToDate": true,
+     "updateAvailable": false,
+     "updateRequired": false,
+     "kind": null,
+     "totalSize": 0,
+     "steps": [],
+     "source": null,
+     "checkedAt": "2026-10-16T12:00:00.000Z",
+     "stale": false,
+     "unknown": false,
+     "error": null
+    },
+    "mainButton": {
+     "state": "game-running",
+     "action": "stop",
+     "enabled": true,
+     "spinner": false,
+     "progress": false
+    },
+    "requiresLicense": false
+   }
+  },
+  {
+   "id": "games-bar-starting",
+   "width": 1600,
+   "height": 900,
+   "game": "218",
+   "delivery": {
+    "gameId": "ghosting-renewed",
+    "launcherId": "218",
+    "state": "ready",
+    "percent": 100,
+    "bytesDownloaded": 0,
+    "totalBytes": 1945918366,
+    "speedBps": 0,
+    "etaSeconds": null,
+    "version": "1.0.9",
+    "installedVersion": "1.0.9",
+    "installedAt": "2026-10-01T09:30:00.000Z",
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "legacy",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": null,
+    "checked": 0,
+    "totalChecked": 0,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "ghosting-renewed",
+     "state": "starting",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": {
+     "installedVersion": "1.0.9",
+     "availableVersion": "1.0.9",
+     "upToDate": true,
+     "updateAvailable": false,
+     "updateRequired": false,
+     "kind": null,
+     "totalSize": 0,
+     "steps": [],
+     "source": null,
+     "checkedAt": "2026-10-16T12:00:00.000Z",
+     "stale": false,
+     "unknown": false,
+     "error": null
+    },
+    "mainButton": {
+     "state": "starting-game",
+     "action": "none",
+     "enabled": false,
+     "spinner": true,
+     "progress": false
+    },
+    "requiresLicense": false
+   }
+  },
+  {
+   "id": "games-bar-stopping",
+   "width": 1600,
+   "height": 900,
+   "game": "218",
+   "delivery": {
+    "gameId": "ghosting-renewed",
+    "launcherId": "218",
+    "state": "ready",
+    "percent": 100,
+    "bytesDownloaded": 0,
+    "totalBytes": 1945918366,
+    "speedBps": 0,
+    "etaSeconds": null,
+    "version": "1.0.9",
+    "installedVersion": "1.0.9",
+    "installedAt": "2026-10-01T09:30:00.000Z",
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "legacy",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": null,
+    "checked": 0,
+    "totalChecked": 0,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "ghosting-renewed",
+     "state": "stopping",
+     "running": true,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": {
+     "installedVersion": "1.0.9",
+     "availableVersion": "1.0.9",
+     "upToDate": true,
+     "updateAvailable": false,
+     "updateRequired": false,
+     "kind": null,
+     "totalSize": 0,
+     "steps": [],
+     "source": null,
+     "checkedAt": "2026-10-16T12:00:00.000Z",
+     "stale": false,
+     "unknown": false,
+     "error": null
+    },
+    "mainButton": {
+     "state": "stopping-game",
+     "action": "none",
+     "enabled": false,
+     "spinner": true,
+     "progress": false
+    },
+    "requiresLicense": false
+   }
+  },
+  {
+   "id": "games-bar-repair-required",
+   "width": 1600,
+   "height": 900,
+   "game": "218",
+   "delivery": {
+    "gameId": "ghosting-renewed",
+    "launcherId": "218",
+    "state": "files-damaged",
+    "percent": 100,
+    "bytesDownloaded": 0,
+    "totalBytes": 1945918366,
+    "speedBps": 0,
+    "etaSeconds": null,
+    "version": "1.0.9",
+    "installedVersion": "1.0.9",
+    "installedAt": "2026-10-01T09:30:00.000Z",
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "legacy",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": null,
+    "checked": 120,
+    "totalChecked": 450,
+    "integrity": {
+     "damaged": 3
+    },
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "ghosting-renewed",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": {
+     "installedVersion": "1.0.9",
+     "availableVersion": "1.0.9",
+     "upToDate": true,
+     "updateAvailable": false,
+     "updateRequired": false,
+     "kind": null,
+     "totalSize": 0,
+     "steps": [],
+     "source": null,
+     "checkedAt": "2026-10-16T12:00:00.000Z",
+     "stale": false,
+     "unknown": false,
+     "error": null
+    },
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": false,
+     "state": "repair-required",
+     "action": "repair",
+     "damaged": 3
+    },
+    "requiresLicense": false
+   }
+  },
+  {
+   "id": "games-bar-steam-depot",
+   "width": 1600,
+   "height": 900,
+   "game": "220",
+   "delivery": {
+    "gameId": "hl2-4260",
+    "launcherId": "220",
+    "state": "downloading",
+    "totalBytes": 1704734880,
+    "version": "1.0.0",
+    "installedVersion": null,
+    "installedAt": null,
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "not-installed",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": null,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "steam-depot",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "hl2-4260",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": null,
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": true,
+     "state": "downloading",
+     "action": "pause"
+    },
+    "requiresLicense": true,
+    "percent": 4,
+    "filesDone": 12,
+    "filesTotal": 340,
+    "bytesDownloaded": 0
+   }
+  },
+  {
+   "id": "games-bar-launcher-update",
+   "width": 1600,
+   "height": 900,
+   "game": "218",
+   "delivery": {
+    "gameId": "ghosting-renewed",
+    "launcherId": "218",
+    "state": "ready",
+    "percent": 100,
+    "bytesDownloaded": 0,
+    "totalBytes": 1945918366,
+    "speedBps": 0,
+    "etaSeconds": null,
+    "version": "1.0.9",
+    "installedVersion": "1.0.9",
+    "installedAt": "2026-10-01T09:30:00.000Z",
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "launcher-update-required",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": "BUILD_REQUIRES_NEWER_LAUNCHER",
+    "error": null,
+    "pending": null,
+    "phase": null,
+    "checked": 0,
+    "totalChecked": 0,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "ghosting-renewed",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": {
+     "installedVersion": "1.0.9",
+     "availableVersion": "1.0.9",
+     "upToDate": true,
+     "updateAvailable": false,
+     "updateRequired": false,
+     "kind": null,
+     "totalSize": 0,
+     "steps": [],
+     "source": null,
+     "checkedAt": "2026-10-16T12:00:00.000Z",
+     "stale": false,
+     "unknown": false,
+     "error": null
+    },
+    "mainButton": {
+     "state": "update-launcher-required",
+     "action": "explain",
+     "enabled": true,
+     "spinner": false,
+     "progress": false,
+     "reason": "BUILD_REQUIRES_NEWER_LAUNCHER"
+    },
+    "requiresLicense": false
+   }
+  },
+  {
+   "id": "games-bar-checking-updates",
+   "width": 1600,
+   "height": 900,
+   "game": "218",
+   "delivery": {
+    "gameId": "ghosting-renewed",
+    "launcherId": "218",
+    "state": "ready",
+    "percent": 100,
+    "bytesDownloaded": 0,
+    "totalBytes": 1945918366,
+    "speedBps": 0,
+    "etaSeconds": null,
+    "version": "1.0.9",
+    "installedVersion": "1.0.9",
+    "installedAt": "2026-10-01T09:30:00.000Z",
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "legacy",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": null,
+    "checked": 0,
+    "totalChecked": 0,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "ghosting-renewed",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": {
+     "installedVersion": "1.0.9",
+     "availableVersion": "1.0.9",
+     "upToDate": true,
+     "updateAvailable": false,
+     "updateRequired": false,
+     "kind": null,
+     "totalSize": 0,
+     "steps": [],
+     "source": null,
+     "checkedAt": "2026-10-16T12:00:00.000Z",
+     "stale": false,
+     "unknown": false,
+     "error": null
+    },
+    "mainButton": {
+     "state": "checking-updates",
+     "action": "none",
+     "enabled": false,
+     "spinner": true,
+     "progress": false
+    },
+    "requiresLicense": false
+   }
+  },
+  {
+   "id": "games-menu-open",
+   "width": 1600,
+   "height": 900,
+   "game": "218",
+   "delivery": {
+    "gameId": "ghosting-renewed",
+    "launcherId": "218",
+    "state": "ready",
+    "percent": 100,
+    "bytesDownloaded": 0,
+    "totalBytes": 1945918366,
+    "speedBps": 0,
+    "etaSeconds": null,
+    "version": "1.0.9",
+    "installedVersion": "1.0.9",
+    "installedAt": "2026-10-01T09:30:00.000Z",
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "legacy",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": null,
+    "checked": 0,
+    "totalChecked": 0,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "ghosting-renewed",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": {
+     "installedVersion": "1.0.9",
+     "availableVersion": "1.0.9",
+     "upToDate": true,
+     "updateAvailable": false,
+     "updateRequired": false,
+     "kind": null,
+     "totalSize": 0,
+     "steps": [],
+     "source": null,
+     "checkedAt": "2026-10-16T12:00:00.000Z",
+     "stale": false,
+     "unknown": false,
+     "error": null
+    },
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": false,
+     "state": "ready",
+     "action": "play"
+    },
+    "requiresLicense": false
+   },
+   "menuState": {
+    "available": true,
+    "gameId": "ghosting-renewed",
+    "installed": true,
+    "busy": false,
+    "running": false,
+    "items": {
+     "settings": {
+      "enabled": true,
+      "reason": null
+     },
+     "shortcut": {
+      "enabled": true,
+      "reason": null
+     },
+     "screenshots": {
+      "enabled": true,
+      "reason": null
+     },
+     "folder": {
+      "enabled": true,
+      "reason": null
+     },
+     "updates": {
+      "enabled": true,
+      "reason": null
+     },
+     "verify": {
+      "enabled": false,
+      "reason": "in-development"
+     },
+     "repair": {
+      "enabled": false,
+      "reason": "in-development"
+     },
+     "exportBuild": {
+      "enabled": true,
+      "reason": null
+     },
+     "exportSettings": {
+      "enabled": true,
+      "reason": null
+     },
+     "importBuild": {
+      "enabled": true,
+      "reason": null
+     },
+     "uninstall": {
+      "enabled": true,
+      "reason": null
+     }
+    }
+   },
+   "steps": [
+    {
+     "click": "menu"
+    }
+   ]
+  },
+  {
+   "id": "games-menu-open-reasons",
+   "width": 1600,
+   "height": 900,
+   "game": "218",
+   "delivery": {
+    "gameId": "ghosting-renewed",
+    "launcherId": "218",
+    "state": "ready",
+    "percent": 100,
+    "bytesDownloaded": 0,
+    "totalBytes": 1945918366,
+    "speedBps": 0,
+    "etaSeconds": null,
+    "version": "1.0.9",
+    "installedVersion": "1.0.9",
+    "installedAt": "2026-10-01T09:30:00.000Z",
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "legacy",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": null,
+    "checked": 0,
+    "totalChecked": 0,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "ghosting-renewed",
+     "state": "running",
+     "running": true,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": {
+     "installedVersion": "1.0.9",
+     "availableVersion": "1.0.9",
+     "upToDate": true,
+     "updateAvailable": false,
+     "updateRequired": false,
+     "kind": null,
+     "totalSize": 0,
+     "steps": [],
+     "source": null,
+     "checkedAt": "2026-10-16T12:00:00.000Z",
+     "stale": false,
+     "unknown": false,
+     "error": null
+    },
+    "mainButton": {
+     "state": "game-running",
+     "action": "stop",
+     "enabled": true,
+     "spinner": false,
+     "progress": false
+    },
+    "requiresLicense": false
+   },
+   "menuState": {
+    "available": true,
+    "gameId": "ghosting-renewed",
+    "installed": true,
+    "busy": false,
+    "running": false,
+    "items": {
+     "settings": {
+      "enabled": true,
+      "reason": null
+     },
+     "shortcut": {
+      "enabled": true,
+      "reason": null
+     },
+     "screenshots": {
+      "enabled": true,
+      "reason": null
+     },
+     "folder": {
+      "enabled": true,
+      "reason": null
+     },
+     "updates": {
+      "enabled": false,
+      "reason": "game-running"
+     },
+     "verify": {
+      "enabled": false,
+      "reason": "in-development"
+     },
+     "repair": {
+      "enabled": false,
+      "reason": "in-development"
+     },
+     "exportBuild": {
+      "enabled": true,
+      "reason": null
+     },
+     "exportSettings": {
+      "enabled": true,
+      "reason": null
+     },
+     "importBuild": {
+      "enabled": false,
+      "reason": "game-running"
+     },
+     "uninstall": {
+      "enabled": false,
+      "reason": "game-running"
+     }
+    }
+   },
+   "steps": [
+    {
+     "click": "menu"
+    }
+   ]
+  },
+  {
+   "id": "games-menu-open-low",
+   "width": 1200,
+   "height": 676,
+   "game": "218",
+   "delivery": {
+    "gameId": "ghosting-renewed",
+    "launcherId": "218",
+    "state": "ready",
+    "percent": 100,
+    "bytesDownloaded": 0,
+    "totalBytes": 1945918366,
+    "speedBps": 0,
+    "etaSeconds": null,
+    "version": "1.0.9",
+    "installedVersion": "1.0.9",
+    "installedAt": "2026-10-01T09:30:00.000Z",
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "legacy",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": null,
+    "checked": 0,
+    "totalChecked": 0,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "ghosting-renewed",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": {
+     "installedVersion": "1.0.9",
+     "availableVersion": "1.0.9",
+     "upToDate": true,
+     "updateAvailable": false,
+     "updateRequired": false,
+     "kind": null,
+     "totalSize": 0,
+     "steps": [],
+     "source": null,
+     "checkedAt": "2026-10-16T12:00:00.000Z",
+     "stale": false,
+     "unknown": false,
+     "error": null
+    },
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": false,
+     "state": "ready",
+     "action": "play"
+    },
+    "requiresLicense": false
+   },
+   "menuState": {
+    "available": true,
+    "gameId": "ghosting-renewed",
+    "installed": true,
+    "busy": false,
+    "running": false,
+    "items": {
+     "settings": {
+      "enabled": true,
+      "reason": null
+     },
+     "shortcut": {
+      "enabled": true,
+      "reason": null
+     },
+     "screenshots": {
+      "enabled": true,
+      "reason": null
+     },
+     "folder": {
+      "enabled": true,
+      "reason": null
+     },
+     "updates": {
+      "enabled": true,
+      "reason": null
+     },
+     "verify": {
+      "enabled": false,
+      "reason": "in-development"
+     },
+     "repair": {
+      "enabled": false,
+      "reason": "in-development"
+     },
+     "exportBuild": {
+      "enabled": true,
+      "reason": null
+     },
+     "exportSettings": {
+      "enabled": true,
+      "reason": null
+     },
+     "importBuild": {
+      "enabled": true,
+      "reason": null
+     },
+     "uninstall": {
+      "enabled": true,
+      "reason": null
+     }
+    }
+   },
+   "steps": [
+    {
+     "click": "menu"
+    }
+   ]
+  },
+  {
+   "id": "games-menu-open-tight",
+   "width": 1200,
+   "height": 520,
+   "game": "218",
+   "delivery": {
+    "gameId": "ghosting-renewed",
+    "launcherId": "218",
+    "state": "ready",
+    "percent": 100,
+    "bytesDownloaded": 0,
+    "totalBytes": 1945918366,
+    "speedBps": 0,
+    "etaSeconds": null,
+    "version": "1.0.9",
+    "installedVersion": "1.0.9",
+    "installedAt": "2026-10-01T09:30:00.000Z",
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "legacy",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": null,
+    "checked": 0,
+    "totalChecked": 0,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "ghosting-renewed",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": {
+     "installedVersion": "1.0.9",
+     "availableVersion": "1.0.9",
+     "upToDate": true,
+     "updateAvailable": false,
+     "updateRequired": false,
+     "kind": null,
+     "totalSize": 0,
+     "steps": [],
+     "source": null,
+     "checkedAt": "2026-10-16T12:00:00.000Z",
+     "stale": false,
+     "unknown": false,
+     "error": null
+    },
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": false,
+     "state": "ready",
+     "action": "play"
+    },
+    "requiresLicense": false
+   },
+   "menuState": {
+    "available": true,
+    "gameId": "ghosting-renewed",
+    "installed": true,
+    "busy": false,
+    "running": false,
+    "items": {
+     "settings": {
+      "enabled": true,
+      "reason": null
+     },
+     "shortcut": {
+      "enabled": true,
+      "reason": null
+     },
+     "screenshots": {
+      "enabled": true,
+      "reason": null
+     },
+     "folder": {
+      "enabled": true,
+      "reason": null
+     },
+     "updates": {
+      "enabled": true,
+      "reason": null
+     },
+     "verify": {
+      "enabled": false,
+      "reason": "in-development"
+     },
+     "repair": {
+      "enabled": false,
+      "reason": "in-development"
+     },
+     "exportBuild": {
+      "enabled": true,
+      "reason": null
+     },
+     "exportSettings": {
+      "enabled": true,
+      "reason": null
+     },
+     "importBuild": {
+      "enabled": true,
+      "reason": null
+     },
+     "uninstall": {
+      "enabled": true,
+      "reason": null
+     }
+    }
+   },
+   "steps": [
+    {
+     "click": "menu"
+    }
+   ]
+  },
+  {
+   "id": "games-build-open",
+   "width": 1600,
+   "height": 900,
+   "game": "220",
+   "delivery": {
+    "gameId": "hl2-4260",
+    "launcherId": "220",
+    "state": "ready",
+    "totalBytes": 1704734880,
+    "version": "1.0.0",
+    "installedVersion": "1.0.0",
+    "installedAt": "2026-09-20T18:00:00.000Z",
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "not-installed",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": null,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "hl2-4260",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": {
+     "installedVersion": "1.0.0",
+     "availableVersion": "1.0.0",
+     "upToDate": true,
+     "updateAvailable": false,
+     "updateRequired": false,
+     "kind": null,
+     "totalSize": 0,
+     "steps": [],
+     "source": null,
+     "checkedAt": "2026-10-16T12:00:00.000Z",
+     "stale": false,
+     "unknown": false,
+     "error": null
+    },
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": false,
+     "state": "ready",
+     "action": "play"
+    },
+    "requiresLicense": true,
+    "percent": 100
+   },
+   "steps": [
+    {
+     "click": "build"
+    }
+   ],
+   "menuState": {
+    "available": true,
+    "gameId": "hl2-4260",
+    "installed": false,
+    "busy": false,
+    "running": false,
+    "items": {
+     "settings": {
+      "enabled": true,
+      "reason": null
+     },
+     "shortcut": {
+      "enabled": false,
+      "reason": "not-installed"
+     },
+     "screenshots": {
+      "enabled": false,
+      "reason": "not-installed"
+     },
+     "folder": {
+      "enabled": false,
+      "reason": "not-installed"
+     },
+     "updates": {
+      "enabled": true,
+      "reason": null
+     },
+     "verify": {
+      "enabled": false,
+      "reason": "in-development"
+     },
+     "repair": {
+      "enabled": false,
+      "reason": "in-development"
+     },
+     "exportBuild": {
+      "enabled": false,
+      "reason": "not-installed"
+     },
+     "exportSettings": {
+      "enabled": false,
+      "reason": "not-installed"
+     },
+     "importBuild": {
+      "enabled": true,
+      "reason": null
+     },
+     "uninstall": {
+      "enabled": false,
+      "reason": "not-installed"
+     }
+    }
+   }
+  },
+  {
+   "id": "games-build-hover",
+   "width": 1600,
+   "height": 900,
+   "game": "220",
+   "delivery": {
+    "gameId": "hl2-4260",
+    "launcherId": "220",
+    "state": "ready",
+    "totalBytes": 1704734880,
+    "version": "1.0.0",
+    "installedVersion": "1.0.0",
+    "installedAt": "2026-09-20T18:00:00.000Z",
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "not-installed",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": null,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "hl2-4260",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": {
+     "installedVersion": "1.0.0",
+     "availableVersion": "1.0.0",
+     "upToDate": true,
+     "updateAvailable": false,
+     "updateRequired": false,
+     "kind": null,
+     "totalSize": 0,
+     "steps": [],
+     "source": null,
+     "checkedAt": "2026-10-16T12:00:00.000Z",
+     "stale": false,
+     "unknown": false,
+     "error": null
+    },
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": false,
+     "state": "ready",
+     "action": "play"
+    },
+    "requiresLicense": true,
+    "percent": 100
+   },
+   "steps": [
+    {
+     "hover": "build"
+    }
+   ],
+   "menuState": {
+    "available": true,
+    "gameId": "hl2-4260",
+    "installed": false,
+    "busy": false,
+    "running": false,
+    "items": {
+     "settings": {
+      "enabled": true,
+      "reason": null
+     },
+     "shortcut": {
+      "enabled": false,
+      "reason": "not-installed"
+     },
+     "screenshots": {
+      "enabled": false,
+      "reason": "not-installed"
+     },
+     "folder": {
+      "enabled": false,
+      "reason": "not-installed"
+     },
+     "updates": {
+      "enabled": true,
+      "reason": null
+     },
+     "verify": {
+      "enabled": false,
+      "reason": "in-development"
+     },
+     "repair": {
+      "enabled": false,
+      "reason": "in-development"
+     },
+     "exportBuild": {
+      "enabled": false,
+      "reason": "not-installed"
+     },
+     "exportSettings": {
+      "enabled": false,
+      "reason": "not-installed"
+     },
+     "importBuild": {
+      "enabled": true,
+      "reason": null
+     },
+     "uninstall": {
+      "enabled": false,
+      "reason": "not-installed"
+     }
+    }
+   }
+  },
+  {
+   "id": "games-tool-new",
+   "width": 1600,
+   "height": 900,
+   "game": "218",
+   "delivery": {
+    "gameId": "ghosting-renewed",
+    "launcherId": "218",
+    "state": "ready",
+    "percent": 100,
+    "bytesDownloaded": 0,
+    "totalBytes": 1945918366,
+    "speedBps": 0,
+    "etaSeconds": null,
+    "version": "1.0.9",
+    "installedVersion": "1.0.9",
+    "installedAt": "2026-10-01T09:30:00.000Z",
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "legacy",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": null,
+    "checked": 0,
+    "totalChecked": 0,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "ghosting-renewed",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": {
+     "installedVersion": "1.0.9",
+     "availableVersion": "1.0.9",
+     "upToDate": true,
+     "updateAvailable": false,
+     "updateRequired": false,
+     "kind": null,
+     "totalSize": 0,
+     "steps": [],
+     "source": null,
+     "checkedAt": "2026-10-16T12:00:00.000Z",
+     "stale": false,
+     "unknown": false,
+     "error": null
+    },
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": false,
+     "state": "ready",
+     "action": "play"
+    },
+    "requiresLicense": false
+   },
+   "tool": {
+    "toolId": "livesplit",
+    "state": "not-installed",
+    "version": null,
+    "availableVersion": "1.0.0",
+    "updateAvailable": false,
+    "installPath": null,
+    "percent": 0,
+    "error": null,
+    "running": false,
+    "stopping": false,
+    "shortName": "LiveSplit",
+    "title": "LiveSplit",
+    "subtitle": "#L_TOOL_LIVESPLIT_SUB",
+    "description": "#L_TOOL_LIVESPLIT_DESC",
+    "icon": "fas fa-stopwatch",
+    "accent": "#3fa7ff",
+    "accentSoft": "rgba(63, 167, 255, 0.16)",
+    "hasHelp": true,
+    "sizeBytes": 8363929
+   },
+   "tools": true
+  },
+  {
+   "id": "games-tool-installing",
+   "width": 1600,
+   "height": 900,
+   "game": "218",
+   "delivery": {
+    "gameId": "ghosting-renewed",
+    "launcherId": "218",
+    "state": "ready",
+    "percent": 100,
+    "bytesDownloaded": 0,
+    "totalBytes": 1945918366,
+    "speedBps": 0,
+    "etaSeconds": null,
+    "version": "1.0.9",
+    "installedVersion": "1.0.9",
+    "installedAt": "2026-10-01T09:30:00.000Z",
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "legacy",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": null,
+    "checked": 0,
+    "totalChecked": 0,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "ghosting-renewed",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": {
+     "installedVersion": "1.0.9",
+     "availableVersion": "1.0.9",
+     "upToDate": true,
+     "updateAvailable": false,
+     "updateRequired": false,
+     "kind": null,
+     "totalSize": 0,
+     "steps": [],
+     "source": null,
+     "checkedAt": "2026-10-16T12:00:00.000Z",
+     "stale": false,
+     "unknown": false,
+     "error": null
+    },
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": false,
+     "state": "ready",
+     "action": "play"
+    },
+    "requiresLicense": false
+   },
+   "tool": {
+    "toolId": "livesplit",
+    "state": "installing",
+    "version": null,
+    "availableVersion": "1.0.0",
+    "updateAvailable": false,
+    "installPath": null,
+    "percent": 40,
+    "error": null,
+    "running": false,
+    "stopping": false,
+    "shortName": "LiveSplit",
+    "title": "LiveSplit",
+    "subtitle": "#L_TOOL_LIVESPLIT_SUB",
+    "description": "#L_TOOL_LIVESPLIT_DESC",
+    "icon": "fas fa-stopwatch",
+    "accent": "#3fa7ff",
+    "accentSoft": "rgba(63, 167, 255, 0.16)",
+    "hasHelp": true,
+    "sizeBytes": 8363929
+   },
+   "tools": true
+  },
+  {
+   "id": "games-tool-ready",
+   "width": 1600,
+   "height": 900,
+   "game": "218",
+   "delivery": {
+    "gameId": "ghosting-renewed",
+    "launcherId": "218",
+    "state": "ready",
+    "percent": 100,
+    "bytesDownloaded": 0,
+    "totalBytes": 1945918366,
+    "speedBps": 0,
+    "etaSeconds": null,
+    "version": "1.0.9",
+    "installedVersion": "1.0.9",
+    "installedAt": "2026-10-01T09:30:00.000Z",
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "legacy",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": null,
+    "checked": 0,
+    "totalChecked": 0,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "ghosting-renewed",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": {
+     "installedVersion": "1.0.9",
+     "availableVersion": "1.0.9",
+     "upToDate": true,
+     "updateAvailable": false,
+     "updateRequired": false,
+     "kind": null,
+     "totalSize": 0,
+     "steps": [],
+     "source": null,
+     "checkedAt": "2026-10-16T12:00:00.000Z",
+     "stale": false,
+     "unknown": false,
+     "error": null
+    },
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": false,
+     "state": "ready",
+     "action": "play"
+    },
+    "requiresLicense": false
+   },
+   "tool": {
+    "toolId": "livesplit",
+    "state": "ready",
+    "version": "1.0.0",
+    "availableVersion": "1.0.0",
+    "updateAvailable": false,
+    "installPath": null,
+    "percent": 0,
+    "error": null,
+    "running": false,
+    "stopping": false,
+    "shortName": "LiveSplit",
+    "title": "LiveSplit",
+    "subtitle": "#L_TOOL_LIVESPLIT_SUB",
+    "description": "#L_TOOL_LIVESPLIT_DESC",
+    "icon": "fas fa-stopwatch",
+    "accent": "#3fa7ff",
+    "accentSoft": "rgba(63, 167, 255, 0.16)",
+    "hasHelp": true,
+    "sizeBytes": 8363929
+   },
+   "tools": true
+  },
+  {
+   "id": "games-tool-running",
+   "width": 1600,
+   "height": 900,
+   "game": "218",
+   "delivery": {
+    "gameId": "ghosting-renewed",
+    "launcherId": "218",
+    "state": "ready",
+    "percent": 100,
+    "bytesDownloaded": 0,
+    "totalBytes": 1945918366,
+    "speedBps": 0,
+    "etaSeconds": null,
+    "version": "1.0.9",
+    "installedVersion": "1.0.9",
+    "installedAt": "2026-10-01T09:30:00.000Z",
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "legacy",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": null,
+    "checked": 0,
+    "totalChecked": 0,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "ghosting-renewed",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": {
+     "installedVersion": "1.0.9",
+     "availableVersion": "1.0.9",
+     "upToDate": true,
+     "updateAvailable": false,
+     "updateRequired": false,
+     "kind": null,
+     "totalSize": 0,
+     "steps": [],
+     "source": null,
+     "checkedAt": "2026-10-16T12:00:00.000Z",
+     "stale": false,
+     "unknown": false,
+     "error": null
+    },
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": false,
+     "state": "ready",
+     "action": "play"
+    },
+    "requiresLicense": false
+   },
+   "tool": {
+    "toolId": "livesplit",
+    "state": "ready",
+    "version": "1.0.0",
+    "availableVersion": "1.0.0",
+    "updateAvailable": false,
+    "installPath": null,
+    "percent": 0,
+    "error": null,
+    "running": true,
+    "stopping": false,
+    "shortName": "LiveSplit",
+    "title": "LiveSplit",
+    "subtitle": "#L_TOOL_LIVESPLIT_SUB",
+    "description": "#L_TOOL_LIVESPLIT_DESC",
+    "icon": "fas fa-stopwatch",
+    "accent": "#3fa7ff",
+    "accentSoft": "rgba(63, 167, 255, 0.16)",
+    "hasHelp": true,
+    "sizeBytes": 8363929
+   },
+   "tools": true
+  },
+  {
+   "id": "games-tool-new-ru",
+   "width": 1600,
+   "height": 900,
+   "game": "218",
+   "delivery": {
+    "gameId": "ghosting-renewed",
+    "launcherId": "218",
+    "state": "ready",
+    "percent": 100,
+    "bytesDownloaded": 0,
+    "totalBytes": 1945918366,
+    "speedBps": 0,
+    "etaSeconds": null,
+    "version": "1.0.9",
+    "installedVersion": "1.0.9",
+    "installedAt": "2026-10-01T09:30:00.000Z",
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "legacy",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": null,
+    "checked": 0,
+    "totalChecked": 0,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "ghosting-renewed",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": {
+     "installedVersion": "1.0.9",
+     "availableVersion": "1.0.9",
+     "upToDate": true,
+     "updateAvailable": false,
+     "updateRequired": false,
+     "kind": null,
+     "totalSize": 0,
+     "steps": [],
+     "source": null,
+     "checkedAt": "2026-10-16T12:00:00.000Z",
+     "stale": false,
+     "unknown": false,
+     "error": null
+    },
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": false,
+     "state": "ready",
+     "action": "play"
+    },
+    "requiresLicense": false
+   },
+   "tool": {
+    "toolId": "livesplit",
+    "state": "not-installed",
+    "version": null,
+    "availableVersion": "1.0.0",
+    "updateAvailable": false,
+    "installPath": null,
+    "percent": 0,
+    "error": null,
+    "running": false,
+    "stopping": false,
+    "shortName": "LiveSplit",
+    "title": "LiveSplit",
+    "subtitle": "#L_TOOL_LIVESPLIT_SUB",
+    "description": "#L_TOOL_LIVESPLIT_DESC",
+    "icon": "fas fa-stopwatch",
+    "accent": "#3fa7ff",
+    "accentSoft": "rgba(63, 167, 255, 0.16)",
+    "hasHelp": true,
+    "sizeBytes": 8363929
+   },
+   "tools": true,
+   "language": "ru"
+  },
+  {
+   "id": "games-theme-lambda-ready",
+   "width": 1600,
+   "height": 900,
+   "game": "218",
+   "delivery": {
+    "gameId": "ghosting-renewed",
+    "launcherId": "218",
+    "state": "ready",
+    "percent": 100,
+    "bytesDownloaded": 0,
+    "totalBytes": 1945918366,
+    "speedBps": 0,
+    "etaSeconds": null,
+    "version": "1.0.9",
+    "installedVersion": "1.0.9",
+    "installedAt": "2026-10-01T09:30:00.000Z",
+    "buildMetadata": null,
+    "buildDate": "2026-09-30T20:30:00.000Z",
+    "buildDateSource": null,
+    "metadataState": "legacy",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": null,
+    "checked": 0,
+    "totalChecked": 0,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "ghosting-renewed",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": {
+     "installedVersion": "1.0.9",
+     "availableVersion": "1.0.9",
+     "upToDate": true,
+     "updateAvailable": false,
+     "updateRequired": false,
+     "kind": null,
+     "totalSize": 0,
+     "steps": [],
+     "source": null,
+     "checkedAt": "2026-10-16T12:00:00.000Z",
+     "stale": false,
+     "unknown": false,
+     "error": null
+    },
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": false,
+     "state": "ready",
+     "action": "play"
+    },
+    "requiresLicense": false
+   },
+   "stats": {
+    "available": true,
+    "gameId": "ghosting-renewed",
+    "lastLaunchAt": "2026-10-11T17:20:00.000Z",
+    "totalPlaySeconds": 7380,
+    "launchCount": 5,
+    "sessionActive": false
+   },
+   "theme": "lambda"
+  },
+  {
+   "id": "games-theme-lambda-downloading",
+   "width": 1600,
+   "height": 900,
+   "game": "220",
+   "delivery": {
+    "gameId": "hl2-4260",
+    "launcherId": "220",
+    "state": "downloading",
+    "totalBytes": 1945918366,
+    "version": "1.0.0",
+    "installedVersion": null,
+    "installedAt": null,
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "not-installed",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": "download",
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "hl2-4260",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": null,
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": true,
+     "state": "downloading",
+     "action": "pause"
+    },
+    "requiresLicense": true,
+    "percent": 33.5,
+    "bytesDownloaded": 524288000,
+    "speedBps": 5242880,
+    "etaSeconds": 600
+   },
+   "theme": "lambda"
+  },
+  {
+   "id": "games-theme-lambda-error",
+   "width": 1600,
+   "height": 900,
+   "game": "220",
+   "delivery": {
+    "gameId": "hl2-4260",
+    "launcherId": "220",
+    "state": "error",
+    "totalBytes": 1704734880,
+    "version": "1.0.0",
+    "installedVersion": null,
+    "installedAt": null,
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "not-installed",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": {
+     "code": "NO_SPACE",
+     "details": {}
+    },
+    "pending": null,
+    "phase": null,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "hl2-4260",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": null,
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": false,
+     "state": "error",
+     "action": "retry"
+    },
+    "requiresLicense": true
+   },
+   "theme": "lambda"
+  },
+  {
+   "id": "games-theme-lambda-unavailable",
+   "width": 1600,
+   "height": 900,
+   "game": "220",
+   "delivery": {
+    "gameId": "hl2-4260",
+    "launcherId": "220",
+    "state": "not-installed",
+    "totalBytes": 1704734880,
+    "version": "1.0.0",
+    "installedVersion": null,
+    "installedAt": null,
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "not-installed",
+    "metadataIssue": null,
+    "installable": false,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": null,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "hl2-4260",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": null,
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": false,
+     "state": "unavailable",
+     "action": "explain",
+     "reason": "UNKNOWN_UNAVAILABLE"
+    },
+    "requiresLicense": true
+   },
+   "theme": "lambda"
+  },
+  {
+   "id": "games-theme-lambda-menu",
+   "width": 1600,
+   "height": 900,
+   "game": "218",
+   "delivery": {
+    "gameId": "ghosting-renewed",
+    "launcherId": "218",
+    "state": "ready",
+    "percent": 100,
+    "bytesDownloaded": 0,
+    "totalBytes": 1945918366,
+    "speedBps": 0,
+    "etaSeconds": null,
+    "version": "1.0.9",
+    "installedVersion": "1.0.9",
+    "installedAt": "2026-10-01T09:30:00.000Z",
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "legacy",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": null,
+    "checked": 0,
+    "totalChecked": 0,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "ghosting-renewed",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": {
+     "installedVersion": "1.0.9",
+     "availableVersion": "1.0.9",
+     "upToDate": true,
+     "updateAvailable": false,
+     "updateRequired": false,
+     "kind": null,
+     "totalSize": 0,
+     "steps": [],
+     "source": null,
+     "checkedAt": "2026-10-16T12:00:00.000Z",
+     "stale": false,
+     "unknown": false,
+     "error": null
+    },
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": false,
+     "state": "ready",
+     "action": "play"
+    },
+    "requiresLicense": false
+   },
+   "menuState": {
+    "available": true,
+    "gameId": "ghosting-renewed",
+    "installed": true,
+    "busy": false,
+    "running": false,
+    "items": {
+     "settings": {
+      "enabled": true,
+      "reason": null
+     },
+     "shortcut": {
+      "enabled": true,
+      "reason": null
+     },
+     "screenshots": {
+      "enabled": true,
+      "reason": null
+     },
+     "folder": {
+      "enabled": true,
+      "reason": null
+     },
+     "updates": {
+      "enabled": true,
+      "reason": null
+     },
+     "verify": {
+      "enabled": false,
+      "reason": "in-development"
+     },
+     "repair": {
+      "enabled": false,
+      "reason": "in-development"
+     },
+     "exportBuild": {
+      "enabled": true,
+      "reason": null
+     },
+     "exportSettings": {
+      "enabled": true,
+      "reason": null
+     },
+     "importBuild": {
+      "enabled": true,
+      "reason": null
+     },
+     "uninstall": {
+      "enabled": true,
+      "reason": null
+     }
+    }
+   },
+   "steps": [
+    {
+     "click": "menu"
+    }
+   ],
+   "theme": "lambda"
+  },
+  {
+   "id": "games-theme-resonance-ready",
+   "width": 1600,
+   "height": 900,
+   "game": "218",
+   "delivery": {
+    "gameId": "ghosting-renewed",
+    "launcherId": "218",
+    "state": "ready",
+    "percent": 100,
+    "bytesDownloaded": 0,
+    "totalBytes": 1945918366,
+    "speedBps": 0,
+    "etaSeconds": null,
+    "version": "1.0.9",
+    "installedVersion": "1.0.9",
+    "installedAt": "2026-10-01T09:30:00.000Z",
+    "buildMetadata": null,
+    "buildDate": "2026-09-30T20:30:00.000Z",
+    "buildDateSource": null,
+    "metadataState": "legacy",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": null,
+    "checked": 0,
+    "totalChecked": 0,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "ghosting-renewed",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": {
+     "installedVersion": "1.0.9",
+     "availableVersion": "1.0.9",
+     "upToDate": true,
+     "updateAvailable": false,
+     "updateRequired": false,
+     "kind": null,
+     "totalSize": 0,
+     "steps": [],
+     "source": null,
+     "checkedAt": "2026-10-16T12:00:00.000Z",
+     "stale": false,
+     "unknown": false,
+     "error": null
+    },
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": false,
+     "state": "ready",
+     "action": "play"
+    },
+    "requiresLicense": false
+   },
+   "stats": {
+    "available": true,
+    "gameId": "ghosting-renewed",
+    "lastLaunchAt": "2026-10-11T17:20:00.000Z",
+    "totalPlaySeconds": 7380,
+    "launchCount": 5,
+    "sessionActive": false
+   },
+   "theme": "resonance"
+  },
+  {
+   "id": "games-theme-resonance-downloading",
+   "width": 1600,
+   "height": 900,
+   "game": "220",
+   "delivery": {
+    "gameId": "hl2-4260",
+    "launcherId": "220",
+    "state": "downloading",
+    "totalBytes": 1945918366,
+    "version": "1.0.0",
+    "installedVersion": null,
+    "installedAt": null,
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "not-installed",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": "download",
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "hl2-4260",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": null,
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": true,
+     "state": "downloading",
+     "action": "pause"
+    },
+    "requiresLicense": true,
+    "percent": 33.5,
+    "bytesDownloaded": 524288000,
+    "speedBps": 5242880,
+    "etaSeconds": 600
+   },
+   "theme": "resonance"
+  },
+  {
+   "id": "games-theme-resonance-error",
+   "width": 1600,
+   "height": 900,
+   "game": "220",
+   "delivery": {
+    "gameId": "hl2-4260",
+    "launcherId": "220",
+    "state": "error",
+    "totalBytes": 1704734880,
+    "version": "1.0.0",
+    "installedVersion": null,
+    "installedAt": null,
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "not-installed",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": {
+     "code": "NO_SPACE",
+     "details": {}
+    },
+    "pending": null,
+    "phase": null,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "hl2-4260",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": null,
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": false,
+     "state": "error",
+     "action": "retry"
+    },
+    "requiresLicense": true
+   },
+   "theme": "resonance"
+  },
+  {
+   "id": "games-theme-resonance-unavailable",
+   "width": 1600,
+   "height": 900,
+   "game": "220",
+   "delivery": {
+    "gameId": "hl2-4260",
+    "launcherId": "220",
+    "state": "not-installed",
+    "totalBytes": 1704734880,
+    "version": "1.0.0",
+    "installedVersion": null,
+    "installedAt": null,
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "not-installed",
+    "metadataIssue": null,
+    "installable": false,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": null,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "hl2-4260",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": null,
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": false,
+     "state": "unavailable",
+     "action": "explain",
+     "reason": "UNKNOWN_UNAVAILABLE"
+    },
+    "requiresLicense": true
+   },
+   "theme": "resonance"
+  },
+  {
+   "id": "games-theme-resonance-menu",
+   "width": 1600,
+   "height": 900,
+   "game": "218",
+   "delivery": {
+    "gameId": "ghosting-renewed",
+    "launcherId": "218",
+    "state": "ready",
+    "percent": 100,
+    "bytesDownloaded": 0,
+    "totalBytes": 1945918366,
+    "speedBps": 0,
+    "etaSeconds": null,
+    "version": "1.0.9",
+    "installedVersion": "1.0.9",
+    "installedAt": "2026-10-01T09:30:00.000Z",
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "legacy",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": null,
+    "checked": 0,
+    "totalChecked": 0,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "ghosting-renewed",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": {
+     "installedVersion": "1.0.9",
+     "availableVersion": "1.0.9",
+     "upToDate": true,
+     "updateAvailable": false,
+     "updateRequired": false,
+     "kind": null,
+     "totalSize": 0,
+     "steps": [],
+     "source": null,
+     "checkedAt": "2026-10-16T12:00:00.000Z",
+     "stale": false,
+     "unknown": false,
+     "error": null
+    },
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": false,
+     "state": "ready",
+     "action": "play"
+    },
+    "requiresLicense": false
+   },
+   "menuState": {
+    "available": true,
+    "gameId": "ghosting-renewed",
+    "installed": true,
+    "busy": false,
+    "running": false,
+    "items": {
+     "settings": {
+      "enabled": true,
+      "reason": null
+     },
+     "shortcut": {
+      "enabled": true,
+      "reason": null
+     },
+     "screenshots": {
+      "enabled": true,
+      "reason": null
+     },
+     "folder": {
+      "enabled": true,
+      "reason": null
+     },
+     "updates": {
+      "enabled": true,
+      "reason": null
+     },
+     "verify": {
+      "enabled": false,
+      "reason": "in-development"
+     },
+     "repair": {
+      "enabled": false,
+      "reason": "in-development"
+     },
+     "exportBuild": {
+      "enabled": true,
+      "reason": null
+     },
+     "exportSettings": {
+      "enabled": true,
+      "reason": null
+     },
+     "importBuild": {
+      "enabled": true,
+      "reason": null
+     },
+     "uninstall": {
+      "enabled": true,
+      "reason": null
+     }
+    }
+   },
+   "steps": [
+    {
+     "click": "menu"
+    }
+   ],
+   "theme": "resonance"
+  },
+  {
+   "id": "games-theme-combine-ready",
+   "width": 1600,
+   "height": 900,
+   "game": "218",
+   "delivery": {
+    "gameId": "ghosting-renewed",
+    "launcherId": "218",
+    "state": "ready",
+    "percent": 100,
+    "bytesDownloaded": 0,
+    "totalBytes": 1945918366,
+    "speedBps": 0,
+    "etaSeconds": null,
+    "version": "1.0.9",
+    "installedVersion": "1.0.9",
+    "installedAt": "2026-10-01T09:30:00.000Z",
+    "buildMetadata": null,
+    "buildDate": "2026-09-30T20:30:00.000Z",
+    "buildDateSource": null,
+    "metadataState": "legacy",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": null,
+    "checked": 0,
+    "totalChecked": 0,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "ghosting-renewed",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": {
+     "installedVersion": "1.0.9",
+     "availableVersion": "1.0.9",
+     "upToDate": true,
+     "updateAvailable": false,
+     "updateRequired": false,
+     "kind": null,
+     "totalSize": 0,
+     "steps": [],
+     "source": null,
+     "checkedAt": "2026-10-16T12:00:00.000Z",
+     "stale": false,
+     "unknown": false,
+     "error": null
+    },
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": false,
+     "state": "ready",
+     "action": "play"
+    },
+    "requiresLicense": false
+   },
+   "stats": {
+    "available": true,
+    "gameId": "ghosting-renewed",
+    "lastLaunchAt": "2026-10-11T17:20:00.000Z",
+    "totalPlaySeconds": 7380,
+    "launchCount": 5,
+    "sessionActive": false
+   },
+   "theme": "combine"
+  },
+  {
+   "id": "games-theme-combine-downloading",
+   "width": 1600,
+   "height": 900,
+   "game": "220",
+   "delivery": {
+    "gameId": "hl2-4260",
+    "launcherId": "220",
+    "state": "downloading",
+    "totalBytes": 1945918366,
+    "version": "1.0.0",
+    "installedVersion": null,
+    "installedAt": null,
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "not-installed",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": "download",
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "hl2-4260",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": null,
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": true,
+     "state": "downloading",
+     "action": "pause"
+    },
+    "requiresLicense": true,
+    "percent": 33.5,
+    "bytesDownloaded": 524288000,
+    "speedBps": 5242880,
+    "etaSeconds": 600
+   },
+   "theme": "combine"
+  },
+  {
+   "id": "games-theme-combine-error",
+   "width": 1600,
+   "height": 900,
+   "game": "220",
+   "delivery": {
+    "gameId": "hl2-4260",
+    "launcherId": "220",
+    "state": "error",
+    "totalBytes": 1704734880,
+    "version": "1.0.0",
+    "installedVersion": null,
+    "installedAt": null,
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "not-installed",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": {
+     "code": "NO_SPACE",
+     "details": {}
+    },
+    "pending": null,
+    "phase": null,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "hl2-4260",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": null,
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": false,
+     "state": "error",
+     "action": "retry"
+    },
+    "requiresLicense": true
+   },
+   "theme": "combine"
+  },
+  {
+   "id": "games-theme-combine-unavailable",
+   "width": 1600,
+   "height": 900,
+   "game": "220",
+   "delivery": {
+    "gameId": "hl2-4260",
+    "launcherId": "220",
+    "state": "not-installed",
+    "totalBytes": 1704734880,
+    "version": "1.0.0",
+    "installedVersion": null,
+    "installedAt": null,
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "not-installed",
+    "metadataIssue": null,
+    "installable": false,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": null,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "hl2-4260",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": null,
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": false,
+     "state": "unavailable",
+     "action": "explain",
+     "reason": "UNKNOWN_UNAVAILABLE"
+    },
+    "requiresLicense": true
+   },
+   "theme": "combine"
+  },
+  {
+   "id": "games-theme-combine-menu",
+   "width": 1600,
+   "height": 900,
+   "game": "218",
+   "delivery": {
+    "gameId": "ghosting-renewed",
+    "launcherId": "218",
+    "state": "ready",
+    "percent": 100,
+    "bytesDownloaded": 0,
+    "totalBytes": 1945918366,
+    "speedBps": 0,
+    "etaSeconds": null,
+    "version": "1.0.9",
+    "installedVersion": "1.0.9",
+    "installedAt": "2026-10-01T09:30:00.000Z",
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "legacy",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": null,
+    "checked": 0,
+    "totalChecked": 0,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "ghosting-renewed",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": {
+     "installedVersion": "1.0.9",
+     "availableVersion": "1.0.9",
+     "upToDate": true,
+     "updateAvailable": false,
+     "updateRequired": false,
+     "kind": null,
+     "totalSize": 0,
+     "steps": [],
+     "source": null,
+     "checkedAt": "2026-10-16T12:00:00.000Z",
+     "stale": false,
+     "unknown": false,
+     "error": null
+    },
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": false,
+     "state": "ready",
+     "action": "play"
+    },
+    "requiresLicense": false
+   },
+   "menuState": {
+    "available": true,
+    "gameId": "ghosting-renewed",
+    "installed": true,
+    "busy": false,
+    "running": false,
+    "items": {
+     "settings": {
+      "enabled": true,
+      "reason": null
+     },
+     "shortcut": {
+      "enabled": true,
+      "reason": null
+     },
+     "screenshots": {
+      "enabled": true,
+      "reason": null
+     },
+     "folder": {
+      "enabled": true,
+      "reason": null
+     },
+     "updates": {
+      "enabled": true,
+      "reason": null
+     },
+     "verify": {
+      "enabled": false,
+      "reason": "in-development"
+     },
+     "repair": {
+      "enabled": false,
+      "reason": "in-development"
+     },
+     "exportBuild": {
+      "enabled": true,
+      "reason": null
+     },
+     "exportSettings": {
+      "enabled": true,
+      "reason": null
+     },
+     "importBuild": {
+      "enabled": true,
+      "reason": null
+     },
+     "uninstall": {
+      "enabled": true,
+      "reason": null
+     }
+    }
+   },
+   "steps": [
+    {
+     "click": "menu"
+    }
+   ],
+   "theme": "combine"
+  },
+  {
+   "id": "games-theme-xen-ready",
+   "width": 1600,
+   "height": 900,
+   "game": "218",
+   "delivery": {
+    "gameId": "ghosting-renewed",
+    "launcherId": "218",
+    "state": "ready",
+    "percent": 100,
+    "bytesDownloaded": 0,
+    "totalBytes": 1945918366,
+    "speedBps": 0,
+    "etaSeconds": null,
+    "version": "1.0.9",
+    "installedVersion": "1.0.9",
+    "installedAt": "2026-10-01T09:30:00.000Z",
+    "buildMetadata": null,
+    "buildDate": "2026-09-30T20:30:00.000Z",
+    "buildDateSource": null,
+    "metadataState": "legacy",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": null,
+    "checked": 0,
+    "totalChecked": 0,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "ghosting-renewed",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": {
+     "installedVersion": "1.0.9",
+     "availableVersion": "1.0.9",
+     "upToDate": true,
+     "updateAvailable": false,
+     "updateRequired": false,
+     "kind": null,
+     "totalSize": 0,
+     "steps": [],
+     "source": null,
+     "checkedAt": "2026-10-16T12:00:00.000Z",
+     "stale": false,
+     "unknown": false,
+     "error": null
+    },
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": false,
+     "state": "ready",
+     "action": "play"
+    },
+    "requiresLicense": false
+   },
+   "stats": {
+    "available": true,
+    "gameId": "ghosting-renewed",
+    "lastLaunchAt": "2026-10-11T17:20:00.000Z",
+    "totalPlaySeconds": 7380,
+    "launchCount": 5,
+    "sessionActive": false
+   },
+   "theme": "xen"
+  },
+  {
+   "id": "games-theme-xen-downloading",
+   "width": 1600,
+   "height": 900,
+   "game": "220",
+   "delivery": {
+    "gameId": "hl2-4260",
+    "launcherId": "220",
+    "state": "downloading",
+    "totalBytes": 1945918366,
+    "version": "1.0.0",
+    "installedVersion": null,
+    "installedAt": null,
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "not-installed",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": "download",
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "hl2-4260",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": null,
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": true,
+     "state": "downloading",
+     "action": "pause"
+    },
+    "requiresLicense": true,
+    "percent": 33.5,
+    "bytesDownloaded": 524288000,
+    "speedBps": 5242880,
+    "etaSeconds": 600
+   },
+   "theme": "xen"
+  },
+  {
+   "id": "games-theme-xen-error",
+   "width": 1600,
+   "height": 900,
+   "game": "220",
+   "delivery": {
+    "gameId": "hl2-4260",
+    "launcherId": "220",
+    "state": "error",
+    "totalBytes": 1704734880,
+    "version": "1.0.0",
+    "installedVersion": null,
+    "installedAt": null,
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "not-installed",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": {
+     "code": "NO_SPACE",
+     "details": {}
+    },
+    "pending": null,
+    "phase": null,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "hl2-4260",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": null,
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": false,
+     "state": "error",
+     "action": "retry"
+    },
+    "requiresLicense": true
+   },
+   "theme": "xen"
+  },
+  {
+   "id": "games-theme-xen-unavailable",
+   "width": 1600,
+   "height": 900,
+   "game": "220",
+   "delivery": {
+    "gameId": "hl2-4260",
+    "launcherId": "220",
+    "state": "not-installed",
+    "totalBytes": 1704734880,
+    "version": "1.0.0",
+    "installedVersion": null,
+    "installedAt": null,
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "not-installed",
+    "metadataIssue": null,
+    "installable": false,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": null,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "hl2-4260",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": null,
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": false,
+     "state": "unavailable",
+     "action": "explain",
+     "reason": "UNKNOWN_UNAVAILABLE"
+    },
+    "requiresLicense": true
+   },
+   "theme": "xen"
+  },
+  {
+   "id": "games-theme-xen-menu",
+   "width": 1600,
+   "height": 900,
+   "game": "218",
+   "delivery": {
+    "gameId": "ghosting-renewed",
+    "launcherId": "218",
+    "state": "ready",
+    "percent": 100,
+    "bytesDownloaded": 0,
+    "totalBytes": 1945918366,
+    "speedBps": 0,
+    "etaSeconds": null,
+    "version": "1.0.9",
+    "installedVersion": "1.0.9",
+    "installedAt": "2026-10-01T09:30:00.000Z",
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "legacy",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": null,
+    "checked": 0,
+    "totalChecked": 0,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "ghosting-renewed",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": {
+     "installedVersion": "1.0.9",
+     "availableVersion": "1.0.9",
+     "upToDate": true,
+     "updateAvailable": false,
+     "updateRequired": false,
+     "kind": null,
+     "totalSize": 0,
+     "steps": [],
+     "source": null,
+     "checkedAt": "2026-10-16T12:00:00.000Z",
+     "stale": false,
+     "unknown": false,
+     "error": null
+    },
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": false,
+     "state": "ready",
+     "action": "play"
+    },
+    "requiresLicense": false
+   },
+   "menuState": {
+    "available": true,
+    "gameId": "ghosting-renewed",
+    "installed": true,
+    "busy": false,
+    "running": false,
+    "items": {
+     "settings": {
+      "enabled": true,
+      "reason": null
+     },
+     "shortcut": {
+      "enabled": true,
+      "reason": null
+     },
+     "screenshots": {
+      "enabled": true,
+      "reason": null
+     },
+     "folder": {
+      "enabled": true,
+      "reason": null
+     },
+     "updates": {
+      "enabled": true,
+      "reason": null
+     },
+     "verify": {
+      "enabled": false,
+      "reason": "in-development"
+     },
+     "repair": {
+      "enabled": false,
+      "reason": "in-development"
+     },
+     "exportBuild": {
+      "enabled": true,
+      "reason": null
+     },
+     "exportSettings": {
+      "enabled": true,
+      "reason": null
+     },
+     "importBuild": {
+      "enabled": true,
+      "reason": null
+     },
+     "uninstall": {
+      "enabled": true,
+      "reason": null
+     }
+    }
+   },
+   "steps": [
+    {
+     "click": "menu"
+    }
+   ],
+   "theme": "xen"
+  },
+  {
+   "id": "games-theme-steam2003-ready",
+   "width": 1600,
+   "height": 900,
+   "game": "218",
+   "delivery": {
+    "gameId": "ghosting-renewed",
+    "launcherId": "218",
+    "state": "ready",
+    "percent": 100,
+    "bytesDownloaded": 0,
+    "totalBytes": 1945918366,
+    "speedBps": 0,
+    "etaSeconds": null,
+    "version": "1.0.9",
+    "installedVersion": "1.0.9",
+    "installedAt": "2026-10-01T09:30:00.000Z",
+    "buildMetadata": null,
+    "buildDate": "2026-09-30T20:30:00.000Z",
+    "buildDateSource": null,
+    "metadataState": "legacy",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": null,
+    "checked": 0,
+    "totalChecked": 0,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "ghosting-renewed",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": {
+     "installedVersion": "1.0.9",
+     "availableVersion": "1.0.9",
+     "upToDate": true,
+     "updateAvailable": false,
+     "updateRequired": false,
+     "kind": null,
+     "totalSize": 0,
+     "steps": [],
+     "source": null,
+     "checkedAt": "2026-10-16T12:00:00.000Z",
+     "stale": false,
+     "unknown": false,
+     "error": null
+    },
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": false,
+     "state": "ready",
+     "action": "play"
+    },
+    "requiresLicense": false
+   },
+   "stats": {
+    "available": true,
+    "gameId": "ghosting-renewed",
+    "lastLaunchAt": "2026-10-11T17:20:00.000Z",
+    "totalPlaySeconds": 7380,
+    "launchCount": 5,
+    "sessionActive": false
+   },
+   "theme": "steam2003"
+  },
+  {
+   "id": "games-theme-steam2003-downloading",
+   "width": 1600,
+   "height": 900,
+   "game": "220",
+   "delivery": {
+    "gameId": "hl2-4260",
+    "launcherId": "220",
+    "state": "downloading",
+    "totalBytes": 1945918366,
+    "version": "1.0.0",
+    "installedVersion": null,
+    "installedAt": null,
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "not-installed",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": "download",
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "hl2-4260",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": null,
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": true,
+     "state": "downloading",
+     "action": "pause"
+    },
+    "requiresLicense": true,
+    "percent": 33.5,
+    "bytesDownloaded": 524288000,
+    "speedBps": 5242880,
+    "etaSeconds": 600
+   },
+   "theme": "steam2003"
+  },
+  {
+   "id": "games-theme-steam2003-error",
+   "width": 1600,
+   "height": 900,
+   "game": "220",
+   "delivery": {
+    "gameId": "hl2-4260",
+    "launcherId": "220",
+    "state": "error",
+    "totalBytes": 1704734880,
+    "version": "1.0.0",
+    "installedVersion": null,
+    "installedAt": null,
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "not-installed",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": {
+     "code": "NO_SPACE",
+     "details": {}
+    },
+    "pending": null,
+    "phase": null,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "hl2-4260",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": null,
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": false,
+     "state": "error",
+     "action": "retry"
+    },
+    "requiresLicense": true
+   },
+   "theme": "steam2003"
+  },
+  {
+   "id": "games-theme-steam2003-unavailable",
+   "width": 1600,
+   "height": 900,
+   "game": "220",
+   "delivery": {
+    "gameId": "hl2-4260",
+    "launcherId": "220",
+    "state": "not-installed",
+    "totalBytes": 1704734880,
+    "version": "1.0.0",
+    "installedVersion": null,
+    "installedAt": null,
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "not-installed",
+    "metadataIssue": null,
+    "installable": false,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": null,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "hl2-4260",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": null,
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": false,
+     "state": "unavailable",
+     "action": "explain",
+     "reason": "UNKNOWN_UNAVAILABLE"
+    },
+    "requiresLicense": true
+   },
+   "theme": "steam2003"
+  },
+  {
+   "id": "games-theme-steam2003-menu",
+   "width": 1600,
+   "height": 900,
+   "game": "218",
+   "delivery": {
+    "gameId": "ghosting-renewed",
+    "launcherId": "218",
+    "state": "ready",
+    "percent": 100,
+    "bytesDownloaded": 0,
+    "totalBytes": 1945918366,
+    "speedBps": 0,
+    "etaSeconds": null,
+    "version": "1.0.9",
+    "installedVersion": "1.0.9",
+    "installedAt": "2026-10-01T09:30:00.000Z",
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "legacy",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": null,
+    "checked": 0,
+    "totalChecked": 0,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "ghosting-renewed",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": {
+     "installedVersion": "1.0.9",
+     "availableVersion": "1.0.9",
+     "upToDate": true,
+     "updateAvailable": false,
+     "updateRequired": false,
+     "kind": null,
+     "totalSize": 0,
+     "steps": [],
+     "source": null,
+     "checkedAt": "2026-10-16T12:00:00.000Z",
+     "stale": false,
+     "unknown": false,
+     "error": null
+    },
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": false,
+     "state": "ready",
+     "action": "play"
+    },
+    "requiresLicense": false
+   },
+   "menuState": {
+    "available": true,
+    "gameId": "ghosting-renewed",
+    "installed": true,
+    "busy": false,
+    "running": false,
+    "items": {
+     "settings": {
+      "enabled": true,
+      "reason": null
+     },
+     "shortcut": {
+      "enabled": true,
+      "reason": null
+     },
+     "screenshots": {
+      "enabled": true,
+      "reason": null
+     },
+     "folder": {
+      "enabled": true,
+      "reason": null
+     },
+     "updates": {
+      "enabled": true,
+      "reason": null
+     },
+     "verify": {
+      "enabled": false,
+      "reason": "in-development"
+     },
+     "repair": {
+      "enabled": false,
+      "reason": "in-development"
+     },
+     "exportBuild": {
+      "enabled": true,
+      "reason": null
+     },
+     "exportSettings": {
+      "enabled": true,
+      "reason": null
+     },
+     "importBuild": {
+      "enabled": true,
+      "reason": null
+     },
+     "uninstall": {
+      "enabled": true,
+      "reason": null
+     }
+    }
+   },
+   "steps": [
+    {
+     "click": "menu"
+    }
+   ],
+   "theme": "steam2003"
+  },
+  {
+   "id": "games-theme-midnight-ready",
+   "width": 1600,
+   "height": 900,
+   "game": "218",
+   "delivery": {
+    "gameId": "ghosting-renewed",
+    "launcherId": "218",
+    "state": "ready",
+    "percent": 100,
+    "bytesDownloaded": 0,
+    "totalBytes": 1945918366,
+    "speedBps": 0,
+    "etaSeconds": null,
+    "version": "1.0.9",
+    "installedVersion": "1.0.9",
+    "installedAt": "2026-10-01T09:30:00.000Z",
+    "buildMetadata": null,
+    "buildDate": "2026-09-30T20:30:00.000Z",
+    "buildDateSource": null,
+    "metadataState": "legacy",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": null,
+    "checked": 0,
+    "totalChecked": 0,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "ghosting-renewed",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": {
+     "installedVersion": "1.0.9",
+     "availableVersion": "1.0.9",
+     "upToDate": true,
+     "updateAvailable": false,
+     "updateRequired": false,
+     "kind": null,
+     "totalSize": 0,
+     "steps": [],
+     "source": null,
+     "checkedAt": "2026-10-16T12:00:00.000Z",
+     "stale": false,
+     "unknown": false,
+     "error": null
+    },
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": false,
+     "state": "ready",
+     "action": "play"
+    },
+    "requiresLicense": false
+   },
+   "stats": {
+    "available": true,
+    "gameId": "ghosting-renewed",
+    "lastLaunchAt": "2026-10-11T17:20:00.000Z",
+    "totalPlaySeconds": 7380,
+    "launchCount": 5,
+    "sessionActive": false
+   },
+   "theme": "midnight"
+  },
+  {
+   "id": "games-theme-midnight-downloading",
+   "width": 1600,
+   "height": 900,
+   "game": "220",
+   "delivery": {
+    "gameId": "hl2-4260",
+    "launcherId": "220",
+    "state": "downloading",
+    "totalBytes": 1945918366,
+    "version": "1.0.0",
+    "installedVersion": null,
+    "installedAt": null,
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "not-installed",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": "download",
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "hl2-4260",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": null,
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": true,
+     "state": "downloading",
+     "action": "pause"
+    },
+    "requiresLicense": true,
+    "percent": 33.5,
+    "bytesDownloaded": 524288000,
+    "speedBps": 5242880,
+    "etaSeconds": 600
+   },
+   "theme": "midnight"
+  },
+  {
+   "id": "games-theme-midnight-error",
+   "width": 1600,
+   "height": 900,
+   "game": "220",
+   "delivery": {
+    "gameId": "hl2-4260",
+    "launcherId": "220",
+    "state": "error",
+    "totalBytes": 1704734880,
+    "version": "1.0.0",
+    "installedVersion": null,
+    "installedAt": null,
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "not-installed",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": {
+     "code": "NO_SPACE",
+     "details": {}
+    },
+    "pending": null,
+    "phase": null,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "hl2-4260",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": null,
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": false,
+     "state": "error",
+     "action": "retry"
+    },
+    "requiresLicense": true
+   },
+   "theme": "midnight"
+  },
+  {
+   "id": "games-theme-midnight-unavailable",
+   "width": 1600,
+   "height": 900,
+   "game": "220",
+   "delivery": {
+    "gameId": "hl2-4260",
+    "launcherId": "220",
+    "state": "not-installed",
+    "totalBytes": 1704734880,
+    "version": "1.0.0",
+    "installedVersion": null,
+    "installedAt": null,
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "not-installed",
+    "metadataIssue": null,
+    "installable": false,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": null,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "hl2-4260",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": null,
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": false,
+     "state": "unavailable",
+     "action": "explain",
+     "reason": "UNKNOWN_UNAVAILABLE"
+    },
+    "requiresLicense": true
+   },
+   "theme": "midnight"
+  },
+  {
+   "id": "games-theme-midnight-menu",
+   "width": 1600,
+   "height": 900,
+   "game": "218",
+   "delivery": {
+    "gameId": "ghosting-renewed",
+    "launcherId": "218",
+    "state": "ready",
+    "percent": 100,
+    "bytesDownloaded": 0,
+    "totalBytes": 1945918366,
+    "speedBps": 0,
+    "etaSeconds": null,
+    "version": "1.0.9",
+    "installedVersion": "1.0.9",
+    "installedAt": "2026-10-01T09:30:00.000Z",
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "legacy",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": null,
+    "checked": 0,
+    "totalChecked": 0,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "ghosting-renewed",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": {
+     "installedVersion": "1.0.9",
+     "availableVersion": "1.0.9",
+     "upToDate": true,
+     "updateAvailable": false,
+     "updateRequired": false,
+     "kind": null,
+     "totalSize": 0,
+     "steps": [],
+     "source": null,
+     "checkedAt": "2026-10-16T12:00:00.000Z",
+     "stale": false,
+     "unknown": false,
+     "error": null
+    },
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": false,
+     "state": "ready",
+     "action": "play"
+    },
+    "requiresLicense": false
+   },
+   "menuState": {
+    "available": true,
+    "gameId": "ghosting-renewed",
+    "installed": true,
+    "busy": false,
+    "running": false,
+    "items": {
+     "settings": {
+      "enabled": true,
+      "reason": null
+     },
+     "shortcut": {
+      "enabled": true,
+      "reason": null
+     },
+     "screenshots": {
+      "enabled": true,
+      "reason": null
+     },
+     "folder": {
+      "enabled": true,
+      "reason": null
+     },
+     "updates": {
+      "enabled": true,
+      "reason": null
+     },
+     "verify": {
+      "enabled": false,
+      "reason": "in-development"
+     },
+     "repair": {
+      "enabled": false,
+      "reason": "in-development"
+     },
+     "exportBuild": {
+      "enabled": true,
+      "reason": null
+     },
+     "exportSettings": {
+      "enabled": true,
+      "reason": null
+     },
+     "importBuild": {
+      "enabled": true,
+      "reason": null
+     },
+     "uninstall": {
+      "enabled": true,
+      "reason": null
+     }
+    }
+   },
+   "steps": [
+    {
+     "click": "menu"
+    }
+   ],
+   "theme": "midnight"
+  },
+  {
+   "id": "games-theme-liquid-glass-ready",
+   "width": 1600,
+   "height": 900,
+   "game": "218",
+   "delivery": {
+    "gameId": "ghosting-renewed",
+    "launcherId": "218",
+    "state": "ready",
+    "percent": 100,
+    "bytesDownloaded": 0,
+    "totalBytes": 1945918366,
+    "speedBps": 0,
+    "etaSeconds": null,
+    "version": "1.0.9",
+    "installedVersion": "1.0.9",
+    "installedAt": "2026-10-01T09:30:00.000Z",
+    "buildMetadata": null,
+    "buildDate": "2026-09-30T20:30:00.000Z",
+    "buildDateSource": null,
+    "metadataState": "legacy",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": null,
+    "checked": 0,
+    "totalChecked": 0,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "ghosting-renewed",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": {
+     "installedVersion": "1.0.9",
+     "availableVersion": "1.0.9",
+     "upToDate": true,
+     "updateAvailable": false,
+     "updateRequired": false,
+     "kind": null,
+     "totalSize": 0,
+     "steps": [],
+     "source": null,
+     "checkedAt": "2026-10-16T12:00:00.000Z",
+     "stale": false,
+     "unknown": false,
+     "error": null
+    },
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": false,
+     "state": "ready",
+     "action": "play"
+    },
+    "requiresLicense": false
+   },
+   "stats": {
+    "available": true,
+    "gameId": "ghosting-renewed",
+    "lastLaunchAt": "2026-10-11T17:20:00.000Z",
+    "totalPlaySeconds": 7380,
+    "launchCount": 5,
+    "sessionActive": false
+   },
+   "theme": "liquid-glass"
+  },
+  {
+   "id": "games-theme-liquid-glass-downloading",
+   "width": 1600,
+   "height": 900,
+   "game": "220",
+   "delivery": {
+    "gameId": "hl2-4260",
+    "launcherId": "220",
+    "state": "downloading",
+    "totalBytes": 1945918366,
+    "version": "1.0.0",
+    "installedVersion": null,
+    "installedAt": null,
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "not-installed",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": "download",
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "hl2-4260",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": null,
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": true,
+     "state": "downloading",
+     "action": "pause"
+    },
+    "requiresLicense": true,
+    "percent": 33.5,
+    "bytesDownloaded": 524288000,
+    "speedBps": 5242880,
+    "etaSeconds": 600
+   },
+   "theme": "liquid-glass"
+  },
+  {
+   "id": "games-theme-liquid-glass-error",
+   "width": 1600,
+   "height": 900,
+   "game": "220",
+   "delivery": {
+    "gameId": "hl2-4260",
+    "launcherId": "220",
+    "state": "error",
+    "totalBytes": 1704734880,
+    "version": "1.0.0",
+    "installedVersion": null,
+    "installedAt": null,
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "not-installed",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": {
+     "code": "NO_SPACE",
+     "details": {}
+    },
+    "pending": null,
+    "phase": null,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "hl2-4260",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": null,
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": false,
+     "state": "error",
+     "action": "retry"
+    },
+    "requiresLicense": true
+   },
+   "theme": "liquid-glass"
+  },
+  {
+   "id": "games-theme-liquid-glass-unavailable",
+   "width": 1600,
+   "height": 900,
+   "game": "220",
+   "delivery": {
+    "gameId": "hl2-4260",
+    "launcherId": "220",
+    "state": "not-installed",
+    "totalBytes": 1704734880,
+    "version": "1.0.0",
+    "installedVersion": null,
+    "installedAt": null,
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "not-installed",
+    "metadataIssue": null,
+    "installable": false,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": null,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "hl2-4260",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": null,
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": false,
+     "state": "unavailable",
+     "action": "explain",
+     "reason": "UNKNOWN_UNAVAILABLE"
+    },
+    "requiresLicense": true
+   },
+   "theme": "liquid-glass"
+  },
+  {
+   "id": "games-theme-liquid-glass-menu",
+   "width": 1600,
+   "height": 900,
+   "game": "218",
+   "delivery": {
+    "gameId": "ghosting-renewed",
+    "launcherId": "218",
+    "state": "ready",
+    "percent": 100,
+    "bytesDownloaded": 0,
+    "totalBytes": 1945918366,
+    "speedBps": 0,
+    "etaSeconds": null,
+    "version": "1.0.9",
+    "installedVersion": "1.0.9",
+    "installedAt": "2026-10-01T09:30:00.000Z",
+    "buildMetadata": null,
+    "buildDate": null,
+    "buildDateSource": null,
+    "metadataState": "legacy",
+    "metadataIssue": null,
+    "installable": true,
+    "reasons": [],
+    "unavailableReason": null,
+    "error": null,
+    "pending": null,
+    "phase": null,
+    "checked": 0,
+    "totalChecked": 0,
+    "integrity": null,
+    "updatePlan": null,
+    "source": "http",
+    "operation": null,
+    "chain": null,
+    "process": {
+     "gameId": "ghosting-renewed",
+     "state": "not-running",
+     "running": false,
+     "since": null,
+     "startedAt": null,
+     "exitCode": null,
+     "lastExit": null
+    },
+    "update": {
+     "installedVersion": "1.0.9",
+     "availableVersion": "1.0.9",
+     "upToDate": true,
+     "updateAvailable": false,
+     "updateRequired": false,
+     "kind": null,
+     "totalSize": 0,
+     "steps": [],
+     "source": null,
+     "checkedAt": "2026-10-16T12:00:00.000Z",
+     "stale": false,
+     "unknown": false,
+     "error": null
+    },
+    "mainButton": {
+     "enabled": true,
+     "spinner": false,
+     "progress": false,
+     "state": "ready",
+     "action": "play"
+    },
+    "requiresLicense": false
+   },
+   "menuState": {
+    "available": true,
+    "gameId": "ghosting-renewed",
+    "installed": true,
+    "busy": false,
+    "running": false,
+    "items": {
+     "settings": {
+      "enabled": true,
+      "reason": null
+     },
+     "shortcut": {
+      "enabled": true,
+      "reason": null
+     },
+     "screenshots": {
+      "enabled": true,
+      "reason": null
+     },
+     "folder": {
+      "enabled": true,
+      "reason": null
+     },
+     "updates": {
+      "enabled": true,
+      "reason": null
+     },
+     "verify": {
+      "enabled": false,
+      "reason": "in-development"
+     },
+     "repair": {
+      "enabled": false,
+      "reason": "in-development"
+     },
+     "exportBuild": {
+      "enabled": true,
+      "reason": null
+     },
+     "exportSettings": {
+      "enabled": true,
+      "reason": null
+     },
+     "importBuild": {
+      "enabled": true,
+      "reason": null
+     },
+     "uninstall": {
+      "enabled": true,
+      "reason": null
+     }
+    }
+   },
+   "steps": [
+    {
+     "click": "menu"
+    }
+   ],
+   "theme": "liquid-glass"
+  }
+ ]
+}

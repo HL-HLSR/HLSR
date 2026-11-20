@@ -1,0 +1,177 @@
+{
+  "$comment": "Раздел «Конфиг» HL1 (G5: GameConfigEditor.vue, GameCfgCheck.vue, GameCfgFiles.vue 0.4.9). Файл игрока userconfig.cfg (sensitivity перекрыта ниже), значения из autoexec.cfg и WON.cfg, проверка правил: 2 ошибки и предупреждение. У Ghosting ответы $else.",
+  "base": "configs/_base",
+  "invoke": {
+    "game-config-info": {
+      "$args": [
+        [
+          [
+            "70",
+            null
+          ],
+          {
+            "status": "ok",
+            "path": "C:\\HLSR\\hl1-won\\valve",
+            "exists": true,
+            "builds": []
+          }
+        ]
+      ],
+      "$else": {
+        "status": "error"
+      }
+    },
+    "game-config-read": {
+      "$args": [
+        [
+          [
+            "70",
+            null
+          ],
+          {
+            "status": "ok",
+            "gameId": "hl1-won",
+            "engine": "goldsrc",
+            "running": false,
+            "values": {
+              "sensitivity": "2.5",
+              "fps_max": "100",
+              "volume": "0.6",
+              "gamma": "2.5",
+              "hud_fastswitch": "1",
+              "crosshair": "1"
+            },
+            "sources": {
+              "sensitivity": "userconfig.cfg",
+              "fps_max": "WON.cfg",
+              "volume": "autoexec.cfg",
+              "gamma": "config.cfg",
+              "hud_fastswitch": "userconfig.cfg",
+              "crosshair": "config.cfg"
+            },
+            "sha256": "5f0c2a4d8e1b3c7a9d6e4f2b1a0c8d7e6f5a4b3c2d1e0f9a8b7c6d5e4f3a2b1c",
+            "playerFile": "userconfig.cfg",
+            "shadowed": [
+              "sensitivity"
+            ]
+          }
+        ]
+      ],
+      "$else": {
+        "status": "error"
+      }
+    },
+    "player-config-check": {
+      "$args": [
+        [
+          [
+            "70",
+            "scriptless"
+          ],
+          {
+            "status": "ok",
+            "stats": {
+              "files": 3,
+              "commands": 41,
+              "errors": 2,
+              "warnings": 1,
+              "infos": 0
+            },
+            "findings": [
+              {
+                "path": "valve/userconfig.cfg",
+                "file": "userconfig.cfg",
+                "line": 9,
+                "command": "+jumpbug",
+                "rule": "banned",
+                "level": "error",
+                "note": "",
+                "trail": [
+                  {
+                    "kind": "alias",
+                    "name": "jb"
+                  }
+                ]
+              },
+              {
+                "path": "valve/userconfig.cfg",
+                "file": "userconfig.cfg",
+                "line": 14,
+                "command": "+jumpbug",
+                "rule": "banned",
+                "level": "error",
+                "note": "",
+                "trail": [
+                  {
+                    "kind": "bind",
+                    "name": "MOUSE4"
+                  }
+                ]
+              },
+              {
+                "path": "valve/autoexec.cfg",
+                "file": "autoexec.cfg",
+                "line": 3,
+                "command": "cl_forwardspeed 999",
+                "rule": "values",
+                "level": "warning",
+                "note": "Allowed values: 400"
+              }
+            ]
+          }
+        ]
+      ],
+      "$else": {
+        "status": "nothing"
+      }
+    },
+    "game-cfg-files-list": {
+      "status": "ok",
+      "player": "valve/userconfig.cfg",
+      "running": false,
+      "truncated": false,
+      "files": [
+        {
+          "path": "valve/autoexec.cfg"
+        },
+        {
+          "path": "valve/config.cfg"
+        },
+        {
+          "path": "valve/userconfig.cfg"
+        },
+        {
+          "path": "valve/scripts/jump.cfg"
+        },
+        {
+          "path": "valve_WON/WON.cfg"
+        }
+      ]
+    },
+    "game-cfg-file-read": {
+      "$args": [
+        [
+          [
+            "hl1-won",
+            null,
+            "valve/userconfig.cfg"
+          ],
+          {
+            "status": "ok",
+            "gameId": "hl1-won",
+            "running": false,
+            "path": "valve/userconfig.cfg",
+            "content": "// HLSR: файл игрока\nsensitivity \"3\"\nm_rawinput 1\nfps_max 100\n\n// прыжки\nbind space +jump\nbind mwheeldown +jump\nalias jb \"+jumpbug\"\nbind e jb\nbind MOUSE5 \"+duck\"\n\n// скрипты\nbind MOUSE4 \"+jumpbug\"\nexec scripts/jump.cfg\nsensitivity \"2.5\"\nhud_fastswitch 1\necho \"userconfig loaded\"\n",
+            "encoding": "utf8",
+            "eol": "crlf",
+            "mtime": "2026-11-10T12:00:00.000Z"
+          }
+        ]
+      ],
+      "$else": {
+        "status": "error",
+        "code": "ENOENT"
+      }
+    }
+  }
+}

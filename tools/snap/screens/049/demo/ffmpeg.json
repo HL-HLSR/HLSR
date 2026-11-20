@@ -1,0 +1,37 @@
+{
+  "id": "demo/ffmpeg",
+  "state": "FFmpeg сломан: карточка «Скачать заново» с ошибкой",
+  "base": "demo/_base",
+  "steps": [
+    {
+      "click": {
+        "css": ".game-rail .rail-item[aria-label=\"Демо\"]",
+        "view": "rail-demo"
+      }
+    },
+    {
+      "click": {
+        "css": ".dmp__list .dmp__group:nth-child(2) .dmp__item:nth-of-type(1)",
+        "view": "dmp-item-gh-run"
+      }
+    },
+    {
+      "move": [
+        800,
+        880
+      ]
+    }
+  ],
+  "invoke": {
+    "demo-ffmpeg-status": {
+      "status": "ok",
+      "ffmpeg": {
+        "state": "error",
+        "code": "FFMPEG_BROKEN",
+        "installable": true,
+        "pinnedVersion": "9.0.2",
+        "sizeBytes": 104857600
+      }
+    }
+  }
+}

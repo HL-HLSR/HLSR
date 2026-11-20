@@ -1,0 +1,16 @@
+{
+  "$comment": "«Рекорды» (S7, HomePanel 0.4.9): вход на «Главную», вкладка «Рекорды», указатель на пустой шапке. Две игры — фильтр; мировой рекорд (золото, бегун с профилем HLSR), свежие забеги со 2 и 3 местом (серебро, бронза), обычные забеги с подкатегориями. Бесконечные анимации мест эталон ставит на t = 0, GPUI — нет: точная сверка мест — в records-still.",
+  "base": "home/_base",
+  "steps": [
+    {"click": {"css": ".launcher-topbar__tab:nth-child(1)", "view": "topbar-tab-home"}},
+    {"click": {"css": "#home-tab-records", "view": "home-tabs-1"}},
+    {"move": [1000, 40]}
+  ],
+  "invoke": {"public-news-get": {"status": "ok", "items": [
+    {"kind": "record", "id": "wr2hl", "game": "Half-Life 2", "gameKey": "hl2", "category": "Any%", "subcategory": "Scriptless · New Engine", "runners": ["Kanoyo"], "seconds": 1652.105, "date": "2026-11-16T10:00:00.000Z", "url": "https://www.speedrun.com/hl2/runs/wr2hl", "place": null, "profiles": ["76561199155902676"]},
+    {"kind": "run", "id": "r2hl1", "game": "Half-Life", "gameKey": "hl1", "category": "Any%", "subcategory": "Glitchless", "runners": ["Zed"], "seconds": 1748.4, "date": "2026-11-15T18:30:00.000Z", "url": "https://www.speedrun.com/hl1/runs/r2hl1", "place": 2, "profiles": null},
+    {"kind": "run", "id": "r3hl2", "game": "Half-Life 2", "gameKey": "hl2", "category": "100%", "subcategory": "", "runners": ["Mia", "Lev"], "seconds": 4512.9, "date": "2026-11-14T12:00:00.000Z", "url": "https://www.speedrun.com/hl2/runs/r3hl2", "place": 3, "profiles": [null, "76561190000000003"]},
+    {"kind": "run", "id": "r9hl1", "game": "Half-Life", "gameKey": "hl1", "category": "Any%", "subcategory": "Glitchless", "runners": ["Bob"], "seconds": 1900.25, "date": "2026-11-12T09:15:00.000Z", "url": "https://www.speedrun.com/hl1/runs/r9hl1", "place": null, "profiles": null},
+    {"kind": "run", "id": "r7hl2", "game": "Half-Life 2", "gameKey": "hl2", "category": "Any%", "subcategory": "Scriptless · Old Engine", "runners": ["Ann"], "seconds": 1700.75, "date": "2026-11-10T20:45:00.000Z", "url": "https://www.speedrun.com/hl2/runs/r7hl2", "place": null, "profiles": null}
+  ]}}
+}

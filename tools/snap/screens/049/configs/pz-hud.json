@@ -1,0 +1,26 @@
+{
+  "themes": ["hlsr", "liquid-glass"],
+  "id": "configs/pz-hud",
+  "state": "Ghosting: подраздел «Оформление HUD» — поля схемы с ползунками, сброс раздела, разделитель колонки",
+  "base": "configs/_pz",
+  "steps": [
+    {
+      "click": {
+        "css": ".launcher-topbar__tab:nth-child(3)",
+        "view": "topbar-tab-configs"
+      }
+    },
+    {
+      "click": {
+        "css": "#gx-tab-hud",
+        "view": "gx-tab-hud"
+      }
+    },
+    {
+      "move": [
+        800,
+        880
+      ]
+    }
+  ]
+}

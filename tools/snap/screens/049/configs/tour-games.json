@@ -1,0 +1,11 @@
+{
+  "id": "configs/tour-games",
+  "state": "Обучение Ghosting по «?», шаг 2 из 10: чипы игр",
+  "base": "configs/_base",
+  "steps": [
+    {"click": {"css": ".launcher-topbar__tab:nth-child(3)", "view": "topbar-tab-configs"}},
+    {"click": {"css": ".cfgp__help", "view": "cfgp-help"}},
+    {"click": {"css": ".tour__btn.primary", "view": "tour-next"}},
+    {"move": [800, 880]}
+  ]
+}

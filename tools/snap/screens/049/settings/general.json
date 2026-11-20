@@ -1,0 +1,9 @@
+{
+  "id": "settings/general",
+  "base": "settings/_base",
+  "state": "«Общие»: язык с флагом, «Прятать во время игры», Discord RPC подключён",
+  "languages": [
+    "ru",
+    "en"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "$comment": "Слой сцен шапки и колонки значков (5a.3, 5a.4; темы и языки — как у базы: 8 × ru/en): скрыто всё, кроме бренда, вкладок и колонки; фон .launcher-bg — ровная картинка shell-backdrop.png (tools/reference/lib/shell-backdrop.py), как в tools/snap/shell.json. Поле css вставляется в страницу при загрузке.",
+  "css": ".launcher-frame > :not(.launcher-bg):not(.game-rail):not(.launcher-topbar) { visibility: hidden !important; }\n.launcher-topbar__search, .launcher-topbar__right { visibility: hidden !important; }\n.launcher-bg { background: url(\"https://fixtures.invalid/shell-backdrop.png\") center top / cover no-repeat !important; }\n.launcher-bg__image, .launcher-bg__front, .launcher-bg__tool { display: none !important; }",
+  "https": {
+    "https://fixtures.invalid/shell-backdrop.png": "assets/shell-backdrop.png"
+  }
+}

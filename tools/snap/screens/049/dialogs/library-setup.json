@@ -1,0 +1,11 @@
+{
+  "id": "dialogs/library-setup",
+  "screen": "dialogs",
+  "state": "Первый запуск: окно «Папка для игр» (get-library-path без confirmed), путь проверен, свободное место; шапка над окном (z-index 15 < 20)",
+  "themes": ["hlsr", "paper"],
+  "languages": ["ru"],
+  "rails": ["closed", "open"],
+  "invoke": {
+    "get-library-path": {"path": "C:\\HLSR", "confirmed": false}
+  }
+}

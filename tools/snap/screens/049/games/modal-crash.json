@@ -1,0 +1,25 @@
+{
+  "id": "games/modal-crash",
+  "base": "games/_base",
+  "state": "Падение HL1 (game-crash-report): архив сбоя, путь с переносом, подсказка DEP; «Папка», Discord, «Закрыть»",
+  "steps": [
+    {
+      "emit": "game-crash-report",
+      "payload": {
+        "gameId": "hl1-won",
+        "launcherId": "70",
+        "exitCode": -1073741819,
+        "hasDump": true,
+        "archive": true,
+        "file": "C:\\HLSR\\Games\\hl1-won\\crash-reports\\hl1-won-2026-11-17_12-00-00-crash-report.zip",
+        "hint": "DEP_ALWAYS_ON"
+      }
+    },
+    {
+      "move": [
+        800,
+        880
+      ]
+    }
+  ]
+}

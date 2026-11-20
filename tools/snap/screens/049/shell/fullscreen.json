@@ -1,0 +1,14 @@
+{
+  "id": "shell/fullscreen",
+  "screen": "shell",
+  "state": "Окно уже на весь экран (fullscreen-state): радиус 0, без контура, кнопка «Выйти из полноэкранного режима»",
+  "themes": ["hlsr"],
+  "languages": ["ru"],
+  "prefs": {"configTourSeen": true},
+  "invoke": {
+    "window-command": {
+      "$args": [[["fullscreen-state"], {"ok": true, "fullscreen": true}]],
+      "$else": {"ok": true, "fullscreen": true}
+    }
+  }
+}

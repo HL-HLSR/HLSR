@@ -1,0 +1,6 @@
+{
+  "id": "home/loading",
+  "base": "home/_base",
+  "state": "Ответа ленты ещё нет: «Загрузка…», стрелка «Обновить» крутится",
+  "invoke": {"public-news-get": {"$pending": true}}
+}

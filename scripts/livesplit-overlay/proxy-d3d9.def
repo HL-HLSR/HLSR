@@ -1,0 +1,17 @@
+LIBRARY d3d9.dll
+EXPORTS
+  Direct3DShaderValidatorCreate9 = thunk_Direct3DShaderValidatorCreate9 @1
+  PSGPError = thunk_PSGPError @2
+  PSGPSampleTexture = thunk_PSGPSampleTexture @3
+  D3DPERF_BeginEvent = thunk_D3DPERF_BeginEvent @4
+  D3DPERF_EndEvent = thunk_D3DPERF_EndEvent @5
+  D3DPERF_GetStatus = thunk_D3DPERF_GetStatus @6
+  D3DPERF_QueryRepeatFrame = thunk_D3DPERF_QueryRepeatFrame @7
+  D3DPERF_SetMarker = thunk_D3DPERF_SetMarker @8
+  D3DPERF_SetOptions = thunk_D3DPERF_SetOptions @9
+  D3DPERF_SetRegion = thunk_D3DPERF_SetRegion @10
+  DebugSetLevel = thunk_DebugSetLevel @11
+  DebugSetMute = thunk_DebugSetMute @12
+  Direct3DCreate9 = hook_Direct3DCreate9@4 @13
+  Direct3DCreate9Ex = hook_Direct3DCreate9Ex@8 @14
+  Direct3DCreate9On12 = thunk_Direct3DCreate9On12 @15

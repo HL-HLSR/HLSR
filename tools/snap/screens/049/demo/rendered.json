@@ -1,0 +1,31 @@
+{
+  "id": "demo/rendered",
+  "state": "«Отрендеренные»: видео открыто — факты, «Экспорт», папка и корзина, метки",
+  "base": "demo/_base",
+  "steps": [
+    {
+      "click": {
+        "css": ".game-rail .rail-item[aria-label=\"Демо\"]",
+        "view": "rail-demo"
+      }
+    },
+    {
+      "click": {
+        "css": ".dmp__tab:nth-child(2)",
+        "view": "dmp-tab-rendered"
+      }
+    },
+    {
+      "click": {
+        "css": "aside[aria-label=\"Отрендеренные\"] .dmp__item",
+        "view": "dmp-video-0"
+      }
+    },
+    {
+      "move": [
+        800,
+        880
+      ]
+    }
+  ]
+}

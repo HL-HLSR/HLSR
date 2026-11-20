@@ -1,0 +1,10 @@
+{
+  "id": "configs/tour-auto",
+  "state": "Обучение само после обновления (configTourSeen нет): через 1,2 с, первый шаг — вкладка в шапке, игрок остаётся в «Играх»",
+  "base": "configs/_base",
+  "prefs": {"configTourSeen": false},
+  "steps": [
+    {"wait": 1500},
+    {"move": [800, 880]}
+  ]
+}

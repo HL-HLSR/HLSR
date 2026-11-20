@@ -1,0 +1,17 @@
+{
+  "id": "sponsors/empty",
+  "base": "sponsors/_base",
+  "state": "v2 без записей: кнопки оплаты, «Спонсоров пока нет.», подсказка",
+  "invoke": {
+    "public-sponsors-get": {
+      "status": "ok",
+      "version": 2,
+      "links": {
+        "bot": "https://t.me/hlsr_support_bot"
+      },
+      "active": [],
+      "donors": [],
+      "past": []
+    }
+  }
+}

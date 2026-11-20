@@ -1,0 +1,10 @@
+{
+  "id": "configs/tour-tab",
+  "state": "Обучение Ghosting по «?», шаг 1 из 10: вкладка «Персонализация» в шапке",
+  "base": "configs/_base",
+  "steps": [
+    {"click": {"css": ".launcher-topbar__tab:nth-child(3)", "view": "topbar-tab-configs"}},
+    {"click": {"css": ".cfgp__help", "view": "cfgp-help"}},
+    {"move": [800, 880]}
+  ]
+}

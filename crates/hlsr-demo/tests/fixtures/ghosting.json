@@ -1,0 +1,3291 @@
+{
+  "protocol": "GHRENDER 2",
+  "maxClientBytes": 67108864,
+  "failCodes": {
+    "BAD_OPTION": "BAD_OPTION",
+    "PLAYLIST_INVALID": "PLAYLIST_INVALID",
+    "MAP_MISSING": "MAP_MISSING",
+    "SEGMENT_MISSING": "SEGMENT_MISSING",
+    "SEGMENT_CHANGED": "SEGMENT_CHANGED",
+    "SEGMENT_MALFORMED": "SEGMENT_MALFORMED",
+    "SEGMENT_UNSAFE": "SEGMENT_UNSAFE",
+    "DEMO_FAILED": "DEMO_OPEN_FAILED",
+    "CANCELLED": "GAME_ERROR",
+    "WRITE_FAILED": "RENDER_FAILED",
+    "NO_FRAMES": "RENDER_FAILED",
+    "INTERNAL": "RENDER_FAILED"
+  },
+  "stockHudCfg": "hlsr-render-hud.cfg",
+  "caps": [
+    {
+      "name": "нет client.dll",
+      "caps": {
+        "ghrender": false,
+        "segments": false
+      }
+    },
+    {
+      "name": "протокол 1",
+      "strings": [
+        "-ghrender",
+        "-ghrender_out",
+        "-ghrender_fps"
+      ],
+      "caps": {
+        "ghrender": true,
+        "segments": false
+      }
+    },
+    {
+      "name": "протокол 2",
+      "strings": [
+        "-ghrender",
+        "-ghrender_out",
+        "-ghrender_segments",
+        "-ghrender_fps"
+      ],
+      "caps": {
+        "ghrender": true,
+        "segments": true
+      }
+    },
+    {
+      "name": "мод 1.0.12",
+      "strings": [
+        "-game",
+        "+exec"
+      ],
+      "caps": {
+        "ghrender": false,
+        "segments": false
+      }
+    },
+    {
+      "name": "тот же mtime",
+      "strings": [
+        "-ghrender_out",
+        "-ghrender_segments"
+      ],
+      "stamp": true,
+      "caps": {
+        "ghrender": true,
+        "segments": true
+      }
+    },
+    {
+      "name": "тот же размер и mtime, другое содержимое",
+      "strings": [
+        "-ghrender_xyz",
+        "-ghrender_abcdefgh"
+      ],
+      "stamp": true,
+      "caps": {
+        "ghrender": false,
+        "segments": false
+      }
+    },
+    {
+      "name": "только -ghrender_segments",
+      "strings": [
+        "-ghrender_segments"
+      ],
+      "caps": {
+        "ghrender": false,
+        "segments": true
+      }
+    },
+    {
+      "name": "больше 64 МиБ",
+      "big": true,
+      "caps": {
+        "ghrender": false,
+        "segments": false
+      }
+    }
+  ],
+  "playlistArg": [
+    {
+      "parts": [
+        "demos",
+        "myrun2",
+        "run.ghplaylist"
+      ],
+      "arg": "demos/myrun2/run.ghplaylist"
+    },
+    {
+      "parts": [
+        "demos",
+        "gh_latest.ghplaylist"
+      ],
+      "arg": "gh_latest.ghplaylist"
+    },
+    {
+      "parts": [
+        "gh_latest.ghplaylist"
+      ],
+      "arg": null
+    },
+    {
+      "parts": [
+        "demos",
+        "my run",
+        "run.ghplaylist"
+      ],
+      "arg": null
+    },
+    {
+      "parts": [
+        "demos",
+        "-ghrender_out",
+        "run.ghplaylist"
+      ],
+      "arg": null
+    },
+    {
+      "parts": [
+        "demos",
+        "+exec",
+        "run.ghplaylist"
+      ],
+      "arg": null
+    },
+    {
+      "parts": [
+        "demos",
+        "a",
+        "b",
+        "run.ghplaylist"
+      ],
+      "arg": null
+    },
+    {
+      "parts": [
+        "demos",
+        "myrun2",
+        "other.ghplaylist"
+      ],
+      "arg": null
+    },
+    {
+      "parts": [
+        "demos",
+        "мой",
+        "run.ghplaylist"
+      ],
+      "arg": null
+    },
+    {
+      "parts": [
+        "Demos",
+        "Run1",
+        "RUN.GHPLAYLIST"
+      ],
+      "arg": "demos/Run1/run.ghplaylist"
+    },
+    {
+      "parts": [
+        "demos",
+        "a..b",
+        "run.ghplaylist"
+      ],
+      "arg": null
+    },
+    {
+      "parts": [
+        "demos",
+        "x..ghplaylist"
+      ],
+      "arg": null
+    },
+    {
+      "parts": [
+        "demos",
+        "run.1_x-y",
+        "run.ghplaylist"
+      ],
+      "arg": "demos/run.1_x-y/run.ghplaylist"
+    },
+    {
+      "parts": [
+        "demos",
+        ".hidden",
+        "run.ghplaylist"
+      ],
+      "arg": null
+    },
+    {
+      "parts": [
+        "demos",
+        "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        "run.ghplaylist"
+      ],
+      "arg": "demos/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/run.ghplaylist"
+    },
+    {
+      "parts": [
+        "demos",
+        "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        "run.ghplaylist"
+      ],
+      "arg": null
+    },
+    {
+      "parts": [
+        "demos",
+        "yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy.ghplaylist"
+      ],
+      "arg": "yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy.ghplaylist"
+    },
+    {
+      "parts": [
+        "demos",
+        "yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy.ghplaylist"
+      ],
+      "arg": null
+    },
+    {
+      "parts": [
+        "demos",
+        "run.ghplaylist"
+      ],
+      "arg": "run.ghplaylist"
+    },
+    {
+      "parts": [
+        "demos"
+      ],
+      "arg": null
+    },
+    {
+      "parts": [
+        "demos",
+        "sub",
+        "..",
+        "flat.ghplaylist"
+      ],
+      "arg": "flat.ghplaylist"
+    },
+    {
+      "absolute": "D:\\elsewhere\\demos\\x\\run.ghplaylist",
+      "arg": null
+    }
+  ],
+  "entriesInPlace": [
+    {
+      "arg": "demos/run1/run.ghplaylist",
+      "segments": [
+        {
+          "name": "segment001.dem",
+          "playlistFile": "demos/run1/segment001.dem"
+        }
+      ],
+      "inPlace": true
+    },
+    {
+      "arg": "demos/Run1/run.ghplaylist",
+      "segments": [
+        {
+          "name": "segment001.dem",
+          "playlistFile": "demos/run1/SEGMENT001.dem"
+        }
+      ],
+      "inPlace": true
+    },
+    {
+      "arg": "demos/best/run.ghplaylist",
+      "segments": [
+        {
+          "name": "segment001.dem",
+          "playlistFile": "demos/run1/segment001.dem"
+        }
+      ],
+      "inPlace": false
+    },
+    {
+      "arg": "gh_latest.ghplaylist",
+      "segments": [
+        {
+          "name": "a.dem",
+          "playlistFile": "demos/a.dem"
+        }
+      ],
+      "inPlace": true
+    },
+    {
+      "arg": "gh_latest.ghplaylist",
+      "segments": [
+        {
+          "name": "a.dem",
+          "playlistFile": "demos/run1/a.dem"
+        }
+      ],
+      "inPlace": false
+    },
+    {
+      "arg": "demos/run1/run.ghplaylist",
+      "segments": [
+        {
+          "name": "segment001.dem"
+        }
+      ],
+      "inPlace": false
+    },
+    {
+      "arg": "demos/run1/run.ghplaylist",
+      "segments": [],
+      "inPlace": false
+    },
+    {
+      "arg": "demos/run1/run.ghplaylist",
+      "segments": [
+        {
+          "name": "segment001.dem",
+          "playlistFile": "demos/run1/segment001.dem"
+        },
+        {
+          "name": "segment002.dem",
+          "playlistFile": "demos/run2/segment002.dem"
+        }
+      ],
+      "inPlace": false
+    }
+  ],
+  "segmentsArg": [
+    {
+      "indexes": [
+        2,
+        4
+      ],
+      "whole": 3,
+      "arg": "3-5"
+    },
+    {
+      "indexes": [
+        13
+      ],
+      "whole": 20,
+      "arg": "14"
+    },
+    {
+      "indexes": [
+        0,
+        2,
+        4
+      ],
+      "whole": 3,
+      "arg": null
+    },
+    {
+      "indexes": [],
+      "whole": 5,
+      "arg": null
+    },
+    {
+      "indexes": [
+        0
+      ],
+      "whole": 1,
+      "arg": null
+    },
+    {
+      "indexes": [
+        0,
+        1
+      ],
+      "whole": 3,
+      "arg": "1-2"
+    },
+    {
+      "indexes": [
+        4,
+        9
+      ],
+      "whole": 7,
+      "arg": "5-10"
+    }
+  ],
+  "config": [
+    {
+      "ownConfig": true,
+      "ownHud": true,
+      "args": [],
+      "files": []
+    },
+    {
+      "ownConfig": true,
+      "ownHud": false,
+      "args": [
+        "-insert_search_path",
+        "ghostingmod/hlsr-render/ab12cd34/std",
+        "+exec",
+        "hlsr-render-hud.cfg"
+      ],
+      "files": [
+        [
+          "cfg/hlsr-render-hud.cfg",
+          "// Generated by HLSR Launcher - Personalization. Do not edit manually.\n// ghostingmod/cfg/hlsr-personalization.cfg - applied via autoexec.cfg\ngh_hud_color \"255 220 0\"\ngh_hud_color_enable \"0\"\ngh_hud_color_alpha \"-1\"\ngh_hud_color_affects_crosshair \"0\"\nhud_quickinfo \"1\"\ngh_cross \"0\"\ngh_cross_color \"0 255 0\"\ngh_cross_alpha \"255\"\ngh_cross_thickness \"2\"\ngh_cross_size \"10\"\ngh_cross_gap \"3\"\ngh_cross_outline \"0\"\ngh_cross_outline_thickness \"1\"\ngh_cross_circle_radius \"0\"\ngh_cross_dot_color \"\"\ngh_cross_dot_size \"0\"\ngh_cross_top_line \"1\"\ngh_cross_bottom_line \"1\"\ngh_cross_left_line \"1\"\ngh_cross_right_line \"1\"\ngh_cross_hide_default \"1\"\n// HLSR_EXTRA_SETTINGS_VERSION 1\n"
+        ]
+      ]
+    },
+    {
+      "ownConfig": false,
+      "ownHud": true,
+      "args": [
+        "-insert_search_path",
+        "ghostingmod/hlsr-render/ab12cd34/std",
+        "+exec",
+        "hlsr-personalization.cfg"
+      ],
+      "files": [
+        [
+          "cfg/config.cfg",
+          "// HLSR: стандартный конфиг для рендера, без настроек игрока.\n"
+        ],
+        [
+          "cfg/autoexec.cfg",
+          "// HLSR: стандартный конфиг для рендера, без настроек игрока.\n"
+        ]
+      ]
+    },
+    {
+      "ownConfig": false,
+      "ownHud": false,
+      "args": [
+        "-insert_search_path",
+        "ghostingmod/hlsr-render/ab12cd34/std"
+      ],
+      "files": [
+        [
+          "cfg/config.cfg",
+          "// HLSR: стандартный конфиг для рендера, без настроек игрока.\n"
+        ],
+        [
+          "cfg/autoexec.cfg",
+          "// HLSR: стандартный конфиг для рендера, без настроек игрока.\n"
+        ]
+      ]
+    }
+  ],
+  "gameArguments": [
+    {
+      "input": {
+        "width": 1920,
+        "height": 1080,
+        "fps": 60,
+        "keyhud": true,
+        "integrity": false,
+        "playlist": "demos/myrun2/run.ghplaylist",
+        "out": "hlsr-render/ab12cd34"
+      },
+      "args": [
+        "-steam",
+        "-game",
+        "ghostingmod",
+        "-windowed",
+        "-noborder",
+        "-w",
+        "1920",
+        "-h",
+        "1080",
+        "-novid",
+        "-multirun",
+        "-ghrender",
+        "demos/myrun2/run.ghplaylist",
+        "-ghrender_out",
+        "hlsr-render/ab12cd34",
+        "-ghrender_fps",
+        "60",
+        "-ghrender_keyshud",
+        "1",
+        "-ghrender_intact",
+        "0",
+        "+con_logfile",
+        "hlsr-render/ab12cd34/console.log",
+        "+volume",
+        "0.8",
+        "+demo_avellimit",
+        "99999",
+        "+demo_interplimit",
+        "99999"
+      ]
+    },
+    {
+      "input": {
+        "width": 1,
+        "height": 1,
+        "fps": 30,
+        "keyhud": false,
+        "integrity": true,
+        "playlist": "p",
+        "out": "o"
+      },
+      "args": [
+        "-steam",
+        "-game",
+        "ghostingmod",
+        "-windowed",
+        "-noborder",
+        "-w",
+        "1",
+        "-h",
+        "1",
+        "-novid",
+        "-multirun",
+        "-ghrender",
+        "p",
+        "-ghrender_out",
+        "o",
+        "-ghrender_fps",
+        "30",
+        "-ghrender_keyshud",
+        "0",
+        "-ghrender_intact",
+        "1",
+        "+con_logfile",
+        "o/console.log",
+        "+volume",
+        "0.8",
+        "+demo_avellimit",
+        "99999",
+        "+demo_interplimit",
+        "99999"
+      ]
+    },
+    {
+      "input": {
+        "width": 1280,
+        "height": 720,
+        "fps": 120,
+        "keyhud": false,
+        "integrity": false,
+        "playlist": "gh_latest.ghplaylist",
+        "out": "hlsr-render/x",
+        "segments": "12-14"
+      },
+      "args": [
+        "-steam",
+        "-game",
+        "ghostingmod",
+        "-windowed",
+        "-noborder",
+        "-w",
+        "1280",
+        "-h",
+        "720",
+        "-novid",
+        "-multirun",
+        "-ghrender",
+        "gh_latest.ghplaylist",
+        "-ghrender_out",
+        "hlsr-render/x",
+        "-ghrender_fps",
+        "120",
+        "-ghrender_segments",
+        "12-14",
+        "-ghrender_keyshud",
+        "0",
+        "-ghrender_intact",
+        "0",
+        "+con_logfile",
+        "hlsr-render/x/console.log",
+        "+volume",
+        "0.8",
+        "+demo_avellimit",
+        "99999",
+        "+demo_interplimit",
+        "99999"
+      ]
+    },
+    {
+      "input": {
+        "width": 1920,
+        "height": 1080,
+        "fps": 60,
+        "keyhud": true,
+        "integrity": false,
+        "playlist": "demos/run1/run.ghplaylist",
+        "out": "hlsr-render/ab12cd34",
+        "segments": "3",
+        "config": [
+          "-insert_search_path",
+          "ghostingmod/hlsr-render/ab12cd34/std",
+          "+exec",
+          "hlsr-personalization.cfg"
+        ]
+      },
+      "args": [
+        "-steam",
+        "-game",
+        "ghostingmod",
+        "-windowed",
+        "-noborder",
+        "-w",
+        "1920",
+        "-h",
+        "1080",
+        "-novid",
+        "-multirun",
+        "-ghrender",
+        "demos/run1/run.ghplaylist",
+        "-ghrender_out",
+        "hlsr-render/ab12cd34",
+        "-ghrender_fps",
+        "60",
+        "-ghrender_segments",
+        "3",
+        "-ghrender_keyshud",
+        "1",
+        "-ghrender_intact",
+        "0",
+        "+con_logfile",
+        "hlsr-render/ab12cd34/console.log",
+        "+volume",
+        "0.8",
+        "+demo_avellimit",
+        "99999",
+        "+demo_interplimit",
+        "99999",
+        "-insert_search_path",
+        "ghostingmod/hlsr-render/ab12cd34/std",
+        "+exec",
+        "hlsr-personalization.cfg"
+      ]
+    }
+  ],
+  "commandLine": [
+    {
+      "exe": "C:\\Games\\Ghosting Renewed\\hl2.exe",
+      "args": [
+        "-steam",
+        "-game",
+        "ghostingmod"
+      ],
+      "line": "\"C:\\Games\\Ghosting Renewed\\hl2.exe\" -steam -game ghostingmod"
+    },
+    {
+      "exe": "C:\\Games\\Ghosting Renewed\\hl2.exe",
+      "args": [
+        "",
+        "a b",
+        "tab\there",
+        "quote\"inside",
+        "slash\\",
+        "slash\\\\",
+        "end with space ",
+        "a\\\"b",
+        "back\\slash\\\"q"
+      ],
+      "line": "\"C:\\Games\\Ghosting Renewed\\hl2.exe\" \"\" \"a b\" \"tab\there\" \"quote\\\"inside\" slash\\ slash\\\\ \"end with space \" \"a\\\\\\\"b\" \"back\\slash\\\\\\\"q\""
+    },
+    {
+      "exe": "C:\\Games\\Ghosting Renewed\\hl2.exe",
+      "args": [
+        "+con_logfile",
+        "hlsr-render/ab12cd34/console.log"
+      ],
+      "line": "\"C:\\Games\\Ghosting Renewed\\hl2.exe\" +con_logfile hlsr-render/ab12cd34/console.log"
+    },
+    {
+      "exe": "C:\\Games\\Ghosting Renewed\\hl2.exe",
+      "args": [
+        "nbsp x",
+        "ideo　x",
+        "plain"
+      ],
+      "line": "\"C:\\Games\\Ghosting Renewed\\hl2.exe\" \"nbsp x\" \"ideo　x\" plain"
+    }
+  ],
+  "parseLine": [
+    {
+      "line": "GHRENDER 2",
+      "parsed": {
+        "key": "GHRENDER",
+        "fields": {},
+        "text": "GHRENDER 2"
+      }
+    },
+    {
+      "line": "JOB playlist=demos/run1/run.ghplaylist out=hlsr-render/x fps=60 width=8 height=4 keyshud=1 intact=0",
+      "parsed": {
+        "key": "JOB",
+        "fields": {
+          "playlist": "demos/run1/run.ghplaylist",
+          "out": "hlsr-render/x",
+          "fps": "60",
+          "width": "8",
+          "height": "4",
+          "keyshud": "1",
+          "intact": "0"
+        },
+        "text": "JOB playlist=demos/run1/run.ghplaylist out=hlsr-render/x fps=60 width=8 height=4 keyshud=1 intact=0"
+      }
+    },
+    {
+      "line": "SEGMENT n=1 entry=1/5 frame=0 kind=start map=m1 start=0.000 end=3.000 timer=0.050 file=demos/run1/segment001.dem",
+      "parsed": {
+        "key": "SEGMENT",
+        "fields": {
+          "n": "1",
+          "entry": "1/5",
+          "frame": "0",
+          "kind": "start",
+          "map": "m1",
+          "start": "0.000",
+          "end": "3.000",
+          "timer": "0.050",
+          "file": "demos/run1/segment001.dem"
+        },
+        "text": "SEGMENT n=1 entry=1/5 frame=0 kind=start map=m1 start=0.000 end=3.000 timer=0.050 file=demos/run1/segment001.dem"
+      }
+    },
+    {
+      "line": "TIMER frame=0 event=start timer=0.000",
+      "parsed": {
+        "key": "TIMER",
+        "fields": {
+          "frame": "0",
+          "event": "start",
+          "timer": "0.000"
+        },
+        "text": "TIMER frame=0 event=start timer=0.000"
+      }
+    },
+    {
+      "line": "SEGMENT n=2 entry=3/5 frame=177 kind=load map=m1 start=3.010 end=7.010 timer=3.060 file=demos/run1/segment003.dem",
+      "parsed": {
+        "key": "SEGMENT",
+        "fields": {
+          "n": "2",
+          "entry": "3/5",
+          "frame": "177",
+          "kind": "load",
+          "map": "m1",
+          "start": "3.010",
+          "end": "7.010",
+          "timer": "3.060",
+          "file": "demos/run1/segment003.dem"
+        },
+        "text": "SEGMENT n=2 entry=3/5 frame=177 kind=load map=m1 start=3.010 end=7.010 timer=3.060 file=demos/run1/segment003.dem"
+      }
+    },
+    {
+      "line": "PROGRESS segment=2 entry=3/5 frames=180",
+      "parsed": {
+        "key": "PROGRESS",
+        "fields": {
+          "segment": "2",
+          "entry": "3/5",
+          "frames": "180"
+        },
+        "text": "PROGRESS segment=2 entry=3/5 frames=180"
+      }
+    },
+    {
+      "line": "SEGMENT n=3 entry=5/5 frame=414 kind=map map=m2 start=7.020 end=10.000 timer=7.070 file=demos/run1/segment005.dem",
+      "parsed": {
+        "key": "SEGMENT",
+        "fields": {
+          "n": "3",
+          "entry": "5/5",
+          "frame": "414",
+          "kind": "map",
+          "map": "m2",
+          "start": "7.020",
+          "end": "10.000",
+          "timer": "7.070",
+          "file": "demos/run1/segment005.dem"
+        },
+        "text": "SEGMENT n=3 entry=5/5 frame=414 kind=map map=m2 start=7.020 end=10.000 timer=7.070 file=demos/run1/segment005.dem"
+      }
+    },
+    {
+      "line": "TIMER frame=588 event=finish timer=9.950",
+      "parsed": {
+        "key": "TIMER",
+        "fields": {
+          "frame": "588",
+          "event": "finish",
+          "timer": "9.950"
+        },
+        "text": "TIMER frame=588 event=finish timer=9.950"
+      }
+    },
+    {
+      "line": "DONE frames=590 segments=3 fps=60 audio=audio.wav samples=433650 rate=44100 channels=2 blocks=3 data=intact",
+      "parsed": {
+        "key": "DONE",
+        "fields": {
+          "frames": "590",
+          "segments": "3",
+          "fps": "60",
+          "audio": "audio.wav",
+          "samples": "433650",
+          "rate": "44100",
+          "channels": "2",
+          "blocks": "3",
+          "data": "intact"
+        },
+        "text": "DONE frames=590 segments=3 fps=60 audio=audio.wav samples=433650 rate=44100 channels=2 blocks=3 data=intact"
+      }
+    },
+    {
+      "line": "JOB playlist=demos/run1/run.ghplaylist out=hlsr-render/x fps=60 width=8 height=4 keyshud=1 intact=0 segments=3-5",
+      "parsed": {
+        "key": "JOB",
+        "fields": {
+          "playlist": "demos/run1/run.ghplaylist",
+          "out": "hlsr-render/x",
+          "fps": "60",
+          "width": "8",
+          "height": "4",
+          "keyshud": "1",
+          "intact": "0",
+          "segments": "3-5"
+        },
+        "text": "JOB playlist=demos/run1/run.ghplaylist out=hlsr-render/x fps=60 width=8 height=4 keyshud=1 intact=0 segments=3-5"
+      }
+    },
+    {
+      "line": "SEGMENT n=1 entry=3/5 frame=0 kind=start map=m1 start=3.010 end=7.010 timer=3.060 tick=5 file=demos/run1/segment003.dem",
+      "parsed": {
+        "key": "SEGMENT",
+        "fields": {
+          "n": "1",
+          "entry": "3/5",
+          "frame": "0",
+          "kind": "start",
+          "map": "m1",
+          "start": "3.010",
+          "end": "7.010",
+          "timer": "3.060",
+          "tick": "5",
+          "file": "demos/run1/segment003.dem"
+        },
+        "text": "SEGMENT n=1 entry=3/5 frame=0 kind=start map=m1 start=3.010 end=7.010 timer=3.060 tick=5 file=demos/run1/segment003.dem"
+      }
+    },
+    {
+      "line": "SEGMENT n=2 entry=5/5 frame=237 kind=map map=m2 start=7.020 end=10.000 timer=7.070 tick=5 file=demos/run1/segment005.dem",
+      "parsed": {
+        "key": "SEGMENT",
+        "fields": {
+          "n": "2",
+          "entry": "5/5",
+          "frame": "237",
+          "kind": "map",
+          "map": "m2",
+          "start": "7.020",
+          "end": "10.000",
+          "timer": "7.070",
+          "tick": "5",
+          "file": "demos/run1/segment005.dem"
+        },
+        "text": "SEGMENT n=2 entry=5/5 frame=237 kind=map map=m2 start=7.020 end=10.000 timer=7.070 tick=5 file=demos/run1/segment005.dem"
+      }
+    },
+    {
+      "line": "TIMER frame=411 event=finish timer=9.950",
+      "parsed": {
+        "key": "TIMER",
+        "fields": {
+          "frame": "411",
+          "event": "finish",
+          "timer": "9.950"
+        },
+        "text": "TIMER frame=411 event=finish timer=9.950"
+      }
+    },
+    {
+      "line": "DONE frames=413 segments=2 fps=60 audio=audio.wav samples=302848 rate=44100 channels=2 blocks=2 data=intact",
+      "parsed": {
+        "key": "DONE",
+        "fields": {
+          "frames": "413",
+          "segments": "2",
+          "fps": "60",
+          "audio": "audio.wav",
+          "samples": "302848",
+          "rate": "44100",
+          "channels": "2",
+          "blocks": "2",
+          "data": "intact"
+        },
+        "text": "DONE frames=413 segments=2 fps=60 audio=audio.wav samples=302848 rate=44100 channels=2 blocks=2 data=intact"
+      }
+    },
+    {
+      "line": "SEGMENT n=6 entry=14/66 frame=2294 kind=load map=d1_trainstation_02\r",
+      "parsed": {
+        "key": "SEGMENT",
+        "fields": {
+          "n": "6",
+          "entry": "14/66",
+          "frame": "2294",
+          "kind": "load",
+          "map": "d1_trainstation_02"
+        },
+        "text": "SEGMENT n=6 entry=14/66 frame=2294 kind=load map=d1_trainstation_02"
+      }
+    },
+    {
+      "line": "   ",
+      "parsed": null
+    },
+    {
+      "line": "",
+      "parsed": null
+    },
+    {
+      "line": "  DONE\tframes=5   x=1=2 =bad novalue key= dup=1 dup=2  \r",
+      "parsed": {
+        "key": "DONE",
+        "fields": {
+          "frames": "5",
+          "x": "1=2",
+          "key": "",
+          "dup": "2"
+        },
+        "text": "DONE\tframes=5   x=1=2 =bad novalue key= dup=1 dup=2"
+      }
+    },
+    {
+      "line": " WARN code=AUDIO_MISSING ",
+      "parsed": {
+        "key": "WARN",
+        "fields": {
+          "code": "AUDIO_MISSING"
+        },
+        "text": "WARN code=AUDIO_MISSING"
+      }
+    },
+    {
+      "line": "WARN zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+      "parsed": {
+        "key": "WARN",
+        "fields": {},
+        "text": "WARN zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz"
+      }
+    },
+    {
+      "line": "FAIL code=SEGMENT_CHANGED entry=11/14 file=demos/badseg/segment011.dem frames=84",
+      "parsed": {
+        "key": "FAIL",
+        "fields": {
+          "code": "SEGMENT_CHANGED",
+          "entry": "11/14",
+          "file": "demos/badseg/segment011.dem",
+          "frames": "84"
+        },
+        "text": "FAIL code=SEGMENT_CHANGED entry=11/14 file=demos/badseg/segment011.dem frames=84"
+      }
+    },
+    {
+      "line": "GHRENDER 1",
+      "parsed": {
+        "key": "GHRENDER",
+        "fields": {},
+        "text": "GHRENDER 1"
+      }
+    }
+  ],
+  "failError": [
+    {
+      "line": "FAIL code=SEGMENT_CHANGED entry=11/14 file=demos/badseg/segment011.dem frames=84",
+      "code": "SEGMENT_CHANGED",
+      "message": "FAIL code=SEGMENT_CHANGED entry=11/14 file=demos/badseg/segment011.dem frames=84",
+      "details": {
+        "segment": 11
+      }
+    },
+    {
+      "line": "FAIL code=SEGMENT_CHANGED entry=11/14 frames=84",
+      "code": "SEGMENT_CHANGED",
+      "message": "FAIL code=SEGMENT_CHANGED entry=11/14 frames=84",
+      "details": {
+        "segment": 11
+      }
+    },
+    {
+      "line": "FAIL code=SEGMENT_MISSING entry=13/14 frames=1539",
+      "code": "SEGMENT_MISSING",
+      "message": "FAIL code=SEGMENT_MISSING entry=13/14 frames=1539",
+      "details": {
+        "segment": 13
+      }
+    },
+    {
+      "line": "FAIL code=SEGMENT_MISSING frames=0",
+      "code": "SEGMENT_MISSING",
+      "message": "FAIL code=SEGMENT_MISSING frames=0",
+      "details": null
+    },
+    {
+      "line": "FAIL code=SEGMENT_MALFORMED entry=0/3 frames=0",
+      "code": "SEGMENT_MALFORMED",
+      "message": "FAIL code=SEGMENT_MALFORMED entry=0/3 frames=0",
+      "details": null
+    },
+    {
+      "line": "FAIL code=SEGMENT_UNSAFE entry= 7/9 frames=0",
+      "code": "SEGMENT_UNSAFE",
+      "message": "FAIL code=SEGMENT_UNSAFE entry= 7/9 frames=0",
+      "details": null
+    },
+    {
+      "line": "FAIL code=SEGMENT_UNSAFE entry=+4x frames=0",
+      "code": "SEGMENT_UNSAFE",
+      "message": "FAIL code=SEGMENT_UNSAFE entry=+4x frames=0",
+      "details": {
+        "segment": 4
+      }
+    },
+    {
+      "line": "FAIL code=MAP_MISSING map=d1_canals_01 frames=0",
+      "code": "MAP_MISSING",
+      "message": "FAIL code=MAP_MISSING map=d1_canals_01 frames=0",
+      "details": null
+    },
+    {
+      "line": "FAIL code=MAP_MISSING entry=2/3 frames=0",
+      "code": "MAP_MISSING",
+      "message": "FAIL code=MAP_MISSING entry=2/3 frames=0",
+      "details": null
+    },
+    {
+      "line": "FAIL code=BAD_OPTION frames=0",
+      "code": "BAD_OPTION",
+      "message": "FAIL code=BAD_OPTION frames=0",
+      "details": null
+    },
+    {
+      "line": "FAIL code=PLAYLIST_INVALID frames=0",
+      "code": "PLAYLIST_INVALID",
+      "message": "FAIL code=PLAYLIST_INVALID frames=0",
+      "details": null
+    },
+    {
+      "line": "FAIL code=DEMO_FAILED frames=0",
+      "code": "DEMO_OPEN_FAILED",
+      "message": "FAIL code=DEMO_FAILED frames=0",
+      "details": null
+    },
+    {
+      "line": "FAIL code=CANCELLED frames=0",
+      "code": "GAME_ERROR",
+      "message": "FAIL code=CANCELLED frames=0",
+      "details": null
+    },
+    {
+      "line": "FAIL code=WRITE_FAILED frames=0",
+      "code": "RENDER_FAILED",
+      "message": "FAIL code=WRITE_FAILED frames=0",
+      "details": null
+    },
+    {
+      "line": "FAIL code=NO_FRAMES frames=0",
+      "code": "RENDER_FAILED",
+      "message": "FAIL code=NO_FRAMES frames=0",
+      "details": null
+    },
+    {
+      "line": "FAIL code=INTERNAL frames=0",
+      "code": "RENDER_FAILED",
+      "message": "FAIL code=INTERNAL frames=0",
+      "details": null
+    },
+    {
+      "line": "FAIL code=SOMETHING_NEW frames=0",
+      "code": "RENDER_FAILED",
+      "message": "FAIL code=SOMETHING_NEW frames=0",
+      "details": null
+    },
+    {
+      "line": "FAIL frames=0",
+      "code": "RENDER_FAILED",
+      "message": "FAIL frames=0",
+      "details": null
+    }
+  ],
+  "timeline": [
+    {
+      "input": {
+        "name": "ран целиком",
+        "segments": [
+          {
+            "n": "1",
+            "entry": "1/5",
+            "frame": "0",
+            "kind": "start",
+            "map": "m1",
+            "start": "0.000",
+            "end": "3.000",
+            "timer": "0.050",
+            "file": "demos/run1/segment001.dem"
+          },
+          {
+            "n": "2",
+            "entry": "3/5",
+            "frame": "177",
+            "kind": "load",
+            "map": "m1",
+            "start": "3.010",
+            "end": "7.010",
+            "timer": "3.060",
+            "file": "demos/run1/segment003.dem"
+          },
+          {
+            "n": "3",
+            "entry": "5/5",
+            "frame": "414",
+            "kind": "map",
+            "map": "m2",
+            "start": "7.020",
+            "end": "10.000",
+            "timer": "7.070",
+            "file": "demos/run1/segment005.dem"
+          }
+        ],
+        "timers": [
+          {
+            "frame": "0",
+            "event": "start",
+            "timer": "0.000"
+          },
+          {
+            "frame": "588",
+            "event": "finish",
+            "timer": "9.950"
+          }
+        ],
+        "frames": 590,
+        "fps": 60,
+        "starts": [
+          0,
+          3,
+          3.01,
+          7.01,
+          7.02
+        ],
+        "total": 10
+      },
+      "out": {
+        "offset": 0.05,
+        "cuts": [
+          {
+            "from": 3,
+            "to": 3.06
+          },
+          {
+            "from": 7.01,
+            "to": 7.07
+          }
+        ],
+        "markers": [
+          {
+            "t": 0.05,
+            "type": "map",
+            "label": "m1"
+          },
+          {
+            "t": 0.05,
+            "type": "timer",
+            "label": "0:00.050"
+          },
+          {
+            "t": 3.06,
+            "type": "saveload",
+            "label": "3"
+          },
+          {
+            "t": 3.06,
+            "type": "timer",
+            "label": "0:03.060"
+          },
+          {
+            "t": 7.07,
+            "type": "map",
+            "label": "m2"
+          },
+          {
+            "t": 7.07,
+            "type": "timer",
+            "label": "0:07.070"
+          }
+        ]
+      }
+    },
+    {
+      "input": {
+        "name": "диапазон 3-5",
+        "segments": [
+          {
+            "n": "1",
+            "entry": "3/5",
+            "frame": "0",
+            "kind": "start",
+            "map": "m1",
+            "start": "3.010",
+            "end": "7.010",
+            "timer": "3.060",
+            "tick": "5",
+            "file": "demos/run1/segment003.dem"
+          },
+          {
+            "n": "2",
+            "entry": "5/5",
+            "frame": "237",
+            "kind": "map",
+            "map": "m2",
+            "start": "7.020",
+            "end": "10.000",
+            "timer": "7.070",
+            "tick": "5",
+            "file": "demos/run1/segment005.dem"
+          }
+        ],
+        "timers": [
+          {
+            "frame": "411",
+            "event": "finish",
+            "timer": "9.950"
+          }
+        ],
+        "frames": 413,
+        "fps": 60,
+        "starts": [
+          0,
+          3,
+          3.01,
+          7.01,
+          7.02
+        ],
+        "total": 10
+      },
+      "out": {
+        "offset": 3.06,
+        "cuts": [
+          {
+            "from": 7.01,
+            "to": 7.07
+          }
+        ],
+        "markers": [
+          {
+            "t": 3.06,
+            "type": "map",
+            "label": "m1"
+          },
+          {
+            "t": 3.06,
+            "type": "timer",
+            "label": "0:03.060"
+          },
+          {
+            "t": 7.07,
+            "type": "map",
+            "label": "m2"
+          },
+          {
+            "t": 7.07,
+            "type": "timer",
+            "label": "0:07.070"
+          }
+        ]
+      }
+    },
+    {
+      "input": {
+        "name": "кадров больше, чем длилась запись",
+        "segments": [
+          {
+            "entry": "1/2",
+            "frame": "0",
+            "kind": "start",
+            "map": "m1",
+            "start": "0",
+            "timer": "0"
+          },
+          {
+            "entry": "2/2",
+            "frame": "200",
+            "kind": "load",
+            "map": "m1",
+            "start": "3",
+            "timer": "3"
+          }
+        ],
+        "timers": [],
+        "frames": 300,
+        "fps": 60,
+        "starts": [
+          0,
+          3
+        ],
+        "total": 5
+      },
+      "out": {
+        "offset": 0,
+        "cuts": [],
+        "markers": [
+          {
+            "t": 0,
+            "type": "map",
+            "label": "m1"
+          },
+          {
+            "t": 0,
+            "type": "timer",
+            "label": "0:00.000"
+          },
+          {
+            "t": 3.333,
+            "type": "saveload",
+            "label": "2"
+          },
+          {
+            "t": 3.333,
+            "type": "timer",
+            "label": "0:03.000"
+          }
+        ]
+      }
+    },
+    {
+      "input": {
+        "name": "пусто",
+        "segments": [],
+        "timers": [],
+        "frames": 0,
+        "fps": 60,
+        "starts": [],
+        "total": 0
+      },
+      "out": {
+        "offset": 0,
+        "cuts": [],
+        "markers": []
+      }
+    },
+    {
+      "input": {
+        "name": "мусор в строках",
+        "segments": [
+          {
+            "entry": "9/9",
+            "frame": "0"
+          },
+          {
+            "entry": "1/2",
+            "frame": "-1"
+          },
+          {
+            "entry": "1/2",
+            "frame": "x"
+          },
+          {
+            "entry": "1/2"
+          },
+          {
+            "entry": "1/2",
+            "frame": "30",
+            "kind": "start",
+            "start": "x",
+            "timer": "0.5"
+          },
+          {
+            "entry": "2/2",
+            "frame": "",
+            "kind": "map",
+            "map": "m2"
+          },
+          {
+            "entry": "2/2",
+            "frame": "90",
+            "kind": "map",
+            "map": "",
+            "start": "1",
+            "timer": ""
+          }
+        ],
+        "timers": [
+          {
+            "frame": "10",
+            "event": "start",
+            "timer": "1.25"
+          },
+          {
+            "frame": "90",
+            "event": "split",
+            "timer": "2"
+          },
+          {
+            "frame": "x",
+            "timer": "1"
+          },
+          {
+            "frame": "60",
+            "event": "finish",
+            "timer": "9"
+          },
+          {
+            "frame": "60",
+            "timer": "nope"
+          },
+          {
+            "frame": "45",
+            "timer": ""
+          }
+        ],
+        "frames": 120,
+        "fps": 30,
+        "starts": [
+          0,
+          1.5
+        ],
+        "total": null
+      },
+      "out": {
+        "offset": 0,
+        "cuts": [
+          {
+            "from": -1,
+            "to": 1.5
+          }
+        ],
+        "markers": [
+          {
+            "t": 0,
+            "type": "map",
+            "label": ""
+          },
+          {
+            "t": 0,
+            "type": "timer",
+            "label": "0:00.500"
+          },
+          {
+            "t": 1.5,
+            "type": "map",
+            "label": "m2"
+          },
+          {
+            "t": 1.833,
+            "type": "timer",
+            "label": "0:01.250"
+          },
+          {
+            "t": 3,
+            "type": "timer",
+            "label": "0:00.000"
+          },
+          {
+            "t": 4.5,
+            "type": "map",
+            "label": ""
+          },
+          {
+            "t": 4.5,
+            "type": "timer",
+            "label": "0:00.000"
+          }
+        ]
+      }
+    }
+  ],
+  "rangeStart": [
+    {
+      "input": {
+        "markers": [
+          {
+            "t": 0.05,
+            "type": "map",
+            "label": "m1"
+          },
+          {
+            "t": 0.05,
+            "type": "timer",
+            "label": "0:00.050"
+          },
+          {
+            "t": 3.06,
+            "type": "saveload",
+            "label": "3"
+          },
+          {
+            "t": 3.06,
+            "type": "timer",
+            "label": "0:03.060"
+          },
+          {
+            "t": 7.07,
+            "type": "map",
+            "label": "m2"
+          },
+          {
+            "t": 7.07,
+            "type": "timer",
+            "label": "0:07.070"
+          }
+        ],
+        "range": {
+          "from": 5,
+          "to": 8
+        }
+      },
+      "out": [
+        {
+          "t": 0.05,
+          "type": "map",
+          "label": "m1"
+        },
+        {
+          "t": 0.05,
+          "type": "timer",
+          "label": "0:00.050"
+        },
+        {
+          "t": 3.06,
+          "type": "saveload",
+          "label": "3"
+        },
+        {
+          "t": 3.06,
+          "type": "timer",
+          "label": "0:03.060"
+        },
+        {
+          "t": 5,
+          "type": "map",
+          "label": "m1"
+        },
+        {
+          "t": 7.07,
+          "type": "map",
+          "label": "m2"
+        },
+        {
+          "t": 7.07,
+          "type": "timer",
+          "label": "0:07.070"
+        }
+      ]
+    },
+    {
+      "input": {
+        "markers": [
+          {
+            "t": 0.05,
+            "type": "map",
+            "label": "m1"
+          },
+          {
+            "t": 0.05,
+            "type": "timer",
+            "label": "0:00.050"
+          },
+          {
+            "t": 3.06,
+            "type": "saveload",
+            "label": "3"
+          },
+          {
+            "t": 3.06,
+            "type": "timer",
+            "label": "0:03.060"
+          },
+          {
+            "t": 7.07,
+            "type": "map",
+            "label": "m2"
+          },
+          {
+            "t": 7.07,
+            "type": "timer",
+            "label": "0:07.070"
+          }
+        ],
+        "range": null
+      },
+      "out": [
+        {
+          "t": 0.05,
+          "type": "map",
+          "label": "m1"
+        },
+        {
+          "t": 0.05,
+          "type": "timer",
+          "label": "0:00.050"
+        },
+        {
+          "t": 3.06,
+          "type": "saveload",
+          "label": "3"
+        },
+        {
+          "t": 3.06,
+          "type": "timer",
+          "label": "0:03.060"
+        },
+        {
+          "t": 7.07,
+          "type": "map",
+          "label": "m2"
+        },
+        {
+          "t": 7.07,
+          "type": "timer",
+          "label": "0:07.070"
+        }
+      ]
+    },
+    {
+      "input": {
+        "markers": [
+          {
+            "t": 0.05,
+            "type": "map",
+            "label": "m1"
+          },
+          {
+            "t": 0.05,
+            "type": "timer",
+            "label": "0:00.050"
+          },
+          {
+            "t": 3.06,
+            "type": "saveload",
+            "label": "3"
+          },
+          {
+            "t": 3.06,
+            "type": "timer",
+            "label": "0:03.060"
+          },
+          {
+            "t": 7.07,
+            "type": "map",
+            "label": "m2"
+          },
+          {
+            "t": 7.07,
+            "type": "timer",
+            "label": "0:07.070"
+          }
+        ],
+        "range": {
+          "from": 0,
+          "to": 8
+        }
+      },
+      "out": [
+        {
+          "t": 0.05,
+          "type": "map",
+          "label": "m1"
+        },
+        {
+          "t": 0.05,
+          "type": "timer",
+          "label": "0:00.050"
+        },
+        {
+          "t": 3.06,
+          "type": "saveload",
+          "label": "3"
+        },
+        {
+          "t": 3.06,
+          "type": "timer",
+          "label": "0:03.060"
+        },
+        {
+          "t": 7.07,
+          "type": "map",
+          "label": "m2"
+        },
+        {
+          "t": 7.07,
+          "type": "timer",
+          "label": "0:07.070"
+        }
+      ]
+    },
+    {
+      "input": {
+        "markers": [
+          {
+            "t": 0.05,
+            "type": "map",
+            "label": "m1"
+          },
+          {
+            "t": 0.05,
+            "type": "timer",
+            "label": "0:00.050"
+          },
+          {
+            "t": 3.06,
+            "type": "saveload",
+            "label": "3"
+          },
+          {
+            "t": 3.06,
+            "type": "timer",
+            "label": "0:03.060"
+          },
+          {
+            "t": 7.07,
+            "type": "map",
+            "label": "m2"
+          },
+          {
+            "t": 7.07,
+            "type": "timer",
+            "label": "0:07.070"
+          }
+        ],
+        "range": {
+          "from": 7.07,
+          "to": 8
+        }
+      },
+      "out": [
+        {
+          "t": 0.05,
+          "type": "map",
+          "label": "m1"
+        },
+        {
+          "t": 0.05,
+          "type": "timer",
+          "label": "0:00.050"
+        },
+        {
+          "t": 3.06,
+          "type": "saveload",
+          "label": "3"
+        },
+        {
+          "t": 3.06,
+          "type": "timer",
+          "label": "0:03.060"
+        },
+        {
+          "t": 7.07,
+          "type": "map",
+          "label": "m2"
+        },
+        {
+          "t": 7.07,
+          "type": "timer",
+          "label": "0:07.070"
+        }
+      ]
+    },
+    {
+      "input": {
+        "markers": [
+          {
+            "t": 0.05,
+            "type": "map",
+            "label": "m1"
+          },
+          {
+            "t": 0.05,
+            "type": "timer",
+            "label": "0:00.050"
+          },
+          {
+            "t": 3.06,
+            "type": "saveload",
+            "label": "3"
+          },
+          {
+            "t": 3.06,
+            "type": "timer",
+            "label": "0:03.060"
+          },
+          {
+            "t": 7.07,
+            "type": "map",
+            "label": "m2"
+          },
+          {
+            "t": 7.07,
+            "type": "timer",
+            "label": "0:07.070"
+          }
+        ],
+        "range": {
+          "from": 7.0700005,
+          "to": 8
+        }
+      },
+      "out": [
+        {
+          "t": 0.05,
+          "type": "map",
+          "label": "m1"
+        },
+        {
+          "t": 0.05,
+          "type": "timer",
+          "label": "0:00.050"
+        },
+        {
+          "t": 3.06,
+          "type": "saveload",
+          "label": "3"
+        },
+        {
+          "t": 3.06,
+          "type": "timer",
+          "label": "0:03.060"
+        },
+        {
+          "t": 7.07,
+          "type": "map",
+          "label": "m2"
+        },
+        {
+          "t": 7.07,
+          "type": "timer",
+          "label": "0:07.070"
+        }
+      ]
+    },
+    {
+      "input": {
+        "markers": [
+          {
+            "t": 0.05,
+            "type": "map",
+            "label": "m1"
+          },
+          {
+            "t": 0.05,
+            "type": "timer",
+            "label": "0:00.050"
+          },
+          {
+            "t": 3.06,
+            "type": "saveload",
+            "label": "3"
+          },
+          {
+            "t": 3.06,
+            "type": "timer",
+            "label": "0:03.060"
+          },
+          {
+            "t": 7.07,
+            "type": "map",
+            "label": "m2"
+          },
+          {
+            "t": 7.07,
+            "type": "timer",
+            "label": "0:07.070"
+          }
+        ],
+        "range": {
+          "from": 0.01,
+          "to": 8
+        }
+      },
+      "out": [
+        {
+          "t": 0.05,
+          "type": "map",
+          "label": "m1"
+        },
+        {
+          "t": 0.05,
+          "type": "timer",
+          "label": "0:00.050"
+        },
+        {
+          "t": 3.06,
+          "type": "saveload",
+          "label": "3"
+        },
+        {
+          "t": 3.06,
+          "type": "timer",
+          "label": "0:03.060"
+        },
+        {
+          "t": 7.07,
+          "type": "map",
+          "label": "m2"
+        },
+        {
+          "t": 7.07,
+          "type": "timer",
+          "label": "0:07.070"
+        }
+      ]
+    },
+    {
+      "input": {
+        "markers": [
+          {
+            "t": 0,
+            "type": "map",
+            "label": ""
+          },
+          {
+            "t": 2,
+            "type": "timer",
+            "label": "0:02.000"
+          }
+        ],
+        "range": {
+          "from": 1,
+          "to": 3
+        }
+      },
+      "out": [
+        {
+          "t": 0,
+          "type": "map",
+          "label": ""
+        },
+        {
+          "t": 1,
+          "type": "map",
+          "label": ""
+        },
+        {
+          "t": 2,
+          "type": "timer",
+          "label": "0:02.000"
+        }
+      ]
+    },
+    {
+      "input": {
+        "markers": [],
+        "range": {
+          "from": 1,
+          "to": 3
+        }
+      },
+      "out": []
+    }
+  ],
+  "tga": [
+    {
+      "name": "24 бит снизу вверх",
+      "hex": "000002000000000000000000080004001800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "info": {
+        "width": 8,
+        "height": 4,
+        "bpp": 24,
+        "pixFmt": "bgr24",
+        "topDown": false,
+        "offset": 18,
+        "bytes": 96,
+        "complete": true
+      }
+    },
+    {
+      "name": "32 бит сверху вниз",
+      "hex": "0000020000000000000000000800040020280000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "info": {
+        "width": 8,
+        "height": 4,
+        "bpp": 32,
+        "pixFmt": "bgra",
+        "topDown": true,
+        "offset": 18,
+        "bytes": 128,
+        "complete": true
+      }
+    },
+    {
+      "name": "с полем id",
+      "hex": "0500020000000000000000000200020018000000000000000000000000000000000000",
+      "info": {
+        "width": 2,
+        "height": 2,
+        "bpp": 24,
+        "pixFmt": "bgr24",
+        "topDown": false,
+        "offset": 23,
+        "bytes": 12,
+        "complete": true
+      }
+    },
+    {
+      "name": "недописан",
+      "hex": "0000020000000000000000000800040018000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "info": {
+        "width": 8,
+        "height": 4,
+        "bpp": 24,
+        "pixFmt": "bgr24",
+        "topDown": false,
+        "offset": 18,
+        "bytes": 96,
+        "complete": false
+      }
+    },
+    {
+      "name": "лишние байты",
+      "hex": "0000020000000000000000000200020020000000000000000000000000000000000000000000000000",
+      "info": {
+        "width": 2,
+        "height": 2,
+        "bpp": 32,
+        "pixFmt": "bgra",
+        "topDown": false,
+        "offset": 18,
+        "bytes": 16,
+        "complete": true
+      }
+    },
+    {
+      "name": "16 бит",
+      "hex": "0000020000000000000000000200020010000000000000000000",
+      "info": null
+    },
+    {
+      "name": "ширина 0",
+      "hex": "000002000000000000000000000002001800",
+      "info": null
+    },
+    {
+      "name": "сжатый (тип 10)",
+      "hex": "00000a000000000000000000020002001800000000000000000000000000",
+      "info": null
+    },
+    {
+      "name": "палитра",
+      "hex": "000102000000000000000000020002001800000000000000000000000000",
+      "info": null
+    },
+    {
+      "name": "короче заголовка",
+      "hex": "0000000000000000000000000000000000",
+      "info": null
+    }
+  ],
+  "run": {
+    "durations": [
+      3,
+      0.01,
+      4,
+      0.01,
+      2.98
+    ],
+    "maps": [
+      "m1",
+      "m1",
+      "m1",
+      "m1",
+      "m2"
+    ],
+    "width": 8,
+    "height": 4,
+    "fps": 60
+  },
+  "adapter": [
+    {
+      "name": "ран целиком с 1 с",
+      "options": {
+        "range": {
+          "from": 1
+        },
+        "journal": [
+          "JOB playlist=demos/run1/run.ghplaylist out=hlsr-render/x fps=60 width=8 height=4 keyshud=1 intact=0",
+          "SEGMENT n=1 entry=1/5 frame=0 kind=start map=m1 start=0.000 end=3.000 timer=0.050 file=demos/run1/segment001.dem",
+          "TIMER frame=0 event=start timer=0.000",
+          "SEGMENT n=2 entry=3/5 frame=177 kind=load map=m1 start=3.010 end=7.010 timer=3.060 file=demos/run1/segment003.dem",
+          "PROGRESS segment=2 entry=3/5 frames=180",
+          "SEGMENT n=3 entry=5/5 frame=414 kind=map map=m2 start=7.020 end=10.000 timer=7.070 file=demos/run1/segment005.dem",
+          "TIMER frame=588 event=finish timer=9.950",
+          "DONE frames=590 segments=3 fps=60 audio=audio.wav samples=433650 rate=44100 channels=2 blocks=3 data=intact"
+        ],
+        "totalFrames": 590
+      },
+      "duration": 10,
+      "launches": [
+        {
+          "exe": "<root>/s3/game/hl2.exe",
+          "cwd": "<root>/s3/game",
+          "commandLine": "<root>/s3/game/hl2.exe -steam -game ghostingmod -windowed -noborder -w 8 -h 4 -novid -multirun -ghrender demos/run1/run.ghplaylist -ghrender_out hlsr-render/abcdef01 -ghrender_fps 60 -ghrender_keyshud 1 -ghrender_intact 0 +con_logfile hlsr-render/abcdef01/console.log +volume 0.8 +demo_avellimit 99999 +demo_interplimit 99999",
+          "mute": true,
+          "unmuteAll": false,
+          "resetCommandLine": "<root>/s3/game/hl2.exe -steam -game ghostingmod -windowed -noborder -w 640 -h 480 -novid -multirun +con_logfile hlsr-render/abcdef01/reset.log +developer 1 +volume 0 +snd_mute_losefocus 0"
+        }
+      ],
+      "segmentsArg": null,
+      "ffmpeg": [
+        {
+          "exe": "ffmpeg",
+          "args": [
+            "-hide_banner",
+            "-loglevel",
+            "error",
+            "-f",
+            "rawvideo",
+            "-pix_fmt",
+            "bgr24",
+            "-s",
+            "8x4",
+            "-framerate",
+            "60",
+            "-i",
+            "pipe:0",
+            "-vf",
+            "vflip",
+            "-c:v",
+            "libx264",
+            "-preset",
+            "ultrafast",
+            "-crf",
+            "14",
+            "-pix_fmt",
+            "yuv420p",
+            "-y",
+            "<root>/s3/jobs/abcdef0123456789/video.mkv"
+          ]
+        }
+      ],
+      "frames": {
+        "count": 590,
+        "first": [
+          0,
+          1,
+          2
+        ],
+        "last": [
+          589
+        ]
+      },
+      "result": {
+        "material": {
+          "video": "<root>/s3/jobs/abcdef0123456789/video.mkv",
+          "audio": "<root>/s3/jobs/abcdef0123456789/audio.wav",
+          "offset": 0.05,
+          "cuts": [
+            {
+              "from": 3,
+              "to": 3.06
+            },
+            {
+              "from": 7.01,
+              "to": 7.07
+            }
+          ],
+          "timeline": [
+            {
+              "t": 0.05,
+              "type": "map",
+              "label": "m1"
+            },
+            {
+              "t": 0.05,
+              "type": "timer",
+              "label": "0:00.050"
+            },
+            {
+              "t": 1,
+              "type": "map",
+              "label": "m1"
+            },
+            {
+              "t": 3.06,
+              "type": "saveload",
+              "label": "3"
+            },
+            {
+              "t": 3.06,
+              "type": "timer",
+              "label": "0:03.060"
+            },
+            {
+              "t": 7.07,
+              "type": "map",
+              "label": "m2"
+            },
+            {
+              "t": 7.07,
+              "type": "timer",
+              "label": "0:07.070"
+            }
+          ],
+          "profile": "ghosting-ghrender",
+          "launches": 1,
+          "segments": 3,
+          "frames": 590
+        }
+      },
+      "resets": [
+        true
+      ],
+      "registry": {
+        "ScreenWidth": 2560
+      },
+      "renderDir": false,
+      "jobFiles": [
+        "audio.wav"
+      ],
+      "pending": null,
+      "logs": [
+        [
+          "info",
+          "[demo] Ghosting: режим -ghrender, demos/run1/run.ghplaylist"
+        ],
+        [
+          "info",
+          "[demo] Ghosting -ghrender: PID 77, 8x4@60, записи все"
+        ],
+        [
+          "info",
+          "[demo] сброс mute после игры: снят"
+        ],
+        [
+          "info",
+          "[demo] Ghosting -ghrender: 590 кадров, сегментов 3, data=intact, <N> с"
+        ]
+      ]
+    },
+    {
+      "name": "интервал 5–8 с: записи 3-5",
+      "options": {
+        "range": {
+          "from": 5,
+          "to": 8
+        },
+        "journal": [
+          "JOB playlist=demos/run1/run.ghplaylist out=hlsr-render/x fps=60 width=8 height=4 keyshud=1 intact=0 segments=3-5",
+          "SEGMENT n=1 entry=3/5 frame=0 kind=start map=m1 start=3.010 end=7.010 timer=3.060 tick=5 file=demos/run1/segment003.dem",
+          "SEGMENT n=2 entry=5/5 frame=237 kind=map map=m2 start=7.020 end=10.000 timer=7.070 tick=5 file=demos/run1/segment005.dem",
+          "TIMER frame=411 event=finish timer=9.950",
+          "DONE frames=413 segments=2 fps=60 audio=audio.wav samples=302848 rate=44100 channels=2 blocks=2 data=intact"
+        ],
+        "totalFrames": 413
+      },
+      "duration": 10,
+      "launches": [
+        {
+          "exe": "<root>/s4/game/hl2.exe",
+          "cwd": "<root>/s4/game",
+          "commandLine": "<root>/s4/game/hl2.exe -steam -game ghostingmod -windowed -noborder -w 8 -h 4 -novid -multirun -ghrender demos/run1/run.ghplaylist -ghrender_out hlsr-render/abcdef01 -ghrender_fps 60 -ghrender_segments 3-5 -ghrender_keyshud 1 -ghrender_intact 0 +con_logfile hlsr-render/abcdef01/console.log +volume 0.8 +demo_avellimit 99999 +demo_interplimit 99999",
+          "mute": true,
+          "unmuteAll": false,
+          "resetCommandLine": "<root>/s4/game/hl2.exe -steam -game ghostingmod -windowed -noborder -w 640 -h 480 -novid -multirun +con_logfile hlsr-render/abcdef01/reset.log +developer 1 +volume 0 +snd_mute_losefocus 0"
+        }
+      ],
+      "segmentsArg": "3-5",
+      "ffmpeg": [
+        {
+          "exe": "ffmpeg",
+          "args": [
+            "-hide_banner",
+            "-loglevel",
+            "error",
+            "-f",
+            "rawvideo",
+            "-pix_fmt",
+            "bgr24",
+            "-s",
+            "8x4",
+            "-framerate",
+            "60",
+            "-i",
+            "pipe:0",
+            "-vf",
+            "vflip",
+            "-c:v",
+            "libx264",
+            "-preset",
+            "ultrafast",
+            "-crf",
+            "14",
+            "-pix_fmt",
+            "yuv420p",
+            "-y",
+            "<root>/s4/jobs/abcdef0123456789/video.mkv"
+          ]
+        }
+      ],
+      "frames": {
+        "count": 413,
+        "first": [
+          0,
+          1,
+          2
+        ],
+        "last": [
+          412
+        ]
+      },
+      "result": {
+        "material": {
+          "video": "<root>/s4/jobs/abcdef0123456789/video.mkv",
+          "audio": "<root>/s4/jobs/abcdef0123456789/audio.wav",
+          "offset": 3.06,
+          "cuts": [
+            {
+              "from": 7.01,
+              "to": 7.07
+            }
+          ],
+          "timeline": [
+            {
+              "t": 3.06,
+              "type": "map",
+              "label": "m1"
+            },
+            {
+              "t": 3.06,
+              "type": "timer",
+              "label": "0:03.060"
+            },
+            {
+              "t": 5,
+              "type": "map",
+              "label": "m1"
+            },
+            {
+              "t": 7.07,
+              "type": "map",
+              "label": "m2"
+            },
+            {
+              "t": 7.07,
+              "type": "timer",
+              "label": "0:07.070"
+            }
+          ],
+          "profile": "ghosting-ghrender",
+          "launches": 1,
+          "segments": 2,
+          "frames": 413
+        }
+      },
+      "resets": [
+        true
+      ],
+      "registry": {
+        "ScreenWidth": 2560
+      },
+      "renderDir": false,
+      "jobFiles": [
+        "audio.wav"
+      ],
+      "pending": null,
+      "logs": [
+        [
+          "info",
+          "[demo] Ghosting: режим -ghrender, demos/run1/run.ghplaylist"
+        ],
+        [
+          "info",
+          "[demo] Ghosting -ghrender: PID 77, 8x4@60, записи 3-5"
+        ],
+        [
+          "info",
+          "[demo] сброс mute после игры: снят"
+        ],
+        [
+          "info",
+          "[demo] Ghosting -ghrender: 413 кадров, сегментов 2, data=intact, <N> с"
+        ]
+      ]
+    },
+    {
+      "name": "свой конфиг выключен, HUD свой, без звука и KeyHUD, проверка данных",
+      "options": {
+        "audio": false,
+        "keyhud": false,
+        "integrity": true,
+        "ownConfig": false,
+        "ownHud": true,
+        "journal": [
+          "JOB playlist=demos/run1/run.ghplaylist out=hlsr-render/x fps=60 width=8 height=4 keyshud=1 intact=0",
+          "SEGMENT n=1 entry=1/5 frame=0 kind=start map=m1 start=0.000 end=3.000 timer=0.050 file=demos/run1/segment001.dem",
+          "TIMER frame=0 event=start timer=0.000",
+          "SEGMENT n=2 entry=3/5 frame=177 kind=load map=m1 start=3.010 end=7.010 timer=3.060 file=demos/run1/segment003.dem",
+          "PROGRESS segment=2 entry=3/5 frames=180",
+          "SEGMENT n=3 entry=5/5 frame=414 kind=map map=m2 start=7.020 end=10.000 timer=7.070 file=demos/run1/segment005.dem",
+          "TIMER frame=588 event=finish timer=9.950",
+          "DONE frames=590 segments=3 fps=60 audio=audio.wav samples=433650 rate=44100 channels=2 blocks=3 data=intact"
+        ],
+        "totalFrames": 590
+      },
+      "duration": 10,
+      "launches": [
+        {
+          "exe": "<root>/s5/game/hl2.exe",
+          "cwd": "<root>/s5/game",
+          "commandLine": "<root>/s5/game/hl2.exe -steam -game ghostingmod -windowed -noborder -w 8 -h 4 -novid -multirun -ghrender demos/run1/run.ghplaylist -ghrender_out hlsr-render/abcdef01 -ghrender_fps 60 -ghrender_keyshud 0 -ghrender_intact 1 +con_logfile hlsr-render/abcdef01/console.log +volume 0.8 +demo_avellimit 99999 +demo_interplimit 99999 -insert_search_path ghostingmod/hlsr-render/abcdef01/std +exec hlsr-personalization.cfg",
+          "mute": true,
+          "unmuteAll": false,
+          "resetCommandLine": "<root>/s5/game/hl2.exe -steam -game ghostingmod -windowed -noborder -w 640 -h 480 -novid -multirun +con_logfile hlsr-render/abcdef01/reset.log +developer 1 +volume 0 +snd_mute_losefocus 0"
+        }
+      ],
+      "segmentsArg": null,
+      "ffmpeg": [
+        {
+          "exe": "ffmpeg",
+          "args": [
+            "-hide_banner",
+            "-loglevel",
+            "error",
+            "-f",
+            "rawvideo",
+            "-pix_fmt",
+            "bgr24",
+            "-s",
+            "8x4",
+            "-framerate",
+            "60",
+            "-i",
+            "pipe:0",
+            "-vf",
+            "vflip",
+            "-c:v",
+            "libx264",
+            "-preset",
+            "ultrafast",
+            "-crf",
+            "14",
+            "-pix_fmt",
+            "yuv420p",
+            "-y",
+            "<root>/s5/jobs/abcdef0123456789/video.mkv"
+          ]
+        }
+      ],
+      "frames": {
+        "count": 590,
+        "first": [
+          0,
+          1,
+          2
+        ],
+        "last": [
+          589
+        ]
+      },
+      "result": {
+        "material": {
+          "video": "<root>/s5/jobs/abcdef0123456789/video.mkv",
+          "audio": null,
+          "offset": 0.05,
+          "cuts": [
+            {
+              "from": 3,
+              "to": 3.06
+            },
+            {
+              "from": 7.01,
+              "to": 7.07
+            }
+          ],
+          "timeline": [
+            {
+              "t": 0.05,
+              "type": "map",
+              "label": "m1"
+            },
+            {
+              "t": 0.05,
+              "type": "timer",
+              "label": "0:00.050"
+            },
+            {
+              "t": 3.06,
+              "type": "saveload",
+              "label": "3"
+            },
+            {
+              "t": 3.06,
+              "type": "timer",
+              "label": "0:03.060"
+            },
+            {
+              "t": 7.07,
+              "type": "map",
+              "label": "m2"
+            },
+            {
+              "t": 7.07,
+              "type": "timer",
+              "label": "0:07.070"
+            }
+          ],
+          "profile": "ghosting-ghrender",
+          "launches": 1,
+          "segments": 3,
+          "frames": 590
+        }
+      },
+      "resets": [
+        true
+      ],
+      "registry": {
+        "ScreenWidth": 2560
+      },
+      "renderDir": false,
+      "jobFiles": [],
+      "pending": null,
+      "logs": [
+        [
+          "info",
+          "[demo] Ghosting: режим -ghrender, demos/run1/run.ghplaylist"
+        ],
+        [
+          "info",
+          "[demo] Ghosting -ghrender: PID 77, 8x4@60, записи все"
+        ],
+        [
+          "info",
+          "[demo] сброс mute после игры: снят"
+        ],
+        [
+          "info",
+          "[demo] Ghosting -ghrender: 590 кадров, сегментов 3, data=intact, <N> с"
+        ]
+      ]
+    },
+    {
+      "name": "HUD стандартный",
+      "options": {
+        "ownHud": false,
+        "journal": [
+          "JOB playlist=demos/run1/run.ghplaylist out=hlsr-render/x fps=60 width=8 height=4 keyshud=1 intact=0",
+          "SEGMENT n=1 entry=1/5 frame=0 kind=start map=m1 start=0.000 end=3.000 timer=0.050 file=demos/run1/segment001.dem",
+          "TIMER frame=0 event=start timer=0.000",
+          "SEGMENT n=2 entry=3/5 frame=177 kind=load map=m1 start=3.010 end=7.010 timer=3.060 file=demos/run1/segment003.dem",
+          "PROGRESS segment=2 entry=3/5 frames=180",
+          "SEGMENT n=3 entry=5/5 frame=414 kind=map map=m2 start=7.020 end=10.000 timer=7.070 file=demos/run1/segment005.dem",
+          "TIMER frame=588 event=finish timer=9.950",
+          "DONE frames=590 segments=3 fps=60 audio=audio.wav samples=433650 rate=44100 channels=2 blocks=3 data=intact"
+        ],
+        "totalFrames": 590
+      },
+      "duration": 10,
+      "launches": [
+        {
+          "exe": "<root>/s6/game/hl2.exe",
+          "cwd": "<root>/s6/game",
+          "commandLine": "<root>/s6/game/hl2.exe -steam -game ghostingmod -windowed -noborder -w 8 -h 4 -novid -multirun -ghrender demos/run1/run.ghplaylist -ghrender_out hlsr-render/abcdef01 -ghrender_fps 60 -ghrender_keyshud 1 -ghrender_intact 0 +con_logfile hlsr-render/abcdef01/console.log +volume 0.8 +demo_avellimit 99999 +demo_interplimit 99999 -insert_search_path ghostingmod/hlsr-render/abcdef01/std +exec hlsr-render-hud.cfg",
+          "mute": true,
+          "unmuteAll": false,
+          "resetCommandLine": "<root>/s6/game/hl2.exe -steam -game ghostingmod -windowed -noborder -w 640 -h 480 -novid -multirun +con_logfile hlsr-render/abcdef01/reset.log +developer 1 +volume 0 +snd_mute_losefocus 0"
+        }
+      ],
+      "segmentsArg": null,
+      "ffmpeg": [
+        {
+          "exe": "ffmpeg",
+          "args": [
+            "-hide_banner",
+            "-loglevel",
+            "error",
+            "-f",
+            "rawvideo",
+            "-pix_fmt",
+            "bgr24",
+            "-s",
+            "8x4",
+            "-framerate",
+            "60",
+            "-i",
+            "pipe:0",
+            "-vf",
+            "vflip",
+            "-c:v",
+            "libx264",
+            "-preset",
+            "ultrafast",
+            "-crf",
+            "14",
+            "-pix_fmt",
+            "yuv420p",
+            "-y",
+            "<root>/s6/jobs/abcdef0123456789/video.mkv"
+          ]
+        }
+      ],
+      "frames": {
+        "count": 590,
+        "first": [
+          0,
+          1,
+          2
+        ],
+        "last": [
+          589
+        ]
+      },
+      "result": {
+        "material": {
+          "video": "<root>/s6/jobs/abcdef0123456789/video.mkv",
+          "audio": "<root>/s6/jobs/abcdef0123456789/audio.wav",
+          "offset": 0.05,
+          "cuts": [
+            {
+              "from": 3,
+              "to": 3.06
+            },
+            {
+              "from": 7.01,
+              "to": 7.07
+            }
+          ],
+          "timeline": [
+            {
+              "t": 0.05,
+              "type": "map",
+              "label": "m1"
+            },
+            {
+              "t": 0.05,
+              "type": "timer",
+              "label": "0:00.050"
+            },
+            {
+              "t": 3.06,
+              "type": "saveload",
+              "label": "3"
+            },
+            {
+              "t": 3.06,
+              "type": "timer",
+              "label": "0:03.060"
+            },
+            {
+              "t": 7.07,
+              "type": "map",
+              "label": "m2"
+            },
+            {
+              "t": 7.07,
+              "type": "timer",
+              "label": "0:07.070"
+            }
+          ],
+          "profile": "ghosting-ghrender",
+          "launches": 1,
+          "segments": 3,
+          "frames": 590
+        }
+      },
+      "resets": [
+        true
+      ],
+      "registry": {
+        "ScreenWidth": 2560
+      },
+      "renderDir": false,
+      "jobFiles": [
+        "audio.wav"
+      ],
+      "pending": null,
+      "logs": [
+        [
+          "info",
+          "[demo] Ghosting: режим -ghrender, demos/run1/run.ghplaylist"
+        ],
+        [
+          "info",
+          "[demo] Ghosting -ghrender: PID 77, 8x4@60, записи все"
+        ],
+        [
+          "info",
+          "[demo] сброс mute после игры: снят"
+        ],
+        [
+          "info",
+          "[demo] Ghosting -ghrender: 590 кадров, сегментов 3, data=intact, <N> с"
+        ]
+      ]
+    },
+    {
+      "name": "интервал без строк SEGMENT",
+      "options": {
+        "range": {
+          "from": 5,
+          "to": 8
+        },
+        "journal": [
+          "JOB playlist=demos/run1/run.ghplaylist out=hlsr-render/x fps=60 width=8 height=4 keyshud=1 intact=0 segments=3-5",
+          "TIMER frame=411 event=finish timer=9.950",
+          "DONE frames=413 segments=2 fps=60 audio=audio.wav samples=302848 rate=44100 channels=2 blocks=2 data=intact"
+        ],
+        "totalFrames": 413
+      },
+      "duration": 10,
+      "launches": [
+        {
+          "exe": "<root>/s7/game/hl2.exe",
+          "cwd": "<root>/s7/game",
+          "commandLine": "<root>/s7/game/hl2.exe -steam -game ghostingmod -windowed -noborder -w 8 -h 4 -novid -multirun -ghrender demos/run1/run.ghplaylist -ghrender_out hlsr-render/abcdef01 -ghrender_fps 60 -ghrender_segments 3-5 -ghrender_keyshud 1 -ghrender_intact 0 +con_logfile hlsr-render/abcdef01/console.log +volume 0.8 +demo_avellimit 99999 +demo_interplimit 99999",
+          "mute": true,
+          "unmuteAll": false,
+          "resetCommandLine": "<root>/s7/game/hl2.exe -steam -game ghostingmod -windowed -noborder -w 640 -h 480 -novid -multirun +con_logfile hlsr-render/abcdef01/reset.log +developer 1 +volume 0 +snd_mute_losefocus 0"
+        }
+      ],
+      "segmentsArg": "3-5",
+      "ffmpeg": [
+        {
+          "exe": "ffmpeg",
+          "args": [
+            "-hide_banner",
+            "-loglevel",
+            "error",
+            "-f",
+            "rawvideo",
+            "-pix_fmt",
+            "bgr24",
+            "-s",
+            "8x4",
+            "-framerate",
+            "60",
+            "-i",
+            "pipe:0",
+            "-vf",
+            "vflip",
+            "-c:v",
+            "libx264",
+            "-preset",
+            "ultrafast",
+            "-crf",
+            "14",
+            "-pix_fmt",
+            "yuv420p",
+            "-y",
+            "<root>/s7/jobs/abcdef0123456789/video.mkv"
+          ]
+        }
+      ],
+      "frames": {
+        "count": 413,
+        "first": [
+          0,
+          1,
+          2
+        ],
+        "last": [
+          412
+        ]
+      },
+      "result": {
+        "error": {
+          "code": "RENDER_FAILED",
+          "message": "В журнале -ghrender нет строк SEGMENT для записей 3-5",
+          "details": null
+        }
+      },
+      "resets": [
+        true
+      ],
+      "registry": {
+        "ScreenWidth": 2560
+      },
+      "renderDir": false,
+      "jobFiles": [
+        "audio.wav"
+      ],
+      "pending": null,
+      "logs": [
+        [
+          "info",
+          "[demo] Ghosting: режим -ghrender, demos/run1/run.ghplaylist"
+        ],
+        [
+          "info",
+          "[demo] Ghosting -ghrender: PID 77, 8x4@60, записи 3-5"
+        ],
+        [
+          "info",
+          "[demo] сброс mute после игры: снят"
+        ],
+        [
+          "info",
+          "[demo] Ghosting -ghrender: 413 кадров, сегментов 2, data=intact, <N> с"
+        ]
+      ]
+    },
+    {
+      "name": "игра вышла без DONE",
+      "options": {
+        "journal": [
+          "JOB playlist=demos/run1/run.ghplaylist out=hlsr-render/x fps=60 width=8 height=4 keyshud=1 intact=0",
+          "SEGMENT n=1 entry=1/5 frame=0 kind=start map=m1 start=0.000 end=3.000 timer=0.050 file=demos/run1/segment001.dem",
+          "TIMER frame=0 event=start timer=0.000"
+        ],
+        "exitAfterJournal": true,
+        "totalFrames": 590
+      },
+      "duration": 10,
+      "launches": [
+        {
+          "exe": "<root>/s8/game/hl2.exe",
+          "cwd": "<root>/s8/game",
+          "commandLine": "<root>/s8/game/hl2.exe -steam -game ghostingmod -windowed -noborder -w 8 -h 4 -novid -multirun -ghrender demos/run1/run.ghplaylist -ghrender_out hlsr-render/abcdef01 -ghrender_fps 60 -ghrender_keyshud 1 -ghrender_intact 0 +con_logfile hlsr-render/abcdef01/console.log +volume 0.8 +demo_avellimit 99999 +demo_interplimit 99999",
+          "mute": true,
+          "unmuteAll": false,
+          "resetCommandLine": "<root>/s8/game/hl2.exe -steam -game ghostingmod -windowed -noborder -w 640 -h 480 -novid -multirun +con_logfile hlsr-render/abcdef01/reset.log +developer 1 +volume 0 +snd_mute_losefocus 0"
+        }
+      ],
+      "segmentsArg": null,
+      "ffmpeg": [],
+      "frames": {
+        "count": 0,
+        "first": [],
+        "last": []
+      },
+      "result": {
+        "error": {
+          "code": "GAME_EXITED",
+          "message": "GAME_EXITED",
+          "details": {
+            "exitCode": 0
+          }
+        }
+      },
+      "resets": [
+        true
+      ],
+      "registry": {
+        "ScreenWidth": 2560
+      },
+      "renderDir": false,
+      "jobFiles": [],
+      "pending": null,
+      "logs": [
+        [
+          "info",
+          "[demo] Ghosting: режим -ghrender, demos/run1/run.ghplaylist"
+        ],
+        [
+          "info",
+          "[demo] Ghosting -ghrender: PID 77, 8x4@60, записи все"
+        ],
+        [
+          "info",
+          "[demo] сброс mute после игры: снят"
+        ]
+      ]
+    },
+    {
+      "name": "застой",
+      "options": {
+        "journal": [
+          "JOB playlist=demos/run1/run.ghplaylist out=hlsr-render/x fps=60 width=8 height=4 keyshud=1 intact=0",
+          "SEGMENT n=1 entry=1/5 frame=0 kind=start map=m1 start=0.000 end=3.000 timer=0.050 file=demos/run1/segment001.dem",
+          "TIMER frame=0 event=start timer=0.000"
+        ],
+        "stallMs": 300,
+        "totalFrames": 590
+      },
+      "duration": 10,
+      "launches": [
+        {
+          "exe": "<root>/s9/game/hl2.exe",
+          "cwd": "<root>/s9/game",
+          "commandLine": "<root>/s9/game/hl2.exe -steam -game ghostingmod -windowed -noborder -w 8 -h 4 -novid -multirun -ghrender demos/run1/run.ghplaylist -ghrender_out hlsr-render/abcdef01 -ghrender_fps 60 -ghrender_keyshud 1 -ghrender_intact 0 +con_logfile hlsr-render/abcdef01/console.log +volume 0.8 +demo_avellimit 99999 +demo_interplimit 99999",
+          "mute": true,
+          "unmuteAll": false,
+          "resetCommandLine": "<root>/s9/game/hl2.exe -steam -game ghostingmod -windowed -noborder -w 640 -h 480 -novid -multirun +con_logfile hlsr-render/abcdef01/reset.log +developer 1 +volume 0 +snd_mute_losefocus 0"
+        }
+      ],
+      "segmentsArg": null,
+      "ffmpeg": [],
+      "frames": {
+        "count": 0,
+        "first": [],
+        "last": []
+      },
+      "result": {
+        "error": {
+          "code": "RENDER_TIMEOUT",
+          "message": "RENDER_TIMEOUT",
+          "details": {
+            "framesDone": 0,
+            "framesTotal": 599
+          }
+        }
+      },
+      "resets": [
+        true
+      ],
+      "registry": {
+        "ScreenWidth": 2560
+      },
+      "renderDir": false,
+      "jobFiles": [],
+      "pending": null,
+      "logs": [
+        [
+          "info",
+          "[demo] Ghosting: режим -ghrender, demos/run1/run.ghplaylist"
+        ],
+        [
+          "info",
+          "[demo] Ghosting -ghrender: PID 77, 8x4@60, записи все"
+        ],
+        [
+          "info",
+          "[demo] сброс mute после игры: снят"
+        ]
+      ]
+    },
+    {
+      "name": "FAIL MAP_MISSING",
+      "options": {
+        "journal": [
+          "JOB playlist=demos/run1/run.ghplaylist out=hlsr-render/x fps=60 width=8 height=4 keyshud=1 intact=0",
+          "FAIL code=MAP_MISSING map=d1_canals_01 frames=0"
+        ],
+        "totalFrames": 590
+      },
+      "duration": 10,
+      "launches": [
+        {
+          "exe": "<root>/s10/game/hl2.exe",
+          "cwd": "<root>/s10/game",
+          "commandLine": "<root>/s10/game/hl2.exe -steam -game ghostingmod -windowed -noborder -w 8 -h 4 -novid -multirun -ghrender demos/run1/run.ghplaylist -ghrender_out hlsr-render/abcdef01 -ghrender_fps 60 -ghrender_keyshud 1 -ghrender_intact 0 +con_logfile hlsr-render/abcdef01/console.log +volume 0.8 +demo_avellimit 99999 +demo_interplimit 99999",
+          "mute": true,
+          "unmuteAll": false,
+          "resetCommandLine": "<root>/s10/game/hl2.exe -steam -game ghostingmod -windowed -noborder -w 640 -h 480 -novid -multirun +con_logfile hlsr-render/abcdef01/reset.log +developer 1 +volume 0 +snd_mute_losefocus 0"
+        }
+      ],
+      "segmentsArg": null,
+      "ffmpeg": [],
+      "frames": {
+        "count": 0,
+        "first": [],
+        "last": []
+      },
+      "result": {
+        "error": {
+          "code": "MAP_MISSING",
+          "message": "FAIL code=MAP_MISSING map=d1_canals_01 frames=0",
+          "details": null
+        }
+      },
+      "resets": [
+        true
+      ],
+      "registry": {
+        "ScreenWidth": 2560
+      },
+      "renderDir": false,
+      "jobFiles": [],
+      "pending": null,
+      "logs": [
+        [
+          "info",
+          "[demo] Ghosting: режим -ghrender, demos/run1/run.ghplaylist"
+        ],
+        [
+          "info",
+          "[demo] Ghosting -ghrender: PID 77, 8x4@60, записи все"
+        ],
+        [
+          "info",
+          "[demo] сброс mute после игры: снят"
+        ]
+      ]
+    },
+    {
+      "name": "FAIL SEGMENT_CHANGED",
+      "options": {
+        "journal": [
+          "JOB playlist=demos/run1/run.ghplaylist out=hlsr-render/x fps=60 width=8 height=4 keyshud=1 intact=0",
+          "SEGMENT n=1 entry=1/5 frame=0 kind=start map=m1 start=0.000 end=3.000 timer=0.050 file=demos/run1/segment001.dem",
+          "FAIL code=SEGMENT_CHANGED entry=3/5 file=demos/run1/segment003.dem frames=84"
+        ],
+        "totalFrames": 590
+      },
+      "duration": 10,
+      "launches": [
+        {
+          "exe": "<root>/s11/game/hl2.exe",
+          "cwd": "<root>/s11/game",
+          "commandLine": "<root>/s11/game/hl2.exe -steam -game ghostingmod -windowed -noborder -w 8 -h 4 -novid -multirun -ghrender demos/run1/run.ghplaylist -ghrender_out hlsr-render/abcdef01 -ghrender_fps 60 -ghrender_keyshud 1 -ghrender_intact 0 +con_logfile hlsr-render/abcdef01/console.log +volume 0.8 +demo_avellimit 99999 +demo_interplimit 99999",
+          "mute": true,
+          "unmuteAll": false,
+          "resetCommandLine": "<root>/s11/game/hl2.exe -steam -game ghostingmod -windowed -noborder -w 640 -h 480 -novid -multirun +con_logfile hlsr-render/abcdef01/reset.log +developer 1 +volume 0 +snd_mute_losefocus 0"
+        }
+      ],
+      "segmentsArg": null,
+      "ffmpeg": [],
+      "frames": {
+        "count": 0,
+        "first": [],
+        "last": []
+      },
+      "result": {
+        "error": {
+          "code": "SEGMENT_CHANGED",
+          "message": "FAIL code=SEGMENT_CHANGED entry=3/5 file=demos/run1/segment003.dem frames=84",
+          "details": {
+            "segment": 3
+          }
+        }
+      },
+      "resets": [
+        true
+      ],
+      "registry": {
+        "ScreenWidth": 2560
+      },
+      "renderDir": false,
+      "jobFiles": [],
+      "pending": null,
+      "logs": [
+        [
+          "info",
+          "[demo] Ghosting: режим -ghrender, demos/run1/run.ghplaylist"
+        ],
+        [
+          "info",
+          "[demo] Ghosting -ghrender: PID 77, 8x4@60, записи все"
+        ],
+        [
+          "info",
+          "[demo] сброс mute после игры: снят"
+        ]
+      ]
+    },
+    {
+      "name": "FAIL BAD_OPTION",
+      "options": {
+        "journal": [
+          "FAIL code=BAD_OPTION frames=0"
+        ],
+        "totalFrames": 590
+      },
+      "duration": 10,
+      "launches": [
+        {
+          "exe": "<root>/s12/game/hl2.exe",
+          "cwd": "<root>/s12/game",
+          "commandLine": "<root>/s12/game/hl2.exe -steam -game ghostingmod -windowed -noborder -w 8 -h 4 -novid -multirun -ghrender demos/run1/run.ghplaylist -ghrender_out hlsr-render/abcdef01 -ghrender_fps 60 -ghrender_keyshud 1 -ghrender_intact 0 +con_logfile hlsr-render/abcdef01/console.log +volume 0.8 +demo_avellimit 99999 +demo_interplimit 99999",
+          "mute": true,
+          "unmuteAll": false,
+          "resetCommandLine": "<root>/s12/game/hl2.exe -steam -game ghostingmod -windowed -noborder -w 640 -h 480 -novid -multirun +con_logfile hlsr-render/abcdef01/reset.log +developer 1 +volume 0 +snd_mute_losefocus 0"
+        }
+      ],
+      "segmentsArg": null,
+      "ffmpeg": [],
+      "frames": {
+        "count": 0,
+        "first": [],
+        "last": []
+      },
+      "result": {
+        "error": {
+          "code": "BAD_OPTION",
+          "message": "FAIL code=BAD_OPTION frames=0",
+          "details": null
+        }
+      },
+      "resets": [
+        true
+      ],
+      "registry": {
+        "ScreenWidth": 2560
+      },
+      "renderDir": false,
+      "jobFiles": [],
+      "pending": null,
+      "logs": [
+        [
+          "info",
+          "[demo] Ghosting: режим -ghrender, demos/run1/run.ghplaylist"
+        ],
+        [
+          "info",
+          "[demo] Ghosting -ghrender: PID 77, 8x4@60, записи все"
+        ],
+        [
+          "info",
+          "[demo] сброс mute после игры: снят"
+        ]
+      ]
+    },
+    {
+      "name": "звука нет, длинная строка, чужой номер сегмента",
+      "options": {
+        "journal": [
+          "JOB playlist=demos/run1/run.ghplaylist out=hlsr-render/x fps=60 width=8 height=4 keyshud=1 intact=0",
+          "SEGMENT n=999999 entry=1/5 frame=0 kind=start map=m1 start=0.000 end=3.000 timer=0.050 file=demos/run1/segment001.dem",
+          "TIMER frame=0 event=start timer=0.000",
+          "SEGMENT n=2 entry=3/5 frame=177 kind=load map=m1 start=3.010 end=7.010 timer=3.060 file=demos/run1/segment003.dem",
+          "PROGRESS segment=2 entry=3/5 frames=180",
+          "SEGMENT n=3 entry=5/5 frame=414 kind=map map=m2 start=7.020 end=10.000 timer=7.070 file=demos/run1/segment005.dem",
+          "TIMER frame=588 event=finish timer=9.950",
+          "WARN xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "DONE frames=590 segments=3 fps=60 audio=none samples=433650 rate=44100 channels=2 blocks=3 data=intact"
+        ],
+        "totalFrames": 590
+      },
+      "duration": 10,
+      "launches": [
+        {
+          "exe": "<root>/s13/game/hl2.exe",
+          "cwd": "<root>/s13/game",
+          "commandLine": "<root>/s13/game/hl2.exe -steam -game ghostingmod -windowed -noborder -w 8 -h 4 -novid -multirun -ghrender demos/run1/run.ghplaylist -ghrender_out hlsr-render/abcdef01 -ghrender_fps 60 -ghrender_keyshud 1 -ghrender_intact 0 +con_logfile hlsr-render/abcdef01/console.log +volume 0.8 +demo_avellimit 99999 +demo_interplimit 99999",
+          "mute": true,
+          "unmuteAll": false,
+          "resetCommandLine": "<root>/s13/game/hl2.exe -steam -game ghostingmod -windowed -noborder -w 640 -h 480 -novid -multirun +con_logfile hlsr-render/abcdef01/reset.log +developer 1 +volume 0 +snd_mute_losefocus 0"
+        }
+      ],
+      "segmentsArg": null,
+      "ffmpeg": [
+        {
+          "exe": "ffmpeg",
+          "args": [
+            "-hide_banner",
+            "-loglevel",
+            "error",
+            "-f",
+            "rawvideo",
+            "-pix_fmt",
+            "bgr24",
+            "-s",
+            "8x4",
+            "-framerate",
+            "60",
+            "-i",
+            "pipe:0",
+            "-vf",
+            "vflip",
+            "-c:v",
+            "libx264",
+            "-preset",
+            "ultrafast",
+            "-crf",
+            "14",
+            "-pix_fmt",
+            "yuv420p",
+            "-y",
+            "<root>/s13/jobs/abcdef0123456789/video.mkv"
+          ]
+        }
+      ],
+      "frames": {
+        "count": 590,
+        "first": [
+          0,
+          1,
+          2
+        ],
+        "last": [
+          589
+        ]
+      },
+      "result": {
+        "material": {
+          "video": "<root>/s13/jobs/abcdef0123456789/video.mkv",
+          "audio": null,
+          "offset": 0.05,
+          "cuts": [
+            {
+              "from": 3,
+              "to": 3.06
+            },
+            {
+              "from": 7.01,
+              "to": 7.07
+            }
+          ],
+          "timeline": [
+            {
+              "t": 0.05,
+              "type": "map",
+              "label": "m1"
+            },
+            {
+              "t": 0.05,
+              "type": "timer",
+              "label": "0:00.050"
+            },
+            {
+              "t": 3.06,
+              "type": "saveload",
+              "label": "3"
+            },
+            {
+              "t": 3.06,
+              "type": "timer",
+              "label": "0:03.060"
+            },
+            {
+              "t": 7.07,
+              "type": "map",
+              "label": "m2"
+            },
+            {
+              "t": 7.07,
+              "type": "timer",
+              "label": "0:07.070"
+            }
+          ],
+          "profile": "ghosting-ghrender",
+          "launches": 1,
+          "segments": 3,
+          "frames": 590
+        }
+      },
+      "resets": [
+        true
+      ],
+      "registry": {
+        "ScreenWidth": 2560
+      },
+      "renderDir": false,
+      "jobFiles": [],
+      "pending": null,
+      "logs": [
+        [
+          "info",
+          "[demo] Ghosting: режим -ghrender, demos/run1/run.ghplaylist"
+        ],
+        [
+          "info",
+          "[demo] Ghosting -ghrender: PID 77, 8x4@60, записи все"
+        ],
+        [
+          "info",
+          "[demo] сброс mute после игры: снят"
+        ],
+        [
+          "warn",
+          "[demo] Ghosting -ghrender: звука нет (audio=none) — экспорт без звука"
+        ],
+        [
+          "info",
+          "[demo] Ghosting -ghrender: 590 кадров, сегментов 3, data=intact, <N> с"
+        ]
+      ]
+    }
+  ],
+  "resetMute": {
+    "blocker": null,
+    "ok": true,
+    "launch": {
+      "exe": "<root>/s14/game/hl2.exe",
+      "cwd": "<root>/s14/game",
+      "commandLine": "<root>/s14/game/hl2.exe -steam -game ghostingmod -windowed -noborder -w 640 -h 480 -novid -multirun +con_logfile hlsr-render/<id>/reset.log +developer 1 +volume 0 +snd_mute_losefocus 0",
+      "resetCommandLine": "<root>/s14/game/hl2.exe -steam -game ghostingmod -windowed -noborder -w 640 -h 480 -novid -multirun +con_logfile hlsr-render/<id>/reset.log +developer 1 +volume 0 +snd_mute_losefocus 0",
+      "resetOnly": true
+    },
+    "pending": false,
+    "registry": {
+      "ScreenWidth": 2560
+    },
+    "renderDir": false
+  }
+}

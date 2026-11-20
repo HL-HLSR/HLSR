@@ -1,0 +1,25 @@
+{
+  "$comment": "Внешний вид игры (G8: GamePersonalization.vue, GhostingSettingsExtras.vue, GhostingPersonalization.vue, GamePersonalizationCode.vue 0.4.9). Моды Ghosting: Condensed HUD выключен, файлы есть. «Моды» и оверлей LiveSplit (G10) в GPUI — пустые места. Разрешение игры для превью (G9) — 1920×1080, кадр 1600 px. Превью в debug рисует кадр 1–2 с (settleMs).",
+  "base": "configs/_base",
+  "invoke": {
+    "custom-packs-get": {
+      "status": "ok",
+      "installed": true,
+      "packs": [
+        {
+          "id": "condensed-hud",
+          "game": "ghosting-renewed",
+          "kind": "hud",
+          "enabled": false,
+          "available": true
+        }
+      ]
+    },
+    "ghosting-screen-get": {
+      "width": 1920,
+      "height": 1080,
+      "source": "game"
+    }
+  },
+  "settleMs": 5000
+}

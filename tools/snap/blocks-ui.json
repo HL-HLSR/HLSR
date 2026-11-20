@@ -1,0 +1,1038 @@
+{
+  "scenes": [
+    {
+      "id": "block-icons",
+      "kind": "block",
+      "width": 296,
+      "height": 112,
+      "background": "#0b0e13",
+      "icons": {
+        "names": [
+          "fas fa-play",
+          "fas fa-cog",
+          "fas fa-times",
+          "fas fa-check",
+          "fas fa-chevron-down",
+          "fas fa-folder-open",
+          "fas fa-sync-alt",
+          "fas fa-dot-circle",
+          "fas fa-exclamation-triangle",
+          "fas fa-external-link-alt"
+        ],
+        "sizes": [
+          12,
+          14,
+          20
+        ],
+        "cell": 28,
+        "row": 32
+      },
+      "group": "glyph"
+    },
+    {
+      "id": "block-icons-styles",
+      "kind": "block",
+      "width": 296,
+      "height": 112,
+      "background": "#0b0e13",
+      "icons": {
+        "names": [
+          "far fa-circle",
+          "far fa-star",
+          "far fa-clock",
+          "far fa-copy",
+          "far fa-trash-alt",
+          "fab fa-discord",
+          "fab fa-steam",
+          "fab fa-github",
+          "fab fa-twitch",
+          "fab fa-youtube"
+        ],
+        "sizes": [
+          12,
+          14,
+          20
+        ],
+        "cell": 28,
+        "row": 32
+      },
+      "group": "glyph"
+    },
+    {
+      "id": "block-icons-box",
+      "kind": "block",
+      "width": 296,
+      "height": 112,
+      "background": "#0b0e13",
+      "icons": {
+        "names": [
+          "fas fa-play",
+          "fas fa-cog",
+          "fas fa-times",
+          "fas fa-check",
+          "fas fa-chevron-down",
+          "fas fa-folder-open",
+          "fas fa-sync-alt",
+          "fas fa-dot-circle",
+          "fas fa-exclamation-triangle",
+          "fas fa-external-link-alt"
+        ],
+        "sizes": [
+          12,
+          14,
+          20
+        ],
+        "cell": 28,
+        "row": 32,
+        "box": 24
+      },
+      "group": "glyph"
+    },
+    {
+      "id": "block-spinner",
+      "kind": "block",
+      "width": 256,
+      "height": 96,
+      "background": "#0b0e13",
+      "rings": {
+        "sizes": [
+          12,
+          14,
+          16,
+          20,
+          24,
+          32
+        ],
+        "colors": [
+          "#f2f5f8",
+          "#00abff"
+        ],
+        "cell": 40,
+        "row": 44
+      }
+    },
+    {
+      "id": "block-glyphs",
+      "kind": "block",
+      "width": 384,
+      "height": 124,
+      "background": "#0b0e13"
+    },
+    {
+      "id": "block-field-text",
+      "kind": "block",
+      "width": 512,
+      "height": 544,
+      "background": "#0b0e13",
+      "css": [
+        "components/Launcher/GhostingSettingsExtras.vue",
+        "components/Launcher/RunnerSettings.vue",
+        "components/Launcher/GameSettingsModal.vue",
+        "components/Launcher/SettingsModal.vue",
+        "components/Launcher/RunnerSearch.vue",
+        "components/Launcher/GamePersonalizationCode.vue"
+      ],
+      "items": [
+        {
+          "kind": "text",
+          "variant": "gx",
+          "x": 8,
+          "y": 8,
+          "w": 240
+        },
+        {
+          "kind": "text",
+          "variant": "gx",
+          "x": 264,
+          "y": 8,
+          "w": 240,
+          "state": "hover"
+        },
+        {
+          "kind": "text",
+          "variant": "gx",
+          "x": 8,
+          "y": 50,
+          "w": 240,
+          "state": "focus"
+        },
+        {
+          "kind": "text",
+          "variant": "gx",
+          "x": 264,
+          "y": 50,
+          "w": 240,
+          "state": "invalid"
+        },
+        {
+          "kind": "text",
+          "variant": "gx",
+          "x": 8,
+          "y": 92,
+          "w": 240,
+          "state": "focus invalid"
+        },
+        {
+          "kind": "text",
+          "variant": "runner",
+          "x": 264,
+          "y": 92,
+          "w": 240
+        },
+        {
+          "kind": "text",
+          "variant": "runner",
+          "x": 8,
+          "y": 140,
+          "w": 240,
+          "state": "hover"
+        },
+        {
+          "kind": "text",
+          "variant": "runner",
+          "x": 264,
+          "y": 140,
+          "w": 240,
+          "state": "focus"
+        },
+        {
+          "kind": "text",
+          "variant": "args",
+          "x": 8,
+          "y": 192,
+          "w": 240
+        },
+        {
+          "kind": "text",
+          "variant": "args",
+          "x": 264,
+          "y": 192,
+          "w": 240,
+          "state": "focus"
+        },
+        {
+          "kind": "search",
+          "variant": "search",
+          "x": 8,
+          "y": 252,
+          "w": 240
+        },
+        {
+          "kind": "search",
+          "variant": "search",
+          "x": 264,
+          "y": 252,
+          "w": 240,
+          "state": "focus"
+        },
+        {
+          "kind": "path",
+          "variant": "path",
+          "x": 8,
+          "y": 308,
+          "w": 240
+        },
+        {
+          "kind": "path",
+          "variant": "path",
+          "x": 264,
+          "y": 308,
+          "w": 240,
+          "state": "focus"
+        },
+        {
+          "kind": "path",
+          "variant": "path",
+          "x": 8,
+          "y": 356,
+          "w": 240,
+          "state": "invalid"
+        },
+        {
+          "kind": "path",
+          "variant": "path",
+          "x": 264,
+          "y": 356,
+          "w": 240,
+          "state": "browse-hover"
+        },
+        {
+          "kind": "text",
+          "variant": "area",
+          "x": 8,
+          "y": 404,
+          "w": 240,
+          "h": 128
+        },
+        {
+          "kind": "text",
+          "variant": "area",
+          "x": 264,
+          "y": 404,
+          "w": 240,
+          "h": 128,
+          "state": "focus-visible"
+        }
+      ]
+    },
+    {
+      "id": "block-field-text-values",
+      "kind": "block",
+      "group": "glyph",
+      "width": 512,
+      "height": 264,
+      "background": "#0b0e13",
+      "css": [
+        "components/Launcher/GhostingSettingsExtras.vue",
+        "components/Launcher/RunnerSettings.vue",
+        "components/Launcher/GameSettingsModal.vue",
+        "components/Launcher/SettingsModal.vue",
+        "components/Launcher/RunnerSearch.vue",
+        "components/Launcher/GamePersonalizationCode.vue",
+        "components/Launcher/GxNumStep.vue"
+      ],
+      "items": [
+        {
+          "kind": "text",
+          "variant": "gx",
+          "x": 8,
+          "y": 8,
+          "w": 240,
+          "text": "Hello world",
+          "placeholder": ""
+        },
+        {
+          "kind": "text",
+          "variant": "gx",
+          "x": 264,
+          "y": 8,
+          "w": 240,
+          "placeholder": "Placeholder"
+        },
+        {
+          "kind": "text",
+          "variant": "runner",
+          "x": 8,
+          "y": 54,
+          "w": 240,
+          "text": "C:\\Games\\Half-Life"
+        },
+        {
+          "kind": "text",
+          "variant": "args",
+          "x": 264,
+          "y": 54,
+          "w": 240,
+          "text": "+fps_max 300 -high"
+        },
+        {
+          "kind": "search",
+          "variant": "search",
+          "x": 8,
+          "y": 112,
+          "w": 240,
+          "placeholder": "Search"
+        },
+        {
+          "kind": "search",
+          "variant": "search",
+          "x": 264,
+          "y": 112,
+          "w": 240,
+          "text": "Gordon"
+        },
+        {
+          "kind": "path",
+          "variant": "path",
+          "x": 8,
+          "y": 168,
+          "w": 240,
+          "text": "C:\\Games\\HLSR"
+        },
+        {
+          "kind": "number",
+          "variant": "gx",
+          "x": 264,
+          "y": 168,
+          "state": "hover",
+          "text": "42",
+          "unit": "%",
+          "step_buttons": true,
+          "min": 0,
+          "max": 100
+        },
+        {
+          "kind": "number",
+          "variant": "gx",
+          "x": 8,
+          "y": 220,
+          "text": "1.5",
+          "unit": "",
+          "min": 0,
+          "max": 10,
+          "step": 0.5
+        },
+        {
+          "kind": "number",
+          "variant": "gx",
+          "x": 128,
+          "y": 220,
+          "text": "250",
+          "unit": "px",
+          "min": 0,
+          "max": 1000
+        }
+      ]
+    },
+    {
+      "id": "block-field-switch",
+      "kind": "block",
+      "width": 232,
+      "height": 40,
+      "background": "#0b0e13",
+      "css": [
+        "components/Launcher/SettingsModal.vue"
+      ],
+      "items": [
+        {
+          "kind": "switch",
+          "variant": "normal",
+          "x": 8,
+          "y": 8
+        },
+        {
+          "kind": "switch",
+          "variant": "normal",
+          "x": 64,
+          "y": 8,
+          "on": true
+        },
+        {
+          "kind": "switch",
+          "variant": "normal",
+          "x": 120,
+          "y": 8,
+          "state": "focus-visible"
+        },
+        {
+          "kind": "switch",
+          "variant": "normal",
+          "x": 176,
+          "y": 8,
+          "state": "focus-visible",
+          "on": true
+        }
+      ]
+    },
+    {
+      "id": "block-field-switch-game",
+      "kind": "block",
+      "width": 400,
+      "height": 44,
+      "background": "#0b0e13",
+      "css": [
+        "components/Launcher/GameSettingsModal.vue"
+      ],
+      "items": [
+        {
+          "kind": "switch",
+          "variant": "game",
+          "x": 8,
+          "y": 8
+        },
+        {
+          "kind": "switch",
+          "variant": "game",
+          "x": 64,
+          "y": 8,
+          "on": true
+        },
+        {
+          "kind": "switch",
+          "variant": "game",
+          "x": 120,
+          "y": 8,
+          "state": "hover"
+        },
+        {
+          "kind": "switch",
+          "variant": "game",
+          "x": 176,
+          "y": 8,
+          "state": "hover",
+          "on": true
+        },
+        {
+          "kind": "switch",
+          "variant": "game",
+          "x": 232,
+          "y": 8,
+          "state": "pressed"
+        },
+        {
+          "kind": "switch",
+          "variant": "game",
+          "x": 288,
+          "y": 8,
+          "state": "pressed",
+          "on": true
+        },
+        {
+          "kind": "switch",
+          "variant": "game",
+          "x": 344,
+          "y": 8,
+          "state": "focus-visible",
+          "on": true
+        }
+      ]
+    },
+    {
+      "id": "block-field-gx-switch",
+      "kind": "block",
+      "width": 176,
+      "height": 40,
+      "background": "#0b0e13",
+      "css": [
+        "components/Launcher/GhostingSettingsExtras.vue"
+      ],
+      "items": [
+        {
+          "kind": "gx-switch",
+          "variant": "gx",
+          "x": 8,
+          "y": 8
+        },
+        {
+          "kind": "gx-switch",
+          "variant": "gx",
+          "x": 64,
+          "y": 8,
+          "on": true
+        },
+        {
+          "kind": "gx-switch",
+          "variant": "gx",
+          "x": 120,
+          "y": 8,
+          "state": "focus-visible",
+          "on": true
+        }
+      ]
+    },
+    {
+      "id": "block-field-check",
+      "kind": "block",
+      "width": 264,
+      "height": 104,
+      "background": "#0b0e13",
+      "css": [
+        "components/Launcher/WelcomeModal.vue",
+        "components/Launcher/GhostingPersonalization.vue"
+      ],
+      "items": [
+        {
+          "kind": "check",
+          "variant": "own",
+          "x": 8,
+          "y": 8
+        },
+        {
+          "kind": "check",
+          "variant": "own",
+          "x": 40,
+          "y": 8,
+          "on": true
+        },
+        {
+          "kind": "check",
+          "variant": "own",
+          "x": 72,
+          "y": 8,
+          "state": "focus-visible"
+        },
+        {
+          "kind": "check",
+          "variant": "own",
+          "x": 104,
+          "y": 8,
+          "state": "focus-visible",
+          "on": true
+        },
+        {
+          "kind": "check",
+          "variant": "chromium",
+          "x": 8,
+          "y": 44
+        },
+        {
+          "kind": "check",
+          "variant": "chromium",
+          "x": 40,
+          "y": 44,
+          "on": true
+        },
+        {
+          "kind": "check",
+          "variant": "chromium",
+          "x": 72,
+          "y": 44,
+          "native_hover": true
+        },
+        {
+          "kind": "check",
+          "variant": "chromium",
+          "x": 104,
+          "y": 44,
+          "on": true,
+          "native_hover": true
+        },
+        {
+          "kind": "check",
+          "variant": "chromium",
+          "x": 136,
+          "y": 44
+        },
+        {
+          "kind": "check",
+          "variant": "chromium",
+          "x": 168,
+          "y": 44,
+          "on": true,
+          "native_focus": true
+        },
+        {
+          "kind": "check",
+          "variant": "chromium",
+          "x": 200,
+          "y": 44,
+          "state": "disabled"
+        },
+        {
+          "kind": "check",
+          "variant": "chromium",
+          "x": 232,
+          "y": 44,
+          "state": "disabled",
+          "on": true
+        },
+        {
+          "kind": "check",
+          "variant": "option",
+          "x": 8,
+          "y": 76
+        },
+        {
+          "kind": "check",
+          "variant": "option",
+          "x": 40,
+          "y": 76,
+          "on": true
+        }
+      ]
+    },
+    {
+      "id": "block-field-range",
+      "kind": "block",
+      "width": 480,
+      "height": 188,
+      "background": "#0b0e13",
+      "css": [
+        "components/Launcher/GhostingSettingsExtras.vue",
+        "components/Launcher/GhostingPersonalization.vue"
+      ],
+      "items": [
+        {
+          "kind": "range",
+          "variant": "gx",
+          "x": 20,
+          "y": 8,
+          "w": 200,
+          "h": 28,
+          "min": 0,
+          "max": 100,
+          "value": 50,
+          "default": 50
+        },
+        {
+          "kind": "range",
+          "variant": "gx",
+          "x": 20,
+          "y": 44,
+          "w": 200,
+          "h": 28,
+          "min": 0,
+          "max": 100,
+          "value": 20,
+          "default": 50
+        },
+        {
+          "kind": "range",
+          "variant": "gx",
+          "x": 20,
+          "y": 80,
+          "w": 200,
+          "h": 28,
+          "min": 0,
+          "max": 100,
+          "value": 80,
+          "default": 50
+        },
+        {
+          "kind": "range",
+          "variant": "gx",
+          "x": 20,
+          "y": 116,
+          "w": 200,
+          "h": 28,
+          "state": "pressed",
+          "min": 0,
+          "max": 100,
+          "value": 80,
+          "default": 50
+        },
+        {
+          "kind": "range",
+          "variant": "gx",
+          "x": 20,
+          "y": 152,
+          "w": 200,
+          "h": 28,
+          "state": "focus-visible",
+          "min": 0,
+          "max": 100,
+          "value": 80,
+          "default": 50
+        },
+        {
+          "kind": "range",
+          "variant": "chromium",
+          "x": 260,
+          "y": 8,
+          "w": 200,
+          "h": 18,
+          "min": 0,
+          "max": 40,
+          "value": 20
+        },
+        {
+          "kind": "range",
+          "variant": "chromium",
+          "x": 260,
+          "y": 44,
+          "w": 200,
+          "h": 18,
+          "min": 0,
+          "max": 40,
+          "value": 0
+        },
+        {
+          "kind": "range",
+          "variant": "chromium",
+          "x": 260,
+          "y": 80,
+          "w": 200,
+          "h": 18,
+          "min": 0,
+          "max": 40,
+          "value": 40
+        },
+        {
+          "kind": "range",
+          "variant": "chromium",
+          "x": 260,
+          "y": 116,
+          "w": 200,
+          "h": 18,
+          "min": 0,
+          "max": 40,
+          "value": 20,
+          "native_hover": true
+        },
+        {
+          "kind": "range",
+          "variant": "chromium",
+          "x": 260,
+          "y": 152,
+          "w": 200,
+          "h": 18,
+          "min": 0,
+          "max": 40,
+          "value": 20,
+          "native_focus": true
+        }
+      ]
+    },
+    {
+      "id": "block-field-color",
+      "kind": "block",
+      "width": 232,
+      "height": 48,
+      "background": "#0b0e13",
+      "css": [
+        "components/Launcher/GhostingSettingsExtras.vue",
+        "components/Launcher/GhostingPersonalization.vue"
+      ],
+      "items": [
+        {
+          "kind": "color",
+          "variant": "gx",
+          "x": 8,
+          "y": 8,
+          "text": "#00abff"
+        },
+        {
+          "kind": "color",
+          "variant": "gx",
+          "x": 64,
+          "y": 8,
+          "text": "#ff7a1c"
+        },
+        {
+          "kind": "color",
+          "variant": "gx",
+          "x": 120,
+          "y": 8,
+          "text": "#ffffff"
+        },
+        {
+          "kind": "color",
+          "variant": "gx",
+          "x": 176,
+          "y": 8,
+          "state": "focus-visible",
+          "text": "#00abff"
+        }
+      ]
+    },
+    {
+      "id": "block-field-details",
+      "kind": "block",
+      "group": "glyph",
+      "width": 200,
+      "height": 112,
+      "background": "#0b0e13",
+      "css": [
+        "components/Launcher/UnavailableModal.vue"
+      ],
+      "items": [
+        {
+          "kind": "details",
+          "variant": "unavail",
+          "x": 8,
+          "y": 8,
+          "text": "Details",
+          "label": "reason code",
+          "on": false
+        },
+        {
+          "kind": "details",
+          "variant": "unavail",
+          "x": 8,
+          "y": 52,
+          "text": "Details",
+          "label": "reason code",
+          "on": true
+        }
+      ]
+    },
+    {
+      "id": "block-field-choice",
+      "kind": "block",
+      "group": "glyph",
+      "width": 400,
+      "height": 204,
+      "background": "#0b0e13",
+      "css": [
+        "components/Launcher/ConfirmModal.vue",
+        "components/Launcher/HomePanel.vue",
+        "components/Launcher/LiveSplitOverlayEditor.vue"
+      ],
+      "items": [
+        {
+          "kind": "choice",
+          "variant": "dot",
+          "x": 8,
+          "y": 8,
+          "w": 280,
+          "text": "Option one",
+          "on": true
+        },
+        {
+          "kind": "choice",
+          "variant": "dot",
+          "x": 8,
+          "y": 56,
+          "w": 280,
+          "text": "Option two"
+        },
+        {
+          "kind": "choice",
+          "variant": "dot",
+          "x": 8,
+          "y": 104,
+          "w": 280,
+          "state": "hover",
+          "text": "Option two"
+        },
+        {
+          "kind": "choice",
+          "variant": "chip",
+          "x": 304,
+          "y": 8,
+          "text": "Active",
+          "on": true
+        },
+        {
+          "kind": "choice",
+          "variant": "chip",
+          "x": 304,
+          "y": 44,
+          "text": "Idle"
+        },
+        {
+          "kind": "choice",
+          "variant": "chip",
+          "x": 304,
+          "y": 80,
+          "state": "hover",
+          "text": "Idle"
+        },
+        {
+          "kind": "choice",
+          "variant": "segment",
+          "x": 8,
+          "y": 156,
+          "w": 280,
+          "label": "One|Two|Three",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "block-field-switch-runner",
+      "kind": "block",
+      "width": 232,
+      "height": 40,
+      "background": "#0b0e13",
+      "css": [
+        "components/Launcher/RunnerSettings.vue"
+      ],
+      "items": [
+        {
+          "kind": "switch",
+          "variant": "normal",
+          "x": 8,
+          "y": 8
+        },
+        {
+          "kind": "switch",
+          "variant": "normal",
+          "x": 64,
+          "y": 8,
+          "on": true
+        },
+        {
+          "kind": "switch",
+          "variant": "normal",
+          "x": 120,
+          "y": 8,
+          "state": "disabled"
+        },
+        {
+          "kind": "switch",
+          "variant": "normal",
+          "x": 176,
+          "y": 8,
+          "on": true,
+          "state": "disabled"
+        }
+      ]
+    },
+    {
+      "id": "block-field-focus",
+      "kind": "block",
+      "group": "glyph",
+      "width": 400,
+      "height": 216,
+      "background": "#0b0e13",
+      "focus_rule": true,
+      "css": [
+        "components/Launcher/ConfirmModal.vue",
+        "components/Launcher/HomePanel.vue",
+        "components/Launcher/LiveSplitOverlayEditor.vue",
+        "components/Launcher/UnavailableModal.vue"
+      ],
+      "items": [
+        {
+          "kind": "choice",
+          "variant": "dot",
+          "x": 12,
+          "y": 12,
+          "w": 272,
+          "text": "Option one",
+          "on": true,
+          "state": "focus-visible"
+        },
+        {
+          "kind": "choice",
+          "variant": "dot",
+          "x": 12,
+          "y": 64,
+          "w": 272,
+          "text": "Option two",
+          "state": "focus-visible"
+        },
+        {
+          "kind": "choice",
+          "variant": "chip",
+          "x": 308,
+          "y": 14,
+          "text": "Active",
+          "on": true,
+          "state": "focus-visible"
+        },
+        {
+          "kind": "choice",
+          "variant": "chip",
+          "x": 308,
+          "y": 58,
+          "text": "Idle",
+          "state": "focus-visible"
+        },
+        {
+          "kind": "choice",
+          "variant": "segment",
+          "x": 12,
+          "y": 112,
+          "w": 272,
+          "label": "One|Two|Three",
+          "value": 1,
+          "state": "focus-visible",
+          "focus_item": 0
+        },
+        {
+          "kind": "choice",
+          "variant": "segment",
+          "x": 12,
+          "y": 156,
+          "w": 272,
+          "label": "One|Two|Three",
+          "value": 1,
+          "state": "focus-visible",
+          "focus_item": 1
+        },
+        {
+          "kind": "details",
+          "variant": "unavail",
+          "x": 308,
+          "y": 112,
+          "text": "Details",
+          "label": "reason code",
+          "on": false,
+          "state": "focus-visible"
+        }
+      ]
+    }
+  ]
+}

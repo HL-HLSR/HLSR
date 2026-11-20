@@ -1,0 +1,4435 @@
+{
+  "errors": {
+    "codes": [
+      "MANIFEST_NOT_FOUND",
+      "MANIFEST_INVALID",
+      "MANIFEST_DISABLED",
+      "MANIFEST_VERSION_DRAFT",
+      "LAUNCHER_TOO_OLD",
+      "REMOTE_DISABLED",
+      "PROVIDER_UNSUPPORTED",
+      "PROVIDER_LINK_FAILED",
+      "PROVIDER_FORBIDDEN",
+      "NETWORK_ERROR",
+      "NETWORK_TIMEOUT",
+      "HTTP_ERROR",
+      "TOO_MANY_REDIRECTS",
+      "INSECURE_REDIRECT",
+      "RANGE_NOT_SUPPORTED",
+      "CONTENT_LENGTH_MISMATCH",
+      "SIZE_MISMATCH",
+      "CHECKSUM_MISMATCH",
+      "NO_SPACE",
+      "PATH_NOT_WRITABLE",
+      "PATH_INVALID",
+      "ARCHIVE_LIST_FAILED",
+      "ARCHIVE_UNSAFE_ENTRY",
+      "ARCHIVE_LIMIT_EXCEEDED",
+      "EXTRACT_FAILED",
+      "REQUIRED_FILE_MISSING",
+      "TOOL_UNKNOWN",
+      "TOOL_EXECUTABLE_MISSING",
+      "TOOL_INSTALL_FAILED",
+      "TOOL_LAUNCH_FAILED",
+      "TOOL_REMOVE_FAILED",
+      "ALREADY_RUNNING",
+      "CANCELLED",
+      "INSTALL_FAILED",
+      "PRESERVE_FAILED",
+      "ANTIVIRUS_BLOCKED",
+      "PACK_FAILED",
+      "PACK_BAD_FORMAT",
+      "PACK_NEWER_FORMAT",
+      "PACK_UNKNOWN_GAME",
+      "PACK_TOO_LARGE",
+      "PACK_DEPOT_BUILD",
+      "PACK_VERSION_UNKNOWN",
+      "PACK_ORIGINALS_UNAVAILABLE",
+      "PACK_MODIFIED",
+      "CUSTOM_PACK_UNKNOWN",
+      "CUSTOM_PACK_NOT_AVAILABLE",
+      "CUSTOM_PACK_FILE_UNKNOWN",
+      "NOT_INSTALLED",
+      "VERSION_MISMATCH",
+      "PATCH_CHAIN_MISSING",
+      "PATCH_FAILED",
+      "FILE_LOCKED",
+      "GAME_RUNNING",
+      "VERIFY_FAILED",
+      "REPAIR_SOURCE_MISSING",
+      "REPAIR_FAILED",
+      "ROLLBACK_FAILED",
+      "FILES_MANIFEST_MISSING",
+      "PROCESS_NOT_FOUND",
+      "PROCESS_MISMATCH",
+      "STOP_TIMEOUT",
+      "STOP_FAILED",
+      "CHANNEL_DISABLED",
+      "CHANNEL_UNAVAILABLE",
+      "SIGNATURE_INVALID",
+      "UPDATE_REQUIRED",
+      "BUILD_METADATA_MISSING",
+      "BUILD_METADATA_INVALID",
+      "BUILD_METADATA_MISMATCH",
+      "BUILD_METADATA_UNSUPPORTED",
+      "BUILD_REQUIRES_NEWER_LAUNCHER",
+      "STEAM_NOT_INSTALLED",
+      "STEAM_NOT_RUNNING",
+      "STEAM_ELEVATED",
+      "STEAM_PROCESS_MISMATCH",
+      "SOURCE_SDK_NOT_INSTALLED",
+      "SOURCE_SDK_INCOMPLETE",
+      "GAME_EXECUTABLE_MISSING",
+      "GAME_DIRECTORY_MISSING",
+      "LIBRARY_PATH_CASE_CONFLICT",
+      "STEAM_APP_ID_MISMATCH",
+      "LAUNCH_CONFIG_INVALID",
+      "LAUNCH_FAILED",
+      "PROTON_WRAPPER_MISSING",
+      "RENDER_ACTIVE",
+      "STEAM_NOT_FOUND",
+      "STEAM_APP_NOT_OWNED",
+      "STEAM_CONTENT_BUSY",
+      "STEAM_LINK_FAILED",
+      "STEAM_DEPOT_FAILED",
+      "STEAM_TIMEOUT",
+      "LICENSE_CHECK_UNAVAILABLE",
+      "STEAM_MANAGED_BUILD"
+    ],
+    "preserve": [
+      {
+        "platform": "linux",
+        "error": {
+          "raw": {
+            "code": "UNKNOWN",
+            "syscall": "copyfile",
+            "path": "C:\\HLSR\\Games\\hl1-won\\valve\\run.dem",
+            "message": "UNKNOWN: copyfile 'C:\\HLSR\\Games\\hl1-won\\valve\\run.dem'"
+          }
+        },
+        "public": {
+          "code": "PRESERVE_FAILED",
+          "message": "Не удалось перенести файл «C:\\HLSR\\Games\\hl1-won\\valve\\run.dem» (UNKNOWN). Закрой программу, которая его держит, и повтори. Прежняя сборка не тронута.",
+          "details": {
+            "path": "C:\\HLSR\\Games\\hl1-won\\valve\\run.dem"
+          }
+        }
+      },
+      {
+        "platform": "linux",
+        "error": {
+          "raw": {
+            "code": "ENOSPC",
+            "syscall": "copyfile",
+            "path": "C:\\HLSR\\Games\\hl1-won\\valve\\run.dem",
+            "message": "ENOSPC: copyfile 'C:\\HLSR\\Games\\hl1-won\\valve\\run.dem'"
+          }
+        },
+        "public": {
+          "code": "NO_SPACE",
+          "message": "Не хватило места, чтобы перенести файл «C:\\HLSR\\Games\\hl1-won\\valve\\run.dem». Прежняя сборка не тронута.",
+          "details": {
+            "path": "C:\\HLSR\\Games\\hl1-won\\valve\\run.dem"
+          }
+        }
+      },
+      {
+        "platform": "linux",
+        "error": {
+          "raw": {
+            "code": "EBUSY",
+            "syscall": "copyfile",
+            "path": "C:\\HLSR\\Games\\hl1-won\\valve\\run.dem",
+            "message": "EBUSY: copyfile 'C:\\HLSR\\Games\\hl1-won\\valve\\run.dem'"
+          }
+        },
+        "public": {
+          "code": "PRESERVE_FAILED",
+          "message": "Не удалось перенести файл «C:\\HLSR\\Games\\hl1-won\\valve\\run.dem» (EBUSY). Закрой программу, которая его держит, и повтори. Прежняя сборка не тронута.",
+          "details": {
+            "path": "C:\\HLSR\\Games\\hl1-won\\valve\\run.dem"
+          }
+        }
+      },
+      {
+        "platform": "linux",
+        "error": {
+          "raw": {
+            "code": "EPERM",
+            "path": "",
+            "message": "EPERM: operation not permitted"
+          }
+        },
+        "public": {
+          "code": "PRESERVE_FAILED",
+          "message": "Не удалось перенести файл игрока (EPERM). Закрой программу, которая его держит, и повтори. Прежняя сборка не тронута.",
+          "details": {
+            "path": null
+          }
+        }
+      },
+      {
+        "platform": "linux",
+        "error": {
+          "raw": {
+            "message": "сбой без кода"
+          }
+        },
+        "public": {
+          "code": "PRESERVE_FAILED",
+          "message": "Не удалось перенести файл игрока (сбой без кода). Закрой программу, которая его держит, и повтори. Прежняя сборка не тронута.",
+          "details": {
+            "path": null
+          }
+        }
+      },
+      {
+        "platform": "linux",
+        "error": {
+          "raw": {
+            "message": ""
+          }
+        },
+        "public": {
+          "code": "PRESERVE_FAILED",
+          "message": "Не удалось перенести файл игрока (Error). Закрой программу, которая его держит, и повтори. Прежняя сборка не тронута.",
+          "details": {
+            "path": null
+          }
+        }
+      },
+      {
+        "platform": "linux",
+        "error": {
+          "raw": {
+            "code": "ENOSPC",
+            "message": "ENOSPC"
+          }
+        },
+        "public": {
+          "code": "NO_SPACE",
+          "message": "Не хватило места, чтобы перенести файл игрока. Прежняя сборка не тронута.",
+          "details": {
+            "path": null
+          }
+        }
+      },
+      {
+        "platform": "linux",
+        "error": {
+          "delivery": {
+            "code": "PATH_INVALID",
+            "message": "выход за папку",
+            "details": {
+              "path": "a"
+            }
+          }
+        },
+        "public": {
+          "code": "PATH_INVALID",
+          "message": "выход за папку",
+          "details": {
+            "path": "a"
+          }
+        }
+      },
+      {
+        "platform": "win32",
+        "error": {
+          "raw": {
+            "code": "UNKNOWN",
+            "syscall": "copyfile",
+            "path": "C:\\HLSR\\Games\\hl1-won\\valve\\run.dem",
+            "message": "UNKNOWN: copyfile 'C:\\HLSR\\Games\\hl1-won\\valve\\run.dem'"
+          }
+        },
+        "public": {
+          "code": "ANTIVIRUS_BLOCKED",
+          "message": "Windows не дал открыть «run.dem»: скорее всего, его заблокировал антивирус. Защитник Windows бывает так реагирует на инструменты спидрана (Bunnymod XT). Добавьте папку библиотеки HLSR в исключения антивируса и повторите установку.",
+          "details": {
+            "path": "C:\\HLSR\\Games\\hl1-won\\valve\\run.dem",
+            "reason": "UNKNOWN: copyfile 'C:\\HLSR\\Games\\hl1-won\\valve\\run.dem'"
+          }
+        }
+      },
+      {
+        "platform": "win32",
+        "error": {
+          "raw": {
+            "code": "ENOSPC",
+            "syscall": "copyfile",
+            "path": "C:\\HLSR\\Games\\hl1-won\\valve\\run.dem",
+            "message": "ENOSPC: copyfile 'C:\\HLSR\\Games\\hl1-won\\valve\\run.dem'"
+          }
+        },
+        "public": {
+          "code": "NO_SPACE",
+          "message": "Не хватило места, чтобы перенести файл «C:\\HLSR\\Games\\hl1-won\\valve\\run.dem». Прежняя сборка не тронута.",
+          "details": {
+            "path": "C:\\HLSR\\Games\\hl1-won\\valve\\run.dem"
+          }
+        }
+      },
+      {
+        "platform": "win32",
+        "error": {
+          "raw": {
+            "code": "EBUSY",
+            "syscall": "copyfile",
+            "path": "C:\\HLSR\\Games\\hl1-won\\valve\\run.dem",
+            "message": "EBUSY: copyfile 'C:\\HLSR\\Games\\hl1-won\\valve\\run.dem'"
+          }
+        },
+        "public": {
+          "code": "PRESERVE_FAILED",
+          "message": "Не удалось перенести файл «C:\\HLSR\\Games\\hl1-won\\valve\\run.dem» (EBUSY). Закрой программу, которая его держит, и повтори. Прежняя сборка не тронута.",
+          "details": {
+            "path": "C:\\HLSR\\Games\\hl1-won\\valve\\run.dem"
+          }
+        }
+      },
+      {
+        "platform": "win32",
+        "error": {
+          "raw": {
+            "code": "EPERM",
+            "path": "",
+            "message": "EPERM: operation not permitted"
+          }
+        },
+        "public": {
+          "code": "PRESERVE_FAILED",
+          "message": "Не удалось перенести файл игрока (EPERM). Закрой программу, которая его держит, и повтори. Прежняя сборка не тронута.",
+          "details": {
+            "path": null
+          }
+        }
+      },
+      {
+        "platform": "win32",
+        "error": {
+          "raw": {
+            "message": "сбой без кода"
+          }
+        },
+        "public": {
+          "code": "PRESERVE_FAILED",
+          "message": "Не удалось перенести файл игрока (сбой без кода). Закрой программу, которая его держит, и повтори. Прежняя сборка не тронута.",
+          "details": {
+            "path": null
+          }
+        }
+      },
+      {
+        "platform": "win32",
+        "error": {
+          "raw": {
+            "message": ""
+          }
+        },
+        "public": {
+          "code": "PRESERVE_FAILED",
+          "message": "Не удалось перенести файл игрока (Error). Закрой программу, которая его держит, и повтори. Прежняя сборка не тронута.",
+          "details": {
+            "path": null
+          }
+        }
+      },
+      {
+        "platform": "win32",
+        "error": {
+          "raw": {
+            "code": "ENOSPC",
+            "message": "ENOSPC"
+          }
+        },
+        "public": {
+          "code": "NO_SPACE",
+          "message": "Не хватило места, чтобы перенести файл игрока. Прежняя сборка не тронута.",
+          "details": {
+            "path": null
+          }
+        }
+      },
+      {
+        "platform": "win32",
+        "error": {
+          "delivery": {
+            "code": "PATH_INVALID",
+            "message": "выход за папку",
+            "details": {
+              "path": "a"
+            }
+          }
+        },
+        "public": {
+          "code": "PATH_INVALID",
+          "message": "выход за папку",
+          "details": {
+            "path": "a"
+          }
+        }
+      }
+    ]
+  },
+  "patterns": {
+    "groups": {
+      "USER_DATA": [
+        "ghostingmod/SAVE",
+        "ghostingmod/runs",
+        "ghostingmod/screenshots",
+        "ghostingmod/cfg",
+        "ghostingmod/custom",
+        "ghostingmod/synclogs",
+        "ghostingmod/DownloadLists",
+        "ghostingmod/download",
+        "**/*.dem",
+        "steam_appid.txt",
+        "hl2/SAVE",
+        "hl2/screenshots",
+        "hl2/cfg",
+        "hl2/custom",
+        "hl2/download",
+        "hl2/DownloadLists",
+        "lostcoast/SAVE",
+        "lostcoast/screenshots",
+        "lostcoast/cfg",
+        "lostcoast/custom",
+        "lostcoast/download",
+        "hl2_russian/SAVE",
+        "hl2_russian/cfg",
+        "hl2_russian/custom",
+        "Half-Life/valve_WON/SAVE",
+        "Half-Life/valve_WON/config.cfg",
+        "Half-Life/valve_WON/userconfig.cfg",
+        "Half-Life/valve_WON_*/config.cfg",
+        "Half-Life/valve_WON_*/userconfig.cfg",
+        "Half-Life/valve_WON/hlsr-config.cfg",
+        "Half-Life/valve_WON/hlsr-import.cfg",
+        "Half-Life/valve_WON/hlsr-import-*.cfg",
+        "Half-Life/valve_WON/custom.hpk",
+        "Half-Life/valve_WON/*.bmp",
+        "Half-Life/errorlogs",
+        "Half-Life/steam_appid.txt"
+      ],
+      "RUNTIME_STATE": [
+        "ghostingmod/demoheader.tmp",
+        "ghostingmod/gamestate.txt",
+        "ghostingmod/stats.txt",
+        "ghostingmod/ep1_gamestats.dat",
+        "ghostingmod/voice_ban.dt",
+        "**/*.log",
+        "**/demoheader.tmp",
+        "**/gamestate.txt",
+        "**/stats.txt",
+        "**/voice_ban.dt",
+        "**/NavPlace.db",
+        "**/shader_cache.cfg",
+        "**/demoheader.dmf"
+      ],
+      "ENGINE_CACHES": [
+        "ghostingmod/modelsounds.cache",
+        "**/soundcache/**",
+        "**/sound.cache",
+        "**/*.vpk.sound.cache",
+        "**/modelsounds.cache",
+        "**/scene.cache",
+        "renderer-cache/**",
+        "renderer-logs/**"
+      ],
+      "LIBRARY_INTERNALS": [
+        ".hlsr",
+        ".hlsr/**",
+        "Downloads",
+        "Downloads/**",
+        "staging",
+        "rollback",
+        "installed.json",
+        "installed.json.*",
+        "*.hlsr-backup"
+      ],
+      "UPDATED_DEPENDENCIES": [
+        "Bunnymod XT/BunnymodXT.dll",
+        "Bunnymod XT/Injector.exe",
+        "Bunnymod XT/version",
+        "Bunnymod XT/.hlsr-*"
+      ],
+      "CUSTOMIZATION": [
+        "Half-Life/valve_WON/sprites/**",
+        "Half-Life/valve_WON/hlsr-personalization.cfg",
+        "Half-Life/valve_WON/hlsr-binds.cfg",
+        "Half-Life/valve_WON/models/v_357.mdl",
+        "Half-Life/valve_WON/models/v_9mmar.mdl",
+        "Half-Life/valve_WON/models/v_9mmhandgun.mdl",
+        "Half-Life/valve_WON/models/v_crossbow.mdl",
+        "Half-Life/valve_WON/models/v_crowbar.mdl",
+        "Half-Life/valve_WON/models/v_egon.mdl",
+        "Half-Life/valve_WON/models/v_gauss.mdl",
+        "Half-Life/valve_WON/models/v_grenade.mdl",
+        "Half-Life/valve_WON/models/v_hgun.mdl",
+        "Half-Life/valve_WON/models/v_rpg.mdl",
+        "Half-Life/valve_WON/models/v_satchel.mdl",
+        "Half-Life/valve_WON/models/v_satchel_radio.mdl",
+        "Half-Life/valve_WON/models/v_shotgun.mdl",
+        "Half-Life/valve_WON/models/v_squeak.mdl",
+        "Half-Life/valve_WON/models/v_tripmine.mdl",
+        "Half-Life/valve_WON/models/w_357.mdl",
+        "Half-Life/valve_WON/models/w_357ammobox.mdl",
+        "Half-Life/valve_WON/models/w_9mmar.mdl",
+        "Half-Life/valve_WON/models/w_9mmarclip.mdl",
+        "Half-Life/valve_WON/models/w_9mmclip.mdl",
+        "Half-Life/valve_WON/models/w_9mmhandgun.mdl",
+        "Half-Life/valve_WON/models/w_argrenade.mdl",
+        "Half-Life/valve_WON/models/w_battery.mdl",
+        "Half-Life/valve_WON/models/w_crossbow.mdl",
+        "Half-Life/valve_WON/models/w_crossbow_clip.mdl",
+        "Half-Life/valve_WON/models/w_egon.mdl",
+        "Half-Life/valve_WON/models/w_gauss.mdl",
+        "Half-Life/valve_WON/models/w_gaussammo.mdl",
+        "Half-Life/valve_WON/models/w_grenade.mdl",
+        "Half-Life/valve_WON/models/w_hgun.mdl",
+        "Half-Life/valve_WON/models/w_longjump.mdl",
+        "Half-Life/valve_WON/models/w_medkit.mdl",
+        "Half-Life/valve_WON/models/w_rpg.mdl",
+        "Half-Life/valve_WON/models/w_rpgammo.mdl",
+        "Half-Life/valve_WON/models/w_satchel.mdl",
+        "Half-Life/valve_WON/models/w_shotbox.mdl",
+        "Half-Life/valve_WON/models/w_shotgun.mdl",
+        "Half-Life/valve_WON/models/w_sqknest.mdl",
+        "Half-Life/valve_WON/sound/barney/ba_die3.wav",
+        "Half-Life/valve_WON/sound/barney/ba_dontmake.wav",
+        "Half-Life/valve_WON/sound/barney/ba_endline.wav",
+        "Half-Life/valve_WON/sound/barney/ba_iwish.wav",
+        "Half-Life/valve_WON/sound/barney/ba_somuch.wav",
+        "Half-Life/valve_WON/sound/barney/ba_stepoff.wav",
+        "Half-Life/valve_WON/sound/barney/ba_tomb.wav",
+        "Half-Life/valve_WON/sound/barney/ba_uwish.wav",
+        "Half-Life/valve_WON/sound/barney/c1a0_ba_hevyes.wav",
+        "Half-Life/valve_WON/sound/barney/c1a4_ba_octo3.wav",
+        "Half-Life/valve_WON/sound/barney/c2a2_ba_launch.wav",
+        "Half-Life/valve_WON/sound/barney/c2a3_ba_assn.wav",
+        "Half-Life/valve_WON/sound/barney/c2a4_ba_5tau.wav",
+        "Half-Life/valve_WON/sound/barney/c2a4_ba_alive.wav",
+        "Half-Life/valve_WON/sound/hgrunt/c2a3_ambush_vox.wav",
+        "Half-Life/valve_WON/sound/hgrunt/c2a3_hg_1drag.wav",
+        "Half-Life/valve_WON/sound/hgrunt/c2a3_hg_2drag.wav",
+        "Half-Life/valve_WON/sound/hgrunt/c2a3_hg_3drag.wav",
+        "Half-Life/valve_WON/sound/hgrunt/c2a3_hg_4drag.wav",
+        "Half-Life/valve_WON/sound/hgrunt/c2a3_hg_5drag.wav",
+        "Half-Life/valve_WON/sound/hgrunt/c2a3_hg_laugh.wav",
+        "Half-Life/valve_WON/sound/hgrunt/c2a5_hg_abandon.wav",
+        "Half-Life/valve_WON/sound/hgrunt/c2a5_hg_lebuz.wav",
+        "Half-Life/valve_WON/sound/hgrunt/hg_civvies.wav",
+        "Half-Life/valve_WON/sound/scientist/afellowsci.wav",
+        "Half-Life/valve_WON/sound/scientist/ahfreeman.wav",
+        "Half-Life/valve_WON/sound/scientist/c1a0_sci_crit1a.wav",
+        "Half-Life/valve_WON/sound/scientist/c1a0_sci_ctrl1a.wav",
+        "Half-Life/valve_WON/sound/scientist/c1a0_sci_ctrl2a.wav",
+        "Half-Life/valve_WON/sound/scientist/c1a0_sci_dis1a.wav",
+        "Half-Life/valve_WON/sound/scientist/c1a0_sci_dis9a.wav",
+        "Half-Life/valve_WON/sound/scientist/c1a0_sci_disa.wav",
+        "Half-Life/valve_WON/sound/scientist/c1a0_sci_lock4a.wav",
+        "Half-Life/valve_WON/sound/scientist/c1a0_sci_lock6a.wav",
+        "Half-Life/valve_WON/sound/scientist/c1a2_sci_dangling.wav",
+        "Half-Life/valve_WON/sound/scientist/c1a3_sci_silo1a.wav",
+        "Half-Life/valve_WON/sound/scientist/c1a3_sci_silo2a.wav",
+        "Half-Life/valve_WON/sound/scientist/c1a4_sci_gener.wav",
+        "Half-Life/valve_WON/sound/scientist/c2a3_sci_track.wav",
+        "Half-Life/valve_WON/sound/scientist/c2a4_sci_letout.wav",
+        "Half-Life/valve_WON/sound/scientist/c2a5_sci_boobie.wav",
+        "Half-Life/valve_WON/sound/scientist/c3a2_sci_fool.wav",
+        "Half-Life/valve_WON/sound/scientist/canttakemore.wav",
+        "Half-Life/valve_WON/sound/scientist/freeman.wav",
+        "Half-Life/valve_WON/sound/scientist/freemanalive.wav",
+        "Half-Life/valve_WON/sound/scientist/goodtoseeyou.wav",
+        "Half-Life/valve_WON/sound/scientist/greetings.wav",
+        "Half-Life/valve_WON/sound/scientist/greetings2.wav",
+        "Half-Life/valve_WON/sound/scientist/heal1.wav",
+        "Half-Life/valve_WON/sound/scientist/heal2.wav",
+        "Half-Life/valve_WON/sound/scientist/heal3.wav",
+        "Half-Life/valve_WON/sound/scientist/heal4.wav",
+        "Half-Life/valve_WON/sound/scientist/heal5.wav",
+        "Half-Life/valve_WON/sound/scientist/hello.wav",
+        "Half-Life/valve_WON/sound/scientist/hello2.wav",
+        "Half-Life/valve_WON/sound/scientist/hellofreeman.wav",
+        "Half-Life/valve_WON/sound/scientist/hellofromlab.wav",
+        "Half-Life/valve_WON/sound/scientist/hellothere.wav",
+        "Half-Life/valve_WON/sound/scientist/holdstill.wav",
+        "Half-Life/valve_WON/sound/scientist/inmesstoo.wav",
+        "Half-Life/valve_WON/sound/scientist/iwounded.wav",
+        "Half-Life/valve_WON/sound/scientist/iwounded2.wav",
+        "Half-Life/valve_WON/sound/scientist/iwoundedbad.wav",
+        "Half-Life/valve_WON/sound/scientist/letstrythis.wav",
+        "Half-Life/valve_WON/sound/scientist/newhevsuit.wav",
+        "Half-Life/valve_WON/sound/scientist/sci_pain1.wav",
+        "Half-Life/valve_WON/sound/scientist/sci_pain2.wav",
+        "Half-Life/valve_WON/sound/scientist/sci_pain3.wav",
+        "Half-Life/valve_WON/sound/scientist/sci_pain4.wav",
+        "Half-Life/valve_WON/sound/scientist/sci_pain5.wav",
+        "Half-Life/valve_WON/sound/scientist/scream01.wav",
+        "Half-Life/valve_WON/sound/scientist/scream3.wav",
+        "Half-Life/valve_WON/sound/scientist/scream4.wav",
+        "Half-Life/valve_WON/sound/scientist/youlookbad.wav",
+        "Half-Life/valve_WON/sound/scientist/youneedmedic.wav",
+        "Half-Life/valve_WON/sound/scientist/youwounded.wav",
+        "ghostingmod/custom/condensed-hud/materials/vgui/hud/icon_acid.vmt",
+        "ghostingmod/custom/condensed-hud/materials/vgui/hud/icon_acid.vtf",
+        "ghostingmod/custom/condensed-hud/materials/vgui/hud/icon_blank.vmt",
+        "ghostingmod/custom/condensed-hud/materials/vgui/hud/icon_blank.vtf",
+        "ghostingmod/custom/condensed-hud/materials/vgui/hud/icon_blast.vmt",
+        "ghostingmod/custom/condensed-hud/materials/vgui/hud/icon_blast.vtf",
+        "ghostingmod/custom/condensed-hud/materials/vgui/hud/icon_energy.vmt",
+        "ghostingmod/custom/condensed-hud/materials/vgui/hud/icon_energy.vtf",
+        "ghostingmod/custom/condensed-hud/materials/vgui/hud/icon_heat.vmt",
+        "ghostingmod/custom/condensed-hud/materials/vgui/hud/icon_heat.vtf",
+        "ghostingmod/custom/condensed-hud/materials/vgui/hud/icon_oxygen.vmt",
+        "ghostingmod/custom/condensed-hud/materials/vgui/hud/icon_oxygen.vtf",
+        "ghostingmod/custom/condensed-hud/materials/vgui/hud/icon_poison.vmt",
+        "ghostingmod/custom/condensed-hud/materials/vgui/hud/icon_poison.vtf",
+        "ghostingmod/custom/condensed-hud/materials/vgui/hud/icon_radiation.vmt",
+        "ghostingmod/custom/condensed-hud/materials/vgui/hud/icon_radiation.vtf",
+        "ghostingmod/custom/condensed-hud/materials/vgui/hud/icon_shock.vmt",
+        "ghostingmod/custom/condensed-hud/materials/vgui/hud/icon_shock.vtf",
+        "ghostingmod/custom/condensed-hud/resource/clientscheme.res",
+        "ghostingmod/custom/condensed-hud/resource/valve_english.txt",
+        "ghostingmod/custom/condensed-hud/resource/valve_russian.txt",
+        "ghostingmod/custom/condensed-hud/resource/synergy_english.txt",
+        "ghostingmod/custom/condensed-hud/resource/Hype font.txt",
+        "ghostingmod/custom/condensed-hud/resource/LICENSE_OFL.txt",
+        "ghostingmod/custom/condensed-hud/resource/din1451alt.ttf",
+        "ghostingmod/custom/condensed-hud/resource/din1451alt2.ttf",
+        "ghostingmod/custom/condensed-hud/resource/FacileSans.ttf",
+        "ghostingmod/custom/condensed-hud/resource/halflife2.ttf",
+        "ghostingmod/custom/condensed-hud/resource/hl2crosshairs.ttf",
+        "ghostingmod/custom/condensed-hud/resource/HL2EP2.ttf",
+        "ghostingmod/custom/condensed-hud/resource/HL2MMod.ttf",
+        "ghostingmod/custom/condensed-hud/resource/HL2MP.ttf",
+        "ghostingmod/custom/condensed-hud/resource/HYPE.ttf",
+        "ghostingmod/custom/condensed-hud/resource/K12HL2.ttf",
+        "ghostingmod/custom/condensed-hud/resource/lostcoast.ttf",
+        "ghostingmod/custom/condensed-hud/resource/nokia-pure-text.ttf",
+        "ghostingmod/custom/condensed-hud/resource/RealBeta's Weapon Icons.ttf",
+        "ghostingmod/custom/condensed-hud/resource/SynFont.ttf",
+        "ghostingmod/custom/condensed-hud/resource/NotoSans-Bold.ttf",
+        "ghostingmod/custom/condensed-hud/resource/NotoSans-BoldItalic.ttf",
+        "ghostingmod/custom/condensed-hud/resource/NotoSans-Italic.ttf",
+        "ghostingmod/custom/condensed-hud/resource/NotoSans-Regular.ttf",
+        "ghostingmod/custom/condensed-hud/resource/Roboto-Black.ttf",
+        "ghostingmod/custom/condensed-hud/resource/Roboto-BlackItalic.ttf",
+        "ghostingmod/custom/condensed-hud/resource/Roboto-Bold.ttf",
+        "ghostingmod/custom/condensed-hud/resource/Roboto-BoldItalic.ttf",
+        "ghostingmod/custom/condensed-hud/resource/Roboto-Italic.ttf",
+        "ghostingmod/custom/condensed-hud/resource/Roboto-Light.ttf",
+        "ghostingmod/custom/condensed-hud/resource/Roboto-LightItalic.ttf",
+        "ghostingmod/custom/condensed-hud/resource/Roboto-Medium.ttf",
+        "ghostingmod/custom/condensed-hud/resource/Roboto-MediumItalic.ttf",
+        "ghostingmod/custom/condensed-hud/resource/Roboto-Regular.ttf",
+        "ghostingmod/custom/condensed-hud/resource/Roboto-Thin.ttf",
+        "ghostingmod/custom/condensed-hud/resource/Roboto-ThinItalic.ttf",
+        "ghostingmod/custom/condensed-hud/resource/RobotoCondensed-Bold.ttf",
+        "ghostingmod/custom/condensed-hud/resource/RobotoCondensed-BoldItalic.ttf",
+        "ghostingmod/custom/condensed-hud/resource/RobotoCondensed-Italic.ttf",
+        "ghostingmod/custom/condensed-hud/resource/RobotoCondensed-Light.ttf",
+        "ghostingmod/custom/condensed-hud/resource/RobotoCondensed-LightItalic.ttf",
+        "ghostingmod/custom/condensed-hud/resource/RobotoCondensed-Regular.ttf",
+        "ghostingmod/custom/condensed-hud/scripts/hudanimations.txt",
+        "ghostingmod/custom/condensed-hud/scripts/hudanimations_manifest.txt",
+        "ghostingmod/custom/condensed-hud/scripts/hudanimations_syn.txt",
+        "ghostingmod/custom/condensed-hud/scripts/hudlayout.res",
+        "ghostingmod/custom/m9-bayonet/models/weapons/v_crowbar.mdl",
+        "ghostingmod/custom/m9-bayonet/models/weapons/v_crowbar.ani",
+        "ghostingmod/custom/m9-bayonet/models/weapons/v_crowbar.vvd",
+        "ghostingmod/custom/m9-bayonet/models/weapons/v_crowbar.dx80.vtx",
+        "ghostingmod/custom/m9-bayonet/models/weapons/v_crowbar.dx90.vtx",
+        "ghostingmod/custom/m9-bayonet/models/weapons/v_crowbar.sw.vtx",
+        "ghostingmod/custom/m9-bayonet/materials/models/csgo_knife/knife_m9_bay.vmt",
+        "ghostingmod/custom/m9-bayonet/materials/models/csgo_knife/knife_m9_bay.vtf",
+        "ghostingmod/custom/m9-bayonet/materials/models/csgo_knife/knife_m9_bay_ao.vtf",
+        "ghostingmod/custom/m9-bayonet/materials/models/csgo_knife/knife_m9_bay_exponent.vtf",
+        "ghostingmod/custom/signed-smg/materials/models/weapons/v_smg1/v_smg1_sheet.vtf",
+        "ghostingmod/custom/signed-shotgun/materials/models/weapons/v_shotgun/vshotgun_albedo.vtf",
+        "ghostingmod/custom/signed-rpg/materials/models/weapons/v_rocket_launcher/rocket launcher sheet.vtf"
+      ],
+      "EPISODE_DIRS": [
+        "episodic",
+        "ep2"
+      ],
+      "MUTABLE_PATTERNS": [
+        "ghostingmod/SAVE",
+        "ghostingmod/runs",
+        "ghostingmod/screenshots",
+        "ghostingmod/cfg",
+        "ghostingmod/custom",
+        "ghostingmod/synclogs",
+        "ghostingmod/DownloadLists",
+        "ghostingmod/download",
+        "**/*.dem",
+        "steam_appid.txt",
+        "hl2/SAVE",
+        "hl2/screenshots",
+        "hl2/cfg",
+        "hl2/custom",
+        "hl2/download",
+        "hl2/DownloadLists",
+        "lostcoast/SAVE",
+        "lostcoast/screenshots",
+        "lostcoast/cfg",
+        "lostcoast/custom",
+        "lostcoast/download",
+        "hl2_russian/SAVE",
+        "hl2_russian/cfg",
+        "hl2_russian/custom",
+        "Half-Life/valve_WON/SAVE",
+        "Half-Life/valve_WON/config.cfg",
+        "Half-Life/valve_WON/userconfig.cfg",
+        "Half-Life/valve_WON_*/config.cfg",
+        "Half-Life/valve_WON_*/userconfig.cfg",
+        "Half-Life/valve_WON/hlsr-config.cfg",
+        "Half-Life/valve_WON/hlsr-import.cfg",
+        "Half-Life/valve_WON/hlsr-import-*.cfg",
+        "Half-Life/valve_WON/custom.hpk",
+        "Half-Life/valve_WON/*.bmp",
+        "Half-Life/errorlogs",
+        "Half-Life/steam_appid.txt",
+        "ghostingmod/demoheader.tmp",
+        "ghostingmod/gamestate.txt",
+        "ghostingmod/stats.txt",
+        "ghostingmod/ep1_gamestats.dat",
+        "ghostingmod/voice_ban.dt",
+        "**/*.log",
+        "**/demoheader.tmp",
+        "**/gamestate.txt",
+        "**/stats.txt",
+        "**/voice_ban.dt",
+        "**/NavPlace.db",
+        "**/shader_cache.cfg",
+        "**/demoheader.dmf",
+        "ghostingmod/modelsounds.cache",
+        "**/soundcache/**",
+        "**/sound.cache",
+        "**/*.vpk.sound.cache",
+        "**/modelsounds.cache",
+        "**/scene.cache",
+        "renderer-cache/**",
+        "renderer-logs/**",
+        ".hlsr",
+        ".hlsr/**",
+        "Downloads",
+        "Downloads/**",
+        "staging",
+        "rollback",
+        "installed.json",
+        "installed.json.*",
+        "*.hlsr-backup",
+        "Bunnymod XT/BunnymodXT.dll",
+        "Bunnymod XT/Injector.exe",
+        "Bunnymod XT/version",
+        "Bunnymod XT/.hlsr-*",
+        "Half-Life/valve_WON/sprites/**",
+        "Half-Life/valve_WON/hlsr-personalization.cfg",
+        "Half-Life/valve_WON/hlsr-binds.cfg",
+        "Half-Life/valve_WON/models/v_357.mdl",
+        "Half-Life/valve_WON/models/v_9mmar.mdl",
+        "Half-Life/valve_WON/models/v_9mmhandgun.mdl",
+        "Half-Life/valve_WON/models/v_crossbow.mdl",
+        "Half-Life/valve_WON/models/v_crowbar.mdl",
+        "Half-Life/valve_WON/models/v_egon.mdl",
+        "Half-Life/valve_WON/models/v_gauss.mdl",
+        "Half-Life/valve_WON/models/v_grenade.mdl",
+        "Half-Life/valve_WON/models/v_hgun.mdl",
+        "Half-Life/valve_WON/models/v_rpg.mdl",
+        "Half-Life/valve_WON/models/v_satchel.mdl",
+        "Half-Life/valve_WON/models/v_satchel_radio.mdl",
+        "Half-Life/valve_WON/models/v_shotgun.mdl",
+        "Half-Life/valve_WON/models/v_squeak.mdl",
+        "Half-Life/valve_WON/models/v_tripmine.mdl",
+        "Half-Life/valve_WON/models/w_357.mdl",
+        "Half-Life/valve_WON/models/w_357ammobox.mdl",
+        "Half-Life/valve_WON/models/w_9mmar.mdl",
+        "Half-Life/valve_WON/models/w_9mmarclip.mdl",
+        "Half-Life/valve_WON/models/w_9mmclip.mdl",
+        "Half-Life/valve_WON/models/w_9mmhandgun.mdl",
+        "Half-Life/valve_WON/models/w_argrenade.mdl",
+        "Half-Life/valve_WON/models/w_battery.mdl",
+        "Half-Life/valve_WON/models/w_crossbow.mdl",
+        "Half-Life/valve_WON/models/w_crossbow_clip.mdl",
+        "Half-Life/valve_WON/models/w_egon.mdl",
+        "Half-Life/valve_WON/models/w_gauss.mdl",
+        "Half-Life/valve_WON/models/w_gaussammo.mdl",
+        "Half-Life/valve_WON/models/w_grenade.mdl",
+        "Half-Life/valve_WON/models/w_hgun.mdl",
+        "Half-Life/valve_WON/models/w_longjump.mdl",
+        "Half-Life/valve_WON/models/w_medkit.mdl",
+        "Half-Life/valve_WON/models/w_rpg.mdl",
+        "Half-Life/valve_WON/models/w_rpgammo.mdl",
+        "Half-Life/valve_WON/models/w_satchel.mdl",
+        "Half-Life/valve_WON/models/w_shotbox.mdl",
+        "Half-Life/valve_WON/models/w_shotgun.mdl",
+        "Half-Life/valve_WON/models/w_sqknest.mdl",
+        "Half-Life/valve_WON/sound/barney/ba_die3.wav",
+        "Half-Life/valve_WON/sound/barney/ba_dontmake.wav",
+        "Half-Life/valve_WON/sound/barney/ba_endline.wav",
+        "Half-Life/valve_WON/sound/barney/ba_iwish.wav",
+        "Half-Life/valve_WON/sound/barney/ba_somuch.wav",
+        "Half-Life/valve_WON/sound/barney/ba_stepoff.wav",
+        "Half-Life/valve_WON/sound/barney/ba_tomb.wav",
+        "Half-Life/valve_WON/sound/barney/ba_uwish.wav",
+        "Half-Life/valve_WON/sound/barney/c1a0_ba_hevyes.wav",
+        "Half-Life/valve_WON/sound/barney/c1a4_ba_octo3.wav",
+        "Half-Life/valve_WON/sound/barney/c2a2_ba_launch.wav",
+        "Half-Life/valve_WON/sound/barney/c2a3_ba_assn.wav",
+        "Half-Life/valve_WON/sound/barney/c2a4_ba_5tau.wav",
+        "Half-Life/valve_WON/sound/barney/c2a4_ba_alive.wav",
+        "Half-Life/valve_WON/sound/hgrunt/c2a3_ambush_vox.wav",
+        "Half-Life/valve_WON/sound/hgrunt/c2a3_hg_1drag.wav",
+        "Half-Life/valve_WON/sound/hgrunt/c2a3_hg_2drag.wav",
+        "Half-Life/valve_WON/sound/hgrunt/c2a3_hg_3drag.wav",
+        "Half-Life/valve_WON/sound/hgrunt/c2a3_hg_4drag.wav",
+        "Half-Life/valve_WON/sound/hgrunt/c2a3_hg_5drag.wav",
+        "Half-Life/valve_WON/sound/hgrunt/c2a3_hg_laugh.wav",
+        "Half-Life/valve_WON/sound/hgrunt/c2a5_hg_abandon.wav",
+        "Half-Life/valve_WON/sound/hgrunt/c2a5_hg_lebuz.wav",
+        "Half-Life/valve_WON/sound/hgrunt/hg_civvies.wav",
+        "Half-Life/valve_WON/sound/scientist/afellowsci.wav",
+        "Half-Life/valve_WON/sound/scientist/ahfreeman.wav",
+        "Half-Life/valve_WON/sound/scientist/c1a0_sci_crit1a.wav",
+        "Half-Life/valve_WON/sound/scientist/c1a0_sci_ctrl1a.wav",
+        "Half-Life/valve_WON/sound/scientist/c1a0_sci_ctrl2a.wav",
+        "Half-Life/valve_WON/sound/scientist/c1a0_sci_dis1a.wav",
+        "Half-Life/valve_WON/sound/scientist/c1a0_sci_dis9a.wav",
+        "Half-Life/valve_WON/sound/scientist/c1a0_sci_disa.wav",
+        "Half-Life/valve_WON/sound/scientist/c1a0_sci_lock4a.wav",
+        "Half-Life/valve_WON/sound/scientist/c1a0_sci_lock6a.wav",
+        "Half-Life/valve_WON/sound/scientist/c1a2_sci_dangling.wav",
+        "Half-Life/valve_WON/sound/scientist/c1a3_sci_silo1a.wav",
+        "Half-Life/valve_WON/sound/scientist/c1a3_sci_silo2a.wav",
+        "Half-Life/valve_WON/sound/scientist/c1a4_sci_gener.wav",
+        "Half-Life/valve_WON/sound/scientist/c2a3_sci_track.wav",
+        "Half-Life/valve_WON/sound/scientist/c2a4_sci_letout.wav",
+        "Half-Life/valve_WON/sound/scientist/c2a5_sci_boobie.wav",
+        "Half-Life/valve_WON/sound/scientist/c3a2_sci_fool.wav",
+        "Half-Life/valve_WON/sound/scientist/canttakemore.wav",
+        "Half-Life/valve_WON/sound/scientist/freeman.wav",
+        "Half-Life/valve_WON/sound/scientist/freemanalive.wav",
+        "Half-Life/valve_WON/sound/scientist/goodtoseeyou.wav",
+        "Half-Life/valve_WON/sound/scientist/greetings.wav",
+        "Half-Life/valve_WON/sound/scientist/greetings2.wav",
+        "Half-Life/valve_WON/sound/scientist/heal1.wav",
+        "Half-Life/valve_WON/sound/scientist/heal2.wav",
+        "Half-Life/valve_WON/sound/scientist/heal3.wav",
+        "Half-Life/valve_WON/sound/scientist/heal4.wav",
+        "Half-Life/valve_WON/sound/scientist/heal5.wav",
+        "Half-Life/valve_WON/sound/scientist/hello.wav",
+        "Half-Life/valve_WON/sound/scientist/hello2.wav",
+        "Half-Life/valve_WON/sound/scientist/hellofreeman.wav",
+        "Half-Life/valve_WON/sound/scientist/hellofromlab.wav",
+        "Half-Life/valve_WON/sound/scientist/hellothere.wav",
+        "Half-Life/valve_WON/sound/scientist/holdstill.wav",
+        "Half-Life/valve_WON/sound/scientist/inmesstoo.wav",
+        "Half-Life/valve_WON/sound/scientist/iwounded.wav",
+        "Half-Life/valve_WON/sound/scientist/iwounded2.wav",
+        "Half-Life/valve_WON/sound/scientist/iwoundedbad.wav",
+        "Half-Life/valve_WON/sound/scientist/letstrythis.wav",
+        "Half-Life/valve_WON/sound/scientist/newhevsuit.wav",
+        "Half-Life/valve_WON/sound/scientist/sci_pain1.wav",
+        "Half-Life/valve_WON/sound/scientist/sci_pain2.wav",
+        "Half-Life/valve_WON/sound/scientist/sci_pain3.wav",
+        "Half-Life/valve_WON/sound/scientist/sci_pain4.wav",
+        "Half-Life/valve_WON/sound/scientist/sci_pain5.wav",
+        "Half-Life/valve_WON/sound/scientist/scream01.wav",
+        "Half-Life/valve_WON/sound/scientist/scream3.wav",
+        "Half-Life/valve_WON/sound/scientist/scream4.wav",
+        "Half-Life/valve_WON/sound/scientist/youlookbad.wav",
+        "Half-Life/valve_WON/sound/scientist/youneedmedic.wav",
+        "Half-Life/valve_WON/sound/scientist/youwounded.wav",
+        "ghostingmod/custom/condensed-hud/materials/vgui/hud/icon_acid.vmt",
+        "ghostingmod/custom/condensed-hud/materials/vgui/hud/icon_acid.vtf",
+        "ghostingmod/custom/condensed-hud/materials/vgui/hud/icon_blank.vmt",
+        "ghostingmod/custom/condensed-hud/materials/vgui/hud/icon_blank.vtf",
+        "ghostingmod/custom/condensed-hud/materials/vgui/hud/icon_blast.vmt",
+        "ghostingmod/custom/condensed-hud/materials/vgui/hud/icon_blast.vtf",
+        "ghostingmod/custom/condensed-hud/materials/vgui/hud/icon_energy.vmt",
+        "ghostingmod/custom/condensed-hud/materials/vgui/hud/icon_energy.vtf",
+        "ghostingmod/custom/condensed-hud/materials/vgui/hud/icon_heat.vmt",
+        "ghostingmod/custom/condensed-hud/materials/vgui/hud/icon_heat.vtf",
+        "ghostingmod/custom/condensed-hud/materials/vgui/hud/icon_oxygen.vmt",
+        "ghostingmod/custom/condensed-hud/materials/vgui/hud/icon_oxygen.vtf",
+        "ghostingmod/custom/condensed-hud/materials/vgui/hud/icon_poison.vmt",
+        "ghostingmod/custom/condensed-hud/materials/vgui/hud/icon_poison.vtf",
+        "ghostingmod/custom/condensed-hud/materials/vgui/hud/icon_radiation.vmt",
+        "ghostingmod/custom/condensed-hud/materials/vgui/hud/icon_radiation.vtf",
+        "ghostingmod/custom/condensed-hud/materials/vgui/hud/icon_shock.vmt",
+        "ghostingmod/custom/condensed-hud/materials/vgui/hud/icon_shock.vtf",
+        "ghostingmod/custom/condensed-hud/resource/clientscheme.res",
+        "ghostingmod/custom/condensed-hud/resource/valve_english.txt",
+        "ghostingmod/custom/condensed-hud/resource/valve_russian.txt",
+        "ghostingmod/custom/condensed-hud/resource/synergy_english.txt",
+        "ghostingmod/custom/condensed-hud/resource/Hype font.txt",
+        "ghostingmod/custom/condensed-hud/resource/LICENSE_OFL.txt",
+        "ghostingmod/custom/condensed-hud/resource/din1451alt.ttf",
+        "ghostingmod/custom/condensed-hud/resource/din1451alt2.ttf",
+        "ghostingmod/custom/condensed-hud/resource/FacileSans.ttf",
+        "ghostingmod/custom/condensed-hud/resource/halflife2.ttf",
+        "ghostingmod/custom/condensed-hud/resource/hl2crosshairs.ttf",
+        "ghostingmod/custom/condensed-hud/resource/HL2EP2.ttf",
+        "ghostingmod/custom/condensed-hud/resource/HL2MMod.ttf",
+        "ghostingmod/custom/condensed-hud/resource/HL2MP.ttf",
+        "ghostingmod/custom/condensed-hud/resource/HYPE.ttf",
+        "ghostingmod/custom/condensed-hud/resource/K12HL2.ttf",
+        "ghostingmod/custom/condensed-hud/resource/lostcoast.ttf",
+        "ghostingmod/custom/condensed-hud/resource/nokia-pure-text.ttf",
+        "ghostingmod/custom/condensed-hud/resource/RealBeta's Weapon Icons.ttf",
+        "ghostingmod/custom/condensed-hud/resource/SynFont.ttf",
+        "ghostingmod/custom/condensed-hud/resource/NotoSans-Bold.ttf",
+        "ghostingmod/custom/condensed-hud/resource/NotoSans-BoldItalic.ttf",
+        "ghostingmod/custom/condensed-hud/resource/NotoSans-Italic.ttf",
+        "ghostingmod/custom/condensed-hud/resource/NotoSans-Regular.ttf",
+        "ghostingmod/custom/condensed-hud/resource/Roboto-Black.ttf",
+        "ghostingmod/custom/condensed-hud/resource/Roboto-BlackItalic.ttf",
+        "ghostingmod/custom/condensed-hud/resource/Roboto-Bold.ttf",
+        "ghostingmod/custom/condensed-hud/resource/Roboto-BoldItalic.ttf",
+        "ghostingmod/custom/condensed-hud/resource/Roboto-Italic.ttf",
+        "ghostingmod/custom/condensed-hud/resource/Roboto-Light.ttf",
+        "ghostingmod/custom/condensed-hud/resource/Roboto-LightItalic.ttf",
+        "ghostingmod/custom/condensed-hud/resource/Roboto-Medium.ttf",
+        "ghostingmod/custom/condensed-hud/resource/Roboto-MediumItalic.ttf",
+        "ghostingmod/custom/condensed-hud/resource/Roboto-Regular.ttf",
+        "ghostingmod/custom/condensed-hud/resource/Roboto-Thin.ttf",
+        "ghostingmod/custom/condensed-hud/resource/Roboto-ThinItalic.ttf",
+        "ghostingmod/custom/condensed-hud/resource/RobotoCondensed-Bold.ttf",
+        "ghostingmod/custom/condensed-hud/resource/RobotoCondensed-BoldItalic.ttf",
+        "ghostingmod/custom/condensed-hud/resource/RobotoCondensed-Italic.ttf",
+        "ghostingmod/custom/condensed-hud/resource/RobotoCondensed-Light.ttf",
+        "ghostingmod/custom/condensed-hud/resource/RobotoCondensed-LightItalic.ttf",
+        "ghostingmod/custom/condensed-hud/resource/RobotoCondensed-Regular.ttf",
+        "ghostingmod/custom/condensed-hud/scripts/hudanimations.txt",
+        "ghostingmod/custom/condensed-hud/scripts/hudanimations_manifest.txt",
+        "ghostingmod/custom/condensed-hud/scripts/hudanimations_syn.txt",
+        "ghostingmod/custom/condensed-hud/scripts/hudlayout.res",
+        "ghostingmod/custom/m9-bayonet/models/weapons/v_crowbar.mdl",
+        "ghostingmod/custom/m9-bayonet/models/weapons/v_crowbar.ani",
+        "ghostingmod/custom/m9-bayonet/models/weapons/v_crowbar.vvd",
+        "ghostingmod/custom/m9-bayonet/models/weapons/v_crowbar.dx80.vtx",
+        "ghostingmod/custom/m9-bayonet/models/weapons/v_crowbar.dx90.vtx",
+        "ghostingmod/custom/m9-bayonet/models/weapons/v_crowbar.sw.vtx",
+        "ghostingmod/custom/m9-bayonet/materials/models/csgo_knife/knife_m9_bay.vmt",
+        "ghostingmod/custom/m9-bayonet/materials/models/csgo_knife/knife_m9_bay.vtf",
+        "ghostingmod/custom/m9-bayonet/materials/models/csgo_knife/knife_m9_bay_ao.vtf",
+        "ghostingmod/custom/m9-bayonet/materials/models/csgo_knife/knife_m9_bay_exponent.vtf",
+        "ghostingmod/custom/signed-smg/materials/models/weapons/v_smg1/v_smg1_sheet.vtf",
+        "ghostingmod/custom/signed-shotgun/materials/models/weapons/v_shotgun/vshotgun_albedo.vtf",
+        "ghostingmod/custom/signed-rpg/materials/models/weapons/v_rocket_launcher/rocket launcher sheet.vtf",
+        "episodic",
+        "ep2"
+      ]
+    },
+    "extra": [
+      "Half-Life/valve_WON_russian/config.cfg",
+      "Half-Life/valve_WON_russian/userconfig.cfg",
+      "Half-Life/valve_WON_x/a/config.cfg",
+      "renderer-cache/dxvk.cache",
+      "renderer-logs/hl2_d3d9.log",
+      "episodic",
+      "episodic/maps/x.bsp",
+      "ep2/cfg/config.cfg",
+      "Half-Life/valve_WON/models/v_357.mdl",
+      "ghostingmod/custom/m9-bayonet/models/weapons/v_crowbar.mdl",
+      "Half-Life/valve_WON/models/v_unknown.mdl"
+    ],
+    "matching": [
+      39,
+      40,
+      41,
+      43,
+      44,
+      45,
+      47,
+      48,
+      50,
+      51,
+      53,
+      55,
+      56,
+      57,
+      58,
+      59,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      69,
+      70,
+      71,
+      72,
+      73,
+      75,
+      76,
+      77,
+      79,
+      80,
+      82,
+      83,
+      84,
+      86,
+      87,
+      88,
+      89,
+      92,
+      93,
+      94,
+      95,
+      97,
+      98,
+      99,
+      115,
+      213,
+      214,
+      215,
+      220,
+      221,
+      222,
+      223,
+      224,
+      225,
+      226,
+      227,
+      228,
+      229,
+      230,
+      231,
+      232,
+      233,
+      234,
+      235,
+      236,
+      237,
+      238,
+      239,
+      240,
+      241,
+      242,
+      243,
+      244,
+      245,
+      246,
+      247,
+      248,
+      249,
+      250,
+      251,
+      252,
+      253,
+      254,
+      255,
+      256,
+      257,
+      258,
+      259,
+      260,
+      261,
+      262,
+      263,
+      264,
+      265,
+      266,
+      267,
+      268,
+      269,
+      270,
+      271,
+      272,
+      273,
+      274,
+      275,
+      276,
+      277,
+      278,
+      279,
+      280,
+      281,
+      282,
+      283,
+      284,
+      285,
+      286,
+      287,
+      288,
+      289,
+      290,
+      291,
+      292,
+      293,
+      294,
+      295,
+      296,
+      297,
+      298,
+      299,
+      300,
+      301,
+      302,
+      303,
+      304,
+      305,
+      306,
+      307,
+      308,
+      309,
+      310,
+      311,
+      312,
+      313,
+      314,
+      315,
+      316,
+      317,
+      318,
+      319,
+      320,
+      321,
+      322,
+      323,
+      324,
+      325,
+      326,
+      327,
+      328,
+      329,
+      399,
+      400,
+      401,
+      402,
+      403,
+      404,
+      405,
+      406,
+      407,
+      408,
+      409,
+      410,
+      411,
+      412,
+      413,
+      414,
+      415,
+      416,
+      417,
+      418,
+      419,
+      420,
+      421,
+      422,
+      423,
+      424,
+      425,
+      426,
+      427,
+      428,
+      429,
+      430,
+      431,
+      432,
+      433,
+      434,
+      435,
+      436,
+      437,
+      438,
+      439,
+      440,
+      441,
+      442,
+      443,
+      444,
+      445,
+      446,
+      447,
+      448,
+      449,
+      450,
+      451,
+      452,
+      453,
+      454,
+      455,
+      456,
+      457,
+      458,
+      459,
+      460,
+      461,
+      462,
+      463,
+      464,
+      465,
+      466,
+      467,
+      468,
+      469,
+      470,
+      471,
+      472,
+      473,
+      474,
+      475,
+      476,
+      477,
+      478,
+      479,
+      480,
+      481,
+      482,
+      483,
+      484,
+      485,
+      486,
+      487,
+      488,
+      489,
+      490,
+      576,
+      604,
+      605,
+      607,
+      608,
+      609,
+      610,
+      611,
+      612,
+      613
+    ]
+  },
+  "customPacks": {
+    "games": {
+      "hl1-won": {
+        "sourceDir": "Half-Life/valve_WON/hlsr-packs",
+        "pruneRoot": "Half-Life/valve_WON",
+        "baseDir": "Half-Life/valve"
+      },
+      "ghosting-renewed": {
+        "sourceDir": "ghostingmod/hlsr-packs",
+        "pruneRoot": "ghostingmod",
+        "baseDir": null
+      }
+    },
+    "stateDir": ".hlsr/custom-packs",
+    "packs": [
+      {
+        "id": "arianon-viewmodels",
+        "game": "hl1-won",
+        "kind": "models",
+        "author": "Arianon",
+        "files": [
+          "models/v_357.mdl",
+          "models/v_9mmar.mdl",
+          "models/v_9mmhandgun.mdl",
+          "models/v_crossbow.mdl",
+          "models/v_crowbar.mdl",
+          "models/v_egon.mdl",
+          "models/v_gauss.mdl",
+          "models/v_grenade.mdl",
+          "models/v_hgun.mdl",
+          "models/v_rpg.mdl",
+          "models/v_satchel.mdl",
+          "models/v_satchel_radio.mdl",
+          "models/v_shotgun.mdl",
+          "models/v_squeak.mdl",
+          "models/v_tripmine.mdl"
+        ]
+      },
+      {
+        "id": "item-sprites",
+        "game": "hl1-won",
+        "kind": "sprites",
+        "author": null,
+        "files": [
+          "models/w_357.mdl",
+          "models/w_357ammobox.mdl",
+          "models/w_9mmar.mdl",
+          "models/w_9mmarclip.mdl",
+          "models/w_9mmclip.mdl",
+          "models/w_9mmhandgun.mdl",
+          "models/w_argrenade.mdl",
+          "models/w_battery.mdl",
+          "models/w_crossbow.mdl",
+          "models/w_crossbow_clip.mdl",
+          "models/w_egon.mdl",
+          "models/w_gauss.mdl",
+          "models/w_gaussammo.mdl",
+          "models/w_grenade.mdl",
+          "models/w_hgun.mdl",
+          "models/w_longjump.mdl",
+          "models/w_medkit.mdl",
+          "models/w_rpg.mdl",
+          "models/w_rpgammo.mdl",
+          "models/w_satchel.mdl",
+          "models/w_shotbox.mdl",
+          "models/w_shotgun.mdl",
+          "models/w_sqknest.mdl"
+        ]
+      },
+      {
+        "id": "oxcjae-soundpack-lite",
+        "game": "hl1-won",
+        "kind": "sounds",
+        "author": "oxcjae",
+        "files": [
+          "sound/barney/ba_die3.wav",
+          "sound/barney/ba_dontmake.wav",
+          "sound/barney/ba_endline.wav",
+          "sound/barney/ba_iwish.wav",
+          "sound/barney/ba_somuch.wav",
+          "sound/barney/ba_stepoff.wav",
+          "sound/barney/ba_tomb.wav",
+          "sound/barney/ba_uwish.wav",
+          "sound/barney/c1a0_ba_hevyes.wav",
+          "sound/barney/c1a4_ba_octo3.wav",
+          "sound/barney/c2a2_ba_launch.wav",
+          "sound/barney/c2a3_ba_assn.wav",
+          "sound/barney/c2a4_ba_5tau.wav",
+          "sound/barney/c2a4_ba_alive.wav",
+          "sound/hgrunt/c2a3_ambush_vox.wav",
+          "sound/hgrunt/c2a3_hg_1drag.wav",
+          "sound/hgrunt/c2a3_hg_2drag.wav",
+          "sound/hgrunt/c2a3_hg_3drag.wav",
+          "sound/hgrunt/c2a3_hg_4drag.wav",
+          "sound/hgrunt/c2a3_hg_5drag.wav",
+          "sound/hgrunt/c2a3_hg_laugh.wav",
+          "sound/hgrunt/c2a5_hg_abandon.wav",
+          "sound/hgrunt/c2a5_hg_lebuz.wav",
+          "sound/hgrunt/hg_civvies.wav",
+          "sound/scientist/afellowsci.wav",
+          "sound/scientist/ahfreeman.wav",
+          "sound/scientist/c1a0_sci_crit1a.wav",
+          "sound/scientist/c1a0_sci_ctrl1a.wav",
+          "sound/scientist/c1a0_sci_ctrl2a.wav",
+          "sound/scientist/c1a0_sci_dis1a.wav",
+          "sound/scientist/c1a0_sci_dis9a.wav",
+          "sound/scientist/c1a0_sci_disa.wav",
+          "sound/scientist/c1a0_sci_lock4a.wav",
+          "sound/scientist/c1a0_sci_lock6a.wav",
+          "sound/scientist/c1a2_sci_dangling.wav",
+          "sound/scientist/c1a3_sci_silo1a.wav",
+          "sound/scientist/c1a3_sci_silo2a.wav",
+          "sound/scientist/c1a4_sci_gener.wav",
+          "sound/scientist/c2a3_sci_track.wav",
+          "sound/scientist/c2a4_sci_letout.wav",
+          "sound/scientist/c2a5_sci_boobie.wav",
+          "sound/scientist/c3a2_sci_fool.wav",
+          "sound/scientist/canttakemore.wav",
+          "sound/scientist/freeman.wav",
+          "sound/scientist/freemanalive.wav",
+          "sound/scientist/goodtoseeyou.wav",
+          "sound/scientist/greetings.wav",
+          "sound/scientist/greetings2.wav",
+          "sound/scientist/heal1.wav",
+          "sound/scientist/heal2.wav",
+          "sound/scientist/heal3.wav",
+          "sound/scientist/heal4.wav",
+          "sound/scientist/heal5.wav",
+          "sound/scientist/hello.wav",
+          "sound/scientist/hello2.wav",
+          "sound/scientist/hellofreeman.wav",
+          "sound/scientist/hellofromlab.wav",
+          "sound/scientist/hellothere.wav",
+          "sound/scientist/holdstill.wav",
+          "sound/scientist/inmesstoo.wav",
+          "sound/scientist/iwounded.wav",
+          "sound/scientist/iwounded2.wav",
+          "sound/scientist/iwoundedbad.wav",
+          "sound/scientist/letstrythis.wav",
+          "sound/scientist/newhevsuit.wav",
+          "sound/scientist/sci_pain1.wav",
+          "sound/scientist/sci_pain2.wav",
+          "sound/scientist/sci_pain3.wav",
+          "sound/scientist/sci_pain4.wav",
+          "sound/scientist/sci_pain5.wav",
+          "sound/scientist/scream01.wav",
+          "sound/scientist/scream3.wav",
+          "sound/scientist/scream4.wav",
+          "sound/scientist/youlookbad.wav",
+          "sound/scientist/youneedmedic.wav",
+          "sound/scientist/youwounded.wav"
+        ]
+      },
+      {
+        "id": "condensed-hud",
+        "game": "ghosting-renewed",
+        "kind": "hud",
+        "author": null,
+        "files": [
+          "materials/vgui/hud/icon_acid.vmt",
+          "materials/vgui/hud/icon_acid.vtf",
+          "materials/vgui/hud/icon_blank.vmt",
+          "materials/vgui/hud/icon_blank.vtf",
+          "materials/vgui/hud/icon_blast.vmt",
+          "materials/vgui/hud/icon_blast.vtf",
+          "materials/vgui/hud/icon_energy.vmt",
+          "materials/vgui/hud/icon_energy.vtf",
+          "materials/vgui/hud/icon_heat.vmt",
+          "materials/vgui/hud/icon_heat.vtf",
+          "materials/vgui/hud/icon_oxygen.vmt",
+          "materials/vgui/hud/icon_oxygen.vtf",
+          "materials/vgui/hud/icon_poison.vmt",
+          "materials/vgui/hud/icon_poison.vtf",
+          "materials/vgui/hud/icon_radiation.vmt",
+          "materials/vgui/hud/icon_radiation.vtf",
+          "materials/vgui/hud/icon_shock.vmt",
+          "materials/vgui/hud/icon_shock.vtf",
+          "resource/clientscheme.res",
+          "resource/valve_english.txt",
+          "resource/valve_russian.txt",
+          "resource/synergy_english.txt",
+          "resource/Hype font.txt",
+          "resource/LICENSE_OFL.txt",
+          "resource/din1451alt.ttf",
+          "resource/din1451alt2.ttf",
+          "resource/FacileSans.ttf",
+          "resource/halflife2.ttf",
+          "resource/hl2crosshairs.ttf",
+          "resource/HL2EP2.ttf",
+          "resource/HL2MMod.ttf",
+          "resource/HL2MP.ttf",
+          "resource/HYPE.ttf",
+          "resource/K12HL2.ttf",
+          "resource/lostcoast.ttf",
+          "resource/nokia-pure-text.ttf",
+          "resource/RealBeta's Weapon Icons.ttf",
+          "resource/SynFont.ttf",
+          "resource/NotoSans-Bold.ttf",
+          "resource/NotoSans-BoldItalic.ttf",
+          "resource/NotoSans-Italic.ttf",
+          "resource/NotoSans-Regular.ttf",
+          "resource/Roboto-Black.ttf",
+          "resource/Roboto-BlackItalic.ttf",
+          "resource/Roboto-Bold.ttf",
+          "resource/Roboto-BoldItalic.ttf",
+          "resource/Roboto-Italic.ttf",
+          "resource/Roboto-Light.ttf",
+          "resource/Roboto-LightItalic.ttf",
+          "resource/Roboto-Medium.ttf",
+          "resource/Roboto-MediumItalic.ttf",
+          "resource/Roboto-Regular.ttf",
+          "resource/Roboto-Thin.ttf",
+          "resource/Roboto-ThinItalic.ttf",
+          "resource/RobotoCondensed-Bold.ttf",
+          "resource/RobotoCondensed-BoldItalic.ttf",
+          "resource/RobotoCondensed-Italic.ttf",
+          "resource/RobotoCondensed-Light.ttf",
+          "resource/RobotoCondensed-LightItalic.ttf",
+          "resource/RobotoCondensed-Regular.ttf",
+          "scripts/hudanimations.txt",
+          "scripts/hudanimations_manifest.txt",
+          "scripts/hudanimations_syn.txt",
+          "scripts/hudlayout.res"
+        ]
+      },
+      {
+        "id": "m9-bayonet",
+        "game": "ghosting-renewed",
+        "kind": "models",
+        "author": null,
+        "files": [
+          "models/weapons/v_crowbar.mdl",
+          "models/weapons/v_crowbar.ani",
+          "models/weapons/v_crowbar.vvd",
+          "models/weapons/v_crowbar.dx80.vtx",
+          "models/weapons/v_crowbar.dx90.vtx",
+          "models/weapons/v_crowbar.sw.vtx",
+          "materials/models/csgo_knife/knife_m9_bay.vmt",
+          "materials/models/csgo_knife/knife_m9_bay.vtf",
+          "materials/models/csgo_knife/knife_m9_bay_ao.vtf",
+          "materials/models/csgo_knife/knife_m9_bay_exponent.vtf"
+        ]
+      },
+      {
+        "id": "signed-smg",
+        "game": "ghosting-renewed",
+        "kind": "skins",
+        "author": "Eold",
+        "files": [
+          "materials/models/weapons/v_smg1/v_smg1_sheet.vtf"
+        ]
+      },
+      {
+        "id": "signed-shotgun",
+        "game": "ghosting-renewed",
+        "kind": "skins",
+        "author": "Eold",
+        "files": [
+          "materials/models/weapons/v_shotgun/vshotgun_albedo.vtf"
+        ]
+      },
+      {
+        "id": "signed-rpg",
+        "game": "ghosting-renewed",
+        "kind": "skins",
+        "author": "Eold",
+        "files": [
+          "materials/models/weapons/v_rocket_launcher/rocket launcher sheet.vtf"
+        ]
+      }
+    ],
+    "targets": [
+      "Half-Life/valve_WON/models/v_357.mdl",
+      "Half-Life/valve_WON/models/v_9mmar.mdl",
+      "Half-Life/valve_WON/models/v_9mmhandgun.mdl",
+      "Half-Life/valve_WON/models/v_crossbow.mdl",
+      "Half-Life/valve_WON/models/v_crowbar.mdl",
+      "Half-Life/valve_WON/models/v_egon.mdl",
+      "Half-Life/valve_WON/models/v_gauss.mdl",
+      "Half-Life/valve_WON/models/v_grenade.mdl",
+      "Half-Life/valve_WON/models/v_hgun.mdl",
+      "Half-Life/valve_WON/models/v_rpg.mdl",
+      "Half-Life/valve_WON/models/v_satchel.mdl",
+      "Half-Life/valve_WON/models/v_satchel_radio.mdl",
+      "Half-Life/valve_WON/models/v_shotgun.mdl",
+      "Half-Life/valve_WON/models/v_squeak.mdl",
+      "Half-Life/valve_WON/models/v_tripmine.mdl",
+      "Half-Life/valve_WON/models/w_357.mdl",
+      "Half-Life/valve_WON/models/w_357ammobox.mdl",
+      "Half-Life/valve_WON/models/w_9mmar.mdl",
+      "Half-Life/valve_WON/models/w_9mmarclip.mdl",
+      "Half-Life/valve_WON/models/w_9mmclip.mdl",
+      "Half-Life/valve_WON/models/w_9mmhandgun.mdl",
+      "Half-Life/valve_WON/models/w_argrenade.mdl",
+      "Half-Life/valve_WON/models/w_battery.mdl",
+      "Half-Life/valve_WON/models/w_crossbow.mdl",
+      "Half-Life/valve_WON/models/w_crossbow_clip.mdl",
+      "Half-Life/valve_WON/models/w_egon.mdl",
+      "Half-Life/valve_WON/models/w_gauss.mdl",
+      "Half-Life/valve_WON/models/w_gaussammo.mdl",
+      "Half-Life/valve_WON/models/w_grenade.mdl",
+      "Half-Life/valve_WON/models/w_hgun.mdl",
+      "Half-Life/valve_WON/models/w_longjump.mdl",
+      "Half-Life/valve_WON/models/w_medkit.mdl",
+      "Half-Life/valve_WON/models/w_rpg.mdl",
+      "Half-Life/valve_WON/models/w_rpgammo.mdl",
+      "Half-Life/valve_WON/models/w_satchel.mdl",
+      "Half-Life/valve_WON/models/w_shotbox.mdl",
+      "Half-Life/valve_WON/models/w_shotgun.mdl",
+      "Half-Life/valve_WON/models/w_sqknest.mdl",
+      "Half-Life/valve_WON/sound/barney/ba_die3.wav",
+      "Half-Life/valve_WON/sound/barney/ba_dontmake.wav",
+      "Half-Life/valve_WON/sound/barney/ba_endline.wav",
+      "Half-Life/valve_WON/sound/barney/ba_iwish.wav",
+      "Half-Life/valve_WON/sound/barney/ba_somuch.wav",
+      "Half-Life/valve_WON/sound/barney/ba_stepoff.wav",
+      "Half-Life/valve_WON/sound/barney/ba_tomb.wav",
+      "Half-Life/valve_WON/sound/barney/ba_uwish.wav",
+      "Half-Life/valve_WON/sound/barney/c1a0_ba_hevyes.wav",
+      "Half-Life/valve_WON/sound/barney/c1a4_ba_octo3.wav",
+      "Half-Life/valve_WON/sound/barney/c2a2_ba_launch.wav",
+      "Half-Life/valve_WON/sound/barney/c2a3_ba_assn.wav",
+      "Half-Life/valve_WON/sound/barney/c2a4_ba_5tau.wav",
+      "Half-Life/valve_WON/sound/barney/c2a4_ba_alive.wav",
+      "Half-Life/valve_WON/sound/hgrunt/c2a3_ambush_vox.wav",
+      "Half-Life/valve_WON/sound/hgrunt/c2a3_hg_1drag.wav",
+      "Half-Life/valve_WON/sound/hgrunt/c2a3_hg_2drag.wav",
+      "Half-Life/valve_WON/sound/hgrunt/c2a3_hg_3drag.wav",
+      "Half-Life/valve_WON/sound/hgrunt/c2a3_hg_4drag.wav",
+      "Half-Life/valve_WON/sound/hgrunt/c2a3_hg_5drag.wav",
+      "Half-Life/valve_WON/sound/hgrunt/c2a3_hg_laugh.wav",
+      "Half-Life/valve_WON/sound/hgrunt/c2a5_hg_abandon.wav",
+      "Half-Life/valve_WON/sound/hgrunt/c2a5_hg_lebuz.wav",
+      "Half-Life/valve_WON/sound/hgrunt/hg_civvies.wav",
+      "Half-Life/valve_WON/sound/scientist/afellowsci.wav",
+      "Half-Life/valve_WON/sound/scientist/ahfreeman.wav",
+      "Half-Life/valve_WON/sound/scientist/c1a0_sci_crit1a.wav",
+      "Half-Life/valve_WON/sound/scientist/c1a0_sci_ctrl1a.wav",
+      "Half-Life/valve_WON/sound/scientist/c1a0_sci_ctrl2a.wav",
+      "Half-Life/valve_WON/sound/scientist/c1a0_sci_dis1a.wav",
+      "Half-Life/valve_WON/sound/scientist/c1a0_sci_dis9a.wav",
+      "Half-Life/valve_WON/sound/scientist/c1a0_sci_disa.wav",
+      "Half-Life/valve_WON/sound/scientist/c1a0_sci_lock4a.wav",
+      "Half-Life/valve_WON/sound/scientist/c1a0_sci_lock6a.wav",
+      "Half-Life/valve_WON/sound/scientist/c1a2_sci_dangling.wav",
+      "Half-Life/valve_WON/sound/scientist/c1a3_sci_silo1a.wav",
+      "Half-Life/valve_WON/sound/scientist/c1a3_sci_silo2a.wav",
+      "Half-Life/valve_WON/sound/scientist/c1a4_sci_gener.wav",
+      "Half-Life/valve_WON/sound/scientist/c2a3_sci_track.wav",
+      "Half-Life/valve_WON/sound/scientist/c2a4_sci_letout.wav",
+      "Half-Life/valve_WON/sound/scientist/c2a5_sci_boobie.wav",
+      "Half-Life/valve_WON/sound/scientist/c3a2_sci_fool.wav",
+      "Half-Life/valve_WON/sound/scientist/canttakemore.wav",
+      "Half-Life/valve_WON/sound/scientist/freeman.wav",
+      "Half-Life/valve_WON/sound/scientist/freemanalive.wav",
+      "Half-Life/valve_WON/sound/scientist/goodtoseeyou.wav",
+      "Half-Life/valve_WON/sound/scientist/greetings.wav",
+      "Half-Life/valve_WON/sound/scientist/greetings2.wav",
+      "Half-Life/valve_WON/sound/scientist/heal1.wav",
+      "Half-Life/valve_WON/sound/scientist/heal2.wav",
+      "Half-Life/valve_WON/sound/scientist/heal3.wav",
+      "Half-Life/valve_WON/sound/scientist/heal4.wav",
+      "Half-Life/valve_WON/sound/scientist/heal5.wav",
+      "Half-Life/valve_WON/sound/scientist/hello.wav",
+      "Half-Life/valve_WON/sound/scientist/hello2.wav",
+      "Half-Life/valve_WON/sound/scientist/hellofreeman.wav",
+      "Half-Life/valve_WON/sound/scientist/hellofromlab.wav",
+      "Half-Life/valve_WON/sound/scientist/hellothere.wav",
+      "Half-Life/valve_WON/sound/scientist/holdstill.wav",
+      "Half-Life/valve_WON/sound/scientist/inmesstoo.wav",
+      "Half-Life/valve_WON/sound/scientist/iwounded.wav",
+      "Half-Life/valve_WON/sound/scientist/iwounded2.wav",
+      "Half-Life/valve_WON/sound/scientist/iwoundedbad.wav",
+      "Half-Life/valve_WON/sound/scientist/letstrythis.wav",
+      "Half-Life/valve_WON/sound/scientist/newhevsuit.wav",
+      "Half-Life/valve_WON/sound/scientist/sci_pain1.wav",
+      "Half-Life/valve_WON/sound/scientist/sci_pain2.wav",
+      "Half-Life/valve_WON/sound/scientist/sci_pain3.wav",
+      "Half-Life/valve_WON/sound/scientist/sci_pain4.wav",
+      "Half-Life/valve_WON/sound/scientist/sci_pain5.wav",
+      "Half-Life/valve_WON/sound/scientist/scream01.wav",
+      "Half-Life/valve_WON/sound/scientist/scream3.wav",
+      "Half-Life/valve_WON/sound/scientist/scream4.wav",
+      "Half-Life/valve_WON/sound/scientist/youlookbad.wav",
+      "Half-Life/valve_WON/sound/scientist/youneedmedic.wav",
+      "Half-Life/valve_WON/sound/scientist/youwounded.wav",
+      "ghostingmod/custom/condensed-hud/materials/vgui/hud/icon_acid.vmt",
+      "ghostingmod/custom/condensed-hud/materials/vgui/hud/icon_acid.vtf",
+      "ghostingmod/custom/condensed-hud/materials/vgui/hud/icon_blank.vmt",
+      "ghostingmod/custom/condensed-hud/materials/vgui/hud/icon_blank.vtf",
+      "ghostingmod/custom/condensed-hud/materials/vgui/hud/icon_blast.vmt",
+      "ghostingmod/custom/condensed-hud/materials/vgui/hud/icon_blast.vtf",
+      "ghostingmod/custom/condensed-hud/materials/vgui/hud/icon_energy.vmt",
+      "ghostingmod/custom/condensed-hud/materials/vgui/hud/icon_energy.vtf",
+      "ghostingmod/custom/condensed-hud/materials/vgui/hud/icon_heat.vmt",
+      "ghostingmod/custom/condensed-hud/materials/vgui/hud/icon_heat.vtf",
+      "ghostingmod/custom/condensed-hud/materials/vgui/hud/icon_oxygen.vmt",
+      "ghostingmod/custom/condensed-hud/materials/vgui/hud/icon_oxygen.vtf",
+      "ghostingmod/custom/condensed-hud/materials/vgui/hud/icon_poison.vmt",
+      "ghostingmod/custom/condensed-hud/materials/vgui/hud/icon_poison.vtf",
+      "ghostingmod/custom/condensed-hud/materials/vgui/hud/icon_radiation.vmt",
+      "ghostingmod/custom/condensed-hud/materials/vgui/hud/icon_radiation.vtf",
+      "ghostingmod/custom/condensed-hud/materials/vgui/hud/icon_shock.vmt",
+      "ghostingmod/custom/condensed-hud/materials/vgui/hud/icon_shock.vtf",
+      "ghostingmod/custom/condensed-hud/resource/clientscheme.res",
+      "ghostingmod/custom/condensed-hud/resource/valve_english.txt",
+      "ghostingmod/custom/condensed-hud/resource/valve_russian.txt",
+      "ghostingmod/custom/condensed-hud/resource/synergy_english.txt",
+      "ghostingmod/custom/condensed-hud/resource/Hype font.txt",
+      "ghostingmod/custom/condensed-hud/resource/LICENSE_OFL.txt",
+      "ghostingmod/custom/condensed-hud/resource/din1451alt.ttf",
+      "ghostingmod/custom/condensed-hud/resource/din1451alt2.ttf",
+      "ghostingmod/custom/condensed-hud/resource/FacileSans.ttf",
+      "ghostingmod/custom/condensed-hud/resource/halflife2.ttf",
+      "ghostingmod/custom/condensed-hud/resource/hl2crosshairs.ttf",
+      "ghostingmod/custom/condensed-hud/resource/HL2EP2.ttf",
+      "ghostingmod/custom/condensed-hud/resource/HL2MMod.ttf",
+      "ghostingmod/custom/condensed-hud/resource/HL2MP.ttf",
+      "ghostingmod/custom/condensed-hud/resource/HYPE.ttf",
+      "ghostingmod/custom/condensed-hud/resource/K12HL2.ttf",
+      "ghostingmod/custom/condensed-hud/resource/lostcoast.ttf",
+      "ghostingmod/custom/condensed-hud/resource/nokia-pure-text.ttf",
+      "ghostingmod/custom/condensed-hud/resource/RealBeta's Weapon Icons.ttf",
+      "ghostingmod/custom/condensed-hud/resource/SynFont.ttf",
+      "ghostingmod/custom/condensed-hud/resource/NotoSans-Bold.ttf",
+      "ghostingmod/custom/condensed-hud/resource/NotoSans-BoldItalic.ttf",
+      "ghostingmod/custom/condensed-hud/resource/NotoSans-Italic.ttf",
+      "ghostingmod/custom/condensed-hud/resource/NotoSans-Regular.ttf",
+      "ghostingmod/custom/condensed-hud/resource/Roboto-Black.ttf",
+      "ghostingmod/custom/condensed-hud/resource/Roboto-BlackItalic.ttf",
+      "ghostingmod/custom/condensed-hud/resource/Roboto-Bold.ttf",
+      "ghostingmod/custom/condensed-hud/resource/Roboto-BoldItalic.ttf",
+      "ghostingmod/custom/condensed-hud/resource/Roboto-Italic.ttf",
+      "ghostingmod/custom/condensed-hud/resource/Roboto-Light.ttf",
+      "ghostingmod/custom/condensed-hud/resource/Roboto-LightItalic.ttf",
+      "ghostingmod/custom/condensed-hud/resource/Roboto-Medium.ttf",
+      "ghostingmod/custom/condensed-hud/resource/Roboto-MediumItalic.ttf",
+      "ghostingmod/custom/condensed-hud/resource/Roboto-Regular.ttf",
+      "ghostingmod/custom/condensed-hud/resource/Roboto-Thin.ttf",
+      "ghostingmod/custom/condensed-hud/resource/Roboto-ThinItalic.ttf",
+      "ghostingmod/custom/condensed-hud/resource/RobotoCondensed-Bold.ttf",
+      "ghostingmod/custom/condensed-hud/resource/RobotoCondensed-BoldItalic.ttf",
+      "ghostingmod/custom/condensed-hud/resource/RobotoCondensed-Italic.ttf",
+      "ghostingmod/custom/condensed-hud/resource/RobotoCondensed-Light.ttf",
+      "ghostingmod/custom/condensed-hud/resource/RobotoCondensed-LightItalic.ttf",
+      "ghostingmod/custom/condensed-hud/resource/RobotoCondensed-Regular.ttf",
+      "ghostingmod/custom/condensed-hud/scripts/hudanimations.txt",
+      "ghostingmod/custom/condensed-hud/scripts/hudanimations_manifest.txt",
+      "ghostingmod/custom/condensed-hud/scripts/hudanimations_syn.txt",
+      "ghostingmod/custom/condensed-hud/scripts/hudlayout.res",
+      "ghostingmod/custom/m9-bayonet/models/weapons/v_crowbar.mdl",
+      "ghostingmod/custom/m9-bayonet/models/weapons/v_crowbar.ani",
+      "ghostingmod/custom/m9-bayonet/models/weapons/v_crowbar.vvd",
+      "ghostingmod/custom/m9-bayonet/models/weapons/v_crowbar.dx80.vtx",
+      "ghostingmod/custom/m9-bayonet/models/weapons/v_crowbar.dx90.vtx",
+      "ghostingmod/custom/m9-bayonet/models/weapons/v_crowbar.sw.vtx",
+      "ghostingmod/custom/m9-bayonet/materials/models/csgo_knife/knife_m9_bay.vmt",
+      "ghostingmod/custom/m9-bayonet/materials/models/csgo_knife/knife_m9_bay.vtf",
+      "ghostingmod/custom/m9-bayonet/materials/models/csgo_knife/knife_m9_bay_ao.vtf",
+      "ghostingmod/custom/m9-bayonet/materials/models/csgo_knife/knife_m9_bay_exponent.vtf",
+      "ghostingmod/custom/signed-smg/materials/models/weapons/v_smg1/v_smg1_sheet.vtf",
+      "ghostingmod/custom/signed-shotgun/materials/models/weapons/v_shotgun/vshotgun_albedo.vtf",
+      "ghostingmod/custom/signed-rpg/materials/models/weapons/v_rocket_launcher/rocket launcher sheet.vtf"
+    ]
+  },
+  "links": [
+    [
+      "site",
+      "https://hlsr.pro"
+    ],
+    [
+      "privacy",
+      "https://hlsr.pro/privacy/"
+    ],
+    [
+      "terms",
+      "https://hlsr.pro/terms/"
+    ],
+    [
+      "github",
+      "https://github.com/HL-HLSR/HLSR-Releases"
+    ],
+    [
+      "discord",
+      "https://discord.com/invite/8Np6brWBuz"
+    ],
+    [
+      "steamHalfLife",
+      "https://store.steampowered.com/app/70/HalfLife/"
+    ],
+    [
+      "steamHalfLife2",
+      "https://store.steampowered.com/app/220/HalfLife_2/"
+    ],
+    [
+      "hl1Resources",
+      "https://www.speedrun.com/hl1/resources"
+    ],
+    [
+      "bxtrsSource",
+      "https://hlsr.pro/downloads/tools/bxt-rs/won-2623912/bxt-rs-won-2623912-src.tar.gz"
+    ],
+    [
+      "bxtrsLicense",
+      "https://hlsr.pro/downloads/tools/bxt-rs/won-2623912/THIRD-PARTY-NOTICES.txt"
+    ],
+    [
+      "speedrun-hl1",
+      "https://www.speedrun.com/hl1"
+    ],
+    [
+      "speedrun-hl2",
+      "https://www.speedrun.com/hl2"
+    ],
+    [
+      "google-drive",
+      "https://drive.google.com/drive/my-drive"
+    ],
+    [
+      "authorInfiniteCore",
+      "https://github.com/InfiniteC0re"
+    ],
+    [
+      "authorProlert",
+      "https://github.com/prolert"
+    ],
+    [
+      "authorKanoyo",
+      "https://github.com/kanoyo-git"
+    ],
+    [
+      "authorScriptedSnark",
+      "https://github.com/ScriptedSnark"
+    ]
+  ],
+  "ansiName": [
+    {
+      "input": "myrun_005.run",
+      "output": "myrun_005.run"
+    },
+    {
+      "input": "спидран_005.run",
+      "output": "спидран_005.run"
+    },
+    {
+      "input": "Пёс.run",
+      "output": "Пёс.run"
+    },
+    {
+      "input": "Привет мир",
+      "output": "Привет мир"
+    },
+    {
+      "input": "日本語.run",
+      "output": "日本語.run"
+    },
+    {
+      "input": "",
+      "output": ""
+    },
+    {
+      "input": "a—b.run",
+      "output": "a—b.run"
+    },
+    {
+      "input": "",
+      "output": ""
+    },
+    {
+      "input": "😀.run",
+      "output": "😀.run"
+    },
+    {
+      "input": "СЃРїРёРґСЂР°РЅ_005.run",
+      "output": "спидран_005.run"
+    },
+    {
+      "input": "РџС‘СЃ.run",
+      "output": "Пёс.run"
+    },
+    {
+      "input": "РЃР¶РёРє.run",
+      "output": "Ёжик.run"
+    },
+    {
+      "input": "РїСЂРёР·СЂР°Рє Р“РѕСЂРґРѕРЅР°.run",
+      "output": "призрак Гордона.run"
+    },
+    {
+      "input": "СЂР°РЅ в„–3.dem",
+      "output": "ран №3.dem"
+    },
+    {
+      "input": "п»їx.run",
+      "output": "x.run"
+    },
+    {
+      "input": "aвЂ”b.run",
+      "output": "a—b.run"
+    },
+    {
+      "input": "рџЂ.run",
+      "output": "😀.run"
+    },
+    {
+      "input": "ÐA",
+      "output": "ÐA"
+    },
+    {
+      "input": "РAГ",
+      "output": "РAГ"
+    }
+  ],
+  "launchArgs": {
+    "current": {
+      "launchArgs": "-novid -w 1280",
+      "protonOptions": "PROTON_LOG=1 %command%",
+      "console": false,
+      "novid": false,
+      "borderless": false,
+      "dx9": false,
+      "nocrashdialog": false,
+      "noasync": false,
+      "noaafonts": false,
+      "high": false,
+      "excludeCpu0": false,
+      "startTimer": false,
+      "vulkan": false,
+      "language": "auto",
+      "rinput": true,
+      "rinputMenuFix": false,
+      "windowed": false,
+      "developer": false,
+      "condebug": false,
+      "nojoy": false,
+      "width": 0,
+      "height": 0,
+      "refreshRate": 0,
+      "packs": {
+        "hud": "default",
+        "crosshair": "default",
+        "changerShape": "Default",
+        "changerColor": "green"
+      },
+      "bxt": {
+        "timer": false,
+        "timerX": 0,
+        "timerY": 50,
+        "speedometer": true,
+        "speedometerX": 50,
+        "speedometerY": 100,
+        "jumpspeed": false,
+        "jumpspeedX": 50,
+        "jumpspeedY": 100,
+        "viewangles": false,
+        "viewanglesX": 100,
+        "viewanglesY": 0,
+        "jumpdistance": false,
+        "precision": 6,
+        "incorrectFps": true,
+        "fov": 90,
+        "fixWidescreenFov": false,
+        "viewmodelFov": 0,
+        "viewmodelSemitransparent": false,
+        "removeViewmodel": false,
+        "viewmodelForward": 0,
+        "viewmodelRight": 0,
+        "viewmodelUp": 0,
+        "viewmodelBobAngled": false,
+        "viewmodelNoIdle": false,
+        "viewmodelNoEquip": false,
+        "hideCrosshair": false
+      },
+      "binds": {},
+      "personalization": {
+        "hudEnabled": false,
+        "hudColor": {
+          "r": 255,
+          "g": 220,
+          "b": 0
+        },
+        "hudAlpha": -1,
+        "hudAffectsCrosshair": false,
+        "hideQuickInfo": false,
+        "crossPreset": "standard",
+        "crossEnabled": false,
+        "crossColor": {
+          "r": 0,
+          "g": 255,
+          "b": 0
+        },
+        "crossAlpha": 255,
+        "crossThickness": 2,
+        "crossSize": 10,
+        "crossGap": 3,
+        "crossOutline": false,
+        "crossOutlineThickness": 1,
+        "crossCircleRadius": 0,
+        "crossDotColor": null,
+        "crossDotSize": 0,
+        "crossTopLine": true,
+        "crossBottomLine": true,
+        "crossLeftLine": true,
+        "crossRightLine": true,
+        "crossHideDefault": true,
+        "extra": {}
+      },
+      "liveSplitOverlay": {
+        "enabled": false,
+        "x": 100,
+        "y": 50,
+        "height": 45,
+        "opacity": 100,
+        "key": "none",
+        "keyColor": {
+          "r": 0,
+          "g": 255,
+          "b": 0
+        },
+        "similarity": 400,
+        "smoothness": 80,
+        "lumaMin": 0.1,
+        "lumaMinSmooth": 0.05,
+        "lumaMax": 1,
+        "lumaMaxSmooth": 0,
+        "crop": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      }
+    },
+    "defaultsText": "{\"launchArgs\":\"\",\"protonOptions\":\"\",\"console\":false,\"novid\":false,\"borderless\":false,\"dx9\":false,\"nocrashdialog\":false,\"noasync\":false,\"noaafonts\":false,\"high\":false,\"excludeCpu0\":false,\"startTimer\":false,\"vulkan\":false,\"language\":\"auto\",\"rinput\":true,\"rinputMenuFix\":false,\"windowed\":false,\"developer\":false,\"condebug\":false,\"nojoy\":false,\"width\":0,\"height\":0,\"refreshRate\":0,\"packs\":{\"hud\":\"default\",\"crosshair\":\"default\",\"changerShape\":\"Default\",\"changerColor\":\"green\"},\"bxt\":{\"timer\":false,\"timerX\":0,\"timerY\":50,\"speedometer\":true,\"speedometerX\":50,\"speedometerY\":100,\"jumpspeed\":false,\"jumpspeedX\":50,\"jumpspeedY\":100,\"viewangles\":false,\"viewanglesX\":100,\"viewanglesY\":0,\"jumpdistance\":false,\"precision\":6,\"incorrectFps\":true,\"fov\":90,\"fixWidescreenFov\":false,\"viewmodelFov\":0,\"viewmodelSemitransparent\":false,\"removeViewmodel\":false,\"viewmodelForward\":0,\"viewmodelRight\":0,\"viewmodelUp\":0,\"viewmodelBobAngled\":false,\"viewmodelNoIdle\":false,\"viewmodelNoEquip\":false,\"hideCrosshair\":false},\"binds\":{},\"personalization\":{\"hudEnabled\":false,\"hudColor\":{\"r\":255,\"g\":220,\"b\":0},\"hudAlpha\":-1,\"hudAffectsCrosshair\":false,\"hideQuickInfo\":false,\"crossPreset\":\"standard\",\"crossEnabled\":false,\"crossColor\":{\"r\":0,\"g\":255,\"b\":0},\"crossAlpha\":255,\"crossThickness\":2,\"crossSize\":10,\"crossGap\":3,\"crossOutline\":false,\"crossOutlineThickness\":1,\"crossCircleRadius\":0,\"crossDotColor\":null,\"crossDotSize\":0,\"crossTopLine\":true,\"crossBottomLine\":true,\"crossLeftLine\":true,\"crossRightLine\":true,\"crossHideDefault\":true,\"extra\":{}},\"liveSplitOverlay\":{\"enabled\":false,\"x\":100,\"y\":50,\"height\":45,\"opacity\":100,\"key\":\"none\",\"keyColor\":{\"r\":0,\"g\":255,\"b\":0},\"similarity\":400,\"smoothness\":80,\"lumaMin\":0.1,\"lumaMinSmooth\":0.05,\"lumaMax\":1,\"lumaMaxSmooth\":0,\"crop\":{\"top\":0,\"right\":0,\"bottom\":0,\"left\":0}}}",
+    "imported": [
+      {
+        "raw": {
+          "launchArgs": "-console -w 1920 -h 1080 -freq 144.5",
+          "protonOptions": "DXVK_HUD=1 %command%",
+          "vulkan": true
+        },
+        "launchArgs": "-console -w 1920 -h 1080 -freq 144.5",
+        "protonOptions": "PROTON_LOG=1 %command%"
+      },
+      {
+        "raw": {
+          "launchArgs": "+exec evil.cfg",
+          "protonOptions": ""
+        },
+        "launchArgs": "-novid -w 1280",
+        "protonOptions": "PROTON_LOG=1 %command%"
+      },
+      {
+        "raw": {
+          "launchArgs": "-game ../x"
+        },
+        "launchArgs": "-novid -w 1280",
+        "protonOptions": "PROTON_LOG=1 %command%"
+      },
+      {
+        "raw": {
+          "launchArgs": "-path C:\\x"
+        },
+        "launchArgs": "-novid -w 1280",
+        "protonOptions": "PROTON_LOG=1 %command%"
+      },
+      {
+        "raw": {
+          "launchArgs": "-a.b"
+        },
+        "launchArgs": "-novid -w 1280",
+        "protonOptions": "PROTON_LOG=1 %command%"
+      },
+      {
+        "raw": {
+          "launchArgs": "1."
+        },
+        "launchArgs": "-novid -w 1280",
+        "protonOptions": "PROTON_LOG=1 %command%"
+      },
+      {
+        "raw": {
+          "launchArgs": "-ABC_def-1 2.50"
+        },
+        "launchArgs": "-ABC_def-1 2.50",
+        "protonOptions": "PROTON_LOG=1 %command%"
+      },
+      {
+        "raw": {
+          "launchArgs": 5
+        },
+        "launchArgs": "-novid -w 1280",
+        "protonOptions": "PROTON_LOG=1 %command%"
+      },
+      {
+        "raw": {
+          "launchArgs": null
+        },
+        "launchArgs": null,
+        "protonOptions": "PROTON_LOG=1 %command%"
+      },
+      {
+        "raw": {
+          "launchArgs": "\"-novid\""
+        },
+        "launchArgs": "\"-novid\"",
+        "protonOptions": "PROTON_LOG=1 %command%"
+      },
+      {
+        "raw": {},
+        "launchArgs": "<undefined>",
+        "protonOptions": "PROTON_LOG=1 %command%"
+      },
+      {
+        "raw": null,
+        "launchArgs": "<undefined>",
+        "protonOptions": "PROTON_LOG=1 %command%"
+      },
+      {
+        "raw": "x",
+        "launchArgs": "<undefined>",
+        "protonOptions": "PROTON_LOG=1 %command%"
+      },
+      {
+        "raw": [
+          1
+        ],
+        "launchArgs": "<undefined>",
+        "protonOptions": "PROTON_LOG=1 %command%"
+      }
+    ],
+    "vulkan": [
+      {
+        "value": true,
+        "settings": true
+      },
+      {
+        "value": false,
+        "settings": false
+      },
+      {
+        "value": "true",
+        "settings": false
+      },
+      {
+        "value": 1,
+        "settings": false
+      },
+      {
+        "value": null,
+        "settings": false
+      }
+    ]
+  },
+  "manifests": {
+    "calls": {
+      "forLauncherId": [
+        {
+          "value": "hl1-won",
+          "gameId": null
+        },
+        {
+          "value": "ghosting-renewed",
+          "gameId": null
+        },
+        {
+          "value": "hl2-4260",
+          "gameId": null
+        },
+        {
+          "value": "hl2-2707",
+          "gameId": null
+        },
+        {
+          "value": "hl2-5288",
+          "gameId": null
+        },
+        {
+          "value": "",
+          "gameId": null
+        },
+        {
+          "value": "x",
+          "gameId": null
+        },
+        {
+          "value": "HL1-WON",
+          "gameId": null
+        },
+        {
+          "value": "70",
+          "gameId": "hl1-won"
+        },
+        {
+          "value": "218",
+          "gameId": "ghosting-renewed"
+        },
+        {
+          "value": "220",
+          "gameId": "hl2-4260"
+        },
+        {
+          "value": "221",
+          "gameId": null
+        },
+        {
+          "value": "undefined",
+          "gameId": null
+        },
+        {
+          "value": "null",
+          "gameId": null
+        },
+        {
+          "value": " hl1-won",
+          "gameId": null
+        }
+      ],
+      "launcherIdOf": [
+        {
+          "value": "hl1-won",
+          "result": {
+            "ok": "70"
+          }
+        },
+        {
+          "value": "ghosting-renewed",
+          "result": {
+            "ok": "218"
+          }
+        },
+        {
+          "value": "hl2-4260",
+          "result": {
+            "ok": "220"
+          }
+        },
+        {
+          "value": "hl2-2707",
+          "result": {
+            "ok": "220"
+          }
+        },
+        {
+          "value": "hl2-5288",
+          "result": {
+            "ok": "220"
+          }
+        },
+        {
+          "value": "",
+          "result": {
+            "ok": null
+          }
+        },
+        {
+          "value": "x",
+          "result": {
+            "ok": null
+          }
+        },
+        {
+          "value": "HL1-WON",
+          "result": {
+            "ok": null
+          }
+        },
+        {
+          "value": "70",
+          "result": {
+            "ok": null
+          }
+        },
+        {
+          "value": "218",
+          "result": {
+            "ok": null
+          }
+        },
+        {
+          "value": "220",
+          "result": {
+            "ok": null
+          }
+        },
+        {
+          "value": "221",
+          "result": {
+            "ok": null
+          }
+        },
+        {
+          "value": "undefined",
+          "result": {
+            "ok": null
+          }
+        },
+        {
+          "value": "null",
+          "result": {
+            "ok": null
+          }
+        },
+        {
+          "value": " hl1-won",
+          "result": {
+            "ok": null
+          }
+        }
+      ],
+      "isDepotBuild": [
+        {
+          "value": "hl1-won",
+          "result": {
+            "ok": false
+          }
+        },
+        {
+          "value": "ghosting-renewed",
+          "result": {
+            "ok": false
+          }
+        },
+        {
+          "value": "hl2-4260",
+          "result": {
+            "ok": false
+          }
+        },
+        {
+          "value": "hl2-2707",
+          "result": {
+            "ok": false
+          }
+        },
+        {
+          "value": "hl2-5288",
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "value": "",
+          "result": {
+            "ok": false
+          }
+        },
+        {
+          "value": "x",
+          "result": {
+            "ok": false
+          }
+        },
+        {
+          "value": "HL1-WON",
+          "result": {
+            "ok": false
+          }
+        },
+        {
+          "value": "70",
+          "result": {
+            "ok": false
+          }
+        },
+        {
+          "value": "218",
+          "result": {
+            "ok": false
+          }
+        },
+        {
+          "value": "220",
+          "result": {
+            "ok": false
+          }
+        },
+        {
+          "value": "221",
+          "result": {
+            "ok": false
+          }
+        },
+        {
+          "value": "undefined",
+          "result": {
+            "ok": false
+          }
+        },
+        {
+          "value": "null",
+          "result": {
+            "ok": false
+          }
+        },
+        {
+          "value": " hl1-won",
+          "result": {
+            "ok": false
+          }
+        }
+      ],
+      "isKnownGame": [
+        {
+          "value": "hl1-won",
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "value": "ghosting-renewed",
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "value": "hl2-4260",
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "value": "hl2-2707",
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "value": "hl2-5288",
+          "result": {
+            "ok": true
+          }
+        },
+        {
+          "value": "",
+          "result": {
+            "ok": false
+          }
+        },
+        {
+          "value": "x",
+          "result": {
+            "ok": false
+          }
+        },
+        {
+          "value": "HL1-WON",
+          "result": {
+            "ok": false
+          }
+        },
+        {
+          "value": "70",
+          "result": {
+            "ok": false
+          }
+        },
+        {
+          "value": "218",
+          "result": {
+            "ok": false
+          }
+        },
+        {
+          "value": "220",
+          "result": {
+            "ok": false
+          }
+        },
+        {
+          "value": "221",
+          "result": {
+            "ok": false
+          }
+        },
+        {
+          "value": "undefined",
+          "result": {
+            "ok": false
+          }
+        },
+        {
+          "value": "null",
+          "result": {
+            "ok": false
+          }
+        },
+        {
+          "value": " hl1-won",
+          "result": {
+            "ok": false
+          }
+        }
+      ],
+      "localConfigOf": [
+        {
+          "value": "hl1-won",
+          "result": {
+            "ok": {
+              "screenshotsPath": "Half-Life/valve_WON",
+              "runsPath": "Half-Life/valve_WON",
+              "runsExtension": ".dem",
+              "runsLanguageDirs": true,
+              "configPath": "Half-Life/valve_WON",
+              "executables": [
+                "hl.exe"
+              ],
+              "settingsSection": "games",
+              "shortcutName": "HLSR - Half-Life (WON)"
+            }
+          }
+        },
+        {
+          "value": "ghosting-renewed",
+          "result": {
+            "ok": {
+              "screenshotsPath": "ghostingmod/screenshots",
+              "runsPath": "ghostingmod/runs",
+              "demoDirs": [
+                "ghostingmod",
+                "ghostingmod/demos"
+              ],
+              "demoExtension": ".dem",
+              "configPath": "ghostingmod/cfg",
+              "executables": [
+                "hl2.exe"
+              ],
+              "settingsSection": "games",
+              "shortcutName": "HLSR - Ghosting Mod Renewed"
+            }
+          }
+        },
+        {
+          "value": "hl2-4260",
+          "result": {
+            "ok": {
+              "screenshotsPath": "hl2/screenshots",
+              "runsPath": null,
+              "configPath": "hl2/cfg",
+              "executables": [
+                "hl2.exe"
+              ],
+              "settingsSection": "games",
+              "shortcutName": "HLSR - Half-Life 2 (4260)"
+            }
+          }
+        },
+        {
+          "value": "hl2-2707",
+          "result": {
+            "ok": {
+              "screenshotsPath": "hl2/screenshots",
+              "runsPath": null,
+              "configPath": "hl2/cfg",
+              "executables": [
+                "hl2.exe"
+              ],
+              "settingsSection": "games",
+              "shortcutName": "HLSR - Half-Life 2 (2707)"
+            }
+          }
+        },
+        {
+          "value": "hl2-5288",
+          "result": {
+            "ok": {
+              "screenshotsPath": "hl2/screenshots",
+              "runsPath": null,
+              "configPath": "hl2/cfg",
+              "executables": [
+                "hl2.exe"
+              ],
+              "settingsSection": "games",
+              "shortcutName": "HLSR - Half-Life 2 (5288)"
+            }
+          }
+        },
+        {
+          "value": "",
+          "result": {
+            "ok": null
+          }
+        },
+        {
+          "value": "x",
+          "result": {
+            "ok": null
+          }
+        },
+        {
+          "value": "HL1-WON",
+          "result": {
+            "ok": null
+          }
+        },
+        {
+          "value": "70",
+          "result": {
+            "ok": null
+          }
+        },
+        {
+          "value": "218",
+          "result": {
+            "ok": null
+          }
+        },
+        {
+          "value": "220",
+          "result": {
+            "ok": null
+          }
+        },
+        {
+          "value": "221",
+          "result": {
+            "ok": null
+          }
+        },
+        {
+          "value": "undefined",
+          "result": {
+            "ok": null
+          }
+        },
+        {
+          "value": "null",
+          "result": {
+            "ok": null
+          }
+        },
+        {
+          "value": " hl1-won",
+          "result": {
+            "ok": null
+          }
+        }
+      ],
+      "launchConfigOf": [
+        {
+          "value": "hl1-won",
+          "result": {
+            "ok": {
+              "steamAppId": 70,
+              "requiresOwnedAppIds": [
+                70
+              ],
+              "engine": "goldsrc",
+              "executable": "Half-Life/hl.exe",
+              "gameDirectory": "Half-Life/valve_WON",
+              "steamAppIdFile": "Half-Life/steam_appid.txt",
+              "injector": "Bunnymod XT/Injector.exe",
+              "rinput": {
+                "executable": "RInput/RInput.exe"
+              },
+              "environment": {
+                "BXT_DISABLE_VSYNC": "1",
+                "PROTON_ENABLE_WAYLAND": "0",
+                "__GL_SYNC_TO_VBLANK": "0"
+              },
+              "packs": {
+                "spritesDir": "Half-Life/valve_WON/sprites",
+                "baseSpritesDir": "Half-Life/valve/sprites"
+              },
+              "dependencies": [
+                {
+                  "id": "bxt",
+                  "title": "Bunnymod XT",
+                  "repo": "YaLTeR/BunnymodXT",
+                  "asset": "^(\\d+-)?BunnymodXT-Windows\\.7z$",
+                  "extract": "BunnymodXT.dll",
+                  "target": "Bunnymod XT/BunnymodXT.dll",
+                  "versionFile": "Bunnymod XT/version"
+                },
+                {
+                  "id": "injector",
+                  "title": "Bunnymod XT Injector",
+                  "repo": "YaLTeR/BunnymodXT-Injector",
+                  "asset": "^Injector\\.exe$",
+                  "target": "Bunnymod XT/Injector.exe",
+                  "versionFile": "Bunnymod XT/.hlsr-injector-version",
+                  "pin": {
+                    "tag": "v3.2",
+                    "sha256": "c4d576f87dbb0ce46ad36e7015e67b1666f9aff1e834d5f0f7ef12e102b5dad9"
+                  }
+                }
+              ],
+              "arguments": [
+                "-steam",
+                "-gl",
+                "-32bpp",
+                "-game",
+                "valve_WON",
+                "-noforcemparms"
+              ],
+              "sourceSdkRequired": false,
+              "ownsSteamAppIdFile": true,
+              "steamBridge": true
+            }
+          }
+        },
+        {
+          "value": "ghosting-renewed",
+          "result": {
+            "ok": {
+              "steamAppId": 243730,
+              "executable": "hl2.exe",
+              "gameDirectory": "ghostingmod",
+              "arguments": [
+                "-steam",
+                "-game",
+                "ghostingmod"
+              ],
+              "sourceSdkRequired": false,
+              "ownsSteamAppIdFile": true,
+              "steamAppIdFileText": "243730\n\u0000",
+              "presenceBridge": true,
+              "steamBridge": true,
+              "vulkan": true
+            }
+          }
+        },
+        {
+          "value": "hl2-4260",
+          "result": {
+            "ok": {
+              "steamAppId": 220,
+              "requiresOwnedAppIds": [
+                220
+              ],
+              "executable": "hl2.exe",
+              "gameDirectory": "hl2",
+              "arguments": [
+                "-steam",
+                "-game",
+                "hl2"
+              ],
+              "sourceSdkRequired": false,
+              "ownsSteamAppIdFile": true
+            }
+          }
+        },
+        {
+          "value": "hl2-2707",
+          "result": {
+            "ok": {
+              "steamAppId": 220,
+              "requiresOwnedAppIds": [
+                220
+              ],
+              "executable": "hl2.exe",
+              "gameDirectory": "hl2",
+              "arguments": [
+                "-steam",
+                "-game",
+                "hl2"
+              ],
+              "sourceSdkRequired": false,
+              "ownsSteamAppIdFile": true
+            }
+          }
+        },
+        {
+          "value": "hl2-5288",
+          "result": {
+            "ok": {
+              "steamAppId": 220,
+              "requiresOwnedAppIds": [
+                220
+              ],
+              "executable": "hl2.exe",
+              "gameDirectory": "hl2",
+              "arguments": [
+                "-steam",
+                "-game",
+                "hl2"
+              ],
+              "sourceSdkRequired": false,
+              "ownsSteamAppIdFile": true
+            }
+          }
+        },
+        {
+          "value": "",
+          "result": {
+            "ok": null
+          }
+        },
+        {
+          "value": "x",
+          "result": {
+            "ok": null
+          }
+        },
+        {
+          "value": "HL1-WON",
+          "result": {
+            "ok": null
+          }
+        },
+        {
+          "value": "70",
+          "result": {
+            "ok": null
+          }
+        },
+        {
+          "value": "218",
+          "result": {
+            "ok": null
+          }
+        },
+        {
+          "value": "220",
+          "result": {
+            "ok": null
+          }
+        },
+        {
+          "value": "221",
+          "result": {
+            "ok": null
+          }
+        },
+        {
+          "value": "undefined",
+          "result": {
+            "ok": null
+          }
+        },
+        {
+          "value": "null",
+          "result": {
+            "ok": null
+          }
+        },
+        {
+          "value": " hl1-won",
+          "result": {
+            "ok": null
+          }
+        }
+      ],
+      "buildsOf": [
+        {
+          "value": "hl1-won",
+          "result": {
+            "ok": []
+          }
+        },
+        {
+          "value": "ghosting-renewed",
+          "result": {
+            "ok": []
+          }
+        },
+        {
+          "value": "hl2-4260",
+          "result": {
+            "ok": []
+          }
+        },
+        {
+          "value": "hl2-2707",
+          "result": {
+            "ok": []
+          }
+        },
+        {
+          "value": "hl2-5288",
+          "result": {
+            "ok": []
+          }
+        },
+        {
+          "value": "",
+          "result": {
+            "ok": []
+          }
+        },
+        {
+          "value": "x",
+          "result": {
+            "ok": []
+          }
+        },
+        {
+          "value": "HL1-WON",
+          "result": {
+            "ok": []
+          }
+        },
+        {
+          "value": "70",
+          "result": {
+            "ok": []
+          }
+        },
+        {
+          "value": "218",
+          "result": {
+            "ok": []
+          }
+        },
+        {
+          "value": "220",
+          "result": {
+            "ok": [
+              "4260",
+              "2707",
+              "5288"
+            ]
+          }
+        },
+        {
+          "value": "221",
+          "result": {
+            "ok": []
+          }
+        },
+        {
+          "value": "undefined",
+          "result": {
+            "ok": []
+          }
+        },
+        {
+          "value": "null",
+          "result": {
+            "ok": []
+          }
+        },
+        {
+          "value": " hl1-won",
+          "result": {
+            "ok": []
+          }
+        }
+      ],
+      "buildGameIdOf": [
+        {
+          "launcher": "hl1-won",
+          "build": "4260",
+          "result": null
+        },
+        {
+          "launcher": "hl1-won",
+          "build": "2707",
+          "result": null
+        },
+        {
+          "launcher": "hl1-won",
+          "build": "5288",
+          "result": null
+        },
+        {
+          "launcher": "hl1-won",
+          "build": "1",
+          "result": null
+        },
+        {
+          "launcher": "hl1-won",
+          "build": "",
+          "result": null
+        },
+        {
+          "launcher": "hl1-won",
+          "build": "x",
+          "result": null
+        },
+        {
+          "launcher": "ghosting-renewed",
+          "build": "4260",
+          "result": null
+        },
+        {
+          "launcher": "ghosting-renewed",
+          "build": "2707",
+          "result": null
+        },
+        {
+          "launcher": "ghosting-renewed",
+          "build": "5288",
+          "result": null
+        },
+        {
+          "launcher": "ghosting-renewed",
+          "build": "1",
+          "result": null
+        },
+        {
+          "launcher": "ghosting-renewed",
+          "build": "",
+          "result": null
+        },
+        {
+          "launcher": "ghosting-renewed",
+          "build": "x",
+          "result": null
+        },
+        {
+          "launcher": "hl2-4260",
+          "build": "4260",
+          "result": null
+        },
+        {
+          "launcher": "hl2-4260",
+          "build": "2707",
+          "result": null
+        },
+        {
+          "launcher": "hl2-4260",
+          "build": "5288",
+          "result": null
+        },
+        {
+          "launcher": "hl2-4260",
+          "build": "1",
+          "result": null
+        },
+        {
+          "launcher": "hl2-4260",
+          "build": "",
+          "result": null
+        },
+        {
+          "launcher": "hl2-4260",
+          "build": "x",
+          "result": null
+        },
+        {
+          "launcher": "hl2-2707",
+          "build": "4260",
+          "result": null
+        },
+        {
+          "launcher": "hl2-2707",
+          "build": "2707",
+          "result": null
+        },
+        {
+          "launcher": "hl2-2707",
+          "build": "5288",
+          "result": null
+        },
+        {
+          "launcher": "hl2-2707",
+          "build": "1",
+          "result": null
+        },
+        {
+          "launcher": "hl2-2707",
+          "build": "",
+          "result": null
+        },
+        {
+          "launcher": "hl2-2707",
+          "build": "x",
+          "result": null
+        },
+        {
+          "launcher": "hl2-5288",
+          "build": "4260",
+          "result": null
+        },
+        {
+          "launcher": "hl2-5288",
+          "build": "2707",
+          "result": null
+        },
+        {
+          "launcher": "hl2-5288",
+          "build": "5288",
+          "result": null
+        },
+        {
+          "launcher": "hl2-5288",
+          "build": "1",
+          "result": null
+        },
+        {
+          "launcher": "hl2-5288",
+          "build": "",
+          "result": null
+        },
+        {
+          "launcher": "hl2-5288",
+          "build": "x",
+          "result": null
+        },
+        {
+          "launcher": "",
+          "build": "4260",
+          "result": null
+        },
+        {
+          "launcher": "",
+          "build": "2707",
+          "result": null
+        },
+        {
+          "launcher": "",
+          "build": "5288",
+          "result": null
+        },
+        {
+          "launcher": "",
+          "build": "1",
+          "result": null
+        },
+        {
+          "launcher": "",
+          "build": "",
+          "result": null
+        },
+        {
+          "launcher": "",
+          "build": "x",
+          "result": null
+        },
+        {
+          "launcher": "x",
+          "build": "4260",
+          "result": null
+        },
+        {
+          "launcher": "x",
+          "build": "2707",
+          "result": null
+        },
+        {
+          "launcher": "x",
+          "build": "5288",
+          "result": null
+        },
+        {
+          "launcher": "x",
+          "build": "1",
+          "result": null
+        },
+        {
+          "launcher": "x",
+          "build": "",
+          "result": null
+        },
+        {
+          "launcher": "x",
+          "build": "x",
+          "result": null
+        },
+        {
+          "launcher": "HL1-WON",
+          "build": "4260",
+          "result": null
+        },
+        {
+          "launcher": "HL1-WON",
+          "build": "2707",
+          "result": null
+        },
+        {
+          "launcher": "HL1-WON",
+          "build": "5288",
+          "result": null
+        },
+        {
+          "launcher": "HL1-WON",
+          "build": "1",
+          "result": null
+        },
+        {
+          "launcher": "HL1-WON",
+          "build": "",
+          "result": null
+        },
+        {
+          "launcher": "HL1-WON",
+          "build": "x",
+          "result": null
+        },
+        {
+          "launcher": "70",
+          "build": "4260",
+          "result": null
+        },
+        {
+          "launcher": "70",
+          "build": "2707",
+          "result": null
+        },
+        {
+          "launcher": "70",
+          "build": "5288",
+          "result": null
+        },
+        {
+          "launcher": "70",
+          "build": "1",
+          "result": null
+        },
+        {
+          "launcher": "70",
+          "build": "",
+          "result": null
+        },
+        {
+          "launcher": "70",
+          "build": "x",
+          "result": null
+        },
+        {
+          "launcher": "218",
+          "build": "4260",
+          "result": null
+        },
+        {
+          "launcher": "218",
+          "build": "2707",
+          "result": null
+        },
+        {
+          "launcher": "218",
+          "build": "5288",
+          "result": null
+        },
+        {
+          "launcher": "218",
+          "build": "1",
+          "result": null
+        },
+        {
+          "launcher": "218",
+          "build": "",
+          "result": null
+        },
+        {
+          "launcher": "218",
+          "build": "x",
+          "result": null
+        },
+        {
+          "launcher": "220",
+          "build": "4260",
+          "result": "hl2-4260"
+        },
+        {
+          "launcher": "220",
+          "build": "2707",
+          "result": "hl2-2707"
+        },
+        {
+          "launcher": "220",
+          "build": "5288",
+          "result": "hl2-5288"
+        },
+        {
+          "launcher": "220",
+          "build": "1",
+          "result": null
+        },
+        {
+          "launcher": "220",
+          "build": "",
+          "result": null
+        },
+        {
+          "launcher": "220",
+          "build": "x",
+          "result": null
+        },
+        {
+          "launcher": "221",
+          "build": "4260",
+          "result": null
+        },
+        {
+          "launcher": "221",
+          "build": "2707",
+          "result": null
+        },
+        {
+          "launcher": "221",
+          "build": "5288",
+          "result": null
+        },
+        {
+          "launcher": "221",
+          "build": "1",
+          "result": null
+        },
+        {
+          "launcher": "221",
+          "build": "",
+          "result": null
+        },
+        {
+          "launcher": "221",
+          "build": "x",
+          "result": null
+        },
+        {
+          "launcher": "undefined",
+          "build": "4260",
+          "result": null
+        },
+        {
+          "launcher": "undefined",
+          "build": "2707",
+          "result": null
+        },
+        {
+          "launcher": "undefined",
+          "build": "5288",
+          "result": null
+        },
+        {
+          "launcher": "undefined",
+          "build": "1",
+          "result": null
+        },
+        {
+          "launcher": "undefined",
+          "build": "",
+          "result": null
+        },
+        {
+          "launcher": "undefined",
+          "build": "x",
+          "result": null
+        },
+        {
+          "launcher": "null",
+          "build": "4260",
+          "result": null
+        },
+        {
+          "launcher": "null",
+          "build": "2707",
+          "result": null
+        },
+        {
+          "launcher": "null",
+          "build": "5288",
+          "result": null
+        },
+        {
+          "launcher": "null",
+          "build": "1",
+          "result": null
+        },
+        {
+          "launcher": "null",
+          "build": "",
+          "result": null
+        },
+        {
+          "launcher": "null",
+          "build": "x",
+          "result": null
+        },
+        {
+          "launcher": " hl1-won",
+          "build": "4260",
+          "result": null
+        },
+        {
+          "launcher": " hl1-won",
+          "build": "2707",
+          "result": null
+        },
+        {
+          "launcher": " hl1-won",
+          "build": "5288",
+          "result": null
+        },
+        {
+          "launcher": " hl1-won",
+          "build": "1",
+          "result": null
+        },
+        {
+          "launcher": " hl1-won",
+          "build": "",
+          "result": null
+        },
+        {
+          "launcher": " hl1-won",
+          "build": "x",
+          "result": null
+        }
+      ],
+      "filesManifestOf": [
+        {
+          "gameId": "ghosting-renewed",
+          "version": "1.0.0",
+          "sha256": "9cb55003fc268db483f3290605decacba9c1c83c83ca20606d80c8b82f1b9d5f"
+        },
+        {
+          "gameId": "ghosting-renewed",
+          "version": "1.0.1",
+          "sha256": "10ffdea5d87b1628f00b489fea8a8726dcc3682670e3a7d94910bc23b1b252c0"
+        },
+        {
+          "gameId": "ghosting-renewed",
+          "version": "1.0.9",
+          "sha256": "551550107933eb2f376680ba8f79d98eb1697ac657fbfa91a48f508c3e8aa957"
+        },
+        {
+          "gameId": "ghosting-renewed",
+          "version": "1.0.10",
+          "sha256": "1dd7f077151f22293720b7d72ff4d29acf9f027327bd2bc4e36eb9211f498e7d"
+        },
+        {
+          "gameId": "ghosting-renewed",
+          "version": "1.0.13",
+          "sha256": "43c86cc68c1c8597eaa5bf8353cfbeb9798bab05b014845dd96afe214feedae3"
+        },
+        {
+          "gameId": "ghosting-renewed",
+          "version": "2.0.0",
+          "sha256": null
+        },
+        {
+          "gameId": "ghosting-renewed",
+          "version": "",
+          "sha256": null
+        },
+        {
+          "gameId": "ghosting-renewed",
+          "version": "x",
+          "sha256": null
+        },
+        {
+          "gameId": "hl2-4260",
+          "version": "1.0.0",
+          "sha256": "481824d42591bb290e506ed6d55345e593ad4c1279c076133cd613d5f221a2f3"
+        },
+        {
+          "gameId": "hl2-4260",
+          "version": "1.0.1",
+          "sha256": null
+        },
+        {
+          "gameId": "hl2-4260",
+          "version": "1.0.9",
+          "sha256": null
+        },
+        {
+          "gameId": "hl2-4260",
+          "version": "1.0.10",
+          "sha256": null
+        },
+        {
+          "gameId": "hl2-4260",
+          "version": "1.0.13",
+          "sha256": null
+        },
+        {
+          "gameId": "hl2-4260",
+          "version": "2.0.0",
+          "sha256": null
+        },
+        {
+          "gameId": "hl2-4260",
+          "version": "",
+          "sha256": null
+        },
+        {
+          "gameId": "hl2-4260",
+          "version": "x",
+          "sha256": null
+        },
+        {
+          "gameId": "hl2-2707",
+          "version": "1.0.0",
+          "sha256": "15feecb7674e6ca30dd7a9c15db9316a6a93dab49eaa1dcba87695a9e8d01299"
+        },
+        {
+          "gameId": "hl2-2707",
+          "version": "1.0.1",
+          "sha256": null
+        },
+        {
+          "gameId": "hl2-2707",
+          "version": "1.0.9",
+          "sha256": null
+        },
+        {
+          "gameId": "hl2-2707",
+          "version": "1.0.10",
+          "sha256": null
+        },
+        {
+          "gameId": "hl2-2707",
+          "version": "1.0.13",
+          "sha256": null
+        },
+        {
+          "gameId": "hl2-2707",
+          "version": "2.0.0",
+          "sha256": null
+        },
+        {
+          "gameId": "hl2-2707",
+          "version": "",
+          "sha256": null
+        },
+        {
+          "gameId": "hl2-2707",
+          "version": "x",
+          "sha256": null
+        },
+        {
+          "gameId": "hl1-won",
+          "version": "1.0.0",
+          "sha256": "502619323f367f958da46de568eb3fd131e918fef8055b54919609bfef0ed8fa"
+        },
+        {
+          "gameId": "hl1-won",
+          "version": "1.0.1",
+          "sha256": null
+        },
+        {
+          "gameId": "hl1-won",
+          "version": "1.0.9",
+          "sha256": null
+        },
+        {
+          "gameId": "hl1-won",
+          "version": "1.0.10",
+          "sha256": null
+        },
+        {
+          "gameId": "hl1-won",
+          "version": "1.0.13",
+          "sha256": null
+        },
+        {
+          "gameId": "hl1-won",
+          "version": "2.0.0",
+          "sha256": null
+        },
+        {
+          "gameId": "hl1-won",
+          "version": "",
+          "sha256": null
+        },
+        {
+          "gameId": "hl1-won",
+          "version": "x",
+          "sha256": null
+        },
+        {
+          "gameId": "hl2-5288",
+          "version": "1.0.0",
+          "sha256": null
+        },
+        {
+          "gameId": "hl2-5288",
+          "version": "1.0.1",
+          "sha256": null
+        },
+        {
+          "gameId": "hl2-5288",
+          "version": "1.0.9",
+          "sha256": null
+        },
+        {
+          "gameId": "hl2-5288",
+          "version": "1.0.10",
+          "sha256": null
+        },
+        {
+          "gameId": "hl2-5288",
+          "version": "1.0.13",
+          "sha256": null
+        },
+        {
+          "gameId": "hl2-5288",
+          "version": "2.0.0",
+          "sha256": null
+        },
+        {
+          "gameId": "hl2-5288",
+          "version": "",
+          "sha256": null
+        },
+        {
+          "gameId": "hl2-5288",
+          "version": "x",
+          "sha256": null
+        },
+        {
+          "gameId": "x",
+          "version": "1.0.0",
+          "sha256": null
+        },
+        {
+          "gameId": "x",
+          "version": "1.0.1",
+          "sha256": null
+        },
+        {
+          "gameId": "x",
+          "version": "1.0.9",
+          "sha256": null
+        },
+        {
+          "gameId": "x",
+          "version": "1.0.10",
+          "sha256": null
+        },
+        {
+          "gameId": "x",
+          "version": "1.0.13",
+          "sha256": null
+        },
+        {
+          "gameId": "x",
+          "version": "2.0.0",
+          "sha256": null
+        },
+        {
+          "gameId": "x",
+          "version": "",
+          "sha256": null
+        },
+        {
+          "gameId": "x",
+          "version": "x",
+          "sha256": null
+        },
+        {
+          "gameId": "",
+          "version": "1.0.0",
+          "sha256": null
+        },
+        {
+          "gameId": "",
+          "version": "1.0.1",
+          "sha256": null
+        },
+        {
+          "gameId": "",
+          "version": "1.0.9",
+          "sha256": null
+        },
+        {
+          "gameId": "",
+          "version": "1.0.10",
+          "sha256": null
+        },
+        {
+          "gameId": "",
+          "version": "1.0.13",
+          "sha256": null
+        },
+        {
+          "gameId": "",
+          "version": "2.0.0",
+          "sha256": null
+        },
+        {
+          "gameId": "",
+          "version": "",
+          "sha256": null
+        },
+        {
+          "gameId": "",
+          "version": "x",
+          "sha256": null
+        }
+      ],
+      "filesManifestVersions": [
+        {
+          "gameId": "ghosting-renewed",
+          "versions": [
+            "1.0.0",
+            "1.0.1",
+            "1.0.10",
+            "1.0.11",
+            "1.0.12",
+            "1.0.13",
+            "1.0.2",
+            "1.0.3",
+            "1.0.4",
+            "1.0.5",
+            "1.0.6",
+            "1.0.7",
+            "1.0.8",
+            "1.0.9"
+          ]
+        },
+        {
+          "gameId": "hl2-4260",
+          "versions": [
+            "1.0.0"
+          ]
+        },
+        {
+          "gameId": "hl2-2707",
+          "versions": [
+            "1.0.0"
+          ]
+        },
+        {
+          "gameId": "hl1-won",
+          "versions": [
+            "1.0.0"
+          ]
+        },
+        {
+          "gameId": "hl2-5288",
+          "versions": []
+        },
+        {
+          "gameId": "x",
+          "versions": []
+        },
+        {
+          "gameId": "",
+          "versions": []
+        }
+      ]
+    },
+    "filesKeys": {
+      "ghosting-renewed": [
+        "1.0.0",
+        "1.0.1",
+        "1.0.2",
+        "1.0.3",
+        "1.0.4",
+        "1.0.5",
+        "1.0.6",
+        "1.0.7",
+        "1.0.8",
+        "1.0.9",
+        "1.0.10",
+        "1.0.11",
+        "1.0.12",
+        "1.0.13"
+      ],
+      "hl2-4260": [
+        "1.0.0"
+      ],
+      "hl2-2707": [
+        "1.0.0"
+      ],
+      "hl1-won": [
+        "1.0.0"
+      ]
+    },
+    "localConfigText": "{\"ghosting-renewed\":{\"screenshotsPath\":\"ghostingmod/screenshots\",\"runsPath\":\"ghostingmod/runs\",\"demoDirs\":[\"ghostingmod\",\"ghostingmod/demos\"],\"demoExtension\":\".dem\",\"configPath\":\"ghostingmod/cfg\",\"executables\":[\"hl2.exe\"],\"settingsSection\":\"games\",\"shortcutName\":\"HLSR - Ghosting Mod Renewed\"},\"hl2-4260\":{\"screenshotsPath\":\"hl2/screenshots\",\"runsPath\":null,\"configPath\":\"hl2/cfg\",\"executables\":[\"hl2.exe\"],\"settingsSection\":\"games\",\"shortcutName\":\"HLSR - Half-Life 2 (4260)\"},\"hl2-2707\":{\"screenshotsPath\":\"hl2/screenshots\",\"runsPath\":null,\"configPath\":\"hl2/cfg\",\"executables\":[\"hl2.exe\"],\"settingsSection\":\"games\",\"shortcutName\":\"HLSR - Half-Life 2 (2707)\"},\"hl2-5288\":{\"screenshotsPath\":\"hl2/screenshots\",\"runsPath\":null,\"configPath\":\"hl2/cfg\",\"executables\":[\"hl2.exe\"],\"settingsSection\":\"games\",\"shortcutName\":\"HLSR - Half-Life 2 (5288)\"},\"hl1-won\":{\"screenshotsPath\":\"Half-Life/valve_WON\",\"runsPath\":\"Half-Life/valve_WON\",\"runsExtension\":\".dem\",\"runsLanguageDirs\":true,\"configPath\":\"Half-Life/valve_WON\",\"executables\":[\"hl.exe\"],\"settingsSection\":\"games\",\"shortcutName\":\"HLSR - Half-Life (WON)\"}}",
+    "launchConfigText": "{\"ghosting-renewed\":{\"steamAppId\":243730,\"executable\":\"hl2.exe\",\"gameDirectory\":\"ghostingmod\",\"arguments\":[\"-steam\",\"-game\",\"ghostingmod\"],\"sourceSdkRequired\":false,\"ownsSteamAppIdFile\":true,\"steamAppIdFileText\":\"243730\\n\\u0000\",\"presenceBridge\":true,\"steamBridge\":true,\"vulkan\":true},\"hl2-4260\":{\"steamAppId\":220,\"requiresOwnedAppIds\":[220],\"executable\":\"hl2.exe\",\"gameDirectory\":\"hl2\",\"arguments\":[\"-steam\",\"-game\",\"hl2\"],\"sourceSdkRequired\":false,\"ownsSteamAppIdFile\":true},\"hl2-2707\":{\"steamAppId\":220,\"requiresOwnedAppIds\":[220],\"executable\":\"hl2.exe\",\"gameDirectory\":\"hl2\",\"arguments\":[\"-steam\",\"-game\",\"hl2\"],\"sourceSdkRequired\":false,\"ownsSteamAppIdFile\":true},\"hl2-5288\":{\"steamAppId\":220,\"requiresOwnedAppIds\":[220],\"executable\":\"hl2.exe\",\"gameDirectory\":\"hl2\",\"arguments\":[\"-steam\",\"-game\",\"hl2\"],\"sourceSdkRequired\":false,\"ownsSteamAppIdFile\":true},\"hl1-won\":{\"steamAppId\":70,\"requiresOwnedAppIds\":[70],\"engine\":\"goldsrc\",\"executable\":\"Half-Life/hl.exe\",\"gameDirectory\":\"Half-Life/valve_WON\",\"steamAppIdFile\":\"Half-Life/steam_appid.txt\",\"injector\":\"Bunnymod XT/Injector.exe\",\"rinput\":{\"executable\":\"RInput/RInput.exe\"},\"environment\":{\"BXT_DISABLE_VSYNC\":\"1\",\"PROTON_ENABLE_WAYLAND\":\"0\",\"__GL_SYNC_TO_VBLANK\":\"0\"},\"packs\":{\"spritesDir\":\"Half-Life/valve_WON/sprites\",\"baseSpritesDir\":\"Half-Life/valve/sprites\"},\"dependencies\":[{\"id\":\"bxt\",\"title\":\"Bunnymod XT\",\"repo\":\"YaLTeR/BunnymodXT\",\"asset\":\"^(\\\\d+-)?BunnymodXT-Windows\\\\.7z$\",\"extract\":\"BunnymodXT.dll\",\"target\":\"Bunnymod XT/BunnymodXT.dll\",\"versionFile\":\"Bunnymod XT/version\"},{\"id\":\"injector\",\"title\":\"Bunnymod XT Injector\",\"repo\":\"YaLTeR/BunnymodXT-Injector\",\"asset\":\"^Injector\\\\.exe$\",\"target\":\"Bunnymod XT/Injector.exe\",\"versionFile\":\"Bunnymod XT/.hlsr-injector-version\",\"pin\":{\"tag\":\"v3.2\",\"sha256\":\"c4d576f87dbb0ce46ad36e7015e67b1666f9aff1e834d5f0f7ef12e102b5dad9\"}}],\"arguments\":[\"-steam\",\"-gl\",\"-32bpp\",\"-game\",\"valve_WON\",\"-noforcemparms\"],\"sourceSdkRequired\":false,\"ownsSteamAppIdFile\":true,\"steamBridge\":true}}",
+    "isFileRepairGame": [
+      {
+        "id": "ghosting-renewed",
+        "result": true
+      },
+      {
+        "id": "hl1-won",
+        "result": false
+      },
+      {
+        "id": "hl2-4260",
+        "result": false
+      },
+      {
+        "id": "",
+        "result": false
+      },
+      {
+        "id": "GHOSTING-RENEWED",
+        "result": false
+      }
+    ]
+  },
+  "embedded": {
+    "games": [
+      {
+        "gameId": "ghosting-renewed",
+        "hash": "d4ca7bc0e66186a10af4cedae002eaf29749d55857449094ba987f3aac019c62",
+        "validate": {
+          "ok": {
+            "sha256": "d4ca7bc0e66186a10af4cedae002eaf29749d55857449094ba987f3aac019c62",
+            "source": "bundled"
+          }
+        }
+      },
+      {
+        "gameId": "hl2-4260",
+        "hash": "311f8f858de55a137e9d6d257b892fdee3954093744733b31bac2b8f0d2a1046",
+        "validate": {
+          "ok": {
+            "sha256": "311f8f858de55a137e9d6d257b892fdee3954093744733b31bac2b8f0d2a1046",
+            "source": "bundled"
+          }
+        }
+      },
+      {
+        "gameId": "hl2-2707",
+        "hash": "6ee522f0de9a24f814d109b12dd1762befb6c729b8355a7f1ff1b9529feb0f20",
+        "validate": {
+          "ok": {
+            "sha256": "6ee522f0de9a24f814d109b12dd1762befb6c729b8355a7f1ff1b9529feb0f20",
+            "source": "bundled"
+          }
+        }
+      },
+      {
+        "gameId": "hl1-won",
+        "hash": "d814b699feee3d5f0cf959b30808b917ec8e5a554f7036f0455c56ca3b796b7e",
+        "validate": {
+          "ok": {
+            "sha256": "d814b699feee3d5f0cf959b30808b917ec8e5a554f7036f0455c56ca3b796b7e",
+            "source": "bundled"
+          }
+        }
+      }
+    ],
+    "files": [
+      {
+        "gameId": "ghosting-renewed",
+        "version": "1.0.0",
+        "file": "config/games/ghosting-renewed-1.0.0.files.json",
+        "stringifySha256": "9cb55003fc268db483f3290605decacba9c1c83c83ca20606d80c8b82f1b9d5f",
+        "canonicalPayloadSha256": "a2b564cb75ece0a36bdbbdb91e1e4f61bc88a9608f8a0ccf295a48f01f2a8df9",
+        "hashManifest": "a2b564cb75ece0a36bdbbdb91e1e4f61bc88a9608f8a0ccf295a48f01f2a8df9",
+        "manifestSha256": "a2b564cb75ece0a36bdbbdb91e1e4f61bc88a9608f8a0ccf295a48f01f2a8df9",
+        "entries": 3786,
+        "validate": {
+          "ok": true
+        }
+      },
+      {
+        "gameId": "ghosting-renewed",
+        "version": "1.0.1",
+        "file": "config/games/ghosting-renewed-1.0.1.files.json",
+        "stringifySha256": "10ffdea5d87b1628f00b489fea8a8726dcc3682670e3a7d94910bc23b1b252c0",
+        "canonicalPayloadSha256": "86aad7348625ce904f9a52f94f2cce9d6936fafa6cfed1edd0fc0271436de96c",
+        "hashManifest": "86aad7348625ce904f9a52f94f2cce9d6936fafa6cfed1edd0fc0271436de96c",
+        "manifestSha256": "86aad7348625ce904f9a52f94f2cce9d6936fafa6cfed1edd0fc0271436de96c",
+        "entries": 3787,
+        "validate": {
+          "ok": true
+        }
+      },
+      {
+        "gameId": "ghosting-renewed",
+        "version": "1.0.2",
+        "file": "config/games/ghosting-renewed-1.0.2.files.json",
+        "stringifySha256": "f3b130769db2751d22aea1d6bf3982e17639778d0670c8e358b856d4c38d684b",
+        "canonicalPayloadSha256": "50e1686838678366ce733c75e8243c38df3d998444646cae55be2619e2e62edc",
+        "hashManifest": "50e1686838678366ce733c75e8243c38df3d998444646cae55be2619e2e62edc",
+        "manifestSha256": "50e1686838678366ce733c75e8243c38df3d998444646cae55be2619e2e62edc",
+        "entries": 1441,
+        "validate": {
+          "ok": true
+        }
+      },
+      {
+        "gameId": "ghosting-renewed",
+        "version": "1.0.3",
+        "file": "config/games/ghosting-renewed-1.0.3.files.json",
+        "stringifySha256": "d4aca2488430c65a43dded86de2a6c5822048376010dfc07079ca2598d751728",
+        "canonicalPayloadSha256": "4870368527f822baa576421097279e366c9c2f8cf9176f9e031f8b5f1fffb3d5",
+        "hashManifest": "4870368527f822baa576421097279e366c9c2f8cf9176f9e031f8b5f1fffb3d5",
+        "manifestSha256": "4870368527f822baa576421097279e366c9c2f8cf9176f9e031f8b5f1fffb3d5",
+        "entries": 1442,
+        "validate": {
+          "ok": true
+        }
+      },
+      {
+        "gameId": "ghosting-renewed",
+        "version": "1.0.4",
+        "file": "config/games/ghosting-renewed-1.0.4.files.json",
+        "stringifySha256": "262a25ef007438105b4027238ad112a7e45fd63360f3cf1b8f5464ec8bd40d0a",
+        "canonicalPayloadSha256": "3504b2e8472f8750e4e786fb5f7f7061870d9ac69b2bbf0ded0095d8b6e2165f",
+        "hashManifest": "3504b2e8472f8750e4e786fb5f7f7061870d9ac69b2bbf0ded0095d8b6e2165f",
+        "manifestSha256": "3504b2e8472f8750e4e786fb5f7f7061870d9ac69b2bbf0ded0095d8b6e2165f",
+        "entries": 1442,
+        "validate": {
+          "ok": true
+        }
+      },
+      {
+        "gameId": "ghosting-renewed",
+        "version": "1.0.5",
+        "file": "config/games/ghosting-renewed-1.0.5.files.json",
+        "stringifySha256": "7b1f35a38fbb708a03befb2b6cbcb1a26fb8e21e66e690217bf1ab8f08acff7a",
+        "canonicalPayloadSha256": "4560ee11b92b62d4856d3ad9e9ca57d475f8970b88438a555468f11bf9e85f35",
+        "hashManifest": "4560ee11b92b62d4856d3ad9e9ca57d475f8970b88438a555468f11bf9e85f35",
+        "manifestSha256": "4560ee11b92b62d4856d3ad9e9ca57d475f8970b88438a555468f11bf9e85f35",
+        "entries": 1442,
+        "validate": {
+          "ok": true
+        }
+      },
+      {
+        "gameId": "ghosting-renewed",
+        "version": "1.0.6",
+        "file": "config/games/ghosting-renewed-1.0.6.files.json",
+        "stringifySha256": "adac2c6d7a14a242fe26acf8a102071373fd72bc2d28f8815a76713a7af3904e",
+        "canonicalPayloadSha256": "513007dd7c36723f2070c3cd513f0042846b2200d4a423504c0ce0f3ce615644",
+        "hashManifest": "513007dd7c36723f2070c3cd513f0042846b2200d4a423504c0ce0f3ce615644",
+        "manifestSha256": "513007dd7c36723f2070c3cd513f0042846b2200d4a423504c0ce0f3ce615644",
+        "entries": 1442,
+        "validate": {
+          "ok": true
+        }
+      },
+      {
+        "gameId": "ghosting-renewed",
+        "version": "1.0.7",
+        "file": "config/games/ghosting-renewed-1.0.7.files.json",
+        "stringifySha256": "a57e9420ec4aa3b3670b867fe95b44169b95b15d4bcc1ba6a47091de52a422a9",
+        "canonicalPayloadSha256": "8700d4eaaa0c053e28382ed327f50d715f9a6d60c2bde48278b7fbc78564ba04",
+        "hashManifest": "8700d4eaaa0c053e28382ed327f50d715f9a6d60c2bde48278b7fbc78564ba04",
+        "manifestSha256": "8700d4eaaa0c053e28382ed327f50d715f9a6d60c2bde48278b7fbc78564ba04",
+        "entries": 1442,
+        "validate": {
+          "ok": true
+        }
+      },
+      {
+        "gameId": "ghosting-renewed",
+        "version": "1.0.8",
+        "file": "config/games/ghosting-renewed-1.0.8.files.json",
+        "stringifySha256": "b9b8c0c5355e1009f3ad42c441cfb476480314fd5442f47d6f69cb649094c1a3",
+        "canonicalPayloadSha256": "34c2339d2601fd4e2d901f6412e06fa00cb4bcddaf5049132811d8e80ae5b83c",
+        "hashManifest": "34c2339d2601fd4e2d901f6412e06fa00cb4bcddaf5049132811d8e80ae5b83c",
+        "manifestSha256": "34c2339d2601fd4e2d901f6412e06fa00cb4bcddaf5049132811d8e80ae5b83c",
+        "entries": 1417,
+        "validate": {
+          "ok": true
+        }
+      },
+      {
+        "gameId": "ghosting-renewed",
+        "version": "1.0.9",
+        "file": "config/games/ghosting-renewed-1.0.9.files.json",
+        "stringifySha256": "551550107933eb2f376680ba8f79d98eb1697ac657fbfa91a48f508c3e8aa957",
+        "canonicalPayloadSha256": "c9f979a652a361c3cd43671257714ca7e4d764609973975257326c9d485b3e65",
+        "hashManifest": "c9f979a652a361c3cd43671257714ca7e4d764609973975257326c9d485b3e65",
+        "manifestSha256": "c9f979a652a361c3cd43671257714ca7e4d764609973975257326c9d485b3e65",
+        "entries": 1427,
+        "validate": {
+          "ok": true
+        }
+      },
+      {
+        "gameId": "ghosting-renewed",
+        "version": "1.0.10",
+        "file": "config/games/ghosting-renewed-1.0.10.files.json",
+        "stringifySha256": "1dd7f077151f22293720b7d72ff4d29acf9f027327bd2bc4e36eb9211f498e7d",
+        "canonicalPayloadSha256": "7f9849e6193d141587d2f44703ceb4c2fa590e67b27d2586410bea4eafdb628c",
+        "hashManifest": "7f9849e6193d141587d2f44703ceb4c2fa590e67b27d2586410bea4eafdb628c",
+        "manifestSha256": "7f9849e6193d141587d2f44703ceb4c2fa590e67b27d2586410bea4eafdb628c",
+        "entries": 1437,
+        "validate": {
+          "ok": true
+        }
+      },
+      {
+        "gameId": "ghosting-renewed",
+        "version": "1.0.11",
+        "file": "config/games/ghosting-renewed-1.0.11.files.json",
+        "stringifySha256": "50a334334b1d83786c0d5182b10aa50ad27c7fb6b01db597aa18de307e2b0ba5",
+        "canonicalPayloadSha256": "9e95a169d345b83dae37c0cb2b84ec07ec01f8819e4fe647126058007d75efc9",
+        "hashManifest": "9e95a169d345b83dae37c0cb2b84ec07ec01f8819e4fe647126058007d75efc9",
+        "manifestSha256": "9e95a169d345b83dae37c0cb2b84ec07ec01f8819e4fe647126058007d75efc9",
+        "entries": 1442,
+        "validate": {
+          "ok": true
+        }
+      },
+      {
+        "gameId": "ghosting-renewed",
+        "version": "1.0.12",
+        "file": "config/games/ghosting-renewed-1.0.12.files.json",
+        "stringifySha256": "019653238d4cf288fb559ca9f1ce5e4636d99d4f60c8f22f58d75e0c601eca7e",
+        "canonicalPayloadSha256": "7fe8e0bb74efa33bde0e82628c17cf5fb329bb733b3dd9e71eae074655dc41e4",
+        "hashManifest": "7fe8e0bb74efa33bde0e82628c17cf5fb329bb733b3dd9e71eae074655dc41e4",
+        "manifestSha256": "7fe8e0bb74efa33bde0e82628c17cf5fb329bb733b3dd9e71eae074655dc41e4",
+        "entries": 1442,
+        "validate": {
+          "ok": true
+        }
+      },
+      {
+        "gameId": "ghosting-renewed",
+        "version": "1.0.13",
+        "file": "config/games/ghosting-renewed-1.0.13.files.json",
+        "stringifySha256": "43c86cc68c1c8597eaa5bf8353cfbeb9798bab05b014845dd96afe214feedae3",
+        "canonicalPayloadSha256": "d1d34cb7180b52a34b162678451a86c6d6203576f0f4d69b0a8a6bcafb730c6e",
+        "hashManifest": "d1d34cb7180b52a34b162678451a86c6d6203576f0f4d69b0a8a6bcafb730c6e",
+        "manifestSha256": "d1d34cb7180b52a34b162678451a86c6d6203576f0f4d69b0a8a6bcafb730c6e",
+        "entries": 1521,
+        "validate": {
+          "ok": true
+        }
+      },
+      {
+        "gameId": "hl2-4260",
+        "version": "1.0.0",
+        "file": "config/games/hl2-4260-1.0.0.files.json",
+        "stringifySha256": "481824d42591bb290e506ed6d55345e593ad4c1279c076133cd613d5f221a2f3",
+        "canonicalPayloadSha256": "5559c7a61a5e50fb81726abab071f181a92ecc02798b4fbb4eebbf8936e8a85f",
+        "hashManifest": "5559c7a61a5e50fb81726abab071f181a92ecc02798b4fbb4eebbf8936e8a85f",
+        "manifestSha256": "5559c7a61a5e50fb81726abab071f181a92ecc02798b4fbb4eebbf8936e8a85f",
+        "entries": 3918,
+        "validate": {
+          "ok": true
+        }
+      },
+      {
+        "gameId": "hl2-2707",
+        "version": "1.0.0",
+        "file": "config/games/hl2-2707-1.0.0.files.json",
+        "stringifySha256": "15feecb7674e6ca30dd7a9c15db9316a6a93dab49eaa1dcba87695a9e8d01299",
+        "canonicalPayloadSha256": "5da0bd15552fddf1bacc6f035da64fa87e89ca79ba4d8d401096970b68eea253",
+        "hashManifest": "5da0bd15552fddf1bacc6f035da64fa87e89ca79ba4d8d401096970b68eea253",
+        "manifestSha256": "5da0bd15552fddf1bacc6f035da64fa87e89ca79ba4d8d401096970b68eea253",
+        "entries": 3111,
+        "validate": {
+          "ok": true
+        }
+      },
+      {
+        "gameId": "hl1-won",
+        "version": "1.0.0",
+        "file": "config/games/hl1-won-1.0.0.files.json",
+        "stringifySha256": "502619323f367f958da46de568eb3fd131e918fef8055b54919609bfef0ed8fa",
+        "canonicalPayloadSha256": "731f4442783a9d1fb80a5c09335572347bebbe0de04b79cde06172afc1c6cd12",
+        "hashManifest": "731f4442783a9d1fb80a5c09335572347bebbe0de04b79cde06172afc1c6cd12",
+        "manifestSha256": "731f4442783a9d1fb80a5c09335572347bebbe0de04b79cde06172afc1c6cd12",
+        "entries": 4494,
+        "validate": {
+          "ok": true
+        }
+      }
+    ]
+  },
+  "updateTarget": [
+    {
+      "l": {
+        "d": "12e53d9c091218f7d53f5887471f1d5ab1eeb3b39b08cc836d7da90ddc9dbfe2"
+      },
+      "c": {
+        "j": {
+          "ok": {
+            "source": "channel",
+            "version": "1.0.0",
+            "updateRequired": false,
+            "minimumLauncherVersion": "0.3.16",
+            "publishedAt": null,
+            "expectedInstalledSize": 425369105,
+            "patches": [],
+            "fullArchive": null,
+            "repairMirror": null,
+            "filesManifest": {
+              "requiredFiles": [
+                "Half-Life/hl.exe",
+                "Half-Life/steam_appid.txt",
+                "Half-Life/valve_WON/liblist.gam",
+                "Bunnymod XT/Injector.exe",
+                "Bunnymod XT/BunnymodXT.dll"
+              ],
+              "maxEntries": 6000,
+              "maxUncompressedSize": 600000000,
+              "entriesSha256": "2b8682d7a6e528fc856a7776f759c746085b5d1de3589e95f65d384517ef4129"
+            },
+            "buildMetadata": null,
+            "notes": "Half-Life 2005 WON с bxt.rs: сборка Anthology 2005 с hw.dll 3248, Bunnymod XT и RInput. Запускается через Steam под AppID 70: игра должна быть на аккаунте."
+          }
+        }
+      }
+    },
+    {
+      "l": {
+        "d": "936ab5fc23943c2d77d5b12c8d80e514375e333fca5ae5b13702c7b01df025bf"
+      },
+      "c": {
+        "d": "120a8ca8cc3ccd8c59b5cddb0b01abcb28b656d4650dc7713269bb4286df6783"
+      }
+    },
+    {
+      "l": {
+        "d": "42014e3e1f9e6e8bb744e656370d30cff8ff6fa984c8e56a80af1729bfa08c78"
+      },
+      "c": {
+        "j": {
+          "ok": {
+            "source": "channel",
+            "version": "1.0.0",
+            "updateRequired": false,
+            "minimumLauncherVersion": "0.3.9",
+            "publishedAt": null,
+            "expectedInstalledSize": 4037015786,
+            "patches": [],
+            "fullArchive": null,
+            "repairMirror": null,
+            "filesManifest": {
+              "requiredFiles": [
+                "hl2.exe",
+                "hl2/GameInfo.txt",
+                "steam_appid.txt"
+              ],
+              "maxEntries": 8000,
+              "maxUncompressedSize": 6000000000,
+              "entriesSha256": "f63755b32cb5e19672ce05a1cc9d3a34ef810eabcea3789132b566a57e845e38"
+            },
+            "buildMetadata": null,
+            "notes": "Half-Life 2 build 4260 — спидран-сборка с примонтированными VPK. Движок 4260, RInput в комплекте. Запускается через Steam под AppID 220: игра должна быть на аккаунте."
+          }
+        }
+      }
+    },
+    {
+      "l": {
+        "d": "782c0b291c9431339ea157c338bdd570f6a4ad4acf38f833c484057dfe73ede5"
+      },
+      "c": {
+        "d": "67f8b868163431a95ed5ab13dd7c977f1a4503ba824ccffa32d5aec3c249c20f"
+      }
+    },
+    {
+      "l": {
+        "d": "782c0b291c9431339ea157c338bdd570f6a4ad4acf38f833c484057dfe73ede5"
+      },
+      "c": {
+        "d": "27e82f4629e655b8a978d86f34822858f4d2bfe374d6f1d70b00e7373e916655"
+      }
+    },
+    {
+      "l": {
+        "d": "cee61aa5d98b34c667b90d2083af8cab14920b204178b19552f53a9bbcb8b31a"
+      },
+      "c": {
+        "d": "f4beabc663321c4ee0b7c8e6e8ff85202ca486ae3dfb29faf9c50ea58412c711"
+      }
+    },
+    {
+      "l": {
+        "d": "782c0b291c9431339ea157c338bdd570f6a4ad4acf38f833c484057dfe73ede5"
+      },
+      "c": {
+        "d": "67f8b868163431a95ed5ab13dd7c977f1a4503ba824ccffa32d5aec3c249c20f"
+      }
+    },
+    {
+      "l": {
+        "j": {
+          "ok": null
+        }
+      },
+      "c": {
+        "j": {
+          "ok": null
+        }
+      }
+    },
+    {
+      "l": {
+        "j": {
+          "ok": null
+        }
+      },
+      "c": {
+        "j": {
+          "ok": null
+        }
+      }
+    },
+    {
+      "l": {
+        "j": {
+          "ok": null
+        }
+      },
+      "c": {
+        "j": {
+          "ok": null
+        }
+      }
+    },
+    {
+      "l": {
+        "d": "cee61aa5d98b34c667b90d2083af8cab14920b204178b19552f53a9bbcb8b31a"
+      },
+      "c": {
+        "d": "ced18c177175bc4832b63d10b4b760348ee9a1d1f1de6e35ea723fd04997a443"
+      }
+    },
+    {
+      "l": {
+        "d": "8750be40f24e6bbe8b36b1476d80768eac657915fb4245dd1e145e894f9da066"
+      },
+      "c": {
+        "d": "d90ad609642866718994992f408a72a85ceb792a44672b5af2b5f77351d2a522"
+      }
+    },
+    {
+      "l": {
+        "d": "023661dffdf759b5d5e3c4381d54844cc66ccb0ec75556bc8cf8c70fef42b77c"
+      },
+      "c": {
+        "d": "17550a70df27aafea0d0dcf2fd0ee09d76119d9f2fc2579a29c488955420e839"
+      }
+    },
+    {
+      "l": {
+        "j": {
+          "ok": {
+            "source": "local",
+            "version": "1.2.3-beta.4",
+            "updateRequired": false,
+            "minimumLauncherVersion": null,
+            "publishedAt": null,
+            "expectedInstalledSize": null,
+            "patches": [],
+            "fullArchive": null,
+            "repairMirror": null,
+            "filesManifest": null,
+            "buildMetadata": null,
+            "notes": null
+          }
+        }
+      },
+      "c": {
+        "j": {
+          "ok": {
+            "source": "channel",
+            "version": "1.2.3-beta.4",
+            "updateRequired": false,
+            "minimumLauncherVersion": null,
+            "publishedAt": null,
+            "expectedInstalledSize": null,
+            "patches": [],
+            "fullArchive": null,
+            "repairMirror": null,
+            "filesManifest": null,
+            "buildMetadata": null,
+            "notes": null
+          }
+        }
+      }
+    },
+    {
+      "l": {
+        "j": {
+          "ok": {
+            "source": "local",
+            "version": "1.2.3-beta.4",
+            "updateRequired": false,
+            "minimumLauncherVersion": "0.4.7",
+            "publishedAt": "2026-10-12T16:14:25.349Z",
+            "expectedInstalledSize": 99,
+            "patches": [
+              {
+                "a": 1
+              }
+            ],
+            "fullArchive": {
+              "x": 1
+            },
+            "repairMirror": null,
+            "filesManifest": {
+              "y": 2
+            },
+            "buildMetadata": {
+              "z": 3
+            },
+            "notes": ""
+          }
+        }
+      },
+      "c": {
+        "j": {
+          "ok": {
+            "source": "channel",
+            "version": "1.2.3-beta.4",
+            "updateRequired": false,
+            "minimumLauncherVersion": "0.4.7",
+            "publishedAt": "2026-10-12T16:14:25.349Z",
+            "expectedInstalledSize": 99,
+            "patches": [
+              {
+                "a": 1
+              }
+            ],
+            "fullArchive": null,
+            "repairMirror": null,
+            "filesManifest": {
+              "y": 2
+            },
+            "buildMetadata": {
+              "z": 3
+            },
+            "notes": ""
+          }
+        }
+      }
+    },
+    {
+      "l": {
+        "j": {
+          "ok": null
+        }
+      },
+      "c": {
+        "j": {
+          "ok": null
+        }
+      }
+    },
+    {
+      "l": {
+        "j": {
+          "ok": {
+            "source": "local",
+            "version": "1.0.0",
+            "updateRequired": false,
+            "minimumLauncherVersion": null,
+            "publishedAt": null,
+            "expectedInstalledSize": null,
+            "patches": [],
+            "fullArchive": null,
+            "repairMirror": null,
+            "filesManifest": null,
+            "buildMetadata": null,
+            "notes": null
+          }
+        }
+      },
+      "c": {
+        "j": {
+          "ok": {
+            "source": "channel",
+            "version": "1.0.0",
+            "updateRequired": false,
+            "minimumLauncherVersion": null,
+            "publishedAt": null,
+            "expectedInstalledSize": null,
+            "patches": [],
+            "fullArchive": null,
+            "repairMirror": null,
+            "filesManifest": null,
+            "buildMetadata": null,
+            "notes": null
+          }
+        }
+      }
+    },
+    {
+      "l": {
+        "j": {
+          "ok": null
+        }
+      },
+      "c": {
+        "j": {
+          "ok": null
+        }
+      }
+    },
+    {
+      "l": {
+        "j": {
+          "ok": null
+        }
+      },
+      "c": {
+        "j": {
+          "ok": null
+        }
+      }
+    },
+    {
+      "l": {
+        "j": {
+          "ok": {
+            "source": "local",
+            "version": 5,
+            "updateRequired": false,
+            "minimumLauncherVersion": null,
+            "publishedAt": null,
+            "expectedInstalledSize": null,
+            "patches": [],
+            "fullArchive": null,
+            "repairMirror": null,
+            "filesManifest": null,
+            "buildMetadata": null,
+            "notes": null
+          }
+        }
+      },
+      "c": {
+        "j": {
+          "ok": {
+            "source": "channel",
+            "version": 5,
+            "updateRequired": false,
+            "minimumLauncherVersion": null,
+            "publishedAt": null,
+            "expectedInstalledSize": null,
+            "patches": [],
+            "fullArchive": null,
+            "repairMirror": null,
+            "filesManifest": null,
+            "buildMetadata": null,
+            "notes": null
+          }
+        }
+      }
+    },
+    {
+      "l": {
+        "j": {
+          "ok": {
+            "source": "local",
+            "version": "2.0.0",
+            "updateRequired": false,
+            "minimumLauncherVersion": null,
+            "publishedAt": null,
+            "expectedInstalledSize": null,
+            "patches": [],
+            "fullArchive": null,
+            "repairMirror": null,
+            "filesManifest": null,
+            "buildMetadata": null,
+            "notes": null
+          }
+        }
+      },
+      "c": {
+        "j": {
+          "ok": {
+            "source": "channel",
+            "version": "2.0.0",
+            "updateRequired": true,
+            "minimumLauncherVersion": null,
+            "publishedAt": null,
+            "expectedInstalledSize": null,
+            "patches": [],
+            "fullArchive": {
+              "a": 1
+            },
+            "repairMirror": null,
+            "filesManifest": null,
+            "buildMetadata": null,
+            "notes": null
+          }
+        }
+      }
+    },
+    {
+      "l": {
+        "j": {
+          "ok": null
+        }
+      },
+      "c": {
+        "j": {
+          "ok": null
+        }
+      }
+    },
+    {
+      "l": {
+        "j": {
+          "ok": null
+        }
+      },
+      "c": {
+        "j": {
+          "ok": null
+        }
+      }
+    },
+    {
+      "l": {
+        "j": {
+          "ok": null
+        }
+      },
+      "c": {
+        "j": {
+          "ok": null
+        }
+      }
+    },
+    {
+      "l": {
+        "j": {
+          "ok": null
+        }
+      },
+      "c": {
+        "j": {
+          "ok": null
+        }
+      }
+    },
+    {
+      "l": {
+        "j": {
+          "ok": null
+        }
+      },
+      "c": {
+        "j": {
+          "ok": null
+        }
+      }
+    },
+    {
+      "l": {
+        "j": {
+          "ok": null
+        }
+      },
+      "c": {
+        "j": {
+          "ok": null
+        }
+      }
+    }
+  ]
+}

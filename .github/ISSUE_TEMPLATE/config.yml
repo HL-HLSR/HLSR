@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Discord HLSR
+    url: https://discord.com/invite/8Np6brWBuz
+    about: Вопросы, помощь с забегами и обсуждение / Questions, run help and discussion
+  - name: Уязвимость / Security vulnerability
+    url: https://github.com/HL-HLSR/HLSR/security/advisories/new
+    about: Сообщайте закрыто, не в issue / Report privately, not in an issue

@@ -1,0 +1,9 @@
+{
+  "themes": ["hlsr", "liquid-glass"],
+  "id": "rail/hover-game",
+  "base": "rail/_base",
+  "state": "Наведение на Half-Life 2: у свёрнутой — подсказка с онлайном, у выдвинутой — карточка",
+  "steps": [
+    {"hover": {"css": ".game-rail__list .rail-item:nth-child(2)", "view": "rail-game-220"}}
+  ]
+}

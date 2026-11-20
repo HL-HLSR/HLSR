@@ -1,0 +1,1361 @@
+{
+  "platform": "win32",
+  "isDumpFile": [{"name":"a.dmp","dump":true},{"name":"a.DMP","dump":true},{"name":"b.mdmp","dump":true},{"name":"c.Mdmp","dump":true},{"name":"d.dmp.txt","dump":false},{"name":"e.txt","dump":false},{"name":".dmp","dump":false},{"name":"dmp","dump":false},{"name":"f.minidump","dump":false},{"name":"hl2.exe.42.dmp","dump":true},{"name":"","dump":false}],
+  "directories": {
+    "win32": [
+      {"installPath":null,"env":{},"gameId":null,"dirs":[]},
+      {"installPath":null,"env":{},"gameId":"ghosting-renewed","dirs":[]},
+      {"installPath":null,"env":{},"gameId":"hl2-4260","dirs":[]},
+      {"installPath":null,"env":{},"gameId":"hl2-2707","dirs":[]},
+      {"installPath":null,"env":{},"gameId":"hl2-5288","dirs":[]},
+      {"installPath":null,"env":{},"gameId":"hl1-won","dirs":[]},
+      {"installPath":null,"env":{},"gameId":"unknown-game","dirs":[]},
+      {"installPath":null,"env":{},"gameId":"","dirs":[]},
+      {"installPath":null,"env":{"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local"},"gameId":null,"dirs":[{"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"}]},
+      {"installPath":null,"env":{"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local"},"gameId":"ghosting-renewed","dirs":[{"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"}]},
+      {"installPath":null,"env":{"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local"},"gameId":"hl2-4260","dirs":[{"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"}]},
+      {"installPath":null,"env":{"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local"},"gameId":"hl2-2707","dirs":[{"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"}]},
+      {"installPath":null,"env":{"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local"},"gameId":"hl2-5288","dirs":[{"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"}]},
+      {"installPath":null,"env":{"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local"},"gameId":"hl1-won","dirs":[{"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"}]},
+      {"installPath":null,"env":{"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local"},"gameId":"unknown-game","dirs":[{"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"}]},
+      {"installPath":null,"env":{"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local"},"gameId":"","dirs":[{"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"}]},
+      {"installPath":null,"env":{"XDG_DATA_HOME":"C:\\xdg"},"gameId":null,"dirs":[{"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}]},
+      {"installPath":null,"env":{"XDG_DATA_HOME":"C:\\xdg"},"gameId":"ghosting-renewed","dirs":[{"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}]},
+      {"installPath":null,"env":{"XDG_DATA_HOME":"C:\\xdg"},"gameId":"hl2-4260","dirs":[{"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}]},
+      {"installPath":null,"env":{"XDG_DATA_HOME":"C:\\xdg"},"gameId":"hl2-2707","dirs":[{"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}]},
+      {"installPath":null,"env":{"XDG_DATA_HOME":"C:\\xdg"},"gameId":"hl2-5288","dirs":[{"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}]},
+      {"installPath":null,"env":{"XDG_DATA_HOME":"C:\\xdg"},"gameId":"hl1-won","dirs":[{"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}]},
+      {"installPath":null,"env":{"XDG_DATA_HOME":"C:\\xdg"},"gameId":"unknown-game","dirs":[{"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}]},
+      {"installPath":null,"env":{"XDG_DATA_HOME":"C:\\xdg"},"gameId":"","dirs":[{"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}]},
+      {"installPath":null,"env":{"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local","XDG_DATA_HOME":"C:\\xdg"},"gameId":null,"dirs":[{"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"},{"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}]},
+      {"installPath":null,"env":{"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local","XDG_DATA_HOME":"C:\\xdg"},"gameId":"ghosting-renewed","dirs":[{"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"},{"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}]},
+      {"installPath":null,"env":{"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local","XDG_DATA_HOME":"C:\\xdg"},"gameId":"hl2-4260","dirs":[{"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"},{"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}]},
+      {"installPath":null,"env":{"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local","XDG_DATA_HOME":"C:\\xdg"},"gameId":"hl2-2707","dirs":[{"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"},{"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}]},
+      {"installPath":null,"env":{"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local","XDG_DATA_HOME":"C:\\xdg"},"gameId":"hl2-5288","dirs":[{"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"},{"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}]},
+      {"installPath":null,"env":{"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local","XDG_DATA_HOME":"C:\\xdg"},"gameId":"hl1-won","dirs":[{"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"},{"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}]},
+      {"installPath":null,"env":{"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local","XDG_DATA_HOME":"C:\\xdg"},"gameId":"unknown-game","dirs":[{"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"},{"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}]},
+      {"installPath":null,"env":{"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local","XDG_DATA_HOME":"C:\\xdg"},"gameId":"","dirs":[{"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"},{"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}]},
+      {"installPath":null,"env":{"LOCALAPPDATA":"","XDG_DATA_HOME":""},"gameId":null,"dirs":[]},
+      {"installPath":null,"env":{"LOCALAPPDATA":"","XDG_DATA_HOME":""},"gameId":"ghosting-renewed","dirs":[]},
+      {"installPath":null,"env":{"LOCALAPPDATA":"","XDG_DATA_HOME":""},"gameId":"hl2-4260","dirs":[]},
+      {"installPath":null,"env":{"LOCALAPPDATA":"","XDG_DATA_HOME":""},"gameId":"hl2-2707","dirs":[]},
+      {"installPath":null,"env":{"LOCALAPPDATA":"","XDG_DATA_HOME":""},"gameId":"hl2-5288","dirs":[]},
+      {"installPath":null,"env":{"LOCALAPPDATA":"","XDG_DATA_HOME":""},"gameId":"hl1-won","dirs":[]},
+      {"installPath":null,"env":{"LOCALAPPDATA":"","XDG_DATA_HOME":""},"gameId":"unknown-game","dirs":[]},
+      {"installPath":null,"env":{"LOCALAPPDATA":"","XDG_DATA_HOME":""},"gameId":"","dirs":[]},
+      {"installPath":"","env":{},"gameId":null,"dirs":[]},
+      {"installPath":"","env":{},"gameId":"ghosting-renewed","dirs":[]},
+      {"installPath":"","env":{},"gameId":"hl2-4260","dirs":[]},
+      {"installPath":"","env":{},"gameId":"hl2-2707","dirs":[]},
+      {"installPath":"","env":{},"gameId":"hl2-5288","dirs":[]},
+      {"installPath":"","env":{},"gameId":"hl1-won","dirs":[]},
+      {"installPath":"","env":{},"gameId":"unknown-game","dirs":[]},
+      {"installPath":"","env":{},"gameId":"","dirs":[]},
+      {"installPath":"","env":{"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local"},"gameId":null,"dirs":[{"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"}]},
+      {"installPath":"","env":{"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local"},"gameId":"ghosting-renewed","dirs":[{"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"}]},
+      {"installPath":"","env":{"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local"},"gameId":"hl2-4260","dirs":[{"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"}]},
+      {"installPath":"","env":{"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local"},"gameId":"hl2-2707","dirs":[{"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"}]},
+      {"installPath":"","env":{"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local"},"gameId":"hl2-5288","dirs":[{"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"}]},
+      {"installPath":"","env":{"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local"},"gameId":"hl1-won","dirs":[{"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"}]},
+      {"installPath":"","env":{"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local"},"gameId":"unknown-game","dirs":[{"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"}]},
+      {"installPath":"","env":{"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local"},"gameId":"","dirs":[{"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"}]},
+      {"installPath":"","env":{"XDG_DATA_HOME":"C:\\xdg"},"gameId":null,"dirs":[{"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}]},
+      {"installPath":"","env":{"XDG_DATA_HOME":"C:\\xdg"},"gameId":"ghosting-renewed","dirs":[{"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}]},
+      {"installPath":"","env":{"XDG_DATA_HOME":"C:\\xdg"},"gameId":"hl2-4260","dirs":[{"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}]},
+      {"installPath":"","env":{"XDG_DATA_HOME":"C:\\xdg"},"gameId":"hl2-2707","dirs":[{"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}]},
+      {"installPath":"","env":{"XDG_DATA_HOME":"C:\\xdg"},"gameId":"hl2-5288","dirs":[{"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}]},
+      {"installPath":"","env":{"XDG_DATA_HOME":"C:\\xdg"},"gameId":"hl1-won","dirs":[{"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}]},
+      {"installPath":"","env":{"XDG_DATA_HOME":"C:\\xdg"},"gameId":"unknown-game","dirs":[{"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}]},
+      {"installPath":"","env":{"XDG_DATA_HOME":"C:\\xdg"},"gameId":"","dirs":[{"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}]},
+      {"installPath":"","env":{"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local","XDG_DATA_HOME":"C:\\xdg"},"gameId":null,"dirs":[{"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"},{"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}]},
+      {"installPath":"","env":{"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local","XDG_DATA_HOME":"C:\\xdg"},"gameId":"ghosting-renewed","dirs":[{"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"},{"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}]},
+      {"installPath":"","env":{"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local","XDG_DATA_HOME":"C:\\xdg"},"gameId":"hl2-4260","dirs":[{"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"},{"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}]},
+      {"installPath":"","env":{"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local","XDG_DATA_HOME":"C:\\xdg"},"gameId":"hl2-2707","dirs":[{"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"},{"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}]},
+      {"installPath":"","env":{"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local","XDG_DATA_HOME":"C:\\xdg"},"gameId":"hl2-5288","dirs":[{"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"},{"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}]},
+      {"installPath":"","env":{"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local","XDG_DATA_HOME":"C:\\xdg"},"gameId":"hl1-won","dirs":[{"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"},{"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}]},
+      {"installPath":"","env":{"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local","XDG_DATA_HOME":"C:\\xdg"},"gameId":"unknown-game","dirs":[{"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"},{"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}]},
+      {"installPath":"","env":{"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local","XDG_DATA_HOME":"C:\\xdg"},"gameId":"","dirs":[{"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"},{"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}]},
+      {"installPath":"","env":{"LOCALAPPDATA":"","XDG_DATA_HOME":""},"gameId":null,"dirs":[]},
+      {"installPath":"","env":{"LOCALAPPDATA":"","XDG_DATA_HOME":""},"gameId":"ghosting-renewed","dirs":[]},
+      {"installPath":"","env":{"LOCALAPPDATA":"","XDG_DATA_HOME":""},"gameId":"hl2-4260","dirs":[]},
+      {"installPath":"","env":{"LOCALAPPDATA":"","XDG_DATA_HOME":""},"gameId":"hl2-2707","dirs":[]},
+      {"installPath":"","env":{"LOCALAPPDATA":"","XDG_DATA_HOME":""},"gameId":"hl2-5288","dirs":[]},
+      {"installPath":"","env":{"LOCALAPPDATA":"","XDG_DATA_HOME":""},"gameId":"hl1-won","dirs":[]},
+      {"installPath":"","env":{"LOCALAPPDATA":"","XDG_DATA_HOME":""},"gameId":"unknown-game","dirs":[]},
+      {"installPath":"","env":{"LOCALAPPDATA":"","XDG_DATA_HOME":""},"gameId":"","dirs":[]},
+      {
+        "installPath": "C:\\HLSR\\games\\hl2-4260",
+        "env": {},
+        "gameId": null,
+        "dirs": [{"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\ghostingmod"},{"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\hl2"},{"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\hl2"},{"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\hl2"},{"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\Half-Life\\valve_WON"},{"id":"game-root","dir":"C:\\HLSR\\games\\hl2-4260"}]
+      },
+      {"installPath":"C:\\HLSR\\games\\hl2-4260","env":{},"gameId":"ghosting-renewed","dirs":[{"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\ghostingmod"},{"id":"game-root","dir":"C:\\HLSR\\games\\hl2-4260"}]},
+      {"installPath":"C:\\HLSR\\games\\hl2-4260","env":{},"gameId":"hl2-4260","dirs":[{"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\hl2"},{"id":"game-root","dir":"C:\\HLSR\\games\\hl2-4260"}]},
+      {"installPath":"C:\\HLSR\\games\\hl2-4260","env":{},"gameId":"hl2-2707","dirs":[{"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\hl2"},{"id":"game-root","dir":"C:\\HLSR\\games\\hl2-4260"}]},
+      {"installPath":"C:\\HLSR\\games\\hl2-4260","env":{},"gameId":"hl2-5288","dirs":[{"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\hl2"},{"id":"game-root","dir":"C:\\HLSR\\games\\hl2-4260"}]},
+      {"installPath":"C:\\HLSR\\games\\hl2-4260","env":{},"gameId":"hl1-won","dirs":[{"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\Half-Life\\valve_WON"},{"id":"game-root","dir":"C:\\HLSR\\games\\hl2-4260"}]},
+      {
+        "installPath": "C:\\HLSR\\games\\hl2-4260",
+        "env": {},
+        "gameId": "unknown-game",
+        "dirs": [{"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\ghostingmod"},{"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\hl2"},{"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\hl2"},{"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\hl2"},{"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\Half-Life\\valve_WON"},{"id":"game-root","dir":"C:\\HLSR\\games\\hl2-4260"}]
+      },
+      {
+        "installPath": "C:\\HLSR\\games\\hl2-4260",
+        "env": {},
+        "gameId": "",
+        "dirs": [{"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\ghostingmod"},{"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\hl2"},{"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\hl2"},{"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\hl2"},{"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\Half-Life\\valve_WON"},{"id":"game-root","dir":"C:\\HLSR\\games\\hl2-4260"}]
+      },
+      {
+        "installPath": "C:\\HLSR\\games\\hl2-4260",
+        "env": {"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local"},
+        "gameId": null,
+        "dirs": [
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\ghostingmod"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\hl2"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\hl2"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\hl2"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\Half-Life\\valve_WON"},
+          {"id":"game-root","dir":"C:\\HLSR\\games\\hl2-4260"},
+          {"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"}
+        ]
+      },
+      {"installPath":"C:\\HLSR\\games\\hl2-4260","env":{"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local"},"gameId":"ghosting-renewed","dirs":[{"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\ghostingmod"},{"id":"game-root","dir":"C:\\HLSR\\games\\hl2-4260"},{"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"}]},
+      {"installPath":"C:\\HLSR\\games\\hl2-4260","env":{"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local"},"gameId":"hl2-4260","dirs":[{"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\hl2"},{"id":"game-root","dir":"C:\\HLSR\\games\\hl2-4260"},{"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"}]},
+      {"installPath":"C:\\HLSR\\games\\hl2-4260","env":{"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local"},"gameId":"hl2-2707","dirs":[{"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\hl2"},{"id":"game-root","dir":"C:\\HLSR\\games\\hl2-4260"},{"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"}]},
+      {"installPath":"C:\\HLSR\\games\\hl2-4260","env":{"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local"},"gameId":"hl2-5288","dirs":[{"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\hl2"},{"id":"game-root","dir":"C:\\HLSR\\games\\hl2-4260"},{"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"}]},
+      {"installPath":"C:\\HLSR\\games\\hl2-4260","env":{"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local"},"gameId":"hl1-won","dirs":[{"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\Half-Life\\valve_WON"},{"id":"game-root","dir":"C:\\HLSR\\games\\hl2-4260"},{"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"}]},
+      {
+        "installPath": "C:\\HLSR\\games\\hl2-4260",
+        "env": {"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local"},
+        "gameId": "unknown-game",
+        "dirs": [
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\ghostingmod"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\hl2"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\hl2"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\hl2"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\Half-Life\\valve_WON"},
+          {"id":"game-root","dir":"C:\\HLSR\\games\\hl2-4260"},
+          {"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"}
+        ]
+      },
+      {
+        "installPath": "C:\\HLSR\\games\\hl2-4260",
+        "env": {"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local"},
+        "gameId": "",
+        "dirs": [
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\ghostingmod"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\hl2"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\hl2"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\hl2"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\Half-Life\\valve_WON"},
+          {"id":"game-root","dir":"C:\\HLSR\\games\\hl2-4260"},
+          {"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"}
+        ]
+      },
+      {
+        "installPath": "C:\\HLSR\\games\\hl2-4260",
+        "env": {"XDG_DATA_HOME":"C:\\xdg"},
+        "gameId": null,
+        "dirs": [
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\ghostingmod"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\hl2"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\hl2"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\hl2"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\Half-Life\\valve_WON"},
+          {"id":"game-root","dir":"C:\\HLSR\\games\\hl2-4260"},
+          {"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}
+        ]
+      },
+      {"installPath":"C:\\HLSR\\games\\hl2-4260","env":{"XDG_DATA_HOME":"C:\\xdg"},"gameId":"ghosting-renewed","dirs":[{"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\ghostingmod"},{"id":"game-root","dir":"C:\\HLSR\\games\\hl2-4260"},{"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}]},
+      {"installPath":"C:\\HLSR\\games\\hl2-4260","env":{"XDG_DATA_HOME":"C:\\xdg"},"gameId":"hl2-4260","dirs":[{"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\hl2"},{"id":"game-root","dir":"C:\\HLSR\\games\\hl2-4260"},{"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}]},
+      {"installPath":"C:\\HLSR\\games\\hl2-4260","env":{"XDG_DATA_HOME":"C:\\xdg"},"gameId":"hl2-2707","dirs":[{"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\hl2"},{"id":"game-root","dir":"C:\\HLSR\\games\\hl2-4260"},{"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}]},
+      {"installPath":"C:\\HLSR\\games\\hl2-4260","env":{"XDG_DATA_HOME":"C:\\xdg"},"gameId":"hl2-5288","dirs":[{"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\hl2"},{"id":"game-root","dir":"C:\\HLSR\\games\\hl2-4260"},{"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}]},
+      {"installPath":"C:\\HLSR\\games\\hl2-4260","env":{"XDG_DATA_HOME":"C:\\xdg"},"gameId":"hl1-won","dirs":[{"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\Half-Life\\valve_WON"},{"id":"game-root","dir":"C:\\HLSR\\games\\hl2-4260"},{"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}]},
+      {
+        "installPath": "C:\\HLSR\\games\\hl2-4260",
+        "env": {"XDG_DATA_HOME":"C:\\xdg"},
+        "gameId": "unknown-game",
+        "dirs": [
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\ghostingmod"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\hl2"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\hl2"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\hl2"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\Half-Life\\valve_WON"},
+          {"id":"game-root","dir":"C:\\HLSR\\games\\hl2-4260"},
+          {"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}
+        ]
+      },
+      {
+        "installPath": "C:\\HLSR\\games\\hl2-4260",
+        "env": {"XDG_DATA_HOME":"C:\\xdg"},
+        "gameId": "",
+        "dirs": [
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\ghostingmod"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\hl2"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\hl2"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\hl2"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\Half-Life\\valve_WON"},
+          {"id":"game-root","dir":"C:\\HLSR\\games\\hl2-4260"},
+          {"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}
+        ]
+      },
+      {
+        "installPath": "C:\\HLSR\\games\\hl2-4260",
+        "env": {"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local","XDG_DATA_HOME":"C:\\xdg"},
+        "gameId": null,
+        "dirs": [
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\ghostingmod"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\hl2"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\hl2"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\hl2"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\Half-Life\\valve_WON"},
+          {"id":"game-root","dir":"C:\\HLSR\\games\\hl2-4260"},
+          {"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"},
+          {"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}
+        ]
+      },
+      {
+        "installPath": "C:\\HLSR\\games\\hl2-4260",
+        "env": {"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local","XDG_DATA_HOME":"C:\\xdg"},
+        "gameId": "ghosting-renewed",
+        "dirs": [{"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\ghostingmod"},{"id":"game-root","dir":"C:\\HLSR\\games\\hl2-4260"},{"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"},{"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}]
+      },
+      {"installPath":"C:\\HLSR\\games\\hl2-4260","env":{"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local","XDG_DATA_HOME":"C:\\xdg"},"gameId":"hl2-4260","dirs":[{"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\hl2"},{"id":"game-root","dir":"C:\\HLSR\\games\\hl2-4260"},{"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"},{"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}]},
+      {"installPath":"C:\\HLSR\\games\\hl2-4260","env":{"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local","XDG_DATA_HOME":"C:\\xdg"},"gameId":"hl2-2707","dirs":[{"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\hl2"},{"id":"game-root","dir":"C:\\HLSR\\games\\hl2-4260"},{"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"},{"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}]},
+      {"installPath":"C:\\HLSR\\games\\hl2-4260","env":{"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local","XDG_DATA_HOME":"C:\\xdg"},"gameId":"hl2-5288","dirs":[{"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\hl2"},{"id":"game-root","dir":"C:\\HLSR\\games\\hl2-4260"},{"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"},{"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}]},
+      {
+        "installPath": "C:\\HLSR\\games\\hl2-4260",
+        "env": {"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local","XDG_DATA_HOME":"C:\\xdg"},
+        "gameId": "hl1-won",
+        "dirs": [{"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\Half-Life\\valve_WON"},{"id":"game-root","dir":"C:\\HLSR\\games\\hl2-4260"},{"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"},{"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}]
+      },
+      {
+        "installPath": "C:\\HLSR\\games\\hl2-4260",
+        "env": {"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local","XDG_DATA_HOME":"C:\\xdg"},
+        "gameId": "unknown-game",
+        "dirs": [
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\ghostingmod"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\hl2"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\hl2"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\hl2"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\Half-Life\\valve_WON"},
+          {"id":"game-root","dir":"C:\\HLSR\\games\\hl2-4260"},
+          {"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"},
+          {"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}
+        ]
+      },
+      {
+        "installPath": "C:\\HLSR\\games\\hl2-4260",
+        "env": {"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local","XDG_DATA_HOME":"C:\\xdg"},
+        "gameId": "",
+        "dirs": [
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\ghostingmod"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\hl2"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\hl2"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\hl2"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\Half-Life\\valve_WON"},
+          {"id":"game-root","dir":"C:\\HLSR\\games\\hl2-4260"},
+          {"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"},
+          {"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}
+        ]
+      },
+      {
+        "installPath": "C:\\HLSR\\games\\hl2-4260",
+        "env": {"LOCALAPPDATA":"","XDG_DATA_HOME":""},
+        "gameId": null,
+        "dirs": [{"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\ghostingmod"},{"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\hl2"},{"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\hl2"},{"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\hl2"},{"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\Half-Life\\valve_WON"},{"id":"game-root","dir":"C:\\HLSR\\games\\hl2-4260"}]
+      },
+      {"installPath":"C:\\HLSR\\games\\hl2-4260","env":{"LOCALAPPDATA":"","XDG_DATA_HOME":""},"gameId":"ghosting-renewed","dirs":[{"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\ghostingmod"},{"id":"game-root","dir":"C:\\HLSR\\games\\hl2-4260"}]},
+      {"installPath":"C:\\HLSR\\games\\hl2-4260","env":{"LOCALAPPDATA":"","XDG_DATA_HOME":""},"gameId":"hl2-4260","dirs":[{"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\hl2"},{"id":"game-root","dir":"C:\\HLSR\\games\\hl2-4260"}]},
+      {"installPath":"C:\\HLSR\\games\\hl2-4260","env":{"LOCALAPPDATA":"","XDG_DATA_HOME":""},"gameId":"hl2-2707","dirs":[{"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\hl2"},{"id":"game-root","dir":"C:\\HLSR\\games\\hl2-4260"}]},
+      {"installPath":"C:\\HLSR\\games\\hl2-4260","env":{"LOCALAPPDATA":"","XDG_DATA_HOME":""},"gameId":"hl2-5288","dirs":[{"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\hl2"},{"id":"game-root","dir":"C:\\HLSR\\games\\hl2-4260"}]},
+      {"installPath":"C:\\HLSR\\games\\hl2-4260","env":{"LOCALAPPDATA":"","XDG_DATA_HOME":""},"gameId":"hl1-won","dirs":[{"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\Half-Life\\valve_WON"},{"id":"game-root","dir":"C:\\HLSR\\games\\hl2-4260"}]},
+      {
+        "installPath": "C:\\HLSR\\games\\hl2-4260",
+        "env": {"LOCALAPPDATA":"","XDG_DATA_HOME":""},
+        "gameId": "unknown-game",
+        "dirs": [{"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\ghostingmod"},{"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\hl2"},{"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\hl2"},{"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\hl2"},{"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\Half-Life\\valve_WON"},{"id":"game-root","dir":"C:\\HLSR\\games\\hl2-4260"}]
+      },
+      {
+        "installPath": "C:\\HLSR\\games\\hl2-4260",
+        "env": {"LOCALAPPDATA":"","XDG_DATA_HOME":""},
+        "gameId": "",
+        "dirs": [{"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\ghostingmod"},{"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\hl2"},{"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\hl2"},{"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\hl2"},{"id":"game-mod","dir":"C:\\HLSR\\games\\hl2-4260\\Half-Life\\valve_WON"},{"id":"game-root","dir":"C:\\HLSR\\games\\hl2-4260"}]
+      },
+      {
+        "installPath": "D:/Games/HLSR/games/hl1-won/",
+        "env": {},
+        "gameId": null,
+        "dirs": [
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\ghostingmod"},
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\hl2"},
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\hl2"},
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\hl2"},
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\Half-Life\\valve_WON"},
+          {"id":"game-root","dir":"D:\\Games\\HLSR\\games\\hl1-won"}
+        ]
+      },
+      {"installPath":"D:/Games/HLSR/games/hl1-won/","env":{},"gameId":"ghosting-renewed","dirs":[{"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\ghostingmod"},{"id":"game-root","dir":"D:\\Games\\HLSR\\games\\hl1-won"}]},
+      {"installPath":"D:/Games/HLSR/games/hl1-won/","env":{},"gameId":"hl2-4260","dirs":[{"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\hl2"},{"id":"game-root","dir":"D:\\Games\\HLSR\\games\\hl1-won"}]},
+      {"installPath":"D:/Games/HLSR/games/hl1-won/","env":{},"gameId":"hl2-2707","dirs":[{"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\hl2"},{"id":"game-root","dir":"D:\\Games\\HLSR\\games\\hl1-won"}]},
+      {"installPath":"D:/Games/HLSR/games/hl1-won/","env":{},"gameId":"hl2-5288","dirs":[{"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\hl2"},{"id":"game-root","dir":"D:\\Games\\HLSR\\games\\hl1-won"}]},
+      {"installPath":"D:/Games/HLSR/games/hl1-won/","env":{},"gameId":"hl1-won","dirs":[{"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\Half-Life\\valve_WON"},{"id":"game-root","dir":"D:\\Games\\HLSR\\games\\hl1-won"}]},
+      {
+        "installPath": "D:/Games/HLSR/games/hl1-won/",
+        "env": {},
+        "gameId": "unknown-game",
+        "dirs": [
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\ghostingmod"},
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\hl2"},
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\hl2"},
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\hl2"},
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\Half-Life\\valve_WON"},
+          {"id":"game-root","dir":"D:\\Games\\HLSR\\games\\hl1-won"}
+        ]
+      },
+      {
+        "installPath": "D:/Games/HLSR/games/hl1-won/",
+        "env": {},
+        "gameId": "",
+        "dirs": [
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\ghostingmod"},
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\hl2"},
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\hl2"},
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\hl2"},
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\Half-Life\\valve_WON"},
+          {"id":"game-root","dir":"D:\\Games\\HLSR\\games\\hl1-won"}
+        ]
+      },
+      {
+        "installPath": "D:/Games/HLSR/games/hl1-won/",
+        "env": {"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local"},
+        "gameId": null,
+        "dirs": [
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\ghostingmod"},
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\hl2"},
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\hl2"},
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\hl2"},
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\Half-Life\\valve_WON"},
+          {"id":"game-root","dir":"D:\\Games\\HLSR\\games\\hl1-won"},
+          {"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"}
+        ]
+      },
+      {"installPath":"D:/Games/HLSR/games/hl1-won/","env":{"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local"},"gameId":"ghosting-renewed","dirs":[{"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\ghostingmod"},{"id":"game-root","dir":"D:\\Games\\HLSR\\games\\hl1-won"},{"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"}]},
+      {"installPath":"D:/Games/HLSR/games/hl1-won/","env":{"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local"},"gameId":"hl2-4260","dirs":[{"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\hl2"},{"id":"game-root","dir":"D:\\Games\\HLSR\\games\\hl1-won"},{"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"}]},
+      {"installPath":"D:/Games/HLSR/games/hl1-won/","env":{"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local"},"gameId":"hl2-2707","dirs":[{"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\hl2"},{"id":"game-root","dir":"D:\\Games\\HLSR\\games\\hl1-won"},{"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"}]},
+      {"installPath":"D:/Games/HLSR/games/hl1-won/","env":{"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local"},"gameId":"hl2-5288","dirs":[{"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\hl2"},{"id":"game-root","dir":"D:\\Games\\HLSR\\games\\hl1-won"},{"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"}]},
+      {"installPath":"D:/Games/HLSR/games/hl1-won/","env":{"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local"},"gameId":"hl1-won","dirs":[{"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\Half-Life\\valve_WON"},{"id":"game-root","dir":"D:\\Games\\HLSR\\games\\hl1-won"},{"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"}]},
+      {
+        "installPath": "D:/Games/HLSR/games/hl1-won/",
+        "env": {"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local"},
+        "gameId": "unknown-game",
+        "dirs": [
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\ghostingmod"},
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\hl2"},
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\hl2"},
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\hl2"},
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\Half-Life\\valve_WON"},
+          {"id":"game-root","dir":"D:\\Games\\HLSR\\games\\hl1-won"},
+          {"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"}
+        ]
+      },
+      {
+        "installPath": "D:/Games/HLSR/games/hl1-won/",
+        "env": {"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local"},
+        "gameId": "",
+        "dirs": [
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\ghostingmod"},
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\hl2"},
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\hl2"},
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\hl2"},
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\Half-Life\\valve_WON"},
+          {"id":"game-root","dir":"D:\\Games\\HLSR\\games\\hl1-won"},
+          {"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"}
+        ]
+      },
+      {
+        "installPath": "D:/Games/HLSR/games/hl1-won/",
+        "env": {"XDG_DATA_HOME":"C:\\xdg"},
+        "gameId": null,
+        "dirs": [
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\ghostingmod"},
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\hl2"},
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\hl2"},
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\hl2"},
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\Half-Life\\valve_WON"},
+          {"id":"game-root","dir":"D:\\Games\\HLSR\\games\\hl1-won"},
+          {"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}
+        ]
+      },
+      {"installPath":"D:/Games/HLSR/games/hl1-won/","env":{"XDG_DATA_HOME":"C:\\xdg"},"gameId":"ghosting-renewed","dirs":[{"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\ghostingmod"},{"id":"game-root","dir":"D:\\Games\\HLSR\\games\\hl1-won"},{"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}]},
+      {"installPath":"D:/Games/HLSR/games/hl1-won/","env":{"XDG_DATA_HOME":"C:\\xdg"},"gameId":"hl2-4260","dirs":[{"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\hl2"},{"id":"game-root","dir":"D:\\Games\\HLSR\\games\\hl1-won"},{"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}]},
+      {"installPath":"D:/Games/HLSR/games/hl1-won/","env":{"XDG_DATA_HOME":"C:\\xdg"},"gameId":"hl2-2707","dirs":[{"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\hl2"},{"id":"game-root","dir":"D:\\Games\\HLSR\\games\\hl1-won"},{"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}]},
+      {"installPath":"D:/Games/HLSR/games/hl1-won/","env":{"XDG_DATA_HOME":"C:\\xdg"},"gameId":"hl2-5288","dirs":[{"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\hl2"},{"id":"game-root","dir":"D:\\Games\\HLSR\\games\\hl1-won"},{"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}]},
+      {"installPath":"D:/Games/HLSR/games/hl1-won/","env":{"XDG_DATA_HOME":"C:\\xdg"},"gameId":"hl1-won","dirs":[{"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\Half-Life\\valve_WON"},{"id":"game-root","dir":"D:\\Games\\HLSR\\games\\hl1-won"},{"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}]},
+      {
+        "installPath": "D:/Games/HLSR/games/hl1-won/",
+        "env": {"XDG_DATA_HOME":"C:\\xdg"},
+        "gameId": "unknown-game",
+        "dirs": [
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\ghostingmod"},
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\hl2"},
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\hl2"},
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\hl2"},
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\Half-Life\\valve_WON"},
+          {"id":"game-root","dir":"D:\\Games\\HLSR\\games\\hl1-won"},
+          {"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}
+        ]
+      },
+      {
+        "installPath": "D:/Games/HLSR/games/hl1-won/",
+        "env": {"XDG_DATA_HOME":"C:\\xdg"},
+        "gameId": "",
+        "dirs": [
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\ghostingmod"},
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\hl2"},
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\hl2"},
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\hl2"},
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\Half-Life\\valve_WON"},
+          {"id":"game-root","dir":"D:\\Games\\HLSR\\games\\hl1-won"},
+          {"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}
+        ]
+      },
+      {
+        "installPath": "D:/Games/HLSR/games/hl1-won/",
+        "env": {"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local","XDG_DATA_HOME":"C:\\xdg"},
+        "gameId": null,
+        "dirs": [
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\ghostingmod"},
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\hl2"},
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\hl2"},
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\hl2"},
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\Half-Life\\valve_WON"},
+          {"id":"game-root","dir":"D:\\Games\\HLSR\\games\\hl1-won"},
+          {"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"},
+          {"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}
+        ]
+      },
+      {
+        "installPath": "D:/Games/HLSR/games/hl1-won/",
+        "env": {"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local","XDG_DATA_HOME":"C:\\xdg"},
+        "gameId": "ghosting-renewed",
+        "dirs": [{"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\ghostingmod"},{"id":"game-root","dir":"D:\\Games\\HLSR\\games\\hl1-won"},{"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"},{"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}]
+      },
+      {
+        "installPath": "D:/Games/HLSR/games/hl1-won/",
+        "env": {"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local","XDG_DATA_HOME":"C:\\xdg"},
+        "gameId": "hl2-4260",
+        "dirs": [{"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\hl2"},{"id":"game-root","dir":"D:\\Games\\HLSR\\games\\hl1-won"},{"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"},{"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}]
+      },
+      {
+        "installPath": "D:/Games/HLSR/games/hl1-won/",
+        "env": {"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local","XDG_DATA_HOME":"C:\\xdg"},
+        "gameId": "hl2-2707",
+        "dirs": [{"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\hl2"},{"id":"game-root","dir":"D:\\Games\\HLSR\\games\\hl1-won"},{"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"},{"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}]
+      },
+      {
+        "installPath": "D:/Games/HLSR/games/hl1-won/",
+        "env": {"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local","XDG_DATA_HOME":"C:\\xdg"},
+        "gameId": "hl2-5288",
+        "dirs": [{"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\hl2"},{"id":"game-root","dir":"D:\\Games\\HLSR\\games\\hl1-won"},{"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"},{"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}]
+      },
+      {
+        "installPath": "D:/Games/HLSR/games/hl1-won/",
+        "env": {"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local","XDG_DATA_HOME":"C:\\xdg"},
+        "gameId": "hl1-won",
+        "dirs": [{"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\Half-Life\\valve_WON"},{"id":"game-root","dir":"D:\\Games\\HLSR\\games\\hl1-won"},{"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"},{"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}]
+      },
+      {
+        "installPath": "D:/Games/HLSR/games/hl1-won/",
+        "env": {"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local","XDG_DATA_HOME":"C:\\xdg"},
+        "gameId": "unknown-game",
+        "dirs": [
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\ghostingmod"},
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\hl2"},
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\hl2"},
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\hl2"},
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\Half-Life\\valve_WON"},
+          {"id":"game-root","dir":"D:\\Games\\HLSR\\games\\hl1-won"},
+          {"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"},
+          {"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}
+        ]
+      },
+      {
+        "installPath": "D:/Games/HLSR/games/hl1-won/",
+        "env": {"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local","XDG_DATA_HOME":"C:\\xdg"},
+        "gameId": "",
+        "dirs": [
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\ghostingmod"},
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\hl2"},
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\hl2"},
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\hl2"},
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\Half-Life\\valve_WON"},
+          {"id":"game-root","dir":"D:\\Games\\HLSR\\games\\hl1-won"},
+          {"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"},
+          {"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}
+        ]
+      },
+      {
+        "installPath": "D:/Games/HLSR/games/hl1-won/",
+        "env": {"LOCALAPPDATA":"","XDG_DATA_HOME":""},
+        "gameId": null,
+        "dirs": [
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\ghostingmod"},
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\hl2"},
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\hl2"},
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\hl2"},
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\Half-Life\\valve_WON"},
+          {"id":"game-root","dir":"D:\\Games\\HLSR\\games\\hl1-won"}
+        ]
+      },
+      {"installPath":"D:/Games/HLSR/games/hl1-won/","env":{"LOCALAPPDATA":"","XDG_DATA_HOME":""},"gameId":"ghosting-renewed","dirs":[{"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\ghostingmod"},{"id":"game-root","dir":"D:\\Games\\HLSR\\games\\hl1-won"}]},
+      {"installPath":"D:/Games/HLSR/games/hl1-won/","env":{"LOCALAPPDATA":"","XDG_DATA_HOME":""},"gameId":"hl2-4260","dirs":[{"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\hl2"},{"id":"game-root","dir":"D:\\Games\\HLSR\\games\\hl1-won"}]},
+      {"installPath":"D:/Games/HLSR/games/hl1-won/","env":{"LOCALAPPDATA":"","XDG_DATA_HOME":""},"gameId":"hl2-2707","dirs":[{"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\hl2"},{"id":"game-root","dir":"D:\\Games\\HLSR\\games\\hl1-won"}]},
+      {"installPath":"D:/Games/HLSR/games/hl1-won/","env":{"LOCALAPPDATA":"","XDG_DATA_HOME":""},"gameId":"hl2-5288","dirs":[{"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\hl2"},{"id":"game-root","dir":"D:\\Games\\HLSR\\games\\hl1-won"}]},
+      {"installPath":"D:/Games/HLSR/games/hl1-won/","env":{"LOCALAPPDATA":"","XDG_DATA_HOME":""},"gameId":"hl1-won","dirs":[{"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\Half-Life\\valve_WON"},{"id":"game-root","dir":"D:\\Games\\HLSR\\games\\hl1-won"}]},
+      {
+        "installPath": "D:/Games/HLSR/games/hl1-won/",
+        "env": {"LOCALAPPDATA":"","XDG_DATA_HOME":""},
+        "gameId": "unknown-game",
+        "dirs": [
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\ghostingmod"},
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\hl2"},
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\hl2"},
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\hl2"},
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\Half-Life\\valve_WON"},
+          {"id":"game-root","dir":"D:\\Games\\HLSR\\games\\hl1-won"}
+        ]
+      },
+      {
+        "installPath": "D:/Games/HLSR/games/hl1-won/",
+        "env": {"LOCALAPPDATA":"","XDG_DATA_HOME":""},
+        "gameId": "",
+        "dirs": [
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\ghostingmod"},
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\hl2"},
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\hl2"},
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\hl2"},
+          {"id":"game-mod","dir":"D:\\Games\\HLSR\\games\\hl1-won\\Half-Life\\valve_WON"},
+          {"id":"game-root","dir":"D:\\Games\\HLSR\\games\\hl1-won"}
+        ]
+      },
+      {
+        "installPath": "C:\\HLSR\\games\\Ghosting\\..\\ghosting",
+        "env": {},
+        "gameId": null,
+        "dirs": [{"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\ghostingmod"},{"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\hl2"},{"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\hl2"},{"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\hl2"},{"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\Half-Life\\valve_WON"},{"id":"game-root","dir":"C:\\HLSR\\games\\ghosting"}]
+      },
+      {"installPath":"C:\\HLSR\\games\\Ghosting\\..\\ghosting","env":{},"gameId":"ghosting-renewed","dirs":[{"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\ghostingmod"},{"id":"game-root","dir":"C:\\HLSR\\games\\ghosting"}]},
+      {"installPath":"C:\\HLSR\\games\\Ghosting\\..\\ghosting","env":{},"gameId":"hl2-4260","dirs":[{"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\hl2"},{"id":"game-root","dir":"C:\\HLSR\\games\\ghosting"}]},
+      {"installPath":"C:\\HLSR\\games\\Ghosting\\..\\ghosting","env":{},"gameId":"hl2-2707","dirs":[{"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\hl2"},{"id":"game-root","dir":"C:\\HLSR\\games\\ghosting"}]},
+      {"installPath":"C:\\HLSR\\games\\Ghosting\\..\\ghosting","env":{},"gameId":"hl2-5288","dirs":[{"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\hl2"},{"id":"game-root","dir":"C:\\HLSR\\games\\ghosting"}]},
+      {"installPath":"C:\\HLSR\\games\\Ghosting\\..\\ghosting","env":{},"gameId":"hl1-won","dirs":[{"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\Half-Life\\valve_WON"},{"id":"game-root","dir":"C:\\HLSR\\games\\ghosting"}]},
+      {
+        "installPath": "C:\\HLSR\\games\\Ghosting\\..\\ghosting",
+        "env": {},
+        "gameId": "unknown-game",
+        "dirs": [{"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\ghostingmod"},{"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\hl2"},{"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\hl2"},{"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\hl2"},{"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\Half-Life\\valve_WON"},{"id":"game-root","dir":"C:\\HLSR\\games\\ghosting"}]
+      },
+      {
+        "installPath": "C:\\HLSR\\games\\Ghosting\\..\\ghosting",
+        "env": {},
+        "gameId": "",
+        "dirs": [{"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\ghostingmod"},{"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\hl2"},{"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\hl2"},{"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\hl2"},{"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\Half-Life\\valve_WON"},{"id":"game-root","dir":"C:\\HLSR\\games\\ghosting"}]
+      },
+      {
+        "installPath": "C:\\HLSR\\games\\Ghosting\\..\\ghosting",
+        "env": {"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local"},
+        "gameId": null,
+        "dirs": [
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\ghostingmod"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\hl2"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\hl2"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\hl2"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\Half-Life\\valve_WON"},
+          {"id":"game-root","dir":"C:\\HLSR\\games\\ghosting"},
+          {"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"}
+        ]
+      },
+      {"installPath":"C:\\HLSR\\games\\Ghosting\\..\\ghosting","env":{"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local"},"gameId":"ghosting-renewed","dirs":[{"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\ghostingmod"},{"id":"game-root","dir":"C:\\HLSR\\games\\ghosting"},{"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"}]},
+      {"installPath":"C:\\HLSR\\games\\Ghosting\\..\\ghosting","env":{"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local"},"gameId":"hl2-4260","dirs":[{"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\hl2"},{"id":"game-root","dir":"C:\\HLSR\\games\\ghosting"},{"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"}]},
+      {"installPath":"C:\\HLSR\\games\\Ghosting\\..\\ghosting","env":{"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local"},"gameId":"hl2-2707","dirs":[{"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\hl2"},{"id":"game-root","dir":"C:\\HLSR\\games\\ghosting"},{"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"}]},
+      {"installPath":"C:\\HLSR\\games\\Ghosting\\..\\ghosting","env":{"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local"},"gameId":"hl2-5288","dirs":[{"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\hl2"},{"id":"game-root","dir":"C:\\HLSR\\games\\ghosting"},{"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"}]},
+      {"installPath":"C:\\HLSR\\games\\Ghosting\\..\\ghosting","env":{"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local"},"gameId":"hl1-won","dirs":[{"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\Half-Life\\valve_WON"},{"id":"game-root","dir":"C:\\HLSR\\games\\ghosting"},{"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"}]},
+      {
+        "installPath": "C:\\HLSR\\games\\Ghosting\\..\\ghosting",
+        "env": {"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local"},
+        "gameId": "unknown-game",
+        "dirs": [
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\ghostingmod"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\hl2"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\hl2"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\hl2"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\Half-Life\\valve_WON"},
+          {"id":"game-root","dir":"C:\\HLSR\\games\\ghosting"},
+          {"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"}
+        ]
+      },
+      {
+        "installPath": "C:\\HLSR\\games\\Ghosting\\..\\ghosting",
+        "env": {"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local"},
+        "gameId": "",
+        "dirs": [
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\ghostingmod"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\hl2"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\hl2"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\hl2"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\Half-Life\\valve_WON"},
+          {"id":"game-root","dir":"C:\\HLSR\\games\\ghosting"},
+          {"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"}
+        ]
+      },
+      {
+        "installPath": "C:\\HLSR\\games\\Ghosting\\..\\ghosting",
+        "env": {"XDG_DATA_HOME":"C:\\xdg"},
+        "gameId": null,
+        "dirs": [
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\ghostingmod"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\hl2"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\hl2"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\hl2"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\Half-Life\\valve_WON"},
+          {"id":"game-root","dir":"C:\\HLSR\\games\\ghosting"},
+          {"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}
+        ]
+      },
+      {"installPath":"C:\\HLSR\\games\\Ghosting\\..\\ghosting","env":{"XDG_DATA_HOME":"C:\\xdg"},"gameId":"ghosting-renewed","dirs":[{"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\ghostingmod"},{"id":"game-root","dir":"C:\\HLSR\\games\\ghosting"},{"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}]},
+      {"installPath":"C:\\HLSR\\games\\Ghosting\\..\\ghosting","env":{"XDG_DATA_HOME":"C:\\xdg"},"gameId":"hl2-4260","dirs":[{"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\hl2"},{"id":"game-root","dir":"C:\\HLSR\\games\\ghosting"},{"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}]},
+      {"installPath":"C:\\HLSR\\games\\Ghosting\\..\\ghosting","env":{"XDG_DATA_HOME":"C:\\xdg"},"gameId":"hl2-2707","dirs":[{"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\hl2"},{"id":"game-root","dir":"C:\\HLSR\\games\\ghosting"},{"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}]},
+      {"installPath":"C:\\HLSR\\games\\Ghosting\\..\\ghosting","env":{"XDG_DATA_HOME":"C:\\xdg"},"gameId":"hl2-5288","dirs":[{"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\hl2"},{"id":"game-root","dir":"C:\\HLSR\\games\\ghosting"},{"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}]},
+      {"installPath":"C:\\HLSR\\games\\Ghosting\\..\\ghosting","env":{"XDG_DATA_HOME":"C:\\xdg"},"gameId":"hl1-won","dirs":[{"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\Half-Life\\valve_WON"},{"id":"game-root","dir":"C:\\HLSR\\games\\ghosting"},{"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}]},
+      {
+        "installPath": "C:\\HLSR\\games\\Ghosting\\..\\ghosting",
+        "env": {"XDG_DATA_HOME":"C:\\xdg"},
+        "gameId": "unknown-game",
+        "dirs": [
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\ghostingmod"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\hl2"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\hl2"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\hl2"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\Half-Life\\valve_WON"},
+          {"id":"game-root","dir":"C:\\HLSR\\games\\ghosting"},
+          {"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}
+        ]
+      },
+      {
+        "installPath": "C:\\HLSR\\games\\Ghosting\\..\\ghosting",
+        "env": {"XDG_DATA_HOME":"C:\\xdg"},
+        "gameId": "",
+        "dirs": [
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\ghostingmod"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\hl2"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\hl2"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\hl2"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\Half-Life\\valve_WON"},
+          {"id":"game-root","dir":"C:\\HLSR\\games\\ghosting"},
+          {"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}
+        ]
+      },
+      {
+        "installPath": "C:\\HLSR\\games\\Ghosting\\..\\ghosting",
+        "env": {"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local","XDG_DATA_HOME":"C:\\xdg"},
+        "gameId": null,
+        "dirs": [
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\ghostingmod"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\hl2"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\hl2"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\hl2"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\Half-Life\\valve_WON"},
+          {"id":"game-root","dir":"C:\\HLSR\\games\\ghosting"},
+          {"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"},
+          {"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}
+        ]
+      },
+      {
+        "installPath": "C:\\HLSR\\games\\Ghosting\\..\\ghosting",
+        "env": {"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local","XDG_DATA_HOME":"C:\\xdg"},
+        "gameId": "ghosting-renewed",
+        "dirs": [{"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\ghostingmod"},{"id":"game-root","dir":"C:\\HLSR\\games\\ghosting"},{"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"},{"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}]
+      },
+      {
+        "installPath": "C:\\HLSR\\games\\Ghosting\\..\\ghosting",
+        "env": {"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local","XDG_DATA_HOME":"C:\\xdg"},
+        "gameId": "hl2-4260",
+        "dirs": [{"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\hl2"},{"id":"game-root","dir":"C:\\HLSR\\games\\ghosting"},{"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"},{"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}]
+      },
+      {
+        "installPath": "C:\\HLSR\\games\\Ghosting\\..\\ghosting",
+        "env": {"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local","XDG_DATA_HOME":"C:\\xdg"},
+        "gameId": "hl2-2707",
+        "dirs": [{"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\hl2"},{"id":"game-root","dir":"C:\\HLSR\\games\\ghosting"},{"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"},{"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}]
+      },
+      {
+        "installPath": "C:\\HLSR\\games\\Ghosting\\..\\ghosting",
+        "env": {"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local","XDG_DATA_HOME":"C:\\xdg"},
+        "gameId": "hl2-5288",
+        "dirs": [{"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\hl2"},{"id":"game-root","dir":"C:\\HLSR\\games\\ghosting"},{"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"},{"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}]
+      },
+      {
+        "installPath": "C:\\HLSR\\games\\Ghosting\\..\\ghosting",
+        "env": {"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local","XDG_DATA_HOME":"C:\\xdg"},
+        "gameId": "hl1-won",
+        "dirs": [{"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\Half-Life\\valve_WON"},{"id":"game-root","dir":"C:\\HLSR\\games\\ghosting"},{"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"},{"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}]
+      },
+      {
+        "installPath": "C:\\HLSR\\games\\Ghosting\\..\\ghosting",
+        "env": {"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local","XDG_DATA_HOME":"C:\\xdg"},
+        "gameId": "unknown-game",
+        "dirs": [
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\ghostingmod"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\hl2"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\hl2"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\hl2"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\Half-Life\\valve_WON"},
+          {"id":"game-root","dir":"C:\\HLSR\\games\\ghosting"},
+          {"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"},
+          {"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}
+        ]
+      },
+      {
+        "installPath": "C:\\HLSR\\games\\Ghosting\\..\\ghosting",
+        "env": {"LOCALAPPDATA":"C:\\Users\\u\\AppData\\Local","XDG_DATA_HOME":"C:\\xdg"},
+        "gameId": "",
+        "dirs": [
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\ghostingmod"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\hl2"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\hl2"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\hl2"},
+          {"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\Half-Life\\valve_WON"},
+          {"id":"game-root","dir":"C:\\HLSR\\games\\ghosting"},
+          {"id":"wer-crashdumps","dir":"C:\\Users\\u\\AppData\\Local\\CrashDumps"},
+          {"id":"wine-crashdumps","dir":"C:\\xdg\\hlsr\\crashdumps"}
+        ]
+      },
+      {
+        "installPath": "C:\\HLSR\\games\\Ghosting\\..\\ghosting",
+        "env": {"LOCALAPPDATA":"","XDG_DATA_HOME":""},
+        "gameId": null,
+        "dirs": [{"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\ghostingmod"},{"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\hl2"},{"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\hl2"},{"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\hl2"},{"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\Half-Life\\valve_WON"},{"id":"game-root","dir":"C:\\HLSR\\games\\ghosting"}]
+      },
+      {"installPath":"C:\\HLSR\\games\\Ghosting\\..\\ghosting","env":{"LOCALAPPDATA":"","XDG_DATA_HOME":""},"gameId":"ghosting-renewed","dirs":[{"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\ghostingmod"},{"id":"game-root","dir":"C:\\HLSR\\games\\ghosting"}]},
+      {"installPath":"C:\\HLSR\\games\\Ghosting\\..\\ghosting","env":{"LOCALAPPDATA":"","XDG_DATA_HOME":""},"gameId":"hl2-4260","dirs":[{"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\hl2"},{"id":"game-root","dir":"C:\\HLSR\\games\\ghosting"}]},
+      {"installPath":"C:\\HLSR\\games\\Ghosting\\..\\ghosting","env":{"LOCALAPPDATA":"","XDG_DATA_HOME":""},"gameId":"hl2-2707","dirs":[{"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\hl2"},{"id":"game-root","dir":"C:\\HLSR\\games\\ghosting"}]},
+      {"installPath":"C:\\HLSR\\games\\Ghosting\\..\\ghosting","env":{"LOCALAPPDATA":"","XDG_DATA_HOME":""},"gameId":"hl2-5288","dirs":[{"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\hl2"},{"id":"game-root","dir":"C:\\HLSR\\games\\ghosting"}]},
+      {"installPath":"C:\\HLSR\\games\\Ghosting\\..\\ghosting","env":{"LOCALAPPDATA":"","XDG_DATA_HOME":""},"gameId":"hl1-won","dirs":[{"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\Half-Life\\valve_WON"},{"id":"game-root","dir":"C:\\HLSR\\games\\ghosting"}]},
+      {
+        "installPath": "C:\\HLSR\\games\\Ghosting\\..\\ghosting",
+        "env": {"LOCALAPPDATA":"","XDG_DATA_HOME":""},
+        "gameId": "unknown-game",
+        "dirs": [{"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\ghostingmod"},{"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\hl2"},{"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\hl2"},{"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\hl2"},{"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\Half-Life\\valve_WON"},{"id":"game-root","dir":"C:\\HLSR\\games\\ghosting"}]
+      },
+      {
+        "installPath": "C:\\HLSR\\games\\Ghosting\\..\\ghosting",
+        "env": {"LOCALAPPDATA":"","XDG_DATA_HOME":""},
+        "gameId": "",
+        "dirs": [{"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\ghostingmod"},{"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\hl2"},{"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\hl2"},{"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\hl2"},{"id":"game-mod","dir":"C:\\HLSR\\games\\ghosting\\Half-Life\\valve_WON"},{"id":"game-root","dir":"C:\\HLSR\\games\\ghosting"}]
+      }
+    ],
+    "linux": [
+      {"installPath":null,"env":{},"gameId":null,"dirs":[]},
+      {"installPath":null,"env":{},"gameId":"ghosting-renewed","dirs":[]},
+      {"installPath":null,"env":{},"gameId":"hl2-4260","dirs":[]},
+      {"installPath":null,"env":{},"gameId":"hl2-2707","dirs":[]},
+      {"installPath":null,"env":{},"gameId":"hl2-5288","dirs":[]},
+      {"installPath":null,"env":{},"gameId":"hl1-won","dirs":[]},
+      {"installPath":null,"env":{},"gameId":"unknown-game","dirs":[]},
+      {"installPath":null,"env":{},"gameId":"","dirs":[]},
+      {"installPath":null,"env":{"XDG_DATA_HOME":"/home/u/.local/share"},"gameId":null,"dirs":[{"id":"wine-crashdumps","dir":"/home/u/.local/share/hlsr/crashdumps"}]},
+      {"installPath":null,"env":{"XDG_DATA_HOME":"/home/u/.local/share"},"gameId":"ghosting-renewed","dirs":[{"id":"wine-crashdumps","dir":"/home/u/.local/share/hlsr/crashdumps"}]},
+      {"installPath":null,"env":{"XDG_DATA_HOME":"/home/u/.local/share"},"gameId":"hl2-4260","dirs":[{"id":"wine-crashdumps","dir":"/home/u/.local/share/hlsr/crashdumps"}]},
+      {"installPath":null,"env":{"XDG_DATA_HOME":"/home/u/.local/share"},"gameId":"hl2-2707","dirs":[{"id":"wine-crashdumps","dir":"/home/u/.local/share/hlsr/crashdumps"}]},
+      {"installPath":null,"env":{"XDG_DATA_HOME":"/home/u/.local/share"},"gameId":"hl2-5288","dirs":[{"id":"wine-crashdumps","dir":"/home/u/.local/share/hlsr/crashdumps"}]},
+      {"installPath":null,"env":{"XDG_DATA_HOME":"/home/u/.local/share"},"gameId":"hl1-won","dirs":[{"id":"wine-crashdumps","dir":"/home/u/.local/share/hlsr/crashdumps"}]},
+      {"installPath":null,"env":{"XDG_DATA_HOME":"/home/u/.local/share"},"gameId":"unknown-game","dirs":[{"id":"wine-crashdumps","dir":"/home/u/.local/share/hlsr/crashdumps"}]},
+      {"installPath":null,"env":{"XDG_DATA_HOME":"/home/u/.local/share"},"gameId":"","dirs":[{"id":"wine-crashdumps","dir":"/home/u/.local/share/hlsr/crashdumps"}]},
+      {"installPath":null,"env":{"LOCALAPPDATA":"/wine/local","XDG_DATA_HOME":"/home/u/.local/share"},"gameId":null,"dirs":[{"id":"wer-crashdumps","dir":"/wine/local/CrashDumps"},{"id":"wine-crashdumps","dir":"/home/u/.local/share/hlsr/crashdumps"}]},
+      {"installPath":null,"env":{"LOCALAPPDATA":"/wine/local","XDG_DATA_HOME":"/home/u/.local/share"},"gameId":"ghosting-renewed","dirs":[{"id":"wer-crashdumps","dir":"/wine/local/CrashDumps"},{"id":"wine-crashdumps","dir":"/home/u/.local/share/hlsr/crashdumps"}]},
+      {"installPath":null,"env":{"LOCALAPPDATA":"/wine/local","XDG_DATA_HOME":"/home/u/.local/share"},"gameId":"hl2-4260","dirs":[{"id":"wer-crashdumps","dir":"/wine/local/CrashDumps"},{"id":"wine-crashdumps","dir":"/home/u/.local/share/hlsr/crashdumps"}]},
+      {"installPath":null,"env":{"LOCALAPPDATA":"/wine/local","XDG_DATA_HOME":"/home/u/.local/share"},"gameId":"hl2-2707","dirs":[{"id":"wer-crashdumps","dir":"/wine/local/CrashDumps"},{"id":"wine-crashdumps","dir":"/home/u/.local/share/hlsr/crashdumps"}]},
+      {"installPath":null,"env":{"LOCALAPPDATA":"/wine/local","XDG_DATA_HOME":"/home/u/.local/share"},"gameId":"hl2-5288","dirs":[{"id":"wer-crashdumps","dir":"/wine/local/CrashDumps"},{"id":"wine-crashdumps","dir":"/home/u/.local/share/hlsr/crashdumps"}]},
+      {"installPath":null,"env":{"LOCALAPPDATA":"/wine/local","XDG_DATA_HOME":"/home/u/.local/share"},"gameId":"hl1-won","dirs":[{"id":"wer-crashdumps","dir":"/wine/local/CrashDumps"},{"id":"wine-crashdumps","dir":"/home/u/.local/share/hlsr/crashdumps"}]},
+      {"installPath":null,"env":{"LOCALAPPDATA":"/wine/local","XDG_DATA_HOME":"/home/u/.local/share"},"gameId":"unknown-game","dirs":[{"id":"wer-crashdumps","dir":"/wine/local/CrashDumps"},{"id":"wine-crashdumps","dir":"/home/u/.local/share/hlsr/crashdumps"}]},
+      {"installPath":null,"env":{"LOCALAPPDATA":"/wine/local","XDG_DATA_HOME":"/home/u/.local/share"},"gameId":"","dirs":[{"id":"wer-crashdumps","dir":"/wine/local/CrashDumps"},{"id":"wine-crashdumps","dir":"/home/u/.local/share/hlsr/crashdumps"}]},
+      {
+        "installPath": "/home/u/Games/HLSR/games/hl2-4260",
+        "env": {},
+        "gameId": null,
+        "dirs": [
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl2-4260/ghostingmod"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl2-4260/hl2"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl2-4260/hl2"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl2-4260/hl2"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl2-4260/Half-Life/valve_WON"},
+          {"id":"game-root","dir":"/home/u/Games/HLSR/games/hl2-4260"}
+        ]
+      },
+      {"installPath":"/home/u/Games/HLSR/games/hl2-4260","env":{},"gameId":"ghosting-renewed","dirs":[{"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl2-4260/ghostingmod"},{"id":"game-root","dir":"/home/u/Games/HLSR/games/hl2-4260"}]},
+      {"installPath":"/home/u/Games/HLSR/games/hl2-4260","env":{},"gameId":"hl2-4260","dirs":[{"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl2-4260/hl2"},{"id":"game-root","dir":"/home/u/Games/HLSR/games/hl2-4260"}]},
+      {"installPath":"/home/u/Games/HLSR/games/hl2-4260","env":{},"gameId":"hl2-2707","dirs":[{"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl2-4260/hl2"},{"id":"game-root","dir":"/home/u/Games/HLSR/games/hl2-4260"}]},
+      {"installPath":"/home/u/Games/HLSR/games/hl2-4260","env":{},"gameId":"hl2-5288","dirs":[{"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl2-4260/hl2"},{"id":"game-root","dir":"/home/u/Games/HLSR/games/hl2-4260"}]},
+      {"installPath":"/home/u/Games/HLSR/games/hl2-4260","env":{},"gameId":"hl1-won","dirs":[{"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl2-4260/Half-Life/valve_WON"},{"id":"game-root","dir":"/home/u/Games/HLSR/games/hl2-4260"}]},
+      {
+        "installPath": "/home/u/Games/HLSR/games/hl2-4260",
+        "env": {},
+        "gameId": "unknown-game",
+        "dirs": [
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl2-4260/ghostingmod"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl2-4260/hl2"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl2-4260/hl2"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl2-4260/hl2"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl2-4260/Half-Life/valve_WON"},
+          {"id":"game-root","dir":"/home/u/Games/HLSR/games/hl2-4260"}
+        ]
+      },
+      {
+        "installPath": "/home/u/Games/HLSR/games/hl2-4260",
+        "env": {},
+        "gameId": "",
+        "dirs": [
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl2-4260/ghostingmod"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl2-4260/hl2"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl2-4260/hl2"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl2-4260/hl2"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl2-4260/Half-Life/valve_WON"},
+          {"id":"game-root","dir":"/home/u/Games/HLSR/games/hl2-4260"}
+        ]
+      },
+      {
+        "installPath": "/home/u/Games/HLSR/games/hl2-4260",
+        "env": {"XDG_DATA_HOME":"/home/u/.local/share"},
+        "gameId": null,
+        "dirs": [
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl2-4260/ghostingmod"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl2-4260/hl2"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl2-4260/hl2"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl2-4260/hl2"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl2-4260/Half-Life/valve_WON"},
+          {"id":"game-root","dir":"/home/u/Games/HLSR/games/hl2-4260"},
+          {"id":"wine-crashdumps","dir":"/home/u/.local/share/hlsr/crashdumps"}
+        ]
+      },
+      {"installPath":"/home/u/Games/HLSR/games/hl2-4260","env":{"XDG_DATA_HOME":"/home/u/.local/share"},"gameId":"ghosting-renewed","dirs":[{"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl2-4260/ghostingmod"},{"id":"game-root","dir":"/home/u/Games/HLSR/games/hl2-4260"},{"id":"wine-crashdumps","dir":"/home/u/.local/share/hlsr/crashdumps"}]},
+      {"installPath":"/home/u/Games/HLSR/games/hl2-4260","env":{"XDG_DATA_HOME":"/home/u/.local/share"},"gameId":"hl2-4260","dirs":[{"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl2-4260/hl2"},{"id":"game-root","dir":"/home/u/Games/HLSR/games/hl2-4260"},{"id":"wine-crashdumps","dir":"/home/u/.local/share/hlsr/crashdumps"}]},
+      {"installPath":"/home/u/Games/HLSR/games/hl2-4260","env":{"XDG_DATA_HOME":"/home/u/.local/share"},"gameId":"hl2-2707","dirs":[{"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl2-4260/hl2"},{"id":"game-root","dir":"/home/u/Games/HLSR/games/hl2-4260"},{"id":"wine-crashdumps","dir":"/home/u/.local/share/hlsr/crashdumps"}]},
+      {"installPath":"/home/u/Games/HLSR/games/hl2-4260","env":{"XDG_DATA_HOME":"/home/u/.local/share"},"gameId":"hl2-5288","dirs":[{"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl2-4260/hl2"},{"id":"game-root","dir":"/home/u/Games/HLSR/games/hl2-4260"},{"id":"wine-crashdumps","dir":"/home/u/.local/share/hlsr/crashdumps"}]},
+      {"installPath":"/home/u/Games/HLSR/games/hl2-4260","env":{"XDG_DATA_HOME":"/home/u/.local/share"},"gameId":"hl1-won","dirs":[{"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl2-4260/Half-Life/valve_WON"},{"id":"game-root","dir":"/home/u/Games/HLSR/games/hl2-4260"},{"id":"wine-crashdumps","dir":"/home/u/.local/share/hlsr/crashdumps"}]},
+      {
+        "installPath": "/home/u/Games/HLSR/games/hl2-4260",
+        "env": {"XDG_DATA_HOME":"/home/u/.local/share"},
+        "gameId": "unknown-game",
+        "dirs": [
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl2-4260/ghostingmod"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl2-4260/hl2"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl2-4260/hl2"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl2-4260/hl2"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl2-4260/Half-Life/valve_WON"},
+          {"id":"game-root","dir":"/home/u/Games/HLSR/games/hl2-4260"},
+          {"id":"wine-crashdumps","dir":"/home/u/.local/share/hlsr/crashdumps"}
+        ]
+      },
+      {
+        "installPath": "/home/u/Games/HLSR/games/hl2-4260",
+        "env": {"XDG_DATA_HOME":"/home/u/.local/share"},
+        "gameId": "",
+        "dirs": [
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl2-4260/ghostingmod"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl2-4260/hl2"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl2-4260/hl2"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl2-4260/hl2"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl2-4260/Half-Life/valve_WON"},
+          {"id":"game-root","dir":"/home/u/Games/HLSR/games/hl2-4260"},
+          {"id":"wine-crashdumps","dir":"/home/u/.local/share/hlsr/crashdumps"}
+        ]
+      },
+      {
+        "installPath": "/home/u/Games/HLSR/games/hl2-4260",
+        "env": {"LOCALAPPDATA":"/wine/local","XDG_DATA_HOME":"/home/u/.local/share"},
+        "gameId": null,
+        "dirs": [
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl2-4260/ghostingmod"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl2-4260/hl2"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl2-4260/hl2"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl2-4260/hl2"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl2-4260/Half-Life/valve_WON"},
+          {"id":"game-root","dir":"/home/u/Games/HLSR/games/hl2-4260"},
+          {"id":"wer-crashdumps","dir":"/wine/local/CrashDumps"},
+          {"id":"wine-crashdumps","dir":"/home/u/.local/share/hlsr/crashdumps"}
+        ]
+      },
+      {
+        "installPath": "/home/u/Games/HLSR/games/hl2-4260",
+        "env": {"LOCALAPPDATA":"/wine/local","XDG_DATA_HOME":"/home/u/.local/share"},
+        "gameId": "ghosting-renewed",
+        "dirs": [{"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl2-4260/ghostingmod"},{"id":"game-root","dir":"/home/u/Games/HLSR/games/hl2-4260"},{"id":"wer-crashdumps","dir":"/wine/local/CrashDumps"},{"id":"wine-crashdumps","dir":"/home/u/.local/share/hlsr/crashdumps"}]
+      },
+      {
+        "installPath": "/home/u/Games/HLSR/games/hl2-4260",
+        "env": {"LOCALAPPDATA":"/wine/local","XDG_DATA_HOME":"/home/u/.local/share"},
+        "gameId": "hl2-4260",
+        "dirs": [{"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl2-4260/hl2"},{"id":"game-root","dir":"/home/u/Games/HLSR/games/hl2-4260"},{"id":"wer-crashdumps","dir":"/wine/local/CrashDumps"},{"id":"wine-crashdumps","dir":"/home/u/.local/share/hlsr/crashdumps"}]
+      },
+      {
+        "installPath": "/home/u/Games/HLSR/games/hl2-4260",
+        "env": {"LOCALAPPDATA":"/wine/local","XDG_DATA_HOME":"/home/u/.local/share"},
+        "gameId": "hl2-2707",
+        "dirs": [{"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl2-4260/hl2"},{"id":"game-root","dir":"/home/u/Games/HLSR/games/hl2-4260"},{"id":"wer-crashdumps","dir":"/wine/local/CrashDumps"},{"id":"wine-crashdumps","dir":"/home/u/.local/share/hlsr/crashdumps"}]
+      },
+      {
+        "installPath": "/home/u/Games/HLSR/games/hl2-4260",
+        "env": {"LOCALAPPDATA":"/wine/local","XDG_DATA_HOME":"/home/u/.local/share"},
+        "gameId": "hl2-5288",
+        "dirs": [{"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl2-4260/hl2"},{"id":"game-root","dir":"/home/u/Games/HLSR/games/hl2-4260"},{"id":"wer-crashdumps","dir":"/wine/local/CrashDumps"},{"id":"wine-crashdumps","dir":"/home/u/.local/share/hlsr/crashdumps"}]
+      },
+      {
+        "installPath": "/home/u/Games/HLSR/games/hl2-4260",
+        "env": {"LOCALAPPDATA":"/wine/local","XDG_DATA_HOME":"/home/u/.local/share"},
+        "gameId": "hl1-won",
+        "dirs": [{"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl2-4260/Half-Life/valve_WON"},{"id":"game-root","dir":"/home/u/Games/HLSR/games/hl2-4260"},{"id":"wer-crashdumps","dir":"/wine/local/CrashDumps"},{"id":"wine-crashdumps","dir":"/home/u/.local/share/hlsr/crashdumps"}]
+      },
+      {
+        "installPath": "/home/u/Games/HLSR/games/hl2-4260",
+        "env": {"LOCALAPPDATA":"/wine/local","XDG_DATA_HOME":"/home/u/.local/share"},
+        "gameId": "unknown-game",
+        "dirs": [
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl2-4260/ghostingmod"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl2-4260/hl2"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl2-4260/hl2"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl2-4260/hl2"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl2-4260/Half-Life/valve_WON"},
+          {"id":"game-root","dir":"/home/u/Games/HLSR/games/hl2-4260"},
+          {"id":"wer-crashdumps","dir":"/wine/local/CrashDumps"},
+          {"id":"wine-crashdumps","dir":"/home/u/.local/share/hlsr/crashdumps"}
+        ]
+      },
+      {
+        "installPath": "/home/u/Games/HLSR/games/hl2-4260",
+        "env": {"LOCALAPPDATA":"/wine/local","XDG_DATA_HOME":"/home/u/.local/share"},
+        "gameId": "",
+        "dirs": [
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl2-4260/ghostingmod"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl2-4260/hl2"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl2-4260/hl2"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl2-4260/hl2"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl2-4260/Half-Life/valve_WON"},
+          {"id":"game-root","dir":"/home/u/Games/HLSR/games/hl2-4260"},
+          {"id":"wer-crashdumps","dir":"/wine/local/CrashDumps"},
+          {"id":"wine-crashdumps","dir":"/home/u/.local/share/hlsr/crashdumps"}
+        ]
+      },
+      {
+        "installPath": "/home/u/Games/HLSR/games/hl1-won/",
+        "env": {},
+        "gameId": null,
+        "dirs": [
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl1-won/ghostingmod"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl1-won/hl2"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl1-won/hl2"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl1-won/hl2"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl1-won/Half-Life/valve_WON"},
+          {"id":"game-root","dir":"/home/u/Games/HLSR/games/hl1-won"}
+        ]
+      },
+      {"installPath":"/home/u/Games/HLSR/games/hl1-won/","env":{},"gameId":"ghosting-renewed","dirs":[{"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl1-won/ghostingmod"},{"id":"game-root","dir":"/home/u/Games/HLSR/games/hl1-won"}]},
+      {"installPath":"/home/u/Games/HLSR/games/hl1-won/","env":{},"gameId":"hl2-4260","dirs":[{"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl1-won/hl2"},{"id":"game-root","dir":"/home/u/Games/HLSR/games/hl1-won"}]},
+      {"installPath":"/home/u/Games/HLSR/games/hl1-won/","env":{},"gameId":"hl2-2707","dirs":[{"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl1-won/hl2"},{"id":"game-root","dir":"/home/u/Games/HLSR/games/hl1-won"}]},
+      {"installPath":"/home/u/Games/HLSR/games/hl1-won/","env":{},"gameId":"hl2-5288","dirs":[{"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl1-won/hl2"},{"id":"game-root","dir":"/home/u/Games/HLSR/games/hl1-won"}]},
+      {"installPath":"/home/u/Games/HLSR/games/hl1-won/","env":{},"gameId":"hl1-won","dirs":[{"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl1-won/Half-Life/valve_WON"},{"id":"game-root","dir":"/home/u/Games/HLSR/games/hl1-won"}]},
+      {
+        "installPath": "/home/u/Games/HLSR/games/hl1-won/",
+        "env": {},
+        "gameId": "unknown-game",
+        "dirs": [
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl1-won/ghostingmod"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl1-won/hl2"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl1-won/hl2"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl1-won/hl2"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl1-won/Half-Life/valve_WON"},
+          {"id":"game-root","dir":"/home/u/Games/HLSR/games/hl1-won"}
+        ]
+      },
+      {
+        "installPath": "/home/u/Games/HLSR/games/hl1-won/",
+        "env": {},
+        "gameId": "",
+        "dirs": [
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl1-won/ghostingmod"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl1-won/hl2"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl1-won/hl2"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl1-won/hl2"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl1-won/Half-Life/valve_WON"},
+          {"id":"game-root","dir":"/home/u/Games/HLSR/games/hl1-won"}
+        ]
+      },
+      {
+        "installPath": "/home/u/Games/HLSR/games/hl1-won/",
+        "env": {"XDG_DATA_HOME":"/home/u/.local/share"},
+        "gameId": null,
+        "dirs": [
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl1-won/ghostingmod"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl1-won/hl2"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl1-won/hl2"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl1-won/hl2"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl1-won/Half-Life/valve_WON"},
+          {"id":"game-root","dir":"/home/u/Games/HLSR/games/hl1-won"},
+          {"id":"wine-crashdumps","dir":"/home/u/.local/share/hlsr/crashdumps"}
+        ]
+      },
+      {"installPath":"/home/u/Games/HLSR/games/hl1-won/","env":{"XDG_DATA_HOME":"/home/u/.local/share"},"gameId":"ghosting-renewed","dirs":[{"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl1-won/ghostingmod"},{"id":"game-root","dir":"/home/u/Games/HLSR/games/hl1-won"},{"id":"wine-crashdumps","dir":"/home/u/.local/share/hlsr/crashdumps"}]},
+      {"installPath":"/home/u/Games/HLSR/games/hl1-won/","env":{"XDG_DATA_HOME":"/home/u/.local/share"},"gameId":"hl2-4260","dirs":[{"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl1-won/hl2"},{"id":"game-root","dir":"/home/u/Games/HLSR/games/hl1-won"},{"id":"wine-crashdumps","dir":"/home/u/.local/share/hlsr/crashdumps"}]},
+      {"installPath":"/home/u/Games/HLSR/games/hl1-won/","env":{"XDG_DATA_HOME":"/home/u/.local/share"},"gameId":"hl2-2707","dirs":[{"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl1-won/hl2"},{"id":"game-root","dir":"/home/u/Games/HLSR/games/hl1-won"},{"id":"wine-crashdumps","dir":"/home/u/.local/share/hlsr/crashdumps"}]},
+      {"installPath":"/home/u/Games/HLSR/games/hl1-won/","env":{"XDG_DATA_HOME":"/home/u/.local/share"},"gameId":"hl2-5288","dirs":[{"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl1-won/hl2"},{"id":"game-root","dir":"/home/u/Games/HLSR/games/hl1-won"},{"id":"wine-crashdumps","dir":"/home/u/.local/share/hlsr/crashdumps"}]},
+      {"installPath":"/home/u/Games/HLSR/games/hl1-won/","env":{"XDG_DATA_HOME":"/home/u/.local/share"},"gameId":"hl1-won","dirs":[{"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl1-won/Half-Life/valve_WON"},{"id":"game-root","dir":"/home/u/Games/HLSR/games/hl1-won"},{"id":"wine-crashdumps","dir":"/home/u/.local/share/hlsr/crashdumps"}]},
+      {
+        "installPath": "/home/u/Games/HLSR/games/hl1-won/",
+        "env": {"XDG_DATA_HOME":"/home/u/.local/share"},
+        "gameId": "unknown-game",
+        "dirs": [
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl1-won/ghostingmod"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl1-won/hl2"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl1-won/hl2"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl1-won/hl2"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl1-won/Half-Life/valve_WON"},
+          {"id":"game-root","dir":"/home/u/Games/HLSR/games/hl1-won"},
+          {"id":"wine-crashdumps","dir":"/home/u/.local/share/hlsr/crashdumps"}
+        ]
+      },
+      {
+        "installPath": "/home/u/Games/HLSR/games/hl1-won/",
+        "env": {"XDG_DATA_HOME":"/home/u/.local/share"},
+        "gameId": "",
+        "dirs": [
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl1-won/ghostingmod"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl1-won/hl2"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl1-won/hl2"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl1-won/hl2"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl1-won/Half-Life/valve_WON"},
+          {"id":"game-root","dir":"/home/u/Games/HLSR/games/hl1-won"},
+          {"id":"wine-crashdumps","dir":"/home/u/.local/share/hlsr/crashdumps"}
+        ]
+      },
+      {
+        "installPath": "/home/u/Games/HLSR/games/hl1-won/",
+        "env": {"LOCALAPPDATA":"/wine/local","XDG_DATA_HOME":"/home/u/.local/share"},
+        "gameId": null,
+        "dirs": [
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl1-won/ghostingmod"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl1-won/hl2"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl1-won/hl2"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl1-won/hl2"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl1-won/Half-Life/valve_WON"},
+          {"id":"game-root","dir":"/home/u/Games/HLSR/games/hl1-won"},
+          {"id":"wer-crashdumps","dir":"/wine/local/CrashDumps"},
+          {"id":"wine-crashdumps","dir":"/home/u/.local/share/hlsr/crashdumps"}
+        ]
+      },
+      {
+        "installPath": "/home/u/Games/HLSR/games/hl1-won/",
+        "env": {"LOCALAPPDATA":"/wine/local","XDG_DATA_HOME":"/home/u/.local/share"},
+        "gameId": "ghosting-renewed",
+        "dirs": [{"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl1-won/ghostingmod"},{"id":"game-root","dir":"/home/u/Games/HLSR/games/hl1-won"},{"id":"wer-crashdumps","dir":"/wine/local/CrashDumps"},{"id":"wine-crashdumps","dir":"/home/u/.local/share/hlsr/crashdumps"}]
+      },
+      {
+        "installPath": "/home/u/Games/HLSR/games/hl1-won/",
+        "env": {"LOCALAPPDATA":"/wine/local","XDG_DATA_HOME":"/home/u/.local/share"},
+        "gameId": "hl2-4260",
+        "dirs": [{"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl1-won/hl2"},{"id":"game-root","dir":"/home/u/Games/HLSR/games/hl1-won"},{"id":"wer-crashdumps","dir":"/wine/local/CrashDumps"},{"id":"wine-crashdumps","dir":"/home/u/.local/share/hlsr/crashdumps"}]
+      },
+      {
+        "installPath": "/home/u/Games/HLSR/games/hl1-won/",
+        "env": {"LOCALAPPDATA":"/wine/local","XDG_DATA_HOME":"/home/u/.local/share"},
+        "gameId": "hl2-2707",
+        "dirs": [{"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl1-won/hl2"},{"id":"game-root","dir":"/home/u/Games/HLSR/games/hl1-won"},{"id":"wer-crashdumps","dir":"/wine/local/CrashDumps"},{"id":"wine-crashdumps","dir":"/home/u/.local/share/hlsr/crashdumps"}]
+      },
+      {
+        "installPath": "/home/u/Games/HLSR/games/hl1-won/",
+        "env": {"LOCALAPPDATA":"/wine/local","XDG_DATA_HOME":"/home/u/.local/share"},
+        "gameId": "hl2-5288",
+        "dirs": [{"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl1-won/hl2"},{"id":"game-root","dir":"/home/u/Games/HLSR/games/hl1-won"},{"id":"wer-crashdumps","dir":"/wine/local/CrashDumps"},{"id":"wine-crashdumps","dir":"/home/u/.local/share/hlsr/crashdumps"}]
+      },
+      {
+        "installPath": "/home/u/Games/HLSR/games/hl1-won/",
+        "env": {"LOCALAPPDATA":"/wine/local","XDG_DATA_HOME":"/home/u/.local/share"},
+        "gameId": "hl1-won",
+        "dirs": [{"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl1-won/Half-Life/valve_WON"},{"id":"game-root","dir":"/home/u/Games/HLSR/games/hl1-won"},{"id":"wer-crashdumps","dir":"/wine/local/CrashDumps"},{"id":"wine-crashdumps","dir":"/home/u/.local/share/hlsr/crashdumps"}]
+      },
+      {
+        "installPath": "/home/u/Games/HLSR/games/hl1-won/",
+        "env": {"LOCALAPPDATA":"/wine/local","XDG_DATA_HOME":"/home/u/.local/share"},
+        "gameId": "unknown-game",
+        "dirs": [
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl1-won/ghostingmod"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl1-won/hl2"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl1-won/hl2"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl1-won/hl2"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl1-won/Half-Life/valve_WON"},
+          {"id":"game-root","dir":"/home/u/Games/HLSR/games/hl1-won"},
+          {"id":"wer-crashdumps","dir":"/wine/local/CrashDumps"},
+          {"id":"wine-crashdumps","dir":"/home/u/.local/share/hlsr/crashdumps"}
+        ]
+      },
+      {
+        "installPath": "/home/u/Games/HLSR/games/hl1-won/",
+        "env": {"LOCALAPPDATA":"/wine/local","XDG_DATA_HOME":"/home/u/.local/share"},
+        "gameId": "",
+        "dirs": [
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl1-won/ghostingmod"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl1-won/hl2"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl1-won/hl2"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl1-won/hl2"},
+          {"id":"game-mod","dir":"/home/u/Games/HLSR/games/hl1-won/Half-Life/valve_WON"},
+          {"id":"game-root","dir":"/home/u/Games/HLSR/games/hl1-won"},
+          {"id":"wer-crashdumps","dir":"/wine/local/CrashDumps"},
+          {"id":"wine-crashdumps","dir":"/home/u/.local/share/hlsr/crashdumps"}
+        ]
+      },
+      {"installPath":"/home/u/a/../b","env":{},"gameId":null,"dirs":[{"id":"game-mod","dir":"/home/u/b/ghostingmod"},{"id":"game-mod","dir":"/home/u/b/hl2"},{"id":"game-mod","dir":"/home/u/b/hl2"},{"id":"game-mod","dir":"/home/u/b/hl2"},{"id":"game-mod","dir":"/home/u/b/Half-Life/valve_WON"},{"id":"game-root","dir":"/home/u/b"}]},
+      {"installPath":"/home/u/a/../b","env":{},"gameId":"ghosting-renewed","dirs":[{"id":"game-mod","dir":"/home/u/b/ghostingmod"},{"id":"game-root","dir":"/home/u/b"}]},
+      {"installPath":"/home/u/a/../b","env":{},"gameId":"hl2-4260","dirs":[{"id":"game-mod","dir":"/home/u/b/hl2"},{"id":"game-root","dir":"/home/u/b"}]},
+      {"installPath":"/home/u/a/../b","env":{},"gameId":"hl2-2707","dirs":[{"id":"game-mod","dir":"/home/u/b/hl2"},{"id":"game-root","dir":"/home/u/b"}]},
+      {"installPath":"/home/u/a/../b","env":{},"gameId":"hl2-5288","dirs":[{"id":"game-mod","dir":"/home/u/b/hl2"},{"id":"game-root","dir":"/home/u/b"}]},
+      {"installPath":"/home/u/a/../b","env":{},"gameId":"hl1-won","dirs":[{"id":"game-mod","dir":"/home/u/b/Half-Life/valve_WON"},{"id":"game-root","dir":"/home/u/b"}]},
+      {"installPath":"/home/u/a/../b","env":{},"gameId":"unknown-game","dirs":[{"id":"game-mod","dir":"/home/u/b/ghostingmod"},{"id":"game-mod","dir":"/home/u/b/hl2"},{"id":"game-mod","dir":"/home/u/b/hl2"},{"id":"game-mod","dir":"/home/u/b/hl2"},{"id":"game-mod","dir":"/home/u/b/Half-Life/valve_WON"},{"id":"game-root","dir":"/home/u/b"}]},
+      {"installPath":"/home/u/a/../b","env":{},"gameId":"","dirs":[{"id":"game-mod","dir":"/home/u/b/ghostingmod"},{"id":"game-mod","dir":"/home/u/b/hl2"},{"id":"game-mod","dir":"/home/u/b/hl2"},{"id":"game-mod","dir":"/home/u/b/hl2"},{"id":"game-mod","dir":"/home/u/b/Half-Life/valve_WON"},{"id":"game-root","dir":"/home/u/b"}]},
+      {
+        "installPath": "/home/u/a/../b",
+        "env": {"XDG_DATA_HOME":"/home/u/.local/share"},
+        "gameId": null,
+        "dirs": [{"id":"game-mod","dir":"/home/u/b/ghostingmod"},{"id":"game-mod","dir":"/home/u/b/hl2"},{"id":"game-mod","dir":"/home/u/b/hl2"},{"id":"game-mod","dir":"/home/u/b/hl2"},{"id":"game-mod","dir":"/home/u/b/Half-Life/valve_WON"},{"id":"game-root","dir":"/home/u/b"},{"id":"wine-crashdumps","dir":"/home/u/.local/share/hlsr/crashdumps"}]
+      },
+      {"installPath":"/home/u/a/../b","env":{"XDG_DATA_HOME":"/home/u/.local/share"},"gameId":"ghosting-renewed","dirs":[{"id":"game-mod","dir":"/home/u/b/ghostingmod"},{"id":"game-root","dir":"/home/u/b"},{"id":"wine-crashdumps","dir":"/home/u/.local/share/hlsr/crashdumps"}]},
+      {"installPath":"/home/u/a/../b","env":{"XDG_DATA_HOME":"/home/u/.local/share"},"gameId":"hl2-4260","dirs":[{"id":"game-mod","dir":"/home/u/b/hl2"},{"id":"game-root","dir":"/home/u/b"},{"id":"wine-crashdumps","dir":"/home/u/.local/share/hlsr/crashdumps"}]},
+      {"installPath":"/home/u/a/../b","env":{"XDG_DATA_HOME":"/home/u/.local/share"},"gameId":"hl2-2707","dirs":[{"id":"game-mod","dir":"/home/u/b/hl2"},{"id":"game-root","dir":"/home/u/b"},{"id":"wine-crashdumps","dir":"/home/u/.local/share/hlsr/crashdumps"}]},
+      {"installPath":"/home/u/a/../b","env":{"XDG_DATA_HOME":"/home/u/.local/share"},"gameId":"hl2-5288","dirs":[{"id":"game-mod","dir":"/home/u/b/hl2"},{"id":"game-root","dir":"/home/u/b"},{"id":"wine-crashdumps","dir":"/home/u/.local/share/hlsr/crashdumps"}]},
+      {"installPath":"/home/u/a/../b","env":{"XDG_DATA_HOME":"/home/u/.local/share"},"gameId":"hl1-won","dirs":[{"id":"game-mod","dir":"/home/u/b/Half-Life/valve_WON"},{"id":"game-root","dir":"/home/u/b"},{"id":"wine-crashdumps","dir":"/home/u/.local/share/hlsr/crashdumps"}]},
+      {
+        "installPath": "/home/u/a/../b",
+        "env": {"XDG_DATA_HOME":"/home/u/.local/share"},
+        "gameId": "unknown-game",
+        "dirs": [{"id":"game-mod","dir":"/home/u/b/ghostingmod"},{"id":"game-mod","dir":"/home/u/b/hl2"},{"id":"game-mod","dir":"/home/u/b/hl2"},{"id":"game-mod","dir":"/home/u/b/hl2"},{"id":"game-mod","dir":"/home/u/b/Half-Life/valve_WON"},{"id":"game-root","dir":"/home/u/b"},{"id":"wine-crashdumps","dir":"/home/u/.local/share/hlsr/crashdumps"}]
+      },
+      {
+        "installPath": "/home/u/a/../b",
+        "env": {"XDG_DATA_HOME":"/home/u/.local/share"},
+        "gameId": "",
+        "dirs": [{"id":"game-mod","dir":"/home/u/b/ghostingmod"},{"id":"game-mod","dir":"/home/u/b/hl2"},{"id":"game-mod","dir":"/home/u/b/hl2"},{"id":"game-mod","dir":"/home/u/b/hl2"},{"id":"game-mod","dir":"/home/u/b/Half-Life/valve_WON"},{"id":"game-root","dir":"/home/u/b"},{"id":"wine-crashdumps","dir":"/home/u/.local/share/hlsr/crashdumps"}]
+      },
+      {
+        "installPath": "/home/u/a/../b",
+        "env": {"LOCALAPPDATA":"/wine/local","XDG_DATA_HOME":"/home/u/.local/share"},
+        "gameId": null,
+        "dirs": [{"id":"game-mod","dir":"/home/u/b/ghostingmod"},{"id":"game-mod","dir":"/home/u/b/hl2"},{"id":"game-mod","dir":"/home/u/b/hl2"},{"id":"game-mod","dir":"/home/u/b/hl2"},{"id":"game-mod","dir":"/home/u/b/Half-Life/valve_WON"},{"id":"game-root","dir":"/home/u/b"},{"id":"wer-crashdumps","dir":"/wine/local/CrashDumps"},{"id":"wine-crashdumps","dir":"/home/u/.local/share/hlsr/crashdumps"}]
+      },
+      {"installPath":"/home/u/a/../b","env":{"LOCALAPPDATA":"/wine/local","XDG_DATA_HOME":"/home/u/.local/share"},"gameId":"ghosting-renewed","dirs":[{"id":"game-mod","dir":"/home/u/b/ghostingmod"},{"id":"game-root","dir":"/home/u/b"},{"id":"wer-crashdumps","dir":"/wine/local/CrashDumps"},{"id":"wine-crashdumps","dir":"/home/u/.local/share/hlsr/crashdumps"}]},
+      {"installPath":"/home/u/a/../b","env":{"LOCALAPPDATA":"/wine/local","XDG_DATA_HOME":"/home/u/.local/share"},"gameId":"hl2-4260","dirs":[{"id":"game-mod","dir":"/home/u/b/hl2"},{"id":"game-root","dir":"/home/u/b"},{"id":"wer-crashdumps","dir":"/wine/local/CrashDumps"},{"id":"wine-crashdumps","dir":"/home/u/.local/share/hlsr/crashdumps"}]},
+      {"installPath":"/home/u/a/../b","env":{"LOCALAPPDATA":"/wine/local","XDG_DATA_HOME":"/home/u/.local/share"},"gameId":"hl2-2707","dirs":[{"id":"game-mod","dir":"/home/u/b/hl2"},{"id":"game-root","dir":"/home/u/b"},{"id":"wer-crashdumps","dir":"/wine/local/CrashDumps"},{"id":"wine-crashdumps","dir":"/home/u/.local/share/hlsr/crashdumps"}]},
+      {"installPath":"/home/u/a/../b","env":{"LOCALAPPDATA":"/wine/local","XDG_DATA_HOME":"/home/u/.local/share"},"gameId":"hl2-5288","dirs":[{"id":"game-mod","dir":"/home/u/b/hl2"},{"id":"game-root","dir":"/home/u/b"},{"id":"wer-crashdumps","dir":"/wine/local/CrashDumps"},{"id":"wine-crashdumps","dir":"/home/u/.local/share/hlsr/crashdumps"}]},
+      {"installPath":"/home/u/a/../b","env":{"LOCALAPPDATA":"/wine/local","XDG_DATA_HOME":"/home/u/.local/share"},"gameId":"hl1-won","dirs":[{"id":"game-mod","dir":"/home/u/b/Half-Life/valve_WON"},{"id":"game-root","dir":"/home/u/b"},{"id":"wer-crashdumps","dir":"/wine/local/CrashDumps"},{"id":"wine-crashdumps","dir":"/home/u/.local/share/hlsr/crashdumps"}]},
+      {
+        "installPath": "/home/u/a/../b",
+        "env": {"LOCALAPPDATA":"/wine/local","XDG_DATA_HOME":"/home/u/.local/share"},
+        "gameId": "unknown-game",
+        "dirs": [{"id":"game-mod","dir":"/home/u/b/ghostingmod"},{"id":"game-mod","dir":"/home/u/b/hl2"},{"id":"game-mod","dir":"/home/u/b/hl2"},{"id":"game-mod","dir":"/home/u/b/hl2"},{"id":"game-mod","dir":"/home/u/b/Half-Life/valve_WON"},{"id":"game-root","dir":"/home/u/b"},{"id":"wer-crashdumps","dir":"/wine/local/CrashDumps"},{"id":"wine-crashdumps","dir":"/home/u/.local/share/hlsr/crashdumps"}]
+      },
+      {
+        "installPath": "/home/u/a/../b",
+        "env": {"LOCALAPPDATA":"/wine/local","XDG_DATA_HOME":"/home/u/.local/share"},
+        "gameId": "",
+        "dirs": [{"id":"game-mod","dir":"/home/u/b/ghostingmod"},{"id":"game-mod","dir":"/home/u/b/hl2"},{"id":"game-mod","dir":"/home/u/b/hl2"},{"id":"game-mod","dir":"/home/u/b/hl2"},{"id":"game-mod","dir":"/home/u/b/Half-Life/valve_WON"},{"id":"game-root","dir":"/home/u/b"},{"id":"wer-crashdumps","dir":"/wine/local/CrashDumps"},{"id":"wine-crashdumps","dir":"/home/u/.local/share/hlsr/crashdumps"}]
+      }
+    ]
+  },
+  "scenarios": [
+    {
+      "name": "Proton: выход с кодом 0 и свежий минидамп в корне игры (linux-selftest)",
+      "steps": [
+        {"op":"write","path":"game/hl2_old.mdmp","size":3,"mtime":1760000000},
+        {"op":"snapshot","name":"s","install":"game","gameId":null},
+        {"op":"left","snapshot":"s","install":"game","startedAtMs":1760000100000,"gameId":null},
+        {"op":"write","path":"game/hl2_20261005_235150_1_InvalidParameterHandler.mdmp","size":4,"mtime":1760000200},
+        {"op":"left","snapshot":"s","install":"game","startedAtMs":1760000100000,"gameId":null},
+        {"op":"left","snapshot":null}
+      ],
+      "results": [{"step":"snapshot","entries":[{"path":"<root>/game/hl2_old.mdmp","size":3,"mtimeMs":1760000000000,"zone":"game-root"}]},{"step":"left","left":false},{"step":"left","left":true},{"step":"left","left":false}]
+    },
+    {
+      "name": "Зоны: папка мода, корень, CrashDumps (только exe игры), дампы Wine; порядок и отсечка по старту",
+      "steps": [
+        {"op":"dir","path":"game/ghostingmod"},
+        {"op":"dir","path":"game/hl2"},
+        {"op":"dir","path":"game/Half-Life/valve_WON"},
+        {"op":"write","path":"game/hl2/old.dmp","size":10,"mtime":1760000000},
+        {"op":"write","path":"local/CrashDumps/hl2.exe.100.dmp","size":10,"mtime":1760000000},
+        {"op":"snapshot","name":"hl2","install":"game","gameId":"hl2-4260"},
+        {"op":"snapshot","name":"all","install":"game","gameId":null},
+        {"op":"snapshot","name":"ghost","install":"game","gameId":"ghosting-renewed"},
+        {"op":"snapshot","name":"hl1","install":"game","gameId":"hl1-won"},
+        {"op":"write","path":"game/hl2/new.dmp","size":20,"mtime":1760001000},
+        {"op":"write","path":"game/hl2/newer.mdmp","size":21,"mtime":1760001005},
+        {"op":"write","path":"game/hl2/old.dmp","size":11,"mtime":1760001001},
+        {"op":"write","path":"game/hl2/stale.dmp","size":22,"mtime":1760000500},
+        {"op":"write","path":"game/hl2/edge.dmp","size":23,"mtime":1760000998},
+        {"op":"write","path":"game/hl2/notes.txt","size":5,"mtime":1760001000},
+        {"op":"dir","path":"game/hl2/folder.dmp"},
+        {"op":"write","path":"game/root.dmp","size":30,"mtime":1760001002},
+        {"op":"write","path":"game/ROOT2.DMP","size":31,"mtime":1760001003},
+        {"op":"write","path":"game/ghostingmod/ghost.dmp","size":40,"mtime":1760001004},
+        {"op":"write","path":"game/Half-Life/valve_WON/won.mdmp","size":41,"mtime":1760001006},
+        {"op":"write","path":"local/CrashDumps/hl2.exe.200.dmp","size":50,"mtime":1760001007},
+        {"op":"write","path":"local/CrashDumps/HL2.EXE.201.dmp","size":51,"mtime":1760001008},
+        {"op":"write","path":"local/CrashDumps/LiveSplit.exe.300.dmp","size":52,"mtime":1760001009},
+        {"op":"write","path":"local/CrashDumps/hl.exe.400.dmp","size":53,"mtime":1760001010},
+        {"op":"write","path":"local/CrashDumps/hl2.exe.100.dmp","size":10,"mtime":1760000000},
+        {"op":"write","path":"xdg/hlsr/crashdumps/wine.mdmp","size":60,"mtime":1760001011},
+        {"op":"find","snapshot":"hl2","install":"game","startedAtMs":1760001000000,"gameId":"hl2-4260"},
+        {"op":"find","snapshot":"all","install":"game","startedAtMs":1760001000000,"gameId":null},
+        {"op":"find","snapshot":"ghost","install":"game","startedAtMs":1760001000000,"gameId":"ghosting-renewed"},
+        {"op":"find","snapshot":"hl1","install":"game","startedAtMs":1760001000000,"gameId":"hl1-won"},
+        {"op":"find","snapshot":"hl2","install":"game","startedAtMs":null,"gameId":"hl2-4260"},
+        {"op":"find","snapshot":null,"install":"game","startedAtMs":0,"gameId":"hl2-4260"},
+        {"op":"find","snapshot":"hl2","install":null,"startedAtMs":1760001000000,"gameId":"hl2-4260"},
+        {"op":"left","snapshot":"hl2","install":"game","startedAtMs":1760001000000,"gameId":"hl2-4260"},
+        {"op":"left","snapshot":"hl2","install":null,"startedAtMs":1760001000000,"gameId":"hl2-4260"},
+        {"op":"remove","path":"game/hl2/new.dmp"},
+        {"op":"find","snapshot":"hl2","install":"game","startedAtMs":1760001000000,"gameId":"hl2-4260"}
+      ],
+      "results": [
+        {"step":"snapshot","entries":[{"path":"<root>/game/hl2/old.dmp","size":10,"mtimeMs":1760000000000,"zone":"game-mod"},{"path":"<root>/local/CrashDumps/hl2.exe.100.dmp","size":10,"mtimeMs":1760000000000,"zone":"wer-crashdumps"}]},
+        {"step":"snapshot","entries":[{"path":"<root>/game/hl2/old.dmp","size":10,"mtimeMs":1760000000000,"zone":"game-mod"},{"path":"<root>/local/CrashDumps/hl2.exe.100.dmp","size":10,"mtimeMs":1760000000000,"zone":"wer-crashdumps"}]},
+        {"step":"snapshot","entries":[{"path":"<root>/local/CrashDumps/hl2.exe.100.dmp","size":10,"mtimeMs":1760000000000,"zone":"wer-crashdumps"}]},
+        {"step":"snapshot","entries":[]},
+        {
+          "step": "find",
+          "found": [
+            {"path":"<root>/game/hl2/newer.mdmp","size":21,"mtimeMs":1760001005000,"zone":"game-mod"},
+            {"path":"<root>/game/hl2/old.dmp","size":11,"mtimeMs":1760001001000,"zone":"game-mod"},
+            {"path":"<root>/game/hl2/new.dmp","size":20,"mtimeMs":1760001000000,"zone":"game-mod"},
+            {"path":"<root>/game/hl2/edge.dmp","size":23,"mtimeMs":1760000998000,"zone":"game-mod"},
+            {"path":"<root>/game/ROOT2.DMP","size":31,"mtimeMs":1760001003000,"zone":"game-root"},
+            {"path":"<root>/game/root.dmp","size":30,"mtimeMs":1760001002000,"zone":"game-root"},
+            {"path":"<root>/local/CrashDumps/HL2.EXE.201.dmp","size":51,"mtimeMs":1760001008000,"zone":"wer-crashdumps"},
+            {"path":"<root>/local/CrashDumps/hl2.exe.200.dmp","size":50,"mtimeMs":1760001007000,"zone":"wer-crashdumps"}
+          ]
+        },
+        {
+          "step": "find",
+          "found": [
+            {"path":"<root>/game/Half-Life/valve_WON/won.mdmp","size":41,"mtimeMs":1760001006000,"zone":"game-mod"},
+            {"path":"<root>/game/hl2/newer.mdmp","size":21,"mtimeMs":1760001005000,"zone":"game-mod"},
+            {"path":"<root>/game/ghostingmod/ghost.dmp","size":40,"mtimeMs":1760001004000,"zone":"game-mod"},
+            {"path":"<root>/game/hl2/old.dmp","size":11,"mtimeMs":1760001001000,"zone":"game-mod"},
+            {"path":"<root>/game/hl2/new.dmp","size":20,"mtimeMs":1760001000000,"zone":"game-mod"},
+            {"path":"<root>/game/hl2/edge.dmp","size":23,"mtimeMs":1760000998000,"zone":"game-mod"},
+            {"path":"<root>/game/ROOT2.DMP","size":31,"mtimeMs":1760001003000,"zone":"game-root"},
+            {"path":"<root>/game/root.dmp","size":30,"mtimeMs":1760001002000,"zone":"game-root"},
+            {"path":"<root>/xdg/hlsr/crashdumps/wine.mdmp","size":60,"mtimeMs":1760001011000,"zone":"wine-crashdumps"},
+            {"path":"<root>/local/CrashDumps/hl.exe.400.dmp","size":53,"mtimeMs":1760001010000,"zone":"wer-crashdumps"},
+            {"path":"<root>/local/CrashDumps/LiveSplit.exe.300.dmp","size":52,"mtimeMs":1760001009000,"zone":"wer-crashdumps"},
+            {"path":"<root>/local/CrashDumps/HL2.EXE.201.dmp","size":51,"mtimeMs":1760001008000,"zone":"wer-crashdumps"},
+            {"path":"<root>/local/CrashDumps/hl2.exe.200.dmp","size":50,"mtimeMs":1760001007000,"zone":"wer-crashdumps"}
+          ]
+        },
+        {
+          "step": "find",
+          "found": [
+            {"path":"<root>/game/ghostingmod/ghost.dmp","size":40,"mtimeMs":1760001004000,"zone":"game-mod"},
+            {"path":"<root>/game/ROOT2.DMP","size":31,"mtimeMs":1760001003000,"zone":"game-root"},
+            {"path":"<root>/game/root.dmp","size":30,"mtimeMs":1760001002000,"zone":"game-root"},
+            {"path":"<root>/local/CrashDumps/HL2.EXE.201.dmp","size":51,"mtimeMs":1760001008000,"zone":"wer-crashdumps"},
+            {"path":"<root>/local/CrashDumps/hl2.exe.200.dmp","size":50,"mtimeMs":1760001007000,"zone":"wer-crashdumps"}
+          ]
+        },
+        {
+          "step": "find",
+          "found": [{"path":"<root>/game/Half-Life/valve_WON/won.mdmp","size":41,"mtimeMs":1760001006000,"zone":"game-mod"},{"path":"<root>/game/ROOT2.DMP","size":31,"mtimeMs":1760001003000,"zone":"game-root"},{"path":"<root>/game/root.dmp","size":30,"mtimeMs":1760001002000,"zone":"game-root"},{"path":"<root>/local/CrashDumps/hl.exe.400.dmp","size":53,"mtimeMs":1760001010000,"zone":"wer-crashdumps"}]
+        },
+        {
+          "step": "find",
+          "found": [
+            {"path":"<root>/game/hl2/newer.mdmp","size":21,"mtimeMs":1760001005000,"zone":"game-mod"},
+            {"path":"<root>/game/hl2/old.dmp","size":11,"mtimeMs":1760001001000,"zone":"game-mod"},
+            {"path":"<root>/game/hl2/new.dmp","size":20,"mtimeMs":1760001000000,"zone":"game-mod"},
+            {"path":"<root>/game/hl2/edge.dmp","size":23,"mtimeMs":1760000998000,"zone":"game-mod"},
+            {"path":"<root>/game/hl2/stale.dmp","size":22,"mtimeMs":1760000500000,"zone":"game-mod"},
+            {"path":"<root>/game/ROOT2.DMP","size":31,"mtimeMs":1760001003000,"zone":"game-root"},
+            {"path":"<root>/game/root.dmp","size":30,"mtimeMs":1760001002000,"zone":"game-root"},
+            {"path":"<root>/local/CrashDumps/HL2.EXE.201.dmp","size":51,"mtimeMs":1760001008000,"zone":"wer-crashdumps"},
+            {"path":"<root>/local/CrashDumps/hl2.exe.200.dmp","size":50,"mtimeMs":1760001007000,"zone":"wer-crashdumps"}
+          ]
+        },
+        {
+          "step": "find",
+          "found": [
+            {"path":"<root>/game/hl2/newer.mdmp","size":21,"mtimeMs":1760001005000,"zone":"game-mod"},
+            {"path":"<root>/game/hl2/old.dmp","size":11,"mtimeMs":1760001001000,"zone":"game-mod"},
+            {"path":"<root>/game/hl2/new.dmp","size":20,"mtimeMs":1760001000000,"zone":"game-mod"},
+            {"path":"<root>/game/hl2/edge.dmp","size":23,"mtimeMs":1760000998000,"zone":"game-mod"},
+            {"path":"<root>/game/hl2/stale.dmp","size":22,"mtimeMs":1760000500000,"zone":"game-mod"},
+            {"path":"<root>/game/ROOT2.DMP","size":31,"mtimeMs":1760001003000,"zone":"game-root"},
+            {"path":"<root>/game/root.dmp","size":30,"mtimeMs":1760001002000,"zone":"game-root"},
+            {"path":"<root>/local/CrashDumps/HL2.EXE.201.dmp","size":51,"mtimeMs":1760001008000,"zone":"wer-crashdumps"},
+            {"path":"<root>/local/CrashDumps/hl2.exe.200.dmp","size":50,"mtimeMs":1760001007000,"zone":"wer-crashdumps"},
+            {"path":"<root>/local/CrashDumps/hl2.exe.100.dmp","size":10,"mtimeMs":1760000000000,"zone":"wer-crashdumps"}
+          ]
+        },
+        {"step":"find","found":[{"path":"<root>/local/CrashDumps/HL2.EXE.201.dmp","size":51,"mtimeMs":1760001008000,"zone":"wer-crashdumps"},{"path":"<root>/local/CrashDumps/hl2.exe.200.dmp","size":50,"mtimeMs":1760001007000,"zone":"wer-crashdumps"}]},
+        {"step":"left","left":true},
+        {"step":"left","left":false},
+        {
+          "step": "find",
+          "found": [
+            {"path":"<root>/game/hl2/newer.mdmp","size":21,"mtimeMs":1760001005000,"zone":"game-mod"},
+            {"path":"<root>/game/hl2/old.dmp","size":11,"mtimeMs":1760001001000,"zone":"game-mod"},
+            {"path":"<root>/game/hl2/edge.dmp","size":23,"mtimeMs":1760000998000,"zone":"game-mod"},
+            {"path":"<root>/game/ROOT2.DMP","size":31,"mtimeMs":1760001003000,"zone":"game-root"},
+            {"path":"<root>/game/root.dmp","size":30,"mtimeMs":1760001002000,"zone":"game-root"},
+            {"path":"<root>/local/CrashDumps/HL2.EXE.201.dmp","size":51,"mtimeMs":1760001008000,"zone":"wer-crashdumps"},
+            {"path":"<root>/local/CrashDumps/hl2.exe.200.dmp","size":50,"mtimeMs":1760001007000,"zone":"wer-crashdumps"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "isAllowedDumpPath: только дампы из папок поиска",
+      "steps": [
+        {"op":"write","path":"game/hl2/a.dmp","size":1,"mtime":1760000000},
+        {"op":"write","path":"game/hl2/a.txt","size":1,"mtime":1760000000},
+        {"op":"write","path":"game/root.mdmp","size":1,"mtime":1760000000},
+        {"op":"write","path":"game/deep/inside/x.dmp","size":1,"mtime":1760000000},
+        {"op":"write","path":"local/CrashDumps/LiveSplit.exe.1.dmp","size":1,"mtime":1760000000},
+        {"op":"write","path":"xdg/hlsr/crashdumps/w.dmp","size":1,"mtime":1760000000},
+        {"op":"write","path":"outside/o.dmp","size":1,"mtime":1760000000},
+        {"op":"allowed","candidate":"game/hl2/a.dmp","install":"game"},
+        {"op":"allowed","candidate":"game/hl2/a.txt","install":"game"},
+        {"op":"allowed","candidate":"game/root.mdmp","install":"game"},
+        {"op":"allowed","candidate":"game/deep/inside/x.dmp","install":"game"},
+        {"op":"allowed","candidate":"local/CrashDumps/LiveSplit.exe.1.dmp","install":"game"},
+        {"op":"allowed","candidate":"xdg/hlsr/crashdumps/w.dmp","install":"game"},
+        {"op":"allowed","candidate":"outside/o.dmp","install":"game"},
+        {"op":"allowed","candidate":"game/hl2/../../outside/o.dmp","install":"game"},
+        {"op":"allowed","candidate":"game/hl2/missing.dmp","install":"game"},
+        {"op":"allowed","candidate":"game/hl2/a.dmp","install":null},
+        {"op":"allowed","candidate":"local/CrashDumps/LiveSplit.exe.1.dmp","install":null},
+        {"op":"allowed","candidate":"","install":"game"}
+      ],
+      "results": [
+        {"step":"allowed","allowed":true},
+        {"step":"allowed","allowed":false},
+        {"step":"allowed","allowed":true},
+        {"step":"allowed","allowed":true},
+        {"step":"allowed","allowed":true},
+        {"step":"allowed","allowed":true},
+        {"step":"allowed","allowed":false},
+        {"step":"allowed","allowed":false},
+        {"step":"allowed","allowed":false},
+        {"step":"allowed","allowed":false},
+        {"step":"allowed","allowed":true},
+        {"step":"allowed","allowed":false}
+      ]
+    }
+  ]
+}

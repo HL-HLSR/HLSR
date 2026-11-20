@@ -1,0 +1,4444 @@
+{
+  "source": {
+    "repo": "https://github.com/yavats/hl1-scripts",
+    "commit": "64b83c58a31253de7b7caa75036f31f73a882423"
+  },
+  "chapters": [
+    {
+      "id": "basic-scripts",
+      "title": "Basic scripts"
+    },
+    {
+      "id": "anomalous-materials",
+      "title": "Anomalous Materials"
+    },
+    {
+      "id": "blast-pit",
+      "title": "Blast Pit"
+    },
+    {
+      "id": "power-up",
+      "title": "Power Up"
+    },
+    {
+      "id": "apprehension",
+      "title": "Apprehension"
+    },
+    {
+      "id": "residue-processing",
+      "title": "Residue Processing"
+    },
+    {
+      "id": "surface-tension",
+      "title": "Surface Tension"
+    },
+    {
+      "id": "forget-about-freeman",
+      "title": "Forget About Freeman"
+    },
+    {
+      "id": "lambda-core",
+      "title": "Lambda Core"
+    },
+    {
+      "id": "xen",
+      "title": "Xen"
+    },
+    {
+      "id": "gonarchs-lair",
+      "title": "Gonarch's Lair"
+    },
+    {
+      "id": "interloper",
+      "title": "Interloper"
+    }
+  ],
+  "scripts": [
+    {
+      "id": "usespam-script",
+      "chapter": "basic-scripts",
+      "section": "Usespam script",
+      "title": "Usespam script",
+      "mark": null,
+      "credit": null,
+      "notes": [],
+      "usage": "hold the script key",
+      "video": null,
+      "save": null,
+      "namespace": null,
+      "aliases": [
+        [
+          "+usespam",
+          "alias _zspecial @use;@use1"
+        ],
+        [
+          "-usespam",
+          "alias _zspecial;-use"
+        ],
+        [
+          "@use1",
+          "+use;alias @use @use2;bxt_append _zspecial"
+        ],
+        [
+          "@use2",
+          "w;alias @use @use3;bxt_append _zspecial"
+        ],
+        [
+          "@use3",
+          "-use;alias @use @use4;bxt_append _zspecial"
+        ],
+        [
+          "@use4",
+          "w;alias @use @use1;bxt_append _zspecial"
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "+usespam",
+          "guideKey": null
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "duckroll-aka-duckspam-script",
+      "chapter": "basic-scripts",
+      "section": "Duckroll (aka Duckspam) script",
+      "title": "Duckroll (aka Duckspam) script",
+      "mark": null,
+      "credit": null,
+      "notes": [],
+      "usage": "*Only use this for waterboosts, `+bxt_tas_ducktap` is much better for movement purposes*\nhold the script key",
+      "video": null,
+      "save": null,
+      "namespace": null,
+      "aliases": [
+        [
+          "+duckroll",
+          "alias _zspecial @duck;@dr1"
+        ],
+        [
+          "-duckroll",
+          "alias _zspecial;-duck"
+        ],
+        [
+          "@dr1",
+          "+duck;alias @duck @dr2;bxt_append _zspecial"
+        ],
+        [
+          "@dr2",
+          "w;alias @duck @dr3;bxt_append _zspecial"
+        ],
+        [
+          "@dr3",
+          "-duck;alias @duck @dr4;bxt_append _zspecial"
+        ],
+        [
+          "@dr4",
+          "w;alias @duck @dr1;bxt_append _zspecial"
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "+duckroll",
+          "guideKey": null
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "hold-script",
+      "chapter": "basic-scripts",
+      "section": "Fps scripts",
+      "title": "Hold script",
+      "mark": null,
+      "credit": null,
+      "notes": [],
+      "usage": "*If you want another value, replace `20` in the `fps_max 20` command and alias names (`+/-fps_20_hold`, `fps_20_reset`)*\nhold the script key to lower fps, release to change back to default",
+      "video": null,
+      "save": null,
+      "namespace": null,
+      "aliases": [
+        [
+          "+fps_20_hold",
+          "fps_max 20; alias -fps_20_hold fps_20_reset"
+        ],
+        [
+          "fps_20_reset",
+          "fps_max 100; alias -fps_20_hold"
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "+fps_20_hold",
+          "guideKey": null
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "toggle-script",
+      "chapter": "basic-scripts",
+      "section": "Fps scripts",
+      "title": "Toggle script",
+      "mark": null,
+      "credit": null,
+      "notes": [],
+      "usage": "press the script key to lower fps, press again to change back to default",
+      "video": null,
+      "save": null,
+      "namespace": null,
+      "aliases": [
+        [
+          "fps_20_toggle",
+          "fps_20_toggle1"
+        ],
+        [
+          "fps_20_toggle1",
+          "fps_max 20; alias fps_20_toggle fps_20_toggle2"
+        ],
+        [
+          "fps_20_toggle2",
+          "fps_max 100; alias fps_20_toggle fps_20_toggle1"
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "fps_20_toggle",
+          "guideKey": null
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "4-fps-script",
+      "chapter": "basic-scripts",
+      "section": "Fps scripts",
+      "title": "4 fps script",
+      "mark": null,
+      "credit": null,
+      "notes": [],
+      "usage": "press the script key once",
+      "video": null,
+      "save": null,
+      "namespace": null,
+      "aliases": [
+        [
+          "4fpsbind",
+          "fps_max 4; w; fps_max 100"
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "4fpsbind",
+          "guideKey": null
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "180-gauss-boost",
+      "chapter": "basic-scripts",
+      "section": "Gauss scripts",
+      "title": "180° Gauss boost",
+      "mark": null,
+      "credit": null,
+      "notes": [],
+      "usage": "hold the script key to charge, release to boost",
+      "video": null,
+      "save": null,
+      "namespace": null,
+      "aliases": [
+        [
+          "_taubo",
+          ""
+        ],
+        [
+          "_taubofunc",
+          "cl_pitchup 180;cl_pitchdown -180;-attack2;wait;cl_pitchup 89;cl_pitchdown 89;force_centerview"
+        ],
+        [
+          "+tau",
+          "+attack2;alias _taubo _taubofunc"
+        ],
+        [
+          "-tau",
+          "_taubo;alias _taubo"
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "+tau",
+          "guideKey": null
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "alternative-gauss-boost-func-c4a1d-interloper-selfgauss",
+      "chapter": "basic-scripts",
+      "section": "Gauss scripts",
+      "title": "Alternative gauss boost func (c4a1d Interloper selfgauss)",
+      "mark": null,
+      "credit": null,
+      "notes": [],
+      "usage": "either use a bind for `alias _taubofunc _taubofunc2` to change the `+tau` script behaviour or duplicate it, rename and make a rebind (`bind key \"bind mouse2 +tau2\"`, for example)",
+      "video": {
+        "id": "EJgwb4_xUXU",
+        "start": 0
+      },
+      "save": "https://github.com/yavats/hl1-scripts/raw/refs/heads/main/Practice%20saves/taubofunc2.sav",
+      "namespace": null,
+      "aliases": [
+        [
+          "_taubofunc2",
+          "cl_pitchup 165;cl_pitchdown -165;-attack2;w;cl_pitchup 89;cl_pitchdown 89;force_centerview"
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "alias _taubofunc _taubofunc2",
+          "guideKey": null
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "slowgauss-script",
+      "chapter": "basic-scripts",
+      "section": "Gauss scripts",
+      "title": "Slowgauss script",
+      "mark": null,
+      "credit": null,
+      "notes": [],
+      "usage": "start charging with `mouse2`, immediately switch to `mouse1`, wait around 3s for the gauss to be fully charged and press the script key to boost. Note that the script has a 0.5s delay to make sure the shot happens (necessary due to shooting being cycle-based). Also you need to have exactly 1 or 2 ammo for this trick to work.",
+      "video": {
+        "id": "d7jesoiDjr4",
+        "start": 0
+      },
+      "save": "https://github.com/yavats/hl1-scripts/raw/refs/heads/main/Practice%20saves/slowgauss.sav",
+      "namespace": null,
+      "aliases": [
+        [
+          "slowgauss",
+          "cl_pitchup 180;cl_pitchdown -180;-attack;w 50;cl_pitchup 89;cl_pitchdown 89;force_centerview"
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "slowgauss",
+          "guideKey": null
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "gauss-script-switcher",
+      "chapter": "basic-scripts",
+      "section": "Gauss scripts",
+      "title": "Gauss script switcher",
+      "mark": null,
+      "credit": null,
+      "notes": [],
+      "usage": "press the script key to change the `mouse2` bind to `+tau`, press again to revert the default bind (`+attack2`) back",
+      "video": null,
+      "save": null,
+      "namespace": null,
+      "aliases": [
+        [
+          "tauswitch",
+          "tauswitch1"
+        ],
+        [
+          "tauswitch1",
+          "bind mouse2 +tau; say gaussboost_ON; alias tauswitch tauswitch2"
+        ],
+        [
+          "tauswitch2",
+          "bind mouse2 +attack2; say gaussboost_OFF; alias tauswitch tauswitch1"
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "tauswitch",
+          "guideKey": null
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "2000-ups",
+      "chapter": "basic-scripts",
+      "section": "Object boost scripts",
+      "title": "2000 UPS",
+      "mark": null,
+      "credit": null,
+      "notes": [],
+      "usage": "",
+      "video": null,
+      "save": null,
+      "namespace": null,
+      "aliases": [
+        [
+          "obbo2000",
+          "+use;w 11;-use;+jump;w;-jump"
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "obbo2000",
+          "guideKey": null
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "1600-ups",
+      "chapter": "basic-scripts",
+      "section": "Object boost scripts",
+      "title": "1600 UPS",
+      "mark": null,
+      "credit": null,
+      "notes": [],
+      "usage": "",
+      "video": null,
+      "save": null,
+      "namespace": null,
+      "aliases": [
+        [
+          "obbo1600",
+          "+use;w 10;-use;+jump;w;-jump"
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "obbo1600",
+          "guideKey": null
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "1300-ups",
+      "chapter": "basic-scripts",
+      "section": "Object boost scripts",
+      "title": "1300 UPS",
+      "mark": null,
+      "credit": null,
+      "notes": [],
+      "usage": "",
+      "video": null,
+      "save": null,
+      "namespace": null,
+      "aliases": [
+        [
+          "obbo1300",
+          "+use;w 9;-use;+jump;w;-jump"
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "obbo1300",
+          "guideKey": null
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "1000-ups",
+      "chapter": "basic-scripts",
+      "section": "Object boost scripts",
+      "title": "1000 UPS",
+      "mark": null,
+      "credit": null,
+      "notes": [],
+      "usage": "",
+      "video": null,
+      "save": null,
+      "namespace": null,
+      "aliases": [
+        [
+          "obbo1000",
+          "+use;w 8;-use;+jump;w;-jump"
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "obbo1000",
+          "guideKey": null
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "800-ups",
+      "chapter": "basic-scripts",
+      "section": "Object boost scripts",
+      "title": "800 UPS",
+      "mark": null,
+      "credit": null,
+      "notes": [],
+      "usage": "",
+      "video": null,
+      "save": null,
+      "namespace": null,
+      "aliases": [
+        [
+          "obbo800",
+          "+use;w 7;-use;+jump;w;-jump"
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "obbo800",
+          "guideKey": null
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "forward-boost-1500-1700-ups",
+      "chapter": "basic-scripts",
+      "section": "Object boost scripts",
+      "title": "Forward boost (~1500-1700 UPS)",
+      "mark": null,
+      "credit": null,
+      "notes": [],
+      "usage": "",
+      "video": null,
+      "save": null,
+      "namespace": null,
+      "aliases": [
+        [
+          "obboshoot",
+          "+use;w 10;-use;+jump;w;-jump;+attack;w;-attack"
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "obboshoot",
+          "guideKey": null
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "elevator-reverse-script-v1",
+      "chapter": "anomalous-materials",
+      "section": "Elevator reverse scripts",
+      "title": "Elevator reverse script v1",
+      "mark": "red",
+      "credit": "javac_",
+      "notes": [
+        "Less consistent than [v2](#elevator-reverse-script-v2)",
+        "Faster by 0.1-0.2s",
+        "Sometimes doesn't work even if everything was done correctly, probably has something to do with the elevator button cycles (?)"
+      ],
+      "usage": "Go into the left corner, set the angles and activate the first part of the script. Wait until the elevator reaches the highest point and activate the second part.\n\n- **Angles:**\n  - Pitch: doesn't matter\n  - Yaw: `89.9 - 91.0`\n- **Activation timing:**\n  - 1st part: any moment after pressing the elevator button\n  - 2nd part: right after the elevator reaches its highest position\n- **Keypresses**:\n  - 1st part: `2 4 2`\n  - 2nd part: `3 13 13 13 13 13 13` (`3` and then `13` six times)",
+      "video": {
+        "id": "g3vjjVVva70",
+        "start": 0
+      },
+      "save": "https://github.com/yavats/hl1-scripts/raw/refs/heads/main/Practice%20saves/elevator_reverse.sav",
+      "namespace": null,
+      "aliases": [
+        [
+          "wolk1",
+          "fps_max 100; w 50; alias wolk wolk2; alias wolkmove +moveright"
+        ],
+        [
+          "wolk2",
+          "w 8; +speed; w 17; -speed; -moveright; alias wolkmove; alias wolk"
+        ],
+        [
+          "wolk",
+          "wolk1"
+        ],
+        [
+          "wolkmove",
+          ""
+        ],
+        [
+          "elev1",
+          "fps_max 100; w 93; alias elevmove +forward; alias elev elev2"
+        ],
+        [
+          "elev2",
+          "force_centerview; fps_max 4; w; fps_max 100; w 10; +duck; alias elevmove +moveright; alias elev elev3"
+        ],
+        [
+          "elev3",
+          "w 29; -moveright; -forward; w 20; alias elevmove +left; alias elev elev4"
+        ],
+        [
+          "elev4",
+          "w 10; alias elevmove +forward; alias elev elev5"
+        ],
+        [
+          "elev5",
+          "+use; w; -use; w 12; -left; w 80; alias elevmove +moveright; alias elev elev6"
+        ],
+        [
+          "elev6",
+          "alias elevmove +right; alias elev elev7"
+        ],
+        [
+          "elev7",
+          "w 10; fps_max 4; w; fps_max 100; w; -forward; -duck; fps_max 4; w; fps_max 100; w 2; -moveright; -right; alias elev; alias elevmove"
+        ],
+        [
+          "elev",
+          "elev1"
+        ],
+        [
+          "elevmove",
+          ""
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "wolk",
+          "guideKey": "2"
+        },
+        {
+          "command": "wolkmove",
+          "guideKey": "4"
+        },
+        {
+          "command": "elev",
+          "guideKey": "3"
+        },
+        {
+          "command": "elevmove",
+          "guideKey": "1"
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "elevator-reverse-script-v2",
+      "chapter": "anomalous-materials",
+      "section": "Elevator reverse scripts",
+      "title": "Elevator reverse script v2",
+      "mark": "yellow",
+      "credit": "N4rk0t1k",
+      "notes": [
+        "Way more consistent than [v1](#elevator-reverse-script-v1) due to the fixed activation timing",
+        "Slightly slower",
+        "Still has the same button cycle timing issue as [v1](#elevator-reverse-script-v1)"
+      ],
+      "usage": "Hold `w` and press the `pre_amel` key (`mouse2` here) to activate the elevator button. Go into the left corner, set the angles and press the script keys.\n\n- **Angles:**\n  - Pitch: doesn't matter\n  - Yaw: `90.0 - 91.0` (~`90.5` is recommended)\n- **Activation timing:**\n  - none (the script starts with pressing the elevator button)\n- **Keypresses**:\n  - `mouse2`, `3 13 13 13 13 13 13 13 13 13` (`3` and then `13` nine times), then hold `w + d`\n- **Additional actions**:\n  - change sensitivity in the `amel_sens` alias to your default",
+      "video": {
+        "id": "CYudVS20Zxc",
+        "start": 0
+      },
+      "save": "https://github.com/yavats/hl1-scripts/raw/refs/heads/main/Practice%20saves/elevator_reverse.sav",
+      "namespace": null,
+      "aliases": [
+        [
+          "amel_use",
+          "cl_pitchup 30; cl_pitchdown -30; +use; w; -use; cl_pitchup 0; w; cl_pitchup 89; cl_pitchdown 89"
+        ],
+        [
+          "amel_fps",
+          "fps_max 4; w; fps_max 40"
+        ],
+        [
+          "pre_amel",
+          "fps_max 20; -back; -moveright; -moveleft; -jump; -duck; +use; w; -use; w 50; -forward; w 23; fps_max 38; w 28; alias AMEL amel1"
+        ],
+        [
+          "amel1",
+          "sensitivity 0; alias AMEL amel2; alias AMEL_MOVE +moveright"
+        ],
+        [
+          "amel2",
+          "w 8; -moveright; +use; w 6; -use; amel_fps; alias AMEL amel3; alias AMEL_MOVE +forward"
+        ],
+        [
+          "amel3",
+          "w 7; +duck; w 3; -forward; alias AMEL amel4; alias AMEL_MOVE +moveright"
+        ],
+        [
+          "amel4",
+          "w 10; alias AMEL amel5; alias AMEL_MOVE +forward"
+        ],
+        [
+          "amel5",
+          "w 5; -moveright; alias AMEL amel6; alias AMEL_MOVE +moveleft"
+        ],
+        [
+          "amel6",
+          "w 4; -moveleft; amel_use; w 3; -forward; w 4; amel_fps; alias AMEL amel7; alias AMEL_MOVE +moveleft"
+        ],
+        [
+          "amel7",
+          "w 10; alias AMEL amel8; alias AMEL_MOVE +forward"
+        ],
+        [
+          "amel8",
+          "w 10; -moveleft; w; alias AMEL amel9; alias AMEL_MOVE +right"
+        ],
+        [
+          "amel9",
+          "alias AMEL amel10; alias AMEL_MOVE +moveright"
+        ],
+        [
+          "amel10",
+          "w; fps_max 4; w 2; -moveright; fps_max 40; -right; -duck; -forward; fps_max 100; amel_sens; alias AMEL; alias AMEL_MOVE"
+        ],
+        [
+          "AMEL",
+          ""
+        ],
+        [
+          "AMEL_MOVE",
+          ""
+        ],
+        [
+          "amel_sens",
+          "sensitivity {sensitivity}"
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "pre_amel",
+          "guideKey": "MOUSE2"
+        },
+        {
+          "command": "AMEL",
+          "guideKey": "3"
+        },
+        {
+          "command": "AMEL_MOVE",
+          "guideKey": "1"
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "testchamber-b",
+      "chapter": "anomalous-materials",
+      "section": "Test Chamber scripts",
+      "title": "Testchamber B",
+      "mark": "green",
+      "credit": "Parklez, modified by javac_",
+      "notes": [
+        "Semi-automated (manual window landing)",
+        "The most consistent version",
+        "~1s slower than [Testchamber D](#testchamber-d)",
+        "Only use this one if you can't get anything else to work"
+      ],
+      "usage": "- **Angles:**\n  - Pitch: `30.0 - 40.0`\n  - Yaw: `125.05 - 125.09`\n- **Activation timing:**\n  - right after the cage starts going down\n- **Keypresses**:\n  - `0 90 90 90 90 90` (`0` and then `90` five times)\n- **Additional actions:**\n  - turn to the left after the script is done (after you hit the wall), so you hit the trigger and land on the reactor\n  - (optional, but very recommended) do the jumpbug at `23` or `30.3` fps",
+      "video": {
+        "id": "-R4quekIkF4",
+        "start": 0
+      },
+      "save": "https://github.com/yavats/hl1-scripts/raw/refs/heads/main/Practice%20saves/tc_b.sav",
+      "namespace": "tcb",
+      "aliases": [
+        [
+          "tcb_testchamber",
+          "tcb_tc1"
+        ],
+        [
+          "tcb_tmove",
+          ""
+        ],
+        [
+          "tcb_testchamber_reset",
+          "alias tcb_testchamber tcb_tc1; alias tcb_tmove; say tc_script_reset"
+        ],
+        [
+          "tcb_tc1",
+          "w 160;alias tcb_testchamber tcb_tc2; alias tcb_tmove +back"
+        ],
+        [
+          "tcb_tc2",
+          "alias tcb_testchamber tcb_tc3; alias tcb_tmove +moveright"
+        ],
+        [
+          "tcb_tc3",
+          "w 30;+use;w 4;-use;w 40;-moveright;-back;w 100;alias tcb_testchamber tcb_tc4; alias tcb_tmove +left"
+        ],
+        [
+          "tcb_tc4",
+          "w 6;-left;w;alias tcb_testchamber tcb_tc5; alias tcb_tmove +moveright"
+        ],
+        [
+          "tcb_tc5",
+          "w 22;+use;w 11;-use;+duck;w;-duck;-moveright;w 40;alias tcb_testchamber tcb_tc6; alias tcb_tmove +back"
+        ],
+        [
+          "tcb_tc6",
+          "w 13;-back;alias tcb_testchamber; alias tcb_tmove"
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "tcb_testchamber",
+          "guideKey": "0"
+        },
+        {
+          "command": "tcb_tmove",
+          "guideKey": "9"
+        },
+        {
+          "command": "tcb_testchamber_reset",
+          "guideKey": "-"
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "testchamber-n",
+      "chapter": "anomalous-materials",
+      "section": "Test Chamber scripts",
+      "title": "Testchamber N",
+      "mark": "yellow",
+      "credit": "N4Rk0t1k",
+      "notes": [
+        "Fully automated",
+        "Very consistent even with fps drops",
+        "0.3s slower than [Testchamber D](#testchamber-d)",
+        "Try this one if you have performance issues that prevent you from using version D"
+      ],
+      "usage": "- **Angles:**\n  - Pitch: `30.0 - 40.0`\n  - Yaw: `73.00 - 73.10` (I personally recommend .05 - 0.7, but doesn't really matter)\n- **Activation timing:**\n  - right after the cage starts going down\n- **Keypresses:**\n  - (first option) `0 90 90 90 90 90 90` (`0` and then `90` six times), wait until you hear the scientist screaming, then press `90` again and hold `w + ctrl`\n  - (second option) `0 90 90 90 90 90 90 90` (`0` and `90` seven times), start holding `w + ctrl` before landing\n- **Tips:**\n  - Tapping `d` after the level changes helps with landing a lot",
+      "video": {
+        "id": "DnRJmZiLDFM",
+        "start": 0
+      },
+      "save": "https://github.com/yavats/hl1-scripts/raw/refs/heads/main/Practice%20saves/tc_n.sav",
+      "namespace": "tcn",
+      "aliases": [
+        [
+          "tcn_cart",
+          "tcn_preboost1"
+        ],
+        [
+          "tcn_mcart",
+          ""
+        ],
+        [
+          "tcn_pausespam",
+          "w; unpause; w; setpause"
+        ],
+        [
+          "tcn_longpausespam",
+          "tcn_pausespam; tcn_pausespam; tcn_pausespam; tcn_pausespam; tcn_pausespam; tcn_pausespam; tcn_pausespam"
+        ],
+        [
+          "tcn_testchamber_reset",
+          "alias tcn_cart tcn_preboost1; alias tcn_mcart; say tc_script_reset"
+        ],
+        [
+          "tcn_preboost1",
+          "pausable 1; w 5; fps_max 18; w 34; alias tcn_cart tcn_preboost2; alias tcn_mcart +moveright"
+        ],
+        [
+          "tcn_preboost2",
+          "+use; w 2; -use; w 12; -moveright; alias tcn_cart tcn_preboost3; alias tcn_mcart +left"
+        ],
+        [
+          "tcn_preboost3",
+          "w 5; +use; w 1; -left; w 1; -use; -left; fps_max 99; w 2; alias tcn_cart tcn_cartboost; alias tcn_mcart +moveright"
+        ],
+        [
+          "tcn_cartboost",
+          "w 33; +use; w 3; setpause; tcn_longpausespam; unpause; -use; w 13; fps_max 30; w 9; alias tcn_cart tcn_cartfly; alias tcn_mcart +right"
+        ],
+        [
+          "tcn_cartfly",
+          "w 5; -moveright; -right; alias tcn_cart tcn_cartlanding1; alias tcn_mcart +moveleft"
+        ],
+        [
+          "tcn_cartlanding1",
+          "alias tcn_mcart +left; alias tcn_cart tcn_cartlanding2"
+        ],
+        [
+          "tcn_cartlanding2",
+          "speak scientist/scream20; fps_max 28.7; w 16; -moveleft; w 44; -left; +bxt_tas_jumpbug; fps_max 10; w 4; -bxt_tas_jumpbug; fps_max 100; alias tcn_cart tcn_cartwindow; alias tcn_mcart +moveright"
+        ],
+        [
+          "tcn_cartwindow",
+          "w 30; -moveright; alias tcn_cart; alias tcn_mcart"
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "tcn_cart",
+          "guideKey": "0"
+        },
+        {
+          "command": "tcn_mcart",
+          "guideKey": "9"
+        },
+        {
+          "command": "tcn_testchamber_reset",
+          "guideKey": "-"
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "testchamber-d",
+      "chapter": "anomalous-materials",
+      "section": "Test Chamber scripts",
+      "title": "Testchamber D",
+      "mark": "orange",
+      "credit": "Parklez",
+      "notes": [
+        "Fully automated",
+        "May be inconsistent if you have performance issues"
+      ],
+      "usage": "- **Angles:**\n  - Pitch: `30.0 - 40.0`\n  - Yaw: `136.45 - 136.51` (I personally recommend `.50` or `.51`, but doesn't really matter)\n- **Activation timing:**\n  - right after the cage starts going down\n- **Keypresses:**\n  - `0 90 90 90 90 90 90 90` (`0` and then `90` seven times), wait until you start turning mid-air (after you hit the trigger), then press `90` again and hold `a + ctrl`",
+      "video": {
+        "id": "7QxRBDo6F8E",
+        "start": 0
+      },
+      "save": "https://github.com/yavats/hl1-scripts/raw/refs/heads/main/Practice%20saves/tc_d.sav",
+      "namespace": "tcd",
+      "aliases": [
+        [
+          "tcd_testchamber",
+          "tcd_tc1"
+        ],
+        [
+          "tcd_move",
+          ""
+        ],
+        [
+          "tcd_testchamber_reset",
+          "alias tcd_testchamber tcd_tc1; alias tcd_move; say tc_script_reset"
+        ],
+        [
+          "tcd_tc1",
+          "w 160;alias tcd_testchamber tcd_tc2;alias tcd_move +moveright"
+        ],
+        [
+          "tcd_tc2",
+          "alias tcd_testchamber tcd_tc3;alias tcd_move +back"
+        ],
+        [
+          "tcd_tc3",
+          "w 30;+use;wait;-moveright;wait;wait;wait;-use;alias tcd_testchamber tcd_tc4;alias tcd_move +moveright"
+        ],
+        [
+          "tcd_tc4",
+          "w 70;cl_pitchup -89;+use;w 10;wait;wait;wait;wait;-use;cl_pitchup 89;-moveright;-back;cl_pitchdown 30;w 50;+use;alias tcd_testchamber tcd_tc5"
+        ],
+        [
+          "tcd_tc5",
+          "w 10;wait;wait;wait;wait;-use;w 10;-moveright;w 30;cl_pitchdown 89;alias tcd_testchamber tcd_tc6;alias tcd_move +forward"
+        ],
+        [
+          "tcd_tc6",
+          "cl_pitchdown 180;cl_pitchup -170;w 9;cl_pitchup 89;cl_pitchdown 40;wait;cl_pitchdown 89;-forward;w 63;alias tcd_testchamber tcd_tc7;alias tcd_move +moveleft"
+        ],
+        [
+          "tcd_tc7",
+          "alias tcd_testchamber tcd_tc8;alias tcd_move +left"
+        ],
+        [
+          "tcd_tc8",
+          "w 50;-moveleft;w 100;-left;fps_max 40;w 11;fps_max 100;alias tcd_testchamber tcd_tc9;alias tcd_move +forward"
+        ],
+        [
+          "tcd_tc9",
+          "w 40; -forward; alias tcd_testchamber; alias tcd_move"
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "tcd_move",
+          "guideKey": "9"
+        },
+        {
+          "command": "tcd_testchamber",
+          "guideKey": "0"
+        },
+        {
+          "command": "tcd_testchamber_reset",
+          "guideKey": "-"
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "testchamber-d-v2",
+      "chapter": "anomalous-materials",
+      "section": "Test Chamber scripts",
+      "title": "Testchamber D v2",
+      "mark": "red",
+      "credit": null,
+      "notes": [
+        "Fully automated + extended to 4 fps the UC trigger",
+        "0.1s faster than [Testchamber D](#testchamber-d)",
+        "It's not necessary to saveload after the script"
+      ],
+      "usage": "*[Testchamber D](#testchamber-d) extended by javac_. Thanks to Razzie for the idea*\n\n- **Angles:**\n  - Pitch: `30.0 - 40.0`\n  - Yaw: `136.45 - 136.51` (I personally recommend `.50 - .51`, but doesn't really matter)\n- **Activation timing:**\n  - right after the cage starts going down\n- **Keypresses:**\n  - `0 90 90 90 90 90 90 90` (`0` and then `90` seven times), wait until you start turning mid-air (after you hit the trigger), then press `90 90 90`",
+      "video": {
+        "id": "mnLNYTiTWYs",
+        "start": 0
+      },
+      "save": "https://github.com/yavats/hl1-scripts/raw/refs/heads/main/Practice%20saves/tc_d.sav",
+      "namespace": "tcd2",
+      "aliases": [
+        [
+          "tcd2_testchamber",
+          "tcd2_tc1"
+        ],
+        [
+          "tcd2_move",
+          ""
+        ],
+        [
+          "tcd2_testchamber_reset",
+          "alias tcd2_testchamber tcd2_tc1; alias tcd2_move; say tc_script_reset"
+        ],
+        [
+          "tcd2_tc1",
+          "w 160;alias tcd2_testchamber tcd2_tc2;alias tcd2_move +moveright"
+        ],
+        [
+          "tcd2_tc2",
+          "alias tcd2_testchamber tcd2_tc3;alias tcd2_move +back"
+        ],
+        [
+          "tcd2_tc3",
+          "w 30;+use;wait;-moveright;wait;wait;wait;-use;alias tcd2_testchamber tcd2_tc4;alias tcd2_move +moveright"
+        ],
+        [
+          "tcd2_tc4",
+          "w 70;cl_pitchup -89;+use;w 10;wait;wait;wait;wait;-use;cl_pitchup 89;-moveright;-back;cl_pitchdown 30;w 50;+use;alias tcd2_testchamber tcd2_tc5"
+        ],
+        [
+          "tcd2_tc5",
+          "w 10;wait;wait;wait;wait;-use;w 10;-moveright;w 30;cl_pitchdown 89;alias tcd2_testchamber tcd2_tc6;alias tcd2_move +forward"
+        ],
+        [
+          "tcd2_tc6",
+          "cl_pitchdown 180;cl_pitchup -170;w 9;cl_pitchup 89;cl_pitchdown 40;wait;cl_pitchdown 89;-forward;w 63;alias tcd2_testchamber tcd2_tc7;alias tcd2_move +moveleft"
+        ],
+        [
+          "tcd2_tc7",
+          "alias tcd2_testchamber tcd2_tc8;alias tcd2_move +left"
+        ],
+        [
+          "tcd2_tc8",
+          "w 50;-moveleft;w 100;-left;fps_max 40;w 11;fps_max 100;alias tcd2_testchamber tcd2_tc9;alias tcd2_move +forward"
+        ],
+        [
+          "tcd2_tc9",
+          "w 40; -forward; alias tcd2_move +moveleft; alias tcd2_testchamber tcd2_tc10"
+        ],
+        [
+          "tcd2_tc10",
+          "+duck; w 85; -duck; alias tcd2_move +left; alias tcd2_testchamber tcd2_tc11"
+        ],
+        [
+          "tcd2_tc11",
+          "w 30; fps_max 4; w; fps_max 100; w 5; -moveleft; -left; alias tcd2_testchamber; alias tcd2_move"
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "tcd2_move",
+          "guideKey": "9"
+        },
+        {
+          "command": "tcd2_testchamber",
+          "guideKey": "0"
+        },
+        {
+          "command": "tcd2_testchamber_reset",
+          "guideKey": "-"
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "barrel-bridge-nade",
+      "chapter": "blast-pit",
+      "section": "Nade boost scripts",
+      "title": "Barrel bridge nade",
+      "mark": null,
+      "credit": "Parklez",
+      "notes": [
+        "Use with ≤ 9 armor"
+      ],
+      "usage": "walk forward and activate the script",
+      "video": {
+        "id": "6au7vtLFNBY",
+        "start": 0
+      },
+      "save": "https://github.com/yavats/hl1-scripts/raw/refs/heads/main/Practice%20saves/bp_nade.sav",
+      "namespace": null,
+      "aliases": [
+        [
+          "bp_nade",
+          "fps_max 100; cl_pitchdown 85;cl_pitchup -85;+duck;+jump;w;-attack;w 15;-jump;-duck;cl_pitchup 89;cl_pitchdown 89;force_centerview"
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "bp_nade",
+          "guideKey": null
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "maxams-nade-route-boost-v1",
+      "chapter": "blast-pit",
+      "section": "Nade boost scripts",
+      "title": "Maxam's nade route boost v1",
+      "mark": null,
+      "credit": null,
+      "notes": [
+        "Requirements: 51 hp, 20 armor",
+        "Makes an autosave midair as a backup"
+      ],
+      "usage": "walk forward and activate the script",
+      "video": {
+        "id": "DkA5ik4JRn4",
+        "start": 0
+      },
+      "save": "https://github.com/yavats/hl1-scripts/raw/refs/heads/main/Practice%20saves/bp_nade2.sav",
+      "namespace": null,
+      "aliases": [
+        [
+          "bp_nade2",
+          "fps_max 100; cl_pitchdown 30;cl_pitchup -30;+duck;+jump;w;-attack;w 15;-jump;-duck;cl_pitchup 89;cl_pitchdown 89;force_centerview; save autosave"
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "bp_nade2",
+          "guideKey": null
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "maxams-nade-route-boost-v2",
+      "chapter": "blast-pit",
+      "section": "Nade boost scripts",
+      "title": "Maxam's nade route boost v2",
+      "mark": null,
+      "credit": null,
+      "notes": [
+        "Requiremenets: 53 hp, 20 armor",
+        "More consistent boost than [v1](#maxams-nade-route-boost-v1)",
+        "Makes an autosave midair as a backup"
+      ],
+      "usage": "walk forward and activate the script",
+      "video": {
+        "id": "DkA5ik4JRn4",
+        "start": 0
+      },
+      "save": "https://github.com/yavats/hl1-scripts/raw/refs/heads/main/Practice%20saves/bp_nade2.sav",
+      "namespace": null,
+      "aliases": [
+        [
+          "bp_nade3",
+          "fps_max 100; cl_pitchdown 15;cl_pitchup -15;+duck;+jump;w;-attack;w 15;-jump;-duck;cl_pitchup 89;cl_pitchdown 89;force_centerview; save autosave"
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "bp_nade3",
+          "guideKey": null
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "slope-nade-boost",
+      "chapter": "blast-pit",
+      "section": "Nade boost scripts",
+      "title": "Slope nade boost",
+      "mark": null,
+      "credit": null,
+      "notes": [
+        "Requirements: ~30-35 hp, 20 armor",
+        "Much more difficult execution",
+        "Slightly faster than other scripts"
+      ],
+      "usage": "Cook a nade beforehand, gain around 600 ups, land near the slope and press the script key. DON'T JUMP ON YOUR OWN, THE SCRIPT DOES IT FOR YOU! It's highly recommended to do a jumpbug (preferably 76 fps one) before this boost to save more hp and get a good jump pattern",
+      "video": {
+        "id": "pbZzpa-TUfY",
+        "start": 0
+      },
+      "save": "https://github.com/yavats/hl1-scripts/raw/refs/heads/main/Practice%20saves/bp_nade4.sav",
+      "namespace": null,
+      "aliases": [
+        [
+          "bp_nade4",
+          "fps_max 100; +jump; cl_pitchdown 89; cl_pitchup -89; -attack; w; cl_pitchup 89; force_centerview; -jump"
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "bp_nade4",
+          "guideKey": null
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "fire-button-room-boost-v1",
+      "chapter": "blast-pit",
+      "section": "Nade boost scripts",
+      "title": "Fire button room boost v1",
+      "mark": null,
+      "credit": null,
+      "notes": [
+        "Requirements: 41 hp (may vary by +-2)",
+        "Makes an autosave in case of failure",
+        "Harder activation timing"
+      ],
+      "usage": "cook a nade a couple frames after the changelevel, start jumping as soon as you touch the ground, switch to the shotgun, keep jumping and break the bottom plank BY ACTIVATING THE SCRIPT, not with regular `+attack2`. Hold `w` during activation",
+      "video": {
+        "id": "wvnJec6XsXU",
+        "start": 0
+      },
+      "save": "https://github.com/yavats/hl1-scripts/raw/refs/heads/main/Practice%20saves/bpbutton.sav",
+      "namespace": null,
+      "aliases": [
+        [
+          "bpbutton",
+          "fps_max 100; +attack2; -jump; w; weapon_handgrenade;-attack2; -moveleft; -moveright; weapon_handgrenade; w 20; cl_pitchdown 45; cl_pitchup -45; w 30; save autosave; w 10; -duck; w 30; +use; w 20; -use; w 15; +jump; w; +duck; cl_pitchdown 89; cl_pitchup 89; w; -jump; w 60; -duck"
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "bpbutton",
+          "guideKey": null
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "fire-button-room-boost-v2",
+      "chapter": "blast-pit",
+      "section": "Nade boost scripts",
+      "title": "Fire button room boost v2",
+      "mark": null,
+      "credit": null,
+      "notes": [
+        "Requirements: 45 hp (may vary by +-2)",
+        "Makes an autosave in case of failure",
+        "Easy activation timing -> more consistent"
+      ],
+      "usage": "cook a nade before the changelevel, start jumping as soon as you touch the ground, switch to the shotgun, keep jumping and break the bottom plank BY ACTIVATING THE SCRIPT, not with regular `+attack2`. Hold `w` during activation",
+      "video": {
+        "id": "_Llz6Epy7OA",
+        "start": 0
+      },
+      "save": "https://github.com/yavats/hl1-scripts/raw/refs/heads/main/Practice%20saves/bpbutton.sav",
+      "namespace": null,
+      "aliases": [
+        [
+          "bpbutton2",
+          "fps_max 100; +attack2; -jump; w; weapon_handgrenade;-attack2; -moveleft; -moveright; weapon_handgrenade; w 20; cl_pitchdown 45; cl_pitchup -45; w 30; save autosave; w 10; -duck; w 30; +use; w 20; -use; w 15; +jump; w; +duck; cl_pitchdown 89; cl_pitchup 89; fps_max 7.5; w 2; -jump; fps_max 100; w 50; -duck"
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "bpbutton2",
+          "guideKey": null
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "hl21-box-script",
+      "chapter": "blast-pit",
+      "section": "HL21 box script",
+      "title": "HL21 box script",
+      "mark": null,
+      "credit": "javac_",
+      "notes": [],
+      "usage": "A HL21-like script, which consists of 2 parts. The first one involves a CLD and object boost, the second one makes a turn and blows up the explosive crates. It keeps all your health so you can use it for something else (for example, [this boost](#maxams-nade-route-boost-v1) ).\n\nOnly uses 1st part of the script\n\n- **Angles:**\n  - Pitch: doesn't matter much, just aim at the box corner\n  - Yaw: `262.40 - 262.71`\n- **Activation timing:**\n  - none\n- **Keypresses:**\n  - `1 21 21 21 21 21 21 21 21 21 21` (`1` and then `21` ten times) before you touch the changelevel trigger\n  - Start holding `d + space` before the changelevel (but not too early)\n- **Additional actions:**\n  - Change sensitivity in the `bpbox_sens` alias to your default\n\nUses both parts of the script\n\n- **Angles:**\n  - Pitch: doesn't matter much, just aim at the box corner\n  - Yaw: `262.40 - 262.62`\n- **Activation timing:**\n  - 1st part: none\n  - 2nd part: after touching the changelevel trigger\n- **Keypresses:**\n  - 1st part: `1 21 21 21 21 21 21 21 21 21 21` (`1` and then `21` ten times) before you touch the changelevel trigger\n  - 2nd part: `9 09 09 09 09 09` (`9` and then `09` five times) after you touch the changelevel trigger\n- **Additional actions:**\n  - Change sensitivity in the `bpbox_sens` alias to your default",
+      "video": {
+        "id": "5Sl6lXTGL60",
+        "start": 0
+      },
+      "save": "https://github.com/yavats/hl1-scripts/raw/refs/heads/main/Practice%20saves/bp_box.sav",
+      "namespace": null,
+      "aliases": [
+        [
+          "box1",
+          "save autosave; fps_max 100; cl_pitchdown 28.7; cl_pitchup -28.7; sensitivity 0; w 100; alias boxmove +left; alias box box2"
+        ],
+        [
+          "box2",
+          "w 3; -left; alias boxmove +moveright; alias box box3"
+        ],
+        [
+          "box3",
+          "w 22; +use; w 9; -use; w 20; +use; w 6; -use; +duck; w; -duck; w; +duck; +use; w 21; -use; -duck; w 15; +use; w 8; -use; w; +duck; w 25; -duck; w 25; +use; w 6; -use; alias boxmove +forward; alias box box4"
+        ],
+        [
+          "box4",
+          "w 23; +use; w 10; -use; w 5; +use; w 8; -use; w 25; -moveright; w 10; +use; w 4; -use; w 42; -forward; w 30; alias boxmove +moveleft; alias box box5"
+        ],
+        [
+          "box5",
+          "w 10; +use; w 9; -use; -moveleft; alias boxmove +right; alias box box6"
+        ],
+        [
+          "box6",
+          "w 12; -right; w 53; alias boxmove +moveleft; alias box box7"
+        ],
+        [
+          "box7",
+          "w 5; alias boxmove +forward; alias box box8"
+        ],
+        [
+          "box8",
+          "w 7; -forward; w 25; -moveleft; w 5; alias boxmove +forward; alias box box9"
+        ],
+        [
+          "box9",
+          "w 2; +use; w 11; +duck; w; -duck; w; -use; alias boxmove +moveright; alias box box10"
+        ],
+        [
+          "box10",
+          "alias boxmove +right; alias box box11"
+        ],
+        [
+          "box11",
+          "w 4; -right; -moveright; -forward; weapon_shotgun; bpbox_sens; cl_pitchdown 89; cl_pitchup 89; alias boxmove; alias box"
+        ],
+        [
+          "box",
+          "box1"
+        ],
+        [
+          "boxmove",
+          ""
+        ],
+        [
+          "bpbox_sens",
+          "sensitivity {sensitivity}"
+        ],
+        [
+          "af1",
+          "sensitivity 0; alias afmove +moveright; alias af af2"
+        ],
+        [
+          "af2",
+          "+jump; w 34; alias afmove +right; alias af af3"
+        ],
+        [
+          "af3",
+          "w 8; -right; +duck; w 20; alias af af4"
+        ],
+        [
+          "af4",
+          "w 4; -moveright; w 32; -right; cl_pitchup -10.5; cl_pitchdown 10.5; w 20; +attack2; w 10; -attack2; w 20; -duck; -moveright; w 17; alias afmove +moveright; alias af af5"
+        ],
+        [
+          "af5",
+          "w 9; alias afmove +right; alias af af6"
+        ],
+        [
+          "af6",
+          "w 15; -right; w 50; -moveright; -jump; cl_pitchdown 89; cl_pitchup 89; alias af; alias afmove; save autosave; bpbox_sens"
+        ],
+        [
+          "af",
+          "af1"
+        ],
+        [
+          "afmove",
+          ""
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "box",
+          "guideKey": "1"
+        },
+        {
+          "command": "boxmove",
+          "guideKey": "2"
+        },
+        {
+          "command": "af",
+          "guideKey": "9"
+        },
+        {
+          "command": "afmove",
+          "guideKey": "0"
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "power-up-a",
+      "chapter": "power-up",
+      "section": "PU CLD scripts",
+      "title": "Power Up A",
+      "mark": "yellow",
+      "credit": "Parklez",
+      "notes": [
+        "The most widely used one",
+        "Backwards movement",
+        "Does an object boost"
+      ],
+      "usage": "Throw a nade under the box at 20 fps to nuke everything, walk into the changelevel trigger holding `s` and activate the script before touching it. Use mouse movement to control the character, pickup tripmines and get stuck into the corner\nIncrease waits in the `w 100` commands if you don't have enough time (every `w 100` = 1s)",
+      "video": {
+        "id": "IkZ4wWKrLVg",
+        "start": 0
+      },
+      "save": "https://github.com/yavats/hl1-scripts/raw/refs/heads/main/Practice%20saves/puskip.sav",
+      "namespace": null,
+      "aliases": [
+        [
+          "puskip_a",
+          "fps_max 100; -jump;-moveright;-moveleft;speak fvox/power_level_is;w 100;speak fvox/beep;w 100;speak fvox/beep;w 100;speak fvox/beep;w 100;speak fvox/beep;w 100;speak fvox/beep;w 100;speak fvox/beep;cl_pitchdown 180;cl_pitchup -179;w 30;cl_pitchup -30;cl_pitchdown 31;w;cl_pitchup 89;cl_pitchdown 89;w 10;+use;w 11;-use;+jump;w;-jump; weapon_tripmine"
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "puskip_a",
+          "guideKey": null
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "power-up-b",
+      "chapter": "power-up",
+      "section": "PU CLD scripts",
+      "title": "Power Up B",
+      "mark": "green",
+      "credit": "Parklez",
+      "notes": [
+        "Simplest (and slowest) version",
+        "Facing forward",
+        "No object boost"
+      ],
+      "usage": "Throw a nade under the box at 20 fps to nuke everything, walk into the changelevel trigger holding `w` and activate the script before touching it. Use mouse movement to control the character and go to the wall, picking up tripmines on the way\nIncrease waits in the `w 100` commands if you don't have enough time (every `w 100` = 1s)",
+      "video": {
+        "id": "B4_AL1Mtu4g",
+        "start": 0
+      },
+      "save": "https://github.com/yavats/hl1-scripts/raw/refs/heads/main/Practice%20saves/puskip.sav",
+      "namespace": null,
+      "aliases": [
+        [
+          "puskip_b",
+          "fps_max 100; speak fvox/power_level_is;w 100;speak fvox/beep;w 100;speak fvox/beep;w 100;speak fvox/beep;w 100;speak fvox/beep;w 100;speak fvox/beep;w 50; weapon_tripmine"
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "puskip_b",
+          "guideKey": null
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "power-up-d",
+      "chapter": "power-up",
+      "section": "PU CLD scripts",
+      "title": "Power Up D",
+      "mark": "orange",
+      "credit": "Wize",
+      "notes": [
+        "Facing forward",
+        "With object boost (1400 UPS)",
+        "Makes an autosave when activated"
+      ],
+      "usage": "Break 2 crates containing tripmines, do an object boost with [obbo1600](#1600-ups) or [obbo2000](#2000-ups) script, make sure the box you boost with doesn't get stuck! You want to push it far enough to be able to boost with it again during CLD. Hold `w` and press the script key before touching the changelevel trigger, then use mouse movement to go to the box you left behind and wait until the script ends\nIncrease waits in the `w 300` command if you don't have enough time (every `w 100` = 1s)",
+      "video": {
+        "id": "e4KVJcd7h14",
+        "start": 0
+      },
+      "save": "https://github.com/yavats/hl1-scripts/raw/refs/heads/main/Practice%20saves/puskip.sav",
+      "namespace": null,
+      "aliases": [
+        [
+          "puskip_d",
+          "fps_max 100; save autosave;weapon_shotgun;-jump;-moveright;-moveleft;w 300;+use;w 7;-use;+jump;w;-jump;+attack2;w;-attack2;+duck;w 37;-duck;weapon_tripmine"
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "puskip_d",
+          "guideKey": null
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "power-up-f",
+      "chapter": "power-up",
+      "section": "PU CLD scripts",
+      "title": "Power Up F",
+      "mark": "red",
+      "credit": null,
+      "notes": [
+        "Fastest version",
+        "Facing forward",
+        "With object boost (1800 UPS)",
+        "Makes an autosave when activated"
+      ],
+      "usage": "*[Power Up D](#power-up-d) modified by javac_*\n\nBreak 2 crates containing tripmines, do an object boost with [obbo1600](#1600-ups) or [obbo2000](#2000-ups) script, make sure the box you boost with doesn't get stuck! You want to push it far enough to be able to boost with it again during CLD. Hold `w` and press the script key before touching the changelevel trigger, then use mouse movement to go to the box you left behind and wait until the script ends\nIncrease waits in the `w 300` command if you don't have enough time (every `w 100` = 1s)",
+      "video": {
+        "id": "5R8_ISE3k3A",
+        "start": 0
+      },
+      "save": "https://github.com/yavats/hl1-scripts/raw/refs/heads/main/Practice%20saves/puskip.sav",
+      "namespace": null,
+      "aliases": [
+        [
+          "puskip_f",
+          "fps_max 100;save autosave;weapon_shotgun;-bxt_tas_ducktap;-jump;-moveright;-moveleft;w 270;+use;fps_max 100;w 8;-use;+jump;wait;-jump;+attack2;wait;-attack2;+duck;w 34;-duck;weapon_tripmine"
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "puskip_f",
+          "guideKey": null
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "obboducktap-script",
+      "chapter": "apprehension",
+      "section": "Obboducktap script",
+      "title": "Obboducktap script",
+      "mark": null,
+      "credit": null,
+      "notes": [],
+      "usage": "drop down, hold `a`, press the script key. Don't stay too close to the box",
+      "video": {
+        "id": "Vu7-yZZ5hr8",
+        "start": 0
+      },
+      "save": "https://github.com/yavats/hl1-scripts/raw/refs/heads/main/Practice%20saves/app_obbo.sav",
+      "namespace": null,
+      "aliases": [
+        [
+          "app_obbo",
+          "+use; w 9; -use; w; +duck; w 8; -duck"
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "app_obbo",
+          "guideKey": null
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "captured-v1",
+      "chapter": "apprehension",
+      "section": "Captured scripts",
+      "title": "Captured v1",
+      "mark": "yellow",
+      "credit": "Parklez",
+      "notes": [],
+      "usage": "Lower fps to 8 before the changelevel, press the first script key as soon as you see the \"loading...\" text on the screen, then press the rest of the keys\n- **Keypresses**:\n```\n7\ns + 7\nrightarrow + 7\nw + 7\nd + rightarrow + 7\na + leftarrow + 7\nw + 7\nw + 7\nw + 7\nw + 7\n```",
+      "video": {
+        "id": "5-jEl8-MREc",
+        "start": 0
+      },
+      "save": "https://github.com/yavats/hl1-scripts/raw/refs/heads/main/Practice%20saves/captured.sav",
+      "namespace": "ct1",
+      "aliases": [
+        [
+          "ct1_captured",
+          "ct1_ct1"
+        ],
+        [
+          "ct1_ct1",
+          "fps_max 100;w 2205;alias ct1_captured ct1_ct2"
+        ],
+        [
+          "ct1_ct2",
+          "w 164;alias ct1_captured ct1_ct3"
+        ],
+        [
+          "ct1_ct3",
+          "w 6;+speed;w 21;-right;-speed;alias ct1_captured ct1_ct4"
+        ],
+        [
+          "ct1_ct4",
+          "w 11;+jump;+duck;w 21;-forward;alias ct1_captured ct1_ct5"
+        ],
+        [
+          "ct1_ct5",
+          "w 15;-moveright;-right;w 50;alias ct1_captured ct1_ct6"
+        ],
+        [
+          "ct1_ct6",
+          "w 30;-duck;-jump;-moveleft;-left;w 40;cl_pitchdown 89.999;cl_pitchup -89.999;w;+use;w;-use;w;alias ct1_captured ct1_ct7"
+        ],
+        [
+          "ct1_ct7",
+          "w;-forward;w;alias ct1_captured ct1_ct8"
+        ],
+        [
+          "ct1_ct8",
+          "w;-forward;w;alias ct1_captured ct1_ct9"
+        ],
+        [
+          "ct1_ct9",
+          "w;-forward;w;alias ct1_captured ct1_ct10"
+        ],
+        [
+          "ct1_ct10",
+          "w;-forward;w;+use;w;-use;cl_pitchup 89;cl_pitchdown 89; alias ct1_captured"
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "ct1_captured",
+          "guideKey": "7"
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "captured-v12",
+      "chapter": "apprehension",
+      "section": "Captured scripts",
+      "title": "Captured v1.2",
+      "mark": "yellow",
+      "credit": null,
+      "notes": [],
+      "usage": "[Captured v1](#captured-v1) 2-key edition\n\nLower fps to 8 before the changelevel, press the first script key as soon as you see the \"loading...\" text on the screen, then press the rest of the keys\n- **Keypresses**:\n  - `0 90 90 90 90 90 90 90 90 90 90 90` (`0` and then `90` eleven times)",
+      "video": {
+        "id": "XqQ8PqylHC0",
+        "start": 0
+      },
+      "save": "https://github.com/yavats/hl1-scripts/raw/refs/heads/main/Practice%20saves/captured.sav",
+      "namespace": "ct12",
+      "aliases": [
+        [
+          "ct12_ct1",
+          "fps_max 100; w 2205; alias ct12_ctmove +back; alias ct12_ct ct12_ct2"
+        ],
+        [
+          "ct12_ct2",
+          "w 164; -back; alias ct12_ctmove +right; alias ct12_ct ct12_ct3"
+        ],
+        [
+          "ct12_ct3",
+          "w 6; +speed; w 21; -right; -speed; alias ct12_ctmove +forward; alias ct12_ct ct12_ct4"
+        ],
+        [
+          "ct12_ct4",
+          "w 11; +jump; +duck; w 21; -forward; alias ct12_ctmove +moveright; alias ct12_ct ct12_ct5"
+        ],
+        [
+          "ct12_ct5",
+          "alias ct12_ctmove +right; alias ct12_ct ct12_ct6"
+        ],
+        [
+          "ct12_ct6",
+          "w 15; -moveright; -right; w 50; alias ct12_ctmove +moveleft; alias ct12_ct ct12_ct7"
+        ],
+        [
+          "ct12_ct7",
+          "alias ct12_ctmove +left; alias ct12_ct ct12_ct8"
+        ],
+        [
+          "ct12_ct8",
+          "w 30; -duck; -jump; -moveleft; -left; w 40; cl_pitchdown 89.999; cl_pitchup -89.999; w; +use; w; -use; w; alias ct12_ctmove +forward; alias ct12_ct ct12_ct9"
+        ],
+        [
+          "ct12_ct9",
+          "w; -forward; w; alias ct12_ct ct12_ct10"
+        ],
+        [
+          "ct12_ct10",
+          "w; -forward; w; alias ct12_ct ct12_ct11"
+        ],
+        [
+          "ct12_ct11",
+          "w; -forward; w; alias ct12_ct ct12_ct12"
+        ],
+        [
+          "ct12_ct12",
+          "w; -forward; w; +use; w; -use; cl_pitchup 89; cl_pitchdown 89; alias ct12_ctmove; alias ct12_ct"
+        ],
+        [
+          "ct12_ct",
+          "ct12_ct1"
+        ],
+        [
+          "ct12_ctmove",
+          ""
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "ct12_ct",
+          "guideKey": "0"
+        },
+        {
+          "command": "ct12_ctmove",
+          "guideKey": "9"
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "captured-v2",
+      "chapter": "apprehension",
+      "section": "Captured scripts",
+      "title": "Captured v2",
+      "mark": "orange",
+      "credit": "javac_",
+      "notes": [
+        "Slightly faster"
+      ],
+      "usage": "Lower fps to 8 before the changelevel, press the first script key as soon as you see the \"loading...\" text on the screen, then press the rest of the keys\n- **Keypresses**:\n  - `0 90 90 90 90 90 90 90 90 90 90 90` (`0` and then `90` eleven times)\n- **Additional actions**:\n  - change sensitivity in the `capt_sens` alias to your default",
+      "video": {
+        "id": "FM-C0JTUf3A",
+        "start": 0
+      },
+      "save": "https://github.com/yavats/hl1-scripts/raw/refs/heads/main/Practice%20saves/captured.sav",
+      "namespace": null,
+      "aliases": [
+        [
+          "capt1",
+          "sensitivity 0; fps_max 40; w 800; alias captmv +right; alias capt capt2"
+        ],
+        [
+          "capt2",
+          "w 8; -right; w 8; alias captmv +back; alias capt capt3"
+        ],
+        [
+          "capt3",
+          "w 40; -back; w 86; fps_max 100; w 56; alias captmv +forward; alias capt capt4"
+        ],
+        [
+          "capt4",
+          "w 11; +jump; +duck; w 3; -forward; w 10; alias captmv +moveright; alias capt capt5"
+        ],
+        [
+          "capt5",
+          "alias captmv +right; alias capt capt6"
+        ],
+        [
+          "capt6",
+          "w 18; -right; -moveright; w 25; alias captmv +moveleft; alias capt capt7"
+        ],
+        [
+          "capt7",
+          "alias captmv +left; alias capt capt8"
+        ],
+        [
+          "capt8",
+          "w 15; -moveleft; -left; -jump; w 35; -duck; w 7; +use; w; -use; alias captmv +forward; alias capt capt9"
+        ],
+        [
+          "capt9",
+          "w; -forward; w; alias capt capt10"
+        ],
+        [
+          "capt10",
+          "w; -forward; w; alias capt capt11"
+        ],
+        [
+          "capt11",
+          "w; -forward; w; alias capt capt12"
+        ],
+        [
+          "capt12",
+          "alias captmv; w; -forward; +use; w; -use; alias capt; capt_sens"
+        ],
+        [
+          "capt",
+          "capt1"
+        ],
+        [
+          "captmv",
+          ""
+        ],
+        [
+          "capt_sens",
+          "sensitivity {sensitivity}"
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "capt",
+          "guideKey": "0"
+        },
+        {
+          "command": "captmv",
+          "guideKey": "9"
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "captured-v3",
+      "chapter": "apprehension",
+      "section": "Captured scripts",
+      "title": "Captured v3",
+      "mark": "red",
+      "credit": "javac_",
+      "notes": [
+        "[Captured v2](#captured-v2) game.cfg edition (starts in the same way as [Simple saveload script](#simple-saveload-script))",
+        "Uses 100 fps",
+        "Fastest version"
+      ],
+      "usage": "1. Create a `game.cfg` file in your game directory (most likely `valve_WON`) and type `auto_alias` there\n2. Press `8` any moment before the changelevel. **After that you shouldn't load any save on your own until the script is done!**\n3. Wait for the level to change and then press the rest of keys (`9`s and `0`s)\n\n- **Keypresses**:\n  - `8 90 90 90 90 90 90 90 90 90 90 90 90` (`8` before the changelevel and `90` twelve times after)\n- **Additional actions**:\n  - change sensitivity in the `capted_sens` alias to your default",
+      "video": null,
+      "save": "https://github.com/yavats/hl1-scripts/raw/refs/heads/main/Practice%20saves/captured.sav",
+      "namespace": null,
+      "aliases": [
+        [
+          "_precapted",
+          "alias auto_alias; sensitivity 0; fps_max 100; w 1935; alias capted capted1"
+        ],
+        [
+          "capted1",
+          "w 50; alias captedmv +right; alias capted capted2"
+        ],
+        [
+          "capted2",
+          "w 20; -right; w 20; alias captedmv +back; alias capted capted3"
+        ],
+        [
+          "capted3",
+          "w 100; -back; w 271; alias captedmv +forward; alias capted capted4"
+        ],
+        [
+          "capted4",
+          "w 11; +jump; +duck; w 3; -forward; w 10; alias captedmv +moveright; alias capted capted5"
+        ],
+        [
+          "capted5",
+          "alias captedmv +right; alias capted capted6"
+        ],
+        [
+          "capted6",
+          "w 18; -right; -moveright; w 25; alias captedmv +moveleft; alias capted capted7"
+        ],
+        [
+          "capted7",
+          "alias captedmv +left; alias capted capted8"
+        ],
+        [
+          "capted8",
+          "w 15; -moveleft; -left; -jump; w 35; -duck; w 7; +use; w; -use; alias captedmv +forward; alias capted capted9"
+        ],
+        [
+          "capted9",
+          "w; -forward; w; alias capted capted10"
+        ],
+        [
+          "capted10",
+          "w; -forward; w; alias capted capted11"
+        ],
+        [
+          "capted11",
+          "w; -forward; w; alias capted capted12"
+        ],
+        [
+          "capted12",
+          "alias captedmv; w; -forward; +use; w; -use; alias capted; capted_sens"
+        ],
+        [
+          "capted",
+          ""
+        ],
+        [
+          "captedmv",
+          ""
+        ],
+        [
+          "capted_sens",
+          "sensitivity {sensitivity}"
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "alias auto_alias _precapted",
+          "guideKey": "8"
+        },
+        {
+          "command": "capted",
+          "guideKey": "9"
+        },
+        {
+          "command": "captedmv",
+          "guideKey": "0"
+        }
+      ],
+      "needsAutoAlias": true
+    },
+    {
+      "id": "simple-meatgrab",
+      "chapter": "residue-processing",
+      "section": "Meatgrab scripts",
+      "title": "Simple meatgrab",
+      "mark": "green",
+      "credit": null,
+      "notes": [],
+      "usage": "Start holding `d` and press the script key after you pass the right edge of the meat. Ideally you want to get a 14XX UPS boost, but sometimes 1300 or 1500 will work as well. You should also delay the first jumpp in order to maintain speed and avoid fall damage. To keep the optimal speed, start holding jump key after the first drop in the pipe (when your velocity drops down do ~700)",
+      "video": {
+        "id": "sa3lghAIK9E",
+        "start": 0
+      },
+      "save": "https://github.com/yavats/hl1-scripts/raw/refs/heads/main/Practice%20saves/meatgrab.sav",
+      "namespace": null,
+      "aliases": [
+        [
+          "meatgrab",
+          "fps_max 100;+use;w 15;-use"
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "meatgrab",
+          "guideKey": null
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "advanced-meatgrab",
+      "chapter": "residue-processing",
+      "section": "Meatgrab scripts",
+      "title": "Advanced meatgrab",
+      "mark": "yellow",
+      "credit": null,
+      "notes": [],
+      "usage": "same setup as [Simple meatgrab](#simple-meatgrab), but you can start holding `+jump` key instantly",
+      "video": {
+        "id": "Z9tLJuKtTAY",
+        "start": 0
+      },
+      "save": "https://github.com/yavats/hl1-scripts/raw/refs/heads/main/Practice%20saves/meatgrab.sav",
+      "namespace": null,
+      "aliases": [
+        [
+          "meatgrab2",
+          "fps_max 100; +use; w 15; -use; -moveright; w 8; +jump; w 3; -jump; fps_max 20; w 10; fps_max 100"
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "meatgrab2",
+          "guideKey": null
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "2-key-meatgrab-v1",
+      "chapter": "residue-processing",
+      "section": "Meatgrab scripts",
+      "title": "2-key meatgrab v1",
+      "mark": "orange",
+      "credit": "mxpph",
+      "notes": [],
+      "usage": "1. Move meat like for the regular setup, look perpendicularly (yaw ~`180`)\n2. Press `key d key` in a quick  succession (`key` is the script key)\n3. Hold `+jump` after the script is done",
+      "video": {
+        "id": "0LMERpfvifc",
+        "start": 0
+      },
+      "save": "https://github.com/yavats/hl1-scripts/raw/refs/heads/main/Practice%20saves/meatgrab.sav",
+      "namespace": null,
+      "aliases": [
+        [
+          "mg",
+          "mg1"
+        ],
+        [
+          "mg1",
+          "fps_max 100;+duck;w 50;alias mg mg2"
+        ],
+        [
+          "mg2",
+          "+use;w 18;-use;w 20;fps_max 20;w 4;fps_max 100;-duck;alias mg mg1"
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "mg",
+          "guideKey": null
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "2-key-meatgrab-v2",
+      "chapter": "residue-processing",
+      "section": "Meatgrab scripts",
+      "title": "2-key meatgrab v2",
+      "mark": "red",
+      "credit": null,
+      "notes": [],
+      "usage": "Slightly modified [v1](#2-key-meatgrab-v1). Higher exit speed\nsame as [v1](#2-key-meatgrab-v1)",
+      "video": {
+        "id": "wiJWJ3Cdykc",
+        "start": 0
+      },
+      "save": "https://github.com/yavats/hl1-scripts/raw/refs/heads/main/Practice%20saves/meatgrab.sav",
+      "namespace": null,
+      "aliases": [
+        [
+          "mtg",
+          "mtg1"
+        ],
+        [
+          "mtg1",
+          "fps_max 100;+duck;w 50;alias mtg mtg2"
+        ],
+        [
+          "mtg2",
+          "+use;w 18;-use;w 60;-duck;alias mtg mtg1"
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "mtg",
+          "guideKey": null
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "rp-clipping-80-hp-ver",
+      "chapter": "residue-processing",
+      "section": "RP clipping scripts",
+      "title": "RP clipping 80 hp ver.",
+      "mark": "green",
+      "credit": "Tankfird & jorikgrozniy, modified by Kisimov",
+      "notes": [
+        "Requirements: 80 hp, 0 armor"
+      ],
+      "usage": "hold `w` and activate the script after you pass the gray pipe on the floor",
+      "video": {
+        "id": "Ho4tTNmveC4",
+        "start": 0
+      },
+      "save": "https://github.com/yavats/hl1-scripts/raw/refs/heads/main/Practice%20saves/rpclipping.sav",
+      "namespace": null,
+      "aliases": [
+        [
+          "rp_80",
+          "cl_pitchdown 89;cl_pitchup -89;fps_max 20.2;+attack;w;weapon_crowbar;-attack;w 32;-forward; +jump; weapon_handgrenade;w;-jump;+duck;w 20;w 10;fps_max 20;w 10;-duck;fps_max 100;cl_pitchdown 89;cl_pitchup 89"
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "rp_80",
+          "guideKey": null
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "rp-clipping-75-hp-ver",
+      "chapter": "residue-processing",
+      "section": "RP clipping scripts",
+      "title": "RP clipping 75 hp ver.",
+      "mark": "yellow",
+      "credit": "javac_, idea by Tankfird",
+      "notes": [
+        "Requirements: 75 hp, 0 armor"
+      ],
+      "usage": "hold `w` and activate the script after you pass the gray pipe on the floor",
+      "video": {
+        "id": "50h5JHY5WvI",
+        "start": 0
+      },
+      "save": "https://github.com/yavats/hl1-scripts/raw/refs/heads/main/Practice%20saves/rpclipping.sav",
+      "namespace": null,
+      "aliases": [
+        [
+          "rp_75",
+          "fps_max 19.9; cl_pitchdown 89;cl_pitchup -89; +attack; w 30; +jump; +duck; -forward; w; -jump; w 10; fps_max 6.41; w; fps_max 19.85; w 5; -attack; w 5; cl_pitchdown -89; cl_pitchup 89; w 14; -duck; cl_pitchdown 89; force_centerview; fps_max 100"
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "rp_75",
+          "guideKey": null
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "st-cld-v1",
+      "chapter": "surface-tension",
+      "section": "ST CLD scripts",
+      "title": "ST CLD v1",
+      "mark": "green",
+      "credit": "Wize",
+      "notes": [
+        "More consistent version"
+      ],
+      "usage": "Switch to the gauss, aim at the cliff corner. Try to be as fast as possible to avoid getting damage. Also it's *highly* recommended to have some armor so the helicopter shots don't change player's position much (good for consistency)\n- **Keypresses**: `1 21 21 21 21 21` (`1` and then `21` five times)",
+      "video": {
+        "id": "Rf5UCa3_MP4",
+        "start": 0
+      },
+      "save": "https://github.com/yavats/hl1-scripts/raw/refs/heads/main/Practice%20saves/st_cld.sav",
+      "namespace": null,
+      "aliases": [
+        [
+          "st0",
+          "bxt_autojump 1; fps_max 100; alias stmove +forward; w 40; alias stskip st1"
+        ],
+        [
+          "st1",
+          "weapon_gauss;+duck;w 146;-duck;-forward;alias stskip st2;alias stmove +moveright"
+        ],
+        [
+          "st2",
+          "+attack2;w 150;-moveright;+use;w 2;-use;alias stskip st3;alias stmove +forward"
+        ],
+        [
+          "st3",
+          "w 15;+jump;cl_pitchup 180;cl_pitchdown -180;-attack2;w;cl_pitchup 89;cl_pitchdown 89;force_centerview;-forward;w 60;alias stskip st4;alias stmove +moveright"
+        ],
+        [
+          "st4",
+          "alias stmove +right; alias stskip st5"
+        ],
+        [
+          "st5",
+          "alias stmove; w 26;-right;-moveright;w 30;-jump;cl_pitchup -89;cl_pitchdown 89;w 44;cl_pitchup 89;weapon_shotgun;alias stskip"
+        ],
+        [
+          "stskip",
+          "st0"
+        ],
+        [
+          "stmove",
+          ""
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "stskip",
+          "guideKey": "1"
+        },
+        {
+          "command": "stmove",
+          "guideKey": "2"
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "st-cld-v2",
+      "chapter": "surface-tension",
+      "section": "ST CLD scripts",
+      "title": "ST CLD v2",
+      "mark": "yellow",
+      "credit": "javac_",
+      "notes": [
+        "Faster version",
+        "Lower chance of taking damage"
+      ],
+      "usage": "Switch to the gauss, hold crouch, go into the corner, uncrouch, aim at the corner of the cliff (not really precise). Try to be as fast as possible to avoid getting damage. Also it's *highly* recommended to have some armor so the helicopter shots don't change player's position much (good for consistency)\n- **Keypresses**: `2 12 12 12 12 12 12` (`2` and then `12` six times)\n- **Additional actions**: increase delay in the `sstdelay` alias if you don't have enough time to press the script keys",
+      "video": {
+        "id": "86eRINHTYZg",
+        "start": 0
+      },
+      "save": "https://github.com/yavats/hl1-scripts/raw/refs/heads/main/Practice%20saves/st_cld.sav",
+      "namespace": null,
+      "aliases": [
+        [
+          "tau",
+          "cl_pitchup 180;cl_pitchdown -180;-attack2;w;cl_pitchup 89;cl_pitchdown 89;force_centerview"
+        ],
+        [
+          "sst1",
+          "bxt_autojump 1; fps_max 100; weapon_gauss; sstdelay; +attack2; alias sstmove +forward; alias sst sst2"
+        ],
+        [
+          "sst2",
+          "w 20; alias sstmove +moveleft; alias sst sst3"
+        ],
+        [
+          "sst3",
+          "w 90; -moveleft; w 10; -forward; alias sst sst4"
+        ],
+        [
+          "sst4",
+          "alias sstmove +left; alias sst sst5"
+        ],
+        [
+          "sst5",
+          "w 10; +jump; w 28; -left; -moveleft; w 15; tau; w 10; +attack2; w 40; alias sstmove +moveright; alias sst sst6"
+        ],
+        [
+          "sst6",
+          "alias sstmove +right; alias sst sst7"
+        ],
+        [
+          "sst7",
+          "alias sstmove; w 30; -moveright; -right; tau; w 25; -jump; cl_pitchdown 89; cl_pitchup -89; w 22; weapon_shotgun; cl_pitchup 89; alias sst"
+        ],
+        [
+          "sst",
+          "sst1"
+        ],
+        [
+          "sstmove",
+          ""
+        ],
+        [
+          "sstdelay",
+          "w 100"
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "sst",
+          "guideKey": "2"
+        },
+        {
+          "command": "sstmove",
+          "guideKey": "1"
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "pipe2pipe-script-v2",
+      "chapter": "surface-tension",
+      "section": "Pipe2pipe scripts",
+      "title": "Pipe2pipe script v2",
+      "mark": "green",
+      "credit": "jorikgrozniy",
+      "notes": [
+        "Most consistent",
+        "Saves hp",
+        "2-3s slower than C2P"
+      ],
+      "usage": "1. Set the angles (it's recommended to do this before anything else)\n2. Start charging gauss before activating the script (3-4 ammo should be enough). Don't start charging on the previous map, you only waste ammo by doing this!\n3. Go into the left corner and press the first script key, then you can release `+attack2`. Press the remaining keys\n\n- **Angles**:\n  - Pitch: around `-1` (doesn't really matter)\n  - Yaw: `268.70 - 268.90` (`.8x` is recommended)\n- **Keypresses:**\n```\n3\n123\n23 23 23 23 23 23 23 23 (x8)\n123\n123\n```\n- **Additional actions:**\n  - Change sensitivity in the `ptpsens` alias to your default\n  - Increase delay in the `ptpdelay` alias if you don't have enough time to press the script keys (every `w 100` = 1s)\n  - You can reset the script with `ptpre` bind instead of re-executing the whole config",
+      "video": {
+        "id": "ZZV663fXqMs",
+        "start": 0
+      },
+      "save": "https://github.com/yavats/hl1-scripts/raw/refs/heads/main/Practice%20saves/p2p.sav",
+      "namespace": null,
+      "aliases": [
+        [
+          "ptptau",
+          "cl_pitchup 180;cl_pitchdown -180;-attack2;w;cl_pitchup 89;cl_pitchdown 89;force_centerview"
+        ],
+        [
+          "ptpre",
+          "say reset_script;fps_max 100;-forward;-moveleft;-moveright;-back;-duck;-jump;-right;-left;-attack2;ptpsens;alias ptpscript ptp0;alias ptpmove2;alias ptpmove1"
+        ],
+        [
+          "ptp0",
+          "fps_max 100;sensitivity 0;ptpdelay;alias ptpscript ptp1;alias ptpmove1 +moveleft;alias ptpmove2 +forward"
+        ],
+        [
+          "ptp1",
+          "+attack2;w 52;-forward;-moveleft;+jump;alias ptpscript ptp2;alias ptpmove2 +moveright"
+        ],
+        [
+          "ptp2",
+          "+duck;w 70;-moveright;alias ptpscript ptp3;alias ptpmove2 +moveleft"
+        ],
+        [
+          "ptp3",
+          "-jump;w 20;-moveleft;-duck;alias ptpscript ptp4;alias ptpmove2 +right"
+        ],
+        [
+          "ptp4",
+          "w 38;-right;w 10;alias ptpscript ptp5;alias ptpmove2 +moveleft"
+        ],
+        [
+          "ptp5",
+          "w 18;-moveleft;w 10;force_centerview;alias ptpscript ptp6;alias ptpmove2 +forward"
+        ],
+        [
+          "ptp6",
+          "w 16;ptptau;w;-forward;alias ptpscript ptp7;alias ptpmove2 +moveright"
+        ],
+        [
+          "ptp7",
+          "w 10;+attack2;w 70;alias ptpscript ptp8;alias ptpmove2 +right"
+        ],
+        [
+          "ptp8",
+          "w 6;-right;-moveright;alias ptpscript ptp9;alias ptpmove2 +back"
+        ],
+        [
+          "ptp9",
+          "w 2;-back;+jump;w 70;alias ptpscript ptp10;alias ptpmove2 +left"
+        ],
+        [
+          "ptp10",
+          "w 5;-left;-moveleft;-jump;ptptau;w;save autosave;w 71;alias ptpscript ptp11;alias ptpmove2 +right;alias ptpmove1 +moveright"
+        ],
+        [
+          "ptp11",
+          "w 4;-right;w 2;-moveright;+duck;w 10;fps_max 20;+use;w 4;-duck;fps_max 100;w 15;-use;ptpsens;alias ptpscript;alias ptpmove2;alias ptpmove1"
+        ],
+        [
+          "ptpscript",
+          "ptp0"
+        ],
+        [
+          "ptpmove2",
+          ""
+        ],
+        [
+          "ptpmove1",
+          ""
+        ],
+        [
+          "ptpsens",
+          "sensitivity {sensitivity}"
+        ],
+        [
+          "ptpdelay",
+          "w 100"
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "ptpscript",
+          "guideKey": "3"
+        },
+        {
+          "command": "ptpmove2",
+          "guideKey": "2"
+        },
+        {
+          "command": "ptpmove1",
+          "guideKey": "1"
+        },
+        {
+          "command": "ptpre",
+          "guideKey": "-"
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "pipe2pipe-script-v3",
+      "chapter": "surface-tension",
+      "section": "Pipe2pipe scripts",
+      "title": "Pipe2pipe script v3",
+      "mark": "yellow",
+      "credit": null,
+      "notes": [
+        "600 UPS into the pipe",
+        "Saves hp",
+        "As fast as C2P"
+      ],
+      "usage": "*[P2P script v2](#pipe2pipe-script-v2) modified and extended by javac_*\n\n1. Set the angles (it's recommended to do this before anything else)\n2. Start charging gauss before activating the script (3-4 ammo should be enough). Don't start charging on the previous map, you only waste ammo by doing this!\n3. Go into the left corner and press the first script key, then you can release `+attack2`. Press the remaining keys\n4. Hold `+jump` after the script is done\n\n- **Angles**:\n  - Pitch: around `-1` (doesn't really matter)\n  - Yaw: `268.69 - 268.90` (`.76 - .86` is recommended)\n- **Keypresses:**\n```\n3\n123\n23 23 23 23 23 23 23 23 (x8)\n123 123 123\n23 23 23\n```\n- **Additional actions:**\n  - Change sensitivity in the `p2psens` alias to your default\n  - Increase delay in the `p2pdelay` alias if you don't have enough time to press the script keys (every `w 100` = 1s)\n  - You can reset the script with `p2pre` bind instead of re-executing the whole config",
+      "video": {
+        "id": "Ox6OqOg4Izs",
+        "start": 0
+      },
+      "save": "https://github.com/yavats/hl1-scripts/raw/refs/heads/main/Practice%20saves/p2p.sav",
+      "namespace": "p2p3",
+      "aliases": [
+        [
+          "p2p3_p2ptau",
+          "cl_pitchup 180;cl_pitchdown -180;-attack2;w;cl_pitchup 89;cl_pitchdown 89;force_centerview"
+        ],
+        [
+          "p2p3_p2pre",
+          "say reset_script; -forward; -moveleft; -moveright; -back; -right; -left; -duck; -jump; fps_max 100; cl_pitchdown 89; cl_pitchup 89; p2p3_p2psens; alias p2p3_p2p p2p3_p2p1; alias p2p3_p2pmv2; alias p2p3_p2pmv1"
+        ],
+        [
+          "p2p3_p2p1",
+          "fps_max 100; bxt_disable_autosave 1; -moveleft; -back; cl_pitchup 1.41; cl_pitchdown -1.41; sensitivity 0; p2p3_p2pdelay; alias p2p3_p2pmv1 +moveleft; alias p2p3_p2pmv2 +forward; alias p2p3_p2p p2p3_p2p2"
+        ],
+        [
+          "p2p3_p2p2",
+          "+attack2; w 52; cl_pitchup 89; cl_pitchdown 89; -forward; -moveleft; +jump; alias p2p3_p2pmv1; alias p2p3_p2pmv2 +moveright; alias p2p3_p2p p2p3_p2p3"
+        ],
+        [
+          "p2p3_p2p3",
+          "+duck; w 70; -moveright; alias p2p3_p2pmv2 +moveleft; alias p2p3_p2p p2p3_p2p4"
+        ],
+        [
+          "p2p3_p2p4",
+          "-jump; w 20; -moveleft; -duck; alias p2p3_p2pmv2 +right; alias p2p3_p2p p2p3_p2p5"
+        ],
+        [
+          "p2p3_p2p5",
+          "w 38; -right; w 10; alias p2p3_p2pmv2 +moveleft; alias p2p3_p2p p2p3_p2p6"
+        ],
+        [
+          "p2p3_p2p6",
+          "w 18; -moveleft; w 10; force_centerview; alias p2p3_p2pmv2 +forward; alias p2p3_p2p p2p3_p2p7"
+        ],
+        [
+          "p2p3_p2p7",
+          "w 16; p2p3_p2ptau; w; -forward; alias p2p3_p2pmv2 +moveright; alias p2p3_p2p p2p3_p2p8"
+        ],
+        [
+          "p2p3_p2p8",
+          "+attack2; w 80; alias p2p3_p2pmv2 +right; alias p2p3_p2p p2p3_p2p9"
+        ],
+        [
+          "p2p3_p2p9",
+          "w 6; -right; -moveright; alias p2p3_p2pmv2 +back; alias p2p3_p2p p2p3_p2p10"
+        ],
+        [
+          "p2p3_p2p10",
+          "w 2; -back; +jump; w 59; alias p2p3_p2pmv1 +left; alias p2p3_p2pmv2 +moveleft; alias p2p3_p2p p2p3_p2p11"
+        ],
+        [
+          "p2p3_p2p11",
+          "w 10; -left; -moveleft; -jump; w; p2p3_p2ptau; w; +attack2; w 10; alias p2p3_p2p p2p3_p2p12"
+        ],
+        [
+          "p2p3_p2p12",
+          "w 2; -left; w 20; -moveleft; w 6; alias p2p3_p2pmv1 +moveright; alias p2p3_p2pmv2 +right; alias p2p3_p2p p2p3_p2p13"
+        ],
+        [
+          "p2p3_p2p13",
+          "w 4; -right; w 11; alias p2p3_p2pmv1; alias p2p3_p2p p2p3_p2p14"
+        ],
+        [
+          "p2p3_p2p14",
+          "w 4; -right; w 11; alias p2p3_p2p p2p3_p2p15"
+        ],
+        [
+          "p2p3_p2p15",
+          "w 4; -right; w 11; alias p2p3_p2p p2p3_p2p16"
+        ],
+        [
+          "p2p3_p2p16",
+          "w 12; -right; +duck; +jump; w; p2p3_p2ptau; w 30; -jump; -duck; -moveright; fps_max 100; p2p3_p2psens; bxt_disable_autosave 0; alias p2p3_p2p; alias p2p3_p2pmv2"
+        ],
+        [
+          "p2p3_p2p",
+          "p2p3_p2p1"
+        ],
+        [
+          "p2p3_p2pmv2",
+          ""
+        ],
+        [
+          "p2p3_p2pmv1",
+          ""
+        ],
+        [
+          "p2p3_p2psens",
+          "sensitivity {sensitivity}"
+        ],
+        [
+          "p2p3_p2pdelay",
+          "w 100"
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "p2p3_p2p",
+          "guideKey": "3"
+        },
+        {
+          "command": "p2p3_p2pmv2",
+          "guideKey": "2"
+        },
+        {
+          "command": "p2p3_p2pmv1",
+          "guideKey": "1"
+        },
+        {
+          "command": "p2p3_p2pre",
+          "guideKey": "-"
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "pipe2pipe-script-v4",
+      "chapter": "surface-tension",
+      "section": "Pipe2pipe scripts",
+      "title": "Pipe2pipe script v4",
+      "mark": "red",
+      "credit": "javac_",
+      "notes": [
+        "800 UPS into the pipe",
+        "Saves hp",
+        "Uses less gauss ammo",
+        "Fastest version"
+      ],
+      "usage": "0. IT'S HIGHLY RECOMMENDED TO HAVE A SEPARATE CONFIG FOR THIS SCRIPT! Execute it before any attempt with a bind like this: `bind key \"exec p2pv4.cfg\"`\n1. Set the angles (it's recommended to do this before anything else)\n2. Start charging gauss before activating the script (3-4 ammo should be enough). Don't start charging on the previous map, you only waste ammo by doing this!\n3. Go into the left corner and press the first script key, then you can release `+attack2`. Press the remaining keys\n4. Hold `+jump` after the script is done\n\n- **Angles**:\n  - Pitch: around `-1` (doesn't really matter)\n  - Yaw: `268.69 - 268.85` (`.7x` is recommended)\n- **Keypresses:**\n```\n3\n123\n23 23 23 23 23 23 23 23 23 23 (x10)\n123\n23 23 23\n123\n23 23 23 23 23\n```\n- **Additional actions:**\n  - Change sensitivity in the `p2psens` alias to your default\n  - Increase delay in the `p2pdelay` alias if you don't have enough time to press the script keys (every `w 100` = 1s)\n  - You can reset the script with `p2pre` bind instead of re-executing the whole config",
+      "video": {
+        "id": "ynC9b9_VrNg",
+        "start": 0
+      },
+      "save": "https://github.com/yavats/hl1-scripts/raw/refs/heads/main/Practice%20saves/p2p.sav",
+      "namespace": "p2p4",
+      "aliases": [
+        [
+          "p2p4_p2ptau",
+          "cl_pitchup 180;cl_pitchdown -180;-attack2;w;cl_pitchup 89;cl_pitchdown 89;force_centerview"
+        ],
+        [
+          "p2p4_p2pre",
+          "say reset_script; p2p4_p2pbind1; p2p4_p2pbind2; p2p4_p2pbind3; -forward; -moveleft; -moveright; -right; -left; -back; -duck; -jump; fps_max 100; cl_pitchdown 89; cl_pitchup 89; p2p4_p2psens; alias p2p4_p2p p2p4_p2p1; alias p2p4_p2pmv1; alias p2p4_p2pmv2"
+        ],
+        [
+          "p2p4_p2p1",
+          "fps_max 100; bxt_disable_autosave 1; save autosave; -moveright; -forward; -back; -moveleft; sensitivity 0; p2p4_p2pdelay; alias p2p4_p2pmv1 +moveleft; alias p2p4_p2pmv2 +forward; alias p2p4_p2p p2p4_p2p2"
+        ],
+        [
+          "p2p4_p2p2",
+          "+attack2; w 52; -forward; -moveleft; +jump; alias p2p4_p2pmv1; alias p2p4_p2pmv2 +moveright; alias p2p4_p2p p2p4_p2p3"
+        ],
+        [
+          "p2p4_p2p3",
+          "+duck; w 70; -moveright; alias p2p4_p2pmv2 +moveleft; alias p2p4_p2p p2p4_p2p4"
+        ],
+        [
+          "p2p4_p2p4",
+          "-jump; w 20; -moveleft; -duck; alias p2p4_p2pmv2 +right; alias p2p4_p2p p2p4_p2p5"
+        ],
+        [
+          "p2p4_p2p5",
+          "w 38; -right; w 10; alias p2p4_p2pmv2 +moveleft; alias p2p4_p2p p2p4_p2p6"
+        ],
+        [
+          "p2p4_p2p6",
+          "w 18; -moveleft; w 10; force_centerview; alias p2p4_p2pmv2 +forward; alias p2p4_p2p p2p4_p2p7"
+        ],
+        [
+          "p2p4_p2p7",
+          "w 16; p2p4_p2ptau; w; -forward; alias p2p4_p2pmv2 +moveright; alias p2p4_p2p p2p4_p2p8"
+        ],
+        [
+          "p2p4_p2p8",
+          "w 6; +attack2; w 62; alias p2p4_p2pmv2 +moveright; alias p2p4_p2p p2p4_p2p9"
+        ],
+        [
+          "p2p4_p2p9",
+          "w 8; alias p2p4_p2pmv2 +right; alias p2p4_p2p p2p4_p2p10"
+        ],
+        [
+          "p2p4_p2p10",
+          "w 3; -right; w 13; alias p2p4_p2p p2p4_p2p11"
+        ],
+        [
+          "p2p4_p2p11",
+          "w 3; -right; w 13; alias p2p4_p2p p2p4_p2p12"
+        ],
+        [
+          "p2p4_p2p12",
+          "w 3; -right; +jump; w 30; -moveright; alias p2p4_p2pmv1 +moveleft; alias p2p4_p2pmv2 +left; alias p2p4_p2p p2p4_p2p13"
+        ],
+        [
+          "p2p4_p2p13",
+          "w 3; -left; w 3; alias p2p4_p2p p2p4_p2p14"
+        ],
+        [
+          "p2p4_p2p14",
+          "w 3; -left; w 3; alias p2p4_p2p p2p4_p2p15"
+        ],
+        [
+          "p2p4_p2p15",
+          "w 8; -left; w 24; p2p4_p2ptau; w 10; alias p2p4_p2p p2p4_p2p16"
+        ],
+        [
+          "p2p4_p2p16",
+          "w 3; -left; -moveleft; w 10; alias p2p4_p2pmv1 +moveright; alias p2p4_p2pmv2 +right; alias p2p4_p2p p2p4_p2p17"
+        ],
+        [
+          "p2p4_p2p17",
+          "w 8; -right; w 6; alias p2p4_p2pmv1; alias p2p4_p2p p2p4_p2p18"
+        ],
+        [
+          "p2p4_p2p18",
+          "w 6; -right; w 14; alias p2p4_p2p p2p4_p2p19"
+        ],
+        [
+          "p2p4_p2p19",
+          "w 5; -right; w 4; alias p2p4_p2p p2p4_p2p20"
+        ],
+        [
+          "p2p4_p2p20",
+          "w 8; -right; w; alias p2p4_p2p p2p4_p2p21"
+        ],
+        [
+          "p2p4_p2p21",
+          "w 8; +duck; -right; fps_max 20; w 12; -moveright; -duck; -jump; fps_max 100; alias p2p4_p2p; alias p2p4_p2pmv2; p2p4_p2psens; bxt_disable_autosave 0; p2p4_defbind1; p2p4_defbind2; p2p4_defbind3"
+        ],
+        [
+          "p2p4_p2p",
+          "p2p4_p2p1"
+        ],
+        [
+          "p2p4_p2pmv2",
+          ""
+        ],
+        [
+          "p2p4_p2pmv1",
+          ""
+        ],
+        [
+          "p2p4_p2pdelay",
+          "w 100"
+        ],
+        [
+          "p2p4_p2psens",
+          "sensitivity {sensitivity}"
+        ],
+        [
+          "p2p4_p2pbind1",
+          ""
+        ],
+        [
+          "p2p4_p2pbind2",
+          ""
+        ],
+        [
+          "p2p4_p2pbind3",
+          ""
+        ],
+        [
+          "p2p4_defbind1",
+          ""
+        ],
+        [
+          "p2p4_defbind2",
+          ""
+        ],
+        [
+          "p2p4_defbind3",
+          ""
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "p2p4_p2pre",
+          "guideKey": "-"
+        },
+        {
+          "command": "p2p4_p2pmv1",
+          "guideKey": "1"
+        },
+        {
+          "command": "p2p4_p2pmv2",
+          "guideKey": "2"
+        },
+        {
+          "command": "p2p4_p2p",
+          "guideKey": "3"
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "pipe2pipe-script-v4-2-key-edition",
+      "chapter": "surface-tension",
+      "section": "Pipe2pipe scripts",
+      "title": "Pipe2pipe script v4 2-key edition",
+      "mark": "red",
+      "credit": "javac_",
+      "notes": [
+        "800 UPS into the pipe",
+        "Saves hp",
+        "Uses less gauss ammo",
+        "Fastest version"
+      ],
+      "usage": "0. IT'S HIGHLY RECOMMENDED TO HAVE A SEPARATE CONFIG FOR THIS SCRIPT! Execute it before any attempt with a bind like this: `bind key \"exec p2pv4.cfg\"`\n1. Set the angles (it's recommended to do this before anything else)\n2. Start charging gauss before activating the script (3-4 ammo should be enough). Don't start charging on the previous map, you only waste ammo by doing this!\n3. Go into the left corner and press the first script key, then you can release `+attack2`. Press the remaining keys\n4. Hold `+jump` after the script is done\n\n- **Angles**:\n  - Pitch: around `-1` (doesn't really matter)\n  - Yaw: `268.69 - 268.85` (`.7x` is recommended)\n- **Keypresses:** `2 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12` (`2` and then `12` twenty three times)\n- **Additional actions:**\n  - Change sensitivity in the `p2psens` alias to your default\n  - Increase delay in the `p2pdelay` alias if you don't have enough time to press the script keys (every `w 100` = 1s)\n  - You can reset the script with `p2pre` bind instead of re-executing the whole config",
+      "video": {
+        "id": "tF90SY2WXso",
+        "start": 0
+      },
+      "save": "https://github.com/yavats/hl1-scripts/raw/refs/heads/main/Practice%20saves/p2p.sav",
+      "namespace": "p2p4k",
+      "aliases": [
+        [
+          "p2p4k_p2ptau",
+          "cl_pitchup 180;cl_pitchdown -180;-attack2;w;cl_pitchup 89;cl_pitchdown 89;force_centerview"
+        ],
+        [
+          "p2p4k_p2pre",
+          "say reset_script; p2p4k_p2pbind1; p2p4k_p2pbind2; -forward; -moveleft; -moveright; -right; -left; -back; -duck; -jump; fps_max 100; cl_pitchdown 89; cl_pitchup 89; p2p4k_p2psens; alias p2p4k_p2p p2p4k_p2p1; alias p2p4k_p2pmv"
+        ],
+        [
+          "p2p4k_p2p1",
+          "fps_max 100; bxt_disable_autosave 1; save autosave; -moveright; -forward; -back; -moveleft; sensitivity 0; p2p4k_p2pdelay; alias p2p4k_p2pmv +forward; alias p2p4k_p2p p2p4k_p2p2"
+        ],
+        [
+          "p2p4k_p2p2",
+          "alias p2p4k_p2pmv +moveleft; alias p2p4k_p2p p2p4k_p2p3"
+        ],
+        [
+          "p2p4k_p2p3",
+          "+attack2; w 52; -forward; -moveleft; +jump; alias p2p4k_p2pmv +moveright; alias p2p4k_p2p p2p4k_p2p4"
+        ],
+        [
+          "p2p4k_p2p4",
+          "+duck; w 70; -moveright; alias p2p4k_p2pmv +moveleft; alias p2p4k_p2p p2p4k_p2p5"
+        ],
+        [
+          "p2p4k_p2p5",
+          "-jump; w 20; -moveleft; -duck; alias p2p4k_p2pmv +right; alias p2p4k_p2p p2p4k_p2p6"
+        ],
+        [
+          "p2p4k_p2p6",
+          "w 38; -right; w 10; alias p2p4k_p2pmv +moveleft; alias p2p4k_p2p p2p4k_p2p7"
+        ],
+        [
+          "p2p4k_p2p7",
+          "w 18; -moveleft; w 10; force_centerview; alias p2p4k_p2pmv +forward; alias p2p4k_p2p p2p4k_p2p8"
+        ],
+        [
+          "p2p4k_p2p8",
+          "w 16; p2p4k_p2ptau; w; -forward; alias p2p4k_p2pmv +moveright; alias p2p4k_p2p p2p4k_p2p9"
+        ],
+        [
+          "p2p4k_p2p9",
+          "w 6; +attack2; w 62; alias p2p4k_p2pmv +moveright; alias p2p4k_p2p p2p4k_p2p10"
+        ],
+        [
+          "p2p4k_p2p10",
+          "w 8; alias p2p4k_p2pmv +right; alias p2p4k_p2p p2p4k_p2p11"
+        ],
+        [
+          "p2p4k_p2p11",
+          "w 3; -right; w 13; alias p2p4k_p2p p2p4k_p2p12"
+        ],
+        [
+          "p2p4k_p2p12",
+          "w 3; -right; w 13; alias p2p4k_p2p p2p4k_p2p13"
+        ],
+        [
+          "p2p4k_p2p13",
+          "w 3; -right; +jump; w 30; -moveright; alias p2p4k_p2pmv +moveleft; alias p2p4k_p2p p2p4k_p2p14"
+        ],
+        [
+          "p2p4k_p2p14",
+          "alias p2p4k_p2pmv +left; alias p2p4k_p2p p2p4k_p2p15"
+        ],
+        [
+          "p2p4k_p2p15",
+          "w 3; -left; w 3; alias p2p4k_p2p p2p4k_p2p16"
+        ],
+        [
+          "p2p4k_p2p16",
+          "w 3; -left; w 3; alias p2p4k_p2p p2p4k_p2p17"
+        ],
+        [
+          "p2p4k_p2p17",
+          "w 8; -left; w 24; p2p4k_p2ptau; w 10; alias p2p4k_p2p p2p4k_p2p18"
+        ],
+        [
+          "p2p4k_p2p18",
+          "w 3; -left; -moveleft; w 10; alias p2p4k_p2pmv +moveright; alias p2p4k_p2p p2p4k_p2p19"
+        ],
+        [
+          "p2p4k_p2p19",
+          "alias p2p4k_p2pmv +right; alias p2p4k_p2p p2p4k_p2p20"
+        ],
+        [
+          "p2p4k_p2p20",
+          "w 8; -right; w 6; alias p2p4k_p2p p2p4k_p2p21"
+        ],
+        [
+          "p2p4k_p2p21",
+          "w 6; -right; w 14; alias p2p4k_p2p p2p4k_p2p22"
+        ],
+        [
+          "p2p4k_p2p22",
+          "w 5; -right; w 4; alias p2p4k_p2p p2p4k_p2p23"
+        ],
+        [
+          "p2p4k_p2p23",
+          "w 8; -right; w; alias p2p4k_p2p p2p4k_p2p24"
+        ],
+        [
+          "p2p4k_p2p24",
+          "w 8; +duck; -right; fps_max 20; w 12; -moveright; -duck; -jump; fps_max 100; alias p2p4k_p2p; alias p2p4k_p2pmv; p2p4k_p2psens; bxt_disable_autosave 0; p2p4k_defbind1; p2p4k_defbind2"
+        ],
+        [
+          "p2p4k_p2p",
+          "p2p4k_p2p1"
+        ],
+        [
+          "p2p4k_p2pmv",
+          ""
+        ],
+        [
+          "p2p4k_p2pdelay",
+          "w 100"
+        ],
+        [
+          "p2p4k_p2psens",
+          "sensitivity {sensitivity}"
+        ],
+        [
+          "p2p4k_p2pbind1",
+          ""
+        ],
+        [
+          "p2p4k_p2pbind2",
+          ""
+        ],
+        [
+          "p2p4k_defbind1",
+          ""
+        ],
+        [
+          "p2p4k_defbind2",
+          ""
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "p2p4k_p2pre",
+          "guideKey": "-"
+        },
+        {
+          "command": "p2p4k_p2pmv",
+          "guideKey": "1"
+        },
+        {
+          "command": "p2p4k_p2p",
+          "guideKey": "2"
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "pre-ihd-nade-boost",
+      "chapter": "surface-tension",
+      "section": "Pre-IHD nade boost",
+      "title": "Pre-IHD nade boost",
+      "mark": null,
+      "credit": "hsci",
+      "notes": [],
+      "usage": "hold `+jump` and press the script key on the slope. Having at least 1100 ups is recommended",
+      "video": {
+        "id": "SCDMUGy1FSA",
+        "start": 0
+      },
+      "save": "https://github.com/yavats/hl1-scripts/raw/refs/heads/main/Practice%20saves/stboost.sav",
+      "namespace": null,
+      "aliases": [
+        [
+          "stboost",
+          "+duck; w 18; cl_pitchup -96; cl_pitchdown -180; w; +attack2; w; -attack2; w 2; -duck; cl_pitchup 89; cl_pitchdown 89; force_centerview; weapon_gauss"
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "stboost",
+          "guideKey": null
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "simple-ihd-forward-boost",
+      "chapter": "surface-tension",
+      "section": "Simple IHD forward boost",
+      "title": "Simple IHD forward boost",
+      "mark": null,
+      "credit": null,
+      "notes": [],
+      "usage": "charge the gauss, press `key w key` (`key` is the script key)",
+      "video": {
+        "id": "kE_0KCV0J3s",
+        "start": 0
+      },
+      "save": "https://github.com/yavats/hl1-scripts/raw/refs/heads/main/Practice%20saves/ihd.sav",
+      "namespace": null,
+      "aliases": [
+        [
+          "ihd",
+          "ihd1"
+        ],
+        [
+          "ihd1",
+          "w 30; alias ihd ihd2"
+        ],
+        [
+          "ihd2",
+          "w 8; cl_pitchup 180; cl_pitchdown -180; -attack2; w; cl_pitchup 89; cl_pitchdown 89; force_centerview; w; -forward; alias ihd ihd1"
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "ihd",
+          "guideKey": null
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "gauss-door-setup-script",
+      "chapter": "surface-tension",
+      "section": "Gauss door setup script",
+      "title": "Gauss door setup script",
+      "mark": null,
+      "credit": "javac, setup by MarQ",
+      "notes": [],
+      "usage": "0. Change `defsens`, `doorsens`, `deffov`, `doorfov` and `defcross` settings\n1. Charge the gauss, go into the corner, start holding the script key\n2. Aim at the right spot and shoot. The script is configured so that at full HD the crosshair line just barely crosses the vertical line between 3rd and 2nd pixels from the right when you look at the correct spot. Yaw: `34.18 - 34.39`",
+      "video": {
+        "id": "G_yYuyRoBFs",
+        "start": 0
+      },
+      "save": "https://github.com/yavats/hl1-scripts/raw/refs/heads/main/Practice%20saves/slowgauss.sav",
+      "namespace": null,
+      "aliases": [
+        [
+          "+doorsetup",
+          "fps_max 100; +duck; +use; cl_pitchdown -16.69; cl_pitchup 16.69; doorfov; doorcross; doorsens; alias _doorsetup _doorsetupfunc"
+        ],
+        [
+          "_doorsetup",
+          ""
+        ],
+        [
+          "_doorsetupfunc",
+          "-duck; -use; cl_pitchdown 89; cl_pitchup 89; deffov; defcross; defsens; weapon_handgrenade"
+        ],
+        [
+          "-doorsetup",
+          "_doorsetup; alias _doorsetup"
+        ],
+        [
+          "doorcross",
+          "bxt_cross 1; bxt_cross_top_line 0; bxt_cross_left_line 0; bxt_cross_bottom_line 0; bxt_cross_right_line 1; bxt_cross_size 32"
+        ],
+        [
+          "defsens",
+          "sensitivity {sensitivity}"
+        ],
+        [
+          "doorsens",
+          "sensitivity {sensitivity}"
+        ],
+        [
+          "deffov",
+          "exec hlsr-personalization.cfg"
+        ],
+        [
+          "doorfov",
+          "default_fov 30"
+        ],
+        [
+          "defcross",
+          "exec hlsr-personalization.cfg"
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "+doorsetup",
+          "guideKey": null
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "forget-about-freeman-a",
+      "chapter": "forget-about-freeman",
+      "section": "FAF CLD scripts",
+      "title": "Forget About Freeman A",
+      "mark": "green",
+      "credit": "Parklez",
+      "notes": [
+        "Crowbar + handgrenade boost version",
+        "Doesn't scare the vortigaunts off"
+      ],
+      "usage": "(optional) Kill the vortigaunts or scare them off with and smg nade\nCook a nade, hold `w` or `w + a` / `w + d` to go down the ladder, activate the script before touching the changelevel trigger. Use mouse movement to control your character, climb up, go into the corner and aim at the vertical line on the wall (yaw ~184).\nIf you don't have enough time to do the script, increase waits in the `w 500` command. Every `w 100` = 1s.",
+      "video": {
+        "id": "E4h4jmzd-gI",
+        "start": 0
+      },
+      "save": "https://github.com/yavats/hl1-scripts/raw/refs/heads/main/Practice%20saves/faf.sav",
+      "namespace": null,
+      "aliases": [
+        [
+          "faf_a",
+          "fps_max 100;speak fvox/power_level_is.beep._comma.beep._comma.beep._comma.beep;-moveright;-moveleft;-duck;weapon_crowbar;+attack;w 500;weapon_handgrenade;w 40;cl_pitchdown 180;cl_pitchup -179;w 40;cl_pitchup 89.999;cl_pitchdown 89.999;cl_pitchup -40;cl_pitchdown 40.001;w 30;-attack;w 4;+jump;+duck;w;-jump;-duck;cl_pitchup 89;cl_pitchdown 89;w 61"
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "faf_a",
+          "guideKey": null
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "forget-about-freeman-c",
+      "chapter": "forget-about-freeman",
+      "section": "FAF CLD scripts",
+      "title": "Forget About Freeman C",
+      "mark": "green",
+      "credit": null,
+      "notes": [
+        "Crowbar + smg nade + handgrenade boost version",
+        "Auto nade charge",
+        "Most consistent version"
+      ],
+      "usage": "Hold `w` or `w + a` / `w + d` to go down the ladder, activate the script before touching the changelevel trigger. Use mouse movement to control your character, climb up, go into the corner and aim at the vertical line on the wall (yaw ~184).\nIf you don't have enough time to do the script, increase waits in the `w 250` command. Every `w 100` = 1s.",
+      "video": {
+        "id": "8dKdXEbiIAc",
+        "start": 0
+      },
+      "save": "https://github.com/yavats/hl1-scripts/raw/refs/heads/main/Practice%20saves/faf.sav",
+      "namespace": null,
+      "aliases": [
+        [
+          "faf_c",
+          "fps_max 100;weapon_handgrenade;w 10;speak fvox/power_level_is.beep._comma.beep._comma.beep._comma.beep;-moveright;-moveleft;-duck;+attack; w 50; weapon_crowbar;w 250;weapon_9mmAR;w 100;smg_c;w;weapon_handgrenade;w 10;+attack;w 50;cl_pitchdown 180;cl_pitchup -179;w 40;cl_pitchup 89.999;cl_pitchdown 89.999;cl_pitchup -40;cl_pitchdown 40.001;w 30;-attack;w 4;+jump;+duck;w;-jump;-duck;cl_pitchup 89;cl_pitchdown 89;w 61;weapon_shotgun"
+        ],
+        [
+          "smg_c",
+          "cl_pitchdown 180;cl_pitchup -179;w;+attack2;w;cl_pitchup 89;cl_pitchdown 89;-attack2"
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "faf_c",
+          "guideKey": null
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "forget-about-freeman-d",
+      "chapter": "forget-about-freeman",
+      "section": "FAF CLD scripts",
+      "title": "Forget About Freeman D",
+      "mark": "yellow",
+      "credit": "Wize",
+      "notes": [
+        "Crowbar + smg nade boost version",
+        "Faster",
+        "Less consistent"
+      ],
+      "usage": "Hold `w` or `w + a` / `w + d` to go down the ladder, activate the script before touching the changelevel trigger. Use mouse movement to control your character, climb up, go into the corner and aim at the vertical line on the wall (yaw ~184).\nIf you don't have enough time to do the script, increase waits in the `w 400` command. Every `w 100` = 1s.\nCrouching during changelevel seems to lower the chance of getting stuck in the wall",
+      "video": {
+        "id": "X7T9iaG2V3w",
+        "start": 0
+      },
+      "save": "https://github.com/yavats/hl1-scripts/raw/refs/heads/main/Practice%20saves/faf.sav",
+      "namespace": null,
+      "aliases": [
+        [
+          "faf_d",
+          "fps_max 100;save autosave;weapon_crowbar;-moveleft;-moveright;+attack;w 400;-attack;weapon_9mmAR;cl_pitchdown 180;cl_pitchup -179;w 40;cl_pitchup 89;cl_pitchdown 89;w 30;+jump;+duck;w;cl_pitchdown 136;cl_pitchup -135;-forward;+attack2;w 30;-attack2;cl_pitchup 89;cl_pitchdown 89;force_centerview;-jump;-duck;w 26; weapon_hornetgun"
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "faf_d",
+          "guideKey": null
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "forget-about-freeman-e",
+      "chapter": "forget-about-freeman",
+      "section": "FAF CLD scripts",
+      "title": "Forget About Freeman E",
+      "mark": "orange",
+      "credit": null,
+      "notes": [
+        "Crowbar + smg nade boost version",
+        "Even faster",
+        "More consistent"
+      ],
+      "usage": "*[FAF D](#forget-about-freeman-d) modified by Kisimov*\n\nHold `w` or `w + a` / `w + d` to go down the ladder, activate the script before touching the changelevel trigger. Use mouse movement to control your character, climb up, go into the corner and aim at the vertical line on the wall (yaw ~184).\nIf you don't have enough time to do the script, increase waits in the `w 350` command. Every `w 100` = 1s.",
+      "video": {
+        "id": "X7T9iaG2V3w",
+        "start": 0
+      },
+      "save": "https://github.com/yavats/hl1-scripts/raw/refs/heads/main/Practice%20saves/faf.sav",
+      "namespace": null,
+      "aliases": [
+        [
+          "faf_e",
+          "fps_max 100;save autosave;-moveleft;-moveright;weapon_crowbar;+attack;w 350;-attack;force_centerview;weapon_9mmAR;cl_pitchdown 180;cl_pitchup -179;w 40;cl_pitchup 89;cl_pitchdown 89;w 30;+jump;+duck;w;cl_pitchdown 136;cl_pitchup -135;-forward;+attack2;w 30;-attack2;cl_pitchup 89;cl_pitchdown 89;force_centerview;-jump;-duck;w 10;+duck;w 16;-duck;weapon_hornetgun"
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "faf_e",
+          "guideKey": null
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "forget-about-freeman-f",
+      "chapter": "forget-about-freeman",
+      "section": "FAF CLD scripts",
+      "title": "Forget About Freeman F",
+      "mark": "red",
+      "credit": null,
+      "notes": [
+        "Crowbar + smg nade boost version",
+        "Fastest one",
+        "Consistent[*](https://www.twitch.tv/gratedastroex/clip/EphemeralRamshackleNuggetsDeIlluminati-_-x35L64CdtDHa8d) if no snarks have spawned"
+      ],
+      "usage": "*[FAF E](#forget-about-freeman-e) ladderstrafe ver.*\n\nHold `w + a` / `w + d` to go down the ladder, activate the script before touching the changelevel trigger. Use mouse movement to control your character, climb up (note that you'll move really fast the first few moments), go into the corner and aim at the vertical line on the wall (yaw ~184). It's HIGHLY recommended to despawn snarks by saveloading when the hatch crosses the snark mine.\nIf you don't have enough time to do the script, increase waits in the `w 100` or `w 180` command (depends on what part of the script you need more time for; `w 100` is for the ladderstrafe part, `w 180` is for the rest). Every `w 100` = 1s.",
+      "video": {
+        "id": "_r7b_2CwO-I",
+        "start": 0
+      },
+      "save": "https://github.com/yavats/hl1-scripts/raw/refs/heads/main/Practice%20saves/faf.sav",
+      "namespace": null,
+      "aliases": [
+        [
+          "faf_f",
+          "cl_pitchup 89.999;fps_max 100;save autosave;weapon_crowbar;+attack;w 100;-moveleft;-moveright;w 180;-attack;force_centerview;weapon_9mmAR;cl_pitchdown 180;cl_pitchup -179;w 40;cl_pitchup 89;cl_pitchdown 89;w 30;+jump;+duck;w;cl_pitchdown 136;cl_pitchup -135;-forward;+attack2;w 30;-attack2;cl_pitchup 89;cl_pitchdown 89;force_centerview;-jump;-duck;w 10;+duck;w 16;-duck;weapon_hornetgun"
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "faf_f",
+          "guideKey": null
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "door-frame-nade-boost",
+      "chapter": "lambda-core",
+      "section": "Door frame nade boost",
+      "title": "Door frame nade boost",
+      "mark": null,
+      "credit": "hsci & javac_",
+      "notes": [],
+      "usage": "cook a nade, open the door, aim slightly to the right and activate the script right before you pass the doorframe",
+      "video": {
+        "id": "BdP288HnmgA",
+        "start": 0
+      },
+      "save": "https://github.com/yavats/hl1-scripts/raw/refs/heads/main/Practice%20saves/lcboost.sav",
+      "namespace": null,
+      "aliases": [
+        [
+          "lcboost",
+          "fps_max 100; cl_pitchdown -20; cl_pitchup 20; +duck; +jump; w 5; -attack; w 15; -jump; cl_pitchup 89; cl_pitchdown 89; w 30; -duck"
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "lcboost",
+          "guideKey": null
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "simple-nade-clipping",
+      "chapter": "lambda-core",
+      "section": "Water clipping nade scripts",
+      "title": "Simple nade clipping",
+      "mark": "green",
+      "credit": "N4rk0t1k",
+      "notes": [
+        "Prevents nukes"
+      ],
+      "usage": "cook a nade, drop into the water, hold `w`, look perpendicular to the pipe, start holding `+duck` and activate the script. Alternatively, you can hold `+duck` and tap `+jump` before pressing the script key",
+      "video": {
+        "id": "-IsroM843jU",
+        "start": 0
+      },
+      "save": "https://github.com/yavats/hl1-scripts/raw/refs/heads/main/Practice%20saves/lc_clipping.sav",
+      "namespace": null,
+      "aliases": [
+        [
+          "lc_pipe_skip",
+          "-forward; -moveright; -moveleft; -back; -jump; -duck; cl_pitchup -170; cl_pitchdown 170; fps_max 19.99; +duck; w; -duck; w; +duck; -attack; w 5; -duck; fps_max 100; cl_pitchup -12; cl_pitchdown 12; w; cl_pitchup 89; cl_pitchdown 89"
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "lc_pipe_skip",
+          "guideKey": null
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "advanced-nade-clipping",
+      "chapter": "lambda-core",
+      "section": "Water clipping nade scripts",
+      "title": "Advanced nade clipping",
+      "mark": "yellow",
+      "credit": "Kisimov",
+      "notes": [
+        "Prevents nukes",
+        "Automatically switches to nades => no need to hold `+attack`",
+        "Doesn't require tapping `+duck`/`+jump`"
+      ],
+      "usage": "cook a nade, switch to any other weapon, drop into the water, hold `w + ctrl`, look perpendicular to the pipe and activate the script",
+      "video": {
+        "id": "e4rhB1Dycas",
+        "start": 0
+      },
+      "save": "https://github.com/yavats/hl1-scripts/raw/refs/heads/main/Practice%20saves/lc_clipping.sav",
+      "namespace": null,
+      "aliases": [
+        [
+          "nadeclip",
+          "fps_max 100; weapon_handgrenade; w 5; -attack; w 90; -forward; force_centerview; cl_pitchup -190; cl_pitchdown -190; fps_max 19.99; w 4; fps_max 100; cl_pitchup 0;cl_pitchdown 0;w;cl_pitchup 89;cl_pitchdown 89"
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "nadeclip",
+          "guideKey": null
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "waterclip-gauss-script-v1",
+      "chapter": "lambda-core",
+      "section": "Water clipping gauss scripts",
+      "title": "Waterclip gauss script v1",
+      "mark": "yellow",
+      "credit": "hsci",
+      "notes": [
+        "Automatic gauss charge release",
+        "Slightly faster",
+        "Riskier"
+      ],
+      "usage": "Start charging gauss ~3s before doing the skip, hold `w` / `w + d` and drop into the water by pressing the script key. Keep holding it until you clip through the wall, but first turn so that you look perpendicular to the pipe. Note that you'll be able to control your character only by moving the camera!\nIf you don't have enough time, increase waits in the `dst` alias (every `w 20` = 1s)",
+      "video": {
+        "id": "Ag9kcqeEKIY",
+        "start": 0
+      },
+      "save": "https://github.com/yavats/hl1-scripts/raw/refs/heads/main/Practice%20saves/lc_clipping.sav",
+      "namespace": null,
+      "aliases": [
+        [
+          "_taubow",
+          ""
+        ],
+        [
+          "_taubofuncw",
+          "cl_pitchup -180;cl_pitchdown 180;wait;-attack;wait;cl_pitchup 12;cl_pitchdown -12;w;cl_pitchup 89.999;cl_pitchdown 89.999"
+        ],
+        [
+          "+tauw",
+          "+attack; alias _taubow _taubofuncw"
+        ],
+        [
+          "-tauw",
+          "_taubow; alias _taubow"
+        ],
+        [
+          "+wc",
+          "+duck;w;-duck;w 5;+duck;w 30;-duck;w 60;gwc;w 10;wwc"
+        ],
+        [
+          "-wc",
+          "-tauw;-attack2"
+        ],
+        [
+          "wwc",
+          "fps_max 20;dst;-forward;-moveright;-wc;w;fps_max 100;weapon_handgrenade"
+        ],
+        [
+          "gwc",
+          "w 5;-attack2;+tauw;w"
+        ],
+        [
+          "dst",
+          "w 8"
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "+wc",
+          "guideKey": null
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "waterclip-gauss-script-v2",
+      "chapter": "lambda-core",
+      "section": "Water clipping gauss scripts",
+      "title": "Waterclip gauss script v2",
+      "mark": "green",
+      "credit": "javac_",
+      "notes": [
+        "Manual gauss release",
+        "Free movement",
+        "More consistent",
+        "Might be slower"
+      ],
+      "usage": "Start charging gauss ~3s before doing the skip, strafe into the water by pressing and holding the script key. Release it to clip through the wall, but first turn so that you look perpendicular to the pipe. Tip: you have full control over your character during the script\n*It's HIGHLY recommended to use a separate config for this script and execute it before doing the strat!!*",
+      "video": {
+        "id": "rZb7-2ByrIM",
+        "start": 0
+      },
+      "save": "https://github.com/yavats/hl1-scripts/raw/refs/heads/main/Practice%20saves/lc_clipping.sav",
+      "namespace": null,
+      "aliases": [
+        [
+          "wlc1",
+          "alias -wlc wlc_cancel; fps_max 100;+duck;w;alias @wlc wlc2;bxt_append _wlc"
+        ],
+        [
+          "wlc2",
+          "-duck;w;alias @wlc wlc3;bxt_append _wlc"
+        ],
+        [
+          "wlc3",
+          "w;alias @wlc wlc4;bxt_append _wlc"
+        ],
+        [
+          "wlc4",
+          "w;alias @wlc wlc5;bxt_append _wlc"
+        ],
+        [
+          "wlc5",
+          "w;alias @wlc wlc6;bxt_append _wlc"
+        ],
+        [
+          "wlc6",
+          "w;alias @wlc wlc7;bxt_append _wlc"
+        ],
+        [
+          "wlc7",
+          "+duck;w;alias @wlc wlc8;bxt_append _wlc"
+        ],
+        [
+          "wlc8",
+          "w;alias @wlc wlc9;bxt_append _wlc"
+        ],
+        [
+          "wlc9",
+          "w;alias @wlc wlc10;bxt_append _wlc"
+        ],
+        [
+          "wlc10",
+          "w;alias @wlc wlc11;bxt_append _wlc"
+        ],
+        [
+          "wlc11",
+          "w;alias @wlc wlc12;bxt_append _wlc"
+        ],
+        [
+          "wlc12",
+          "w;alias @wlc wlc13;bxt_append _wlc"
+        ],
+        [
+          "wlc13",
+          "w;alias @wlc wlc14;bxt_append _wlc"
+        ],
+        [
+          "wlc14",
+          "w;alias @wlc wlc15;bxt_append _wlc"
+        ],
+        [
+          "wlc15",
+          "w;alias @wlc wlc16;bxt_append _wlc"
+        ],
+        [
+          "wlc16",
+          "w;alias @wlc wlc17;bxt_append _wlc"
+        ],
+        [
+          "wlc17",
+          "w;alias @wlc wlc18;bxt_append _wlc"
+        ],
+        [
+          "wlc18",
+          "w;alias @wlc wlc19;bxt_append _wlc"
+        ],
+        [
+          "wlc19",
+          "w;alias @wlc wlc20;bxt_append _wlc"
+        ],
+        [
+          "wlc20",
+          "w;alias @wlc wlc21;bxt_append _wlc"
+        ],
+        [
+          "wlc21",
+          "w;alias @wlc wlc22;bxt_append _wlc"
+        ],
+        [
+          "wlc22",
+          "w;alias @wlc wlc23;bxt_append _wlc"
+        ],
+        [
+          "wlc23",
+          "w;alias @wlc wlc24;bxt_append _wlc"
+        ],
+        [
+          "wlc24",
+          "w;alias @wlc wlc25;bxt_append _wlc"
+        ],
+        [
+          "wlc25",
+          "w;alias @wlc wlc26;bxt_append _wlc"
+        ],
+        [
+          "wlc26",
+          "w;alias @wlc wlc27;bxt_append _wlc"
+        ],
+        [
+          "wlc27",
+          "w;alias @wlc wlc28;bxt_append _wlc"
+        ],
+        [
+          "wlc28",
+          "w;alias @wlc wlc29;bxt_append _wlc"
+        ],
+        [
+          "wlc29",
+          "w;alias @wlc wlc30;bxt_append _wlc"
+        ],
+        [
+          "wlc30",
+          "w;alias @wlc wlc31;bxt_append _wlc"
+        ],
+        [
+          "wlc31",
+          "w;alias @wlc wlc32;bxt_append _wlc"
+        ],
+        [
+          "wlc32",
+          "w;alias @wlc wlc33;bxt_append _wlc"
+        ],
+        [
+          "wlc33",
+          "w;alias @wlc wlc34;bxt_append _wlc"
+        ],
+        [
+          "wlc34",
+          "w;alias @wlc wlc35;bxt_append _wlc"
+        ],
+        [
+          "wlc35",
+          "w;alias @wlc wlc36;bxt_append _wlc"
+        ],
+        [
+          "wlc36",
+          "w;alias @wlc wlc37;bxt_append _wlc"
+        ],
+        [
+          "wlc37",
+          "-duck;w;alias @wlc wlc38;bxt_append _wlc"
+        ],
+        [
+          "wlc38",
+          "w;alias @wlc wlc39;bxt_append _wlc"
+        ],
+        [
+          "wlc39",
+          "w;alias @wlc wlc40;bxt_append _wlc"
+        ],
+        [
+          "wlc40",
+          "w;alias @wlc wlc41;bxt_append _wlc"
+        ],
+        [
+          "wlc41",
+          "w;alias @wlc wlc42;bxt_append _wlc"
+        ],
+        [
+          "wlc42",
+          "w;alias @wlc wlc43;bxt_append _wlc"
+        ],
+        [
+          "wlc43",
+          "w;alias @wlc wlc44;bxt_append _wlc"
+        ],
+        [
+          "wlc44",
+          "w;alias @wlc wlc45;bxt_append _wlc"
+        ],
+        [
+          "wlc45",
+          "w;alias @wlc wlc46;bxt_append _wlc"
+        ],
+        [
+          "wlc46",
+          "w;alias @wlc wlc47;bxt_append _wlc"
+        ],
+        [
+          "wlc47",
+          "w;alias @wlc wlc48;bxt_append _wlc"
+        ],
+        [
+          "wlc48",
+          "w;alias @wlc wlc49;bxt_append _wlc"
+        ],
+        [
+          "wlc49",
+          "w;alias @wlc wlc50;bxt_append _wlc"
+        ],
+        [
+          "wlc50",
+          "w;alias @wlc wlc51;bxt_append _wlc"
+        ],
+        [
+          "wlc51",
+          "w;alias @wlc wlc52;bxt_append _wlc"
+        ],
+        [
+          "wlc52",
+          "w;alias @wlc wlc53;bxt_append _wlc"
+        ],
+        [
+          "wlc53",
+          "w;alias @wlc wlc54;bxt_append _wlc"
+        ],
+        [
+          "wlc54",
+          "w;alias @wlc wlc55;bxt_append _wlc"
+        ],
+        [
+          "wlc55",
+          "w;alias @wlc wlc56;bxt_append _wlc"
+        ],
+        [
+          "wlc56",
+          "w;alias @wlc wlc57;bxt_append _wlc"
+        ],
+        [
+          "wlc57",
+          "w;alias @wlc wlc58;bxt_append _wlc"
+        ],
+        [
+          "wlc58",
+          "w;alias @wlc wlc59;bxt_append _wlc"
+        ],
+        [
+          "wlc59",
+          "w;alias @wlc wlc60;bxt_append _wlc"
+        ],
+        [
+          "wlc60",
+          "w;alias @wlc wlc61;bxt_append _wlc"
+        ],
+        [
+          "wlc61",
+          "w;alias @wlc wlc62;bxt_append _wlc"
+        ],
+        [
+          "wlc62",
+          "w;alias @wlc wlc63;bxt_append _wlc"
+        ],
+        [
+          "wlc63",
+          "w;alias @wlc wlc64;bxt_append _wlc"
+        ],
+        [
+          "wlc64",
+          "w;alias @wlc wlc65;bxt_append _wlc"
+        ],
+        [
+          "wlc65",
+          "w;alias @wlc wlc66;bxt_append _wlc"
+        ],
+        [
+          "wlc66",
+          "w;alias @wlc wlc67;bxt_append _wlc"
+        ],
+        [
+          "wlc67",
+          "w;alias @wlc wlc68;bxt_append _wlc"
+        ],
+        [
+          "wlc68",
+          "w;alias @wlc wlc69;bxt_append _wlc"
+        ],
+        [
+          "wlc69",
+          "w;alias @wlc wlc70;bxt_append _wlc"
+        ],
+        [
+          "wlc70",
+          "w;alias @wlc wlc71;bxt_append _wlc"
+        ],
+        [
+          "wlc71",
+          "w;alias @wlc wlc72;bxt_append _wlc"
+        ],
+        [
+          "wlc72",
+          "w;alias @wlc wlc73;bxt_append _wlc"
+        ],
+        [
+          "wlc73",
+          "w;alias @wlc wlc74;bxt_append _wlc"
+        ],
+        [
+          "wlc74",
+          "w;alias @wlc wlc75;bxt_append _wlc"
+        ],
+        [
+          "wlc75",
+          "w;alias @wlc wlc76;bxt_append _wlc"
+        ],
+        [
+          "wlc76",
+          "w;alias @wlc wlc77;bxt_append _wlc"
+        ],
+        [
+          "wlc77",
+          "w;alias @wlc wlc78;bxt_append _wlc"
+        ],
+        [
+          "wlc78",
+          "w;alias @wlc wlc79;bxt_append _wlc"
+        ],
+        [
+          "wlc79",
+          "w;alias @wlc wlc80;bxt_append _wlc"
+        ],
+        [
+          "wlc80",
+          "w;alias @wlc wlc81;bxt_append _wlc"
+        ],
+        [
+          "wlc81",
+          "w;alias @wlc wlc82;bxt_append _wlc"
+        ],
+        [
+          "wlc82",
+          "w;alias @wlc wlc83;bxt_append _wlc"
+        ],
+        [
+          "wlc83",
+          "w;alias @wlc wlc84;bxt_append _wlc"
+        ],
+        [
+          "wlc84",
+          "w;alias @wlc wlc85;bxt_append _wlc"
+        ],
+        [
+          "wlc85",
+          "w;alias @wlc wlc86;bxt_append _wlc"
+        ],
+        [
+          "wlc86",
+          "w;alias @wlc wlc87;bxt_append _wlc"
+        ],
+        [
+          "wlc87",
+          "w;alias @wlc wlc88;bxt_append _wlc"
+        ],
+        [
+          "wlc88",
+          "w;alias @wlc wlc89;bxt_append _wlc"
+        ],
+        [
+          "wlc89",
+          "w;alias @wlc wlc90;bxt_append _wlc"
+        ],
+        [
+          "wlc90",
+          "w;alias @wlc wlc91;bxt_append _wlc"
+        ],
+        [
+          "wlc91",
+          "w;alias @wlc wlc92;bxt_append _wlc"
+        ],
+        [
+          "wlc92",
+          "w;alias @wlc wlc93;bxt_append _wlc"
+        ],
+        [
+          "wlc93",
+          "w;alias @wlc wlc94;bxt_append _wlc"
+        ],
+        [
+          "wlc94",
+          "w;alias @wlc wlc95;bxt_append _wlc"
+        ],
+        [
+          "wlc95",
+          "w;alias @wlc wlc96;bxt_append _wlc"
+        ],
+        [
+          "wlc96",
+          "w;alias @wlc wlc97;bxt_append _wlc"
+        ],
+        [
+          "wlc97",
+          "w;alias @wlc wlc98;bxt_append _wlc"
+        ],
+        [
+          "wlc98",
+          "w;alias @wlc wlc99;bxt_append _wlc"
+        ],
+        [
+          "wlc99",
+          "w;alias @wlc wlc100;bxt_append _wlc"
+        ],
+        [
+          "wlc100",
+          "w;alias @wlc wlc101;bxt_append _wlc"
+        ],
+        [
+          "wlc101",
+          "w;alias @wlc wlc102;bxt_append _wlc"
+        ],
+        [
+          "wlc102",
+          "-attack2;+attack;fps_max 20;alias @wlc; alias -wlc wlc_release"
+        ],
+        [
+          "wlc",
+          "alias _wlc @wlc; wlc1"
+        ],
+        [
+          "wlc_cancel",
+          "-attack; -duck; fps_max 100; alias -wlc; alias +wlc wlc; alias _wlc"
+        ],
+        [
+          "wlc_release",
+          "-forward; cl_pitchup -180; cl_pitchdown 180; w; -attack; w; cl_pitchup 89; cl_pitchdown 89; force_centerview; w; fps_max 100; weapon_handgrenade; alias -wlc; alias +wlc wlc; alias _wlc"
+        ],
+        [
+          "+wlc",
+          "wlc"
+        ],
+        [
+          "-wlc",
+          ""
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "+wlc",
+          "guideKey": null
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "simple-water-double-boost",
+      "chapter": "lambda-core",
+      "section": "Water boost scripts",
+      "title": "Simple water double boost",
+      "mark": "green",
+      "credit": "N4rk0t1k",
+      "notes": [
+        "Consistent",
+        "Has at least 2 possible setups"
+      ],
+      "usage": "Setup 1:\n  Cook a nade, stay around the cross on the floor, look perpendicular to the reactor wall, press the script key, start holding W and release it after the smg boost occurs.\n  Setup 2:\n  Cook a nade, stay in the shadow area on the floor, look perpendicular to the reactor wall, press the script key, start holding W and release it after the smg boost occurs.",
+      "video": {
+        "id": "6PkGIk_Napk",
+        "start": 0
+      },
+      "save": "https://github.com/yavats/hl1-scripts/raw/refs/heads/main/Practice%20saves/labo.sav",
+      "namespace": null,
+      "aliases": [
+        [
+          "labo",
+          "+jump; +duck; fps_max 30; cl_pitchup -90; cl_pitchdown 90; weapon_crowbar; w; weapon_handgrenade; +attack; w 20; -attack; w 10; speak scientist/scream20; -jump; cl_pitchup -70; cl_pitchdown 70; weapon_9mmAR; +attack2; w 20; -attack2; -duck; cl_pitchup 89; cl_pitchdown 89; fps_max 100"
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "labo",
+          "guideKey": null
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "advanced-water-double-boost",
+      "chapter": "lambda-core",
+      "section": "Water boost scripts",
+      "title": "Advanced water double boost",
+      "mark": "yellow",
+      "credit": "javac_",
+      "notes": [
+        "Faster",
+        "Less consistent",
+        "Uses slope to redirect player's velocity",
+        "4fpses the door"
+      ],
+      "usage": "Cook a nade, get next to the dark rectangle between green dots on the reactor side, aim at the right green pixels (yaw ~`290-300`), press: `2 12 12 12`, start holding `+duck` before the script ends.",
+      "video": {
+        "id": "meCJNgjEubc",
+        "start": 0
+      },
+      "save": "https://github.com/yavats/hl1-scripts/raw/refs/heads/main/Practice%20saves/labo.sav",
+      "namespace": null,
+      "aliases": [
+        [
+          "lb1",
+          "fps_max 100; sensitivity 0; cl_pitchdown 86.5; cl_pitchup -86.5; w 50; +attack; alias labo2 lb2; alias labo2mv +back"
+        ],
+        [
+          "lb2",
+          "w 25; -attack; w 4; +duck; w 13; -back; weapon_9mmAR; w 35; cl_pitchdown 127; cl_pitchup -127; alias labo2mv +forward; alias labo2 lb3"
+        ],
+        [
+          "lb3",
+          "w 15; +attack2; w 4; -attack2; alias labo2mv +moveleft; alias labo2 lb4"
+        ],
+        [
+          "lb4",
+          "alias labo2; alias labo2mv; w 40; -moveleft; -forward; -duck; cl_pitchdown 89; cl_pitchup 89; w 20; fps_max 4; w; fps_max 100; labosens"
+        ],
+        [
+          "labo2",
+          "lb1"
+        ],
+        [
+          "labo2mv",
+          ""
+        ],
+        [
+          "labosens",
+          "sensitivity {sensitivity}"
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "labo2",
+          "guideKey": "2"
+        },
+        {
+          "command": "labo2mv",
+          "guideKey": "1"
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "hl-ast-double-boost",
+      "chapter": "lambda-core",
+      "section": "HL AST double boost",
+      "title": "HL AST double boost",
+      "mark": null,
+      "credit": "javac_",
+      "notes": [],
+      "usage": "Make sure the area marked with red on the image below isn't blocked by moving platforms when you boost\n![](Images/lcdb.png)\nCook a nade, go into the left door corner, aim between \"0\" and \"1\", then press:\n`2 12 12`\nHold crouch and optionally 4fps the door.",
+      "video": {
+        "id": "56KFxahiANI",
+        "start": 0
+      },
+      "save": "https://github.com/yavats/hl1-scripts/raw/refs/heads/main/Practice%20saves/lcdb.sav",
+      "namespace": null,
+      "aliases": [
+        [
+          "lcdb1",
+          "+attack; w 50; alias lcdbmove +forward; alias lcdb lcdb2"
+        ],
+        [
+          "lcdb2",
+          "fps_max 100; w 60; cl_pitchdown 60; cl_pitchup -60; -attack; w; +jump; +duck; w 3; -forward; weapon_9mmAR; alias lcdbmove +moveright; alias lcdb lcdb3"
+        ],
+        [
+          "lcdb3",
+          "-jump; w 50; +attack2; w 20; -attack2; cl_pitchup 89; cl_pitchdown 89; w 60; -moveright; -jump; -duck; alias lcdb; alias lcdbmove"
+        ],
+        [
+          "lcdb",
+          "lcdb1"
+        ],
+        [
+          "lcdbmove",
+          ""
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "lcdb",
+          "guideKey": "2"
+        },
+        {
+          "command": "lcdbmove",
+          "guideKey": "1"
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "semi-manual-xen-script",
+      "chapter": "xen",
+      "section": "Viewsnap scripts",
+      "title": "Semi-manual xen script",
+      "mark": "green",
+      "credit": "javac_ & Razzie",
+      "notes": [
+        "Recommended version",
+        "Locked pitch",
+        "Manual jumpbug",
+        "Multiple jumpbug fps values available"
+      ],
+      "usage": "Before doing the script, change `xenw_sens` and `xenw_fps` to your default sens and to the jumpbug fps you want to use respectively. Available fps values:\n- `xenw_fps1` (`fps_max 22.22222`) - the most consistent one, but makes it harder to turn;\n- `xenw_fps2` (`fps_max 33.33333`) - used by default. Probably the most balanced one (easier turn, great consistency);\n- `xenw_fps3` (`fps_max 55.55555`);\n- `xenw_fps4` (`fps_max 66.66666`);\n- `xenw_fps5` (`fps_max 97`) - not recommended, seems to be very inconsistent;\n- `xenw_fps6` (`fps_max 100`) - the easiest turn, may work better than other values for some people.\n\nAlso note that most likely you'll need to lower DPI during the strat to make viewsnap more comfortable.\n\nInstruction:\n1. Start charging gauss right after shooting a hornet\n2. Press the script key any moment BEFORE the changelevel. then release `mouse2`. **DON'T HOLD `+DUCK`!!!**\n3. Lower DPI if needed (optimally to `50-100`), wait for the changelevel and move your mouse to the right by one pixel. Yaw should change to `274.976807`\n4. Change DPI back to default and press the script key again\n5. Do the rest manually (turn, do the second gauss boost, land and jumpbug)",
+      "video": {
+        "id": "9wnG2ATKNvs",
+        "start": 0
+      },
+      "save": "https://github.com/yavats/hl1-scripts/raw/refs/heads/main/Practice%20saves/xen.sav",
+      "namespace": null,
+      "aliases": [
+        [
+          "xenw",
+          "xenw1"
+        ],
+        [
+          "xenw1",
+          "pausable 1; +attack2; +duck; bxt_autopause 1; fps_max 97; cl_pitchup -35.83; cl_pitchdown 35.83; m_pitch 0; sensitivity 1819.54545; say xen_strat2; alias xenw xenw2"
+        ],
+        [
+          "xenw2",
+          "sensitivity 0; unpause; +attack2; w 10; -attack2; fps_max 97; w 50; -duck; bxt_autopause 0; xenw_sens; cl_pitchup 89; cl_pitchdown 89; m_pitch {m_pitch}; xenw_fps; alias xenw xenw1"
+        ],
+        [
+          "xenw_fps1",
+          "fps_max 22.22222"
+        ],
+        [
+          "xenw_fps2",
+          "fps_max 33.33333"
+        ],
+        [
+          "xenw_fps3",
+          "fps_max 55.55555"
+        ],
+        [
+          "xenw_fps4",
+          "fps_max 66.66666"
+        ],
+        [
+          "xenw_fps5",
+          "fps_max 97"
+        ],
+        [
+          "xenw_fps6",
+          "fps_max 100"
+        ],
+        [
+          "xenw_sens",
+          "sensitivity {sensitivity}"
+        ],
+        [
+          "xenw_fps",
+          "xenw_fps2"
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "xenw",
+          "guideKey": "F1"
+        },
+        {
+          "command": "+bxt_tas_jumpbug",
+          "guideKey": null
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "fully-automatic-xen-script",
+      "chapter": "xen",
+      "section": "Viewsnap scripts",
+      "title": "Fully automatic xen script",
+      "mark": "purple",
+      "credit": "javac & hsci",
+      "notes": [
+        "Inconsistent for most people",
+        "This version is NOT faster, however it's easier to do because of automated jumpbug. **Only use this script if it's consistent for you!**"
+      ],
+      "usage": "Before doing the script:\n- Change `xenv_sens` to your default sens\n- Change `xenv_pre` bind (`f1` by default)\n- Change binds in `xenv_bind1`, `xenv_bind2` and `xenv_bind3` to whatever keys you want to use (`1`, `2` and `3` by default)\n- Change binds in `xenv_defbind1`, `xenv_defbind2` and `xenv_defbind3` to default actions for the selected keys (weapons by default)\n- (Optional) set `r_norefresh` in the `xenv1` alias to 1 if you experience fps drops\n\nInstruction:\n1. You MUST start charging gauss as soon as possible to get a 999 ups boost right after the changelevel!!\n2. Press the `xenv_pre` key before the changelevel after entering the portal. **DON'T HOLD `+DUCK`, IT'LL BREAK THE SCRIPT!!**\n3. Lower DPI if needed (optimally to `50-100`), wait for the changelevel and move your mouse to the right by one pixel. Yaw should change to `274.976807`\n4. Press: `123 123 1`\n5. Change DPI back to default",
+      "video": {
+        "id": "vcLeRXTN_Sk",
+        "start": 0
+      },
+      "save": "https://github.com/yavats/hl1-scripts/raw/refs/heads/main/Practice%20saves/xen.sav",
+      "namespace": null,
+      "aliases": [
+        [
+          "xenv_reset",
+          "alias xenv xenv1; alias xenv_mv1 +moveright; alias xenv_mv2 +left"
+        ],
+        [
+          "xenv_pre",
+          "+attack2; +duck; bxt_autopause 1; fps_max 97; cl_pitchup -35.83; cl_pitchdown 35.83; m_pitch 0; sensitivity 1819.54545; say xen_strat; xenv_reset; xenv_bind1; xenv_bind2; xenv_bind3"
+        ],
+        [
+          "xenv1",
+          "r_norefresh 0; sensitivity 0; unpause; +attack2; w 10; -attack2; fps_max 97; w 40; +attack2; w 10; alias xenv xenv2"
+        ],
+        [
+          "xenv2",
+          "w 14; -duck; w 58; -moveright; w 4; -attack2; w 85; -left; w 63; alias xenv_mv1 +moveleft; alias xenv xenv3"
+        ],
+        [
+          "xenv3",
+          "w 13; -left; -moveleft; +jump; +bxt_tas_jumpbug; bxt_autopause 0; w 30; -jump; -bxt_tas_jumpbug; r_norefresh 0; xenv_sens; cl_pitchup 89; cl_pitchdown 89; m_pitch {m_pitch}; fps_max 100; weapon_shotgun; save autosave; alias xenv_mv1; alias xenv_mv2; xenv_defbind1; xenv_defbind2; xenv_defbind3"
+        ],
+        [
+          "xenv_sens",
+          "sensitivity {sensitivity}"
+        ],
+        [
+          "xenv_bind1",
+          ""
+        ],
+        [
+          "xenv_bind2",
+          ""
+        ],
+        [
+          "xenv_bind3",
+          ""
+        ],
+        [
+          "xenv_defbind1",
+          ""
+        ],
+        [
+          "xenv_defbind2",
+          ""
+        ],
+        [
+          "xenv_defbind3",
+          ""
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "xenv_pre",
+          "guideKey": "F1"
+        },
+        {
+          "command": "xenv",
+          "guideKey": "1"
+        },
+        {
+          "command": "xenv_mv1",
+          "guideKey": "2"
+        },
+        {
+          "command": "xenv_mv2",
+          "guideKey": "3"
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "simple-saveload-script",
+      "chapter": "gonarchs-lair",
+      "section": "Simple saveload script",
+      "title": "Simple saveload script",
+      "mark": "green",
+      "credit": "javac_ & Tmob",
+      "notes": [
+        "Fastest saveload as the highest allowed fps (100) is used",
+        "No timing at all"
+      ],
+      "usage": "This script utilizes the `game.cfg` config being executed on every map/save load. That is, if you put an initially empty alias into this config file and only change its actual behaviour before the first Gonarch map, you can automatically do a saveload exactly 270 ms after changelevel. Normally that would be nearly impossible to nail this timing at 100 fps consistently as its window is around +-5 ms.\nInstruction:\n1. Add alias _saveload from above to your config\n2. Create a `game.cfg` file in your game directory (most likely `valve_WON`) and type `auto_alias` there\n3. Make a bind to change what the alias does: `bind key \"alias auto_alias _saveload\"`\n4. Press the key from the bind above any moment before gonarch changelevel",
+      "video": null,
+      "save": "https://github.com/yavats/hl1-scripts/raw/refs/heads/main/Practice%20saves/gonarch.sav",
+      "namespace": null,
+      "aliases": [
+        [
+          "_saveload",
+          "alias auto_alias; w 27; save quick; fps_max 100; load quick"
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "alias auto_alias _saveload",
+          "guideKey": null
+        }
+      ],
+      "needsAutoAlias": true
+    },
+    {
+      "id": "saveload-chase-script",
+      "chapter": "gonarchs-lair",
+      "section": "Saveload + chase script",
+      "title": "Saveload + chase script",
+      "mark": "purple",
+      "credit": "javac_",
+      "notes": [
+        "Not recommended since there is a much better [game.cfg version](#saveload-chase-script-v2)",
+        "Uses 11 fps",
+        "Extremely precise activation timing",
+        "Triggers Gonarch for chasing strat"
+      ],
+      "usage": "1. Change fps to 11 before the changelevel, set yaw to `185.5x`\n2. Press `l` IMMEDIATELY as you see the \"loading...\" text, then press `kl kl`\n3. Hold `s`",
+      "video": {
+        "id": "i7nRXv5z-_w",
+        "start": 0
+      },
+      "save": "https://github.com/yavats/hl1-scripts/raw/refs/heads/main/Practice%20saves/gonarch.sav",
+      "namespace": null,
+      "aliases": [
+        [
+          "gon1",
+          "fps_max 11; w 15; save quick; fps_max 100; load quick; w 18; alias gonmv +forward; alias gon gon2"
+        ],
+        [
+          "gon2",
+          "w 300; weapon_gauss; w 100; alias gonmv +right; alias gon gon3"
+        ],
+        [
+          "gon3",
+          "w 2; -right; w 30; +attack2; w 16; +jump; w 45; cl_pitchup 180; cl_pitchdown -180; -attack2; w; cl_pitchup 89; cl_pitchdown 89; force_centerview; w 48; -jump; w 50; -forward; weapon_9mmAR; save quick; alias gonmv; alias gon"
+        ],
+        [
+          "gon",
+          "gon1"
+        ],
+        [
+          "gonmv",
+          ""
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "fps_max 11",
+          "guideKey": null
+        },
+        {
+          "command": "gon",
+          "guideKey": "L"
+        },
+        {
+          "command": "gonmv",
+          "guideKey": "K"
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "saveload-chase-script-v2",
+      "chapter": "gonarchs-lair",
+      "section": "Saveload + chase script v2",
+      "title": "Saveload + chase script v2",
+      "mark": "yellow",
+      "credit": "javac_",
+      "notes": [
+        "A combination of [Simple saveload script](#simple-saveload-script) and [Saveload + chase script](#saveload-chase-script)",
+        "Fastest saveload as the highest allowed fps (100) is used",
+        "No saveload timing",
+        "Triggers Gonarch for chasing strat"
+      ],
+      "usage": "1. Create a `game.cfg` file in your game directory (most likely `valve_WON`) and type `auto_alias` there\n2. Set yaw to `185.50 - 186.00`\n3. Hold any weapon **OTHER THAN GAUSS!!!** If you hold gauss from the start, you'll get too much speed from the boost (600 > 553)!\n4. Press `8` any moment before the changelevel. **After that you shouldn't load any save on your own until the script is done!**\n5. There will be a saveload after the changelevel, then you'll hear a \"beep\" sound. When you hear it, press `90 90` as soon as possible (you have only a second or so to do that)\n6. Hold `s`",
+      "video": null,
+      "save": "https://github.com/yavats/hl1-scripts/raw/refs/heads/main/Practice%20saves/gonarch.sav",
+      "namespace": null,
+      "aliases": [
+        [
+          "_saveload2",
+          "alias auto_alias; w 27; save quick; fps_max 100; load quick; w 25; speak fvox/beep; say GO; w 90; alias gonch gonch1; alias gonchmv +forward"
+        ],
+        [
+          "gonch1",
+          "weapon_gauss; w 30; +attack2; w 80; +jump; w 45; cl_pitchup 180; cl_pitchdown -180; -attack2; w; cl_pitchup 89; cl_pitchdown 89; force_centerview; w 150; -jump; w 80; alias gonchmv +right; alias gonch gonch2"
+        ],
+        [
+          "gonch2",
+          "w 5; -right; w 95; -forward; weapon_9mmAR; save quick; alias gonch; alias gonchmv"
+        ],
+        [
+          "gonch",
+          ""
+        ],
+        [
+          "gonchmv",
+          ""
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "alias auto_alias _saveload2",
+          "guideKey": "8"
+        },
+        {
+          "command": "gonchmv",
+          "guideKey": "9"
+        },
+        {
+          "command": "gonch",
+          "guideKey": "0"
+        }
+      ],
+      "needsAutoAlias": true
+    },
+    {
+      "id": "nade-boost-c4a1c",
+      "chapter": "interloper",
+      "section": "Nade boost (c4a1c)",
+      "title": "Nade boost (c4a1c)",
+      "mark": null,
+      "credit": "Parklez",
+      "notes": [],
+      "usage": "hold `w` and activate the script",
+      "video": {
+        "id": "kJUeQMNqbjs",
+        "start": 0
+      },
+      "save": "https://github.com/yavats/hl1-scripts/raw/refs/heads/main/Practice%20saves/in_nade.sav",
+      "namespace": null,
+      "aliases": [
+        [
+          "in_nade",
+          "fps_max 100;cl_pitchdown -35;cl_pitchup 35;+duck;+jump;w;-attack;w 15;-jump;-duck;cl_pitchup 89;cl_pitchdown 89;force_centerview"
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "in_nade",
+          "guideKey": null
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "interloper-db-v1",
+      "chapter": "interloper",
+      "section": "Double nade boosts",
+      "title": "Interloper DB v1",
+      "mark": "green",
+      "credit": "Parklez",
+      "notes": [
+        "Handgrenade first",
+        "Wall setup",
+        "Slower",
+        "A bit more consistent"
+      ],
+      "usage": "cook a nade, get next to the wall, look perpendicular, boost.",
+      "video": {
+        "id": "v3zxn_-jyec",
+        "start": 0
+      },
+      "save": "https://github.com/yavats/hl1-scripts/raw/refs/heads/main/Practice%20saves/in_dboost.sav",
+      "namespace": null,
+      "aliases": [
+        [
+          "in_dboost",
+          "fps_max 100;-forward;cl_pitchdown 89;cl_pitchup -89;-attack;w;+duck;+jump;weapon_9mmAR;w 45;cl_pitchdown 32;cl_pitchup -32;+attack2;w 10;-duck;-jump;-attack2;cl_pitchup 89;cl_pitchdown 89;force_centerview"
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "in_dboost",
+          "guideKey": null
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "interloper-db-v2",
+      "chapter": "interloper",
+      "section": "Double nade boosts",
+      "title": "Interloper DB v2",
+      "mark": "yellow",
+      "credit": "javac_",
+      "notes": [
+        "SMG nade first",
+        "No setup",
+        "Faster"
+      ],
+      "usage": "Cook a nade, switch to the smg, aim around yaw 65-75 to avoid hitting the bridge above you, hold W for a while and press the script key. You have to be holding +duck when the nade releases, also try to not change the pitch as -45 gives you the best vertical boost.",
+      "video": {
+        "id": "0623Z5jazVM",
+        "start": 0
+      },
+      "save": "https://github.com/yavats/hl1-scripts/raw/refs/heads/main/Practice%20saves/in_dboost.sav",
+      "namespace": null,
+      "aliases": [
+        [
+          "in_dboost2",
+          "fps_max 100; +duck; w 4; +jump; cl_pitchup -72; cl_pitchdown 72;w; +attack2; w; weapon_handgrenade; w 5; -jump; -duck; -attack2; cl_pitchdown -45; cl_pitchup 45; w; cl_pitchdown 89; cl_pitchup 89"
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "in_dboost2",
+          "guideKey": null
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "satchel-boost",
+      "chapter": "interloper",
+      "section": "Satchel boost",
+      "title": "Satchel boost",
+      "mark": null,
+      "credit": "Kisimov",
+      "notes": [],
+      "usage": "MAKE SURE YOUR SATCHELS ARE UNBUGGED!!!!!!!!\nswitch to satchels, start holding `w` during teleportation, press the script key after the changelevel (but not immediately)",
+      "video": {
+        "id": "S9d3n2OvbUY",
+        "start": 0
+      },
+      "save": "https://github.com/yavats/hl1-scripts/raw/refs/heads/main/Practice%20saves/satch.sav",
+      "namespace": null,
+      "aliases": [
+        [
+          "satch",
+          "fps_max 100; cl_pitchup -60.999; +attack; w; -attack; cl_pitchup 89; force_centerview; w 100; +bxt_tas_ducktap; w; -bxt_tas_ducktap; w; +duck; w 33; +attack; w 2; -duck; -attack; -attack2; weapon_gauss; +attack2; w 100; cl_pitchup 180; cl_pitchdown -180; -attack2; w; cl_pitchup 89; cl_pitchdown 89; force_centerview"
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "satch",
+          "guideKey": null
+        }
+      ],
+      "needsAutoAlias": false
+    },
+    {
+      "id": "satchel-boost-v2",
+      "chapter": "interloper",
+      "section": "Satchel boost v2",
+      "title": "Satchel boost v2",
+      "mark": null,
+      "credit": null,
+      "notes": [
+        "No strict activation timing",
+        "4fpses the trigger"
+      ],
+      "usage": "*[Satchel boost](#satchel-boost) modified by Codeboy__ and javac_*\nMAKE SURE YOUR SATCHELS ARE UNBUGGED!!!!!!!!\n\n1. Create a `game.cfg` file in your game directory (most likely `valve_WON`) and type `auto_alias` there\n2. Press `8` and start holding `w` any moment before the changelevel. **After that you shouldn't load any save on your own until the script is done!**\n3. Press `67 67 67` after the changelevel (you have around a second to do that). Now you can release `w`",
+      "video": null,
+      "save": "https://github.com/yavats/hl1-scripts/raw/refs/heads/main/Practice%20saves/satch.sav",
+      "namespace": null,
+      "aliases": [
+        [
+          "pre_satcher",
+          "alias auto_alias; fps_max 100; w 37; cl_pitchup -60.999; +attack; w; -attack; cl_pitchup 89; force_centerview; w 100; +bxt_tas_ducktap; w; -bxt_tas_ducktap; w; +duck; w 33; -forward; +attack; w 2; -duck; -attack; -attack2; weapon_gauss; +tau; w 58; alias satchermv +moveleft; alias satcher satcher1"
+        ],
+        [
+          "satcher1",
+          "alias satchermv +left; alias satcher satcher2"
+        ],
+        [
+          "satcher2",
+          "w 3; -left; w 40; -tau; w 20; alias satcher satcher3"
+        ],
+        [
+          "satcher3",
+          "w 4; -left; -moveleft; +duck; w 15; fps_max 4; w; fps_max 100; w 5; -duck; alias satcher; alias satchermv"
+        ],
+        [
+          "satcher",
+          ""
+        ],
+        [
+          "satchermv",
+          ""
+        ]
+      ],
+      "commands": [],
+      "actions": [
+        {
+          "command": "weapon_satchel; alias auto_alias pre_satcher",
+          "guideKey": "8"
+        },
+        {
+          "command": "satchermv",
+          "guideKey": "6"
+        },
+        {
+          "command": "satcher",
+          "guideKey": "7"
+        }
+      ],
+      "needsAutoAlias": true
+    }
+  ]
+}

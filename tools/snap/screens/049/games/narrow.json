@@ -1,0 +1,15 @@
+{
+  "id": "games/narrow",
+  "base": "games/_base",
+  "state": "Ghosting в узком окне: CSS-окно 1152×648 (зум 1) — нижняя ступень сетки героя",
+  "window": {
+    "width": 1152,
+    "height": 648
+  },
+  "zooms": [
+    1
+  ],
+  "rails": [
+    "closed"
+  ]
+}

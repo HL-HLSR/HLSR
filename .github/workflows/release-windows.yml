@@ -1,0 +1,403 @@
+name: Release Windows installer
+
+# Модель распространения:
+#   * ЭТОТ репозиторий (HL-HLSR/HLSR) — открытый, с исходниками;
+#   * бинарники уходят в ОТДЕЛЬНЫЙ ПУБЛИЧНЫЙ HL-HLSR/HLSR-Releases,
+#     где нет исходного кода.
+#
+# Лаунчер на Rust (подпроект 6): HLSR.exe собирает Cargo, hlsr-release упаковывает
+# HLSR-Setup-<версия>.exe (exe + нагрузка + хвост) и latest.yml, Node-скрипты
+# tools/release/node подписывают канал и режут куски обновления. Три файла выпуска вместо
+# четырёх: blockmap не публикуется (0.4.7 качает установщик целиком, решение Р4).
+#
+# Push в main/dev, тег v*.*.* и pull request в main/dev ничего не публикуют: работает
+# только job `build` (без секретов); ветки разработки (gpui и прочие) проверяет
+# ci.yml, сборка выпуска на каждый их push не дублируется. Публикация — job
+# `publish` (только ручной workflow_dispatch с publish=true) через protected
+# environment `release` с ручным подтверждением.
+#
+# Принцип publish job: ОДИН production-build является единственным источником байтов.
+# Из этих же байтов подписывается launcher-channel.json (Ed25519, trust root вшит в
+# лаунчер 0.4.7). Выпуск, не прошедший приёмку 0.4.7 (замороженная обновлялка
+# проверяет готовые байты, tools/compat-047/accept-release.js), не публикуется.
+# Публикация — только через gh CLI: draft Release -> загрузка ровно трёх assets ->
+# обратное скачивание -> повторная проверка хешей, подписи и приёмка 0.4.7 -> и лишь
+# затем draft становится публичным latest.
+
+on:
+  push:
+    branches: [main, dev]
+    tags: ["v*.*.*"]
+  pull_request:
+    branches: [main, dev]
+  workflow_dispatch:
+    inputs:
+      publish:
+        description: "Publish to HL-HLSR/HLSR-Releases (requires approval)"
+        type: boolean
+        default: false
+
+# Секреты в job `build` не нужны вовсе: он ничего не публикует и не подписывает
+permissions:
+  contents: read
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+    runs-on: windows-2022
+    env:
+      # Путь Б приёмки на самом раннере (настоящий HKCU под QA-идентичностью, уборка в конце)
+      # включается, когда hlsr.exe получает режим Setup (задача 9 подпроекта 6): "1".
+      HLSR_ACCEPT_NATIVE: "0"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      # Версия — как в rust-toolchain.toml.
+      - uses: dtolnay/rust-toolchain@16c20dfc2b8bc5cd72c3bf5072a9453664776e70 # 1.98.0
+
+      # Скрипты выпуска и приёмка 0.4.7 — Node без пакетов (npm ci не нужен).
+      - name: Setup Node
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: ".nvmrc"
+
+      # Пути сборки в exe — нейтральные (/cargo/…, /hlsr/…): ни каталога пользователя раннера, ни
+      # каталога checkout. Для всех шагов cargo этой задачи — одни ключи, одна сборка зависимостей.
+      - name: Neutral build paths
+        shell: bash
+        run: echo "RUSTFLAGS=$(scripts/slint/remap-flags.sh)" >> "$GITHUB_ENV"
+
+      - name: Build launcher and release tools
+        run: cargo build --release -p hlsr-app -p hlsr-release
+
+      # Упаковщик, Node-скрипты выпуска и замороженные копии 0.4.7 (в том числе сквозной выпуск
+      # от упаковки до приёмки на тестовом ключе).
+      - name: Release tools selftest
+        run: cargo test --release -p hlsr-release --no-fail-fast
+
+      - name: Verify tag matches Cargo version
+        if: startsWith(github.ref, 'refs/tags/v')
+        shell: pwsh
+        run: |
+          $tag = "${{ github.ref_name }}".TrimStart("v")
+          $version = (& target\release\hlsr-release.exe version --release)
+          if ($LASTEXITCODE -ne 0) { exit 1 }
+          Write-Host "tag=$tag Cargo.toml=$version"
+          if ($tag -ne $version) {
+            Write-Error "Tag $tag does not match Cargo version $version"
+            exit 1
+          }
+
+      # Установщик — сам лаунчер с нагрузкой (hlsr-release setup). Выпуск — ровно X.Y.Z (Р9);
+      # на обычном push версия Cargo.toml может быть 0.5.0-dev: пробная упаковка по числам.
+      - name: Pack installer (release version)
+        if: startsWith(github.ref, 'refs/tags/v')
+        shell: bash
+        run: scripts/slint/package-windows.sh --exe target/release/hlsr.exe
+
+      - name: Pack installer (development version, never published)
+        if: ${{ !startsWith(github.ref, 'refs/tags/v') }}
+        shell: bash
+        run: scripts/slint/package-windows.sh --exe target/release/hlsr.exe --dev
+
+      # Приёмка 0.4.7 на тестовом ключе: замороженная обновлялка проверяет готовые артефакты
+      # (подпись, имя и размер, latest.yml, plan.validate, блок build, нагрузка, ProductVersion).
+      - name: Acceptance 0.4.7 (test-signed channel)
+        shell: pwsh
+        run: scripts/slint/accept-windows.ps1 -Exe target\release\hlsr.exe -HlsrRelease target\release\hlsr-release.exe
+
+      - name: Acceptance 0.4.7, path B on the runner (QA identity, real HKCU)
+        if: ${{ env.HLSR_ACCEPT_NATIVE == '1' }}
+        shell: pwsh
+        run: scripts/slint/accept-windows.ps1 -Exe target\release\hlsr.exe -HlsrRelease target\release\hlsr-release.exe -Qa -Native
+
+      - name: Report signing status
+        shell: pwsh
+        run: |
+          Write-Host "::warning::This build is UNSIGNED. Authenticode signing is out of scope; the channel is signed only in the publish job."
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: hlsr-windows-installer
+          retention-days: 14
+          if-no-files-found: error
+          path: |
+            target/dist/windows/HLSR-Setup-*.exe
+            target/dist/windows/latest.yml
+
+  # ---------------------------------------------------------------------------
+  # Публикация: draft -> проверка ровно опубликованных байтов -> public latest.
+  # Запускается ТОЛЬКО вручную (workflow_dispatch с publish=true). Environment
+  # `release` должен иметь required reviewers в настройках GitHub.
+  # ---------------------------------------------------------------------------
+  publish:
+    needs: build
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.publish == true }}
+    runs-on: windows-2022
+    environment: release
+
+    # Секреты окружения `release` (см. docs/RELEASING.md):
+    #   HLSR_RELEASES_TOKEN                   — fine-grained token, только
+    #                                           Contents: Read and write на
+    #                                           HL-HLSR/HLSR-Releases;
+    #   HLSR_LAUNCHER_CHANNEL_PRIVATE_KEY_B64 — base64 приватного Ed25519 PEM
+    #                                           канала лаунчера (keyId должен
+    #                                           совпадать с trust root в
+    #                                           launcher-channel.js 0.4.7);
+    #   CSC_LINK / CSC_KEY_PASSWORD (опционально) — Authenticode-сертификат
+    #                                           (в упаковщик пока не подключён).
+
+    env:
+      RELEASES_REPO: HL-HLSR/HLSR-Releases
+      # Ключ аттестации версии создаёт и вшивает в бинарник сборка (build.rs, подпроект 7);
+      # пока этого нет, канал выходит без build.attest. После подключения build.rs убрать переменную.
+      HLSR_ATTEST_DISABLE: "1"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - uses: dtolnay/rust-toolchain@16c20dfc2b8bc5cd72c3bf5072a9453664776e70 # 1.98.0
+
+      - name: Setup Node
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: ".nvmrc"
+
+      # Оба секрета проверяются ДО тяжёлой работы. Содержимое не печатается.
+      - name: Fail fast if release secrets are missing
+        shell: pwsh
+        env:
+          RELEASES_TOKEN: ${{ secrets.HLSR_RELEASES_TOKEN }}
+          CHANNEL_KEY_B64: ${{ secrets.HLSR_LAUNCHER_CHANNEL_PRIVATE_KEY_B64 }}
+        run: |
+          if ([string]::IsNullOrEmpty($env:RELEASES_TOKEN)) {
+            Write-Error "HLSR_RELEASES_TOKEN is not configured for the 'release' environment"
+            exit 1
+          }
+          if ([string]::IsNullOrEmpty($env:CHANNEL_KEY_B64)) {
+            Write-Error "HLSR_LAUNCHER_CHANNEL_PRIVATE_KEY_B64 is not configured for the 'release' environment"
+            exit 1
+          }
+          Write-Host "Release secrets are present."
+
+      # Пути сборки в exe — нейтральные (/cargo/…, /hlsr/…), как в задаче build.
+      - name: Neutral build paths
+        shell: bash
+        run: echo "RUSTFLAGS=$(scripts/slint/remap-flags.sh)" >> "$GITHUB_ENV"
+
+      - name: Build release tools
+        run: cargo build --release -p hlsr-release
+
+      # Версия: Cargo.toml — источник, ровно X.Y.Z (Р9); тег обязан совпасть
+      - name: Resolve and verify release version
+        shell: pwsh
+        run: |
+          $version = (& target\release\hlsr-release.exe version --release)
+          if ($LASTEXITCODE -ne 0) { exit 1 }
+          if ("${{ github.ref }}".StartsWith("refs/tags/v")) {
+            $tag = "${{ github.ref_name }}".TrimStart("v")
+            if ($tag -ne $version) {
+              Write-Error "Tag ${{ github.ref_name }} does not match Cargo version $version"
+              exit 1
+            }
+          }
+          "RELEASE_VERSION=$version" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
+          "RELEASE_TAG=v$version" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
+          Write-Host "Releasing version $version as tag v$version"
+
+      # Версия неизменяема: существующий Release никогда не перезаписывается
+      - name: Fail if this version is already released
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ secrets.HLSR_RELEASES_TOKEN }}
+        run: |
+          gh release view $env:RELEASE_TAG --repo $env:RELEASES_REPO --json tagName 2>$null
+          if ($LASTEXITCODE -eq 0) {
+            Write-Error "Release $env:RELEASE_TAG already exists in $env:RELEASES_REPO. Bump the version — published bytes are immutable."
+            exit 1
+          }
+          Write-Host "Release $env:RELEASE_TAG does not exist yet."
+
+      - name: Build launcher
+        run: cargo build --release -p hlsr-app
+
+      # ЕДИНСТВЕННАЯ упаковка. Эти байты и только они уходят в Release.
+      - name: Pack installer once (never publishes)
+        shell: bash
+        run: scripts/slint/package-windows.sh --exe target/release/hlsr.exe
+
+      # Ключ подписи канала: ТОЛЬКО во временный файл вне worktree
+      # ($RUNNER_TEMP). Содержимое и base64 никогда не печатаются, в артефакты
+      # и кеш файл не попадает, удаляется шагом cleanup с if: always().
+      - name: Materialize launcher channel signing key
+        shell: pwsh
+        env:
+          CHANNEL_KEY_B64: ${{ secrets.HLSR_LAUNCHER_CHANNEL_PRIVATE_KEY_B64 }}
+        run: |
+          $keyPath = Join-Path $env:RUNNER_TEMP "hlsr-launcher-channel.pem"
+          try {
+            $bytes = [Convert]::FromBase64String($env:CHANNEL_KEY_B64)
+          } catch {
+            Write-Error "HLSR_LAUNCHER_CHANNEL_PRIVATE_KEY_B64 is not valid base64"
+            exit 1
+          }
+          if ($bytes.Length -lt 64) {
+            Write-Error "Decoded signing key is suspiciously small — check the secret"
+            exit 1
+          }
+          [IO.File]::WriteAllBytes($keyPath, $bytes)
+          "HLSR_MANIFEST_PRIVATE_KEY_PATH=$keyPath" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
+          Write-Host "Signing key materialized at RUNNER_TEMP (path not echoed further)."
+
+      # prepare подписывает канал ЭТИМИ байтами (в канал входят куски обновления и блок build) и
+      # жёстко падает, если keyId не совпадает с trust root, вшитым в лаунчер 0.4.7
+      # (ожидается def6be181724142e). Всё складывается рядом с установщиком.
+      - name: Prepare signed launcher-channel.json (production)
+        run: node tools/release/node/launcher-release-prepare.js --build-dir target/dist/windows --out target/dist/windows
+
+      - name: Verify signed channel against the exact built artifacts
+        shell: pwsh
+        run: |
+          node tools/release/node/verify-launcher-release.js `
+            --channel "target/dist/windows/launcher-channel.json" `
+            --installer "target/dist/windows/HLSR-Setup-$env:RELEASE_VERSION.exe" `
+            --latest-yml "target/dist/windows/latest.yml" `
+            --expected-version $env:RELEASE_VERSION
+          if ($LASTEXITCODE -ne 0) { exit 1 }
+
+      # Приёмка 0.4.7 на боевом канале: вшитые ключи, без подмены trust root.
+      - name: Acceptance 0.4.7 (production channel)
+        shell: pwsh
+        run: scripts/slint/accept-windows.ps1 -Dist target\dist\windows -HlsrRelease target\release\hlsr-release.exe
+
+      # Draft создаётся только после всех локальных проверок.
+      # Пользователи draft не видят: electron-updater и boot-ворота его
+      # не получают, промежуточного Release без launcher-channel.json не будет.
+      - name: Create DRAFT release
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ secrets.HLSR_RELEASES_TOKEN }}
+        run: |
+          $notes = @"
+          HLSR Launcher $env:RELEASE_VERSION
+
+          - Windows x64 installer
+          - Automatic launcher updates
+          - Signed launcher update channel
+          "@
+          gh release create $env:RELEASE_TAG --repo $env:RELEASES_REPO --draft --title "HLSR Launcher $env:RELEASE_VERSION" --notes $notes
+          if ($LASTEXITCODE -ne 0) { Write-Error "Failed to create draft release"; exit 1 }
+
+      # Ровно три артефакта, без перезаписи существующих assets:
+      # неудача любой загрузки оставляет Release в draft и валит workflow
+      - name: Upload the three release assets to the draft
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ secrets.HLSR_RELEASES_TOKEN }}
+        run: |
+          $assets = @(
+            "target/dist/windows/HLSR-Setup-$env:RELEASE_VERSION.exe",
+            "target/dist/windows/latest.yml",
+            "target/dist/windows/launcher-channel.json"
+          )
+          foreach ($asset in $assets) {
+            if (-not (Test-Path $asset)) { Write-Error "Asset missing locally: $asset"; exit 1 }
+            gh release upload $env:RELEASE_TAG $asset --repo $env:RELEASES_REPO
+            if ($LASTEXITCODE -ne 0) { Write-Error "Failed to upload $asset — draft stays unpublished"; exit 1 }
+          }
+
+      - name: Verify draft asset list (exactly the three expected)
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ secrets.HLSR_RELEASES_TOKEN }}
+        run: |
+          $expected = @(
+            "HLSR-Setup-$env:RELEASE_VERSION.exe",
+            "latest.yml",
+            "launcher-channel.json"
+          ) | Sort-Object
+          $actual = (gh release view $env:RELEASE_TAG --repo $env:RELEASES_REPO --json assets |
+            ConvertFrom-Json).assets.name | Sort-Object
+          Write-Host "draft assets: $($actual -join ', ')"
+          if (($actual -join "|") -ne ($expected -join "|")) {
+            Write-Error "Draft asset list mismatch. Expected exactly: $($expected -join ', ')"
+            exit 1
+          }
+
+      # Обратное скачивание: проверяются РОВНО опубликованные байты,
+      # а не локальные копии
+      - name: Download draft assets and re-verify the published bytes
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ secrets.HLSR_RELEASES_TOKEN }}
+        run: |
+          $dir = Join-Path $env:RUNNER_TEMP "release-verify"
+          New-Item -ItemType Directory -Force $dir | Out-Null
+          gh release download $env:RELEASE_TAG --repo $env:RELEASES_REPO --dir $dir
+          if ($LASTEXITCODE -ne 0) { Write-Error "Failed to download draft assets"; exit 1 }
+
+          $pairs = @(
+            @{ local = "target/dist/windows/HLSR-Setup-$env:RELEASE_VERSION.exe"; remote = "HLSR-Setup-$env:RELEASE_VERSION.exe" },
+            @{ local = "target/dist/windows/latest.yml";                          remote = "latest.yml" },
+            @{ local = "target/dist/windows/launcher-channel.json";               remote = "launcher-channel.json" }
+          )
+          foreach ($pair in $pairs) {
+            $remotePath = Join-Path $dir $pair.remote
+            $localSha = (Get-FileHash $pair.local -Algorithm SHA256).Hash
+            $remoteSha = (Get-FileHash $remotePath -Algorithm SHA256).Hash
+            if ($localSha -ne $remoteSha) {
+              Write-Error "Uploaded $($pair.remote) differs from the local build (SHA-256 mismatch)"
+              exit 1
+            }
+            Write-Host "$($pair.remote): SHA-256 OK"
+          }
+
+          node tools/release/node/verify-launcher-release.js `
+            --channel (Join-Path $dir "launcher-channel.json") `
+            --installer (Join-Path $dir "HLSR-Setup-$env:RELEASE_VERSION.exe") `
+            --latest-yml (Join-Path $dir "latest.yml") `
+            --expected-version $env:RELEASE_VERSION
+          if ($LASTEXITCODE -ne 0) { Write-Error "Downloaded draft assets failed verification — draft stays unpublished"; exit 1 }
+
+          # Приёмка 0.4.7 над скачанными байтами.
+          pwsh scripts/slint/accept-windows.ps1 -Dist $dir -HlsrRelease target\release\hlsr-release.exe
+          if ($LASTEXITCODE -ne 0) { Write-Error "Downloaded draft assets failed the 0.4.7 acceptance — draft stays unpublished"; exit 1 }
+
+      # Только после успешной повторной проверки draft становится публичным
+      - name: Publish the verified draft as latest
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ secrets.HLSR_RELEASES_TOKEN }}
+        run: |
+          gh release edit $env:RELEASE_TAG --repo $env:RELEASES_REPO --draft=false --latest
+          if ($LASTEXITCODE -ne 0) { Write-Error "Failed to publish the draft release"; exit 1 }
+          Write-Host "Release $env:RELEASE_TAG is now public and latest."
+
+      # Ключ удаляется ВСЕГДА — и при успехе, и при любой ошибке
+      - name: Remove signing key from the runner
+        if: always()
+        shell: pwsh
+        run: |
+          $keyPath = Join-Path $env:RUNNER_TEMP "hlsr-launcher-channel.pem"
+          if (Test-Path $keyPath) {
+            Remove-Item -LiteralPath $keyPath -Force
+            Write-Host "Signing key removed."
+          }
+          $verifyDir = Join-Path $env:RUNNER_TEMP "release-verify"
+          if (Test-Path $verifyDir) { Remove-Item -LiteralPath $verifyDir -Recurse -Force }
+
+      - name: Fail-closed note
+        if: failure()
+        shell: pwsh
+        run: |
+          Write-Host "::error::Publish failed. If a draft release was created in $env:RELEASES_REPO it was left UNPUBLISHED (users never see drafts). Nothing was overwritten. Inspect the draft, delete it manually if needed, fix the problem and re-run."

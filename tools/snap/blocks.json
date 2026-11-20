@@ -1,0 +1,45 @@
+{
+  "scenes": [
+    { "id": "block-ring", "kind": "block", "width": 320, "height": 96, "background": "#0b0e13" },
+    { "id": "block-shadow-pop", "kind": "block", "width": 480, "height": 200, "background": "#9aa3b0" },
+    { "id": "block-toast", "kind": "block", "width": 640, "height": 400, "backdrop": true },
+    {
+      "id": "block-toast-lg",
+      "kind": "block",
+      "width": 640,
+      "height": 400,
+      "backdrop": true,
+      "liquid": { "filter": "soft", "x": 148, "y": 172, "width": 344, "height": 56 }
+    },
+    { "id": "block-dots", "kind": "block", "width": 96, "height": 32, "background": "#06101b" },
+    { "id": "block-ellipse", "kind": "block", "width": 480, "height": 200, "background": "#12161d" },
+    { "id": "block-footer", "kind": "block", "width": 1200, "height": 240, "background": "#9aa3b0" },
+    { "id": "block-tool", "kind": "block", "width": 640, "height": 400, "background": "#0a0d12" },
+    { "id": "block-rail", "kind": "block", "width": 640, "height": 400, "backdrop": true, "moving": 28 },
+    { "id": "block-rail-open", "kind": "block", "width": 640, "height": 400, "backdrop": true, "moving": 28 },
+    {
+      "id": "block-lg-window",
+      "kind": "block",
+      "width": 640,
+      "height": 400,
+      "backdrop": true,
+      "liquid": { "filter": "window", "x": 160, "y": 100, "width": 320, "height": 200 }
+    },
+    {
+      "id": "block-lg-panel",
+      "kind": "block",
+      "width": 640,
+      "height": 400,
+      "backdrop": true,
+      "liquid": { "filter": "panel", "x": 200, "y": 120, "width": 240, "height": 160 }
+    },
+    { "id": "block-scroll-thin", "kind": "block", "width": 200, "height": 160, "background": "#0b0e13" },
+    { "id": "block-scroll-list", "kind": "block", "width": 200, "height": 160, "background": "#0b0e13" },
+    { "id": "block-scroll-dropdown", "kind": "block", "width": 200, "height": 160, "background": "#0b0e13" },
+    { "id": "block-scroll-fields", "kind": "block", "width": 200, "height": 160, "background": "#0b0e13" },
+    { "id": "block-edge-fade", "kind": "block", "width": 1200, "height": 676, "theme": "hlsr" },
+    {"id": "block-rich-news", "kind": "block", "width": 760, "height": 480, "background": "#0b0e13", "rich": {"variant": "news", "markdown": "В **HLSR 0.4.7** появились темы оформления и [журнал изменений](https://hlsr.pro/changelog). Длинная строка проверяет перенос внутри абзаца и межстрочный интервал тела новости.\n\n### Что нового\n\n- Темы оформления и `Liquid Glass`\n- Список игр:\n  - скрытые игры не показываются\n  - быстрый поиск\n- Исправлены ошибки\n\n1. Откройте настройки\n2. Выберите тему\n\n```\nbind f \"+use\"\n  alias _zspecial\n```", "headings": true, "preserveCodeIndent": true}},
+    {"id": "block-rich-guide", "kind": "block", "width": 600, "height": 340, "background": "#0e2136", "rich": {"variant": "guide", "markdown": "Hold `w` and press the `pre_amel` key (`mouse2` here) to activate the elevator button. Go into the left corner, set the angles and press the script keys.\n\n- **Angles:**\n  - Pitch: doesn't matter\n  - Yaw: `90.0 - 91.0` (~`90.5` is recommended)\n- **Keypresses**:\n  - `mouse2`, `3 13 13 13` (`3` and then `13`), then hold `w + d`\n\nSee [v1](#elevator-reverse-script-v1) for the older version.", "scriptIds": ["elevator-reverse-script-v1"], "notes": ["Slightly slower", "Way more consistent than [v1](#elevator-reverse-script-v1)"]}},
+    {"id": "block-rich-consent", "kind": "block", "width": 480, "height": 96, "background": "#0e2136", "rich": {"variant": "consent", "spans": [{"text": "Я ознакомлен(а) с "}, {"text": "политикой конфиденциальности", "action": "privacy", "atomic": true}, {"text": " и принимаю "}, {"text": "условия использования", "action": "terms", "atomic": true}]}}
+  ]
+}

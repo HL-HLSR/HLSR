@@ -1,0 +1,12 @@
+{
+  "id": "shell/configs",
+  "screen": "shell",
+  "state": "Вкладка «Персонализация» щелчком",
+  "themes": ["hlsr"],
+  "languages": ["ru"],
+  "prefs": {"configTourSeen": true},
+  "steps": [
+    {"click": {"css": ".launcher-topbar__tab:nth-child(3)", "view": "topbar-tab-configs"}},
+    {"move": [800, 600]}
+  ]
+}

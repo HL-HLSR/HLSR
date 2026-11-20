@@ -1,0 +1,1205 @@
+{
+  "now": 1792152000000,
+  "slowScript": "#!/bin/sh\nfor a in \"$@\"; do case \"$a\" in -o*) : > \"${a#-o}/.started\";; esac; done\nexec sleep 60\n",
+  "archives": {
+    "livesplit-1.0.0.7z": {"size":1056,"sha256":"402b71f53c59327b251793388708cfa42515aba05acbdc2e692845f8df21d80d"},
+    "livesplit-1.1.0.7z": {"size":999,"sha256":"4f9205e50a6cf26bca7867766ef789733019760e958930cdb1d514b07041c73d"},
+    "no-exe-1.0.0.7z": {"size":251,"sha256":"7d615e6f5431862366efa3151f953308fad2bd827eac3d2b4cabb3af5aa61b3f"},
+    "nested-1.0.0.7z": {"size":338,"sha256":"38382e02cb9d31a1a8b51a95927c18de5d7ba919a11f5b590c5f5fabf924ad9d"},
+    "exe-dir-1.0.0.7z": {"size":217,"sha256":"1e48c31f72fd909787751c9cfcc5591dd95b77ce529f6de477592ef45460b63b"},
+    "corrupt-1.0.0.7z": {"size":1056,"sha256":"3a38ec75b4b0e70e668d5ad691e001afe7c059f6d5644c16d1a9ed25b3d26cd0"}
+  },
+  "constants": {"LIVESPLIT_TOOL_ID":"livesplit","MAX_ARCHIVE_BYTES":536870912,"STATE_FILE":"installed.json","LIVESPLIT":"livesplit"},
+  "registry": {
+    "ids": ["livesplit"],
+    "manifest": [
+      [
+        "livesplit",
+        {
+          "schemaVersion": 1,
+          "toolId": "livesplit",
+          "channel": "stable",
+          "version": "1.0.0",
+          "enabled": true,
+          "executable": "LiveSplit.exe",
+          "archive": {"filename":"livesplit-1.0.0.7z","size":8363929,"sha256":"6c8e091766d8b5b9107c185e379c835380f601480293b3c0b3aa920ffe87071e","providers":[{"id":"hlsr-primary","type":"https-direct","status":"permanent","priority":10,"url":"https://hlsr.pro/downloads/tools/livesplit/1.0.0/livesplit-1.0.0.7z"}]}
+        }
+      ],
+      ["LIVESPLIT",null],
+      ["",null],
+      ["constructor",null],
+      ["__proto__",null],
+      ["timer",null]
+    ],
+    "presentation": [["livesplit",{"shortName":"LiveSplit","title":"LiveSplit","subtitle":"#L_TOOL_LIVESPLIT_SUB","description":"#L_TOOL_LIVESPLIT_DESC","icon":"fas fa-stopwatch","accent":"#3fa7ff","accentSoft":"rgba(63, 167, 255, 0.16)","help":"https://youtu.be/l-lZ1yr_Mlc?t=316"}],["LIVESPLIT",null],["",null],["constructor",null],["__proto__",null],["timer",null]]
+  },
+  "environment": [
+    ["livesplit",{"DISPLAY":":0"},{"PROTON_USE_X11_EXCLUSIVE":"LiveSplit.exe"}],
+    ["livesplit",{"DISPLAY":":0","WAYLAND_DISPLAY":"wayland-0"},{"PROTON_USE_X11_EXCLUSIVE":"LiveSplit.exe"}],
+    ["livesplit",{},null],
+    ["livesplit",{"DISPLAY":""},null],
+    ["LiveSplit",{"DISPLAY":":0"},null],
+    ["LiveSplit",{"DISPLAY":":0","WAYLAND_DISPLAY":"wayland-0"},null],
+    ["LiveSplit",{},null],
+    ["LiveSplit",{"DISPLAY":""},null],
+    ["other-tool",{"DISPLAY":":0"},null],
+    ["other-tool",{"DISPLAY":":0","WAYLAND_DISPLAY":"wayland-0"},null],
+    ["other-tool",{},null],
+    ["other-tool",{"DISPLAY":""},null],
+    ["",{"DISPLAY":":0"},null],
+    ["",{"DISPLAY":":0","WAYLAND_DISPLAY":"wayland-0"},null],
+    ["",{},null],
+    ["",{"DISPLAY":""},null]
+  ],
+  "scenarios": [
+    {
+      "name": "состояние: не установлен, установка, установлен",
+      "servers": {"a":{"/livesplit-1.0.0.7z":[{"bodyArchive":"livesplit-1.0.0.7z"}]}},
+      "setup": [],
+      "registry": {"livesplit":{"schemaVersion":1,"toolId":"livesplit","channel":"stable","version":"1.0.0","enabled":true,"executable":"LiveSplit.exe","archive":{"filename":"livesplit-1.0.0.7z","size":1056,"sha256":"402b71f53c59327b251793388708cfa42515aba05acbdc2e692845f8df21d80d","providers":[{"id":"a","type":"https-direct","status":"permanent","priority":10,"url":"http://{a}/livesplit-1.0.0.7z"}]}}},
+      "service": {},
+      "steps": [{"op":"status","tool":"livesplit"},{"op":"install","tool":"livesplit"},{"op":"status","tool":"livesplit"},{"op":"tree"},{"op":"readInstalled","tool":"livesplit"}],
+      "results": [
+        {"status":{"toolId":"livesplit","state":"not-installed","version":null,"availableVersion":"1.0.0","updateAvailable":false,"installPath":null,"percent":0,"error":null,"running":false,"stopping":false}},
+        {"outcome":{"ok":{"status":"installed","version":"1.0.0","installPath":"<root>/lib/Tools/livesplit"}},"progress":[[100,1056]],"timeline":[{"log":"info","message":"[tools] livesplit 1.0.0 установлен: <root>/lib/Tools/livesplit"}],"requests":[{"server":"a","method":"GET","url":"/livesplit-1.0.0.7z","headers":{"user-agent":"HLSR-Launcher"}}],"busy":null},
+        {"status":{"toolId":"livesplit","state":"ready","version":"1.0.0","availableVersion":"1.0.0","updateAvailable":false,"installPath":"<root>/lib/Tools/livesplit","percent":0,"error":null,"running":false,"stopping":false}},
+        {
+          "tree": [
+            {"path":".hlsr","kind":"dir"},
+            {"path":".hlsr/staging","kind":"dir"},
+            {"path":"Downloads","kind":"dir"},
+            {"path":"Tools","kind":"dir"},
+            {"path":"Tools/livesplit","kind":"dir"},
+            {"path":"Tools/livesplit/Components","kind":"dir"},
+            {"path":"Tools/livesplit/Components/LiveSplit.SourceSplit.dll","kind":"file","size":28,"sha256":"13b1a6b60c572ebd7524a2ad197df6421e54e962dd66eab69e8ddd803f83a542"},
+            {"path":"Tools/livesplit/Components/LiveSplit.Splits.dll","kind":"file","size":120,"sha256":"243822c0c52396aca7ab2e9b12a9bae80292a9e4a09cdc07812efedb81612b5b"},
+            {"path":"Tools/livesplit/LiveSplit.Core.dll","kind":"file","size":300,"sha256":"de49f1baac9023c2796b8fcb5466498f7beb9ed3d0fddba8db18853a37b1c5f0"},
+            {"path":"Tools/livesplit/LiveSplit.exe","kind":"file","size":10,"sha256":"b5f6eda7e43f0833815cf670d564876a901a91df5a6f3211cfda6550ecc22600"},
+            {"path":"Tools/livesplit/empty dir","kind":"dir"},
+            {"path":"Tools/livesplit/installed.json","kind":"file","size":196,"sha256":"317dfa40492c189d5d4a4aa339d47d349eadd8ed2f6ecdfbb07a1702440dc691","latin1":"{\n  \"schemaVersion\": 1,\n  \"toolId\": \"livesplit\",\n  \"version\": \"1.0.0\",\n  \"executable\": \"LiveSplit.exe\",\n  \"installPath\": \"<root>/lib/Tools/livesplit\",\n  \"installedAt\": \"2026-10-16T12:00:00.000Z\"\n}"},
+            {"path":"Tools/livesplit/settings.cfg","kind":"file","size":112,"sha256":"8e97f7d6fb08318d2abec0b1a1c1239e95ac8b39cb3cc2c456686f39f84eacd1"},
+            {"path":"Tools/livesplit/splits","kind":"dir"},
+            {"path":"Tools/livesplit/splits/chapters","kind":"dir"},
+            {"path":"Tools/livesplit/splits/chapters/chapters.lsl","kind":"file","size":186,"sha256":"f149363d70a8082dd7ff3e9a80cbc81253424eb725ee2feae574cea2295079da"},
+            {"path":"Tools/livesplit/splits/chapters/chapters.lss","kind":"file","size":7,"sha256":"5a13158c298fa7dfb64b6d126ee9eebf80b8ed2f420dd263a88755ff34128ad0"},
+            {"path":"Tools/livesplit/splits/maps","kind":"dir"},
+            {"path":"Tools/livesplit/splits/maps/maps.lsl","kind":"file","size":186,"sha256":"f149363d70a8082dd7ff3e9a80cbc81253424eb725ee2feae574cea2295079da"},
+            {"path":"Tools/livesplit/splits/maps/maps.lss","kind":"file","size":7,"sha256":"5a13158c298fa7dfb64b6d126ee9eebf80b8ed2f420dd263a88755ff34128ad0"},
+            {"path":"Tools/livesplit/Документы","kind":"dir"},
+            {"path":"Tools/livesplit/Документы/справка по LiveSplit.txt","kind":"file","size":37,"sha256":"262b850dc01dd387b609c56a2d404c0262fe0cb9a7ae34ad12346ccf0c6801fa"}
+          ]
+        },
+        {"ok":{"schemaVersion":1,"toolId":"livesplit","version":"1.0.0","executable":"LiveSplit.exe","installPath":"<root>/lib/Tools/livesplit","installedAt":"2026-10-16T12:00:00.000Z"}}
+      ]
+    },
+    {
+      "name": "состояние: неизвестный инструмент и недопустимые id",
+      "servers": {},
+      "setup": [],
+      "registry": {
+        "livesplit": {"schemaVersion":1,"toolId":"livesplit","channel":"stable","version":"1.0.0","enabled":true,"executable":"LiveSplit.exe","archive":{"filename":"livesplit-1.0.0.7z","size":1056,"sha256":"402b71f53c59327b251793388708cfa42515aba05acbdc2e692845f8df21d80d","providers":[{"id":"a","type":"https-direct","status":"permanent","priority":10,"url":"http://{a}/livesplit-1.0.0.7z"}]}},
+        "timer": {"version":"2","executable":"timer.exe","archive":{"filename":"timer.zip","size":100,"providers":[]}},
+        "Bad_ID": {"schemaVersion":1,"toolId":"livesplit","channel":"stable","version":"1.0.0","enabled":true,"executable":"LiveSplit.exe","archive":{"filename":"livesplit-1.0.0.7z","size":1056,"sha256":"402b71f53c59327b251793388708cfa42515aba05acbdc2e692845f8df21d80d","providers":[{"id":"a","type":"https-direct","status":"permanent","priority":10,"url":"http://{a}/livesplit-1.0.0.7z"}]}},
+        "a.b-c_d": {"schemaVersion":1,"toolId":"livesplit","channel":"stable","version":"1.0.0","enabled":true,"executable":"LiveSplit.exe","archive":{"filename":"livesplit-1.0.0.7z","size":1056,"sha256":"402b71f53c59327b251793388708cfa42515aba05acbdc2e692845f8df21d80d","providers":[{"id":"a","type":"https-direct","status":"permanent","priority":10,"url":"http://{a}/livesplit-1.0.0.7z"}]}}
+      },
+      "service": {},
+      "steps": [
+        {"op":"status","tool":"livesplit"},
+        {"op":"status","tool":"timer"},
+        {"op":"status","tool":"nothing"},
+        {"op":"status","tool":"Bad_ID"},
+        {"op":"status","tool":"a.b-c_d"},
+        {"op":"status","tool":"LIVESPLIT"},
+        {"op":"uninstall","tool":"livesplit"},
+        {"op":"uninstall","tool":"Bad_ID"},
+        {"op":"uninstall","tool":"a.b-c_d"},
+        {"op":"uninstall","tool":"nothing"},
+        {"op":"uninstall","tool":"Nothing"},
+        {"op":"uninstall","tool":"../x"},
+        {"op":"uninstall","tool":""},
+        {"op":"install","tool":"Bad_ID"},
+        {"op":"install","tool":"nothing"},
+        {"op":"tree"}
+      ],
+      "results": [
+        {"status":{"toolId":"livesplit","state":"not-installed","version":null,"availableVersion":"1.0.0","updateAvailable":false,"installPath":null,"percent":0,"error":null,"running":false,"stopping":false}},
+        {"status":{"toolId":"timer","state":"not-installed","version":null,"availableVersion":"2","updateAvailable":false,"installPath":null,"percent":0,"error":null,"running":false,"stopping":false}},
+        {"status":{"toolId":"nothing","state":"unknown","version":null,"availableVersion":null,"updateAvailable":false,"installPath":null,"percent":0,"error":{"code":"TOOL_UNKNOWN"},"running":false,"stopping":false}},
+        {"status":{"toolId":"Bad_ID","state":"not-installed","version":null,"availableVersion":"1.0.0","updateAvailable":false,"installPath":null,"percent":0,"error":null,"running":false,"stopping":false}},
+        {"status":{"toolId":"a.b-c_d","state":"not-installed","version":null,"availableVersion":"1.0.0","updateAvailable":false,"installPath":null,"percent":0,"error":null,"running":false,"stopping":false}},
+        {"status":{"toolId":"LIVESPLIT","state":"unknown","version":null,"availableVersion":null,"updateAvailable":false,"installPath":null,"percent":0,"error":{"code":"TOOL_UNKNOWN"},"running":false,"stopping":false}},
+        {"outcome":{"ok":{"status":"not-installed"}},"timeline":[]},
+        {"outcome":{"error":{"code":"TOOL_UNKNOWN","message":"Недопустимый идентификатор инструмента: Bad_ID","details":null}},"timeline":[]},
+        {"outcome":{"ok":{"status":"not-installed"}},"timeline":[]},
+        {"outcome":{"ok":{"status":"not-installed"}},"timeline":[]},
+        {"outcome":{"error":{"code":"TOOL_UNKNOWN","message":"Недопустимый идентификатор инструмента: Nothing","details":null}},"timeline":[]},
+        {"outcome":{"error":{"code":"TOOL_UNKNOWN","message":"Недопустимый идентификатор инструмента: ../x","details":null}},"timeline":[]},
+        {"outcome":{"error":{"code":"TOOL_UNKNOWN","message":"Недопустимый идентификатор инструмента: ","details":null}},"timeline":[]},
+        {"outcome":{"error":{"code":"TOOL_UNKNOWN","message":"Недопустимый идентификатор инструмента: Bad_ID","details":null}},"progress":[],"timeline":[],"requests":[],"busy":null},
+        {"outcome":{"error":{"code":"TOOL_UNKNOWN","message":"Нет манифеста инструмента nothing","details":null}},"progress":[],"timeline":[],"requests":[],"busy":null},
+        {"tree":null}
+      ]
+    },
+    {
+      "name": "состояние: installed.json разного вида",
+      "servers": {},
+      "setup": [
+        {"file":"lib/Tools/t1/installed.json","utf8":"{\"toolId\":\"t1\",\"version\":\"1.0.0\",\"installPath\":\"/x\"}"},
+        {"file":"lib/Tools/t2/installed.json","utf8":"{\"toolId\":\"other\",\"version\":\"1.0.0\",\"installPath\":\"/x\"}"},
+        {"file":"lib/Tools/t3/installed.json","utf8":"{\"toolId\":\"t3\",\"installPath\":\"/x\"}"},
+        {"file":"lib/Tools/t4/installed.json","utf8":"﻿{\"toolId\":\"t4\",\"version\":\"1.0.0\"}"},
+        {"file":"lib/Tools/t5/installed.json","utf8":"{ не JSON"},
+        {"file":"lib/Tools/t6/installed.json","utf8":"null"},
+        {"file":"lib/Tools/t7/installed.json","utf8":"{\"toolId\":\"t7\",\"version\":\"3\"}"},
+        {"file":"lib/Tools/t8/installed.json","utf8":"{\"toolId\":\"t8\",\"version\":\"2\",\"extra\":true,\"installPath\":null}"},
+        {"file":"lib/Tools/t9/installed.json","utf8":"{\"toolId\":\"t9\",\"version\":\"1\"}"}
+      ],
+      "registry": {
+        "t1": {"version":"2","executable":"t.exe","archive":{"filename":"t.zip","size":1,"providers":[]}},
+        "t2": {"version":"2","executable":"t.exe","archive":{"filename":"t.zip","size":1,"providers":[]}},
+        "t3": {"version":"2","executable":"t.exe","archive":{"filename":"t.zip","size":1,"providers":[]}},
+        "t4": {"version":"2","executable":"t.exe","archive":{"filename":"t.zip","size":1,"providers":[]}},
+        "t5": {"version":"2","executable":"t.exe","archive":{"filename":"t.zip","size":1,"providers":[]}},
+        "t6": {"version":"2","executable":"t.exe","archive":{"filename":"t.zip","size":1,"providers":[]}},
+        "t7": {"version":"2","executable":"t.exe","archive":{"filename":"t.zip","size":1,"providers":[]}},
+        "t8": {"version":"2","executable":"t.exe","archive":{"filename":"t.zip","size":1,"providers":[]}},
+        "t9": {"executable":"t.exe","archive":{"filename":"t.zip","size":1,"providers":[]}}
+      },
+      "service": {},
+      "steps": [
+        {"op":"status","tool":"t1"},
+        {"op":"status","tool":"t2"},
+        {"op":"status","tool":"t3"},
+        {"op":"status","tool":"t4"},
+        {"op":"status","tool":"t5"},
+        {"op":"status","tool":"t6"},
+        {"op":"status","tool":"t7"},
+        {"op":"status","tool":"t8"},
+        {"op":"status","tool":"t9"},
+        {"op":"readInstalled","tool":"t1"},
+        {"op":"readInstalled","tool":"t2"},
+        {"op":"readInstalled","tool":"t3"},
+        {"op":"readInstalled","tool":"t4"},
+        {"op":"readInstalled","tool":"t5"},
+        {"op":"readInstalled","tool":"t6"},
+        {"op":"readInstalled","tool":"t7"},
+        {"op":"readInstalled","tool":"t8"},
+        {"op":"readInstalled","tool":"t9"}
+      ],
+      "results": [
+        {"status":{"toolId":"t1","state":"ready","version":"1.0.0","availableVersion":"2","updateAvailable":true,"installPath":"/x","percent":0,"error":null,"running":false,"stopping":false}},
+        {"status":{"toolId":"t2","state":"not-installed","version":null,"availableVersion":"2","updateAvailable":false,"installPath":null,"percent":0,"error":null,"running":false,"stopping":false}},
+        {"status":{"toolId":"t3","state":"not-installed","version":null,"availableVersion":"2","updateAvailable":false,"installPath":null,"percent":0,"error":null,"running":false,"stopping":false}},
+        {"status":{"toolId":"t4","state":"not-installed","version":null,"availableVersion":"2","updateAvailable":false,"installPath":null,"percent":0,"error":null,"running":false,"stopping":false}},
+        {"status":{"toolId":"t5","state":"not-installed","version":null,"availableVersion":"2","updateAvailable":false,"installPath":null,"percent":0,"error":null,"running":false,"stopping":false}},
+        {"status":{"toolId":"t6","state":"not-installed","version":null,"availableVersion":"2","updateAvailable":false,"installPath":null,"percent":0,"error":null,"running":false,"stopping":false}},
+        {"status":{"toolId":"t7","state":"ready","version":"3","availableVersion":"2","updateAvailable":true,"percent":0,"error":null,"running":false,"stopping":false}},
+        {"status":{"toolId":"t8","state":"ready","version":"2","availableVersion":"2","updateAvailable":false,"installPath":null,"percent":0,"error":null,"running":false,"stopping":false}},
+        {"status":{"toolId":"t9","state":"ready","version":"1","updateAvailable":false,"percent":0,"error":null,"running":false,"stopping":false}},
+        {"ok":{"toolId":"t1","version":"1.0.0","installPath":"/x"}},
+        {"ok":null},
+        {"ok":null},
+        {"ok":null},
+        {"ok":null},
+        {"ok":null},
+        {"ok":{"toolId":"t7","version":"3"}},
+        {"ok":{"toolId":"t8","version":"2","extra":true,"installPath":null}},
+        {"ok":{"toolId":"t9","version":"1"}}
+      ]
+    },
+    {
+      "name": "установка: прогресс по кускам, переустановка",
+      "servers": {"a":{"/livesplit-1.0.0.7z":[{"bodyArchive":"livesplit-1.0.0.7z","gates":[{"at":200,"name":"g1"},{"at":400,"name":"g2"}]}]}},
+      "setup": [],
+      "registry": {"livesplit":{"schemaVersion":1,"toolId":"livesplit","channel":"stable","version":"1.0.0","enabled":true,"executable":"LiveSplit.exe","archive":{"filename":"livesplit-1.0.0.7z","size":1056,"sha256":"402b71f53c59327b251793388708cfa42515aba05acbdc2e692845f8df21d80d","providers":[{"id":"a","type":"https-direct","status":"permanent","priority":10,"url":"http://{a}/livesplit-1.0.0.7z"}]}}},
+      "service": {},
+      "steps": [{"op":"install","tool":"livesplit","actions":[{"waitFile":"lib/Downloads/livesplit-1.0.0.7z.part","size":200},{"status":"livesplit"},{"tree":true},{"release":"g1"},{"waitFile":"lib/Downloads/livesplit-1.0.0.7z.part","size":400},{"release":"g2"}]},{"op":"tree"},{"op":"install","tool":"livesplit"},{"op":"tree"}],
+      "results": [
+        {
+          "outcome": {"ok":{"status":"installed","version":"1.0.0","installPath":"<root>/lib/Tools/livesplit"}},
+          "progress": [[19,200],[38,400],[100,1056]],
+          "timeline": [{"log":"info","message":"[tools] livesplit 1.0.0 установлен: <root>/lib/Tools/livesplit"}],
+          "requests": [{"server":"a","method":"GET","url":"/livesplit-1.0.0.7z","headers":{"user-agent":"HLSR-Launcher"}}],
+          "busy": null,
+          "actions": [
+            {"action":"status","result":{"toolId":"livesplit","state":"installing","version":null,"availableVersion":"1.0.0","updateAvailable":false,"installPath":null,"percent":0,"error":null,"running":false,"stopping":false}},
+            {"action":"tree","result":[{"path":".hlsr","kind":"dir"},{"path":".hlsr/staging","kind":"dir"},{"path":"Downloads","kind":"dir"},{"path":"Downloads/livesplit-1.0.0.7z.part","kind":"file","size":200,"sha256":"12a23664716835505c7bbf591b197eeffde3bf2882b464762a0af814dd36925a"},{"path":"Tools","kind":"dir"}]}
+          ]
+        },
+        {
+          "tree": [
+            {"path":".hlsr","kind":"dir"},
+            {"path":".hlsr/staging","kind":"dir"},
+            {"path":"Downloads","kind":"dir"},
+            {"path":"Tools","kind":"dir"},
+            {"path":"Tools/livesplit","kind":"dir"},
+            {"path":"Tools/livesplit/Components","kind":"dir"},
+            {"path":"Tools/livesplit/Components/LiveSplit.SourceSplit.dll","kind":"file","size":28,"sha256":"13b1a6b60c572ebd7524a2ad197df6421e54e962dd66eab69e8ddd803f83a542"},
+            {"path":"Tools/livesplit/Components/LiveSplit.Splits.dll","kind":"file","size":120,"sha256":"243822c0c52396aca7ab2e9b12a9bae80292a9e4a09cdc07812efedb81612b5b"},
+            {"path":"Tools/livesplit/LiveSplit.Core.dll","kind":"file","size":300,"sha256":"de49f1baac9023c2796b8fcb5466498f7beb9ed3d0fddba8db18853a37b1c5f0"},
+            {"path":"Tools/livesplit/LiveSplit.exe","kind":"file","size":10,"sha256":"b5f6eda7e43f0833815cf670d564876a901a91df5a6f3211cfda6550ecc22600"},
+            {"path":"Tools/livesplit/empty dir","kind":"dir"},
+            {"path":"Tools/livesplit/installed.json","kind":"file","size":196,"sha256":"317dfa40492c189d5d4a4aa339d47d349eadd8ed2f6ecdfbb07a1702440dc691","latin1":"{\n  \"schemaVersion\": 1,\n  \"toolId\": \"livesplit\",\n  \"version\": \"1.0.0\",\n  \"executable\": \"LiveSplit.exe\",\n  \"installPath\": \"<root>/lib/Tools/livesplit\",\n  \"installedAt\": \"2026-10-16T12:00:00.000Z\"\n}"},
+            {"path":"Tools/livesplit/settings.cfg","kind":"file","size":112,"sha256":"8e97f7d6fb08318d2abec0b1a1c1239e95ac8b39cb3cc2c456686f39f84eacd1"},
+            {"path":"Tools/livesplit/splits","kind":"dir"},
+            {"path":"Tools/livesplit/splits/chapters","kind":"dir"},
+            {"path":"Tools/livesplit/splits/chapters/chapters.lsl","kind":"file","size":186,"sha256":"f149363d70a8082dd7ff3e9a80cbc81253424eb725ee2feae574cea2295079da"},
+            {"path":"Tools/livesplit/splits/chapters/chapters.lss","kind":"file","size":7,"sha256":"5a13158c298fa7dfb64b6d126ee9eebf80b8ed2f420dd263a88755ff34128ad0"},
+            {"path":"Tools/livesplit/splits/maps","kind":"dir"},
+            {"path":"Tools/livesplit/splits/maps/maps.lsl","kind":"file","size":186,"sha256":"f149363d70a8082dd7ff3e9a80cbc81253424eb725ee2feae574cea2295079da"},
+            {"path":"Tools/livesplit/splits/maps/maps.lss","kind":"file","size":7,"sha256":"5a13158c298fa7dfb64b6d126ee9eebf80b8ed2f420dd263a88755ff34128ad0"},
+            {"path":"Tools/livesplit/Документы","kind":"dir"},
+            {"path":"Tools/livesplit/Документы/справка по LiveSplit.txt","kind":"file","size":37,"sha256":"262b850dc01dd387b609c56a2d404c0262fe0cb9a7ae34ad12346ccf0c6801fa"}
+          ]
+        },
+        {"outcome":{"ok":{"status":"installed","version":"1.0.0","installPath":"<root>/lib/Tools/livesplit"}},"progress":[[100,1056]],"timeline":[{"log":"info","message":"[tools] livesplit 1.0.0 установлен: <root>/lib/Tools/livesplit"}],"requests":[{"server":"a","method":"GET","url":"/livesplit-1.0.0.7z","headers":{"user-agent":"HLSR-Launcher"}}],"busy":null},
+        {
+          "tree": [
+            {"path":".hlsr","kind":"dir"},
+            {"path":".hlsr/staging","kind":"dir"},
+            {"path":"Downloads","kind":"dir"},
+            {"path":"Tools","kind":"dir"},
+            {"path":"Tools/livesplit","kind":"dir"},
+            {"path":"Tools/livesplit/Components","kind":"dir"},
+            {"path":"Tools/livesplit/Components/LiveSplit.SourceSplit.dll","kind":"file","size":28,"sha256":"13b1a6b60c572ebd7524a2ad197df6421e54e962dd66eab69e8ddd803f83a542"},
+            {"path":"Tools/livesplit/Components/LiveSplit.Splits.dll","kind":"file","size":120,"sha256":"243822c0c52396aca7ab2e9b12a9bae80292a9e4a09cdc07812efedb81612b5b"},
+            {"path":"Tools/livesplit/LiveSplit.Core.dll","kind":"file","size":300,"sha256":"de49f1baac9023c2796b8fcb5466498f7beb9ed3d0fddba8db18853a37b1c5f0"},
+            {"path":"Tools/livesplit/LiveSplit.exe","kind":"file","size":10,"sha256":"b5f6eda7e43f0833815cf670d564876a901a91df5a6f3211cfda6550ecc22600"},
+            {"path":"Tools/livesplit/empty dir","kind":"dir"},
+            {"path":"Tools/livesplit/installed.json","kind":"file","size":196,"sha256":"317dfa40492c189d5d4a4aa339d47d349eadd8ed2f6ecdfbb07a1702440dc691","latin1":"{\n  \"schemaVersion\": 1,\n  \"toolId\": \"livesplit\",\n  \"version\": \"1.0.0\",\n  \"executable\": \"LiveSplit.exe\",\n  \"installPath\": \"<root>/lib/Tools/livesplit\",\n  \"installedAt\": \"2026-10-16T12:00:00.000Z\"\n}"},
+            {"path":"Tools/livesplit/settings.cfg","kind":"file","size":112,"sha256":"8e97f7d6fb08318d2abec0b1a1c1239e95ac8b39cb3cc2c456686f39f84eacd1"},
+            {"path":"Tools/livesplit/splits","kind":"dir"},
+            {"path":"Tools/livesplit/splits/chapters","kind":"dir"},
+            {"path":"Tools/livesplit/splits/chapters/chapters.lsl","kind":"file","size":186,"sha256":"f149363d70a8082dd7ff3e9a80cbc81253424eb725ee2feae574cea2295079da"},
+            {"path":"Tools/livesplit/splits/chapters/chapters.lss","kind":"file","size":7,"sha256":"5a13158c298fa7dfb64b6d126ee9eebf80b8ed2f420dd263a88755ff34128ad0"},
+            {"path":"Tools/livesplit/splits/maps","kind":"dir"},
+            {"path":"Tools/livesplit/splits/maps/maps.lsl","kind":"file","size":186,"sha256":"f149363d70a8082dd7ff3e9a80cbc81253424eb725ee2feae574cea2295079da"},
+            {"path":"Tools/livesplit/splits/maps/maps.lss","kind":"file","size":7,"sha256":"5a13158c298fa7dfb64b6d126ee9eebf80b8ed2f420dd263a88755ff34128ad0"},
+            {"path":"Tools/livesplit/Документы","kind":"dir"},
+            {"path":"Tools/livesplit/Документы/справка по LiveSplit.txt","kind":"file","size":37,"sha256":"262b850dc01dd387b609c56a2d404c0262fe0cb9a7ae34ad12346ccf0c6801fa"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "установка: поверх старой версии заменяет каталог целиком",
+      "servers": {"a":{"/livesplit-1.1.0.7z":[{"bodyArchive":"livesplit-1.1.0.7z"}]}},
+      "setup": [
+        {"file":"lib/Tools/livesplit/LiveSplit.exe","utf8":"exe 0.9.0\n"},
+        {"file":"lib/Tools/livesplit/settings.cfg","utf8":"<Settings>мои настройки</Settings>\n"},
+        {"file":"lib/Tools/livesplit/splits/hlsr/hl2-2707/scripts-maps.lss","utf8":"рекорды игрока"},
+        {"file":"lib/Tools/livesplit/old only.txt","utf8":"только в старой\n"},
+        {"file":"lib/Tools/livesplit/installed.json","utf8":"{\n  \"schemaVersion\": 1,\n  \"toolId\": \"livesplit\",\n  \"version\": \"0.9.0\",\n  \"executable\": \"LiveSplit.exe\",\n  \"installPath\": \"<root>/lib/Tools/livesplit\",\n  \"installedAt\": \"2026-01-01T00:00:00.000Z\"\n}"}
+      ],
+      "registry": {"livesplit":{"schemaVersion":1,"toolId":"livesplit","channel":"stable","version":"1.1.0","enabled":true,"executable":"LiveSplit.exe","archive":{"filename":"livesplit-1.1.0.7z","size":999,"sha256":"4f9205e50a6cf26bca7867766ef789733019760e958930cdb1d514b07041c73d","providers":[{"id":"a","type":"https-direct","status":"permanent","priority":10,"url":"http://{a}/livesplit-1.1.0.7z"}]}}},
+      "service": {},
+      "steps": [{"op":"status","tool":"livesplit"},{"op":"install","tool":"livesplit"},{"op":"status","tool":"livesplit"},{"op":"tree"}],
+      "results": [
+        {"status":{"toolId":"livesplit","state":"ready","version":"0.9.0","availableVersion":"1.1.0","updateAvailable":true,"installPath":"<root>/lib/Tools/livesplit","percent":0,"error":null,"running":false,"stopping":false}},
+        {"outcome":{"ok":{"status":"installed","version":"1.1.0","installPath":"<root>/lib/Tools/livesplit"}},"progress":[[100,999]],"timeline":[{"log":"info","message":"[tools] livesplit 1.1.0 установлен: <root>/lib/Tools/livesplit"}],"requests":[{"server":"a","method":"GET","url":"/livesplit-1.1.0.7z","headers":{"user-agent":"HLSR-Launcher"}}],"busy":null},
+        {"status":{"toolId":"livesplit","state":"ready","version":"1.1.0","availableVersion":"1.1.0","updateAvailable":false,"installPath":"<root>/lib/Tools/livesplit","percent":0,"error":null,"running":false,"stopping":false}},
+        {
+          "tree": [
+            {"path":".hlsr","kind":"dir"},
+            {"path":".hlsr/staging","kind":"dir"},
+            {"path":"Downloads","kind":"dir"},
+            {"path":"Tools","kind":"dir"},
+            {"path":"Tools/livesplit","kind":"dir"},
+            {"path":"Tools/livesplit/Components","kind":"dir"},
+            {"path":"Tools/livesplit/Components/LiveSplit.SourceSplit.dll","kind":"file","size":22,"sha256":"bcfe7b157100257a70ea5ab5a05fabac9f5b735a53a9222f1a47c0fb69e5a807"},
+            {"path":"Tools/livesplit/Components/LiveSplit.Splits.dll","kind":"file","size":120,"sha256":"243822c0c52396aca7ab2e9b12a9bae80292a9e4a09cdc07812efedb81612b5b"},
+            {"path":"Tools/livesplit/LiveSplit.Core.dll","kind":"file","size":300,"sha256":"de49f1baac9023c2796b8fcb5466498f7beb9ed3d0fddba8db18853a37b1c5f0"},
+            {"path":"Tools/livesplit/LiveSplit.exe","kind":"file","size":10,"sha256":"e15bc304217611a3e90323bb7644ffb0c5958de4e6e59ccfc3faa83d14831a4a"},
+            {"path":"Tools/livesplit/empty dir","kind":"dir"},
+            {"path":"Tools/livesplit/installed.json","kind":"file","size":196,"sha256":"7920deec52d67943924481ae1a8b9d8f80f9b959bdde8dc5b646891aead50815","latin1":"{\n  \"schemaVersion\": 1,\n  \"toolId\": \"livesplit\",\n  \"version\": \"1.1.0\",\n  \"executable\": \"LiveSplit.exe\",\n  \"installPath\": \"<root>/lib/Tools/livesplit\",\n  \"installedAt\": \"2026-10-16T12:00:00.000Z\"\n}"},
+            {"path":"Tools/livesplit/new.txt","kind":"file","size":22,"sha256":"3d739a43da1447cf045549cccf3dc7caf1931d899b66ae1c91a3ca40856f3c7a"},
+            {"path":"Tools/livesplit/settings.cfg","kind":"file","size":112,"sha256":"8e97f7d6fb08318d2abec0b1a1c1239e95ac8b39cb3cc2c456686f39f84eacd1"},
+            {"path":"Tools/livesplit/splits","kind":"dir"},
+            {"path":"Tools/livesplit/splits/chapters","kind":"dir"},
+            {"path":"Tools/livesplit/splits/chapters/chapters.lsl","kind":"file","size":186,"sha256":"f149363d70a8082dd7ff3e9a80cbc81253424eb725ee2feae574cea2295079da"},
+            {"path":"Tools/livesplit/splits/chapters/chapters.lss","kind":"file","size":7,"sha256":"5a13158c298fa7dfb64b6d126ee9eebf80b8ed2f420dd263a88755ff34128ad0"},
+            {"path":"Tools/livesplit/splits/maps","kind":"dir"},
+            {"path":"Tools/livesplit/splits/maps/maps.lsl","kind":"file","size":186,"sha256":"f149363d70a8082dd7ff3e9a80cbc81253424eb725ee2feae574cea2295079da"},
+            {"path":"Tools/livesplit/splits/maps/maps.lss","kind":"file","size":7,"sha256":"5a13158c298fa7dfb64b6d126ee9eebf80b8ed2f420dd263a88755ff34128ad0"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "установка: без размера и sha256 в манифесте",
+      "servers": {"a":{"/livesplit-1.0.0.7z":[{"bodyArchive":"livesplit-1.0.0.7z"}]}},
+      "setup": [],
+      "registry": {"livesplit":{"schemaVersion":1,"toolId":"livesplit","channel":"stable","version":"1.0.0","enabled":true,"executable":"LiveSplit.exe","archive":{"filename":"livesplit-1.0.0.7z","providers":[{"id":"a","type":"https-direct","status":"permanent","priority":10,"url":"http://{a}/livesplit-1.0.0.7z"}]}}},
+      "service": {},
+      "steps": [{"op":"install","tool":"livesplit"},{"op":"tree"}],
+      "results": [
+        {"outcome":{"ok":{"status":"installed","version":"1.0.0","installPath":"<root>/lib/Tools/livesplit"}},"progress":[],"timeline":[{"log":"info","message":"[tools] livesplit 1.0.0 установлен: <root>/lib/Tools/livesplit"}],"requests":[{"server":"a","method":"GET","url":"/livesplit-1.0.0.7z","headers":{"user-agent":"HLSR-Launcher"}}],"busy":null},
+        {
+          "tree": [
+            {"path":".hlsr","kind":"dir"},
+            {"path":".hlsr/staging","kind":"dir"},
+            {"path":"Downloads","kind":"dir"},
+            {"path":"Tools","kind":"dir"},
+            {"path":"Tools/livesplit","kind":"dir"},
+            {"path":"Tools/livesplit/Components","kind":"dir"},
+            {"path":"Tools/livesplit/Components/LiveSplit.SourceSplit.dll","kind":"file","size":28,"sha256":"13b1a6b60c572ebd7524a2ad197df6421e54e962dd66eab69e8ddd803f83a542"},
+            {"path":"Tools/livesplit/Components/LiveSplit.Splits.dll","kind":"file","size":120,"sha256":"243822c0c52396aca7ab2e9b12a9bae80292a9e4a09cdc07812efedb81612b5b"},
+            {"path":"Tools/livesplit/LiveSplit.Core.dll","kind":"file","size":300,"sha256":"de49f1baac9023c2796b8fcb5466498f7beb9ed3d0fddba8db18853a37b1c5f0"},
+            {"path":"Tools/livesplit/LiveSplit.exe","kind":"file","size":10,"sha256":"b5f6eda7e43f0833815cf670d564876a901a91df5a6f3211cfda6550ecc22600"},
+            {"path":"Tools/livesplit/empty dir","kind":"dir"},
+            {"path":"Tools/livesplit/installed.json","kind":"file","size":196,"sha256":"317dfa40492c189d5d4a4aa339d47d349eadd8ed2f6ecdfbb07a1702440dc691","latin1":"{\n  \"schemaVersion\": 1,\n  \"toolId\": \"livesplit\",\n  \"version\": \"1.0.0\",\n  \"executable\": \"LiveSplit.exe\",\n  \"installPath\": \"<root>/lib/Tools/livesplit\",\n  \"installedAt\": \"2026-10-16T12:00:00.000Z\"\n}"},
+            {"path":"Tools/livesplit/settings.cfg","kind":"file","size":112,"sha256":"8e97f7d6fb08318d2abec0b1a1c1239e95ac8b39cb3cc2c456686f39f84eacd1"},
+            {"path":"Tools/livesplit/splits","kind":"dir"},
+            {"path":"Tools/livesplit/splits/chapters","kind":"dir"},
+            {"path":"Tools/livesplit/splits/chapters/chapters.lsl","kind":"file","size":186,"sha256":"f149363d70a8082dd7ff3e9a80cbc81253424eb725ee2feae574cea2295079da"},
+            {"path":"Tools/livesplit/splits/chapters/chapters.lss","kind":"file","size":7,"sha256":"5a13158c298fa7dfb64b6d126ee9eebf80b8ed2f420dd263a88755ff34128ad0"},
+            {"path":"Tools/livesplit/splits/maps","kind":"dir"},
+            {"path":"Tools/livesplit/splits/maps/maps.lsl","kind":"file","size":186,"sha256":"f149363d70a8082dd7ff3e9a80cbc81253424eb725ee2feae574cea2295079da"},
+            {"path":"Tools/livesplit/splits/maps/maps.lss","kind":"file","size":7,"sha256":"5a13158c298fa7dfb64b6d126ee9eebf80b8ed2f420dd263a88755ff34128ad0"},
+            {"path":"Tools/livesplit/Документы","kind":"dir"},
+            {"path":"Tools/livesplit/Документы/справка по LiveSplit.txt","kind":"file","size":37,"sha256":"262b850dc01dd387b609c56a2d404c0262fe0cb9a7ae34ad12346ccf0c6801fa"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "установка: тело без Content-Length",
+      "servers": {"a":{"/livesplit-1.0.0.7z":[{"bodyArchive":"livesplit-1.0.0.7z","contentLength":null}]}},
+      "setup": [],
+      "registry": {"livesplit":{"schemaVersion":1,"toolId":"livesplit","channel":"stable","version":"1.0.0","enabled":true,"executable":"LiveSplit.exe","archive":{"filename":"livesplit-1.0.0.7z","size":1056,"sha256":"402b71f53c59327b251793388708cfa42515aba05acbdc2e692845f8df21d80d","providers":[{"id":"a","type":"https-direct","status":"permanent","priority":10,"url":"http://{a}/livesplit-1.0.0.7z"}]}}},
+      "service": {},
+      "steps": [{"op":"install","tool":"livesplit"},{"op":"tree"}],
+      "results": [
+        {"outcome":{"ok":{"status":"installed","version":"1.0.0","installPath":"<root>/lib/Tools/livesplit"}},"progress":[[100,1056]],"timeline":[{"log":"info","message":"[tools] livesplit 1.0.0 установлен: <root>/lib/Tools/livesplit"}],"requests":[{"server":"a","method":"GET","url":"/livesplit-1.0.0.7z","headers":{"user-agent":"HLSR-Launcher"}}],"busy":null},
+        {
+          "tree": [
+            {"path":".hlsr","kind":"dir"},
+            {"path":".hlsr/staging","kind":"dir"},
+            {"path":"Downloads","kind":"dir"},
+            {"path":"Tools","kind":"dir"},
+            {"path":"Tools/livesplit","kind":"dir"},
+            {"path":"Tools/livesplit/Components","kind":"dir"},
+            {"path":"Tools/livesplit/Components/LiveSplit.SourceSplit.dll","kind":"file","size":28,"sha256":"13b1a6b60c572ebd7524a2ad197df6421e54e962dd66eab69e8ddd803f83a542"},
+            {"path":"Tools/livesplit/Components/LiveSplit.Splits.dll","kind":"file","size":120,"sha256":"243822c0c52396aca7ab2e9b12a9bae80292a9e4a09cdc07812efedb81612b5b"},
+            {"path":"Tools/livesplit/LiveSplit.Core.dll","kind":"file","size":300,"sha256":"de49f1baac9023c2796b8fcb5466498f7beb9ed3d0fddba8db18853a37b1c5f0"},
+            {"path":"Tools/livesplit/LiveSplit.exe","kind":"file","size":10,"sha256":"b5f6eda7e43f0833815cf670d564876a901a91df5a6f3211cfda6550ecc22600"},
+            {"path":"Tools/livesplit/empty dir","kind":"dir"},
+            {"path":"Tools/livesplit/installed.json","kind":"file","size":196,"sha256":"317dfa40492c189d5d4a4aa339d47d349eadd8ed2f6ecdfbb07a1702440dc691","latin1":"{\n  \"schemaVersion\": 1,\n  \"toolId\": \"livesplit\",\n  \"version\": \"1.0.0\",\n  \"executable\": \"LiveSplit.exe\",\n  \"installPath\": \"<root>/lib/Tools/livesplit\",\n  \"installedAt\": \"2026-10-16T12:00:00.000Z\"\n}"},
+            {"path":"Tools/livesplit/settings.cfg","kind":"file","size":112,"sha256":"8e97f7d6fb08318d2abec0b1a1c1239e95ac8b39cb3cc2c456686f39f84eacd1"},
+            {"path":"Tools/livesplit/splits","kind":"dir"},
+            {"path":"Tools/livesplit/splits/chapters","kind":"dir"},
+            {"path":"Tools/livesplit/splits/chapters/chapters.lsl","kind":"file","size":186,"sha256":"f149363d70a8082dd7ff3e9a80cbc81253424eb725ee2feae574cea2295079da"},
+            {"path":"Tools/livesplit/splits/chapters/chapters.lss","kind":"file","size":7,"sha256":"5a13158c298fa7dfb64b6d126ee9eebf80b8ed2f420dd263a88755ff34128ad0"},
+            {"path":"Tools/livesplit/splits/maps","kind":"dir"},
+            {"path":"Tools/livesplit/splits/maps/maps.lsl","kind":"file","size":186,"sha256":"f149363d70a8082dd7ff3e9a80cbc81253424eb725ee2feae574cea2295079da"},
+            {"path":"Tools/livesplit/splits/maps/maps.lss","kind":"file","size":7,"sha256":"5a13158c298fa7dfb64b6d126ee9eebf80b8ed2f420dd263a88755ff34128ad0"},
+            {"path":"Tools/livesplit/Документы","kind":"dir"},
+            {"path":"Tools/livesplit/Документы/справка по LiveSplit.txt","kind":"file","size":37,"sha256":"262b850dc01dd387b609c56a2d404c0262fe0cb9a7ae34ad12346ccf0c6801fa"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "установка: источники по очереди",
+      "servers": {"a":{"/p404":[{"status":404}],"/p500":[{"status":500,"body":"x"}],"/ok.7z":[{"bodyArchive":"livesplit-1.0.0.7z"}]}},
+      "setup": [],
+      "registry": {
+        "livesplit": {
+          "schemaVersion": 1,
+          "toolId": "livesplit",
+          "channel": "stable",
+          "version": "1.0.0",
+          "enabled": true,
+          "executable": "LiveSplit.exe",
+          "archive": {
+            "filename": "livesplit-1.0.0.7z",
+            "size": 1056,
+            "sha256": "402b71f53c59327b251793388708cfa42515aba05acbdc2e692845f8df21d80d",
+            "providers": [{"id":"s1","type":"https-direct","status":"permanent","priority":10,"url":"http://{a}/p404"},{"id":"s2","type":"https-direct","status":"permanent","priority":11,"url":"http://{a}/p500"},{"id":"s3","type":"https-direct","status":"permanent","priority":12,"url":"http://{a}/ok.7z"}]
+          }
+        }
+      },
+      "service": {},
+      "steps": [{"op":"install","tool":"livesplit"},{"op":"tree"}],
+      "results": [
+        {
+          "outcome": {"ok":{"status":"installed","version":"1.0.0","installPath":"<root>/lib/Tools/livesplit"}},
+          "progress": [[100,1056]],
+          "timeline": [{"log":"warn","message":"[tools] источник s1 не сработал: Источник ответил 404"},{"log":"warn","message":"[tools] источник s2 не сработал: Источник ответил 500"},{"log":"info","message":"[tools] livesplit 1.0.0 установлен: <root>/lib/Tools/livesplit"}],
+          "requests": [{"server":"a","method":"GET","url":"/p404","headers":{"user-agent":"HLSR-Launcher"}},{"server":"a","method":"GET","url":"/p500","headers":{"user-agent":"HLSR-Launcher"}},{"server":"a","method":"GET","url":"/ok.7z","headers":{"user-agent":"HLSR-Launcher"}}],
+          "busy": null
+        },
+        {
+          "tree": [
+            {"path":".hlsr","kind":"dir"},
+            {"path":".hlsr/staging","kind":"dir"},
+            {"path":"Downloads","kind":"dir"},
+            {"path":"Tools","kind":"dir"},
+            {"path":"Tools/livesplit","kind":"dir"},
+            {"path":"Tools/livesplit/Components","kind":"dir"},
+            {"path":"Tools/livesplit/Components/LiveSplit.SourceSplit.dll","kind":"file","size":28,"sha256":"13b1a6b60c572ebd7524a2ad197df6421e54e962dd66eab69e8ddd803f83a542"},
+            {"path":"Tools/livesplit/Components/LiveSplit.Splits.dll","kind":"file","size":120,"sha256":"243822c0c52396aca7ab2e9b12a9bae80292a9e4a09cdc07812efedb81612b5b"},
+            {"path":"Tools/livesplit/LiveSplit.Core.dll","kind":"file","size":300,"sha256":"de49f1baac9023c2796b8fcb5466498f7beb9ed3d0fddba8db18853a37b1c5f0"},
+            {"path":"Tools/livesplit/LiveSplit.exe","kind":"file","size":10,"sha256":"b5f6eda7e43f0833815cf670d564876a901a91df5a6f3211cfda6550ecc22600"},
+            {"path":"Tools/livesplit/empty dir","kind":"dir"},
+            {"path":"Tools/livesplit/installed.json","kind":"file","size":196,"sha256":"317dfa40492c189d5d4a4aa339d47d349eadd8ed2f6ecdfbb07a1702440dc691","latin1":"{\n  \"schemaVersion\": 1,\n  \"toolId\": \"livesplit\",\n  \"version\": \"1.0.0\",\n  \"executable\": \"LiveSplit.exe\",\n  \"installPath\": \"<root>/lib/Tools/livesplit\",\n  \"installedAt\": \"2026-10-16T12:00:00.000Z\"\n}"},
+            {"path":"Tools/livesplit/settings.cfg","kind":"file","size":112,"sha256":"8e97f7d6fb08318d2abec0b1a1c1239e95ac8b39cb3cc2c456686f39f84eacd1"},
+            {"path":"Tools/livesplit/splits","kind":"dir"},
+            {"path":"Tools/livesplit/splits/chapters","kind":"dir"},
+            {"path":"Tools/livesplit/splits/chapters/chapters.lsl","kind":"file","size":186,"sha256":"f149363d70a8082dd7ff3e9a80cbc81253424eb725ee2feae574cea2295079da"},
+            {"path":"Tools/livesplit/splits/chapters/chapters.lss","kind":"file","size":7,"sha256":"5a13158c298fa7dfb64b6d126ee9eebf80b8ed2f420dd263a88755ff34128ad0"},
+            {"path":"Tools/livesplit/splits/maps","kind":"dir"},
+            {"path":"Tools/livesplit/splits/maps/maps.lsl","kind":"file","size":186,"sha256":"f149363d70a8082dd7ff3e9a80cbc81253424eb725ee2feae574cea2295079da"},
+            {"path":"Tools/livesplit/splits/maps/maps.lss","kind":"file","size":7,"sha256":"5a13158c298fa7dfb64b6d126ee9eebf80b8ed2f420dd263a88755ff34128ad0"},
+            {"path":"Tools/livesplit/Документы","kind":"dir"},
+            {"path":"Tools/livesplit/Документы/справка по LiveSplit.txt","kind":"file","size":37,"sha256":"262b850dc01dd387b609c56a2d404c0262fe0cb9a7ae34ad12346ccf0c6801fa"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "установка: все источники не сработали — последняя ошибка, старая версия цела",
+      "servers": {"a":{"/p404":[{"status":404}],"/p500":[{"status":500}]}},
+      "setup": [
+        {"file":"lib/Tools/livesplit/LiveSplit.exe","utf8":"exe 0.9.0\n"},
+        {"file":"lib/Tools/livesplit/settings.cfg","utf8":"<Settings>мои настройки</Settings>\n"},
+        {"file":"lib/Tools/livesplit/splits/hlsr/hl2-2707/scripts-maps.lss","utf8":"рекорды игрока"},
+        {"file":"lib/Tools/livesplit/old only.txt","utf8":"только в старой\n"},
+        {"file":"lib/Tools/livesplit/installed.json","utf8":"{\n  \"schemaVersion\": 1,\n  \"toolId\": \"livesplit\",\n  \"version\": \"0.9.0\",\n  \"executable\": \"LiveSplit.exe\",\n  \"installPath\": \"<root>/lib/Tools/livesplit\",\n  \"installedAt\": \"2026-01-01T00:00:00.000Z\"\n}"}
+      ],
+      "registry": {
+        "livesplit": {
+          "schemaVersion": 1,
+          "toolId": "livesplit",
+          "channel": "stable",
+          "version": "1.0.0",
+          "enabled": true,
+          "executable": "LiveSplit.exe",
+          "archive": {"filename":"livesplit-1.0.0.7z","size":1056,"sha256":"402b71f53c59327b251793388708cfa42515aba05acbdc2e692845f8df21d80d","providers":[{"id":"s1","type":"https-direct","status":"permanent","priority":10,"url":"http://{a}/p404"},{"id":"s2","type":"https-direct","status":"permanent","priority":11,"url":"http://{a}/p500"}]}
+        }
+      },
+      "service": {},
+      "steps": [{"op":"install","tool":"livesplit"},{"op":"tree"}],
+      "results": [
+        {
+          "outcome": {"error":{"code":"NETWORK_ERROR","message":"Источник ответил 500","details":null}},
+          "progress": [],
+          "timeline": [{"log":"warn","message":"[tools] источник s1 не сработал: Источник ответил 404"},{"log":"warn","message":"[tools] источник s2 не сработал: Источник ответил 500"}],
+          "requests": [{"server":"a","method":"GET","url":"/p404","headers":{"user-agent":"HLSR-Launcher"}},{"server":"a","method":"GET","url":"/p500","headers":{"user-agent":"HLSR-Launcher"}}],
+          "busy": null
+        },
+        {
+          "tree": [
+            {"path":".hlsr","kind":"dir"},
+            {"path":".hlsr/staging","kind":"dir"},
+            {"path":"Downloads","kind":"dir"},
+            {"path":"Tools","kind":"dir"},
+            {"path":"Tools/livesplit","kind":"dir"},
+            {"path":"Tools/livesplit/LiveSplit.exe","kind":"file","size":10,"sha256":"1554d760545fcea7924f47df3b724876579a41897845f98dfef85a0656a760a1"},
+            {"path":"Tools/livesplit/installed.json","kind":"file","size":196,"sha256":"35442cd3c37dc0010fc79ac3714c605bb8cdccf34cb622969b847384f9c06085","latin1":"{\n  \"schemaVersion\": 1,\n  \"toolId\": \"livesplit\",\n  \"version\": \"0.9.0\",\n  \"executable\": \"LiveSplit.exe\",\n  \"installPath\": \"<root>/lib/Tools/livesplit\",\n  \"installedAt\": \"2026-01-01T00:00:00.000Z\"\n}"},
+            {"path":"Tools/livesplit/old only.txt","kind":"file","size":29,"sha256":"532b3b16714e7120a1feda389bbc9d234baf2b8aa3689404ec3847481946ccb3"},
+            {"path":"Tools/livesplit/settings.cfg","kind":"file","size":47,"sha256":"925042c4c48ffd497a93f30294db607c44f7f5f9828bc1116fe5b6d351a69ddb"},
+            {"path":"Tools/livesplit/splits","kind":"dir"},
+            {"path":"Tools/livesplit/splits/hlsr","kind":"dir"},
+            {"path":"Tools/livesplit/splits/hlsr/hl2-2707","kind":"dir"},
+            {"path":"Tools/livesplit/splits/hlsr/hl2-2707/scripts-maps.lss","kind":"file","size":27,"sha256":"53c618afdf34f0a5456d476dabbaea46e91aa0413d6b88ecb9f1e0a501c18ff3"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "установка: ответы сервера",
+      "servers": {
+        "a": {
+          "/204": [{"status":204,"contentLength":0}],
+          "/403": [{"status":403}],
+          "/redirect": [{"status":302,"headers":[["Location","/ok.7z"]]}],
+          "/ok.7z": [{"bodyArchive":"livesplit-1.0.0.7z"}],
+          "/loop": [{"status":302,"headers":[["Location","/loop"]]}],
+          "/ftp": [{"status":302,"headers":[["Location","ftp://127.0.0.1/x"]]}],
+          "/hangup": [{"hangUp":true}],
+          "/cut": [{"bodyArchive":"livesplit-1.0.0.7z","cutAfter":300}],
+          "/longer": [{"bodyArchive":"livesplit-1.0.0.7z","appendHex":"00"}],
+          "/empty": [{"contentLength":0}]
+        }
+      },
+      "setup": [],
+      "registry": {"livesplit":{"schemaVersion":1,"toolId":"livesplit","channel":"stable","version":"1.0.0","enabled":true,"executable":"LiveSplit.exe","archive":{"filename":"livesplit-1.0.0.7z","size":1056,"sha256":"402b71f53c59327b251793388708cfa42515aba05acbdc2e692845f8df21d80d","providers":[{"id":"a","type":"https-direct","status":"permanent","priority":10,"url":"http://{a}/livesplit-1.0.0.7z"}]}}},
+      "service": {},
+      "steps": [
+        {
+          "op": "install",
+          "tool": "livesplit",
+          "manifest": {"schemaVersion":1,"toolId":"livesplit","channel":"stable","version":"1.0.0","enabled":true,"executable":"LiveSplit.exe","archive":{"filename":"livesplit-1.0.0.7z","size":1056,"sha256":"402b71f53c59327b251793388708cfa42515aba05acbdc2e692845f8df21d80d","providers":[{"id":"s1","type":"https-direct","status":"permanent","priority":10,"url":"http://{a}/204"}]}}
+        },
+        {
+          "op": "install",
+          "tool": "livesplit",
+          "manifest": {"schemaVersion":1,"toolId":"livesplit","channel":"stable","version":"1.0.0","enabled":true,"executable":"LiveSplit.exe","archive":{"filename":"livesplit-1.0.0.7z","size":1056,"sha256":"402b71f53c59327b251793388708cfa42515aba05acbdc2e692845f8df21d80d","providers":[{"id":"s1","type":"https-direct","status":"permanent","priority":10,"url":"http://{a}/403"}]}}
+        },
+        {
+          "op": "install",
+          "tool": "livesplit",
+          "manifest": {"schemaVersion":1,"toolId":"livesplit","channel":"stable","version":"1.0.0","enabled":true,"executable":"LiveSplit.exe","archive":{"filename":"livesplit-1.0.0.7z","size":1056,"sha256":"402b71f53c59327b251793388708cfa42515aba05acbdc2e692845f8df21d80d","providers":[{"id":"s1","type":"https-direct","status":"permanent","priority":10,"url":"http://{a}/redirect"}]}}
+        },
+        {
+          "op": "install",
+          "tool": "livesplit",
+          "manifest": {"schemaVersion":1,"toolId":"livesplit","channel":"stable","version":"1.0.0","enabled":true,"executable":"LiveSplit.exe","archive":{"filename":"livesplit-1.0.0.7z","size":1056,"sha256":"402b71f53c59327b251793388708cfa42515aba05acbdc2e692845f8df21d80d","providers":[{"id":"s1","type":"https-direct","status":"permanent","priority":10,"url":"http://{a}/ok.7z"}]}}
+        },
+        {
+          "op": "install",
+          "tool": "livesplit",
+          "manifest": {"schemaVersion":1,"toolId":"livesplit","channel":"stable","version":"1.0.0","enabled":true,"executable":"LiveSplit.exe","archive":{"filename":"livesplit-1.0.0.7z","size":1056,"sha256":"402b71f53c59327b251793388708cfa42515aba05acbdc2e692845f8df21d80d","providers":[{"id":"s1","type":"https-direct","status":"permanent","priority":10,"url":"http://{a}/loop"}]}}
+        },
+        {
+          "op": "install",
+          "tool": "livesplit",
+          "manifest": {"schemaVersion":1,"toolId":"livesplit","channel":"stable","version":"1.0.0","enabled":true,"executable":"LiveSplit.exe","archive":{"filename":"livesplit-1.0.0.7z","size":1056,"sha256":"402b71f53c59327b251793388708cfa42515aba05acbdc2e692845f8df21d80d","providers":[{"id":"s1","type":"https-direct","status":"permanent","priority":10,"url":"http://{a}/ftp"}]}}
+        },
+        {
+          "op": "install",
+          "tool": "livesplit",
+          "manifest": {"schemaVersion":1,"toolId":"livesplit","channel":"stable","version":"1.0.0","enabled":true,"executable":"LiveSplit.exe","archive":{"filename":"livesplit-1.0.0.7z","size":1056,"sha256":"402b71f53c59327b251793388708cfa42515aba05acbdc2e692845f8df21d80d","providers":[{"id":"s1","type":"https-direct","status":"permanent","priority":10,"url":"http://{a}/hangup"}]}}
+        },
+        {
+          "op": "install",
+          "tool": "livesplit",
+          "manifest": {"schemaVersion":1,"toolId":"livesplit","channel":"stable","version":"1.0.0","enabled":true,"executable":"LiveSplit.exe","archive":{"filename":"livesplit-1.0.0.7z","size":1056,"sha256":"402b71f53c59327b251793388708cfa42515aba05acbdc2e692845f8df21d80d","providers":[{"id":"s1","type":"https-direct","status":"permanent","priority":10,"url":"http://{a}/cut"}]}}
+        },
+        {
+          "op": "install",
+          "tool": "livesplit",
+          "manifest": {"schemaVersion":1,"toolId":"livesplit","channel":"stable","version":"1.0.0","enabled":true,"executable":"LiveSplit.exe","archive":{"filename":"livesplit-1.0.0.7z","size":1056,"sha256":"402b71f53c59327b251793388708cfa42515aba05acbdc2e692845f8df21d80d","providers":[{"id":"s1","type":"https-direct","status":"permanent","priority":10,"url":"http://{a}/longer"}]}}
+        },
+        {
+          "op": "install",
+          "tool": "livesplit",
+          "manifest": {"schemaVersion":1,"toolId":"livesplit","channel":"stable","version":"1.0.0","enabled":true,"executable":"LiveSplit.exe","archive":{"filename":"livesplit-1.0.0.7z","size":1056,"sha256":"402b71f53c59327b251793388708cfa42515aba05acbdc2e692845f8df21d80d","providers":[{"id":"s1","type":"https-direct","status":"permanent","priority":10,"url":"http://{a}/empty"}]}}
+        },
+        {
+          "op": "install",
+          "tool": "livesplit",
+          "manifest": {"schemaVersion":1,"toolId":"livesplit","channel":"stable","version":"1.0.0","enabled":true,"executable":"LiveSplit.exe","archive":{"filename":"livesplit-1.0.0.7z","size":1056,"sha256":"402b71f53c59327b251793388708cfa42515aba05acbdc2e692845f8df21d80d","providers":[{"id":"s1","type":"https-direct","status":"permanent","priority":10,"url":"http://{dead}/x"}]}}
+        },
+        {"op":"tree"}
+      ],
+      "results": [
+        {"outcome":{"error":{"code":"NETWORK_ERROR","message":"Источник ответил 204","details":null}},"progress":[],"timeline":[{"log":"warn","message":"[tools] источник s1 не сработал: Источник ответил 204"}],"requests":[{"server":"a","method":"GET","url":"/204","headers":{"user-agent":"HLSR-Launcher"}}],"busy":null},
+        {"outcome":{"error":{"code":"NETWORK_ERROR","message":"Источник ответил 403","details":null}},"progress":[],"timeline":[{"log":"warn","message":"[tools] источник s1 не сработал: Источник ответил 403"}],"requests":[{"server":"a","method":"GET","url":"/403","headers":{"user-agent":"HLSR-Launcher"}}],"busy":null},
+        {
+          "outcome": {"ok":{"status":"installed","version":"1.0.0","installPath":"<root>/lib/Tools/livesplit"}},
+          "progress": [[100,1056]],
+          "timeline": [{"log":"info","message":"[tools] livesplit 1.0.0 установлен: <root>/lib/Tools/livesplit"}],
+          "requests": [{"server":"a","method":"GET","url":"/redirect","headers":{"user-agent":"HLSR-Launcher"}},{"server":"a","method":"GET","url":"/ok.7z","headers":{"user-agent":"HLSR-Launcher"}}],
+          "busy": null
+        },
+        {"outcome":{"ok":{"status":"installed","version":"1.0.0","installPath":"<root>/lib/Tools/livesplit"}},"progress":[[100,1056]],"timeline":[{"log":"info","message":"[tools] livesplit 1.0.0 установлен: <root>/lib/Tools/livesplit"}],"requests":[{"server":"a","method":"GET","url":"/ok.7z","headers":{"user-agent":"HLSR-Launcher"}}],"busy":null},
+        {
+          "outcome": {"error":{"code":"TOO_MANY_REDIRECTS","message":"Слишком много редиректов: http://{a}/loop","details":null}},
+          "progress": [],
+          "timeline": [{"log":"warn","message":"[tools] источник s1 не сработал: Слишком много редиректов: http://{a}/loop"}],
+          "requests": [
+            {"server":"a","method":"GET","url":"/loop","headers":{"user-agent":"HLSR-Launcher"}},
+            {"server":"a","method":"GET","url":"/loop","headers":{"user-agent":"HLSR-Launcher"}},
+            {"server":"a","method":"GET","url":"/loop","headers":{"user-agent":"HLSR-Launcher"}},
+            {"server":"a","method":"GET","url":"/loop","headers":{"user-agent":"HLSR-Launcher"}},
+            {"server":"a","method":"GET","url":"/loop","headers":{"user-agent":"HLSR-Launcher"}},
+            {"server":"a","method":"GET","url":"/loop","headers":{"user-agent":"HLSR-Launcher"}}
+          ],
+          "busy": null
+        },
+        {"outcome":{"error":{"code":"INSECURE_REDIRECT","message":"Редирект на недопустимую схему: ftp:","details":null}},"progress":[],"timeline":[{"log":"warn","message":"[tools] источник s1 не сработал: Редирект на недопустимую схему: ftp:"}],"requests":[{"server":"a","method":"GET","url":"/ftp","headers":{"user-agent":"HLSR-Launcher"}}],"busy":null},
+        {"outcome":{"error":{"code":"NETWORK_ERROR","message":"Сетевая ошибка: socket hang up","details":null}},"progress":[],"timeline":[{"log":"warn","message":"[tools] источник s1 не сработал: Сетевая ошибка: socket hang up"}],"requests":[{"server":"a","method":"GET","url":"/hangup","headers":{"user-agent":"HLSR-Launcher"}}],"busy":null},
+        {"outcome":{"error":{"code":"NETWORK_ERROR","message":"aborted","details":null}},"progress":[[28,300]],"timeline":[{"log":"warn","message":"[tools] источник s1 не сработал: aborted"}],"requests":[{"server":"a","method":"GET","url":"/cut","headers":{"user-agent":"HLSR-Launcher"}}],"busy":null},
+        {"outcome":{"error":{"code":"SIZE_MISMATCH","message":"Размер архива не совпал: 1057 вместо 1056","details":null}},"progress":[[100,1057]],"timeline":[{"log":"warn","message":"[tools] источник s1 не сработал: Размер архива не совпал: 1057 вместо 1056"}],"requests":[{"server":"a","method":"GET","url":"/longer","headers":{"user-agent":"HLSR-Launcher"}}],"busy":null},
+        {"outcome":{"error":{"code":"SIZE_MISMATCH","message":"Размер архива не совпал: 0 вместо 1056","details":null}},"progress":[],"timeline":[{"log":"warn","message":"[tools] источник s1 не сработал: Размер архива не совпал: 0 вместо 1056"}],"requests":[{"server":"a","method":"GET","url":"/empty","headers":{"user-agent":"HLSR-Launcher"}}],"busy":null},
+        {"outcome":{"error":{"code":"NETWORK_ERROR","message":"Сетевая ошибка: connect ECONNREFUSED {dead}","details":null}},"progress":[],"timeline":[{"log":"warn","message":"[tools] источник s1 не сработал: Сетевая ошибка: connect ECONNREFUSED {dead}"}],"requests":[],"busy":null},
+        {
+          "tree": [
+            {"path":".hlsr","kind":"dir"},
+            {"path":".hlsr/staging","kind":"dir"},
+            {"path":"Downloads","kind":"dir"},
+            {"path":"Tools","kind":"dir"},
+            {"path":"Tools/livesplit","kind":"dir"},
+            {"path":"Tools/livesplit/Components","kind":"dir"},
+            {"path":"Tools/livesplit/Components/LiveSplit.SourceSplit.dll","kind":"file","size":28,"sha256":"13b1a6b60c572ebd7524a2ad197df6421e54e962dd66eab69e8ddd803f83a542"},
+            {"path":"Tools/livesplit/Components/LiveSplit.Splits.dll","kind":"file","size":120,"sha256":"243822c0c52396aca7ab2e9b12a9bae80292a9e4a09cdc07812efedb81612b5b"},
+            {"path":"Tools/livesplit/LiveSplit.Core.dll","kind":"file","size":300,"sha256":"de49f1baac9023c2796b8fcb5466498f7beb9ed3d0fddba8db18853a37b1c5f0"},
+            {"path":"Tools/livesplit/LiveSplit.exe","kind":"file","size":10,"sha256":"b5f6eda7e43f0833815cf670d564876a901a91df5a6f3211cfda6550ecc22600"},
+            {"path":"Tools/livesplit/empty dir","kind":"dir"},
+            {"path":"Tools/livesplit/installed.json","kind":"file","size":196,"sha256":"317dfa40492c189d5d4a4aa339d47d349eadd8ed2f6ecdfbb07a1702440dc691","latin1":"{\n  \"schemaVersion\": 1,\n  \"toolId\": \"livesplit\",\n  \"version\": \"1.0.0\",\n  \"executable\": \"LiveSplit.exe\",\n  \"installPath\": \"<root>/lib/Tools/livesplit\",\n  \"installedAt\": \"2026-10-16T12:00:00.000Z\"\n}"},
+            {"path":"Tools/livesplit/settings.cfg","kind":"file","size":112,"sha256":"8e97f7d6fb08318d2abec0b1a1c1239e95ac8b39cb3cc2c456686f39f84eacd1"},
+            {"path":"Tools/livesplit/splits","kind":"dir"},
+            {"path":"Tools/livesplit/splits/chapters","kind":"dir"},
+            {"path":"Tools/livesplit/splits/chapters/chapters.lsl","kind":"file","size":186,"sha256":"f149363d70a8082dd7ff3e9a80cbc81253424eb725ee2feae574cea2295079da"},
+            {"path":"Tools/livesplit/splits/chapters/chapters.lss","kind":"file","size":7,"sha256":"5a13158c298fa7dfb64b6d126ee9eebf80b8ed2f420dd263a88755ff34128ad0"},
+            {"path":"Tools/livesplit/splits/maps","kind":"dir"},
+            {"path":"Tools/livesplit/splits/maps/maps.lsl","kind":"file","size":186,"sha256":"f149363d70a8082dd7ff3e9a80cbc81253424eb725ee2feae574cea2295079da"},
+            {"path":"Tools/livesplit/splits/maps/maps.lss","kind":"file","size":7,"sha256":"5a13158c298fa7dfb64b6d126ee9eebf80b8ed2f420dd263a88755ff34128ad0"},
+            {"path":"Tools/livesplit/Документы","kind":"dir"},
+            {"path":"Tools/livesplit/Документы/справка по LiveSplit.txt","kind":"file","size":37,"sha256":"262b850dc01dd387b609c56a2d404c0262fe0cb9a7ae34ad12346ccf0c6801fa"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "установка: размер и sha256 архива",
+      "servers": {"a":{"/livesplit-1.0.0.7z":[{"bodyArchive":"livesplit-1.0.0.7z"}]}},
+      "setup": [],
+      "registry": {"livesplit":{"schemaVersion":1,"toolId":"livesplit","channel":"stable","version":"1.0.0","enabled":true,"executable":"LiveSplit.exe","archive":{"filename":"livesplit-1.0.0.7z","size":1056,"sha256":"402b71f53c59327b251793388708cfa42515aba05acbdc2e692845f8df21d80d","providers":[{"id":"a","type":"https-direct","status":"permanent","priority":10,"url":"http://{a}/livesplit-1.0.0.7z"}]}}},
+      "service": {},
+      "steps": [
+        {
+          "op": "install",
+          "tool": "livesplit",
+          "manifest": {"schemaVersion":1,"toolId":"livesplit","channel":"stable","version":"1.0.0","enabled":true,"executable":"LiveSplit.exe","archive":{"filename":"livesplit-1.0.0.7z","size":1055,"sha256":"402b71f53c59327b251793388708cfa42515aba05acbdc2e692845f8df21d80d","providers":[{"id":"a","type":"https-direct","status":"permanent","priority":10,"url":"http://{a}/livesplit-1.0.0.7z"}]}}
+        },
+        {
+          "op": "install",
+          "tool": "livesplit",
+          "manifest": {"schemaVersion":1,"toolId":"livesplit","channel":"stable","version":"1.0.0","enabled":true,"executable":"LiveSplit.exe","archive":{"filename":"livesplit-1.0.0.7z","size":1056,"sha256":"0000000000000000000000000000000000000000000000000000000000000000","providers":[{"id":"a","type":"https-direct","status":"permanent","priority":10,"url":"http://{a}/livesplit-1.0.0.7z"}]}}
+        },
+        {
+          "op": "install",
+          "tool": "livesplit",
+          "manifest": {"schemaVersion":1,"toolId":"livesplit","channel":"stable","version":"1.0.0","enabled":true,"executable":"LiveSplit.exe","archive":{"filename":"livesplit-1.0.0.7z","size":1056,"sha256":"402B71F53C59327B251793388708CFA42515ABA05ACBDC2E692845F8DF21D80D","providers":[{"id":"a","type":"https-direct","status":"permanent","priority":10,"url":"http://{a}/livesplit-1.0.0.7z"}]}}
+        },
+        {
+          "op": "install",
+          "tool": "livesplit",
+          "manifest": {"schemaVersion":1,"toolId":"livesplit","channel":"stable","version":"1.0.0","enabled":true,"executable":"LiveSplit.exe","archive":{"filename":"livesplit-1.0.0.7z","size":0,"sha256":"402b71f53c59327b251793388708cfa42515aba05acbdc2e692845f8df21d80d","providers":[{"id":"a","type":"https-direct","status":"permanent","priority":10,"url":"http://{a}/livesplit-1.0.0.7z"}]}}
+        },
+        {"op":"tree"}
+      ],
+      "results": [
+        {"outcome":{"error":{"code":"SIZE_MISMATCH","message":"Размер архива не совпал: 1056 вместо 1055","details":null}},"progress":[[100,1056]],"timeline":[{"log":"warn","message":"[tools] источник a не сработал: Размер архива не совпал: 1056 вместо 1055"}],"requests":[{"server":"a","method":"GET","url":"/livesplit-1.0.0.7z","headers":{"user-agent":"HLSR-Launcher"}}],"busy":null},
+        {
+          "outcome": {"error":{"code":"CHECKSUM_MISMATCH","message":"SHA-256 скачанного архива не совпал с объявленным","details":null}},
+          "progress": [[100,1056]],
+          "timeline": [{"log":"warn","message":"[tools] источник a не сработал: SHA-256 скачанного архива не совпал с объявленным"}],
+          "requests": [{"server":"a","method":"GET","url":"/livesplit-1.0.0.7z","headers":{"user-agent":"HLSR-Launcher"}}],
+          "busy": null
+        },
+        {
+          "outcome": {"error":{"code":"CHECKSUM_MISMATCH","message":"SHA-256 скачанного архива не совпал с объявленным","details":null}},
+          "progress": [[100,1056]],
+          "timeline": [{"log":"warn","message":"[tools] источник a не сработал: SHA-256 скачанного архива не совпал с объявленным"}],
+          "requests": [{"server":"a","method":"GET","url":"/livesplit-1.0.0.7z","headers":{"user-agent":"HLSR-Launcher"}}],
+          "busy": null
+        },
+        {"outcome":{"ok":{"status":"installed","version":"1.0.0","installPath":"<root>/lib/Tools/livesplit"}},"progress":[],"timeline":[{"log":"info","message":"[tools] livesplit 1.0.0 установлен: <root>/lib/Tools/livesplit"}],"requests":[{"server":"a","method":"GET","url":"/livesplit-1.0.0.7z","headers":{"user-agent":"HLSR-Launcher"}}],"busy":null},
+        {
+          "tree": [
+            {"path":".hlsr","kind":"dir"},
+            {"path":".hlsr/staging","kind":"dir"},
+            {"path":"Downloads","kind":"dir"},
+            {"path":"Tools","kind":"dir"},
+            {"path":"Tools/livesplit","kind":"dir"},
+            {"path":"Tools/livesplit/Components","kind":"dir"},
+            {"path":"Tools/livesplit/Components/LiveSplit.SourceSplit.dll","kind":"file","size":28,"sha256":"13b1a6b60c572ebd7524a2ad197df6421e54e962dd66eab69e8ddd803f83a542"},
+            {"path":"Tools/livesplit/Components/LiveSplit.Splits.dll","kind":"file","size":120,"sha256":"243822c0c52396aca7ab2e9b12a9bae80292a9e4a09cdc07812efedb81612b5b"},
+            {"path":"Tools/livesplit/LiveSplit.Core.dll","kind":"file","size":300,"sha256":"de49f1baac9023c2796b8fcb5466498f7beb9ed3d0fddba8db18853a37b1c5f0"},
+            {"path":"Tools/livesplit/LiveSplit.exe","kind":"file","size":10,"sha256":"b5f6eda7e43f0833815cf670d564876a901a91df5a6f3211cfda6550ecc22600"},
+            {"path":"Tools/livesplit/empty dir","kind":"dir"},
+            {"path":"Tools/livesplit/installed.json","kind":"file","size":196,"sha256":"317dfa40492c189d5d4a4aa339d47d349eadd8ed2f6ecdfbb07a1702440dc691","latin1":"{\n  \"schemaVersion\": 1,\n  \"toolId\": \"livesplit\",\n  \"version\": \"1.0.0\",\n  \"executable\": \"LiveSplit.exe\",\n  \"installPath\": \"<root>/lib/Tools/livesplit\",\n  \"installedAt\": \"2026-10-16T12:00:00.000Z\"\n}"},
+            {"path":"Tools/livesplit/settings.cfg","kind":"file","size":112,"sha256":"8e97f7d6fb08318d2abec0b1a1c1239e95ac8b39cb3cc2c456686f39f84eacd1"},
+            {"path":"Tools/livesplit/splits","kind":"dir"},
+            {"path":"Tools/livesplit/splits/chapters","kind":"dir"},
+            {"path":"Tools/livesplit/splits/chapters/chapters.lsl","kind":"file","size":186,"sha256":"f149363d70a8082dd7ff3e9a80cbc81253424eb725ee2feae574cea2295079da"},
+            {"path":"Tools/livesplit/splits/chapters/chapters.lss","kind":"file","size":7,"sha256":"5a13158c298fa7dfb64b6d126ee9eebf80b8ed2f420dd263a88755ff34128ad0"},
+            {"path":"Tools/livesplit/splits/maps","kind":"dir"},
+            {"path":"Tools/livesplit/splits/maps/maps.lsl","kind":"file","size":186,"sha256":"f149363d70a8082dd7ff3e9a80cbc81253424eb725ee2feae574cea2295079da"},
+            {"path":"Tools/livesplit/splits/maps/maps.lss","kind":"file","size":7,"sha256":"5a13158c298fa7dfb64b6d126ee9eebf80b8ed2f420dd263a88755ff34128ad0"},
+            {"path":"Tools/livesplit/Документы","kind":"dir"},
+            {"path":"Tools/livesplit/Документы/справка по LiveSplit.txt","kind":"file","size":37,"sha256":"262b850dc01dd387b609c56a2d404c0262fe0cb9a7ae34ad12346ccf0c6801fa"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "установка: слишком большой архив в манифесте",
+      "servers": {"a":{"/livesplit-1.0.0.7z":[{"bodyArchive":"livesplit-1.0.0.7z"}]}},
+      "setup": [],
+      "registry": {"livesplit":{"schemaVersion":1,"toolId":"livesplit","channel":"stable","version":"1.0.0","enabled":true,"executable":"LiveSplit.exe","archive":{"filename":"livesplit-1.0.0.7z","size":1056,"sha256":"402b71f53c59327b251793388708cfa42515aba05acbdc2e692845f8df21d80d","providers":[{"id":"a","type":"https-direct","status":"permanent","priority":10,"url":"http://{a}/livesplit-1.0.0.7z"}]}}},
+      "service": {},
+      "steps": [
+        {
+          "op": "install",
+          "tool": "livesplit",
+          "manifest": {"schemaVersion":1,"toolId":"livesplit","channel":"stable","version":"1.0.0","enabled":true,"executable":"LiveSplit.exe","archive":{"filename":"livesplit-1.0.0.7z","size":536870913,"sha256":"402b71f53c59327b251793388708cfa42515aba05acbdc2e692845f8df21d80d","providers":[{"id":"a","type":"https-direct","status":"permanent","priority":10,"url":"http://{a}/livesplit-1.0.0.7z"}]}}
+        },
+        {
+          "op": "install",
+          "tool": "livesplit",
+          "manifest": {"schemaVersion":1,"toolId":"livesplit","channel":"stable","version":"1.0.0","enabled":true,"executable":"LiveSplit.exe","archive":{"filename":"livesplit-1.0.0.7z","size":536870912,"sha256":"402b71f53c59327b251793388708cfa42515aba05acbdc2e692845f8df21d80d","providers":[{"id":"a","type":"https-direct","status":"permanent","priority":10,"url":"http://{a}/livesplit-1.0.0.7z"}]}}
+        },
+        {
+          "op": "install",
+          "tool": "livesplit",
+          "manifest": {
+            "schemaVersion": 1,
+            "toolId": "livesplit",
+            "channel": "stable",
+            "version": "1.0.0",
+            "enabled": true,
+            "executable": "LiveSplit.exe",
+            "archive": {"filename":"livesplit-1.0.0.7z","size":536870913,"sha256":"402b71f53c59327b251793388708cfa42515aba05acbdc2e692845f8df21d80d","providers":[{"id":"s1","type":"https-direct","status":"permanent","priority":10,"url":"http://{a}/livesplit-1.0.0.7z"},{"id":"s2","type":"https-direct","status":"permanent","priority":11,"url":"http://{a}/livesplit-1.0.0.7z"}]}
+          }
+        },
+        {"op":"tree"}
+      ],
+      "results": [
+        {"outcome":{"error":{"code":"MANIFEST_INVALID","message":"Архив инструмента подозрительно велик","details":null}},"progress":[],"timeline":[{"log":"warn","message":"[tools] источник a не сработал: Архив инструмента подозрительно велик"}],"requests":[],"busy":null},
+        {"outcome":{"error":{"code":"SIZE_MISMATCH","message":"Размер архива не совпал: 1056 вместо 536870912","details":null}},"progress":[[0,1056]],"timeline":[{"log":"warn","message":"[tools] источник a не сработал: Размер архива не совпал: 1056 вместо 536870912"}],"requests":[{"server":"a","method":"GET","url":"/livesplit-1.0.0.7z","headers":{"user-agent":"HLSR-Launcher"}}],"busy":null},
+        {"outcome":{"error":{"code":"MANIFEST_INVALID","message":"Архив инструмента подозрительно велик","details":null}},"progress":[],"timeline":[{"log":"warn","message":"[tools] источник s1 не сработал: Архив инструмента подозрительно велик"},{"log":"warn","message":"[tools] источник s2 не сработал: Архив инструмента подозрительно велик"}],"requests":[],"busy":null},
+        {"tree":[{"path":".hlsr","kind":"dir"},{"path":".hlsr/staging","kind":"dir"},{"path":"Downloads","kind":"dir"},{"path":"Tools","kind":"dir"}]}
+      ]
+    },
+    {
+      "name": "установка: манифест отказывает",
+      "servers": {"a":{"/livesplit-1.0.0.7z":[{"bodyArchive":"livesplit-1.0.0.7z"}]}},
+      "setup": [],
+      "registry": {
+        "livesplit": {"schemaVersion":1,"toolId":"livesplit","channel":"stable","version":"1.0.0","enabled":false,"executable":"LiveSplit.exe","archive":{"filename":"livesplit-1.0.0.7z","size":1056,"sha256":"402b71f53c59327b251793388708cfa42515aba05acbdc2e692845f8df21d80d","providers":[{"id":"a","type":"https-direct","status":"permanent","priority":10,"url":"http://{a}/livesplit-1.0.0.7z"}]}},
+        "nosource": {"schemaVersion":1,"toolId":"livesplit","channel":"stable","version":"1.0.0","enabled":true,"executable":"LiveSplit.exe","archive":{"filename":"livesplit-1.0.0.7z","size":1056,"sha256":"402b71f53c59327b251793388708cfa42515aba05acbdc2e692845f8df21d80d","providers":[]}},
+        "nolist": {"schemaVersion":1,"toolId":"livesplit","channel":"stable","version":"1.0.0","enabled":true,"executable":"LiveSplit.exe","archive":{"filename":"livesplit-1.0.0.7z","size":1056,"sha256":"402b71f53c59327b251793388708cfa42515aba05acbdc2e692845f8df21d80d"}}
+      },
+      "service": {},
+      "steps": [{"op":"install","tool":"livesplit"},{"op":"install","tool":"nosource"},{"op":"install","tool":"nolist"},{"op":"install","tool":"nothing"},{"op":"tree"}],
+      "results": [
+        {"outcome":{"error":{"code":"REMOTE_DISABLED","message":"Инструмент временно недоступен","details":null}},"progress":[],"timeline":[],"requests":[],"busy":null},
+        {"outcome":{"error":{"code":"MANIFEST_INVALID","message":"У архива инструмента нет ни одного источника","details":null}},"progress":[],"timeline":[],"requests":[],"busy":null},
+        {"outcome":{"error":{"code":"MANIFEST_INVALID","message":"У архива инструмента нет ни одного источника","details":null}},"progress":[],"timeline":[],"requests":[],"busy":null},
+        {"outcome":{"error":{"code":"TOOL_UNKNOWN","message":"Нет манифеста инструмента nothing","details":null}},"progress":[],"timeline":[],"requests":[],"busy":null},
+        {"tree":[{"path":".hlsr","kind":"dir"},{"path":".hlsr/staging","kind":"dir"},{"path":"Downloads","kind":"dir"},{"path":"Tools","kind":"dir"}]}
+      ]
+    },
+    {
+      "name": "установка: в архиве нет исполняемого файла",
+      "servers": {"a":{"/no-exe-1.0.0.7z":[{"bodyArchive":"no-exe-1.0.0.7z"}],"/nested-1.0.0.7z":[{"bodyArchive":"nested-1.0.0.7z"}],"/exe-dir-1.0.0.7z":[{"bodyArchive":"exe-dir-1.0.0.7z"}]}},
+      "setup": [
+        {"file":"lib/Tools/livesplit/LiveSplit.exe","utf8":"exe 0.9.0\n"},
+        {"file":"lib/Tools/livesplit/settings.cfg","utf8":"<Settings>мои настройки</Settings>\n"},
+        {"file":"lib/Tools/livesplit/splits/hlsr/hl2-2707/scripts-maps.lss","utf8":"рекорды игрока"},
+        {"file":"lib/Tools/livesplit/old only.txt","utf8":"только в старой\n"},
+        {"file":"lib/Tools/livesplit/installed.json","utf8":"{\n  \"schemaVersion\": 1,\n  \"toolId\": \"livesplit\",\n  \"version\": \"0.9.0\",\n  \"executable\": \"LiveSplit.exe\",\n  \"installPath\": \"<root>/lib/Tools/livesplit\",\n  \"installedAt\": \"2026-01-01T00:00:00.000Z\"\n}"}
+      ],
+      "registry": {
+        "livesplit": {"schemaVersion":1,"toolId":"livesplit","channel":"stable","version":"1.0.0","enabled":true,"executable":"LiveSplit.exe","archive":{"filename":"no-exe-1.0.0.7z","size":251,"sha256":"7d615e6f5431862366efa3151f953308fad2bd827eac3d2b4cabb3af5aa61b3f","providers":[{"id":"a","type":"https-direct","status":"permanent","priority":10,"url":"http://{a}/no-exe-1.0.0.7z"}]}},
+        "nested": {"schemaVersion":1,"toolId":"livesplit","channel":"stable","version":"1.0.0","enabled":true,"executable":"LiveSplit.exe","archive":{"filename":"nested-1.0.0.7z","size":338,"sha256":"38382e02cb9d31a1a8b51a95927c18de5d7ba919a11f5b590c5f5fabf924ad9d","providers":[{"id":"a","type":"https-direct","status":"permanent","priority":10,"url":"http://{a}/nested-1.0.0.7z"}]}},
+        "exedir": {"schemaVersion":1,"toolId":"livesplit","channel":"stable","version":"1.0.0","enabled":true,"executable":"LiveSplit.exe","archive":{"filename":"exe-dir-1.0.0.7z","size":217,"sha256":"1e48c31f72fd909787751c9cfcc5591dd95b77ce529f6de477592ef45460b63b","providers":[{"id":"a","type":"https-direct","status":"permanent","priority":10,"url":"http://{a}/exe-dir-1.0.0.7z"}]}}
+      },
+      "service": {},
+      "steps": [{"op":"install","tool":"livesplit"},{"op":"tree"},{"op":"install","tool":"nested"},{"op":"install","tool":"exedir"},{"op":"tree"}],
+      "results": [
+        {"outcome":{"error":{"code":"EXTRACT_FAILED","message":"В архиве нет LiveSplit.exe — распаковано не то, что ожидалось","details":null}},"progress":[[100,251]],"timeline":[],"requests":[{"server":"a","method":"GET","url":"/no-exe-1.0.0.7z","headers":{"user-agent":"HLSR-Launcher"}}],"busy":null},
+        {
+          "tree": [
+            {"path":".hlsr","kind":"dir"},
+            {"path":".hlsr/staging","kind":"dir"},
+            {"path":"Downloads","kind":"dir"},
+            {"path":"Tools","kind":"dir"},
+            {"path":"Tools/livesplit","kind":"dir"},
+            {"path":"Tools/livesplit/LiveSplit.exe","kind":"file","size":10,"sha256":"1554d760545fcea7924f47df3b724876579a41897845f98dfef85a0656a760a1"},
+            {"path":"Tools/livesplit/installed.json","kind":"file","size":196,"sha256":"35442cd3c37dc0010fc79ac3714c605bb8cdccf34cb622969b847384f9c06085","latin1":"{\n  \"schemaVersion\": 1,\n  \"toolId\": \"livesplit\",\n  \"version\": \"0.9.0\",\n  \"executable\": \"LiveSplit.exe\",\n  \"installPath\": \"<root>/lib/Tools/livesplit\",\n  \"installedAt\": \"2026-01-01T00:00:00.000Z\"\n}"},
+            {"path":"Tools/livesplit/old only.txt","kind":"file","size":29,"sha256":"532b3b16714e7120a1feda389bbc9d234baf2b8aa3689404ec3847481946ccb3"},
+            {"path":"Tools/livesplit/settings.cfg","kind":"file","size":47,"sha256":"925042c4c48ffd497a93f30294db607c44f7f5f9828bc1116fe5b6d351a69ddb"},
+            {"path":"Tools/livesplit/splits","kind":"dir"},
+            {"path":"Tools/livesplit/splits/hlsr","kind":"dir"},
+            {"path":"Tools/livesplit/splits/hlsr/hl2-2707","kind":"dir"},
+            {"path":"Tools/livesplit/splits/hlsr/hl2-2707/scripts-maps.lss","kind":"file","size":27,"sha256":"53c618afdf34f0a5456d476dabbaea46e91aa0413d6b88ecb9f1e0a501c18ff3"}
+          ]
+        },
+        {"outcome":{"error":{"code":"EXTRACT_FAILED","message":"В архиве нет LiveSplit.exe — распаковано не то, что ожидалось","details":null}},"progress":[[100,338]],"timeline":[],"requests":[{"server":"a","method":"GET","url":"/nested-1.0.0.7z","headers":{"user-agent":"HLSR-Launcher"}}],"busy":null},
+        {"outcome":{"ok":{"status":"installed","version":"1.0.0","installPath":"<root>/lib/Tools/exedir"}},"progress":[[100,217]],"timeline":[{"log":"info","message":"[tools] exedir 1.0.0 установлен: <root>/lib/Tools/exedir"}],"requests":[{"server":"a","method":"GET","url":"/exe-dir-1.0.0.7z","headers":{"user-agent":"HLSR-Launcher"}}],"busy":null},
+        {
+          "tree": [
+            {"path":".hlsr","kind":"dir"},
+            {"path":".hlsr/staging","kind":"dir"},
+            {"path":"Downloads","kind":"dir"},
+            {"path":"Tools","kind":"dir"},
+            {"path":"Tools/exedir","kind":"dir"},
+            {"path":"Tools/exedir/LiveSplit.exe","kind":"dir"},
+            {"path":"Tools/exedir/LiveSplit.exe/inner.txt","kind":"file","size":35,"sha256":"654c5dd8d860df1b21d7cae53de3a1d506cdbe4703bae57dd4d657fdc5a2e9d2"},
+            {"path":"Tools/exedir/installed.json","kind":"file","size":190,"sha256":"8455304009c4fb00b78cdcef9b9d24a6ecf042fb8e5fb36f2973405d34e11fbb","latin1":"{\n  \"schemaVersion\": 1,\n  \"toolId\": \"exedir\",\n  \"version\": \"1.0.0\",\n  \"executable\": \"LiveSplit.exe\",\n  \"installPath\": \"<root>/lib/Tools/exedir\",\n  \"installedAt\": \"2026-10-16T12:00:00.000Z\"\n}"},
+            {"path":"Tools/livesplit","kind":"dir"},
+            {"path":"Tools/livesplit/LiveSplit.exe","kind":"file","size":10,"sha256":"1554d760545fcea7924f47df3b724876579a41897845f98dfef85a0656a760a1"},
+            {"path":"Tools/livesplit/installed.json","kind":"file","size":196,"sha256":"35442cd3c37dc0010fc79ac3714c605bb8cdccf34cb622969b847384f9c06085","latin1":"{\n  \"schemaVersion\": 1,\n  \"toolId\": \"livesplit\",\n  \"version\": \"0.9.0\",\n  \"executable\": \"LiveSplit.exe\",\n  \"installPath\": \"<root>/lib/Tools/livesplit\",\n  \"installedAt\": \"2026-01-01T00:00:00.000Z\"\n}"},
+            {"path":"Tools/livesplit/old only.txt","kind":"file","size":29,"sha256":"532b3b16714e7120a1feda389bbc9d234baf2b8aa3689404ec3847481946ccb3"},
+            {"path":"Tools/livesplit/settings.cfg","kind":"file","size":47,"sha256":"925042c4c48ffd497a93f30294db607c44f7f5f9828bc1116fe5b6d351a69ddb"},
+            {"path":"Tools/livesplit/splits","kind":"dir"},
+            {"path":"Tools/livesplit/splits/hlsr","kind":"dir"},
+            {"path":"Tools/livesplit/splits/hlsr/hl2-2707","kind":"dir"},
+            {"path":"Tools/livesplit/splits/hlsr/hl2-2707/scripts-maps.lss","kind":"file","size":27,"sha256":"53c618afdf34f0a5456d476dabbaea46e91aa0413d6b88ecb9f1e0a501c18ff3"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "установка: исполняемый файл вне и внутри папки",
+      "servers": {"a":{"/livesplit-1.0.0.7z":[{"bodyArchive":"livesplit-1.0.0.7z"}]}},
+      "setup": [{"file":"lib/.hlsr/staging/outside.exe","utf8":"снаружи"}],
+      "registry": {
+        "livesplit": {"schemaVersion":1,"toolId":"livesplit","channel":"stable","version":"1.0.0","enabled":true,"executable":"../outside.exe","archive":{"filename":"livesplit-1.0.0.7z","size":1056,"sha256":"402b71f53c59327b251793388708cfa42515aba05acbdc2e692845f8df21d80d","providers":[{"id":"a","type":"https-direct","status":"permanent","priority":10,"url":"http://{a}/livesplit-1.0.0.7z"}]}},
+        "up": {"schemaVersion":1,"toolId":"livesplit","channel":"stable","version":"1.0.0","enabled":true,"executable":"Components/../LiveSplit.exe","archive":{"filename":"livesplit-1.0.0.7z","size":1056,"sha256":"402b71f53c59327b251793388708cfa42515aba05acbdc2e692845f8df21d80d","providers":[{"id":"a","type":"https-direct","status":"permanent","priority":10,"url":"http://{a}/livesplit-1.0.0.7z"}]}}
+      },
+      "service": {},
+      "steps": [{"op":"install","tool":"livesplit"},{"op":"install","tool":"up"},{"op":"tree"}],
+      "results": [
+        {"outcome":{"error":{"code":"PATH_INVALID","message":"Путь выходит за пределы разрешённого каталога: <root>/lib/.hlsr/staging/outside.exe","details":null}},"progress":[[100,1056]],"timeline":[],"requests":[{"server":"a","method":"GET","url":"/livesplit-1.0.0.7z","headers":{"user-agent":"HLSR-Launcher"}}],"busy":null},
+        {"outcome":{"ok":{"status":"installed","version":"1.0.0","installPath":"<root>/lib/Tools/up"}},"progress":[[100,1056]],"timeline":[{"log":"info","message":"[tools] up 1.0.0 установлен: <root>/lib/Tools/up"}],"requests":[{"server":"a","method":"GET","url":"/livesplit-1.0.0.7z","headers":{"user-agent":"HLSR-Launcher"}}],"busy":null},
+        {
+          "tree": [
+            {"path":".hlsr","kind":"dir"},
+            {"path":".hlsr/staging","kind":"dir"},
+            {"path":".hlsr/staging/outside.exe","kind":"file","size":14,"sha256":"336d99a515193d1a5964c2fac8cf9ecd5a36565d8f6abfac3f5929c6da615041"},
+            {"path":"Downloads","kind":"dir"},
+            {"path":"Tools","kind":"dir"},
+            {"path":"Tools/up","kind":"dir"},
+            {"path":"Tools/up/Components","kind":"dir"},
+            {"path":"Tools/up/Components/LiveSplit.SourceSplit.dll","kind":"file","size":28,"sha256":"13b1a6b60c572ebd7524a2ad197df6421e54e962dd66eab69e8ddd803f83a542"},
+            {"path":"Tools/up/Components/LiveSplit.Splits.dll","kind":"file","size":120,"sha256":"243822c0c52396aca7ab2e9b12a9bae80292a9e4a09cdc07812efedb81612b5b"},
+            {"path":"Tools/up/LiveSplit.Core.dll","kind":"file","size":300,"sha256":"de49f1baac9023c2796b8fcb5466498f7beb9ed3d0fddba8db18853a37b1c5f0"},
+            {"path":"Tools/up/LiveSplit.exe","kind":"file","size":10,"sha256":"b5f6eda7e43f0833815cf670d564876a901a91df5a6f3211cfda6550ecc22600"},
+            {"path":"Tools/up/empty dir","kind":"dir"},
+            {"path":"Tools/up/installed.json","kind":"file","size":196,"sha256":"93dbed93660f0a937c87053ae5dc3f1f03b1b4bd0bdc13266bc88f4fb6ec004b","latin1":"{\n  \"schemaVersion\": 1,\n  \"toolId\": \"up\",\n  \"version\": \"1.0.0\",\n  \"executable\": \"Components/../LiveSplit.exe\",\n  \"installPath\": \"<root>/lib/Tools/up\",\n  \"installedAt\": \"2026-10-16T12:00:00.000Z\"\n}"},
+            {"path":"Tools/up/settings.cfg","kind":"file","size":112,"sha256":"8e97f7d6fb08318d2abec0b1a1c1239e95ac8b39cb3cc2c456686f39f84eacd1"},
+            {"path":"Tools/up/splits","kind":"dir"},
+            {"path":"Tools/up/splits/chapters","kind":"dir"},
+            {"path":"Tools/up/splits/chapters/chapters.lsl","kind":"file","size":186,"sha256":"f149363d70a8082dd7ff3e9a80cbc81253424eb725ee2feae574cea2295079da"},
+            {"path":"Tools/up/splits/chapters/chapters.lss","kind":"file","size":7,"sha256":"5a13158c298fa7dfb64b6d126ee9eebf80b8ed2f420dd263a88755ff34128ad0"},
+            {"path":"Tools/up/splits/maps","kind":"dir"},
+            {"path":"Tools/up/splits/maps/maps.lsl","kind":"file","size":186,"sha256":"f149363d70a8082dd7ff3e9a80cbc81253424eb725ee2feae574cea2295079da"},
+            {"path":"Tools/up/splits/maps/maps.lss","kind":"file","size":7,"sha256":"5a13158c298fa7dfb64b6d126ee9eebf80b8ed2f420dd263a88755ff34128ad0"},
+            {"path":"Tools/up/Документы","kind":"dir"},
+            {"path":"Tools/up/Документы/справка по LiveSplit.txt","kind":"file","size":37,"sha256":"262b850dc01dd387b609c56a2d404c0262fe0cb9a7ae34ad12346ccf0c6801fa"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "установка: битый архив",
+      "servers": {"a":{"/corrupt-1.0.0.7z":[{"bodyArchive":"corrupt-1.0.0.7z"}]}},
+      "setup": [
+        {"file":"lib/Tools/livesplit/LiveSplit.exe","utf8":"exe 0.9.0\n"},
+        {"file":"lib/Tools/livesplit/settings.cfg","utf8":"<Settings>мои настройки</Settings>\n"},
+        {"file":"lib/Tools/livesplit/splits/hlsr/hl2-2707/scripts-maps.lss","utf8":"рекорды игрока"},
+        {"file":"lib/Tools/livesplit/old only.txt","utf8":"только в старой\n"},
+        {"file":"lib/Tools/livesplit/installed.json","utf8":"{\n  \"schemaVersion\": 1,\n  \"toolId\": \"livesplit\",\n  \"version\": \"0.9.0\",\n  \"executable\": \"LiveSplit.exe\",\n  \"installPath\": \"<root>/lib/Tools/livesplit\",\n  \"installedAt\": \"2026-01-01T00:00:00.000Z\"\n}"}
+      ],
+      "registry": {"livesplit":{"schemaVersion":1,"toolId":"livesplit","channel":"stable","version":"1.0.0","enabled":true,"executable":"LiveSplit.exe","archive":{"filename":"corrupt-1.0.0.7z","size":1056,"sha256":"3a38ec75b4b0e70e668d5ad691e001afe7c059f6d5644c16d1a9ed25b3d26cd0","providers":[{"id":"a","type":"https-direct","status":"permanent","priority":10,"url":"http://{a}/corrupt-1.0.0.7z"}]}}},
+      "service": {},
+      "steps": [{"op":"install","tool":"livesplit"},{"op":"tree"}],
+      "results": [
+        {"outcome":{"error":{"code":"EXTRACT_FAILED","message":"Ошибка распаковки: <stderr>","details":null}},"progress":[[100,1056]],"timeline":[],"requests":[{"server":"a","method":"GET","url":"/corrupt-1.0.0.7z","headers":{"user-agent":"HLSR-Launcher"}}],"busy":null},
+        {
+          "tree": [
+            {"path":".hlsr","kind":"dir"},
+            {"path":".hlsr/staging","kind":"dir"},
+            {"path":"Downloads","kind":"dir"},
+            {"path":"Tools","kind":"dir"},
+            {"path":"Tools/livesplit","kind":"dir"},
+            {"path":"Tools/livesplit/LiveSplit.exe","kind":"file","size":10,"sha256":"1554d760545fcea7924f47df3b724876579a41897845f98dfef85a0656a760a1"},
+            {"path":"Tools/livesplit/installed.json","kind":"file","size":196,"sha256":"35442cd3c37dc0010fc79ac3714c605bb8cdccf34cb622969b847384f9c06085","latin1":"{\n  \"schemaVersion\": 1,\n  \"toolId\": \"livesplit\",\n  \"version\": \"0.9.0\",\n  \"executable\": \"LiveSplit.exe\",\n  \"installPath\": \"<root>/lib/Tools/livesplit\",\n  \"installedAt\": \"2026-01-01T00:00:00.000Z\"\n}"},
+            {"path":"Tools/livesplit/old only.txt","kind":"file","size":29,"sha256":"532b3b16714e7120a1feda389bbc9d234baf2b8aa3689404ec3847481946ccb3"},
+            {"path":"Tools/livesplit/settings.cfg","kind":"file","size":47,"sha256":"925042c4c48ffd497a93f30294db607c44f7f5f9828bc1116fe5b6d351a69ddb"},
+            {"path":"Tools/livesplit/splits","kind":"dir"},
+            {"path":"Tools/livesplit/splits/hlsr","kind":"dir"},
+            {"path":"Tools/livesplit/splits/hlsr/hl2-2707","kind":"dir"},
+            {"path":"Tools/livesplit/splits/hlsr/hl2-2707/scripts-maps.lss","kind":"file","size":27,"sha256":"53c618afdf34f0a5456d476dabbaea46e91aa0413d6b88ecb9f1e0a501c18ff3"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "установка: распаковщик не подключён",
+      "servers": {"a":{"/livesplit-1.0.0.7z":[{"bodyArchive":"livesplit-1.0.0.7z"}]}},
+      "setup": [
+        {"file":"lib/Tools/livesplit/LiveSplit.exe","utf8":"exe 0.9.0\n"},
+        {"file":"lib/Tools/livesplit/settings.cfg","utf8":"<Settings>мои настройки</Settings>\n"},
+        {"file":"lib/Tools/livesplit/splits/hlsr/hl2-2707/scripts-maps.lss","utf8":"рекорды игрока"},
+        {"file":"lib/Tools/livesplit/old only.txt","utf8":"только в старой\n"},
+        {"file":"lib/Tools/livesplit/installed.json","utf8":"{\n  \"schemaVersion\": 1,\n  \"toolId\": \"livesplit\",\n  \"version\": \"0.9.0\",\n  \"executable\": \"LiveSplit.exe\",\n  \"installPath\": \"<root>/lib/Tools/livesplit\",\n  \"installedAt\": \"2026-01-01T00:00:00.000Z\"\n}"}
+      ],
+      "registry": {"livesplit":{"schemaVersion":1,"toolId":"livesplit","channel":"stable","version":"1.0.0","enabled":true,"executable":"LiveSplit.exe","archive":{"filename":"livesplit-1.0.0.7z","size":1056,"sha256":"402b71f53c59327b251793388708cfa42515aba05acbdc2e692845f8df21d80d","providers":[{"id":"a","type":"https-direct","status":"permanent","priority":10,"url":"http://{a}/livesplit-1.0.0.7z"}]}}},
+      "service": {"archive":"none"},
+      "steps": [{"op":"install","tool":"livesplit"},{"op":"tree"}],
+      "results": [
+        {"outcome":{"error":{"code":"EXTRACT_FAILED","message":"Распаковщик не подключён","details":null}},"progress":[[100,1056]],"timeline":[],"requests":[{"server":"a","method":"GET","url":"/livesplit-1.0.0.7z","headers":{"user-agent":"HLSR-Launcher"}}],"busy":null},
+        {
+          "tree": [
+            {"path":".hlsr","kind":"dir"},
+            {"path":".hlsr/staging","kind":"dir"},
+            {"path":"Downloads","kind":"dir"},
+            {"path":"Tools","kind":"dir"},
+            {"path":"Tools/livesplit","kind":"dir"},
+            {"path":"Tools/livesplit/LiveSplit.exe","kind":"file","size":10,"sha256":"1554d760545fcea7924f47df3b724876579a41897845f98dfef85a0656a760a1"},
+            {"path":"Tools/livesplit/installed.json","kind":"file","size":196,"sha256":"35442cd3c37dc0010fc79ac3714c605bb8cdccf34cb622969b847384f9c06085","latin1":"{\n  \"schemaVersion\": 1,\n  \"toolId\": \"livesplit\",\n  \"version\": \"0.9.0\",\n  \"executable\": \"LiveSplit.exe\",\n  \"installPath\": \"<root>/lib/Tools/livesplit\",\n  \"installedAt\": \"2026-01-01T00:00:00.000Z\"\n}"},
+            {"path":"Tools/livesplit/old only.txt","kind":"file","size":29,"sha256":"532b3b16714e7120a1feda389bbc9d234baf2b8aa3689404ec3847481946ccb3"},
+            {"path":"Tools/livesplit/settings.cfg","kind":"file","size":47,"sha256":"925042c4c48ffd497a93f30294db607c44f7f5f9828bc1116fe5b6d351a69ddb"},
+            {"path":"Tools/livesplit/splits","kind":"dir"},
+            {"path":"Tools/livesplit/splits/hlsr","kind":"dir"},
+            {"path":"Tools/livesplit/splits/hlsr/hl2-2707","kind":"dir"},
+            {"path":"Tools/livesplit/splits/hlsr/hl2-2707/scripts-maps.lss","kind":"file","size":27,"sha256":"53c618afdf34f0a5456d476dabbaea46e91aa0413d6b88ecb9f1e0a501c18ff3"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "установка: старый каталог — файл, остатки staging и Downloads убираются",
+      "servers": {"a":{"/livesplit-1.0.0.7z":[{"bodyArchive":"livesplit-1.0.0.7z"}]}},
+      "setup": [{"file":"lib/Tools/livesplit","utf8":"файл на месте каталога"},{"file":"lib/.hlsr/staging/tool-livesplit/old.txt","utf8":"остаток прежней установки"},{"file":"lib/Downloads/livesplit-1.0.0.7z","utf8":"старый архив"}],
+      "registry": {"livesplit":{"schemaVersion":1,"toolId":"livesplit","channel":"stable","version":"1.0.0","enabled":true,"executable":"LiveSplit.exe","archive":{"filename":"livesplit-1.0.0.7z","size":1056,"sha256":"402b71f53c59327b251793388708cfa42515aba05acbdc2e692845f8df21d80d","providers":[{"id":"a","type":"https-direct","status":"permanent","priority":10,"url":"http://{a}/livesplit-1.0.0.7z"}]}}},
+      "service": {},
+      "steps": [{"op":"install","tool":"livesplit"},{"op":"tree"}],
+      "results": [
+        {"outcome":{"ok":{"status":"installed","version":"1.0.0","installPath":"<root>/lib/Tools/livesplit"}},"progress":[[100,1056]],"timeline":[{"log":"info","message":"[tools] livesplit 1.0.0 установлен: <root>/lib/Tools/livesplit"}],"requests":[{"server":"a","method":"GET","url":"/livesplit-1.0.0.7z","headers":{"user-agent":"HLSR-Launcher"}}],"busy":null},
+        {
+          "tree": [
+            {"path":".hlsr","kind":"dir"},
+            {"path":".hlsr/staging","kind":"dir"},
+            {"path":"Downloads","kind":"dir"},
+            {"path":"Tools","kind":"dir"},
+            {"path":"Tools/livesplit","kind":"dir"},
+            {"path":"Tools/livesplit/Components","kind":"dir"},
+            {"path":"Tools/livesplit/Components/LiveSplit.SourceSplit.dll","kind":"file","size":28,"sha256":"13b1a6b60c572ebd7524a2ad197df6421e54e962dd66eab69e8ddd803f83a542"},
+            {"path":"Tools/livesplit/Components/LiveSplit.Splits.dll","kind":"file","size":120,"sha256":"243822c0c52396aca7ab2e9b12a9bae80292a9e4a09cdc07812efedb81612b5b"},
+            {"path":"Tools/livesplit/LiveSplit.Core.dll","kind":"file","size":300,"sha256":"de49f1baac9023c2796b8fcb5466498f7beb9ed3d0fddba8db18853a37b1c5f0"},
+            {"path":"Tools/livesplit/LiveSplit.exe","kind":"file","size":10,"sha256":"b5f6eda7e43f0833815cf670d564876a901a91df5a6f3211cfda6550ecc22600"},
+            {"path":"Tools/livesplit/empty dir","kind":"dir"},
+            {"path":"Tools/livesplit/installed.json","kind":"file","size":196,"sha256":"317dfa40492c189d5d4a4aa339d47d349eadd8ed2f6ecdfbb07a1702440dc691","latin1":"{\n  \"schemaVersion\": 1,\n  \"toolId\": \"livesplit\",\n  \"version\": \"1.0.0\",\n  \"executable\": \"LiveSplit.exe\",\n  \"installPath\": \"<root>/lib/Tools/livesplit\",\n  \"installedAt\": \"2026-10-16T12:00:00.000Z\"\n}"},
+            {"path":"Tools/livesplit/settings.cfg","kind":"file","size":112,"sha256":"8e97f7d6fb08318d2abec0b1a1c1239e95ac8b39cb3cc2c456686f39f84eacd1"},
+            {"path":"Tools/livesplit/splits","kind":"dir"},
+            {"path":"Tools/livesplit/splits/chapters","kind":"dir"},
+            {"path":"Tools/livesplit/splits/chapters/chapters.lsl","kind":"file","size":186,"sha256":"f149363d70a8082dd7ff3e9a80cbc81253424eb725ee2feae574cea2295079da"},
+            {"path":"Tools/livesplit/splits/chapters/chapters.lss","kind":"file","size":7,"sha256":"5a13158c298fa7dfb64b6d126ee9eebf80b8ed2f420dd263a88755ff34128ad0"},
+            {"path":"Tools/livesplit/splits/maps","kind":"dir"},
+            {"path":"Tools/livesplit/splits/maps/maps.lsl","kind":"file","size":186,"sha256":"f149363d70a8082dd7ff3e9a80cbc81253424eb725ee2feae574cea2295079da"},
+            {"path":"Tools/livesplit/splits/maps/maps.lss","kind":"file","size":7,"sha256":"5a13158c298fa7dfb64b6d126ee9eebf80b8ed2f420dd263a88755ff34128ad0"},
+            {"path":"Tools/livesplit/Документы","kind":"dir"},
+            {"path":"Tools/livesplit/Документы/справка по LiveSplit.txt","kind":"file","size":37,"sha256":"262b850dc01dd387b609c56a2d404c0262fe0cb9a7ae34ad12346ccf0c6801fa"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "отмена: во время загрузки не пробует другие источники",
+      "servers": {"a":{"/first.7z":[{"bodyArchive":"livesplit-1.0.0.7z","gates":[{"at":300,"name":"c1"}]}]},"b":{"/second.7z":[{"bodyArchive":"livesplit-1.0.0.7z"}]}},
+      "setup": [
+        {"file":"lib/Tools/livesplit/LiveSplit.exe","utf8":"exe 0.9.0\n"},
+        {"file":"lib/Tools/livesplit/settings.cfg","utf8":"<Settings>мои настройки</Settings>\n"},
+        {"file":"lib/Tools/livesplit/splits/hlsr/hl2-2707/scripts-maps.lss","utf8":"рекорды игрока"},
+        {"file":"lib/Tools/livesplit/old only.txt","utf8":"только в старой\n"},
+        {"file":"lib/Tools/livesplit/installed.json","utf8":"{\n  \"schemaVersion\": 1,\n  \"toolId\": \"livesplit\",\n  \"version\": \"0.9.0\",\n  \"executable\": \"LiveSplit.exe\",\n  \"installPath\": \"<root>/lib/Tools/livesplit\",\n  \"installedAt\": \"2026-01-01T00:00:00.000Z\"\n}"}
+      ],
+      "registry": {
+        "livesplit": {
+          "schemaVersion": 1,
+          "toolId": "livesplit",
+          "channel": "stable",
+          "version": "1.0.0",
+          "enabled": true,
+          "executable": "LiveSplit.exe",
+          "archive": {"filename":"livesplit-1.0.0.7z","size":1056,"sha256":"402b71f53c59327b251793388708cfa42515aba05acbdc2e692845f8df21d80d","providers":[{"id":"s1","type":"https-direct","status":"permanent","priority":10,"url":"http://{a}/first.7z"},{"id":"s2","type":"https-direct","status":"permanent","priority":11,"url":"http://{b}/second.7z"}]}
+        }
+      },
+      "service": {},
+      "steps": [{"op":"cancel","tool":"livesplit"},{"op":"install","tool":"livesplit","actions":[{"waitFile":"lib/Downloads/livesplit-1.0.0.7z.part","size":300},{"cancel":"other"},{"cancel":"livesplit"}]},{"op":"cancel","tool":"livesplit"},{"op":"status","tool":"livesplit"},{"op":"tree"}],
+      "results": [
+        {"cancel":false},
+        {"outcome":{"error":{"code":"CANCELLED","message":"Установка инструмента отменена","details":null}},"progress":[[28,300]],"timeline":[],"requests":[{"server":"a","method":"GET","url":"/first.7z","headers":{"user-agent":"HLSR-Launcher"}}],"busy":null,"actions":[{"action":"cancel","result":false},{"action":"cancel","result":true}]},
+        {"cancel":false},
+        {"status":{"toolId":"livesplit","state":"ready","version":"0.9.0","availableVersion":"1.0.0","updateAvailable":true,"installPath":"<root>/lib/Tools/livesplit","percent":0,"error":null,"running":false,"stopping":false}},
+        {
+          "tree": [
+            {"path":".hlsr","kind":"dir"},
+            {"path":".hlsr/staging","kind":"dir"},
+            {"path":"Downloads","kind":"dir"},
+            {"path":"Tools","kind":"dir"},
+            {"path":"Tools/livesplit","kind":"dir"},
+            {"path":"Tools/livesplit/LiveSplit.exe","kind":"file","size":10,"sha256":"1554d760545fcea7924f47df3b724876579a41897845f98dfef85a0656a760a1"},
+            {"path":"Tools/livesplit/installed.json","kind":"file","size":196,"sha256":"35442cd3c37dc0010fc79ac3714c605bb8cdccf34cb622969b847384f9c06085","latin1":"{\n  \"schemaVersion\": 1,\n  \"toolId\": \"livesplit\",\n  \"version\": \"0.9.0\",\n  \"executable\": \"LiveSplit.exe\",\n  \"installPath\": \"<root>/lib/Tools/livesplit\",\n  \"installedAt\": \"2026-01-01T00:00:00.000Z\"\n}"},
+            {"path":"Tools/livesplit/old only.txt","kind":"file","size":29,"sha256":"532b3b16714e7120a1feda389bbc9d234baf2b8aa3689404ec3847481946ccb3"},
+            {"path":"Tools/livesplit/settings.cfg","kind":"file","size":47,"sha256":"925042c4c48ffd497a93f30294db607c44f7f5f9828bc1116fe5b6d351a69ddb"},
+            {"path":"Tools/livesplit/splits","kind":"dir"},
+            {"path":"Tools/livesplit/splits/hlsr","kind":"dir"},
+            {"path":"Tools/livesplit/splits/hlsr/hl2-2707","kind":"dir"},
+            {"path":"Tools/livesplit/splits/hlsr/hl2-2707/scripts-maps.lss","kind":"file","size":27,"sha256":"53c618afdf34f0a5456d476dabbaea46e91aa0413d6b88ecb9f1e0a501c18ff3"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "отмена: под ограничением скорости",
+      "servers": {"a":{"/livesplit-1.0.0.7z":[{"bodyArchive":"livesplit-1.0.0.7z"}]}},
+      "setup": [],
+      "registry": {"livesplit":{"schemaVersion":1,"toolId":"livesplit","channel":"stable","version":"1.0.0","enabled":true,"executable":"LiveSplit.exe","archive":{"filename":"livesplit-1.0.0.7z","size":1056,"sha256":"402b71f53c59327b251793388708cfa42515aba05acbdc2e692845f8df21d80d","providers":[{"id":"a","type":"https-direct","status":"permanent","priority":10,"url":"http://{a}/livesplit-1.0.0.7z"}]}}},
+      "service": {"limit":1},
+      "steps": [{"op":"install","tool":"livesplit","actions":[{"waitFile":"lib/Downloads/livesplit-1.0.0.7z.part"},{"sleep":50},{"cancel":"livesplit"}]},{"op":"tree"}],
+      "results": [
+        {"outcome":{"error":{"code":"CANCELLED","message":"Установка инструмента отменена","details":null}},"progress":[],"timeline":[],"requests":[{"server":"a","method":"GET","url":"/livesplit-1.0.0.7z","headers":{"user-agent":"HLSR-Launcher"}}],"busy":null,"actions":[{"action":"cancel","result":true}]},
+        {"tree":[{"path":".hlsr","kind":"dir"},{"path":".hlsr/staging","kind":"dir"},{"path":"Downloads","kind":"dir"},{"path":"Tools","kind":"dir"}]}
+      ]
+    },
+    {
+      "name": "отмена: распаковка прерывается, старая версия цела, повтор удаётся",
+      "servers": {"a":{"/livesplit-1.0.0.7z":[{"bodyArchive":"livesplit-1.0.0.7z"}]}},
+      "setup": [
+        {"file":"lib/Tools/livesplit/LiveSplit.exe","utf8":"exe 0.9.0\n"},
+        {"file":"lib/Tools/livesplit/settings.cfg","utf8":"<Settings>мои настройки</Settings>\n"},
+        {"file":"lib/Tools/livesplit/splits/hlsr/hl2-2707/scripts-maps.lss","utf8":"рекорды игрока"},
+        {"file":"lib/Tools/livesplit/old only.txt","utf8":"только в старой\n"},
+        {"file":"lib/Tools/livesplit/installed.json","utf8":"{\n  \"schemaVersion\": 1,\n  \"toolId\": \"livesplit\",\n  \"version\": \"0.9.0\",\n  \"executable\": \"LiveSplit.exe\",\n  \"installPath\": \"<root>/lib/Tools/livesplit\",\n  \"installedAt\": \"2026-01-01T00:00:00.000Z\"\n}"}
+      ],
+      "registry": {"livesplit":{"schemaVersion":1,"toolId":"livesplit","channel":"stable","version":"1.0.0","enabled":true,"executable":"LiveSplit.exe","archive":{"filename":"livesplit-1.0.0.7z","size":1056,"sha256":"402b71f53c59327b251793388708cfa42515aba05acbdc2e692845f8df21d80d","providers":[{"id":"a","type":"https-direct","status":"permanent","priority":10,"url":"http://{a}/livesplit-1.0.0.7z"}]}}},
+      "service": {"archive":"slow"},
+      "steps": [{"op":"install","tool":"livesplit","actions":[{"waitFile":"lib/.hlsr/staging/tool-livesplit/.started"},{"cancel":"livesplit"}]},{"op":"tree"},{"op":"setArchive","archive":"real"},{"op":"install","tool":"livesplit"},{"op":"tree"}],
+      "linuxOnly": true,
+      "results": [
+        {"outcome":{"error":{"code":"CANCELLED","message":"Установка инструмента отменена","details":null}},"progress":[[100,1056]],"timeline":[],"requests":[{"server":"a","method":"GET","url":"/livesplit-1.0.0.7z","headers":{"user-agent":"HLSR-Launcher"}}],"busy":null,"actions":[{"action":"cancel","result":true}]},
+        {
+          "tree": [
+            {"path":".hlsr","kind":"dir"},
+            {"path":".hlsr/staging","kind":"dir"},
+            {"path":"Downloads","kind":"dir"},
+            {"path":"Tools","kind":"dir"},
+            {"path":"Tools/livesplit","kind":"dir"},
+            {"path":"Tools/livesplit/LiveSplit.exe","kind":"file","size":10,"sha256":"1554d760545fcea7924f47df3b724876579a41897845f98dfef85a0656a760a1"},
+            {"path":"Tools/livesplit/installed.json","kind":"file","size":196,"sha256":"35442cd3c37dc0010fc79ac3714c605bb8cdccf34cb622969b847384f9c06085","latin1":"{\n  \"schemaVersion\": 1,\n  \"toolId\": \"livesplit\",\n  \"version\": \"0.9.0\",\n  \"executable\": \"LiveSplit.exe\",\n  \"installPath\": \"<root>/lib/Tools/livesplit\",\n  \"installedAt\": \"2026-01-01T00:00:00.000Z\"\n}"},
+            {"path":"Tools/livesplit/old only.txt","kind":"file","size":29,"sha256":"532b3b16714e7120a1feda389bbc9d234baf2b8aa3689404ec3847481946ccb3"},
+            {"path":"Tools/livesplit/settings.cfg","kind":"file","size":47,"sha256":"925042c4c48ffd497a93f30294db607c44f7f5f9828bc1116fe5b6d351a69ddb"},
+            {"path":"Tools/livesplit/splits","kind":"dir"},
+            {"path":"Tools/livesplit/splits/hlsr","kind":"dir"},
+            {"path":"Tools/livesplit/splits/hlsr/hl2-2707","kind":"dir"},
+            {"path":"Tools/livesplit/splits/hlsr/hl2-2707/scripts-maps.lss","kind":"file","size":27,"sha256":"53c618afdf34f0a5456d476dabbaea46e91aa0413d6b88ecb9f1e0a501c18ff3"}
+          ]
+        },
+        null,
+        {"outcome":{"ok":{"status":"installed","version":"1.0.0","installPath":"<root>/lib/Tools/livesplit"}},"progress":[[100,1056]],"timeline":[{"log":"info","message":"[tools] livesplit 1.0.0 установлен: <root>/lib/Tools/livesplit"}],"requests":[{"server":"a","method":"GET","url":"/livesplit-1.0.0.7z","headers":{"user-agent":"HLSR-Launcher"}}],"busy":null},
+        {
+          "tree": [
+            {"path":".hlsr","kind":"dir"},
+            {"path":".hlsr/staging","kind":"dir"},
+            {"path":"Downloads","kind":"dir"},
+            {"path":"Tools","kind":"dir"},
+            {"path":"Tools/livesplit","kind":"dir"},
+            {"path":"Tools/livesplit/Components","kind":"dir"},
+            {"path":"Tools/livesplit/Components/LiveSplit.SourceSplit.dll","kind":"file","size":28,"sha256":"13b1a6b60c572ebd7524a2ad197df6421e54e962dd66eab69e8ddd803f83a542"},
+            {"path":"Tools/livesplit/Components/LiveSplit.Splits.dll","kind":"file","size":120,"sha256":"243822c0c52396aca7ab2e9b12a9bae80292a9e4a09cdc07812efedb81612b5b"},
+            {"path":"Tools/livesplit/LiveSplit.Core.dll","kind":"file","size":300,"sha256":"de49f1baac9023c2796b8fcb5466498f7beb9ed3d0fddba8db18853a37b1c5f0"},
+            {"path":"Tools/livesplit/LiveSplit.exe","kind":"file","size":10,"sha256":"b5f6eda7e43f0833815cf670d564876a901a91df5a6f3211cfda6550ecc22600"},
+            {"path":"Tools/livesplit/empty dir","kind":"dir"},
+            {"path":"Tools/livesplit/installed.json","kind":"file","size":196,"sha256":"317dfa40492c189d5d4a4aa339d47d349eadd8ed2f6ecdfbb07a1702440dc691","latin1":"{\n  \"schemaVersion\": 1,\n  \"toolId\": \"livesplit\",\n  \"version\": \"1.0.0\",\n  \"executable\": \"LiveSplit.exe\",\n  \"installPath\": \"<root>/lib/Tools/livesplit\",\n  \"installedAt\": \"2026-10-16T12:00:00.000Z\"\n}"},
+            {"path":"Tools/livesplit/settings.cfg","kind":"file","size":112,"sha256":"8e97f7d6fb08318d2abec0b1a1c1239e95ac8b39cb3cc2c456686f39f84eacd1"},
+            {"path":"Tools/livesplit/splits","kind":"dir"},
+            {"path":"Tools/livesplit/splits/chapters","kind":"dir"},
+            {"path":"Tools/livesplit/splits/chapters/chapters.lsl","kind":"file","size":186,"sha256":"f149363d70a8082dd7ff3e9a80cbc81253424eb725ee2feae574cea2295079da"},
+            {"path":"Tools/livesplit/splits/chapters/chapters.lss","kind":"file","size":7,"sha256":"5a13158c298fa7dfb64b6d126ee9eebf80b8ed2f420dd263a88755ff34128ad0"},
+            {"path":"Tools/livesplit/splits/maps","kind":"dir"},
+            {"path":"Tools/livesplit/splits/maps/maps.lsl","kind":"file","size":186,"sha256":"f149363d70a8082dd7ff3e9a80cbc81253424eb725ee2feae574cea2295079da"},
+            {"path":"Tools/livesplit/splits/maps/maps.lss","kind":"file","size":7,"sha256":"5a13158c298fa7dfb64b6d126ee9eebf80b8ed2f420dd263a88755ff34128ad0"},
+            {"path":"Tools/livesplit/Документы","kind":"dir"},
+            {"path":"Tools/livesplit/Документы/справка по LiveSplit.txt","kind":"file","size":37,"sha256":"262b850dc01dd387b609c56a2d404c0262fe0cb9a7ae34ad12346ccf0c6801fa"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "отмена: ничего не идёт",
+      "servers": {},
+      "setup": [],
+      "registry": {"livesplit":{"schemaVersion":1,"toolId":"livesplit","channel":"stable","version":"1.0.0","enabled":true,"executable":"LiveSplit.exe","archive":{"filename":"livesplit-1.0.0.7z","size":1056,"sha256":"402b71f53c59327b251793388708cfa42515aba05acbdc2e692845f8df21d80d","providers":[{"id":"a","type":"https-direct","status":"permanent","priority":10,"url":"http://{a}/livesplit-1.0.0.7z"}]}}},
+      "service": {},
+      "steps": [{"op":"cancel","tool":"livesplit"},{"op":"cancel","tool":"nothing"}],
+      "results": [{"cancel":false},{"cancel":false}]
+    },
+    {
+      "name": "параллельно: идущая установка блокирует вторую и удаление",
+      "servers": {"a":{"/livesplit-1.0.0.7z":[{"bodyArchive":"livesplit-1.0.0.7z","gates":[{"at":300,"name":"p1"}]}]}},
+      "setup": [{"file":"lib/Tools/timer/anything.txt","utf8":"чужой инструмент"}],
+      "registry": {
+        "livesplit": {"schemaVersion":1,"toolId":"livesplit","channel":"stable","version":"1.0.0","enabled":true,"executable":"LiveSplit.exe","archive":{"filename":"livesplit-1.0.0.7z","size":1056,"sha256":"402b71f53c59327b251793388708cfa42515aba05acbdc2e692845f8df21d80d","providers":[{"id":"a","type":"https-direct","status":"permanent","priority":10,"url":"http://{a}/livesplit-1.0.0.7z"}]}},
+        "timer": {"schemaVersion":1,"toolId":"livesplit","channel":"stable","version":"2.0.0","enabled":true,"executable":"LiveSplit.exe","archive":{"filename":"livesplit-1.0.0.7z","size":1056,"sha256":"402b71f53c59327b251793388708cfa42515aba05acbdc2e692845f8df21d80d","providers":[{"id":"a","type":"https-direct","status":"permanent","priority":10,"url":"http://{a}/livesplit-1.0.0.7z"}]}}
+      },
+      "service": {},
+      "steps": [{"op":"install","tool":"livesplit","actions":[{"waitFile":"lib/Downloads/livesplit-1.0.0.7z.part","size":300},{"status":"livesplit"},{"status":"timer"},{"install":"livesplit"},{"install":"nothing"},{"remove":"livesplit"},{"remove":"timer"},{"release":"p1"}]},{"op":"status","tool":"livesplit"},{"op":"tree"}],
+      "results": [
+        {
+          "outcome": {"ok":{"status":"installed","version":"1.0.0","installPath":"<root>/lib/Tools/livesplit"}},
+          "progress": [[28,300],[100,1056]],
+          "timeline": [{"log":"info","message":"[tools] timer удалён: <root>/lib/Tools/timer"},{"log":"info","message":"[tools] livesplit 1.0.0 установлен: <root>/lib/Tools/livesplit"}],
+          "requests": [{"server":"a","method":"GET","url":"/livesplit-1.0.0.7z","headers":{"user-agent":"HLSR-Launcher"}}],
+          "busy": null,
+          "actions": [
+            {"action":"status","result":{"toolId":"livesplit","state":"installing","version":null,"availableVersion":"1.0.0","updateAvailable":false,"installPath":null,"percent":0,"error":null,"running":false,"stopping":false}},
+            {"action":"status","result":{"toolId":"timer","state":"not-installed","version":null,"availableVersion":"2.0.0","updateAvailable":false,"installPath":null,"percent":0,"error":null,"running":false,"stopping":false}},
+            {"action":"install","result":{"error":{"code":"ALREADY_RUNNING","message":"Установка уже идёт","details":null}}},
+            {"action":"install","result":{"error":{"code":"ALREADY_RUNNING","message":"Установка уже идёт","details":null}}},
+            {"action":"remove","result":{"error":{"code":"ALREADY_RUNNING","message":"Установка ещё выполняется","details":null}}},
+            {"action":"remove","result":{"ok":{"status":"removed"}}}
+          ]
+        },
+        {"status":{"toolId":"livesplit","state":"ready","version":"1.0.0","availableVersion":"1.0.0","updateAvailable":false,"installPath":"<root>/lib/Tools/livesplit","percent":0,"error":null,"running":false,"stopping":false}},
+        {
+          "tree": [
+            {"path":".hlsr","kind":"dir"},
+            {"path":".hlsr/staging","kind":"dir"},
+            {"path":"Downloads","kind":"dir"},
+            {"path":"Tools","kind":"dir"},
+            {"path":"Tools/livesplit","kind":"dir"},
+            {"path":"Tools/livesplit/Components","kind":"dir"},
+            {"path":"Tools/livesplit/Components/LiveSplit.SourceSplit.dll","kind":"file","size":28,"sha256":"13b1a6b60c572ebd7524a2ad197df6421e54e962dd66eab69e8ddd803f83a542"},
+            {"path":"Tools/livesplit/Components/LiveSplit.Splits.dll","kind":"file","size":120,"sha256":"243822c0c52396aca7ab2e9b12a9bae80292a9e4a09cdc07812efedb81612b5b"},
+            {"path":"Tools/livesplit/LiveSplit.Core.dll","kind":"file","size":300,"sha256":"de49f1baac9023c2796b8fcb5466498f7beb9ed3d0fddba8db18853a37b1c5f0"},
+            {"path":"Tools/livesplit/LiveSplit.exe","kind":"file","size":10,"sha256":"b5f6eda7e43f0833815cf670d564876a901a91df5a6f3211cfda6550ecc22600"},
+            {"path":"Tools/livesplit/empty dir","kind":"dir"},
+            {"path":"Tools/livesplit/installed.json","kind":"file","size":196,"sha256":"317dfa40492c189d5d4a4aa339d47d349eadd8ed2f6ecdfbb07a1702440dc691","latin1":"{\n  \"schemaVersion\": 1,\n  \"toolId\": \"livesplit\",\n  \"version\": \"1.0.0\",\n  \"executable\": \"LiveSplit.exe\",\n  \"installPath\": \"<root>/lib/Tools/livesplit\",\n  \"installedAt\": \"2026-10-16T12:00:00.000Z\"\n}"},
+            {"path":"Tools/livesplit/settings.cfg","kind":"file","size":112,"sha256":"8e97f7d6fb08318d2abec0b1a1c1239e95ac8b39cb3cc2c456686f39f84eacd1"},
+            {"path":"Tools/livesplit/splits","kind":"dir"},
+            {"path":"Tools/livesplit/splits/chapters","kind":"dir"},
+            {"path":"Tools/livesplit/splits/chapters/chapters.lsl","kind":"file","size":186,"sha256":"f149363d70a8082dd7ff3e9a80cbc81253424eb725ee2feae574cea2295079da"},
+            {"path":"Tools/livesplit/splits/chapters/chapters.lss","kind":"file","size":7,"sha256":"5a13158c298fa7dfb64b6d126ee9eebf80b8ed2f420dd263a88755ff34128ad0"},
+            {"path":"Tools/livesplit/splits/maps","kind":"dir"},
+            {"path":"Tools/livesplit/splits/maps/maps.lsl","kind":"file","size":186,"sha256":"f149363d70a8082dd7ff3e9a80cbc81253424eb725ee2feae574cea2295079da"},
+            {"path":"Tools/livesplit/splits/maps/maps.lss","kind":"file","size":7,"sha256":"5a13158c298fa7dfb64b6d126ee9eebf80b8ed2f420dd263a88755ff34128ad0"},
+            {"path":"Tools/livesplit/Документы","kind":"dir"},
+            {"path":"Tools/livesplit/Документы/справка по LiveSplit.txt","kind":"file","size":37,"sha256":"262b850dc01dd387b609c56a2d404c0262fe0cb9a7ae34ad12346ccf0c6801fa"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "удаление: установленный, повторное",
+      "servers": {},
+      "setup": [
+        {"file":"lib/Tools/livesplit/LiveSplit.exe","utf8":"exe 0.9.0\n"},
+        {"file":"lib/Tools/livesplit/settings.cfg","utf8":"<Settings>мои настройки</Settings>\n"},
+        {"file":"lib/Tools/livesplit/splits/hlsr/hl2-2707/scripts-maps.lss","utf8":"рекорды игрока"},
+        {"file":"lib/Tools/livesplit/old only.txt","utf8":"только в старой\n"},
+        {"file":"lib/Tools/livesplit/installed.json","utf8":"{\n  \"schemaVersion\": 1,\n  \"toolId\": \"livesplit\",\n  \"version\": \"0.9.0\",\n  \"executable\": \"LiveSplit.exe\",\n  \"installPath\": \"<root>/lib/Tools/livesplit\",\n  \"installedAt\": \"2026-01-01T00:00:00.000Z\"\n}"}
+      ],
+      "registry": {"livesplit":{"schemaVersion":1,"toolId":"livesplit","channel":"stable","version":"1.0.0","enabled":true,"executable":"LiveSplit.exe","archive":{"filename":"livesplit-1.0.0.7z","size":1056,"sha256":"402b71f53c59327b251793388708cfa42515aba05acbdc2e692845f8df21d80d","providers":[{"id":"a","type":"https-direct","status":"permanent","priority":10,"url":"http://{a}/livesplit-1.0.0.7z"}]}}},
+      "service": {},
+      "steps": [{"op":"uninstall","tool":"livesplit"},{"op":"tree"},{"op":"uninstall","tool":"livesplit"},{"op":"status","tool":"livesplit"}],
+      "results": [
+        {"outcome":{"ok":{"status":"removed"}},"timeline":[{"log":"info","message":"[tools] livesplit удалён: <root>/lib/Tools/livesplit"}]},
+        {"tree":[{"path":"Tools","kind":"dir"}]},
+        {"outcome":{"ok":{"status":"not-installed"}},"timeline":[]},
+        {"status":{"toolId":"livesplit","state":"not-installed","version":null,"availableVersion":"1.0.0","updateAvailable":false,"installPath":null,"percent":0,"error":null,"running":false,"stopping":false}}
+      ]
+    },
+    {
+      "name": "удаление: ссылка на каталог и файл на месте каталога",
+      "servers": {},
+      "setup": [{"file":"outside/keep.txt","utf8":"вне библиотеки"},{"symlink":"lib/Tools/livesplit","target":"<root>/outside"},{"file":"lib/Tools/second","utf8":"файл"}],
+      "registry": {
+        "livesplit": {"schemaVersion":1,"toolId":"livesplit","channel":"stable","version":"1.0.0","enabled":true,"executable":"LiveSplit.exe","archive":{"filename":"livesplit-1.0.0.7z","size":1056,"sha256":"402b71f53c59327b251793388708cfa42515aba05acbdc2e692845f8df21d80d","providers":[{"id":"a","type":"https-direct","status":"permanent","priority":10,"url":"http://{a}/livesplit-1.0.0.7z"}]}},
+        "second": {"schemaVersion":1,"toolId":"livesplit","channel":"stable","version":"1.0.0","enabled":true,"executable":"LiveSplit.exe","archive":{"filename":"livesplit-1.0.0.7z","size":1056,"sha256":"402b71f53c59327b251793388708cfa42515aba05acbdc2e692845f8df21d80d","providers":[{"id":"a","type":"https-direct","status":"permanent","priority":10,"url":"http://{a}/livesplit-1.0.0.7z"}]}}
+      },
+      "service": {},
+      "steps": [{"op":"uninstall","tool":"livesplit"},{"op":"uninstall","tool":"second"},{"op":"tree"}],
+      "results": [{"outcome":{"ok":{"status":"removed"}},"timeline":[{"log":"info","message":"[tools] livesplit удалён: <root>/lib/Tools/livesplit"}]},{"outcome":{"ok":{"status":"removed"}},"timeline":[{"log":"info","message":"[tools] second удалён: <root>/lib/Tools/second"}]},{"tree":[{"path":"Tools","kind":"dir"}]}]
+    }
+  ]
+}

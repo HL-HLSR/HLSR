@@ -1,0 +1,434 @@
+{
+  "now": 1792152000000,
+  "random": [0.5,0,0.999,0.25,0.75],
+  "installed": {"ghosting-renewed":{"version":"1.2.0","buildId":"gh-77","installPath":"/games/gh"},"hl1-won":{"version":"","buildId":null},"hl2-2707":{"version":"2707","buildId":"b2707"}},
+  "scenarios": [
+    {
+      "name": "вход, игра, обновления, ремонт, выход",
+      "token": "tok-1",
+      "setup": [{"file":"user/telemetry-session-marker.json","utf8":"{\"schemaVersion\":1,\"sessionId\":\"11111111-1111-4111-8111-111111111111\",\"openedAt\":\"2026-10-16T10:00:00.000Z\",\"touchedAt\":\"2026-10-16T11:30:00.000Z\"}"},{"file":"install/.hlsr-install-owner.json","utf8":"{\"installId\":\"{0a1b2c3d-1111-2222-3333-444455556666}\"}"}],
+      "routes": {"POST /v1/telemetry/batch":[{"json":{"accepted":3}}]},
+      "steps": [
+        {"op":"appStart"},
+        {"op":"snapshot"},
+        {"op":"files"},
+        {"op":"advance","ms":120000},
+        {"op":"launcherHeartbeat"},
+        {"op":"visible","value":false},
+        {"op":"advance","ms":120000},
+        {"op":"launcherHeartbeat"},
+        {"op":"visible","value":true},
+        {"op":"gameStarting","gameId":"ghosting-renewed"},
+        {"op":"advance","ms":3000},
+        {"op":"gameRunning","gameId":"ghosting-renewed"},
+        {"op":"advance","ms":60000},
+        {"op":"gameHeartbeat"},
+        {"op":"gameStarting","gameId":"hl1-won"},
+        {"op":"gameLaunchFailed","gameId":"hl1-won","error":{"code":"GAME_EXECUTABLE_MISSING"}},
+        {"op":"gameStarting","gameId":"hl2-4260"},
+        {"op":"gameLaunchFailed","gameId":"hl2-4260","error":{"code":"HTTP_ERROR","details":{"status":503}}},
+        {"op":"gameStarting","gameId":"hl2-5288"},
+        {"op":"gameLaunchFailed","gameId":"hl2-5288","error":"LAUNCH_FAILED"},
+        {"op":"gameRunning","gameId":"hl2-4260"},
+        {"op":"snapshot"},
+        {"op":"advance","ms":1800500},
+        {"op":"gameFinished","gameId":"ghosting-renewed","lastExit":{"requested":true,"outcome":"crashed"},"crashed":false},
+        {"op":"gameStarting","gameId":"hl2-2707"},
+        {"op":"gameRunning","gameId":"hl2-2707"},
+        {"op":"advance","ms":999},
+        {"op":"gameFinished","gameId":"hl2-2707","lastExit":null,"crashed":true},
+        {"op":"gameStarting","gameId":"hl2-2707"},
+        {"op":"gameFinished","gameId":"hl2-2707","lastExit":{"outcome":"exited"},"crashed":false},
+        {"op":"gameStarting","gameId":"hl2-2707"},
+        {"op":"gameFinished","gameId":"hl2-2707","lastExit":{"outcome":"crashed"},"crashed":false},
+        {"op":"gameStarting","gameId":"hl2-2707"},
+        {"op":"gameFinished","gameId":"hl2-2707","lastExit":null,"crashed":false},
+        {"op":"gameFinished","gameId":"nothing","lastExit":null,"crashed":false},
+        {"op":"locale","value":"EN-us"},
+        {"op":"emit","type":"game_download_started","fields":{"gameId":"ghosting-renewed","fromVersion":"1.2.0","toVersion":"1.2.0","planKind":"full"}},
+        {"op":"emit","type":"game_download_completed","fields":{"gameId":"ghosting-renewed","fromVersion":"1.2.0","toVersion":"1.3.0","planKind":"full","downloadBytes":1048576,"downloadDurationMilliseconds":2000,"averageBytesPerSecond":524288,"patchBytes":null,"fullArchiveBytes":null,"savedBytes":null}},
+        {"op":"emit","type":"game_update_installed","fields":{"gameId":"ghosting-renewed","fromVersion":"1.2.0","toVersion":"1.3.0","planKind":"full"}},
+        {"op":"emit","type":"game_download_started","fields":{"gameId":"ghosting-renewed","fromVersion":"1.2.0","toVersion":"1.2.0","planKind":"patch"}},
+        {"op":"emit","type":"game_download_cancelled","fields":{"gameId":"ghosting-renewed","fromVersion":"1.2.0","toVersion":"1.2.0","planKind":"full","downloadBytes":null}},
+        {"op":"emit","type":"game_update_failed","fields":{"gameId":"ghosting-renewed","fromVersion":"1.2.0","toVersion":"1.2.0","planKind":"full","errorCode":"CHECKSUM_MISMATCH","fallbackReason":"CHECKSUM_MISMATCH"}},
+        {"op":"emit","type":"game_repair_started","fields":{"gameId":"ghosting-renewed","gameVersion":"1.3.0"}},
+        {"op":"emit","type":"game_repair_completed","fields":{"gameId":"ghosting-renewed","gameVersion":"1.3.0","durationSeconds":42}},
+        {"op":"emit","type":"game_repair_failed","fields":{"gameId":"ghosting-renewed","gameVersion":"1.3.0","errorCode":"REPAIR_FAILED"}},
+        {"op":"emit","type":"run_started","fields":{}},
+        {"op":"emit","type":"no_such_type","fields":{}},
+        {"op":"emit","type":"game_repair_failed","fields":{"gameId":"ghosting-renewed","gameVersion":"1.3.0","errorCode":"NOPE"}},
+        {"op":"emit","type":"game_update_installed","fields":{"gameId":"ghosting-renewed","fromVersion":"1.2.0","toVersion":"1.2.0","planKind":"delta","extra":1}},
+        {"op":"emit","type":"launcher_heartbeat","fields":{"sessionId":"11111111-1111-4111-8111-111111111111","occurredAt":"2026-10-16T11:59:00.000Z"}},
+        {"op":"locale","value":null},
+        {"op":"gameStarting","gameId":"ghosting-renewed"},
+        {"op":"gameStarting","gameId":"hl2-2707"},
+        {"op":"gameStarting","gameId":"ghosting-renewed"},
+        {"op":"snapshot"},
+        {"op":"advance","ms":5000},
+        {"op":"appShutdown"},
+        {"op":"snapshot"},
+        {"op":"files"}
+      ],
+      "results": [
+        {"result":null,"logs":[["info","[telemetry] согласие восстановлено: вход в аккаунт выполнен"],["info","[telemetry] включена, установка 00000000…"]]},
+        {"result":{"backendConfigured":true,"enabled":true,"hasIdentity":true,"installationIdPrefix":"00000000","launcherSessionActive":true,"gameSessionsActive":0,"queue":{"queued":0,"failures":0,"nextAttemptInMs":0,"sent":3,"accepted":3,"dropped":0,"lastError":null,"lastSentAt":"2026-10-16T12:00:00.000Z"}},"logs":[]},
+        {
+          "result": {
+            "install/.hlsr-install-owner.json": "{\"installId\":\"{0a1b2c3d-1111-2222-3333-444455556666}\"}",
+            "user/telemetry-identity.json": "{\n  \"schemaVersion\": 1,\n  \"installationId\": \"00000000-0000-4000-8000-000000000001\",\n  \"createdAt\": \"2026-10-16T12:00:00.000Z\"\n}\n",
+            "user/telemetry-install-state.json": "{\n  \"schemaVersion\": 1,\n  \"installId\": \"{0A1B2C3D-1111-2222-3333-444455556666}\",\n  \"reportedAt\": \"2026-10-16T12:00:00.000Z\"\n}\n",
+            "user/telemetry-queue.jsonl": "",
+            "user/telemetry-session-marker.json": "{\n  \"schemaVersion\": 1,\n  \"sessionId\": \"00000000-0000-4000-8000-000000000004\",\n  \"openedAt\": \"2026-10-16T12:00:00.000Z\",\n  \"touchedAt\": \"2026-10-16T12:00:00.000Z\"\n}\n",
+            "user/telemetry.json": "{\n  \"schemaVersion\": 1,\n  \"enabled\": true,\n  \"source\": \"user\",\n  \"updatedAt\": \"2026-10-16T12:00:00.000Z\"\n}"
+          },
+          "logs": []
+        },
+        {"result":null,"logs":[]},
+        {"result":null,"logs":[]},
+        {"result":null,"logs":[]},
+        {"result":null,"logs":[]},
+        {"result":null,"logs":[]},
+        {"result":null,"logs":[]},
+        {"result":"00000000-0000-4000-8000-000000000007","logs":[]},
+        {"result":null,"logs":[]},
+        {"result":null,"logs":[]},
+        {"result":null,"logs":[]},
+        {"result":null,"logs":[]},
+        {"result":"00000000-0000-4000-8000-000000000011","logs":[]},
+        {"result":null,"logs":[]},
+        {"result":"00000000-0000-4000-8000-000000000014","logs":[]},
+        {"result":null,"logs":[]},
+        {"result":"00000000-0000-4000-8000-000000000017","logs":[]},
+        {"result":null,"logs":[]},
+        {"result":null,"logs":[]},
+        {"result":{"backendConfigured":true,"enabled":true,"hasIdentity":true,"installationIdPrefix":"00000000","launcherSessionActive":true,"gameSessionsActive":1,"queue":{"queued":6,"failures":0,"nextAttemptInMs":0,"sent":7,"accepted":12,"dropped":0,"lastError":null,"lastSentAt":"2026-10-16T12:05:03.000Z"}},"logs":[]},
+        {"result":null,"logs":[]},
+        {"result":null,"logs":[]},
+        {"result":"00000000-0000-4000-8000-000000000021","logs":[]},
+        {"result":null,"logs":[]},
+        {"result":null,"logs":[]},
+        {"result":null,"logs":[]},
+        {"result":"00000000-0000-4000-8000-000000000025","logs":[]},
+        {"result":null,"logs":[]},
+        {"result":"00000000-0000-4000-8000-000000000028","logs":[]},
+        {"result":null,"logs":[]},
+        {"result":"00000000-0000-4000-8000-000000000031","logs":[]},
+        {"result":null,"logs":[]},
+        {"result":null,"logs":[]},
+        {"result":null,"logs":[]},
+        {"result":true,"logs":[]},
+        {"result":true,"logs":[]},
+        {"result":true,"logs":[]},
+        {"result":true,"logs":[]},
+        {"result":true,"logs":[]},
+        {"result":true,"logs":[]},
+        {"result":true,"logs":[]},
+        {"result":true,"logs":[]},
+        {"result":true,"logs":[]},
+        {"result":false,"logs":[]},
+        {"result":false,"logs":[]},
+        {"result":false,"logs":[["warn","[telemetry] событие game_repair_failed отброшено: bad:errorCode"]]},
+        {"result":false,"logs":[["warn","[telemetry] событие game_update_installed отброшено: bad:planKind"]]},
+        {"result":true,"logs":[]},
+        {"result":null,"logs":[]},
+        {"result":"00000000-0000-4000-8000-000000000046","logs":[]},
+        {"result":"00000000-0000-4000-8000-000000000048","logs":[]},
+        {"result":"00000000-0000-4000-8000-000000000050","logs":[]},
+        {"result":{"backendConfigured":true,"enabled":true,"hasIdentity":true,"installationIdPrefix":"00000000","launcherSessionActive":true,"gameSessionsActive":2,"queue":{"queued":13,"failures":0,"nextAttemptInMs":0,"sent":23,"accepted":30,"dropped":0,"lastError":null,"lastSentAt":"2026-10-16T12:35:04.499Z"}},"logs":[]},
+        {"result":null,"logs":[]},
+        {"result":null,"logs":[]},
+        {"result":{"backendConfigured":true,"enabled":true,"hasIdentity":true,"installationIdPrefix":"00000000","launcherSessionActive":true,"gameSessionsActive":0,"queue":{"queued":1,"failures":0,"nextAttemptInMs":0,"sent":38,"accepted":33,"dropped":0,"lastError":null,"lastSentAt":"2026-10-16T12:35:09.499Z"}},"logs":[]},
+        {
+          "result": {
+            "install/.hlsr-install-owner.json": "{\"installId\":\"{0a1b2c3d-1111-2222-3333-444455556666}\"}",
+            "user/telemetry-identity.json": "{\n  \"schemaVersion\": 1,\n  \"installationId\": \"00000000-0000-4000-8000-000000000001\",\n  \"createdAt\": \"2026-10-16T12:00:00.000Z\"\n}\n",
+            "user/telemetry-install-state.json": "{\n  \"schemaVersion\": 1,\n  \"installId\": \"{0A1B2C3D-1111-2222-3333-444455556666}\",\n  \"reportedAt\": \"2026-10-16T12:00:00.000Z\"\n}\n",
+            "user/telemetry-queue.jsonl": "{\"schemaVersion\":1,\"eventId\":\"00000000-0000-4000-8000-000000000054\",\"installationId\":\"00000000-0000-4000-8000-000000000001\",\"sessionId\":\"00000000-0000-4000-8000-000000000048\",\"type\":\"game_session_ended\",\"occurredAt\":\"2026-10-16T12:35:09.000Z\",\"launcherVersion\":\"0.5.0\",\"locale\":\"ru\",\"windowsMajor\":\"unknown\",\"windowsArch\":\"x64\",\"gameId\":\"hl2-2707\",\"gameVersion\":\"2707\",\"buildId\":\"b2707\",\"durationSeconds\":5,\"exitReason\":\"unknown\"}\n",
+            "user/telemetry.json": "{\n  \"schemaVersion\": 1,\n  \"enabled\": true,\n  \"source\": \"user\",\n  \"updatedAt\": \"2026-10-16T12:00:00.000Z\"\n}"
+          },
+          "logs": []
+        }
+      ],
+      "journal": [
+        {
+          "server": "api",
+          "method": "POST",
+          "path": "/v1/telemetry/batch",
+          "query": "",
+          "headers": {"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity","authorization":"Bearer tok-1","content-type":"application/json","content-length":"1002"},
+          "body": "{\"schemaVersion\":1,\"events\":[{\"schemaVersion\":1,\"eventId\":\"00000000-0000-4000-8000-000000000002\",\"installationId\":\"00000000-0000-4000-8000-000000000001\",\"sessionId\":\"11111111-1111-4111-8111-111111111111\",\"type\":\"launcher_crash_detected\",\"occurredAt\":\"2026-10-16T11:30:00.000Z\",\"launcherVersion\":\"0.5.0\",\"locale\":\"ru\",\"windowsMajor\":\"unknown\",\"windowsArch\":\"x64\"},{\"schemaVersion\":1,\"eventId\":\"00000000-0000-4000-8000-000000000003\",\"installationId\":\"00000000-0000-4000-8000-000000000001\",\"sessionId\":null,\"type\":\"launcher_install_completed\",\"occurredAt\":\"2026-10-16T12:00:00.000Z\",\"launcherVersion\":\"0.5.0\",\"locale\":\"ru\",\"windowsMajor\":\"unknown\",\"windowsArch\":\"x64\"},{\"schemaVersion\":1,\"eventId\":\"00000000-0000-4000-8000-000000000005\",\"installationId\":\"00000000-0000-4000-8000-000000000001\",\"sessionId\":\"00000000-0000-4000-8000-000000000004\",\"type\":\"launcher_session_started\",\"occurredAt\":\"2026-10-16T12:00:00.000Z\",\"launcherVersion\":\"0.5.0\",\"locale\":\"ru\",\"windowsMajor\":\"unknown\",\"windowsArch\":\"x64\"}]}"
+        },
+        {
+          "server": "api",
+          "method": "POST",
+          "path": "/v1/telemetry/batch",
+          "query": "",
+          "headers": {"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity","authorization":"Bearer tok-1","content-type":"application/json","content-length":"359"},
+          "body": "{\"schemaVersion\":1,\"events\":[{\"schemaVersion\":1,\"eventId\":\"00000000-0000-4000-8000-000000000006\",\"installationId\":\"00000000-0000-4000-8000-000000000001\",\"sessionId\":\"00000000-0000-4000-8000-000000000004\",\"type\":\"launcher_heartbeat\",\"occurredAt\":\"2026-10-16T12:02:00.000Z\",\"launcherVersion\":\"0.5.0\",\"locale\":\"ru\",\"windowsMajor\":\"unknown\",\"windowsArch\":\"x64\"}]}"
+        },
+        {
+          "server": "api",
+          "method": "POST",
+          "path": "/v1/telemetry/batch",
+          "query": "",
+          "headers": {"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity","authorization":"Bearer tok-1","content-type":"application/json","content-length":"828"},
+          "body": "{\"schemaVersion\":1,\"events\":[{\"schemaVersion\":1,\"eventId\":\"00000000-0000-4000-8000-000000000008\",\"installationId\":\"00000000-0000-4000-8000-000000000001\",\"sessionId\":\"00000000-0000-4000-8000-000000000007\",\"type\":\"game_launch_started\",\"occurredAt\":\"2026-10-16T12:04:00.000Z\",\"launcherVersion\":\"0.5.0\",\"locale\":\"ru\",\"windowsMajor\":\"unknown\",\"windowsArch\":\"x64\",\"gameId\":\"ghosting-renewed\",\"gameVersion\":\"1.2.0\",\"buildId\":\"gh-77\"},{\"schemaVersion\":1,\"eventId\":\"00000000-0000-4000-8000-000000000009\",\"installationId\":\"00000000-0000-4000-8000-000000000001\",\"sessionId\":\"00000000-0000-4000-8000-000000000007\",\"type\":\"game_launch_succeeded\",\"occurredAt\":\"2026-10-16T12:04:03.000Z\",\"launcherVersion\":\"0.5.0\",\"locale\":\"ru\",\"windowsMajor\":\"unknown\",\"windowsArch\":\"x64\",\"gameId\":\"ghosting-renewed\",\"gameVersion\":\"1.2.0\",\"buildId\":\"gh-77\"}]}"
+        },
+        {
+          "server": "api",
+          "method": "POST",
+          "path": "/v1/telemetry/batch",
+          "query": "",
+          "headers": {"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity","authorization":"Bearer tok-1","content-type":"application/json","content-length":"423"},
+          "body": "{\"schemaVersion\":1,\"events\":[{\"schemaVersion\":1,\"eventId\":\"00000000-0000-4000-8000-000000000010\",\"installationId\":\"00000000-0000-4000-8000-000000000001\",\"sessionId\":\"00000000-0000-4000-8000-000000000007\",\"type\":\"game_heartbeat\",\"occurredAt\":\"2026-10-16T12:05:03.000Z\",\"launcherVersion\":\"0.5.0\",\"locale\":\"ru\",\"windowsMajor\":\"unknown\",\"windowsArch\":\"x64\",\"gameId\":\"ghosting-renewed\",\"gameVersion\":\"1.2.0\",\"buildId\":\"gh-77\"}]}"
+        },
+        {
+          "server": "api",
+          "method": "POST",
+          "path": "/v1/telemetry/batch",
+          "query": "",
+          "headers": {"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity","authorization":"Bearer tok-1","content-type":"application/json","content-length":"2903"},
+          "body": "{\"schemaVersion\":1,\"events\":[{\"schemaVersion\":1,\"eventId\":\"00000000-0000-4000-8000-000000000012\",\"installationId\":\"00000000-0000-4000-8000-000000000001\",\"sessionId\":\"00000000-0000-4000-8000-000000000011\",\"type\":\"game_launch_started\",\"occurredAt\":\"2026-10-16T12:05:03.000Z\",\"launcherVersion\":\"0.5.0\",\"locale\":\"ru\",\"windowsMajor\":\"unknown\",\"windowsArch\":\"x64\",\"gameId\":\"hl1-won\",\"gameVersion\":\"0.0.0\",\"buildId\":\"unknown\"},{\"schemaVersion\":1,\"eventId\":\"00000000-0000-4000-8000-000000000013\",\"installationId\":\"00000000-0000-4000-8000-000000000001\",\"sessionId\":\"00000000-0000-4000-8000-000000000011\",\"type\":\"game_launch_failed\",\"occurredAt\":\"2026-10-16T12:05:03.000Z\",\"launcherVersion\":\"0.5.0\",\"locale\":\"ru\",\"windowsMajor\":\"unknown\",\"windowsArch\":\"x64\",\"gameId\":\"hl1-won\",\"gameVersion\":\"0.0.0\",\"buildId\":\"unknown\",\"errorCode\":\"LAUNCH_FAILED\"},{\"schemaVersion\":1,\"eventId\":\"00000000-0000-4000-8000-000000000015\",\"installationId\":\"00000000-0000-4000-8000-000000000001\",\"sessionId\":\"00000000-0000-4000-8000-000000000014\",\"type\":\"game_launch_started\",\"occurredAt\":\"2026-10-16T12:05:03.000Z\",\"launcherVersion\":\"0.5.0\",\"locale\":\"ru\",\"windowsMajor\":\"unknown\",\"windowsArch\":\"x64\",\"gameId\":\"hl2-4260\",\"gameVersion\":\"0.0.0\",\"buildId\":\"unknown\"},{\"schemaVersion\":1,\"eventId\":\"00000000-0000-4000-8000-000000000016\",\"installationId\":\"00000000-0000-4000-8000-000000000001\",\"sessionId\":\"00000000-0000-4000-8000-000000000014\",\"type\":\"game_launch_failed\",\"occurredAt\":\"2026-10-16T12:05:03.000Z\",\"launcherVersion\":\"0.5.0\",\"locale\":\"ru\",\"windowsMajor\":\"unknown\",\"windowsArch\":\"x64\",\"gameId\":\"hl2-4260\",\"gameVersion\":\"0.0.0\",\"buildId\":\"unknown\",\"errorCode\":\"HTTP_5XX\"},{\"schemaVersion\":1,\"eventId\":\"00000000-0000-4000-8000-000000000018\",\"installationId\":\"00000000-0000-4000-8000-000000000001\",\"sessionId\":\"00000000-0000-4000-8000-000000000017\",\"type\":\"game_launch_started\",\"occurredAt\":\"2026-10-16T12:05:03.000Z\",\"launcherVersion\":\"0.5.0\",\"locale\":\"ru\",\"windowsMajor\":\"unknown\",\"windowsArch\":\"x64\",\"gameId\":\"hl2-5288\",\"gameVersion\":\"0.0.0\",\"buildId\":\"unknown\"},{\"schemaVersion\":1,\"eventId\":\"00000000-0000-4000-8000-000000000019\",\"installationId\":\"00000000-0000-4000-8000-000000000001\",\"sessionId\":\"00000000-0000-4000-8000-000000000017\",\"type\":\"game_launch_failed\",\"occurredAt\":\"2026-10-16T12:05:03.000Z\",\"launcherVersion\":\"0.5.0\",\"locale\":\"ru\",\"windowsMajor\":\"unknown\",\"windowsArch\":\"x64\",\"gameId\":\"hl2-5288\",\"gameVersion\":\"0.0.0\",\"buildId\":\"unknown\",\"errorCode\":\"LAUNCH_FAILED\"},{\"schemaVersion\":1,\"eventId\":\"00000000-0000-4000-8000-000000000020\",\"installationId\":\"00000000-0000-4000-8000-000000000001\",\"sessionId\":\"00000000-0000-4000-8000-000000000007\",\"type\":\"game_session_ended\",\"occurredAt\":\"2026-10-16T12:35:03.000Z\",\"launcherVersion\":\"0.5.0\",\"locale\":\"ru\",\"windowsMajor\":\"unknown\",\"windowsArch\":\"x64\",\"gameId\":\"ghosting-renewed\",\"gameVersion\":\"1.2.0\",\"buildId\":\"gh-77\",\"durationSeconds\":1863,\"exitReason\":\"user-closed\"}]}"
+        },
+        {
+          "server": "api",
+          "method": "POST",
+          "path": "/v1/telemetry/batch",
+          "query": "",
+          "headers": {"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity","authorization":"Bearer tok-1","content-type":"application/json","content-length":"810"},
+          "body": "{\"schemaVersion\":1,\"events\":[{\"schemaVersion\":1,\"eventId\":\"00000000-0000-4000-8000-000000000022\",\"installationId\":\"00000000-0000-4000-8000-000000000001\",\"sessionId\":\"00000000-0000-4000-8000-000000000021\",\"type\":\"game_launch_started\",\"occurredAt\":\"2026-10-16T12:35:03.000Z\",\"launcherVersion\":\"0.5.0\",\"locale\":\"ru\",\"windowsMajor\":\"unknown\",\"windowsArch\":\"x64\",\"gameId\":\"hl2-2707\",\"gameVersion\":\"2707\",\"buildId\":\"b2707\"},{\"schemaVersion\":1,\"eventId\":\"00000000-0000-4000-8000-000000000023\",\"installationId\":\"00000000-0000-4000-8000-000000000001\",\"sessionId\":\"00000000-0000-4000-8000-000000000021\",\"type\":\"game_launch_succeeded\",\"occurredAt\":\"2026-10-16T12:35:03.000Z\",\"launcherVersion\":\"0.5.0\",\"locale\":\"ru\",\"windowsMajor\":\"unknown\",\"windowsArch\":\"x64\",\"gameId\":\"hl2-2707\",\"gameVersion\":\"2707\",\"buildId\":\"b2707\"}]}"
+        },
+        {
+          "server": "api",
+          "method": "POST",
+          "path": "/v1/telemetry/batch",
+          "query": "",
+          "headers": {"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity","authorization":"Bearer tok-1","content-type":"application/json","content-length":"457"},
+          "body": "{\"schemaVersion\":1,\"events\":[{\"schemaVersion\":1,\"eventId\":\"00000000-0000-4000-8000-000000000024\",\"installationId\":\"00000000-0000-4000-8000-000000000001\",\"sessionId\":\"00000000-0000-4000-8000-000000000021\",\"type\":\"game_crashed\",\"occurredAt\":\"2026-10-16T12:35:04.000Z\",\"launcherVersion\":\"0.5.0\",\"locale\":\"ru\",\"windowsMajor\":\"unknown\",\"windowsArch\":\"x64\",\"gameId\":\"hl2-2707\",\"gameVersion\":\"2707\",\"buildId\":\"b2707\",\"durationSeconds\":0,\"errorCode\":\"GAME_CRASH\"}]}"
+        },
+        {
+          "server": "api",
+          "method": "POST",
+          "path": "/v1/telemetry/batch",
+          "query": "",
+          "headers": {"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity","authorization":"Bearer tok-1","content-type":"application/json","content-length":"849"},
+          "body": "{\"schemaVersion\":1,\"events\":[{\"schemaVersion\":1,\"eventId\":\"00000000-0000-4000-8000-000000000026\",\"installationId\":\"00000000-0000-4000-8000-000000000001\",\"sessionId\":\"00000000-0000-4000-8000-000000000025\",\"type\":\"game_launch_started\",\"occurredAt\":\"2026-10-16T12:35:04.000Z\",\"launcherVersion\":\"0.5.0\",\"locale\":\"ru\",\"windowsMajor\":\"unknown\",\"windowsArch\":\"x64\",\"gameId\":\"hl2-2707\",\"gameVersion\":\"2707\",\"buildId\":\"b2707\"},{\"schemaVersion\":1,\"eventId\":\"00000000-0000-4000-8000-000000000027\",\"installationId\":\"00000000-0000-4000-8000-000000000001\",\"sessionId\":\"00000000-0000-4000-8000-000000000025\",\"type\":\"game_session_ended\",\"occurredAt\":\"2026-10-16T12:35:04.000Z\",\"launcherVersion\":\"0.5.0\",\"locale\":\"ru\",\"windowsMajor\":\"unknown\",\"windowsArch\":\"x64\",\"gameId\":\"hl2-2707\",\"gameVersion\":\"2707\",\"buildId\":\"b2707\",\"durationSeconds\":0,\"exitReason\":\"normal\"}]}"
+        },
+        {
+          "server": "api",
+          "method": "POST",
+          "path": "/v1/telemetry/batch",
+          "query": "",
+          "headers": {"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity","authorization":"Bearer tok-1","content-type":"application/json","content-length":"850"},
+          "body": "{\"schemaVersion\":1,\"events\":[{\"schemaVersion\":1,\"eventId\":\"00000000-0000-4000-8000-000000000029\",\"installationId\":\"00000000-0000-4000-8000-000000000001\",\"sessionId\":\"00000000-0000-4000-8000-000000000028\",\"type\":\"game_launch_started\",\"occurredAt\":\"2026-10-16T12:35:04.000Z\",\"launcherVersion\":\"0.5.0\",\"locale\":\"ru\",\"windowsMajor\":\"unknown\",\"windowsArch\":\"x64\",\"gameId\":\"hl2-2707\",\"gameVersion\":\"2707\",\"buildId\":\"b2707\"},{\"schemaVersion\":1,\"eventId\":\"00000000-0000-4000-8000-000000000030\",\"installationId\":\"00000000-0000-4000-8000-000000000001\",\"sessionId\":\"00000000-0000-4000-8000-000000000028\",\"type\":\"game_session_ended\",\"occurredAt\":\"2026-10-16T12:35:04.000Z\",\"launcherVersion\":\"0.5.0\",\"locale\":\"ru\",\"windowsMajor\":\"unknown\",\"windowsArch\":\"x64\",\"gameId\":\"hl2-2707\",\"gameVersion\":\"2707\",\"buildId\":\"b2707\",\"durationSeconds\":0,\"exitReason\":\"crashed\"}]}"
+        },
+        {
+          "server": "api",
+          "method": "POST",
+          "path": "/v1/telemetry/batch",
+          "query": "",
+          "headers": {"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity","authorization":"Bearer tok-1","content-type":"application/json","content-length":"850"},
+          "body": "{\"schemaVersion\":1,\"events\":[{\"schemaVersion\":1,\"eventId\":\"00000000-0000-4000-8000-000000000032\",\"installationId\":\"00000000-0000-4000-8000-000000000001\",\"sessionId\":\"00000000-0000-4000-8000-000000000031\",\"type\":\"game_launch_started\",\"occurredAt\":\"2026-10-16T12:35:04.000Z\",\"launcherVersion\":\"0.5.0\",\"locale\":\"ru\",\"windowsMajor\":\"unknown\",\"windowsArch\":\"x64\",\"gameId\":\"hl2-2707\",\"gameVersion\":\"2707\",\"buildId\":\"b2707\"},{\"schemaVersion\":1,\"eventId\":\"00000000-0000-4000-8000-000000000033\",\"installationId\":\"00000000-0000-4000-8000-000000000001\",\"sessionId\":\"00000000-0000-4000-8000-000000000031\",\"type\":\"game_session_ended\",\"occurredAt\":\"2026-10-16T12:35:04.000Z\",\"launcherVersion\":\"0.5.0\",\"locale\":\"ru\",\"windowsMajor\":\"unknown\",\"windowsArch\":\"x64\",\"gameId\":\"hl2-2707\",\"gameVersion\":\"2707\",\"buildId\":\"b2707\",\"durationSeconds\":0,\"exitReason\":\"unknown\"}]}"
+        },
+        {
+          "server": "api",
+          "method": "POST",
+          "path": "/v1/telemetry/batch",
+          "query": "",
+          "headers": {"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity","authorization":"Bearer tok-1","content-type":"application/json","content-length":"6293"},
+          "body": "{\"schemaVersion\":1,\"events\":[{\"schemaVersion\":1,\"eventId\":\"00000000-0000-4000-8000-000000000034\",\"installationId\":\"00000000-0000-4000-8000-000000000001\",\"sessionId\":\"00000000-0000-4000-8000-000000000004\",\"type\":\"game_download_started\",\"occurredAt\":\"2026-10-16T12:35:04.000Z\",\"launcherVersion\":\"0.5.0\",\"locale\":\"en\",\"windowsMajor\":\"unknown\",\"windowsArch\":\"x64\",\"gameId\":\"ghosting-renewed\",\"fromVersion\":\"1.2.0\",\"toVersion\":\"1.2.0\",\"planKind\":\"full\"},{\"schemaVersion\":1,\"eventId\":\"00000000-0000-4000-8000-000000000035\",\"installationId\":\"00000000-0000-4000-8000-000000000001\",\"sessionId\":\"00000000-0000-4000-8000-000000000004\",\"type\":\"game_download_completed\",\"occurredAt\":\"2026-10-16T12:35:04.000Z\",\"launcherVersion\":\"0.5.0\",\"locale\":\"en\",\"windowsMajor\":\"unknown\",\"windowsArch\":\"x64\",\"gameId\":\"ghosting-renewed\",\"fromVersion\":\"1.2.0\",\"toVersion\":\"1.3.0\",\"planKind\":\"full\",\"downloadBytes\":1048576,\"downloadDurationMilliseconds\":2000,\"averageBytesPerSecond\":524288,\"patchBytes\":null,\"fullArchiveBytes\":null,\"savedBytes\":null},{\"schemaVersion\":1,\"eventId\":\"00000000-0000-4000-8000-000000000036\",\"installationId\":\"00000000-0000-4000-8000-000000000001\",\"sessionId\":\"00000000-0000-4000-8000-000000000004\",\"type\":\"game_update_installed\",\"occurredAt\":\"2026-10-16T12:35:04.000Z\",\"launcherVersion\":\"0.5.0\",\"locale\":\"en\",\"windowsMajor\":\"unknown\",\"windowsArch\":\"x64\",\"gameId\":\"ghosting-renewed\",\"fromVersion\":\"1.2.0\",\"toVersion\":\"1.3.0\",\"planKind\":\"full\"},{\"schemaVersion\":1,\"eventId\":\"00000000-0000-4000-8000-000000000037\",\"installationId\":\"00000000-0000-4000-8000-000000000001\",\"sessionId\":\"00000000-0000-4000-8000-000000000004\",\"type\":\"game_download_started\",\"occurredAt\":\"2026-10-16T12:35:04.000Z\",\"launcherVersion\":\"0.5.0\",\"locale\":\"en\",\"windowsMajor\":\"unknown\",\"windowsArch\":\"x64\",\"gameId\":\"ghosting-renewed\",\"fromVersion\":\"1.2.0\",\"toVersion\":\"1.2.0\",\"planKind\":\"patch\"},{\"schemaVersion\":1,\"eventId\":\"00000000-0000-4000-8000-000000000038\",\"installationId\":\"00000000-0000-4000-8000-000000000001\",\"sessionId\":\"00000000-0000-4000-8000-000000000004\",\"type\":\"game_download_cancelled\",\"occurredAt\":\"2026-10-16T12:35:04.000Z\",\"launcherVersion\":\"0.5.0\",\"locale\":\"en\",\"windowsMajor\":\"unknown\",\"windowsArch\":\"x64\",\"gameId\":\"ghosting-renewed\",\"fromVersion\":\"1.2.0\",\"toVersion\":\"1.2.0\",\"planKind\":\"full\",\"downloadBytes\":null},{\"schemaVersion\":1,\"eventId\":\"00000000-0000-4000-8000-000000000039\",\"installationId\":\"00000000-0000-4000-8000-000000000001\",\"sessionId\":\"00000000-0000-4000-8000-000000000004\",\"type\":\"game_update_failed\",\"occurredAt\":\"2026-10-16T12:35:04.000Z\",\"launcherVersion\":\"0.5.0\",\"locale\":\"en\",\"windowsMajor\":\"unknown\",\"windowsArch\":\"x64\",\"gameId\":\"ghosting-renewed\",\"fromVersion\":\"1.2.0\",\"toVersion\":\"1.2.0\",\"planKind\":\"full\",\"errorCode\":\"CHECKSUM_MISMATCH\",\"fallbackReason\":\"CHECKSUM_MISMATCH\"},{\"schemaVersion\":1,\"eventId\":\"00000000-0000-4000-8000-000000000040\",\"installationId\":\"00000000-0000-4000-8000-000000000001\",\"sessionId\":\"00000000-0000-4000-8000-000000000004\",\"type\":\"game_repair_started\",\"occurredAt\":\"2026-10-16T12:35:04.000Z\",\"launcherVersion\":\"0.5.0\",\"locale\":\"en\",\"windowsMajor\":\"unknown\",\"windowsArch\":\"x64\",\"gameId\":\"ghosting-renewed\",\"gameVersion\":\"1.3.0\"},{\"schemaVersion\":1,\"eventId\":\"00000000-0000-4000-8000-000000000041\",\"installationId\":\"00000000-0000-4000-8000-000000000001\",\"sessionId\":\"00000000-0000-4000-8000-000000000004\",\"type\":\"game_repair_completed\",\"occurredAt\":\"2026-10-16T12:35:04.000Z\",\"launcherVersion\":\"0.5.0\",\"locale\":\"en\",\"windowsMajor\":\"unknown\",\"windowsArch\":\"x64\",\"gameId\":\"ghosting-renewed\",\"gameVersion\":\"1.3.0\",\"durationSeconds\":42},{\"schemaVersion\":1,\"eventId\":\"00000000-0000-4000-8000-000000000042\",\"installationId\":\"00000000-0000-4000-8000-000000000001\",\"sessionId\":\"00000000-0000-4000-8000-000000000004\",\"type\":\"game_repair_failed\",\"occurredAt\":\"2026-10-16T12:35:04.000Z\",\"launcherVersion\":\"0.5.0\",\"locale\":\"en\",\"windowsMajor\":\"unknown\",\"windowsArch\":\"x64\",\"gameId\":\"ghosting-renewed\",\"gameVersion\":\"1.3.0\",\"errorCode\":\"REPAIR_FAILED\"},{\"schemaVersion\":1,\"eventId\":\"00000000-0000-4000-8000-000000000045\",\"installationId\":\"00000000-0000-4000-8000-000000000001\",\"sessionId\":\"11111111-1111-4111-8111-111111111111\",\"type\":\"launcher_heartbeat\",\"occurredAt\":\"2026-10-16T11:59:00.000Z\",\"launcherVersion\":\"0.5.0\",\"locale\":\"en\",\"windowsMajor\":\"unknown\",\"windowsArch\":\"x64\"},{\"schemaVersion\":1,\"eventId\":\"00000000-0000-4000-8000-000000000047\",\"installationId\":\"00000000-0000-4000-8000-000000000001\",\"sessionId\":\"00000000-0000-4000-8000-000000000046\",\"type\":\"game_launch_started\",\"occurredAt\":\"2026-10-16T12:35:04.000Z\",\"launcherVersion\":\"0.5.0\",\"locale\":\"ru\",\"windowsMajor\":\"unknown\",\"windowsArch\":\"x64\",\"gameId\":\"ghosting-renewed\",\"gameVersion\":\"1.2.0\",\"buildId\":\"gh-77\"},{\"schemaVersion\":1,\"eventId\":\"00000000-0000-4000-8000-000000000049\",\"installationId\":\"00000000-0000-4000-8000-000000000001\",\"sessionId\":\"00000000-0000-4000-8000-000000000048\",\"type\":\"game_launch_started\",\"occurredAt\":\"2026-10-16T12:35:04.000Z\",\"launcherVersion\":\"0.5.0\",\"locale\":\"ru\",\"windowsMajor\":\"unknown\",\"windowsArch\":\"x64\",\"gameId\":\"hl2-2707\",\"gameVersion\":\"2707\",\"buildId\":\"b2707\"},{\"schemaVersion\":1,\"eventId\":\"00000000-0000-4000-8000-000000000051\",\"installationId\":\"00000000-0000-4000-8000-000000000001\",\"sessionId\":\"00000000-0000-4000-8000-000000000050\",\"type\":\"game_launch_started\",\"occurredAt\":\"2026-10-16T12:35:04.000Z\",\"launcherVersion\":\"0.5.0\",\"locale\":\"ru\",\"windowsMajor\":\"unknown\",\"windowsArch\":\"x64\",\"gameId\":\"ghosting-renewed\",\"gameVersion\":\"1.2.0\",\"buildId\":\"gh-77\"},{\"schemaVersion\":1,\"eventId\":\"00000000-0000-4000-8000-000000000052\",\"installationId\":\"00000000-0000-4000-8000-000000000001\",\"sessionId\":\"00000000-0000-4000-8000-000000000004\",\"type\":\"launcher_session_ended\",\"occurredAt\":\"2026-10-16T12:35:09.000Z\",\"launcherVersion\":\"0.5.0\",\"locale\":\"ru\",\"windowsMajor\":\"unknown\",\"windowsArch\":\"x64\",\"durationSeconds\":2109},{\"schemaVersion\":1,\"eventId\":\"00000000-0000-4000-8000-000000000053\",\"installationId\":\"00000000-0000-4000-8000-000000000001\",\"sessionId\":\"00000000-0000-4000-8000-000000000050\",\"type\":\"game_session_ended\",\"occurredAt\":\"2026-10-16T12:35:09.000Z\",\"launcherVersion\":\"0.5.0\",\"locale\":\"ru\",\"windowsMajor\":\"unknown\",\"windowsArch\":\"x64\",\"gameId\":\"ghosting-renewed\",\"gameVersion\":\"1.2.0\",\"buildId\":\"gh-77\",\"durationSeconds\":5,\"exitReason\":\"unknown\"}]}"
+        }
+      ]
+    },
+    {
+      "name": "без входа: очередь и маркер стираются",
+      "token": null,
+      "setup": [
+        {"file":"user/telemetry.json","utf8":"{\"schemaVersion\":1,\"enabled\":true,\"source\":\"user\"}"},
+        {"file":"user/telemetry-queue.jsonl","utf8":"{\"type\":\"launcher_heartbeat\"}\n"},
+        {"file":"user/telemetry-session-marker.json","utf8":"{\"schemaVersion\":1,\"sessionId\":\"11111111-1111-4111-8111-111111111111\",\"openedAt\":\"2026-10-16T10:00:00.000Z\",\"touchedAt\":\"2026-10-16T11:30:00.000Z\"}"}
+      ],
+      "routes": {},
+      "steps": [{"op":"appStart"},{"op":"files"},{"op":"gameStarting","gameId":"ghosting-renewed"},{"op":"reportUninstall"},{"op":"launcherHeartbeat"},{"op":"snapshot"},{"op":"appShutdown"},{"op":"files"}],
+      "results": [
+        {"result":null,"logs":[]},
+        {"result":{"user/telemetry.json":"{\"schemaVersion\":1,\"enabled\":true,\"source\":\"user\"}"},"logs":[]},
+        {"result":null,"logs":[]},
+        {"result":false,"logs":[]},
+        {"result":null,"logs":[]},
+        {"result":{"backendConfigured":true,"enabled":false,"hasIdentity":false,"installationIdPrefix":null,"launcherSessionActive":false,"gameSessionsActive":0,"queue":{"queued":0,"failures":0,"nextAttemptInMs":0,"sent":0,"accepted":0,"dropped":0,"lastError":null,"lastSentAt":null}},"logs":[]},
+        {"result":null,"logs":[]},
+        {"result":{"user/telemetry.json":"{\"schemaVersion\":1,\"enabled\":true,\"source\":\"user\"}"},"logs":[]}
+      ],
+      "journal": []
+    },
+    {
+      "name": "согласие: выход из профиля, onConsent, сброс личности",
+      "token": "tok-2",
+      "setup": [{"file":"user/telemetry.json","utf8":"{\"schemaVersion\":1,\"enabled\":true,\"source\":\"user\"}"},{"file":"user/telemetry-session-marker.json","utf8":"{\"schemaVersion\":1,\"sessionId\":\"11111111-1111-4111-8111-111111111111\",\"openedAt\":\"2026-10-16T10:00:00.000Z\",\"touchedAt\":\"2026-10-01T11:30:00.000Z\"}"}],
+      "routes": {"POST /v1/telemetry/batch":[{"json":{"accepted":1}}]},
+      "steps": [
+        {"op":"appStart"},
+        {"op":"gameStarting","gameId":"ghosting-renewed"},
+        {"op":"files"},
+        {"op":"profileChange","signedIn":false},
+        {"op":"token","value":null},
+        {"op":"onConsent","enabled":false},
+        {"op":"snapshot"},
+        {"op":"files"},
+        {"op":"token","value":"tok-3"},
+        {"op":"onConsent","enabled":true},
+        {"op":"snapshot"},
+        {"op":"onConsent","enabled":true},
+        {"op":"resetIdentity"},
+        {"op":"snapshot"},
+        {"op":"files"},
+        {"op":"setEnabled","enabled":"yes"},
+        {"op":"files"},
+        {"op":"appShutdown"},
+        {"op":"files"}
+      ],
+      "results": [
+        {"result":null,"logs":[["info","[telemetry] включена, установка 00000000…"]]},
+        {"result":"00000000-0000-4000-8000-000000000004","logs":[]},
+        {
+          "result": {
+            "user/telemetry-identity.json": "{\n  \"schemaVersion\": 1,\n  \"installationId\": \"00000000-0000-4000-8000-000000000001\",\n  \"createdAt\": \"2026-10-16T12:00:00.000Z\"\n}\n",
+            "user/telemetry-queue.jsonl": "{\"schemaVersion\":1,\"eventId\":\"00000000-0000-4000-8000-000000000005\",\"installationId\":\"00000000-0000-4000-8000-000000000001\",\"sessionId\":\"00000000-0000-4000-8000-000000000004\",\"type\":\"game_launch_started\",\"occurredAt\":\"2026-10-16T12:00:00.000Z\",\"launcherVersion\":\"0.5.0\",\"locale\":\"ru\",\"windowsMajor\":\"unknown\",\"windowsArch\":\"x64\",\"gameId\":\"ghosting-renewed\",\"gameVersion\":\"1.2.0\",\"buildId\":\"gh-77\"}\n",
+            "user/telemetry-session-marker.json": "{\n  \"schemaVersion\": 1,\n  \"sessionId\": \"00000000-0000-4000-8000-000000000002\",\n  \"openedAt\": \"2026-10-16T12:00:00.000Z\",\n  \"touchedAt\": \"2026-10-16T12:00:00.000Z\"\n}\n",
+            "user/telemetry.json": "{\"schemaVersion\":1,\"enabled\":true,\"source\":\"user\"}"
+          },
+          "logs": []
+        },
+        {"result":null,"logs":[]},
+        {"result":null,"logs":[]},
+        {"result":null,"logs":[]},
+        {"result":{"backendConfigured":true,"enabled":false,"hasIdentity":true,"installationIdPrefix":"00000000","launcherSessionActive":true,"gameSessionsActive":1,"queue":{"queued":0,"failures":0,"nextAttemptInMs":0,"sent":1,"accepted":1,"dropped":0,"lastError":null,"lastSentAt":"2026-10-16T12:00:00.000Z"}},"logs":[]},
+        {"result":{"user/telemetry-identity.json":"{\n  \"schemaVersion\": 1,\n  \"installationId\": \"00000000-0000-4000-8000-000000000001\",\n  \"createdAt\": \"2026-10-16T12:00:00.000Z\"\n}\n","user/telemetry.json":"{\n  \"schemaVersion\": 1,\n  \"enabled\": false,\n  \"source\": \"user\",\n  \"updatedAt\": \"2026-10-16T12:00:00.000Z\"\n}"},"logs":[]},
+        {"result":null,"logs":[]},
+        {"result":null,"logs":[["info","[telemetry] включена, установка 00000000…"]]},
+        {"result":{"backendConfigured":true,"enabled":true,"hasIdentity":true,"installationIdPrefix":"00000000","launcherSessionActive":true,"gameSessionsActive":1,"queue":{"queued":0,"failures":0,"nextAttemptInMs":0,"sent":2,"accepted":2,"dropped":0,"lastError":null,"lastSentAt":"2026-10-16T12:00:00.000Z"}},"logs":[]},
+        {"result":null,"logs":[["info","[telemetry] включена, установка 00000000…"]]},
+        {"result":{"ok":true,"hadIdentity":true},"logs":[["info","[telemetry] включена, установка 00000000…"]]},
+        {"result":{"backendConfigured":true,"enabled":true,"hasIdentity":true,"installationIdPrefix":"00000000","launcherSessionActive":true,"gameSessionsActive":0,"queue":{"queued":0,"failures":0,"nextAttemptInMs":0,"sent":5,"accepted":4,"dropped":0,"lastError":null,"lastSentAt":"2026-10-16T12:00:00.000Z"}},"logs":[]},
+        {
+          "result": {
+            "user/telemetry-identity.json": "{\n  \"schemaVersion\": 1,\n  \"installationId\": \"00000000-0000-4000-8000-000000000011\",\n  \"createdAt\": \"2026-10-16T12:00:00.000Z\"\n}\n",
+            "user/telemetry-queue.jsonl": "",
+            "user/telemetry-session-marker.json": "{\n  \"schemaVersion\": 1,\n  \"sessionId\": \"00000000-0000-4000-8000-000000000012\",\n  \"openedAt\": \"2026-10-16T12:00:00.000Z\",\n  \"touchedAt\": \"2026-10-16T12:00:00.000Z\"\n}\n",
+            "user/telemetry.json": "{\n  \"schemaVersion\": 1,\n  \"enabled\": true,\n  \"source\": \"user\",\n  \"updatedAt\": \"2026-10-16T12:00:00.000Z\"\n}"
+          },
+          "logs": []
+        },
+        {"result":{"enabled":false,"purged":true},"logs":[["info","[telemetry] выключена, локальные данные телеметрии удалены"]]},
+        {"result":{"user/telemetry-identity.json":"{\n  \"schemaVersion\": 1,\n  \"installationId\": \"00000000-0000-4000-8000-000000000011\",\n  \"createdAt\": \"2026-10-16T12:00:00.000Z\"\n}\n","user/telemetry.json":"{\n  \"schemaVersion\": 1,\n  \"enabled\": false,\n  \"source\": \"user\",\n  \"updatedAt\": \"2026-10-16T12:00:00.000Z\"\n}"},"logs":[]},
+        {"result":null,"logs":[]},
+        {"result":{"user/telemetry-identity.json":"{\n  \"schemaVersion\": 1,\n  \"installationId\": \"00000000-0000-4000-8000-000000000011\",\n  \"createdAt\": \"2026-10-16T12:00:00.000Z\"\n}\n","user/telemetry.json":"{\n  \"schemaVersion\": 1,\n  \"enabled\": false,\n  \"source\": \"user\",\n  \"updatedAt\": \"2026-10-16T12:00:00.000Z\"\n}"},"logs":[]}
+      ],
+      "journal": [
+        {
+          "server": "api",
+          "method": "POST",
+          "path": "/v1/telemetry/batch",
+          "query": "",
+          "headers": {"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity","authorization":"Bearer tok-2","content-type":"application/json","content-length":"365"},
+          "body": "{\"schemaVersion\":1,\"events\":[{\"schemaVersion\":1,\"eventId\":\"00000000-0000-4000-8000-000000000003\",\"installationId\":\"00000000-0000-4000-8000-000000000001\",\"sessionId\":\"00000000-0000-4000-8000-000000000002\",\"type\":\"launcher_session_started\",\"occurredAt\":\"2026-10-16T12:00:00.000Z\",\"launcherVersion\":\"0.5.0\",\"locale\":\"ru\",\"windowsMajor\":\"unknown\",\"windowsArch\":\"x64\"}]}"
+        },
+        {
+          "server": "api",
+          "method": "POST",
+          "path": "/v1/telemetry/batch",
+          "query": "",
+          "headers": {"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity","authorization":"Bearer tok-3","content-type":"application/json","content-length":"365"},
+          "body": "{\"schemaVersion\":1,\"events\":[{\"schemaVersion\":1,\"eventId\":\"00000000-0000-4000-8000-000000000007\",\"installationId\":\"00000000-0000-4000-8000-000000000001\",\"sessionId\":\"00000000-0000-4000-8000-000000000006\",\"type\":\"launcher_session_started\",\"occurredAt\":\"2026-10-16T12:00:00.000Z\",\"launcherVersion\":\"0.5.0\",\"locale\":\"ru\",\"windowsMajor\":\"unknown\",\"windowsArch\":\"x64\"}]}"
+        },
+        {
+          "server": "api",
+          "method": "POST",
+          "path": "/v1/telemetry/batch",
+          "query": "",
+          "headers": {"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity","authorization":"Bearer tok-3","content-type":"application/json","content-length":"699"},
+          "body": "{\"schemaVersion\":1,\"events\":[{\"schemaVersion\":1,\"eventId\":\"00000000-0000-4000-8000-000000000008\",\"installationId\":\"00000000-0000-4000-8000-000000000001\",\"sessionId\":\"00000000-0000-4000-8000-000000000006\",\"type\":\"launcher_crash_detected\",\"occurredAt\":\"2026-10-16T12:00:00.000Z\",\"launcherVersion\":\"0.5.0\",\"locale\":\"ru\",\"windowsMajor\":\"unknown\",\"windowsArch\":\"x64\"},{\"schemaVersion\":1,\"eventId\":\"00000000-0000-4000-8000-000000000010\",\"installationId\":\"00000000-0000-4000-8000-000000000001\",\"sessionId\":\"00000000-0000-4000-8000-000000000009\",\"type\":\"launcher_session_started\",\"occurredAt\":\"2026-10-16T12:00:00.000Z\",\"launcherVersion\":\"0.5.0\",\"locale\":\"ru\",\"windowsMajor\":\"unknown\",\"windowsArch\":\"x64\"}]}"
+        },
+        {
+          "server": "api",
+          "method": "POST",
+          "path": "/v1/telemetry/batch",
+          "query": "",
+          "headers": {"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity","authorization":"Bearer tok-3","content-type":"application/json","content-length":"365"},
+          "body": "{\"schemaVersion\":1,\"events\":[{\"schemaVersion\":1,\"eventId\":\"00000000-0000-4000-8000-000000000013\",\"installationId\":\"00000000-0000-4000-8000-000000000011\",\"sessionId\":\"00000000-0000-4000-8000-000000000012\",\"type\":\"launcher_session_started\",\"occurredAt\":\"2026-10-16T12:00:00.000Z\",\"launcherVersion\":\"0.5.0\",\"locale\":\"ru\",\"windowsMajor\":\"unknown\",\"windowsArch\":\"x64\"}]}"
+        }
+      ]
+    },
+    {
+      "name": "сервер: 503, затем 401",
+      "token": "tok-4",
+      "setup": [{"file":"user/telemetry.json","utf8":"{\"schemaVersion\":1,\"enabled\":true,\"source\":\"user\"}"}],
+      "routes": {"POST /v1/telemetry/batch":[{"status":503},{"status":401,"json":{"error":"unauthorized"}}]},
+      "steps": [{"op":"appStart"},{"op":"snapshot"},{"op":"advance","ms":20000},{"op":"launcherHeartbeat"},{"op":"snapshot"},{"op":"advance","ms":15000},{"op":"launcherHeartbeat"},{"op":"snapshot"},{"op":"files"},{"op":"reportUninstall"},{"op":"flush"},{"op":"files"}],
+      "results": [
+        {"result":null,"logs":[["info","[telemetry] включена, установка 00000000…"]]},
+        {"result":{"backendConfigured":true,"enabled":true,"hasIdentity":true,"installationIdPrefix":"00000000","launcherSessionActive":true,"gameSessionsActive":0,"queue":{"queued":1,"failures":1,"nextAttemptInMs":22500,"sent":0,"accepted":0,"dropped":0,"lastError":"HTTP_503","lastSentAt":null}},"logs":[]},
+        {"result":null,"logs":[]},
+        {"result":null,"logs":[]},
+        {"result":{"backendConfigured":true,"enabled":true,"hasIdentity":true,"installationIdPrefix":"00000000","launcherSessionActive":true,"gameSessionsActive":0,"queue":{"queued":2,"failures":1,"nextAttemptInMs":2500,"sent":0,"accepted":0,"dropped":0,"lastError":"HTTP_503","lastSentAt":null}},"logs":[]},
+        {"result":null,"logs":[]},
+        {"result":null,"logs":[["warn","[telemetry] сервер отклонил 3 событий (HTTP 401), очередь очищена"]]},
+        {"result":{"backendConfigured":true,"enabled":true,"hasIdentity":true,"installationIdPrefix":"00000000","launcherSessionActive":true,"gameSessionsActive":0,"queue":{"queued":0,"failures":2,"nextAttemptInMs":74970,"sent":0,"accepted":0,"dropped":3,"lastError":"HTTP_401","lastSentAt":null}},"logs":[]},
+        {
+          "result": {
+            "user/telemetry-identity.json": "{\n  \"schemaVersion\": 1,\n  \"installationId\": \"00000000-0000-4000-8000-000000000001\",\n  \"createdAt\": \"2026-10-16T12:00:00.000Z\"\n}\n",
+            "user/telemetry-queue.jsonl": "",
+            "user/telemetry-session-marker.json": "{\n  \"schemaVersion\": 1,\n  \"sessionId\": \"00000000-0000-4000-8000-000000000002\",\n  \"openedAt\": \"2026-10-16T12:00:00.000Z\",\n  \"touchedAt\": \"2026-10-16T12:00:35.000Z\"\n}\n",
+            "user/telemetry.json": "{\"schemaVersion\":1,\"enabled\":true,\"source\":\"user\"}"
+          },
+          "logs": []
+        },
+        {"result":true,"logs":[]},
+        {"result":null,"logs":[]},
+        {
+          "result": {
+            "user/telemetry-identity.json": "{\n  \"schemaVersion\": 1,\n  \"installationId\": \"00000000-0000-4000-8000-000000000001\",\n  \"createdAt\": \"2026-10-16T12:00:00.000Z\"\n}\n",
+            "user/telemetry-queue.jsonl": "{\"schemaVersion\":1,\"eventId\":\"00000000-0000-4000-8000-000000000006\",\"installationId\":\"00000000-0000-4000-8000-000000000001\",\"sessionId\":null,\"type\":\"launcher_uninstall_initiated\",\"occurredAt\":\"2026-10-16T12:00:35.000Z\",\"launcherVersion\":\"0.5.0\",\"locale\":\"ru\",\"windowsMajor\":\"unknown\",\"windowsArch\":\"x64\"}\n",
+            "user/telemetry-session-marker.json": "{\n  \"schemaVersion\": 1,\n  \"sessionId\": \"00000000-0000-4000-8000-000000000002\",\n  \"openedAt\": \"2026-10-16T12:00:00.000Z\",\n  \"touchedAt\": \"2026-10-16T12:00:35.000Z\"\n}\n",
+            "user/telemetry.json": "{\"schemaVersion\":1,\"enabled\":true,\"source\":\"user\"}"
+          },
+          "logs": []
+        }
+      ],
+      "journal": [
+        {
+          "server": "api",
+          "method": "POST",
+          "path": "/v1/telemetry/batch",
+          "query": "",
+          "headers": {"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity","authorization":"Bearer tok-4","content-type":"application/json","content-length":"365"},
+          "body": "{\"schemaVersion\":1,\"events\":[{\"schemaVersion\":1,\"eventId\":\"00000000-0000-4000-8000-000000000003\",\"installationId\":\"00000000-0000-4000-8000-000000000001\",\"sessionId\":\"00000000-0000-4000-8000-000000000002\",\"type\":\"launcher_session_started\",\"occurredAt\":\"2026-10-16T12:00:00.000Z\",\"launcherVersion\":\"0.5.0\",\"locale\":\"ru\",\"windowsMajor\":\"unknown\",\"windowsArch\":\"x64\"}]}"
+        },
+        {
+          "server": "api",
+          "method": "POST",
+          "path": "/v1/telemetry/batch",
+          "query": "",
+          "headers": {"user-agent":"HLSR-Launcher/0.5.0","accept":"application/json","accept-encoding":"identity","authorization":"Bearer tok-4","content-type":"application/json","content-length":"1023"},
+          "body": "{\"schemaVersion\":1,\"events\":[{\"schemaVersion\":1,\"eventId\":\"00000000-0000-4000-8000-000000000003\",\"installationId\":\"00000000-0000-4000-8000-000000000001\",\"sessionId\":\"00000000-0000-4000-8000-000000000002\",\"type\":\"launcher_session_started\",\"occurredAt\":\"2026-10-16T12:00:00.000Z\",\"launcherVersion\":\"0.5.0\",\"locale\":\"ru\",\"windowsMajor\":\"unknown\",\"windowsArch\":\"x64\"},{\"schemaVersion\":1,\"eventId\":\"00000000-0000-4000-8000-000000000004\",\"installationId\":\"00000000-0000-4000-8000-000000000001\",\"sessionId\":\"00000000-0000-4000-8000-000000000002\",\"type\":\"launcher_heartbeat\",\"occurredAt\":\"2026-10-16T12:00:20.000Z\",\"launcherVersion\":\"0.5.0\",\"locale\":\"ru\",\"windowsMajor\":\"unknown\",\"windowsArch\":\"x64\"},{\"schemaVersion\":1,\"eventId\":\"00000000-0000-4000-8000-000000000005\",\"installationId\":\"00000000-0000-4000-8000-000000000001\",\"sessionId\":\"00000000-0000-4000-8000-000000000002\",\"type\":\"launcher_heartbeat\",\"occurredAt\":\"2026-10-16T12:00:35.000Z\",\"launcherVersion\":\"0.5.0\",\"locale\":\"ru\",\"windowsMajor\":\"unknown\",\"windowsArch\":\"x64\"}]}"
+        }
+      ]
+    },
+    {
+      "name": "бэкенд не настроен",
+      "token": "tok-5",
+      "backendConfigured": false,
+      "setup": [{"file":"user/telemetry.json","utf8":"{\"schemaVersion\":1,\"enabled\":true,\"source\":\"user\"}"},{"file":"user/telemetry-session-marker.json","utf8":"{\"schemaVersion\":1,\"sessionId\":\"11111111-1111-4111-8111-111111111111\",\"openedAt\":\"2026-10-16T10:00:00.000Z\",\"touchedAt\":\"2026-10-16T11:30:00.000Z\"}"}],
+      "routes": {},
+      "steps": [{"op":"appStart"},{"op":"snapshot"},{"op":"emit","type":"game_repair_started","fields":{"gameId":"x","gameVersion":"1"}},{"op":"files"}],
+      "results": [
+        {"result":null,"logs":[]},
+        {"result":{"backendConfigured":false,"enabled":false,"hasIdentity":false,"installationIdPrefix":null,"launcherSessionActive":false,"gameSessionsActive":0,"queue":{"queued":0,"failures":0,"nextAttemptInMs":0,"sent":0,"accepted":0,"dropped":0,"lastError":null,"lastSentAt":null}},"logs":[]},
+        {"result":false,"logs":[]},
+        {"result":{"user/telemetry.json":"{\"schemaVersion\":1,\"enabled\":true,\"source\":\"user\"}"},"logs":[]}
+      ],
+      "journal": []
+    }
+  ]
+}

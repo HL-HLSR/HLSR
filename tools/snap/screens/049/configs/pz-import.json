@@ -1,0 +1,97 @@
+{
+  "id": "configs/pz-import",
+  "state": "Ghosting: «Код настроек» — вставлен код с модом Condensed HUD: мод включён, вид в черновике, раздел «Цвет и прицел», заметка «Код импортирован»",
+  "base": "configs/_pz",
+  "invoke": {
+    "game-personalization-code-import": {
+      "status": "ok",
+      "look": {
+        "personalization": {
+          "hudEnabled": true,
+          "hudColor": {
+            "r": 0,
+            "g": 255,
+            "b": 255
+          },
+          "hudAlpha": -1,
+          "hudAffectsCrosshair": false,
+          "hideQuickInfo": false,
+          "crossPreset": "custom",
+          "crossEnabled": false,
+          "crossColor": {
+            "r": 0,
+            "g": 255,
+            "b": 0
+          },
+          "crossAlpha": 255,
+          "crossThickness": 2,
+          "crossSize": 10,
+          "crossGap": 3,
+          "crossOutline": false,
+          "crossOutlineThickness": 1,
+          "crossCircleRadius": 0,
+          "crossDotColor": null,
+          "crossDotSize": 0,
+          "crossTopLine": true,
+          "crossBottomLine": true,
+          "crossLeftLine": true,
+          "crossRightLine": true,
+          "crossHideDefault": true,
+          "extra": {
+            "viewmodel_fov": 76
+          }
+        }
+      },
+      "mods": {
+        "condensed-hud": true
+      }
+    },
+    "custom-packs-set": {
+      "status": "ok",
+      "packs": [
+        {
+          "id": "condensed-hud",
+          "game": "ghosting-renewed",
+          "kind": "hud",
+          "enabled": true,
+          "available": true
+        }
+      ]
+    }
+  },
+  "steps": [
+    {
+      "click": {
+        "css": ".launcher-topbar__tab:nth-child(3)",
+        "view": "topbar-tab-configs"
+      }
+    },
+    {
+      "click": {
+        "css": "#gx-tab-settings-code",
+        "view": "gx-tab-settings-code"
+      }
+    },
+    {
+      "click": {
+        "css": "#look-code-import-218",
+        "view": "look-code-field"
+      }
+    },
+    {
+      "type": "HLSR-P1.218.code.0000"
+    },
+    {
+      "click": {
+        "css": ".look-code__button.is-primary",
+        "view": "look-code-import"
+      }
+    },
+    {
+      "move": [
+        800,
+        880
+      ]
+    }
+  ]
+}

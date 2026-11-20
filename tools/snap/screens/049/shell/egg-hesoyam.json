@@ -1,0 +1,12 @@
+{
+  "id": "shell/egg-hesoyam",
+  "screen": "shell",
+  "state": "HESOYAM набран в главном окне: плашка «Чит активирован» под кнопкой «Закрыть», достижение hesoyam",
+  "themes": ["hlsr"],
+  "languages": ["ru"],
+  "prefs": {"configTourSeen": true},
+  "rails": ["closed", "open"],
+  "steps": [
+    {"key": "H"}, {"key": "E"}, {"key": "S"}, {"key": "O"}, {"key": "Y"}, {"key": "A"}, {"key": "M"}
+  ]
+}

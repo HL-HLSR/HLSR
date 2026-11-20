@@ -1,0 +1,18 @@
+{
+  "id": "configs/tour-demos",
+  "state": "Обучение Ghosting по «?», шаг 9 из 10: «Демо» в списке слева",
+  "base": "configs/_base",
+  "steps": [
+    {"click": {"css": ".launcher-topbar__tab:nth-child(3)", "view": "topbar-tab-configs"}},
+    {"click": {"css": ".cfgp__help", "view": "cfgp-help"}},
+    {"click": {"css": ".tour__btn.primary", "view": "tour-next"}},
+    {"click": {"css": ".tour__btn.primary", "view": "tour-next"}},
+    {"click": {"css": ".tour__btn.primary", "view": "tour-next"}},
+    {"click": {"css": ".tour__btn.primary", "view": "tour-next"}},
+    {"click": {"css": ".tour__btn.primary", "view": "tour-next"}},
+    {"click": {"css": ".tour__btn.primary", "view": "tour-next"}},
+    {"click": {"css": ".tour__btn.primary", "view": "tour-next"}},
+    {"click": {"css": ".tour__btn.primary", "view": "tour-next"}},
+    {"move": [800, 880]}
+  ]
+}

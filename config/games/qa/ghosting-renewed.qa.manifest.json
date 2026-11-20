@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "gameId": "ghosting-renewed",
+  "channel": "test",
+  "version": "1.0.1",
+  "versionStatus": "assigned",
+  "publishedAt": null,
+  "minimumLauncherVersion": "0.2.10",
+  "expectedInstalledSize": 4514762251,
+  "preservePaths": [
+    "ghostingmod/SAVE",
+    "ghostingmod/runs",
+    "ghostingmod/screenshots",
+    "ghostingmod/custom",
+    "ghostingmod/cfg/config.cfg",
+    "ghostingmod/cfg/user"
+  ],
+  "baseArchive": {
+    "filename": "ghosting-renewed-1.0.1.7z",
+    "size": 1741339987,
+    "sha256": "d29892e054bc56728fefcd0c753581ac52efe79ebe7de84197c5c1a9c30d6a9b",
+    "rootPrefix": "Ghosting Mod Renewed",
+    "providers": [
+      {
+        "id": "timeweb-qa",
+        "type": "https-direct",
+        "status": "temporary",
+        "priority": 10,
+        "url": "https://hlsr.pro/downloads/ghosting-renewed/qa/1.0.1/ghosting-renewed-1.0.1.7z"
+      }
+    ]
+  },
+  "filesManifest": {
+    "requiredFiles": [
+      "hl2.exe",
+      "hl2/gameinfo.txt",
+      "ghostingmod/gameinfo.txt",
+      "steam_appid.txt"
+    ],
+    "maxEntries": 8000,
+    "maxUncompressedSize": 6000000000,
+    "entriesSha256": "0bd0f989156fd99fcb112f094aed54b3614070acc28a903bb9994890aa85b69f"
+  },
+  "patches": [],
+  "enabled": false,
+  "notes": "QA-манифест изолированного тестового канала. В приложение НЕ попадает: webpack его не собирает, лаунчер читает файл только в QA-режиме по абсолютному пути из HLSR_GAME_DELIVERY_QA_MANIFEST. Отличается от боевого только источником — каталог /downloads/ghosting-renewed/qa/1.0.1/, куда публикуется тестовая копия 1.0.1. Байты архива и все контрольные суммы те же, что у боевого 1.0.1: QA проверяет доставку, а не другую сборку. enabled остаётся false — QA-режим включает копию в памяти."
+}

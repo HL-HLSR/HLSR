@@ -1,0 +1,1445 @@
+{
+  "big": 20000,
+  "cases": [
+    {
+      "name": "файл без имени и с другим регистром ключа",
+      "engine": "goldsrc",
+      "root": {"name":"main.cfg","text":"exec a.cfg\nexec B.cfg\n"},
+      "files": {"a.cfg":{"text":"bind a +use\n"},"B.cfg":{"name":"","text":"bind b +use\n"}},
+      "missing": [],
+      "flat": {"text":"// ===== from a.cfg =====\nbind a +use\n\nexec B.cfg\n","runtimeFiles":[],"report":{"files":[],"missing":[],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},"bytes":50,"summary":{"binds":1,"cvars":0,"aliases":0,"unknown":0,"files":2}}
+    },
+    {
+      "name": "два файла с одним текстом",
+      "engine": "goldsrc",
+      "root": {"name":"main.cfg","text":"exec a.cfg\nexec b.cfg\nexec c.cfg\n"},
+      "files": {"a.cfg":{"name":"a.cfg","text":"x 1\n"},"b.cfg":{"name":"b.cfg","text":"x 1\r\n"},"c.cfg":{"name":"c.cfg","text":"x 1\n"}},
+      "missing": ["Z.cfg","z.cfg"],
+      "flat": {"text":"// ===== from a.cfg =====\nx 1\n\n// ===== from b.cfg =====\nx 1\n\n// ===== from c.cfg =====\nx 1\n\n","runtimeFiles":[],"report":{"files":["a.cfg","b.cfg","c.cfg"],"missing":["z.cfg"],"cycles":[],"duplicateFiles":[["a.cfg","c.cfg"]],"duplicates":[],"unsafe":[]},"bytes":93,"summary":{"binds":0,"cvars":3,"aliases":0,"unknown":0,"files":3}}
+    },
+    {
+      "name": "файл не из цепочки",
+      "engine": "goldsrc",
+      "root": {"name":"main.cfg","text":"exec a.cfg\n"},
+      "files": {"a.cfg":{"name":"a.cfg","text":""},"extra.cfg":{"name":"extra.cfg","text":"bind e +use\n"}},
+      "missing": [],
+      "flat": {"text":"// ===== from a.cfg =====\n\n","runtimeFiles":[],"report":{"files":["a.cfg","extra.cfg"],"missing":[],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},"bytes":27,"summary":{"binds":0,"cvars":0,"aliases":0,"unknown":0,"files":2}}
+    },
+    {
+      "name": "корень совпадает с файлом по имени",
+      "engine": "goldsrc",
+      "root": {"name":"A.cfg","text":"exec a.cfg\nbind r +use\n"},
+      "files": {"a.cfg":{"name":"a.cfg","text":"bind a +use\nexec A.cfg\n"}},
+      "missing": [],
+      "flat": {"text":"// HLSR: exec a.cfg skipped (cycle)\nbind r +use\n","runtimeFiles":[],"report":{"files":["a.cfg"],"missing":[],"cycles":[["a.cfg","a.cfg"]],"duplicateFiles":[],"duplicates":[],"unsafe":[]},"bytes":48,"summary":{"binds":1,"cvars":0,"aliases":0,"unknown":0,"files":1}}
+    },
+    {
+      "name": "системный файл выбран игроком",
+      "engine": "goldsrc",
+      "root": {"name":"main.cfg","text":"exec config.cfg\nexec valve.rc\nexec game.cfg\n"},
+      "files": {"config.cfg":{"name":"config.cfg","text":"bind c +use\nexec userconfig.cfg\n"}},
+      "missing": [],
+      "flat": {"text":"// HLSR: exec config.cfg\n// HLSR: exec valve.rc\n// HLSR: exec game.cfg\n","runtimeFiles":[],"report":{"files":["config.cfg"],"missing":[],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},"bytes":71,"summary":{"binds":0,"cvars":0,"aliases":0,"unknown":0,"files":1}}
+    },
+    {
+      "name": "цель переименована в безопасное имя",
+      "engine": "goldsrc",
+      "root": {"name":"main.cfg","text":"exec \"my file.cfg\"\nexec my file.cfg\nbind q \"exec my file.cfg\"\nexec MY FILE.CFG\n"},
+      "files": {"my file.cfg":{"name":"My File.cfg","target":"player-2.cfg","text":"bind m +use\n"}},
+      "missing": [],
+      "flat": {"text":"// ===== from my file.cfg =====\nbind m +use\n\nexec my file.cfg\nbind q \"exec my file.cfg\"\nexec MY FILE.CFG\n","runtimeFiles":[],"report":{"files":["My File.cfg"],"missing":[],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},"bytes":105,"summary":{"binds":2,"cvars":0,"aliases":0,"unknown":0,"files":1}}
+    },
+    {
+      "name": "невыбранный userconfig и autoexec",
+      "engine": "goldsrc",
+      "root": {"name":"main.cfg","text":"exec userconfig.cfg\nexec autoexec.cfg; echo x\nexec skipped.cfg\nexec other.cfg\n"},
+      "files": {},
+      "missing": ["SKIPPED.cfg"],
+      "flat": {"text":"// HLSR: exec userconfig.cfg skipped (not imported)\nexec autoexec.cfg; echo x\n// HLSR: exec skipped.cfg skipped (not imported)\nexec other.cfg\n","runtimeFiles":[],"report":{"files":[],"missing":["skipped.cfg"],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},"bytes":142,"summary":{"binds":0,"cvars":1,"aliases":0,"unknown":0,"files":0}}
+    },
+    {
+      "name": "Source: расширение дописывается",
+      "engine": "source",
+      "root": {"name":"main.cfg","text":"exec jump\nexec scripts/run\nexec autoexec\n"},
+      "files": {"jump.cfg":{"name":"jump.cfg","text":"bind j +jump\n"}},
+      "missing": [],
+      "flat": {"text":"// ===== from jump.cfg =====\nbind j +jump\n\nexec scripts/run\n// HLSR: exec autoexec.cfg skipped (not imported)\n","runtimeFiles":[],"report":{"files":["jump.cfg"],"missing":[],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},"bytes":110,"summary":{"binds":1,"cvars":0,"aliases":0,"unknown":0,"files":1}}
+    },
+    {
+      "name": "раскрытие до предела команд",
+      "engine": "goldsrc",
+      "root": {
+        "name": "main.cfg",
+        "text": "exec f0.cfg\nexec f1.cfg\nexec f2.cfg\nexec f0.cfg\nexec f1.cfg\nexec f2.cfg\nexec f0.cfg\nexec f1.cfg\nexec f2.cfg\nexec f0.cfg\nexec f1.cfg\nexec f2.cfg\nexec f0.cfg\nexec f1.cfg\nexec f2.cfg\nexec f0.cfg\nexec f1.cfg\nexec f2.cfg\nexec f0.cfg\nexec f1.cfg\nexec f2.cfg\nexec f0.cfg\nexec f1.cfg\nexec f2.cfg\nexec f0.cfg\nexec f1.cfg\nexec f2.cfg\nexec f0.cfg\nexec f1.cfg\nexec f2.cfg"
+      },
+      "files": {
+        "f0.cfg": {
+          "name": "f0.cfg",
+          "text": "exec f1.cfg\nexec f1.cfg\nexec f1.cfg\nexec f1.cfg\nexec f1.cfg\nexec f1.cfg\nexec f1.cfg\nexec f1.cfg\nexec f1.cfg\nexec f1.cfg\nexec f1.cfg\nexec f1.cfg\nexec f1.cfg\nexec f1.cfg\nexec f1.cfg\nexec f1.cfg\nexec f1.cfg\nexec f1.cfg\nexec f1.cfg\nexec f1.cfg\nexec f1.cfg\nexec f1.cfg\nexec f1.cfg\nexec f1.cfg\nexec f1.cfg\nexec f1.cfg\nexec f1.cfg\nexec f1.cfg\nexec f1.cfg\nexec f1.cfg"
+        },
+        "f1.cfg": {
+          "name": "f1.cfg",
+          "text": "exec f2.cfg\nexec f2.cfg\nexec f2.cfg\nexec f2.cfg\nexec f2.cfg\nexec f2.cfg\nexec f2.cfg\nexec f2.cfg\nexec f2.cfg\nexec f2.cfg\nexec f2.cfg\nexec f2.cfg\nexec f2.cfg\nexec f2.cfg\nexec f2.cfg\nexec f2.cfg\nexec f2.cfg\nexec f2.cfg\nexec f2.cfg\nexec f2.cfg\nexec f2.cfg\nexec f2.cfg\nexec f2.cfg\nexec f2.cfg\nexec f2.cfg\nexec f2.cfg\nexec f2.cfg\nexec f2.cfg\nexec f2.cfg\nexec f2.cfg"
+        },
+        "f2.cfg": {"name":"f2.cfg","text":"cvar0 0\ncvar1 1\ncvar2 2\ncvar3 3\ncvar4 4\ncvar5 5\ncvar6 6\ncvar7 7\ncvar8 8\ncvar9 9\ncvar10 10\ncvar11 11\ncvar12 12\ncvar13 13\ncvar14 14\ncvar15 15\ncvar16 16\ncvar17 17\ncvar18 18\ncvar19 19\ncvar20 20\ncvar21 21\ncvar22 22\ncvar23 23\ncvar24 24\ncvar25 25\ncvar26 26\ncvar27 27\ncvar28 28\ncvar29 29"}
+      },
+      "missing": [],
+      "flat": {"text":{"length":2866809,"sha256":"93a4a465b3edca256be066ed3b84f51e90dcfe58da4a2c04712509d141445456"},"runtimeFiles":[],"report":{"files":["f0.cfg","f1.cfg","f2.cfg"],"missing":[],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},"bytes":2866809,"summary":{"binds":0,"cvars":279300,"aliases":0,"unknown":0,"files":3}}
+    },
+    {
+      "name": "переименованный файл в exec: соседи, пробелы, кавычки",
+      "engine": "goldsrc",
+      "root": {
+        "name": "main.cfg",
+        "text": "exec \"my+file.cfg\"\r\néexec \"my+file.cfg\"\r\n_exec \"my+file.cfg\"\r\nxexec \"my+file.cfg\"\r\nEXEC   \"my+file.cfg\"\r\nexec\t\"my+file.cfg\"\r\nexec \"my+file.cfg\"\r\nexec \"my+file.cfg\"\r\nsay exec \"my+file.cfg\"\r\nbind q \"exec \\\"my+file.cfg\\\"\"\r\nexec \"my+file.cfg\r\nexec my+file.cfg\"\r\nexec \"\"my+file.cfg\"\"\r\nalias z \"exec 'my+file.cfg'\"\r\nexec \"MY+FILE.CFG\"; exec \"my+file.cfg\"\r\nexec \"my+file.cfg\"extra\r\nexec my+file.cfg\r\nalias go \"exec my+file.cfg; echo 1\"\r\nbind w \"exec \\u0131 my+file.cfg\"\r\nſexec \"my+file.cfg\"\r\nexеc \"my+file.cfg\"\r\nExec \"My+File.cfg\" // exec \"my+file.cfg\"\r\nexec  \t \"my+file.cfg\" ;exec my+file.cfg;;exec \"my+file.cfg\"\r\necho exec my+file.cfg\r\nexec \"a;b.cfg\"\r\nexec \"my+file.cfg\" \"my+file.cfg\""
+      },
+      "files": {"my+file.cfg":{"name":"My+File.cfg","text":"bind m +use\r\n"}},
+      "missing": [],
+      "flat": {
+        "text": "// ===== from my+file.cfg =====\nbind m +use\n\néexec \"my+file.cfg\"\n_exec \"my+file.cfg\"\nxexec \"my+file.cfg\"\n// ===== from my+file.cfg =====\nbind m +use\n\n// ===== from my+file.cfg =====\nbind m +use\n\n// ===== from my+file.cfg =====\nbind m +use\n\n// ===== from my+file.cfg =====\nbind m +use\n\nsay exec \"my+file.cfg\"\nbind q \"exec \\\"my+file.cfg\\\"\"\n// ===== from my+file.cfg =====\nbind m +use\n\n// ===== from my+file.cfg =====\nbind m +use\n\nexec \"\"my+file.cfg\"\"\nalias z \"exec 'my+file.cfg'\"\nexec \"MY+FILE.CFG\"; exec \"my+file.cfg\"\nexec \"my+file.cfg\"extra\n// ===== from my+file.cfg =====\nbind m +use\n\nalias go \"exec my+file.cfg; echo 1\"\nbind w \"exec \\u0131 my+file.cfg\"\nſexec \"my+file.cfg\"\nexеc \"my+file.cfg\"\n// ===== from My+File.cfg =====\nbind m +use\n\nexec  \t \"my+file.cfg\" ;exec my+file.cfg;;exec \"my+file.cfg\"\necho exec my+file.cfg\nexec \"a;b.cfg\"\nexec \"my+file.cfg\" \"my+file.cfg\"",
+        "runtimeFiles": [],
+        "report": {"files":["My+File.cfg"],"missing":[],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":["my+file.cfg"]},
+        "bytes": 868,
+        "summary": {"binds":11,"cvars":7,"aliases":2,"unknown":0,"files":1}
+      }
+    },
+    {
+      "name": "символы выше U+00FF в тексте",
+      "engine": "goldsrc",
+      "root": {"name":"main.cfg","text":"say привет\nexec a.cfg\nbind ф +use\n"},
+      "files": {"a.cfg":{"name":"a.cfg","text":"say 😀\n"}},
+      "missing": [],
+      "flat": {"text":"say привет\n// ===== from a.cfg =====\nsay 😀\n\nbind ф +use\n","runtimeFiles":[],"report":{"files":["a.cfg"],"missing":[],"cycles":[],"duplicateFiles":[],"duplicates":[{"kind":"cvar","name":"say","files":["main.cfg","a.cfg"],"value":"😀"}],"unsafe":[]},"bytes":57,"summary":{"binds":1,"cvars":2,"aliases":0,"unknown":0,"files":1}}
+    },
+    {
+      "name": "BOM, UTF-16 и NUL",
+      "engine": "goldsrc",
+      "root": {"name":"main.cfg","text":"ï»¿exec a.cfg\n\u0000bind a +use\u0007\n"},
+      "files": {"a.cfg":{"name":"a.cfg","text":"ÿþb\u0000i\u0000n\u0000d\u0000 \u0000x\u0000 \u0000y\u0000"}},
+      "missing": [],
+      "flat": {"text":"// ===== from a.cfg =====\nbind x y\nbind a +use\n","runtimeFiles":[],"report":{"files":["a.cfg"],"missing":[],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},"bytes":47,"summary":{"binds":2,"cvars":0,"aliases":0,"unknown":0,"files":1}}
+    },
+    {
+      "name": "exec внутри кавычек и после комментария",
+      "engine": "goldsrc",
+      "root": {"name":"main.cfg","text":"say \"exec a.cfg\"\n// exec b.cfg\nalias g \"exec c.cfg\" // exec d.cfg\n"},
+      "files": {"a.cfg":{"name":"a.cfg","text":"x\n"},"c.cfg":{"name":"c.cfg","text":"y\n"}},
+      "missing": [],
+      "flat": {"text":"say \"exec a.cfg\"\n// exec b.cfg\nalias g \"exec c.cfg\" // exec d.cfg\n","runtimeFiles":[{"file":"c.cfg","text":"y\n"}],"report":{"files":["a.cfg","c.cfg"],"missing":[],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},"bytes":68,"summary":{"binds":0,"cvars":1,"aliases":1,"unknown":0,"files":3}}
+    },
+    {
+      "name": "цепочка exec спрашивает каждый файл по разу",
+      "engine": "goldsrc",
+      "root": {"name":"main.cfg","text":"exec \"binds.cfg\"\r\nalias +x \"exec scripts/run.cfg\"\r\nexec config.cfg\r\nexec binds.cfg\r\n"},
+      "files": {"binds.cfg":{"name":"Binds.cfg","text":"exec more.cfg\nbind k +jump"},"scripts/run.cfg":{"name":"run.cfg","text":"+jump"},"more.cfg":{"name":"more.cfg","text":"echo more\n"}},
+      "missing": [],
+      "flat": {
+        "text": "// ===== from binds.cfg =====\n// ===== from more.cfg =====\necho more\n\nbind k +jump\nalias +x \"exec scripts/run.cfg\"\n// HLSR: exec config.cfg\n// ===== from binds.cfg =====\n// ===== from more.cfg =====\necho more\n\nbind k +jump\n",
+        "runtimeFiles": [{"file":"scripts/run.cfg","text":"+jump"}],
+        "report": {"files":["Binds.cfg","run.cfg","more.cfg"],"missing":[],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},
+        "bytes": 228,
+        "summary": {"binds":2,"cvars":2,"aliases":1,"unknown":0,"files":4}
+      }
+    },
+    {
+      "name": "цикл exec отключён, повторы в отчёте",
+      "engine": "goldsrc",
+      "root": {"name":"main.cfg","text":"fps_max 100\nexec a.cfg\nexec b.cfg\nbind f +use\nalias go \"exec a.cfg\"\n"},
+      "files": {"a.cfg":{"name":"a.cfg","text":"bind f +attack\nexec main.cfg\nfps_max 250\n"},"b.cfg":{"name":"b.cfg","text":"bind f +attack\nexec main.cfg\nfps_max 250\n"}},
+      "missing": [],
+      "flat": {
+        "text": "fps_max 100\n// ===== from a.cfg =====\nbind f +attack\n// HLSR: exec main.cfg skipped (cycle)\nfps_max 250\n\n// ===== from b.cfg =====\nbind f +attack\n// HLSR: exec main.cfg skipped (cycle)\nfps_max 250\n\nbind f +use\nalias go \"exec a.cfg\"\n",
+        "runtimeFiles": [{"file":"a.cfg","text":"bind f +attack\nexec main.cfg\nfps_max 250\n"}],
+        "report": {"files":["a.cfg","b.cfg"],"missing":[],"cycles":[["a.cfg","main.cfg"],["b.cfg","main.cfg"]],"duplicateFiles":[["a.cfg","b.cfg"]],"duplicates":[{"kind":"cvar","name":"fps_max","files":["main.cfg","a.cfg","b.cfg"],"value":"250"},{"kind":"bind","name":"f","files":["a.cfg","b.cfg","main.cfg"],"value":"+use"}],"unsafe":[]},
+        "bytes": 273,
+        "summary": {"binds":3,"cvars":3,"aliases":1,"unknown":0,"files":3}
+      }
+    },
+    {
+      "name": "импорт с цепочкой и другим регистром",
+      "engine": "goldsrc",
+      "root": {"name":"main.cfg","text":"exec scripts/Jump.cfg\nbind n go\n"},
+      "files": {"scripts/jump.cfg":{"name":"Jump.cfg","text":"alias go +jump\nbind j +jump\n"}},
+      "missing": [],
+      "flat": {"text":"// ===== from scripts/Jump.cfg =====\nalias go +jump\nbind j +jump\n\nbind n go\n","runtimeFiles":[],"report":{"files":["Jump.cfg"],"missing":[],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},"bytes":76,"summary":{"binds":2,"cvars":0,"aliases":1,"unknown":0,"files":1}}
+    },
+    {
+      "name": "userconfig.cfg игрока из config.cfg",
+      "engine": "goldsrc",
+      "root": {"name":"config.cfg","text":"unbindall\r\nbind \"t\" \"exec userconfig.cfg; say Tero0\"\r\nbind \"-\" \"p2pre\"\r\nexec userconfig.cfg\r\n"},
+      "files": {"userconfig.cfg":{"name":"userconfig.cfg","text":"alias p2pre \"say pre\"\r\nexec config.cfg; echo after\r\n"}},
+      "missing": [],
+      "flat": {
+        "text": "unbindall\nbind \"t\" \"exec userconfig.cfg; say Tero0\"\nbind \"-\" \"p2pre\"\n// ===== from userconfig.cfg =====\nalias p2pre \"say pre\"\n echo after // HLSR: exec config.cfg\n\n",
+        "runtimeFiles": [],
+        "report": {"files":["userconfig.cfg"],"missing":[],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},
+        "bytes": 164,
+        "summary": {"binds":2,"cvars":1,"aliases":1,"unknown":0,"files":1}
+      }
+    },
+    {
+      "name": "без userconfig.cfg игрока",
+      "engine": "goldsrc",
+      "root": {"name":"config.cfg","text":"unbindall\r\nbind \"t\" \"exec userconfig.cfg; say Tero0\"\r\nbind \"-\" \"p2pre\"\r\nexec userconfig.cfg\r\n"},
+      "files": {},
+      "missing": ["userconfig.cfg"],
+      "flat": {"text":"unbindall\nbind \"t\" \"exec userconfig.cfg; say Tero0\"\nbind \"-\" \"p2pre\"\n// HLSR: exec userconfig.cfg skipped (not imported)\n","runtimeFiles":[],"report":{"files":[],"missing":["userconfig.cfg"],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},"bytes":121,"summary":{"binds":2,"cvars":0,"aliases":0,"unknown":0,"files":0}}
+    },
+    {
+      "name": "повторный импорт hlsr-import.cfg",
+      "engine": "goldsrc",
+      "root": {"name":"hlsr-import.cfg","text":"// Imported by HLSR Launcher\r\nexec hlsr-import-jump.cfg\r\nexec hlsr-binds.cfg\r\n"},
+      "files": {"hlsr-import-jump.cfg":{"name":"hlsr-import-jump.cfg","text":"bind j +jump\r\n"}},
+      "missing": [],
+      "flat": {"text":"// Imported by HLSR Launcher\n// ===== from hlsr-import-jump.cfg =====\nbind j +jump\n\n// HLSR: exec hlsr-binds.cfg\n","runtimeFiles":[],"report":{"files":["hlsr-import-jump.cfg"],"missing":[],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},"bytes":113,"summary":{"binds":1,"cvars":0,"aliases":0,"unknown":0,"files":1}}
+    },
+    {
+      "name": "несколько файлов, autoexec.cfg и config.cfg",
+      "engine": "goldsrc",
+      "root": {"name":"autoexec.cfg, config.cfg","text":"exec \"autoexec.cfg\"\nexec \"config.cfg\"","virtual":true},
+      "files": {"autoexec.cfg":{"name":"autoexec.cfg","target":"autoexec.cfg","text":"alias a1 \"say a\"\n"},"config.cfg":{"name":"config.cfg","target":"config.cfg","text":"bind q \"exec autoexec.cfg\"\nexec userconfig.cfg\n"}},
+      "missing": ["userconfig.cfg"],
+      "flat": {
+        "text": "// ===== from autoexec.cfg =====\nalias a1 \"say a\"\n\n// ===== from config.cfg =====\nbind q \"exec autoexec.cfg\"\n// HLSR: exec userconfig.cfg skipped (not imported)\n",
+        "runtimeFiles": [],
+        "report": {"files":["autoexec.cfg","config.cfg"],"missing":["userconfig.cfg"],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},
+        "bytes": 161,
+        "summary": {"binds":1,"cvars":0,"aliases":1,"unknown":0,"files":2}
+      }
+    },
+    {
+      "name": "свои файлы подключаются по порядку",
+      "engine": "goldsrc",
+      "root": {"name":"binds.cfg, scripts.cfg","text":"exec \"binds.cfg\"\nexec \"scripts.cfg\"","virtual":true},
+      "files": {"binds.cfg":{"name":"binds.cfg","target":"binds.cfg","text":"bind k +jump\n"},"scripts.cfg":{"name":"scripts.cfg","target":"scripts.cfg","text":"alias x y\n"}},
+      "missing": [],
+      "flat": {"text":"// ===== from binds.cfg =====\nbind k +jump\n\n// ===== from scripts.cfg =====\nalias x y\n","runtimeFiles":[],"report":{"files":["binds.cfg","scripts.cfg"],"missing":[],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},"bytes":86,"summary":{"binds":1,"cvars":0,"aliases":1,"unknown":0,"files":2}}
+    },
+    {
+      "name": "вкладка конфигов: файл цепочки",
+      "engine": "goldsrc",
+      "root": {"name":"my.cfg","text":"sensitivity 2\r\nexec \"mouse.cfg\"\r\nvolume \"abc\"\r\nm_pitch \"-0.022\" // invert\r\nunknown_cvar 5\r\n"},
+      "files": {"mouse.cfg":{"name":"mouse.cfg","text":"sensitivity 99; alias x \"sensitivity 1\"\n"}},
+      "missing": [],
+      "flat": {
+        "text": "sensitivity 2\n// ===== from mouse.cfg =====\nsensitivity 99; alias x \"sensitivity 1\"\n\nvolume \"abc\"\nm_pitch \"-0.022\" // invert\nunknown_cvar 5\n",
+        "runtimeFiles": [],
+        "report": {"files":["mouse.cfg"],"missing":[],"cycles":[],"duplicateFiles":[],"duplicates":[{"kind":"cvar","name":"sensitivity","files":["my.cfg","mouse.cfg"],"value":"99"}],"unsafe":[]},
+        "bytes": 140,
+        "summary": {"binds":0,"cvars":5,"aliases":1,"unknown":0,"files":1}
+      }
+    },
+    {
+      "name": "вкладка конфигов: несколько выбранных",
+      "engine": "goldsrc",
+      "root": {"name":"config.cfg, My Binds.cfg","text":"exec \"config.cfg\"\nexec \"My Binds.cfg\"","virtual":true},
+      "files": {"config.cfg":{"name":"config.cfg","target":"config.cfg","text":"sensitivity 2\nexec extra.cfg\n"},"my binds.cfg":{"name":"My Binds.cfg","target":"My Binds.cfg","text":"sensitivity 4\nbind f \"+use\"\n"}},
+      "missing": ["extra.cfg"],
+      "flat": {
+        "text": "// ===== from config.cfg =====\nsensitivity 2\n// HLSR: exec extra.cfg skipped (not imported)\n\n// ===== from My Binds.cfg =====\nsensitivity 4\nbind f \"+use\"\n",
+        "runtimeFiles": [],
+        "report": {"files":["config.cfg","My Binds.cfg"],"missing":["extra.cfg"],"cycles":[],"duplicateFiles":[],"duplicates":[{"kind":"cvar","name":"sensitivity","files":["config.cfg","My Binds.cfg"],"value":"4"}],"unsafe":[]},
+        "bytes": 154,
+        "summary": {"binds":1,"cvars":2,"aliases":0,"unknown":0,"files":2}
+      }
+    },
+    {
+      "name": "образец конфига",
+      "engine": "goldsrc",
+      "root": {"name":"player.cfg","text":"name prolert\r\nalias \"_taubo\" \"\"\r\nalias \"+tau\" \"+attack2;alias _taubo _taubofunc\"\r\nbind \"mouse4\" \"save oarEnt; bind mouse4 +tau; speak fvox/beep; say TAO\"\r\nalias obboshoot \"+use;w 10;-use;+attack2;+jump;w;-attack2;-jump\"\r\nbind n \"obboshoot\"\r\nexec userconfig.cfg\r\nbind z \"fps_max 20\"\r\n"},
+      "files": {},
+      "missing": ["userconfig.cfg"],
+      "flat": {
+        "text": "name prolert\nalias \"_taubo\" \"\"\nalias \"+tau\" \"+attack2;alias _taubo _taubofunc\"\nbind \"mouse4\" \"save oarEnt; bind mouse4 +tau; speak fvox/beep; say TAO\"\nalias obboshoot \"+use;w 10;-use;+attack2;+jump;w;-attack2;-jump\"\nbind n \"obboshoot\"\n// HLSR: exec userconfig.cfg skipped (not imported)\nbind z \"fps_max 20\"\n",
+        "runtimeFiles": [],
+        "report": {"files":[],"missing":["userconfig.cfg"],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},
+        "bytes": 307,
+        "summary": {"binds":3,"cvars":1,"aliases":3,"unknown":0,"files":0}
+      }
+    },
+    {
+      "name": "образец, Source",
+      "engine": "source",
+      "root": {"name":"autoexec.cfg","text":"exec scripts/run\nexec binds\nbind f \"exec jump\"\n"},
+      "files": {"scripts/run.cfg":{"name":"run.cfg","text":"+jump"}},
+      "missing": ["binds.cfg","jump.cfg"],
+      "flat": {"text":"// ===== from scripts/run.cfg =====\n+jump\n// HLSR: exec binds.cfg skipped (not imported)\nbind f \"exec jump\"\n","runtimeFiles":[],"report":{"files":["run.cfg"],"missing":["binds.cfg","jump.cfg"],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},"bytes":108,"summary":{"binds":1,"cvars":0,"aliases":0,"unknown":1,"files":1}}
+    },
+    {"name":"пустой корень","engine":"goldsrc","root":{"name":"empty.cfg","text":""},"files":{},"missing":[],"flat":{"text":"","runtimeFiles":[],"report":{"files":[],"missing":[],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},"bytes":0,"summary":{"binds":0,"cvars":0,"aliases":0,"unknown":0,"files":0}}},
+    {"name":"корень без расширения","engine":"goldsrc","root":{"name":"my config","text":"exec a.cfg\n"},"files":{},"missing":["a.cfg"],"flat":{"text":"// HLSR: exec a.cfg skipped (not imported)\n","runtimeFiles":[],"report":{"files":[],"missing":["a.cfg"],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},"bytes":43,"summary":{"binds":0,"cvars":0,"aliases":0,"unknown":0,"files":0}}},
+    {
+      "name": "случайная цепочка 0",
+      "engine": "goldsrc",
+      "root": {"name":"a.cfg","text":"exec Ünï.cfg // note\r\nalias go \"exec a.cfg\"\r\nexec \"hlsr-import.cfg\"\r\nbind NOSUCHKEY say hi\r\nunbindall\r\n"},
+      "files": {"ünï.cfg":{"name":"Ünï.cfg","text":"bind e exec x.cfg\r\nexec jump; echo after\r\nalias +x \"exec hlsr-import-x.cfg; say hi\"\r\nexec \"server.cfg\""},"hlsr-import.cfg":{"name":"hlsr-import.cfg","text":"bind e obbo\n// только комментарий\n"}},
+      "missing": [],
+      "flat": {
+        "text": "// ===== from _n_.cfg =====\nbind e exec x.cfg\nexec jump; echo after\nalias +x \"exec hlsr-import-x.cfg; say hi\"\nexec \"server.cfg\"\nalias go \"exec a.cfg\"\n// ===== from hlsr-import.cfg =====\nbind e obbo\n// только комментарий\n\nbind NOSUCHKEY say hi\nunbindall\n",
+        "runtimeFiles": [{"file":"a.cfg","text":"// ===== from _n_.cfg =====\nbind e exec x.cfg\nexec jump; echo after\nalias +x \"exec hlsr-import-x.cfg; say hi\"\nexec \"server.cfg\"\nalias go \"exec a.cfg\"\n// ===== from hlsr-import.cfg =====\nbind e obbo\n// только комментарий\n\nbind NOSUCHKEY say hi\nunbindall\n"}],
+        "report": {"files":["Ünï.cfg","hlsr-import.cfg"],"missing":[],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},
+        "bytes": 506,
+        "summary": {"binds":3,"cvars":1,"aliases":2,"unknown":0,"files":3}
+      }
+    },
+    {
+      "name": "случайная цепочка 1",
+      "engine": "goldsrc",
+      "root": {"name":"userconfig.cfg","text":"EXEC d/e/f/g.cfg\nexec userconfig.cfg // note\n"},
+      "files": {"d/e/f/g.cfg":{"name":"d/e/f/g.cfg","text":"cl_showfps 2\r\nbind MOUSE4 \"exec valve.rc\""}},
+      "missing": [],
+      "flat": {"text":"// ===== from d/e/f/g.cfg =====\ncl_showfps 2\nbind MOUSE4 \"exec valve.rc\"\n// HLSR: exec userconfig.cfg skipped (cycle)\n","runtimeFiles":[],"report":{"files":["d/e/f/g.cfg"],"missing":[],"cycles":[["userconfig.cfg","userconfig.cfg"]],"duplicateFiles":[],"duplicates":[],"unsafe":[]},"bytes":118,"summary":{"binds":1,"cvars":1,"aliases":0,"unknown":0,"files":1}}
+    },
+    {
+      "name": "случайная цепочка 2",
+      "engine": "goldsrc",
+      "root": {"name":"hlsr-binds.cfg","text":"ï»¿exec hlsr-binds.cfg\nexec hlsr-binds.cfg; echo after\nalias +x \"exec d/e/f/g.cfg; say hi\"\nbind SPACE +jump\nalias go \"exec autoexec.cfg\"\nname 3.5\nalias go obbo\n"},
+      "files": {},
+      "missing": [],
+      "flat": {
+        "text": "// HLSR: exec hlsr-binds.cfg\n echo after // HLSR: exec hlsr-binds.cfg\nalias +x \"exec d/e/f/g.cfg; say hi\"\nbind SPACE +jump\nalias go \"exec autoexec.cfg\"\nname 3.5\nalias go obbo\n",
+        "runtimeFiles": [],
+        "report": {"files":[],"missing":[],"cycles":[],"duplicateFiles":[],"duplicates":[{"kind":"alias","name":"go","files":["hlsr-binds.cfg","hlsr-binds.cfg"],"value":"obbo"}],"unsafe":[]},
+        "bytes": 175,
+        "summary": {"binds":1,"cvars":2,"aliases":3,"unknown":0,"files":0}
+      }
+    },
+    {
+      "name": "случайная цепочка 3",
+      "engine": "source",
+      "root": {"name":"a.cfg, scripts/jump.cfg","text":"exec \"a.cfg\"\nexec \"scripts/jump.cfg\"","virtual":true},
+      "files": {
+        "a.cfg": {"name":"a.cfg","target":"a.cfg","text":"bind SPACE impulse 100\nunbindall\nexec \"d/e/f/g.cfg\"\nexec ../evil.cfg // note\n\nexec scripts/jump.cfg"},
+        "scripts/jump.cfg": {"name":"scripts/jump.cfg","target":"scripts/jump.cfg","text":"echo before; exec x y.cfg\nbind f save quick"},
+        "d/e/f/g.cfg": {"name":"d/e/f/g.cfg","text":"exec a.cfg\n// только комментарий\nexec\nexec \"a.cfg\"; echo after\nalias Y obbo\ndefault_fov \"x y\"\nexec \"d/e/f/g.cfg\"\nalias go \"exec scripts/jump.cfg\""}
+      },
+      "missing": ["x.cfg"],
+      "flat": {
+        "text": "// ===== from a.cfg =====\nbind SPACE impulse 100\nunbindall\n// ===== from d/e/f/g.cfg =====\n// HLSR: exec a.cfg skipped (cycle)\n// только комментарий\nexec\nexec \"a.cfg\"; echo after\nalias Y obbo\ndefault_fov \"x y\"\n// HLSR: exec d/e/f/g.cfg skipped (cycle)\nalias go \"exec scripts/jump.cfg\"\nexec ../evil.cfg // note\n\n// ===== from scripts/jump.cfg =====\necho before; exec x y.cfg\nbind f save quick\n// ===== from scripts/jump.cfg =====\necho before; exec x y.cfg\nbind f save quick",
+        "runtimeFiles": [{"file":"scripts/jump.cfg","text":"echo before; exec x y.cfg\nbind f save quick"}],
+        "report": {"files":["a.cfg","scripts/jump.cfg","d/e/f/g.cfg"],"missing":["x.cfg"],"cycles":[["d/e/f/g.cfg","a.cfg"],["d/e/f/g.cfg","d/e/f/g.cfg"]],"duplicateFiles":[],"duplicates":[{"kind":"cvar","name":"echo","files":["d/e/f/g.cfg","scripts/jump.cfg","scripts/jump.cfg"],"value":"before"}],"unsafe":[]},
+        "bytes": 515,
+        "summary": {"binds":3,"cvars":4,"aliases":2,"unknown":0,"files":4}
+      }
+    },
+    {
+      "name": "случайная цепочка 4",
+      "engine": "goldsrc",
+      "root": {"name":"userconfig.cfg","text":"exec server.cfg\r\nexec \"Scripts/Jump.cfg\" extra\r\nalias go exec x.cfg"},
+      "files": {"scripts/jump.cfg":{"name":"scripts/jump.cfg","text":"alias Y fps_max 20\nunbindall\nbind ; \"alias q \\\"exec a.cfg\\\"\"\nunbind SPACE\nalias Y \"exec server.cfg; say hi\"\nbind e +attack; +attack2\n"}},
+      "missing": ["x.cfg"],
+      "flat": {
+        "text": "exec server.cfg\nexec \"Scripts/Jump.cfg\" extra\nalias go exec x.cfg",
+        "runtimeFiles": [],
+        "report": {"files":["scripts/jump.cfg"],"missing":["x.cfg"],"cycles":[],"duplicateFiles":[],"duplicates":[{"kind":"alias","name":"y","files":["scripts/jump.cfg","scripts/jump.cfg"],"value":"exec server.cfg; say hi"}],"unsafe":[]},
+        "bytes": 65,
+        "summary": {"binds":0,"cvars":0,"aliases":1,"unknown":0,"files":1}
+      }
+    },
+    {
+      "name": "случайная цепочка 5",
+      "engine": "goldsrc",
+      "root": {"name":"d/e/f/g.cfg, ../evil.cfg","text":"exec \"g.cfg\"\nexec \"evil.cfg\"","virtual":true},
+      "files": {
+        "g.cfg": {"name":"d/e/f/g.cfg","target":"g.cfg","text":"\nEXEC game.cfg\n\nname 3.5\nexec config.cfg extra\ncl_showfps -0.022\nbind w obbo\n\n"},
+        "evil.cfg": {"name":"../evil.cfg","target":"evil.cfg","text":"echo before; exec b.cfg"},
+        "b.cfg": {"name":"b.cfg","text":"echo before; exec d/e/f/g.cfg\r\ncl_showfps 1\r\nexec game.cfg; echo after\r\necho before; exec userconfig.cfg\r\nalias go \"exec game.cfg\"\r\n"},
+        "d/e/f/g.cfg": {"name":"d/e/f/g.cfg","text":"alias go \"exec ../evil.cfg\"\nexec d/e/f/g.cfg extra\nalias Y obbo\nalias +x impulse 100"},
+        "userconfig.cfg": {"name":"userconfig.cfg","text":"exec jump\nfps_max -0.022\nbind F5 \"exec game.cfg\"\nbind ; say hi\n"}
+      },
+      "missing": [],
+      "flat": {
+        "text": "// ===== from g.cfg =====\n\n// HLSR: EXEC game.cfg\n\nname 3.5\n// HLSR: exec config.cfg extra\ncl_showfps -0.022\nbind w obbo\n\n\n// ===== from evil.cfg =====\necho before; exec b.cfg",
+        "runtimeFiles": [],
+        "report": {
+          "files": ["d/e/f/g.cfg","../evil.cfg","b.cfg","d/e/f/g.cfg","userconfig.cfg"],
+          "missing": [],
+          "cycles": [["d/e/f/g.cfg","d/e/f/g.cfg"]],
+          "duplicateFiles": [],
+          "duplicates": [{"kind":"cvar","name":"cl_showfps","files":["d/e/f/g.cfg","b.cfg"],"value":"1"},{"kind":"cvar","name":"echo","files":["../evil.cfg","b.cfg","b.cfg","b.cfg"],"value":"before"},{"kind":"alias","name":"go","files":["d/e/f/g.cfg","b.cfg"],"value":"exec game.cfg"}],
+          "unsafe": []
+        },
+        "bytes": 175,
+        "summary": {"binds":1,"cvars":3,"aliases":0,"unknown":0,"files":5}
+      }
+    },
+    {
+      "name": "случайная цепочка 6",
+      "engine": "source",
+      "root": {"name":"c.cfg, scripts/jump.cfg, b.cfg","text":"exec \"c.cfg\"\nexec \"scripts/jump.cfg\"\nexec \"b.cfg\"","virtual":true},
+      "files": {
+        "c.cfg": {"name":"c.cfg","target":"c.cfg","text":"exec autoexec.cfg\nexec \"autoexec.cfg\" // note"},
+        "scripts/jump.cfg": {"name":"scripts/jump.cfg","target":"scripts/jump.cfg","text":"\r\nfps_max 1\r\nalias z \"exec p.rc; say hi\"\r\ncl_showfps 0\r\n"},
+        "b.cfg": {"name":"b.cfg","target":"b.cfg","text":"ï»¿exec \"b.cfg\"; echo after\nexec scripts/jump.cfg\nbind f obbo\nbind f \"alias q \\\"exec b.cfg\\\"\"\nbind ; \"alias q \\\"exec b.cfg\\\"\"\n"},
+        "autoexec.cfg": {"name":"autoexec.cfg","text":""},
+        "p.rc": {"name":"p.rc","text":"// только комментарий\nexec \"p.rc\"\necho before; exec My Binds.cfg\nexec \"hlsr-binds.cfg\""}
+      },
+      "missing": ["my.cfg"],
+      "flat": {
+        "text": "// ===== from c.cfg =====\n// ===== from autoexec.cfg =====\n\n// ===== from autoexec.cfg =====\n\n// ===== from scripts/jump.cfg =====\n\nfps_max 1\nalias z \"exec p.rc; say hi\"\ncl_showfps 0\n\n// ===== from b.cfg =====\nexec \"b.cfg\"; echo after\n// ===== from scripts/jump.cfg =====\n\nfps_max 1\nalias z \"exec p.rc; say hi\"\ncl_showfps 0\n\nbind f obbo\nbind f \"alias q \\\"exec b.cfg\\\"\"\nbind ; \"alias q \\\"exec b.cfg\\\"\"\n",
+        "runtimeFiles": [{"file":"p.rc","text":"// только комментарий\n// HLSR: exec p.rc skipped (cycle)\necho before; exec My Binds.cfg\n// HLSR: exec \"hlsr-binds.cfg\""}],
+        "report": {"files":["c.cfg","scripts/jump.cfg","b.cfg","autoexec.cfg","p.rc"],"missing":["my.cfg"],"cycles":[["b.cfg","b.cfg"]],"duplicateFiles":[],"duplicates":[{"kind":"bind","name":"f","files":["b.cfg","b.cfg"],"value":"alias q \\ exec b.cfg\\"}],"unsafe":[]},
+        "bytes": 519,
+        "summary": {"binds":2,"cvars":6,"aliases":2,"unknown":1,"files":6}
+      }
+    },
+    {
+      "name": "случайная цепочка 7",
+      "engine": "source",
+      "root": {"name":"config.cfg, b.cfg","text":"exec \"config.cfg\"\nexec \"b.cfg\"","virtual":true},
+      "files": {"config.cfg":{"name":"config.cfg","target":"config.cfg","text":"// только комментарий\r\n// только комментарий\r\n"},"b.cfg":{"name":"b.cfg","target":"b.cfg","text":""}},
+      "missing": [],
+      "flat": {"text":"// ===== from config.cfg =====\n// только комментарий\n// только комментарий\n\n// ===== from b.cfg =====\n","runtimeFiles":[],"report":{"files":["config.cfg","b.cfg"],"missing":[],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},"bytes":102,"summary":{"binds":0,"cvars":0,"aliases":0,"unknown":0,"files":2}}
+    },
+    {"name":"случайная цепочка 8","engine":"goldsrc","root":{"name":"a.cfg","text":""},"files":{},"missing":[],"flat":{"text":"","runtimeFiles":[],"report":{"files":[],"missing":[],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},"bytes":0,"summary":{"binds":0,"cvars":0,"aliases":0,"unknown":0,"files":0}}},
+    {"name":"случайная цепочка 9","engine":"source","root":{"name":"Ünï.cfg","text":"\r\nname -0.022\r\n\nпривет я"},"files":{},"missing":[],"flat":{"text":"\nname -0.022\n\nпривет я","runtimeFiles":[],"report":{"files":[],"missing":[],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},"bytes":22,"summary":{"binds":0,"cvars":2,"aliases":0,"unknown":0,"files":0}}},
+    {
+      "name": "случайная цепочка 10",
+      "engine": "goldsrc",
+      "root": {"name":"userconfig.cfg, game.cfg","text":"exec \"userconfig.cfg\"\nexec \"cfg-game.cfg\"","virtual":true},
+      "files": {"userconfig.cfg":{"name":"userconfig.cfg","target":"userconfig.cfg","text":"unbindall\r\nexec userconfig.cfg\r\nexec x y.cfg extra\r\nbind f exec x.cfg\r\nbind F5 \"alias q \\\"exec d/e/f/g.cfg\\\"\"\r\nexec x y.cfg; echo after"},"cfg-game.cfg":{"name":"game.cfg","target":"cfg-game.cfg","text":"\r\n\r\nexec game.cfg\r\n"}},
+      "missing": ["x.cfg"],
+      "flat": {
+        "text": "// ===== from userconfig.cfg =====\nunbindall\n// HLSR: exec userconfig.cfg skipped (cycle)\nexec x y.cfg extra\nbind f exec x.cfg\nbind F5 \"alias q \\\"exec d/e/f/g.cfg\\\"\"\nexec x y.cfg; echo after\n// ===== from cfg-game.cfg =====\n\n\n// HLSR: exec game.cfg\n",
+        "runtimeFiles": [],
+        "report": {"files":["userconfig.cfg","game.cfg"],"missing":["x.cfg"],"cycles":[["userconfig.cfg","userconfig.cfg"]],"duplicateFiles":[],"duplicates":[],"unsafe":[]},
+        "bytes": 249,
+        "summary": {"binds":2,"cvars":1,"aliases":0,"unknown":0,"files":2}
+      }
+    },
+    {
+      "name": "случайная цепочка 11",
+      "engine": "source",
+      "root": {"name":"hlsr-binds.cfg, jump, hlsr-import-x.cfg","text":"exec \"cfg-hlsr-binds.cfg\"\nexec \"jump.cfg\"\nexec \"x.cfg\"","virtual":true},
+      "files": {
+        "cfg-hlsr-binds.cfg": {"name":"hlsr-binds.cfg","target":"cfg-hlsr-binds.cfg","text":"m_pitch 0\nalias go \"exec hlsr-binds.cfg\"\nexec \"hlsr-binds.cfg\" // note\nEXEC hlsr-binds.cfg\n// только комментарий\nvolume -0.022\nunbind SPACE\nexec \"jump\"; echo after"},
+        "jump.cfg": {"name":"jump","target":"jump.cfg","text":"EXEC jump\r\nexec hlsr-import-x.cfg // note\r\nexec\r\nalias go \"exec scripts/jump.cfg\"\r\nalias +x \"exec hlsr-import-x.cfg; say hi\"\r\nexec hlsr-binds.cfg\r\nfps_max 2\r\n"},
+        "x.cfg": {"name":"hlsr-import-x.cfg","target":"x.cfg","text":"echo before; exec hlsr-binds.cfg\nexec hlsr-binds.cfg\nexec\nexec \"hlsr-binds.cfg\"; echo after\n"},
+        "hlsr-import-x.cfg": {"name":"hlsr-import-x.cfg","text":"alias Y \"exec Ünï.cfg; say hi\""}
+      },
+      "missing": [],
+      "flat": {
+        "text": "// ===== from cfg-hlsr-binds.cfg =====\nm_pitch 0\nalias go \"exec hlsr-binds.cfg\"\n// HLSR: exec \"hlsr-binds.cfg\" // note\n// HLSR: EXEC hlsr-binds.cfg\n// только комментарий\nvolume -0.022\nunbind SPACE\nexec \"jump\"; echo after\n// ===== from jump.cfg =====\n// HLSR: exec jump.cfg skipped (cycle)\n// ===== from hlsr-import-x.cfg =====\nalias Y \"exec Ünï.cfg; say hi\"\nexec\nalias go \"exec scripts/jump.cfg\"\nalias +x \"exec hlsr-import-x.cfg; say hi\"\n// HLSR: exec hlsr-binds.cfg\nfps_max 2\n\n// ===== from x.cfg =====\necho before // HLSR: exec hlsr-binds.cfg\n// HLSR: exec hlsr-binds.cfg\nexec\n echo after // HLSR: exec \"hlsr-binds.cfg\"\n",
+        "runtimeFiles": [],
+        "report": {
+          "files": ["hlsr-binds.cfg","jump","hlsr-import-x.cfg","hlsr-import-x.cfg"],
+          "missing": [],
+          "cycles": [["jump","jump"]],
+          "duplicateFiles": [],
+          "duplicates": [{"kind":"alias","name":"go","files":["hlsr-binds.cfg","jump","jump"],"value":"exec scripts/jump.cfg"},{"kind":"cvar","name":"echo","files":["hlsr-binds.cfg","hlsr-import-x.cfg","hlsr-import-x.cfg"],"value":"after"}],
+          "unsafe": ["hlsr-import-x.cfg"]
+        },
+        "bytes": 622,
+        "summary": {"binds":0,"cvars":6,"aliases":4,"unknown":0,"files":4}
+      }
+    },
+    {
+      "name": "случайная цепочка 12",
+      "engine": "source",
+      "root": {"name":"hlsr-import-x.cfg","text":"echo before; exec Ünï.cfg\nvolume -0.022\nbind NOSUCHKEY fps_max 20\nbind ; \"exec a.cfg\"\nbind ; +attack; +attack2\nexec game.cfg; echo after\nbind NOSUCHKEY \"exec a.cfg\"\n"},
+      "files": {"ünï.cfg":{"name":"Ünï.cfg","text":"bind NOSUCHKEY +use\nexec main.cfg // note\nEXEC hlsr-import-x.cfg\n"}},
+      "missing": ["main.cfg"],
+      "flat": {
+        "text": "echo before; exec Ünï.cfg\nvolume -0.022\nbind NOSUCHKEY fps_max 20\nbind ; \"exec a.cfg\"\nbind ; +attack; +attack2\n echo after // HLSR: exec game.cfg\nbind NOSUCHKEY \"exec a.cfg\"\n",
+        "runtimeFiles": [],
+        "report": {"files":["Ünï.cfg"],"missing":["main.cfg"],"cycles":[["Ünï.cfg","hlsr-import-x.cfg"]],"duplicateFiles":[],"duplicates":[{"kind":"cvar","name":"echo","files":["hlsr-import-x.cfg","hlsr-import-x.cfg"],"value":"after"}],"unsafe":[]},
+        "bytes": 174,
+        "summary": {"binds":2,"cvars":3,"aliases":0,"unknown":5,"files":1}
+      }
+    },
+    {
+      "name": "случайная цепочка 13",
+      "engine": "goldsrc",
+      "root": {"name":"a.cfg, b.cfg, valve.rc","text":"exec \"a.cfg\"\nexec \"b.cfg\"\nexec \"cfg-valve.cfg\"","virtual":true},
+      "files": {
+        "a.cfg": {"name":"a.cfg","target":"a.cfg","text":"fps_max 3.5\r\nbind 1 \"exec valve.rc\"\r\necho before; exec \"b.cfg\"\r\nexec\r\nexec ../evil.cfg // note\r\n"},
+        "b.cfg": {"name":"b.cfg","target":"b.cfg","text":"bind f say hi\r\necho before; exec a.cfg\r\nalias go +use\r\nbind 1 say hi\r\nalias go +jump\r\n"},
+        "cfg-valve.cfg": {"name":"valve.rc","target":"cfg-valve.cfg","text":"\nunbind SPACE\nbind w \"exec jump\"\nexec Ünï.cfg\n"}
+      },
+      "missing": ["ünï.cfg"],
+      "flat": {
+        "text": "// ===== from a.cfg =====\nfps_max 3.5\nbind 1 \"exec valve.rc\"\necho before; exec \"b.cfg\"\nexec\nexec ../evil.cfg // note\n\n// ===== from b.cfg =====\nbind f say hi\necho before; exec a.cfg\nalias go +use\nbind 1 say hi\nalias go +jump\n\n// ===== from cfg-valve.cfg =====\n\nunbind SPACE\nbind w \"exec jump\"\n// HLSR: exec _n_.cfg skipped (not imported)\n",
+        "runtimeFiles": [],
+        "report": {"files":["a.cfg","b.cfg","valve.rc"],"missing":["ünï.cfg"],"cycles":[["b.cfg","a.cfg"],["a.cfg","b.cfg"]],"duplicateFiles":[],"duplicates":[{"kind":"bind","name":"1","files":["a.cfg","b.cfg","a.cfg","b.cfg"],"value":"say hi"},{"kind":"alias","name":"go","files":["b.cfg","b.cfg","b.cfg","b.cfg"],"value":"+jump"}],"unsafe":[]},
+        "bytes": 338,
+        "summary": {"binds":4,"cvars":3,"aliases":2,"unknown":0,"files":3}
+      }
+    },
+    {
+      "name": "случайная цепочка 14",
+      "engine": "source",
+      "root": {"name":"c.cfg","text":"fps_max 100\nEXEC \"Scripts/Jump.cfg\"\nexec\n"},
+      "files": {"scripts/jump.cfg":{"name":"Scripts/Jump.cfg","text":"bind e obbo\nexec \"hlsr-binds.cfg\" // note\nalias go \"exec x y.cfg\"\ndefault_fov 2\n"}},
+      "missing": ["x.cfg"],
+      "flat": {"text":"fps_max 100\n// ===== from Scripts/Jump.cfg =====\nbind e obbo\n// HLSR: exec \"hlsr-binds.cfg\" // note\nalias go \"exec x y.cfg\"\ndefault_fov 2\n\nexec\n","runtimeFiles":[],"report":{"files":["Scripts/Jump.cfg"],"missing":["x.cfg"],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},"bytes":144,"summary":{"binds":1,"cvars":2,"aliases":1,"unknown":0,"files":1}}
+    },
+    {
+      "name": "случайная цепочка 15",
+      "engine": "goldsrc",
+      "root": {"name":"Scripts/Jump.cfg, c.cfg, Ünï.cfg","text":"exec \"Scripts/Jump.cfg\"\nexec \"c.cfg\"\nexec \"n.cfg\"","virtual":true},
+      "files": {
+        "scripts/jump.cfg": {"name":"Scripts/Jump.cfg","target":"Scripts/Jump.cfg","text":"bind MOUSE4 \"alias q \\\"exec autoexec.cfg\\\"\"\nname 3.5\nvolume 1\nexec autoexec.cfg extra\nsensitivity 1\n"},
+        "c.cfg": {"name":"c.cfg","target":"c.cfg","text":"exec \"p.rc\"\nexec Scripts/Jump.cfg // note\n"},
+        "n.cfg": {"name":"Ünï.cfg","target":"n.cfg","text":""},
+        "autoexec.cfg": {"name":"autoexec.cfg","text":"exec x y.cfg; echo after\r\nexec Scripts/Jump.cfg; echo after\r\necho before; exec game.cfg\r\nbind SPACE \"alias q \\\"exec Ünï.cfg\\\"\""},
+        "p.rc": {"name":"p.rc","text":"ï»¿exec \"hlsr-import.cfg\"\r\n"}
+      },
+      "missing": [],
+      "flat": {
+        "text": "// ===== from Scripts/Jump.cfg =====\nbind MOUSE4 \"alias q \\\"exec autoexec.cfg\\\"\"\nname 3.5\nvolume 1\nexec autoexec.cfg extra\nsensitivity 1\n\n// ===== from c.cfg =====\n// ===== from p.rc =====\nexec \"hlsr-import.cfg\"\n\n// ===== from Scripts/Jump.cfg =====\nbind MOUSE4 \"alias q \\\"exec autoexec.cfg\\\"\"\nname 3.5\nvolume 1\nexec autoexec.cfg extra\nsensitivity 1\n\n\n// ===== from n.cfg =====\n",
+        "runtimeFiles": [],
+        "report": {"files":["Scripts/Jump.cfg","c.cfg","Ünï.cfg","autoexec.cfg","p.rc"],"missing":[],"cycles":[["autoexec.cfg","Scripts/Jump.cfg"]],"duplicateFiles":[],"duplicates":[{"kind":"cvar","name":"echo","files":["autoexec.cfg","autoexec.cfg","autoexec.cfg","autoexec.cfg","autoexec.cfg","autoexec.cfg"],"value":"before"}],"unsafe":[]},
+        "bytes": 378,
+        "summary": {"binds":2,"cvars":6,"aliases":0,"unknown":0,"files":5}
+      }
+    },
+    {
+      "name": "случайная цепочка 16",
+      "engine": "source",
+      "root": {"name":"Scripts/Jump.cfg","text":"exec\nfps_max -0.022\nbind e obbo\nexec b.cfg\nunbindall\n"},
+      "files": {"b.cfg":{"name":"b.cfg","text":"exec Scripts/Jump.cfg\nalias go \"exec scripts/jump.cfg\"\nunbind w\nexec My Binds.cfg\nalias go \"exec autoexec.cfg\"\nsensitivity 3.5\nEXEC \"Scripts/Jump.cfg\"\n"}},
+      "missing": ["my.cfg","autoexec.cfg"],
+      "flat": {
+        "text": "exec\nfps_max -0.022\nbind e obbo\n// ===== from b.cfg =====\n// HLSR: exec Scripts/Jump.cfg skipped (cycle)\nalias go \"exec scripts/jump.cfg\"\nunbind w\nexec My Binds.cfg\nalias go \"exec autoexec.cfg\"\nsensitivity 3.5\n// HLSR: exec Scripts/Jump.cfg skipped (cycle)\n\nunbindall\n",
+        "runtimeFiles": [{"file":"scripts/jump.cfg","text":"exec\nfps_max -0.022\nbind e obbo\n// ===== from b.cfg =====\n// HLSR: exec Scripts/Jump.cfg skipped (cycle)\nalias go \"exec scripts/jump.cfg\"\nunbind w\nexec My Binds.cfg\nalias go \"exec autoexec.cfg\"\nsensitivity 3.5\n// HLSR: exec Scripts/Jump.cfg skipped (cycle)\n\nunbindall\n"}],
+        "report": {"files":["b.cfg"],"missing":["my.cfg","autoexec.cfg"],"cycles":[["b.cfg","Scripts/Jump.cfg"]],"duplicateFiles":[],"duplicates":[{"kind":"alias","name":"go","files":["b.cfg","b.cfg"],"value":"exec autoexec.cfg"}],"unsafe":[]},
+        "bytes": 536,
+        "summary": {"binds":1,"cvars":2,"aliases":2,"unknown":0,"files":2}
+      }
+    },
+    {
+      "name": "случайная цепочка 17",
+      "engine": "goldsrc",
+      "root": {"name":"valve.rc, autoexec.cfg, Scripts/Jump.cfg","text":"exec \"cfg-valve.cfg\"\nexec \"autoexec.cfg\"\nexec \"Scripts/Jump.cfg\"","virtual":true},
+      "files": {
+        "cfg-valve.cfg": {"name":"valve.rc","target":"cfg-valve.cfg","text":"alias +x \"exec server.cfg; say hi\"\nalias go \"exec game.cfg\"\nexec \"valve.rc\"\nexec Scripts/Jump.cfg\n"},
+        "autoexec.cfg": {"name":"autoexec.cfg","target":"autoexec.cfg","text":""},
+        "scripts/jump.cfg": {"name":"Scripts/Jump.cfg","target":"Scripts/Jump.cfg","text":"exec server.cfg; echo after\nfps_max 100\nalias z \"exec server.cfg; say hi\"\nbind e \"exec valve.rc\"\nunbindall"}
+      },
+      "missing": [],
+      "flat": {
+        "text": "// ===== from cfg-valve.cfg =====\nalias +x \"exec server.cfg; say hi\"\nalias go \"exec game.cfg\"\n// HLSR: exec \"valve.rc\"\n// ===== from Scripts/Jump.cfg =====\nexec server.cfg; echo after\nfps_max 100\nalias z \"exec server.cfg; say hi\"\nbind e \"exec valve.rc\"\nunbindall\n\n// ===== from autoexec.cfg =====\n\n// ===== from Scripts/Jump.cfg =====\nexec server.cfg; echo after\nfps_max 100\nalias z \"exec server.cfg; say hi\"\nbind e \"exec valve.rc\"\nunbindall",
+        "runtimeFiles": [],
+        "report": {"files":["valve.rc","autoexec.cfg","Scripts/Jump.cfg"],"missing":[],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},
+        "bytes": 441,
+        "summary": {"binds":2,"cvars":4,"aliases":4,"unknown":0,"files":3}
+      }
+    },
+    {
+      "name": "случайная цепочка 18",
+      "engine": "goldsrc",
+      "root": {"name":"scripts/jump.cfg","text":"exec c.cfg\nbind 1 \"exec a.cfg\"\nexec scripts/jump.cfg // note\nalias go exec x.cfg\nexec\nname 3.5\nalias +x impulse 100\n"},
+      "files": {
+        "c.cfg": {"name":"c.cfg","text":"exec ../evil.cfg extra\r\nalias +x \"exec d/e/f/g.cfg; say hi\"\r\nbind w \"exec scripts/jump.cfg\"\r\nunbind w\r\n\nпривет я"},
+        "a.cfg": {"name":"a.cfg","text":"alias +x +jump\r\nexec scripts/jump.cfg\r\nbind f \"exec Ünï.cfg\"\r\nbind f fps_max 20\r\nexec jump\r\nexec\r\necho before; exec a.cfg"},
+        "d/e/f/g.cfg": {"name":"d/e/f/g.cfg","text":"exec ../evil.cfg extra\nalias go \"exec d/e/f/g.cfg\"\nalias Y obbo\nEXEC d/e/f/g.cfg\nunbind 1\nexec d/e/f/g.cfg extra\nexec a.cfg\nfps_max 0\n"}
+      },
+      "missing": ["x.cfg","ünï.cfg"],
+      "flat": {
+        "text": "// ===== from c.cfg =====\nexec ../evil.cfg extra\nalias +x \"exec d/e/f/g.cfg; say hi\"\nbind w \"exec scripts/jump.cfg\"\nunbind w\n\nпривет я\nbind 1 \"exec a.cfg\"\n// HLSR: exec scripts/jump.cfg skipped (cycle)\nalias go exec x.cfg\nexec\nname 3.5\nalias +x impulse 100\n",
+        "runtimeFiles": [
+          {"file":"scripts/jump.cfg","text":"// ===== from c.cfg =====\nexec ../evil.cfg extra\nalias +x \"exec d/e/f/g.cfg; say hi\"\nbind w \"exec scripts/jump.cfg\"\nunbind w\n\nпривет я\nbind 1 \"exec a.cfg\"\n// HLSR: exec scripts/jump.cfg skipped (cycle)\nalias go exec x.cfg\nexec\nname 3.5\nalias +x impulse 100\n"},
+          {"file":"a.cfg","text":"alias +x +jump\nexec scripts/jump.cfg\nbind f \"exec Ünï.cfg\"\nbind f fps_max 20\nexec jump\nexec\necho before; exec a.cfg"}
+        ],
+        "report": {"files":["c.cfg","a.cfg","d/e/f/g.cfg"],"missing":["x.cfg","ünï.cfg"],"cycles":[["scripts/jump.cfg","scripts/jump.cfg"]],"duplicateFiles":[],"duplicates":[{"kind":"alias","name":"+x","files":["c.cfg","scripts/jump.cfg"],"value":"impulse 100"}],"unsafe":["d/e/f/g.cfg"]},
+        "bytes": 629,
+        "summary": {"binds":2,"cvars":2,"aliases":3,"unknown":0,"files":5}
+      }
+    },
+    {
+      "name": "случайная цепочка 19",
+      "engine": "source",
+      "root": {"name":"a.cfg","text":"\r\nexec b.cfg\r\nbind MOUSE4 fps_max 20\r\nexec \"hlsr-binds.cfg\" // note"},
+      "files": {"b.cfg":{"name":"b.cfg","text":"EXEC \"hlsr-binds.cfg\"\n// только комментарий\nexec b.cfg\nexec\nexec Scripts/Jump.cfg extra\n\nexec \"Scripts/Jump.cfg\"; echo after\ncl_showfps 1"},"scripts/jump.cfg":{"name":"Scripts/Jump.cfg","text":"alias +x \"exec b.cfg; say hi\"\n\nexec\nunbindall\n// только комментарий\nEXEC \"b.cfg\"\n"}},
+      "missing": [],
+      "flat": {
+        "text": "\n// ===== from b.cfg =====\n// HLSR: EXEC \"hlsr-binds.cfg\"\n// только комментарий\n// HLSR: exec b.cfg skipped (cycle)\nexec\nexec Scripts/Jump.cfg extra\n\nexec \"Scripts/Jump.cfg\"; echo after\ncl_showfps 1\nbind MOUSE4 fps_max 20\n// HLSR: exec \"hlsr-binds.cfg\" // note",
+        "runtimeFiles": [],
+        "report": {"files":["b.cfg","Scripts/Jump.cfg"],"missing":[],"cycles":[["b.cfg","b.cfg"],["Scripts/Jump.cfg","b.cfg"]],"duplicateFiles":[],"duplicates":[],"unsafe":[]},
+        "bytes": 260,
+        "summary": {"binds":1,"cvars":2,"aliases":0,"unknown":0,"files":2}
+      }
+    },
+    {"name":"случайная цепочка 20","engine":"goldsrc","root":{"name":"b.cfg","text":""},"files":{},"missing":[],"flat":{"text":"","runtimeFiles":[],"report":{"files":[],"missing":[],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},"bytes":0,"summary":{"binds":0,"cvars":0,"aliases":0,"unknown":0,"files":0}}},
+    {
+      "name": "случайная цепочка 21",
+      "engine": "goldsrc",
+      "root": {"name":"hlsr-import-x.cfg","text":"name \"x y\"\nname 1\ndefault_fov -0.022\nalias z \"exec autoexec.cfg; say hi\"\nexec \"autoexec.cfg\"\n"},
+      "files": {"autoexec.cfg":{"name":"autoexec.cfg","text":"ï»¿\nalias z \"exec hlsr-import-x.cfg; say hi\"\n"}},
+      "missing": [],
+      "flat": {
+        "text": "name \"x y\"\nname 1\ndefault_fov -0.022\nalias z \"exec autoexec.cfg; say hi\"\n// ===== from autoexec.cfg =====\n\nalias z \"exec hlsr-import-x.cfg; say hi\"\n\n",
+        "runtimeFiles": [],
+        "report": {"files":["autoexec.cfg"],"missing":[],"cycles":[],"duplicateFiles":[],"duplicates":[{"kind":"cvar","name":"name","files":["hlsr-import-x.cfg","hlsr-import-x.cfg"],"value":"1"},{"kind":"alias","name":"z","files":["hlsr-import-x.cfg","autoexec.cfg"],"value":"exec hlsr-import-x.cfg; say hi"}],"unsafe":["hlsr-import-x.cfg"]},
+        "bytes": 149,
+        "summary": {"binds":0,"cvars":3,"aliases":2,"unknown":0,"files":1}
+      }
+    },
+    {
+      "name": "случайная цепочка 22",
+      "engine": "goldsrc",
+      "root": {"name":"game.cfg","text":"alias +x +attack; +attack2\nexec b.cfg\nexec hlsr-import-x.cfg extra\n// только комментарий\nexec game.cfg"},
+      "files": {"b.cfg":{"name":"b.cfg","text":""},"hlsr-import-x.cfg":{"name":"hlsr-import-x.cfg","text":"alias go +jump\nunbindall\nunbind w\nalias go impulse 100\nalias go \"exec game.cfg\"\n\n"}},
+      "missing": [],
+      "flat": {
+        "text": "alias +x +attack; +attack2\n// ===== from b.cfg =====\n\nexec hlsr-import-x.cfg extra\n// только комментарий\n// HLSR: exec game.cfg",
+        "runtimeFiles": [],
+        "report": {"files":["b.cfg","hlsr-import-x.cfg"],"missing":[],"cycles":[],"duplicateFiles":[],"duplicates":[{"kind":"alias","name":"go","files":["hlsr-import-x.cfg","hlsr-import-x.cfg","hlsr-import-x.cfg"],"value":"exec game.cfg"}],"unsafe":[]},
+        "bytes": 127,
+        "summary": {"binds":0,"cvars":0,"aliases":1,"unknown":1,"files":2}
+      }
+    },
+    {
+      "name": "случайная цепочка 23",
+      "engine": "goldsrc",
+      "root": {"name":"autoexec.cfg","text":"// только комментарий\nexec Scripts/Jump.cfg\nunbindall\n"},
+      "files": {"scripts/jump.cfg":{"name":"Scripts/Jump.cfg","text":"exec\nalias +x +attack; +attack2\n\nbind w exec x.cfg\ncl_showfps 3.5\nbind NOSUCHKEY +jump\n\n"}},
+      "missing": [],
+      "flat": {"text":"// только комментарий\n// ===== from Scripts/Jump.cfg =====\nexec\nalias +x +attack; +attack2\n\nbind w exec x.cfg\ncl_showfps 3.5\nbind NOSUCHKEY +jump\n\n\nunbindall\n","runtimeFiles":[],"report":{"files":["Scripts/Jump.cfg"],"missing":[],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},"bytes":158,"summary":{"binds":2,"cvars":1,"aliases":1,"unknown":1,"files":1}}
+    },
+    {"name":"случайная цепочка 24","engine":"goldsrc","root":{"name":"p.rc","text":"exec"},"files":{},"missing":[],"flat":{"text":"exec","runtimeFiles":[],"report":{"files":[],"missing":[],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},"bytes":4,"summary":{"binds":0,"cvars":0,"aliases":0,"unknown":0,"files":0}}},
+    {
+      "name": "случайная цепочка 25",
+      "engine": "source",
+      "root": {"name":"valve.rc","text":"exec\r\nbind F5 +attack; +attack2\r\nEXEC \"valve.rc\"\r\nexec \"hlsr-binds.cfg\"; echo after\r\nsensitivity 0\r\nname 1\r\nalias +x \"exec d/e/f/g.cfg; say hi\"\r\n"},
+      "files": {},
+      "missing": [],
+      "flat": {"text":"exec\nbind F5 +attack; +attack2\n// HLSR: EXEC \"valve.rc\"\n echo after // HLSR: exec \"hlsr-binds.cfg\"\nsensitivity 0\nname 1\nalias +x \"exec d/e/f/g.cfg; say hi\"\n","runtimeFiles":[],"report":{"files":[],"missing":[],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},"bytes":156,"summary":{"binds":1,"cvars":3,"aliases":1,"unknown":1,"files":0}}
+    },
+    {
+      "name": "случайная цепочка 26",
+      "engine": "source",
+      "root": {"name":"c.cfg, config.cfg, Ünï.cfg","text":"exec \"c.cfg\"\nexec \"config.cfg\"\nexec \"n.cfg\"","virtual":true},
+      "files": {
+        "c.cfg": {"name":"c.cfg","target":"c.cfg","text":"sensitivity 100"},
+        "config.cfg": {"name":"config.cfg","target":"config.cfg","text":"bind ; exec x.cfg\nbind ; \"exec c.cfg\"\nalias go +jump\nexec hlsr-import.cfg // note\nexec c.cfg\nalias +x impulse 100\nexec\n"},
+        "n.cfg": {"name":"Ünï.cfg","target":"n.cfg","text":"// только комментарий\nexec config.cfg; echo after\nm_pitch 250\nfps_max 3.5\nexec \"config.cfg\" extra\nbind w +attack; +attack2\nbind SPACE +use\nexec x y.cfg extra\n"}
+      },
+      "missing": ["x.cfg","hlsr-import.cfg"],
+      "flat": {
+        "text": "// ===== from c.cfg =====\nsensitivity 100\n// ===== from config.cfg =====\nbind ; exec x.cfg\nbind ; \"exec c.cfg\"\nalias go +jump\n// HLSR: exec hlsr-import.cfg skipped (not imported)\n// ===== from c.cfg =====\nsensitivity 100\nalias +x impulse 100\nexec\n\n// ===== from n.cfg =====\n// только комментарий\n echo after // HLSR: exec config.cfg\nm_pitch 250\nfps_max 3.5\n// HLSR: exec \"config.cfg\" extra\nbind w +attack; +attack2\nbind SPACE +use\nexec x y.cfg extra\n",
+        "runtimeFiles": [],
+        "report": {"files":["c.cfg","config.cfg","Ünï.cfg"],"missing":["x.cfg","hlsr-import.cfg"],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},
+        "bytes": 450,
+        "summary": {"binds":2,"cvars":5,"aliases":2,"unknown":4,"files":3}
+      }
+    },
+    {
+      "name": "случайная цепочка 27",
+      "engine": "goldsrc",
+      "root": {"name":"userconfig.cfg","text":"alias Y obbo\r\nalias Y \"exec userconfig.cfg; say hi\"\r\nbind NOSUCHKEY +use\r\nfps_max -0.022\r\nexec \"d/e/f/g.cfg\"\r\nexec c.cfg // note\r\n"},
+      "files": {
+        "d/e/f/g.cfg": {"name":"d/e/f/g.cfg","text":"exec \"b.cfg\" // note\nbind w impulse 100\nexec d/e/f/g.cfg\nbind e say hi\nexec hlsr-import.cfg extra\nexec Ünï.cfg; echo after\n"},
+        "c.cfg": {"name":"c.cfg","text":"echo before; exec \"../evil.cfg\"\r\n"},
+        "ünï.cfg": {"name":"Ünï.cfg","text":"alias go \"exec ../evil.cfg\"\nexec \"p.rc\" extra\nexec \"Ünï.cfg\"; echo after\nexec \"Ünï.cfg\"\nbind f +jump\n"},
+        "p.rc": {"name":"p.rc","text":"exec Ünï.cfg\nalias +x fps_max 20\n\nexec\nunbind w\nunbindall\n"}
+      },
+      "missing": ["b.cfg","hlsr-import.cfg"],
+      "flat": {
+        "text": "alias Y obbo\nalias Y \"exec userconfig.cfg; say hi\"\nbind NOSUCHKEY +use\nfps_max -0.022\n// ===== from d/e/f/g.cfg =====\n// HLSR: exec b.cfg skipped (not imported)\nbind w impulse 100\n// HLSR: exec d/e/f/g.cfg skipped (cycle)\nbind e say hi\nexec hlsr-import.cfg extra\nexec Ünï.cfg; echo after\n\n// ===== from c.cfg =====\necho before; exec \"../evil.cfg\"\n\n",
+        "runtimeFiles": [],
+        "report": {
+          "files": ["d/e/f/g.cfg","c.cfg","Ünï.cfg","p.rc"],
+          "missing": ["b.cfg","hlsr-import.cfg"],
+          "cycles": [["d/e/f/g.cfg","d/e/f/g.cfg"],["p.rc","Ünï.cfg"],["Ünï.cfg","Ünï.cfg"]],
+          "duplicateFiles": [],
+          "duplicates": [{"kind":"alias","name":"y","files":["userconfig.cfg","userconfig.cfg"],"value":"exec userconfig.cfg; say hi"},{"kind":"cvar","name":"echo","files":["Ünï.cfg","d/e/f/g.cfg","c.cfg"],"value":"before"}],
+          "unsafe": []
+        },
+        "bytes": 348,
+        "summary": {"binds":3,"cvars":3,"aliases":2,"unknown":0,"files":4}
+      }
+    },
+    {
+      "name": "случайная цепочка 28",
+      "engine": "source",
+      "root": {"name":"Scripts/Jump.cfg, config.cfg, d/e/f/g.cfg","text":"exec \"Scripts/Jump.cfg\"\nexec \"config.cfg\"\nexec \"g.cfg\"","virtual":true},
+      "files": {
+        "scripts/jump.cfg": {"name":"Scripts/Jump.cfg","target":"Scripts/Jump.cfg","text":"ï»¿exec\r\nbind F5 \"exec d/e/f/g.cfg\"\r\nunbind F5\r\nbind SPACE \"exec d/e/f/g.cfg\"\r\nexec hlsr-import.cfg; echo after\r\nalias z \"exec c.cfg; say hi\"\r\nbind w \"alias q \\\"exec c.cfg\\\"\"\r\n"},
+        "config.cfg": {"name":"config.cfg","target":"config.cfg","text":""},
+        "g.cfg": {"name":"d/e/f/g.cfg","target":"g.cfg","text":"alias go \"exec x y.cfg\"\r\nbind w \"alias q \\\"exec x y.cfg\\\"\"\r\nbind ; exec x.cfg\r\n// только комментарий\r\nbind w \"exec c.cfg\"\r\nexec \"jump\"; echo after\r\ncl_showfps 0\r\n"},
+        "d/e/f/g.cfg": {"name":"d/e/f/g.cfg","text":"exec valve.rc\nexec \"hlsr-binds.cfg\" // note\n"},
+        "hlsr-import.cfg": {"name":"hlsr-import.cfg","text":"// только комментарий\nbind MOUSE4 +use\necho before; exec \"Scripts/Jump.cfg\"\nbind ; save quick\n// только комментарий\nexec\nbind e exec x.cfg\nfps_max -0.022\n"},
+        "c.cfg": {"name":"c.cfg","text":"exec \"hlsr-import-x.cfg\"\nexec \"d/e/f/g.cfg\"\nbind f exec x.cfg\nalias go \"exec hlsr-import.cfg\"\nbind SPACE \"alias q \\\"exec hlsr-import.cfg\\\"\"\nunbind F5\nbind w say hi"}
+      },
+      "missing": ["x.cfg","jump.cfg","hlsr-import-x.cfg"],
+      "flat": {
+        "text": "// ===== from Scripts/Jump.cfg =====\nexec\nbind F5 \"exec d/e/f/g.cfg\"\nunbind F5\nbind SPACE \"exec d/e/f/g.cfg\"\nexec hlsr-import.cfg; echo after\nalias z \"exec c.cfg; say hi\"\nbind w \"alias q \\\"exec c.cfg\\\"\"\n\n// ===== from config.cfg =====\n\n// ===== from g.cfg =====\nalias go \"exec x y.cfg\"\nbind w \"alias q \\\"exec x y.cfg\\\"\"\nbind ; exec x.cfg\n// только комментарий\nbind w \"exec c.cfg\"\nexec \"jump\"; echo after\ncl_showfps 0\n",
+        "runtimeFiles": [{"file":"c.cfg","text":"// HLSR: exec hlsr-import-x.cfg skipped (not imported)\n// ===== from d/e/f/g.cfg =====\n// HLSR: exec valve.rc\n// HLSR: exec \"hlsr-binds.cfg\" // note\n\nbind f exec x.cfg\nalias go \"exec hlsr-import.cfg\"\nbind SPACE \"alias q \\\"exec hlsr-import.cfg\\\"\"\nunbind F5\nbind w say hi"}],
+        "report": {
+          "files": ["Scripts/Jump.cfg","config.cfg","d/e/f/g.cfg","d/e/f/g.cfg","hlsr-import.cfg","c.cfg"],
+          "missing": ["x.cfg","jump.cfg","hlsr-import-x.cfg"],
+          "cycles": [["hlsr-import.cfg","Scripts/Jump.cfg"]],
+          "duplicateFiles": [],
+          "duplicates": [{"kind":"cvar","name":"echo","files":["hlsr-import.cfg","Scripts/Jump.cfg","d/e/f/g.cfg"],"value":"after"},{"kind":"bind","name":"w","files":["Scripts/Jump.cfg","d/e/f/g.cfg","d/e/f/g.cfg"],"value":"exec c.cfg"}],
+          "unsafe": ["d/e/f/g.cfg","hlsr-import.cfg"]
+        },
+        "bytes": 686,
+        "summary": {"binds":5,"cvars":3,"aliases":2,"unknown":1,"files":7}
+      }
+    },
+    {
+      "name": "случайная цепочка 29",
+      "engine": "goldsrc",
+      "root": {"name":"../evil.cfg, autoexec.cfg, Ünï.cfg","text":"exec \"evil.cfg\"\nexec \"autoexec.cfg\"\nexec \"n.cfg\"","virtual":true},
+      "files": {
+        "evil.cfg": {"name":"../evil.cfg","target":"evil.cfg","text":"\nbind NOSUCHKEY \"exec autoexec.cfg\"\nbind f fps_max 20\nunbind SPACE\nexec b.cfg // note\n\n// только комментарий"},
+        "autoexec.cfg": {"name":"autoexec.cfg","target":"autoexec.cfg","text":""},
+        "n.cfg": {"name":"Ünï.cfg","target":"n.cfg","text":"exec \"hlsr-import-x.cfg\"\r\ndefault_fov 1\r\nexec Ünï.cfg\r\nunbindall"},
+        "ünï.cfg": {"name":"Ünï.cfg","text":""}
+      },
+      "missing": ["b.cfg","hlsr-import-x.cfg"],
+      "flat": {
+        "text": "// ===== from evil.cfg =====\n\nbind NOSUCHKEY \"exec autoexec.cfg\"\nbind f fps_max 20\nunbind SPACE\n// HLSR: exec b.cfg skipped (not imported)\n\n// только комментарий\n// ===== from autoexec.cfg =====\n\n// ===== from n.cfg =====\n// HLSR: exec hlsr-import-x.cfg skipped (not imported)\ndefault_fov 1\n// ===== from _n_.cfg =====\n\nunbindall",
+        "runtimeFiles": [],
+        "report": {"files":["../evil.cfg","autoexec.cfg","Ünï.cfg","Ünï.cfg"],"missing":["b.cfg","hlsr-import-x.cfg"],"cycles":[],"duplicateFiles":[["autoexec.cfg","Ünï.cfg"]],"duplicates":[],"unsafe":[]},
+        "bytes": 329,
+        "summary": {"binds":2,"cvars":1,"aliases":0,"unknown":0,"files":4}
+      }
+    },
+    {
+      "name": "случайная цепочка 30",
+      "engine": "goldsrc",
+      "root": {"name":"hlsr-binds.cfg, Ünï.cfg, My Binds.cfg","text":"exec \"cfg-hlsr-binds.cfg\"\nexec \"n.cfg\"\nexec \"My Binds.cfg\"","virtual":true},
+      "files": {
+        "cfg-hlsr-binds.cfg": {"name":"hlsr-binds.cfg","target":"cfg-hlsr-binds.cfg","text":"bind SPACE \"exec Ünï.cfg\"\nexec Ünï.cfg extra\nexec scripts/jump.cfg extra\nexec Ünï.cfg\nbind SPACE \"alias q \\\"exec hlsr-binds.cfg\\\"\"\nexec Ünï.cfg extra\nalias z \"exec My Binds.cfg; say hi\"\nalias z \"exec scripts/jump.cfg; say hi\""},
+        "n.cfg": {"name":"Ünï.cfg","target":"n.cfg","text":"exec hlsr-binds.cfg\nexec \"My Binds.cfg\" // note\n"},
+        "my binds.cfg": {"name":"My Binds.cfg","target":"My Binds.cfg","text":"exec\necho before; exec \"Ünï.cfg\""},
+        "ünï.cfg": {"name":"Ünï.cfg","text":"exec \"scripts/jump.cfg\"\nexec hlsr-binds.cfg\nbind NOSUCHKEY \"exec b.cfg\"\nunbindall\n"}
+      },
+      "missing": ["scripts/jump.cfg","b.cfg"],
+      "flat": {
+        "text": "// ===== from cfg-hlsr-binds.cfg =====\nbind SPACE \"exec Ünï.cfg\"\nexec Ünï.cfg extra\nexec scripts/jump.cfg extra\n// ===== from _n_.cfg =====\n// HLSR: exec scripts/jump.cfg skipped (not imported)\n// HLSR: exec hlsr-binds.cfg\nbind NOSUCHKEY \"exec b.cfg\"\nunbindall\n\nbind SPACE \"alias q \\\"exec hlsr-binds.cfg\\\"\"\nexec Ünï.cfg extra\nalias z \"exec My Binds.cfg; say hi\"\nalias z \"exec scripts/jump.cfg; say hi\"\n// ===== from n.cfg =====\n// HLSR: exec hlsr-binds.cfg\n// ===== from My Binds.cfg =====\nexec\necho before; exec \"Ünï.cfg\"\n\n// ===== from My Binds.cfg =====\nexec\necho before; exec \"Ünï.cfg\"",
+        "runtimeFiles": [],
+        "report": {"files":["hlsr-binds.cfg","Ünï.cfg","My Binds.cfg","Ünï.cfg"],"missing":["scripts/jump.cfg","b.cfg"],"cycles":[],"duplicateFiles":[],"duplicates":[{"kind":"alias","name":"z","files":["hlsr-binds.cfg","hlsr-binds.cfg"],"value":"exec scripts/jump.cfg; say hi"}],"unsafe":["Ünï.cfg"]},
+        "bytes": 589,
+        "summary": {"binds":3,"cvars":2,"aliases":2,"unknown":0,"files":4}
+      }
+    },
+    {
+      "name": "случайная цепочка 31",
+      "engine": "goldsrc",
+      "root": {"name":"game.cfg, scripts/jump.cfg, a.cfg","text":"exec \"cfg-game.cfg\"\nexec \"scripts/jump.cfg\"\nexec \"a.cfg\"","virtual":true},
+      "files": {
+        "cfg-game.cfg": {"name":"game.cfg","target":"cfg-game.cfg","text":"alias Y \"exec hlsr-import.cfg; say hi\"\nexec autoexec.cfg; echo after\nalias go \"exec main.cfg\"\nunbind MOUSE4\nalias +x \"exec My Binds.cfg; say hi\"\nbind w \"exec scripts/jump.cfg\""},
+        "scripts/jump.cfg": {"name":"scripts/jump.cfg","target":"scripts/jump.cfg","text":"EXEC autoexec.cfg\nbind SPACE \"exec hlsr-import-x.cfg\"\nbind w \"alias q \\\"exec d/e/f/g.cfg\\\"\"\nexec \"scripts/jump.cfg\"; echo after\n\nalias +x +use\n// только комментарий"},
+        "a.cfg": {"name":"a.cfg","target":"a.cfg","text":"bind f \"alias q \\\"exec game.cfg\\\"\"\r\nexec server.cfg extra\r\n// только комментарий\r\nbind e \"exec game.cfg\"\r\nfps_max -0.022\r\nunbind ;\r\n"},
+        "hlsr-import.cfg": {"name":"hlsr-import.cfg","text":"unbindall\nunbindall\nbind w exec x.cfg\nalias z \"exec hlsr-import.cfg; say hi\"\nexec \"userconfig.cfg\" // note\nalias go \"exec autoexec.cfg\"\nEXEC hlsr-import.cfg\nexec \"hlsr-import.cfg\""},
+        "autoexec.cfg": {"name":"autoexec.cfg","text":"\nпривет я"},
+        "userconfig.cfg": {"name":"userconfig.cfg","text":"alias z \"exec scripts/jump.cfg; say hi\"\n\n"}
+      },
+      "missing": ["main.cfg","hlsr-import-x.cfg","x.cfg"],
+      "flat": {
+        "text": "// ===== from cfg-game.cfg =====\nalias Y \"exec hlsr-import.cfg; say hi\"\nexec autoexec.cfg; echo after\nalias go \"exec main.cfg\"\nunbind MOUSE4\nalias +x \"exec My Binds.cfg; say hi\"\nbind w \"exec scripts/jump.cfg\"\n// ===== from scripts/jump.cfg =====\n// ===== from autoexec.cfg =====\n\nпривет я\nbind SPACE \"exec hlsr-import-x.cfg\"\nbind w \"alias q \\\"exec d/e/f/g.cfg\\\"\"\nexec \"scripts/jump.cfg\"; echo after\n\nalias +x +use\n// только комментарий\n// ===== from a.cfg =====\nbind f \"alias q \\\"exec game.cfg\\\"\"\nexec server.cfg extra\n// только комментарий\nbind e \"exec game.cfg\"\nfps_max -0.022\nunbind ;\n",
+        "runtimeFiles": [{"file":"scripts/jump.cfg","text":"// ===== from autoexec.cfg =====\n\nпривет я\nbind SPACE \"exec hlsr-import-x.cfg\"\nbind w \"alias q \\\"exec d/e/f/g.cfg\\\"\"\nexec \"scripts/jump.cfg\"; echo after\n\nalias +x +use\n// только комментарий"}],
+        "report": {
+          "files": ["game.cfg","scripts/jump.cfg","a.cfg","hlsr-import.cfg","autoexec.cfg","userconfig.cfg"],
+          "missing": ["main.cfg","hlsr-import-x.cfg","x.cfg"],
+          "cycles": [["scripts/jump.cfg","scripts/jump.cfg"]],
+          "duplicateFiles": [],
+          "duplicates": [{"kind":"alias","name":"+x","files":["game.cfg","scripts/jump.cfg"],"value":"+use"},{"kind":"bind","name":"w","files":["game.cfg","scripts/jump.cfg"],"value":"alias q \\ exec d/e/f/g.cfg\\"}],
+          "unsafe": ["hlsr-import.cfg"]
+        },
+        "bytes": 777,
+        "summary": {"binds":5,"cvars":4,"aliases":4,"unknown":0,"files":7}
+      }
+    },
+    {
+      "name": "случайная цепочка 32",
+      "engine": "goldsrc",
+      "root": {"name":"scripts/jump.cfg, Scripts/Jump.cfg","text":"exec \"scripts/jump.cfg\"\nexec \"Scripts/Jump-2.cfg\"","virtual":true},
+      "files": {"scripts/jump.cfg":{"name":"scripts/jump.cfg","target":"scripts/jump.cfg","text":"exec \"b.cfg\" extra\nexec \"userconfig.cfg\"\ncl_showfps -0.022"},"scripts/jump-2.cfg":{"name":"Scripts/Jump.cfg","target":"Scripts/Jump-2.cfg","text":"default_fov 100\r\nexec b.cfg // note"},"b.cfg":{"name":"b.cfg","text":"bind SPACE \"alias q \\\"exec Scripts/Jump.cfg\\\"\"\nalias go \"exec b.cfg\""}},
+      "missing": ["userconfig.cfg"],
+      "flat": {
+        "text": "// ===== from scripts/jump.cfg =====\nexec \"b.cfg\" extra\n// HLSR: exec userconfig.cfg skipped (not imported)\ncl_showfps -0.022\n// ===== from Scripts/Jump-2.cfg =====\ndefault_fov 100\n// ===== from b.cfg =====\nbind SPACE \"alias q \\\"exec Scripts/Jump.cfg\\\"\"\nalias go \"exec b.cfg\"",
+        "runtimeFiles": [{"file":"b.cfg","text":"bind SPACE \"alias q \\\"exec Scripts/Jump.cfg\\\"\"\nalias go \"exec b.cfg\""}],
+        "report": {"files":["scripts/jump.cfg","Scripts/Jump.cfg","b.cfg"],"missing":["userconfig.cfg"],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},
+        "bytes": 343,
+        "summary": {"binds":1,"cvars":2,"aliases":1,"unknown":0,"files":4}
+      }
+    },
+    {
+      "name": "случайная цепочка 33",
+      "engine": "goldsrc",
+      "root": {"name":"server.cfg, x y.cfg, a.cfg","text":"exec \"cfg-server.cfg\"\nexec \"x y.cfg\"\nexec \"a.cfg\"","virtual":true},
+      "files": {
+        "cfg-server.cfg": {"name":"server.cfg","target":"cfg-server.cfg","text":"exec a.cfg\r\nfps_max 250\r\nexec\r\nexec hlsr-import-x.cfg extra\r\nalias z \"exec game.cfg; say hi\"\r\nbind 1 exec x.cfg"},
+        "x y.cfg": {"name":"x y.cfg","target":"x y.cfg","text":"EXEC game.cfg\nEXEC b.cfg\nexec game.cfg\nbind SPACE \"exec game.cfg\"\nalias Y +attack; +attack2\nexec autoexec.cfg // note\nbind e \"alias q \\\"exec hlsr-import.cfg\\\"\""},
+        "a.cfg": {"name":"a.cfg","target":"a.cfg","text":"exec b.cfg // note\n// только комментарий\nexec Ünï.cfg\n\necho before; exec hlsr-import.cfg\n"},
+        "b.cfg": {"name":"b.cfg","text":"bind NOSUCHKEY \"exec game.cfg\"\r\nbind w exec x.cfg\r\nbind SPACE \"exec a.cfg\""},
+        "hlsr-import.cfg": {"name":"hlsr-import.cfg","text":"unbind e\nexec b.cfg\ncl_showfps 2\nvolume 0\nexec hlsr-import.cfg\n"}
+      },
+      "missing": ["hlsr-import-x.cfg","x.cfg","autoexec.cfg","ünï.cfg"],
+      "flat": {
+        "text": "// ===== from cfg-server.cfg =====\n// ===== from a.cfg =====\n// ===== from b.cfg =====\nbind NOSUCHKEY \"exec game.cfg\"\nbind w exec x.cfg\nbind SPACE \"exec a.cfg\"\n// только комментарий\n// HLSR: exec _n_.cfg skipped (not imported)\n\necho before; exec hlsr-import.cfg\n\nfps_max 250\nexec\nexec hlsr-import-x.cfg extra\nalias z \"exec game.cfg; say hi\"\nbind 1 exec x.cfg\n// ===== from x y.cfg =====\n// HLSR: EXEC game.cfg\n// ===== from b.cfg =====\nbind NOSUCHKEY \"exec game.cfg\"\nbind w exec x.cfg\nbind SPACE \"exec a.cfg\"\n// HLSR: exec game.cfg\nbind SPACE \"exec game.cfg\"\nalias Y +attack; +attack2\n// HLSR: exec autoexec.cfg skipped (not imported)\nbind e \"alias q \\\"exec hlsr-import.cfg\\\"\"\n// ===== from a.cfg =====\n// ===== from b.cfg =====\nbind NOSUCHKEY \"exec game.cfg\"\nbind w exec x.cfg\nbind SPACE \"exec a.cfg\"\n// только комментарий\n// HLSR: exec _n_.cfg skipped (not imported)\n\necho before; exec hlsr-import.cfg\n",
+        "runtimeFiles": [{"file":"a.cfg","text":"// ===== from b.cfg =====\nbind NOSUCHKEY \"exec game.cfg\"\nbind w exec x.cfg\nbind SPACE \"exec a.cfg\"\n// только комментарий\n// HLSR: exec _n_.cfg skipped (not imported)\n\necho before; exec hlsr-import.cfg\n"}],
+        "report": {"files":["server.cfg","x y.cfg","a.cfg","b.cfg","hlsr-import.cfg"],"missing":["hlsr-import-x.cfg","x.cfg","autoexec.cfg","ünï.cfg"],"cycles":[["hlsr-import.cfg","hlsr-import.cfg"]],"duplicateFiles":[],"duplicates":[{"kind":"bind","name":"SPACE","files":["b.cfg","b.cfg","b.cfg","x y.cfg","b.cfg","b.cfg"],"value":"exec a.cfg"}],"unsafe":[]},
+        "bytes": 1105,
+        "summary": {"binds":12,"cvars":3,"aliases":2,"unknown":1,"files":6}
+      }
+    },
+    {"name":"случайная цепочка 34","engine":"goldsrc","root":{"name":"Ünï.cfg","text":"// только комментарий\n"},"files":{},"missing":[],"flat":{"text":"// только комментарий\n","runtimeFiles":[],"report":{"files":[],"missing":[],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},"bytes":22,"summary":{"binds":0,"cvars":0,"aliases":0,"unknown":0,"files":0}}},
+    {
+      "name": "случайная цепочка 35",
+      "engine": "goldsrc",
+      "root": {"name":"hlsr-binds.cfg","text":"exec autoexec.cfg\nalias go \"exec main.cfg\"\n"},
+      "files": {},
+      "missing": ["autoexec.cfg"],
+      "flat": {"text":"// HLSR: exec autoexec.cfg skipped (not imported)\nalias go \"exec main.cfg\"\n","runtimeFiles":[],"report":{"files":[],"missing":["autoexec.cfg"],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},"bytes":75,"summary":{"binds":0,"cvars":0,"aliases":1,"unknown":0,"files":0}}
+    },
+    {
+      "name": "случайная цепочка 36",
+      "engine": "source",
+      "root": {"name":"game.cfg","text":"alias Y \"exec game.cfg; say hi\"\nbind e \"alias q \\\"exec b.cfg\\\"\"\nbind MOUSE4 +use\nexec \"valve.rc\" extra\nexec valve.rc\nEXEC \"valve.rc\"\nalias Y exec x.cfg\nunbindall\nпривет я"},
+      "files": {},
+      "missing": ["x.cfg"],
+      "flat": {
+        "text": "alias Y \"exec game.cfg; say hi\"\nbind e \"alias q \\\"exec b.cfg\\\"\"\nbind MOUSE4 +use\n// HLSR: exec \"valve.rc\" extra\n// HLSR: exec valve.rc\n// HLSR: EXEC \"valve.rc\"\nalias Y exec x.cfg\nunbindall\nпривет я",
+        "runtimeFiles": [],
+        "report": {"files":[],"missing":["x.cfg"],"cycles":[],"duplicateFiles":[],"duplicates":[{"kind":"alias","name":"y","files":["game.cfg","game.cfg"],"value":"exec x.cfg"}],"unsafe":["game.cfg"]},
+        "bytes": 197,
+        "summary": {"binds":2,"cvars":1,"aliases":2,"unknown":0,"files":0}
+      }
+    },
+    {
+      "name": "случайная цепочка 37",
+      "engine": "goldsrc",
+      "root": {"name":"hlsr-import-x.cfg","text":"exec c.cfg extra\r\nalias go \"exec c.cfg\"\r\n\nпривет я"},
+      "files": {"c.cfg":{"name":"c.cfg","text":"bind w \"exec game.cfg\"\r\nsensitivity 1"}},
+      "missing": [],
+      "flat": {"text":"exec c.cfg extra\nalias go \"exec c.cfg\"\n\nпривет я","runtimeFiles":[{"file":"c.cfg","text":"bind w \"exec game.cfg\"\nsensitivity 1"}],"report":{"files":["c.cfg"],"missing":[],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},"bytes":84,"summary":{"binds":0,"cvars":1,"aliases":1,"unknown":0,"files":2}}
+    },
+    {
+      "name": "случайная цепочка 38",
+      "engine": "goldsrc",
+      "root": {"name":"scripts/jump.cfg","text":"bind e \"exec main.cfg\"\nexec scripts/jump.cfg; echo after\nunbindall\nexec\nEXEC valve.rc\n"},
+      "files": {"main.cfg":{"name":"main.cfg","text":"m_pitch \"x y\"\nbind SPACE \"alias q \\\"exec My Binds.cfg\\\"\"\nexec valve.rc // note\nbind ; +jump\n"}},
+      "missing": [],
+      "flat": {
+        "text": "bind e \"exec main.cfg\"\nexec scripts/jump.cfg; echo after\nunbindall\nexec\n// HLSR: EXEC valve.rc\n",
+        "runtimeFiles": [{"file":"main.cfg","text":"m_pitch \"x y\"\nbind SPACE \"alias q \\\"exec My Binds.cfg\\\"\"\n// HLSR: exec valve.rc // note\nbind ; +jump\n"}],
+        "report": {"files":["main.cfg"],"missing":[],"cycles":[["scripts/jump.cfg","scripts/jump.cfg"]],"duplicateFiles":[],"duplicates":[],"unsafe":[]},
+        "bytes": 196,
+        "summary": {"binds":1,"cvars":1,"aliases":0,"unknown":0,"files":2}
+      }
+    },
+    {
+      "name": "случайная цепочка 39",
+      "engine": "source",
+      "root": {"name":"scripts/jump.cfg","text":"unbindall\r\nbind 1 \"exec ../evil.cfg\"\r\nexec My Binds.cfg\r\nEXEC \"config.cfg\"\r\nexec \"../evil.cfg\"; echo after\r\nbind NOSUCHKEY +attack; +attack2\r\nexec \"config.cfg\" // note"},
+      "files": {},
+      "missing": ["my.cfg"],
+      "flat": {
+        "text": "unbindall\nbind 1 \"exec ../evil.cfg\"\nexec My Binds.cfg\n// HLSR: EXEC \"config.cfg\"\nexec \"../evil.cfg\"; echo after\nbind NOSUCHKEY +attack; +attack2\n// HLSR: exec \"config.cfg\" // note",
+        "runtimeFiles": [],
+        "report": {"files":[],"missing":["my.cfg"],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},
+        "bytes": 179,
+        "summary": {"binds":2,"cvars":1,"aliases":0,"unknown":1,"files":0}
+      }
+    },
+    {
+      "name": "случайная цепочка 40",
+      "engine": "goldsrc",
+      "root": {"name":"Scripts/Jump.cfg, userconfig.cfg","text":"exec \"Scripts/Jump.cfg\"\nexec \"userconfig.cfg\"","virtual":true},
+      "files": {"scripts/jump.cfg":{"name":"Scripts/Jump.cfg","target":"Scripts/Jump.cfg","text":"exec Scripts/Jump.cfg\nalias Y +attack; +attack2\n"},"userconfig.cfg":{"name":"userconfig.cfg","target":"userconfig.cfg","text":"unbind NOSUCHKEY\nexec\nm_pitch 0\n"}},
+      "missing": [],
+      "flat": {
+        "text": "// ===== from Scripts/Jump.cfg =====\n// HLSR: exec Scripts/Jump.cfg skipped (cycle)\nalias Y +attack; +attack2\n\n// ===== from userconfig.cfg =====\nunbind NOSUCHKEY\nexec\nm_pitch 0\n",
+        "runtimeFiles": [],
+        "report": {"files":["Scripts/Jump.cfg","userconfig.cfg"],"missing":[],"cycles":[["Scripts/Jump.cfg","Scripts/Jump.cfg"]],"duplicateFiles":[],"duplicates":[],"unsafe":[]},
+        "bytes": 178,
+        "summary": {"binds":0,"cvars":1,"aliases":1,"unknown":1,"files":2}
+      }
+    },
+    {
+      "name": "случайная цепочка 41",
+      "engine": "goldsrc",
+      "root": {"name":"jump","text":"bind F5 \"exec config.cfg\"\r\nalias +x +use\r\nunbind e\r\nunbindall"},
+      "files": {},
+      "missing": [],
+      "flat": {"text":"bind F5 \"exec config.cfg\"\nalias +x +use\nunbind e\nunbindall","runtimeFiles":[],"report":{"files":[],"missing":[],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},"bytes":58,"summary":{"binds":1,"cvars":0,"aliases":1,"unknown":0,"files":0}}
+    },
+    {
+      "name": "случайная цепочка 42",
+      "engine": "goldsrc",
+      "root": {"name":"hlsr-import-x.cfg","text":"unbindall\r\n// только комментарий\r\n"},
+      "files": {},
+      "missing": [],
+      "flat": {"text":"unbindall\n// только комментарий\n","runtimeFiles":[],"report":{"files":[],"missing":[],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},"bytes":32,"summary":{"binds":0,"cvars":0,"aliases":0,"unknown":0,"files":0}}
+    },
+    {
+      "name": "случайная цепочка 43",
+      "engine": "goldsrc",
+      "root": {"name":"hlsr-import-x.cfg","text":"EXEC \"hlsr-import-x.cfg\"\nexec p.rc\nalias Y \"exec p.rc; say hi\"\nbind NOSUCHKEY \"alias q \\\"exec game.cfg\\\"\"\nbind 1 +attack; +attack2\nunbindall"},
+      "files": {"p.rc":{"name":"p.rc","text":"alias go \"exec Ünï.cfg\"\n\n"},"ünï.cfg":{"name":"Ünï.cfg","text":"// только комментарий\nexec \"hlsr-import-x.cfg\" // note\nunbindall\nпривет я"}},
+      "missing": [],
+      "flat": {
+        "text": "// HLSR: exec hlsr-import-x.cfg skipped (cycle)\n// ===== from p.rc =====\nalias go \"exec Ünï.cfg\"\n\n\nalias Y \"exec p.rc; say hi\"\nbind NOSUCHKEY \"alias q \\\"exec game.cfg\\\"\"\nbind 1 +attack; +attack2\nunbindall",
+        "runtimeFiles": [{"file":"p.rc","text":"alias go \"exec Ünï.cfg\"\n\n"}],
+        "report": {"files":["p.rc","Ünï.cfg"],"missing":[],"cycles":[["hlsr-import-x.cfg","hlsr-import-x.cfg"]],"duplicateFiles":[],"duplicates":[],"unsafe":["Ünï.cfg"]},
+        "bytes": 229,
+        "summary": {"binds":2,"cvars":0,"aliases":2,"unknown":1,"files":3}
+      }
+    },
+    {
+      "name": "случайная цепочка 44",
+      "engine": "goldsrc",
+      "root": {"name":"jump","text":"exec config.cfg extra\r\nunbindall\r\nexec\r\nalias Y +use\r\nexec valve.rc\r\nexec c.cfg\r\n"},
+      "files": {"c.cfg":{"name":"c.cfg","text":"bind SPACE \"exec valve.rc\"\nexec \"valve.rc\"; echo after\ndefault_fov \"x y\""}},
+      "missing": [],
+      "flat": {
+        "text": "// HLSR: exec config.cfg extra\nunbindall\nexec\nalias Y +use\n// HLSR: exec valve.rc\n// ===== from c.cfg =====\nbind SPACE \"exec valve.rc\"\n echo after // HLSR: exec \"valve.rc\"\ndefault_fov \"x y\"\n",
+        "runtimeFiles": [],
+        "report": {"files":["c.cfg"],"missing":[],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},
+        "bytes": 190,
+        "summary": {"binds":1,"cvars":2,"aliases":1,"unknown":0,"files":1}
+      }
+    },
+    {
+      "name": "случайная цепочка 45",
+      "engine": "goldsrc",
+      "root": {"name":"server.cfg","text":"EXEC server.cfg\nexec Ünï.cfg\nalias go \"exec Scripts/Jump.cfg\""},
+      "files": {"ünï.cfg":{"name":"Ünï.cfg","text":"alias go say hi\nexec server.cfg\nexec \"scripts/jump.cfg\"\nalias +x impulse 100\n"}},
+      "missing": ["scripts/jump.cfg"],
+      "flat": {
+        "text": "// HLSR: exec server.cfg skipped (cycle)\n// ===== from _n_.cfg =====\nalias go say hi\n// HLSR: exec server.cfg skipped (cycle)\n// HLSR: exec scripts/jump.cfg skipped (not imported)\nalias +x impulse 100\n\nalias go \"exec Scripts/Jump.cfg\"",
+        "runtimeFiles": [],
+        "report": {"files":["Ünï.cfg"],"missing":["scripts/jump.cfg"],"cycles":[],"duplicateFiles":[],"duplicates":[{"kind":"alias","name":"go","files":["Ünï.cfg","server.cfg"],"value":"exec Scripts/Jump.cfg"}],"unsafe":[]},
+        "bytes": 234,
+        "summary": {"binds":0,"cvars":0,"aliases":3,"unknown":0,"files":1}
+      }
+    },
+    {
+      "name": "случайная цепочка 46",
+      "engine": "source",
+      "root": {"name":"main.cfg","text":"exec server.cfg\nbind 1 \"exec Ünï.cfg\"\nexec\nexec\nalias Y save quick\nexec game.cfg\n"},
+      "files": {"ünï.cfg":{"name":"Ünï.cfg","text":"ï»¿exec main.cfg extra\n"}},
+      "missing": [],
+      "flat": {"text":"exec server.cfg\nbind 1 \"exec Ünï.cfg\"\nexec\nexec\nalias Y save quick\n// HLSR: exec game.cfg\n","runtimeFiles":[],"report":{"files":["Ünï.cfg"],"missing":[],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":["Ünï.cfg"]},"bytes":90,"summary":{"binds":1,"cvars":0,"aliases":1,"unknown":0,"files":1}}
+    },
+    {
+      "name": "случайная цепочка 47",
+      "engine": "goldsrc",
+      "root": {"name":"userconfig.cfg","text":"exec main.cfg; echo after\nexec"},
+      "files": {"main.cfg":{"name":"main.cfg","text":"alias go fps_max 20\n// только комментарий"}},
+      "missing": [],
+      "flat": {"text":"exec main.cfg; echo after\nexec","runtimeFiles":[],"report":{"files":["main.cfg"],"missing":[],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},"bytes":30,"summary":{"binds":0,"cvars":1,"aliases":0,"unknown":0,"files":1}}
+    },
+    {
+      "name": "случайная цепочка 48",
+      "engine": "goldsrc",
+      "root": {"name":"scripts/jump.cfg","text":"alias go \"exec scripts/jump.cfg\"\r\n\r\nEXEC hlsr-binds.cfg\r\nbind 1 fps_max 20\r\nexec \"scripts/jump.cfg\"\r\nexec My Binds.cfg\r\n"},
+      "files": {},
+      "missing": [],
+      "flat": {
+        "text": "alias go \"exec scripts/jump.cfg\"\n\n// HLSR: EXEC hlsr-binds.cfg\nbind 1 fps_max 20\n// HLSR: exec scripts/jump.cfg skipped (cycle)\nexec My Binds.cfg\n",
+        "runtimeFiles": [{"file":"scripts/jump.cfg","text":"alias go \"exec scripts/jump.cfg\"\n\n// HLSR: EXEC hlsr-binds.cfg\nbind 1 fps_max 20\n// HLSR: exec scripts/jump.cfg skipped (cycle)\nexec My Binds.cfg\n"}],
+        "report": {"files":[],"missing":[],"cycles":[["scripts/jump.cfg","scripts/jump.cfg"]],"duplicateFiles":[],"duplicates":[],"unsafe":[]},
+        "bytes": 292,
+        "summary": {"binds":1,"cvars":0,"aliases":1,"unknown":0,"files":1}
+      }
+    },
+    {
+      "name": "случайная цепочка 49",
+      "engine": "goldsrc",
+      "root": {"name":"config.cfg, scripts/jump.cfg, a.cfg","text":"exec \"config.cfg\"\nexec \"scripts/jump.cfg\"\nexec \"a.cfg\"","virtual":true},
+      "files": {
+        "config.cfg": {"name":"config.cfg","target":"config.cfg","text":"echo before; exec \"a.cfg\"\r\nunbind MOUSE4\r\ncl_showfps \"x y\"\r\n// только комментарий\r\n\r\necho before; exec scripts/jump.cfg\r\n"},
+        "scripts/jump.cfg": {"name":"scripts/jump.cfg","target":"scripts/jump.cfg","text":"alias Y say hi\r\nalias go \"exec ../evil.cfg\""},
+        "a.cfg": {"name":"a.cfg","target":"a.cfg","text":"unbindall\nbind SPACE obbo\nalias go \"exec server.cfg\"\nbind w +attack; +attack2\nexec Ünï.cfg; echo after\nexec scripts/jump.cfg"},
+        "ünï.cfg": {"name":"Ünï.cfg","text":"bind e \"exec a.cfg\"\r\nname 100\r\nexec \"server.cfg\" extra\r\nexec Ünï.cfg\r\nunbind f\r\nvolume 2\r\n"}
+      },
+      "missing": [],
+      "flat": {
+        "text": "// ===== from config.cfg =====\necho before; exec \"a.cfg\"\nunbind MOUSE4\ncl_showfps \"x y\"\n// только комментарий\n\necho before; exec scripts/jump.cfg\n\n// ===== from scripts/jump.cfg =====\nalias Y say hi\nalias go \"exec ../evil.cfg\"\n// ===== from a.cfg =====\nunbindall\nbind SPACE obbo\nalias go \"exec server.cfg\"\nbind w +attack; +attack2\nexec Ünï.cfg; echo after\n// ===== from scripts/jump.cfg =====\nalias Y say hi\nalias go \"exec ../evil.cfg\"",
+        "runtimeFiles": [],
+        "report": {
+          "files": ["config.cfg","scripts/jump.cfg","a.cfg","Ünï.cfg"],
+          "missing": [],
+          "cycles": [["Ünï.cfg","Ünï.cfg"]],
+          "duplicateFiles": [],
+          "duplicates": [{"kind":"cvar","name":"echo","files":["config.cfg","a.cfg","config.cfg","a.cfg"],"value":"after"},{"kind":"alias","name":"go","files":["a.cfg","scripts/jump.cfg","scripts/jump.cfg","scripts/jump.cfg","a.cfg","scripts/jump.cfg"],"value":"exec ../evil.cfg"}],
+          "unsafe": []
+        },
+        "bytes": 435,
+        "summary": {"binds":2,"cvars":4,"aliases":5,"unknown":1,"files":4}
+      }
+    },
+    {
+      "name": "случайная цепочка 50",
+      "engine": "source",
+      "root": {"name":"server.cfg","text":"unbind SPACE\r\nalias go say hi\r\nalias z \"exec main.cfg; say hi\"\r\n"},
+      "files": {"main.cfg":{"name":"main.cfg","text":"exec \"server.cfg\"\n// только комментарий"}},
+      "missing": [],
+      "flat": {"text":"unbind SPACE\nalias go say hi\nalias z \"exec main.cfg; say hi\"\n","runtimeFiles":[{"file":"main.cfg","text":"exec \"server.cfg\"\n// только комментарий"}],"report":{"files":["main.cfg"],"missing":[],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},"bytes":100,"summary":{"binds":0,"cvars":0,"aliases":2,"unknown":0,"files":2}}
+    },
+    {
+      "name": "случайная цепочка 51",
+      "engine": "goldsrc",
+      "root": {"name":"hlsr-binds.cfg","text":"fps_max 1\r\nbind w +use\r\nsensitivity 2\r\n"},
+      "files": {},
+      "missing": [],
+      "flat": {"text":"fps_max 1\nbind w +use\nsensitivity 2\n","runtimeFiles":[],"report":{"files":[],"missing":[],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},"bytes":36,"summary":{"binds":1,"cvars":2,"aliases":0,"unknown":0,"files":0}}
+    },
+    {
+      "name": "случайная цепочка 52",
+      "engine": "goldsrc",
+      "root": {"name":"server.cfg","text":"exec server.cfg; echo after\n\nexec\nbind 1 +attack; +attack2"},
+      "files": {},
+      "missing": [],
+      "flat": {"text":"exec server.cfg; echo after\n\nexec\nbind 1 +attack; +attack2","runtimeFiles":[],"report":{"files":[],"missing":[],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},"bytes":58,"summary":{"binds":1,"cvars":1,"aliases":0,"unknown":1,"files":0}}
+    },
+    {
+      "name": "случайная цепочка 53",
+      "engine": "source",
+      "root": {"name":"p.rc","text":"sensitivity 2\r\nbind MOUSE4 fps_max 20\r\n\r\n"},
+      "files": {},
+      "missing": [],
+      "flat": {"text":"sensitivity 2\nbind MOUSE4 fps_max 20\n\n","runtimeFiles":[],"report":{"files":[],"missing":[],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},"bytes":38,"summary":{"binds":1,"cvars":1,"aliases":0,"unknown":0,"files":0}}
+    },
+    {"name":"случайная цепочка 54","engine":"source","root":{"name":"main.cfg","text":"exec main.cfg"},"files":{},"missing":[],"flat":{"text":"// HLSR: exec main.cfg skipped (cycle)","runtimeFiles":[],"report":{"files":[],"missing":[],"cycles":[["main.cfg","main.cfg"]],"duplicateFiles":[],"duplicates":[],"unsafe":[]},"bytes":38,"summary":{"binds":0,"cvars":0,"aliases":0,"unknown":0,"files":0}}},
+    {
+      "name": "случайная цепочка 55",
+      "engine": "goldsrc",
+      "root": {"name":"userconfig.cfg","text":"bind e obbo\nunbindall\nexec hlsr-binds.cfg extra\nexec userconfig.cfg // note\nunbind ;\nbind f \"alias q \\\"exec userconfig.cfg\\\"\"\nalias Y impulse 100\n"},
+      "files": {},
+      "missing": [],
+      "flat": {
+        "text": "bind e obbo\nunbindall\n// HLSR: exec hlsr-binds.cfg extra\n// HLSR: exec userconfig.cfg skipped (cycle)\nunbind ;\nbind f \"alias q \\\"exec userconfig.cfg\\\"\"\nalias Y impulse 100\n",
+        "runtimeFiles": [],
+        "report": {"files":[],"missing":[],"cycles":[["userconfig.cfg","userconfig.cfg"]],"duplicateFiles":[],"duplicates":[],"unsafe":[]},
+        "bytes": 172,
+        "summary": {"binds":2,"cvars":0,"aliases":1,"unknown":0,"files":0}
+      }
+    },
+    {
+      "name": "случайная цепочка 56",
+      "engine": "goldsrc",
+      "root": {"name":"My Binds.cfg","text":"exec a.cfg\nunbindall\n\n// только комментарий\nbind f \"exec Scripts/Jump.cfg\"\nbind SPACE \"alias q \\\"exec Scripts/Jump.cfg\\\"\""},
+      "files": {"scripts/jump.cfg":{"name":"Scripts/Jump.cfg","text":"name 3.5\nexec \"b.cfg\"\ndefault_fov -0.022\nbind MOUSE4 +jump\nexec Scripts/Jump.cfg; echo after\nexec \"../evil.cfg\"; echo after\n// только комментарий\n"}},
+      "missing": ["a.cfg","b.cfg"],
+      "flat": {
+        "text": "// HLSR: exec a.cfg skipped (not imported)\nunbindall\n\n// только комментарий\nbind f \"exec Scripts/Jump.cfg\"\nbind SPACE \"alias q \\\"exec Scripts/Jump.cfg\\\"\"",
+        "runtimeFiles": [{"file":"Scripts/Jump.cfg","text":"name 3.5\n// HLSR: exec b.cfg skipped (not imported)\ndefault_fov -0.022\nbind MOUSE4 +jump\nexec Scripts/Jump.cfg; echo after\nexec \"../evil.cfg\"; echo after\n// только комментарий\n"}],
+        "report": {"files":["Scripts/Jump.cfg"],"missing":["a.cfg","b.cfg"],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},
+        "bytes": 329,
+        "summary": {"binds":2,"cvars":0,"aliases":0,"unknown":0,"files":2}
+      }
+    },
+    {"name":"случайная цепочка 57","engine":"goldsrc","root":{"name":"Ünï.cfg","text":"\nпривет я"},"files":{},"missing":[],"flat":{"text":"\nпривет я","runtimeFiles":[],"report":{"files":[],"missing":[],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},"bytes":9,"summary":{"binds":0,"cvars":1,"aliases":0,"unknown":0,"files":0}}},
+    {
+      "name": "случайная цепочка 58",
+      "engine": "goldsrc",
+      "root": {"name":"userconfig.cfg","text":"unbindall\nalias go \"exec My Binds.cfg\"\n// только комментарий\nexec \"x y.cfg\"\nexec \"My Binds.cfg\""},
+      "files": {"x y.cfg":{"name":"x y.cfg","text":"exec userconfig.cfg\necho before; exec userconfig.cfg\nalias z \"exec valve.rc; say hi\""},"my binds.cfg":{"name":"My Binds.cfg","text":"echo before; exec My Binds.cfg\nbind F5 exec x.cfg\nbind w save quick\n\nbind w \"alias q \\\"exec userconfig.cfg\\\"\"\nunbindall\n"}},
+      "missing": ["x.cfg"],
+      "flat": {
+        "text": "unbindall\nalias go \"exec My Binds.cfg\"\n// только комментарий\n// ===== from x y.cfg =====\n// HLSR: exec userconfig.cfg skipped (cycle)\necho before; exec userconfig.cfg\nalias z \"exec valve.rc; say hi\"\n// ===== from My Binds.cfg =====\necho before; exec My Binds.cfg\nbind F5 exec x.cfg\nbind w save quick\n\nbind w \"alias q \\\"exec userconfig.cfg\\\"\"\nunbindall\n",
+        "runtimeFiles": [],
+        "report": {"files":["x y.cfg","My Binds.cfg"],"missing":["x.cfg"],"cycles":[["x y.cfg","userconfig.cfg"]],"duplicateFiles":[],"duplicates":[],"unsafe":[]},
+        "bytes": 352,
+        "summary": {"binds":3,"cvars":2,"aliases":2,"unknown":0,"files":2}
+      }
+    },
+    {
+      "name": "случайная цепочка 59",
+      "engine": "goldsrc",
+      "root": {"name":"scripts/jump.cfg, x y.cfg","text":"exec \"scripts/jump.cfg\"\nexec \"x y.cfg\"","virtual":true},
+      "files": {"scripts/jump.cfg":{"name":"scripts/jump.cfg","target":"scripts/jump.cfg","text":"fps_max 2\r\nalias go +use\r\n"},"x y.cfg":{"name":"x y.cfg","target":"x y.cfg","text":"exec scripts/jump.cfg\r\nexec x y.cfg\r\nalias go +use\r\nexec valve.rc\r\nunbindall\r\nexec\r\nexec\r\necho before; exec \"autoexec.cfg\"\r\n"}},
+      "missing": ["autoexec.cfg"],
+      "flat": {
+        "text": "// ===== from scripts/jump.cfg =====\nfps_max 2\nalias go +use\n\n// ===== from x y.cfg =====\n// ===== from scripts/jump.cfg =====\nfps_max 2\nalias go +use\n\nexec x y.cfg\nalias go +use\n// HLSR: exec valve.rc\nunbindall\nexec\nexec\necho before; exec \"autoexec.cfg\"\n",
+        "runtimeFiles": [],
+        "report": {"files":["scripts/jump.cfg","x y.cfg"],"missing":["autoexec.cfg"],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},
+        "bytes": 255,
+        "summary": {"binds":0,"cvars":3,"aliases":3,"unknown":0,"files":2}
+      }
+    },
+    {
+      "name": "случайная цепочка 60",
+      "engine": "goldsrc",
+      "root": {"name":"server.cfg","text":"m_pitch -0.022\nexec\nalias +x impulse 100\nexec c.cfg; echo after\nexec a.cfg\nalias go fps_max 20\ndefault_fov 2\nexec \"a.cfg\" // note"},
+      "files": {
+        "c.cfg": {"name":"c.cfg","text":"alias Y +attack; +attack2\n\nexec\nalias go \"exec server.cfg\"\nunbindall\n"},
+        "a.cfg": {"name":"a.cfg","text":"bind NOSUCHKEY \"alias q \\\"exec Scripts/Jump.cfg\\\"\"\nm_pitch 250\nunbindall\nexec Scripts/Jump.cfg\nexec Scripts/Jump.cfg extra"},
+        "scripts/jump.cfg": {"name":"Scripts/Jump.cfg","text":"unbindall\r\nexec config.cfg extra\r\n// только комментарий\r\necho before; exec config.cfg\r\nexec \"server.cfg\""}
+      },
+      "missing": [],
+      "flat": {
+        "text": "m_pitch -0.022\nexec\nalias +x impulse 100\nexec c.cfg; echo after\n// ===== from a.cfg =====\nbind NOSUCHKEY \"alias q \\\"exec Scripts/Jump.cfg\\\"\"\nm_pitch 250\nunbindall\n// ===== from Scripts/Jump.cfg =====\nunbindall\n// HLSR: exec config.cfg extra\n// только комментарий\necho before // HLSR: exec config.cfg\n// HLSR: exec server.cfg skipped (cycle)\nexec Scripts/Jump.cfg extra\nalias go fps_max 20\ndefault_fov 2\n// ===== from a.cfg =====\nbind NOSUCHKEY \"alias q \\\"exec Scripts/Jump.cfg\\\"\"\nm_pitch 250\nunbindall\n// ===== from Scripts/Jump.cfg =====\nunbindall\n// HLSR: exec config.cfg extra\n// только комментарий\necho before // HLSR: exec config.cfg\n// HLSR: exec server.cfg skipped (cycle)\nexec Scripts/Jump.cfg extra",
+        "runtimeFiles": [],
+        "report": {
+          "files": ["c.cfg","a.cfg","Scripts/Jump.cfg"],
+          "missing": [],
+          "cycles": [],
+          "duplicateFiles": [],
+          "duplicates": [{"kind":"cvar","name":"m_pitch","files":["server.cfg","a.cfg","a.cfg"],"value":"250"},{"kind":"alias","name":"go","files":["c.cfg","server.cfg"],"value":"fps_max 20"},{"kind":"cvar","name":"echo","files":["server.cfg","Scripts/Jump.cfg","Scripts/Jump.cfg","Scripts/Jump.cfg","Scripts/Jump.cfg"],"value":"before"}],
+          "unsafe": []
+        },
+        "bytes": 707,
+        "summary": {"binds":2,"cvars":7,"aliases":2,"unknown":0,"files":3}
+      }
+    },
+    {
+      "name": "случайная цепочка 61",
+      "engine": "goldsrc",
+      "root": {"name":"autoexec.cfg","text":"alias go \"exec autoexec.cfg\"\r\necho before; exec server.cfg\r\nexec\r\nexec userconfig.cfg // note"},
+      "files": {"userconfig.cfg":{"name":"userconfig.cfg","text":"\n\nEXEC c.cfg\nunbind ;\nbind 1 \"exec userconfig.cfg\""},"c.cfg":{"name":"c.cfg","text":""}},
+      "missing": [],
+      "flat": {
+        "text": "alias go \"exec autoexec.cfg\"\necho before; exec server.cfg\nexec\n// ===== from userconfig.cfg =====\n\n\n// ===== from c.cfg =====\n\nunbind ;\nbind 1 \"exec userconfig.cfg\"",
+        "runtimeFiles": [],
+        "report": {"files":["userconfig.cfg","c.cfg"],"missing":[],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},
+        "bytes": 164,
+        "summary": {"binds":1,"cvars":1,"aliases":1,"unknown":0,"files":2}
+      }
+    },
+    {
+      "name": "случайная цепочка 62",
+      "engine": "goldsrc",
+      "root": {"name":"autoexec.cfg","text":"bind e \"exec valve.rc\"\nalias +x \"exec game.cfg; say hi\"\necho before; exec main.cfg\nexec game.cfg extra\n"},
+      "files": {},
+      "missing": ["main.cfg"],
+      "flat": {"text":"bind e \"exec valve.rc\"\nalias +x \"exec game.cfg; say hi\"\necho before; exec main.cfg\n// HLSR: exec game.cfg extra\n","runtimeFiles":[],"report":{"files":[],"missing":["main.cfg"],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},"bytes":112,"summary":{"binds":1,"cvars":1,"aliases":1,"unknown":0,"files":0}}
+    },
+    {
+      "name": "случайная цепочка 63",
+      "engine": "goldsrc",
+      "root": {"name":"config.cfg, My Binds.cfg","text":"exec \"config.cfg\"\nexec \"My Binds.cfg\"","virtual":true},
+      "files": {"config.cfg":{"name":"config.cfg","target":"config.cfg","text":"exec\nexec \"config.cfg\"\nexec \"My Binds.cfg\" extra\ncl_showfps 100\nbind f exec x.cfg\nEXEC \"My Binds.cfg\"\nalias go fps_max 20\n"},"my binds.cfg":{"name":"My Binds.cfg","target":"My Binds.cfg","text":"name 3.5\nexec \"server.cfg\"; echo after\n\nexec\nunbindall\n// только комментарий\n"}},
+      "missing": [],
+      "flat": {
+        "text": "// ===== from config.cfg =====\nexec\n// HLSR: exec \"config.cfg\"\nexec \"My Binds.cfg\" extra\ncl_showfps 100\nbind f exec x.cfg\n// ===== from My Binds.cfg =====\nname 3.5\nexec \"server.cfg\"; echo after\n\nexec\nunbindall\n// только комментарий\n\nalias go fps_max 20\n\n// ===== from My Binds.cfg =====\nname 3.5\nexec \"server.cfg\"; echo after\n\nexec\nunbindall\n// только комментарий\n",
+        "runtimeFiles": [],
+        "report": {"files":["config.cfg","My Binds.cfg"],"missing":[],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},
+        "bytes": 364,
+        "summary": {"binds":1,"cvars":5,"aliases":1,"unknown":0,"files":2}
+      }
+    },
+    {
+      "name": "случайная цепочка 64",
+      "engine": "goldsrc",
+      "root": {"name":"Ünï.cfg, scripts/jump.cfg, b.cfg","text":"exec \"n.cfg\"\nexec \"scripts/jump.cfg\"\nexec \"b.cfg\"","virtual":true},
+      "files": {
+        "n.cfg": {"name":"Ünï.cfg","target":"n.cfg","text":"\nalias go \"exec b.cfg\"\necho before; exec Ünï.cfg\n"},
+        "scripts/jump.cfg": {"name":"scripts/jump.cfg","target":"scripts/jump.cfg","text":"alias Y \"exec a.cfg; say hi\"\nname \"x y\"\n// только комментарий\nbind ; obbo\nexec b.cfg\nEXEC \"b.cfg\"\nbind NOSUCHKEY \"exec Ünï.cfg\"\nexec \"b.cfg\" extra"},
+        "b.cfg": {"name":"b.cfg","target":"b.cfg","text":"name 2\nexec \"Ünï.cfg\"; echo after\nunbindall\nexec main.cfg; echo after\nexec \"Ünï.cfg\" extra\n"},
+        "ünï.cfg": {"name":"Ünï.cfg","text":""}
+      },
+      "missing": ["a.cfg","main.cfg"],
+      "flat": {
+        "text": "// ===== from n.cfg =====\n\nalias go \"exec b.cfg\"\necho before; exec Ünï.cfg\n\n// ===== from scripts/jump.cfg =====\nalias Y \"exec a.cfg; say hi\"\nname \"x y\"\n// только комментарий\nbind ; obbo\n// ===== from b.cfg =====\nname 2\nexec \"Ünï.cfg\"; echo after\nunbindall\nexec main.cfg; echo after\nexec \"Ünï.cfg\" extra\n\n// ===== from b.cfg =====\nname 2\nexec \"Ünï.cfg\"; echo after\nunbindall\nexec main.cfg; echo after\nexec \"Ünï.cfg\" extra\n\nbind NOSUCHKEY \"exec Ünï.cfg\"\nexec \"b.cfg\" extra\n// ===== from b.cfg =====\nname 2\nexec \"Ünï.cfg\"; echo after\nunbindall\nexec main.cfg; echo after\nexec \"Ünï.cfg\" extra\n",
+        "runtimeFiles": [{"file":"b.cfg","text":"name 2\nexec \"Ünï.cfg\"; echo after\nunbindall\nexec main.cfg; echo after\nexec \"Ünï.cfg\" extra\n"}],
+        "report": {"files":["Ünï.cfg","scripts/jump.cfg","b.cfg","Ünï.cfg"],"missing":["a.cfg","main.cfg"],"cycles":[],"duplicateFiles":[],"duplicates":[{"kind":"cvar","name":"echo","files":["Ünï.cfg","b.cfg","b.cfg","b.cfg","b.cfg","b.cfg","b.cfg","b.cfg","b.cfg"],"value":"after"},{"kind":"cvar","name":"name","files":["scripts/jump.cfg","b.cfg","b.cfg","b.cfg","b.cfg"],"value":"2"}],"unsafe":["Ünï.cfg"]},
+        "bytes": 680,
+        "summary": {"binds":1,"cvars":11,"aliases":2,"unknown":2,"files":5}
+      }
+    },
+    {
+      "name": "случайная цепочка 65",
+      "engine": "source",
+      "root": {"name":"scripts/jump.cfg","text":"name -0.022\necho before; exec \"hlsr-import-x.cfg\"\nunbind SPACE\nname \"x y\"\nexec \"a.cfg\" extra\n// только комментарий\nbind F5 say hi\n"},
+      "files": {"hlsr-import-x.cfg":{"name":"hlsr-import-x.cfg","text":"exec \"server.cfg\"; echo after\nbind NOSUCHKEY \"alias q \\\"exec a.cfg\\\"\"\n\nпривет я"},"a.cfg":{"name":"a.cfg","text":""}},
+      "missing": [],
+      "flat": {
+        "text": "name -0.022\necho before; exec \"hlsr-import-x.cfg\"\nunbind SPACE\nname \"x y\"\nexec \"a.cfg\" extra\n// только комментарий\nbind F5 say hi\n",
+        "runtimeFiles": [],
+        "report": {"files":["hlsr-import-x.cfg","a.cfg"],"missing":[],"cycles":[],"duplicateFiles":[],"duplicates":[{"kind":"cvar","name":"name","files":["scripts/jump.cfg","scripts/jump.cfg"],"value":"x y"},{"kind":"cvar","name":"echo","files":["scripts/jump.cfg","hlsr-import-x.cfg"],"value":"after"}],"unsafe":[]},
+        "bytes": 130,
+        "summary": {"binds":1,"cvars":3,"aliases":0,"unknown":0,"files":2}
+      }
+    },
+    {
+      "name": "случайная цепочка 66",
+      "engine": "source",
+      "root": {"name":"hlsr-binds.cfg","text":"// только комментарий\r\ndefault_fov \"x y\"\r\ndefault_fov 3.5"},
+      "files": {},
+      "missing": [],
+      "flat": {"text":"// только комментарий\ndefault_fov \"x y\"\ndefault_fov 3.5","runtimeFiles":[],"report":{"files":[],"missing":[],"cycles":[],"duplicateFiles":[],"duplicates":[{"kind":"cvar","name":"default_fov","files":["hlsr-binds.cfg","hlsr-binds.cfg"],"value":"3.5"}],"unsafe":[]},"bytes":55,"summary":{"binds":0,"cvars":2,"aliases":0,"unknown":0,"files":0}}
+    },
+    {
+      "name": "случайная цепочка 67",
+      "engine": "goldsrc",
+      "root": {"name":"hlsr-import-x.cfg","text":"exec autoexec.cfg // note\nexec \"hlsr-import-x.cfg\"\nalias +x \"exec autoexec.cfg; say hi\"\n"},
+      "files": {"autoexec.cfg":{"name":"autoexec.cfg","text":"bind MOUSE4 impulse 100\nalias +x \"exec Ünï.cfg; say hi\"\n"},"ünï.cfg":{"name":"Ünï.cfg","text":""}},
+      "missing": [],
+      "flat": {
+        "text": "// ===== from autoexec.cfg =====\nbind MOUSE4 impulse 100\nalias +x \"exec Ünï.cfg; say hi\"\n\n// HLSR: exec hlsr-import-x.cfg skipped (cycle)\nalias +x \"exec autoexec.cfg; say hi\"\n",
+        "runtimeFiles": [],
+        "report": {"files":["autoexec.cfg","Ünï.cfg"],"missing":[],"cycles":[["hlsr-import-x.cfg","hlsr-import-x.cfg"]],"duplicateFiles":[],"duplicates":[{"kind":"alias","name":"+x","files":["autoexec.cfg","hlsr-import-x.cfg"],"value":"exec autoexec.cfg; say hi"}],"unsafe":["Ünï.cfg"]},
+        "bytes": 175,
+        "summary": {"binds":1,"cvars":0,"aliases":2,"unknown":0,"files":2}
+      }
+    },
+    {"name":"случайная цепочка 68","engine":"goldsrc","root":{"name":"hlsr-binds.cfg","text":""},"files":{},"missing":[],"flat":{"text":"","runtimeFiles":[],"report":{"files":[],"missing":[],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},"bytes":0,"summary":{"binds":0,"cvars":0,"aliases":0,"unknown":0,"files":0}}},
+    {
+      "name": "случайная цепочка 69",
+      "engine": "goldsrc",
+      "root": {"name":"valve.rc","text":"default_fov 3.5\nbind F5 exec x.cfg\nexec hlsr-import-x.cfg\nexec scripts/jump.cfg extra\nbind e \"alias q \\\"exec valve.rc\\\"\"\nbind 1 \"exec scripts/jump.cfg\"\n"},
+      "files": {"scripts/jump.cfg":{"name":"scripts/jump.cfg","text":""}},
+      "missing": ["hlsr-import-x.cfg"],
+      "flat": {
+        "text": "default_fov 3.5\nbind F5 exec x.cfg\n// HLSR: exec hlsr-import-x.cfg skipped (not imported)\nexec scripts/jump.cfg extra\nbind e \"alias q \\\"exec valve.rc\\\"\"\nbind 1 \"exec scripts/jump.cfg\"\n",
+        "runtimeFiles": [{"file":"scripts/jump.cfg","text":""}],
+        "report": {"files":["scripts/jump.cfg"],"missing":["hlsr-import-x.cfg"],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},
+        "bytes": 184,
+        "summary": {"binds":3,"cvars":1,"aliases":0,"unknown":0,"files":2}
+      }
+    },
+    {
+      "name": "случайная цепочка 70",
+      "engine": "goldsrc",
+      "root": {"name":"hlsr-import-x.cfg, Scripts/Jump.cfg, Ünï.cfg","text":"exec \"x.cfg\"\nexec \"Scripts/Jump.cfg\"\nexec \"n.cfg\"","virtual":true},
+      "files": {
+        "x.cfg": {"name":"hlsr-import-x.cfg","target":"x.cfg","text":"exec hlsr-import-x.cfg extra\n\nalias z \"exec hlsr-import-x.cfg; say hi\"\nbind f \"alias q \\\"exec x y.cfg\\\"\"\n"},
+        "scripts/jump.cfg": {"name":"Scripts/Jump.cfg","target":"Scripts/Jump.cfg","text":"// только комментарий\nEXEC x y.cfg\n// только комментарий\nalias +x impulse 100\nexec autoexec.cfg\n\n"},
+        "n.cfg": {"name":"Ünï.cfg","target":"n.cfg","text":"ï»¿"},
+        "hlsr-import-x.cfg": {"name":"hlsr-import-x.cfg","text":"exec Scripts/Jump.cfg // note\nEXEC \"My Binds.cfg\"\ndefault_fov 250\nexec ../evil.cfg // note\nexec Ünï.cfg\n"},
+        "autoexec.cfg": {"name":"autoexec.cfg","text":"exec Ünï.cfg // note\r\nunbindall\r\nm_pitch 0\r\n"},
+        "ünï.cfg": {"name":"Ünï.cfg","text":"bind F5 save quick\r\nexec hlsr-import-x.cfg // note\r\nexec hlsr-import-x.cfg\r\n\r\nexec Scripts/Jump.cfg\r\necho before; exec x y.cfg\r\nm_pitch 1"}
+      },
+      "missing": ["my binds.cfg"],
+      "flat": {
+        "text": "// ===== from x.cfg =====\nexec hlsr-import-x.cfg extra\n\nalias z \"exec hlsr-import-x.cfg; say hi\"\nbind f \"alias q \\\"exec x y.cfg\\\"\"\n\n// ===== from Scripts/Jump.cfg =====\n// только комментарий\nEXEC x y.cfg\n// только комментарий\nalias +x impulse 100\n// ===== from autoexec.cfg =====\n// ===== from _n_.cfg =====\nbind F5 save quick\n// ===== from hlsr-import-x.cfg =====\n// HLSR: exec Scripts/Jump.cfg skipped (cycle)\n// HLSR: exec My Binds.cfg skipped (not imported)\ndefault_fov 250\nexec ../evil.cfg // note\n// HLSR: exec _n_.cfg skipped (cycle)\n\n// ===== from hlsr-import-x.cfg =====\n// HLSR: exec Scripts/Jump.cfg skipped (cycle)\n// HLSR: exec My Binds.cfg skipped (not imported)\ndefault_fov 250\nexec ../evil.cfg // note\n// HLSR: exec _n_.cfg skipped (cycle)\n\n\n// HLSR: exec Scripts/Jump.cfg skipped (cycle)\necho before; exec x y.cfg\nm_pitch 1\nunbindall\nm_pitch 0\n\n\n\n// ===== from n.cfg =====\n",
+        "runtimeFiles": [],
+        "report": {
+          "files": ["hlsr-import-x.cfg","Scripts/Jump.cfg","Ünï.cfg","hlsr-import-x.cfg","autoexec.cfg","Ünï.cfg"],
+          "missing": ["my binds.cfg"],
+          "cycles": [["Ünï.cfg","hlsr-import-x.cfg"],["Ünï.cfg","Scripts/Jump.cfg"],["autoexec.cfg","Ünï.cfg"],["hlsr-import-x.cfg","Scripts/Jump.cfg"],["hlsr-import-x.cfg","Ünï.cfg"]],
+          "duplicateFiles": [],
+          "duplicates": [{"kind":"cvar","name":"m_pitch","files":["Ünï.cfg","autoexec.cfg","autoexec.cfg","Ünï.cfg","Ünï.cfg","autoexec.cfg"],"value":"0"}],
+          "unsafe": ["hlsr-import-x.cfg"]
+        },
+        "bytes": 890,
+        "summary": {"binds":2,"cvars":5,"aliases":2,"unknown":0,"files":6}
+      }
+    },
+    {"name":"случайная цепочка 71","engine":"source","root":{"name":"d/e/f/g.cfg","text":"// только комментарий"},"files":{},"missing":[],"flat":{"text":"// только комментарий","runtimeFiles":[],"report":{"files":[],"missing":[],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},"bytes":21,"summary":{"binds":0,"cvars":0,"aliases":0,"unknown":0,"files":0}}},
+    {
+      "name": "случайная цепочка 72",
+      "engine": "goldsrc",
+      "root": {"name":"hlsr-import.cfg","text":"exec hlsr-import.cfg extra\r\nfps_max 2\r\nalias go \"exec game.cfg\"\r\nunbind w\r\n"},
+      "files": {},
+      "missing": [],
+      "flat": {"text":"exec hlsr-import.cfg extra\nfps_max 2\nalias go \"exec game.cfg\"\nunbind w\n","runtimeFiles":[],"report":{"files":[],"missing":[],"cycles":[["hlsr-import.cfg","hlsr-import.cfg"]],"duplicateFiles":[],"duplicates":[],"unsafe":[]},"bytes":71,"summary":{"binds":0,"cvars":1,"aliases":1,"unknown":0,"files":0}}
+    },
+    {"name":"случайная цепочка 73","engine":"goldsrc","root":{"name":"Ünï.cfg","text":""},"files":{},"missing":[],"flat":{"text":"","runtimeFiles":[],"report":{"files":[],"missing":[],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},"bytes":0,"summary":{"binds":0,"cvars":0,"aliases":0,"unknown":0,"files":0}}},
+    {
+      "name": "случайная цепочка 74",
+      "engine": "source",
+      "root": {"name":"My Binds.cfg","text":"bind NOSUCHKEY obbo\nname \"x y\"\nexec ../evil.cfg\n"},
+      "files": {},
+      "missing": [],
+      "flat": {"text":"bind NOSUCHKEY obbo\nname \"x y\"\nexec ../evil.cfg\n","runtimeFiles":[],"report":{"files":[],"missing":[],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},"bytes":48,"summary":{"binds":1,"cvars":1,"aliases":0,"unknown":0,"files":0}}
+    },
+    {
+      "name": "случайная цепочка 75",
+      "engine": "goldsrc",
+      "root": {"name":"My Binds.cfg, valve.rc, x y.cfg","text":"exec \"My Binds.cfg\"\nexec \"cfg-valve.cfg\"\nexec \"x y.cfg\"","virtual":true},
+      "files": {
+        "my binds.cfg": {"name":"My Binds.cfg","target":"My Binds.cfg","text":"exec x y.cfg extra\nexec \"d/e/f/g.cfg\"; echo after\nexec valve.rc\nbind w \"alias q \\\"exec x y.cfg\\\"\"\nexec My Binds.cfg; echo after\nexec \"My Binds.cfg\" // note\n"},
+        "cfg-valve.cfg": {"name":"valve.rc","target":"cfg-valve.cfg","text":"unbind NOSUCHKEY\nexec b.cfg\nbind ; \"exec d/e/f/g.cfg\"\nexec \"x y.cfg\" // note\nbind MOUSE4 \"exec valve.rc\"\nexec Ünï.cfg // note\nexec hlsr-import-x.cfg\n"},
+        "x y.cfg": {"name":"x y.cfg","target":"x y.cfg","text":"ï»¿"},
+        "hlsr-import-x.cfg": {"name":"hlsr-import-x.cfg","text":"exec My Binds.cfg; echo after\ndefault_fov 0"}
+      },
+      "missing": ["d/e/f/g.cfg","b.cfg","ünï.cfg"],
+      "flat": {
+        "text": "// ===== from My Binds.cfg =====\nexec x y.cfg extra\nexec \"d/e/f/g.cfg\"; echo after\n// HLSR: exec valve.rc\nbind w \"alias q \\\"exec x y.cfg\\\"\"\nexec My Binds.cfg; echo after\n// HLSR: exec My Binds.cfg skipped (cycle)\n\n// ===== from cfg-valve.cfg =====\nunbind NOSUCHKEY\n// HLSR: exec b.cfg skipped (not imported)\nbind ; \"exec d/e/f/g.cfg\"\n// ===== from x y.cfg =====\n\nbind MOUSE4 \"exec valve.rc\"\n// HLSR: exec _n_.cfg skipped (not imported)\n// ===== from hlsr-import-x.cfg =====\nexec My Binds.cfg; echo after\ndefault_fov 0\n\n// ===== from x y.cfg =====\n",
+        "runtimeFiles": [],
+        "report": {"files":["My Binds.cfg","valve.rc","x y.cfg","hlsr-import-x.cfg"],"missing":["d/e/f/g.cfg","b.cfg","ünï.cfg"],"cycles":[["My Binds.cfg","My Binds.cfg"]],"duplicateFiles":[],"duplicates":[],"unsafe":[]},
+        "bytes": 547,
+        "summary": {"binds":2,"cvars":4,"aliases":0,"unknown":2,"files":4}
+      }
+    },
+    {
+      "name": "случайная цепочка 76",
+      "engine": "goldsrc",
+      "root": {"name":"d/e/f/g.cfg","text":"exec My Binds.cfg\r\nvolume \"x y\"\r\nunbindall\r\nEXEC d/e/f/g.cfg\r\nexec d/e/f/g.cfg\r\nexec My Binds.cfg\r\n"},
+      "files": {},
+      "missing": [],
+      "flat": {"text":"exec My Binds.cfg\nvolume \"x y\"\nunbindall\n// HLSR: exec d/e/f/g.cfg skipped (cycle)\n// HLSR: exec d/e/f/g.cfg skipped (cycle)\nexec My Binds.cfg\n","runtimeFiles":[],"report":{"files":[],"missing":[],"cycles":[["d/e/f/g.cfg","d/e/f/g.cfg"]],"duplicateFiles":[],"duplicates":[],"unsafe":[]},"bytes":143,"summary":{"binds":0,"cvars":1,"aliases":0,"unknown":0,"files":0}}
+    },
+    {"name":"случайная цепочка 77","engine":"source","root":{"name":"hlsr-binds.cfg","text":""},"files":{},"missing":[],"flat":{"text":"","runtimeFiles":[],"report":{"files":[],"missing":[],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},"bytes":0,"summary":{"binds":0,"cvars":0,"aliases":0,"unknown":0,"files":0}}},
+    {
+      "name": "случайная цепочка 78",
+      "engine": "source",
+      "root": {"name":"Ünï.cfg, hlsr-import-x.cfg","text":"exec \"n.cfg\"\nexec \"x.cfg\"","virtual":true},
+      "files": {
+        "n.cfg": {"name":"Ünï.cfg","target":"n.cfg","text":"unbindall\necho before; exec \"hlsr-import-x.cfg\"\nalias go \"exec valve.rc\"\nEXEC \"d/e/f/g.cfg\"\nm_pitch 100"},
+        "x.cfg": {"name":"hlsr-import-x.cfg","target":"x.cfg","text":"exec hlsr-import-x.cfg\r\nalias +x impulse 100\r\nalias +x \"exec d/e/f/g.cfg; say hi\""},
+        "hlsr-import-x.cfg": {"name":"hlsr-import-x.cfg","text":"exec \"Ünï.cfg\"\r\necho before; exec Ünï.cfg\r\nfps_max 100\r\nexec\r\nunbindall\r\nalias go \"exec hlsr-binds.cfg\"\r\n"},
+        "d/e/f/g.cfg": {"name":"d/e/f/g.cfg","text":"bind f +attack; +attack2\n"},
+        "ünï.cfg": {"name":"Ünï.cfg","text":"exec hlsr-import-x.cfg; echo after\nbind NOSUCHKEY \"exec d/e/f/g.cfg\"\ndefault_fov 250\nsensitivity 0\n"}
+      },
+      "missing": [],
+      "flat": {
+        "text": "// ===== from n.cfg =====\nunbindall\necho before; exec \"hlsr-import-x.cfg\"\nalias go \"exec valve.rc\"\n// ===== from d/e/f/g.cfg =====\nbind f +attack; +attack2\n\nm_pitch 100\n// ===== from x.cfg =====\n// ===== from hlsr-import-x.cfg =====\n// ===== from _n_.cfg =====\nexec hlsr-import-x.cfg; echo after\nbind NOSUCHKEY \"exec d/e/f/g.cfg\"\ndefault_fov 250\nsensitivity 0\n\necho before; exec Ünï.cfg\nfps_max 100\nexec\nunbindall\nalias go \"exec hlsr-binds.cfg\"\n\nalias +x impulse 100\nalias +x \"exec d/e/f/g.cfg; say hi\"",
+        "runtimeFiles": [],
+        "report": {
+          "files": ["Ünï.cfg","hlsr-import-x.cfg","hlsr-import-x.cfg","d/e/f/g.cfg","Ünï.cfg"],
+          "missing": [],
+          "cycles": [["Ünï.cfg","hlsr-import-x.cfg"]],
+          "duplicateFiles": [],
+          "duplicates": [{"kind":"cvar","name":"echo","files":["Ünï.cfg","Ünï.cfg","hlsr-import-x.cfg","Ünï.cfg","Ünï.cfg","hlsr-import-x.cfg","Ünï.cfg"],"value":"after"},{"kind":"alias","name":"go","files":["hlsr-import-x.cfg","Ünï.cfg","hlsr-import-x.cfg"],"value":"exec hlsr-binds.cfg"},{"kind":"alias","name":"+x","files":["hlsr-import-x.cfg","hlsr-import-x.cfg"],"value":"exec d/e/f/g.cfg; say hi"}],
+          "unsafe": ["d/e/f/g.cfg"]
+        },
+        "bytes": 502,
+        "summary": {"binds":2,"cvars":7,"aliases":4,"unknown":1,"files":5}
+      }
+    },
+    {"name":"случайная цепочка 79","engine":"goldsrc","root":{"name":"main.cfg","text":""},"files":{},"missing":[],"flat":{"text":"","runtimeFiles":[],"report":{"files":[],"missing":[],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},"bytes":0,"summary":{"binds":0,"cvars":0,"aliases":0,"unknown":0,"files":0}}},
+    {
+      "name": "три файла в порядке выполнения",
+      "engine": "goldsrc",
+      "root": {"name":"main.cfg","text":"fps_max 100\nexec a.cfg\nbind f +use\nsensitivity 3\n"},
+      "files": {"a.cfg":{"name":"a.cfg","target":"a.cfg","text":"bind a +jump\nexec \"b.cfg\"\nfps_max 250\n"},"b.cfg":{"name":"b.cfg","target":"b.cfg","text":"sensitivity 2\nbind f +attack\n"}},
+      "missing": [],
+      "flat": {
+        "text": "fps_max 100\n// ===== from a.cfg =====\nbind a +jump\n// ===== from b.cfg =====\nsensitivity 2\nbind f +attack\n\nfps_max 250\n\nbind f +use\nsensitivity 3\n",
+        "runtimeFiles": [],
+        "report": {"files":["a.cfg","b.cfg"],"missing":[],"cycles":[],"duplicateFiles":[],"duplicates":[{"kind":"cvar","name":"fps_max","files":["main.cfg","a.cfg"],"value":"250"},{"kind":"cvar","name":"sensitivity","files":["b.cfg","main.cfg"],"value":"3"},{"kind":"bind","name":"f","files":["b.cfg","main.cfg"],"value":"+use"}],"unsafe":[]},
+        "bytes": 146,
+        "summary": {"binds":3,"cvars":4,"aliases":0,"unknown":0,"files":2}
+      }
+    },
+    {
+      "name": "exec внутри alias и bind остаётся файлом",
+      "engine": "goldsrc",
+      "root": {"name":"main.cfg","text":"alias go \"exec scripts/run.cfg\"\nbind g \"exec scripts/run.cfg; say hi\"\nbind h +use\n"},
+      "files": {"scripts/run.cfg":{"name":"run.cfg","target":"scripts/run.cfg","text":"bind k +jump\nexec deep.cfg\n"},"deep.cfg":{"name":"deep.cfg","target":"deep.cfg","text":"fps_max 20\n"}},
+      "missing": [],
+      "flat": {
+        "text": "alias go \"exec scripts/run.cfg\"\nbind g \"exec scripts/run.cfg; say hi\"\nbind h +use\n",
+        "runtimeFiles": [{"file":"scripts/run.cfg","text":"bind k +jump\n// ===== from deep.cfg =====\nfps_max 20\n\n"}],
+        "report": {"files":["run.cfg","deep.cfg"],"missing":[],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},
+        "bytes": 136,
+        "summary": {"binds":2,"cvars":0,"aliases":1,"unknown":0,"files":3}
+      }
+    },
+    {
+      "name": "цикл и невыбранные файлы",
+      "engine": "goldsrc",
+      "root": {"name":"a.cfg","text":"bind a +use\nexec b.cfg\nexec userconfig.cfg\nexec gone.cfg\n"},
+      "files": {"b.cfg":{"name":"b.cfg","target":"b.cfg","text":"bind b +jump\nexec a.cfg\n"}},
+      "missing": ["gone.cfg"],
+      "flat": {
+        "text": "bind a +use\n// ===== from b.cfg =====\nbind b +jump\n// HLSR: exec a.cfg skipped (cycle)\n\n// HLSR: exec userconfig.cfg skipped (not imported)\n// HLSR: exec gone.cfg skipped (not imported)\n",
+        "runtimeFiles": [],
+        "report": {"files":["b.cfg"],"missing":["gone.cfg"],"cycles":[["b.cfg","a.cfg"]],"duplicateFiles":[],"duplicates":[],"unsafe":[]},
+        "bytes": 186,
+        "summary": {"binds":2,"cvars":0,"aliases":0,"unknown":0,"files":1}
+      }
+    },
+    {
+      "name": "скрипт с другим регистром имени",
+      "engine": "goldsrc",
+      "root": {"name":"main.cfg","text":"bind z \"exec scripts/Run.cfg\"\nexec other.cfg\n"},
+      "files": {"scripts/run.cfg":{"name":"Run.cfg","target":"scripts/Run.cfg","text":"bind k +jump\n"},"other.cfg":{"name":"other.cfg","target":"other.cfg","text":"fps_max 50\n"}},
+      "missing": [],
+      "flat": {"text":"bind z \"exec scripts/Run.cfg\"\n// ===== from other.cfg =====\nfps_max 50\n\n","runtimeFiles":[{"file":"scripts/Run.cfg","text":"bind k +jump\n"}],"report":{"files":["Run.cfg","other.cfg"],"missing":[],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},"bytes":85,"summary":{"binds":1,"cvars":1,"aliases":0,"unknown":0,"files":3}}
+    },
+    {
+      "name": "новый файл из alias",
+      "engine": "goldsrc",
+      "root": {"name":"m.cfg","text":"alias go \"exec fresh.cfg\"\n"},
+      "files": {"fresh.cfg":{"name":"fresh.cfg","target":"fresh.cfg","text":"bind k +jump\n"}},
+      "missing": [],
+      "flat": {"text":"alias go \"exec fresh.cfg\"\n","runtimeFiles":[{"file":"fresh.cfg","text":"bind k +jump\n"}],"report":{"files":["fresh.cfg"],"missing":[],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},"bytes":39,"summary":{"binds":0,"cvars":0,"aliases":1,"unknown":0,"files":2}}
+    },
+    {
+      "name": "имя в комментарии только ASCII и без «;»",
+      "engine": "goldsrc",
+      "root": {"name":"main.cfg","text":"bind a +use\nexec \"файл.cfg\"\nexec \"x;bind b +jump.cfg\"\nexec userconfig.cfg\n"},
+      "files": {"файл.cfg":{"name":"файл.cfg","target":"файл.cfg","text":"bind c +duck\n"},"x;bind b +jump.cfg":{"name":"x;bind b +jump.cfg","target":"x;bind b +jump.cfg","text":"bind d +attack\n"}},
+      "missing": [],
+      "flat": {
+        "text": "bind a +use\n// ===== from ____.cfg =====\nbind c +duck\n\n// ===== from x_bind b +jump.cfg =====\nbind d +attack\n\n// HLSR: exec userconfig.cfg skipped (not imported)\n",
+        "runtimeFiles": [],
+        "report": {"files":["файл.cfg","x;bind b +jump.cfg"],"missing":[],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},
+        "bytes": 162,
+        "summary": {"binds":3,"cvars":0,"aliases":0,"unknown":0,"files":2}
+      }
+    },
+    {
+      "name": "Source: alias из файла и бинд на него",
+      "engine": "source",
+      "root": {"name":"autoexec.cfg","text":"alias hop \"+jump; wait 2; -jump\"\nbind f hop\nexec extra\n"},
+      "files": {"extra.cfg":{"name":"extra.cfg","target":"extra.cfg","text":"alias spin \"+left\"\nbind g spin\n"}},
+      "missing": [],
+      "flat": {"text":"alias hop \"+jump; wait 2; -jump\"\nbind f hop\n// ===== from extra.cfg =====\nalias spin \"+left\"\nbind g spin\n\n","runtimeFiles":[],"report":{"files":["extra.cfg"],"missing":[],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},"bytes":106,"summary":{"binds":2,"cvars":0,"aliases":2,"unknown":0,"files":1}}
+    },
+    {
+      "name": "скрипты с небезопасным именем",
+      "engine": "goldsrc",
+      "root": {"name":"main.cfg","text":"alias a \"exec valve.rc\"\nalias b \"exec a/b/c/d.cfg\"\nalias c \"exec ok.cfg\"\nbind x \"exec Ok.cfg\"\n"},
+      "files": {"valve.rc":{"name":"valve.rc","target":"valve.rc","text":"bind v +use\n"},"a/b/c/d.cfg":{"name":"d.cfg","target":"a/b/c/d.cfg","text":"bind d +use\n"},"ok.cfg":{"name":"ok.cfg","target":"ok.cfg","text":"bind o +use\r\nexec \"deeper.cfg\"\r\nalias more \"exec deeper.cfg\"\r\n"},"deeper.cfg":{"name":"deeper.cfg","target":"deeper.cfg","text":"bind q +duck\n"}},
+      "missing": [],
+      "flat": {
+        "text": "alias a \"exec valve.rc\"\nalias b \"exec a/b/c/d.cfg\"\nalias c \"exec ok.cfg\"\nbind x \"exec Ok.cfg\"\n",
+        "runtimeFiles": [{"file":"ok.cfg","text":"bind o +use\n// ===== from deeper.cfg =====\nbind q +duck\n\nalias more \"exec deeper.cfg\"\n"},{"file":"deeper.cfg","text":"bind q +duck\n"}],
+        "report": {"files":["valve.rc","d.cfg","ok.cfg","deeper.cfg"],"missing":[],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":["valve.rc","a/b/c/d.cfg"]},
+        "bytes": 193,
+        "summary": {"binds":1,"cvars":0,"aliases":3,"unknown":0,"files":6}
+      }
+    },
+    {
+      "name": "корень зовёт сам себя из alias",
+      "engine": "goldsrc",
+      "root": {"name":"Main.cfg","text":"alias r \"exec main.cfg\"\nbind x +use\nexec main.cfg\n"},
+      "files": {},
+      "missing": [],
+      "flat": {
+        "text": "alias r \"exec main.cfg\"\nbind x +use\n// HLSR: exec main.cfg skipped (cycle)\n",
+        "runtimeFiles": [{"file":"main.cfg","text":"alias r \"exec main.cfg\"\nbind x +use\n// HLSR: exec main.cfg skipped (cycle)\n"}],
+        "report": {"files":[],"missing":[],"cycles":[["Main.cfg","Main.cfg"]],"duplicateFiles":[],"duplicates":[],"unsafe":[]},
+        "bytes": 150,
+        "summary": {"binds":1,"cvars":0,"aliases":1,"unknown":0,"files":1}
+      }
+    },
+    {
+      "name": "userconfig.cfg и autoexec.cfg выбраны игроком",
+      "engine": "goldsrc",
+      "root": {"name":"main.cfg","text":"exec userconfig.cfg\nalias u \"exec userconfig.cfg\"\nalias v \"exec autoexec.cfg\"\n"},
+      "files": {"userconfig.cfg":{"name":"userconfig.cfg","target":"userconfig.cfg","text":"bind u +use\n"},"autoexec.cfg":{"name":"autoexec.cfg","target":"autoexec.cfg","text":"bind w +forward\n"}},
+      "missing": [],
+      "flat": {"text":"// ===== from userconfig.cfg =====\nbind u +use\n\nalias u \"exec userconfig.cfg\"\nalias v \"exec autoexec.cfg\"\n","runtimeFiles":[],"report":{"files":["userconfig.cfg","autoexec.cfg"],"missing":[],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},"bytes":106,"summary":{"binds":1,"cvars":0,"aliases":2,"unknown":0,"files":2}}
+    },
+    {
+      "name": "имена вне ASCII и вне BMP",
+      "engine": "goldsrc",
+      "root": {"name":"main.cfg","text":"exec \"😀.cfg\"\nexec \"ÿ.cfg\"\nexec \"tab\there.cfg\"\n"},
+      "files": {"😀.cfg":{"name":"😀.cfg","target":"😀.cfg","text":"bind e +use\n"},"ÿ.cfg":{"name":"ÿ.cfg","target":"ÿ.cfg","text":"say ÿ\n"}},
+      "missing": [],
+      "flat": {"text":"// ===== from __.cfg =====\nbind e +use\n\n// ===== from _.cfg =====\nsay ÿ\n\nexec \"tab\there.cfg\"\n","runtimeFiles":[],"report":{"files":["😀.cfg","ÿ.cfg"],"missing":[],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},"bytes":93,"summary":{"binds":1,"cvars":1,"aliases":0,"unknown":0,"files":2}}
+    },
+    {
+      "name": "строка с exec и ещё командой не раскрывается",
+      "engine": "goldsrc",
+      "root": {"name":"main.cfg","text":"exec a.cfg; echo x\nexec a.cfg extra\n  EXEC   \"A.CFG\"  // note\nexec\n"},
+      "files": {"a.cfg":{"name":"a.cfg","target":"a.cfg","text":"bind a +use\r\n"}},
+      "missing": [],
+      "flat": {"text":"exec a.cfg; echo x\nexec a.cfg extra\n// ===== from A.CFG =====\nbind a +use\n\nexec\n","runtimeFiles":[],"report":{"files":["a.cfg"],"missing":[],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},"bytes":80,"summary":{"binds":1,"cvars":1,"aliases":0,"unknown":0,"files":1}}
+    },
+    {
+      "name": "несколько выбранных со скриптами",
+      "engine": "goldsrc",
+      "root": {"name":"binds.cfg, scripts.cfg","text":"exec \"binds.cfg\"\nexec \"scripts.cfg\"","virtual":true},
+      "files": {"binds.cfg":{"name":"binds.cfg","target":"binds.cfg","text":"bind k +jump\nalias s \"exec scripts.cfg\"\n"},"scripts.cfg":{"name":"scripts.cfg","target":"scripts.cfg","text":"alias x y\nexec binds.cfg\n"}},
+      "missing": [],
+      "flat": {
+        "text": "// ===== from binds.cfg =====\nbind k +jump\nalias s \"exec scripts.cfg\"\n\n// ===== from scripts.cfg =====\nalias x y\n// ===== from binds.cfg =====\nbind k +jump\nalias s \"exec scripts.cfg\"\n\n",
+        "runtimeFiles": [{"file":"scripts.cfg","text":"alias x y\n// ===== from binds.cfg =====\nbind k +jump\nalias s \"exec scripts.cfg\"\n\n"}],
+        "report": {"files":["binds.cfg","scripts.cfg"],"missing":[],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},
+        "bytes": 265,
+        "summary": {"binds":2,"cvars":0,"aliases":3,"unknown":0,"files":3}
+      }
+    },
+    {
+      "name": "сводка: бинды, alias, переменные, неизвестные",
+      "engine": "goldsrc",
+      "root": {"name":"s.cfg","text":"bind a\nbind a b\nalias x\nalias y z\nunbind a\nunbindall\nexec q.cfg\n+jump\necho\nfps_max 100\nname \"a b\"\n// c\n\"\" x\n"},
+      "files": {},
+      "missing": [],
+      "flat": {"text":"bind a\nbind a b\nalias x\nalias y z\nunbind a\nunbindall\nexec q.cfg\n+jump\necho\nfps_max 100\nname \"a b\"\n// c\n\"\" x\n","runtimeFiles":[],"report":{"files":[],"missing":[],"cycles":[],"duplicateFiles":[],"duplicates":[],"unsafe":[]},"bytes":108,"summary":{"binds":1,"cvars":4,"aliases":2,"unknown":2,"files":0}}
+    }
+  ]
+}

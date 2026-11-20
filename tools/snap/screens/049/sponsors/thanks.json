@@ -1,0 +1,29 @@
+{
+  "themes": ["hlsr", "liquid-glass"],
+  "id": "sponsors/thanks",
+  "base": "sponsors/_base",
+  "state": "«Спасибо за поддержку» после оплаты подписки (событие support-thanks): строка про стили и «до 11.12.2026»",
+  "steps": [
+    {
+      "wait": 300
+    },
+    {
+      "emit": "support-thanks",
+      "payload": {
+        "id": "42",
+        "kind": "subscription",
+        "until": 1797000000,
+        "styles": true
+      }
+    },
+    {
+      "wait": 600
+    },
+    {
+      "move": [
+        800,
+        880
+      ]
+    }
+  ]
+}

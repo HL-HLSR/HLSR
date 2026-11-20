@@ -1,0 +1,49 @@
+[package]
+name = "hlsr-ui"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+
+# Логика интерфейса без UI-фреймворка: контроллеры, сервисы, движение, CPU-растры, строки.
+# Вид (GPUI) — крейт hlsr-gpui.
+
+[dependencies]
+hlsr-core.workspace = true
+tokio = { workspace = true, features = ["rt", "sync"] }
+thiserror.workspace = true
+base64.workspace = true
+hlsr-delivery.workspace = true
+image = { workspace = true, features = ["png", "jpeg", "webp"] }
+serde.workspace = true
+tracing.workspace = true
+serde_json.workspace = true
+# Хост ссылки спонсора в подсказке — как `new URL().hostname` (controllers/sponsors.rs).
+url.workspace = true
+# Canvas 2D fillText превью (render/canvas_text.rs): раскладка parley, глифы swash.
+parley.workspace = true
+swash.workspace = true
+skrifa.workspace = true
+# Markdown новостей и гайда — разбор ПП4 (shared::guide_markdown), отрисовка — richtext.rs.
+hlsr-online = { path = "../hlsr-online" }
+# Даты интерфейса по часам ОС (intl.rs, как Date#toLocale* 0.4.7).
+chrono.workspace = true
+# Каналы фасада платформы (services/platform.rs); оверлей LiveSplit в превью: маски и место
+# (livesplit_overlay_shared, как у запуска).
+hlsr-platform = { path = "../hlsr-platform" }
+# Каналы фасада обновления и диагностики (services/update.rs, ПП6).
+hlsr-update.workspace = true
+# Растр превью, ника и рамки (render/).
+tiny-skia = { version = "0.12.0", default-features = false, features = ["std", "simd"] }
+# safe_svg: разбор SVG значка перед растром (тот же roxmltree, что у usvg); positions — границы атрибутов.
+roxmltree = { version = "0.21.1", default-features = false, features = ["std", "positions"] }
+# safe_svg: растр значка — та же версия resvg, что у GPUI (одна копия в бинарнике).
+resvg = { version = "0.46.0", default-features = false, features = ["text", "raster-images"] }
+
+[build-dependencies]
+hlsr-ui-build = { path = "../hlsr-ui-build" }
+
+[dev-dependencies]
+tokio = { workspace = true, features = ["rt-multi-thread", "sync", "time"] }
+# tests/personalization_logic.rs: хеш битмапа HSV-круга против холста 0.4.7.
+sha2.workspace = true

@@ -1,0 +1,820 @@
+{
+  "constants": {"PROFILE_HOST":"steamcommunity.com","IMAGE_HOSTS":["steamcdn-a.akamaihd.net","media.steampowered.com","steamcommunity-a.akamaihd.net"],"IMAGE_HOST_SUFFIX":".steamstatic.com"},
+  "avatarUrlFrom": [
+    {"input":"<avatarMedium>https://a.b/c.jpg</avatarMedium>","result":"https://a.b/c.jpg"},
+    {"input":"<avatarMedium><![CDATA[https://a.b/c.jpg]]></avatarMedium>","result":"https://a.b/c.jpg"},
+    {"input":"<avatarMedium>  <![CDATA[  https://a.b/c.jpg  ]]>  </avatarMedium>","result":"https://a.b/c.jpg"},
+    {"input":"<AVATARMEDIUM>HTTPS://a.b/C.JPG</avatarmedium>","result":"HTTPS://a.b/C.JPG"},
+    {"input":"<avatarmedium><![cdata[https://a.b/c.jpg]]></AvatarMedium>","result":"https://a.b/c.jpg"},
+    {"input":"<avatarMedium>\n\thttps://a.b/c.jpg\r\n</avatarMedium>","result":"https://a.b/c.jpg"},
+    {"input":"<avatarMedium>http://a.b/c.jpg</avatarMedium>","result":null},
+    {"input":"<avatarMedium></avatarMedium>","result":null},
+    {"input":"<avatarMedium>https://</avatarMedium>","result":null},
+    {"input":"<avatarMedium>https://a b/c.jpg</avatarMedium>","result":null},
+    {"input":"<avatarMedium>https://a.b/c<d.jpg</avatarMedium>","result":null},
+    {"input":"<avatarMedium>https://a.b/c]d.jpg</avatarMedium>","result":null},
+    {"input":"<avatarMedium>https://a.b/c.jpg]]></avatarMedium>","result":"https://a.b/c.jpg"},
+    {"input":"<avatarMedium><![CDATA[https://a.b/c.jpg</avatarMedium>","result":"https://a.b/c.jpg"},
+    {"input":"<avatarMedium><![CDATA[https://a.b/c.jpg]]]]></avatarMedium>","result":null},
+    {"input":"<avatarMedium>https://a.b/c.jpg</avatarMedium><avatarMedium>https://x.y/z.jpg</avatarMedium>","result":"https://a.b/c.jpg"},
+    {"input":"<avatarMedium>nope</avatarMedium><avatarMedium>https://x.y/z.jpg</avatarMedium>","result":"https://x.y/z.jpg"},
+    {"input":"<avatarIcon>https://i.c/o.jpg</avatarIcon><avatarMedium>https://m.d/m.jpg</avatarMedium><avatarFull>https://f.u/f.jpg</avatarFull>","result":"https://m.d/m.jpg"},
+    {"input":"<avatarFull>https://f.u/f.jpg</avatarFull>","result":null},
+    {"input":"<avatarMedium>https://a.b/c.jpg</avatarMedium","result":null},
+    {"input":"<avatarMedium>https://a.b/c.jpg</ avatarMedium>","result":null},
+    {"input":"<avatarMedium> https://a.b/c.jpg </avatarMedium>","result":"https://a.b/c.jpg"},
+    {"input":"<avatarMedium>﻿https://a.b/c.jpg</avatarMedium>","result":"https://a.b/c.jpg"},
+    {"input":"<avatarMedium>https://a.b/c.jpg</avatarMedium>","result":null},
+    {"input":"<avatarMedium>https://a.b/c.jpg</avatarMedium>","result":"https://a.b/c.jpg"},
+    {"input":"<avatarMedium>https://a.b/путь/картинка.jpg</avatarMedium>","result":"https://a.b/путь/картинка.jpg"},
+    {"input":"<avatarMedium>https://a.b/c.jpg?x=1&amp;y=2</avatarMedium>","result":"https://a.b/c.jpg?x=1&amp;y=2"},
+    {"input":"<avatarMedium>https://a.b/c.jpg</avatarMedium><avatarMedium>https://a.b/c.jpg</avatarMedium><avatarMedium>https://a.b/c.jpg</avatarMedium>","result":"https://a.b/c.jpg"},
+    {"input":"прочее <avatarMedium>https://a.b/c.jpg</avatarMedium> прочее","result":"https://a.b/c.jpg"},
+    {"input":"<avatarMedium><![CDATA[]]></avatarMedium>","result":null},
+    {"input":"<avatarMedium><![CDATA[ ]]>https://a.b/c.jpg</avatarMedium>","result":null},
+    {"input":"","result":null},
+    {"input":"нет тегов","result":null},
+    {"input":null,"result":null},
+    {"input":{"undefined":true},"result":null},
+    {"input":5,"result":null}
+  ],
+  "imageTypeOf": [
+    {"hex":"","result":null},
+    {"hex":"89","result":null},
+    {"hex":"89504e47","result":null},
+    {"hex":"89504e470d0a1a","result":null},
+    {"hex":"89504e470d0a1a0a","result":"png"},
+    {"hex":"89504e47ffffffffffffffff","result":"png"},
+    {"hex":"89504e46ffffffffffffffff","result":null},
+    {"hex":"ffd8ff","result":null},
+    {"hex":"ffd8ffe000104a46","result":"jpeg"},
+    {"hex":"ffd8fee000104a46","result":null},
+    {"hex":"ffd8ffffffffffff","result":"jpeg"},
+    {"hex":"474946383961ffff","result":null},
+    {"hex":"52494646ffffffff57454250","result":null},
+    {"hex":"0000000000000000","result":null},
+    {"hex":"ffd8ffe0","result":null}
+  ],
+  "notBuffer": [{"input":null,"result":null},{"input":"text","result":null},{"input":5,"result":null}],
+  "isAllowedImageHost": [
+    {"host":"steamcdn-a.akamaihd.net","result":true},
+    {"host":"STEAMCDN-A.AKAMAIHD.NET","result":true},
+    {"host":"media.steampowered.com","result":true},
+    {"host":"steamcommunity-a.akamaihd.net","result":true},
+    {"host":"steamcommunity.com","result":false},
+    {"host":"avatars.fastly.steamstatic.com","result":true},
+    {"host":"AVATARS.STEAMSTATIC.COM","result":true},
+    {"host":"steamstatic.com","result":false},
+    {"host":".steamstatic.com","result":true},
+    {"host":"evilsteamstatic.com","result":false},
+    {"host":"steamstatic.com.evil.example","result":false},
+    {"host":"a.b.steamstatic.com","result":true},
+    {"host":"cdn.cloudflare.steamstatic.com","result":true},
+    {"host":"akamaihd.net","result":false},
+    {"host":"evil.example.com","result":false},
+    {"host":"","result":false},
+    {"host":"localhost","result":false},
+    {"host":"127.0.0.1","result":false},
+    {"host":"[::1]","result":false},
+    {"host":"steamcdn-a.akamaihd.net.","result":false},
+    {"host":null,"result":false},
+    {"host":{"undefined":true},"result":false}
+  ],
+  "fetch": [
+    {
+      "name": "XML и картинка: PNG, кеш записан",
+      "id": "76561197960265828",
+      "cache": null,
+      "cacheAsDirectory": false,
+      "cacheDirIsFile": false,
+      "noCacheDir": false,
+      "routes": [
+        {"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","status":200,"headers":{},"body":{"text":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<profile><steamID64>76561197960265828</steamID64><avatarMedium><![CDATA[https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ab/abcd_medium.jpg]]></avatarMedium></profile>\n"}},
+        {"host":"steamcdn-a.akamaihd.net","path":"/steamcommunity/public/images/avatars/ab/abcd_medium.jpg","status":200,"headers":{},"body":{"png":200}}
+      ],
+      "result": {"length":290,"sha256":"4d8d1768d19e631cd1d9f2f5f5f225e60dfe05a5df22858e0b2127ee43d8762c"},
+      "requests": [{"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","accept":"text/xml","userAgent":"HLSR"},{"host":"steamcdn-a.akamaihd.net","path":"/steamcommunity/public/images/avatars/ab/abcd_medium.jpg","accept":"*/*","userAgent":"HLSR"}],
+      "cacheFiles": {"76561197960265828.bin":{"length":200,"sha256":"035771e18dc3057087bc585bbe73d172bee152e7a24557d6f7315fca5ef4331f"}}
+    },
+    {
+      "name": "картинка JPEG",
+      "id": "76561197960265828",
+      "cache": null,
+      "cacheAsDirectory": false,
+      "cacheDirIsFile": false,
+      "noCacheDir": false,
+      "routes": [
+        {"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","status":200,"headers":{},"body":{"text":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<profile><steamID64>76561197960265828</steamID64><avatarMedium><![CDATA[https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ab/abcd_medium.jpg]]></avatarMedium></profile>\n"}},
+        {"host":"steamcdn-a.akamaihd.net","path":"/steamcommunity/public/images/avatars/ab/abcd_medium.jpg","status":200,"headers":{},"body":{"jpeg":90}}
+      ],
+      "result": {"length":143,"sha256":"cfdb7ef2ee933bb4896d246ccfb62edecdaa4c388b961515116b183cd624fe67"},
+      "requests": [{"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","accept":"text/xml","userAgent":"HLSR"},{"host":"steamcdn-a.akamaihd.net","path":"/steamcommunity/public/images/avatars/ab/abcd_medium.jpg","accept":"*/*","userAgent":"HLSR"}],
+      "cacheFiles": {"76561197960265828.bin":{"length":90,"sha256":"e94584e9918ca258f8e519f734e877744af00b9ad4c8af9c898fedd7bb49526f"}}
+    },
+    {
+      "name": "кеш PNG читается без сети",
+      "id": "76561197960265828",
+      "cache": {"png":64},
+      "cacheAsDirectory": false,
+      "cacheDirIsFile": false,
+      "noCacheDir": false,
+      "routes": [],
+      "result": {"length":110,"sha256":"a35f9ad324fec8dcdc48f201a4954ce6fc168d320b0f5a677ce53a0689f6e015"},
+      "requests": [],
+      "cacheFiles": {"76561197960265828.bin":{"length":64,"sha256":"941ba72c4f8f39b383a7c41751fc29570de070aa195c3251e272333457d58a1a"}}
+    },
+    {
+      "name": "кеш JPEG читается без сети",
+      "id": "76561197960265828",
+      "cache": {"jpeg":64},
+      "cacheAsDirectory": false,
+      "cacheDirIsFile": false,
+      "noCacheDir": false,
+      "routes": [],
+      "result": {"length":111,"sha256":"6b6d72173f03c0bfe955d3ec7a982af800988d448dfb977f191dbe010b7e2438"},
+      "requests": [],
+      "cacheFiles": {"76561197960265828.bin":{"length":64,"sha256":"24ee28919f9ec6db2dfb0b13012b991b1d118e7881d0cc93dbe7e5afeb3ec22d"}}
+    },
+    {
+      "name": "кеш больше предела читается как есть",
+      "id": "76561197960265828",
+      "cache": {"png":716800},
+      "cacheAsDirectory": false,
+      "cacheDirIsFile": false,
+      "noCacheDir": false,
+      "routes": [],
+      "result": {"length":955758,"sha256":"2a737c5e25d86f8381b1f51616325d30522567f0a0dca2e9783aef7babf74787"},
+      "requests": [],
+      "cacheFiles": {"76561197960265828.bin":{"length":716800,"sha256":"40815356ea6cc07c2e9db9390ed5c26be5b62a18a8d33e9426553e8086998af7"}}
+    },
+    {
+      "name": "кеш — не картинка: идём в сеть и перезаписываем",
+      "id": "76561197960265828",
+      "cache": {"text":"это не картинка вообще"},
+      "cacheAsDirectory": false,
+      "cacheDirIsFile": false,
+      "noCacheDir": false,
+      "routes": [
+        {"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","status":200,"headers":{},"body":{"text":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<profile><steamID64>76561197960265828</steamID64><avatarMedium><![CDATA[https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ab/abcd_medium.jpg]]></avatarMedium></profile>\n"}},
+        {"host":"steamcdn-a.akamaihd.net","path":"/steamcommunity/public/images/avatars/ab/abcd_medium.jpg","status":200,"headers":{},"body":{"png":80}}
+      ],
+      "result": {"length":130,"sha256":"49bf58843d1f4ab6fc8051dd56709ce07c27ab7a836acde49725286f61795f3e"},
+      "requests": [{"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","accept":"text/xml","userAgent":"HLSR"},{"host":"steamcdn-a.akamaihd.net","path":"/steamcommunity/public/images/avatars/ab/abcd_medium.jpg","accept":"*/*","userAgent":"HLSR"}],
+      "cacheFiles": {"76561197960265828.bin":{"length":80,"sha256":"016a506cb8aebb3785865fd480d3bde6536fc6dfdb63c50ad8e8502c956d94e8"}}
+    },
+    {
+      "name": "кеш короче 8 байт",
+      "id": "76561197960265828",
+      "cache": {"hex":"89504e47"},
+      "cacheAsDirectory": false,
+      "cacheDirIsFile": false,
+      "noCacheDir": false,
+      "routes": [
+        {"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","status":200,"headers":{},"body":{"text":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<profile><steamID64>76561197960265828</steamID64><avatarMedium><![CDATA[https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ab/abcd_medium.jpg]]></avatarMedium></profile>\n"}},
+        {"host":"steamcdn-a.akamaihd.net","path":"/steamcommunity/public/images/avatars/ab/abcd_medium.jpg","status":200,"headers":{},"body":{"jpeg":80}}
+      ],
+      "result": {"length":131,"sha256":"8c469335dd5b69f7d65e584efdd3d43f1115f6106df15456f2b2a394f53f20a9"},
+      "requests": [{"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","accept":"text/xml","userAgent":"HLSR"},{"host":"steamcdn-a.akamaihd.net","path":"/steamcommunity/public/images/avatars/ab/abcd_medium.jpg","accept":"*/*","userAgent":"HLSR"}],
+      "cacheFiles": {"76561197960265828.bin":{"length":80,"sha256":"8de0824136d2149fe814a3705f09cb4830878eb7b27890740161970d72479252"}}
+    },
+    {
+      "name": "кеш пуст",
+      "id": "76561197960265828",
+      "cache": {"text":""},
+      "cacheAsDirectory": false,
+      "cacheDirIsFile": false,
+      "noCacheDir": false,
+      "routes": [
+        {"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","status":200,"headers":{},"body":{"text":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<profile><steamID64>76561197960265828</steamID64><avatarMedium><![CDATA[https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ab/abcd_medium.jpg]]></avatarMedium></profile>\n"}},
+        {"host":"steamcdn-a.akamaihd.net","path":"/steamcommunity/public/images/avatars/ab/abcd_medium.jpg","status":200,"headers":{},"body":{"png":80}}
+      ],
+      "result": {"length":130,"sha256":"49bf58843d1f4ab6fc8051dd56709ce07c27ab7a836acde49725286f61795f3e"},
+      "requests": [{"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","accept":"text/xml","userAgent":"HLSR"},{"host":"steamcdn-a.akamaihd.net","path":"/steamcommunity/public/images/avatars/ab/abcd_medium.jpg","accept":"*/*","userAgent":"HLSR"}],
+      "cacheFiles": {"76561197960265828.bin":{"length":80,"sha256":"016a506cb8aebb3785865fd480d3bde6536fc6dfdb63c50ad8e8502c956d94e8"}}
+    },
+    {
+      "name": "кеш GIF не принимается",
+      "id": "76561197960265828",
+      "cache": {"hex":"47494638396101000100","padTo":40},
+      "cacheAsDirectory": false,
+      "cacheDirIsFile": false,
+      "noCacheDir": false,
+      "routes": [
+        {"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","status":200,"headers":{},"body":{"text":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<profile><steamID64>76561197960265828</steamID64><avatarMedium><![CDATA[https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ab/abcd_medium.jpg]]></avatarMedium></profile>\n"}},
+        {"host":"steamcdn-a.akamaihd.net","path":"/steamcommunity/public/images/avatars/ab/abcd_medium.jpg","status":200,"headers":{},"body":{"png":80}}
+      ],
+      "result": {"length":130,"sha256":"49bf58843d1f4ab6fc8051dd56709ce07c27ab7a836acde49725286f61795f3e"},
+      "requests": [{"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","accept":"text/xml","userAgent":"HLSR"},{"host":"steamcdn-a.akamaihd.net","path":"/steamcommunity/public/images/avatars/ab/abcd_medium.jpg","accept":"*/*","userAgent":"HLSR"}],
+      "cacheFiles": {"76561197960265828.bin":{"length":80,"sha256":"016a506cb8aebb3785865fd480d3bde6536fc6dfdb63c50ad8e8502c956d94e8"}}
+    },
+    {
+      "name": "кеш — папка",
+      "id": "76561197960265828",
+      "cache": null,
+      "cacheAsDirectory": true,
+      "cacheDirIsFile": false,
+      "noCacheDir": false,
+      "routes": [
+        {"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","status":200,"headers":{},"body":{"text":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<profile><steamID64>76561197960265828</steamID64><avatarMedium><![CDATA[https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ab/abcd_medium.jpg]]></avatarMedium></profile>\n"}},
+        {"host":"steamcdn-a.akamaihd.net","path":"/steamcommunity/public/images/avatars/ab/abcd_medium.jpg","status":200,"headers":{},"body":{"png":80}}
+      ],
+      "result": {"length":130,"sha256":"49bf58843d1f4ab6fc8051dd56709ce07c27ab7a836acde49725286f61795f3e"},
+      "requests": [{"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","accept":"text/xml","userAgent":"HLSR"},{"host":"steamcdn-a.akamaihd.net","path":"/steamcommunity/public/images/avatars/ab/abcd_medium.jpg","accept":"*/*","userAgent":"HLSR"}],
+      "cacheFiles": {"76561197960265828.bin":null}
+    },
+    {
+      "name": "без cacheDir: ничего не пишется",
+      "id": "76561197960265828",
+      "cache": null,
+      "cacheAsDirectory": false,
+      "cacheDirIsFile": false,
+      "noCacheDir": true,
+      "routes": [
+        {"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","status":200,"headers":{},"body":{"text":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<profile><steamID64>76561197960265828</steamID64><avatarMedium><![CDATA[https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ab/abcd_medium.jpg]]></avatarMedium></profile>\n"}},
+        {"host":"steamcdn-a.akamaihd.net","path":"/steamcommunity/public/images/avatars/ab/abcd_medium.jpg","status":200,"headers":{},"body":{"png":80}}
+      ],
+      "result": {"length":130,"sha256":"49bf58843d1f4ab6fc8051dd56709ce07c27ab7a836acde49725286f61795f3e"},
+      "requests": [{"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","accept":"text/xml","userAgent":"HLSR"},{"host":"steamcdn-a.akamaihd.net","path":"/steamcommunity/public/images/avatars/ab/abcd_medium.jpg","accept":"*/*","userAgent":"HLSR"}],
+      "cacheFiles": {}
+    },
+    {
+      "name": "cacheDir — файл: запись не удалась, результат есть",
+      "id": "76561197960265828",
+      "cache": null,
+      "cacheAsDirectory": false,
+      "cacheDirIsFile": true,
+      "noCacheDir": false,
+      "routes": [
+        {"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","status":200,"headers":{},"body":{"text":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<profile><steamID64>76561197960265828</steamID64><avatarMedium><![CDATA[https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ab/abcd_medium.jpg]]></avatarMedium></profile>\n"}},
+        {"host":"steamcdn-a.akamaihd.net","path":"/steamcommunity/public/images/avatars/ab/abcd_medium.jpg","status":200,"headers":{},"body":{"png":80}}
+      ],
+      "result": {"length":130,"sha256":"49bf58843d1f4ab6fc8051dd56709ce07c27ab7a836acde49725286f61795f3e"},
+      "requests": [{"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","accept":"text/xml","userAgent":"HLSR"},{"host":"steamcdn-a.akamaihd.net","path":"/steamcommunity/public/images/avatars/ab/abcd_medium.jpg","accept":"*/*","userAgent":"HLSR"}],
+      "cacheFiles": {}
+    },
+    {
+      "name": "XML без avatarMedium",
+      "id": "76561197960265828",
+      "cache": null,
+      "cacheAsDirectory": false,
+      "cacheDirIsFile": false,
+      "noCacheDir": false,
+      "routes": [{"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","status":200,"headers":{},"body":{"text":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<profile><steamID64>76561197960265828</steamID64><avatarIcon>https://x.y/i.jpg</avatarIcon></profile>\n"}}],
+      "result": null,
+      "requests": [{"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","accept":"text/xml","userAgent":"HLSR"}],
+      "cacheFiles": {}
+    },
+    {
+      "name": "avatarMedium по http",
+      "id": "76561197960265828",
+      "cache": null,
+      "cacheAsDirectory": false,
+      "cacheDirIsFile": false,
+      "noCacheDir": false,
+      "routes": [
+        {"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","status":200,"headers":{},"body":{"text":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<profile><steamID64>76561197960265828</steamID64><avatarMedium><![CDATA[http://steamcdn-a.akamaihd.net/a.jpg]]></avatarMedium></profile>\n"}},
+        {"host":"steamcdn-a.akamaihd.net","path":"/steamcommunity/public/images/avatars/ab/abcd_medium.jpg","status":200,"headers":{},"body":{"png":80}}
+      ],
+      "result": null,
+      "requests": [{"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","accept":"text/xml","userAgent":"HLSR"}],
+      "cacheFiles": {}
+    },
+    {
+      "name": "XML без CDATA",
+      "id": "76561197960265828",
+      "cache": null,
+      "cacheAsDirectory": false,
+      "cacheDirIsFile": false,
+      "noCacheDir": false,
+      "routes": [
+        {"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","status":200,"headers":{},"body":{"text":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<profile><steamID64>76561197960265828</steamID64><avatarMedium>https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ab/abcd_medium.jpg</avatarMedium></profile>\n"}},
+        {"host":"steamcdn-a.akamaihd.net","path":"/steamcommunity/public/images/avatars/ab/abcd_medium.jpg","status":200,"headers":{},"body":{"png":80}}
+      ],
+      "result": {"length":130,"sha256":"49bf58843d1f4ab6fc8051dd56709ce07c27ab7a836acde49725286f61795f3e"},
+      "requests": [{"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","accept":"text/xml","userAgent":"HLSR"},{"host":"steamcdn-a.akamaihd.net","path":"/steamcommunity/public/images/avatars/ab/abcd_medium.jpg","accept":"*/*","userAgent":"HLSR"}],
+      "cacheFiles": {"76561197960265828.bin":{"length":80,"sha256":"016a506cb8aebb3785865fd480d3bde6536fc6dfdb63c50ad8e8502c956d94e8"}}
+    },
+    {
+      "name": "картинка на чужом хосте не запрашивается",
+      "id": "76561197960265828",
+      "cache": null,
+      "cacheAsDirectory": false,
+      "cacheDirIsFile": false,
+      "noCacheDir": false,
+      "routes": [{"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","status":200,"headers":{},"body":{"text":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<profile><steamID64>76561197960265828</steamID64><avatarMedium><![CDATA[https://evil.example.com/a.jpg]]></avatarMedium></profile>\n"}},{"host":"evil.example.com","path":"/a.jpg","status":200,"headers":{},"body":{"png":80}}],
+      "result": null,
+      "requests": [{"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","accept":"text/xml","userAgent":"HLSR"}],
+      "cacheFiles": {}
+    },
+    {
+      "name": "картинка на steamstatic.com (поддомен) разрешена",
+      "id": "76561197960265828",
+      "cache": null,
+      "cacheAsDirectory": false,
+      "cacheDirIsFile": false,
+      "noCacheDir": false,
+      "routes": [
+        {"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","status":200,"headers":{},"body":{"text":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<profile><steamID64>76561197960265828</steamID64><avatarMedium><![CDATA[https://avatars.fastly.steamstatic.com/ab_medium.jpg]]></avatarMedium></profile>\n"}},
+        {"host":"avatars.fastly.steamstatic.com","path":"/ab_medium.jpg","status":200,"headers":{},"body":{"jpeg":80}}
+      ],
+      "result": {"length":131,"sha256":"8c469335dd5b69f7d65e584efdd3d43f1115f6106df15456f2b2a394f53f20a9"},
+      "requests": [{"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","accept":"text/xml","userAgent":"HLSR"},{"host":"avatars.fastly.steamstatic.com","path":"/ab_medium.jpg","accept":"*/*","userAgent":"HLSR"}],
+      "cacheFiles": {"76561197960265828.bin":{"length":80,"sha256":"8de0824136d2149fe814a3705f09cb4830878eb7b27890740161970d72479252"}}
+    },
+    {
+      "name": "хост steamstatic.com без поддомена запрещён",
+      "id": "76561197960265828",
+      "cache": null,
+      "cacheAsDirectory": false,
+      "cacheDirIsFile": false,
+      "noCacheDir": false,
+      "routes": [{"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","status":200,"headers":{},"body":{"text":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<profile><steamID64>76561197960265828</steamID64><avatarMedium><![CDATA[https://steamstatic.com/a.jpg]]></avatarMedium></profile>\n"}},{"host":"steamstatic.com","path":"/a.jpg","status":200,"headers":{},"body":{"png":80}}],
+      "result": null,
+      "requests": [{"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","accept":"text/xml","userAgent":"HLSR"}],
+      "cacheFiles": {}
+    },
+    {
+      "name": "хост evilsteamstatic.com запрещён",
+      "id": "76561197960265828",
+      "cache": null,
+      "cacheAsDirectory": false,
+      "cacheDirIsFile": false,
+      "noCacheDir": false,
+      "routes": [{"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","status":200,"headers":{},"body":{"text":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<profile><steamID64>76561197960265828</steamID64><avatarMedium><![CDATA[https://evilsteamstatic.com/a.jpg]]></avatarMedium></profile>\n"}},{"host":"evilsteamstatic.com","path":"/a.jpg","status":200,"headers":{},"body":{"png":80}}],
+      "result": null,
+      "requests": [{"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","accept":"text/xml","userAgent":"HLSR"}],
+      "cacheFiles": {}
+    },
+    {
+      "name": "media.steampowered.com разрешён",
+      "id": "76561197960265828",
+      "cache": null,
+      "cacheAsDirectory": false,
+      "cacheDirIsFile": false,
+      "noCacheDir": false,
+      "routes": [
+        {"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","status":200,"headers":{},"body":{"text":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<profile><steamID64>76561197960265828</steamID64><avatarMedium><![CDATA[https://media.steampowered.com/a.jpg]]></avatarMedium></profile>\n"}},
+        {"host":"media.steampowered.com","path":"/a.jpg","status":200,"headers":{},"body":{"png":80}}
+      ],
+      "result": {"length":130,"sha256":"49bf58843d1f4ab6fc8051dd56709ce07c27ab7a836acde49725286f61795f3e"},
+      "requests": [{"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","accept":"text/xml","userAgent":"HLSR"},{"host":"media.steampowered.com","path":"/a.jpg","accept":"*/*","userAgent":"HLSR"}],
+      "cacheFiles": {"76561197960265828.bin":{"length":80,"sha256":"016a506cb8aebb3785865fd480d3bde6536fc6dfdb63c50ad8e8502c956d94e8"}}
+    },
+    {
+      "name": "хост в верхнем регистре в XML",
+      "id": "76561197960265828",
+      "cache": null,
+      "cacheAsDirectory": false,
+      "cacheDirIsFile": false,
+      "noCacheDir": false,
+      "routes": [
+        {"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","status":200,"headers":{},"body":{"text":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<profile><steamID64>76561197960265828</steamID64><avatarMedium><![CDATA[https://STEAMCDN-A.akamaihd.net/Up.jpg]]></avatarMedium></profile>\n"}},
+        {"host":"steamcdn-a.akamaihd.net","path":"/Up.jpg","status":200,"headers":{},"body":{"png":80}}
+      ],
+      "result": {"length":130,"sha256":"49bf58843d1f4ab6fc8051dd56709ce07c27ab7a836acde49725286f61795f3e"},
+      "requests": [{"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","accept":"text/xml","userAgent":"HLSR"},{"host":"steamcdn-a.akamaihd.net","path":"/Up.jpg","accept":"*/*","userAgent":"HLSR"}],
+      "cacheFiles": {"76561197960265828.bin":{"length":80,"sha256":"016a506cb8aebb3785865fd480d3bde6536fc6dfdb63c50ad8e8502c956d94e8"}}
+    },
+    {
+      "name": "профиль: 404",
+      "id": "76561197960265828",
+      "cache": null,
+      "cacheAsDirectory": false,
+      "cacheDirIsFile": false,
+      "noCacheDir": false,
+      "routes": [{"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","status":404,"headers":{},"body":null}],
+      "result": null,
+      "requests": [{"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","accept":"text/xml","userAgent":"HLSR"}],
+      "cacheFiles": {}
+    },
+    {
+      "name": "профиль: 500",
+      "id": "76561197960265828",
+      "cache": null,
+      "cacheAsDirectory": false,
+      "cacheDirIsFile": false,
+      "noCacheDir": false,
+      "routes": [{"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","status":500,"headers":{},"body":null}],
+      "result": null,
+      "requests": [{"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","accept":"text/xml","userAgent":"HLSR"}],
+      "cacheFiles": {}
+    },
+    {
+      "name": "профиль: 204",
+      "id": "76561197960265828",
+      "cache": null,
+      "cacheAsDirectory": false,
+      "cacheDirIsFile": false,
+      "noCacheDir": false,
+      "routes": [{"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","status":204,"headers":{},"body":null}],
+      "result": null,
+      "requests": [{"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","accept":"text/xml","userAgent":"HLSR"}],
+      "cacheFiles": {}
+    },
+    {
+      "name": "профиль: пустой ответ 200",
+      "id": "76561197960265828",
+      "cache": null,
+      "cacheAsDirectory": false,
+      "cacheDirIsFile": false,
+      "noCacheDir": false,
+      "routes": [{"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","status":200,"headers":{},"body":null}],
+      "result": null,
+      "requests": [{"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","accept":"text/xml","userAgent":"HLSR"}],
+      "cacheFiles": {}
+    },
+    {
+      "name": "картинка: 404",
+      "id": "76561197960265828",
+      "cache": null,
+      "cacheAsDirectory": false,
+      "cacheDirIsFile": false,
+      "noCacheDir": false,
+      "routes": [
+        {"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","status":200,"headers":{},"body":{"text":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<profile><steamID64>76561197960265828</steamID64><avatarMedium><![CDATA[https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ab/abcd_medium.jpg]]></avatarMedium></profile>\n"}},
+        {"host":"steamcdn-a.akamaihd.net","path":"/steamcommunity/public/images/avatars/ab/abcd_medium.jpg","status":404,"headers":{},"body":null}
+      ],
+      "result": null,
+      "requests": [{"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","accept":"text/xml","userAgent":"HLSR"},{"host":"steamcdn-a.akamaihd.net","path":"/steamcommunity/public/images/avatars/ab/abcd_medium.jpg","accept":"*/*","userAgent":"HLSR"}],
+      "cacheFiles": {}
+    },
+    {
+      "name": "картинка: не PNG и не JPEG (GIF)",
+      "id": "76561197960265828",
+      "cache": null,
+      "cacheAsDirectory": false,
+      "cacheDirIsFile": false,
+      "noCacheDir": false,
+      "routes": [
+        {"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","status":200,"headers":{},"body":{"text":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<profile><steamID64>76561197960265828</steamID64><avatarMedium><![CDATA[https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ab/abcd_medium.jpg]]></avatarMedium></profile>\n"}},
+        {"host":"steamcdn-a.akamaihd.net","path":"/steamcommunity/public/images/avatars/ab/abcd_medium.jpg","status":200,"headers":{},"body":{"hex":"47494638396101000100","padTo":50}}
+      ],
+      "result": null,
+      "requests": [{"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","accept":"text/xml","userAgent":"HLSR"},{"host":"steamcdn-a.akamaihd.net","path":"/steamcommunity/public/images/avatars/ab/abcd_medium.jpg","accept":"*/*","userAgent":"HLSR"}],
+      "cacheFiles": {}
+    },
+    {
+      "name": "картинка короче 8 байт",
+      "id": "76561197960265828",
+      "cache": null,
+      "cacheAsDirectory": false,
+      "cacheDirIsFile": false,
+      "noCacheDir": false,
+      "routes": [
+        {"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","status":200,"headers":{},"body":{"text":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<profile><steamID64>76561197960265828</steamID64><avatarMedium><![CDATA[https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ab/abcd_medium.jpg]]></avatarMedium></profile>\n"}},
+        {"host":"steamcdn-a.akamaihd.net","path":"/steamcommunity/public/images/avatars/ab/abcd_medium.jpg","status":200,"headers":{},"body":{"hex":"89504e47"}}
+      ],
+      "result": null,
+      "requests": [{"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","accept":"text/xml","userAgent":"HLSR"},{"host":"steamcdn-a.akamaihd.net","path":"/steamcommunity/public/images/avatars/ab/abcd_medium.jpg","accept":"*/*","userAgent":"HLSR"}],
+      "cacheFiles": {}
+    },
+    {
+      "name": "картинка ровно 512 КиБ",
+      "id": "76561197960265828",
+      "cache": null,
+      "cacheAsDirectory": false,
+      "cacheDirIsFile": false,
+      "noCacheDir": false,
+      "routes": [
+        {"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","status":200,"headers":{},"body":{"text":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<profile><steamID64>76561197960265828</steamID64><avatarMedium><![CDATA[https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ab/abcd_medium.jpg]]></avatarMedium></profile>\n"}},
+        {"host":"steamcdn-a.akamaihd.net","path":"/steamcommunity/public/images/avatars/ab/abcd_medium.jpg","status":200,"headers":{},"body":{"png":524288}}
+      ],
+      "result": {"length":699074,"sha256":"8929bc1de77d14e426674ffb0b13a39b195b09d2e55734bcc350f0ac6e911d4f"},
+      "requests": [{"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","accept":"text/xml","userAgent":"HLSR"},{"host":"steamcdn-a.akamaihd.net","path":"/steamcommunity/public/images/avatars/ab/abcd_medium.jpg","accept":"*/*","userAgent":"HLSR"}],
+      "cacheFiles": {"76561197960265828.bin":{"length":524288,"sha256":"4781db2cd92ad27b8719abd801fe94f94993bfaab4e72f796afb6a6bf2d52479"}}
+    },
+    {
+      "name": "картинка 512 КиБ + 1 байт",
+      "id": "76561197960265828",
+      "cache": null,
+      "cacheAsDirectory": false,
+      "cacheDirIsFile": false,
+      "noCacheDir": false,
+      "routes": [
+        {"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","status":200,"headers":{},"body":{"text":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<profile><steamID64>76561197960265828</steamID64><avatarMedium><![CDATA[https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ab/abcd_medium.jpg]]></avatarMedium></profile>\n"}},
+        {"host":"steamcdn-a.akamaihd.net","path":"/steamcommunity/public/images/avatars/ab/abcd_medium.jpg","status":200,"headers":{},"body":{"png":524289}}
+      ],
+      "result": null,
+      "requests": [{"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","accept":"text/xml","userAgent":"HLSR"},{"host":"steamcdn-a.akamaihd.net","path":"/steamcommunity/public/images/avatars/ab/abcd_medium.jpg","accept":"*/*","userAgent":"HLSR"}],
+      "cacheFiles": {}
+    },
+    {
+      "name": "XML ровно 256 КиБ",
+      "id": "76561197960265828",
+      "cache": null,
+      "cacheAsDirectory": false,
+      "cacheDirIsFile": false,
+      "noCacheDir": false,
+      "routes": [
+        {"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","status":200,"headers":{},"body":{"text":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<profile><steamID64>76561197960265828</steamID64><avatarMedium><![CDATA[https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ab/abcd_medium.jpg]]></avatarMedium></profile>\n","padSpacesTo":262144}},
+        {"host":"steamcdn-a.akamaihd.net","path":"/steamcommunity/public/images/avatars/ab/abcd_medium.jpg","status":200,"headers":{},"body":{"png":80}}
+      ],
+      "result": {"length":130,"sha256":"49bf58843d1f4ab6fc8051dd56709ce07c27ab7a836acde49725286f61795f3e"},
+      "requests": [{"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","accept":"text/xml","userAgent":"HLSR"},{"host":"steamcdn-a.akamaihd.net","path":"/steamcommunity/public/images/avatars/ab/abcd_medium.jpg","accept":"*/*","userAgent":"HLSR"}],
+      "cacheFiles": {"76561197960265828.bin":{"length":80,"sha256":"016a506cb8aebb3785865fd480d3bde6536fc6dfdb63c50ad8e8502c956d94e8"}}
+    },
+    {
+      "name": "XML 256 КиБ + 1 байт",
+      "id": "76561197960265828",
+      "cache": null,
+      "cacheAsDirectory": false,
+      "cacheDirIsFile": false,
+      "noCacheDir": false,
+      "routes": [
+        {"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","status":200,"headers":{},"body":{"text":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<profile><steamID64>76561197960265828</steamID64><avatarMedium><![CDATA[https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ab/abcd_medium.jpg]]></avatarMedium></profile>\n","padSpacesTo":262145}},
+        {"host":"steamcdn-a.akamaihd.net","path":"/steamcommunity/public/images/avatars/ab/abcd_medium.jpg","status":200,"headers":{},"body":{"png":80}}
+      ],
+      "result": null,
+      "requests": [{"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","accept":"text/xml","userAgent":"HLSR"}],
+      "cacheFiles": {}
+    },
+    {
+      "name": "редирект профиля 301 на тот же хост",
+      "id": "76561197960265828",
+      "cache": null,
+      "cacheAsDirectory": false,
+      "cacheDirIsFile": false,
+      "noCacheDir": false,
+      "routes": [
+        {"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","status":301,"headers":{"location":"/id/moved?xml=1"},"body":null},
+        {"host":"steamcommunity.com","path":"/id/moved?xml=1","status":200,"headers":{},"body":{"text":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<profile><steamID64>76561197960265828</steamID64><avatarMedium><![CDATA[https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ab/abcd_medium.jpg]]></avatarMedium></profile>\n"}},
+        {"host":"steamcdn-a.akamaihd.net","path":"/steamcommunity/public/images/avatars/ab/abcd_medium.jpg","status":200,"headers":{},"body":{"png":80}}
+      ],
+      "result": {"length":130,"sha256":"49bf58843d1f4ab6fc8051dd56709ce07c27ab7a836acde49725286f61795f3e"},
+      "requests": [{"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","accept":"text/xml","userAgent":"HLSR"},{"host":"steamcommunity.com","path":"/id/moved?xml=1","accept":"text/xml","userAgent":"HLSR"},{"host":"steamcdn-a.akamaihd.net","path":"/steamcommunity/public/images/avatars/ab/abcd_medium.jpg","accept":"*/*","userAgent":"HLSR"}],
+      "cacheFiles": {"76561197960265828.bin":{"length":80,"sha256":"016a506cb8aebb3785865fd480d3bde6536fc6dfdb63c50ad8e8502c956d94e8"}}
+    },
+    {
+      "name": "редирект профиля 307 с абсолютным адресом",
+      "id": "76561197960265828",
+      "cache": null,
+      "cacheAsDirectory": false,
+      "cacheDirIsFile": false,
+      "noCacheDir": false,
+      "routes": [
+        {"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","status":307,"headers":{"location":"https://steamcommunity.com/id/m2?xml=1"},"body":null},
+        {"host":"steamcommunity.com","path":"/id/m2?xml=1","status":200,"headers":{},"body":{"text":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<profile><steamID64>76561197960265828</steamID64><avatarMedium><![CDATA[https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ab/abcd_medium.jpg]]></avatarMedium></profile>\n"}},
+        {"host":"steamcdn-a.akamaihd.net","path":"/steamcommunity/public/images/avatars/ab/abcd_medium.jpg","status":200,"headers":{},"body":{"png":80}}
+      ],
+      "result": {"length":130,"sha256":"49bf58843d1f4ab6fc8051dd56709ce07c27ab7a836acde49725286f61795f3e"},
+      "requests": [{"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","accept":"text/xml","userAgent":"HLSR"},{"host":"steamcommunity.com","path":"/id/m2?xml=1","accept":"text/xml","userAgent":"HLSR"},{"host":"steamcdn-a.akamaihd.net","path":"/steamcommunity/public/images/avatars/ab/abcd_medium.jpg","accept":"*/*","userAgent":"HLSR"}],
+      "cacheFiles": {"76561197960265828.bin":{"length":80,"sha256":"016a506cb8aebb3785865fd480d3bde6536fc6dfdb63c50ad8e8502c956d94e8"}}
+    },
+    {
+      "name": "редирект профиля 308",
+      "id": "76561197960265828",
+      "cache": null,
+      "cacheAsDirectory": false,
+      "cacheDirIsFile": false,
+      "noCacheDir": false,
+      "routes": [
+        {"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","status":308,"headers":{"location":"/id/m3?xml=1"},"body":null},
+        {"host":"steamcommunity.com","path":"/id/m3?xml=1","status":200,"headers":{},"body":{"text":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<profile><steamID64>76561197960265828</steamID64><avatarMedium><![CDATA[https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ab/abcd_medium.jpg]]></avatarMedium></profile>\n"}},
+        {"host":"steamcdn-a.akamaihd.net","path":"/steamcommunity/public/images/avatars/ab/abcd_medium.jpg","status":200,"headers":{},"body":{"png":80}}
+      ],
+      "result": {"length":130,"sha256":"49bf58843d1f4ab6fc8051dd56709ce07c27ab7a836acde49725286f61795f3e"},
+      "requests": [{"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","accept":"text/xml","userAgent":"HLSR"},{"host":"steamcommunity.com","path":"/id/m3?xml=1","accept":"text/xml","userAgent":"HLSR"},{"host":"steamcdn-a.akamaihd.net","path":"/steamcommunity/public/images/avatars/ab/abcd_medium.jpg","accept":"*/*","userAgent":"HLSR"}],
+      "cacheFiles": {"76561197960265828.bin":{"length":80,"sha256":"016a506cb8aebb3785865fd480d3bde6536fc6dfdb63c50ad8e8502c956d94e8"}}
+    },
+    {
+      "name": "редирект профиля 303",
+      "id": "76561197960265828",
+      "cache": null,
+      "cacheAsDirectory": false,
+      "cacheDirIsFile": false,
+      "noCacheDir": false,
+      "routes": [
+        {"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","status":303,"headers":{"location":"/id/m4?xml=1"},"body":null},
+        {"host":"steamcommunity.com","path":"/id/m4?xml=1","status":200,"headers":{},"body":{"text":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<profile><steamID64>76561197960265828</steamID64><avatarMedium><![CDATA[https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ab/abcd_medium.jpg]]></avatarMedium></profile>\n"}},
+        {"host":"steamcdn-a.akamaihd.net","path":"/steamcommunity/public/images/avatars/ab/abcd_medium.jpg","status":200,"headers":{},"body":{"png":80}}
+      ],
+      "result": {"length":130,"sha256":"49bf58843d1f4ab6fc8051dd56709ce07c27ab7a836acde49725286f61795f3e"},
+      "requests": [{"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","accept":"text/xml","userAgent":"HLSR"},{"host":"steamcommunity.com","path":"/id/m4?xml=1","accept":"text/xml","userAgent":"HLSR"},{"host":"steamcdn-a.akamaihd.net","path":"/steamcommunity/public/images/avatars/ab/abcd_medium.jpg","accept":"*/*","userAgent":"HLSR"}],
+      "cacheFiles": {"76561197960265828.bin":{"length":80,"sha256":"016a506cb8aebb3785865fd480d3bde6536fc6dfdb63c50ad8e8502c956d94e8"}}
+    },
+    {
+      "name": "300 — не редирект",
+      "id": "76561197960265828",
+      "cache": null,
+      "cacheAsDirectory": false,
+      "cacheDirIsFile": false,
+      "noCacheDir": false,
+      "routes": [
+        {"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","status":300,"headers":{"location":"/id/m5?xml=1"},"body":null},
+        {"host":"steamcommunity.com","path":"/id/m5?xml=1","status":200,"headers":{},"body":{"text":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<profile><steamID64>76561197960265828</steamID64><avatarMedium><![CDATA[https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ab/abcd_medium.jpg]]></avatarMedium></profile>\n"}}
+      ],
+      "result": null,
+      "requests": [{"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","accept":"text/xml","userAgent":"HLSR"}],
+      "cacheFiles": {}
+    },
+    {
+      "name": "309 — не редирект",
+      "id": "76561197960265828",
+      "cache": null,
+      "cacheAsDirectory": false,
+      "cacheDirIsFile": false,
+      "noCacheDir": false,
+      "routes": [
+        {"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","status":309,"headers":{"location":"/id/m5?xml=1"},"body":null},
+        {"host":"steamcommunity.com","path":"/id/m5?xml=1","status":200,"headers":{},"body":{"text":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<profile><steamID64>76561197960265828</steamID64><avatarMedium><![CDATA[https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ab/abcd_medium.jpg]]></avatarMedium></profile>\n"}}
+      ],
+      "result": null,
+      "requests": [{"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","accept":"text/xml","userAgent":"HLSR"}],
+      "cacheFiles": {}
+    },
+    {
+      "name": "редирект без Location",
+      "id": "76561197960265828",
+      "cache": null,
+      "cacheAsDirectory": false,
+      "cacheDirIsFile": false,
+      "noCacheDir": false,
+      "routes": [{"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","status":302,"headers":{},"body":null}],
+      "result": null,
+      "requests": [{"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","accept":"text/xml","userAgent":"HLSR"}],
+      "cacheFiles": {}
+    },
+    {
+      "name": "редирект профиля на чужой хост запрещён",
+      "id": "76561197960265828",
+      "cache": null,
+      "cacheAsDirectory": false,
+      "cacheDirIsFile": false,
+      "noCacheDir": false,
+      "routes": [
+        {"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","status":302,"headers":{"location":"https://evil.example.com/x?xml=1"},"body":null},
+        {"host":"evil.example.com","path":"/x?xml=1","status":200,"headers":{},"body":{"text":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<profile><steamID64>76561197960265828</steamID64><avatarMedium><![CDATA[https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ab/abcd_medium.jpg]]></avatarMedium></profile>\n"}}
+      ],
+      "result": null,
+      "requests": [{"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","accept":"text/xml","userAgent":"HLSR"}],
+      "cacheFiles": {}
+    },
+    {
+      "name": "редирект профиля на steamcommunity-a запрещён (только steamcommunity.com)",
+      "id": "76561197960265828",
+      "cache": null,
+      "cacheAsDirectory": false,
+      "cacheDirIsFile": false,
+      "noCacheDir": false,
+      "routes": [
+        {"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","status":302,"headers":{"location":"https://steamcommunity-a.akamaihd.net/x"},"body":null},
+        {"host":"steamcommunity-a.akamaihd.net","path":"/x","status":200,"headers":{},"body":{"text":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<profile><steamID64>76561197960265828</steamID64><avatarMedium><![CDATA[https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ab/abcd_medium.jpg]]></avatarMedium></profile>\n"}}
+      ],
+      "result": null,
+      "requests": [{"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","accept":"text/xml","userAgent":"HLSR"}],
+      "cacheFiles": {}
+    },
+    {
+      "name": "редирект профиля на http запрещён",
+      "id": "76561197960265828",
+      "cache": null,
+      "cacheAsDirectory": false,
+      "cacheDirIsFile": false,
+      "noCacheDir": false,
+      "routes": [{"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","status":302,"headers":{"location":"http://steamcommunity.com/x"},"body":null}],
+      "result": null,
+      "requests": [{"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","accept":"text/xml","userAgent":"HLSR"}],
+      "cacheFiles": {}
+    },
+    {
+      "name": "три редиректа допустимы",
+      "id": "76561197960265828",
+      "cache": null,
+      "cacheAsDirectory": false,
+      "cacheDirIsFile": false,
+      "noCacheDir": false,
+      "routes": [
+        {"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","status":302,"headers":{"location":"/r1"},"body":null},
+        {"host":"steamcommunity.com","path":"/r1","status":302,"headers":{"location":"/r2"},"body":null},
+        {"host":"steamcommunity.com","path":"/r2","status":302,"headers":{"location":"/r3"},"body":null},
+        {"host":"steamcommunity.com","path":"/r3","status":200,"headers":{},"body":{"text":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<profile><steamID64>76561197960265828</steamID64><avatarMedium><![CDATA[https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ab/abcd_medium.jpg]]></avatarMedium></profile>\n"}},
+        {"host":"steamcdn-a.akamaihd.net","path":"/steamcommunity/public/images/avatars/ab/abcd_medium.jpg","status":200,"headers":{},"body":{"png":80}}
+      ],
+      "result": {"length":130,"sha256":"49bf58843d1f4ab6fc8051dd56709ce07c27ab7a836acde49725286f61795f3e"},
+      "requests": [
+        {"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","accept":"text/xml","userAgent":"HLSR"},
+        {"host":"steamcommunity.com","path":"/r1","accept":"text/xml","userAgent":"HLSR"},
+        {"host":"steamcommunity.com","path":"/r2","accept":"text/xml","userAgent":"HLSR"},
+        {"host":"steamcommunity.com","path":"/r3","accept":"text/xml","userAgent":"HLSR"},
+        {"host":"steamcdn-a.akamaihd.net","path":"/steamcommunity/public/images/avatars/ab/abcd_medium.jpg","accept":"*/*","userAgent":"HLSR"}
+      ],
+      "cacheFiles": {"76561197960265828.bin":{"length":80,"sha256":"016a506cb8aebb3785865fd480d3bde6536fc6dfdb63c50ad8e8502c956d94e8"}}
+    },
+    {
+      "name": "четыре редиректа — отказ",
+      "id": "76561197960265828",
+      "cache": null,
+      "cacheAsDirectory": false,
+      "cacheDirIsFile": false,
+      "noCacheDir": false,
+      "routes": [
+        {"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","status":302,"headers":{"location":"/r1"},"body":null},
+        {"host":"steamcommunity.com","path":"/r1","status":302,"headers":{"location":"/r2"},"body":null},
+        {"host":"steamcommunity.com","path":"/r2","status":302,"headers":{"location":"/r3"},"body":null},
+        {"host":"steamcommunity.com","path":"/r3","status":302,"headers":{"location":"/r4"},"body":null},
+        {"host":"steamcommunity.com","path":"/r4","status":200,"headers":{},"body":{"text":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<profile><steamID64>76561197960265828</steamID64><avatarMedium><![CDATA[https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ab/abcd_medium.jpg]]></avatarMedium></profile>\n"}},
+        {"host":"steamcdn-a.akamaihd.net","path":"/steamcommunity/public/images/avatars/ab/abcd_medium.jpg","status":200,"headers":{},"body":{"png":80}}
+      ],
+      "result": null,
+      "requests": [{"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","accept":"text/xml","userAgent":"HLSR"},{"host":"steamcommunity.com","path":"/r1","accept":"text/xml","userAgent":"HLSR"},{"host":"steamcommunity.com","path":"/r2","accept":"text/xml","userAgent":"HLSR"},{"host":"steamcommunity.com","path":"/r3","accept":"text/xml","userAgent":"HLSR"}],
+      "cacheFiles": {}
+    },
+    {
+      "name": "редирект картинки на другой разрешённый хост",
+      "id": "76561197960265828",
+      "cache": null,
+      "cacheAsDirectory": false,
+      "cacheDirIsFile": false,
+      "noCacheDir": false,
+      "routes": [
+        {"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","status":200,"headers":{},"body":{"text":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<profile><steamID64>76561197960265828</steamID64><avatarMedium><![CDATA[https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ab/abcd_medium.jpg]]></avatarMedium></profile>\n"}},
+        {"host":"steamcdn-a.akamaihd.net","path":"/steamcommunity/public/images/avatars/ab/abcd_medium.jpg","status":302,"headers":{"location":"https://avatars.cloudflare.steamstatic.com/final.jpg"},"body":null},
+        {"host":"avatars.cloudflare.steamstatic.com","path":"/final.jpg","status":200,"headers":{},"body":{"png":80}}
+      ],
+      "result": {"length":130,"sha256":"49bf58843d1f4ab6fc8051dd56709ce07c27ab7a836acde49725286f61795f3e"},
+      "requests": [{"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","accept":"text/xml","userAgent":"HLSR"},{"host":"steamcdn-a.akamaihd.net","path":"/steamcommunity/public/images/avatars/ab/abcd_medium.jpg","accept":"*/*","userAgent":"HLSR"},{"host":"avatars.cloudflare.steamstatic.com","path":"/final.jpg","accept":"*/*","userAgent":"HLSR"}],
+      "cacheFiles": {"76561197960265828.bin":{"length":80,"sha256":"016a506cb8aebb3785865fd480d3bde6536fc6dfdb63c50ad8e8502c956d94e8"}}
+    },
+    {
+      "name": "редирект картинки на чужой хост запрещён",
+      "id": "76561197960265828",
+      "cache": null,
+      "cacheAsDirectory": false,
+      "cacheDirIsFile": false,
+      "noCacheDir": false,
+      "routes": [
+        {"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","status":200,"headers":{},"body":{"text":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<profile><steamID64>76561197960265828</steamID64><avatarMedium><![CDATA[https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ab/abcd_medium.jpg]]></avatarMedium></profile>\n"}},
+        {"host":"steamcdn-a.akamaihd.net","path":"/steamcommunity/public/images/avatars/ab/abcd_medium.jpg","status":302,"headers":{"location":"https://evil.example.com/final.jpg"},"body":null},
+        {"host":"evil.example.com","path":"/final.jpg","status":200,"headers":{},"body":{"png":80}}
+      ],
+      "result": null,
+      "requests": [{"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","accept":"text/xml","userAgent":"HLSR"},{"host":"steamcdn-a.akamaihd.net","path":"/steamcommunity/public/images/avatars/ab/abcd_medium.jpg","accept":"*/*","userAgent":"HLSR"}],
+      "cacheFiles": {}
+    },
+    {
+      "name": "адрес картинки с относительным редиректом",
+      "id": "76561197960265828",
+      "cache": null,
+      "cacheAsDirectory": false,
+      "cacheDirIsFile": false,
+      "noCacheDir": false,
+      "routes": [
+        {"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","status":200,"headers":{},"body":{"text":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<profile><steamID64>76561197960265828</steamID64><avatarMedium><![CDATA[https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ab/abcd_medium.jpg]]></avatarMedium></profile>\n"}},
+        {"host":"steamcdn-a.akamaihd.net","path":"/steamcommunity/public/images/avatars/ab/abcd_medium.jpg","status":301,"headers":{"location":"../other/pic.jpg"},"body":null},
+        {"host":"steamcdn-a.akamaihd.net","path":"/steamcommunity/public/images/avatars/other/pic.jpg","status":200,"headers":{},"body":{"jpeg":80}}
+      ],
+      "result": {"length":131,"sha256":"8c469335dd5b69f7d65e584efdd3d43f1115f6106df15456f2b2a394f53f20a9"},
+      "requests": [{"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","accept":"text/xml","userAgent":"HLSR"},{"host":"steamcdn-a.akamaihd.net","path":"/steamcommunity/public/images/avatars/ab/abcd_medium.jpg","accept":"*/*","userAgent":"HLSR"},{"host":"steamcdn-a.akamaihd.net","path":"/steamcommunity/public/images/avatars/other/pic.jpg","accept":"*/*","userAgent":"HLSR"}],
+      "cacheFiles": {"76561197960265828.bin":{"length":80,"sha256":"8de0824136d2149fe814a3705f09cb4830878eb7b27890740161970d72479252"}}
+    },
+    {
+      "name": "адрес картинки с кириллицей и параметрами",
+      "id": "76561197960265828",
+      "cache": null,
+      "cacheAsDirectory": false,
+      "cacheDirIsFile": false,
+      "noCacheDir": false,
+      "routes": [
+        {"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","status":200,"headers":{},"body":{"text":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<profile><steamID64>76561197960265828</steamID64><avatarMedium><![CDATA[https://steamcdn-a.akamaihd.net/a/путь.jpg?v=1&w=2]]></avatarMedium></profile>\n"}},
+        {"host":"steamcdn-a.akamaihd.net","path":"/a/%D0%BF%D1%83%D1%82%D1%8C.jpg?v=1&w=2","status":200,"headers":{},"body":{"png":80}}
+      ],
+      "result": {"length":130,"sha256":"49bf58843d1f4ab6fc8051dd56709ce07c27ab7a836acde49725286f61795f3e"},
+      "requests": [{"host":"steamcommunity.com","path":"/profiles/76561197960265828?xml=1","accept":"text/xml","userAgent":"HLSR"},{"host":"steamcdn-a.akamaihd.net","path":"/a/%D0%BF%D1%83%D1%82%D1%8C.jpg?v=1&w=2","accept":"*/*","userAgent":"HLSR"}],
+      "cacheFiles": {"76561197960265828.bin":{"length":80,"sha256":"016a506cb8aebb3785865fd480d3bde6536fc6dfdb63c50ad8e8502c956d94e8"}}
+    },
+    {"name":"steamId64 не из цифр","id":"76561197960265828x","cache":null,"cacheAsDirectory":false,"cacheDirIsFile":false,"noCacheDir":false,"routes":[],"result":null,"requests":[],"cacheFiles":{}},
+    {"name":"steamId64 из 21 цифры","id":"123456789012345678901","cache":null,"cacheAsDirectory":false,"cacheDirIsFile":false,"noCacheDir":false,"routes":[],"result":null,"requests":[],"cacheFiles":{}},
+    {
+      "name": "steamId64 из 20 цифр",
+      "id": "12345678901234567890",
+      "cache": null,
+      "cacheAsDirectory": false,
+      "cacheDirIsFile": false,
+      "noCacheDir": false,
+      "routes": [
+        {"host":"steamcommunity.com","path":"/profiles/12345678901234567890?xml=1","status":200,"headers":{},"body":{"text":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<profile><steamID64>76561197960265828</steamID64><avatarMedium><![CDATA[https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ab/abcd_medium.jpg]]></avatarMedium></profile>\n"}},
+        {"host":"steamcdn-a.akamaihd.net","path":"/steamcommunity/public/images/avatars/ab/abcd_medium.jpg","status":200,"headers":{},"body":{"png":80}}
+      ],
+      "result": {"length":130,"sha256":"49bf58843d1f4ab6fc8051dd56709ce07c27ab7a836acde49725286f61795f3e"},
+      "requests": [{"host":"steamcommunity.com","path":"/profiles/12345678901234567890?xml=1","accept":"text/xml","userAgent":"HLSR"},{"host":"steamcdn-a.akamaihd.net","path":"/steamcommunity/public/images/avatars/ab/abcd_medium.jpg","accept":"*/*","userAgent":"HLSR"}],
+      "cacheFiles": {"12345678901234567890.bin":{"length":80,"sha256":"016a506cb8aebb3785865fd480d3bde6536fc6dfdb63c50ad8e8502c956d94e8"}}
+    },
+    {"name":"steamId64 пустой","id":"","cache":null,"cacheAsDirectory":false,"cacheDirIsFile":false,"noCacheDir":false,"routes":[],"result":null,"requests":[],"cacheFiles":{}},
+    {"name":"steamId64 с пробелом","id":" 7656","cache":null,"cacheAsDirectory":false,"cacheDirIsFile":false,"noCacheDir":false,"routes":[],"result":null,"requests":[],"cacheFiles":{}},
+    {
+      "name": "steamId64 числом",
+      "id": {"number":12345},
+      "cache": null,
+      "cacheAsDirectory": false,
+      "cacheDirIsFile": false,
+      "noCacheDir": false,
+      "routes": [
+        {"host":"steamcommunity.com","path":"/profiles/12345?xml=1","status":200,"headers":{},"body":{"text":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<profile><steamID64>76561197960265828</steamID64><avatarMedium><![CDATA[https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ab/abcd_medium.jpg]]></avatarMedium></profile>\n"}},
+        {"host":"steamcdn-a.akamaihd.net","path":"/steamcommunity/public/images/avatars/ab/abcd_medium.jpg","status":200,"headers":{},"body":{"png":80}}
+      ],
+      "result": {"length":130,"sha256":"49bf58843d1f4ab6fc8051dd56709ce07c27ab7a836acde49725286f61795f3e"},
+      "requests": [{"host":"steamcommunity.com","path":"/profiles/12345?xml=1","accept":"text/xml","userAgent":"HLSR"},{"host":"steamcdn-a.akamaihd.net","path":"/steamcommunity/public/images/avatars/ab/abcd_medium.jpg","accept":"*/*","userAgent":"HLSR"}],
+      "cacheFiles": {"12345.bin":{"length":80,"sha256":"016a506cb8aebb3785865fd480d3bde6536fc6dfdb63c50ad8e8502c956d94e8"}}
+    }
+  ]
+}
