@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "gameId": "hl1-won",
+  "channel": "stable",
+  "version": "1.0.0",
+  "versionStatus": "assigned",
+  "publishedAt": null,
+  "minimumLauncherVersion": "0.3.16",
+  "expectedInstalledSize": 425369105,
+  "preservePaths": [
+    "Half-Life/valve_WON/SAVE",
+    "Half-Life/valve_WON/config.cfg",
+    "Half-Life/valve_WON/userconfig.cfg",
+    "Half-Life/valve_WON/custom.hpk"
+  ],
+  "baseArchive": {
+    "filename": "hl1-won-1.0.0.7z",
+    "size": 162457024,
+    "sha256": "ff6ff180222d89ee5f16cd0a0ab0b9efa544ad126165704c7b9eade042e10509",
+    "rootPrefix": "Half-Life 2005 WON",
+    "providers": [
+      {
+        "id": "bxt-rs",
+        "type": "https-direct",
+        "status": "permanent",
+        "priority": 10,
+        "url": "https://bxt.rs/files/goldsrc/Half-Life%202005%20WON.7z"
+      }
+    ]
+  },
+  "filesManifest": {
+    "requiredFiles": [
+      "Half-Life/hl.exe",
+      "Half-Life/steam_appid.txt",
+      "Half-Life/valve_WON/liblist.gam",
+      "Bunnymod XT/Injector.exe",
+      "Bunnymod XT/BunnymodXT.dll"
+    ],
+    "maxEntries": 6000,
+    "maxUncompressedSize": 600000000,
+    "entriesSha256": "2b8682d7a6e528fc856a7776f759c746085b5d1de3589e95f65d384517ef4129"
+  },
+  "patches": [],
+  "enabled": true,
+  "notes": "Half-Life 2005 WON с bxt.rs: сборка Anthology 2005 с hw.dll 3248, Bunnymod XT и RInput. Запускается через Steam под AppID 70: игра должна быть на аккаунте."
+}

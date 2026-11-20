@@ -1,0 +1,91 @@
+"use strict";
+
+const schema = require("./event-schema");
+
+const MAP = {
+  STEAM_NOT_RUNNING: "STEAM_NOT_RUNNING",
+  STEAM_NOT_INSTALLED: "STEAM_NOT_INSTALLED",
+  STEAM_PROCESS_MISMATCH: "STEAM_NOT_RUNNING",
+  SOURCE_SDK_NOT_INSTALLED: "SDK_2013_NOT_INSTALLED",
+  SOURCE_SDK_INCOMPLETE: "SDK_2013_NOT_INSTALLED",
+
+  NETWORK_ERROR: "NETWORK_UNREACHABLE",
+  NETWORK_TIMEOUT: "NETWORK_TIMEOUT",
+  TOO_MANY_REDIRECTS: "POSSIBLE_RESOURCE_BLOCK",
+  INSECURE_REDIRECT: "POSSIBLE_RESOURCE_BLOCK",
+  PROVIDER_FORBIDDEN: "POSSIBLE_RESOURCE_BLOCK",
+  PROVIDER_LINK_FAILED: "POSSIBLE_RESOURCE_BLOCK",
+  CHANNEL_UNAVAILABLE: "POSSIBLE_RESOURCE_BLOCK",
+
+  CHECKSUM_MISMATCH: "CHECKSUM_MISMATCH",
+  SIZE_MISMATCH: "CHECKSUM_MISMATCH",
+  CONTENT_LENGTH_MISMATCH: "CHECKSUM_MISMATCH",
+  SIGNATURE_INVALID: "SIGNATURE_INVALID",
+  MANIFEST_INVALID: "MANIFEST_INVALID",
+  MANIFEST_NOT_FOUND: "MANIFEST_INVALID",
+  FILES_MANIFEST_MISSING: "MANIFEST_INVALID",
+  BUILD_METADATA_INVALID: "MANIFEST_INVALID",
+  BUILD_METADATA_MISMATCH: "MANIFEST_INVALID",
+
+  EXTRACT_FAILED: "EXTRACT_FAILED",
+  ARCHIVE_LIST_FAILED: "EXTRACT_FAILED",
+  ARCHIVE_UNSAFE_ENTRY: "EXTRACT_FAILED",
+  ARCHIVE_LIMIT_EXCEEDED: "EXTRACT_FAILED",
+  NO_SPACE: "NO_SPACE",
+
+  REPAIR_FAILED: "REPAIR_FAILED",
+  REPAIR_SOURCE_MISSING: "REPAIR_FAILED",
+  ROLLBACK_FAILED: "REPAIR_FAILED",
+  VERIFY_FAILED: "REPAIR_FAILED",
+
+  LAUNCH_FAILED: "LAUNCH_FAILED",
+  LAUNCH_CONFIG_INVALID: "LAUNCH_FAILED",
+  GAME_EXECUTABLE_MISSING: "LAUNCH_FAILED",
+  GAME_DIRECTORY_MISSING: "LAUNCH_FAILED",
+  LIBRARY_PATH_CASE_CONFLICT: "LAUNCH_FAILED",
+  STEAM_APP_ID_MISMATCH: "LAUNCH_FAILED",
+
+  PROFILE_IMPORT_FAILED: "PROFILE_IMPORT_FAILED",
+};
+
+function fromHttpStatus(status) {
+  if (status === 404) return "HTTP_404";
+  if (status === 429) return "HTTP_429";
+  if (status >= 500 && status < 600) return "HTTP_5XX";
+  return null;
+}
+
+function toTelemetryCode(input) {
+  if (!input) return "UNKNOWN_SAFE";
+
+  const code = typeof input === "string" ? input : input.code;
+  if (typeof code !== "string") return "UNKNOWN_SAFE";
+
+  if (code === "HTTP_ERROR") {
+    const status = input && input.details && Number(input.details.status);
+    const mapped = Number.isFinite(status) ? fromHttpStatus(status) : null;
+    return mapped || "UNKNOWN_SAFE";
+  }
+
+  const mapped = MAP[code];
+  if (mapped && schema.ERROR_CODES.indexOf(mapped) !== -1) return mapped;
+
+  return "UNKNOWN_SAFE";
+}
+
+const FALLBACK_MAP = {
+  PATCH_CHAIN_MISSING: "PATCH_UNAVAILABLE",
+  PATCH_FAILED: "PATCH_APPLY_FAILED",
+  CHECKSUM_MISMATCH: "CHECKSUM_MISMATCH",
+  REPAIR_SOURCE_MISSING: "SOURCE_MISSING",
+  VERSION_MISMATCH: "SOURCE_MISSING",
+};
+
+function toFallbackReason(input) {
+  if (!input) return "UNKNOWN_SAFE";
+  const code = typeof input === "string" ? input : input.code;
+  const mapped = FALLBACK_MAP[code];
+  return mapped && schema.FALLBACK_REASONS.indexOf(mapped) !== -1 ? mapped : "UNKNOWN_SAFE";
+}
+
+module.exports = { MAP, FALLBACK_MAP, fromHttpStatus, toTelemetryCode, toFallbackReason };

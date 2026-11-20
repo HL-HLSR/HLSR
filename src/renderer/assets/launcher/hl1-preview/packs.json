@@ -1,0 +1,134 @@
+{
+  "sources": {
+    "ag-hud": "462e5714d1a12d65af8c1b1ec45874d91e99d78de91ef2e7c65676d0e037c1e3",
+    "execut4ble-crosshair": "43b9e3a1f79e84924c12b3d7c4c2fa9573cffe0e4dab7b5d09833c9db7ccd2c6",
+    "crosshair-changer": "98594d4cc130187facb8efdfe619e5fed22d83c22b9da398b15cd9dde08d9fbd"
+  },
+  "hud": {
+    "number_0": [
+      0,
+      0,
+      30,
+      40
+    ],
+    "number_1": [
+      64,
+      0,
+      30,
+      40
+    ],
+    "number_2": [
+      128,
+      0,
+      30,
+      40
+    ],
+    "number_3": [
+      192,
+      0,
+      30,
+      40
+    ],
+    "number_4": [
+      256,
+      0,
+      30,
+      40
+    ],
+    "number_5": [
+      320,
+      0,
+      30,
+      40
+    ],
+    "number_6": [
+      384,
+      0,
+      30,
+      40
+    ],
+    "number_7": [
+      448,
+      0,
+      30,
+      40
+    ],
+    "number_8": [
+      0,
+      64,
+      30,
+      40
+    ],
+    "number_9": [
+      64,
+      64,
+      30,
+      40
+    ],
+    "cross": [
+      128,
+      64,
+      8,
+      8
+    ],
+    "suit_empty": [
+      192,
+      64,
+      8,
+      8
+    ],
+    "suit_full": [
+      256,
+      64,
+      8,
+      8
+    ],
+    "flash_empty": [
+      320,
+      64,
+      8,
+      8
+    ],
+    "flash_full": [
+      384,
+      64,
+      8,
+      8
+    ],
+    "ammo": [
+      448,
+      64,
+      24,
+      24
+    ],
+    "ammo2": [
+      0,
+      128,
+      24,
+      24
+    ]
+  },
+  "shapes": [
+    "Default",
+    "1px",
+    "3px",
+    "Small Circle",
+    "Medium Circle",
+    "Large Circle",
+    "Small Circle with 1px",
+    "Medium Circle with 1px",
+    "Large Circle with 1px"
+  ],
+  "colors": [
+    "green",
+    "red",
+    "blue",
+    "lightblue",
+    "orange",
+    "pink",
+    "yellow"
+  ],
+  "changerCell": 32,
+  "changerInset": 4,
+  "changerSize": 24
+}

@@ -1,0 +1,9 @@
+{
+  "name": "hlsr-updater",
+  "productName": "HLSR Updater",
+  "version": "0.4.3",
+  "description": "HLSR launcher updater",
+  "main": "main.js",
+  "author": "HLSR Team",
+  "license": "UNLICENSED"
+}

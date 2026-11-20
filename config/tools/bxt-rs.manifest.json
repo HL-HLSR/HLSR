@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "toolId": "bxt-rs",
+  "channel": "stable",
+  "version": "won-2623912",
+  "enabled": true,
+  "license": "GPL-3.0-or-later",
+  "build": "bxt-rs 6ab51ed + WON 3248 patch (2623912)",
+  "executable": "bxt_rs.dll",
+  "raw": true,
+  "files": {
+    "bxt_rs.dll": "a598e9a626a69cfea65e9b539d6122ff5b8960bf3668011796ba1fd7de1dc505"
+  },
+  "archive": {
+    "filename": "bxt_rs.dll",
+    "size": 7006208,
+    "sha256": "a598e9a626a69cfea65e9b539d6122ff5b8960bf3668011796ba1fd7de1dc505",
+    "providers": [
+      {
+        "id": "hlsr",
+        "type": "https-direct",
+        "status": "permanent",
+        "priority": 10,
+        "url": "https://hlsr.pro/downloads/tools/bxt-rs/won-2623912/bxt_rs.dll"
+      }
+    ]
+  },
+  "extras": [
+    {
+      "name": "COPYING",
+      "size": 35148,
+      "sha256": "0ae0485a5bd37a63e63603596417e4eb0e653334fa6c7f932ca3a0e85d4af227",
+      "url": "https://hlsr.pro/downloads/tools/bxt-rs/won-2623912/COPYING"
+    },
+    {
+      "name": "THIRD-PARTY-NOTICES.txt",
+      "size": 202784,
+      "sha256": "a95fa3ed1e761f0a754f0dbc5496cbc70e1120795bb84e91faa179de863bdc01",
+      "url": "https://hlsr.pro/downloads/tools/bxt-rs/won-2623912/THIRD-PARTY-NOTICES.txt"
+    }
+  ]
+}

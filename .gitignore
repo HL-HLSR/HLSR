@@ -3,9 +3,112 @@ dist/electron/*
 dist/web/*
 build/*
 !build/icons
+!build/license_en.txt
+!build/license_ru.txt
+!build/license-en.txt
+!build/license-ru.txt
+!build/THIRD-PARTY-NOTICES.txt
+!build/SOURCE-SDK-LICENSE.txt
+!build/thirdpartylegalnotices.txt
 node_modules/*
+# Проект использует npm (package-lock.json). Второй lock-файл не заводить.
+yarn.lock
+pnpm-lock.yaml
 npm-debug.log
 npm-debug.log.*
+# Локальные переменные окружения. Шаблоны можно хранить в репозитории,
+# реальные значения и секреты — нельзя.
+.env
+.env.*
+!.env.example
+!**/.env.example
+# Приватные ключи подписи манифестов не коммитятся никогда
+*.pem
+*.key
+*.p8
+*.pkcs8
+keys/
+secrets/
+# Локальные каталоги релизов (планы публикации, бэкапы серверных файлов)
+release/
+# Изолированные QA-сборки лаунчера и артефакты QA-прогонов.
+# Это сотни мегабайт установщиков: в git они не попадают никогда.
+build-qa/
+build-qa*/
+build-gap/
+build-gap*/
+qa-out/
+qa-report/
+*.qa-trace.json
+!build/icons/*.pem
 thumbs.db
 !.gitkeep
 electron-builder.yml
+# Изолированные прогоны вёрстки: тот же класс, что build-qa.
+build-layout-qa/
+# Конфигурация выкладки (аккаунт хостинга, SSH-отпечатки) хранится вне репозитория.
+config/deploy/
+# Зависимости локальных пакетов монорепозитория
+packages/*/node_modules/
+
+# Внутренние документы: отчёты о выкладке и разборы дефектов. Часть из них
+# описывает раскладку хостинга — имя аккаунта, пути на сервере, каталоги
+# резервных копий. Публичному репозиторию это не нужно.
+#
+# Исключается СОДЕРЖИМОЕ, а не сам каталог: правило `docs/` запрещает git
+# заходить внутрь вовсе, и никакое `!docs/что-то` после него уже не
+# сработает.
+# Документация целиком, включая память проекта и порядок выпуска: по
+# решению владельца от 10.08.2026 в репозитории они не ведутся. На диске
+# остаются, но git их не видит — значит и git clean -xdf их снесёт.
+docs/
+RELEASE-CHECKLIST.md
+
+# Обвязка агентов и локальные заметки. К программе отношения не имеют, но
+# захламляют git status перед каждым выпуском — а именно там их и надо
+# читать внимательно.
+CLAUDE.md
+.claude/
+.agents/
+skills-lock.json
+
+# Тесты в репозитории не ведутся — по решению владельца от 10.08.2026.
+# На диске они остаются и запускаются как раньше (npm test, npm run lint
+# линтит src и test), но в свежем клоне их не будет: обе команды там
+# упадут, пока каталог не вернут.
+test/
+
+# Снято с отслеживания 10.08.2026. Файлы остались на диске, но не ведутся.
+# ВНИМАНИЕ: git clean -xdf удалит всё перечисленное здесь с диска безвозвратно.
+.travis.yml
+appveyor.yml
+.vscode/
+src/renderer/assets/mlp*.gif
+src/renderer/assets/scripts/*.webm
+src/renderer/assets/screenshots/half-life-2*.jpg
+src/renderer/assets/fonts/*.ttf
+!src/renderer/assets/fonts/Roboto-Bold.ttf
+!src/renderer/assets/fonts/Roboto-Medium.ttf
+!src/renderer/assets/fonts/Roboto-Regular.ttf
+!src/renderer/assets/fonts/Rubik-Bold.ttf
+!src/renderer/assets/fonts/Rubik-Light.ttf
+!src/renderer/assets/fonts/Rubik-Medium.ttf
+!src/renderer/assets/fonts/Rubik-Regular.ttf
+src/renderer/assets/font-awesome/css/*
+!src/renderer/assets/font-awesome/css/all.css
+
+# Пакет hlsr-console отвязан в 0.3.15: он не вызывался ниоткуда, а тянул
+# в установку 56 МБ чужих ассетов и лицензию, запрещающую публикацию
+# отдельно от официальной поставки. В сборке не участвует, на диске лежит.
+packages/hlsr-console/
+
+# Рантайм-данные лаунчера: установленные игры, скачанные архивы/патчи,
+# установленные тулзы, локальное состояние и бэкапы. Это гигабайты
+# чужих бинарников и логов — в git им не место, только код.
+Games/
+Tools/
+# Манифесты инструментов — код, а не рантайм (Windows не различает tools/Tools).
+!config/tools/
+Downloads/
+.hlsr/
+Backups/

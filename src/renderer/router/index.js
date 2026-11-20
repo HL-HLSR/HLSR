@@ -1,43 +1,12 @@
-import Vue from 'vue'
-import Router from 'vue-router'
+import { createRouter, createWebHashHistory } from "vue-router";
+import Loading from "@/views/Loading";
+import Launcher from "@/views/Launcher";
 
-Vue.use(Router)
-
-export default new Router({
-    routes: [{
-            path: '/',
-            name: 'loading',
-            component: require('@/views/Loading').default
-        },
-        {
-            path: '/home',
-            name: 'home',
-            component: require('@/views/Home').default
-        },
-        {
-            path: '/settings',
-            name: 'settings',
-            component: require('@/views/Settings').default
-        },
-        {
-            path: '/game',
-            name: "game-menu",
-            component: require('@/views/GameMenu').default
-        },
-        {
-            path: '/config-editor',
-            name: "config-editor",
-            component: require('@/views/ConfigEditor').default
-        },
-        {
-            path: '/config-constructor',
-            name: "config-constructor",
-            component: require('@/views/ConfigConstructor').default
-        },
-        {
-            path: '/customization',
-            name: 'customization',
-            component: require('@/views/Customization').default
-        },
-    ]
-})
+// Окно грузит index.html с file://, поэтому история — через хеш.
+export default createRouter({
+  history: createWebHashHistory(),
+  routes: [
+    { path: "/", name: "loading", component: Loading },
+    { path: "/launcher", name: "launcher", component: Launcher },
+  ],
+});

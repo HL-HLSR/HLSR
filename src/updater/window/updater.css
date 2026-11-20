@@ -1,0 +1,247 @@
+/* Оформление окна обновления.
+   Нативная программа Windows, а не «второй лаунчер»: системный шрифт,
+   плоские поверхности, сплошные цвета. Стеклянных эффектов и размытия
+   подложки здесь нет — они запрещены и проверяются тестом. */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    height: 100%;
+}
+
+body {
+    font-family: "Segoe UI Variable Text", "Segoe UI", system-ui, sans-serif;
+    font-size: 13px;
+    color: #1a1a1a;
+    background: #f3f3f3;
+    user-select: none;
+    cursor: default;
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        color: #f0f0f0;
+        background: #202020;
+    }
+}
+
+.upd {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 18px 20px 16px;
+}
+
+.upd__head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Знак HLSR: кольцо с точкой — тот же мотив, что в лаунчере,
+   нарисованный без внешних файлов */
+.upd__mark {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+    border: 3px solid #0f6cbd;
+    border-radius: 50%;
+}
+
+.upd__mark::after {
+    content: "";
+    position: absolute;
+    inset: 6px;
+    background: #0f6cbd;
+    border-radius: 50%;
+}
+
+.upd__titles {
+    min-width: 0;
+}
+
+.upd__title {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.upd__subtitle {
+    margin: 2px 0 0;
+    font-size: 12px;
+    color: #616161;
+}
+
+@media (prefers-color-scheme: dark) {
+    .upd__subtitle {
+        color: #a0a0a0;
+    }
+}
+
+.upd__body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+}
+
+.upd__stage {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+/* Полоса прогресса в пропорциях системной: тонкая, со скруглением */
+.upd__track {
+    height: 6px;
+    background: #d1d1d1;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+@media (prefers-color-scheme: dark) {
+    .upd__track {
+        background: #3a3a3a;
+    }
+}
+
+.upd__fill {
+    width: 0;
+    height: 100%;
+    background: #0f6cbd;
+    border-radius: 3px;
+    transition: width 0.15s linear;
+}
+
+/* Неопределённый прогресс (проверка, ожидание, установка): бегущая полоса */
+.upd__fill.indeterminate {
+    width: 35%;
+    animation: upd-slide 1.4s ease-in-out infinite;
+}
+
+@keyframes upd-slide {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(320%);
+    }
+}
+
+.upd__fill.done {
+    width: 100%;
+    background: #0f7b0f;
+}
+
+.upd__fill.failed {
+    width: 100%;
+    background: #c42b1c;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .upd__fill {
+        transition: none;
+    }
+
+    .upd__fill.indeterminate {
+        width: 100%;
+        animation: none;
+    }
+}
+
+.upd__meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #616161;
+    font-variant-numeric: tabular-nums;
+    min-height: 16px;
+}
+
+@media (prefers-color-scheme: dark) {
+    .upd__meta {
+        color: #a0a0a0;
+    }
+}
+
+.upd__note {
+    margin: 0;
+    font-size: 12px;
+    color: #616161;
+    min-height: 16px;
+}
+
+@media (prefers-color-scheme: dark) {
+    .upd__note {
+        color: #a0a0a0;
+    }
+}
+
+/* Код ошибки: мелко, но доступно для копирования в отчёт */
+.upd__code {
+    margin: 0;
+    font-family: Consolas, "Cascadia Mono", monospace;
+    font-size: 11px;
+    color: #8a8a8a;
+    user-select: text;
+    min-height: 14px;
+}
+
+.upd__actions {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 12px;
+}
+
+/* Системная кнопка Windows 11: светлая поверхность, тонкая граница */
+.upd__btn {
+    min-width: 96px;
+    height: 30px;
+    padding: 0 14px;
+    border: 1px solid #d1d1d1;
+    border-radius: 4px;
+    background: #fdfdfd;
+    color: inherit;
+    font-family: inherit;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.upd__btn:hover {
+    background: #f5f5f5;
+}
+
+.upd__btn:active {
+    background: #ebebeb;
+}
+
+.upd__btn:focus-visible {
+    outline: 2px solid #0f6cbd;
+    outline-offset: 1px;
+}
+
+.upd__btn[hidden] {
+    display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+    .upd__btn {
+        border-color: #4a4a4a;
+        background: #2d2d2d;
+    }
+
+    .upd__btn:hover {
+        background: #363636;
+    }
+
+    .upd__btn:active {
+        background: #292929;
+    }
+}

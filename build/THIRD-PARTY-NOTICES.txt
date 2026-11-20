@@ -1,0 +1,464 @@
+﻿HLSR LAUNCHER - THIRD-PARTY NOTICES
+
+Original HLSR material is covered by the proprietary LICENSE included with
+the launcher. These notices preserve the separate terms of other owners.
+
+This file lists third-party software distributed with, or used by, the HLSR
+Launcher. It does not replace the licenses shipped with the game builds
+(Source SDK LICENSE, thirdpartylegalnotices.txt and similar files), which stay
+inside the game folders and must be preserved.
+
+RUNTIME COMPONENTS SHIPPED WITH THE LAUNCHER
+--------------------------------------------
+Electron                  MIT           https://github.com/electron/electron
+Chromium                  BSD-3-Clause  https://www.chromium.org
+Node.js                   MIT           https://nodejs.org
+Vue.js 2                  MIT           https://github.com/vuejs/vue
+Vuex                      MIT           https://github.com/vuejs/vuex
+Vue Router                MIT           https://github.com/vuejs/vue-router
+vue-material              MIT           https://github.com/vuematerial/vue-material
+CodeMirror                MIT           https://codemirror.net
+axios                     MIT           https://github.com/axios/axios
+jQuery                    MIT           https://jquery.com
+discord-rpc               MIT           https://github.com/discordjs/RPC
+register-scheme           MIT           https://github.com/devsnek/node-register-scheme
+bindings                  MIT           https://github.com/TooTallNate/node-bindings
+file-uri-to-path          MIT           https://github.com/TooTallNate/file-uri-to-path
+electron-updater          MIT           https://github.com/electron-userland/electron-builder
+electron-log              MIT           https://github.com/megahertz/electron-log
+node-7z                   MIT           https://github.com/quentinrossetti/node-7z
+tiny-typed-emitter        MIT           https://github.com/binier/tiny-typed-emitter
+7-Zip 26.05 (7za, Windows) LGPL-2.1     https://www.7-zip.org
+7zip-bin (7-Zip binaries) LGPL-2.1      https://www.7-zip.org
+Font Awesome (icons)      Font Awesome Free, CC BY 4.0
+                                           https://fontawesome.com/license/free
+Font Awesome Free (fonts) OFL-1.1       https://fontawesome.com/license/free
+Font Awesome Free (code)  MIT           https://fontawesome.com/license/free
+Roboto font               Apache-2.0    https://fonts.google.com/specimen/Roboto
+Rubik font                OFL-1.1       https://fonts.google.com/specimen/Rubik
+Carlito font              OFL-1.1       https://github.com/googlefonts/carlito
+SourceSplit (Linux, patched for Wine)
+                          WTFPL         https://github.com/thisis2838/SourceSplit
+BunnySplit (LiveSplit autosplitter for Bunnymod XT)
+                          MIT           https://github.com/YaLTeR/LiveSplit.BunnySplit
+hlsr-console              proprietary    packages/hlsr-console/LICENSE.txt
+hlsr-native               see project    https://github.com/InfiniteC0re
+
+TOOLS REFERENCED OR INSTALLED WITH GAME BUILDS
+----------------------------------------------
+The following tools are not part of the launcher installer. They are part of
+the separately downloaded game builds and keep their own licenses:
+
+Bunnymod XT, Source Unpack, Source Pause Tool, RInput, LiveSplit,
+Ghosting Mod, Cutsceneless Mod, HL1 Movement Mod, GoldSrc Package.
+
+TOOLS DOWNLOADED ON DEMAND BY THE DEMO TOOL
+-------------------------------------------
+The launcher downloads these separate programs only when the player asks for
+them (pinned version and SHA-256). They are not linked into the launcher and
+keep their own licenses:
+
+FFmpeg 9.0.2 (gyan.dev release essentials build)
+                          GPL-3.0-or-later  https://ffmpeg.org
+bxt-rs, HLSR build won-2623912 (upstream master 6ab51ed with a patch for the
+Half-Life WON engine, modified 2026-11-08)
+                          GPL-3.0-or-later  https://github.com/YaLTeR/bxt-rs
+    Copyright (c) Ivan Molodetskikh and contributors.
+    Complete corresponding source code, with COPYING and Cargo.lock:
+    https://hlsr.pro/downloads/tools/bxt-rs/won-2623912/bxt-rs-won-2623912-src.tar.gz
+    Full GPL-3 text and the notices of the Rust crates, MinHook and SQLite
+    built into bxt_rs.dll (they are downloaded and kept next to the DLL, in
+    the launcher's Tools/bxt-rs folder):
+    https://hlsr.pro/downloads/tools/bxt-rs/won-2623912/COPYING
+    https://hlsr.pro/downloads/tools/bxt-rs/won-2623912/THIRD-PARTY-NOTICES.txt
+    The launcher injects it only into the game process that renders a demo,
+    never into the regular game.
+
+TRADEMARKS
+----------
+Half-Life, Half-Life 2, Steam, Source and related marks are trademarks of
+Valve Corporation. HLSR is an independent community project and is not
+affiliated with or endorsed by Valve Corporation.
+
+===============================================================================
+Bunnymod XT
+===============================================================================
+
+Project:
+https://github.com/YaLTeR/BunnymodXT
+
+Bunnymod XT is a speedrunning and TAS tool for Half-Life and related games.
+Some speedrunning commands or functionality in Ghosting Mod were inspired by
+or adapted from Bunnymod XT.
+
+In the HLSR Launcher this applies to the console script editor: the
+bxt_* command inventory and its argument syntax in
+src/renderer/utils/hlscripts.js are adapted from the Bunnymod XT
+command set.
+
+It also applies to the shape of the Discord Rich Presence card: showing the
+current map as the large image and the run state as a small circular overlay
+follows Bunnymod XT's discord_integration. The HLSR implementation
+(src/main/discord-rpc, src/main/game-presence) is written from scratch for
+this architecture; no Bunnymod XT code is copied.
+
+The full original LICENSE file of Bunnymod XT follows verbatim. It also
+carries the notices of components bundled inside that project; none of them
+have been removed or shortened.
+
+Retrieved from https://raw.githubusercontent.com/YaLTeR/BunnymodXT/master/LICENSE
+at commit eec19bf169f77b813724118c9c4b009fdecb4077 (2025-07-13).
+sha256 of the retrieved file: 5f71a884ffe0e8a5fdce0b6aa185cbba0be860cb7bf1a7574b87c1004492c48d
+
+-------------------------------------------------------------------------------
+
+The MIT License (MIT)
+
+Copyright (c) 2014-2020 Ivan Molodetskikh
+Copyright (c) 2015-2018 Chong Jiang Wei
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+==============================================================================
+SPTLib
+
+The MIT License (MIT)
+
+Copyright (c) 2014-2016 Ivan Molodetskikh
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+==============================================================================
+hltas
+
+The MIT License (MIT)
+
+Copyright (c) 2014-2015 Ivan Molodetskikh
+Copyright (c) 2014-2015 Chong Jiang Wei
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+==============================================================================
+hlstrafe
+
+The MIT License (MIT)
+
+Copyright (c) 2015 Ivan Molodetskikh
+Copyright (c) 2015 Chong Jiang Wei
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+==============================================================================
+taslogger
+
+The MIT License (MIT)
+
+Copyright (c) 2015 Chong Jiang Wei
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+==============================================================================
+MinHook
+
+MinHook - The Minimalistic API Hooking Library for x64/x86
+Copyright (C) 2009-2015 Tsuda Kageyu.
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions
+are met:
+
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
+TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER
+OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+================================================================================
+Portions of this software are Copyright (c) 2008-2009, Vyacheslav Patkov.
+================================================================================
+Hacker Disassembler Engine 32 C
+Copyright (c) 2008-2009, Vyacheslav Patkov.
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions
+are met:
+
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
+TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE REGENTS OR
+CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+-------------------------------------------------------------------------------
+Hacker Disassembler Engine 64 C
+Copyright (c) 2008-2009, Vyacheslav Patkov.
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions
+are met:
+
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
+TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE REGENTS OR
+CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+==============================================================================
+Cereal
+
+Copyright (c) 2014, Randolph Voorhies, Shane Grant
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+    * Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above copyright
+      notice, this list of conditions and the following disclaimer in the
+      documentation and/or other materials provided with the distribution.
+    * Neither the name of cereal nor the
+      names of its contributors may be used to endorse or promote products
+      derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL RANDOLPH VOORHIES OR SHANE GRANT BE LIABLE FOR ANY
+DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-------------------------------------------------------------------------------
+
+==============================================================================
+GetGitRevisionDescription.cmake
+
+Original Author:
+2009-2010 Ryan Pavlik <rpavlik@iastate.edu> <abiryan@ryand.net>
+http://academic.cleardefinition.com
+Iowa State University HCI Graduate Program/VRAC
+
+Copyright Iowa State University 2009-2010.
+Distributed under the Boost Software License, Version 1.0.
+(See accompanying file LICENSE_1_0.txt or copy at
+http://www.boost.org/LICENSE_1_0.txt)
+
+Boost Software License - Version 1.0 - August 17th, 2003
+
+Permission is hereby granted, free of charge, to any person or organization
+obtaining a copy of the software and accompanying documentation covered by
+this license (the "Software") to use, reproduce, display, distribute,
+execute, and transmit the Software, and to prepare derivative works of the
+Software, and to permit third-parties to whom the Software is furnished to
+do so, all subject to the following:
+
+The copyright notices in the Software and this entire statement, including
+the above license grant, this restriction and the following disclaimer,
+must be included in all copies of the Software, in whole or in part, and
+all derivative works of the Software, unless such copies or derivative
+works are solely in the form of machine-executable object code generated by
+a source language processor.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE, TITLE AND NON-INFRINGEMENT. IN NO EVENT
+SHALL THE COPYRIGHT HOLDERS OR ANYONE DISTRIBUTING THE SOFTWARE BE LIABLE
+FOR ANY DAMAGES OR OTHER LIABILITY, WHETHER IN CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+DEALINGS IN THE SOFTWARE.
+-------------------------------------------------------------------------------
+
+==============================================================================
+Copyright 2017 Discord, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+of the Software, and to permit persons to whom the Software is furnished to do
+so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+=== BEGIN GENERATED DEPENDENCY INVENTORY (npm run audit:licenses -- --write-inventory) ===
+
+Full production dependency tree (transitive included), generated 2026-10-30:
+
+7zip-bin@5.2.0                                   MIT
+ajv@8.20.0                                       MIT
+ajv-formats@3.0.1                                MIT
+argparse@3.0.4                                   PSF-2.0
+builder-util-runtime@9.7.0                       MIT
+builder-util-runtime/node_modules/debug@4.4.3    MIT
+builder-util-runtime/node_modules/ms@2.1.3       MIT
+bytenode@2.1.0                                   MIT
+discord-rpc@4.0.1                                MIT
+electron-log@5.4.4                               MIT
+electron-updater@6.8.11                          MIT
+electron-updater/node_modules/argparse@2.0.1     Python-2.0
+electron-updater/node_modules/js-yaml@4.3.2      MIT
+fast-deep-equal@3.1.3                            MIT
+fast-uri@3.1.8                                   BSD-3-Clause
+fs-extra@10.1.0                                  MIT
+graceful-fs@4.2.11                               ISC
+hlsr-native@1.0.8                                MIT
+hlsr-native/node_modules/node-addon-api@3.2.1    MIT
+js-yaml@5.5.0                                    MIT
+json-schema-traverse@1.0.0                       MIT
+jsonfile@6.2.1                                   MIT
+lazy-val@1.0.5                                   MIT
+lodash.defaultsdeep@4.6.1                        MIT
+lodash.defaultto@4.14.0                          MIT
+lodash.escaperegexp@4.1.2                        MIT
+lodash.flattendeep@4.4.0                         MIT
+lodash.isempty@4.4.0                             MIT
+lodash.isequal@4.5.0                             MIT
+lodash.negate@3.0.2                              MIT
+node-7z@3.0.0                                    ISC
+node-7z/node_modules/debug@4.4.3                 MIT
+node-7z/node_modules/ms@2.1.3                    MIT
+node-fetch@2.7.0                                 MIT
+normalize-path@3.0.0                             MIT
+register-scheme@0.0.0-hlsr                       MIT
+require-from-string@2.0.2                        MIT
+sax@1.6.0                                        BlueOak-1.0.0
+semver@7.7.4                                     ISC
+tiny-typed-emitter@2.1.0                         MIT
+tr46@0.0.3                                       MIT
+universalify@2.0.1                               MIT
+webidl-conversions@3.0.1                         BSD-2-Clause
+whatwg-url@5.0.0                                 MIT
+ws@7.5.13                                        MIT
+
+=== END GENERATED DEPENDENCY INVENTORY ===

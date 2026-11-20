@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "gameId": "ghosting-renewed",
+  "version": "0.0.0",
+  "buildId": "ghosting-renewed-sample-0000000",
+  "buildName": "HL1 Movement",
+  "gitCommit": "0000000",
+  "builtAt": "2020-01-01T00:00:00.000Z",
+  "architecture": "x86",
+  "requiredSteamAppId": 243730,
+  "minimumLauncherVersion": "0.2.11"
+}

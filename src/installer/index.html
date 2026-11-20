@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'">
+<title>HLSR</title>
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="launcher.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="launcher-root">
+<main class="window" role="dialog" aria-modal="true" aria-labelledby="title" aria-describedby="description">
+  <header class="topbar">
+    <div class="brand" aria-hidden="true"><span class="brand-mark"><span></span></span><span class="brand-name">HLSR</span><span class="brand-beta">BETA</span></div>
+    <div class="window-controls">
+      <button id="minimize" class="window-controls__btn" type="button" aria-label="Свернуть" data-icon="minimize"></button>
+      <button id="close" class="window-controls__btn close" type="button" aria-label="Закрыть" data-icon="cancel"></button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="identity">
+      <div id="badge" class="badge" aria-hidden="true"></div>
+      <div class="who">
+        <h1 id="title" class="title">Установка HLSR</h1>
+        <div id="meta" class="meta"></div>
+      </div>
+    </div>
+    <p id="description" class="description">Установите HLSR, чтобы запускать игры, управлять сборками и получать обновления.</p>
+  </section>
+
+  <section class="body">
+    <div id="welcome" class="steps" hidden>
+      <div class="row row--static"><span class="row__icon" data-icon="download" aria-hidden="true"></span><span class="row__text"><span id="welcome-builds" class="row__label"></span><span id="welcome-builds-hint" class="row__hint"></span></span></div>
+      <div class="row row--static"><span class="row__icon" data-icon="gamepad" aria-hidden="true"></span><span class="row__text"><span id="welcome-play" class="row__label"></span><span id="welcome-play-hint" class="row__hint"></span></span></div>
+      <div class="row row--static"><span class="row__icon" data-icon="update" aria-hidden="true"></span><span class="row__text"><span id="welcome-update" class="row__label"></span><span id="welcome-update-hint" class="row__hint"></span></span></div>
+    </div>
+
+    <div id="defender" class="callout" hidden>
+      <p id="callout-lead" class="callout__lead"></p>
+      <h2 id="callout-title" class="callout__title"></h2>
+      <p id="callout-steps" class="callout__text"></p>
+      <p id="callout-why" class="callout__text"></p>
+    </div>
+
+    <div id="destination" class="field">
+      <label id="location-label" class="group" for="directory">Каталог установки</label>
+      <div class="path">
+        <span class="path__icon" data-icon="folder" aria-hidden="true"></span>
+        <input id="directory" class="path__input" type="text" readonly>
+        <button id="browse" class="path__browse" type="button" aria-label="Выбрать папку" data-icon="folderOpen"></button>
+      </div>
+    </div>
+
+    <label id="desktop-option" class="row">
+      <span class="row__icon" data-icon="desktop" aria-hidden="true"></span>
+      <span class="row__text"><span id="desktop-label" class="row__label">Ярлык на рабочем столе</span><span id="desktop-hint" class="row__hint"></span></span>
+      <span class="switch"><input id="desktop" type="checkbox" checked><span class="switch__track"><span class="switch__thumb"></span></span></span>
+    </label>
+    <label id="games-option" class="row row--danger" hidden>
+      <span class="row__icon" data-icon="gamepad" aria-hidden="true"></span>
+      <span class="row__text"><span id="games-label" class="row__label"></span><span id="games-hint" class="row__hint"></span></span>
+      <span class="switch"><input id="games" type="checkbox" checked><span class="switch__track"><span class="switch__thumb"></span></span></span>
+    </label>
+
+    <div id="activity" class="activity" role="status" aria-live="polite" hidden>
+      <div class="activity__head"><span id="step"></span><span id="progress-text" class="activity__value"></span></div>
+      <progress id="progress" max="100"></progress>
+    </div>
+
+    <p id="error" class="notice" role="alert" hidden><span class="notice__icon" data-icon="error" aria-hidden="true"></span><span id="error-text"></span></p>
+  </section>
+
+  <footer class="footer">
+    <button id="uninstall" class="btn ghost danger" type="button" hidden><span data-icon="trash" aria-hidden="true"></span><span id="uninstall-label"></span></button>
+    <span class="footer__spacer"></span>
+    <button id="discord" class="btn" type="button" hidden><span data-icon="open" aria-hidden="true"></span><span id="discord-label"></span></button>
+    <button id="dismiss" class="btn" type="button" hidden><span id="dismiss-icon" aria-hidden="true"></span><span id="dismiss-label">Отмена</span></button>
+    <button id="action" class="btn primary" type="button"><span id="action-icon" aria-hidden="true"></span><span id="action-label">Установить HLSR</span></button>
+  </footer>
+</main>
+<script src="installer.js"></script>
+</body>
+</html>

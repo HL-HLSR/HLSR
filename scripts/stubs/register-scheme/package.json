@@ -1,0 +1,8 @@
+{
+  "name": "register-scheme",
+  "version": "0.0.0-hlsr",
+  "description": "Заглушка опциональной зависимости discord-rpc: в Electron протокол регистрирует app.setAsDefaultProtocolClient",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true
+}

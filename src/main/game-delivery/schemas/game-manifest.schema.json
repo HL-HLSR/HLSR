@@ -1,0 +1,309 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://hlsr.pro/schemas/game-manifest-1.json",
+  "title": "HLSR game delivery manifest",
+  "description": "Описание одной сборки игры. Манифест описывает ТОЛЬКО данные для скачивания и проверки. Он не может задавать исполняемый файл, аргументы запуска, shell-команды, абсолютные пути, Steam AppID или произвольные URL: всё это живёт в локальном доверенном game config лаунчера.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "gameId",
+    "channel",
+    "version",
+    "publishedAt",
+    "minimumLauncherVersion",
+    "expectedInstalledSize",
+    "preservePaths",
+    "baseArchive",
+    "filesManifest",
+    "enabled"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "description": "Версия схемы. Лаунчер отказывается читать манифест с неизвестной версией.",
+      "const": 1
+    },
+    "gameId": {
+      "description": "Идентификатор сборки. Используется как имя папки внутри Games — отсюда жёсткий формат.",
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "minLength": 3,
+      "maxLength": 64
+    },
+    "channel": {
+      "type": "string",
+      "enum": ["stable", "beta", "test"]
+    },
+    "version": {
+      "description": "SemVer сборки. null означает черновик: установка из production запрещена, пока владелец проекта не назначит версию.",
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+(-[0-9A-Za-z.-]+)?$"
+        },
+        { "type": "null" }
+      ]
+    },
+    "versionStatus": {
+      "description": "draft — версия ещё не назначена доверенным источником; assigned — назначена владельцем проекта.",
+      "type": "string",
+      "enum": ["draft", "assigned"]
+    },
+    "publishedAt": {
+      "oneOf": [
+        { "type": "string", "format": "date-time" },
+        { "type": "null" }
+      ]
+    },
+    "minimumLauncherVersion": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "expectedInstalledSize": {
+      "description": "Ожидаемый размер после распаковки в байтах. 0 или null запрещает установку: проверка свободного места невозможна.",
+      "oneOf": [
+        { "type": "integer", "minimum": 1 },
+        { "type": "null" }
+      ]
+    },
+    "preservePaths": {
+      "description": "Пользовательские данные внутри папки игры, которые нельзя терять при переустановке.",
+      "type": "array",
+      "maxItems": 64,
+      "items": { "$ref": "#/definitions/relativePath" }
+    },
+    "baseArchive": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["filename", "size", "sha256", "providers"],
+      "properties": {
+        "version": {
+          "description": "Версия сборки ВНУТРИ архива. Без поля архив описывает ту же версию, что и манифест. С полем полный архив остаётся базой прошлой версии, а до объявленной установку доводит патч база -> version: так выпуск новой сборки не требует пересобирать и перезаливать гигабайты.",
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+(-[0-9A-Za-z.-]+)?$"
+        },
+        "filename": {
+          "description": "Имя файла архива. Только имя, без разделителей пути.",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200,
+          "pattern": "^[^/\\\\:*?\"<>|]+\\.(7z|zip)$"
+        },
+        "size": { "type": "integer", "minimum": 1 },
+        "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "rootPrefix": {
+          "description": "Единственная корневая папка внутри архива, если она есть. Лаунчер снимает её при установке.",
+          "oneOf": [{ "$ref": "#/definitions/relativePath" }, { "type": "null" }]
+        },
+        "providers": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 8,
+          "items": { "$ref": "#/definitions/provider" }
+        }
+      }
+    },
+    "filesManifest": {
+      "description": "Ожидаемое содержимое архива: обязательные файлы и лимиты, по которым отбраковывается подозрительный архив.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["requiredFiles", "maxEntries", "maxUncompressedSize"],
+      "properties": {
+        "requiredFiles": {
+          "description": "Файлы, без которых установка считается неуспешной. Проверяются в staging до переноса в библиотеку.",
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 64,
+          "items": { "$ref": "#/definitions/relativePath" }
+        },
+        "maxEntries": { "type": "integer", "minimum": 1, "maximum": 1000000 },
+        "maxUncompressedSize": { "type": "integer", "minimum": 1 },
+        "entriesSha256": {
+          "description": "Опциональный SHA-256 файла с полным списком элементов архива. Сам список манифестом не задаётся.",
+          "oneOf": [
+            { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+            { "type": "null" }
+          ]
+        }
+      }
+    },
+    "patches": {
+      "description": "Цепочка инкрементальных обновлений. Лаунчер применяет их последовательно, если находит путь от установленной версии к целевой.",
+      "type": "array",
+      "maxItems": 64,
+      "items": { "$ref": "#/definitions/patch" }
+    },
+    "enabled": {
+      "description": "false — сборка не устанавливается ни при каком состоянии feature flag.",
+      "type": "boolean"
+    },
+    "buildMetadata": {
+      "description": "Опциональный дескриптор файла метаданных сборки ghostingmod/hlsr-build.json. Отсутствие поля = legacy-пакет без метаданных (совместим). required=true = отсутствие/несоответствие метаданных блокирует запуск до восстановления. Значения descriptor сверяются с локальным файлом и должны прийти из подписанного релиза; сам локальный файл источником доверия не является.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "schemaVersion",
+        "required",
+        "buildId",
+        "buildName",
+        "builtAt",
+        "gitCommit",
+        "architecture"
+      ],
+      "properties": {
+        "path": {
+          "description": "Фиксированный allowlist-путь внутри сборки. Только это значение и допустимо.",
+          "const": "ghostingmod/hlsr-build.json"
+        },
+        "schemaVersion": { "const": 1 },
+        "required": { "type": "boolean" },
+        "buildId": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 128,
+          "pattern": "^[a-z0-9]+([._-][a-z0-9]+)*$"
+        },
+        "buildName": { "type": "string", "enum": ["HL1 Movement"] },
+        "builtAt": { "type": "string", "format": "date-time" },
+        "gitCommit": { "type": "string", "pattern": "^[0-9a-f]{7,40}$" },
+        "architecture": { "type": "string", "enum": ["x86"] }
+      }
+    },
+    "notes": {
+      "type": "string",
+      "maxLength": 2000
+    }
+  },
+  "definitions": {
+    "patch": {
+      "description": "Один шаг обновления. Как и базовый архив, патч описывает только данные: ни команд, ни аргументов запуска, ни абсолютных путей здесь быть не может.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fromVersion", "toVersion", "archive", "resultingFilesManifestSha256"],
+      "properties": {
+        "fromVersion": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+(-[0-9A-Za-z.-]+)?$"
+        },
+        "toVersion": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+(-[0-9A-Za-z.-]+)?$"
+        },
+        "publishedAt": {
+          "oneOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }]
+        },
+        "archive": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["filename", "size", "sha256", "providers"],
+          "properties": {
+            "filename": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200,
+              "pattern": "^[^/\\\\:*?\"<>|]+\\.(7z|zip)$"
+            },
+            "size": { "type": "integer", "minimum": 1 },
+            "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+            "providers": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 8,
+              "items": { "$ref": "#/definitions/provider" }
+            }
+          }
+        },
+        "changedFiles": { "type": "integer", "minimum": 0 },
+        "deletedFiles": { "type": "integer", "minimum": 0 },
+        "resultingFilesManifestSha256": {
+          "description": "SHA-256 файлового манифеста, который обязан получиться после применения патча.",
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "resultingInstalledSize": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "relativePath": {
+      "description": "Относительный путь с прямыми слэшами. Запрещены абсолютные пути, буквы дисков, UNC и '..'.",
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 260,
+      "allOf": [
+        {
+          "not": { "pattern": "(^|/)\\.\\.(/|$)" }
+        },
+        {
+          "pattern": "^(?![A-Za-z]:)(?!/)[^\\\\:*?\"<>|]+$"
+        }
+      ]
+    },
+    "provider": {
+      "description": "Источник архива. Тип определяет, какой класс провайдера будет использован; произвольные URL вне описанных типов невозможны.",
+      "type": "object",
+      "required": ["id", "type", "status"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+          "maxLength": 64
+        },
+        "type": {
+          "type": "string",
+          "enum": ["yandex-public", "https-direct", "local-http"]
+        },
+        "status": {
+          "description": "temporary — источник временный и не может быть единственным в production-релизе.",
+          "type": "string",
+          "enum": ["temporary", "permanent"]
+        },
+        "priority": { "type": "integer", "minimum": 0, "maximum": 100 }
+      },
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "id": true,
+            "type": { "const": "yandex-public" },
+            "status": true,
+            "priority": true,
+            "publicUrl": {
+              "type": "string",
+              "pattern": "^https://disk\\.yandex\\.(ru|com)/d/[A-Za-z0-9_-]+$"
+            }
+          },
+          "required": ["publicUrl"]
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "id": true,
+            "type": { "const": "https-direct" },
+            "status": true,
+            "priority": true,
+            "url": {
+              "type": "string",
+              "pattern": "^https://[A-Za-z0-9.-]+(:\\d+)?/[^\\s\"'<>]*$"
+            }
+          },
+          "required": ["url"]
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "id": true,
+            "type": { "const": "local-http" },
+            "status": true,
+            "priority": true,
+            "url": {
+              "description": "Только localhost. Используется тестовым HTTP-сервером, в production недоступен.",
+              "type": "string",
+              "pattern": "^http://(127\\.0\\.0\\.1|localhost)(:\\d+)?/[^\\s\"'<>]*$"
+            }
+          },
+          "required": ["url"]
+        }
+      ]
+    }
+  }
+}

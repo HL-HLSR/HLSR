@@ -1,64 +1,20 @@
-import Vue from "vue";
+import { createApp } from "vue";
 
-import {
-  MdButton,
-  MdCheckbox,
-  MdProgress,
-  MdSwitch,
-  MdRadio,
-  MdField,
-  MdTooltip,
-  MdBadge,
-  MdSnackbar,
-  MdEmptyState,
-  MdDialog,
-  MdContent,
-  MdMenu,
-  MdList,
-  MdSubheader,
-  MdAutocomplete,
-} from "vue-material/dist/components";
+import "@/assets/css/base.css";
 
-import "vue-material/dist/vue-material.min.css";
-import "@/assets/css/theme.css";
-
-import "@/assets/font-awesome/css/all.css";
+import "@fortawesome/fontawesome-free/css/all.css";
 import "@/assets/fonts/fonts.css";
-import HLSRConsole from "hlsr-console";
 import LocalizationHelper from "@/utils/locales";
-
-Vue.use(MdButton);
-Vue.use(MdCheckbox);
-Vue.use(MdProgress);
-Vue.use(MdSwitch);
-Vue.use(MdRadio);
-Vue.use(MdField);
-Vue.use(MdTooltip);
-Vue.use(MdBadge);
-Vue.use(MdSnackbar);
-Vue.use(MdEmptyState);
-Vue.use(MdDialog);
-Vue.use(MdContent);
-Vue.use(MdMenu);
-Vue.use(MdList);
-Vue.use(MdSubheader);
-Vue.use(MdAutocomplete);
 
 import App from "./App";
 import router from "./router";
-import store from "./store";
 
-Vue.prototype.$localization = LocalizationHelper;
-Vue.prototype.$t = LocalizationHelper.get.bind(LocalizationHelper);
-Vue.prototype.$hlsrConsole = new HLSRConsole();
-Vue.prototype.$isDebug = require("process").env.WEBPACK_DEV_SERVER === "true";
-Vue.config.productionTip = false;
+const app = createApp(App);
+app.config.globalProperties.$localization = LocalizationHelper;
+app.config.globalProperties.$t = LocalizationHelper.get.bind(LocalizationHelper);
+app.config.globalProperties.$isDebug = process.env.WEBPACK_DEV_SERVER === "true";
 
-new Vue({
-  store,
-  components: {
-    App,
-  },
-  router,
-  template: "<App/>",
-}).$mount("#app");
+for (const type of ["dragover", "drop"])
+  window.addEventListener(type, (event) => event.preventDefault(), false);
+
+app.use(router).mount("#root");

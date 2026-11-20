@@ -1,0 +1,155 @@
+﻿HLSR LICENCE AGREEMENT
+
+Agreement version: 1.3
+Effective date: September 23, 2026
+
+Thank you for using HLSR.
+
+HLSR is a free launcher for installing, updating, verifying and starting
+supported game modifications. By installing or using HLSR you confirm
+that you have read this agreement and accept its terms.
+
+
+1. USING HLSR
+
+The source code of the HLSR launcher and updater is open and licensed
+under the GNU GPL version 3 (HLSR-LICENSE.txt next to the program). It
+lets you use, study, change and redistribute HLSR, including modified
+versions, under its terms. The HLSR name and logo are not covered by the
+license: a modified build must use a different name.
+
+Third-party game files, artwork, fonts, trademarks and Source SDK material
+remain under their respective licenses. This agreement does not change the
+rights granted by those licenses.
+
+
+2. VALVE GAMES AND THE SOURCE SDK
+
+HLSR is an independent project and is not affiliated with Valve
+Corporation. Half-Life, Half-Life 2, Steam, Source and related names are
+trademarks of their respective owners.
+
+Individual builds may require an installed copy of Steam and the
+corresponding Valve game licence. HLSR does not grant any right to use
+Valve files in a way that bypasses their licences.
+
+
+3. UPDATES
+
+HLSR may check for updates to the launcher and to installed builds. Before
+installing an update, it checks the version and applicable release metadata.
+
+
+4. MINIMAL TECHNICAL TELEMETRY
+
+By accepting this agreement you allow HLSR to send the minimal technical
+statistics needed to assess stability and fix errors. Sending is on by
+default. You can switch it off with the "Technical statistics" toggle in
+HLSR settings.
+
+That can include:
+
+  - the HLSR version and the installed build version;
+  - the Windows version and architecture;
+  - the type of operation performed: install, update, launch or error;
+  - a general result or error code;
+  - the time of the event, without the contents of user files.
+
+As with any network connection, the server and the hosting provider
+handle the IP address briefly: that is an ordinary technical part of an
+HTTP request.
+
+When technical telemetry is enabled in Settings, HLSR may send only the
+launcher technical events listed above. The data goes over HTTPS to
+api.hlsr.pro and nowhere else.
+
+That is about telemetry. The launcher reaches the network in three more
+cases, and none of these requests carries any statistics:
+
+  - for launcher and build updates, it goes to hlsr.pro, or to the backup
+    mirror on github.com when hlsr.pro is unreachable;
+  - for the avatars of the Steam friends missing from the local Steam
+    cache, it goes to steamcommunity.com. Only the Steam profile number
+    leaves your computer, and it goes to Valve, not to us. The downloaded
+    picture is kept on your computer, and the launcher does not ask for it
+    a second time;
+  - for the «playing now» counter, it goes to api.hlsr.pro once a minute
+    while the launcher window is open. The request has no body: the
+    launcher asks for a number and tells nothing about you. It also runs
+    with telemetry disabled, which is why it is named separately here:
+    telemetry being off means HLSR collects and sends nothing about you,
+    not that no network requests remain at all.
+
+Telemetry can be turned off at any time in the HLSR settings. After it
+is disabled, new events are not created, the local queue is deleted, and
+sending stops. Turning telemetry off does not prevent installing,
+updating or launching a game.
+
+HLSR can show in Discord that you are playing: the build name, the map
+name, the frame rate and the time spent in the app. This is Rich
+Presence, the same «Playing...» line any game shows in Steam or Discord.
+It appears inside Discord and is visible to people already on your
+friends list; none of it reaches our servers. The feature is on by
+default and is turned off by a single switch in the HLSR settings.
+
+A diagnostic archive, a crash report, technical logs and user files are
+created or stored only by your explicit action. HLSR never uploads them
+automatically.
+
+
+5. LOCAL DATA
+
+HLSR keeps your settings, information about installed builds, playtime
+statistics, launch history, notifications and technical logs on your
+computer. When uninstalling the program you can choose which data to
+keep.
+
+
+6. THIRD-PARTY COMPONENTS
+
+HLSR uses third-party libraries covered by their own licences. Their
+notices and licences ship together with the program. This agreement does
+not supersede the Source SDK licence or the licences of other
+components.
+
+
+7. LIABILITY
+
+We do our best to keep file installation and updates safe, but HLSR is
+provided "as is". Before installing large updates we recommend backing
+up important configs, runs and personal files.
+
+The project is not liable for problems caused by third-party
+modifications, a damaged system, blocked network resources, incompatible
+drivers, or manual changes to the program files.
+
+
+8. UNINSTALLATION
+
+When HLSR is uninstalled, the game builds it installed are removed
+together with the program. Saved games, configs, demos and screenshots
+stored inside those builds are lost. Back them up beforehand if you need
+them. The exact folder to be deleted is shown in the uninstall window
+before you confirm.
+
+Updating HLSR does not delete games: they are removed only when the
+program itself is uninstalled.
+
+In addition, when uninstalling you can choose whether to:
+
+  - keep or delete your local profile statistics;
+  - keep or delete your settings and logs.
+
+By default, profile statistics, settings and logs are kept.
+
+
+9. CONTACT
+
+For questions about how HLSR works and how it handles technical data:
+
+  contact@hlsr.pro
+  https://hlsr.pro
+
+
+By clicking "I Agree" you confirm that you have read and accepted this
+agreement.

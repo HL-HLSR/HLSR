@@ -1,0 +1,1045 @@
+/* Font Awesome 7 по умолчанию даёт значкам ширину 1.25em; в лаунчере
+   значки шириной по содержимому, как было в 5-й версии. .fa-fw задаёт
+   фиксированную ширину на самом элементе и поэтому остаётся в силе. */
+:root {
+    --fa-width: auto;
+}
+
+/* Дизайн-токены и общие утилиты нового интерфейса лаунчера */
+
+.launcher-root {
+    /* Поверхности */
+    --l-bg: #0b0e13;
+    --l-bg-raised: #10141b;
+    --l-surface: rgba(15, 19, 26, 0.86);
+    --l-surface-solid: #131820;
+    --l-border: rgba(255, 255, 255, 0.08);
+    --l-border-strong: rgba(255, 255, 255, 0.16);
+
+    /* Текст */
+    --l-text: #f2f5f8;
+    --l-text-dim: #98a1ac;
+    --l-text-faint: #5e6773;
+
+    /* Уровни проверки конфига (ошибка, предупреждение, всё хорошо): цвет всегда в паре со значком и словом. */
+    --l-level-error: #ff6b78;
+    --l-level-warning: #f2cf4a;
+    --l-level-ok: #5fd068;
+
+    /* Подложки мелких элементов страницы «Персонализация»: таблетки, кнопка «?», строка итога, поле пути. */
+    --l-chip-bg: rgba(0, 0, 0, 0.32);
+    --l-chip-hover: rgba(255, 255, 255, 0.08);
+    --l-note-bg: rgba(0, 0, 0, 0.28);
+    --l-field-bg: rgba(0, 0, 0, 0.22);
+
+    /* Акценты */
+    --l-orange: #ff7a1c;
+    /* Токен --l-accent читают десятки правил с запасным цветом
+       (var(--l-accent, #ff7a1c) и т.п.), но нигде не задавали: ссылка на
+       политику конфиденциальности выходила оранжевой на голубом интерфейсе.
+       Сам акцент лежит в --accent и ставится на .launcher-root из оболочки. */
+    --l-accent: var(--accent, #00abff);
+    --l-accent-hover: var(--accent-hover, #2fbaff);
+    --l-accent-soft: var(--accent-soft, rgba(0, 171, 255, 0.16));
+
+    /* Тоны основной кнопки в теме HLSR. launcher-themes.js перекрашивает
+       запуск, установку и загрузки в акцент выбранной темы и задаёт
+       контрастный текст. Восстановление и ошибки имеют свои тона. */
+    --btn-ready-bg: #00a2ff;
+    --btn-ready-hover: #29b2ff;
+    --btn-ready-pressed: #008bdb;
+    --btn-ready-glow: rgba(0, 162, 255, 0.32);
+    --btn-progress-bg: #1f7ae0;
+    --btn-progress-hover: #3a8ce8;
+    --btn-progress-pressed: #1a68c0;
+    --btn-progress-glow: rgba(31, 122, 224, 0.3);
+    --btn-progress-text: #ffffff;
+    --btn-repair-bg: #e8a33d;
+    --btn-repair-hover: #f0b055;
+    --btn-repair-pressed: #cf8f2f;
+    --btn-repair-glow: rgba(232, 163, 61, 0.3);
+    --btn-danger-bg: #e0455a;
+    --btn-danger-hover: #e85f72;
+    --btn-danger-pressed: #c53a4d;
+    --btn-danger-glow: rgba(224, 69, 90, 0.3);
+    --btn-muted-bg: #22262d;
+    --btn-muted-hover: #2a2f37;
+
+    /* Геометрия */
+    --l-radius: 12px;
+    --l-radius-sm: 8px;
+    /* ---- Сетка 4 px ----
+       Главный экран разложен по сетке 4 px от левого верхнего угла окна;
+       окно тоже кратно 4 (main/window-size.js). На экране с масштабом
+       125 % 4 px — ровно 5 физических пикселей, а 1 px — уже 1.25: рамка
+       на дробной координате размазывается на два пикселя, одинаковые
+       значки выходят на пиксель разными, и всё это рябит. Правила:
+       - размеры, отступы и положения блоков кратны 4;
+       - то, что центрируется, меньше родителя на кратное 8: тогда отступ
+         с каждой стороны тоже кратен 4;
+       - высота строки текста задаётся явно, в px, кратных 4;
+       - линии в 1 px не занимают места в раскладке (отрицательный отступ
+         или box-shadow вместо border), иначе всё после них съезжает на 1;
+       - блоки, ширина которых зависит от текста (вкладки, ник, панель
+         сборки, подсказки), доводит до кратной 4 директива grid-width.js.
+
+       Раньше размеры тянулись за высотой окна через clamp(…vh…) и почти
+       всегда выходили дробными: шапка 61.42 px, значок 42.63 px. Теперь они
+       меняются ступенями по высоте окна (медиазапросы ниже). Значения
+       ступени подобраны так, чтобы колонка значков (пять игр, LiveSplit и
+       четыре кнопки снизу) помещалась без прокрутки уже на нижней границе
+       ступени. Здесь — ступень FullHD (окно 1200x676). */
+    --l-topbar-h: 80px;
+    --l-header-control: 40px;
+    /* Шапка: между всем, что в ней видно (конец «BETA», тексты вкладок,
+       поле поиска, значки, аватар), один шаг. Значки в кнопках — 24 px,
+       поэтому промежутки между кнопками считаются от значка:
+       --l-header-inset — поле кнопки вокруг значка. */
+    --l-header-gap: 32px;
+    --l-header-inset: calc((var(--l-header-control) - 24px) / 2);
+    --l-brand-mark: 40px;
+    --l-edge-pad: 24px;
+    --l-rail-w: 80px;
+    --l-rail-item: 56px;
+    --l-rail-circle: 48px;
+    --l-rail-logo: 32px;
+    --l-rail-gap: 8px;
+    --l-rail-tool: 40px;
+    --l-rail-tool-gap: 4px;
+    --l-rail-bottom: 12px;
+    /* Ширина выдвинутой колонки: самая узкая, где целиком помещаются логотип с «HLSR BETA»
+       и названия игр с онлайном. */
+    --l-rail-open-w: 240px;
+    /* Отступ текста Hero и «Главной» от колонки значков */
+    --l-hero-pad: 48px;
+    /* Верх заголовка игры и «Главной» от верха окна */
+    --l-hero-top: 192px;
+    --l-hero-gap: 32px;
+    --l-hero-title: 56px;
+    --l-hero-title-lh: 60px;
+    --l-hero-subtitle-lh: 28px;
+    --l-stats-gap: 28px;
+    --l-stats-icon: 48px;
+    --l-stats-value: 18px;
+    --l-stats-value-lh: 24px;
+    --l-stats-texts-gap: 4px;
+    --l-bottombar-h: 96px;
+    --l-bottombar-gap: 32px;
+    --l-bottombar-lead: 32px;
+    --l-control-gap: 16px;
+    /* «Играть» и панель сборки над ней одной ширины: правый и левый края
+       у них на одной линии */
+    --l-play-w: 256px;
+    --l-play-h: 56px;
+    --l-play-font: 19px;
+    --l-play-icon: 16px;
+    --l-build-h: 56px;
+
+    /* Движение. Единая система анимаций лаунчера: три длительности и три
+       кривые. Всё, что появляется, уходит или откликается на наведение,
+       берёт значения отсюда, а не пишет свои секунды: так окна, меню,
+       панели и кнопки двигаются в одном ритме.
+       --l-ease         — основная: быстрый старт, мягкая посадка (появление)
+       --l-ease-in      — уход: разгон без торможения, элемент «улетает»
+       --l-ease-spring  — лёгкий перелёт для отклика (иконки, значки)
+       --l-ease-fade, --l-dur-fade — перетекание одного содержимого в
+                          другое на том же месте (фон игры, значения):
+                          симметричная кривая, старое и новое идут вместе */
+    --l-ease: cubic-bezier(0.22, 1, 0.36, 1);
+    --l-ease-in: cubic-bezier(0.55, 0, 0.75, 0.2);
+    --l-ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --l-dur-fast: 0.16s;
+    --l-dur: 0.26s;
+    --l-dur-slow: 0.42s;
+    --l-ease-fade: cubic-bezier(0.45, 0, 0.55, 1);
+    --l-dur-fade: 0.5s;
+    /* Вкладки: свайп содержимого, как в iOS — быстрый старт и долгое
+       мягкое торможение; скорости краёв подсветки вкладок. */
+    --l-ease-swipe: cubic-bezier(0.32, 0.72, 0, 1);
+    --l-dur-swipe: 0.5s;
+    /* Смена вкладки короче, чем сворачивание панелей (--l-dur-swipe):
+       вкладки переключают часто, и полсекунды на каждую тянулись. */
+    --l-dur-tab: 0.35s;
+    --l-swipe-gap: 40px;
+    --l-ink-lead: 0.23s;
+    --l-ink-trail: 0.35s;
+    /* Сокращения для transition: «свойство var(--l-fast)». */
+    --l-fast: var(--l-dur-fast) var(--l-ease);
+    --l-med: var(--l-dur) var(--l-ease);
+    --l-base: var(--l-dur) var(--l-ease);
+    --l-slow: var(--l-dur-slow) var(--l-ease);
+    /* Насколько смещается появляющийся элемент. */
+    --l-rise: 8px;
+    --l-shadow-pop: 0 18px 48px rgba(0, 0, 0, 0.55);
+
+    --l-glow: transparent;
+    /* Фон боковой и нижней панелей. В нейтральном режиме непрозрачный. */
+    --l-chrome: var(--l-bg);
+    /* Декоративная подложка приложения (виден там, где нет hero-картинки) */
+    --l-app-bg: var(--l-bg);
+
+    /* Базовый вырез фонового слоя: перекрывается ниже единым оформлением */
+    --l-bg-inset: 0;
+
+    /* Слои читаемости поверх кадра игры. Затемняются края окна, а не сцена
+       целиком: центр кадра должен оставаться чётким. */
+    --l-bg-scrim:
+        linear-gradient(90deg, rgba(11, 14, 19, 0.88) 0%, rgba(11, 14, 19, 0.45) 34%, rgba(11, 14, 19, 0.05) 62%),
+        linear-gradient(0deg, rgba(11, 14, 19, 0.92) 0%, rgba(11, 14, 19, 0.25) 26%, rgba(11, 14, 19, 0) 45%);
+
+    /* Видно, пока картинка грузится и если она не загрузилась вовсе.
+       Тёмный градиент, а не белое или чёрное поле. */
+    --l-bg-fallback: linear-gradient(180deg, var(--l-bg-raised) 0%, var(--l-bg) 100%);
+
+    /* ---- Рабочие поверхности модальных окон ----
+       Настройки — это рабочее окно, а не стекло над игрой. Значения
+       НЕПРОЗРАЧНЫЕ и одинаковые в обеих темах: игровой фон сквозь
+       настройки не просвечивает ни при каком переключателе. */
+    --l-modal-bg: #12161d;
+    --l-modal-nav: #0e1219;
+    --l-modal-bar: #10151c;
+    --l-modal-border: rgba(255, 255, 255, 0.1);
+    --l-modal-scrim: rgba(0, 0, 0, 0.58);
+}
+
+/* ---------------------------------------------------------------------------
+   Оформление HLSR: глубокий синий фон, голубые акценты, full-bleed фон игры.
+   Раньше это была отдельная тема под переключателем «Цветной фон интерфейса»;
+   переключатель убран, и оформление стало единственным — блок переопределяет
+   те же токены и идёт после базового, поэтому побеждает по порядку.
+
+   Только переопределение токенов — компоненты не знают об оформлении и не
+   содержат собственных hex-цветов. Тема также переопределяет тона запуска
+   и загрузок (--btn-ready-* и --btn-progress-*) в launcher-themes.js.
+--------------------------------------------------------------------------- */
+.launcher-root {
+    /* Тона оформления — каналами RGB, а токены ниже собраны из них. Тема
+       (launcher-themes.js) меняет только каналы, и затемнение кадра, рамки,
+       колонка значков и нижняя панель окрашиваются вместе с ней; раньше
+       они оставались синими в любой теме.
+         shade — затемнение поверх кадра игры и нижняя панель;
+         deep  — полупрозрачные панели поверх кадра (колонка, шапка);
+         panel — поверхности карточек;
+         tint  — светлый оттенок рамок. */
+    --l-shade-rgb: 6, 11, 18;
+    --l-deep-rgb: 8, 18, 30;
+    --l-panel-rgb: 12, 30, 50;
+    --l-tint-rgb: 96, 190, 255;
+
+    --l-bg: #06101b;
+    --l-bg-raised: #0c1c2e;
+    --l-surface: rgba(var(--l-panel-rgb), 0.72);
+    --l-surface-solid: #0e2136;
+    --l-border: rgba(var(--l-tint-rgb), 0.16);
+    --l-border-strong: rgba(var(--l-tint-rgb), 0.32);
+
+    --l-text: #f2f7fb;
+    --l-text-dim: #a3bcd2;
+    --l-text-faint: #6a8299;
+
+    --l-glow: rgba(var(--accent-rgb, 0, 171, 255), 0.18);
+
+    /* Панели полупрозрачны, чтобы кадр выбранной игры читался сквозь них.
+       Плотность подобрана так, чтобы текст на панелях оставался
+       контрастным. */
+    --l-chrome: rgba(var(--l-deep-rgb), 0.55);
+
+    /* Full-bleed: кадр выбранной игры занимает всю клиентскую площадь и
+       продолжается под sidebar, Hero и нижней панелью */
+    --l-bg-inset: 0;
+
+    /* Базовое кадрирование: ни увеличения, ни сдвига.
+
+       Кадр снят под интерфейс — центральная фигура стоит правее центра, а
+       левая часть отдана городу и небу, там и идёт название игры. Сдвигать
+       его нечем и незачем: background-position при background-size: cover
+       уже прижат к верху, а любое постоянное увеличение съедает правый край,
+       где вытянутая рука второй фигуры кончается на 0.988 ширины.
+
+       Параллакс поверх этого живёт в собственных переменных
+       (--l-bg-par-*), которые ставит LauncherBackground: они равны нулю,
+       пока анимации интерфейса выключены, и тогда кадр выглядит ровно так,
+       как задано здесь.
+
+       Плата за это — текст Hero задан в px и на окнах уже ~1600 подходит к
+       фигуре вплотную. Лечится это со стороны текста (разрядка/размер
+       подзаголовка), а не кадрированием. */
+    --l-bg-zoom: 1;
+    --l-bg-shift-x: 0%;
+
+    /* ЕДИНСТВЕННЫЙ слой затемнения поверх кадра. Все градиенты
+       отсчитываются от краёв ОКНА, а не от краёв отдельных панелей.
+
+       Это принципиально: подложка читаемости, начинавшаяся от левой границы
+       Hero, накладывалась на левый градиент этого слоя и давала тёмную
+       вертикальную полосу ровно у края sidebar. Полоса читалась как вторая
+       копия кадра слева. Один слой с одним началом координат такой ступени
+       не создаёт.
+
+       Левый градиент доведён до плотности, при которой заголовок читается
+       и без второй подложки; середина и правая часть кадра не трогаются. */
+    --l-bg-scrim:
+        linear-gradient(90deg, rgba(var(--l-shade-rgb), 0.86) 0%, rgba(var(--l-shade-rgb), 0.66) 18%, rgba(var(--l-shade-rgb), 0.36) 34%, rgba(var(--l-shade-rgb), 0.1) 48%, rgba(var(--l-shade-rgb), 0) 62%),
+        linear-gradient(0deg, rgba(var(--l-shade-rgb), 0.88) 0%, rgba(var(--l-shade-rgb), 0.45) 13%, rgba(var(--l-shade-rgb), 0.06) 28%, rgba(var(--l-shade-rgb), 0) 42%),
+        linear-gradient(180deg, rgba(var(--l-shade-rgb), 0.42) 0%, rgba(var(--l-shade-rgb), 0.1) 7%, rgba(var(--l-shade-rgb), 0) 14%),
+        linear-gradient(270deg, rgba(var(--l-shade-rgb), 0.3) 0%, rgba(var(--l-shade-rgb), 0.07) 12%, rgba(var(--l-shade-rgb), 0) 24%);
+
+    /* Колонка значков: стекло над кадром, без линии на краю. Значки
+       серые, кнопки снизу — приглушённо-голубые. */
+    --l-rail-fill: rgba(var(--l-shade-rgb), 0.5);
+    --l-rail-open-fill: rgba(var(--l-shade-rgb), 0.22);
+    --l-rail-blur: 28px;
+    --l-rail-game: #aab4bf;
+    --l-rail-icon: #7c90a8;
+
+    /* Нижняя панель. Заливка и растворение — ОДИН градиент на слое, который
+       выше самой панели: раньше это были два разных слоя, и на их стыке
+       плотность менялась ступенькой.
+
+       Высота слоя = панель + растворение, поэтому градиент один непрерывный. */
+    --l-footer-feather: 72px;
+    --l-footer-fill: linear-gradient(
+        0deg,
+        rgba(var(--l-shade-rgb), 0.96) 0%,
+        rgba(var(--l-shade-rgb), 0.86) 34%,
+        rgba(var(--l-shade-rgb), 0.6) 62%,
+        rgba(var(--l-shade-rgb), 0.24) 84%,
+        rgba(var(--l-shade-rgb), 0) 100%
+    );
+
+    /* Ширина, на которой затемнение нижней панели набирает силу слева.
+       У самой боковой панели слой не добавляет ничего — иначе внизу слева
+       возникает вертикальный шов: справа от границы кадр дополнительно
+       затемнён нижней панелью, слева нет. Замер показывал там перепад
+       яркости 4–6 единиц против 1 на остальной высоте. */
+    --l-footer-lead-in: clamp(150px, 13vw, 260px);
+
+    /* Затемняющий слой поверх фирменного фона. Оригинал из старого HLSR
+       заметно светлее: без этого слоя текст и панели теряют контраст.
+       Плотность подобрана вживую (варианты 0.35/0.45/0.55): при 0.45–0.58
+       фирменный сине-бирюзовый оттенок ещё читается, но фон остаётся
+       заметно темнее легаси. */
+    --l-app-scrim: linear-gradient(180deg, rgba(6, 11, 18, 0.45) 0%, rgba(4, 8, 14, 0.58) 100%);
+
+    /* Запасной вариант, если картинка почему-то не подгрузилась */
+    --l-app-bg: linear-gradient(180deg, var(--l-bg-raised) 0%, var(--l-bg) 100%);
+}
+
+/* ---- Ступени сетки по высоте окна ----
+   Окно не растягивается, его размер выбирается под экран один раз:
+   1152x648 (минимум), 1200x676 (FullHD), 1280x720 (1440p при 125 %),
+   1600x900 (1440p при 100 %) и промежуточные. Базовая ступень выше —
+   FullHD; здесь остальные. Границы ступеней — высоты, на которых колонка
+   значков ещё помещается без прокрутки. */
+@media (max-height: 663px) {
+    .launcher-root {
+        --l-rail-item: 48px;
+        --l-rail-circle: 40px;
+        --l-hero-top: 184px;
+        --l-hero-gap: 28px;
+        --l-stats-gap: 24px;
+    }
+}
+
+@media (min-height: 708px) {
+    .launcher-root {
+        --l-rail-gap: 8px;
+        --l-rail-tool-gap: 8px;
+        --l-rail-bottom: 16px;
+        --l-hero-pad: 56px;
+        --l-hero-top: 208px;
+        --l-bottombar-gap: 40px;
+    }
+}
+
+/* В узком окне шаг 24 px: при 32 полю поиска не остаётся места. */
+@media (max-width: 1295px) {
+    .launcher-root {
+        --l-header-gap: 24px;
+    }
+}
+
+@media (min-height: 780px) {
+    .launcher-root {
+        --l-topbar-h: 88px;
+        --l-rail-w: 88px;
+        --l-rail-tool: 48px;
+        --l-rail-bottom: 20px;
+        --l-hero-pad: 64px;
+        --l-hero-top: 232px;
+        --l-hero-gap: 36px;
+        --l-stats-gap: 32px;
+        --l-stats-value: 20px;
+        --l-bottombar-h: 104px;
+        --l-bottombar-lead: 40px;
+        --l-play-w: 272px;
+        --l-play-h: 64px;
+        --l-play-font: 21px;
+        --l-play-icon: 18px;
+    }
+}
+
+@media (min-height: 860px) {
+    .launcher-root {
+        --l-topbar-h: 96px;
+        --l-header-control: 48px;
+        --l-brand-mark: 48px;
+        --l-rail-w: 96px;
+        --l-rail-item: 64px;
+        --l-rail-circle: 56px;
+        --l-rail-logo: 40px;
+        --l-rail-gap: 12px;
+        --l-rail-bottom: 24px;
+        --l-hero-pad: 72px;
+        --l-hero-top: 256px;
+        --l-hero-gap: 40px;
+        --l-hero-title: 68px;
+        --l-hero-title-lh: 72px;
+        --l-hero-subtitle-lh: 32px;
+        --l-stats-gap: 36px;
+        --l-stats-icon: 56px;
+        --l-stats-value: 22px;
+        --l-stats-value-lh: 28px;
+        --l-stats-texts-gap: 8px;
+        --l-bottombar-h: 112px;
+        --l-bottombar-gap: 48px;
+        --l-play-w: 304px;
+        --l-play-h: 72px;
+        --l-play-font: 23px;
+        --l-play-icon: 20px;
+        --l-build-h: 64px;
+    }
+}
+
+/* Подложка приложения задаётся в scoped-стилях LauncherShell.vue: там же
+   лежит базовое правило .launcher-root, и оно (как scoped) перебивает
+   глобальное по специфичности. Здесь остаются только токены. */
+
+/* Плавающие элементы главного экрана (селектор сборки, dropdown, меню
+   действий, центр уведомлений, тосты, верхние кнопки) — НЕПРОЗРАЧНЫЕ:
+   сплошной тёмный фон HLSR, без размытия и полупрозрачной заливки. Игровой
+   фон сквозь них не просвечивает ни в одной теме. Заливку и границы задают
+   сами компоненты в своих scoped-стилях (сплошные токены --l-surface-solid /
+   --l-bg-raised), поэтому общего стеклянного правила здесь больше нет.
+   Окна настроек — тем более непрозрачны (см. --l-modal-*). */
+
+/* Тонкое цветное свечение границ */
+.launcher-root .l-glow {
+    box-shadow: 0 0 0 1px var(--l-border), 0 8px 32px var(--l-glow);
+}
+
+/* Контур всего окна задан в App.vue, вне CSS zoom оболочки. */
+
+/* Видимый фокус только при навигации с клавиатуры */
+.launcher-root :focus-visible {
+    outline: 2px solid var(--accent-focus);
+    outline-offset: 2px;
+}
+
+/* ---- Общие переходы ----
+   Четыре вида появления на весь лаунчер. Компонент выбирает подходящий
+   по роли, а не придумывает свой:
+   l-pop    — всплывающее у кнопки: меню, поповеры, подсказки;
+   l-fade   — просто проявление: оверлеи, заглушки, смена текста;
+   l-modal  — модальное окно: затемнение и окно проявляются вместе;
+   l-swap   — смена содержимого на месте: вкладки, разделы, страницы.
+   Уход всегда короче появления: интерфейс не заставляет ждать. */
+.l-pop-enter-active {
+    transition: opacity var(--l-dur) var(--l-ease), transform var(--l-dur) var(--l-ease);
+}
+
+.l-pop-leave-active {
+    transition: opacity var(--l-dur-fast) var(--l-ease-in), transform var(--l-dur-fast) var(--l-ease-in);
+}
+
+.l-pop-enter-from,
+.l-pop-leave-to {
+    opacity: 0;
+    transform: translateY(calc(var(--l-rise) * -0.5)) scale(0.97);
+}
+
+.l-fade-enter-active {
+    transition: opacity var(--l-dur) var(--l-ease);
+}
+
+.l-fade-leave-active {
+    transition: opacity var(--l-dur-fast) var(--l-ease-in);
+}
+
+.l-swap-enter-active {
+    transition: opacity var(--l-dur) var(--l-ease), transform var(--l-dur) var(--l-ease);
+}
+
+.l-swap-leave-active {
+    transition: opacity var(--l-dur-fast) var(--l-ease-in), transform var(--l-dur-fast) var(--l-ease-in);
+}
+
+.l-swap-enter-from {
+    opacity: 0;
+    transform: translateY(var(--l-rise));
+}
+
+.l-swap-leave-to {
+    opacity: 0;
+    transform: translateY(calc(var(--l-rise) * -0.5));
+}
+
+/* Ключевой кадр появления содержимого (без <transition>): разделы
+   настроек, карточки, строки списков. */
+@keyframes l-rise-in {
+    from {
+        opacity: 0;
+        transform: translateY(var(--l-rise));
+    }
+}
+
+.l-fade-enter-from,
+.l-fade-leave-to {
+    opacity: 0;
+}
+
+/* Шапка — область перетаскивания окна (-webkit-app-region: drag), и
+   Electron считает её такой даже под модальным окном, если оно само не
+   помечено no-drag: верх окна профиля в полосе шапки таскал окно вместо
+   нажатия, у крестика работал только нижний край. Поэтому no-drag у
+   каждого слоя, который перекрывает шапку. */
+.launcher-root .settings-modal,
+.launcher-root .profile,
+.launcher-root .confirm,
+.launcher-root .friends,
+.launcher-root .thanks,
+.launcher-root .library-setup,
+.launcher-root .gp__backdrop,
+.launcher-root .news-viewer,
+/* Любое окно-диалог: новые модалки («Экспорт клипа» и др.) не надо дописывать по одной. */
+.launcher-root [role="dialog"],
+.launcher-root [role="alertdialog"],
+.launcher-root [aria-modal="true"] {
+    -webkit-app-region: no-drag;
+}
+
+/* l-value — смена содержимого на месте при выборе другой игры или
+   инструмента: окончание названия, подзаголовок, цифры статистики, панель
+   игры против панели LiveSplit. Только прозрачность, старое и новое
+   растворяются друг в друге одновременно и в такт с фоном игры. Подписи и
+   значки статистики при смене игры не трогаются — они одинаковые у всех. */
+.l-value-enter-active,
+.l-value-leave-active {
+    transition: opacity var(--l-dur-fade) var(--l-ease-fade);
+}
+
+.l-value-leave-active {
+    pointer-events: none;
+}
+
+.l-value-enter-from,
+.l-value-leave-to {
+    opacity: 0;
+}
+
+/* l-slide-next / l-slide-prev — смена вкладки (Персонализация, профиль),
+   свайп как в iOS. Старое содержимое целиком уезжает за край, новое
+   въезжает следом с той стороны, куда нажали: вкладка правее — справа.
+   Оба движутся вместе, без растворения, и стоят в одной ячейке сетки
+   родителя; родитель обрезает то, что за краем. Зазор между ними больше
+   поля родителя, чтобы край соседнего не выглядывал. */
+.l-slide-next-enter-active,
+.l-slide-prev-enter-active,
+.l-slide-next-leave-active,
+.l-slide-prev-leave-active {
+    transition: transform var(--l-dur-tab) var(--l-ease-swipe);
+}
+
+.l-slide-next-leave-active,
+.l-slide-prev-leave-active {
+    pointer-events: none;
+}
+
+.l-slide-next-enter-from,
+.l-slide-prev-leave-to {
+    transform: translateX(calc(100% + var(--l-swipe-gap)));
+}
+
+.l-slide-next-leave-to,
+.l-slide-prev-enter-from {
+    transform: translateX(calc(-100% - var(--l-swipe-gap)));
+}
+
+/* .l-ink — подсветка выбранной вкладки, которая перетекает к новой. Края
+   движутся с разной скоростью: передний (в сторону нажатой вкладки) —
+   быстро, задний догоняет. Подсветка вытягивается и стягивается на новой
+   кнопке. Положение задаётся left/right, направление — is-next/is-prev. */
+.l-ink {
+    position: absolute;
+    transition: left var(--l-ink-trail) var(--l-ease-swipe), right var(--l-ink-trail) var(--l-ease-swipe);
+}
+
+.l-ink.is-next {
+    transition: left var(--l-ink-trail) var(--l-ease-swipe), right var(--l-ink-lead) var(--l-ease-swipe);
+}
+
+.l-ink.is-prev {
+    transition: left var(--l-ink-lead) var(--l-ease-swipe), right var(--l-ink-trail) var(--l-ease-swipe);
+}
+
+.l-ink.is-still {
+    transition: none;
+}
+
+/* Смена темы лаунчера (LauncherShell.setTheme): старые цвета плавно
+   переходят в новые по всему окну. Корень документа вне .launcher-root,
+   поэтому длительность и кривая — значениями --l-dur-slow и --l-ease. */
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation-duration: 0.42s;
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Появление модального окна: затемнение и окно проявляются вместе, без
+   подъёма. Затемнение проявляется цветом, а прозрачность — у самого окна,
+   а не у всего слоя: элемент с opacity < 1 становится для потомков
+   границей backdrop-filter, и стекло окна (тема Liquid Glass) до конца
+   анимации видело бы только пустое затемнение, а потом размытие
+   включалось бы рывком. Затемнение каждое окно задаёт фоном корня
+   (background: var(--l-modal-scrim)). Сдвоенный класс перебивает scoped-
+   стили окон: они подключаются позже и при равной силе победили бы. */
+.launcher-root.launcher-root .l-modal-enter-active {
+    transition: background-color var(--l-dur) var(--l-ease);
+}
+
+.launcher-root.launcher-root .l-modal-leave-active {
+    transition: background-color var(--l-dur-fast) var(--l-ease-in);
+}
+
+.launcher-root.launcher-root .l-modal-enter-from,
+.launcher-root.launcher-root .l-modal-leave-to {
+    background-color: transparent;
+}
+
+.launcher-root.launcher-root .l-modal-enter-active > * {
+    transition: opacity var(--l-dur) var(--l-ease);
+}
+
+.launcher-root.launcher-root .l-modal-leave-active > * {
+    transition: opacity var(--l-dur-fast) var(--l-ease-in);
+}
+
+.launcher-root.launcher-root .l-modal-enter-from > *,
+.launcher-root.launcher-root .l-modal-leave-to > * {
+    opacity: 0;
+}
+
+/* Кольцо имеет собственный квадрат 1em и вращается внутри неподвижной
+   колонки значка. Кнопки могут задавать <i> ширину 24px: размеры кольца
+   от неё не зависят, поэтому оно остаётся круглым и не смещает текст. */
+.launcher-root .fa-spin {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+    box-sizing: border-box;
+    width: 1em;
+    height: 1em;
+    line-height: 1;
+    letter-spacing: 0;
+    text-indent: 0;
+    text-transform: none;
+    vertical-align: -0.125em;
+    animation: none;
+}
+
+.launcher-root .fa-spin::before {
+    content: "";
+    display: block;
+    flex: none;
+    box-sizing: border-box;
+    width: 1em;
+    height: 1em;
+    border: 0.14em solid color-mix(in srgb, currentColor 28%, transparent);
+    border-top-color: currentColor;
+    border-radius: 50%;
+    animation: l-spin 0.85s linear infinite;
+    transform-origin: center;
+    will-change: transform;
+}
+
+@keyframes l-spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes l-pulse {
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.35;
+    }
+}
+
+/* Отключение анимаций: системная настройка и переключатель в настройках */
+@media (prefers-reduced-motion: reduce) {
+    .launcher-root *,
+    .launcher-root *::before,
+    .launcher-root *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+}
+
+.launcher-root.no-anim *,
+.launcher-root.no-anim *::before,
+.launcher-root.no-anim *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+}
+
+/* Правило выше сводит любую анимацию к 0.01 мс. Бесконечное вращение при
+   этом превращалось в мелькание (десятки тысяч оборотов в секунду), а не в
+   «остановку». Занятость должна оставаться видимой и без движения, поэтому
+   вместо вращения кольцо мягко мигает. */
+@media (prefers-reduced-motion: reduce) {
+    .launcher-root .fa-spin::before {
+        animation: l-pulse 1.4s ease-in-out infinite !important;
+    }
+}
+
+.launcher-root.no-anim .fa-spin::before {
+    animation: l-pulse 1.4s ease-in-out infinite !important;
+}
+
+/* Пошаговое появление групп диагностики: только transform/opacity.
+   Глобальное правило prefers-reduced-motion выше сводит длительность к 0. */
+.diag-in-enter-active {
+    transition: opacity var(--l-dur) var(--l-ease), transform var(--l-dur) var(--l-ease);
+}
+
+.diag-in-enter-from {
+    opacity: 0;
+    transform: translateY(var(--l-rise));
+}
+
+/* Кнопка запуска не меняет ширину при смене подписи/спиннера */
+.diag__run {
+    min-width: 210px;
+    justify-content: center;
+}
+
+/* ---- Оформление ника (выдаёт только админка, src/shared/nick-styles.js) ----
+   Готовые стили — классы .nick--<id>. Анимации nick-shift, nick-pulse и
+   nick-glow объявлены здесь, чтобы их мог взять и свой CSS ника: сам он
+   @keyframes объявить не может. */
+.nick {
+    display: inline;
+}
+
+
+/* Разработчик: акцент, фиолетовый и розовый перетекают по буквам, а ник
+   мягко светится тем же фиолетовым. */
+.nick--developer {
+    background: linear-gradient(90deg, #5ec8ff 0%, #a26bff 25%, #ff7ad9 50%, #a26bff 75%, #5ec8ff 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 0.35em rgba(162, 107, 255, 0.45));
+    animation: nick-shift 6s linear infinite;
+}
+
+/* Золото: тёплый градиент, по которому раз в несколько секунд проходит блик. */
+.nick--gold {
+    background: linear-gradient(100deg, #c9932a 0%, #ffd76a 35%, #fff6cf 50%, #ffd76a 65%, #c9932a 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 0.3em rgba(255, 196, 80, 0.35));
+    animation: nick-shift 5s ease-in-out infinite alternate;
+}
+
+/* Призрак: бирюзовое свечение, как у призраков в Ghosting, мерцает. */
+.nick--ghost {
+    color: #8af7e4;
+    text-shadow: 0 0 0.3em rgba(110, 240, 215, 0.6), 0 0 0.8em rgba(110, 240, 215, 0.3);
+    animation: nick-pulse 3.2s ease-in-out infinite;
+}
+
+@keyframes nick-shift {
+    to { background-position: 200% center; }
+}
+
+@keyframes nick-pulse {
+    50% { opacity: 0.72; }
+}
+
+@keyframes nick-glow {
+    50% { filter: brightness(1.35); }
+}
+
+/* Общее правило выше сводит длительность к 0.01 мс, и бесконечный перелив
+   превращался бы в мелькание. Без анимаций ник просто стоит. */
+@media (prefers-reduced-motion: reduce) {
+    .launcher-root .nick {
+        animation: none !important;
+    }
+}
+
+.launcher-root.no-anim .nick {
+    animation: none !important;
+}
+
+/* ---- Значок подписчика слева от ника (NickName.vue) ----
+   Высота — от размера ника, поэтому значок одинаково смотрится и в списке
+   игроков, и в шапке профиля. Отрицательные поля сверху и снизу убирают
+   его из расчёта высоты строки: строка с ником подписчика не выше
+   обычной. Нижний край картинки на 0.2em ниже линии букв — середина
+   значка приходится на середину заглавных. Не сжимается ни в строке, ни
+   во flex-контейнере: многоточие режет ник, а не значок. Свечение — в
+   цветах значка (#22d3ee → #3b82f6) и медленно «дышит». */
+.nick-line {
+    display: inline;
+}
+
+.nick-badge {
+    display: inline-block;
+    flex: none;
+    width: 1.05em;
+    min-width: 1.05em;
+    max-width: none;
+    height: 1.05em;
+    margin: -0.2em 0.3em -0.2em 0;
+    vertical-align: baseline;
+    font-style: normal;
+    -webkit-user-drag: none;
+    user-select: none;
+    filter: drop-shadow(0 0 0.2em rgba(56, 189, 248, 0.75)) drop-shadow(0 0 0.5em rgba(59, 130, 246, 0.45));
+    animation: nick-badge-glow 3.6s ease-in-out infinite alternate;
+}
+
+@keyframes nick-badge-glow {
+    from { filter: drop-shadow(0 0 0.15em rgba(56, 189, 248, 0.6)) drop-shadow(0 0 0.4em rgba(59, 130, 246, 0.3)); }
+    to { filter: drop-shadow(0 0 0.25em rgba(56, 189, 248, 0.9)) drop-shadow(0 0 0.65em rgba(59, 130, 246, 0.55)); }
+}
+
+/* Без анимаций (система или переключатель в настройках) свечение стоит:
+   общее правило выше свело бы «дыхание» к мельканию. */
+@media (prefers-reduced-motion: reduce) {
+    .launcher-root .nick-badge {
+        animation: none !important;
+    }
+}
+
+.launcher-root.no-anim .nick-badge {
+    animation: none !important;
+}
+
+/* ---- Рамка аватара (выдаёт только админка, src/shared/avatar-frames.js) ----
+   Свой CSS рамки не может объявить @keyframes, поэтому готовые анимации
+   здесь: frame-spin вращает --frame-angle, которое рамка подставляет в
+   conic-gradient(from var(--frame-angle), …), frame-hue прогоняет цвета по
+   кругу, frame-pulse мягко пульсирует. */
+@property --frame-angle {
+    syntax: "<angle>";
+    inherits: false;
+    initial-value: 0deg;
+}
+
+@keyframes frame-spin {
+    to { --frame-angle: 360deg; }
+}
+
+@keyframes frame-hue {
+    to { filter: hue-rotate(360deg); }
+}
+
+@keyframes frame-pulse {
+    50% { opacity: 0.6; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .launcher-root .avatar-frame__ring {
+        animation: none !important;
+    }
+}
+
+.launcher-root.no-anim .avatar-frame__ring {
+    animation: none !important;
+}
+
+/* ---------------------------------------------------------------------------
+   Тема Liquid Glass — жидкое стекло iOS. Переменные темы (launcher-themes.js)
+   делают поверхности полупрозрачными, а здесь стекло собирается из трёх
+   слоёв, как в Liquid Glass с 21st.dev:
+    1. преломление — backdrop-filter размывает кадр под стеклом и сдвигает
+       его SVG-фильтром #lg-refract (LauncherShell.vue), как толща стекла;
+    2. подкраска — светлая полупрозрачная заливка поверх;
+    3. блик — светлые внутренние кромки сверху-слева и снизу-справа.
+   Стекло получают только внешние контейнеры (окна, меню, кнопки над
+   кадром): вложенные поверхности остаются прозрачной заливкой поверх них.
+--------------------------------------------------------------------------- */
+.launcher-root[data-theme="liquid-glass"] {
+    --lg-filter: blur(14px) url(#lg-refract) saturate(170%) brightness(1.06);
+    --lg-filter-panel: blur(8px) url(#lg-refract-strong) saturate(160%);
+    --lg-filter-soft: blur(6px) url(#lg-refract-strong) saturate(140%);
+    --lg-tint: rgba(255, 255, 255, 0.07);
+    --lg-rim:
+        inset 2px 2px 1px 0 rgba(255, 255, 255, 0.28),
+        inset -1px -1px 1px 1px rgba(255, 255, 255, 0.14);
+    --lg-shadow: 0 6px 6px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.1), 0 24px 60px rgba(0, 0, 0, 0.28);
+    --lg-sheen: linear-gradient(150deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.04) 30%,
+        rgba(255, 255, 255, 0) 55%, rgba(255, 255, 255, 0.06) 100%);
+}
+
+/* Неактивные вкладки окна настроек и меню редактора лежат прямо на преломлённом кадре:
+   текст светлее и с тенью, значки заметнее (контраст не ниже 4,5:1). Только в этой теме. */
+.launcher-root[data-theme="liquid-glass"] :is(.game-settings__tab:not(.is-active), .gx-nav__item:not(.active)) {
+    color: #e3e8ee;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+.launcher-root[data-theme="liquid-glass"] .game-settings__tab:not(.is-active) i {
+    color: #c3c9d2;
+}
+.launcher-root[data-theme="liquid-glass"] .game-settings__subtab:not(.is-active) {
+    color: #e3e8ee;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.lg-filters {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+/* Окна: тёмная подкраска оставляет текст читаемым поверх преломлённого
+   кадра. Состояний наведения и выбора у окон нет, поэтому заливку, блик
+   и тень тема задаёт им целиком. */
+.launcher-root[data-theme="liquid-glass"] :is(
+    .settings-modal__window, .profile__window, .confirm__window, .library-setup__window, .ls-launch__window, .thanks__window,
+    .friends, .dex__window
+) {
+    background-color: rgba(18, 22, 30, 0.58);
+    background-image: linear-gradient(var(--lg-tint), var(--lg-tint)), var(--lg-sheen);
+    -webkit-backdrop-filter: var(--lg-filter);
+    backdrop-filter: var(--lg-filter);
+    border-color: var(--l-modal-border);
+    box-shadow: var(--lg-rim), var(--lg-shadow);
+}
+
+/* Всплывающие панели меньше окон: стекло прозрачнее, преломление сильнее. */
+.launcher-root[data-theme="liquid-glass"] :is(
+    .account-menu__panel, .notif__panel, .ui-dropdown__menu, .game-menu__dropdown,
+    .runner-search__results, .rail-tip, .dpl__menu, .dpl__tip
+) {
+    background-color: rgba(24, 28, 38, 0.5);
+    background-image: linear-gradient(var(--lg-tint), var(--lg-tint)), var(--lg-sheen);
+    -webkit-backdrop-filter: var(--lg-filter-panel);
+    backdrop-filter: var(--lg-filter-panel);
+    box-shadow: var(--lg-rim), var(--lg-shadow);
+}
+
+/* Меню скорости и подсказка метки плеера «Демо» лежат на ярком видео:
+   подкраска темнее, иначе мелкий текст тонет в кадре. */
+.launcher-root[data-theme="liquid-glass"] :is(.dpl__menu, .dpl__tip) {
+    background-color: rgba(18, 22, 30, 0.78);
+}
+
+/* Уход стеклянных панелей. Общие анимации ухода короткие и ускоряются к
+   концу: на обычной подложке это незаметно, а стекло с размытием в
+   последнем кадре пропадает с фона рывком. Особенно видно, когда пункт
+   меню открывает окно («Открыть профиль», «Настройки игры»): окно
+   проявляется дольше, чем исчезает меню. Здесь панели уходят плавно и за
+   то же время, за которое появляется окно. Без анимаций (.no-anim) уход
+   остаётся мгновенным. */
+.launcher-root[data-theme="liquid-glass"]:not(.no-anim) :is(.l-pop-leave-active, .gm-leave-active):is(
+    .account-menu__panel, .ui-dropdown__menu, .game-menu__dropdown, .runner-search__results, .friends
+) {
+    transition: opacity var(--l-dur) var(--l-ease), transform var(--l-dur) var(--l-ease);
+}
+
+.launcher-root[data-theme="liquid-glass"]:not(.no-anim) .toasts__item.toast-leave-active {
+    animation-timing-function: var(--l-ease);
+}
+
+/* Кнопки, тосты и поле поиска над кадром игры получают только
+   преломление. Заливка у них и так полупрозрачная из палитры, а рамки
+   выбора, наведения и фокуса, цветной оттенок тостов и тона «Играть»
+   заданы через background и box-shadow самих компонентов — перекрыть их
+   значит потерять эти состояния. Ленту и рекорды не размываем: под ними
+   ровный фон, а размытие десятков карточек тормозит прокрутку. */
+.launcher-root[data-theme="liquid-glass"] :is(
+    .build-panel, .game-menu__trigger, .toasts__item, .runner-search input
+) {
+    -webkit-backdrop-filter: var(--lg-filter-soft);
+    backdrop-filter: var(--lg-filter-soft);
+}
+
+/* «Играть» — цветное стекло: блик поверх акцента. Других картинок фона
+   у кнопки нет, а сдвоенный класс держит блик и при наведении. */
+.launcher-root[data-theme="liquid-glass"] .download-bar__play.download-bar__play {
+    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0) 52%);
+}
+
+/* ---------------------------------------------------------------------------
+   Тема «Бумага» (paper). Палитра и акцент — переменные launcher-themes.js,
+   формы те же, что в теме HLSR. Здесь только то, что переменными не
+   сказать:
+    - тёплый приглушённый оттенок кадра игры;
+    - белый текст заголовков и статистики — тёплым белым палитры.
+   Цветные метки (зелёный «в сети», тосты, метки демо, спонсоры, неон
+   профиля, редкость достижений, шарики LiveSplit) — яркими, как в других
+   темах: приглушённые терялись на тёмно-коричневом (просьба владельца 10.11).
+   Всё — только под [data-theme="paper"], другие темы эти правила не видят.
+--------------------------------------------------------------------------- */
+.launcher-root[data-theme="paper"] {
+    --paper-text-rgb: 238, 227, 223;
+}
+
+/* Белый текст заголовков и статистики — тёплым белым палитры. */
+.launcher-root[data-theme="paper"] :is(.hero__title, .tool-panel__title, .home-panel__title, .cfgp__title, .dmp__title) {
+    color: var(--l-text);
+}
+
+.launcher-root[data-theme="paper"] :is(.hero__subtitle, .tool-panel__subtitle) {
+    color: rgba(var(--paper-text-rgb), 0.85);
+}
+
+.launcher-root[data-theme="paper"] .game-stats__icon {
+    color: var(--l-text);
+}
+
+.launcher-root[data-theme="paper"] .game-stats__label {
+    color: rgba(var(--paper-text-rgb), 0.62);
+}
+
+.launcher-root[data-theme="paper"] .game-stats__divider::after {
+    background: rgba(var(--paper-text-rgb), 0.28);
+}
+
+/* Кнопка удаления в окне подтверждения — красным палитры (белый текст читается). */
+.launcher-root[data-theme="paper"] .confirm__btn.danger {
+    background: var(--btn-danger-bg);
+}
+
+/* Фон LiveSplit: тот же рисунок в тёмных тонах палитры. */
+.launcher-root[data-theme="paper"] .launcher-bg__tool {
+    background:
+        radial-gradient(ellipse 46% 52% at 70% 40%, rgba(255, 255, 255, 0.05), transparent 70%),
+        repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.022) 0 2px, transparent 2px 6px),
+        linear-gradient(160deg, #170e10 0%, #1b1113 55%, #1e1417 100%);
+}
+
+/* Кольцо точки изменённого раздела на выбранном пункте — цветом панели. */
+.launcher-root[data-theme="paper"] .gx-nav__item.active .gx-nav__dot {
+    box-shadow: 0 0 0 2px #2e1e20;
+}

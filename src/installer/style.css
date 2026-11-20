@@ -1,0 +1,409 @@
+* { box-sizing: border-box; }
+
+/* Установщик оформлен как модальное окно лаунчера (SettingsModal.vue,
+   ProfileModal.vue): та же поверхность, шапка со значком в квадрате,
+   подписи групп, строки с переключателем и кнопки с иконками. Токены
+   --l-* берутся из launcher.css; акцент — тема HLSR по умолчанию. */
+body.launcher-root {
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+  color: var(--l-text);
+  font: 14px/1.5 Rubik, sans-serif;
+  --accent: #00abff;
+  --accent-hover: #25b7ff;
+  --accent-pressed: #0094dc;
+  --accent-focus: #00abff;
+  --accent-soft: rgba(0, 171, 255, .16);
+  --accent-contrast-text: #04121c;
+  --l-danger: #ff6b78;
+  --l-danger-soft: rgba(224, 69, 90, .14);
+  --l-warning: #ffb37a;
+  --l-warning-soft: rgba(232, 163, 61, .12);
+  --l-caution: #e6b84a;
+  --l-caution-text: #f3dca8;
+  /* Окно прозрачное, контур и скругление рисует .window, как #app в лаунчере. */
+  background: transparent;
+  user-select: none;
+}
+
+.icon { display: block; width: 1em; height: 1em; fill: currentColor; flex: none; }
+.spin { animation: spin .9s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+[data-icon] { display: inline-flex; }
+
+/* Окно без рамки, углы и контур как у окна лаунчера (App.vue, #app):
+   радиус 16 px, обрезка clip-path и линия 1 px поверх содержимого. */
+.window {
+  --window-radius: 16px;
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: var(--window-radius);
+  clip-path: inset(0 round var(--window-radius));
+  isolation: isolate;
+  background:
+    radial-gradient(70% 55% at 0% 0%, color-mix(in srgb, var(--accent) 10%, transparent) 0%, transparent 70%),
+    var(--l-modal-bg);
+}
+.window::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .12);
+  pointer-events: none;
+  z-index: 100000;
+}
+
+/* ---- Шапка окна: логотип и кнопки окна ---- */
+
+.topbar {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* Логотип 30 px: при 56 px он прижимался к краю окна. 68 px дают ему
+     те же поля, что у логотипа в шапке лаунчера (3/4 от 80 px с запасом). */
+  height: 68px;
+  padding: 4px 16px 0 32px;
+  -webkit-app-region: drag;
+}
+/* Логотип — копия логотипа лаунчера в масштабе 3/4: кольцо 2 px, точка
+   0.4 диаметра (30 и 12 px, чтобы точка стояла ровно по центру), «HLSR»
+   21 px с разрядкой 8/28 em, «BETA» 13/28 кегля «HLSR». Отступ «BETA»
+   подобран замером: верх на 0.24 кегля выше верха букв, начало через
+   0.36 кегля после «R» — как в шапке лаунчера. */
+.brand { display: flex; align-items: center; user-select: none; }
+.brand-mark {
+  flex: none;
+  width: 30px;
+  height: 30px;
+  margin-right: 14px;
+  box-shadow: inset 0 0 0 2px #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.brand-mark > span { width: 12px; height: 12px; background: #fff; border-radius: 50%; }
+.brand-name { font-size: 21px; font-weight: 700; line-height: calc(32 / 28); letter-spacing: calc(8em / 28); margin-right: calc(-8em / 28); }
+.brand-beta { align-self: flex-start; margin: -2.1px 0 0 7.6px; color: var(--l-text-dim); font-size: calc(21px * 13 / 28); font-weight: 700; line-height: 1; letter-spacing: .08em; }
+
+.window-controls { display: flex; gap: 4px; -webkit-app-region: no-drag; }
+.window-controls__btn {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--l-radius-sm);
+  background: transparent;
+  color: rgba(255, 255, 255, .55);
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background var(--l-fast), color var(--l-fast);
+}
+.window-controls__btn:hover { background: rgba(255, 255, 255, .09); color: #fff; }
+.window-controls__btn:active { background: rgba(255, 255, 255, .14); }
+.window-controls__btn.close:hover { background: var(--btn-danger-bg); color: #fff; }
+.window-controls__btn.close:active { background: var(--btn-danger-pressed); }
+
+/* ---- Заголовок: значок фазы, название, чипы версии ---- */
+
+.hero {
+  flex: none;
+  padding: 12px 32px 24px;
+  box-shadow: inset 0 -1px 0 var(--l-modal-border);
+}
+.identity { display: flex; align-items: center; gap: 20px; }
+.badge {
+  flex: 0 0 64px;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  --tone: var(--accent);
+  background:
+    radial-gradient(100% 100% at 30% 20%, color-mix(in srgb, var(--tone) 24%, transparent) 0%, transparent 70%),
+    rgba(255, 255, 255, .02);
+  box-shadow: inset 0 0 0 1px var(--l-border);
+  color: var(--tone);
+  font-size: 26px;
+  transition: color var(--l-fast);
+}
+.badge[data-tone="danger"] { --tone: var(--btn-danger-bg); }
+.badge[data-tone="muted"] { --tone: var(--l-text-dim); }
+.badge[data-tone="caution"] { --tone: var(--l-caution); }
+.who { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+.title { margin: 0; color: var(--l-text); font-size: 24px; font-weight: 700; line-height: 32px; letter-spacing: .01em; }
+.meta { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 10px;
+  border-radius: var(--l-radius-sm);
+  background: rgba(255, 255, 255, .05);
+  color: var(--l-text-dim);
+  font-size: 12.5px;
+  line-height: 16px;
+  font-variant-numeric: tabular-nums;
+}
+.chip--update { padding: 4px 10px; }
+.chip__from, .chip__to { padding: 0; background: none; }
+.chip__from { color: var(--l-text-faint); }
+.chip__to { color: var(--accent); font-weight: 600; }
+.chip__arrow { font-size: 10px; color: var(--l-text-faint); }
+.description { margin: 16px 0 0; color: var(--l-text-dim); font-size: 13.5px; line-height: 20px; }
+
+/* ---- Содержимое ---- */
+
+.body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 24px 32px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.group {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--l-text-dim);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.path {
+  display: flex;
+  align-items: stretch;
+  background: rgba(255, 255, 255, .05);
+  border-radius: var(--l-radius-sm);
+  box-shadow: inset 0 0 0 1px var(--l-border);
+  overflow: hidden;
+  transition: background var(--l-fast);
+}
+.path__icon { flex: none; align-items: center; padding-left: 14px; color: var(--l-text-faint); font-size: 14px; }
+.path__input {
+  flex: 1;
+  min-width: 0;
+  height: 44px;
+  padding: 0 14px 0 10px;
+  border: 0;
+  background: transparent;
+  color: var(--l-text);
+  font: 500 13px/1.5 Rubik, sans-serif;
+  text-overflow: ellipsis;
+  user-select: text;
+}
+.path__input:focus { outline: none; }
+.path__browse {
+  flex: 0 0 44px;
+  width: 44px;
+  padding: 0;
+  border: 0;
+  box-shadow: inset 1px 0 0 var(--l-border);
+  background: transparent;
+  color: var(--l-text-dim);
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background var(--l-fast), color var(--l-fast);
+}
+.path__browse:hover { background: rgba(255, 255, 255, .08); color: var(--l-text); }
+.path__browse:active { background: rgba(255, 255, 255, .12); }
+.path__browse:disabled { opacity: .4; cursor: default; background: transparent; color: var(--l-text-dim); }
+
+/* Строка-настройка: значок в квадрате, подпись с пояснением, переключатель. */
+.row {
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: 12px;
+  margin-top: 8px;
+  padding: 12px 16px;
+  border-radius: var(--l-radius-sm);
+  background: rgba(255, 255, 255, .03);
+  box-shadow: inset 0 0 0 1px var(--l-border);
+  cursor: pointer;
+  transition: background var(--l-fast);
+}
+.row:hover { background: rgba(255, 255, 255, .05); }
+.row__icon {
+  width: 32px;
+  height: 32px;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--l-radius-sm);
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 14px;
+}
+.row--danger .row__icon { background: var(--l-danger-soft); color: var(--l-danger); }
+.row--static, .row--static:hover { cursor: default; background: rgba(255, 255, 255, .03); }
+.steps .row:first-child { margin-top: 0; }
+
+/* Плашка про SmartScreen: тёмная подложка, жёлтая рамка, крупный заголовок. */
+.callout {
+  padding: 14px 18px 16px;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--l-caution) 7%, rgba(0, 0, 0, .2));
+  box-shadow: inset 0 0 0 2px var(--l-caution);
+  color: var(--l-text-dim);
+  font-size: 13px;
+  line-height: 19px;
+  user-select: text;
+}
+.callout__lead { margin: 0; }
+.callout__title { margin: 8px 0 6px; color: var(--l-caution-text); font-size: 18px; font-weight: 700; line-height: 24px; }
+.callout__text { margin: 6px 0 0; }
+.row__text { display: flex; flex-direction: column; min-width: 0; }
+.row__label { color: var(--l-text); font-size: 14px; font-weight: 500; line-height: 20px; }
+.row__hint { color: var(--l-text-faint); font-size: 12px; line-height: 16px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+/* Что удалится: размер и все папки должны быть видны целиком, без многоточия. */
+#games-hint { white-space: normal; overflow-wrap: anywhere; }
+
+.switch { position: relative; display: inline-flex; }
+.switch input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
+.switch__track {
+  width: 42px;
+  height: 24px;
+  padding: 3px;
+  display: flex;
+  align-items: center;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, .12);
+  transition: background var(--l-med);
+}
+.switch__thumb { width: 18px; height: 18px; border-radius: 50%; background: #fff; transition: transform var(--l-med); }
+.switch input:checked + .switch__track { background: var(--accent); }
+.switch input:checked + .switch__track .switch__thumb { transform: translateX(18px); }
+.row--danger .switch input:checked + .switch__track { background: var(--btn-danger-bg); }
+.switch input:focus-visible + .switch__track { outline: 2px solid var(--accent-focus); outline-offset: 2px; }
+
+.activity { margin-top: 16px; color: var(--l-text-dim); font-size: 13px; line-height: 20px; }
+.activity__head { display: flex; justify-content: space-between; gap: 12px; }
+.activity__value { color: var(--l-text); font-weight: 600; font-variant-numeric: tabular-nums; }
+progress {
+  display: block;
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  margin-top: 10px;
+  border: 0;
+  border-radius: 2px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, .08);
+}
+progress::-webkit-progress-bar { background: rgba(255, 255, 255, .08); border-radius: 2px; }
+progress::-webkit-progress-value { background: var(--accent); border-radius: 2px; transition: width var(--l-med); }
+/* Без процента полоса бегущая: отрезок акцента ездит по дорожке туда и
+   обратно и всё время виден целиком: 212.5% своей ширины = (100 − 32) / 32. */
+progress:indeterminate { position: relative; }
+progress:indeterminate::after {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 32%;
+  border-radius: 2px;
+  background: var(--accent);
+  animation: indeterminate 1.3s ease-in-out infinite alternate;
+}
+@keyframes indeterminate {
+  from { transform: translateX(0); }
+  to { transform: translateX(212.5%); }
+}
+
+.notice {
+  display: flex;
+  gap: 10px;
+  margin: 16px 0 0;
+  padding: 12px 14px;
+  border-radius: var(--l-radius-sm);
+  background: var(--l-danger-soft);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--l-danger) 30%, transparent);
+  color: var(--l-danger);
+  font-size: 12.5px;
+  line-height: 18px;
+  overflow-wrap: anywhere;
+  white-space: pre-line;
+  user-select: text;
+}
+.notice[data-tone="warning"] {
+  background: var(--l-warning-soft);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--l-warning) 30%, transparent);
+  color: var(--l-warning);
+}
+.notice__icon { flex: none; padding-top: 2px; font-size: 14px; }
+
+/* ---- Низ: действия ---- */
+
+.footer {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 32px;
+  box-shadow: inset 0 1px 0 var(--l-modal-border);
+}
+.footer__spacer { flex: 1; }
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 12px 20px;
+  border: 0;
+  border-radius: var(--l-radius-sm);
+  box-shadow: inset 0 0 0 1px var(--l-border-strong);
+  background: rgba(255, 255, 255, .05);
+  color: var(--l-text);
+  font: 600 13.5px/24px Rubik, sans-serif;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background var(--l-fast), color var(--l-fast), transform var(--l-fast);
+}
+.btn .icon { font-size: 13px; }
+.btn:hover { background: rgba(255, 255, 255, .1); }
+.btn:active { transform: scale(.97); }
+.btn:disabled { opacity: .45; cursor: default; transform: none; }
+.btn:disabled:hover { background: rgba(255, 255, 255, .05); }
+.btn.primary { min-width: 168px; box-shadow: none; background: var(--accent); color: var(--accent-contrast-text); }
+.btn.primary:hover { background: var(--accent-hover); }
+.btn.primary:active { background: var(--accent-pressed); }
+.btn.primary:disabled { opacity: .6; }
+.btn.primary:disabled:hover { background: var(--accent); }
+.btn.ghost { box-shadow: none; background: transparent; color: var(--l-text-dim); padding: 12px 14px; }
+.btn.ghost:hover { background: rgba(255, 255, 255, .06); color: var(--l-text); }
+.btn.ghost.danger { color: #ff8f84; }
+.btn.ghost.danger:hover { background: var(--l-danger-soft); color: #ffb3aa; }
+body[data-phase="error"] .btn.primary,
+body[data-phase="uninstall-confirm"] .btn.primary,
+body[data-phase="uninstalling"] .btn.primary { background: var(--btn-danger-bg); color: #fff; }
+body[data-phase="error"] .btn.primary:hover,
+body[data-phase="uninstall-confirm"] .btn.primary:hover { background: var(--btn-danger-hover); }
+body[data-phase="error"] .btn.primary:active,
+body[data-phase="uninstall-confirm"] .btn.primary:active { background: var(--btn-danger-pressed); }
+
+button:focus-visible { outline: 2px solid var(--accent-focus); outline-offset: 2px; }
+.path__browse:focus-visible { outline-offset: -2px; }
+[hidden] { display: none !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+  .spin, progress:indeterminate::after { animation: none; }
+}

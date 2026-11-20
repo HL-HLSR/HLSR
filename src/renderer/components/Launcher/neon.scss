@@ -1,0 +1,43 @@
+// Бегущая неоновая рамка окна. В окно кладётся пустой <span>:
+//   <span class="neon" aria-hidden="true"></span>
+// Слой — квадрат с conic-gradient, который крутится transform: rotate (одна
+// «дорожка» за 6 с по часовой); background и box-shadow по кадрам не меняются.
+// Сам .neon неподвижен и маской оставляет только кольцо в 2 px у рамки.
+// Мягкое свечение — статичные box-shadow окна (outer и inset, под содержимым);
+// размытых слоёв, которые перерисовываются каждый кадр, здесь нет.
+@mixin neon($name, $a, $b, $dim) {
+  .neon {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    padding: 2px;
+    border-radius: inherit;
+    overflow: hidden;
+    pointer-events: none;
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 150%;
+      aspect-ratio: 1;
+      translate: -50% -50%;
+      background: conic-gradient(from 0deg, #{$dim}, #{$dim} 30%, #{$b} 55%, #{$a} 75%, #{$dim});
+      animation: #{$name} 6s linear infinite;
+    }
+  }
+
+  @keyframes #{$name} {
+    to { transform: rotate(360deg); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .neon::before { animation: none; }
+  }
+
+  .launcher-root.no-anim .neon::before { animation: none !important; }
+}

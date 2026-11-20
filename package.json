@@ -1,132 +1,301 @@
 {
   "name": "hlsr",
-  "version": "0.2.9",
-  "author": "",
+  "version": "0.4.9",
+  "author": "HLSR Team",
   "description": "Launcher that will help you to start speedrun Half-Life games.",
-  "main": "./dist/electron/main.js",
-  "node": "17.1.0",
-  "scripts": {
-    "build": "node .electron-vue/build.js && electron-builder",
-    "deploy": "node .electron-vue/build.js && electron-builder --publish always",
-    "build:dir": "node .electron-vue/build.js && electron-builder --dir",
-    "build:clean": "cross-env BUILD_TARGET=clean node .electron-vue/build.js",
-    "build:web": "cross-env BUILD_TARGET=web node .electron-vue/build.js",
-    "dev": "node .electron-vue/dev-runner.js",
-    "lint": "eslint --ext .js,.vue -f ./node_modules/eslint-friendly-formatter src test",
-    "lint:fix": "eslint --ext .js,.vue -f ./node_modules/eslint-friendly-formatter --fix src test",
-    "pack": "npm run pack:main && npm run pack:renderer",
-    "pack:main": "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.main.config.js",
-    "pack:renderer": "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.renderer.config.js",
-    "test": "npm run unit",
-    "unit": "karma start test/unit/karma.conf.js",
-    "postinstall": "npm run lint:fix"
-  },
-  "steamworks": {
-    "appid": "250820"
-  },
+  "homepage": "https://hlsr.pro",
   "repository": {
     "type": "git",
-    "url": "https://github.com/InfiniteC0re/HLSR.git"
+    "url": "https://github.com/HL-HLSR/HLSR.git"
+  },
+  "bugs": {
+    "url": "https://github.com/HL-HLSR/HLSR/issues"
+  },
+  "license": "UNLICENSED",
+  "private": true,
+  "main": "./dist/electron/main.js",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "build": "node scripts/run-platform-script.js build",
+    "build:dir": "node scripts/run-platform-script.js build:dir",
+    "build:win": "cross-env HLSR_TARGET_PLATFORM=win32 node .electron-vue/build.js && node scripts/build-windows-setup.js",
+    "build:win:dir": "cross-env HLSR_TARGET_PLATFORM=win32 node .electron-vue/build.js && node scripts/build-windows-setup.js --dir",
+    "dist:win": "npm run build:win",
+    "deploy": "node .electron-vue/build.js && electron-builder --publish always",
+    "build:linux": "npm run build:linux:dir && node scripts/build-launcher-archive.js && npm run build:bootstrap && npm run audit:package",
+    "build:linux:dir": "node .electron-vue/build.js && node scripts/prepare-linux-umu.js && node scripts/prepare-linux-7zip.js && electron-builder --linux --dir --x64 --publish never",
+    "build:bootstrap": "node scripts/prepare-installer-assets.js && node scripts/build-bootstrap-app.js && npm run audit:bootstrap",
+    "build:clean": "cross-env BUILD_TARGET=clean node .electron-vue/build.js",
+    "dev": "node .electron-vue/dev-runner.js",
+    "rebuild:native": "node scripts/patch-hlsr-native.js && electron-rebuild -f -w hlsr-native -v 45.3.0 --arch=x64",
+    "lint": "eslint -f ./node_modules/eslint-friendly-formatter/index.js src",
+    "lint:fix": "eslint -f ./node_modules/eslint-friendly-formatter/index.js --fix src",
+    "pack": "npm run pack:main && npm run pack:renderer",
+    "pack:main": "cross-env NODE_ENV=production webpack --config .electron-vue/webpack.main.config.js",
+    "pack:renderer": "cross-env NODE_ENV=production webpack --config .electron-vue/webpack.renderer.config.js",
+    "test:linux": "node --test scripts/presence-endpoint-selftest.js scripts/linux-selftest.js scripts/livesplit-overlay-selftest.js scripts/livesplit-splits-selftest.js scripts/proton-update-selftest.js scripts/window-size-selftest.js scripts/hl1-selftest.js scripts/practice-saves-selftest.js scripts/cfg-files-selftest.js scripts/build-transfer-selftest.js",
+    "test:delivery": "node scripts/run-delivery-tests.js",
+    "test:ghosting": "node --test scripts/ghosting-settings-selftest.js scripts/ghosting-scene-preview-selftest.js scripts/ghosting-assets-selftest.js scripts/ghosting-integration-selftest.js scripts/player-personalization-selftest.js scripts/ghosting-vulkan-selftest.js",
+    "test:personalization-codes": "node --test scripts/personalization-code-selftest.js",
+    "test:ipc": "node --test scripts/ipc-contract-selftest.js",
+    "test:demo": "node --test scripts/demo-tool-headers-selftest.js scripts/demo-tool-planner-selftest.js scripts/demo-tool-jobs-selftest.js scripts/demo-tool-ffmpeg-selftest.js scripts/demo-tool-ghosting-selftest.js scripts/demo-tool-ghrender-selftest.js scripts/demo-tool-hl1-selftest.js scripts/demo-tool-ui-selftest.js",
+    "test:ui": "node --test scripts/launcher-ui-selftest.js scripts/pane-size-selftest.js scripts/game-config-selftest.js scripts/hl1-pack-preview-selftest.js scripts/ghost-runs-selftest.js scripts/cancellation-selftest.js scripts/news-selftest.js scripts/sponsors-selftest.js scripts/tray-selftest.js scripts/online-profile-selftest.js scripts/cfg-text-ops-selftest.js scripts/cfg-document-selftest.js scripts/player-config-selftest.js scripts/config-migration-selftest.js scripts/player-binds-selftest.js scripts/cfg-import-flatten-selftest.js scripts/single-config-owner-cfg-selftest.js scripts/single-config-owner-hl1-selftest.js scripts/config-tour-selftest.js scripts/hl1-config-check-selftest.js",
+    "test:downloads": "node --test scripts/download-settings-selftest.js scripts/user-configs-selftest.js scripts/delivery-errors-selftest.js scripts/steam-detect-selftest.js scripts/game-pack-selftest.js scripts/delivery-trust-selftest.js scripts/custom-packs-selftest.js",
+    "test:diagnostics": "node --test scripts/diagnostics-selftest.js scripts/crash-report-selftest.js",
+    "test:attestation": "node --test scripts/attestation-selftest.js",
+    "eula:sync": "node scripts/sync-eula.js",
+    "audit:package": "node scripts/audit-packaged-content.js",
+    "audit:bootstrap": "node scripts/audit-bootstrap-app.js",
+    "audit:licenses": "node scripts/audit-licenses.js",
+    "verify:packaged-launcher": "node scripts/verify-packaged-launcher.js",
+    "smoke:packaged-launcher": "node scripts/qa-packaged-smoke.js",
+    "launcher:release:prepare": "node scripts/launcher-release-prepare.js",
+    "launcher:release:verify": "node scripts/verify-launcher-release.js",
+    "test:launcher-update": "node --test scripts/launcher-update-selftest.js scripts/launcher-chunks-selftest.js",
+    "test:windows-install": "node --test scripts/windows-install-selftest.js scripts/seven-zip-selftest.js",
+    "launcher:release:prepare:linux": "node scripts/launcher-release-prepare-linux.js",
+    "launcher:release:verify:linux": "node scripts/verify-launcher-release-linux.js",
+    "launcher:publish:github": "node scripts/publish-launcher-linux.js"
   },
   "build": {
     "productName": "HLSR",
+    "afterPack": "./scripts/after-pack-linux.js",
+    "executableName": "HLSR",
     "appId": "com.hlsrteam.hlsr",
+    "copyright": "Copyright © 2020-2026 HLSR Team",
     "directories": {
-      "output": "build"
+      "output": "build",
+      "buildResources": "build"
     },
-    "publish": [
-      {
-        "provider": "github",
-        "owner": "infinitec0re",
-        "repo": "hlsr"
-      }
+    "asar": true,
+    "asarUnpack": [
+      "**/*.node"
     ],
-    "asar": false,
+    "electronFuses": {
+      "runAsNode": false,
+      "enableNodeOptionsEnvironmentVariable": false,
+      "enableNodeCliInspectArguments": false,
+      "enableEmbeddedAsarIntegrityValidation": true,
+      "onlyLoadAppFromAsar": true
+    },
     "files": [
       "dist/electron/**/*",
-      "icons"
+      "icons",
+      "!**/*.map",
+      "!**/node_modules/7zip-bin/mac/**",
+      "!**/node_modules/7zip-bin/{win,linux}/**",
+      "**/node_modules/7zip-bin/${os}/**",
+      "!**/node_modules/7zip-bin/win/**",
+      "!**/node_modules/hlsr-native/src/**",
+      "!**/node_modules/hlsr-native/bin/**",
+      "!**/node_modules/hlsr-native/test.js",
+      "!**/node_modules/hlsr-native/binding.gyp",
+      "!**/node_modules/hlsr-native/build/obj/**",
+      "!**/node_modules/hlsr-native/build/Release/obj/**",
+      "!**/node_modules/hlsr-native/build/Release/main.{exp,ilk,lib,pdb}",
+      "!**/node_modules/hlsr-native/build/{binding.sln,config.gypi,main.vcxproj,main.vcxproj.filters}",
+      "!**/node_modules/7zip-bin/7x.sh",
+      "!**/node_modules/**/{test,tests,__tests__,spec,example,examples,demo,docs,doc,.github,.idea,.vscode}/**",
+      "!**/node_modules/**/*.{md,markdown,ts,jsx,vue,scss,sass,less,snap}",
+      "!**/node_modules/**/{.editorconfig,.eslintrc.js,.eslintrc.json,.eslintrc.yml,.babelrc,.npmignore,.travis.yml,appveyor.yml,CHANGELOG,CHANGELOG.md,AUTHORS,CONTRIBUTING.md,FUNDING.yml}",
+      "!**/node_modules/vue-material/src/**",
+      "!**/node_modules/vue/packages/**",
+      "!**/node_modules/vue/src/**",
+      "!**/node_modules/vue-toc/src/**",
+      "!**/node_modules/vue-codemirror/src/**",
+      "**/node_modules/**/LICENSE*",
+      "**/node_modules/**/license*",
+      "**/node_modules/**/COPYING*",
+      "!qa-out{,/**/*}",
+      "!build-qa{,/**/*}",
+      "!build-qa*{,/**/*}",
+      "!test{,/**/*}"
     ],
+    "extraResources": [
+      {
+        "from": "LICENSE",
+        "to": "licenses/HLSR-LICENSE.txt"
+      },
+      {
+        "from": "build/license-en.txt",
+        "to": "licenses/LICENSE_en.txt"
+      },
+      {
+        "from": "build/license-ru.txt",
+        "to": "licenses/LICENSE_ru.txt"
+      },
+      {
+        "from": "build/THIRD-PARTY-NOTICES.txt",
+        "to": "licenses/THIRD-PARTY-NOTICES.txt"
+      },
+      {
+        "from": "build/SOURCE-SDK-LICENSE.txt",
+        "to": "licenses/SOURCE-SDK-LICENSE.txt"
+      },
+      {
+        "from": "build/thirdpartylegalnotices.txt",
+        "to": "licenses/thirdpartylegalnotices.txt"
+      },
+      {
+        "from": "resources/livesplit-overlay",
+        "to": "livesplit-overlay",
+        "filter": [
+          "proxy-d3d9.dll",
+          "proxy-opengl32.dll"
+        ]
+      },
+      {
+        "from": "resources/livesplit-components",
+        "to": "livesplit-components"
+      }
+    ],
+    "npmRebuild": false,
     "win": {
+      "executableName": "HLSR",
+      "publish": [
+        {
+          "provider": "github",
+          "owner": "HL-HLSR",
+          "repo": "HLSR-Releases",
+          "releaseType": "release"
+        }
+      ],
+      "asarUnpack": [
+        "**/node_modules/hlsr-native/build/Release/*.node",
+        "**/node_modules/hlsr-native/build/Release/steam_api*.dll"
+      ],
+      "extraResources": [
+        {
+          "from": "build/installer",
+          "to": "installer"
+        },
+        {
+          "from": "resources/7zip/win-x64",
+          "to": "7zip"
+        },
+        {
+          "from": "resources/demo-render",
+          "to": "demo-render"
+        }
+      ],
       "icon": "build/icons/icon.ico",
-      "requestedExecutionLevel": "highestAvailable"
+      "requestedExecutionLevel": "asInvoker",
+      "artifactName": "HLSR-Setup-${version}.${ext}",
+      "target": [
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "portable": {
+      "artifactName": "HLSR-Setup-${version}.${ext}",
+      "requestExecutionLevel": "user",
+      "unpackDirName": true,
+      "unicode": true
+    },
+    "linux": {
+      "executableName": "hlsr",
+      "publish": [
+        {
+          "provider": "generic",
+          "url": "https://hlsr.pro/downloads/launcher/linux/stable/"
+        }
+      ],
+      "extraResources": [
+        {
+          "from": "build/icons/256x256.png",
+          "to": "icons/hlsr.png"
+        },
+        {
+          "from": "build/umu/umu-run",
+          "to": "umu/umu-run"
+        },
+        {
+          "from": "resources/livesplit-fonts",
+          "to": "livesplit-fonts"
+        },
+        {
+          "from": "resources/livesplit-fixes",
+          "to": "livesplit-fixes"
+        },
+        {
+          "from": "resources/presence-relay",
+          "to": "presence-relay"
+        },
+        {
+          "from": "resources/linux/install-userns-profile.sh",
+          "to": "linux/install-userns-profile.sh"
+        },
+        {
+          "from": "resources/livesplit-overlay",
+          "to": "livesplit-overlay",
+          "filter": [
+            "hlsr-overlay64.exe",
+            "hlsr-share64.dll"
+          ]
+        }
+      ],
+      "target": [
+        "AppImage"
+      ],
+      "category": "Game",
+      "icon": "build/icons/256x256.png",
+      "artifactName": "HLSR-Setup-${version}-linux-x86_64.${ext}"
     }
   },
   "dependencies": {
     "7zip-bin": "^5.1.1",
-    "@electron/remote": "^2.0.1",
-    "axios": "^0.19.2",
-    "discord-rpc": "3.2.0",
-    "electron-updater": "^4.3.4",
-    "hlsr-console": "^1.2.0",
+    "ajv": "^8.20.0",
+    "ajv-formats": "^3.0.1",
+    "bytenode": "2.1.0",
+    "discord-rpc": "^4.0.1",
+    "electron-log": "^5.4.4",
+    "electron-updater": "6.8.11",
+    "js-yaml": "5.5.0",
+    "node-7z": "^3.0.0"
+  },
+  "optionalDependencies": {
     "hlsr-native": "1.0.8",
-    "jquery": "^3.5.1",
-    "node-7z": "^3.0.0",
-    "vue": "^2.5.16",
-    "vue-codemirror": "^4.0.6",
-    "vue-material": "https://github.com/InfiniteC0re/vue-material-dart",
-    "vue-router": "^3.0.1",
-    "vuex": "^3.0.1"
+    "register-scheme": "file:scripts/stubs/register-scheme"
   },
   "devDependencies": {
-    "ajv": "^6.5.0",
-    "babel-core": "^6.26.3",
-    "babel-eslint": "^8.2.3",
-    "babel-loader": "^7.1.4",
-    "babel-minify-webpack-plugin": "^0.3.1",
-    "babel-plugin-istanbul": "^6.0.0",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-stage-0": "^6.24.1",
-    "babel-register": "^6.26.0",
-    "cfonts": "^2.1.2",
-    "chai": "^4.1.2",
-    "chalk": "^2.4.1",
-    "copy-webpack-plugin": "^4.5.1",
-    "cross-env": "^5.1.6",
-    "css-loader": "^0.28.11",
-    "del": "^5.1.0",
-    "devtron": "^1.4.0",
-    "electron": "18.2.0",
-    "electron-builder": "~22.10.5",
-    "electron-debug": "^3.1.0",
-    "electron-devtools-installer": "^3.0.0",
-    "electron-rebuild": "^1.11.0",
-    "eslint": "^4.19.1",
-    "eslint-config-standard": "^11.0.0",
+    "@babel/core": "8.0.10",
+    "@babel/preset-env": "8.0.7",
+    "@electron/asar": "^4.3.1",
+    "@electron/rebuild": "4.2.1",
+    "@eslint/js": "10.0.1",
+    "@fortawesome/fontawesome-free": "7.3.1",
+    "cross-env": "10.1.0",
+    "css-loader": "7.1.5",
+    "electron": "45.3.0",
+    "electron-builder": "26.18.0",
+    "electron-debug": "5.0.0",
+    "electron-devtools-installer": "4.0.0",
+    "eslint": "10.14.0",
     "eslint-friendly-formatter": "^4.0.1",
-    "eslint-loader": "^2.0.0",
-    "eslint-plugin-html": "^4.0.3",
-    "eslint-plugin-import": "^2.12.0",
-    "eslint-plugin-node": "^6.0.1",
-    "eslint-plugin-promise": "^3.8.0",
-    "eslint-plugin-standard": "^3.1.0",
-    "file-loader": "^1.1.11",
-    "html-webpack-plugin": "^3.2.0",
-    "inject-loader": "^4.0.1",
-    "karma": "^2.0.2",
-    "karma-chai": "^0.1.0",
-    "karma-coverage": "^1.1.2",
-    "karma-electron": "^6.0.0",
-    "karma-mocha": "^1.3.0",
-    "karma-sourcemap-loader": "^0.3.7",
-    "karma-spec-reporter": "^0.0.32",
-    "karma-webpack": "^3.0.0",
-    "mini-css-extract-plugin": "0.4.0",
-    "mocha": "^5.2.0",
-    "multispinner": "^0.2.1",
-    "node-loader": "^0.6.0",
-    "sass": "^1.43.5",
-    "sass-loader": "^10",
-    "style-loader": "^0.21.0",
-    "url-loader": "^1.0.1",
-    "vue-html-loader": "^1.2.4",
-    "vue-loader": "^15.2.4",
-    "vue-style-loader": "^4.1.0",
-    "vue-template-compiler": "^2.5.16",
-    "webpack": "^4.15.1",
-    "webpack-cli": "^3.0.8",
-    "webpack-dev-server": "^3.1.4",
-    "webpack-hot-middleware": "^2.22.2",
-    "webpack-merge": "^4.1.3"
+    "eslint-plugin-html": "8.2.1",
+    "globals": "17.13.0",
+    "html-webpack-plugin": "5.6.8",
+    "mini-css-extract-plugin": "2.10.2",
+    "node-loader": "2.1.0",
+    "sass": "1.107.0",
+    "sass-loader": "17.1.0",
+    "style-loader": "4.0.0",
+    "terser": "5.51.2",
+    "vue": "3.5.44",
+    "vue-eslint-parser": "10.4.1",
+    "vue-loader": "17.4.2",
+    "vue-router": "5.4.0",
+    "webpack": "5.112.2",
+    "webpack-cli": "7.3.1",
+    "webpack-dev-server": "6.1.0"
+  },
+  "overrides": {
+    "register-scheme": "$register-scheme"
   }
 }

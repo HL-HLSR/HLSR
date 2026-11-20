@@ -2,9 +2,7 @@ export default [
   {
     id: "70",
     name: "Half-Life",
-    iconFile: "hl1.ico",
-    background: "half-life-background.jpg",
-    needSteam: true,
+    iconFile: "hl1.ico",    needSteam: true,
     info: {
       isStandalone: true,
       requiredGame: null,
@@ -30,9 +28,7 @@ export default [
   {
     id: "50",
     name: "Half-Life: Opposing Force",
-    iconFile: "of.ico",
-    background: "opposing-force-background.jpg",
-    needSteam: true,
+    iconFile: "of.ico",    needSteam: true,
     info: {
       isStandalone: false,
       requiredGame: "70",
@@ -57,9 +53,7 @@ export default [
   {
     id: "130",
     name: "Half-Life: Blue Shift",
-    iconFile: "bs.ico",
-    background: "blue-shift-background.jpg",
-    needSteam: true,
+    iconFile: "bs.ico",    needSteam: true,
     info: {
       isStandalone: false,
       requiredGame: "70",
@@ -78,9 +72,7 @@ export default [
   {
     id: "220",
     name: "Half-Life 2",
-    iconFile: "hl2.ico",
-    background: "half-life-2-background.jpg",
-    needSteam: true,
+    iconFile: "hl2.ico",    needSteam: true,
     info: {
       isStandalone: true,
       requiredGame: null,
@@ -104,9 +96,7 @@ export default [
   {
     id: "218",
     name: "Half-Life 2: Ghosting",
-    iconFile: "hl2.ico",
-    background: "half-life-2-ghosting-background.jpg",
-    needSteam: true,
+    iconFile: "hl2.ico",    needSteam: true,
     info: {
       isStandalone: true,
       requiredGame: null,
@@ -126,6 +116,40 @@ export default [
       ],
       sourceruns: "https://wiki.sourceruns.org/wiki/Ghosting_mod",
       leaderboard: "https://www.speedrun.com/hl2ce",
+    },
+  },
+  {
+    id: "380",
+    name: "Half-Life 2: Episode One",
+    iconFile: "hl2.ico",    needSteam: true,
+    info: {
+      isStandalone: true,
+      requiredGame: null,
+      installPath: "",
+      uninstallPaths: ["Half-Life 2 Episode One"],
+      totalSize: 0,
+      archiveSize: 0,
+      features: ["Source Unpack", "Source Pause Tool", "#UI_LIVESPLIT", "RInput"],
+      archives: [],
+      sourceruns: "https://wiki.sourceruns.org/wiki/Category:Half-Life_2:_Episode_One",
+      leaderboard: "https://www.speedrun.com/hl2ep1",
+    },
+  },
+  {
+    id: "420",
+    name: "Half-Life 2: Episode Two",
+    iconFile: "hl2.ico",    needSteam: true,
+    info: {
+      isStandalone: true,
+      requiredGame: null,
+      installPath: "",
+      uninstallPaths: ["Half-Life 2 Episode Two"],
+      totalSize: 0,
+      archiveSize: 0,
+      features: ["Source Unpack", "Source Pause Tool", "#UI_LIVESPLIT", "RInput"],
+      archives: [],
+      sourceruns: "https://wiki.sourceruns.org/wiki/Category:Half-Life_2:_Episode_Two",
+      leaderboard: "https://www.speedrun.com/hl2ep2",
     },
   },
 ];

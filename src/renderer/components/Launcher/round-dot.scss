@@ -1,0 +1,32 @@
+// Круглая точка состояния.
+//
+// При дробном масштабе (125 %, 150 %, масштаб интерфейса) Chromium округляет
+// к пикселям экрана ширину и высоту блока по отдельности: точка 7×7 с
+// border-radius: 50% становится овалом 9×8. Круг, нарисованный градиентом
+// closest-side, от округления блока не зависит — по меньшей стороне он всегда
+// круглый. Поэтому цвет задаётся через --dot-color, а не background, и
+// свечение — drop-shadow по форме круга, а не box-shadow по форме блока.
+//
+// $ring — обводка внутри блока (цвет фона под точкой), $ring-width — её
+// толщина. Блок с обводкой больше самой точки на две толщины.
+@mixin round-dot($color: currentColor, $ring: null, $ring-width: 0px) {
+  --dot-color: #{$color};
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  @if $ring {
+    background: radial-gradient(
+      circle closest-side,
+      var(--dot-color) calc(100% - #{$ring-width} - 0.75px),
+      #{$ring} calc(100% - #{$ring-width}),
+      #{$ring} calc(100% - 0.75px),
+      transparent
+    );
+  } @else {
+    background: radial-gradient(circle closest-side, var(--dot-color) calc(100% - 0.75px), transparent);
+  }
+}
+
+@mixin round-dot-glow($blur, $color: var(--dot-color)) {
+  filter: drop-shadow(0 0 $blur $color);
+}

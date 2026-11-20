@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:"
+    />
+    <title>HLSR Updater</title>
+    <link rel="stylesheet" href="updater.css" />
+  </head>
+  <body>
+
+    <main class="upd">
+      <header class="upd__head">
+        <div class="upd__mark" aria-hidden="true"></div>
+        <div class="upd__titles">
+          <h1 class="upd__title" id="title">Обновление HLSR</h1>
+          <p class="upd__subtitle" id="subtitle"></p>
+        </div>
+      </header>
+
+      <section class="upd__body">
+        <p class="upd__stage" id="stage">Скачивание обновления…</p>
+
+        <div
+          class="upd__track"
+          id="track"
+          role="progressbar"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-valuenow="0"
+        >
+          <div class="upd__fill" id="fill"></div>
+        </div>
+
+        <div class="upd__meta">
+          <span id="bytes"></span>
+          <span id="speed"></span>
+        </div>
+
+        <p class="upd__note" id="note"></p>
+        <p class="upd__code" id="code"></p>
+      </section>
+
+      <footer class="upd__actions">
+        <button type="button" class="upd__btn" id="action"></button>
+      </footer>
+    </main>
+
+    <script src="updater.js"></script>
+  </body>
+</html>

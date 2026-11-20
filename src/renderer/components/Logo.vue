@@ -3,12 +3,7 @@
     <div class="logo">
       <div class="inner"></div>
     </div>
-    <div class="title">
-      HLSR
-      <span style="color: rgba(255, 255, 255, 0.2)">
-        <span class="header__version">BETA</span>
-      </span>
-    </div>
+    <div class="title"><span>HLSR</span><span class="header__version">BETA</span></div>
   </div>
 </template>
 
@@ -56,17 +51,25 @@ export default {
   width: 26px;
   height: 26px;
 }
+/* Название и «BETA» — как в логотипе на сайте (Brand.tsx, site.css):
+   те же кегли и разрядка, «BETA» у верха названия, через 0.38 em после «R». */
 .title {
+  display: flex;
+  align-items: center;
   font-size: 22px;
+  line-height: 28px;
   color: white;
   margin-left: 16px;
-  font-family: Roboto;
-  font-weight: bold;
-  letter-spacing: 9px;
+  font-weight: 700;
+  letter-spacing: 6px;
 }
 .header__version {
-  font-size: 12px;
-  letter-spacing: 0.5px;
-  margin-left: -16px;
+  align-self: flex-start;
+  margin: 2px 0 0 2px;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.08em;
 }
 </style>

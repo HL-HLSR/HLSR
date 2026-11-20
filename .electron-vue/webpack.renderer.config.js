@@ -1,191 +1,107 @@
 'use strict'
 
-process.env.BABEL_ENV = 'renderer'
-
 const path = require('path')
-const { dependencies } = require('../package.json')
 const webpack = require('webpack')
 
-const MinifyPlugin = require("babel-minify-webpack-plugin")
-const CopyWebpackPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { VueLoaderPlugin } = require('vue-loader')
 
-/**
- * List of node_modules to include in webpack bundle
- *
- * Required for specific packages like Vue UI libraries
- * that provide pure *.vue files that need compiling
- * https://simulatedgreg.gitbooks.io/electron-vue/content/en/webpack-configurations.html#white-listing-externals
- */
-let whiteListedModules = ['vue', 'vue-codemirror']
+const production = process.env.NODE_ENV === 'production'
 
-let rendererConfig = {
-  devtool: '#cheap-module-eval-source-map',
+// В production стили выносятся в styles.css, в разработке их вставляет
+// style-loader, чтобы работала горячая замена.
+const styleLoader = production ? MiniCssExtractPlugin.loader : 'style-loader'
+
+// Babel не нужен: renderer исполняется только в Chromium из Electron 45,
+// который понимает весь синтаксис исходников.
+const rendererConfig = {
+  mode: production ? 'production' : 'development',
+  devtool: production ? false : 'eval-cheap-module-source-map',
   entry: {
     renderer: path.join(__dirname, '../src/renderer/main.js')
   },
-  externals: [
-    ...Object.keys(dependencies || {}).filter(d => !whiteListedModules.includes(d))
-  ],
   module: {
     rules: [
       {
         test: /\.scss$/,
-        use: ['vue-style-loader', 'css-loader', 'sass-loader']
-      },
-      {
-        test: /\.sass$/,
-        use: ['vue-style-loader', 'css-loader', 'sass-loader?indentedSyntax']
-      },
-      {
-        test: /\.less$/,
-        use: ['vue-style-loader', 'css-loader', 'less-loader']
+        use: [styleLoader, 'css-loader', 'sass-loader']
       },
       {
         test: /\.css$/,
-        use: ['vue-style-loader', 'css-loader']
-      },
-      {
-        test: /\.html$/,
-        use: 'vue-html-loader'
-      },
-      {
-        test: /\.js$/,
-        use: 'babel-loader',
-        exclude: /node_modules/
-      },
-      {
-        test: /\.node$/,
-        use: 'node-loader'
+        use: [styleLoader, 'css-loader']
       },
       {
         test: /\.vue$/,
-        use: {
-          loader: 'vue-loader',
-          options: {
-            extractCSS: process.env.NODE_ENV === 'production',
-            loaders: {
-              sass: 'vue-style-loader!css-loader!sass-loader?indentedSyntax=1',
-              scss: 'vue-style-loader!css-loader!sass-loader',
-              less: 'vue-style-loader!css-loader!less-loader'
-            }
-          }
-        }
+        loader: 'vue-loader'
       },
       {
-        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-        use: {
-          loader: 'url-loader',
-          query: {
-            limit: 10000,
-            name: 'imgs/[name]--[folder].[ext]'
-          }
-        }
+        test: /\.(png|jpe?g|gif|svg|webp)(\?.*)?$/,
+        type: 'asset',
+        parser: { dataUrlCondition: { maxSize: 10000 } },
+        generator: { filename: 'imgs/[name]-[contenthash:8][ext]' }
       },
       {
         test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
-        loader: 'url-loader',
-        options: {
-          limit: 10000,
-          name: 'media/[name]--[folder].[ext]'
-        }
+        // Всегда файлом: CSP (index.ejs) не пускает data: в media-src.
+        type: 'asset/resource',
+        generator: { filename: 'media/[name]-[contenthash:8][ext]' }
       },
       {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-        use: {
-          loader: 'url-loader',
-          query: {
-            limit: 10000,
-            name: 'fonts/[name]--[folder].[ext]'
-          }
-        }
+        type: 'asset',
+        parser: { dataUrlCondition: { maxSize: 10000 } },
+        generator: { filename: 'fonts/[name]-[contenthash:8][ext]' }
       }
     ]
   },
-  node: {
-    __dirname: process.env.NODE_ENV !== 'production',
-    __filename: process.env.NODE_ENV !== 'production'
-  },
   plugins: [
     new VueLoaderPlugin(),
-    new MiniCssExtractPlugin({filename: 'styles.css'}),
+    new MiniCssExtractPlugin({ filename: 'styles.css' }),
+    new webpack.DefinePlugin({
+      'process.env.WEBPACK_DEV_SERVER': JSON.stringify(process.env.WEBPACK_DEV_SERVER || ''),
+      __VUE_OPTIONS_API__: 'true',
+      __VUE_PROD_DEVTOOLS__: 'false',
+      __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: 'false'
+    }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: path.resolve(__dirname, '../src/index.ejs'),
-      templateParameters(compilation, assets, options) {
-        return {
-          compilation: compilation,
-          webpack: compilation.getStats().toJson(),
-          webpackConfig: compilation.options,
-          htmlWebpackPlugin: {
-            files: assets,
-            options: options,
-          },
-          process,
-        };
-      },
-      minify: {
+      // В разработке CSP разрешает eval для source map и сокет dev-сервера.
+      isDevelopment: !production,
+      minify: production && {
         collapseWhitespace: true,
         removeAttributeQuotes: true,
         removeComments: true
-      },
-      nodeModules: process.env.NODE_ENV !== 'production'
-        ? path.resolve(__dirname, '../node_modules')
-        : false
-    }),
-    new webpack.NoEmitOnErrorsPlugin()
+      }
+    })
   ],
+  optimization: {
+    emitOnErrors: false
+  },
+  performance: {
+    hints: false
+  },
   output: {
     filename: '[name].js',
-    libraryTarget: 'commonjs2',
-    path: path.join(__dirname, '../dist/electron')
+    path: path.join(__dirname, '../dist/electron'),
+    // main.js и preload.js лежат в той же папке; renderer их не трогает.
+    clean: false
   },
   resolve: {
     alias: {
       '@': path.join(__dirname, '../src/renderer'),
-      'vue$': 'vue/dist/vue.esm.js'
+      // utils/Store.js общий с main. В renderer он работает через мост preload,
+      // а ветка с прямым доступом к файлам не выполняется.
+      electron: false,
+      'electron-log': false,
+      fs: false,
+      path: false
     },
-    extensions: ['.js', '.vue', '.json', '.css', '.node']
+    extensions: ['.js', '.vue', '.json', '.css']
   },
-  target: 'electron-renderer'
-}
-
-/**
- * Adjust rendererConfig for development settings
- */
-// if (process.env.NODE_ENV !== 'production') {
-//   rendererConfig.plugins.push(
-//     new webpack.HotModuleReplacementPlugin(),
-//     new webpack.DefinePlugin({
-//       '__static': `"${path.join(__dirname, '../static').replace(/\\/g, '\\\\')}"`
-//     })
-//   )
-// }
-
-/**
- * Adjust rendererConfig for production settings
- */
-if (process.env.NODE_ENV === 'production') {
-  rendererConfig.devtool = ''
-
-  rendererConfig.plugins.push(
-    new MinifyPlugin(),
-    // new CopyWebpackPlugin([
-    //   {
-    //     from: path.join(__dirname, '../static'),
-    //     to: path.join(__dirname, '../dist/electron/static'),
-    //     ignore: ['.*']
-    //   }
-    // ]),
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': '"production"'
-    }),
-    new webpack.LoaderOptionsPlugin({
-      minimize: true
-    })
-  )
+  // Renderer работает в песочнице без доступа к Node.js.
+  target: 'web'
 }
 
 module.exports = rendererConfig

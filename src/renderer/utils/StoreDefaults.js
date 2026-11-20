@@ -2,6 +2,7 @@ export default {
   library: {
     installed: {},
     lastLaunched: "",
+    libraryConfirmed: false,
     config: {
       "70": {
         steam: false,
@@ -46,9 +47,17 @@ export default {
       },
     },
   },
+  // Инструмент «Демо» (main: src/main/demo-tool): добавленные вручную файлы,
+  // последние настройки экспорта, папка вывода (null — Видео\HLSR).
+  demoTool: {
+    manual: [],
+    export: { preset: "quality", height: 1080, fps: 60, audio: true, keyhud: false, encoder: "auto", speed: 1 },
+    outputDir: null,
+  },
   settings: {
     config: {
-      language: 0,
+      language: null,
+      gpuAcceleration: true,
       theme: 0,
       rpc: true,
       experimental: false,

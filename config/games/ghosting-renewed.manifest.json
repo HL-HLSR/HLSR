@@ -1,0 +1,321 @@
+{
+  "schemaVersion": 1,
+  "gameId": "ghosting-renewed",
+  "channel": "stable",
+  "version": "1.0.13",
+  "versionStatus": "assigned",
+  "publishedAt": "2026-11-12T14:00:26.705Z",
+  "minimumLauncherVersion": "0.3.9",
+  "expectedInstalledSize": 5065584938,
+  "preservePaths": [
+    "ghostingmod/SAVE",
+    "ghostingmod/runs",
+    "ghostingmod/screenshots",
+    "ghostingmod/cfg",
+    "ghostingmod/custom",
+    "ghostingmod/synclogs",
+    "ghostingmod/DownloadLists",
+    "ghostingmod/download"
+  ],
+  "baseArchive": {
+    "filename": "ghosting-renewed-1.0.6.7z",
+    "size": 1945918366,
+    "sha256": "7bc9deab2dd2a4b6eeab8aabebe7250b83b10862813ead074c9dccfc437dcc75",
+    "rootPrefix": "Ghosting Mod Renewed",
+    "providers": [
+      {
+        "id": "hlsr-primary",
+        "type": "https-direct",
+        "status": "permanent",
+        "priority": 10,
+        "url": "https://hlsr.pro/downloads/ghosting-renewed/1.0.6/ghosting-renewed-1.0.6.7z"
+      },
+      {
+        "id": "github-fallback",
+        "type": "https-direct",
+        "status": "permanent",
+        "priority": 20,
+        "url": "https://github.com/HL-HLSR/Ghosting-Renewed-Releases/releases/download/game-ghosting-renewed-v1.0.6/ghosting-renewed-1.0.6.7z"
+      }
+    ],
+    "version": "1.0.6"
+  },
+  "buildMetadata": {
+    "path": "ghostingmod/hlsr-build.json",
+    "schemaVersion": 1,
+    "required": true,
+    "buildId": "1.0.13-67867112",
+    "buildName": "HL1 Movement",
+    "builtAt": "2026-11-12T11:13:00.000Z",
+    "gitCommit": "67867112b1972b130c9a5711912269cf386aa1fd",
+    "architecture": "x86"
+  },
+  "filesManifest": {
+    "requiredFiles": [
+      "hl2.exe",
+      "hl2/gameinfo.txt",
+      "ghostingmod/gameinfo.txt",
+      "steam_appid.txt"
+    ],
+    "maxEntries": 8000,
+    "maxUncompressedSize": 6000000000,
+    "entriesSha256": "697868588f42fe93e066eb20b9a919e3425f3b16dc7a8b0f21eaaa64e1f3b9ea"
+  },
+  "patches": [
+    {
+      "fromVersion": "1.0.2",
+      "toVersion": "1.0.13",
+      "publishedAt": "2026-11-12T14:00:26.551Z",
+      "archive": {
+        "filename": "ghosting-renewed-1.0.2-to-1.0.13.7z",
+        "size": 27327019,
+        "sha256": "06a8d3fdaeeece1374410c840c8141e8c48242684f3a9e0fdb144bf4f00723de",
+        "providers": [
+          {
+            "id": "timeweb-primary",
+            "type": "https-direct",
+            "status": "permanent",
+            "priority": 10,
+            "url": "https://hlsr.pro/downloads/ghosting-renewed/1.0.13/ghosting-renewed-1.0.2-to-1.0.13.7z"
+          }
+        ]
+      },
+      "changedFiles": 122,
+      "deletedFiles": 0,
+      "resultingFilesManifestSha256": "d1d34cb7180b52a34b162678451a86c6d6203576f0f4d69b0a8a6bcafb730c6e",
+      "resultingInstalledSize": 5065584938
+    },
+    {
+      "fromVersion": "1.0.3",
+      "toVersion": "1.0.13",
+      "publishedAt": "2026-11-12T14:00:26.569Z",
+      "archive": {
+        "filename": "ghosting-renewed-1.0.3-to-1.0.13.7z",
+        "size": 27327020,
+        "sha256": "1f164a2d25909777ad15e6515c72ffee8a8a246c4ac0c3763209861e119d91b6",
+        "providers": [
+          {
+            "id": "timeweb-primary",
+            "type": "https-direct",
+            "status": "permanent",
+            "priority": 10,
+            "url": "https://hlsr.pro/downloads/ghosting-renewed/1.0.13/ghosting-renewed-1.0.3-to-1.0.13.7z"
+          }
+        ]
+      },
+      "changedFiles": 122,
+      "deletedFiles": 0,
+      "resultingFilesManifestSha256": "d1d34cb7180b52a34b162678451a86c6d6203576f0f4d69b0a8a6bcafb730c6e",
+      "resultingInstalledSize": 5065584938
+    },
+    {
+      "fromVersion": "1.0.4",
+      "toVersion": "1.0.13",
+      "publishedAt": "2026-11-12T14:00:26.587Z",
+      "archive": {
+        "filename": "ghosting-renewed-1.0.4-to-1.0.13.7z",
+        "size": 27327021,
+        "sha256": "37be6134e43dde182593892af6aca79f565db88552020dfc0955821ad07fe239",
+        "providers": [
+          {
+            "id": "timeweb-primary",
+            "type": "https-direct",
+            "status": "permanent",
+            "priority": 10,
+            "url": "https://hlsr.pro/downloads/ghosting-renewed/1.0.13/ghosting-renewed-1.0.4-to-1.0.13.7z"
+          }
+        ]
+      },
+      "changedFiles": 122,
+      "deletedFiles": 0,
+      "resultingFilesManifestSha256": "d1d34cb7180b52a34b162678451a86c6d6203576f0f4d69b0a8a6bcafb730c6e",
+      "resultingInstalledSize": 5065584938
+    },
+    {
+      "fromVersion": "1.0.5",
+      "toVersion": "1.0.13",
+      "publishedAt": "2026-11-12T14:00:26.605Z",
+      "archive": {
+        "filename": "ghosting-renewed-1.0.5-to-1.0.13.7z",
+        "size": 27321475,
+        "sha256": "e29ee7a6bfc82c7b71128bd09a1510e49b981f4d0073a28ce9ad879203f4af2c",
+        "providers": [
+          {
+            "id": "timeweb-primary",
+            "type": "https-direct",
+            "status": "permanent",
+            "priority": 10,
+            "url": "https://hlsr.pro/downloads/ghosting-renewed/1.0.13/ghosting-renewed-1.0.5-to-1.0.13.7z"
+          }
+        ]
+      },
+      "changedFiles": 120,
+      "deletedFiles": 0,
+      "resultingFilesManifestSha256": "d1d34cb7180b52a34b162678451a86c6d6203576f0f4d69b0a8a6bcafb730c6e",
+      "resultingInstalledSize": 5065584938
+    },
+    {
+      "fromVersion": "1.0.6",
+      "toVersion": "1.0.13",
+      "publishedAt": "2026-11-12T14:00:26.623Z",
+      "archive": {
+        "filename": "ghosting-renewed-1.0.6-to-1.0.13.7z",
+        "size": 27321481,
+        "sha256": "019f771da5e1e3d0f64aca204b9df6fbafc1b58a35f382bd269c0b1f0db30e56",
+        "providers": [
+          {
+            "id": "timeweb-primary",
+            "type": "https-direct",
+            "status": "permanent",
+            "priority": 10,
+            "url": "https://hlsr.pro/downloads/ghosting-renewed/1.0.13/ghosting-renewed-1.0.6-to-1.0.13.7z"
+          }
+        ]
+      },
+      "changedFiles": 120,
+      "deletedFiles": 0,
+      "resultingFilesManifestSha256": "d1d34cb7180b52a34b162678451a86c6d6203576f0f4d69b0a8a6bcafb730c6e",
+      "resultingInstalledSize": 5065584938
+    },
+    {
+      "fromVersion": "1.0.7",
+      "toVersion": "1.0.13",
+      "publishedAt": "2026-11-12T14:00:26.641Z",
+      "archive": {
+        "filename": "ghosting-renewed-1.0.7-to-1.0.13.7z",
+        "size": 27321476,
+        "sha256": "56ad3a5d10b2fb94f5a3b0e46933c3352477929576f1821d4cc818f57a62824f",
+        "providers": [
+          {
+            "id": "timeweb-primary",
+            "type": "https-direct",
+            "status": "permanent",
+            "priority": 10,
+            "url": "https://hlsr.pro/downloads/ghosting-renewed/1.0.13/ghosting-renewed-1.0.7-to-1.0.13.7z"
+          }
+        ]
+      },
+      "changedFiles": 120,
+      "deletedFiles": 0,
+      "resultingFilesManifestSha256": "d1d34cb7180b52a34b162678451a86c6d6203576f0f4d69b0a8a6bcafb730c6e",
+      "resultingInstalledSize": 5065584938
+    },
+    {
+      "fromVersion": "1.0.8",
+      "toVersion": "1.0.13",
+      "publishedAt": "2026-11-12T14:00:26.660Z",
+      "archive": {
+        "filename": "ghosting-renewed-1.0.8-to-1.0.13.7z",
+        "size": 27313871,
+        "sha256": "02b4164c329397706bc0d61db3cbf86508ad662f9ae5a22e28b83936f4a2526a",
+        "providers": [
+          {
+            "id": "timeweb-primary",
+            "type": "https-direct",
+            "status": "permanent",
+            "priority": 10,
+            "url": "https://hlsr.pro/downloads/ghosting-renewed/1.0.13/ghosting-renewed-1.0.8-to-1.0.13.7z"
+          }
+        ]
+      },
+      "changedFiles": 119,
+      "deletedFiles": 0,
+      "resultingFilesManifestSha256": "d1d34cb7180b52a34b162678451a86c6d6203576f0f4d69b0a8a6bcafb730c6e",
+      "resultingInstalledSize": 5065584938
+    },
+    {
+      "fromVersion": "1.0.9",
+      "toVersion": "1.0.13",
+      "publishedAt": "2026-11-12T14:00:26.678Z",
+      "archive": {
+        "filename": "ghosting-renewed-1.0.9-to-1.0.13.7z",
+        "size": 27263926,
+        "sha256": "5d0fd79a75a7b80681576a44671be3fd50409e666fea7b8bcf608a6debe6d39a",
+        "providers": [
+          {
+            "id": "timeweb-primary",
+            "type": "https-direct",
+            "status": "permanent",
+            "priority": 10,
+            "url": "https://hlsr.pro/downloads/ghosting-renewed/1.0.13/ghosting-renewed-1.0.9-to-1.0.13.7z"
+          }
+        ]
+      },
+      "changedFiles": 109,
+      "deletedFiles": 0,
+      "resultingFilesManifestSha256": "d1d34cb7180b52a34b162678451a86c6d6203576f0f4d69b0a8a6bcafb730c6e",
+      "resultingInstalledSize": 5065584938
+    },
+    {
+      "fromVersion": "1.0.10",
+      "toVersion": "1.0.13",
+      "publishedAt": "2026-11-12T14:00:26.687Z",
+      "archive": {
+        "filename": "ghosting-renewed-1.0.10-to-1.0.13.7z",
+        "size": 10182767,
+        "sha256": "af9de3d25aa7bc677d959d4c8bad82c997141e7768863351c46d464b6fe593fa",
+        "providers": [
+          {
+            "id": "timeweb-primary",
+            "type": "https-direct",
+            "status": "permanent",
+            "priority": 10,
+            "url": "https://hlsr.pro/downloads/ghosting-renewed/1.0.13/ghosting-renewed-1.0.10-to-1.0.13.7z"
+          }
+        ]
+      },
+      "changedFiles": 95,
+      "deletedFiles": 0,
+      "resultingFilesManifestSha256": "d1d34cb7180b52a34b162678451a86c6d6203576f0f4d69b0a8a6bcafb730c6e",
+      "resultingInstalledSize": 5065584938
+    },
+    {
+      "fromVersion": "1.0.11",
+      "toVersion": "1.0.13",
+      "publishedAt": "2026-11-12T14:00:26.696Z",
+      "archive": {
+        "filename": "ghosting-renewed-1.0.11-to-1.0.13.7z",
+        "size": 9266662,
+        "sha256": "156291172ae58408a52ec3a8b7e6ec766ffb8c3bfafd73a5acce1d601e5f32b3",
+        "providers": [
+          {
+            "id": "timeweb-primary",
+            "type": "https-direct",
+            "status": "permanent",
+            "priority": 10,
+            "url": "https://hlsr.pro/downloads/ghosting-renewed/1.0.13/ghosting-renewed-1.0.11-to-1.0.13.7z"
+          }
+        ]
+      },
+      "changedFiles": 85,
+      "deletedFiles": 0,
+      "resultingFilesManifestSha256": "d1d34cb7180b52a34b162678451a86c6d6203576f0f4d69b0a8a6bcafb730c6e",
+      "resultingInstalledSize": 5065584938
+    },
+    {
+      "fromVersion": "1.0.12",
+      "toVersion": "1.0.13",
+      "publishedAt": "2026-11-12T14:00:26.704Z",
+      "archive": {
+        "filename": "ghosting-renewed-1.0.12-to-1.0.13.7z",
+        "size": 9266666,
+        "sha256": "82209ef4ccc24dd3194043fe775a80a25361a995e494c324de7801db813cc332",
+        "providers": [
+          {
+            "id": "timeweb-primary",
+            "type": "https-direct",
+            "status": "permanent",
+            "priority": 10,
+            "url": "https://hlsr.pro/downloads/ghosting-renewed/1.0.13/ghosting-renewed-1.0.12-to-1.0.13.7z"
+          }
+        ]
+      },
+      "changedFiles": 85,
+      "deletedFiles": 0,
+      "resultingFilesManifestSha256": "d1d34cb7180b52a34b162678451a86c6d6203576f0f4d69b0a8a6bcafb730c6e",
+      "resultingInstalledSize": 5065584938
+    }
+  ],
+  "enabled": true,
+  "notes": "1.0.13 — HL1 Movement 4.3: исправлены вылеты после загрузки на d2_prison_02 и других картах с дымом, при броске предмета без физики, на d3_citadel_03 и после множества быстрых сохранений; в главном меню появился список серверов; параметр запуска -truehl1 включает движение Half-Life 1; для лаунчера 0.4.9 — Vulkan (DXVK 3.1.1) и моды «HUD и модели»."
+}

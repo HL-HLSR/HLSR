@@ -5,12 +5,10 @@
  *  environment.
  */
 
-/* eslint-disable */
+require('electron').app.commandLine.appendSwitch('remote-debugging-port', '9222')
 
-// Install `electron-debug` with `devtron`
-require('electron-debug')({ showDevTools: true })
+require('electron-debug').default({ showDevTools: true })
 
-// Install `vue-devtools`
 require('electron').app.on('ready', () => {
   let installExtension = require('electron-devtools-installer')
   installExtension.default(installExtension.VUEJS_DEVTOOLS)
@@ -20,5 +18,4 @@ require('electron').app.on('ready', () => {
     })
 })
 
-// Require `main` process to boot app
 require('./index')

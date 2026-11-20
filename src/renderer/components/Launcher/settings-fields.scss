@@ -1,0 +1,329 @@
+// Разметка списка настроек: разделы слева, строки с переключателями,
+// полями и ползунками справа. Общая для дополнительных настроек Ghosting/HL1
+// (GhostingSettingsExtras) и редактора конфигов (GameConfigEditor).
+
+// Полоса прокрутки внутри рамки: общая (App.vue) прижата к краю, и
+// закруглённый угол срезал ползунок. Здесь ползунок отступает от рамки
+// прозрачной обводкой, а дорожка — от углов.
+@mixin gx-scrollbar {
+  &::-webkit-scrollbar { width: 10px; }
+  &::-webkit-scrollbar-track { margin-block: 8px; border-radius: 0; background: transparent; }
+  &::-webkit-scrollbar-thumb { border: 3px solid transparent; border-radius: 5px; background: rgba(255, 255, 255, 0.14) padding-box; }
+  &::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.24) padding-box; }
+}
+
+.gx {
+  --gx-nav: 184px;
+  /* Ширину колонки полей может задать родитель (вкладка «Персонализация»). */
+  --gx-fields: var(--gx-fields-w, clamp(330px, 32%, 370px));
+  display: grid;
+  grid-template-columns: var(--gx-nav) var(--gx-fields) minmax(0, 1fr);
+  gap: 12px;
+  height: 100%;
+  min-height: 0;
+  color: var(--l-text);
+  color-scheme: dark;
+
+  &--wide { grid-template-columns: var(--gx-nav) minmax(0, 1fr); }
+}
+
+.gx-stage { min-width: 0; }
+.gx-code { min-width: 0; min-height: 0; overflow-y: auto; @include gx-scrollbar; }
+
+/* Sections */
+.gx-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-height: 0;
+  padding: 8px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border: 1px solid var(--l-border);
+  border-radius: var(--l-radius-sm);
+  background: var(--l-modal-nav);
+  @include gx-scrollbar;
+
+  &__item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    min-height: 38px;
+    padding: 7px 8px;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--l-text-dim);
+    font: inherit;
+    font-size: 13px;
+    line-height: 1.25;
+    text-align: left;
+    cursor: pointer;
+    transition: background var(--l-fast), color var(--l-fast);
+
+    &:hover { background: rgba(255, 255, 255, 0.06); color: var(--l-text); }
+    &.active { background: var(--accent-soft); color: var(--l-text); }
+    &.active i { color: var(--accent); }
+    &:focus-visible { outline: 2px solid var(--accent-focus); outline-offset: -2px; }
+  }
+  &__icon { position: relative; flex: none; width: 16px; text-align: center; }
+  &__icon i { font-size: 13px; }
+  // A section with changed settings gets a dot on its icon; the number is in the reset button.
+  &__dot { position: absolute; top: -4px; right: -5px; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 2px var(--l-modal-nav); }
+  &__item.active &__dot { box-shadow: 0 0 0 2px #0f2a3d; }
+  &__label { flex: 1; min-width: 0; }
+}
+
+.gx-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; }
+
+/* Settings list */
+.gx-pane {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  border: 1px solid var(--l-border);
+  border-radius: var(--l-radius-sm);
+  background: var(--l-modal-bar);
+
+  &__head {
+    display: grid;
+    flex: none;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 3px 12px;
+    padding: 10px 14px 10px;
+    border-bottom: 1px solid var(--l-border);
+  }
+  &__title { margin: 0; font-size: 15px; font-weight: 600; line-height: 1.3; text-wrap: balance; }
+  &__reset { grid-column: 2; grid-row: 1; }
+  &__note { grid-column: 1 / -1; margin: 0; color: var(--l-text-faint); font-size: 12px; line-height: 1.4; text-wrap: pretty; }
+
+  &--packs {
+    .gx-pane__head { padding: 8px 14px; }
+    .gx-pane__link { grid-column: 1 / -1; justify-content: flex-start; min-height: 20px; height: auto; padding: 0; border: 0; background: transparent; white-space: normal; }
+    .gx-row { padding-block: 6px; }
+    .gx-row__main { flex-direction: column; align-items: stretch; gap: 6px; }
+    .gx-dropdown, .gx-dropdown :deep(.ui-dropdown__toggle) { flex: none; width: 100%; }
+  }
+}
+
+.gx-fields {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  @include gx-scrollbar;
+}
+.gx-col { min-width: 0; }
+.gx--wide .gx-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 28px; align-items: start; padding: 0 14px; }
+
+.gx-row {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+  margin: 0;
+  padding: 10px 14px;
+  border: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.055);
+  transition: background var(--l-fast);
+
+  &:hover, &:focus-within { background: rgba(255, 255, 255, 0.025); }
+  // The changed mark is always there and only fades in. Adding a ::before to
+  // a fieldset rebuilds its layout, and Chromium drops a slider drag that is
+  // under way: the first move off the default would stop dead.
+  &::before { content: ''; position: absolute; top: 10px; bottom: 10px; left: 0; width: 3px; border-radius: 0 3px 3px 0; background: var(--accent); opacity: 0; transition: opacity var(--l-fast); pointer-events: none; }
+  &.is-changed::before { opacity: 1; }
+  &__main { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 28px; }
+  // Обычное слово не рвётся посередине (переносится по пробелам); слишком длинный токен всё же переломится. Место подписи освобождает поле числа (.gx-num сжимается).
+  &__label { flex: 1; min-width: 0; color: var(--l-text); font-size: 13.5px; font-weight: 500; line-height: 1.3; cursor: pointer; overflow-wrap: break-word; word-break: normal; hyphens: none; }
+  &__hint { margin: 0; color: var(--l-text-faint); font-size: 12px; line-height: 1.4; text-wrap: pretty; }
+  &__error { margin: 0; color: #ff8a96; font-size: 12px; line-height: 1.4; }
+  &__needs { margin: 0; color: var(--l-text-faint); font-size: 12px; line-height: 1.4; }
+  // The controls fade; the note saying what turns the setting on stays readable.
+  &.is-off > :not(.gx-row__needs) { opacity: 0.45; }
+  &.is-off .gx-row__label { cursor: default; }
+}
+.gx--wide .gx-row { padding-inline: 0; }
+.gx--wide .gx-row::before { left: -14px; }
+
+/* Controls */
+.gx-input {
+  box-sizing: border-box;
+  height: 34px;
+  min-width: 0;
+  padding: 0 12px;
+  border: 1px solid var(--l-border);
+  border-radius: var(--l-radius-sm);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--l-text);
+  font: inherit;
+  font-size: 13px;
+  transition: background var(--l-fast), border-color var(--l-fast);
+
+  &:hover { border-color: var(--l-border-strong); background: rgba(255, 255, 255, 0.07); }
+  &:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-soft); }
+  &::placeholder { color: var(--l-text-faint); opacity: 1; }
+  &.invalid { border-color: #ff4d5e; }
+  &--num { flex: 0 1 92px; width: 92px; min-width: 64px; font-variant-numeric: tabular-nums; text-align: right; }
+  /* Поле выбора. Стрелка — отдельный значок, а не фоновая картинка:
+     у фона её сбрасывало сокращение background при наведении, и переход
+     уводил стрелку в левый верхний угол. */
+  &--select {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    line-height: 32px;
+    cursor: pointer;
+  }
+  &--select.open { border-color: var(--l-border-strong); background: rgba(255, 255, 255, 0.07); }
+  &__value { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-align: left; }
+  &__chev { flex: none; width: 12px; color: var(--l-text-dim); font-size: 10px; text-align: center; transition: transform var(--l-med), color var(--l-fast); }
+  &--select:hover &__chev { color: var(--l-text); }
+  &--select.open &__chev { transform: rotate(180deg); color: var(--l-accent); }
+}
+
+/* Кнопка списка занимает место бывшего <select>; фокус рисует поле. */
+.gx-dropdown { flex: 0 1 164px; min-width: 0; }
+.gx-dropdown :deep(.ui-dropdown__toggle) { width: 100%; }
+.gx-dropdown :deep(.ui-dropdown__toggle:focus-visible) { outline: none; }
+.gx-dropdown :deep(.ui-dropdown__toggle:focus-visible) .gx-input { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-soft); }
+
+.gx-num { position: relative; display: inline-flex; flex: 0 1 auto; min-width: 64px; }
+.gx-num.has-unit .gx-input--num { padding-right: 20px; }
+.gx-num__unit { position: absolute; top: 50%; right: 9px; transform: translateY(-50%); color: var(--l-text-faint); font-size: 13px; pointer-events: none; }
+/* Системные стрелки рисуются поверх единицы и не красятся под лаунчер:
+   вместо них кнопки GxNumStep справа, единица стоит перед ними. */
+.gx-input--num { appearance: textfield; }
+.gx-input--num::-webkit-inner-spin-button,
+.gx-input--num::-webkit-outer-spin-button { margin: 0; appearance: none; }
+.gx-num.has-step .gx-input--num { padding-right: 28px; padding-left: 8px; }
+.gx-num.has-step.has-unit .gx-input--num { padding-right: 46px; }
+.gx-num.has-step .gx-num__unit { right: 28px; }
+
+
+.gx-slider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 2px;
+
+  &__end { flex: none; min-width: 44px; color: var(--l-text-faint); font-size: 12px; }
+  &__end:last-child { text-align: right; }
+  &__track {
+    position: relative;
+    flex: 1;
+    height: 28px;
+    &::before { content: ''; position: absolute; top: 50%; left: 0; right: 0; height: 4px; transform: translateY(-50%); border-radius: 2px; background: rgba(255, 255, 255, 0.12); pointer-events: none; }
+    &::after { content: ''; position: absolute; top: 50%; left: var(--from); width: calc(var(--to) - var(--from)); height: 4px; transform: translateY(-50%); border-radius: 2px; background: var(--accent); pointer-events: none; }
+  }
+  // Where the default is; a double click on the slider goes back to it.
+  &__default {
+    position: absolute;
+    top: 50%;
+    left: var(--default);
+    width: 2px;
+    height: 12px;
+    transform: translate(-50%, -50%);
+    border-radius: 1px;
+    background: var(--l-text-faint);
+    pointer-events: none;
+  }
+  &__track.is-default &__default { opacity: 0; }
+}
+// The thumb is centred on the track from end to end, so the fill under the
+// track matches where the thumb is.
+.gx-range {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: calc(100% + 18px);
+  height: 28px;
+  margin: 0 -9px;
+  background: transparent;
+  appearance: none;
+  cursor: pointer;
+  touch-action: none;
+  &::-webkit-slider-runnable-track { height: 28px; background: transparent; }
+  &::-webkit-slider-thumb { width: 18px; height: 18px; margin-top: 5px; border: 2px solid var(--accent); border-radius: 50%; background: var(--l-switch-thumb-on, #fff); appearance: none; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4); cursor: grab; transition: transform var(--l-fast); }
+  &:active::-webkit-slider-thumb { cursor: grabbing; transform: scale(1.12); }
+  &:focus { outline: none; }
+  &:focus-visible::-webkit-slider-thumb { box-shadow: 0 0 0 3px var(--accent-soft); }
+}
+
+.gx-switch {
+  position: relative;
+  display: inline-flex;
+  flex: none;
+  cursor: pointer;
+
+  input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
+  &__track { display: flex; align-items: center; box-sizing: border-box; width: 42px; height: 24px; padding: 3px; border-radius: 12px; background: rgba(255, 255, 255, 0.12); transition: background var(--l-med); pointer-events: none; }
+  &__thumb { width: 18px; height: 18px; border-radius: 50%; background: #fff; transition: transform var(--l-med); }
+  input:checked + &__track { background: var(--accent); }
+  input:checked + &__track &__thumb { background: var(--l-switch-thumb-on, #fff); transform: translateX(18px); }
+  input:focus-visible + &__track { outline: 2px solid var(--accent-focus); outline-offset: 2px; }
+}
+
+.gx-color {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 10px;
+
+  input { width: 46px; height: 30px; padding: 2px; border: 1px solid var(--l-border); border-radius: 8px; background: rgba(255, 255, 255, 0.05); cursor: pointer; }
+  input:focus-visible { outline: 2px solid var(--accent-focus); outline-offset: 2px; }
+  code { color: var(--l-text-dim); font-family: Consolas, monospace; font-size: 12.5px; }
+}
+
+.gx-text { display: flex; align-items: center; gap: 8px; .gx-input { flex: 1; } }
+
+.gx-btn {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-width: 30px;
+  height: 30px;
+  padding: 0 11px;
+  border: 1px solid var(--l-border);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--l-text-dim);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: background var(--l-fast), border-color var(--l-fast), color var(--l-fast), transform 90ms var(--l-ease, ease-out);
+
+  &:hover:not(:disabled) { border-color: var(--l-border-strong); background: rgba(255, 255, 255, 0.1); color: var(--l-text); }
+  // Нажатие видно сразу, даже если действие ничего не поменяло на экране
+  &:active:not(:disabled) { transform: scale(0.96); background: rgba(255, 255, 255, 0.16); }
+  &:focus-visible { outline: 2px solid var(--accent-focus); outline-offset: 2px; }
+  &:disabled { opacity: 0.4; cursor: default; }
+  &--icon { width: 34px; height: 34px; padding: 0; }
+  i { font-size: 11px; }
+  &--icon i { font-size: 13px; }
+  &__count { min-width: 18px; padding: 2px 6px; border-radius: 9px; background: var(--accent); color: var(--accent-contrast-text, #fff); font-size: 11px; font-variant-numeric: tabular-nums; font-weight: 600; line-height: 1.2; text-align: center; }
+}
+
+/* The smallest launcher window with the largest interface scale. */
+@media (max-height: 640px) {
+  .gx-nav__item { min-height: 34px; padding-block: 5px; }
+  .gx-row { padding-block: 8px; }
+  .gx-pane__head { padding-block: 9px 8px; }
+  .gx-pane__note { display: -webkit-box; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gx *, .gx *::after { transition: none !important; }
+}
