@@ -670,7 +670,11 @@ fn service(
     links: ServiceLinks,
     relaunch: Arc<PendingRelaunch>,
 ) -> Arc<dyn UpdateService> {
-    let build = BuildInfo::current(env!("CARGO_PKG_VERSION"));
+    let mut build = BuildInfo::current(env!("CARGO_PKG_VERSION"));
+    // HLSR-CE: самообновление качает официальный HLSR (HL-HLSR/HLSR-Releases) и заменило бы им
+    // CE — в форке оно выключено, новые версии CE выходят релизами форка.
+    build.packaged = false;
+    build.production = false;
     let exe = std::env::current_exe().unwrap_or_default();
     if cfg!(windows) {
         let _ = relaunch;
