@@ -50,7 +50,15 @@ mod tests {
     use std::path::Path;
 
     /// Файлы, где `px(` — сама точка перевода CSS px в `Pixels` или вне раскладки.
-    const PX_FILES: &[&str] = &["scale.rs", "text.rs", "paint.rs", "smoke.rs", "main.rs"];
+    /// HLSR-CE: `legacy.rs` — интерфейс 0.2.9 со своим масштабом от окна 950 × 690 (`K::p`).
+    const PX_FILES: &[&str] = &[
+        "scale.rs",
+        "text.rs",
+        "paint.rs",
+        "smoke.rs",
+        "main.rs",
+        "legacy.rs",
+    ];
     /// Что можно писать через `px(` везде: линия 1 px, ноль, радиус окна.
     const PX_ALLOWED: &[&str] = &["px(0.)", "px(1.)", "px(WINDOW_RADIUS)"];
 

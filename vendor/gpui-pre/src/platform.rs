@@ -163,13 +163,29 @@ const FRAME_STEP_MIN: Duration = Duration::from_micros(16_500);
 /// HLSR: самый длинный шаг кадров окна — 1/45 с с допуском (90 Гц через кадр — ровно 45 к/с).
 const FRAME_STEP_MAX: Duration = Duration::from_micros(22_500);
 
+/// HLSR-CE: предел 60 кадров/с включён (по умолчанию). Выключен — [`frame_divisor`] всегда 1:
+/// окно рисует каждый vblank своего монитора (144 Гц — 144 к/с, 280 Гц — 280 к/с), как rAF
+/// Chromium 0.4.9. Ставит лаунчер из настройки «Снять ограничение 60 FPS» (`uncappedFps`).
+static FRAME_CAP: std::sync::atomic::AtomicBool = std::sync::atomic::AtomicBool::new(true);
+
+/// HLSR-CE: включить или снять предел 60 кадров/с. Поток vsync берёт новый делитель со
+/// следующего ожидания, сетка движения лаунчера — со следующего кадра.
+pub fn set_frame_cap(on: bool) {
+    FRAME_CAP.store(on, std::sync::atomic::Ordering::Relaxed);
+}
+
+/// HLSR-CE: включён ли предел 60 кадров/с.
+pub fn frame_cap() -> bool {
+    FRAME_CAP.load(std::sync::atomic::Ordering::Relaxed)
+}
+
 /// HLSR: через сколько кадров монитора с кадром `refresh` рисует окно: наименьшее целое, при котором
 /// кадров не больше 60 в секунду. Шаг кратен кадру монитора — сетка vsync без рывков: 60 и 120,
 /// 240, 360 Гц — 60 к/с, 144 Гц — 48, 165 — 55, 280 — 56, 90 — 45. Кратный шаг длиннее 1/45 с —
 /// на кадр монитора короче, кадров чуть больше 60: 75 Гц через кадр дал бы 37,5 к/с, поэтому
 /// 61–88 Гц рисуют каждый кадр, 122–133 Гц — каждый второй (61–67 к/с). Кадр неизвестен (0) — 1.
 pub fn frame_divisor(refresh: Duration) -> u32 {
-    if refresh.is_zero() {
+    if refresh.is_zero() || !frame_cap() {
         return 1;
     }
     let divisor = FRAME_STEP_MIN

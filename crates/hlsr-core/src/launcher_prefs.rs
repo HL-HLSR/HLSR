@@ -34,7 +34,7 @@ const KEPT_ON_SAVE: [&str; 5] = [
     "pane",
 ];
 
-/// Умолчания `launcher-prefs.js` 0.4.9 плюс `keyboardRunMode` и `wasLaunched`.
+/// Умолчания `launcher-prefs.js` 0.4.9 плюс `keyboardRunMode`, `wasLaunched` и `uncappedFps` (HLSR-CE).
 pub fn prefs_defaults() -> Value {
     json!({
         "speedLimit": 0,
@@ -56,6 +56,8 @@ pub fn prefs_defaults() -> Value {
         "ghostingBuild": "HL1 MOVEMENT",
         "keyboardRunMode": "scriptless",
         "wasLaunched": false,
+        // HLSR-CE: снять предел 60 кадров/с (`gpui::set_frame_cap`).
+        "uncappedFps": false,
     })
 }
 

@@ -55,6 +55,12 @@ Discord»; допуск 1 %: монитор 60,4 Гц рисует каждый 
 (`crates/hlsr-gpui/src/motion/driver.rs`). Тест — там же, `motion::driver::pacing` (`cargo test
 -p hlsr-gpui --lib pacing`): тесты самого пакета вне workspace не собираются.
 
+**HLSR-CE: предел можно снять.** `set_frame_cap(false)` (настройка лаунчера «Снять ограничение
+60 FPS», prefs `uncappedFps`) — `frame_divisor` всегда 1: поток vsync `gpui-pre-windows` будит окна
+каждым vblank монитора окна, сетка движения лаунчера идёт с тем же шагом, интерфейс рисуется с
+частотой монитора (как rAF Chromium 0.4.9). Флаг глобальный (`AtomicBool`), меняется на лету:
+поток vsync берёт делитель перед каждым ожиданием. По умолчанию предел включён.
+
 Остальные файлы — как в пакете crates.io (`Cargo.toml` нормализован пакетом, `Cargo.toml.orig`,
 `LICENSE-APACHE`).
 

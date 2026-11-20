@@ -930,6 +930,14 @@ pub fn set_theme(id: &str, accent: Option<&str>, window: &mut Window, cx: &mut A
     window.refresh();
 }
 
+/// HLSR-CE: смена языка из Legacy-интерфейса ([`crate::legacy`]).
+pub(crate) fn change_language_to(lang: Language, _window: &mut Window, cx: &mut App) {
+    let Some(services) = ShellContext::get(cx).map(|shell| shell.services.clone()) else {
+        return;
+    };
+    change_language(&services, lang.code(), cx);
+}
+
 /// `setLanguage(id)` оболочки: тот же или незнакомый — ничего; иначе `settings.config.language`,
 /// интерфейс заново (`langRev`), `updater-set-language`.
 fn change_language(services: &Services, code: &str, cx: &mut App) {

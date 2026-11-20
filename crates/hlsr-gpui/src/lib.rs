@@ -24,6 +24,7 @@ pub mod installer;
 pub mod keys;
 pub mod kit;
 pub mod layer;
+pub mod legacy;
 pub mod liquid;
 pub mod live;
 pub mod media;

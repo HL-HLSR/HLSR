@@ -2,9 +2,14 @@
 
 <img src="icons/hlsrc.png" width="128" alt="Логотип HLSR">
 
-<h1>HLSR</h1>
+<h1>HLSR-CE</h1>
 
-**Современный и самый удобный лаунчер со сборками Half-Life.**
+**HLSR Community Edition — форк [HLSR](https://github.com/HL-HLSR/HLSR) от сообщества, современного и самого удобного лаунчера со сборками Half-Life.**
+
+Что добавляет CE поверх HLSR:
+
+- **Снять ограничение 60 FPS** — *Настройки → Интерфейс*: интерфейс лаунчера рисуется с частотой вашего монитора (144, 240 Гц и выше), а не 60 кадров в секунду.
+- **Секрет** — лаунчер помнит, с чего начинался. Подсказка: наберите одно слово на клавиатуре в любом месте вне полей ввода.
 
 [![release](https://img.shields.io/github/v/release/HL-HLSR/HLSR-Releases?label=release&color=7c3aed)](https://github.com/HL-HLSR/HLSR-Releases/releases/latest)
 [![downloads](https://img.shields.io/github/downloads/HL-HLSR/HLSR-Releases/total?label=downloads&color=7c3aed)](https://github.com/HL-HLSR/HLSR-Releases/releases)

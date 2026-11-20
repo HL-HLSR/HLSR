@@ -4,6 +4,9 @@
 //! снизу посередине окна, шириной `min(46%, 640px)`, выезд .45 с, на экране 1,45 с. Обе поверх
 //! всего (z 70) и прозрачны для мыши. Под окнами и в полях ввода чит не набирается — это решает
 //! корень ([`super::root`]); логотип под окном закрыт подложкой.
+//!
+//! HLSR-CE: код «LEGACY» ([`LegacyCode`]) переключает интерфейс на HLSR 0.2.9 ([`crate::legacy`])
+//! и обратно; до перезапуска.
 
 use super::topbar::text_width;
 use crate::games::hero::Title;
@@ -49,6 +52,32 @@ impl Cheat {
             self.0.remove(0);
         }
         if self.0.iter().map(String::as_str).eq(CHEAT) {
+            self.0.clear();
+            return true;
+        }
+        false
+    }
+}
+
+/// HLSR-CE: код «LEGACY» — интерфейс HLSR 0.2.9 ([`crate::legacy`]); повтор возвращает новый.
+const LEGACY: [&str; 6] = ["KeyL", "KeyE", "KeyG", "KeyA", "KeyC", "KeyY"];
+
+/// Последние нажатия для кода «LEGACY».
+#[derive(Debug, Default)]
+pub struct LegacyCode(Vec<String>);
+
+impl LegacyCode {
+    pub fn reset(&mut self) {
+        self.0.clear();
+    }
+
+    /// Нажатие (`event.code`); код набран — сброс и `true`.
+    pub fn push(&mut self, code: &str) -> bool {
+        self.0.push(code.to_owned());
+        if self.0.len() > LEGACY.len() {
+            self.0.remove(0);
+        }
+        if self.0.iter().map(String::as_str).eq(LEGACY) {
             self.0.clear();
             return true;
         }
