@@ -108,7 +108,7 @@ fn emit(cx: &App, act: impl FnOnce(&ShellFlows)) {
 }
 
 /// `onAction`: действие главной кнопки → обработчик оболочки (`@play`, `@install`, …).
-fn press(action: &str, flows: &ShellFlows) {
+pub(crate) fn press(action: &str, flows: &ShellFlows) {
     match action {
         "play" => flows.on_play(),
         "stop" => flows.on_stop_game(),

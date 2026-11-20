@@ -4,7 +4,7 @@
 //! (герой, нижняя панель, инструмент, «Демо»), шапка ([`super::topbar`]), стопка окон и
 //! `overlayOpen` ([`Layers`]), тосты (`notify`), Discord (`discord-rpc-activity`), секретные
 //! достижения оболочки (`wake-up`, `back-to-past`; `chronicler` и `night-shift` — в сценариях),
-//! пасхалки ([`super::eggs`]: HESOYAM и пони).
+//! пасхалки ([`super::eggs`]: HESOYAM и пони; HLSR-CE — «LEGACY», интерфейс 0.2.9 [`LegacyShell`]).
 //!
 //! Логика — контроллеры `hlsr-ui`: [`ShellController`] (тосты, подтверждение, язык),
 //! [`NavController`] (раздел, колонка, игра), [`LogoController`], [`ShellFlows`] (сценарии
@@ -16,7 +16,7 @@
 //! рамки (`:key="langRev"`).
 
 use super::background::Background;
-use super::eggs::{Cheat, Eggs};
+use super::eggs::{Cheat, Eggs, LegacyCode};
 use super::rail::GameSidebar;
 use super::topbar::Topbar;
 use super::window_controls::WindowControls;
@@ -41,6 +41,7 @@ use crate::header::{
 };
 use crate::home::panel::HomePanel;
 use crate::layer::{Layers, Toasts, tab_root};
+use crate::legacy::LegacyShell;
 use crate::motion::{AnimGate, Timing, VALUE, swap, tween};
 use crate::profile::{friends::FriendsPanel, modal::ProfileModal};
 use crate::settings::SettingsModal;
@@ -395,6 +396,12 @@ pub struct ShellRoot {
     livesplit: Rc<RefCell<Option<LiveSplitAsk>>>,
     secret: SecretSequence,
     cheat: Cheat,
+    /// HLSR-CE: набор кода «LEGACY».
+    legacy_code: LegacyCode,
+    /// HLSR-CE: интерфейс HLSR 0.2.9 вместо нового (пасхалка, до перезапуска).
+    legacy: Option<Entity<LegacyShell>>,
+    /// HLSR-CE: картинки 0.2.9 разбираются перед показом.
+    legacy_loading: Option<Task<()>>,
     /// Фокус корня: без фокуса у элемента клавиши (F11, последовательность) идут сюда.
     focus: FocusHandle,
     /// Последняя отправленная активность Discord.
@@ -426,6 +433,12 @@ fn poker(cx: &mut Context<ShellRoot>) -> Rc<dyn Fn()> {
             })
             .detach();
     })
+}
+
+/// HLSR-CE: `uncappedFps` — снять предел 60 кадров/с: окна рисуют каждый vblank монитора, на
+/// котором стоят (`gpui::frame_divisor` = 1), и интерфейс идёт с его частотой.
+fn apply_frame_cap(prefs: &Prefs) {
+    gpui::set_frame_cap(prefs.get("uncappedFps") != Some(&Value::Bool(true)));
 }
 
 /// Язык окна: `settings.config.language` хранилища (0 — en, 1 — ru).
@@ -543,6 +556,7 @@ impl ShellRoot {
         });
         let no_anim = prefs.borrow().get("animations") == Some(&Value::Bool(false));
         AnimGate::set_no_anim(cx, no_anim);
+        apply_frame_cap(&prefs.borrow());
 
         let events = crate::bridge::listen(cx, services.subscribe(), |root, event, cx| {
             root.on_event(event, cx)
@@ -582,6 +596,9 @@ impl ShellRoot {
             livesplit,
             secret: SecretSequence::default(),
             cheat: Cheat::default(),
+            legacy_code: LegacyCode::default(),
+            legacy: None,
+            legacy_loading: None,
             focus: cx.focus_handle(),
             rpc: Some(activity),
             background_key: None,
@@ -592,6 +609,10 @@ impl ShellRoot {
         // mounted(): игра при запуске (и для Discord), библиотека, загрузки, статусы,
         // `support-thanks-ready`, онлайн.
         root.flows.mount(library.get("lastLaunched"));
+        // HLSR-CE: отладочная сборка может стартовать сразу в Legacy (снимки и проверка вида).
+        if cfg!(debug_assertions) && std::env::var_os("HLSR_CE_LEGACY").is_some() {
+            root.open_legacy(true, cx);
+        }
         root.sync(cx);
         root
     }
@@ -653,6 +674,7 @@ impl ShellRoot {
         });
         let prefs = self.prefs.borrow();
         AnimGate::set_no_anim(cx, prefs.get("animations") == Some(&Value::Bool(false)));
+        apply_frame_cap(&prefs);
         let button = prefs.get("fullscreenButton") != Some(&Value::Bool(false));
         drop(prefs);
         if !button && self.controls.fullscreen {
@@ -779,16 +801,75 @@ impl ShellRoot {
         if in_field || Self::overlay_open(cx) {
             self.secret.reset();
             self.cheat.reset();
+            self.legacy_code.reset();
             return;
         }
         let code = dom_code(key);
         if self.secret.push(&code) {
             self.cheat.reset();
+            self.legacy_code.reset();
             self.shell.unlock_achievement("wake-up");
         } else if self.cheat.push(&code) {
             self.secret.reset();
+            self.legacy_code.reset();
             self.eggs.update(cx, |eggs, cx| eggs.show_cheat(cx));
+        } else if self.legacy_code.push(&code) {
+            self.secret.reset();
+            self.cheat.reset();
+            self.toggle_legacy(cx);
         }
+    }
+
+    /// HLSR-CE: код «LEGACY» — интерфейс HLSR 0.2.9 ([`LegacyShell`]) или обратно новый.
+    /// Окна-диалоги, тосты и пасхалки нового лаунчера остаются поверх: их открывают сценарии
+    /// (установка, запуск, параметры игры), которые Legacy зовёт.
+    pub fn toggle_legacy(&mut self, cx: &mut Context<Self>) {
+        if let Some(legacy) = self.legacy.take() {
+            // Картинки 0.2.9 уходят из памяти и атласа вместе с интерфейсом.
+            for image in legacy.read(cx).images() {
+                cx.drop_image(image, None);
+            }
+            let text = self.shell.tr("#L_LEGACY_OFF", &[]);
+            self.shell.notify(&text, "fas fa-rocket");
+            cx.notify();
+        } else {
+            self.open_legacy(false, cx);
+        }
+    }
+
+    /// HLSR-CE: интерфейс 0.2.9 показывается, когда все его картинки разобраны (в фоне, пакетом):
+    /// иначе страницы появлялись бы без картинок и они догружались бы на глазах.
+    fn open_legacy(&mut self, debug_page: bool, cx: &mut Context<Self>) {
+        if self.legacy_loading.is_some() {
+            return;
+        }
+        self.legacy_loading = Some(cx.spawn(async move |this, cx| {
+            let images = cx
+                .background_executor()
+                .spawn(async { crate::legacy::decode_images() })
+                .await;
+            this.update(cx, |root, cx| {
+                root.legacy_loading = None;
+                let shell = LegacyShell::new(images);
+                let shell = if debug_page {
+                    shell.with_debug_page()
+                } else {
+                    shell
+                };
+                root.legacy = Some(cx.new(|_| shell));
+                if !debug_page {
+                    let text = root.shell.tr("#L_LEGACY_ON", &[]);
+                    root.shell.notify(&text, "fas fa-history");
+                }
+                cx.notify();
+            })
+            .ok();
+        }));
+    }
+
+    /// HLSR-CE: открыт ли интерфейс 0.2.9.
+    pub fn legacy_active(&self) -> bool {
+        self.legacy.is_some()
     }
 
     /// Раздел страницы рядом с колонкой.
@@ -928,7 +1009,13 @@ impl Render for ShellRoot {
                 }
             });
         }
-        let page = self.page(window, cx);
+        let legacy = self.legacy.clone();
+        let legacy_on = legacy.is_some();
+        let page = if legacy_on {
+            div().into_any_element()
+        } else {
+            self.page(window, cx)
+        };
         let on = crate::cache::on(cx);
         let topbar = StyleRefinement::default()
             .absolute()
@@ -961,29 +1048,44 @@ impl Render for ShellRoot {
             .font_family(crate::text::RUBIK)
             .text_color(theme.color("l-text"))
             .on_key_down(cx.listener(Self::on_key_down))
-            .children(app_background(&theme, radius))
-            // .launcher-frame: колонка и страница в одной строке, фон — слой под ними.
-            .child(
-                div()
-                    .absolute()
-                    .inset_0()
-                    .flex()
-                    .child(cached(
-                        self.frame.background.clone(),
-                        StyleRefinement::default().absolute().inset_0(),
-                        on,
-                    ))
-                    .child(self.frame.glass.clone())
-                    .child(cached(self.frame.rail.clone(), rail, on))
-                    .child(page),
-            )
-            .child(cached(self.frame.topbar.clone(), topbar, on))
+            .when_some(legacy, |root, legacy| {
+                // HLSR-CE: интерфейс 0.2.9 вместо рамки нового (пасхалка «LEGACY»).
+                root.child(
+                    div()
+                        .absolute()
+                        .inset_0()
+                        .rounded(radius)
+                        .overflow_hidden()
+                        .child(legacy),
+                )
+            })
+            .when(!legacy_on, |root| {
+                root.children(app_background(&theme, radius))
+                    // .launcher-frame: колонка и страница в одной строке, фон — слой под ними.
+                    .child(
+                        div()
+                            .absolute()
+                            .inset_0()
+                            .flex()
+                            .child(cached(
+                                self.frame.background.clone(),
+                                StyleRefinement::default().absolute().inset_0(),
+                                on,
+                            ))
+                            .child(self.frame.glass.clone())
+                            .child(cached(self.frame.rail.clone(), rail, on))
+                            .child(page),
+                    )
+                    .child(cached(self.frame.topbar.clone(), topbar, on))
+            })
             // Окна-диалоги рисуют себя `deferred` + `anchored` по окну: место — всё окно.
             .children(self.frame.windows.iter().map(|view| {
                 let style = StyleRefinement::default().absolute().inset_0();
                 cached(view.clone(), style, on)
             }))
-            .child(self.frame.update_card.clone())
+            .when(!legacy_on, |root| {
+                root.child(self.frame.update_card.clone())
+            })
             .child(self.toasts.clone())
             .child(self.eggs.clone())
             // #app::after: контур окна inset 0 0 0 1px rgba(255,255,255,.12); в полном экране нет.

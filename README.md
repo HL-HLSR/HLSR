@@ -2,9 +2,14 @@
 
 <img src="icons/hlsrc.png" width="128" alt="HLSR logo">
 
-<h1>HLSR</h1>
+<h1>HLSR-CE</h1>
 
-**A modern and the most convenient launcher for Half-Life speedrun builds.**
+**HLSR Community Edition — a community fork of [HLSR](https://github.com/HL-HLSR/HLSR), a modern and the most convenient launcher for Half-Life speedrun builds.**
+
+What CE adds on top of HLSR:
+
+- **Uncap 60 FPS** — *Settings → Interface*: the launcher interface draws at your monitor refresh rate (144, 240 Hz and up) instead of being capped at 60 frames per second.
+- **A secret** — the launcher remembers its roots. Hint: type a certain word on the keyboard anywhere outside text fields.
 
 [![release](https://img.shields.io/github/v/release/HL-HLSR/HLSR-Releases?label=release&color=7c3aed)](https://github.com/HL-HLSR/HLSR-Releases/releases/latest)
 [![downloads](https://img.shields.io/github/downloads/HL-HLSR/HLSR-Releases/total?label=downloads&color=7c3aed)](https://github.com/HL-HLSR/HLSR-Releases/releases)

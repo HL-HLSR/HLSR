@@ -1073,6 +1073,16 @@ fn interface(snap: &Snap) -> Vec<AnyElement> {
             ],
             Some(switch(snap, "animations", "#L_S_ANIMATIONS", true)),
             false,
+            At::Middle,
+        ),
+        // HLSR-CE: предел 60 кадров/с снят — интерфейс идёт с частотой монитора окна.
+        row(
+            vec![
+                label(snap, snap.t("#L_S_UNCAPPED_FPS")),
+                hint(snap, snap.t("#L_S_UNCAPPED_FPS_HINT")),
+            ],
+            Some(switch(snap, "uncappedFps", "#L_S_UNCAPPED_FPS", false)),
+            false,
             At::Last,
         ),
     ]

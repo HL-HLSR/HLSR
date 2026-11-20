@@ -107,6 +107,7 @@ fn sanitize_keeps_defaults_order_then_saved_keys() {
             "ghostingBuild",
             "keyboardRunMode",
             "wasLaunched",
+            "uncappedFps",
             "custom",
         ]
     );
