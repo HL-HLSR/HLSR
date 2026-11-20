@@ -14,19 +14,22 @@
 //! было, а действия объясняют это тостом.
 
 use crate::icons::fa_glyph;
+use crate::motion::{AnimGate, Timing, hover, mix, monitor_frame, tween};
 use crate::shell::root::ShellContext;
 use crate::text::RUBIK;
 use gpui::{
-    AnyElement, App, ClickEvent, Context, Div, FontWeight, Hsla, IntoElement, ObjectFit, Pixels,
-    Render, Rgba, SharedString, Stateful, Window, WindowControlArea, deferred, div, img,
-    linear_color_stop, linear_gradient, prelude::*, px, svg,
+    AnyElement, App, AssetSource, ClickEvent, Context, Div, FontWeight, Hsla, Img, IntoElement,
+    ObjectFit, Pixels, Render, RenderImage, Rgba, SharedString, Stateful, Window,
+    WindowControlArea, deferred, div, img, linear_color_stop, linear_gradient, prelude::*, px, svg,
 };
 use hlsr_core::language::Language;
 use hlsr_ui::controllers::download_bar::button_view;
 use hlsr_ui::services::StoreRead;
 use serde_json::{Value, json};
+use std::collections::HashMap;
 use std::rc::Rc;
-use std::time::Duration;
+use std::sync::Arc;
+use std::time::{Duration, Instant};
 
 /// Окно 0.2.9 (`CreateWindow.js`: `width: 950, height: 690`, без рамки, без изменения размера).
 const BASE_W: f32 = 950.;
@@ -100,6 +103,78 @@ const THEMES: [&str; 4] = [
     "legacy/lancer.jpg",
 ];
 
+/// Все картинки интерфейса 0.2.9: разбираются заранее одним пакетом ([`decode_images`]), иначе
+/// `img("путь")` GPUI грузит каждую при первом показе и страница появляется без неё.
+const IMAGES: [&str; 26] = [
+    "legacy/gradient.jpg",
+    "legacy/blue.jpg",
+    "legacy/red.jpg",
+    "legacy/lancer.jpg",
+    "legacy/logo.png",
+    "legacy/screenshots/half-life-background.jpg",
+    "legacy/screenshots/opposing-force-background.jpg",
+    "legacy/screenshots/blue-shift-background.jpg",
+    "legacy/screenshots/half-life-2-background.jpg",
+    "legacy/screenshots/half-life-2-ghosting-background.jpg",
+    "legacy/customization/Standard.jpg",
+    "legacy/customization/CF.jpg",
+    "legacy/customization/BM.jpg",
+    "legacy/customization/ST.jpg",
+    "legacy/customization/XEN.jpg",
+    "legacy/customization/XEN_2.jpg",
+    "legacy/customization/crosshairs/Standard.jpg",
+    "legacy/customization/crosshairs/Enchanced.jpg",
+    "legacy/customization/crosshairs/Dot.jpg",
+    "legacy/customization/crosshairs/Counter-Strike.jpg",
+    "legacy/customization/crosshairs/Green.jpg",
+    "legacy/customization/hud/1.jpg",
+    "legacy/customization/hud/2.jpg",
+    "legacy/customization/sprites/1.jpg",
+    "legacy/customization/sprites/2.jpg",
+    "legacy/customization/icon-checkbox.png",
+];
+
+/// Разобранные картинки 0.2.9.
+pub type Images = Vec<(&'static str, Arc<RenderImage>)>;
+
+/// Разобрать все картинки 0.2.9 (в фоне: тяжело). Делит работу на потоки — пакет готов за
+/// время самой большой картинки, а не всех подряд.
+pub fn decode_images() -> Images {
+    let decode = |path: &'static str| -> Option<(&'static str, Arc<RenderImage>)> {
+        let bytes = crate::assets::Assets.load(path).ok().flatten()?;
+        let decoded = hlsr_ui::images::decode(&bytes, None, hlsr_ui::images::Fit::Contain).ok()?;
+        Some((path, crate::image::render_image(&decoded.pixels)))
+    };
+    let threads = std::thread::available_parallelism().map_or(4, |n| n.get().clamp(2, 8));
+    let chunks: Vec<Vec<&'static str>> = (0..threads)
+        .map(|i| IMAGES.iter().copied().skip(i).step_by(threads).collect())
+        .collect();
+    std::thread::scope(|scope| {
+        let handles: Vec<_> = chunks
+            .iter()
+            .map(|chunk| {
+                scope.spawn(move || chunk.iter().filter_map(|p| decode(p)).collect::<Vec<_>>())
+            })
+            .collect();
+        handles
+            .into_iter()
+            .flat_map(|h| h.join().unwrap_or_default())
+            .collect()
+    })
+}
+
+/// Картинка из разобранных заранее; нет её — по пути (GPUI загрузит сам).
+fn pic(images: &Rc<HashMap<&'static str, Arc<RenderImage>>>, path: &'static str) -> Img {
+    match images.get(path) {
+        Some(image) => img(image.clone()),
+        None => img(path),
+    }
+}
+
+/// Смена страницы (`<transition name="slide" mode="out-in">`): прежняя уходит вверх и гаснет
+/// за .22 с, новая въезжает снизу за .22 с.
+const SLIDE_MS: f64 = 220.;
+
 /// Страница (`router/index.js`).
 #[derive(Clone, PartialEq, Eq)]
 enum Page {
@@ -134,6 +209,12 @@ pub struct LegacyShell {
     dialog: Option<Dialog>,
     /// Логотип перекрашен двойным щелчком (`changeColor`), через 1,5 с снова белый.
     logo_color: Option<Rgba>,
+    /// Последний цвет логотипа: к нему и от него цвет перетекает (`.5s color`).
+    logo_last: Rgba,
+    /// Уходящая страница и начало перехода.
+    leaving: Option<(Page, Instant)>,
+    /// Картинки, разобранные до показа.
+    images: Rc<HashMap<&'static str, Arc<RenderImage>>>,
     logo_seed: u32,
     logo_reset: Option<gpui::Task<()>>,
     /// Кастомизация: игра, фон меню, прицел, HUD, спрайты, скайбоксы.
@@ -214,8 +295,16 @@ const SEQUENCES: [&str; 4] = [
 ];
 
 impl LegacyShell {
-    pub fn new() -> LegacyShell {
+    pub fn new(images: Images) -> LegacyShell {
         LegacyShell {
+            logo_last: Rgba {
+                r: 1.,
+                g: 1.,
+                b: 1.,
+                a: 1.,
+            },
+            leaving: None,
+            images: Rc::new(images.into_iter().collect()),
             page: Page::Home,
             games_open: false,
             configs_open: false,
@@ -283,7 +372,12 @@ impl LegacyShell {
                 context.nav.select_game(id);
             }
         }
-        self.page = page;
+        if self.page != page && !AnimGate::still(cx).any() {
+            let old = std::mem::replace(&mut self.page, page);
+            self.leaving = Some((old, Instant::now()));
+        } else {
+            self.page = page;
+        }
         cx.notify();
     }
 
@@ -314,12 +408,14 @@ impl LegacyShell {
             self.logo_seed ^= self.logo_seed << 5;
             (self.logo_seed % 250) as f32 / 255.
         };
-        self.logo_color = Some(Rgba {
+        let color = Rgba {
             r: next(),
             g: next(),
             b: next(),
             a: 1.,
-        });
+        };
+        self.logo_color = Some(color);
+        self.logo_last = color;
         self.logo_reset = Some(cx.spawn(async move |this, cx| {
             cx.background_executor()
                 .timer(Duration::from_millis(1500))
@@ -334,9 +430,10 @@ impl LegacyShell {
     }
 }
 
-impl Default for LegacyShell {
-    fn default() -> Self {
-        Self::new()
+impl LegacyShell {
+    /// Картинки — освободить при выходе из Legacy (`cx.drop_image`).
+    pub fn images(&self) -> Vec<Arc<RenderImage>> {
+        self.images.values().cloned().collect()
     }
 }
 
@@ -468,9 +565,31 @@ impl Render for LegacyShell {
         let k = K::of(window);
         let snap = Snap::of(cx);
         let any_menu = self.games_open || self.configs_open || self.gear_open;
-        let game_page = matches!(self.page, Page::Game(_));
+        // Переход: первая половина — уходящая страница вверх, вторая — новая снизу.
+        let mut shown = self.page.clone();
+        let mut shift = 0.;
+        let mut fade = 1.;
+        if let Some((old, since)) = &self.leaving {
+            let ms = since.elapsed().as_secs_f64() * 1000.;
+            let ease = Timing::new(SLIDE_MS, EASE);
+            if ms < SLIDE_MS {
+                let t = ease.at(ms);
+                shown = old.clone();
+                shift = -t;
+                fade = 1. - t;
+                monitor_frame(window);
+            } else if ms < 2. * SLIDE_MS {
+                shift = 1. - ease.at(ms - SLIDE_MS);
+                monitor_frame(window);
+            } else {
+                self.leaving = None;
+            }
+        }
+        let game_page = matches!(shown, Page::Game(_));
+        let area_h = f32::from(window.viewport_size().height) - 32. * k.0;
+        let dy = shift * area_h;
 
-        let page = match self.page.clone() {
+        let page = match shown {
             Page::Home => self.home(k, &snap, cx),
             Page::Game(id) => self.game_menu(k, &snap, id, cx),
             Page::Constructor => self.constructor(k, &snap, cx),
@@ -493,7 +612,7 @@ impl Render for LegacyShell {
                     .absolute()
                     .inset_0()
                     .child(
-                        img(THEMES[self.theme])
+                        pic(&self.images, THEMES[self.theme])
                             .absolute()
                             .inset_0()
                             .size_full()
@@ -534,8 +653,9 @@ impl Render for LegacyShell {
                                         .absolute()
                                         .left_0()
                                         .right_0()
-                                        .bottom_0()
-                                        .top(k.p(if game_page { -32. } else { 0. }))
+                                        .bottom(px(-dy))
+                                        .top(k.p(if game_page { -32. } else { 0. }) + px(dy))
+                                        .opacity(fade)
                                         .child(page),
                                 ),
                             ),
@@ -611,78 +731,103 @@ impl LegacyShell {
     fn sidebar(&self, k: K, snap: &Snap, cx: &mut Context<Self>) -> AnyElement {
         let lang = snap.lang;
         let page = self.page.clone();
-        let logo_color: Hsla = self.logo_color.map_or_else(|| white_a(1.), Into::into);
 
-        // .top .logo: 48 × 48, рамка 4 px; .inner 20 px (наведение — 26 px).
-        let logo = div()
-            .id("legacy-logo")
-            .size(k.p(48.))
-            .rounded_full()
-            .border(k.p(4.))
-            .border_color(logo_color)
-            .flex()
-            .items_center()
-            .justify_center()
-            .group("legacy-logo")
-            .on_click(cx.listener(|this, event: &ClickEvent, _, cx| {
-                if event.click_count() == 2 {
-                    this.change_logo_color(cx);
-                }
-            }))
-            .child(
-                div()
-                    .size(k.p(20.))
-                    .rounded_full()
-                    .bg(logo_color)
-                    .group_hover("legacy-logo", |s| s.size(k.p(26.))),
-            );
-
-        let sbutton = |id: &'static str, icon: &'static str, active: bool, pre: bool| {
-            let base = div()
-                .id(id)
-                .flex()
-                .items_center()
-                .justify_center()
-                .cursor_pointer();
-            if active {
-                base.size(k.p(50.))
-                    .rounded(k.p(8.))
-                    .bg(rgb_a(ACCENT, 0.15))
-                    .border(k.p(2.))
-                    .border_color(rgb_a(ACCENT, 1.))
-                    .text_color(white_a(1.))
-                    .child(fa_glyph(icon, 19. * k.icon()))
-            } else {
-                base.size(k.p(50.))
-                    .text_color(white_a(if pre { 0.5 } else { 0.15 }))
-                    .hover(|s| s.text_color(white_a(0.3)))
-                    .child(fa_glyph(icon, 19. * k.icon()))
+        // .top .logo: 48 × 48, рамка 4 px; .inner 20 px, наведение — 26 px (`.2s`); цвет
+        // перетекает за `.5s` (`transition: .5s color`).
+        let colored = self.logo_color.is_some();
+        let shown: Hsla = self.logo_last.into();
+        let logo_click = cx.listener(|this, event: &ClickEvent, _, cx| {
+            if event.click_count() == 2 {
+                this.change_logo_color(cx);
             }
-        };
+        });
+        let logo = tween(
+            "legacy-logo-color",
+            if colored { 1. } else { 0. },
+            Timing::new(500., EASE),
+            move |c| {
+                let color = mix(white_a(1.), shown, c);
+                hover("legacy-logo-hover", Timing::new(200., EASE), move |h| {
+                    div()
+                        .id("legacy-logo")
+                        .size(k.p(48.))
+                        .rounded_full()
+                        .border(k.p(4.))
+                        .border_color(color)
+                        .flex()
+                        .items_center()
+                        .justify_center()
+                        .on_click(logo_click)
+                        .child(div().size(k.p(20. + 6. * h)).rounded_full().bg(color))
+                })
+            },
+        );
 
-        let games_list = self.games_open.then(|| {
-            let items: Vec<AnyElement> = GAMES
-                .iter()
-                .enumerate()
-                .map(|(i, g)| {
-                    let selected = page == Page::Game(g.id);
-                    let id = g.id;
-                    popup_item(k, i + 1 == GAMES.len(), selected)
-                        .id(SharedString::from(format!("legacy-game-{id}")))
-                        .when(!selected, |el| {
-                            el.on_click(on(cx, move |this, _, cx| {
-                                this.navigate(Page::Game(id), cx)
-                            }))
-                        })
-                        .child(
+        // Кнопка колонки: цвет .15 → .3 при наведении (`transition: .1s`), открытый список — .5.
+        let sbutton =
+            |id: &'static str, icon: &'static str, active: bool, pre: bool, click: Click| {
+                hover(
+                    SharedString::from(format!("{id}-hover")),
+                    Timing::new(100., EASE),
+                    move |h| {
+                        let base = div()
+                            .id(id)
+                            .size(k.p(50.))
+                            .flex()
+                            .items_center()
+                            .justify_center()
+                            .cursor_pointer()
+                            .on_click(click);
+                        if active {
+                            base.rounded(k.p(8.))
+                                .bg(rgb_a(ACCENT, 0.15))
+                                .border(k.p(2.))
+                                .border_color(rgb_a(ACCENT, 1.))
+                                .text_color(white_a(1.))
+                                .child(fa_glyph(icon, 19. * k.icon()))
+                        } else {
+                            let rest = if pre { 0.5 } else { 0.15 };
+                            let over = if pre { 0.5 } else { 0.3 };
+                            base.text_color(white_a(rest + (over - rest) * h))
+                                .child(fa_glyph(icon, 19. * k.icon()))
+                        }
+                    },
+                )
+                .into_any_element()
+            };
+
+        let games_items: Vec<AnyElement> = GAMES
+            .iter()
+            .enumerate()
+            .map(|(i, g)| {
+                let selected = page == Page::Game(g.id);
+                let id = g.id;
+                let time = match lang {
+                    Language::Ru => format!("{} ч.", snap.play_time(g.id)),
+                    _ => format!("{} h.", snap.play_time(g.id)),
+                };
+                let lambda = g.lambda;
+                let name = g.name;
+                let click: Option<Click> = (!selected).then(|| -> Click {
+                    Box::new(on(cx, move |this, _, cx| this.navigate(Page::Game(id), cx)))
+                });
+                popup_item(
+                    k,
+                    SharedString::from(format!("legacy-game-{id}")),
+                    i + 1 == GAMES.len(),
+                    selected,
+                    click,
+                    move |el, h| {
+                        let lambda_a = if selected { 1. } else { 0.5 + 0.1 * h };
+                        el.child(
                             svg()
                                 .path("legacy/lambda.svg")
                                 .size(k.p(14.))
                                 .mr(k.p(12.))
                                 .flex_none()
-                                .text_color(rgb_a(g.lambda, if selected { 1. } else { 0.6 })),
+                                .text_color(rgb_a(lambda, lambda_a)),
                         )
-                        .child(g.name)
+                        .child(name)
                         .child(
                             div()
                                 .ml_auto()
@@ -690,34 +835,39 @@ impl LegacyShell {
                                 .text_size(k.p(12.8))
                                 .font_weight(FontWeight::THIN)
                                 .text_color(white_a(0.15))
-                                .child(match lang {
-                                    Language::Ru => format!("{} ч.", snap.play_time(g.id)),
-                                    _ => format!("{} h.", snap.play_time(g.id)),
-                                }),
+                                .child(time),
                         )
-                        .into_any_element()
-                })
-                .collect();
-            popup(k, items)
-        });
+                    },
+                )
+            })
+            .collect();
+        let games_list = popup(k, "legacy-games-list", self.games_open, games_items);
 
-        let configs_list = self.configs_open.then(|| {
-            let items = vec![
-                popup_item(k, false, page == Page::Constructor)
-                    .id("legacy-cfg-constructor")
-                    .on_click(on(cx, |this, _, cx| this.navigate(Page::Constructor, cx)))
-                    .child(t(lang, "Конструктор", "Constructor"))
-                    .into_any_element(),
-                popup_item(k, true, page == Page::Editor)
-                    .id("legacy-cfg-editor")
-                    .on_click(on(cx, |this, _, cx| this.navigate(Page::Editor, cx)))
-                    .child(t(lang, "Редактор", "Editor"))
-                    .into_any_element(),
-            ];
-            popup(k, items)
-        });
+        let configs_items = vec![
+            popup_item(
+                k,
+                "legacy-cfg-constructor".into(),
+                false,
+                page == Page::Constructor,
+                Some(Box::new(on(cx, |this, _, cx| {
+                    this.navigate(Page::Constructor, cx)
+                }))),
+                move |el, _| el.child(t(lang, "Конструктор", "Constructor")),
+            ),
+            popup_item(
+                k,
+                "legacy-cfg-editor".into(),
+                true,
+                page == Page::Editor,
+                Some(Box::new(on(cx, |this, _, cx| {
+                    this.navigate(Page::Editor, cx)
+                }))),
+                move |el, _| el.child(t(lang, "Редактор", "Editor")),
+            ),
+        ];
+        let configs_list = popup(k, "legacy-configs-list", self.configs_open, configs_items);
 
-        let slot = |child: Stateful<Div>, list: Option<AnyElement>| {
+        let slot = |child: AnyElement, list: Option<AnyElement>| {
             div()
                 .relative()
                 .h(k.p(70.))
@@ -744,21 +894,29 @@ impl LegacyShell {
             .flex()
             .flex_col()
             .child(slot(
-                sbutton("legacy-home", "fas fa-home", page == Page::Home, false)
-                    .on_click(on(cx, |this, _, cx| this.navigate(Page::Home, cx))),
+                sbutton(
+                    "legacy-home",
+                    "fas fa-home",
+                    page == Page::Home,
+                    false,
+                    Box::new(on(cx, |this, _, cx| this.navigate(Page::Home, cx))),
+                ),
                 None,
             ))
             .child(slot(
-                sbutton("legacy-games", "fas fa-play", is_game, self.games_open).on_click(on(
-                    cx,
-                    |this, _, cx| {
+                sbutton(
+                    "legacy-games",
+                    "fas fa-play",
+                    is_game,
+                    self.games_open,
+                    Box::new(on(cx, |this, _, cx| {
                         let open = !this.games_open;
                         this.close_menus();
                         this.games_open = open;
                         cx.notify();
-                    },
-                )),
-                games_list,
+                    })),
+                ),
+                Some(games_list),
             ))
             .child(slot(
                 sbutton(
@@ -766,14 +924,14 @@ impl LegacyShell {
                     "fas fa-align-left",
                     matches!(page, Page::Constructor | Page::Editor),
                     self.configs_open,
-                )
-                .on_click(on(cx, |this, _, cx| {
-                    let open = !this.configs_open;
-                    this.close_menus();
-                    this.configs_open = open;
-                    cx.notify();
-                })),
-                configs_list,
+                    Box::new(on(cx, |this, _, cx| {
+                        let open = !this.configs_open;
+                        this.close_menus();
+                        this.configs_open = open;
+                        cx.notify();
+                    })),
+                ),
+                Some(configs_list),
             ))
             .child(slot(
                 sbutton(
@@ -781,11 +939,13 @@ impl LegacyShell {
                     "fas fa-sliders-h",
                     page == Page::Customization,
                     false,
-                )
-                .on_click(on(cx, |this, _, cx| this.navigate(Page::Customization, cx))),
+                    Box::new(on(cx, |this, _, cx| this.navigate(Page::Customization, cx))),
+                ),
                 None,
             ));
 
+        let settings_click: Click =
+            Box::new(on(cx, |this, _, cx| this.navigate(Page::Settings, cx)));
         let bottom = div()
             .absolute()
             .left_0()
@@ -818,22 +978,25 @@ impl LegacyShell {
                             .text_color(white_a(0.2)),
                     ),
             )
-            .child(
-                div()
-                    .id("legacy-settings")
-                    .size(k.p(46.))
-                    .mb(k.p(16.))
-                    .rounded(k.p(8.))
-                    .bg(rgb_a(ACCENT, 1.))
-                    .hover(|s| s.bg(rgb_a(0x1fb4ff, 1.)))
-                    .flex()
-                    .items_center()
-                    .justify_center()
-                    .text_color(white_a(1.))
-                    .cursor_pointer()
-                    .on_click(on(cx, |this, _, cx| this.navigate(Page::Settings, cx)))
-                    .child(fa_glyph("fas fa-cog", 19. * k.icon())),
-            )
+            .child(hover(
+                "legacy-settings-hover",
+                Timing::new(100., EASE),
+                move |h| {
+                    div()
+                        .id("legacy-settings")
+                        .size(k.p(46.))
+                        .mb(k.p(16.))
+                        .rounded(k.p(8.))
+                        .bg(mix(rgb_a(ACCENT, 1.), rgb_a(0x1fb4ff, 1.), h))
+                        .flex()
+                        .items_center()
+                        .justify_center()
+                        .text_color(white_a(1.))
+                        .cursor_pointer()
+                        .on_click(settings_click)
+                        .child(fa_glyph("fas fa-cog", 19. * k.icon()))
+                },
+            ))
             .child(
                 div()
                     .mr(k.p(24.))
@@ -870,39 +1033,90 @@ impl LegacyShell {
     }
 }
 
-/// `.items`: тёмный список справа от кнопки колонки.
-fn popup(k: K, items: Vec<AnyElement>) -> AnyElement {
-    let height = items.len() as f32 * 44.;
-    div()
-        .mt(k.p(-height / 2.))
-        .flex()
-        .flex_col()
-        .bg(rgb_a(0x141414, 0.97))
-        .border(k.p(2.))
-        .border_color(rgb_a(0x2a2a2a, 1.))
-        .rounded(k.p(6.))
-        .overflow_hidden()
-        .text_size(k.p(14.4))
-        .font_weight(FontWeight::MEDIUM)
-        .children(items)
-        .into_any_element()
+/// Обработчик щелчка, построенный заранее (его забирает элемент внутри перехода).
+type Click = Box<dyn Fn(&ClickEvent, &mut Window, &mut App)>;
+
+/// CSS `ease` — кривая переходов 0.2.9 по умолчанию.
+const EASE: [f64; 4] = [0.25, 0.1, 0.25, 1.];
+
+/// Наведение с переходом `ms` (CSS `transition`): `build(h)` — элемент при доле наведения `h`.
+fn hover_fx<E: IntoElement>(
+    id: impl Into<SharedString>,
+    ms: f64,
+    build: impl FnOnce(f32) -> E + 'static,
+) -> AnyElement {
+    let id: SharedString = id.into();
+    hover(
+        SharedString::from(format!("{id}-hover")),
+        Timing::new(ms, EASE),
+        build,
+    )
+    .into_any_element()
 }
 
-fn popup_item(k: K, last: bool, selected: bool) -> Div {
-    div()
-        .h(k.p(44.))
-        .px(k.p(14.))
-        .flex()
-        .items_center()
-        .whitespace_nowrap()
-        .cursor_pointer()
-        .text_color(if selected {
-            rgb_a(ACCENT, 1.)
-        } else {
-            white_a(0.5)
-        })
-        .when(!selected, |el| el.hover(|s| s.text_color(white_a(0.65))))
-        .when(!last, |el| el.border_b(k.p(2.)).border_color(white_a(0.03)))
+/// `.items`: тёмный список справа от кнопки колонки; появляется и гаснет за .15 с
+/// (`transition: .15s ease opacity`), закрытый щелчков не ловит (`pointer-events: none`).
+fn popup(k: K, id: &'static str, open: bool, items: Vec<AnyElement>) -> AnyElement {
+    let height = items.len() as f32 * 44.;
+    tween(
+        id,
+        if open { 1. } else { 0. },
+        Timing::new(150., EASE),
+        move |t| {
+            if t <= 0. {
+                return div();
+            }
+            div()
+                .mt(k.p(-height / 2.))
+                .opacity(t)
+                .flex()
+                .flex_col()
+                .bg(rgb_a(0x141414, 0.97))
+                .border(k.p(2.))
+                .border_color(rgb_a(0x2a2a2a, 1.))
+                .rounded(k.p(6.))
+                .overflow_hidden()
+                .text_size(k.p(14.4))
+                .font_weight(FontWeight::MEDIUM)
+                .children(items)
+                .when(!open, |el| el.occlude())
+        },
+    )
+    .into_any_element()
+}
+
+/// `.item`: строка списка; цвет .5 → .65 при наведении (`transition: .05s`).
+fn popup_item(
+    k: K,
+    id: SharedString,
+    last: bool,
+    selected: bool,
+    click: Option<Click>,
+    content: impl FnOnce(Stateful<Div>, f32) -> Stateful<Div> + 'static,
+) -> AnyElement {
+    let hover_id = SharedString::from(format!("{id}-hover"));
+    hover(hover_id, Timing::new(50., EASE), move |h| {
+        let el = div()
+            .id(id)
+            .h(k.p(44.))
+            .px(k.p(14.))
+            .flex()
+            .items_center()
+            .whitespace_nowrap()
+            .cursor_pointer()
+            .text_color(if selected {
+                rgb_a(ACCENT, 1.)
+            } else {
+                white_a(0.5 + 0.15 * h)
+            })
+            .when(!last, |el| el.border_b(k.p(2.)).border_color(white_a(0.03)));
+        let el = match click {
+            Some(click) => el.on_click(click),
+            None => el,
+        };
+        content(el, h)
+    })
+    .into_any_element()
 }
 
 // ---- Общие элементы страниц ----------------------------------------------------------------
@@ -1046,64 +1260,74 @@ impl LegacyShell {
                 .overflow_hidden()
         };
 
+        let quick_click: Click = Box::new(on(cx, move |_, _, cx| {
+            let Some(id) = last else { return };
+            let snap = Snap::of(cx);
+            if !snap.installed(id) || snap.running(id) {
+                return;
+            }
+            if let Some(context) = ShellContext::get(cx).cloned() {
+                if context.flows.with_state(|s| s.selected_game_id.clone()) != id {
+                    context.nav.select_game(id);
+                }
+                context.flows.on_play();
+            }
+        }));
+        let cog_click: Click = Box::new(on(cx, move |this, _, cx| {
+            cx.stop_propagation();
+            if let Some(id) = last.filter(|_| installed) {
+                this.navigate(Page::Game(id), cx);
+                this.section = 1;
+            }
+        }));
         let quick = box_()
             .flex_none()
             .h(k.p(118.))
             .child(mini_title(k, t(lang, "Быстрый запуск", "Quick Start")))
             .child(
-                div().flex_1().flex().items_center().mt(k.p(16.)).child(
-                    div()
-                        .id("legacy-quick")
-                        .w_full()
-                        .h(k.p(47.))
-                        .rounded(k.p(4.))
-                        .bg(white_a(0.06))
-                        .hover(|s| s.bg(white_a(0.12)))
-                        .flex()
-                        .items_center()
-                        .cursor_pointer()
-                        .font_weight(FontWeight::MEDIUM)
-                        .on_click(on(cx, move |_, _, cx| {
-                            let Some(id) = last else { return };
-                            let snap = Snap::of(cx);
-                            if !snap.installed(id) || snap.running(id) {
-                                return;
-                            }
-                            if let Some(context) = ShellContext::get(cx).cloned() {
-                                if context.flows.with_state(|s| s.selected_game_id.clone()) != id {
-                                    context.nav.select_game(id);
-                                }
-                                context.flows.on_play();
-                            }
-                        }))
-                        .child(
-                            div()
-                                .ml(k.p(16.))
-                                .text_size(k.p(16.))
-                                .text_color(white_a(if gray { 0.4 } else { 0.6 }))
-                                .child(name),
-                        )
-                        .child(
-                            div()
-                                .id("legacy-quick-cog")
-                                .ml_auto()
-                                .size(k.p(40.))
-                                .rounded_full()
-                                .flex()
-                                .items_center()
-                                .justify_center()
-                                .text_color(white_a(if installed { 0.7 } else { 0.25 }))
-                                .when(installed, |el| el.hover(|s| s.bg(white_a(0.08))))
-                                .on_click(on(cx, move |this, _, cx| {
-                                    cx.stop_propagation();
-                                    if let Some(id) = last.filter(|_| installed) {
-                                        this.navigate(Page::Game(id), cx);
-                                        this.section = 1;
-                                    }
-                                }))
-                                .child(fa_glyph("fas fa-cog", 18. * k.icon())),
-                        ),
-                ),
+                div()
+                    .flex_1()
+                    .flex()
+                    .items_center()
+                    .mt(k.p(16.))
+                    .child(hover_fx("legacy-quick", 50., move |h| {
+                        div()
+                            .id("legacy-quick")
+                            .w_full()
+                            .h(k.p(47.))
+                            .rounded(k.p(4.))
+                            .bg(white_a(0.06 + 0.06 * h))
+                            .flex()
+                            .items_center()
+                            .cursor_pointer()
+                            .font_weight(FontWeight::MEDIUM)
+                            .on_click(quick_click)
+                            .child(
+                                div()
+                                    .ml(k.p(16.))
+                                    .text_size(k.p(16.))
+                                    .text_color(mix(
+                                        white_a(if gray { 0.4 } else { 0.6 }),
+                                        white_a(1.),
+                                        if gray { 0. } else { h },
+                                    ))
+                                    .child(name),
+                            )
+                            .child(
+                                div()
+                                    .id("legacy-quick-cog")
+                                    .ml_auto()
+                                    .size(k.p(40.))
+                                    .rounded_full()
+                                    .flex()
+                                    .items_center()
+                                    .justify_center()
+                                    .text_color(white_a(if installed { 0.7 } else { 0.25 }))
+                                    .when(installed, |el| el.hover(|s| s.bg(white_a(0.08))))
+                                    .on_click(cog_click)
+                                    .child(fa_glyph("fas fa-cog", 18. * k.icon())),
+                            )
+                    })),
             );
 
         let friends = box_()
@@ -1238,51 +1462,51 @@ impl LegacyShell {
         let action = button.as_ref().and_then(|b| b.pressed().map(str::to_owned));
 
         // .md-raised: 200 × 48, белая .22 или акцентная у установленной.
-        let main_button = div()
-            .id("legacy-game-button")
-            .w(k.p(200.))
-            .h(k.p(48.))
-            .rounded(k.p(2.))
-            .flex()
-            .items_center()
-            .justify_center()
-            .text_size(k.p(14.))
-            .font_weight(FontWeight::MEDIUM)
-            .bg(if installed {
-                rgb_a(ACCENT, if disabled { 0.5 } else { 0.78 })
-            } else {
-                white_a(0.22)
-            })
-            .text_color(if installed {
-                white_a(1.)
-            } else {
-                rgb_a(0xd2d2d2, if disabled { 0.5 } else { 1. })
-            })
-            .when(!disabled, |el| {
-                el.cursor_pointer().hover(move |s| {
-                    s.bg(if installed {
-                        rgb_a(ACCENT, 0.9)
+        let main_click = move |_: &ClickEvent, _: &mut Window, cx: &mut App| {
+            if disabled {
+                return;
+            }
+            let Some(action) = action.as_deref() else {
+                return;
+            };
+            if let Some(context) = ShellContext::get(cx).cloned() {
+                if context.flows.with_state(|s| s.selected_game_id.clone()) != id {
+                    context.nav.select_game(id);
+                }
+                crate::games::download_bar::press(action, &context.flows);
+            }
+        };
+        let main_button = hover(
+            "legacy-game-button-hover",
+            Timing::new(400., [0.4, 0., 0.2, 1.]),
+            move |h| {
+                let h = if disabled { 0. } else { h };
+                div()
+                    .id("legacy-game-button")
+                    .w(k.p(200.))
+                    .h(k.p(48.))
+                    .rounded(k.p(2.))
+                    .flex()
+                    .items_center()
+                    .justify_center()
+                    .text_size(k.p(14.))
+                    .font_weight(FontWeight::MEDIUM)
+                    .bg(if installed {
+                        rgb_a(ACCENT, if disabled { 0.5 } else { 0.78 + 0.12 * h })
                     } else {
-                        white_a(0.33)
+                        white_a(0.22 + 0.11 * h)
                     })
-                })
-            })
-            .on_click(move |_, _, cx| {
-                if disabled {
-                    return;
-                }
-                let Some(action) = action.as_deref() else {
-                    return;
-                };
-                if let Some(context) = ShellContext::get(cx).cloned() {
-                    if context.flows.with_state(|s| s.selected_game_id.clone()) != id {
-                        context.nav.select_game(id);
-                    }
-                    crate::games::download_bar::press(action, &context.flows);
-                }
-            })
-            .child(div().mr(k.p(8.)).child(fa_glyph(icon, 13. * k.icon())))
-            .child(label.to_uppercase());
+                    .text_color(if installed {
+                        white_a(1.)
+                    } else {
+                        rgb_a(0xd2d2d2, if disabled { 0.5 } else { 1. })
+                    })
+                    .when(!disabled, |el| el.cursor_pointer())
+                    .on_click(main_click)
+                    .child(div().mr(k.p(8.)).child(fa_glyph(icon, 13. * k.icon())))
+                    .child(label.to_uppercase())
+            },
+        );
 
         let gear_menu = self.gear_open.then(|| {
             let item = |id: &'static str,
@@ -1392,70 +1616,69 @@ impl LegacyShell {
         let nav_button = |i: u8, label: &str, needs_install: bool| {
             let active = section == i;
             let disabled = needs_install && !installed;
-            div()
-                .id(SharedString::from(format!("legacy-section-{i}")))
-                .w_full()
-                .h(k.p(32.))
-                .flex()
-                .items_center()
-                .font_weight(FontWeight::BOLD)
-                .text_color(if active {
-                    rgb_a(ACCENT, 1.)
-                } else if disabled {
-                    rgb_a(0x787878, 1.)
-                } else {
-                    rgb_a(0x969696, 1.)
-                })
-                .when(active, |el| {
-                    el.border_l(k.p(4.)).border_color(rgb_a(ACCENT, 1.))
-                })
-                .when(!active && !disabled, |el| {
-                    el.cursor_pointer()
-                        .hover(|s| s.text_color(rgb_a(0xd2d2d2, 1.)))
-                })
-                .when(!disabled, |el| {
-                    el.on_click(on(cx, move |this, _, cx| {
-                        this.section = i;
-                        cx.notify();
-                    }))
-                })
-                .child(
-                    div()
-                        .ml(k.p(if active { 12. } else { 16. }))
-                        .child(label.to_owned()),
-                )
+            let click: Option<Click> = (!disabled).then(|| -> Click {
+                Box::new(on(cx, move |this, _, cx| {
+                    this.section = i;
+                    cx.notify();
+                }))
+            });
+            let label = label.to_owned();
+            hover_fx(format!("legacy-section-{i}"), 200., move |h| {
+                div()
+                    .id(SharedString::from(format!("legacy-section-{i}")))
+                    .w_full()
+                    .h(k.p(32.))
+                    .flex()
+                    .items_center()
+                    .font_weight(FontWeight::BOLD)
+                    .text_color(if active {
+                        rgb_a(ACCENT, 1.)
+                    } else if disabled {
+                        rgb_a(0x787878, 1.)
+                    } else {
+                        mix(rgb_a(0x969696, 1.), rgb_a(0xd2d2d2, 1.), h)
+                    })
+                    .when(active, |el| {
+                        el.border_l(k.p(4.)).border_color(rgb_a(ACCENT, 1.))
+                    })
+                    .when(!active && !disabled, |el| el.cursor_pointer())
+                    .when_some(click, |el, click| el.on_click(click))
+                    .child(div().ml(k.p(if active { 12. } else { 16. })).child(label))
+            })
         };
         let link = |id: &'static str, label: &str, url: &'static str, border: bool| {
-            div()
-                .id(id)
-                .w_full()
-                .h(k.p(32.))
-                .flex()
-                .items_center()
-                .font_weight(FontWeight::BOLD)
-                .text_color(rgb_a(0x969696, 1.))
-                .cursor_pointer()
-                .hover(|s| s.text_color(rgb_a(0xd2d2d2, 1.)))
-                .when(border, |el| {
-                    el.mt_auto()
-                        .pt(k.p(16.))
-                        .h(k.p(48.))
-                        .border_t_1()
-                        .border_color(white_a(0.1))
-                })
-                .on_click(move |_, _, cx| cx.open_url(url))
-                .child(
-                    div()
-                        .ml(k.p(16.))
-                        .flex()
-                        .items_center()
-                        .child(
-                            div()
-                                .mr(k.p(16.))
-                                .child(fa_glyph("fas fa-link", 13. * k.icon())),
-                        )
-                        .child(label.to_owned()),
-                )
+            let label = label.to_owned();
+            hover_fx(id, 200., move |h| {
+                div()
+                    .id(id)
+                    .w_full()
+                    .h(k.p(32.))
+                    .flex()
+                    .items_center()
+                    .font_weight(FontWeight::BOLD)
+                    .text_color(mix(rgb_a(0x969696, 1.), rgb_a(0xd2d2d2, 1.), h))
+                    .cursor_pointer()
+                    .when(border, |el| {
+                        el.mt_auto()
+                            .pt(k.p(16.))
+                            .h(k.p(48.))
+                            .border_t_1()
+                            .border_color(white_a(0.1))
+                    })
+                    .on_click(move |_, _, cx| cx.open_url(url))
+                    .child(
+                        div()
+                            .ml(k.p(16.))
+                            .flex()
+                            .items_center()
+                            .child(
+                                div()
+                                    .mr(k.p(16.))
+                                    .child(fa_glyph("fas fa-link", 13. * k.icon())),
+                            )
+                            .child(label),
+                    )
+            })
         };
         let warning_text = if !available {
             Some(t(
@@ -1545,7 +1768,7 @@ impl LegacyShell {
             .overflow_hidden()
             // #mainview: скриншот игры `cover` под linear-gradient(0deg, #070707 10%, transparent 200%).
             .child(
-                img(g.background)
+                pic(&self.images, g.background)
                     .absolute()
                     .inset_0()
                     .size_full()
@@ -1945,6 +2168,7 @@ impl LegacyShell {
                 .text_color(rgb_a(0xd2d2d2, 1.))
                 .child(value.to_uppercase())
         };
+        let images = self.images.clone();
         let picture =
             |id: String, path: &'static str, active: bool, height: f32, pick: Listener| {
                 div()
@@ -1959,7 +2183,7 @@ impl LegacyShell {
                         cx.listener(move |this, _: &ClickEvent, window, cx| pick(this, window, cx)),
                     )
                     .child(
-                        img(path)
+                        pic(&images, path)
                             .absolute()
                             .inset_0()
                             .size_full()
@@ -1975,7 +2199,7 @@ impl LegacyShell {
                                 .border_color(rgb_a(ACCENT, 1.)),
                         )
                         .child(
-                            img("legacy/customization/icon-checkbox.png")
+                            pic(&images, "legacy/customization/icon-checkbox.png")
                                 .absolute()
                                 .right(k.p(12.5))
                                 .bottom(k.p(12.))
@@ -2564,7 +2788,7 @@ impl LegacyShell {
                                 .items_center()
                                 .justify_center()
                                 .w(k.p(220.))
-                                .child(img("legacy/logo.png").w(k.p(180.)).h(k.p(180.)).rounded(k.p(4.))),
+                                .child(pic(&self.images, "legacy/logo.png").w(k.p(180.)).h(k.p(180.)).rounded(k.p(4.))),
                         )
                         .into_any_element(),
                 ],

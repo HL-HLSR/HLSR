@@ -400,6 +400,8 @@ pub struct ShellRoot {
     legacy_code: LegacyCode,
     /// HLSR-CE: интерфейс HLSR 0.2.9 вместо нового (пасхалка, до перезапуска).
     legacy: Option<Entity<LegacyShell>>,
+    /// HLSR-CE: картинки 0.2.9 разбираются перед показом.
+    legacy_loading: Option<Task<()>>,
     /// Фокус корня: без фокуса у элемента клавиши (F11, последовательность) идут сюда.
     focus: FocusHandle,
     /// Последняя отправленная активность Discord.
@@ -596,6 +598,7 @@ impl ShellRoot {
             cheat: Cheat::default(),
             legacy_code: LegacyCode::default(),
             legacy: None,
+            legacy_loading: None,
             focus: cx.focus_handle(),
             rpc: Some(activity),
             background_key: None,
@@ -608,7 +611,7 @@ impl ShellRoot {
         root.flows.mount(library.get("lastLaunched"));
         // HLSR-CE: отладочная сборка может стартовать сразу в Legacy (снимки и проверка вида).
         if cfg!(debug_assertions) && std::env::var_os("HLSR_CE_LEGACY").is_some() {
-            root.legacy = Some(cx.new(|_| LegacyShell::new().with_debug_page()));
+            root.open_legacy(true, cx);
         }
         root.sync(cx);
         root
@@ -821,14 +824,47 @@ impl ShellRoot {
     /// Окна-диалоги, тосты и пасхалки нового лаунчера остаются поверх: их открывают сценарии
     /// (установка, запуск, параметры игры), которые Legacy зовёт.
     pub fn toggle_legacy(&mut self, cx: &mut Context<Self>) {
-        let (text, icon) = if self.legacy.take().is_some() {
-            (self.shell.tr("#L_LEGACY_OFF", &[]), "fas fa-rocket")
+        if let Some(legacy) = self.legacy.take() {
+            // Картинки 0.2.9 уходят из памяти и атласа вместе с интерфейсом.
+            for image in legacy.read(cx).images() {
+                cx.drop_image(image, None);
+            }
+            let text = self.shell.tr("#L_LEGACY_OFF", &[]);
+            self.shell.notify(&text, "fas fa-rocket");
+            cx.notify();
         } else {
-            self.legacy = Some(cx.new(|_| LegacyShell::new()));
-            (self.shell.tr("#L_LEGACY_ON", &[]), "fas fa-history")
-        };
-        self.shell.notify(&text, icon);
-        cx.notify();
+            self.open_legacy(false, cx);
+        }
+    }
+
+    /// HLSR-CE: интерфейс 0.2.9 показывается, когда все его картинки разобраны (в фоне, пакетом):
+    /// иначе страницы появлялись бы без картинок и они догружались бы на глазах.
+    fn open_legacy(&mut self, debug_page: bool, cx: &mut Context<Self>) {
+        if self.legacy_loading.is_some() {
+            return;
+        }
+        self.legacy_loading = Some(cx.spawn(async move |this, cx| {
+            let images = cx
+                .background_executor()
+                .spawn(async { crate::legacy::decode_images() })
+                .await;
+            this.update(cx, |root, cx| {
+                root.legacy_loading = None;
+                let shell = LegacyShell::new(images);
+                let shell = if debug_page {
+                    shell.with_debug_page()
+                } else {
+                    shell
+                };
+                root.legacy = Some(cx.new(|_| shell));
+                if !debug_page {
+                    let text = root.shell.tr("#L_LEGACY_ON", &[]);
+                    root.shell.notify(&text, "fas fa-history");
+                }
+                cx.notify();
+            })
+            .ok();
+        }));
     }
 
     /// HLSR-CE: открыт ли интерфейс 0.2.9.
