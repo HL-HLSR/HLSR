@@ -1,0 +1,48 @@
+[package]
+name = "hlsr-ffi"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+
+# Службы лаунчера без GPUI для окна на WinUI (HLSR-UWP): DLL с C ABI.
+
+[lib]
+name = "hlsr_ffi"
+crate-type = ["cdylib"]
+
+[features]
+dev-hooks = [
+    "hlsr-core/dev-hooks",
+    "hlsr-delivery/dev-hooks",
+    "hlsr-demo/dev-hooks",
+    "hlsr-online/dev-hooks",
+    "hlsr-platform/dev-hooks",
+    "hlsr-update/dev-hooks",
+]
+
+[dependencies]
+hlsr-core.workspace = true
+hlsr-delivery.workspace = true
+hlsr-online = { path = "../hlsr-online" }
+hlsr-platform = { path = "../hlsr-platform" }
+hlsr-ui = { path = "../hlsr-ui" }
+hlsr-demo = { path = "../hlsr-demo" }
+hlsr-update.workspace = true
+tokio = { workspace = true, features = ["macros", "rt-multi-thread", "sync", "time"] }
+tracing.workspace = true
+serde_json.workspace = true
+raw-window-handle = "0.6.2"
+rfd.workspace = true
+
+[target.'cfg(windows)'.dependencies]
+windows-sys = { workspace = true, features = [
+    "Win32_Foundation",
+    "Win32_Graphics_Gdi",
+    "Win32_System_Com",
+    "Win32_System_SystemInformation",
+    "Win32_System_Threading",
+    "Win32_UI_Controls",
+    "Win32_UI_Shell",
+    "Win32_UI_WindowsAndMessaging",
+] }

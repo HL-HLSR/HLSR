@@ -13,6 +13,7 @@ members = [
     "crates/hlsr-ui",
     "crates/hlsr-gpui",
     "crates/hlsr-app",
+    "crates/hlsr-ffi",
     "tools/release",
     "tools/snap",
 ]
