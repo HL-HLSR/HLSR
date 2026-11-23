@@ -1,7 +1,8 @@
 #!/bin/bash
 # Сборка выпуска лаунчера на Windows в Git Bash. Нужны Visual Studio Build Tools (MSVC и Windows SDK) и Python.
 # GPUI компилирует шейдеры через fxc.exe. При отдельной кросс-сборке с cargo-xwin
-# переменная GPUI_FXC_PATH должна указывать на обёртку fxc.exe, исполняемую на хосте.
+# переменная GPUI_FXC_PATH должна указывать на обёртку Windows SDK fxc.exe, исполняемую на хосте
+# (под Wine обязателен WINEDLLOVERRIDES="d3dcompiler_47=n;..." с нативной d3dcompiler_47.dll).
 #
 #   scripts/slint/build-windows.sh [--package] [аргументы cargo]
 #

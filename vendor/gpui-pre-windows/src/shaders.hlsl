@@ -1432,7 +1432,7 @@ float color_curve(uint channel, float value) {
     uint index = min((uint)at, COLOR_CURVE_POINTS - 2);
     float low = color_curves.Load(int2(index, 0))[channel];
     float high = color_curves.Load(int2(index + 1, 0))[channel];
-    return lerp(low, high, at - index);
+    return lerp(low, high, at - (float)index);
 }
 
 float4 color_fragment(float4 position: SV_Position): SV_Target {

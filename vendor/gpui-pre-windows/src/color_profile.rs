@@ -98,7 +98,15 @@ impl ColorTransform {
                     .sum::<f64>() as f32
             })
         });
-        let [r, g, b] = [b"rTRC", b"gTRC", b"bTRC"].map(|sig| tag(sig).and_then(Curve::parse));
+        if !matrix
+            .iter()
+            .flatten()
+            .all(|v| v.is_finite() && v.abs() < 8.0)
+        {
+            return None;
+        }
+        let [r, g, b] = [b"rTRC", b"gTRC", b"bTRC"]
+            .map(|sig| tag(sig).and_then(Curve::parse).filter(Curve::is_valid));
         Some(Self {
             matrix,
             curves: [r?.inverse(), g?.inverse(), b?.inverse()],
@@ -231,6 +239,32 @@ impl Curve {
         }
     }
 
+    /// Проверка адекватности кривой (аналог проверки skcms): конечная, неубывающая,
+    /// `0 → ~0`, `1 → ~1`, без вырожденных ступенек.
+    fn is_valid(&self) -> bool {
+        let y0 = self.eval(0.0);
+        let y_mid = self.eval(0.5);
+        let y1 = self.eval(1.0);
+        if !(y0.is_finite()
+            && y_mid.is_finite()
+            && y1.is_finite()
+            && (-0.05..=0.05).contains(&y0)
+            && (0.01..=0.99).contains(&y_mid)
+            && (0.95..=1.05).contains(&y1))
+        {
+            return false;
+        }
+        let mut prev = y0;
+        for i in 1..=64 {
+            let y = self.eval(i as f64 / 64.0);
+            if !y.is_finite() || y + 1e-4 < prev {
+                return false;
+            }
+            prev = y;
+        }
+        true
+    }
+
     /// Обратная кривая: для каждой точки — x, при котором кривая доходит до неё (деление пополам;
     /// кривые профилей монитора не убывают).
     fn inverse(&self) -> Vec<f32> {
@@ -280,7 +314,7 @@ fn invert(m: [[f64; 3]; 3]) -> Option<[[f64; 3]; 3]> {
         m[r0][c0] * m[r1][c1] - m[r0][c1] * m[r1][c0]
     };
     let det = (0..3).map(|c| m[0][c] * cofactor(0, c)).sum::<f64>();
-    (det.abs() > 1e-9)
+    (det.abs() > 1e-3)
         .then(|| std::array::from_fn(|r| std::array::from_fn(|c| cofactor(c, r) / det)))
 }
 
