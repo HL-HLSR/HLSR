@@ -184,7 +184,7 @@ fn mock(zoom: f32, width: f32, bg: Hsla, surface: Hsla, accent: Hsla, radius: gp
                     radius: (1.2, 0.9),
                     stops: vec![(0., 0.22), (0.6, 0.)],
                 }
-                .paint(width, 128., accent),
+                .paint_rounded(width, 128., radius.0 * 16., accent),
             ),
         )
         .child(

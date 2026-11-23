@@ -18,7 +18,7 @@ mod doc;
 mod tests;
 
 use crate::scale::{u, zoom, zpx};
-use crate::scroll::{Bar, Scroll, ScrollArea};
+use crate::scroll::{Bar, Motion, Scroll, ScrollArea, line_step};
 use crate::text::MONO;
 use crate::theme::Theme;
 use doc::Lines;
@@ -189,6 +189,7 @@ pub struct CodeArea {
     scroll: Scroll,
     /// scrollLeft, px окна.
     scroll_x: f32,
+    wheel_x: Option<Motion>,
     frame: Frame,
     selecting: bool,
     hdrag: Option<Drag>,
@@ -293,15 +294,6 @@ fn x_at(line: Option<&ShapedLine>, index: usize) -> f32 {
     line.map_or(0., |line| f32::from(line.x_for_index(index)))
 }
 
-/// Шаг колеса на строку события GPUI, CSS px (как у прокрутки F5).
-fn wheel_step() -> f32 {
-    if cfg!(windows) {
-        hlsr_ui::render::wheel_step_for_lines(1)
-    } else {
-        hlsr_ui::render::WHEEL_STEP
-    }
-}
-
 impl CodeArea {
     pub fn new(window: &mut Window, cx: &mut Context<Self>) -> CodeArea {
         let focus_handle = cx.focus_handle().tab_stop(true);
@@ -329,6 +321,7 @@ impl CodeArea {
             goal_x: None,
             scroll: Scroll::new(),
             scroll_x: 0.,
+            wheel_x: None,
             frame: Frame::default(),
             selecting: false,
             hdrag: None,
@@ -360,6 +353,7 @@ impl CodeArea {
         self.history.clear();
         self.goal_x = None;
         self.scroll_x = 0.;
+        self.wheel_x = None;
         self.scroll.handle().set_offset(Point::default());
         cx.notify();
     }
@@ -614,6 +608,7 @@ impl CodeArea {
         };
         let hi = x + 1.;
         let width = self.frame.text_w;
+        self.wheel_x = None;
         if lo < self.scroll_x {
             self.scroll_x = lo;
         } else if width > 0. && hi > self.scroll_x + width {
@@ -853,6 +848,7 @@ impl CodeArea {
             && y >= f32::from(self.frame.view.bottom()) - HBAR * zoom
         {
             window.prevent_default();
+            self.wheel_x = None;
             let local = x - self.frame.text_left;
             if local >= start && local < start + length {
                 self.hdrag = Some(Drag {
@@ -932,16 +928,40 @@ impl CodeArea {
 
     /// Колесо по горизонтали (Shift + колесо GPUI отдаёт как x); вертикаль — у [`ScrollArea`].
     fn on_wheel(&mut self, event: &ScrollEvent, window: &mut Window, cx: &mut Context<Self>) {
+        let zoom = zoom(window);
         let dx = match event.delta {
-            ScrollDelta::Lines(lines) => -lines.x * wheel_step() * zoom(window),
+            ScrollDelta::Lines(lines) => -lines.x * line_step() * zoom,
             ScrollDelta::Pixels(pixels) => -f32::from(pixels.x),
         };
-        let to = (self.scroll_x + dx).clamp(0., self.frame.max_x.max(0.));
-        if dx != 0. && to != self.scroll_x {
-            self.scroll_x = to;
-            cx.stop_propagation();
-            cx.notify();
+        let smooth = !event.delta.precise() && !cx.reduce_motion();
+        let max = self.frame.max_x.max(0.);
+        let from = if smooth {
+            self.wheel_x.as_ref().map_or(self.scroll_x, Motion::target)
+        } else {
+            self.scroll_x
         }
+        .clamp(0., max);
+        let to = (from + dx).clamp(0., max);
+        if to == from {
+            return;
+        }
+        self.wheel_x = if smooth {
+            Motion::wheel(
+                self.wheel_x.as_ref(),
+                self.scroll_x,
+                to,
+                max,
+                zoom,
+                cx.background_executor().now(),
+            )
+        } else {
+            None
+        };
+        if self.wheel_x.is_none() {
+            self.scroll_x = to;
+        }
+        cx.stop_propagation();
+        cx.notify();
     }
 
     // ---- Кадр --------------------------------------------------------------------------
@@ -1183,7 +1203,16 @@ fn paint(
 }
 
 impl Render for CodeArea {
-    fn render(&mut self, _window: &mut Window, cx: &mut Context<Self>) -> impl IntoElement {
+    fn render(&mut self, window: &mut Window, cx: &mut Context<Self>) -> impl IntoElement {
+        if let Some(motion) = &self.wheel_x {
+            let (x, done) = motion.sample(cx.background_executor().now());
+            self.scroll_x = x;
+            if done {
+                self.wheel_x = None;
+            } else {
+                crate::motion::monitor_frame(window);
+            }
+        }
         let theme = cx.global::<Theme>();
         let colors = Colors {
             text: theme.color("l-text"),

@@ -3,14 +3,17 @@
 //! многостоповый линейный градиент полосами по 2 стопа (в GPUI градиент только из двух),
 //! `radial-gradient` — маской SVG с цветом.
 
-use crate::scale::{u, zpx};
+use crate::scale::{u, zoom, zpx};
 use crate::theme::{Gradient, Stop, Theme};
-use gpui::prelude::FluentBuilder as _;
 use gpui::{
-    BoxShadow, Div, Hsla, Pixels, Styled, Svg, div, linear_color_stop, linear_gradient, point, px,
-    relative, svg,
+    BoxShadow, Canvas, Corners, Div, Hsla, ParentElement, Pixels, RenderImage, Rgba, Styled,
+    canvas, div, linear_color_stop, linear_gradient, point, px,
 };
+use std::cell::RefCell;
+use std::collections::HashMap;
+#[cfg(test)]
 use std::fmt::Write as _;
+use std::sync::Arc;
 
 /// `box-shadow: x y blur spread color` в CSS px макета.
 pub fn shadow(zoom: f32, x: f32, y: f32, blur: f32, spread: f32, color: Hsla) -> BoxShadow {
@@ -104,6 +107,10 @@ pub fn scrim_alpha(x: f32, y: f32, (width, height): (f32, f32)) -> f32 {
 /// Полосы — `absolute` в родителе с `relative`. GPUI режет детей прямоугольником, поэтому
 /// полосы у краёв скругляют свои углы на `radius` (у окна — радиус окна, иначе 0).
 pub fn strips(gradient: &Gradient, radius: Pixels) -> Vec<Div> {
+    strips_with_corners(gradient, gpui::Corners::all(radius))
+}
+
+pub(crate) fn strips_with_corners(gradient: &Gradient, corners: gpui::Corners<Pixels>) -> Vec<Div> {
     let mut stops = gradient.stops.clone();
     let (Some(first), Some(last)) = (stops.first().copied(), stops.last().copied()) else {
         return Vec::new();
@@ -133,38 +140,60 @@ pub fn strips(gradient: &Gradient, radius: Pixels) -> Vec<Div> {
                 linear_color_stop(a.color, 0.),
                 linear_color_stop(b.color, 1.),
             );
-            let (start, end) = (a.pos == 0., b.pos == 1.);
-            let strip = div().absolute().bg(fill);
-            match angle as u32 {
-                90 => strip
-                    .top_0()
-                    .bottom_0()
-                    .left(relative(a.pos))
-                    .w(relative(b.pos - a.pos))
-                    .when(start, |s| s.rounded_tl(radius).rounded_bl(radius))
-                    .when(end, |s| s.rounded_tr(radius).rounded_br(radius)),
-                270 => strip
-                    .top_0()
-                    .bottom_0()
-                    .right(relative(a.pos))
-                    .w(relative(b.pos - a.pos))
-                    .when(start, |s| s.rounded_tr(radius).rounded_br(radius))
-                    .when(end, |s| s.rounded_tl(radius).rounded_bl(radius)),
-                180 => strip
-                    .left_0()
-                    .right_0()
-                    .top(relative(a.pos))
-                    .h(relative(b.pos - a.pos))
-                    .when(start, |s| s.rounded_tl(radius).rounded_tr(radius))
-                    .when(end, |s| s.rounded_bl(radius).rounded_br(radius)),
-                _ => strip
-                    .left_0()
-                    .right_0()
-                    .bottom(relative(a.pos))
-                    .h(relative(b.pos - a.pos))
-                    .when(start, |s| s.rounded_bl(radius).rounded_br(radius))
-                    .when(end, |s| s.rounded_tl(radius).rounded_tr(radius)),
-            }
+            div().absolute().size_full().child(
+                gpui::canvas(
+                    |_, _, _| {},
+                    move |bounds, _, window, _| {
+                        let horizontal = angle == 90. || angle == 270.;
+                        let (start, end) = if angle == 90. || angle == 180. {
+                            (a.pos, b.pos)
+                        } else {
+                            (1. - b.pos, 1. - a.pos)
+                        };
+                        let (origin, length) = if horizontal {
+                            (bounds.left(), bounds.size.width)
+                        } else {
+                            (bounds.top(), bounds.size.height)
+                        };
+                        // Соседние полосы используют одну координату стыка. Независимо
+                        // округлённые inset и width при смене ширины оставляли щель.
+                        let edge = |t| {
+                            let px = origin + length * t;
+                            if t == 0. || t == 1. {
+                                px
+                            } else {
+                                window.pixel_snap(px)
+                            }
+                        };
+                        let (left, top, right, bottom) = if horizontal {
+                            (edge(start), bounds.top(), edge(end), bounds.bottom())
+                        } else {
+                            (bounds.left(), edge(start), bounds.right(), edge(end))
+                        };
+                        if right <= left || bottom <= top {
+                            return;
+                        }
+                        let radius = |show, radius| if show { radius } else { px(0.) };
+                        let at_left = !horizontal || start == 0.;
+                        let at_right = !horizontal || end == 1.;
+                        let at_top = horizontal || start == 0.;
+                        let at_bottom = horizontal || end == 1.;
+                        window.paint_quad(
+                            gpui::fill(
+                                gpui::Bounds::from_corners(point(left, top), point(right, bottom)),
+                                fill,
+                            )
+                            .corner_radii(gpui::Corners {
+                                top_left: radius(at_left && at_top, corners.top_left),
+                                top_right: radius(at_right && at_top, corners.top_right),
+                                bottom_left: radius(at_left && at_bottom, corners.bottom_left),
+                                bottom_right: radius(at_right && at_bottom, corners.bottom_right),
+                            }),
+                        );
+                    },
+                )
+                .size_full(),
+            )
         })
         .collect()
 }
@@ -194,9 +223,9 @@ fn premultiplied(stops: Vec<Stop>) -> Vec<Stop> {
     out
 }
 
-/// `radial-gradient(ellipse rx ry at cx cy, …)` одного цвета: маска SVG (альфа по стопам)
-/// и цвет `color`, как у одноцветного значка. Доли — от размера блока (`46%` → 0.46).
-/// Маска не зависит от темы, поэтому при перетекании темы новых растров нет.
+/// `radial-gradient(ellipse rx ry at cx cy, …)` одного цвета: запечённая компактная 64×64
+/// текстура с билинейным масштабированием и скруглением на GPU (`window.paint_image`) — без
+/// полноразмерной растеризации SVG через `resvg` в потоке интерфейса.
 #[derive(Debug, Clone, PartialEq)]
 pub struct Radial {
     pub center: (f32, f32),
@@ -205,18 +234,157 @@ pub struct Radial {
     pub stops: Vec<(f32, f32)>,
 }
 
+const RADIAL_SIDE: u32 = 64;
+const RADIAL_CACHE_LIMIT: usize = 64;
+
+#[derive(Hash, PartialEq, Eq)]
+struct RadialKey {
+    cx: u32,
+    cy: u32,
+    rx: u32,
+    ry: u32,
+    stops: Vec<(u32, u32)>,
+    rgba: [u8; 4],
+}
+
+fn eval_stops(stops: &[(f32, f32)], t: f32) -> f32 {
+    if stops.is_empty() {
+        return 0.;
+    }
+    if t <= stops[0].0 {
+        return stops[0].1;
+    }
+    for pair in stops.windows(2) {
+        let (p0, a0) = pair[0];
+        let (p1, a1) = pair[1];
+        if t <= p1 {
+            let k = if p1 > p0 { (t - p0) / (p1 - p0) } else { 0. };
+            return a0 + (a1 - a0) * k;
+        }
+    }
+    stops.last().map_or(0., |&(_, a)| a)
+}
+
+fn radial_image(
+    radial: &Radial,
+    color: Hsla,
+    window: &mut gpui::Window,
+    cx: &mut gpui::App,
+) -> Arc<RenderImage> {
+    thread_local! {
+        static CACHE: RefCell<HashMap<RadialKey, Arc<RenderImage>>> = RefCell::new(HashMap::new());
+    }
+    let c = Rgba::from(color);
+    let byte = |v: f32| (v.clamp(0., 1.) * 255.).round() as u8;
+    let rgba = [byte(c.r), byte(c.g), byte(c.b), byte(c.a)];
+    let key = RadialKey {
+        cx: radial.center.0.to_bits(),
+        cy: radial.center.1.to_bits(),
+        rx: radial.radius.0.to_bits(),
+        ry: radial.radius.1.to_bits(),
+        stops: radial
+            .stops
+            .iter()
+            .map(|&(p, a)| (p.to_bits(), a.to_bits()))
+            .collect(),
+        rgba,
+    };
+    CACHE.with(|cell| {
+        let mut map = cell.borrow_mut();
+        if let Some(hit) = map.get(&key) {
+            return hit.clone();
+        }
+        if map.len() >= RADIAL_CACHE_LIMIT {
+            for (_, image) in map.drain() {
+                cx.drop_image(image, Some(window));
+            }
+        }
+        let side = RADIAL_SIDE;
+        let inv = 1. / side as f32;
+        let (cx0, cy0) = radial.center;
+        let (rx, ry) = (
+            radial.radius.0.max(f32::EPSILON),
+            radial.radius.1.max(f32::EPSILON),
+        );
+        let base_a = c.a.clamp(0., 1.);
+        let [r, g, b, _] = rgba;
+        let mut bytes = Vec::with_capacity((side * side * 4) as usize);
+        for y in 0..side {
+            let ny = ((y as f32 + 0.5) * inv - cy0) / ry;
+            let ny2 = ny * ny;
+            for x in 0..side {
+                let nx = ((x as f32 + 0.5) * inv - cx0) / rx;
+                let d = (nx * nx + ny2).sqrt();
+                let a = (eval_stops(&radial.stops, d) * base_a).clamp(0., 1.);
+                bytes.extend_from_slice(&[b, g, r, (a * 255.).round() as u8]);
+            }
+        }
+        let buffer =
+            ::image::RgbaImage::from_raw(side, side, bytes).expect("размер совпадает с байтами");
+        let image = Arc::new(RenderImage::new([::image::Frame::new(buffer)]));
+        map.insert(key, image.clone());
+        image
+    })
+}
+
 impl Radial {
     /// Блок `width`×`height` CSS px с этим градиентом (обычно `absolute` поверх места).
-    pub fn paint(&self, width: f32, height: f32, color: Hsla) -> Svg {
-        svg()
-            .data(self.svg(width, height).as_bytes())
-            .w(u(width))
-            .h(u(height))
-            .text_color(color)
+    pub fn paint(&self, width: f32, height: f32, color: Hsla) -> Canvas<()> {
+        self.paint_corners(width, height, (0., 0.), color)
     }
 
-    /// SVG маски: стороны как у блока (растр GPUI сохраняет пропорции SVG), градиент в долях.
-    fn svg(&self, width: f32, height: f32) -> String {
+    /// Блок `width`×`height` CSS px со скруглением `radius` верхних углов.
+    pub fn paint_rounded_top(
+        &self,
+        width: f32,
+        height: f32,
+        radius: f32,
+        color: Hsla,
+    ) -> Canvas<()> {
+        self.paint_corners(width, height, (radius, 0.), color)
+    }
+
+    /// Блок `width`×`height` CSS px со скруглением `radius` всех четырёх углов.
+    pub fn paint_rounded(&self, width: f32, height: f32, radius: f32, color: Hsla) -> Canvas<()> {
+        self.paint_corners(width, height, (radius, radius), color)
+    }
+
+    fn paint_corners(
+        &self,
+        width: f32,
+        height: f32,
+        (top_r, bottom_r): (f32, f32),
+        color: Hsla,
+    ) -> Canvas<()> {
+        let radial = self.clone();
+        canvas(
+            |_, _, _| {},
+            move |bounds, _, window, cx| {
+                if bounds.size.width <= px(0.) || bounds.size.height <= px(0.) {
+                    return;
+                }
+                let z = zoom(window);
+                let top = zpx(z, top_r);
+                let bottom = zpx(z, bottom_r);
+                let corners = Corners {
+                    top_left: top,
+                    top_right: top,
+                    bottom_right: bottom,
+                    bottom_left: bottom,
+                };
+                let image = radial_image(&radial, color, window, cx);
+                window
+                    .paint_image(bounds, bounds, corners, image, 0, false)
+                    .ok();
+            },
+        )
+        .w(u(width))
+        .h(u(height))
+    }
+
+    /// SVG маски (оставлено для проверки геометрии градиента в тестах).
+    #[cfg(test)]
+    fn svg(&self, width: f32, height: f32, radius: f32) -> String {
         let (cx, cy) = self.center;
         let (rx, ry) = self.radius;
         let mut out = format!(
@@ -231,9 +399,58 @@ impl Radial {
                 "<stop offset='{pos}' stop-color='#fff' stop-opacity='{alpha}'/>"
             );
         }
-        out.push_str("</radialGradient><rect width='1' height='1' fill='url(#g)'/></svg>");
+        out.push_str("</radialGradient>");
+        if radius > 0. && width > 0. && height > 0. {
+            let x = (radius / width).min(0.5);
+            let y = (radius / height).min(1.);
+            let right = 1. - x;
+            let _ = write!(
+                out,
+                "<path d='M0 {y} A{x} {y} 0 0 1 {x} 0 H{right} A{x} {y} 0 0 1 1 {y} V1 H0 Z' fill='url(#g)'/>"
+            );
+        } else {
+            out.push_str("<rect width='1' height='1' fill='url(#g)'/>");
+        }
+        out.push_str("</svg>");
         out
     }
+}
+
+/// Знак HLSR — кольцо с точкой (`.launcher-topbar__logo-mark` 0.4.9 и `Logo` заставки): кольцо
+/// `inset 0 0 0 <stroke>px currentColor` во всю коробку, по центру точка `dot` CSS px с
+/// `transform: scale(<scale>)`. Рисуется путями от центра коробки, а не рамкой и блоком: GPUI
+/// округляет рамки и коробки до пикселя экрана, и точка под курсором росла ступенями по 1 px
+/// со сдвигом от центра, а кольцо 2 px на масштабе 125 % выходило в 2 пикселя вместо 2,5.
+/// Пути GPUI сглаживает по точной геометрии, как Chromium — тень и `scale()`.
+pub fn logo_mark(stroke: f32, dot: f32, scale: f32, color: Hsla) -> gpui::Canvas<()> {
+    gpui::canvas(
+        |_, _, _| {},
+        move |bounds, _, window, _| {
+            let zoom = crate::scale::zoom(window);
+            let center = bounds.center();
+            let outer = f32::from(bounds.size.width.min(bounds.size.height)) / 2.;
+            let circle = |path: &mut gpui::PathBuilder, r: f32| {
+                let (cx, cy) = (f32::from(center.x), f32::from(center.y));
+                let radii = point(px(r), px(r));
+                path.move_to(point(px(cx + r), px(cy)));
+                path.arc_to(radii, px(0.), false, true, point(px(cx - r), px(cy)));
+                path.arc_to(radii, px(0.), false, true, point(px(cx + r), px(cy)));
+                path.close();
+            };
+            // Кольцо: два круга, заливка even-odd оставляет полосу между ними.
+            let mut ring = gpui::PathBuilder::fill();
+            circle(&mut ring, outer);
+            circle(&mut ring, (outer - stroke * zoom).max(0.));
+            if let Ok(path) = ring.build() {
+                window.paint_path(path, color);
+            }
+            let mut point_path = gpui::PathBuilder::fill();
+            circle(&mut point_path, dot * scale * zoom / 2.);
+            if let Ok(path) = point_path.build() {
+                window.paint_path(path, color);
+            }
+        },
+    )
 }
 
 #[cfg(test)]
@@ -311,7 +528,7 @@ mod tests {
             radius: (0.46, 0.52),
             stops: vec![(0., 0.05), (0.7, 0.)],
         };
-        let text = radial.svg(1600., 900.);
+        let text = radial.svg(1600., 900., 0.);
         assert!(text.contains("width='1600' height='900'"), "{text}");
         assert!(text.contains("matrix(0.46 0 0 0.52 0.7 0.4)"), "{text}");
         assert!(text.contains("offset='0.7' stop-color='#fff' stop-opacity='0'"));

@@ -27,8 +27,11 @@ pub mod layer;
 pub mod liquid;
 pub mod live;
 pub mod media;
+pub mod memory;
 pub mod motion;
 pub mod paint;
+#[cfg(test)]
+mod perf;
 pub mod personal;
 pub mod profile;
 pub mod rows;

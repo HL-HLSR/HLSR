@@ -24,6 +24,7 @@ use crate::layer::TipExt;
 use crate::motion::{Push, Timing, hover, mix, press, tween};
 use crate::paint::ring;
 use crate::scale::{u, viewport, zoom};
+use crate::scroll::{Bar, Scroll, ScrollArea};
 use crate::shell::root::ShellContext;
 use crate::text::{TextExt, spaced};
 use crate::theme::Theme;
@@ -32,11 +33,13 @@ use gpui::{
     AnyElement, App, ClickEvent, Context, Entity, FontWeight, Hsla, IntoElement, Render, Role,
     SharedString, Subscription, Task, Window, div, prelude::*, rgb, rgba, svg,
 };
+use hlsr_core::language::Language;
 use hlsr_ui::controllers::runner_settings::{
-    Code, Effect, Hint, LINKS, SettingsState, SettingsView,
+    Code, Effect, Hint, LINKS, SettingsState, SettingsView, style_presets::PickerView,
 };
 use hlsr_ui::controllers::wall_clock::WallClock;
 use hlsr_ui::services::Services;
+use std::rc::Rc;
 use std::time::Duration;
 
 /// Поля ввода раздела (создаются с окном).
@@ -59,6 +62,18 @@ pub struct RunnerSettingsTab {
     countdown: Option<Task<()>>,
     /// Сроки кодов Telegram и Discord.
     timers: [Option<Task<()>>; 2],
+    scroll: Scroll,
+    /// Кэш снимка настроек, заготовок и списков выбора (~200 стран): прокрутка не перестраивает их 240 раз/с.
+    local_rev: u64,
+    synced_modal_rev: Option<u64>,
+    synced_inputs_key: Option<(Language, u64, u64)>,
+    view_cache: Option<(
+        (Language, u64, u64),
+        Rc<SettingsView>,
+        Option<Rc<PickerView>>,
+        Vec<Item>,
+        Vec<Item>,
+    )>,
     _activation: Option<Subscription>,
 }
 
@@ -85,8 +100,21 @@ impl RunnerSettingsTab {
             inputs: None,
             countdown: None,
             timers: [None, None],
+            scroll: Scroll::new(),
+            local_rev: 0,
+            synced_modal_rev: None,
+            synced_inputs_key: None,
+            view_cache: None,
             _activation: None,
         }
+    }
+
+    fn bump(&mut self) {
+        self.local_rev = self.local_rev.wrapping_add(1);
+    }
+
+    pub fn reset_scroll(&mut self) {
+        self.scroll = Scroll::new();
     }
 
     /// Окно профиля на каждом кадре: `Some(поколение окна)` — свой профиль показан (раздел
@@ -102,6 +130,10 @@ impl RunnerSettingsTab {
             self.timers = [None, None];
             self.state = SettingsState::new();
             self.mounted = key;
+            self.synced_modal_rev = None;
+            self.synced_inputs_key = None;
+            self.view_cache = None;
+            self.bump();
             if key.is_some() {
                 let effects = self.state.load_presets(false);
                 self.run(effects, cx);
@@ -111,6 +143,7 @@ impl RunnerSettingsTab {
     }
 
     pub(super) fn state(&mut self) -> &mut SettingsState {
+        self.bump();
         &mut self.state
     }
 
@@ -119,6 +152,7 @@ impl RunnerSettingsTab {
         if effects.is_empty() {
             return;
         }
+        self.bump();
         for effect in effects {
             match effect {
                 Effect::Request { tag, channel, args } => {
@@ -132,6 +166,7 @@ impl RunnerSettingsTab {
                             }
                             let now = this.wall.now_ms();
                             let effects = this.state.answer(tag, reply, now);
+                            this.bump();
                             this.run(effects, cx);
                             cx.notify();
                         })
@@ -159,6 +194,7 @@ impl RunnerSettingsTab {
                                     .update(cx, |this, cx| {
                                         let now = this.wall.now_ms();
                                         let done = this.state.tick(now);
+                                        this.bump();
                                         cx.notify();
                                         done
                                     })
@@ -182,6 +218,7 @@ impl RunnerSettingsTab {
                                 .await;
                             this.update(cx, |this, cx| {
                                 this.state.code_expired(code);
+                                this.bump();
                                 cx.notify();
                             })
                             .ok();
@@ -202,6 +239,7 @@ impl RunnerSettingsTab {
         cx.listener(move |this, _: &ClickEvent, _, cx| {
             let now = this.wall.now_ms();
             let effects = f(&mut this.state, now);
+            this.bump();
             this.run(effects, cx);
             cx.notify();
         })
@@ -238,6 +276,7 @@ impl RunnerSettingsTab {
                 if *event == FieldEvent::Input {
                     let text = input.read(cx).text().to_owned();
                     this.state.set_field("status", &text);
+                    this.bump();
                     cx.notify();
                 }
             }),
@@ -257,6 +296,7 @@ impl RunnerSettingsTab {
                         }
                         _ => return,
                     }
+                    this.bump();
                     cx.notify();
                 }),
             );
@@ -273,6 +313,7 @@ impl RunnerSettingsTab {
                 }
                 _ => return,
             }
+            this.bump();
             cx.notify();
         }));
         self.inputs = Some(Inputs {
@@ -290,6 +331,7 @@ impl RunnerSettingsTab {
                 this.state.hide_id();
                 Vec::new()
             };
+            this.bump();
             this.run(effects, cx);
             cx.notify();
         }));
@@ -312,6 +354,7 @@ impl RunnerSettingsTab {
         set(&inputs.status, &view.status, view.status_muted, cx);
         for (input, row) in inputs.links.iter().zip(&view.links) {
             set(input, &row.value, false, cx);
+            input.update(cx, |input, cx| input.set_invalid(row.invalid, cx));
         }
         set(&inputs.key, self.state.speedrun_key(), view.busy, cx);
     }
@@ -593,6 +636,7 @@ fn field(input: &Entity<TextInput>) -> AnyElement {
 
 impl Render for RunnerSettingsTab {
     fn render(&mut self, window: &mut Window, cx: &mut Context<Self>) -> impl IntoElement {
+        crate::live::rendered(cx.entity_id());
         let Some(context) = ProfileContext::get(cx) else {
             return div().into_any_element();
         };
@@ -600,27 +644,65 @@ impl Render for RunnerSettingsTab {
         let Some(modal) = context.modal.upgrade() else {
             return div().into_any_element();
         };
-        let (language, wall, tr) = {
+        let (language, wall, tr, modal_rev) = {
             let modal = modal.read(cx);
-            (modal.language, modal.wall.clone(), modal.tr.clone())
+            (modal.language, modal.wall.clone(), modal.tr.clone(), modal.view_rev())
         };
-        let effects = {
-            let p = profile.borrow();
-            self.state
-                .set_props(p.account(), p.details(), p.deletion_at(), p.mute());
-            self.state.set_hide_steam_id(p.hide_steam_id());
-            self.state.set_support(
-                p.perks(),
-                p.subscriber(),
-                p.style_preset(),
-                p.telegram(),
-                p.discord_link(),
-            )
-        };
-        self.run(effects, cx);
+        if self.synced_modal_rev != Some(modal_rev) {
+            let effects = {
+                let p = profile.borrow();
+                self.state
+                    .set_props(p.account(), p.details(), p.deletion_at(), p.mute());
+                self.state.set_hide_steam_id(p.hide_steam_id());
+                self.state.set_support(
+                    p.perks(),
+                    p.subscriber(),
+                    p.style_preset(),
+                    p.telegram(),
+                    p.discord_link(),
+                )
+            };
+            self.synced_modal_rev = Some(modal_rev);
+            self.run(effects, cx);
+        }
         self.ensure_inputs(window, cx);
-        let view = self.state.view(language, &wall, &tr);
-        self.sync_inputs(&view, cx);
+        let cache_key = (language, modal_rev, self.local_rev);
+        let (view, picked_view, pronouns_items, country_items) = match &self.view_cache {
+            Some((k, view, picked, pronouns, countries)) if *k == cache_key => (
+                view.clone(),
+                picked.clone(),
+                pronouns.clone(),
+                countries.clone(),
+            ),
+            _ => {
+                let view = Rc::new(self.state.view(language, &wall, &tr));
+                let picked = view
+                    .style_group
+                    .then(|| Rc::new(self.state.picker_view(&wall, &tr)));
+                let pronouns: Vec<Item> = view
+                    .pronouns_items
+                    .iter()
+                    .map(|(id, label)| Item::new(id.clone(), label.clone()))
+                    .collect();
+                let countries: Vec<Item> = view
+                    .country_items
+                    .iter()
+                    .map(|(id, label)| Item::new(id.clone(), label.clone()))
+                    .collect();
+                self.view_cache = Some((
+                    cache_key,
+                    view.clone(),
+                    picked.clone(),
+                    pronouns.clone(),
+                    countries.clone(),
+                ));
+                (view, picked, pronouns, countries)
+            }
+        };
+        if self.synced_inputs_key != Some(cache_key) {
+            self.sync_inputs(&view, cx);
+            self.synced_inputs_key = Some(cache_key);
+        }
         let theme = cx.global::<Theme>().clone();
         let t = |key: &str| tr(key, &[]);
         let mut body: Vec<AnyElement> = Vec::new();
@@ -753,15 +835,11 @@ impl Render for RunnerSettingsTab {
             .into_any_element(),
         );
         let select = |id: &'static str,
-                      items: &[(String, String)],
+                      items: Vec<Item>,
                       value: &str,
                       shown: String,
                       pick: fn(&mut SettingsState, &str),
                       cx: &mut Context<Self>| {
-            let items: Vec<Item> = items
-                .iter()
-                .map(|(id, label)| Item::new(id.clone(), label.clone()))
-                .collect();
             let theme = theme.clone();
             let weak = cx.weak_entity();
             dropdown(id, items, Some(SharedString::from(value.to_owned())))
@@ -770,6 +848,7 @@ impl Render for RunnerSettingsTab {
                 .on_select(move |item, _, cx| {
                     weak.update(cx, |this, cx| {
                         pick(&mut this.state, &item.id);
+                        this.bump();
                         cx.notify();
                     })
                     .ok();
@@ -784,7 +863,7 @@ impl Render for RunnerSettingsTab {
                 ),
                 Some(select(
                     "rs-pronouns",
-                    &view.pronouns_items,
+                    pronouns_items,
                     &view.pronouns,
                     view.pronouns_label.clone(),
                     SettingsState::set_pronouns,
@@ -802,7 +881,7 @@ impl Render for RunnerSettingsTab {
                 ),
                 Some(select(
                     "rs-country",
-                    &view.country_items,
+                    country_items,
                     &view.country,
                     view.country_label.clone(),
                     SettingsState::set_country,
@@ -818,7 +897,6 @@ impl Render for RunnerSettingsTab {
                 .then(|| hint(link_row.hint.clone(), link_row.invalid, &theme))
                 .into_iter()
                 .collect();
-            link_inputs[index].update(cx, |input, cx| input.set_invalid(link_row.invalid, cx));
             body.push(
                 row(
                     texts(
@@ -872,9 +950,10 @@ impl Render for RunnerSettingsTab {
             body.push(group(&t("#L_RUNNER_STYLE_GROUP"), false, &theme));
             let (vw, _) = viewport(window);
             let width = (vw - 64.).min(1040.) - 64.;
-            let picked = self.state.picker_view(&wall, &tr);
-            if picked.visible {
-                body.push(picker(&picked, width, &tr, window, cx));
+            if let Some(picked) = &picked_view
+                && picked.visible
+            {
+                body.push(picker(picked, width, &tr, window, cx));
             }
             // Привязка Telegram — только в официальной сборке.
             if crate::shell::root::official(cx) {
@@ -965,13 +1044,22 @@ impl Render for RunnerSettingsTab {
                     .into_any_element(),
             );
         }
-        div()
+        let inner = div()
             .id("runner-settings")
             .flex()
             .flex_col()
-            .pb(u(24.))
-            .children(body)
-            .into_any_element()
+            .pt(u(28.))
+            .px(u(32.))
+            .pb(u(56.))
+            .children(body);
+        crate::snap::target(
+            "profile-body",
+            ScrollArea::new(("profile-scroll", 2usize), &self.scroll)
+                .bar(Bar::Thin)
+                .size_full()
+                .child(inner),
+        )
+        .into_any_element()
     }
 }
 
@@ -1028,6 +1116,7 @@ impl RunnerSettingsTab {
         let accent = theme.color("accent");
         let toggle = cx.listener(|this, _: &ClickEvent, _, cx| {
             this.state.toggle_id_revealed();
+            this.bump();
             cx.notify();
         });
         let eye = hover("rs-id-eye", Timing::fast(), move |t| {
@@ -1529,6 +1618,7 @@ impl RunnerSettingsTab {
             .cursor_pointer()
             .on_click(cx.listener(|this, _: &ClickEvent, _, cx| {
                 this.state.toggle_discord_help();
+                this.bump();
                 cx.notify();
             }))
             .child(div().w(u(12.)).child(fa_glyph(
@@ -1710,6 +1800,7 @@ impl RunnerSettingsTab {
         .on_change(move |on, _, cx| {
             weak.update(cx, |this, cx| {
                 this.state.set_delete_agreed(*on);
+                this.bump();
                 cx.notify();
             })
             .ok();

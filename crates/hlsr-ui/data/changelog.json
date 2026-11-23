@@ -7,6 +7,27 @@
   },
   "releases": [
     {
+      "version": "0.5.1",
+      "ru": [
+        "Снято ограничение в 60 кадров в секунду: анимации, прокрутка, неоновые рамки, смена тем и переходы между вкладками (включая разделы «Персонализации») теперь идут плавно на полной частоте монитора (120/144/240+ Гц)",
+        "Снижено потребление оперативной памяти: оптимизированы кэши изображений и предпросмотров, на Linux лаунчер работает на Vulkan без лишней загрузки OpenGL и освобождает память скрытых разделов",
+        "HL2 Ghosting на Linux: в «Версии сборки» добавлены Episode One и Episode Two — скачивание, установка, запуск через Proton и синхронизация конфигов работают так же, как на Windows",
+        "Окно лаунчера и скроллбары: углы сглажены на GPU с единой ровной рамкой без «лесенок» на Windows и Linux, полосы прокрутки больше не выходят за скругления окон и панелей, а на Linux исправлены разворачивание и полноэкранный режим по F11 и в плеере «Демо»",
+        "Профиль: блок «Ссылки» перенесён сразу под карточку «Закреплённый забег», убрана лишняя полоса справа от карточки рекорда, а у YouTube снова отображается логотип YouTube вместо ромба",
+        "Главная: все эмодзи реакций в ленте новостей на Linux отображаются в едином цветном стиле Unicode, а обводка реакций больше не искажается и не даёт «лесенок» при прокрутке",
+        "Персонализация («HUD и модели»): исправлено растягивание и искажение превью карточек при раскрытии списка «Что заменяется»"
+      ],
+      "en": [
+        "Removed the 60 FPS cap: animations, scrolling, neon frames, theme transitions and tab swipes (including Personalization sections) now run smoothly at your monitor's full refresh rate (120/144/240+ Hz)",
+        "Lower memory usage: trimmed image and preview caches, switched Linux to Vulkan without loading extra OpenGL drivers, and released idle buffers when leaving heavy sections",
+        "HL2 Ghosting on Linux: added Episode One and Episode Two to Build version — download, installation, Proton launch and config sync now work just like on Windows",
+        "Launcher window and scrollbars: GPU anti-aliased rounded window corners with a crisp uniform border on Windows and Linux, scrollbars now stay cleanly inside rounded windows and panels, and fixed maximize and fullscreen (F11 and the Demo player) on Linux Wayland/X11",
+        "Profile: moved the Links section directly below the Pinned Run card, removed the stray line along the right edge of the record card, and fixed the YouTube icon showing as a diamond on Linux",
+        "Home: all news feed reaction emojis on Linux now render in a consistent color Unicode emoji style, and reaction pill borders no longer clip or show jagged edges while scrolling",
+        "Personalization (HUD & Models): fixed preview images stretching or distorting when expanding “What it replaces”"
+      ]
+    },
+    {
       "version": "0.5.0",
       "ru": [
         "Лаунчер переписан с Electron на Rust. Он быстрее запускается, весит около 80 МБ вместо 400 и занимает меньше памяти",

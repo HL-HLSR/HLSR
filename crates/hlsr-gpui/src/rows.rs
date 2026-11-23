@@ -20,6 +20,14 @@ use std::rc::Rc;
 /// успевает загрузиться и перевестись, пока строка ещё не видна.
 const MARGIN: f32 = 0.5;
 
+/// Неизмеренных строк за окном видимости строится не больше стольких за кадр: остальные —
+/// распорка средней высоты, их меряют следующие кадры (замер новых высот сам просит кадр). Раньше
+/// первый кадр списка строил все строки сразу, и открытие раздела с тысячей записей стоило
+/// кадра в десятки мс.
+const BATCH: usize = 8;
+/// То же, пока высота области неизвестна (первый кадр до раскладки): строк с запасом на экран.
+const BATCH_FIRST: usize = 24;
+
 /// Окно одного списка: вид держит его полем рядом со [`Scroll`] области (клон — то же окно).
 #[derive(Clone, Default)]
 pub struct Rows(Rc<RefCell<State>>);
@@ -42,7 +50,7 @@ struct State {
 }
 
 /// Место в колонке.
-#[derive(Debug, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum Slot {
     /// Строка с этим индексом: построить.
     Row(usize),
@@ -64,6 +72,7 @@ impl Rows {
     ) -> Vec<Slot> {
         let zoom = zoom(window);
         let top = scroll.top_at(cx.background_executor().now());
+        let scrolling = scroll.moving();
         let viewport = scroll.handle().bounds().size.height;
         let mut state = self.0.borrow_mut();
         if state
@@ -72,7 +81,7 @@ impl Rows {
         {
             state.heights.clear();
         }
-        let slots = state.slots_for(&keys, zpx(zoom, gap), top, viewport);
+        let slots = state.slots_for(&keys, zpx(zoom, gap), top, viewport, scrolling);
         state.slots = slots
             .iter()
             .map(|slot| match slot {
@@ -148,6 +157,7 @@ impl State {
         gap: Pixels,
         top: Pixels,
         viewport: Pixels,
+        scrolling: bool,
     ) -> Vec<Slot> {
         let known: Vec<Pixels> = keys
             .iter()
@@ -155,7 +165,8 @@ impl State {
             .collect();
         // Место неизмеренной строки до замера — средняя высота измеренных.
         let guess = if known.is_empty() {
-            Pixels::ZERO
+            // До первого замера — десятая часть области: в окно попадает с десяток строк.
+            viewport * 0.1
         } else {
             known.iter().sum::<Pixels>() * (1. / known.len() as f32)
         };
@@ -175,10 +186,26 @@ impl State {
         let mut slots = Vec::new();
         let mut space: Option<Pixels> = None;
         let mut y = self.origin;
+        let mut fresh = 0;
+        let batch = if viewport <= Pixels::ZERO {
+            BATCH_FIRST
+        } else if scrolling {
+            // Во время активной прокрутки не тратим бюджет кадра на домер далёких строк.
+            0
+        } else {
+            BATCH
+        };
         for (index, key) in keys.iter().enumerate() {
             let near_focus = focused.is_some_and(|at| at.abs_diff(index) <= 1);
             let build = match height(key) {
-                None => true,
+                None => {
+                    let near = near_focus || (y + guess > from && y < to);
+                    let build = near || fresh < batch;
+                    if build && !near {
+                        fresh += 1;
+                    }
+                    build
+                }
                 Some(h) => self.resizing || near_focus || (y + h > from && y < to),
             };
             let h = height(key).unwrap_or(guess);
@@ -223,7 +250,7 @@ mod tests {
     fn rows_outside_the_window_become_one_spacer_each_side() {
         let mut state = measured_state();
         // Видно 400..600, окно с запасом 300..700: строки 2 (220..320) – 6 (660..760).
-        let slots = state.slots_for(&keys(10), p(10.), p(400.), p(200.));
+        let slots = state.slots_for(&keys(10), p(10.), p(400.), p(200.), false);
         assert_eq!(
             slots,
             vec![
@@ -244,7 +271,7 @@ mod tests {
         let mut state = measured_state();
         state.heights.remove("k8");
         state.focused = Some("k0".into());
-        let slots = state.slots_for(&keys(10), p(10.), p(400.), p(200.));
+        let slots = state.slots_for(&keys(10), p(10.), p(400.), p(200.), false);
         let built: Vec<usize> = slots
             .iter()
             .filter_map(|slot| match slot {
@@ -258,10 +285,48 @@ mod tests {
     }
 
     #[test]
+    fn unmeasured_rows_far_away_are_built_a_batch_per_frame() {
+        // 100 строк по 100 px, измерены первые 10: видно 0..200, окно −100..300 (строки 0–2).
+        // Из неизмеренных 10–99 за кадр строится BATCH, остальные — распорка средней высоты.
+        let mut state = measured_state();
+        let slots = state.slots_for(&keys(100), p(10.), p(0.), p(200.), false);
+        let built: Vec<usize> = slots
+            .iter()
+            .filter_map(|slot| match slot {
+                Slot::Row(index) => Some(*index),
+                Slot::Space(_) => None,
+            })
+            .collect();
+        let mut want = vec![0, 1, 2];
+        want.extend(10..10 + BATCH);
+        assert_eq!(built, want);
+        // Колонка той же высоты, что со всеми строками: распорки по средней высоте.
+        let total: Pixels = slots
+            .iter()
+            .map(|slot| match slot {
+                Slot::Row(_) => p(100.),
+                Slot::Space(h) => *h,
+            })
+            .sum::<Pixels>()
+            + p(10.) * (slots.len() as f32 - 1.);
+        assert_eq!(total, p(100. * 100. + 10. * 99.));
+        // Во время активной прокрутки далёкие неизмеренные строки не строятся.
+        let scrolling_slots = state.slots_for(&keys(100), p(10.), p(0.), p(200.), true);
+        let scrolling_built: Vec<usize> = scrolling_slots
+            .iter()
+            .filter_map(|slot| match slot {
+                Slot::Row(index) => Some(*index),
+                Slot::Space(_) => None,
+            })
+            .collect();
+        assert_eq!(scrolling_built, vec![0, 1, 2]);
+    }
+
+    #[test]
     fn scroll_past_the_end_keeps_the_last_rows() {
         let mut state = measured_state();
         // Сдвиг 5000 при содержимом 1100: прижат к 900 (видно 900..1100, последние строки).
-        let slots = state.slots_for(&keys(10), p(10.), p(5000.), p(200.));
+        let slots = state.slots_for(&keys(10), p(10.), p(5000.), p(200.), false);
         assert_eq!(slots.last(), Some(&Slot::Row(9)));
         assert!(slots.contains(&Slot::Row(8)));
     }
@@ -288,7 +353,7 @@ mod tests {
         let slots = rows
             .0
             .borrow_mut()
-            .slots_for(&keys(3), p(0.), p(0.), p(10.));
+            .slots_for(&keys(3), p(0.), p(0.), p(10.), false);
         assert_eq!(slots, vec![Slot::Row(0), Slot::Row(1), Slot::Row(2)]);
         // Устоялась: ещё кадр перерисовки, дальше — окно.
         assert!(rows.measured(&frame(480., 120.), p(0.), 1.));

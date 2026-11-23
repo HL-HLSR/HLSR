@@ -440,7 +440,7 @@ impl GameDeliveryService {
             lock(&self.state).pack_cancel = None;
 
             let fresh = staging.join(dir);
-            if !fresh.join("gameinfo.txt").exists() {
+            if !episodes::has_gameinfo(&fresh) {
                 return Err(DeliveryError::new(
                     Code::ExtractFailed,
                     format!("В архиве эпизода нет {dir}/gameinfo.txt"),

@@ -105,6 +105,19 @@ pub fn read_marker(install_path: &Path, id: &str) -> Value {
     dir_of(install_path, id).map_or(Value::Null, |dir| read_json_safe(&dir.join(MARKER)))
 }
 
+/// Есть ли в каталоге мода `gameinfo.txt` без учёта регистра имени (на Linux в архивах
+/// эпизодов лежит `GameInfo.txt`).
+pub fn has_gameinfo(dir: &Path) -> bool {
+    if dir.join("gameinfo.txt").exists() || dir.join("GameInfo.txt").exists() {
+        return true;
+    }
+    hlsr_core::js::fs::read_dir(dir).is_ok_and(|entries| {
+        entries
+            .into_iter()
+            .any(|entry| entry.name.eq_ignore_ascii_case("gameinfo.txt"))
+    })
+}
+
 /// `status(installPath)`: `{ep1: {installed, version}, ep2: …}`. Установлен — есть и маркер с
 /// версией-строкой, и `gameinfo.txt`.
 pub fn status(install_path: Option<&Path>) -> Map<String, Value> {
@@ -120,8 +133,7 @@ pub fn status(install_path: Option<&Path>) -> Map<String, Value> {
                         .map(str::to_owned)
                 })
                 .filter(|_| {
-                    install_path
-                        .is_some_and(|root| root.join(episode.dir).join("gameinfo.txt").exists())
+                    install_path.is_some_and(|root| has_gameinfo(&root.join(episode.dir)))
                 });
             (
                 episode.id.to_owned(),

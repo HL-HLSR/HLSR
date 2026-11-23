@@ -19,5 +19,5 @@ pub use config::{ConfigEditor, Edits, FieldView, Kind, SectionView, TabItem};
 pub use draft::{Draft, Item};
 pub use session::{
     ConfigMode, EditorView, Env, Event, FilesHook, FilesSlot, FooterView, LoadState, RunRow,
-    RunsBody, SelectView, Session, TabView, ToggleView, View, VulkanView, Zone,
+    RunsBody, RunsView, SelectView, Session, TabView, ToggleView, View, VulkanView, Zone,
 };

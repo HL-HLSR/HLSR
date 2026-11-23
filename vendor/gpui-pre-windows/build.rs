@@ -1,17 +1,14 @@
 #![allow(clippy::disallowed_methods, reason = "build scripts are exempt")]
 
 fn main() {
-    #[cfg(not(all(target_os = "windows", not(debug_assertions))))]
     println!("cargo:rerun-if-changed=build.rs");
-    #[cfg(target_os = "windows")]
-    {
-        // Compile HLSL shaders
-        #[cfg(not(debug_assertions))]
-        compile_shaders();
+    #[cfg(not(debug_assertions))]
+    if std::env::var("CARGO_CFG_TARGET_OS").as_deref() == Ok("windows") {
+        shader_compilation::compile_shaders();
     }
 }
 
-#[cfg(all(target_os = "windows", not(debug_assertions)))]
+#[cfg(not(debug_assertions))]
 mod shader_compilation {
     use std::{
         fs,
@@ -26,6 +23,7 @@ mod shader_compilation {
         let out_dir = std::env::var("OUT_DIR").unwrap();
 
         println!("cargo:rerun-if-changed={}", shader_path.display());
+        println!("cargo:rerun-if-env-changed=GPUI_FXC_PATH");
 
         // Check if fxc.exe is available
         let fxc_path = find_fxc_compiler();
@@ -40,8 +38,9 @@ mod shader_compilation {
             "monochrome_sprite",
             "subpixel_sprite",
             "polychrome_sprite",
-            // HLSR: перевод кадра в профиль монитора (color_profile.rs).
+            // HLSR: перевод кадра в профиль монитора (color_profile.rs) и маска углов окна.
             "color",
+            "window_corner_mask",
         ];
 
         let rust_binding_path = format!("{}/shaders_bytes.rs", out_dir);
@@ -61,7 +60,8 @@ mod shader_compilation {
     }
 
     /// Locate `binary` in the newest installed Windows SDK.
-    pub fn find_latest_windows_sdk_binary(
+    #[cfg(target_os = "windows")]
+    fn find_latest_windows_sdk_binary(
         binary: &str,
     ) -> Result<Option<PathBuf>, Box<dyn std::error::Error>> {
         let key = windows_registry::LOCAL_MACHINE
@@ -112,22 +112,22 @@ mod shader_compilation {
             return path;
         }
 
-        // Try to find in PATH
-        // NOTE: This has to be `where.exe` on Windows, not `where`, it must be ended with `.exe`
-        if let Ok(output) = std::process::Command::new("where.exe")
-            .arg("fxc.exe")
-            .output()
-            && output.status.success()
+        #[cfg(target_os = "windows")]
         {
-            let path = String::from_utf8_lossy(&output.stdout);
-            return path.trim().to_string();
+            // `where.exe` finds fxc.exe in PATH on a native Windows build.
+            if let Ok(output) = Command::new("where.exe").arg("fxc.exe").output()
+                && output.status.success()
+            {
+                let path = String::from_utf8_lossy(&output.stdout);
+                return path.trim().to_string();
+            }
+
+            if let Ok(Some(path)) = find_latest_windows_sdk_binary("fxc.exe") {
+                return path.to_string_lossy().into_owned();
+            }
         }
 
-        if let Ok(Some(path)) = find_latest_windows_sdk_binary("fxc.exe") {
-            return path.to_string_lossy().into_owned();
-        }
-
-        panic!("Failed to find fxc.exe");
+        panic!("Failed to find fxc.exe. Set GPUI_FXC_PATH to the shader compiler.");
     }
 
     fn compile_shader_for_module(
@@ -207,7 +207,10 @@ mod shader_compilation {
     }
 
     fn generate_rust_binding(const_name: &str, head_file: &str, output_path: &str) {
-        let header_content = fs::read_to_string(head_file).expect("Failed to read header file");
+        // HLSR: fxc.exe под Wine иногда оставляет не-UTF-8 байт в комментарии `#if 0 … #endif`
+        // до `const BYTE`; сам массив байтов — чистый ASCII.
+        let header_bytes = fs::read(head_file).expect("Failed to read header file");
+        let header_content = String::from_utf8_lossy(&header_bytes);
         let const_definition = {
             let global_var_start = header_content.find("const BYTE").unwrap();
             let global_var = &header_content[global_var_start..];
@@ -229,6 +232,3 @@ mod shader_compilation {
             .expect("Failed to write Rust binding file");
     }
 }
-
-#[cfg(all(target_os = "windows", not(debug_assertions)))]
-use shader_compilation::compile_shaders;

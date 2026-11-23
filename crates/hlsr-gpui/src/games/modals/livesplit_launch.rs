@@ -296,13 +296,13 @@ impl Render for LiveSplitLaunchModal {
             ));
         let (vw, vh) = viewport(window);
         // .ls-launch__window: min(520px, 100% − 80px), до 100% − 60px с прокруткой, поля 24.
-        let body = card(&theme, window)
-            .id("ls-launch-window")
+        let scroll = crate::scroll::Scroll::retained("ls-launch-window".into(), window, cx);
+        let body = scroll
+            .overflow(card(&theme, window).id("ls-launch-window"))
             .role(Role::Dialog)
             .aria_label(title.clone())
             .w(u((vw - 80.).min(520.)))
             .max_h(u(vh - 60.))
-            .overflow_y_scroll()
             .p(u(24.))
             .child(spaced(
                 title.to_uppercase(),

@@ -54,15 +54,6 @@ pub struct Viewport {
     focus: FocusHandle,
 }
 
-/// Шаг колеса на строку события GPUI, CSS px (как у прокрутки, `scroll.rs`).
-fn line_step() -> f64 {
-    if cfg!(windows) {
-        f64::from(hlsr_ui::render::wheel_step_for_lines(1))
-    } else {
-        f64::from(hlsr_ui::render::WHEEL_STEP)
-    }
-}
-
 impl Viewport {
     pub fn new(focus: FocusHandle) -> Viewport {
         let geometry = Geometry {
@@ -210,7 +201,7 @@ impl GhostingPreview {
             return;
         }
         let delta_y = match event.delta {
-            ScrollDelta::Lines(lines) => -f64::from(lines.y) * line_step(),
+            ScrollDelta::Lines(lines) => -f64::from(lines.y * crate::scroll::line_step()),
             ScrollDelta::Pixels(pixels) => -f64::from(f32::from(pixels.y) / zoom),
         };
         let (x, y) = vp.local(event.position, zoom);
@@ -401,7 +392,7 @@ impl GhostingPreview {
                 }
                 window.set_window_cursor_style(cursor);
                 let moving = me.clone();
-                window.on_mouse_event(move |event: &MouseMoveEvent, phase, window, cx| {
+                window.on_mouse_event(move |event: &MouseMoveEvent, phase, _window, cx| {
                     if phase != DispatchPhase::Bubble {
                         return;
                     }
@@ -416,7 +407,6 @@ impl GhostingPreview {
                             cx.notify();
                         })
                         .ok();
-                    window.refresh();
                 });
                 let ending = me.clone();
                 window.on_mouse_event(move |event: &MouseUpEvent, phase, _, cx| {

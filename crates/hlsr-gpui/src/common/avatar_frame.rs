@@ -10,8 +10,10 @@ use crate::motion::{AnimGate, keyframes};
 use crate::scale::{u, zoom};
 use crate::theme::Theme;
 use gpui::prelude::*;
-use gpui::{AnyElement, App, ElementId, Hsla, ObjectFit, SharedString, Window, div, img};
-use hlsr_ui::render::profile_art;
+use gpui::{AnyElement, App, ElementId, Hsla, ObjectFit, SharedString, Window, canvas, div, img};
+use hlsr_ui::render::profile_art::{self, ProfileArt};
+use std::cell::Cell;
+use std::rc::Rc;
 use std::time::Instant;
 
 #[derive(IntoElement)]
@@ -67,6 +69,9 @@ impl AvatarFrame {
 struct State {
     start: Instant,
     ring: Art,
+    visible: Rc<Cell<bool>>,
+    last_key: String,
+    last_art: Option<ProfileArt>,
 }
 
 impl RenderOnce for AvatarFrame {
@@ -78,27 +83,56 @@ impl RenderOnce for AvatarFrame {
         let scale = zoom(window) * window.scale_factor();
         let still = AnimGate::still(cx);
         let now = cx.background_executor().now();
+        let step_ms = profile_art::step_ms_for_hz(crate::motion::refresh_hz(window, cx));
         let state = window.use_keyed_state(child_id(&self.id, "frame"), cx, |_, cx| {
             cx.on_release(|state: &mut State, cx| state.ring.release(cx))
                 .detach();
             State {
                 start: now,
                 ring: Art::default(),
+                visible: Rc::new(Cell::new(true)),
+                last_key: String::new(),
+                last_art: None,
             }
         });
         let hole = self
             .hole
             .unwrap_or_else(|| cx.global::<Theme>().color("l-modal-bg"));
-        let art = profile_art::frame_art(
-            &self.css,
-            self.size,
-            self.width,
-            self.radius,
-            rgba8(hole),
-            scale,
-            elapsed(now, state.read(cx).start),
-            still,
-        );
+        let hole8 = rgba8(hole);
+        let moving_frame = profile_art::frame_moving(&self.css, still);
+        let (ms, visible, frame_key) = {
+            let s = state.read(cx);
+            let key = format!(
+                "{}|{}|{}|{:?}|{hole8:?}|{scale}|{still:?}",
+                self.css, self.size, self.width, self.radius
+            );
+            (elapsed(now, s.start), s.visible.clone(), key)
+        };
+        let cached_offscreen = state.read(cx);
+        let art = if moving_frame
+            && !visible.get()
+            && cached_offscreen.last_key == frame_key
+            && let Some(prev) = &cached_offscreen.last_art
+        {
+            prev.clone()
+        } else {
+            let art = profile_art::frame_art_paced(
+                &self.css,
+                self.size,
+                self.width,
+                self.radius,
+                hole8,
+                scale,
+                ms,
+                still,
+                step_ms,
+            );
+            state.update(cx, |s, _| {
+                s.last_key = frame_key;
+                s.last_art = Some(art.clone());
+            });
+            art
+        };
         let shown = art.styled.then_some(&art.image);
         let image = state.update(cx, |state, cx| state.ring.image(shown, window, cx));
         let ring = image.map(|image| {
@@ -111,9 +145,20 @@ impl RenderOnce for AvatarFrame {
                 .object_fit(ObjectFit::Fill)
                 .opacity(art.opacity)
         });
+        let probe = (art.styled && moving_frame).then(|| {
+            let visible = visible.clone();
+            canvas(
+                |_, _, _| {},
+                move |bounds, _, window, _| {
+                    visible.set(bounds.intersects(&window.content_mask().bounds));
+                },
+            )
+            .absolute()
+            .inset_0()
+        });
         // Слой рамки позади аватара (`z-index: -1` внутри `isolation: isolate`).
-        let framed = shell.children(ring).child(self.child);
-        if art.styled && profile_art::frame_moving(&self.css, still) {
+        let framed = shell.children(probe).children(ring).child(self.child);
+        if art.styled && moving_frame {
             keyframes(child_id(&self.id, "tick"), TICK, move |_| framed).into_any_element()
         } else {
             framed.into_any_element()

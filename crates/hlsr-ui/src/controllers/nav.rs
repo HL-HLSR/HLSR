@@ -377,7 +377,7 @@ impl NavController {
     /// Щелчок по вкладке шапки (`section = tab.id`). Новый раздел закрывает раскрытую на
     /// «Главной» или в «Персонализации» колонку (`watch.section`).
     pub fn select_section(&self, id: &str) {
-        if !SECTIONS.contains(&id) {
+        if !SECTIONS.contains(&id) || self.inner.state.borrow().section == id {
             return;
         }
         self.set_section(id);

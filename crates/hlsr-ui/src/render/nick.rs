@@ -15,7 +15,9 @@ use super::css::{self, Anim, Filter, Image, Length, Rgba, Shadow};
 use crate::motion::{Registry, Still};
 use hlsr_core::language::Language;
 use serde::Deserialize;
-use std::collections::BTreeMap;
+use std::cell::RefCell;
+use std::collections::{BTreeMap, HashMap};
+use std::rc::Rc;
 use std::sync::{Arc, OnceLock};
 use tiny_skia::{Pixmap, PremultipliedColorU8};
 
@@ -230,6 +232,20 @@ pub fn cycle(look: &Look, still: Still) -> Option<(f64, f64)> {
     look.motion.as_ref()?.keyframes_cycle(MOTION_KEY, still)
 }
 
+/// Анимация меняет только `opacity` (`nick-pulse`): пиксели постоянны, перерастр не нужен.
+pub fn opacity_only(look: &Look, still: Still) -> bool {
+    moving(look, still)
+        && look
+            .animation
+            .as_ref()
+            .is_some_and(|anim| anim.name == "nick-pulse")
+}
+
+/// Значение `opacity` анимации в момент `elapsed` (мс).
+pub fn opacity_at(look: &Look, elapsed: f64, still: Still) -> f32 {
+    frame(look, Some(elapsed), still).opacity as f32
+}
+
 /// Как Chromium размывает `drop-shadow()`: σ = радиус / 2, как у `text-shadow`.
 const DROP_SIGMA: f32 = 0.5;
 
@@ -239,33 +255,156 @@ const MAX_CHARS: usize = 256;
 /// Ширина текста в растре, физ. px.
 const MAX_WIDTH_PX: f32 = 8192.0;
 
-/// Нарисовать ник в момент `elapsed`.
-pub fn render(look: &Look, text: &NickText, elapsed: Option<f64>, still: Still) -> Option<NickArt> {
-    let f = frame(look, elapsed, still);
+/// Предварительно собранный градиент: `resolve_stops` и `sin/cos` считаются один раз на кадр,
+/// а не на каждый пиксель.
+pub(crate) enum PreparedImage {
+    Linear {
+        sin: f32,
+        cos: f32,
+        inv_len: f32,
+        half_w: f32,
+        half_h: f32,
+        stops: Vec<(f32, Rgba)>,
+    },
+    Conic {
+        half_w: f32,
+        half_h: f32,
+        stops: Vec<(f32, Rgba)>,
+    },
+}
+
+impl PreparedImage {
+    pub(crate) fn new(image: &Image, w: f32, h: f32) -> Self {
+        match image {
+            Image::Linear { angle, stops } => {
+                let (sin, cos) = angle.to_radians().sin_cos();
+                let length = ((w * sin).abs() + (h * cos).abs()).max(f32::EPSILON);
+                Self::Linear {
+                    sin,
+                    cos,
+                    inv_len: 1.0 / length,
+                    half_w: w * 0.5,
+                    half_h: h * 0.5,
+                    stops: css::resolve_stops(stops),
+                }
+            }
+            Image::Conic { stops, .. } => Self::Conic {
+                half_w: w * 0.5,
+                half_h: h * 0.5,
+                stops: css::resolve_stops(stops),
+            },
+        }
+    }
+
+    #[inline]
+    pub(crate) fn color(&self, u: f32, v: f32) -> Rgba {
+        match self {
+            Self::Linear {
+                sin,
+                cos,
+                inv_len,
+                half_w,
+                half_h,
+                stops,
+            } => {
+                let t = ((u - half_w) * sin - (v - half_h) * cos) * inv_len + 0.5;
+                css::gradient_at(stops, t.clamp(0.0, 1.0))
+            }
+            Self::Conic {
+                half_w,
+                half_h,
+                stops,
+            } => {
+                let a = (u - half_w)
+                    .atan2(-(v - half_h))
+                    .to_degrees()
+                    .rem_euclid(360.0);
+                css::gradient_at(stops, a / 360.0)
+            }
+        }
+    }
+}
+
+/// Не зависящая от времени основа ника: раскладка глифов, ненулевые пиксели маски и заранее
+/// размытые `text-shadow` (а при непрозрачной заливке и чистых `drop-shadow` — и они тоже).
+struct NickBase {
+    cw: i32,
+    ch: i32,
+    pad: i32,
+    advance_px: f32,
+    ascent: f32,
+    content_h: f32,
+    empty: bool,
+    non_zero: Vec<(usize, u8)>,
+    under: Pixmap,
+    prebaked_drops: bool,
+}
+
+const NICK_BASE_LIMIT: usize = 64;
+
+thread_local! {
+    static NICK_BASES: RefCell<HashMap<String, Rc<NickBase>>> = RefCell::new(HashMap::new());
+}
+
+fn fill_is_opaque(fill: &Fill, inherited: Rgba) -> bool {
+    match fill {
+        Fill::Color(c) => c.unwrap_or(inherited)[3] >= 0.999,
+        Fill::Gradient { image, .. } => match image {
+            Image::Linear { stops, .. } | Image::Conic { stops, .. } => {
+                stops.iter().all(|stop| stop.color[3] >= 0.999)
+            }
+        },
+    }
+}
+
+fn nick_base(look: &Look, text: &NickText) -> Option<Rc<NickBase>> {
     let s = text.scale.max(0.01);
     let weight = look.weight.unwrap_or(text.weight);
     let em = text.size;
     let spacing = look
         .letter_spacing
         .map_or(text.letter_spacing, |l| l.px(em));
-    // Ник с сервера: столько знаков не влезает ни в одно место окна, а растр — на весь текст.
     let shown: String = text.text.chars().take(MAX_CHARS).collect();
     let value = if look.uppercase == Some(true) {
         shown.to_uppercase()
     } else {
         shown
     };
+    let opaque_fill = fill_is_opaque(&look.fill, text.color);
+    let only_drops = !look.filters.is_empty()
+        && look
+            .filters
+            .iter()
+            .all(|f| matches!(f, Filter::DropShadow(_)));
+    let can_prebake_drops = opaque_fill && only_drops;
+    let table_rgb = match &look.fill {
+        Fill::Color(c) => {
+            let c = c.unwrap_or(text.color);
+            [to8(c[0]), to8(c[1]), to8(c[2])]
+        }
+        Fill::Gradient { .. } => [0x7f, 0x80, 0x7f],
+    };
+    let key = format!(
+        "{value}|{weight}|{em}|{spacing}|{s}|{:?}|{:?}|{can_prebake_drops}|{table_rgb:?}",
+        look.text_shadows,
+        if can_prebake_drops {
+            &look.filters[..]
+        } else {
+            &[]
+        }
+    );
+    if let Some(hit) = NICK_BASES.with(|bases| bases.borrow().get(&key).cloned()) {
+        return Some(hit);
+    }
     let font = Font {
         weight,
         size: em * s,
         families: vec!["Rubik".to_owned()],
     };
     let line = canvas_text::layout_spaced(&value, &font, spacing * s);
-    // Область содержимого: подъём и спуск, округлённые в физических px (Blink).
     let ascent = line.metrics.ascent;
     let descent = line.metrics.descent;
     let advance_px = line.width;
-    // Поле под тени и свечение.
     let mut reach = 0.0f32;
     for sh in &look.text_shadows {
         reach = reach.max(sh.blur.px(em) * 1.5 + sh.x.px(em).abs().max(sh.y.px(em).abs()));
@@ -277,10 +416,9 @@ pub fn render(look: &Look, text: &NickText, elapsed: Option<f64>, still: Still) 
         }
     }
     let pad = (reach.min(css::MAX_REACH) * s).ceil() as i32 + 2;
-    // Шире окна растр не нужен (длинный `letter-spacing`): дальше ник обрезается.
     let width = advance_px.ceil().min(MAX_WIDTH_PX) as i32 + pad * 2;
     let height = (ascent + descent).ceil() as i32 + pad * 2;
-    let mut canvas = Pixmap::new(width.max(1) as u32, height.max(1) as u32)?;
+    let mut under = Pixmap::new(width.max(1) as u32, height.max(1) as u32)?;
     let cover = canvas_text::coverage(
         &line,
         Place {
@@ -292,45 +430,125 @@ pub fn render(look: &Look, text: &NickText, elapsed: Option<f64>, still: Still) 
         },
         TextPaint::Fill,
     );
-    let Some(cover) = cover else {
+    let (cw, ch) = (under.width() as i32, under.height() as i32);
+    let content_h = ascent + descent;
+    let base = match cover {
+        None => Rc::new(NickBase {
+            cw,
+            ch,
+            pad,
+            advance_px,
+            ascent,
+            content_h,
+            empty: true,
+            non_zero: Vec::new(),
+            under,
+            prebaked_drops: can_prebake_drops,
+        }),
+        Some(cover) => {
+            let mut mask = vec![0u8; (cw * ch) as usize];
+            let mut non_zero = Vec::new();
+            for row in 0..cover.height as i32 {
+                for col in 0..cover.width as i32 {
+                    let (x, y) = (cover.x + col, cover.y + row);
+                    if x >= 0 && y >= 0 && x < cw && y < ch {
+                        let m = cover.data[(row * cover.width as i32 + col) as usize];
+                        if m != 0 {
+                            let idx = (y * cw + x) as usize;
+                            mask[idx] = m;
+                            non_zero.push((idx, m));
+                        }
+                    }
+                }
+            }
+            for sh in look.text_shadows.iter().rev() {
+                paint_shadow(&mut under, &mask, sh, em, s, 0.5);
+            }
+            if can_prebake_drops {
+                // Суммарная альфа `(text_shadows over непрозрачный текст)` не зависит от сдвига
+                // градиента, а `source-over` ассоциативен — можно запечь `drop-shadow` заранее.
+                let table = canvas_text::coverage_table(table_rgb);
+                let mut alpha: Vec<u8> = under.pixels().iter().map(|p| p.alpha()).collect();
+                for &(i, m) in &non_zero {
+                    let k = f32::from(table[usize::from(m)]) / 255.0;
+                    let a = (k * 255.0 + f32::from(alpha[i]) * (1.0 - k))
+                        .round()
+                        .clamp(0.0, 255.0) as u8;
+                    alpha[i] = a;
+                }
+                for filter in &look.filters {
+                    if let Filter::DropShadow(sh) = filter {
+                        let mut drop = Pixmap::new(under.width(), under.height())?;
+                        paint_shadow(&mut drop, &alpha, sh, em, s, DROP_SIGMA);
+                        for (i, (d, u)) in drop
+                            .pixels_mut()
+                            .iter_mut()
+                            .zip(under.pixels())
+                            .enumerate()
+                        {
+                            let da = d.alpha();
+                            let ca = alpha[i];
+                            let inv = 255 - u32::from(ca);
+                            alpha[i] = (u32::from(ca) + (u32::from(da) * inv + 127) / 255).min(255)
+                                as u8;
+                            *d = over_pm(*d, *u);
+                        }
+                        under = drop;
+                    }
+                }
+            }
+            Rc::new(NickBase {
+                cw,
+                ch,
+                pad,
+                advance_px,
+                ascent,
+                content_h,
+                empty: false,
+                non_zero,
+                under,
+                prebaked_drops: can_prebake_drops,
+            })
+        }
+    };
+    NICK_BASES.with(|bases| {
+        let mut bases = bases.borrow_mut();
+        if bases.len() >= NICK_BASE_LIMIT {
+            bases.clear();
+        }
+        bases.insert(key, base.clone());
+    });
+    Some(base)
+}
+
+/// Нарисовать ник в момент `elapsed`.
+pub fn render(look: &Look, text: &NickText, elapsed: Option<f64>, still: Still) -> Option<NickArt> {
+    let f = frame(look, elapsed, still);
+    let s = text.scale.max(0.01);
+    let em = text.size;
+    let base = nick_base(look, text)?;
+    let mut canvas = base.under.clone();
+    if base.empty {
         return Some(NickArt {
             pixels: canvas,
-            x: -(pad as f32) / s,
-            y: -(pad as f32) / s,
-            width: width as f32 / s,
-            height: height as f32 / s,
-            advance: advance_px / s,
-            line_height: (ascent + descent) / s,
-            ascent: ascent / s,
+            x: -(base.pad as f32) / s,
+            y: -(base.pad as f32) / s,
+            width: base.cw as f32 / s,
+            height: base.ch as f32 / s,
+            advance: base.advance_px / s,
+            line_height: base.content_h / s,
+            ascent: base.ascent / s,
             opacity: 1.0,
         });
-    };
-    // Маска глифов на весь холст.
-    let (cw, ch) = (canvas.width() as i32, canvas.height() as i32);
-    let mut mask = vec![0u8; (cw * ch) as usize];
-    for row in 0..cover.height as i32 {
-        for col in 0..cover.width as i32 {
-            let (x, y) = (cover.x + col, cover.y + row);
-            if x >= 0 && y >= 0 && x < cw && y < ch {
-                mask[(y * cw + x) as usize] = cover.data[(row * cover.width as i32 + col) as usize];
-            }
-        }
     }
-    // Тени текста: под текстом, первая — выше остальных.
-    for sh in look.text_shadows.iter().rev() {
-        paint_shadow(&mut canvas, &mask, sh, em, s, 0.5);
-    }
+    let (cw, pad, content_h, advance_px) = (base.cw, base.pad, base.content_h, base.advance_px);
     // Текст.
-    let content_h = ascent + descent;
     let px = canvas.pixels_mut();
     match &look.fill {
         Fill::Color(c) => {
             let c = c.unwrap_or(text.color);
             let table = canvas_text::coverage_table([to8(c[0]), to8(c[1]), to8(c[2])]);
-            for (i, &m) in mask.iter().enumerate() {
-                if m == 0 {
-                    continue;
-                }
+            for &(i, m) in &base.non_zero {
                 let k = f32::from(table[usize::from(m)]) / 255.0 * c[3];
                 px[i] = over(px[i], [c[0], c[1], c[2]], k);
             }
@@ -341,14 +559,14 @@ pub fn render(look: &Look, text: &NickText, elapsed: Option<f64>, still: Still) 
             // background-position-x в долях (nick-shift: 0 → 200 %): (W − Wt) · p.
             let offset = (w - tile_w) * f.shift as f32;
             let table = canvas_text::coverage_table([0x7f, 0x80, 0x7f]);
-            for (i, &m) in mask.iter().enumerate() {
-                if m == 0 {
-                    continue;
-                }
+            let prepared = PreparedImage::new(image, tile_w, content_h);
+            let tile_mod = tile_w.max(1.0);
+            let pad_f = pad as f32;
+            for &(i, m) in &base.non_zero {
                 let (x, y) = ((i as i32 % cw) as f32 + 0.5, (i as i32 / cw) as f32 + 0.5);
-                let u = (x - pad as f32 - offset).rem_euclid(tile_w.max(1.0));
-                let v = y - pad as f32;
-                let c = image_color(image, u, v, tile_w, content_h);
+                let u = (x - pad_f - offset).rem_euclid(tile_mod);
+                let v = y - pad_f;
+                let c = prepared.color(u, v);
                 let k = f32::from(table[usize::from(m)]) / 255.0 * c[3];
                 px[i] = over(px[i], [c[0], c[1], c[2]], k);
             }
@@ -364,20 +582,22 @@ pub fn render(look: &Look, text: &NickText, elapsed: Option<f64>, still: Still) 
     } else {
         1.0
     };
-    for filter in &look.filters {
-        match filter {
-            Filter::DropShadow(sh) => {
-                let alpha: Vec<u8> = canvas.pixels().iter().map(|p| p.alpha()).collect();
-                let mut under = Pixmap::new(canvas.width(), canvas.height())?;
-                paint_shadow(&mut under, &alpha, sh, em, s, DROP_SIGMA);
-                // Картинка поверх своей тени.
-                for (u, c) in under.pixels_mut().iter_mut().zip(canvas.pixels()) {
-                    *u = over_pm(*u, *c);
+    if !base.prebaked_drops {
+        for filter in &look.filters {
+            match filter {
+                Filter::DropShadow(sh) => {
+                    let alpha: Vec<u8> = canvas.pixels().iter().map(|p| p.alpha()).collect();
+                    let mut under = Pixmap::new(canvas.width(), canvas.height())?;
+                    paint_shadow(&mut under, &alpha, sh, em, s, DROP_SIGMA);
+                    // Картинка поверх своей тени.
+                    for (u, c) in under.pixels_mut().iter_mut().zip(canvas.pixels()) {
+                        *u = over_pm(*u, *c);
+                    }
+                    canvas = under;
                 }
-                canvas = under;
+                Filter::Brightness(b) => apply_brightness(&mut canvas, *b),
+                Filter::HueRotate(_) => return None,
             }
-            Filter::Brightness(b) => apply_brightness(&mut canvas, *b),
-            Filter::HueRotate(_) => return None,
         }
     }
     if brightness != 1.0 {
@@ -385,13 +605,13 @@ pub fn render(look: &Look, text: &NickText, elapsed: Option<f64>, still: Still) 
     }
     Some(NickArt {
         pixels: canvas,
-        x: -(pad as f32) / s,
-        y: -(pad as f32) / s,
-        width: width as f32 / s,
-        height: height as f32 / s,
-        advance: advance_px / s,
+        x: -(base.pad as f32) / s,
+        y: -(base.pad as f32) / s,
+        width: base.cw as f32 / s,
+        height: base.ch as f32 / s,
+        advance: base.advance_px / s,
         line_height: content_h / s,
-        ascent: ascent / s,
+        ascent: base.ascent / s,
         opacity: f.opacity as f32,
     })
 }
@@ -444,14 +664,108 @@ pub fn badge_cycle(still: Still) -> Option<(f64, f64)> {
     crate::motion::registry().keyframes_cycle(BADGE_GLOW, still)
 }
 
-/// Значок подписчика у ника кеглем `em` px в момент `elapsed` (мс; `None` — t = 0).
-pub fn badge(em: f32, scale: f32, elapsed: Option<f64>, still: Still) -> Option<BadgeArt> {
+/// Доля дыхания значка `mix ∈ [0, 1]` в момент `elapsed` (мс); `None` — свечение стоит.
+pub fn badge_mix(elapsed: f64, still: Still) -> Option<f32> {
+    badge_moving(still).then(|| {
+        crate::motion::registry()
+            .keyframes_frame(BADGE_GLOW, Some(elapsed.max(0.0)), 0, still, true)
+            .mix as f32
+    })
+}
+
+/// Разложенный значок подписчика: сам значок и два слоя свечения (`t = 0` и `t = 1`),
+/// которые смешиваются на GPU по `opacity(1 - t)` / `opacity(t)` на полной частоте монитора.
+pub struct BadgeParts {
+    pub icon: Pixmap,
+    pub glow_min: Pixmap,
+    pub glow_max: Pixmap,
+    pub x: f32,
+    pub y: f32,
+    pub width: f32,
+    pub height: f32,
+}
+
+fn badge_icon_image() -> &'static image::RgbaImage {
     static ICON: OnceLock<image::RgbaImage> = OnceLock::new();
-    let icon = ICON.get_or_init(|| {
+    ICON.get_or_init(|| {
         image::load_from_memory(include_bytes!("../../assets/launcher/subscriber-badge.png"))
             .expect("assets/launcher/subscriber-badge.png")
             .into_rgba8()
-    });
+    })
+}
+
+fn badge_glow_only(icon: &Pixmap, em: f32, s: f32, t: Option<f32>) -> Option<Pixmap> {
+    let (total_w, total_h) = (icon.width(), icon.height());
+    let glows = badge_glow(t);
+    let mut glow_accum = Pixmap::new(total_w, total_h)?;
+    let mut combined_alpha: Vec<u8> = icon.pixels().iter().map(|p| p.alpha()).collect();
+    for (blur, color) in glows {
+        let shadow = Shadow {
+            x: Length::Px(0.0),
+            y: Length::Px(0.0),
+            blur: Length::Em(blur),
+            spread: Length::Px(0.0),
+            color,
+        };
+        let mut under = Pixmap::new(total_w, total_h)?;
+        paint_shadow(&mut under, &combined_alpha, &shadow, em, s, DROP_SIGMA);
+        for (i, (u, g)) in under
+            .pixels_mut()
+            .iter_mut()
+            .zip(glow_accum.pixels())
+            .enumerate()
+        {
+            let ua = u.alpha();
+            let ca = combined_alpha[i];
+            let inv = 255 - u32::from(ca);
+            combined_alpha[i] = (u32::from(ca) + (u32::from(ua) * inv + 127) / 255).min(255) as u8;
+            *u = over_pm(*u, *g);
+        }
+        glow_accum = under;
+    }
+    Some(glow_accum)
+}
+
+/// Значок подписчика разложен на иконку и крайние свечения (для плавного смешения на GPU).
+pub fn badge_parts(em: f32, scale: f32) -> Option<BadgeParts> {
+    let icon_img = badge_icon_image();
+    let s = scale.max(0.01);
+    let side = (em * BADGE_EM * s).round().max(1.0) as u32;
+    let reach: f32 = badge_glow(Some(1.0))
+        .iter()
+        .map(|(blur, _)| blur * em * DROP_SIGMA * 3.0)
+        .sum();
+    let pad = (reach * s).ceil() as u32 + 1;
+    let total = side + pad * 2;
+    let mut icon = Pixmap::new(total, total)?;
+    let small = image::imageops::resize(icon_img, side, side, image::imageops::FilterType::Triangle);
+    let px = icon.pixels_mut();
+    for (y, row) in small.rows().enumerate() {
+        for (x, p) in row.enumerate() {
+            let [r, g, b, a] = p.0;
+            let pm = |c: u8| super::raster::premultiply(c, a);
+            if let Some(c) = PremultipliedColorU8::from_rgba(pm(r), pm(g), pm(b), a) {
+                px[(y + pad as usize) * total as usize + x + pad as usize] = c;
+            }
+        }
+    }
+    let glow_min = badge_glow_only(&icon, em, s, Some(0.0))?;
+    let glow_max = badge_glow_only(&icon, em, s, Some(1.0))?;
+    let at = -(pad as f32) / s;
+    Some(BadgeParts {
+        icon,
+        glow_min,
+        glow_max,
+        x: at,
+        y: at,
+        width: total as f32 / s,
+        height: total as f32 / s,
+    })
+}
+
+/// Значок подписчика у ника кеглем `em` px в момент `elapsed` (мс; `None` — t = 0).
+pub fn badge(em: f32, scale: f32, elapsed: Option<f64>, still: Still) -> Option<BadgeArt> {
+    let icon = badge_icon_image();
     let s = scale.max(0.01);
     let t = badge_moving(still).then(|| {
         let registry = crate::motion::registry();
@@ -631,25 +945,6 @@ fn apply_brightness(canvas: &mut Pixmap, b: f32) {
             PremultipliedColorU8::from_rgba(ch(p.red()), ch(p.green()), ch(p.blue()), a)
         {
             *p = c;
-        }
-    }
-}
-
-/// Цвет градиента в точке `(u, v)` плитки `w × h` (px).
-pub(crate) fn image_color(image: &Image, u: f32, v: f32, w: f32, h: f32) -> Rgba {
-    match image {
-        Image::Linear { angle, stops } => {
-            let (sin, cos) = angle.to_radians().sin_cos();
-            let length = (w * sin).abs() + (h * cos).abs();
-            let t = ((u - w / 2.0) * sin - (v - h / 2.0) * cos) / length.max(f32::EPSILON) + 0.5;
-            css::gradient_at(&css::resolve_stops(stops), t.clamp(0.0, 1.0))
-        }
-        Image::Conic { stops, .. } => {
-            let a = (u - w / 2.0)
-                .atan2(-(v - h / 2.0))
-                .to_degrees()
-                .rem_euclid(360.0);
-            css::gradient_at(&css::resolve_stops(stops), a / 360.0)
         }
     }
 }

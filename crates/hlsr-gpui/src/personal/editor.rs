@@ -273,13 +273,27 @@ impl GamePersonalization {
         self.panel.is_dirty(&self.host.game_id)
     }
 
-    /// Щелчок по подразделу в списке слева (`personalNav.active = id`): поля — к началу.
-    pub fn select(&mut self, id: &str, cx: &mut Context<Self>) {
-        if let Some(look) = self.look.as_mut() {
-            look.extras.select_section(id);
+    /// Сбросить буферы превью, когда «Персонализация» не на экране.
+    pub fn release_idle_caches(&mut self, cx: &mut Context<Self>) {
+        if let Some(preview) = &self.widgets.preview {
+            preview.update(cx, |p, cx| p.release_caches(cx));
         }
+        cx.notify();
+    }
+
+    /// Щелчок по подразделу в списке слева (`personalNav.active = id`): поля — к началу.
+    pub fn select(&mut self, id: &str, cx: &mut Context<Self>) -> bool {
+        let Some(look) = self
+            .look
+            .as_mut()
+            .filter(|look| look.extras.active_id != id)
+        else {
+            return false;
+        };
+        look.extras.select_section(id);
         self.widgets.fields_scroll = Scroll::new();
         cx.notify();
+        true
     }
 
     /// Идёт импорт кода: моды уже переключаются, вид ещё не в черновике.

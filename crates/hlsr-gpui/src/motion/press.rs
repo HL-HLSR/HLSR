@@ -177,19 +177,10 @@ impl<E: IntoElement + Styled + 'static> Drive for Press<E> {
         cx: &mut App,
     ) -> (AnyElement, Need) {
         let target = self.target(state.held.get(self.live));
-        let (t, mut need) = state.ease.step(target, self.push.timing, now, cx);
-        if t > 0. && state.natural.get().is_none() {
-            // Нажата с первого кадра: он меряет размер, масштаб — со следующего.
-            need = Need::Finite;
-        }
+        let (t, need) = state.ease.step(target, self.push.timing, now, cx);
         let k = 1. - (1. - self.push.k) * f64::from(t);
-        let mut child = self.child.take().expect("один build на кадр");
-        let flow = if zoom::scales(k, &state.natural) {
-            zoom::take_flow(&mut child)
-        } else {
-            Default::default()
-        };
-        let zoomed = zoom::scaled(k, Origin::CENTER, state.natural.clone(), child).flow(flow);
+        let child = self.child.take().expect("один build на кадр");
+        let zoomed = zoom::scaled(k, Origin::CENTER, state.natural.clone(), child);
         (zoomed.into_any_element(), need)
     }
 

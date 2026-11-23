@@ -20,7 +20,7 @@ use crate::scale::{u, zoom};
 use crate::theme::Theme;
 use gpui::prelude::FluentBuilder as _;
 use gpui::{
-    App, Bounds, CursorStyle, DispatchPhase, ElementId, Entity, FocusHandle, IntoElement,
+    App, Bounds, CursorStyle, DispatchPhase, ElementId, Entity, EntityId, FocusHandle, IntoElement,
     KeyDownEvent, MouseButton, MouseDownEvent, MouseMoveEvent, Pixels, Point, RenderOnce, Role,
     SharedString, Styled, Window, canvas, div, prelude::*, relative,
 };
@@ -200,7 +200,7 @@ fn emit(handler: &Option<Handler<Option<f64>>>, value: Option<f64>, w: &mut Wind
 
 /// Отпустили: размер закрепится кадром позже, если тянули (щелчок без движения и первый
 /// щелчок двойного — нет).
-fn release(state: &Entity<State>, window: &mut Window, cx: &mut App) {
+fn release(state: &Entity<State>, owner: EntityId, cx: &mut App) {
     let drag = state.update(cx, |s, _| s.drag.take());
     if let Some(drag) = drag {
         if drag.moved {
@@ -211,7 +211,7 @@ fn release(state: &Entity<State>, window: &mut Window, cx: &mut App) {
                 })
             });
         }
-        window.refresh();
+        cx.notify(owner);
     }
 }
 
@@ -220,6 +220,7 @@ fn reset(
     state: &Entity<State>,
     input: &Option<Handler<Option<f64>>>,
     save: &Option<Handler<Option<f64>>>,
+    owner: EntityId,
     window: &mut Window,
     cx: &mut App,
 ) {
@@ -229,7 +230,7 @@ fn reset(
     });
     emit(input, None, window, cx);
     emit(save, None, window, cx);
-    window.refresh();
+    cx.notify(owner);
 }
 
 /// Имя клавиши `KeyboardEvent.key` для `pane_size::key_size`.
@@ -270,6 +271,7 @@ impl RenderOnce for PaneSplitter {
             next,
             zoom: zoom(window),
         };
+        let owner = window.current_view();
         let state = window.use_keyed_state(child_id(&id, "split"), cx, |_, cx| State {
             focus: cx.focus_handle().tab_stop(true),
             drag: None,
@@ -336,7 +338,7 @@ impl RenderOnce for PaneSplitter {
                         }
                         // Кнопку отпустили там, где окно не слышало.
                         if event.pressed_button != Some(MouseButton::Left) {
-                            release(&state, window, cx);
+                            release(&state, owner, cx);
                             return;
                         }
                         let delta = geometry.coord(event.position) - drag.from;
@@ -351,7 +353,7 @@ impl RenderOnce for PaneSplitter {
                             }
                         });
                         emit(&input, Some(next), window, cx);
-                        window.refresh();
+                        cx.notify(owner);
                     });
                 },
             )
@@ -413,7 +415,7 @@ impl RenderOnce for PaneSplitter {
                     MouseButton::Left,
                     move |event: &MouseDownEvent, window, cx| {
                         if event.click_count >= 2 {
-                            reset(&down, &down_input, &down_save, window, cx);
+                            reset(&down, &down_input, &down_save, owner, window, cx);
                             return;
                         }
                         let Some((now, max)) = down_geometry.measure() else {
@@ -429,20 +431,20 @@ impl RenderOnce for PaneSplitter {
                                 moved: false,
                             })
                         });
-                        window.refresh();
+                        cx.notify(owner);
                     },
                 )
-                .on_mouse_up(MouseButton::Left, move |_, window, cx| {
-                    release(&up, window, cx)
+                .on_mouse_up(MouseButton::Left, move |_, _window, cx| {
+                    release(&up, owner, cx)
                 })
-                .on_mouse_up_out(MouseButton::Left, move |_, window, cx| {
-                    release(&out, window, cx)
+                .on_mouse_up_out(MouseButton::Left, move |_, _window, cx| {
+                    release(&out, owner, cx)
                 })
                 .on_key_down(move |event: &KeyDownEvent, window, cx| {
                     let key = event.keystroke.key.as_str();
                     if key == "enter" {
                         cx.stop_propagation();
-                        reset(&keys, &on_input, &on_save, window, cx);
+                        reset(&keys, &on_input, &on_save, owner, window, cx);
                         return;
                     }
                     let Some(name) = js_key(key) else { return };
@@ -455,7 +457,7 @@ impl RenderOnce for PaneSplitter {
                     cx.stop_propagation();
                     keys.update(cx, |s, _| s.settle = Some(Start { size: now, value }));
                     emit(&on_input, Some(next), window, cx);
-                    window.refresh();
+                    cx.notify(owner);
                 })
         })
     }

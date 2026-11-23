@@ -8,15 +8,19 @@ use crate::icons::{fa_glyph, icon};
 use crate::kit::button::white;
 use crate::layer::TipExt;
 use crate::motion::{Timing, hover, mix, rise_in};
+use crate::rows::{Rows, Slot};
 use crate::scale::u;
+use crate::scroll::Scroll;
 use crate::text::{RUBIK, TextExt};
 use crate::theme::Theme;
 use gpui::prelude::FluentBuilder as _;
 use gpui::{
-    AnyElement, App, FontWeight, IntoElement, ParentElement, Role, Styled, WeakEntity, div,
-    prelude::*, rgb,
+    AnyElement, App, Context, FontWeight, IntoElement, ParentElement, Render, Role, Styled,
+    WeakEntity, Window, div, prelude::*, rgb,
 };
-use hlsr_ui::controllers::game_settings::{RunsBody, View};
+use hlsr_core::language::Language;
+use hlsr_ui::controllers::game_settings::{RunsBody, RunsView, Session, View};
+use std::rc::Rc;
 
 /// `.game-settings__empty`: рамка, 13 px, по центру.
 pub fn empty_box(theme: &Theme, text: String) -> AnyElement {
@@ -88,76 +92,128 @@ fn run_icon(
 }
 
 /// «Призраки».
-pub fn ghosts(
-    view: &View,
-    weak: WeakEntity<GameSettings>,
-    t: &dyn Fn(&str) -> String,
-    theme: &Theme,
-) -> AnyElement {
-    let theme = theme.clone();
-    let act = |f: fn(&mut GameSettings)| {
-        let weak = weak.clone();
-        move |_: &gpui::ClickEvent, _: &mut gpui::Window, cx: &mut App| {
-            weak.update(cx, |this, cx| {
-                f(this);
-                cx.notify();
-            })
-            .ok();
+/// Раздел «Призраки»: закэшированный вид во всю ячейку раздела ([`crate::cache`]) со своей
+/// прокруткой и окном видимости карточек ([`crate::rows`]). Был частью окна настроек игры, и
+/// каждый кадр прокрутки и наведения карточки рисовал всё окно и все записи. Читает только
+/// записи сессии ([`Session::runs_view`]); окно настроек уведомляет его о переменах сессии.
+pub struct GameGhostsView {
+    session: Rc<Session>,
+    settings: WeakEntity<GameSettings>,
+    language: Language,
+    scroll: Scroll,
+    rows: Rows,
+    /// Записи сессии: форматируются при переменах сессии ([`Self::stale`]), а не на каждый кадр
+    /// прокрутки и наведения карточки.
+    view: Option<Rc<RunsView>>,
+}
+
+impl GameGhostsView {
+    /// Сессия сменилась: записи — заново со следующим кадром.
+    pub fn stale(&mut self, cx: &mut Context<Self>) {
+        self.view = None;
+        cx.notify();
+    }
+
+    pub fn new(
+        session: Rc<Session>,
+        settings: WeakEntity<GameSettings>,
+        language: Language,
+    ) -> GameGhostsView {
+        GameGhostsView {
+            session,
+            settings,
+            language,
+            scroll: Scroll::new(),
+            rows: Rows::default(),
+            view: None,
         }
-    };
-    let head = div()
-        .flex()
-        .items_center()
-        .gap(u(8.))
-        .pt(u(4.))
-        .pb(u(16.))
-        .child(
-            div()
-                .text_px(12., 20.)
-                .text_color(theme.color("l-text-faint"))
-                .child(view.runs_summary.clone()),
-        )
-        .child(div().flex_1())
-        .child(
-            settings_btn("gs-runs-refresh", BtnLook::Plain)
-                .disabled(!view.runs_refresh_enabled)
-                .on_click(act(|this| this.session().refresh_runs()))
-                .children(icon_label("fas fa-sync-alt", t("#L_GS_REFRESH"), true)),
-        )
-        .child(
-            settings_btn("gs-runs-folder", BtnLook::Plain)
-                .disabled(!view.runs_folder_enabled)
-                .on_click(act(|this| this.session().open_runs_folder()))
-                .children(icon_label("fas fa-folder-open", t("#L_GS_OPEN_RUNS"), true)),
-        );
-    let body = match &view.runs_body {
-        RunsBody::Loading => empty_box(&theme, t("#L_GS_LOADING")),
-        RunsBody::Error(text) => empty_box(&theme, text.clone()),
-        RunsBody::Empty => empty_box(&theme, t("#L_NO_DATA")),
-        RunsBody::List => {
-            let busy = view.runs.iter().any(|run| run.deleting);
-            let mut list = div().flex().flex_col().gap(u(8.));
-            for run in &view.runs {
-                list = list.child(run_card(run, busy, &weak, &theme, t));
+    }
+}
+
+impl Render for GameGhostsView {
+    fn render(&mut self, window: &mut Window, cx: &mut Context<Self>) -> impl IntoElement {
+        crate::live::rendered(cx.entity_id());
+        let theme = cx.global::<Theme>().clone();
+        let language = self.language;
+        let t = move |key: &str| hlsr_ui::tr(language, key, &[]);
+        let session = &self.session;
+        let view = self
+            .view
+            .get_or_insert_with(|| Rc::new(session.runs_view()))
+            .clone();
+        let weak = self.settings.clone();
+        let act = |f: fn(&mut GameSettings)| {
+            let weak = weak.clone();
+            move |_: &gpui::ClickEvent, _: &mut gpui::Window, cx: &mut App| {
+                weak.update(cx, |this, cx| {
+                    f(this);
+                    cx.notify();
+                })
+                .ok();
             }
-            list.into_any_element()
-        }
-    };
-    div()
-        .flex()
-        .flex_col()
-        .child(head)
-        .child(body)
-        .when(!view.runs_error.is_empty(), |el| {
-            el.child(
+        };
+        let head = div()
+            .flex()
+            .items_center()
+            .gap(u(8.))
+            .pt(u(4.))
+            .pb(u(16.))
+            .child(
                 div()
-                    .mt(u(12.))
-                    .text_size(u(12.))
-                    .text_color(rgb(0xff8796))
-                    .child(view.runs_error.clone()),
+                    .text_px(12., 20.)
+                    .text_color(theme.color("l-text-faint"))
+                    .child(view.summary.clone()),
             )
-        })
-        .into_any_element()
+            .child(div().flex_1())
+            .child(
+                settings_btn("gs-runs-refresh", BtnLook::Plain)
+                    .disabled(!view.refresh_enabled)
+                    .on_click(act(|this| this.session().refresh_runs()))
+                    .children(icon_label("fas fa-sync-alt", t("#L_GS_REFRESH"), true)),
+            )
+            .child(
+                settings_btn("gs-runs-folder", BtnLook::Plain)
+                    .disabled(!view.folder_enabled)
+                    .on_click(act(|this| this.session().open_runs_folder()))
+                    .children(icon_label("fas fa-folder-open", t("#L_GS_OPEN_RUNS"), true)),
+            );
+        let body = match &view.body {
+            RunsBody::Loading => empty_box(&theme, t("#L_GS_LOADING")),
+            RunsBody::Error(text) => empty_box(&theme, text.clone()),
+            RunsBody::Empty => empty_box(&theme, t("#L_NO_DATA")),
+            RunsBody::List => {
+                let busy = view.runs.iter().any(|run| run.deleting);
+                let keys = view.runs.iter().map(|run| run.id.clone()).collect();
+                let slots = self.rows.plan(&self.scroll, keys, 8., window, cx);
+                let mut list = div().flex().flex_col().gap(u(8.));
+                for slot in slots {
+                    list = match slot {
+                        Slot::Row(index) => {
+                            list.child(run_card(&view.runs[index], busy, &weak, &theme, &t))
+                        }
+                        Slot::Space(height) => list.child(div().flex_none().h(height)),
+                    };
+                }
+                self.rows.measure(&self.scroll, list).into_any_element()
+            }
+        };
+        let content =
+            div()
+                .flex()
+                .flex_col()
+                .child(head)
+                .child(body)
+                .when(!view.error.is_empty(), |el| {
+                    el.child(
+                        div()
+                            .mt(u(12.))
+                            .text_size(u(12.))
+                            .text_color(rgb(0xff8796))
+                            .child(view.error.clone()),
+                    )
+                });
+        super::sections::body("ghosts", &self.scroll, content.into_any_element())
+    }
 }
 
 fn run_card(

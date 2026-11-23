@@ -599,7 +599,14 @@ impl ImageLoader {
     /// Готовая картинка из кеша: та же область или крупнее (тот же источник и вписывание).
     pub fn cached(&self, request: &ImageRequest) -> Option<Arc<Rgba8Image>> {
         self.inner
-            .lookup(&request.source.key(), request.area(), request.fit)
+            .lookup(&request.source.key(), request.area(), request.fit, true)
+    }
+
+    /// То же, но без обновления LRU-метки: для чтения уже показанного слоя (подложки стекла),
+    /// чтобы уходящий фон не становился «свежее» загружаемого нового и не вытеснял его.
+    pub fn peek(&self, request: &ImageRequest) -> Option<Arc<Rgba8Image>> {
+        self.inner
+            .lookup(&request.source.key(), request.area(), request.fit, false)
     }
 
     /// Картинка по запросу: из кеша сразу, иначе — после загрузки (`done` в потоке интерфейса).
@@ -608,7 +615,7 @@ impl ImageLoader {
         let inner = &self.inner;
         let source = request.source.key();
         let target = request.area();
-        if let Some(image) = inner.lookup(&source, target, request.fit) {
+        if let Some(image) = inner.lookup(&source, target, request.fit, true) {
             done(Ok(image));
             return;
         }
@@ -779,10 +786,10 @@ impl Inner {
         source: &str,
         target: Option<(u32, u32)>,
         fit: Fit,
+        touch: bool,
     ) -> Option<Arc<Rgba8Image>> {
         let mut entries = self.entries.borrow_mut();
         let copies = entries.get_mut(source)?;
-        let now = self.tick();
         let found = match copies
             .iter()
             .position(|entry| entry.target == target && entry.fit == fit)
@@ -798,7 +805,9 @@ impl Inner {
                 })
                 .min_by_key(|entry| entry.bytes)?,
         };
-        found.used = now;
+        if touch {
+            found.used = self.tick();
+        }
         Some(found.image.clone())
     }
 

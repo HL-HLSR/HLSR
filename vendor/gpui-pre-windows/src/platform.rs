@@ -444,8 +444,8 @@ impl WindowsPlatform {
                 let vsync_provider = VSyncProvider::new();
                 loop {
                     // HLSR: такт — vblank монитора окон (`vsync.rs`), каждый раз заново: окно
-                    // перенесли на другой монитор — со следующего кадра его частота. Не чаще 60
-                    // раз в секунду: каждый k-й vblank (`gpui::frame_divisor`).
+                    // перенесли на другой монитор — со следующего кадра его частота. Каждый
+                    // k-й vblank (`gpui::frame_divisor`, сейчас каждый).
                     let monitor = all_windows
                         .upgrade()
                         .and_then(|windows| windows_monitor(&windows.read()));

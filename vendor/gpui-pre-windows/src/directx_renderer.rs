@@ -173,6 +173,8 @@ struct DirectXRenderPipelines {
     mono_sprites: PipelineState<MonochromeSprite>,
     subpixel_sprites: PipelineState<SubpixelSprite>,
     poly_sprites: PipelineState<PolychromeSprite>,
+    /// HLSR: финальная сглаженная маска 4 скруглённых углов окна.
+    window_corner_mask: WindowCornerMaskPipeline,
 }
 
 struct DirectXGlobalElements {
@@ -286,7 +288,12 @@ impl DirectXRenderer {
         self.atlas.clone()
     }
 
-    fn pre_draw(&self, clear_color: &[f32; 4], depth_scale: f32) -> Result<()> {
+    fn pre_draw(
+        &self,
+        clear_color: &[f32; 4],
+        depth_scale: f32,
+        window_corner_radius: f32,
+    ) -> Result<()> {
         let resources = self.resources.as_ref().expect("resources missing");
         let device_context = &self
             .devices
@@ -303,7 +310,8 @@ impl DirectXRenderer {
                 subpixel_enhanced_contrast: self.font_info.subpixel_enhanced_contrast,
                 is_bgr: self.font_info.is_bgr as u32,
                 depth_scale,
-                _pad: [0; 2],
+                window_corner_radius,
+                _pad: 0,
             }],
         )?;
         unsafe {
@@ -608,12 +616,14 @@ impl DirectXRenderer {
         }
         let mut cuts = cuts.into_iter().peekable();
         let depth_scale = quad_depth_scale(scene.quads.len());
+        let window_corner_radius = scene.window_corner_radius.0.max(0.0);
         self.pre_draw(
             &match background_appearance {
                 WindowBackgroundAppearance::Opaque => [1.0f32; 4],
                 _ => [0.0f32; 4],
             },
             depth_scale,
+            window_corner_radius,
         )?;
         self.upload_scene_buffers(scene)?;
 
@@ -707,6 +717,15 @@ impl DirectXRenderer {
                     scene.surfaces.len(),
                 )
             })?;
+        }
+        // HLSR: сглаженная маска 4 скруглённых углов окна в один проход (без 1-битного SetWindowRgn
+        // и без накопления альфы нескольких наложенных слоёв).
+        if window_corner_radius > 0.0 {
+            let devices = self.devices.as_ref().expect("devices missing");
+            let resources = self.resources.as_ref().expect("resources missing");
+            self.pipelines
+                .window_corner_mask
+                .draw(&devices.device_context, &resources.viewport);
         }
         self.discard_depth_buffer();
         Ok(())
@@ -1356,6 +1375,7 @@ impl DirectXRenderPipelines {
             create_blend_state(device)?,
         )?;
         let opaque_quad_pipeline = OpaqueQuadPipeline::new(device)?;
+        let window_corner_mask = WindowCornerMaskPipeline::new(device)?;
 
         Ok(Self {
             shadow_pipeline,
@@ -1368,6 +1388,7 @@ impl DirectXRenderPipelines {
             mono_sprites,
             subpixel_sprites,
             poly_sprites,
+            window_corner_mask,
         })
     }
 }
@@ -1435,7 +1456,8 @@ struct GlobalParams {
     subpixel_enhanced_contrast: f32,
     is_bgr: u32,
     depth_scale: f32,
-    _pad: [u32; 2],
+    window_corner_radius: f32,
+    _pad: u32,
 }
 
 #[derive(Clone, Copy, Debug, Default)]
@@ -1665,6 +1687,82 @@ impl OpaqueQuadPipeline {
         );
         unsafe { device_context.DrawInstanced(4, quad_count, 0, 0) };
         Ok(())
+    }
+}
+
+/// HLSR: финальная сглаженная альфа-маска 4 углов окна (DirectComposition premultiplied).
+struct WindowCornerMaskPipeline {
+    vertex: ID3D11VertexShader,
+    fragment: ID3D11PixelShader,
+    blend_state: ID3D11BlendState,
+    depth_stencil_state: ID3D11DepthStencilState,
+}
+
+impl WindowCornerMaskPipeline {
+    fn new(device: &ID3D11Device) -> Result<Self> {
+        let vertex = {
+            let raw_shader =
+                RawShaderBytes::new(ShaderModule::WindowCornerMask, ShaderTarget::Vertex)?;
+            create_vertex_shader(device, raw_shader.as_bytes())?
+        };
+        let fragment = {
+            let raw_shader =
+                RawShaderBytes::new(ShaderModule::WindowCornerMask, ShaderTarget::Fragment)?;
+            create_fragment_shader(device, raw_shader.as_bytes())?
+        };
+        let mut blend_desc = D3D11_BLEND_DESC::default();
+        blend_desc.RenderTarget[0].BlendEnable = true.into();
+        blend_desc.RenderTarget[0].BlendOp = D3D11_BLEND_OP_ADD;
+        blend_desc.RenderTarget[0].BlendOpAlpha = D3D11_BLEND_OP_ADD;
+        blend_desc.RenderTarget[0].SrcBlend = D3D11_BLEND_ZERO;
+        blend_desc.RenderTarget[0].DestBlend = D3D11_BLEND_SRC_ALPHA;
+        blend_desc.RenderTarget[0].SrcBlendAlpha = D3D11_BLEND_ZERO;
+        blend_desc.RenderTarget[0].DestBlendAlpha = D3D11_BLEND_SRC_ALPHA;
+        blend_desc.RenderTarget[0].RenderTargetWriteMask = D3D11_COLOR_WRITE_ENABLE_ALL.0 as u8;
+        let blend_state = unsafe {
+            let mut state = None;
+            device.CreateBlendState(&blend_desc, Some(&mut state))?;
+            state.unwrap()
+        };
+        let stencil_op = D3D11_DEPTH_STENCILOP_DESC {
+            StencilFailOp: D3D11_STENCIL_OP_KEEP,
+            StencilDepthFailOp: D3D11_STENCIL_OP_KEEP,
+            StencilPassOp: D3D11_STENCIL_OP_KEEP,
+            StencilFunc: D3D11_COMPARISON_ALWAYS,
+        };
+        let depth_desc = D3D11_DEPTH_STENCIL_DESC {
+            DepthEnable: false.into(),
+            DepthWriteMask: D3D11_DEPTH_WRITE_MASK_ZERO,
+            DepthFunc: D3D11_COMPARISON_ALWAYS,
+            StencilEnable: false.into(),
+            StencilReadMask: D3D11_DEFAULT_STENCIL_READ_MASK as u8,
+            StencilWriteMask: D3D11_DEFAULT_STENCIL_WRITE_MASK as u8,
+            FrontFace: stencil_op,
+            BackFace: stencil_op,
+        };
+        let depth_stencil_state = unsafe {
+            let mut state = None;
+            device.CreateDepthStencilState(&depth_desc, Some(&mut state))?;
+            state.unwrap()
+        };
+        Ok(Self {
+            vertex,
+            fragment,
+            blend_state,
+            depth_stencil_state,
+        })
+    }
+
+    fn draw(&self, device_context: &ID3D11DeviceContext, viewport: &D3D11_VIEWPORT) {
+        unsafe {
+            device_context.RSSetViewports(Some(slice::from_ref(viewport)));
+            device_context.IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
+            device_context.VSSetShader(&self.vertex, None);
+            device_context.PSSetShader(&self.fragment, None);
+            device_context.OMSetBlendState(&self.blend_state, None, 0xFFFFFFFF);
+            device_context.OMSetDepthStencilState(&self.depth_stencil_state, 0);
+            device_context.DrawInstanced(4, 4, 0, 0);
+        }
     }
 }
 
@@ -2191,6 +2289,8 @@ pub(crate) mod shader_resources {
         PolychromeSprite,
         /// HLSR: перевод кадра в профиль монитора (`color_profile.rs`).
         Color,
+        /// HLSR: сглаженная маска 4 скруглённых углов окна.
+        WindowCornerMask,
     }
 
     #[derive(Copy, Clone, Debug, Eq, PartialEq)]
@@ -2267,6 +2367,10 @@ pub(crate) mod shader_resources {
                 ShaderModule::Color => match target {
                     ShaderTarget::Vertex => COLOR_VERTEX_BYTES,
                     ShaderTarget::Fragment => COLOR_FRAGMENT_BYTES,
+                },
+                ShaderModule::WindowCornerMask => match target {
+                    ShaderTarget::Vertex => WINDOW_CORNER_MASK_VERTEX_BYTES,
+                    ShaderTarget::Fragment => WINDOW_CORNER_MASK_FRAGMENT_BYTES,
                 },
             };
             Self { inner: bytes }
@@ -2349,6 +2453,7 @@ pub(crate) mod shader_resources {
                 ShaderModule::SubpixelSprite => "subpixel_sprite",
                 ShaderModule::PolychromeSprite => "polychrome_sprite",
                 ShaderModule::Color => "color",
+                ShaderModule::WindowCornerMask => "window_corner_mask",
             }
         }
     }

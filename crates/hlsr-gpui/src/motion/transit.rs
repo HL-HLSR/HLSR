@@ -5,11 +5,11 @@
 
 use super::driver::{Drive, Driven, Need};
 use super::gate::AnimGate;
-use super::zoom::{Natural, Origin, scaled};
+use super::zoom::{Origin, transformed};
 use super::{ms, registry};
 use gpui::{
     AnyElement, App, Div, ElementId, Empty, IntoElement, ParentElement, Pixels, StyleRefinement,
-    Styled, Window, div, prelude::FluentBuilder, px,
+    Styled, Window, div, point, prelude::FluentBuilder, px,
 };
 use hlsr_ui::motion::Frame;
 use std::time::{Duration, Instant};
@@ -154,12 +154,11 @@ impl<K: Clone + PartialEq + 'static> IntoElement for Transit<K> {
 pub struct Item<K> {
     key: K,
     entering: bool,
+    name: &'static str,
     /// Начало фазы; `None` — вход доигран. В будущем — ждёт ухода старого (out-in).
     since: Option<Instant>,
     /// Значения в момент смены фазы, если прервана идущая.
     origin: Option<Frame>,
-    /// Размер без масштаба (`l-pop` .97 и др.).
-    natural: Natural,
 }
 
 pub struct TransitState<K> {
@@ -169,10 +168,10 @@ pub struct TransitState<K> {
 }
 
 impl<K: Clone + PartialEq + 'static> Transit<K> {
-    fn frame(&self, item: &Item<K>, now: Instant, cx: &App) -> Frame {
+    fn frame(item: &Item<K>, now: Instant, cx: &App) -> Frame {
         let elapsed = item.since.map(|since| ms(now, since));
         registry().transition_frame(
-            self.name,
+            item.name,
             item.entering,
             elapsed,
             AnimGate::still(cx),
@@ -188,9 +187,9 @@ impl<K: Clone + PartialEq + 'static> Drive for Transit<K> {
         let items = self.current.clone().map(|key| Item {
             key,
             entering: true,
+            name: self.name,
             since: self.appear.then_some(now),
             origin: None,
-            natural: Natural::default(),
         });
         TransitState {
             items: items.into_iter().collect(),
@@ -206,15 +205,24 @@ impl<K: Clone + PartialEq + 'static> Drive for Transit<K> {
         cx: &mut App,
     ) -> (AnyElement, Need) {
         let still = AnimGate::still(cx);
-        let length = |entering| registry().transition_length(self.name, entering, still);
+        let length = |item: &Item<K>| registry().transition_length(item.name, item.entering, still);
+        if self.out_in {
+            // Сменившийся до показа ключ выходит из очереди. Новый ждёт только видимый уход.
+            state.items.retain(|item| {
+                !item.entering
+                    || self.current.as_ref() == Some(&item.key)
+                    || item.since.is_none_or(|since| since < now)
+            });
+        }
         // Смена фазы: текущее входит, остальное уходит — от значений этого кадра.
         for at in 0..state.items.len() {
             let item = &state.items[at];
             let entering = self.current.as_ref() == Some(&item.key);
             if entering != item.entering {
-                let origin = self.frame(item, now, cx);
+                let origin = Self::frame(item, now, cx);
                 let item = &mut state.items[at];
                 item.entering = entering;
+                item.name = self.name;
                 item.since = Some(now);
                 item.origin = Some(origin);
             }
@@ -225,7 +233,7 @@ impl<K: Clone + PartialEq + 'static> Drive for Transit<K> {
             let wait = if self.out_in {
                 let left = state.items.iter().filter_map(|item| {
                     let since = item.since?;
-                    Some(length(false) - ms(now, since))
+                    Some(length(item) - ms(now, since))
                 });
                 left.fold(0.0, f64::max)
             } else {
@@ -234,9 +242,9 @@ impl<K: Clone + PartialEq + 'static> Drive for Transit<K> {
             state.items.push(Item {
                 key: key.clone(),
                 entering: true,
+                name: self.name,
                 since: Some(now + Duration::from_secs_f64(wait / 1000.)),
                 origin: None,
-                natural: Natural::default(),
             });
         }
         // Доигранный вход встаёт, доигранный уход исчезает.
@@ -244,7 +252,7 @@ impl<K: Clone + PartialEq + 'static> Drive for Transit<K> {
             let Some(since) = item.since else {
                 return true;
             };
-            if now < since || ms(now, since) < length(item.entering) {
+            if now < since || ms(now, since) < length(item) {
                 return true;
             }
             item.since = None;
@@ -262,30 +270,31 @@ impl<K: Clone + PartialEq + 'static> Drive for Transit<K> {
         let gap = registry().tokens.l_swipe_gap as f32;
         let mut children = Vec::with_capacity(shown.len());
         for (at, item) in shown.iter().enumerate() {
-            let frame = self.frame(item, now, cx);
+            let frame = Self::frame(item, now, cx);
             let x = rem * (frame.x as f32 / 16.)
                 + (state.width + rem * (gap / 16.)) * frame.slide as f32;
+            let offset = point(x, rem * (frame.y as f32 / 16.));
+            let scale = if self.origin.is_some() {
+                frame.scale
+            } else {
+                1.
+            };
             let wrap = div().size_full().flex().flex_col();
             let wrap = if at + 1 == shown.len() {
                 wrap.relative()
             } else {
                 wrap.absolute().top_0().left_0()
             };
-            children.push(
-                wrap.left(x)
-                    .top(rem * (frame.y as f32 / 16.))
-                    .opacity(frame.opacity as f32)
-                    .child(scaled(
-                        if self.origin.is_some() {
-                            frame.scale
-                        } else {
-                            1.
-                        },
-                        self.origin.unwrap_or_default(),
-                        item.natural.clone(),
-                        (self.child)(&item.key, &frame),
-                    )),
-            );
+            // Сдвиг, масштаб и прозрачность идут в `paint` (Window::with_paint_transform),
+            // поэтому рамка, `rem` и кэш видов (`Entity::cached`) не срываются на всём переходе.
+            let child = wrap.child(transformed(
+                offset,
+                scale,
+                self.origin.unwrap_or_default(),
+                frame.opacity as f32,
+                (self.child)(&item.key, &frame),
+            ));
+            children.push(child.into_any_element());
         }
         let mut container = self.container.take().expect("один build на кадр");
         if container.style().position.is_none() {

@@ -13,18 +13,21 @@ use crate::kit::button::{child_id, focus_handle, focus_visible, outline, white};
 use crate::kit::{Tab, TabStyle, tabs};
 use crate::layer::{Place, PopLook, TipExt, menu_keys, popup};
 use crate::motion::{Push, Timing, hover, mix, press, rise_in};
-use crate::paint::{Radial, ring, shadow, strips};
+use crate::paint::{Radial, ring, shadow, strips_with_corners};
 use crate::scale::{u, zoom};
 use crate::text::TextExt;
 use crate::theme::{Gradient, Stop, Theme};
 use gpui::prelude::FluentBuilder as _;
 use gpui::{
-    AnyElement, Context, FontWeight, Hsla, IntoElement, ObjectFit, Radians, Role, Transformation,
-    Window, canvas, div, img, linear_color_stop, linear_gradient, point, prelude::*, px, rgb, size,
-    svg,
+    AnyElement, App, Bounds, Context, FontWeight, Hsla, IntoElement, ObjectFit, Pixels, Radians,
+    RenderImage, Role, Transformation, Window, canvas, div, img, linear_color_stop,
+    linear_gradient, prelude::*, px, rgb, svg,
 };
 use hlsr_ui::controllers::profile::ProfileView;
 use hlsr_ui::images::{Fit, ImageRequest, ImageSource};
+use std::cell::RefCell;
+use std::collections::HashMap;
+use std::sync::Arc;
 
 /// Лямбда баннера (`::after`, viewBox 0 0 177 186).
 const LAMBDA: &str = "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 177 186'>\
@@ -41,18 +44,94 @@ fn blend(a: Hsla, p: f32, b: Hsla) -> Hsla {
     mix(b, a, p)
 }
 
+/// Запечённая сетка точек 16 px баннера разработчика (1 картинка вместо ~455 квадов на кадр).
+fn dev_dots_image(
+    bounds: Bounds<Pixels>,
+    css_w: f32,
+    css_h: f32,
+    window: &mut Window,
+    cx: &mut App,
+) -> Arc<RenderImage> {
+    thread_local! {
+        static CACHE: RefCell<HashMap<(u32, u32), Arc<RenderImage>>> = RefCell::new(HashMap::new());
+    }
+    let scale = window.scale_factor();
+    let pw = (f32::from(bounds.size.width) * scale).round().max(1.) as u32;
+    let ph = (f32::from(bounds.size.height) * scale).round().max(1.) as u32;
+    let key = (pw, ph);
+    CACHE.with(|cell| {
+        let mut map = cell.borrow_mut();
+        if let Some(hit) = map.get(&key) {
+            return hit.clone();
+        }
+        if map.len() >= 8 {
+            for (_, old) in map.drain() {
+                cx.drop_image(old, Some(&mut *window));
+            }
+        }
+        let step_px = (pw as f32 / (css_w / 16.).max(1.)).max(1.);
+        let radius = step_px * (1.5 / 16.);
+        let rows = (css_h / 16.).ceil() as usize;
+        let cols = (css_w / 16.).ceil() as usize;
+        let mut bytes = vec![0u8; (pw * ph * 4) as usize];
+        for row in 0..rows {
+            let fade = 1. - (row as f32 * 16. + 8.) / (css_h * 0.85);
+            if fade <= 0. {
+                break;
+            }
+            let cy = step_px * (row as f32 + 0.5);
+            let y0 = ((cy - radius - 1.).floor() as i32).max(0) as u32;
+            let y1 = ((cy + radius + 1.).ceil() as i32).min(ph as i32) as u32;
+            let base_alpha = 0.16 * fade;
+            for col in 0..cols {
+                let cx_px = step_px * (col as f32 + 0.5);
+                let x0 = ((cx_px - radius - 1.).floor() as i32).max(0) as u32;
+                let x1 = ((cx_px + radius + 1.).ceil() as i32).min(pw as i32) as u32;
+                for y in y0..y1 {
+                    let dy = y as f32 + 0.5 - cy;
+                    for x in x0..x1 {
+                        let dx = x as f32 + 0.5 - cx_px;
+                        let dist = (dx * dx + dy * dy).sqrt();
+                        let cov = (radius + 0.5 - dist).clamp(0., 1.);
+                        if cov <= 0. {
+                            continue;
+                        }
+                        let a = (base_alpha * cov * 255.).round().clamp(0., 255.) as u8;
+                        let idx = ((y * pw + x) * 4) as usize;
+                        bytes[idx] = 255;
+                        bytes[idx + 1] = 255;
+                        bytes[idx + 2] = 255;
+                        bytes[idx + 3] = bytes[idx + 3].max(a);
+                    }
+                }
+            }
+        }
+        let buf = ::image::RgbaImage::from_raw(pw, ph, bytes).expect("размер совпадает с байтами");
+        let image = Arc::new(RenderImage::new([::image::Frame::new(buf)]));
+        map.insert(key, image.clone());
+        image
+    })
+}
+
 /// Баннер `.profile__banner` высотой `height`, шириной окна `width` (CSS px).
-fn banner(theme: &Theme, developer: bool, width: f32, height: f32, radius: f32) -> AnyElement {
+fn banner(
+    theme: &Theme,
+    developer: bool,
+    width: f32,
+    height: f32,
+    radius: f32,
+    zoom: f32,
+) -> AnyElement {
     let accent = theme.color("l-accent");
     let bg = theme.color("l-modal-bg");
     let text = theme.color("l-text");
-    let radial = |center: (f32, f32), radius: (f32, f32), alpha: f32, color: Hsla| {
+    let radial = |center: (f32, f32), spread: (f32, f32), alpha: f32, color: Hsla| {
         Radial {
             center,
-            radius,
+            radius: spread,
             stops: vec![(0., alpha), (0.7, 0.)],
         }
-        .paint(width, height, color)
+        .paint_rounded_top(width, height, radius, color)
         .absolute()
         .top_0()
         .left_0()
@@ -107,30 +186,11 @@ fn banner(theme: &Theme, developer: bool, width: f32, height: f32, radius: f32) 
     };
     let dots = canvas(
         |_, _, _| {},
-        move |bounds, _, window, _| {
-            // Сетка точек 16 px, тающая к низу (`mask: linear-gradient(#000, transparent 85%)`).
-            let step = bounds.size.width / (width / 16.);
-            let dot = step * (1.5 / 16.);
-            let rows = (height / 16.).ceil() as usize;
-            let cols = (width / 16.).ceil() as usize;
-            for row in 0..rows {
-                let y = step * (row as f32 + 0.5);
-                let fade = 1. - (row as f32 * 16. + 8.) / (height * 0.85);
-                if fade <= 0. {
-                    break;
-                }
-                for col in 0..cols {
-                    let x = step * (col as f32 + 0.5);
-                    let origin = bounds.origin + point(x - dot, y - dot);
-                    window.paint_quad(
-                        gpui::fill(
-                            gpui::Bounds::new(origin, size(dot * 2., dot * 2.)),
-                            white(0.16 * fade),
-                        )
-                        .corner_radii(dot),
-                    );
-                }
-            }
+        move |bounds, _, window, cx| {
+            let image = dev_dots_image(bounds, width, height, window, cx);
+            window
+                .paint_image(bounds, bounds, gpui::Corners::default(), image, 0, false)
+                .ok();
         },
     )
     .absolute()
@@ -146,12 +206,19 @@ fn banner(theme: &Theme, developer: bool, width: f32, height: f32, radius: f32) 
         .h(u(160.))
         .text_color(tint.opacity(0.16))
         .with_transformation(Transformation::rotate(Radians(-12f32.to_radians())));
-    base.children(strips(&sweep, px(0.)))
-        .child(radial((0., 0.), (0.7, 1.6), 0.42, accent))
-        .child(radial((1., 0.), (0.6, 1.6), 0.48, tint))
-        .child(dots)
-        .child(glyph)
-        .into_any_element()
+    base.children(strips_with_corners(
+        &sweep,
+        gpui::Corners {
+            top_left: crate::scale::zpx(zoom, radius),
+            top_right: crate::scale::zpx(zoom, radius),
+            ..gpui::Corners::default()
+        },
+    ))
+    .child(radial((0., 0.), (0.7, 1.6), 0.42, accent))
+    .child(radial((1., 0.), (0.6, 1.6), 0.48, tint))
+    .child(dots)
+    .child(glyph)
+    .into_any_element()
 }
 
 /// `.profile__since`: значок 11 px и текст 12,5/20 цветом `--l-text-faint`.
@@ -769,6 +836,7 @@ impl ProfileModal {
                 width,
                 if compact { 66. } else { 112. },
                 radius,
+                zoom,
             ))
             .child(identity)
             .child(bar)

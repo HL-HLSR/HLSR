@@ -11,12 +11,14 @@
 use crate::motion::keyframes;
 use crate::scale::zpx;
 use gpui::{
-    Bounds, ContentMask, Corners, Edges, ElementId, Hsla, IntoElement, Pixels, Rgba, Styled,
-    Window, canvas, point, quad, size, transparent_black,
+    Background, Bounds, ContentMask, Corners, Edges, ElementId, Hsla, IntoElement, Pixels, Rgba,
+    Styled, Window, canvas, linear_color_stop, linear_gradient, point, quad, size,
+    transparent_black,
 };
 
-/// Длина куска прямого края, CSS px.
-const STEP: f32 = 4.;
+/// Длина куска прямого края, CSS px (каждый прямой отрезок заливается GPU `linear_gradient`,
+/// поэтому шаг 40 px одновременно в 10 раз легче по квадам и плавнее плоских полос по 4 px).
+const STEP: f32 = 40.;
 /// На сколько частей режется каждый угол.
 const CORNER_CUTS: usize = 6;
 /// Толщина кольца, CSS px (`padding: 2px`).
@@ -124,6 +126,10 @@ pub(crate) struct Piece {
     pub bounds: Bounds<Pixels>,
     pub mask: Bounds<Pixels>,
     pub color: Rgba,
+    /// Конечный цвет прямой полосы (для GPU `linear_gradient` вдоль отрезка).
+    pub color_end: Rgba,
+    /// Направление градиента прямой полосы (90° — горизонталь, 180° — вертикаль).
+    pub angle: f32,
     pub corners: Corners<Pixels>,
     pub borders: Edges<Pixels>,
 }
@@ -143,37 +149,59 @@ pub(crate) fn pieces(
     let (width, height) = (bounds.size.width, bounds.size.height);
     let color = |x: Pixels, y: Pixels| paint(f32::from(x), f32::from(y));
     let mut out = Vec::new();
-    let mut strip =
-        |origin: gpui::Point<Pixels>, extent: gpui::Size<Pixels>, at: gpui::Point<Pixels>| {
-            let piece = Bounds::new(origin, extent);
-            out.push(Piece {
-                bounds: piece,
-                mask: piece,
-                color: color(at.x, at.y),
-                corners: Corners::default(),
-                borders: Edges::default(),
-            });
-        };
-    // Прямые края между углами.
+    let mut strip = |origin: gpui::Point<Pixels>,
+                     extent: gpui::Size<Pixels>,
+                     from: gpui::Point<Pixels>,
+                     to: gpui::Point<Pixels>,
+                     angle: f32| {
+        let piece = Bounds::new(origin, extent);
+        out.push(Piece {
+            bounds: piece,
+            mask: piece,
+            color: color(from.x, from.y),
+            color_end: color(to.x, to.y),
+            angle,
+            corners: Corners::default(),
+            borders: Edges::default(),
+        });
+    };
+    // Прямые края между углами (гладкие GPU-градиенты на каждый отрезок).
+    let step = zpx(zoom, STEP);
     let mut x = left + r;
     while x < left + width - r {
-        let len = (left + width - r - x).min(zpx(zoom, STEP));
-        strip(point(x, top), size(len, w), point(x + len / 2., top));
+        let len = (left + width - r - x).min(step);
+        strip(
+            point(x, top),
+            size(len, w),
+            point(x, top),
+            point(x + len, top),
+            90.,
+        );
         strip(
             point(x, top + height - w),
             size(len, w),
-            point(x + len / 2., top + height),
+            point(x, top + height),
+            point(x + len, top + height),
+            90.,
         );
         x += len;
     }
     let mut y = top + r;
     while y < top + height - r {
-        let len = (top + height - r - y).min(zpx(zoom, STEP));
-        strip(point(left, y), size(w, len), point(left, y + len / 2.));
+        let len = (top + height - r - y).min(step);
+        strip(
+            point(left, y),
+            size(w, len),
+            point(left, y),
+            point(left, y + len),
+            180.,
+        );
         strip(
             point(left + width - w, y),
             size(w, len),
-            point(left + width, y + len / 2.),
+            point(left + width, y),
+            point(left + width, y + len),
+            180.,
         );
         y += len;
     }
@@ -226,10 +254,13 @@ pub(crate) fn pieces(
             } else {
                 f32::from(y0) + rr - rise
             };
+            let c = paint(ax, ay);
             out.push(Piece {
                 bounds: square,
                 mask,
-                color: paint(ax, ay),
+                color: c,
+                color_end: c,
+                angle: 0.,
                 corners: corner_radii,
                 borders,
             });
@@ -254,14 +285,25 @@ fn paint_ring(
     paint_pieces(list, window);
 }
 
-/// Нарисовать куски [`pieces`].
+/// Нарисовать куски [`pieces`]. Прямые полосы не требуют отдельной маски — только угловые срезы.
 pub(crate) fn paint_pieces(list: Vec<Piece>, window: &mut Window) {
     for piece in list {
-        let color: Hsla = piece.color.into();
-        window.with_content_mask(Some(ContentMask { bounds: piece.mask }), |window| {
-            if piece.borders == Edges::default() {
-                window.paint_quad(gpui::fill(piece.bounds, color));
+        if piece.borders == Edges::default() {
+            let c0: Hsla = piece.color.into();
+            let c1: Hsla = piece.color_end.into();
+            let bg: Background = if piece.color == piece.color_end {
+                c0.into()
             } else {
+                linear_gradient(
+                    piece.angle,
+                    linear_color_stop(c0, 0.),
+                    linear_color_stop(c1, 1.),
+                )
+            };
+            window.paint_quad(gpui::fill(piece.bounds, bg));
+        } else {
+            let color: Hsla = piece.color.into();
+            window.with_content_mask(Some(ContentMask { bounds: piece.mask }), |window| {
                 window.paint_quad(quad(
                     piece.bounds,
                     piece.corners,
@@ -270,8 +312,8 @@ pub(crate) fn paint_pieces(list: Vec<Piece>, window: &mut Window) {
                     color,
                     gpui::BorderStyle::Solid,
                 ));
-            }
-        });
+            });
+        }
     }
 }
 
@@ -319,8 +361,10 @@ mod tests {
             .filter(|p| p.borders != Edges::default())
             .count();
         assert_eq!(corners, 4 * CORNER_CUTS);
-        // Прямые края: (200 − 32) / 4 × 2 + (100 − 32) / 4 × 2.
-        assert_eq!(list.len() - corners, 42 * 2 + 17 * 2);
+        // Прямые края: ceil((200 − 32) / STEP) × 2 + ceil((100 − 32) / STEP) × 2.
+        let horiz = ((200. - 32.) / STEP).ceil() as usize;
+        let vert = ((100. - 32.) / STEP).ceil() as usize;
+        assert_eq!(list.len() - corners, horiz * 2 + vert * 2);
         // Угол куска — четверть квада (по ней шейдер берёт скругление), маска — внутри неё.
         for piece in list.iter().filter(|p| p.borders != Edges::default()) {
             let r = zpx(1., 16.);

@@ -71,7 +71,7 @@ pub(super) enum Which {
 
 pub struct GhostingPreview {
     pub(super) controller: Rc<PreviewController>,
-    _worker: RenderWorker,
+    worker: RenderWorker,
     pub(super) state: State,
     pub(super) language: Language,
     inputs: Inputs,
@@ -134,6 +134,7 @@ impl GhostingPreview {
         };
         let controller = PreviewController::new(variant, game_id, invoke);
         let worker = with_worker(&controller, hlsr_ui::env::dispatch(&*env));
+        worker.set_refresh_hz(crate::motion::refresh_hz(window, cx));
         let (tx, mut rx) = tokio::sync::mpsc::unbounded_channel::<Signal>();
         {
             let tx = tx.clone();
@@ -166,7 +167,7 @@ impl GhostingPreview {
         let mut this = GhostingPreview {
             state: controller.state(),
             controller,
-            _worker: worker,
+            worker,
             language,
             inputs: Inputs::default(),
             levels: Default::default(),
@@ -207,6 +208,22 @@ impl GhostingPreview {
             self.inputs.active = active;
             self.controller.set_active(active);
         }
+    }
+
+    /// Освободить тяжёлые декодированные слои и мип-уровни, пока страница скрыта (`keep-alive`
+    /// сохраняет черновики формы, но не держит 40–80 МиБ буферов превью в ОЗУ и атласе GPU).
+    pub fn release_caches(&mut self, cx: &mut Context<Self>) {
+        self.inputs.active = false;
+        self.controller.set_active(false);
+        self.pending = None;
+        self.levels_scene = None;
+        self.shown = Default::default();
+        for raster in &mut self.levels {
+            raster.release(cx);
+        }
+        self.worker.purge();
+        cx.notify();
+        crate::memory::trim_heap_async(cx);
     }
 
     /// Новые `props` редактора: в контроллер уходит только изменившееся (у оверлея нет своей
@@ -261,6 +278,9 @@ impl GhostingPreview {
                 cx.notify();
             }
             Signal::Frame(frame, scene) => {
+                if !self.inputs.active {
+                    return;
+                }
                 self.pending = Some((frame, scene));
                 if !self.converting {
                     self.convert_next(cx);
@@ -281,6 +301,13 @@ impl GhostingPreview {
         cx.spawn(async move |this, cx| {
             let levels = convert.await;
             this.update(cx, |this, cx| {
+                if !this.inputs.active {
+                    this.converting = false;
+                    for image in levels {
+                        cx.drop_image(image, None);
+                    }
+                    return;
+                }
                 for (i, raster) in this.levels.iter_mut().enumerate() {
                     match levels.get(i) {
                         Some(image) => raster.set_render(image.clone()),
@@ -517,6 +544,8 @@ impl GhostingPreview {
 
 impl Render for GhostingPreview {
     fn render(&mut self, window: &mut Window, cx: &mut Context<Self>) -> impl IntoElement {
+        self.worker
+            .set_refresh_hz(crate::motion::refresh_hz(window, cx));
         let theme = cx.global::<Theme>().clone();
         let zoom = zoom(window);
         let portrait = self.state.portrait;

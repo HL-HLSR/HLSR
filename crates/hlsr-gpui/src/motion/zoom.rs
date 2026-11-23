@@ -1,24 +1,15 @@
-//! `transform: scale(k)` поддерева (`l-pop` .97, `gm` .96, `toast` .96): у блоков GPUI нет
-//! transform, поэтому поддерево раскладывается с rem × k (все размеры — rem, `scale.rs`) и стоит
-//! в коробке прежнего размера так, что точка опоры (`transform-origin`) остаётся на месте. Снаружи
-//! раскладка не меняется, как у transform. Размер без масштаба — с последнего кадра без масштаба;
-//! пока его нет (первый кадр входа, прозрачность там 0), масштаба нет.
-//!
-//! Нажатие (`:active { transform: scale(.97) }`, [`super::press`]) масштабирует сам элемент в
-//! потоке: его место у родителя (`position`, `inset`, `margin`, `align-self`) на кадры с масштабом
-//! переходит коробке ([`Zoom::flow`]), а он заполняет её внутреннюю часть.
+//! `transform: scale(k)` / `translate(x, y)` / `opacity` поддерева (`l-pop` .97, `gm` .96,
+//! `toast` .96, `notif-flow` .08, `l-slide-*`, `:active` `press`): преобразование примитивов сцены
+//! в фазе `paint` ([`Window::with_paint_transform`]). Раскладка, размер `rem`, кэш шрифтов и
+//! кэш видов (`Entity::cached`) не срываются — переходы и масштабирование идут плавно на полной
+//! частоте монитора без ступеней и перерастеризации глифов.
 
 use gpui::{
-    AnyElement, App, Bounds, Edges, Element, ElementId, GlobalElementId, InspectorElementId,
-    IntoElement, LayoutId, Pixels, Position, Refineable, Size, Style, StyleRefinement, Styled,
-    Window, relative,
+    AnyElement, App, Bounds, Element, ElementId, GlobalElementId, InspectorElementId, IntoElement,
+    LayoutId, Pixels, Point, Size, Window, point,
 };
 use std::cell::Cell;
 use std::rc::Rc;
-
-/// Ступень масштаба: глифы растрируются под каждый размер шрифта, ступени их кэшируют (у .96…1 —
-/// два десятка размеров на всё время работы), шаг — доли пикселя.
-const STEPS: f32 = 512.;
 
 /// Точка опоры: доля размера и сдвиг в CSS px (`calc(100% - 32px) 100%` — `x: (1., -32.)`).
 #[derive(Debug, Clone, Copy, PartialEq)]
@@ -53,72 +44,54 @@ impl Default for Origin {
     }
 }
 
-/// Размер поддерева без масштаба: живёт между кадрами у владельца (элемент перехода).
+/// Сохранённый тип-заглушка (ранее держал размер без масштаба для `rem × k`).
 pub type Natural = Rc<Cell<Option<Size<Pixels>>>>;
 
-/// Ступень масштаба `k` (см. [`STEPS`]).
+/// Непрерывный коэффициент масштаба `k` (без ступеней: GPU масштабирует примитивы напрямую).
+#[cfg(test)]
 pub fn step(k: f64) -> f32 {
-    ((k as f32) * STEPS).round() / STEPS
+    k as f32
 }
 
-/// `child` в масштабе `k` вокруг `origin`; `natural` — его размер без масштаба (пишется здесь же).
-pub fn scaled(k: f64, origin: Origin, natural: Natural, child: impl IntoElement) -> Zoom {
+/// `child` в масштабе `k` вокруг `origin`.
+pub fn scaled(k: f64, origin: Origin, _natural: Natural, child: impl IntoElement) -> Zoom {
     Zoom {
-        k: step(k),
+        offset: Point::default(),
+        k: k as f32,
         origin,
-        natural,
-        flow: StyleRefinement::default(),
+        opacity: 1.,
         child: child.into_any_element(),
     }
 }
 
-/// Будет ли кадр в масштабе `k` (размер без масштаба уже есть) — то же условие, что у
-/// [`Zoom::request_layout`].
-pub(super) fn scales(k: f64, natural: &Natural) -> bool {
-    let k = step(k);
-    natural.get().is_some() && k != 1. && k > 0.
-}
-
-/// Место элемента у родителя: забирает у `el` то, что ставит его в поток, а сам `el`
-/// растягивает на всю коробку (для [`Zoom::flow`]).
-pub(super) fn take_flow(el: &mut impl Styled) -> StyleRefinement {
-    let style = el.style();
-    let flow = StyleRefinement {
-        position: style.position.take(),
-        inset: std::mem::take(&mut style.inset),
-        margin: std::mem::take(&mut style.margin),
-        align_self: style.align_self.take(),
-        grid_location: style.grid_location.take(),
-        ..StyleRefinement::default()
-    };
-    style.size.width = Some(relative(1.).into());
-    style.size.height = Some(relative(1.).into());
-    flow
-}
-
-pub struct Zoom {
-    k: f32,
+/// `child` с полным преобразованием перехода в `paint`: сдвиг `offset`, масштаб `k` вокруг
+/// `origin` и прозрачность `opacity`.
+pub(super) fn transformed(
+    offset: Point<Pixels>,
+    k: f64,
     origin: Origin,
-    natural: Natural,
-    /// Место у родителя на кадры с масштабом ([`take_flow`]).
-    flow: StyleRefinement,
-    child: AnyElement,
-}
-
-impl Zoom {
-    pub(super) fn flow(mut self, flow: StyleRefinement) -> Zoom {
-        self.flow = flow;
-        self
+    opacity: f32,
+    child: impl IntoElement,
+) -> Zoom {
+    Zoom {
+        offset,
+        k: k as f32,
+        origin,
+        opacity,
+        child: child.into_any_element(),
     }
 }
 
-/// Кадр: rem поддерева (`None` — без масштаба).
-pub struct Layout {
-    rem: Option<Pixels>,
+pub struct Zoom {
+    offset: Point<Pixels>,
+    k: f32,
+    origin: Origin,
+    opacity: f32,
+    child: AnyElement,
 }
 
 impl Element for Zoom {
-    type RequestLayoutState = Layout;
+    type RequestLayoutState = ();
     type PrepaintState = ();
 
     fn id(&self) -> Option<ElementId> {
@@ -129,85 +102,44 @@ impl Element for Zoom {
         None
     }
 
-    /// Без масштаба — сам `child`; с масштабом — коробка размера без масштаба, в ней `child` с
-    /// rem × k там, где его оставил бы transform.
     fn request_layout(
         &mut self,
         _id: Option<&GlobalElementId>,
         _inspector_id: Option<&InspectorElementId>,
         window: &mut Window,
         cx: &mut App,
-    ) -> (LayoutId, Layout) {
-        let k = self.k;
-        let Some(size) = self.natural.get().filter(|_| k != 1. && k > 0.) else {
-            let child = self.child.request_layout(window, cx);
-            return (child, Layout { rem: None });
-        };
-        let rem = window.rem_size();
-        let inner_rem = rem * k;
-        let child = window.with_rem_size(Some(inner_rem), |window| {
-            self.child.request_layout(window, cx)
-        });
-        let (ox, oy) = self.origin.at(size, f32::from(rem) / 16.);
-        let mut inner = Style {
-            position: Position::Absolute,
-            ..Style::default()
-        };
-        inner.inset = Edges {
-            left: (ox * (1. - k)).into(),
-            top: (oy * (1. - k)).into(),
-            ..inner.inset
-        };
-        inner.size = Size {
-            width: (size.width * k).into(),
-            height: (size.height * k).into(),
-        };
-        let inner = window.request_layout(inner, [child], cx);
-        let mut outer = Style {
-            flex_shrink: 0.,
-            ..Style::default()
-        };
-        outer.refine(&self.flow);
-        outer.size = Size {
-            width: size.width.into(),
-            height: size.height.into(),
-        };
-        let outer = window.request_layout(outer, [inner], cx);
-        (
-            outer,
-            Layout {
-                rem: Some(inner_rem),
-            },
-        )
+    ) -> (LayoutId, ()) {
+        (self.child.request_layout(window, cx), ())
     }
 
     fn prepaint(
         &mut self,
         _id: Option<&GlobalElementId>,
         _inspector_id: Option<&InspectorElementId>,
-        bounds: Bounds<Pixels>,
-        layout: &mut Layout,
+        _bounds: Bounds<Pixels>,
+        _layout: &mut (),
         window: &mut Window,
         cx: &mut App,
     ) {
-        // Размер без масштаба — только с кадра без масштаба: рамка / k с округлением до пикселя
-        // за переход уползала на несколько px (содержимое по ширине коробки мерило само себя).
-        if layout.rem.is_none() {
-            self.natural.set(Some(bounds.size));
-        }
-        window.with_rem_size(layout.rem, |window| self.child.prepaint(window, cx));
+        self.child.prepaint(window, cx);
     }
 
     fn paint(
         &mut self,
         _id: Option<&GlobalElementId>,
         _inspector_id: Option<&InspectorElementId>,
-        _bounds: Bounds<Pixels>,
-        layout: &mut Layout,
+        bounds: Bounds<Pixels>,
+        _layout: &mut (),
         _prepaint: &mut (),
         window: &mut Window,
         cx: &mut App,
     ) {
-        window.with_rem_size(layout.rem, |window| self.child.paint(window, cx));
+        let zoom = f32::from(window.rem_size()) / 16.;
+        let (ox, oy) = self.origin.at(bounds.size, zoom);
+        let origin = point(bounds.origin.x + ox, bounds.origin.y + oy);
+        let k = if self.k > 0. { self.k } else { 0. };
+        window.with_paint_transform(self.offset, origin, k, self.opacity, |window| {
+            self.child.paint(window, cx);
+        });
     }
 }

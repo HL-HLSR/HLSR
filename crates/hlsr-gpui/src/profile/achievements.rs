@@ -16,7 +16,9 @@ use crate::icons::fa_glyph;
 use crate::kit::button::white;
 use crate::motion::{Timing, hover, keyframes, mix, tween};
 use crate::paint::{ring, shadow, strips};
+use crate::rows::{Rows, Slot};
 use crate::scale::{u, zoom, zpx};
+use crate::scroll::{Bar, Scroll, ScrollArea};
 use crate::text::{TextExt, spaced};
 use crate::theme::{Gradient, Stop, Theme};
 use gpui::prelude::FluentBuilder as _;
@@ -26,7 +28,8 @@ use gpui::{
 };
 use hlsr_ui::controllers::profile::AchievementView;
 use hlsr_ui::services::Services;
-use std::cell::RefCell;
+use std::cell::{Cell, RefCell};
+use std::rc::Rc;
 use std::sync::Arc;
 
 /// Угол радуги (`linear-gradient(115deg, …)`).
@@ -118,8 +121,8 @@ fn glow_at(color: Rgba, w: f32, h: f32, x: f32, y: f32) -> Rgba {
     }
 }
 
-/// Что запекается (картинка в физических px).
-#[derive(Debug, Clone, Copy, PartialEq)]
+/// Что запекается (гладкие градиенты в компактных текстурах, масштабируемых GPU).
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 enum Bake {
     /// Плитка радуги значка: 300 % × 100 %.
     Tile,
@@ -142,28 +145,44 @@ impl Bake {
     fn glow((r, g, b): (u8, u8, u8), alpha: u8) -> Bake {
         Bake::Glow(r, g, b, alpha)
     }
-}
 
-/// Запечённая картинка: вид, физический размер, картинка.
-type Baked = (Bake, (u32, u32), Arc<RenderImage>);
+    /// Компактный размер текстуры: гладкие градиенты билинейно растягиваются видеокартой без
+    /// потерь, а карточки разной высоты не выбивают друг друга из кэша.
+    fn tex_size(self, (w, h): (u32, u32)) -> (u32, u32) {
+        match self {
+            Bake::Glow(..) => (64, 64),
+            Bake::Tile => (192, 64),
+            Bake::Wash => {
+                // Сохраняем пропорции карточки для точного угла 115°.
+                let tw = 96u32;
+                let th = ((h as f32 / w.max(1) as f32) * tw as f32)
+                    .round()
+                    .clamp(16., 96.) as u32;
+                (tw, th)
+            }
+        }
+    }
+}
 
 thread_local! {
-    /// Запечённые картинки: по одной на вид (карточки сетки одного размера).
-    static BAKED: RefCell<Vec<Baked>> = RefCell::default();
+    /// Запечённые текстуры градиентов карточек (по ключу вида и компактного размера).
+    static BAKED: RefCell<std::collections::HashMap<(Bake, (u32, u32)), Arc<RenderImage>>> =
+        RefCell::default();
 }
 
-/// Картинка `kind` размера `w × h` физических px; прежний размер того же вида — из атласа.
-// shortcut: картинки живут до смены размера (не освобождаются при закрытии окна) — пара сотен КБ; освобождать, если видов станет много.
-fn baked(kind: Bake, (w, h): (u32, u32), window: &mut Window, cx: &mut App) -> Arc<RenderImage> {
+/// Картинка `kind` под рамку `(w, h)` физических px: берётся из кэша, без пересчёта на ЦП.
+fn baked(kind: Bake, size_px: (u32, u32), window: &mut Window, cx: &mut App) -> Arc<RenderImage> {
+    let (w, h) = kind.tex_size(size_px);
+    let key = (kind, (w, h));
     BAKED.with(|cell| {
-        let mut list = cell.borrow_mut();
-        if let Some((_, _, image)) = list.iter().find(|e| e.0 == kind && e.1 == (w, h)) {
+        let mut map = cell.borrow_mut();
+        if let Some(image) = map.get(&key) {
             return image.clone();
         }
-        let (gone, kept): (Vec<_>, Vec<_>) = list.drain(..).partition(|entry| entry.0 == kind);
-        *list = kept;
-        for (_, _, image) in gone {
-            cx.drop_image(image, Some(&mut *window));
+        if map.len() >= 32 {
+            for (_, image) in map.drain() {
+                cx.drop_image(image, Some(&mut *window));
+            }
         }
         let mut bytes = Vec::with_capacity((w * h * 4) as usize);
         for y in 0..h {
@@ -175,7 +194,7 @@ fn baked(kind: Bake, (w, h): (u32, u32), window: &mut Window, cx: &mut App) -> A
         }
         let buffer = ::image::RgbaImage::from_raw(w, h, bytes).expect("размер совпадает с байтами");
         let image = Arc::new(RenderImage::new([::image::Frame::new(buffer)]));
-        list.push((kind, (w, h), image.clone()));
+        map.insert(key, image.clone());
         image
     })
 }
@@ -221,6 +240,9 @@ fn rainbow_badge(index: usize, radius: Pixels) -> impl IntoElement {
             canvas(
                 |_, _, _| {},
                 move |bounds, _, window, cx| {
+                    if !bounds.intersects(&window.content_mask().bounds) {
+                        return;
+                    }
                     let (w, h) = device(bounds, window);
                     let tile = baked(Bake::Tile, (w * 3, h), window, cx);
                     let width = bounds.size.width;
@@ -259,6 +281,9 @@ fn rainbow_ring(index: usize, radius: f32, zoom: f32) -> impl IntoElement {
             canvas(
                 |_, _, _| {},
                 move |bounds, _, window, _| {
+                    if !bounds.intersects(&window.content_mask().bounds) {
+                        return;
+                    }
                     let (left, top) = (f32::from(bounds.origin.x), f32::from(bounds.origin.y));
                     let (w, h) = (f32::from(bounds.size.width), f32::from(bounds.size.height));
                     let start = offset(w, shift);
@@ -287,7 +312,7 @@ fn tier_of(tier: &str) -> Option<(u8, u8, u8)> {
 }
 
 /// Карточка `.profile__achievement`.
-fn card(item: AchievementView, index: usize, theme: &Theme, zoom: f32) -> AnyElement {
+fn card(item: &AchievementView, index: usize, theme: &Theme, zoom: f32) -> AnyElement {
     let locked = !item.unlocked;
     let rainbow = item.tier == "rainbow";
     let tier = tier_of(item.tier);
@@ -444,6 +469,7 @@ fn card(item: AchievementView, index: usize, theme: &Theme, zoom: f32) -> AnyEle
             .role(Role::ListItem)
             .aria_label(title)
             .relative()
+            .flex_1()
             .flex()
             .items_center()
             .gap(u(16.))
@@ -462,17 +488,33 @@ fn card(item: AchievementView, index: usize, theme: &Theme, zoom: f32) -> AnyEle
     .into_any_element()
 }
 
-/// Вкладка «Достижения».
-pub struct AchievementsTab;
+/// Вкладка «Достижения» (со своей прокруткой — кэшируется окном как единый вид).
+pub struct AchievementsTab {
+    scroll: Scroll,
+    rows: Rows,
+    /// Общая высота ряда (`grid-auto-rows: 1fr`): `(ширина, зум, макс. высота)`.
+    row_h: Rc<Cell<(Pixels, f32, Pixels)>>,
+}
 
 impl AchievementsTab {
     pub fn new(_services: &Services, _cx: &mut Context<AchievementsTab>) -> AchievementsTab {
-        AchievementsTab
+        AchievementsTab {
+            scroll: Scroll::new(),
+            rows: Rows::default(),
+            row_h: Rc::new(Cell::new((Pixels::ZERO, 0., Pixels::ZERO))),
+        }
+    }
+
+    pub fn reset_scroll(&mut self) {
+        self.scroll = Scroll::new();
+        self.rows = Rows::default();
+        self.row_h.set((Pixels::ZERO, 0., Pixels::ZERO));
     }
 }
 
 impl Render for AchievementsTab {
     fn render(&mut self, window: &mut Window, cx: &mut Context<Self>) -> impl IntoElement {
+        crate::live::rendered(cx.entity_id());
         let Some(context) = ProfileContext::get(cx) else {
             return div().into_any_element();
         };
@@ -480,11 +522,13 @@ impl Render for AchievementsTab {
         let Some(modal) = context.modal.upgrade() else {
             return div().into_any_element();
         };
-        let (language, wall, tr) = {
+        let (view, tr) = {
             let modal = modal.read(cx);
-            (modal.language, modal.wall.clone(), modal.tr.clone())
+            let view = modal.view_snapshot().unwrap_or_else(|| {
+                std::rc::Rc::new(state.borrow().view(modal.language, &modal.wall, &modal.tr))
+            });
+            (view, modal.tr.clone())
         };
-        let view = state.borrow().view(language, &wall, &tr);
         let theme = cx.global::<Theme>().clone();
         let zoom = zoom(window);
         let faint = theme.color("l-text-faint");
@@ -544,27 +588,99 @@ impl Render for AchievementsTab {
                     }
                 },
             ));
-        let rows = view.achievements.len().div_ceil(2).max(1);
-        let grid = div()
+        let row_count = view.achievements.len().div_ceil(2);
+        let keys: Vec<String> = (0..row_count)
+            .map(|r| {
+                let a = &view.achievements[r * 2];
+                match view.achievements.get(r * 2 + 1) {
+                    Some(b) => format!("{}:{}", a.title, b.title),
+                    None => a.title.clone(),
+                }
+            })
+            .collect();
+        let slots = self.rows.plan(&self.scroll, keys, 12., window, cx);
+        let (_, saved_zoom, min_row_h) = self.row_h.get();
+        let min_row_h = (saved_zoom == zoom && min_row_h > Pixels::ZERO).then_some(min_row_h);
+        let grid_rows: Vec<AnyElement> = slots
+            .into_iter()
+            .map(|slot| match slot {
+                Slot::Row(r) => {
+                    let left = r * 2;
+                    let right = left + 1;
+                    let probe_h = self.row_h.clone();
+                    let probe = canvas(
+                        move |bounds, window, _| {
+                            let (lw, lz, lh) = probe_h.get();
+                            let z = crate::scale::zoom(window);
+                            if (f32::from(bounds.size.width) - f32::from(lw)).abs() > 0.5
+                                || z != lz
+                            {
+                                probe_h.set((bounds.size.width, z, bounds.size.height));
+                                crate::motion::monitor_frame(window);
+                            } else if f32::from(bounds.size.height) > f32::from(lh) + 0.5 {
+                                probe_h.set((lw, lz, bounds.size.height));
+                                crate::motion::monitor_frame(window);
+                            }
+                        },
+                        |_, _, _, _| {},
+                    )
+                    .absolute()
+                    .inset_0();
+                    div()
+                        .relative()
+                        .flex()
+                        .items_stretch()
+                        .gap(u(12.))
+                        .when_some(min_row_h, |el, h| el.min_h(h))
+                        .child(probe)
+                        .child(
+                            div()
+                                .flex_1()
+                                .min_w_0()
+                                .flex()
+                                .flex_col()
+                                .child(card(&view.achievements[left], left, &theme, zoom)),
+                        )
+                        .child(
+                            div()
+                                .flex_1()
+                                .min_w_0()
+                                .flex()
+                                .flex_col()
+                                .when_some(view.achievements.get(right), |el, item| {
+                                    el.child(card(item, right, &theme, zoom))
+                                }),
+                        )
+                        .into_any_element()
+                }
+                Slot::Space(height) => div().flex_none().h(height).into_any_element(),
+            })
+            .collect();
+        let grid = self
+            .rows
+            .measure(
+                &self.scroll,
+                div().flex().flex_col().gap(u(12.)).children(grid_rows),
+            )
             .id("ach-list")
-            .role(Role::List)
-            .grid()
-            .grid_cols(2)
-            .grid_rows_min_content(u16::try_from(rows).unwrap_or(u16::MAX))
-            .gap(u(12.))
-            .children(
-                view.achievements
-                    .into_iter()
-                    .enumerate()
-                    .map(|(index, item)| card(item, index, &theme, zoom)),
-            );
-        div()
+            .role(Role::List);
+        let body = div()
             .flex()
             .flex_col()
+            .pt(u(28.))
+            .px(u(32.))
+            .pb(u(32.))
             .child(head)
             .child(meter)
-            .child(grid)
-            .into_any_element()
+            .child(grid);
+        crate::snap::target(
+            "profile-body",
+            ScrollArea::new(("profile-scroll", 1usize), &self.scroll)
+                .bar(Bar::Thin)
+                .size_full()
+                .child(body),
+        )
+        .into_any_element()
     }
 }
 

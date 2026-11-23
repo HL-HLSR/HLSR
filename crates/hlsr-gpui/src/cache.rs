@@ -48,9 +48,31 @@ pub fn on(cx: &App) -> bool {
 /// Вид `view` на месте `style`: закэшированный, если `on` ([`on`]) и в его прошлой отрисовке не
 /// было стекла Liquid Glass, иначе обычный.
 pub fn cached(view: impl Into<AnyView>, style: StyleRefinement, on: bool) -> AnyElement {
+    cached_with(view, style, on, false)
+}
+
+/// Как [`cached`], но для видов страницы/оболочки под открытым окном верхнего слоя: пока
+/// `frozen` (`AnimGate::top_layer > 0`), фон и параллакс под окном на паузе, поэтому стеклянные
+/// виды оболочки (`topbar`, `rail`, `hero`, `download_bar`) не перерисовываются 240 раз в секунду
+/// из-за анимаций внутри модального окна (неона профиля и т. п.).
+pub fn cached_under_modal(
+    view: impl Into<AnyView>,
+    style: StyleRefinement,
+    on: bool,
+    frozen: bool,
+) -> AnyElement {
+    cached_with(view, style, on, frozen)
+}
+
+fn cached_with(
+    view: impl Into<AnyView>,
+    style: StyleRefinement,
+    on: bool,
+    frozen: bool,
+) -> AnyElement {
     let view: AnyView = view.into();
     let id = view.entity_id();
-    let on = on && !GLASS.with(|glass| glass.borrow().contains(&id));
+    let on = on && (frozen || !GLASS.with(|glass| glass.borrow().contains(&id)));
     let child = if on {
         view.cached(style).into_any_element()
     } else {
@@ -58,6 +80,7 @@ pub fn cached(view: impl Into<AnyView>, style: StyleRefinement, on: bool) -> Any
     };
     Slot {
         view: id,
+        frozen,
         child: crate::live::scope(id, child),
     }
     .into_any()
@@ -96,6 +119,7 @@ impl Drop for Inside {
 /// там же раскладка детей `deferred`), вид — в стопке.
 struct Slot {
     view: EntityId,
+    frozen: bool,
     child: AnyElement,
 }
 
@@ -118,9 +142,11 @@ impl Element for Slot {
         window: &mut Window,
         cx: &mut App,
     ) -> (LayoutId, ()) {
-        // Стекло вида — то, что он отметит в этой отрисовке; повторённый кадр стекла не держит
-        // (вид со стеклом в кэш не попадает).
-        GLASS.with(|glass| glass.borrow_mut().remove(&self.view));
+        // Стекло вида — то, что он отметит в этой отрисовке; пока вид заморожен под модалкой,
+        // его метку в `GLASS` сохраняем, чтобы после закрытия модалки он снова обновлял стекло.
+        if !self.frozen {
+            GLASS.with(|glass| glass.borrow_mut().remove(&self.view));
+        }
         let _inside = Inside::enter(self.view);
         (self.child.request_layout(window, cx), ())
     }

@@ -14,7 +14,7 @@ use super::keyboard::GameKeyboard;
 use super::launch::{args_style, launch};
 use super::nav::nav;
 use super::page::GameConfigsPanel;
-use super::records::{ghosts, version};
+use super::records::{GameGhostsView, version};
 use super::scripts::GameScripts;
 use crate::kit::{FieldEvent, TextInput};
 use crate::motion::{SLIDE_NEXT, SLIDE_PREV, swap};
@@ -67,11 +67,14 @@ pub struct GameSettings {
     keyboard: Entity<GameKeyboard>,
     scripts: Entity<GameScripts>,
     demos: Entity<GameDemosView>,
+    ghosts: Entity<GameGhostsView>,
     scrolls: HashMap<&'static str, Scroll>,
     nav_scroll: Scroll,
     events: Rc<RefCell<Vec<Event>>>,
     /// Раздел прошлого кадра (`watch activeSection`).
     seen: Option<&'static str>,
+    /// Последняя версия данных сессии, о которой уведомлены закэшированные разделы.
+    seen_data_rev: u64,
     /// Рамка ошибки полей на прошлом кадре: `set_invalid` перерисовывает поле.
     invalid: [bool; 2],
     _subs: Vec<Subscription>,
@@ -178,12 +181,21 @@ impl GameSettings {
         ];
         let demos =
             cx.new(|cx| GameDemosView::new(services, &game.id, engine_of(&game.id), language, cx));
+        let active = session.active_section();
+        if active == "demos" {
+            demos.update(cx, |demos, cx| demos.load(cx));
+        }
+        let ghosts = {
+            let settings = cx.weak_entity();
+            cx.new(|_| GameGhostsView::new(session.clone(), settings, language))
+        };
         let this = GameSettings {
             personal,
             configs: cx.new(|cx| GameConfigEditor::new(&host, cx)),
             keyboard: cx.new(|cx| GameKeyboard::new(&host, cx)),
             scripts: cx.new(|cx| GameScripts::new(&host, cx)),
             demos,
+            ghosts,
             host,
             page,
             args,
@@ -191,7 +203,8 @@ impl GameSettings {
             scrolls: HashMap::new(),
             nav_scroll: Scroll::new(),
             events,
-            seen: None,
+            seen: Some(active),
+            seen_data_rev: session.data_revision(),
             invalid: [false; 2],
             _subs: subs,
         };
@@ -211,17 +224,28 @@ impl GameSettings {
         &self.configs
     }
 
-    /// Сессия сообщила о переменах: события — странице, вид — заново, и закэшированные разделы
-    /// тоже (они читают ту же сессию, а кадры свайпа и наведения списка их не рисуют; «Демо» её
-    /// не читает).
+    /// Сбросить буферы превью, когда страница «Персонализация» скрыта.
+    pub fn release_idle_caches(&mut self, cx: &mut Context<Self>) {
+        self.personal
+            .update(cx, |personal, cx| personal.release_idle_caches(cx));
+        cx.notify();
+    }
+
+    /// Сессия сообщила о переменах: события — странице, вид — заново; закэшированные разделы
+    /// перерисовываются только при смене данных сессии (чистое переключение вкладки и свайп их
+    /// не трогают; «Персонализация» и «Демо» сессию не читают).
     fn sync(&mut self, cx: &mut Context<Self>) {
-        for section in [
-            self.personal.entity_id(),
-            self.configs.entity_id(),
-            self.keyboard.entity_id(),
-            self.scripts.entity_id(),
-        ] {
-            App::notify(cx, section);
+        let data_rev = self.host.session.data_revision();
+        if data_rev != self.seen_data_rev {
+            self.seen_data_rev = data_rev;
+            for section in [
+                self.configs.entity_id(),
+                self.keyboard.entity_id(),
+                self.scripts.entity_id(),
+            ] {
+                App::notify(cx, section);
+            }
+            self.ghosts.update(cx, |ghosts, cx| ghosts.stale(cx));
         }
         let events = std::mem::take(&mut *self.events.borrow_mut());
         for event in events {
@@ -280,9 +304,12 @@ impl GameSettings {
 
     /// Подраздел внешнего вида в списке слева.
     pub fn select_personal(&mut self, id: &str, cx: &mut Context<Self>) {
-        self.personal
-            .update(cx, |personal, cx| personal.select(id, cx));
-        cx.notify();
+        if self
+            .personal
+            .update(cx, |personal, cx| personal.select(id, cx))
+        {
+            cx.notify();
+        }
     }
 
     pub fn reset(&mut self) {
@@ -324,15 +351,60 @@ impl GameSettings {
             return;
         }
         cx.defer_in(window, move |this, _, cx| {
+            // Все фоновые перечитывания после смены вкладки ждём до конца 350-мс свайпа, чтобы
+            // ответы IPC не перерисовывали кэшированные разделы посреди анимации перехода.
+            let after_swipe = std::time::Duration::from_millis(380);
             if active == "demos" {
-                this.demos.update(cx, |demos, cx| demos.load(cx));
+                if previous.is_none() || !this.demos.read(cx).has_loaded() {
+                    this.demos.update(cx, |demos, cx| demos.load(cx));
+                } else {
+                    cx.spawn(async move |this, cx| {
+                        cx.background_executor().timer(after_swipe).await;
+                        this.update(cx, |this, cx| {
+                            if this.host.session.active_section() == "demos" {
+                                this.demos.update(cx, |demos, cx| demos.load(cx));
+                            }
+                        })
+                        .ok();
+                    })
+                    .detach();
+                }
             }
             if previous.is_some() {
                 if active == "personal" {
-                    this.personal
-                        .update(cx, |personal, cx| personal.on_window_focus(cx));
+                    cx.spawn(async move |this, cx| {
+                        cx.background_executor().timer(after_swipe).await;
+                        this.update(cx, |this, cx| {
+                            if this.host.session.active_section() == "personal" {
+                                this.personal
+                                    .update(cx, |personal, cx| personal.on_window_focus(cx));
+                            }
+                        })
+                        .ok();
+                    })
+                    .detach();
                 } else if previous == Some("personal") {
-                    this.host.session.on_window_focus();
+                    cx.spawn(async move |this, cx| {
+                        cx.background_executor().timer(after_swipe).await;
+                        this.update(cx, |this, _| {
+                            if this.host.session.active_section() != "personal" {
+                                this.host.session.on_window_focus();
+                            }
+                        })
+                        .ok();
+                        // После конца свайпа (350 мс) отпустить тяжёлые буферы скрытого превью.
+                        cx.background_executor()
+                            .timer(std::time::Duration::from_millis(70))
+                            .await;
+                        this.update(cx, |this, cx| {
+                            if this.host.session.active_section() != "personal" {
+                                this.personal
+                                    .update(cx, |p, cx| p.release_idle_caches(cx));
+                            }
+                        })
+                        .ok();
+                    })
+                    .detach();
                 }
             }
         });
@@ -391,6 +463,7 @@ struct Bodies {
     keyboard: AnyView,
     scripts: AnyView,
     demos: AnyView,
+    ghosts: AnyView,
     scrolls: HashMap<&'static str, Scroll>,
     language: Language,
     theme: Theme,
@@ -459,11 +532,8 @@ impl Bodies {
             ),
             // Свою прокрутку ведёт сам: место — вся ячейка.
             "demos" => self.section(&self.demos),
-            "ghosts" => body(
-                id,
-                &scroll,
-                ghosts(&self.view, self.weak.clone(), &t, theme),
-            ),
+            // Свою прокрутку ведёт сам: место — вся ячейка.
+            "ghosts" => self.section(&self.ghosts),
             "version" => body(id, &scroll, version(&self.view, &t, theme)),
             _ => div().into_any_element(),
         }
@@ -473,13 +543,13 @@ impl Bodies {
 impl Render for GameSettings {
     fn render(&mut self, window: &mut Window, cx: &mut Context<Self>) -> impl IntoElement {
         self.watch(window, cx);
-        let view = Rc::new(self.host.session.view());
+        let view = self.host.session.panel_view();
         self.sync_inputs(&view, cx);
         let theme = cx.global::<Theme>().clone();
         let language = self.host.language;
         let t = move |key: &str| hlsr_ui::tr(language, key, &[]);
         let personal_nav = self.personal.read(cx).nav();
-        for id in ["launch", "ghosts", "version"] {
+        for id in ["launch", "version"] {
             self.body(id);
         }
         let weak = cx.weak_entity();
@@ -502,6 +572,7 @@ impl Render for GameSettings {
             scripts: self.scripts.clone().into(),
             demos: self.demos.clone().into(),
             scrolls: self.scrolls.clone(),
+            ghosts: self.ghosts.clone().into(),
             language,
             theme: theme.clone(),
             cache: crate::cache::on(cx),
@@ -665,5 +736,163 @@ mod tests {
         demos.update(cx, |demos, cx| demos.load(cx));
         cx.run_until_parked();
         assert!(renders(id) > drawn, "свои данные — заново");
+    }
+
+    #[gpui::test]
+    fn swipe_demos_to_keyboard_keeps_both_sections_cached(cx: &mut TestAppContext) {
+        let (settings, cx) = open(cx, "demos");
+        let (demos, keyboard, session) = settings.read_with(cx, |s, _| {
+            (
+                s.demos.entity_id(),
+                s.keyboard.entity_id(),
+                s.session().clone(),
+            )
+        });
+        session.select_section("keyboard");
+        settings.update(cx, |_, cx| cx.notify());
+        cx.run_until_parked();
+        let mut d_frames = Vec::new();
+        let mut k_frames = Vec::new();
+        for _ in 0..15 {
+            frame_after(cx, 16);
+            d_frames.push(renders(demos));
+            k_frames.push(renders(keyboard));
+        }
+        assert_eq!(
+            d_frames[2],
+            *d_frames.last().unwrap(),
+            "demos должен быть из кэша"
+        );
+        assert_eq!(
+            k_frames[2],
+            *k_frames.last().unwrap(),
+            "keyboard должен быть из кэша"
+        );
+    }
+
+    struct CachedPanel {
+        settings: Option<Entity<GameSettings>>,
+    }
+
+    impl Render for CachedPanel {
+        fn render(&mut self, _: &mut Window, cx: &mut Context<Self>) -> impl IntoElement {
+            crate::live::rendered(cx.entity_id());
+            div().size_full().flex().children(self.settings.clone())
+        }
+    }
+
+    struct CachedPanelHost {
+        panel: Entity<CachedPanel>,
+        tick: usize,
+    }
+
+    impl Render for CachedPanelHost {
+        fn render(&mut self, window: &mut Window, cx: &mut Context<Self>) -> impl IntoElement {
+            crate::theme::frame(window, cx);
+            div()
+                .size_full()
+                .flex()
+                .child(div().w(gpui::px(1.)).child(self.tick.to_string()))
+                .child(
+                    self.panel
+                        .clone()
+                        .cached(StyleRefinement::default().flex_1().size_full()),
+                )
+        }
+    }
+
+    #[gpui::test]
+    fn nested_cached_panel_keeps_sections_cached_during_swipes(cx: &mut TestAppContext) {
+        cx.update(crate::init);
+        let mut scene = Scene::load(&screens_049_dir(), "configs/kb-main").expect("сцена");
+        let cfg = Scene::load(&screens_049_dir(), "configs/cfg-files").expect("cfg");
+        for (k, v) in cfg.invoke {
+            scene.invoke.insert(k, v);
+        }
+        let variant = Variant {
+            theme: "hlsr".into(),
+            lang: "ru".into(),
+            scale: 1.0,
+            zoom: None,
+            rail: None,
+        };
+        let services: Services =
+            Arc::new(FixtureServices::new(&scene, &variant).expect("фикстура"));
+        let game = ConfigGame {
+            id: "70".into(),
+            name: "HL1".into(),
+            title: "Half-Life".into(),
+        };
+        let panel = cx.new(|_| CachedPanel { settings: None });
+        let (host, cx) = cx.add_window_view({
+            let panel = panel.clone();
+            move |_, _| CachedPanelHost { panel, tick: 0 }
+        });
+        cx.simulate_resize(gpui::size(
+            crate::scale::zpx(1., 1400.),
+            crate::scale::zpx(1., 820.),
+        ));
+        panel.update_in(cx, |panel, window, cx| {
+            let page = WeakEntity::new_invalid();
+            panel.settings = Some(cx.new(|cx| {
+                GameSettings::new(&services, &game, "demos", Language::Ru, page, window, cx)
+            }));
+            cx.notify();
+        });
+        for _ in 0..10 {
+            frame_after(cx, 200);
+        }
+        let settings = panel.read_with(cx, |panel, _| panel.settings.clone().expect("окно"));
+        let (kb, cfg_e, scr, demos, session) = settings.read_with(cx, |s, _| {
+            (
+                s.keyboard.entity_id(),
+                s.configs.entity_id(),
+                s.scripts.entity_id(),
+                s.demos.entity_id(),
+                s.session().clone(),
+            )
+        });
+        // Сначала несколько кадров крутится только сосед снаружи (кэшированная панель не
+        // перерисовывается, `draw_generation` уходит вперёд), затем свайп будит панель:
+        // вложенные разделы должны безопасно синхронизироваться и остаться в кэше на весь свайп.
+        for _ in 0..3 {
+            host.update(cx, |host, cx| {
+                host.tick += 1;
+                cx.notify();
+            });
+            frame_after(cx, 16);
+        }
+        for (name, target, a, b) in [
+            ("demos->keyboard", "keyboard", demos, kb),
+            ("keyboard->scripts", "scripts", kb, scr),
+            ("scripts->configs", "configs", scr, cfg_e),
+            ("configs->demos", "demos", cfg_e, demos),
+        ] {
+            session.select_section(target);
+            settings.update(cx, |_, cx| cx.notify());
+            cx.run_until_parked();
+            let mut ra = Vec::new();
+            let mut rb = Vec::new();
+            for _ in 0..12 {
+                frame_after(cx, 16);
+                ra.push(renders(a));
+                rb.push(renders(b));
+            }
+            // Первый кадр может разово дорисовать входящий раздел или проснувшийся уходящий,
+            // но все последующие кадры свайпа оба вложенных вида обязаны браться из кэша.
+            assert_eq!(
+                ra[1],
+                *ra.last().unwrap(),
+                "{name}: уходящий раздел перерисовывался на свайпе ({ra:?})"
+            );
+            assert_eq!(
+                rb[1],
+                *rb.last().unwrap(),
+                "{name}: входящий раздел перерисовывался на свайпе ({rb:?})"
+            );
+            for _ in 0..4 {
+                frame_after(cx, 200);
+            }
+        }
     }
 }

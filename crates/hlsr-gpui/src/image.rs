@@ -289,6 +289,7 @@ fn drop_later(gone: Vec<Arc<RenderImage>>, cx: &mut App) {
             cx.drop_image(image, None);
         }
         cx.refresh_windows();
+        crate::memory::trim_heap_async(cx);
     });
 }
 

@@ -169,8 +169,9 @@ fn ghosting_opens_on_its_look_and_lists_its_sections() {
         "C:\\HLSR\\ghosting-renewed\\ghostingmod\\cfg"
     );
     assert!(!view.build_select, "у Ghosting одна сборка");
-    assert_eq!(view.runs.len(), 2);
-    assert_eq!(view.runs_summary, "Runs: 2");
+    let runs = rig.session.runs_view();
+    assert_eq!(runs.runs.len(), 2);
+    assert_eq!(runs.summary, "Runs: 2");
     // Состояние показано один раз за круг, а не на каждый вызов.
     assert!(*rig.renders.borrow() >= 1);
 }
@@ -465,7 +466,7 @@ fn ghost_rows_ask_before_deleting_and_remove_only_the_confirmed_one() {
     let rig = rig(&scene);
     rig.mount();
     rig.session.select_section("ghosts");
-    let rows = rig.session.view().runs;
+    let rows = rig.session.runs_view().runs;
     assert_eq!(
         rows.iter().map(|r| r.name.as_str()).collect::<Vec<_>>(),
         ["two.run", "one.run"]
@@ -474,17 +475,17 @@ fn ghost_rows_ask_before_deleting_and_remove_only_the_confirmed_one() {
     rig.session.delete_run(&rows[0].id);
     assert!(rig.calls_to("game-runs-delete").is_empty());
     rig.session.confirm_run_delete(&rows[0].id);
-    assert!(rig.session.view().runs[0].confirm);
+    assert!(rig.session.runs_view().runs[0].confirm);
     // «Отмена» закрывает вопрос.
     rig.session.cancel_run_delete();
-    assert!(!rig.session.view().runs[0].confirm);
+    assert!(!rig.session.runs_view().runs[0].confirm);
     rig.session.confirm_run_delete(&rows[0].id);
     rig.session.delete_run(&rows[0].id);
     assert_eq!(
         rig.calls_to("game-runs-delete"),
         [json!(["218", "two.run"])]
     );
-    let rows = rig.session.view().runs;
+    let rows = rig.session.runs_view().runs;
     assert_eq!(rows.len(), 1);
     assert_eq!(rows[0].name, "one.run");
     assert_eq!(rows[0].size, "9\u{a0}B");
@@ -500,16 +501,13 @@ fn a_failed_deletion_keeps_the_row_and_says_why() {
     let rig = rig(&scene);
     rig.mount();
     rig.session.select_section("ghosts");
-    let id = rig.session.view().runs[0].id.clone();
+    let id = rig.session.runs_view().runs[0].id.clone();
     rig.session.confirm_run_delete(&id);
     rig.session.delete_run(&id);
-    let view = rig.session.view();
+    let view = rig.session.runs_view();
     assert_eq!(view.runs.len(), 2);
     assert!(view.runs[0].confirm, "вопрос остаётся для повтора");
-    assert_eq!(
-        view.runs_error,
-        "The game is running. Close it and try again"
-    );
+    assert_eq!(view.error, "The game is running. Close it and try again");
 }
 
 #[test]

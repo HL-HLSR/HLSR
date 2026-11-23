@@ -230,7 +230,7 @@ impl RepairModal {
     }
 
     /// Слот `.rp`: кнопки выбора и прокручиваемый список.
-    fn slot(&self, cx: &mut Context<Self>) -> AnyElement {
+    fn slot(&self, window: &mut Window, cx: &mut Context<Self>) -> AnyElement {
         let theme = cx.global::<Theme>().clone();
         let head = div()
             .flex()
@@ -254,10 +254,8 @@ impl RepairModal {
                 .on_click(cx.listener(|this, _, _, cx| this.edit(cx, |t| t.set_all(false)))),
             );
         let sections = self.tree.sections();
-        let list = div()
-            .id("rp-scroll")
+        let list = crate::scroll::overflow_y("rp-scroll", window, cx)
             .max_h(u(260.))
-            .overflow_y_scroll()
             .py(u(8.))
             .px(u(10.))
             .bg(white().opacity(0.05))
@@ -314,7 +312,7 @@ impl Render for RepairModal {
             confirm_label: Some(tr(cx, "#L_GM_REPAIR_FETCH", &[&count.to_string(), &size])),
             ..Confirm::default()
         };
-        let slot = self.slot(cx);
+        let slot = self.slot(window, cx);
         let view = cx.entity().downgrade();
         let on_answer: OnAnswer = Rc::new(move |answer, window, cx| {
             view.update(cx, |this, cx| this.answer(answer, window, cx))

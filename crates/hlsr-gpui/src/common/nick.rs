@@ -14,10 +14,16 @@ use crate::motion::{AnimGate, keyframes};
 use crate::scale::{u, zoom};
 use crate::shell::root::ShellContext;
 use gpui::prelude::*;
-use gpui::{AnyElement, App, ElementId, ObjectFit, SharedString, Window, div, img};
+use gpui::{
+    AnyElement, App, ElementId, ObjectFit, RenderImage, SharedString, Window, canvas, div, img,
+};
 use hlsr_core::language::Language;
 use hlsr_ui::render::nick::{self, BADGE_DROP_EM, BADGE_EM, BADGE_GAP_EM};
-use hlsr_ui::render::profile_art;
+use hlsr_ui::render::profile_art::{self, ProfileArt};
+use std::cell::{Cell, RefCell};
+use std::collections::HashMap;
+use std::rc::Rc;
+use std::sync::Arc;
 use std::time::{Instant, SystemTime, UNIX_EPOCH};
 
 #[derive(IntoElement)]
@@ -58,11 +64,55 @@ impl NickName {
     }
 }
 
+/// Кэш текстур значка подписчика (иконка + два крайних свечения): один на размер и масштаб,
+/// общий для всех карточек на экране; дыхание идёт плавно на GPU без перерастра.
+#[derive(Clone)]
+struct BadgeGpu {
+    icon: Arc<RenderImage>,
+    glow_min: Arc<RenderImage>,
+    glow_max: Arc<RenderImage>,
+    x: f32,
+    y: f32,
+    width: f32,
+    height: f32,
+}
+
+fn badge_gpu(size: f32, scale: f32) -> Option<BadgeGpu> {
+    thread_local! {
+        static CACHE: RefCell<HashMap<(u32, u32), BadgeGpu>> = RefCell::new(HashMap::new());
+    }
+    let key = ((size * 100.).round() as u32, (scale * 1000.).round() as u32);
+    if let Some(hit) = CACHE.with_borrow(|c| c.get(&key).cloned()) {
+        return Some(hit);
+    }
+    let parts = profile_art::badge_parts_art(size, scale)?;
+    let gpu = BadgeGpu {
+        icon: crate::image::render_image(&parts.icon),
+        glow_min: crate::image::render_image(&parts.glow_min),
+        glow_max: crate::image::render_image(&parts.glow_max),
+        x: parts.x,
+        y: parts.y,
+        width: parts.width,
+        height: parts.height,
+    };
+    CACHE.with_borrow_mut(|c| {
+        if c.len() >= 32 {
+            c.clear();
+        }
+        c.insert(key, gpu.clone());
+    });
+    Some(gpu)
+}
+
 /// Часы и растры одного ника.
 struct State {
     start: Instant,
     nick: Art,
     badge: Art,
+    /// Видимость в прошлом кадре: скрытые за прокруткой карточки не тратят ЦП и атлас.
+    visible: Rc<Cell<bool>>,
+    last_key: String,
+    last_art: Option<ProfileArt>,
 }
 
 impl RenderOnce for NickName {
@@ -77,6 +127,7 @@ impl RenderOnce for NickName {
         let line = f32::from(line_px) / zoom;
         let still = AnimGate::still(cx);
         let now = cx.background_executor().now();
+        let step_ms = profile_art::step_ms_for_hz(crate::motion::refresh_hz(window, cx));
         let state = window.use_keyed_state(child_id(&self.id, "nick"), cx, |_, cx| {
             cx.on_release(|state: &mut State, cx| {
                 state.nick.release(cx);
@@ -87,23 +138,50 @@ impl RenderOnce for NickName {
                 start: now,
                 nick: Art::default(),
                 badge: Art::default(),
+                visible: Rc::new(Cell::new(true)),
+                last_key: String::new(),
+                last_art: None,
             }
         });
-        let ms = elapsed(now, state.read(cx).start);
-
-        let art = profile_art::nick_art(
-            &self.style,
-            &self.css,
-            &self.text,
-            size,
-            text_style.font_weight.0.round() as u16,
-            0.,
-            rgba8(text_style.color),
-            scale,
-            ms,
-            still,
-        );
-        let mut moving = art.styled && profile_art::nick_moving(&self.style, &self.css, still);
+        let (ms, visible, nick_key) = {
+            let s = state.read(cx);
+            let weight = text_style.font_weight.0.round() as u16;
+            let color = rgba8(text_style.color);
+            let key = format!(
+                "{}|{}|{}|{size}|{weight}|{color:?}|{scale}|{still:?}",
+                self.style, self.css, self.text
+            );
+            (elapsed(now, s.start), s.visible.clone(), key)
+        };
+        let moving_nick = profile_art::nick_moving(&self.style, &self.css, still);
+        let cached_offscreen = state.read(cx);
+        let art = if moving_nick
+            && !visible.get()
+            && cached_offscreen.last_key == nick_key
+            && let Some(prev) = &cached_offscreen.last_art
+        {
+            prev.clone()
+        } else {
+            let art = profile_art::nick_art_paced(
+                &self.style,
+                &self.css,
+                &self.text,
+                size,
+                text_style.font_weight.0.round() as u16,
+                0.,
+                rgba8(text_style.color),
+                scale,
+                ms,
+                still,
+                step_ms,
+            );
+            state.update(cx, |s, _| {
+                s.last_key = nick_key;
+                s.last_art = Some(art.clone());
+            });
+            art
+        };
+        let mut moving = art.styled && moving_nick;
         let shown = art.styled.then_some(&art.image);
         let image = state.update(cx, |state, cx| state.nick.image(shown, window, cx));
         let nick: AnyElement = if art.styled {
@@ -134,15 +212,12 @@ impl RenderOnce for NickName {
                 .into_any_element()
         };
 
-        if !self.subscriber {
+        let badge_mix = self.subscriber.then(|| nick::badge_mix(ms, still)).flatten();
+        if !self.subscriber || badge_mix.is_some() {
             state.update(cx, |state, cx| state.badge.image(None, window, cx));
         }
         let badge = self.subscriber.then(|| {
             moving |= nick::badge_moving(still);
-            let art = profile_art::badge_art(size, scale, ms, still);
-            let image = state.update(cx, |state, cx| {
-                state.badge.image(Some(&art.image), window, cx)
-            });
             // Линия букв, как у строки текста GPUI: половинный интерлиньяж + подъём (спуск в
             // метриках отрицательный, поэтому не `baseline_offset`).
             let text_system = window.text_system();
@@ -152,12 +227,34 @@ impl RenderOnce for NickName {
             let baseline = (f32::from(line_px) - ascent - descent) / 2. + ascent;
             let top = baseline / zoom + (BADGE_DROP_EM - BADGE_EM) * size;
             let since = self.since;
-            div()
+            let mut box_el = div()
                 .relative()
                 .flex_none()
                 .w(u((BADGE_EM + BADGE_GAP_EM) * size))
-                .h(u(line))
-                .children(image.map(|image| {
+                .h(u(line));
+            if let Some(mix) = badge_mix {
+                if let Some(parts) = badge_gpu(size, scale) {
+                    let place = |image: Arc<RenderImage>, opacity: f32| {
+                        img(image)
+                            .absolute()
+                            .left(u(parts.x))
+                            .top(u(top + parts.y))
+                            .w(u(parts.width))
+                            .h(u(parts.height))
+                            .object_fit(ObjectFit::Fill)
+                            .opacity(opacity)
+                    };
+                    box_el = box_el
+                        .child(place(parts.glow_min, (1. - mix).clamp(0., 1.)))
+                        .child(place(parts.glow_max, mix.clamp(0., 1.)))
+                        .child(place(parts.icon, 1.));
+                }
+            } else {
+                let art = profile_art::badge_art(size, scale, ms, still);
+                let image = state.update(cx, |state, cx| {
+                    state.badge.image(Some(&art.image), window, cx)
+                });
+                box_el = box_el.children(image.map(|image| {
                     img(image)
                         .absolute()
                         .left(u(art.x))
@@ -165,27 +262,42 @@ impl RenderOnce for NickName {
                         .w(u(art.width))
                         .h(u(art.height))
                         .object_fit(ObjectFit::Fill)
-                }))
-                .child(
-                    // title у самой картинки 1.05em.
-                    div()
-                        .id(child_id(&self.id, "badge"))
-                        .absolute()
-                        .left_0()
-                        .top(u(top))
-                        .size(u(BADGE_EM * size))
-                        .tip_with(move |cx| {
-                            let language = ShellContext::get(cx)
-                                .map_or(Language::Ru, |shell| shell.shell.language());
-                            nick::badge_title(language, since, now_ms()).into()
-                        }),
-                )
+                }));
+            }
+            box_el.child(
+                // title у самой картинки 1.05em.
+                div()
+                    .id(child_id(&self.id, "badge"))
+                    .absolute()
+                    .left_0()
+                    .top(u(top))
+                    .size(u(BADGE_EM * size))
+                    .tip_with(move |cx| {
+                        let language = ShellContext::get(cx)
+                            .map_or(Language::Ru, |shell| shell.shell.language());
+                        nick::badge_title(language, since, now_ms()).into()
+                    }),
+            )
         });
 
+        let probe = moving_nick.then(|| {
+            let visible = visible.clone();
+            canvas(
+                |_, _, _| {},
+                move |bounds, _, window, _| {
+                    let on = bounds.intersects(&window.content_mask().bounds);
+                    visible.set(on);
+                },
+            )
+            .absolute()
+            .inset_0()
+        });
         let line_el = div()
+            .relative()
             .flex()
             .flex_row()
             .min_w_0()
+            .children(probe)
             .children(badge)
             .child(nick);
         if moving {

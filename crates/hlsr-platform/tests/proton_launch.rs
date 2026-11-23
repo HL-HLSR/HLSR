@@ -1560,17 +1560,99 @@ async fn ghosting_launch_does_not_write_settings_or_extras() {
     );
 }
 
-/// `episode-launch-selftest.js`: на Linux эпизод — `LAUNCH_CONFIG_INVALID` до «запускается», а не
-/// сама Ghosting.
+/// Эпизоды Ghosting на Linux: без установки — `NOT_INSTALLED`, чужой эпизод —
+/// `LAUNCH_CONFIG_INVALID`, установленный эпизод запускает `hl2.exe` с `-game ep2` и
+/// синхронизирует `config.cfg`/`autoexec.cfg` из `ghostingmod/cfg`.
 #[tokio::test]
-async fn an_episode_is_refused_on_linux_before_starting() {
+async fn ghosting_episodes_launch_on_linux_and_validate_install() {
     let rig = ghosting_rig();
+    // Чужой эпизод / игра без эпизодов — LAUNCH_CONFIG_INVALID.
+    for (game, episode) in [("ghosting-renewed", "ep3"), ("hl2-4260", "ep1")] {
+        let error = rig
+            .service
+            .launch_episode(game, Some(episode))
+            .await
+            .unwrap_err();
+        assert_eq!(error.code.as_str(), "LAUNCH_CONFIG_INVALID");
+    }
+    // Эпизод не установлен — NOT_INSTALLED до запуска.
     let error = rig
         .service
-        .launch_episode("ghosting-renewed", Some("ep1"))
+        .launch_episode("ghosting-renewed", Some("ep2"))
         .await
         .unwrap_err();
-    assert_eq!(error.code.as_str(), "LAUNCH_CONFIG_INVALID");
-    assert!(error.message.contains("Linux"), "{}", error.message);
+    assert_eq!(error.code.as_str(), "NOT_INSTALLED");
     assert!(actions(&rig.events).is_empty());
+
+    // Ставим маркер и GameInfo.txt (реальный регистр в архивах эпизодов!) и проверяем запуск.
+    let ep2 = rig.install.join("ep2");
+    std::fs::create_dir_all(ep2.join("cfg")).unwrap();
+    std::fs::write(ep2.join("GameInfo.txt"), "\"GameInfo\" {}\n").unwrap();
+    std::fs::write(
+        ep2.join(hlsr_delivery::episodes::MARKER),
+        r#"{"version":"1.0.0"}"#,
+    )
+    .unwrap();
+    let seen_argv: Arc<Mutex<Vec<String>>> = Arc::default();
+    let seen_argv_cb = seen_argv.clone();
+    let seen_episode: Arc<Mutex<Option<String>>> = Arc::default();
+    let seen_episode_cb = seen_episode.clone();
+
+    struct EpisodeDelivery {
+        install: PathBuf,
+        episode: Arc<Mutex<Option<String>>>,
+    }
+    impl LaunchDelivery for EpisodeDelivery {
+        fn is_busy(&self) -> bool {
+            false
+        }
+        fn installed_of(&self, _game_id: &str) -> Result<Value, DeliveryError> {
+            Ok(json!({"installPath": self.install.to_string_lossy()}))
+        }
+        fn register_started_process(
+            &self,
+            _game_id: &str,
+            info: StartedProcess,
+        ) -> Result<Value, DeliveryError> {
+            *self.episode.lock().unwrap() = info.episode.clone();
+            Ok(json!({"state": "running", "episode": info.episode}))
+        }
+    }
+
+    let runner = FakeRunner::new(
+        Arc::default(),
+        Box::new(move |call| {
+            *seen_argv_cb.lock().unwrap() = call.args.clone();
+            Ok(())
+        }),
+    );
+    let service = LaunchService::new(LaunchServiceOptions {
+        delivery: Some(Arc::new(EpisodeDelivery {
+            install: rig.install.clone(),
+            episode: seen_episode_cb,
+        })),
+        processes: Some(Arc::new(FakeProcesses::default())),
+        runner: Some(runner),
+        settings_store: Some(rig.store.clone()),
+        steam_locator: Some(FakeSteam::new("/steam", true)),
+        start_check: Some(Duration::ZERO),
+        ..LaunchServiceOptions::default()
+    });
+    let result = service
+        .launch_episode("ghosting-renewed", Some("ep2"))
+        .await
+        .expect("запуск ep2");
+    assert_eq!(result["status"], "started");
+    assert_eq!(result["process"]["episode"], "ep2");
+    assert_eq!(seen_episode.lock().unwrap().as_deref(), Some("ep2"));
+    let argv = seen_argv.lock().unwrap().clone();
+    let at = argv.iter().position(|arg| arg == "-game").expect("-game");
+    assert_eq!(argv[at + 1], "ep2", "{argv:?}");
+    assert!(!argv.iter().any(|arg| arg == "ghostingmod"), "{argv:?}");
+    assert!(ep2.join("cfg/autoexec.cfg").exists());
+    assert!(ep2.join("cfg/config.cfg").exists());
+    assert_eq!(
+        hlsr_delivery::episodes::pending_sync(Some(rig.install.as_path())),
+        ["ep2"]
+    );
 }

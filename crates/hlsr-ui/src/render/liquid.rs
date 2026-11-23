@@ -1,206 +1,131 @@
-//! Стекло темы Liquid Glass (`launcher.css` 0.4.9, `[data-theme="liquid-glass"]`): кусок подложки
-//! блока с `backdrop-filter: blur(N) url(#lg-refract…) saturate(S) brightness(B)` и поверх него
-//! заливка, подкраска `--lg-tint` и блик `--lg-sheen`. Шум преломления — из slint
-//! (`render/refraction.rs`), без типов Slint; размытие под блоком — [`box_backdrop`] стекла колонки.
+//! Стекло темы Liquid Glass: кусок подложки блока — размытие, линза кромки, цвет — и поверх него
+//! заливка, подкраска `--lg-tint`, блик `--lg-sheen` и блик кромки.
 //!
-//! - `feTurbulence type="fractalNoise" numOctaves="1" seed="17"` — опорная реализация SVG 1.1
-//!   (§15.25), тот же генератор, что у Skia; шум берётся в CSS px от левого верхнего угла блока,
-//!   координата вниз до целого, как в `GrPerlinNoise2Effect`.
-//! - `feGaussianBlur` карты (σ 2–3 px) не делается: период шума — от 80 px, и размытие меняет карту
-//!   меньше, чем на уровень байта (у края блока `feDisplacementMap` берёт непредумноженную карту,
-//!   её значения у края те же).
-//! - Размытие — подложки только под коробкой блока, за её краем зеркало (как у колонки, замер GL).
+//! Линза — эталон 21st.dev «Liquid Glass» (manuarora700/liquid-glass, aakashmehra/liquid-glass-button):
+//! карта смещения скруглённого прямоугольника под `feDisplacementMap`. В 0.4.9 вместо неё был
+//! шум `feTurbulence` со сдвигом 70–120 px (`#lg-refract`): он не знал формы блока и давал мутную
+//! рябь по всему стеклу, а не линзу.
+//!
+//! - Форма — расстояние со знаком до скруглённого прямоугольника блока (`sdRoundedBox`).
+//! - Кромка шириной `bevel` — купол-«сквиркл» `y = (1 − (1 − x)⁴)^¼`: луч под углом его склона
+//!   преломляется по закону Снеллиуса (n = 1,5), изгиб `sin(θᵢ − θₜ)`. Высота поля — интеграл
+//!   изгиба по глубине, смещение — его градиент: изгиб на глубине вдоль нормали внутрь, ×1,35 и
+//!   до ±1 по осям (кромка сжимается, но не заворачивается). Глубже кромки смещения нет.
 //! - `feDisplacementMap scale=… xChannelSelector="R" yChannelSelector="G"`: сдвиг выборки
-//!   `scale · (c − ½)` CSS px. Выборка за коробкой блока прозрачна (вход фильтра — размытая
-//!   подложка коробки), и там видна подложка без фильтра: сверено по снимку 0.4.9 — кнопка меню игры
-//!   64 × 64 при `scale` 120 почти вся тёмная, как кадр рядом, а не светлая, как кадр в 60 px выше.
-//! - `saturate()` — матрица `feColorMatrix type="saturate"`, `brightness()` — множитель; в sRGB.
+//!   `scale · (c − ½)`, `c = (128 + 127·d) / 255`. Красный канал берётся со `scale + aberration`,
+//!   зелёный — со `scale`, синий — со `scale − aberration` (хроматическая кайма у кромки).
+//! - Блик кромки — канал B эталонной карты: нормаль к свету слева сверху `(−0.55, −0.85)`, у края
+//!   полностью, к глубине `bevel` — ноль; с обратной стороны — 35 %.
+//! - Смещение считается аналитически (градиент поля = изгиб × нормаль), а не разностями на сетке:
+//!   оно не зависит от шага сетки куска.
+//!
+//! Размытие — подложки только под коробкой блока, за её краем зеркало (как у колонки, замер GL);
+//! линза гнёт уже размытое (`blur()` раньше `url()` в цепочке `backdrop-filter`), а к краю
+//! кромки выборка переходит на резкую подложку ([`SHARP_RIM`]). Выборка за
+//! коробкой блока (клетки поля куска) — подложка без фильтра. `saturate()` — матрица
+//! `feColorMatrix type="saturate"`, `brightness()` — множитель; в sRGB.
 //!
 //! Кусок считается на сетке с шагом σ/4 CSS px, как кусок колонки ([`box_backdrop`]): размытое
-//! преломлённое на ней не теряет, вид растягивает кусок на блок. Кусок шире блока на две клетки с
-//! каждой стороны: видеокарта растягивает его с линейной выборкой, а края картинки (к ним
-//! подмешиваются соседи по атласу) остаются за обрезкой блока.
+//! преломлённое на ней не теряет, вид растягивает кусок на блок. Кромка — от 10 CSS px, это
+//! 5–7 клеток. Кусок шире блока на две клетки с каждой стороны: видеокарта растягивает его
+//! с линейной выборкой, а края картинки (к ним подмешиваются соседи по атласу) остаются за обрезкой
+//! блока.
 
 use super::rail_glass::{Placement, area, box_backdrop_at, over};
 use crate::{Rgba, Rgba8Image};
-use std::sync::{Arc, Mutex};
-
-const B_SIZE: usize = 0x100;
-const BM: usize = 0xff;
-const PERLIN_N: f64 = 4096.0;
-const RAND_M: i64 = 2_147_483_647;
-const RAND_A: i64 = 16807;
-const RAND_Q: i64 = 127_773;
-const RAND_R: i64 = 2836;
+use std::sync::{Arc, LazyLock, Mutex};
 
 /// σ подложки в клетках сетки (как у колонки).
 pub const SIGMA: f32 = 4.0;
 /// Грубая сетка: σ — две клетки, клеток вчетверо меньше. Так считается первый кусок блока в кадре,
-/// где блок появился, пока точный считается в фоне. На кадре игры с преломлением разница в среднем
-/// меньше уровня, у 99 % точек — до 5 уровней (`coarse_piece_stays_close_to_the_fine_one`).
+/// где блок появился, пока точный считается в фоне (`coarse_piece_stays_close_to_the_fine_one`).
 pub const SIGMA_COARSE: f32 = 2.0;
 /// Клеток куска за краем блока с каждой стороны.
 const PAD: f32 = 2.0;
 
-/// Решётка и градиенты шума для одного `seed` (функция `init` из SVG 1.1).
-pub struct Turbulence {
-    lattice: [usize; B_SIZE + B_SIZE + 2],
-    gradient: [[[f64; 2]; B_SIZE + B_SIZE + 2]; 4],
-}
-
-fn setup_seed(seed: i64) -> i64 {
-    let mut s = seed;
-    if s <= 0 {
-        s = -(s % (RAND_M - 1)) + 1;
-    }
-    if s > RAND_M - 1 {
-        s = RAND_M - 1;
-    }
-    s
-}
-
-fn random(seed: i64) -> i64 {
-    let mut result = RAND_A * (seed % RAND_Q) - RAND_R * (seed / RAND_Q);
-    if result <= 0 {
-        result += RAND_M;
-    }
-    result
-}
-
-fn s_curve(t: f64) -> f64 {
-    t * t * (3.0 - 2.0 * t)
-}
-
-fn lerp(t: f64, a: f64, b: f64) -> f64 {
-    a + t * (b - a)
-}
-
-impl Turbulence {
-    pub fn new(seed: i64) -> Turbulence {
-        let mut lattice = [0usize; B_SIZE + B_SIZE + 2];
-        let mut gradient = [[[0.0f64; 2]; B_SIZE + B_SIZE + 2]; 4];
-        let mut seed = setup_seed(seed);
-        for channel in gradient.iter_mut() {
-            for (i, cell) in channel.iter_mut().enumerate().take(B_SIZE) {
-                lattice[i] = i;
-                for v in cell.iter_mut() {
-                    seed = random(seed);
-                    *v = ((seed % (B_SIZE + B_SIZE) as i64) - B_SIZE as i64) as f64 / B_SIZE as f64;
-                }
-                let s = (cell[0] * cell[0] + cell[1] * cell[1]).sqrt();
-                if s > 0.0 {
-                    cell[0] /= s;
-                    cell[1] /= s;
-                }
-            }
-        }
-        for i in (1..B_SIZE).rev() {
-            let k = lattice[i];
-            seed = random(seed);
-            let j = (seed % B_SIZE as i64) as usize;
-            lattice[i] = lattice[j];
-            lattice[j] = k;
-        }
-        for i in 0..B_SIZE + 2 {
-            lattice[B_SIZE + i] = lattice[i];
-            for channel in gradient.iter_mut() {
-                channel[B_SIZE + i] = channel[i];
-            }
-        }
-        Turbulence { lattice, gradient }
-    }
-
-    fn noise2(&self, channel: usize, x: f64, y: f64) -> f64 {
-        let setup = |v: f64| {
-            let t = v + PERLIN_N;
-            let b0 = (t as i64 as usize) & BM;
-            let b1 = (b0 + 1) & BM;
-            let r0 = t - (t as i64) as f64;
-            (b0, b1, r0, r0 - 1.0)
-        };
-        let (bx0, bx1, rx0, rx1) = setup(x);
-        let (by0, by1, ry0, ry1) = setup(y);
-        let i = self.lattice[bx0];
-        let j = self.lattice[bx1];
-        let b00 = self.lattice[i + by0];
-        let b10 = self.lattice[j + by0];
-        let b01 = self.lattice[i + by1];
-        let b11 = self.lattice[j + by1];
-        let sx = s_curve(rx0);
-        let sy = s_curve(ry0);
-        let g = &self.gradient[channel];
-        let u = rx0 * g[b00][0] + ry0 * g[b00][1];
-        let v = rx1 * g[b10][0] + ry0 * g[b10][1];
-        let a = lerp(sx, u, v);
-        let u = rx0 * g[b01][0] + ry1 * g[b01][1];
-        let v = rx1 * g[b11][0] + ry1 * g[b11][1];
-        let b = lerp(sx, u, v);
-        lerp(sy, a, b)
-    }
-
-    /// Значение `fractalNoise` канала (0 — R … 3 — A) в точке пользовательских координат,
-    /// уже переведённое в 0…1: `(сумма + 1) / 2`.
-    pub fn fractal(&self, channel: usize, x: f64, y: f64, freq: (f64, f64), octaves: u32) -> f64 {
-        let (mut vx, mut vy) = (x * freq.0, y * freq.1);
-        let (mut sum, mut ratio) = (0.0, 1.0);
-        for _ in 0..octaves {
-            sum += self.noise2(channel, vx, vy) / ratio;
-            vx *= 2.0;
-            vy *= 2.0;
-            ratio *= 2.0;
-        }
-        ((sum + 1.0) / 2.0).clamp(0.0, 1.0)
-    }
-}
-
-/// Фильтр `#lg-refract` / `#lg-refract-strong` (LauncherShell.vue 0.4.9).
+/// Линза кромки блока (эталон 21st.dev, см. модуль).
 #[derive(Debug, Clone, Copy, PartialEq)]
-pub struct Refraction {
-    pub base_frequency: (f64, f64),
+pub struct Lens {
+    /// Ширина кромки, которая гнёт свет, CSS px (не больше половины меньшей стороны блока).
+    pub bevel: f32,
+    /// Сила смещения `feDisplacementMap scale`, CSS px.
     pub scale: f32,
+    /// Разнос каналов, CSS px: красный — `scale + aberration`, синий — `scale − aberration`.
+    pub aberration: f32,
+    /// Прозрачность белого блика у самого края со стороны света.
+    pub specular: f32,
 }
 
-/// `#lg-refract`: окна.
-pub const LG_REFRACT: Refraction = Refraction {
-    base_frequency: (0.002, 0.006),
-    scale: 70.0,
+impl Lens {
+    /// Без линзы: только размытие и цвет.
+    pub const NONE: Lens = Lens {
+        bevel: 0.0,
+        scale: 0.0,
+        aberration: 0.0,
+        specular: 0.0,
+    };
+
+    fn is_none(&self) -> bool {
+        self.bevel <= 0.0 || (self.scale <= 0.0 && self.specular <= 0.0)
+    }
+}
+
+/// Окна: широкая кромка, мягкая кайма (эталон: `bevelDepth` 14…37, `scale` 48, `aberration` 4…14;
+/// у окна поверх текст, поэтому кайма скромнее). Изгиб купола сходит на нет к середине кромки, так
+/// что смещение заметно в её внешней трети: у края до `scale · 0,44` px.
+pub const LG_LENS_WINDOW: Lens = Lens {
+    bevel: 24.0,
+    scale: 56.0,
+    aberration: 5.0,
+    specular: 0.16,
 };
 
-/// `#lg-refract-strong`: всплывающие панели и «мягкие» кнопки.
-pub const LG_REFRACT_STRONG: Refraction = Refraction {
-    base_frequency: (0.004, 0.012),
-    scale: 120.0,
+/// Всплывающие панели.
+pub const LG_LENS_PANEL: Lens = Lens {
+    bevel: 16.0,
+    scale: 48.0,
+    aberration: 4.0,
+    specular: 0.14,
 };
 
-/// Цепочка `backdrop-filter` одной группы правил Liquid Glass.
+/// «Мягкие» кнопки, тосты, поле поиска: блоки 40–70 px.
+pub const LG_LENS_SOFT: Lens = Lens {
+    bevel: 12.0,
+    scale: 40.0,
+    aberration: 3.0,
+    specular: 0.12,
+};
+
+/// Цепочка `backdrop-filter` одной группы правил Liquid Glass: `blur() <линза> saturate()
+/// brightness()`.
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub struct LiquidFilter {
     pub blur: f32,
-    pub refraction: Refraction,
+    pub lens: Lens,
     pub saturate: f32,
     pub brightness: f32,
 }
 
-/// `--lg-filter`: `blur(14px) url(#lg-refract) saturate(170%) brightness(1.06)`.
+/// `--lg-filter`: `blur(14px) <линза окна> saturate(170%) brightness(1.06)`.
 pub const LG_WINDOW: LiquidFilter = LiquidFilter {
     blur: 14.0,
-    refraction: LG_REFRACT,
+    lens: LG_LENS_WINDOW,
     saturate: 1.7,
     brightness: 1.06,
 };
 
-/// `--lg-filter-panel`: `blur(8px) url(#lg-refract-strong) saturate(160%)`.
+/// `--lg-filter-panel`: `blur(8px) <линза панели> saturate(160%)`.
 pub const LG_PANEL: LiquidFilter = LiquidFilter {
     blur: 8.0,
-    refraction: LG_REFRACT_STRONG,
+    lens: LG_LENS_PANEL,
     saturate: 1.6,
     brightness: 1.0,
 };
 
-/// `--lg-filter-soft`: `blur(6px) url(#lg-refract-strong) saturate(140%)`.
+/// `--lg-filter-soft`: `blur(6px) <линза кнопки> saturate(140%)`.
 pub const LG_SOFT: LiquidFilter = LiquidFilter {
     blur: 6.0,
-    refraction: LG_REFRACT_STRONG,
+    lens: LG_LENS_SOFT,
     saturate: 1.4,
     brightness: 1.0,
 };
@@ -209,10 +134,7 @@ pub const LG_SOFT: LiquidFilter = LiquidFilter {
 /// (`.news-viewer` NewsImageViewer.vue 0.4.9) — во всех темах, не только Liquid Glass.
 pub const BLUR_8: LiquidFilter = LiquidFilter {
     blur: 8.0,
-    refraction: Refraction {
-        base_frequency: (0.0, 0.0),
-        scale: 0.0,
-    },
+    lens: Lens::NONE,
     saturate: 1.0,
     brightness: 1.0,
 };
@@ -242,14 +164,17 @@ pub struct Piece {
     pub place: Placement,
 }
 
-/// Кусок стекла блока `rect` (CSS px окна) над кадром `source`, который лежит в окне в `frame`
-/// (cover и параллакс — у хозяина фона). `top(x, y)` — что лежит над кадром в точке окна (CSS px,
-/// прямая альфа): затемнение, передний план, подложка окна-диалога. `None` — блок пустой.
-/// Сетка — `cells` клеток на σ размытия ([`SIGMA`] или [`SIGMA_COARSE`]).
+/// Кусок стекла блока `rect` (CSS px окна, углы скруглены на `radius` CSS px) над кадром `source`,
+/// который лежит в окне в `frame` (cover и параллакс — у хозяина фона). `top(x, y)` — что лежит
+/// над кадром в точке окна (CSS px, прямая альфа): затемнение, передний план, подложка
+/// окна-диалога. `None` — блок пустой. Сетка — `cells` клеток на σ размытия ([`SIGMA`] или
+/// [`SIGMA_COARSE`]).
+#[allow(clippy::too_many_arguments)]
 pub fn piece_at(
     source: &Rgba8Image,
     frame: Placement,
     rect: Placement,
+    radius: f32,
     filter: &LiquidFilter,
     cells: f32,
     top: impl Fn(f32, f32) -> Rgba,
@@ -276,7 +201,7 @@ pub fn piece_at(
     );
     let (uw, uh) = (under.width() as usize, under.height() as usize);
     let (ux, uy) = (rect.width / uw as f32, rect.height / uh as f32);
-    // Подложка клетки без фильтра: там, куда выборка преломления ушла за коробку.
+    // Подложка клетки без фильтра: там, куда выборка ушла за коробку (клетки поля куска).
     let plain = |x: f32, y: f32| {
         let half = step / 2.0;
         let under = area(source, frame, (x - half, y - half), (x + half, y + half));
@@ -291,29 +216,63 @@ pub fn piece_at(
         width: out_w as f32 * step,
         height: out_h as f32 * step,
     };
-    let refraction = filter.refraction;
-    let shifts = shifts(out_w, out_h, step, pad, refraction);
+    let lens = filter.lens;
+    let field = field(
+        Grid {
+            out_w,
+            out_h,
+            step,
+            pad,
+        },
+        rect,
+        radius,
+        lens,
+    );
+    // Сдвиг каналов: красный, зелёный, синий.
+    let scales = [
+        lens.scale + lens.aberration,
+        lens.scale,
+        (lens.scale - lens.aberration).max(0.0),
+    ];
     let matrix = saturate_matrix(filter.saturate);
     // Ось блика: 150deg — вниз и вправо; длина градиента по CSS.
     let (sin, cos) = 150f32.to_radians().sin_cos();
     let line = (rect.width * sin).abs() + (rect.height * cos).abs();
     let center = (rect.x + rect.width / 2.0, rect.y + rect.height / 2.0);
+    let inside = |x: f32, y: f32| {
+        (rect.x..rect.x + rect.width).contains(&x) && (rect.y..rect.y + rect.height).contains(&y)
+    };
+    let under_at =
+        |x: f32, y: f32| bilinear(&under, (x - rect.x) / ux - 0.5, (y - rect.y) / uy - 0.5);
     let mut image = Rgba8Image::new(out_w as u32, out_h as u32);
     for (index, out) in image.make_mut_slice().iter_mut().enumerate() {
         let (i, j) = ((index % out_w) as f32, (index / out_w) as f32);
         let (x, y) = (place.x + (i + 0.5) * step, place.y + (j + 0.5) * step);
-        let (dx, dy) = shifts[index];
-        let (sx, sy) = (x + dx, y + dy);
-        let inside = (rect.x..rect.x + rect.width).contains(&sx)
-            && (rect.y..rect.y + rect.height).contains(&sy);
-        let mut color = if inside {
-            let [r, g, b] = bilinear(&under, (sx - rect.x) / ux - 0.5, (sy - rect.y) / uy - 0.5);
+        let cell = field.get(index).copied().unwrap_or_default();
+        let mut color = if !inside(x, y) {
+            plain(x, y)
+        } else {
+            let mut rgb = [0.0; 3];
+            let sharp = cell.rim * cell.rim * SHARP_RIM;
+            if cell.dx == 0.0 && cell.dy == 0.0 && sharp <= 0.0 {
+                rgb = under_at(x, y);
+            } else {
+                for (k, scale) in scales.iter().enumerate() {
+                    let (sx, sy) = (x + scale * cell.dx, y + scale * cell.dy);
+                    let (blurred, crisp) = if inside(sx, sy) {
+                        let crisp = if sharp > 0.0 { plain(sx, sy)[k] } else { 0.0 };
+                        (under_at(sx, sy)[k], crisp)
+                    } else {
+                        let p = plain(x, y)[k];
+                        (p, p)
+                    };
+                    rgb[k] = blurred + (crisp - blurred) * sharp;
+                }
+            }
             matrix.map(|row| {
-                let v = (row[0] * r + row[1] * g + row[2] * b).clamp(0.0, 1.0);
+                let v = (row[0] * rgb[0] + row[1] * rgb[1] + row[2] * rgb[2]).clamp(0.0, 1.0);
                 (v * filter.brightness).clamp(0.0, 1.0)
             })
-        } else {
-            plain(x, y)
         };
         for layer in [paint.fill, paint.tint] {
             color = blend(color, layer);
@@ -322,70 +281,167 @@ pub fn piece_at(
             let t = ((x - center.0) * sin - (y - center.1) * cos) / line + 0.5;
             color = blend(color, Rgba::new(255, 255, 255, alpha_byte(sheen_at(t))));
         }
+        if cell.light > 0.0 {
+            color = blend(
+                color,
+                Rgba::new(255, 255, 255, alpha_byte(cell.light * lens.specular)),
+            );
+        }
         let [r, g, b] = color.map(|v| (v * 255.0).round().clamp(0.0, 255.0) as u8);
         *out = Rgba::rgb(r, g, b);
     }
     Some(Piece { image, place })
 }
 
-/// Сдвиги преломления клеток куска `out_w × out_h` (шаг `step`, поле `pad` за краем блока, CSS px).
-/// Шум берётся от угла блока, поэтому сдвиги зависят только от размера куска и фильтра: блок, чья
-/// подложка движется (параллакс), берёт их готовыми. Помнятся последние [`SHIFTS_KEPT`].
-fn shifts(out_w: usize, out_h: usize, step: f32, pad: f32, refraction: Refraction) -> Shifts {
-    // Без преломления сдвигов нет: шум не считается (подложка во всё окно — сотни тысяч клеток).
-    if refraction.scale == 0.0 {
-        return vec![(0.0, 0.0); out_w * out_h].into();
+/// Сетка куска: `out_w × out_h` клеток с шагом `step`, поле `pad` за краем блока (CSS px).
+#[derive(Debug, Clone, Copy, PartialEq)]
+struct Grid {
+    out_w: usize,
+    out_h: usize,
+    step: f32,
+    pad: f32,
+}
+
+/// Клетка карты линзы: сдвиг выборки на единицу `scale` (`c − ½` каналов R и G эталонной карты)
+/// и блик кромки (канал B, 0…1).
+#[derive(Debug, Clone, Copy, Default, PartialEq)]
+pub struct LensCell {
+    pub dx: f32,
+    pub dy: f32,
+    pub light: f32,
+    /// Близость к краю: 1 у края, 0 на внутренней границе кромки.
+    pub rim: f32,
+}
+
+/// Расстояние со знаком до скруглённого прямоугольника с полуосями `half` и радиусом `r` (центр в
+/// нуле, внутри — меньше нуля) и внешняя нормаль в точке `(x, y)`.
+fn rounded_box(x: f32, y: f32, half: (f32, f32), r: f32) -> (f32, (f32, f32)) {
+    let qx = x.abs() - half.0 + r;
+    let qy = y.abs() - half.1 + r;
+    let outside = qx.max(0.0).hypot(qy.max(0.0));
+    let d = qx.max(qy).min(0.0) + outside - r;
+    let (nx, ny) = if qx > 0.0 && qy > 0.0 {
+        (qx / outside, qy / outside)
+    } else if qx > qy {
+        (1.0, 0.0)
+    } else {
+        (0.0, 1.0)
+    };
+    (d, (nx.copysign(x), ny.copysign(y)))
+}
+
+/// Изгиб луча купола-«сквиркла» по закону Снеллиуса (n = 1,5): `x` — доля кромки от края (0) до
+/// её внутренней границы (1). `bendFromDepth` эталона.
+fn bend_exact(x: f32) -> f32 {
+    let u = 1.0 - x.clamp(0.0, 1.0);
+    let denom = (1.0 - u.powi(4)).powf(0.75);
+    if denom < 1e-6 {
+        return 0.0;
     }
-    type Key = (usize, usize, u32, u32, u64, u64, u32);
-    static CACHE: Mutex<Vec<(Key, Shifts)>> = Mutex::new(Vec::new());
-    let (fx, fy) = refraction.base_frequency;
+    let theta = (u.powi(3) / denom).min(8.0).atan();
+    let sin_t = theta.sin() / 1.5;
+    if sin_t >= 1.0 {
+        return theta.sin();
+    }
+    (theta - sin_t.asin()).sin()
+}
+
+/// Точек таблицы изгиба на кромку.
+const BEND_STEPS: usize = 256;
+
+/// Изгиб с линейной выборкой из таблицы: тригонометрия на клетку не нужна.
+fn bend(x: f32) -> f32 {
+    static TABLE: LazyLock<[f32; BEND_STEPS + 1]> =
+        LazyLock::new(|| std::array::from_fn(|i| bend_exact(i as f32 / BEND_STEPS as f32)));
+    let at = x.clamp(0.0, 1.0) * BEND_STEPS as f32;
+    let i = (at as usize).min(BEND_STEPS - 1);
+    let f = at - i as f32;
+    TABLE[i] + (TABLE[i + 1] - TABLE[i]) * f
+}
+
+/// Доля резкой подложки у самого края кромки (к её внутренней границе — квадратично до нуля).
+/// В эталоне матовости почти нет (`frost` 0,4 px), и кромка гнёт резкую картинку — это и есть
+/// вид «жидкого стекла»; окнам лаунчера нужна матовая середина под текстом, поэтому резкость —
+/// только у края, а середина размыта, как в 0.4.9.
+const SHARP_RIM: f32 = 0.85;
+
+/// Усиление смещения эталона (`gain`).
+const GAIN: f32 = 1.35;
+/// Свет блика: слева сверху (эталон, ось y вниз).
+const LIGHT: (f32, f32) = (-0.55, -0.85);
+
+/// Карта линзы в точке блока `(x, y)` от его центра (CSS px), полуоси `half`, радиус угла `r`,
+/// ширина кромки `bevel`.
+pub fn lens_cell(x: f32, y: f32, half: (f32, f32), r: f32, bevel: f32) -> LensCell {
+    let (d, (nx, ny)) = rounded_box(x, y, half, r);
+    if d > 0.0 || bevel <= 0.0 {
+        return LensCell::default();
+    }
+    let depth = -d;
+    if depth >= bevel {
+        return LensCell::default();
+    }
+    // Градиент поля высоты — изгиб на этой глубине вдоль нормали внутрь.
+    let b = bend(depth / bevel) * GAIN;
+    let axis = |n: f32| (-n * b).clamp(-1.0, 1.0) * 127.0 / 255.0;
+    let len = LIGHT.0.hypot(LIGHT.1);
+    let dot = (nx * LIGHT.0 + ny * LIGHT.1) / len;
+    let rim = 1.0 - depth / bevel;
+    LensCell {
+        dx: axis(nx),
+        dy: axis(ny),
+        light: (dot.max(0.0) + (-dot).max(0.0) * 0.35) * rim,
+        rim,
+    }
+}
+
+/// Карта линзы клеток куска (сетка `grid`) блока `rect` с радиусом угла `radius`. Зависит только
+/// от размеров, не от места блока: блок, чья подложка движется (параллакс), берёт её готовой.
+/// Помнятся последние [`FIELDS_KEPT`].
+fn field(grid: Grid, rect: Placement, radius: f32, lens: Lens) -> Field {
+    // Без линзы карты нет: подложка во всё окно — сотни тысяч клеток.
+    if lens.is_none() {
+        return Arc::from([]);
+    }
+    type Key = (usize, usize, [u32; 6]);
+    static CACHE: Mutex<Vec<(Key, Field)>> = Mutex::new(Vec::new());
+    let half = (rect.width / 2.0, rect.height / 2.0);
+    let r = radius.clamp(0.0, half.0.min(half.1));
+    let bevel = lens.bevel.min(half.0.min(half.1));
     let key = (
-        out_w,
-        out_h,
-        step.to_bits(),
-        pad.to_bits(),
-        fx.to_bits(),
-        fy.to_bits(),
-        refraction.scale.to_bits(),
+        grid.out_w,
+        grid.out_h,
+        [grid.step, grid.pad, rect.width, rect.height, r, bevel].map(f32::to_bits),
     );
     let mut cache = CACHE
         .lock()
         .unwrap_or_else(|poisoned| poisoned.into_inner());
     if let Some(at) = cache.iter().position(|(k, _)| *k == key) {
         let hit = cache.remove(at);
-        let shifts = hit.1.clone();
+        let field = hit.1.clone();
         cache.push(hit);
-        return shifts;
+        return field;
     }
-    let noise = Turbulence::new(17);
-    let shifts: Shifts = (0..out_w * out_h)
+    let field: Field = (0..grid.out_w * grid.out_h)
         .map(|index| {
-            let (i, j) = ((index % out_w) as f32, (index / out_w) as f32);
-            // Пользовательские координаты фильтра — CSS px от угла блока, вниз до целого (блок и
-            // шаг — по сетке ¼ px, поэтому отсчёт от угла точен).
-            let (bx, by) = (
-                f64::from(((i + 0.5) * step - pad).floor()),
-                f64::from(((j + 0.5) * step - pad).floor()),
-            );
-            let shift = |channel| {
-                let c = noise.fractal(channel, bx, by, refraction.base_frequency, 1) as f32;
-                refraction.scale * (c - 0.5)
-            };
-            (shift(0), shift(1))
+            let (i, j) = ((index % grid.out_w) as f32, (index / grid.out_w) as f32);
+            let x = (i + 0.5) * grid.step - grid.pad - half.0;
+            let y = (j + 0.5) * grid.step - grid.pad - half.1;
+            lens_cell(x, y, half, r, bevel)
         })
         .collect();
-    if cache.len() >= SHIFTS_KEPT {
+    if cache.len() >= FIELDS_KEPT {
         cache.remove(0);
     }
-    cache.push((key, shifts.clone()));
-    shifts
+    cache.push((key, field.clone()));
+    field
 }
 
-/// Сдвиги преломления клеток куска (CSS px).
-type Shifts = Arc<[(f32, f32)]>;
+/// Карта линзы клеток куска; пустая — линзы нет.
+type Field = Arc<[LensCell]>;
 
-/// Сколько наборов сдвигов помнить: окна, панели и мягкие кнопки на экране.
-const SHIFTS_KEPT: usize = 16;
+/// Сколько карт помнить: окна, панели и мягкие кнопки на экране.
+const FIELDS_KEPT: usize = 16;
 
 fn alpha_byte(a: f32) -> u8 {
     (a * 255.0).round().clamp(0.0, 255.0) as u8
@@ -491,7 +547,10 @@ mod tests {
         Rgba::TRANSPARENT
     }
 
-    /// Точный кусок (сетка [`SIGMA`]).
+    /// Радиус угла блока в тестах, CSS px.
+    const RADIUS: f32 = 12.0;
+
+    /// Точный кусок (сетка [`SIGMA`]) блока со скруглением [`RADIUS`].
     fn piece(
         source: &Rgba8Image,
         frame: Placement,
@@ -500,7 +559,7 @@ mod tests {
         top: impl Fn(f32, f32) -> Rgba,
         paint: &Paint,
     ) -> Option<Piece> {
-        piece_at(source, frame, rect, filter, SIGMA, top, paint)
+        piece_at(source, frame, rect, RADIUS, filter, SIGMA, top, paint)
     }
 
     /// Цвет куска в точке окна с линейной выборкой, как его растягивает видеокарта.
@@ -572,8 +631,17 @@ mod tests {
         };
         for filter in [LG_WINDOW, LG_PANEL, LG_SOFT] {
             let fine = piece(&source, WINDOW, rect, &filter, none, &clear()).unwrap();
-            let coarse =
-                piece_at(&source, WINDOW, rect, &filter, SIGMA_COARSE, none, &clear()).unwrap();
+            let coarse = piece_at(
+                &source,
+                WINDOW,
+                rect,
+                RADIUS,
+                &filter,
+                SIGMA_COARSE,
+                none,
+                &clear(),
+            )
+            .unwrap();
             let mut diffs = Vec::new();
             for j in 0..rect.height as usize {
                 for i in 0..rect.width as usize {
@@ -587,30 +655,6 @@ mod tests {
             let p99 = diffs[diffs.len() * 99 / 100];
             assert!(mean < 1.0 && p99 < 6.0, "σ {}: {mean} {p99}", filter.blur);
         }
-    }
-
-    #[test]
-    fn lcg_matches_svg_reference_sequence() {
-        // random(): «минимальный стандарт» Парка — Миллера, x₁ = 16807·x₀ mod (2³¹ − 1).
-        assert_eq!(random(1), 16807);
-        assert_eq!(random(16807), 282_475_249);
-        assert_eq!(setup_seed(0), 1);
-        assert_eq!(setup_seed(-5), 6);
-    }
-
-    #[test]
-    fn noise_is_half_on_lattice_points_and_smooth_between() {
-        let t = Turbulence::new(17);
-        for ch in 0..4 {
-            assert!((t.fractal(ch, 3.0, 5.0, (1.0, 1.0), 1) - 0.5).abs() < 1e-12);
-        }
-        let a = t.fractal(0, 100.0, 40.0, (0.002, 0.006), 1);
-        let b = t.fractal(0, 101.0, 40.0, (0.002, 0.006), 1);
-        assert!((a - b).abs() < 0.01, "{a} {b}");
-        assert_ne!(
-            a,
-            Turbulence::new(18).fractal(0, 100.0, 40.0, (0.002, 0.006), 1)
-        );
     }
 
     #[test]
@@ -634,7 +678,8 @@ mod tests {
 
     #[test]
     fn flat_backdrop_is_only_coloured_by_the_filter() {
-        // Серый остаётся серым (насыщенность серого не меняет), brightness(1.06) светлее.
+        // Серый остаётся серым (насыщенность, линза и белый блик кромки серого не меняют),
+        // brightness(1.06) светлее.
         let source = flat(160, 90, |_, _| [100, 100, 100]);
         let rect = Placement {
             x: 400.0,
@@ -643,22 +688,26 @@ mod tests {
             height: 200.0,
         };
         let window = piece(&source, WINDOW, rect, &LG_WINDOW, none, &clear()).unwrap();
-        // Выборка за коробкой — подложка без фильтра (100), внутри — с brightness (106).
+        // Поле куска за коробкой — подложка без фильтра (100), внутри — с brightness (106), у кромки
+        // светлее на блик.
         let pixels = window.image.as_slice();
         assert!(
             pixels
                 .iter()
-                .all(|p| p.r == p.b && (p.r == 100 || p.r == 106))
+                .all(|p| p.r == p.g && p.g == p.b && p.r >= 100)
         );
         let middle = pixels[pixels.len() / 2 + window.image.width() as usize / 2];
         assert_eq!(middle, Rgba::rgb(106, 106, 106));
         let panel = piece(&source, WINDOW, rect, &LG_PANEL, none, &clear()).unwrap();
+        let w = panel.image.width() as usize;
+        let middle = panel.image.as_slice()[panel.image.as_slice().len() / 2 + w / 2];
+        assert_eq!(middle, Rgba::rgb(100, 100, 100));
         assert!(
             panel
                 .image
                 .as_slice()
                 .iter()
-                .all(|p| *p == Rgba::rgb(100, 100, 100))
+                .all(|p| p.r == p.b && p.r >= 100)
         );
         // Насыщенность раздвигает каналы цветного.
         let tinted = flat(160, 90, |_, _| [120, 100, 80]);
@@ -669,9 +718,9 @@ mod tests {
     }
 
     #[test]
-    fn refraction_moves_what_is_under_the_box() {
-        // Вертикальные полосы по 20 CSS px: без преломления столбец клеток ровный сверху вниз,
-        // с ним — полосы гнутся (по высоте шум меняется втрое быстрее).
+    fn the_lens_bends_only_the_rim() {
+        // Вертикальные полосы по 40 CSS px, левый край блока за 10 px до границы полос: глубже
+        // кромки кусок тот же, что без линзы, на кромке — полосы сдвинуты внутрь блока.
         let source = flat(1600, 900, |x, _| {
             if x / 40 % 2 == 0 {
                 [30, 30, 30]
@@ -680,24 +729,118 @@ mod tests {
             }
         });
         let rect = Placement {
-            x: 300.0,
+            x: 310.0,
             y: 100.0,
             width: 600.0,
             height: 600.0,
         };
-        let soft = piece(&source, WINDOW, rect, &LG_SOFT, none, &clear()).unwrap();
-        let w = soft.image.width() as usize;
-        let column: Vec<u8> = (0..soft.image.height() as usize)
-            .map(|j| soft.image.as_slice()[j * w + w / 2].r)
-            .collect();
-        let (lo, hi) = (column.iter().min().unwrap(), column.iter().max().unwrap());
-        assert!(hi - lo > 60, "полосы не гнутся: {lo}…{hi}");
+        let flat_lens = LiquidFilter {
+            lens: Lens {
+                scale: 0.0,
+                aberration: 0.0,
+                specular: 0.0,
+                ..LG_LENS_SOFT
+            },
+            ..LG_SOFT
+        };
+        let bare = LiquidFilter {
+            lens: Lens {
+                specular: 0.0,
+                ..LG_LENS_SOFT
+            },
+            ..LG_SOFT
+        };
+        let lens = piece(&source, WINDOW, rect, &bare, none, &clear()).unwrap();
+        let plain = piece(&source, WINDOW, rect, &flat_lens, none, &clear()).unwrap();
+        let w = lens.image.width() as usize;
+        let row = lens.image.height() as usize / 2;
+        let step = LG_SOFT.blur / SIGMA;
+        let mut rim = 0u8;
+        for i in 0..w {
+            let x = lens.place.x + (i as f32 + 0.5) * step;
+            let (a, b) = (
+                lens.image.as_slice()[row * w + i],
+                plain.image.as_slice()[row * w + i],
+            );
+            let depth = (x - rect.x).min(rect.x + rect.width - x);
+            if depth > LG_LENS_SOFT.bevel {
+                assert_eq!(a, b, "глубже кромки, x {x}");
+            } else if depth > 0.0 {
+                rim = rim.max(a.r.abs_diff(b.r));
+            }
+        }
+        assert!(rim > 40, "кромка не гнёт: {rim}");
+    }
+
+    #[test]
+    fn lens_pulls_inward_and_lights_the_top_left() {
+        let half = (100.0, 50.0);
+        let (r, bevel) = (20.0, 14.0);
+        // Снаружи и глубже кромки — ничего.
+        assert_eq!(lens_cell(150.0, 0.0, half, r, bevel), LensCell::default());
+        assert_eq!(lens_cell(0.0, 0.0, half, r, bevel), LensCell::default());
+        assert_eq!(lens_cell(-80.0, 0.0, half, r, bevel), LensCell::default());
+        // Левая кромка тянет выборку вправо (внутрь), правая — влево, верхняя — вниз.
+        let left = lens_cell(-98.0, 0.0, half, r, bevel);
+        let right = lens_cell(98.0, 0.0, half, r, bevel);
+        let top = lens_cell(0.0, -48.0, half, r, bevel);
+        let bottom = lens_cell(0.0, 48.0, half, r, bevel);
+        assert!(left.dx > 0.1 && left.dy == 0.0, "{left:?}");
+        assert!((left.dx + right.dx).abs() < 1e-6);
+        assert!(top.dy > 0.1 && top.dx == 0.0, "{top:?}");
+        // Не больше ±127/255 по оси, как байт карты.
+        assert!(left.dx <= 127.0 / 255.0);
+        // Угол тянет по диагонали к центру.
+        let corner = lens_cell(-90.0, -40.0, half, r, bevel);
+        assert!(corner.dx > 0.0 && corner.dy > 0.0, "{corner:?}");
+        // Свет слева сверху: верх и левый край ярче низа и правого.
+        assert!(top.light > bottom.light && left.light > right.light);
+        assert!(bottom.light > 0.0);
+        // Изгиб: ноль в глубине, наибольший у края.
+        assert_eq!(bend_exact(1.0), 0.0);
+        assert!(bend_exact(0.02) > bend_exact(0.5) && bend_exact(0.5) > 0.0);
+        for k in 0..=20 {
+            let x = k as f32 / 20.0;
+            assert!((bend(x) - bend_exact(x)).abs() < 0.02, "{x}");
+        }
+    }
+
+    #[test]
+    fn aberration_splits_channels_at_the_rim() {
+        // Серый, светлеющий слева направо от левого края блока (2 уровня на px): у левой кромки
+        // красный канал берётся глубже (светлее) синего, в середине каналы равны.
+        let source = flat(1600, 900, |x, _| {
+            let v = (x.saturating_sub(380) * 2).min(255) as u8;
+            [v, v, v]
+        });
+        let rect = Placement {
+            x: 400.0,
+            y: 200.0,
+            width: 400.0,
+            height: 300.0,
+        };
+        let filter = LiquidFilter {
+            saturate: 1.0,
+            lens: Lens {
+                specular: 0.0,
+                ..LG_LENS_PANEL
+            },
+            ..LG_PANEL
+        };
+        let out = piece(&source, WINDOW, rect, &filter, none, &clear()).unwrap();
+        let w = out.image.width() as usize;
+        let row = out.image.height() as usize / 2;
+        let at = |i: usize| out.image.as_slice()[row * w + i];
+        let edge = at(3);
+        assert!(edge.r > edge.b, "{edge:?}");
+        let middle = at(w / 2);
+        assert_eq!(middle.r, middle.b);
     }
 
     #[test]
     fn samples_beyond_the_box_show_the_backdrop_without_the_filter() {
-        // Кнопка 64 × 64 у нижнего края светлого: над ней (60 px) светло, под ней темно. Сильное
-        // преломление (`scale` 120) уводит выборку за коробку — там подложка без фильтра (тёмная),
+        // Кнопка 64 × 64 у нижнего края светлого: над ней (60 px) светло, под ней темно. Линза
+        // тянет выборку внутрь коробки, поле куска за коробкой — подложка без фильтра (тёмная):
         // светлое сверху в кусок не попадает.
         let source = flat(1600, 900, |_, y| {
             if y < 760 {
@@ -712,7 +855,14 @@ mod tests {
             width: 64.0,
             height: 64.0,
         };
-        let soft = piece(&source, WINDOW, rect, &LG_SOFT, none, &clear()).unwrap();
+        let filter = LiquidFilter {
+            lens: Lens {
+                specular: 0.0,
+                ..LG_LENS_SOFT
+            },
+            ..LG_SOFT
+        };
+        let soft = piece(&source, WINDOW, rect, &filter, none, &clear()).unwrap();
         assert!(
             soft.image.as_slice().iter().all(|p| p.r < 40),
             "сверху подмешалось светлое"
@@ -732,6 +882,7 @@ mod tests {
         let filter = LiquidFilter {
             saturate: 1.0,
             brightness: 1.0,
+            lens: Lens::NONE,
             ..LG_PANEL
         };
         let half = |_: f32, _: f32| Rgba::new(0, 0, 0, 128);

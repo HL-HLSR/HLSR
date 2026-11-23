@@ -916,7 +916,6 @@ fn ghosting_scenario(
     }))
 }
 
-#[cfg(windows)]
 #[test]
 fn ghosting_episodes_launch_install_cancel_and_remove() {
     let installed = json!({"ep1": {"installed": true}, "ep2": {"installed": true}});

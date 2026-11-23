@@ -17,8 +17,8 @@ use crate::scale::{u, zoom, zpx};
 use crate::text::{RUBIK, TextExt};
 use crate::theme::Theme;
 use gpui::{
-    Context, ElementId, FontWeight, Hsla, Rgba, TextRun, Window, WindowControlArea, div, font,
-    prelude::*, px, relative,
+    Context, ElementId, FontWeight, Hsla, Rgba, TextRun, Window, div, font, prelude::*, px,
+    relative,
 };
 use hlsr_ui::controllers::nav::{SECTION_TITLES, SECTIONS};
 use hlsr_ui::services::Standing;
@@ -58,6 +58,11 @@ pub(super) fn text_width(window: &Window, text: &str, size: f32, weight: FontWei
         .layout_line(text, zpx(zoom, size), &[run], None);
     f32::from(line.width) / zoom
 }
+
+/// Знак сайта (`.brand-mark` hlsr-website, `viewBox 32`): обводка кольца и диаметр точки в долях
+/// внешнего диаметра кольца (29).
+const MARK_STROKE: f32 = 3. / 29.;
+const MARK_DOT: f32 = 11. / 29.;
 
 /// `v-grid-width`: ширина, доведённая вверх до кратной 4 (допуск — сотая шага).
 fn grid_width(width: f32) -> f32 {
@@ -158,16 +163,17 @@ impl ShellRoot {
             Timing::new(260., [0.34, 1.56, 0.64, 1.]),
             {
                 move |k| {
+                    // Знак сайта HLSR (`.brand-mark` hlsr-website: `viewBox 32`, кольцо r 13 с
+                    // обводкой 3 — внешний диаметр 29, точка r 5,5): кольцо во всю коробку знака,
+                    // обводка 3/29 и точка 11/29 её размера. В 0.4.9 было кольцо 2 px и точка 16 —
+                    // кольцо втрое тоньше сайта, точка в большой дырке казалась мелкой. Под курсором
+                    // `scale(1.3)` (0.4.9). Путями: точно по центру, без ступеней округления.
                     div()
                         .id("topbar-logo")
+                        .occlude()
                         .size(u(mark))
                         .flex_none()
                         .rounded_full()
-                        .border(u(2.))
-                        .border_color(logo_color)
-                        .flex()
-                        .items_center()
-                        .justify_center()
                         .on_click(move |event, _, cx| {
                             if logo.click() {
                                 eggs.update(cx, |eggs, cx| eggs.show_pony(cx));
@@ -177,11 +183,13 @@ impl ShellRoot {
                             }
                         })
                         .child(
-                            div()
-                                .size(u(16. * (1. + 0.3 * k)))
-                                .flex_none()
-                                .rounded_full()
-                                .bg(logo_color),
+                            crate::paint::logo_mark(
+                                mark * MARK_STROKE,
+                                mark * MARK_DOT,
+                                1. + 0.3 * k,
+                                logo_color,
+                            )
+                            .size_full(),
                         )
                 }
             },
@@ -193,7 +201,6 @@ impl ShellRoot {
                 let side = (rail_w - mark) / 2.;
                 div()
                     .id("topbar-brand")
-                    .occlude()
                     .flex()
                     .items_center()
                     .flex_none()
@@ -340,14 +347,13 @@ impl ShellRoot {
         // Поиск занимает всё место между вкладками и значками (без поиска — место остаётся).
         let search = div()
             .id("topbar-search")
-            .occlude()
             .flex_grow(1.)
             .flex_shrink(1.)
             .flex_basis(u(288.))
             .min_w(u(152.))
             .ml(u(-gap / 2.))
             .mr(u(-inset))
-            .when(official, |el| el.child(self.frame.search.clone()));
+            .when(official, |el| el.occlude().child(self.frame.search.clone()));
 
         // Справа: спонсоры, уведомления, разделитель, аккаунт, кнопки окна. Линия
         // разделителя места в ряду не занимает.
@@ -391,15 +397,19 @@ impl ShellRoot {
                 )
             })
             .child(
-                div()
-                    .ml(u(inset - 8.))
-                    .child(window_controls::buttons(self, window, cx)),
+                // Кнопки окна — над подложкой окна выбора папки: она затемняет всю шапку, а
+                // полный экран, «Свернуть» и «Закрыть» остаются видны и работают. Под
+                // окнами-диалогами (`Z_MODAL`) — как и вся шапка.
+                gpui::deferred(
+                    div()
+                        .ml(u(inset - 8.))
+                        .child(window_controls::buttons(self, window, cx)),
+                )
+                .with_priority(crate::header::Z_TOPBAR),
             );
 
         // `w_full`: в кэше шапка — корень раскладки своего места.
-        div()
-            .id("launcher-topbar")
-            .window_control_area(WindowControlArea::Drag)
+        crate::window::drag_area(div().id("launcher-topbar"))
             .absolute()
             .top_0()
             .left_0()

@@ -18,8 +18,7 @@ use crate::scale::{u, zoom};
 use crate::theme::Theme;
 use gpui::{
     App, Bounds, Div, ElementId, InteractiveElement, IntoElement, MouseDownEvent, Pixels, Point,
-    Rems, ScrollEvent, ScrollHandle, Size, Window, anchored, canvas, deferred, div, point,
-    prelude::*,
+    Rems, ScrollEvent, Size, Window, anchored, canvas, deferred, div, point, prelude::*,
 };
 use hlsr_ui::overlay::{
     self, DropdownPlace, DropdownRequest, MENU_PADDING, Rect, TYPEAHEAD_RESET_MS,
@@ -356,7 +355,7 @@ pub fn popup_scroll<I, E, D, C>(
     open: bool,
     place: Place,
     look: PopLook,
-    scroll: Option<ScrollHandle>,
+    scroll: Option<crate::scroll::Scroll>,
     window: &mut Window,
     cx: &mut App,
     on_dismiss: D,
@@ -432,21 +431,26 @@ where
     } else {
         id.clone()
     };
+    let scroll = scroll.unwrap_or_else(|| {
+        let scroll = crate::scroll::Scroll::retained(id.clone(), window, cx);
+        if measuring {
+            scroll.scroll_to(Pixels::ZERO, false, window, cx);
+        }
+        scroll
+    });
     let panel = presence(transit, open, motion, move || {
-        let surface = surface
-            .id("popup-surface")
-            .p(u(MENU_PADDING as f32))
-            .child(content());
+        let surface = surface.id("popup-surface").p(u(MENU_PADDING as f32));
         // Как 0.4.9: ширина на открытие, высота — max-height: пункты, сменившиеся при
         // открытом списке, меняют высоту без нового замера.
         let surface = match sized {
-            Some(place) => surface
-                .w(u(place.width as f32))
-                .max_h(u(place.max_height as f32))
-                .overflow_y_scroll()
-                .when_some(scroll, |surface, scroll| surface.track_scroll(&scroll)),
+            Some(place) => scroll.overflow(
+                surface
+                    .w(u(place.width as f32))
+                    .max_h(u(place.max_height as f32)),
+            ),
             None => surface,
-        };
+        }
+        .child(content());
         // Слушатели — рядом с панелью, не внутри прокрутки: их рамка не едет с содержимым.
         let watch = if measuring {
             // Первый кадр: размер без ограничений, панель не видна и мышь не ловит.

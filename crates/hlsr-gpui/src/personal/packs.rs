@@ -284,8 +284,12 @@ impl CustomPacksView {
                     // Из кеша или известная ошибка — колбэк зовётся сразу, внутри `request`.
                     let inside = Rc::new(Cell::new(true));
                     let sync = inside.clone();
+                    let finished_sync = Rc::new(Cell::new(false));
+                    let finished = finished_sync.clone();
+                    let check_request = request.clone();
                     self.loader.request(request, move |_| {
                         if sync.get() {
+                            finished.set(true);
                             return;
                         }
                         app.update(|cx| {
@@ -297,6 +301,13 @@ impl CustomPacksView {
                         });
                     });
                     inside.set(false);
+                    if finished_sync.get() {
+                        self.waiting.remove(shot.src);
+                        if let Some(image) = self.loader.cached(&check_request) {
+                            entry.raster.set(&crop_cover(&image, size, shot.focus));
+                            entry.size = size;
+                        }
+                    }
                 }
                 None => {}
             }
@@ -336,7 +347,7 @@ impl CustomPacksView {
         } else {
             // `@container (min-aspect-ratio: 2/1)`: кадры рядом.
             let wide = sh > 0. && sw / sh >= 2.;
-            let mut shots_el = div().flex_1().min_w_0().flex().gap(u(6.));
+            let mut shots_el = div().flex_1().min_w_0().min_h_0().flex().gap(u(6.));
             if !wide {
                 shots_el = shots_el.flex_col();
             }
@@ -372,7 +383,7 @@ impl CustomPacksView {
                                 .inset_0()
                                 .size_full()
                                 .rounded(u(8.))
-                                .object_fit(ObjectFit::Fill)
+                                .object_fit(ObjectFit::Cover)
                         }))
                         .children(label),
                 );
@@ -383,6 +394,7 @@ impl CustomPacksView {
             .relative()
             .flex_1()
             .min_w_0()
+            .min_h_0()
             .flex()
             .child(anchor_probe(probe))
             .child(body)
@@ -394,6 +406,7 @@ impl CustomPacksView {
         &mut self,
         pack: &Pack,
         row: bool,
+        preview_h: f32,
         window: &mut Window,
         cx: &mut Context<Self>,
     ) -> AnyElement {
@@ -448,15 +461,10 @@ impl CustomPacksView {
                 })
                 .relative()
                 .flex()
-                .min_h(u(150.))
+                .flex_none()
+                .h(u(preview_h))
                 .rounded(u(10.))
-                .map(|el| {
-                    if row {
-                        el.flex_none().w(gpui::relative(0.46))
-                    } else {
-                        el.flex_1()
-                    }
-                })
+                .when(row, |el| el.w(gpui::relative(0.46)))
                 // `0 0 0 2px --l-text` — контуром поверх. Мягкое свечение `0 0 18px` не
                 // переносится: тень GPUI ложится и под полупрозрачную плитку.
                 .when(enabled, |el| el.child(outline(zoom, 10., 0., 2., text)))
@@ -621,7 +629,14 @@ impl CustomPacksView {
     }
 
     /// Плитка `.cpk-card`.
-    fn card(&mut self, pack: &Pack, row: bool, window: &mut Window, cx: &mut Context<Self>) -> Div {
+    fn card(
+        &mut self,
+        pack: &Pack,
+        row: bool,
+        preview_h: f32,
+        window: &mut Window,
+        cx: &mut Context<Self>,
+    ) -> Div {
         let theme = cx.global::<Theme>().clone();
         let text = theme.color("l-text");
         let (dim, faint) = (theme.color("l-text-dim"), theme.color("l-text-faint"));
@@ -658,14 +673,14 @@ impl CustomPacksView {
                 .text_color(faint)
                 .child(self.t(self.packs.needs_key(), &[]))
         });
-        let preview = self.preview(pack, row, window, cx);
+        let preview = self.preview(pack, row, preview_h, window, cx);
         let files = self.files(pack, window, cx);
         let body = div()
             .flex()
             .flex_col()
+            .flex_1()
             .gap(u(6.))
             .min_w_0()
-            .map(|el| if row { el.flex_1() } else { el.flex_none() })
             .child(
                 div()
                     .flex()
@@ -764,6 +779,18 @@ impl Render for CustomPacksView {
         let narrow = inner <= 653.;
         let row_cards = narrow && inner >= 460.;
         let centered_last = (654.0..=987.).contains(&inner) && packs.len() % 2 == 1;
+        // Фиксированная высота превью по ширине карточки (16:9): раскрытие «Что заменяется»
+        // растит тело карточки вниз и никогда не сжимает и не растягивает превью в ряду.
+        let preview_w = if row_cards {
+            ((card_w - 36.) * 0.46).max(0.)
+        } else {
+            (card_w - 24.).max(0.)
+        };
+        let preview_h = if row_cards {
+            (preview_w * 9. / 16.).clamp(150., 210.)
+        } else {
+            (preview_w * 9. / 16.).clamp(160., 220.)
+        };
 
         let mut grid_rows = Vec::new();
         for (index, chunk) in packs.chunks(cols).enumerate() {
@@ -771,14 +798,13 @@ impl Render for CustomPacksView {
             let mut row = div()
                 .flex()
                 .gap(u(GAP))
-                .flex_grow(1.)
-                .flex_shrink_0()
+                .flex_none()
                 .min_h(u(if narrow { 220. } else { 380. }));
             if centered_last && last_row && chunk.len() == 1 {
                 row = row.justify_center();
             }
             for pack in chunk {
-                let card = self.card(pack, row_cards, window, cx);
+                let card = self.card(pack, row_cards, preview_h, window, cx);
                 row = row.child(card.flex_none().w(u(card_w)));
             }
             grid_rows.push(row);

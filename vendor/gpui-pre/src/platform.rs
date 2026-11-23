@@ -156,31 +156,12 @@ pub fn refresh_interval_from_hz(hertz: f64) -> Option<Duration> {
     (hertz.is_finite() && hertz > 0.0).then(|| Duration::from_secs_f64(1.0 / hertz))
 }
 
-/// HLSR: кратчайший шаг кадров окна — 1/60 с (решение владельца 19.11: предел 60 кадров/с, как у
-/// Discord) с допуском 1 %, чтобы монитор 60,4 Гц не рисовал вдвое реже.
-const FRAME_STEP_MIN: Duration = Duration::from_micros(16_500);
-
-/// HLSR: самый длинный шаг кадров окна — 1/45 с с допуском (90 Гц через кадр — ровно 45 к/с).
-const FRAME_STEP_MAX: Duration = Duration::from_micros(22_500);
-
-/// HLSR: через сколько кадров монитора с кадром `refresh` рисует окно: наименьшее целое, при котором
-/// кадров не больше 60 в секунду. Шаг кратен кадру монитора — сетка vsync без рывков: 60 и 120,
-/// 240, 360 Гц — 60 к/с, 144 Гц — 48, 165 — 55, 280 — 56, 90 — 45. Кратный шаг длиннее 1/45 с —
-/// на кадр монитора короче, кадров чуть больше 60: 75 Гц через кадр дал бы 37,5 к/с, поэтому
-/// 61–88 Гц рисуют каждый кадр, 122–133 Гц — каждый второй (61–67 к/с). Кадр неизвестен (0) — 1.
-pub fn frame_divisor(refresh: Duration) -> u32 {
-    if refresh.is_zero() {
-        return 1;
-    }
-    let divisor = FRAME_STEP_MIN
-        .as_nanos()
-        .div_ceil(refresh.as_nanos())
-        .clamp(1, u32::MAX as u128) as u32;
-    if divisor > 1 && refresh * divisor > FRAME_STEP_MAX {
-        divisor - 1
-    } else {
-        divisor
-    }
+/// HLSR: через сколько кадров монитора с кадром `refresh` рисует окно. Окно рисует каждый кадр
+/// монитора (решение владельца 22.11: лаунчер — с частотой монитора, как rAF Chromium в 0.4.9;
+/// прежний предел 60 к/с «как у Discord» снят). Одна точка для потока vsync `gpui-pre-windows` и
+/// сетки движения лаунчера (`crates/hlsr-gpui/src/motion/driver.rs`): вернуть предел — здесь.
+pub fn frame_divisor(_refresh: Duration) -> u32 {
+    1
 }
 
 /// Controls whether the application participates in the system's foreground UI.

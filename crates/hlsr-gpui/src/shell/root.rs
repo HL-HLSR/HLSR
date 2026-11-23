@@ -48,8 +48,7 @@ use crate::sponsors::{modal::SponsorsModal, thanks::SupportThanksModal};
 use crate::theme::Theme;
 use gpui::{
     AnyView, App, AppContext, ClipboardItem, Context, Entity, FocusHandle, Global, KeyDownEvent,
-    Pixels, Render, StyleRefinement, Subscription, Task, WeakEntity, Window, div, prelude::*,
-    white,
+    Pixels, Render, StyleRefinement, Subscription, Task, WeakEntity, Window, div, prelude::*, px,
 };
 use hlsr_core::language::Language;
 use hlsr_core::launcher_prefs::{LauncherPrefs, prefs_defaults};
@@ -399,8 +398,10 @@ pub struct ShellRoot {
     focus: FocusHandle,
     /// Последняя отправленная активность Discord.
     rpc: Option<&'static str>,
-    /// Что отдано фону: кадр, фон инструмента, скругление (в фон — только перемены).
-    background_key: Option<(Option<&'static str>, bool, Pixels)>,
+    /// Что отдано фону: кадр и передний план, фон инструмента, скругление (в фон — только перемены).
+    background_key: Option<(Option<Selection>, bool, Pixels)>,
+    /// Была ли открыта «Персонализация» в прошлом кадре (уход сбрасывает буферы превью).
+    configs_shown: bool,
     lang_rev: i32,
     _events: Task<()>,
     /// Уведомление корня доходит до закэшированных видов рамки ([`Frame::invalidate`]).
@@ -585,6 +586,7 @@ impl ShellRoot {
             focus: cx.focus_handle(),
             rpc: Some(activity),
             background_key: None,
+            configs_shown: false,
             lang_rev: 0,
             _events: events,
             _invalidate: cx.observe_self(|root, cx| root.frame.invalidate(cx)),
@@ -676,8 +678,8 @@ impl ShellRoot {
                     .or_else(|| Selection::of_game(&game))
             })
             .flatten();
-        let key = (selection.as_ref().map(|s| s.hero), tool, radius);
-        if self.background_key == Some(key) {
+        let key = (selection.clone(), tool, radius);
+        if self.background_key.as_ref() == Some(&key) {
             return;
         }
         self.background_key = Some(key);
@@ -801,9 +803,17 @@ impl ShellRoot {
         if section != "home" || build != Standing::Official {
             self.frame.home = None;
         }
+        let in_configs = section == "configs";
+        if self.configs_shown && !in_configs
+            && let Some(configs) = self.frame.configs.clone()
+        {
+            configs.update(cx, |configs, cx| configs.release_idle_caches(cx));
+        }
+        self.configs_shown = in_configs;
         let services = self.services.clone();
         let cell = || div().flex_1().min_w_0().h_full().relative();
         let on = crate::cache::on(cx);
+        let frozen = AnimGate::get(cx).top_layer > 0;
         let full = || StyleRefinement::default().size_full();
         match (section.as_str(), tab.as_str()) {
             // Пока сервер не ответил — пусто; самосборка — заглушка со ссылкой на выпуски.
@@ -828,7 +838,9 @@ impl ShellRoot {
                     .home
                     .get_or_insert_with(|| cx.new(|cx| HomePanel::new(&services, cx)))
                     .clone();
-                cell().child(cached(home, full(), on)).into_any_element()
+                cell()
+                    .child(crate::cache::cached_under_modal(home, full(), on, frozen))
+                    .into_any_element()
             }
             ("configs", _) => {
                 let configs = self
@@ -836,7 +848,9 @@ impl ShellRoot {
                     .configs
                     .get_or_insert_with(|| cx.new(|cx| GameConfigsPanel::new(&services, cx)))
                     .clone();
-                cell().child(cached(configs, full(), on)).into_any_element()
+                cell()
+                    .child(crate::cache::cached_under_modal(configs, full(), on, frozen))
+                    .into_any_element()
             }
             (_, "demo") => {
                 let demo = self
@@ -844,7 +858,9 @@ impl ShellRoot {
                     .demo
                     .get_or_insert_with(|| cx.new(|cx| DemoPanel::new(&services, cx)))
                     .clone();
-                cell().child(cached(demo, full(), on)).into_any_element()
+                cell()
+                    .child(crate::cache::cached_under_modal(demo, full(), on, frozen))
+                    .into_any_element()
             }
             _ => {
                 // .launcher-main: сцена (герой игры или инструмента) и низ (панель игры или
@@ -867,11 +883,19 @@ impl ShellRoot {
                     .child(
                         swap("launcher-stage", stage_key, VALUE, move |key: &String| {
                             if key == "games" {
-                                div().size_full().child(cached(hero.clone(), full(), on))
+                                div().size_full().child(crate::cache::cached_under_modal(
+                                    hero.clone(),
+                                    full(),
+                                    on,
+                                    frozen,
+                                ))
                             } else {
-                                div()
-                                    .size_full()
-                                    .child(cached(tool_hero.clone(), full(), on))
+                                div().size_full().child(crate::cache::cached_under_modal(
+                                    tool_hero.clone(),
+                                    full(),
+                                    on,
+                                    frozen,
+                                ))
                             }
                         })
                         .flex_1()
@@ -881,11 +905,19 @@ impl ShellRoot {
                     .child(
                         swap("launcher-dock", tool, VALUE, move |tool: &bool| {
                             if *tool {
-                                div()
-                                    .w_full()
-                                    .child(cached(controls.clone(), dock.clone(), on))
+                                div().w_full().child(crate::cache::cached_under_modal(
+                                    controls.clone(),
+                                    dock.clone(),
+                                    on,
+                                    frozen,
+                                ))
                             } else {
-                                div().w_full().child(cached(bar.clone(), dock.clone(), on))
+                                div().w_full().child(crate::cache::cached_under_modal(
+                                    bar.clone(),
+                                    dock.clone(),
+                                    on,
+                                    frozen,
+                                ))
                             }
                         })
                         .flex_none()
@@ -918,7 +950,10 @@ impl Render for ShellRoot {
         let theme = cx.global::<Theme>().clone();
         let fullscreen = self.controls.fullscreen;
         let radius = Layers::radius(cx);
-        self.sync_background(radius, cx);
+        window.set_window_corner_radius(radius);
+        // Углы всего окна скругляет GPU-маска `window_corner_mask` в один проход: фоновые слои
+        // остаются прямоугольными, чтобы по краям не было накопления альфы и тёмного ореола.
+        self.sync_background(px(0.), cx);
         // Ничего не в фокусе — фокус у корня (как keydown у window в 0.4.9).
         if window.focused(cx).is_none() {
             let focus = self.focus.clone();
@@ -930,6 +965,7 @@ impl Render for ShellRoot {
         }
         let page = self.page(window, cx);
         let on = crate::cache::on(cx);
+        let frozen = AnimGate::get(cx).top_layer > 0;
         let topbar = StyleRefinement::default()
             .absolute()
             .top_0()
@@ -956,12 +992,11 @@ impl Render for ShellRoot {
             .track_focus(&self.focus)
             .size_full()
             .relative()
-            .rounded(radius)
             .bg(theme.color("l-bg"))
             .font_family(crate::text::RUBIK)
             .text_color(theme.color("l-text"))
             .on_key_down(cx.listener(Self::on_key_down))
-            .children(app_background(&theme, radius))
+            .children(app_background(&theme, px(0.)))
             // .launcher-frame: колонка и страница в одной строке, фон — слой под ними.
             .child(
                 div()
@@ -974,10 +1009,20 @@ impl Render for ShellRoot {
                         on,
                     ))
                     .child(self.frame.glass.clone())
-                    .child(cached(self.frame.rail.clone(), rail, on))
+                    .child(crate::cache::cached_under_modal(
+                        self.frame.rail.clone(),
+                        rail,
+                        on,
+                        frozen,
+                    ))
                     .child(page),
             )
-            .child(cached(self.frame.topbar.clone(), topbar, on))
+            .child(crate::cache::cached_under_modal(
+                self.frame.topbar.clone(),
+                topbar,
+                on,
+                frozen,
+            ))
             // Окна-диалоги рисуют себя `deferred` + `anchored` по окну: место — всё окно.
             .children(self.frame.windows.iter().map(|view| {
                 let style = StyleRefinement::default().absolute().inset_0();
@@ -988,14 +1033,7 @@ impl Render for ShellRoot {
             .child(self.eggs.clone())
             // #app::after: контур окна inset 0 0 0 1px rgba(255,255,255,.12); в полном экране нет.
             .when(!fullscreen, |root| {
-                root.child(
-                    div()
-                        .absolute()
-                        .inset_0()
-                        .rounded(radius)
-                        .border_1()
-                        .border_color(white().opacity(0.12)),
-                )
+                root.child(crate::window::frame_border(radius))
             });
         let root = tab_root(root);
         // `window-switching`: гаснет .13 с (`--l-ease-in`), проявляется .24 с (`--l-ease`).

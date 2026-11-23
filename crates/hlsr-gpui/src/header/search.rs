@@ -212,12 +212,12 @@ impl RunnerSearch {
         let open = view.open;
         let top = theme.len("l-header-control") + 8.;
         let pop = liquid::motion(&theme, POP);
+        let scroll = crate::scroll::Scroll::retained("runner-search-results".into(), window, cx);
         let panel = presence("runner-search-pop", open, pop, move || {
-            let results = div()
-                .id("runner-search-results")
+            let results = scroll
+                .overflow(div().id("runner-search-results"))
                 .occlude()
                 .max_h(u(352.))
-                .overflow_y_scroll()
                 .p(u(8.))
                 .rounded(theme.rem("l-radius"))
                 .bg(theme.color("l-modal-bg"))

@@ -9,7 +9,7 @@
 //! рамки и строка в журнале.
 
 use super::css::{self, Anim, Filter, Image, Length, Rgba, Shadow};
-use super::nick::{image_color, over_pm};
+use super::nick::{PreparedImage, over_pm};
 use crate::motion::{Registry, Still};
 use std::cell::RefCell;
 use std::collections::HashMap;
@@ -140,6 +140,20 @@ pub fn cycle(look: &FrameLook, still: Still) -> Option<(f64, f64)> {
     look.motion.as_ref()?.keyframes_cycle(MOTION_KEY, still)
 }
 
+/// Анимация рамки меняет только `opacity` (`frame-pulse`): пиксели постоянны.
+pub fn opacity_only(look: &FrameLook, still: Still) -> bool {
+    moving(look, still)
+        && look
+            .animation
+            .as_ref()
+            .is_some_and(|anim| anim.name == "frame-pulse")
+}
+
+/// Прозрачность рамки в момент `elapsed` (мс).
+pub fn opacity_at(look: &FrameLook, elapsed: f64, still: Still) -> f32 {
+    look.opacity * frame_of(look, Some(elapsed), still).opacity as f32
+}
+
 /// Картинка слоя рамки в физических px; места — в логических px от левого верхнего угла
 /// аватара (рамка выступает на `width` и на поле теней).
 pub struct FrameArt {
@@ -186,59 +200,87 @@ pub fn render(
     let pad = (reach.min(css::MAX_REACH) * s).ceil() as i32 + 1;
     let side_px = (ring * s).round() as i32;
     let total = side_px + pad * 2;
-    let centre = total as f32 / 2.0;
     let half = ring * s / 2.0;
     let inner = size * s / 2.0;
-    let base = base(look, total, half, inner, outer_r, inner_r, s)?;
+    let base = base(look, total, half, inner, outer_r, inner_r, ring, s)?;
     // Внешние тени уже на холсте.
     let mut canvas = base.shadows.clone();
-    let disc = &base.disc;
-    // Фон, обрезанный кругом.
+    // Фон, обрезанный кругом; если подложка `hole` непрозрачна, закрытые ею пиксели внутри
+    // не считаются.
+    let opaque_hole = hole[3] >= 0.999;
     if let Some(background) = &look.background {
-        let conic = match background {
-            Background::Image(Image::Conic { stops, .. }) => css::resolve_stops(stops),
-            _ => Vec::new(),
+        let pixels = if opaque_hole {
+            &base.ring_pixels[..]
+        } else {
+            &base.disc_pixels[..]
         };
-        for (i, m) in disc.iter().enumerate() {
-            if *m == 0 {
-                continue;
-            }
-            let (x, y) = (
-                (i as i32 % total) as f32 + 0.5,
-                (i as i32 / total) as f32 + 0.5,
-            );
-            let (u, v) = ((x - centre) / s + ring / 2.0, (y - centre) / s + ring / 2.0);
-            let c = match background {
-                Background::Color(c) => *c,
-                Background::Image(Image::Conic { from, .. }) => {
-                    let start = match from {
-                        css::From::Deg(d) => *d,
-                        css::From::FrameAngle => f.angle as f32,
-                    };
-                    let a = (u - ring / 2.0).atan2(-(v - ring / 2.0)).to_degrees();
-                    let t = (a - start).rem_euclid(360.0) / 360.0;
-                    css::gradient_at(&conic, t)
+        let dst = canvas.pixels_mut();
+        match background {
+            Background::Color(c) => {
+                let c = *c;
+                for p in pixels {
+                    let k = f32::from(p.m) / 255.0 * c[3];
+                    dst[p.idx] = mix(dst[p.idx], c, k);
                 }
-                Background::Image(image) => image_color(image, u, v, ring, ring),
-            };
-            let k = f32::from(*m) / 255.0 * c[3];
-            canvas.pixels_mut()[i] = mix(canvas.pixels()[i], c, k);
+            }
+            Background::Image(Image::Conic { from, stops }) => {
+                let conic = css::resolve_stops(stops);
+                let start = match from {
+                    css::From::Deg(d) => *d,
+                    css::From::FrameAngle => f.angle as f32,
+                };
+                for p in pixels {
+                    let t = (p.angle - start).rem_euclid(360.0) / 360.0;
+                    let c = css::gradient_at(&conic, t);
+                    let k = f32::from(p.m) / 255.0 * c[3];
+                    dst[p.idx] = mix(dst[p.idx], c, k);
+                }
+            }
+            Background::Image(image) => {
+                let prepared = PreparedImage::new(image, ring, ring);
+                for p in pixels {
+                    let c = prepared.color(p.u, p.v);
+                    let k = f32::from(p.m) / 255.0 * c[3];
+                    dst[p.idx] = mix(dst[p.idx], c, k);
+                }
+            }
         }
     }
     // Рамка border внутри круга.
     if let Some((_, color)) = look.border {
-        for (i, m) in disc.iter().enumerate() {
-            let k = (f32::from(*m) - f32::from(base.border[i])).max(0.0) / 255.0 * color[3];
+        let dst = canvas.pixels_mut();
+        for &(i, frac) in &base.border_pixels {
+            let k = frac * color[3];
             if k > 0.0 {
-                canvas.pixels_mut()[i] = mix(canvas.pixels()[i], color, k);
+                dst[i] = mix(dst[i], color, k);
             }
         }
     }
     // ::after — подложка в середине.
-    for (i, m) in base.hole.iter().enumerate() {
-        let k = f32::from(*m) / 255.0 * hole[3];
-        if k > 0.0 {
-            canvas.pixels_mut()[i] = mix(canvas.pixels()[i], hole, k);
+    if hole[3] > 0.0 {
+        let dst = canvas.pixels_mut();
+        if opaque_hole {
+            let solid = PremultipliedColorU8::from_rgba(
+                (hole[0] * 255.0).round().clamp(0.0, 255.0) as u8,
+                (hole[1] * 255.0).round().clamp(0.0, 255.0) as u8,
+                (hole[2] * 255.0).round().clamp(0.0, 255.0) as u8,
+                255,
+            );
+            for &(i, m) in &base.hole_pixels {
+                if m == 255
+                    && let Some(c) = solid
+                {
+                    dst[i] = c;
+                } else {
+                    let k = f32::from(m) / 255.0 * hole[3];
+                    dst[i] = mix(dst[i], hole, k);
+                }
+            }
+        } else {
+            for &(i, m) in &base.hole_pixels {
+                let k = f32::from(m) / 255.0 * hole[3];
+                dst[i] = mix(dst[i], hole, k);
+            }
         }
     }
     // Фильтры: объявленные; frame-hue подменяет filter анимацией.
@@ -333,19 +375,27 @@ pub fn render(
     })
 }
 
-/// Что у рамки не зависит от времени: внешние тени на холсте и маски слоя, края `border` и
-/// подложки. Кадр `frame-spin/hue/pulse` меняет только заливку и фильтры, поэтому тени не
-/// размываются заново на каждом кадре и у одинаковых рамок экрана одни на всех.
+#[derive(Clone, Copy)]
+struct PixelCoord {
+    idx: usize,
+    m: u8,
+    u: f32,
+    v: f32,
+    angle: f32,
+}
+
+/// Что у рамки не зависит от времени: внешние тени на холсте, ненулевые пиксели кольца/диска
+/// с предвычисленными координатами и углами `atan2`, края `border` и подложки.
 struct Base {
     shadows: Pixmap,
-    disc: Vec<u8>,
-    /// Внутренний край `border` (пусто без него).
-    border: Vec<u8>,
-    hole: Vec<u8>,
+    disc_pixels: Vec<PixelCoord>,
+    ring_pixels: Vec<PixelCoord>,
+    border_pixels: Vec<(usize, f32)>,
+    hole_pixels: Vec<(usize, u8)>,
 }
 
 /// Основ в кэше; при переполнении он очищается.
-const BASE_LIMIT: usize = 16;
+const BASE_LIMIT: usize = 32;
 
 thread_local! {
     static BASES: RefCell<HashMap<String, Rc<Base>>> = RefCell::new(HashMap::new());
@@ -359,11 +409,12 @@ fn base(
     inner: f32,
     outer_r: f32,
     inner_r: f32,
+    ring: f32,
     s: f32,
 ) -> Option<Rc<Base>> {
     let em = 16.0;
     let key = format!(
-        "{:?}|{:?}|{total}|{half}|{inner}|{outer_r}|{inner_r}|{s}",
+        "{:?}|{:?}|{total}|{half}|{inner}|{outer_r}|{inner_r}|{ring}|{s}",
         look.shadows,
         look.border.map(|(width, _)| width)
     );
@@ -401,10 +452,10 @@ fn base(
             }
         }
     }
-    let mut border = Vec::new();
+    let mut border_pixels = Vec::new();
     if let Some((bw, _)) = look.border {
         let bw = bw.px(em) * s;
-        border = vec![0u8; len];
+        let mut border = vec![0u8; len];
         shape_mask(
             &mut border,
             total,
@@ -413,14 +464,49 @@ fn base(
             half - bw,
             (outer_r - bw).max(0.0),
         );
+        for (i, &m) in disc.iter().enumerate() {
+            let frac = (f32::from(m) - f32::from(border[i])).max(0.0) / 255.0;
+            if frac > 0.0 {
+                border_pixels.push((i, frac));
+            }
+        }
     }
     let mut hole = vec![0u8; len];
     shape_mask(&mut hole, total, centre, centre, inner, inner_r);
+    let mut disc_pixels = Vec::new();
+    let mut ring_pixels = Vec::new();
+    let mut hole_pixels = Vec::new();
+    let half_ring = ring / 2.0;
+    for (i, (&dm, &hm)) in disc.iter().zip(&hole).enumerate() {
+        if hm != 0 {
+            hole_pixels.push((i, hm));
+        }
+        if dm != 0 {
+            let (x, y) = (
+                (i as i32 % total) as f32 + 0.5,
+                (i as i32 / total) as f32 + 0.5,
+            );
+            let (u, v) = ((x - centre) / s + half_ring, (y - centre) / s + half_ring);
+            let angle = (u - half_ring).atan2(-(v - half_ring)).to_degrees();
+            let coord = PixelCoord {
+                idx: i,
+                m: dm,
+                u,
+                v,
+                angle,
+            };
+            disc_pixels.push(coord);
+            if hm < 255 {
+                ring_pixels.push(coord);
+            }
+        }
+    }
     let base = Rc::new(Base {
         shadows,
-        disc,
-        border,
-        hole,
+        disc_pixels,
+        ring_pixels,
+        border_pixels,
+        hole_pixels,
     });
     BASES.with(|bases| {
         let mut bases = bases.borrow_mut();

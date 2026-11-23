@@ -2,9 +2,42 @@
 //! 0.4.9), окна режимов и место окна в рабочей области.
 
 use gpui::{
-    Bounds, Pixels, Point, Size, TitlebarOptions, WindowBackgroundAppearance, WindowBounds,
-    WindowDecorations, WindowOptions, point,
+    Bounds, Div, InteractiveElement, Pixels, Point, Size, Styled, TitlebarOptions,
+    WindowBackgroundAppearance, WindowBounds, WindowControlArea, WindowDecorations, WindowOptions,
+    div, point, px, white,
 };
+
+/// Контур окна (`#app::after`: `inset 0 0 0 1px rgba(255,255,255,.12)`).
+/// Сдвинут на 1 px наружу с толщиной 2 px и радиусом `r + 1`, чтобы внутренняя граница
+/// лежала ровно в 1 px от края окна, а наружная за пределами маски `window_corner_mask` —
+/// тогда на скруглённых углах рамка не затухает дважды и совпадает по яркости с прямыми краями.
+pub(crate) fn frame_border(radius: Pixels) -> Div {
+    let one = px(1.);
+    div()
+        .absolute()
+        .top(-one)
+        .right(-one)
+        .bottom(-one)
+        .left(-one)
+        .rounded(radius + one)
+        .border_2()
+        .border_color(white().opacity(0.12))
+}
+
+/// Область, за которую таскают окно без рамки (`-webkit-app-region: drag` 0.4.9). На Windows —
+/// `HTCAPTION` по хит-тесту GPUI. На Linux GPUI областей окна не хит-тестит
+/// (`on_hit_test_window_control` у X11 и Wayland пустой), и окно было не взять: там перенос
+/// начинает композитор по `start_window_move` с нажатия левой кнопки. Нажатие доходит до
+/// области там же, где Windows отдаёт `HTCAPTION`: над ней нет перекрывающего (`occlude`)
+/// элемента — кнопки и вкладки окно не таскают.
+pub fn drag_area<E: InteractiveElement>(el: E) -> E {
+    let el = el.window_control_area(WindowControlArea::Drag);
+    #[cfg(not(windows))]
+    let el = el.on_mouse_down(gpui::MouseButton::Left, |_, window, _| {
+        window.start_window_move();
+    });
+    el
+}
 
 /// Окно лаунчера: `bounds` — место и размер в логических px.
 pub fn launcher_options(bounds: Bounds<Pixels>) -> WindowOptions {
@@ -38,14 +71,14 @@ pub fn mode_options(title: &str, bounds: Bounds<Pixels>) -> WindowOptions {
     }
 }
 
-/// Кадры по общему пределу (60 в секунду по сетке vsync монитора окна, `gpui::frame_divisor`) и у
-/// окна без фокуса: GPUI по умолчанию держит неактивное окно (и всё при энергосбережении Windows)
+/// Кадры с частотой монитора окна (`gpui::frame_divisor`) и у окна без фокуса: GPUI по умолчанию держит неактивное окно (и всё при энергосбережении Windows)
 /// на 30 кадрах/с, а 0.4.9 — `backgroundThrottling: false`, и Chromium рисует видимое окно по
 /// vsync всегда. Скрытое и свёрнутое окно кадров не просит (`AnimGate`), так что лишней работы нет.
 pub fn full_rate() -> WindowOptions {
     WindowOptions {
         inactive_frame_interval: None,
         low_power_frame_interval: None,
+        thermal_frame_interval: None,
         ..Default::default()
     }
 }

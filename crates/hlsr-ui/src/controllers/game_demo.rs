@@ -29,12 +29,8 @@ pub struct GameDemo {
 }
 
 /// `GHOSTING_EPISODES` 0.4.9: эпизоды Ghosting — дополнения её установки; выбор хранит
-/// лаунчер (`prefs.ghostingBuild`). На Linux main эпизоды не запускает.
-pub const GHOSTING_EPISODES: &[(&str, &str)] = if cfg!(target_os = "linux") {
-    &[]
-} else {
-    &[("Episode One", "ep1"), ("Episode Two", "ep2")]
-};
+/// лаунчер (`prefs.ghostingBuild`).
+pub const GHOSTING_EPISODES: &[(&str, &str)] = &[("Episode One", "ep1"), ("Episode Two", "ep2")];
 
 impl GameDemo {
     /// `(demo.episodes || {})[build] || null`: эпизод выбранной сборки.
@@ -77,11 +73,7 @@ pub fn demo_state(id: &str) -> GameDemo {
             ..GameDemo::default()
         },
         "218" => GameDemo {
-            builds: if cfg!(target_os = "linux") {
-                &["HL1 MOVEMENT"]
-            } else {
-                &["HL1 MOVEMENT", "Episode One", "Episode Two"]
-            },
+            builds: &["HL1 MOVEMENT", "Episode One", "Episode Two"],
             episodes: GHOSTING_EPISODES,
             ..GameDemo::default()
         },
@@ -212,15 +204,14 @@ mod tests {
         let hl2 = demo_state("220");
         assert_eq!(hl2.builds, ["4260", "2707", "5288"]);
         assert!(hl2.upcoming.is_empty() && hl2.episodes.is_empty());
-        // 0.4.9: эпизоды Ghosting — сборки её списка (не на Linux).
+        // Эпизоды Ghosting — сборки её списка на Windows и Linux.
         let ghosting = demo_state("218");
-        if cfg!(windows) {
-            assert_eq!(
-                ghosting.builds,
-                ["HL1 MOVEMENT", "Episode One", "Episode Two"]
-            );
-            assert_eq!(ghosting.episode_of("Episode Two"), Some("ep2"));
-        }
+        assert_eq!(
+            ghosting.builds,
+            ["HL1 MOVEMENT", "Episode One", "Episode Two"]
+        );
+        assert_eq!(ghosting.episode_of("Episode One"), Some("ep1"));
+        assert_eq!(ghosting.episode_of("Episode Two"), Some("ep2"));
         assert_eq!(ghosting.episode_of("HL1 MOVEMENT"), None);
         assert_eq!(demo_state("50").last_launch_days, Some(6));
         assert_eq!(

@@ -320,7 +320,7 @@ fn rail_slot_follows_the_rail_in_one_frame(cx: &mut TestAppContext) {
 fn rail_collapses_on_release_from_the_next_frame(cx: &mut TestAppContext) {
     let (root, cx) = shell(cx);
     // Монитор 120 Гц, как DISPLAY2 серии recheckA (у тестового экрана — 60 Гц). Будильник окна —
-    // кадр окна: каждый второй vblank (предел 60 к/с, `gpui::frame_divisor`, поток vsync Windows).
+    // кадр окна: каждый vblank (`gpui::frame_divisor`, поток vsync Windows).
     let display = cx.update(|window, cx| window.display(cx).expect("экран").id());
     cx.simulate_display_refresh_interval_change(display, Some(Duration::from_secs(1) / 120));
     let wake = Duration::from_secs(1) / 120 * gpui::frame_divisor(Duration::from_secs(1) / 120);
@@ -360,9 +360,11 @@ fn rail_collapses_on_release_from_the_next_frame(cx: &mut TestAppContext) {
     );
 }
 
-/// Колонка выдвигается и сворачивается с кадрами окна (монитор 120 Гц, предел 60 к/с), хотя
+/// Колонка выдвигается и сворачивается с кадрами окна (монитор 120 Гц — 120 к/с), хотя
 /// будильник окна — 280 Гц (DWM по самому быстрому монитору): страница под ней меряет себя каждый
-/// кадр, и «ещё кадр после раскладки» гнал окно с каждым будильником.
+/// кадр, и «ещё кадр после раскладки» гнал окно с каждым будильником. Будильник быстрее монитора
+/// окна — только Windows; на Linux будильник и есть кадр монитора окна (`motion::driver::grid`),
+/// там предел — кадр на будильник, без лишних кадров после раскладки.
 #[gpui::test]
 fn rail_swipe_follows_the_window_monitor(cx: &mut TestAppContext) {
     let (root, cx) = shell(cx);
@@ -384,8 +386,9 @@ fn rail_swipe_follows_the_window_monitor(cx: &mut TestAppContext) {
             frame_after(cx, Duration::from_micros(3_571));
         }
         let drawn = frames() - before;
-        assert!(drawn > 20, "колонка движется: {drawn} кадров");
-        assert!(drawn <= 45, "{drawn} кадров за 0,7 с при пределе 60 к/с");
+        assert!(drawn > 40, "колонка движется: {drawn} кадров");
+        let cap = if cfg!(windows) { 88 } else { 196 };
+        assert!(drawn <= cap, "{drawn} кадров за 0,7 с");
     }
 }
 

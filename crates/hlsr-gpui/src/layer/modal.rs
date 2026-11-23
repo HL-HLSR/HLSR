@@ -170,11 +170,9 @@ impl Modal {
         }
         let theme = cx.global::<Theme>();
         let scrim = self.scrim.unwrap_or_else(|| theme.color("l-modal-scrim"));
-        let radius = Layers::radius(cx);
-        // Размытая подложка: стекло со своей заливкой и скруглением окна.
+        // Размытая подложка на всё окно: углы окна скругляет GPU-маска `window_corner_mask`.
         let blur = self.blur.then(|| {
-            let rems = gpui::rems(f32::from(radius) / f32::from(window.rem_size()));
-            liquid::Surface::new(liquid::Kind::Scrim, rems).own(scrim)
+            liquid::Surface::new(liquid::Kind::Scrim, gpui::rems(0.)).own(scrim)
         });
         let view = window.viewport_size();
         let scope = self.scope.clone();
@@ -186,7 +184,7 @@ impl Modal {
             let on_escape = on_close;
             let next = scope.clone();
             let prev = scope.clone();
-            let el = div().id("modal-scrim").size_full().rounded(radius);
+            let el = div().id("modal-scrim").size_full();
             match blur {
                 Some(surface) => liquid::with_surface(el, surface),
                 None => el.bg(scrim),

@@ -66,8 +66,9 @@ fn window_size(layout: &Layout) -> gpui::Size<Pixels> {
     size(px(layout.width as f32), px(layout.height as f32))
 }
 
-/// Открыть окно лаунчера: по центру рабочей области, без рамки, прозрачное; закрытие окна —
-/// выход (`window-all-closed` 0.4.9).
+/// Открыть окно лаунчера: без рамки, прозрачное; закрытие окна — выход (`window-all-closed`
+/// 0.4.9). Всегда по центру рабочей области основного монитора (`center: true` 0.4.9); полный
+/// экран прошлого запуска возвращает `window_ops::restore_fullscreen`.
 pub fn open_launcher(cx: &mut App, ui_scale: f64, services: Services) -> Result<(), String> {
     let display = live_display(cx);
     let area = display.as_ref().map_or_else(|| work_area(cx), |d| d.1);
@@ -133,7 +134,7 @@ fn open_with(
         .open_window(options, |window, cx| {
             window.set_rem_size(rem);
             #[cfg(windows)]
-            hlsr_gpui::win32::round_corners(window);
+            hlsr_gpui::win32::system_corners_off(window);
             // WM_CLOSE и Alt+F4 — тот же выход, что кнопка «Закрыть»: окно закрывает `quit`.
             // Разрешённое закрытие GPUI уничтожал окно сам, и выход потом обращался к уже
             // уничтоженному («Недопустимый дескриптор окна» в журнале).

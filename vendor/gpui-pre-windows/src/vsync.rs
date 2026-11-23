@@ -58,11 +58,10 @@ impl VSyncProvider {
     /// с частотой самого быстрого монитора, и окно на мониторе 120 Гц рядом с 280 Гц будилось
     /// 280 раз в секунду неровно (2 или 3 будильника на кадр монитора). Без монитора — DWM.
     ///
-    /// HLSR: предел 60 кадров/с — ожидание длится `gpui::frame_divisor` кадров монитора (или
-    /// композиции DWM): на 120 Гц будит каждый второй vblank, на 280 Гц — каждый пятый. Будят окна
-    /// только отсюда, так что предел общий для всего: переходы, бесконечные анимации, анимации
-    /// сцены GPUI, ответ на ввод. Кадр в ответ на ввод ждёт этого же будильника: до 1/60 с (на
-    /// 280 Гц — до 17,9 мс вместо 3,6 мс), как у окна на мониторе 60 Гц.
+    /// HLSR: ожидание длится `gpui::frame_divisor` кадров монитора (или композиции DWM) — сейчас
+    /// один: окна будятся каждым vblank, с частотой монитора (решение владельца 22.11; прежде
+    /// предел 60 к/с). Будят окна только отсюда, так что шаг общий для всего: переходы,
+    /// бесконечные анимации, анимации сцены GPUI, ответ на ввод.
     pub(crate) fn wait_for_vsync(&self, monitor: Option<HMONITOR>) -> FrameRequestSource {
         let vsync_start = Instant::now();
         let (output, frame) = match monitor.and_then(|monitor| self.output(monitor)) {
@@ -99,7 +98,7 @@ impl VSyncProvider {
         // but it shouldn't happen often.
         if !wait_succeeded || elapsed < VSYNC_INTERVAL_THRESHOLD {
             log::trace!("VSyncProvider::wait_for_vsync() took less time than expected");
-            // HLSR: и сон — не чаще 60 раз в секунду.
+            // HLSR: и сон — тот же шаг (`gpui::frame_divisor`).
             std::thread::sleep(self.interval * gpui::frame_divisor(self.interval));
             FrameRequestSource::LocalSchedule
         } else {
@@ -218,11 +217,11 @@ mod tests {
         );
     }
 
-    /// HLSR: предел 60 кадров/с — одно ожидание длится `frame_divisor` кадров (60 Гц — 1, 120 Гц —
-    /// 2, 280 Гц — 5), неудачное ожидание обрывает счёт.
+    /// HLSR: одно ожидание длится `frame_divisor` кадров (сейчас один на любой частоте),
+    /// неудачное ожидание обрывает счёт.
     #[test]
     fn one_wait_spans_frame_divisor_frames() {
-        for (hz, ok, waits) in [(60, true, 1), (120, true, 2), (280, true, 5), (280, false, 1)] {
+        for (hz, ok, waits) in [(60, true, 1), (120, true, 1), (280, true, 1), (280, false, 1)] {
             let calls = std::rc::Rc::new(std::cell::Cell::new(0));
             let counted = calls.clone();
             let provider = VSyncProvider {
@@ -239,8 +238,8 @@ mod tests {
         }
     }
 
-    /// HLSR: у каждого монитора такт — его кадр, а не кадр самого быстрого (композиции DWM), и не
-    /// чаще 60 раз в секунду: на 120 Гц — 16,67 мс, на 280 Гц — 17,86 мс (5 кадров).
+    /// HLSR: у каждого монитора такт — его кадр, а не кадр самого быстрого (композиции DWM):
+    /// на 120 Гц — 8,33 мс, на 280 Гц — 3,57 мс.
     #[test]
     fn each_monitor_paces_at_its_own_refresh() {
         let provider = VSyncProvider::new();

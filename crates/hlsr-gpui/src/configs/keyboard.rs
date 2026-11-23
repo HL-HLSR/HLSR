@@ -24,9 +24,8 @@ use crate::theme::Theme;
 use gpui::prelude::FluentBuilder as _;
 use gpui::{
     AbsoluteLength, AnyElement, App, Bounds, Context, ElementId, Entity, Focusable, FontWeight,
-    Hsla, IntoElement, ParentElement, PathBuilder, Pixels, Render, Role, ScrollHandle,
-    SharedString, Styled, StyledText, Subscription, Window, canvas, div, hsla, point, prelude::*,
-    relative, rgb,
+    Hsla, IntoElement, ParentElement, PathBuilder, Pixels, Render, Role, SharedString, Styled,
+    StyledText, Subscription, Window, canvas, div, hsla, point, prelude::*, relative, rgb,
 };
 use hlsr_core::language::Language;
 use hlsr_ui::controllers::game_keyboard::{CapView, KeyboardView, Shown};
@@ -393,7 +392,7 @@ pub struct GameKeyboard {
     scroll: Scroll,
     info_scroll: Scroll,
     list_scroll: Scroll,
-    cats: ScrollHandle,
+    cats: Scroll,
     /// Высота схемы с разделителя (`boardHeight`); `None` — по умолчанию.
     board_h: Option<f64>,
     /// Игра, чей размер разделителя прочитан (`storageKey` меняется вместе с игрой).
@@ -419,7 +418,7 @@ impl GameKeyboard {
             scroll: Scroll::new(),
             info_scroll: Scroll::new(),
             list_scroll: Scroll::new(),
-            cats: ScrollHandle::new(),
+            cats: Scroll::horizontal(),
             board_h: None,
             pane_game: None,
             board_box: Rc::default(),
@@ -1411,14 +1410,12 @@ impl GameKeyboard {
                 view.category.as_deref() == Some(item.id.as_str()),
             ));
         }
-        div()
-            .id("kb-cats")
+        self.cats
+            .overflow(div().id("kb-cats"))
             .flex()
             .gap(u(2.))
             .flex_1()
             .min_w_0()
-            .overflow_x_scroll()
-            .track_scroll(&self.cats)
             .pr(u(24.))
             .role(Role::TabList)
             .aria_label(self.t("#L_KB_CATEGORIES", &[]))

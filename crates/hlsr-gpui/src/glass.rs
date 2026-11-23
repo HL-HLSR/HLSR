@@ -17,10 +17,10 @@
 use crate::layer::Layers;
 use crate::motion::{AnimGate, Timing, monitor_notify};
 use crate::paint::{scrim_alpha, shadow, strips};
-use crate::scale::{WINDOW_RADIUS, u, viewport, zoom};
+use crate::scale::{u, viewport, zoom};
 use crate::shell::background::{Background, scrims};
 use crate::theme::Theme;
-use gpui::{Context, ObjectFit, Render, RenderImage, WeakEntity, Window, div, img, prelude::*, px};
+use gpui::{Context, ObjectFit, Render, RenderImage, WeakEntity, Window, div, img, prelude::*};
 use hlsr_ui::render::rail_glass::{Placement, box_backdrop};
 use hlsr_ui::{Rgba, Rgba8Image};
 use std::sync::Arc;
@@ -180,6 +180,15 @@ impl RailGlass {
             return;
         }
         piece.busy = true;
+        // Размытие 28 px на ЦП + загрузка текстуры колонки в атлас GPU: чаще 30 Гц сдвиг под
+        // таким размытием не виден, но 240 Гц забивают очередь атласа GPU и дают срывы кадров.
+        // Само проявление (fade) и выдвижение колонки при этом идут на полной герцовке монитора.
+        const MIN_BLUR_PACE: Duration = Duration::from_millis(33);
+        let pace = window
+            .refresh_interval(cx)
+            .filter(|d| !d.is_zero())
+            .map(|d| d.max(MIN_BLUR_PACE))
+            .unwrap_or(PACE);
         let task = cx.background_spawn({
             let job = job.clone();
             async move { job.run() }
@@ -210,7 +219,7 @@ impl RailGlass {
                 monitor_notify(window, cx.entity_id());
             })
             .ok();
-            let rest = PACE.saturating_sub(started.elapsed());
+            let rest = pace.saturating_sub(started.elapsed());
             if !rest.is_zero() {
                 cx.background_executor().timer(rest).await;
             }
@@ -259,6 +268,7 @@ impl Render for RailGlass {
         } else {
             crate::motion::monitor_frame(window);
         }
+        let radius = Layers::radius(cx);
         let mut layers = Vec::new();
         if let Some(backdrop) = self.backdrop.clone() {
             // Выдвинутая снизу, свёрнутая поверх с прозрачностью 1 − выдвижение.
@@ -291,8 +301,8 @@ impl Render for RailGlass {
                         .w(u(width))
                         .h(u(height))
                         .object_fit(ObjectFit::Fill)
-                        .rounded_tl(px(WINDOW_RADIUS))
-                        .rounded_bl(px(WINDOW_RADIUS))
+                        .rounded_tl(radius)
+                        .rounded_bl(radius)
                         .opacity(opacity)
                 };
                 match &piece.under {
@@ -304,7 +314,6 @@ impl Render for RailGlass {
                 }
             }
         }
-        let radius = Layers::radius(cx);
         let width = widths[0] + (widths[1] - widths[0]) * open;
         // box-shadow выдвинутой колонки `24px 0 48px -32px rgba(0,0,0,.7)` переходит из `none`;
         // она под стеклом (рисуется до детей слоя).

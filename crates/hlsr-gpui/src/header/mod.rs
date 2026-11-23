@@ -18,7 +18,7 @@ use hlsr_ui::controllers::bridge::Tr;
 use std::rc::Rc;
 
 /// `z-index: 20` шапки: её всплывающие (меню аккаунта, список поиска) — под окнами-диалогами.
-const Z_TOPBAR: usize = 20;
+pub(crate) const Z_TOPBAR: usize = 20;
 /// `z-index: 45` карточки обновления: над шапкой, под окнами (50).
 const Z_UPDATE_CARD: usize = 45;
 /// Картинки шапки (аватары аккаунта и поиска) в кеше загрузчика.

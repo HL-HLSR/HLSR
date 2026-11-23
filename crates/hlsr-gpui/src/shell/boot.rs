@@ -340,15 +340,9 @@ impl BootScreen {
             .flex()
             .items_center()
             .child(hover("boot-logo", Timing::new(200., EASE), |t| {
-                div()
-                    .size(u(48.))
-                    .rounded_full()
-                    .border(u(4.))
-                    .border_color(white())
-                    .flex()
-                    .items_center()
-                    .justify_center()
-                    .child(div().size(u(20. + 6. * t)).rounded_full().bg(white()))
+                div().size(u(48.)).flex_none().child(
+                    crate::paint::logo_mark(4., 20., (20. + 6. * t) / 20., white()).size_full(),
+                )
             }))
             .child(
                 div()
@@ -543,7 +537,6 @@ impl Render for BootScreen {
                     .inset_0()
                     .size_full()
                     .object_fit(ObjectFit::Fill)
-                    .rounded(radius)
             }))
             .child(self.logo())
             .children(arrows)
@@ -594,14 +587,7 @@ impl Render for BootScreen {
             })
             // #app::after: контур окна; в полном экране нет.
             .when(radius > px(0.), |root| {
-                root.child(
-                    div()
-                        .absolute()
-                        .inset_0()
-                        .rounded(radius)
-                        .border_1()
-                        .border_color(white_a(0.12)),
-                )
+                root.child(crate::window::frame_border(radius))
             })
     }
 }

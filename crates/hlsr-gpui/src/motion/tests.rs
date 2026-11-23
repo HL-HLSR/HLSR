@@ -30,6 +30,71 @@ fn wait(cx: &mut TestAppContext, ms: u64) {
     cx.executor().advance_clock(Duration::from_millis(ms));
 }
 
+struct Swipe {
+    active: usize,
+    direction: &'static str,
+    positions: Rc<Cell<[gpui::Pixels; 2]>>,
+}
+
+impl Render for Swipe {
+    fn render(&mut self, _: &mut Window, _: &mut Context<Self>) -> impl IntoElement {
+        let positions = self.positions.clone();
+        swap("pages", self.active, self.direction, move |index| {
+            let index = *index;
+            let positions = positions.clone();
+            gpui::canvas(
+                |_, _, _| {},
+                move |bounds, _, window, _| {
+                    let mut values = positions.get();
+                    values[index] = window.paint_transform_bounds(bounds).left();
+                    positions.set(values);
+                },
+            )
+            .size_full()
+        })
+        .size_full()
+        .overflow_hidden()
+    }
+}
+
+#[gpui::test]
+fn reversing_a_tab_slide_preserves_both_positions(cx: &mut TestAppContext) {
+    let positions = Rc::new(Cell::new([gpui::px(0.); 2]));
+    let window = open(
+        cx,
+        Swipe {
+            active: 0,
+            direction: SLIDE_NEXT,
+            positions: positions.clone(),
+        },
+    );
+    window
+        .update(cx, |view, _, cx| {
+            view.active = 1;
+            cx.notify();
+        })
+        .unwrap();
+    cx.run_until_parked();
+    wait(cx, 48);
+    frame(&window, cx);
+    let before_reverse = positions.get();
+    assert!(before_reverse[0] < gpui::px(0.) && before_reverse[1] > gpui::px(0.));
+
+    window
+        .update(cx, |view, _, cx| {
+            view.active = 0;
+            view.direction = SLIDE_PREV;
+            cx.notify();
+        })
+        .unwrap();
+    cx.run_until_parked();
+    assert_eq!(positions.get(), before_reverse);
+    cx.executor().advance_clock(Duration::from_micros(4_167));
+    frame(&window, cx);
+    assert!(positions.get()[0] > before_reverse[0]);
+    assert!(positions.get()[1] > before_reverse[1]);
+}
+
 struct Shown {
     show: bool,
     renders: Rc<Cell<usize>>,
@@ -196,6 +261,18 @@ fn choose_enters_from_nothing_at_once_and_after_the_leave_otherwise(cx: &mut Tes
     wait(cx, 100);
     frame(&window, cx);
     assert_eq!(seen.take(), vec![2]);
+
+    wait(cx, 300);
+    frame(&window, cx);
+    set(cx, Some(3));
+    wait(cx, 40);
+    frame(&window, cx);
+    assert_eq!(seen.take(), vec![2]);
+    // Смена ещё ждущего ключа не продлевает текущий уход.
+    set(cx, Some(4));
+    wait(cx, 130);
+    frame(&window, cx);
+    assert_eq!(seen.take(), vec![4]);
 }
 
 struct Pulse {
@@ -325,6 +402,7 @@ fn keyframes_since_continue_from_the_given_moment(cx: &mut TestAppContext) {
     rebuild("life-new", None, cx);
     assert!(seen.get() > 0.99, "{}", seen.get());
 }
+#[cfg_attr(not(windows), allow(dead_code))]
 struct Counted {
     renders: Rc<Cell<usize>>,
 }
@@ -338,9 +416,11 @@ impl Render for Counted {
     }
 }
 
-/// Бесконечное движение перерисовывает окно не чаще 60 раз в секунду по сетке монитора окна, а не
-/// с каждым будильником: будильник раз в 8 мс на мониторе 60 Гц — каждый второй, раз в 9 мс на
-/// мониторе 120 Гц (шаг — 2 кадра монитора, 16,7 мс) — тоже 6 кадров из 12.
+/// Бесконечное движение перерисовывает окно по сетке монитора окна, а не с каждым будильником:
+/// будильник раз в 8 мс на мониторе 60 Гц — каждый второй; раз в 9 мс на мониторе 120 Гц (шаг —
+/// кадр монитора, 8,3 мс) — каждый, 12 из 12. Сетка — только Windows (`driver::grid`): на Linux
+/// будильник и есть кадр монитора окна.
+#[cfg(windows)]
 #[gpui::test]
 fn infinite_frames_follow_the_monitor(cx: &mut TestAppContext) {
     let renders = Rc::new(Cell::new(0));
@@ -364,9 +444,10 @@ fn infinite_frames_follow_the_monitor(cx: &mut TestAppContext) {
         .update(cx, |_, window, cx| window.display(cx).expect("экран").id())
         .unwrap();
     cx.simulate_display_refresh_interval_change(display, Some(Duration::from_secs(1) / 120));
-    assert_eq!(drawn(cx, 9, 12), 6);
+    assert_eq!(drawn(cx, 9, 12), 12);
 }
 
+#[cfg_attr(not(windows), allow(dead_code))]
 struct Mixed {
     target: f32,
     renders: Rc<Cell<usize>>,
@@ -389,8 +470,10 @@ impl Render for Mixed {
     }
 }
 
-/// Переход вместе с бесконечным движением — одна сетка кадров окна (монитор 120 Гц, предел 60 к/с)
+/// Переход вместе с бесконечным движением — одна сетка кадров окна (монитор 120 Гц — 120 к/с)
 /// при будильнике 280 Гц: у них были свои сетки со сдвигом фазы, и кадры шли по 4/4/8 мс.
+/// Будильник быстрее монитора окна — только Windows (`driver::grid`).
+#[cfg(windows)]
 #[gpui::test]
 fn finite_and_infinite_share_the_monitor_frames(cx: &mut TestAppContext) {
     let renders = Rc::new(Cell::new(0));
@@ -427,11 +510,11 @@ fn finite_and_infinite_share_the_monitor_frames(cx: &mut TestAppContext) {
         }
     }
     let drawn = renders.get() - before;
-    assert!((15..=19).contains(&drawn), "{drawn} кадров за 0,3 с");
+    assert!((32..=37).contains(&drawn), "{drawn} кадров за 0,3 с");
     assert!(
         gaps.iter()
             .skip(1)
-            .all(|gap| *gap > Duration::from_micros(12_500)),
+            .all(|gap| *gap > Duration::from_micros(6_250)),
         "{gaps:?}"
     );
 }
@@ -550,9 +633,12 @@ impl Render for Popped {
     fn render(&mut self, _: &mut Window, _: &mut Context<Self>) -> impl IntoElement {
         let (seen, outer) = (self.seen.clone(), self.outer.clone());
         let probe = |cell: Rc<Cell<gpui::Bounds<gpui::Pixels>>>| {
-            gpui::canvas(move |bounds, _, _| cell.set(bounds), |_, _, _, _| {})
-                .absolute()
-                .size_full()
+            gpui::canvas(
+                |_, _, _| {},
+                move |bounds, _, window, _| cell.set(window.paint_transform_bounds(bounds)),
+            )
+            .absolute()
+            .size_full()
         };
         div().size_full().child(
             div()
@@ -761,8 +847,12 @@ fn pop_scales_around_its_origin_without_moving_the_layout(cx: &mut TestAppContex
         })
         .unwrap();
     cx.run_until_parked();
-    // Первый кадр входа меряет размер без масштаба (прозрачность 0).
-    assert_eq!(seen.get().size.width, zpx(1., 100.));
+    // С первого же кадра входа масштаб применяется в `paint` без пропуска кадра (l-pop: .97).
+    assert!(
+        (seen.get().size.width - zpx(1., 97.)).abs() < zpx(1., 0.1),
+        "{:?}",
+        seen.get()
+    );
     let open_height = outer.get().size.height;
     wait(cx, 10);
     frame(&window, cx);
@@ -800,9 +890,12 @@ struct Pressed {
 impl Render for Pressed {
     fn render(&mut self, _: &mut Window, _: &mut Context<Self>) -> impl IntoElement {
         let probe = |cell: Rc<Cell<gpui::Bounds<gpui::Pixels>>>| {
-            gpui::canvas(move |bounds, _, _| cell.set(bounds), |_, _, _, _| {})
-                .absolute()
-                .size_full()
+            gpui::canvas(
+                |_, _, _| {},
+                move |bounds, _, window, _| cell.set(window.paint_transform_bounds(bounds)),
+            )
+            .absolute()
+            .size_full()
         };
         // Кнопка с отступом в ряду: место в потоке при нажатии не меняется.
         let button = div()
@@ -943,10 +1036,67 @@ fn press_scales_in_place_while_held(cx: &mut TestAppContext) {
 }
 
 #[test]
-fn scale_steps_are_cached_sizes() {
+fn scale_steps_are_continuous() {
     assert_eq!(zoom::step(1.), 1.);
-    assert_eq!(zoom::step(0.97), (0.97f32 * 512.).round() / 512.);
-    assert!((zoom::step(0.9701) - zoom::step(0.9702)).abs() < f32::EPSILON);
+    assert!((zoom::step(0.97) - 0.97).abs() < 1e-6);
+    assert!((zoom::step(0.9701) - zoom::step(0.9702)).abs() > 1e-5);
+}
+
+#[gpui::test]
+fn swap_keeps_cached_views_cached_during_slide(cx: &mut TestAppContext) {
+    struct Leaf(Rc<Cell<usize>>);
+    impl Render for Leaf {
+        fn render(&mut self, _: &mut Window, _: &mut Context<Self>) -> impl IntoElement {
+            self.0.set(self.0.get() + 1);
+            div().size_full().bg(white())
+        }
+    }
+    struct Host {
+        tab: usize,
+        pages: [gpui::Entity<Leaf>; 2],
+    }
+    impl Render for Host {
+        fn render(&mut self, _: &mut Window, _: &mut Context<Self>) -> impl IntoElement {
+            let pages = self.pages.clone();
+            div().size(u(400.)).child(
+                swap("slide-cache", self.tab, SLIDE_NEXT, move |&tab| {
+                    crate::cache::cached(
+                        pages[tab].clone(),
+                        gpui::StyleRefinement::default().size_full(),
+                        true,
+                    )
+                })
+                .size_full()
+                .overflow_hidden(),
+            )
+        }
+    }
+    let a = Rc::new(Cell::new(0));
+    let b = Rc::new(Cell::new(0));
+    let (a_, b_) = (a.clone(), b.clone());
+    let (host, cx) = cx.add_window_view(|_, cx| Host {
+        tab: 0,
+        pages: [cx.new(|_| Leaf(a_)), cx.new(|_| Leaf(b_))],
+    });
+    cx.run_until_parked();
+    let a_before = a.get();
+    host.update(cx, |h, cx| {
+        h.tab = 1;
+        cx.notify();
+    });
+    cx.run_until_parked();
+    let (a_start, b_start) = (a.get(), b.get());
+    // На первом кадре свайпа уходящий вид А не перерисовывался вовсе, входящий B нарисовался 1 раз.
+    assert_eq!(a_start, a_before);
+    assert_eq!(b_start, 1);
+    // Несколько кадров свайпа подряд: оба закэшированных вида берутся из кэша (0 перерисовок).
+    for _ in 0..5 {
+        cx.executor().advance_clock(Duration::from_millis(10));
+        cx.update(|window, cx| window.simulate_next_frame(cx));
+        cx.run_until_parked();
+    }
+    assert_eq!(a.get(), a_start, "уходящий кэшированный вид не должен перерисовываться в свайпе");
+    assert_eq!(b.get(), b_start, "входящий кэшированный вид не должен перерисовываться в свайпе");
 }
 
 #[test]

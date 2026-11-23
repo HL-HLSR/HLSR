@@ -10,7 +10,7 @@ use super::sections::{GameSettings, SettingsEvent};
 use crate::icons::fa_glyph;
 use crate::kit::button::{focus_handle, focus_visible, outline};
 use crate::layer::TipExt;
-use crate::motion::{Timing, hover, mix};
+use crate::motion::{FADE, Timing, hover, mix, swap};
 use crate::paint::{ring, shadow};
 use crate::scale::{u, viewport, zoom};
 use crate::shell::root::ShellContext;
@@ -135,6 +135,15 @@ impl GameConfigsPanel {
         self.settings.as_ref().map(|(_, entity, _)| entity)
     }
 
+    /// Сбросить тяжёлые буферы превью при уходе со страницы «Персонализация» (`keep-alive`
+    /// сохраняет состояние редактора и несохранённые правки).
+    pub fn release_idle_caches(&mut self, cx: &mut Context<Self>) {
+        if let Some((_, settings, _)) = &self.settings {
+            settings.update(cx, |s, cx| s.release_idle_caches(cx));
+        }
+        cx.notify();
+    }
+
     /// Несохранённое на странице (`unsavedParts`): черновик окна и раздел «Персонализация»;
     /// `part` — только эта часть (смена раздела слева).
     fn dirty(&self, part: Option<&str>, cx: &App) -> (bool, bool) {
@@ -219,7 +228,7 @@ impl GameConfigsPanel {
         let Some(settings) = self.settings().cloned() else {
             return;
         };
-        if settings.read(cx).session().view().saving {
+        if settings.read(cx).session().panel_view().saving {
             return;
         }
         let Some(ask) = self.after_save.take() else {
@@ -1093,13 +1102,14 @@ impl Render for GameConfigsPanel {
             self.empty(cx)
         } else {
             match self.settings() {
-                Some(settings) => div()
-                    .flex()
-                    .flex_col()
-                    .flex_1()
-                    .min_h_0()
-                    .child(settings.clone())
-                    .into_any_element(),
+                Some(settings) => swap("cfgp-game", settings.clone(), FADE, |settings| {
+                    settings.clone()
+                })
+                .out_in()
+                .flex_1()
+                .min_h_0()
+                .overflow_hidden()
+                .into_any_element(),
                 None => div().into_any_element(),
             }
         };

@@ -153,6 +153,32 @@ where
         ordering
     }
 
+    /// HLSR: резервирует цельный диапазон `base..=base + order_span` для повторённого
+    /// кэшированного поддерева одной записью в дереве вместо O(N) вставок по примитиву.
+    pub fn reserve_range(
+        &mut self,
+        new_bounds: Bounds<U>,
+        order_span: u32,
+        max_kind: PrimitiveKind,
+    ) -> u32 {
+        let base = match self.find_max_key(&new_bounds) {
+            None => 1,
+            Some(max_key) => max_key.ordering + 1,
+        };
+        let top = base.saturating_add(order_span);
+        let key = Key {
+            ordering: top,
+            kind: max_kind,
+        };
+        let new_leaf_idx = self.insert_leaf(new_bounds, key);
+        self.max_leaf = match self.max_leaf {
+            None => Some(new_leaf_idx),
+            Some(old_idx) if self.nodes[old_idx].max_key < key => Some(new_leaf_idx),
+            some => some,
+        };
+        base
+    }
+
     /// Finds the maximum key among all bounds that intersect with the query.
     fn find_max_key(&mut self, query: &Bounds<U>) -> Option<Key> {
         let root_idx = self.root?;

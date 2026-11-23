@@ -11,13 +11,13 @@
 //! - [`AnimGate`] — `.no-anim`/reduced-motion и пауза бесконечного (окно спрятано, поверх
 //!   окно-слой [`layer`], элемент вне видимой области);
 //! - [`monitor_frame`] / [`monitor_notify`] — кадр движения (вместо `request_animation_frame`):
-//!   у переходов, бесконечного движения и замеров одна сетка кадров — не чаще 60 в секунду, каждый
-//!   k-й кадр монитора окна (`gpui::frame_divisor`). Время анимаций — по часам, не по кадрам.
+//!   у переходов, бесконечного движения и замеров одна сетка кадров — каждый k-й кадр монитора
+//!   окна (`gpui::frame_divisor`, сейчас 1 — каждый кадр монитора). Время анимаций — по часам.
 //!
-//! `transform` у блоков GPUI нет: сдвиг — `left/top` обёртки (раскладка не меняется, как у
-//! translate), масштаб переходов (`l-pop` .97, `gm` .96, `toast` .96, `notif-flow` .08) — rem
-//! поддерева в коробке прежнего размера ([`scaled`]), затемнение `l-modal` идёт прозрачностью
-//! слоя вместе с окном (у 0.4.9 те же время и кривая, масштаба у `l-modal` нет).
+//! `transform` у блоков GPUI нет: сдвиг, масштаб (`l-pop` .97, `gm` .96, `toast` .96,
+//! `notif-flow` .08, `:active` [`press`]) и прозрачность переходов идут в фазе `paint` через
+//! [`gpui::Window::with_paint_transform`] без перераскладки, перерастеризации шрифтов и срыва
+//! кэша видов; затемнение `l-modal` идёт прозрачностью слоя вместе с окном.
 
 mod driver;
 mod gate;
@@ -30,7 +30,7 @@ mod tween;
 mod zoom;
 
 pub use driver::current_layer;
-pub use driver::{monitor_frame, monitor_notify};
+pub use driver::{monitor_frame, monitor_notify, refresh_hz};
 pub use gate::AnimGate;
 pub use hlsr_ui::motion::{Frame, Still};
 pub use keyframes::{Keyframes, keyframes, rise_in};

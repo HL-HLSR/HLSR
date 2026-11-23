@@ -9,7 +9,7 @@
 лаунчера (DwmRegisterThumbnail, 1:1). Снимок окна-фона — PrintWindow с PW_RENDERFULLCONTENT: DWM
 составляет эскиз с альфой окна лаунчера поверх мадженты (`corners.png`). Сам PrintWindow окна
 лаунчера альфу не передаёт: прозрачное выходит непрозрачным чёрным (проверено на слоистом окне),
-поэтому — через эскиз. Угол (пиксель 1, 1): маджента — прозрачный, чёрный — ошибка (код выхода 1).
+поэтому — через эскиз. Все четыре угла на отступе 1 px должны быть прозрачными.
 """
 
 import argparse
@@ -238,21 +238,21 @@ def check(exe, out, wait, host):
             if hwnd is None:
                 time.sleep(0.2)
         if hwnd is None:
-            return "нет окна"
+            raise RuntimeError("нет окна")
         time.sleep(wait)
         rect = wintypes.RECT()
         user32.GetWindowRect(hwnd, ctypes.byref(rect))
         width, height = rect.right - rect.left, rect.bottom - rect.top
         ok, pixels = composed(host, hwnd, width, height)
-        write_png(os.path.join(out, "corners.png"), width, height, pixels)
         if not ok:
-            return "эскиз DWM или PrintWindow не удался"
+            raise RuntimeError("эскиз DWM или PrintWindow не удался")
+        write_png(os.path.join(out, "corners.png"), width, height, pixels)
         center = classify(pixels[(height // 2) * width + width // 2])
         corners = [classify(pixels[y * width + x]) for x, y in
                    ((1, 1), (width - 2, 1), (1, height - 2), (width - 2, height - 2))]
         if center in ("чёрный", "прозрачный"):
-            return f"не снимается (середина окна {width}x{height} — {center})"
-        return ", ".join(corners)
+            raise RuntimeError(f"не снимается (середина окна {width}x{height} — {center})")
+        return corners
     finally:
         subprocess.run(["taskkill", "/T", "/F", "/PID", str(proc.pid)], capture_output=True)
 
@@ -271,9 +271,13 @@ def main():
     while not ready:
         time.sleep(0.05)
     host = ready[0][0]
-    verdict = check(os.path.abspath(a.exe), a.out, a.wait, host)
-    print(f"углы: {verdict}", flush=True)
-    return 1 if "чёрный" in verdict else 0
+    try:
+        corners = check(os.path.abspath(a.exe), a.out, a.wait, host)
+    except RuntimeError as error:
+        print(f"углы: {error}", flush=True)
+        return 1
+    print(f"углы: {', '.join(corners)}", flush=True)
+    return 0 if all(corner == "прозрачный" for corner in corners) else 1
 
 
 if __name__ == "__main__":

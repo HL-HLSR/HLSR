@@ -65,6 +65,10 @@ pub struct DemoPanel {
     quitting: bool,
     pub(super) list_scroll: Scroll,
     pub(super) rendered_scroll: Scroll,
+    /// Окна видимости списков (`crate::rows`): прокрутка перерисовывает страницу вместе с
+    /// плеером каждый кадр, и без окна каждый кадр строил все записи папки.
+    pub(super) list_rows: crate::rows::Rows,
+    pub(super) rendered_rows: crate::rows::Rows,
     pub(super) info_scroll: Scroll,
     pub(super) side_scroll: Scroll,
     _events: Task<()>,
@@ -130,6 +134,8 @@ impl DemoPanel {
             quitting: false,
             list_scroll: Scroll::new(),
             rendered_scroll: Scroll::new(),
+            list_rows: Default::default(),
+            rendered_rows: Default::default(),
             info_scroll: Scroll::new(),
             side_scroll: Scroll::new(),
             _events: events,

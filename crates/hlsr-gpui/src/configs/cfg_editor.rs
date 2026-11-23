@@ -191,8 +191,9 @@ impl GameConfigEditor {
     fn select_tab(&mut self, id: &'static str, window: &mut Window, cx: &mut Context<Self>) {
         let session = self.session().clone();
         let leaving_files = session
-            .view()
+            .config_view()
             .editor
+            .as_ref()
             .is_some_and(|editor| editor.active == FILES_ID && id != FILES_ID);
         if leaving_files && session.cfg_files_dirty() {
             let page = self.host.page.clone();
@@ -913,7 +914,7 @@ impl Render for GameConfigEditor {
         crate::live::rendered(cx.entity_id());
         let theme = cx.global::<Theme>().clone();
         self.sync_files(window, cx);
-        let view = self.session().view();
+        let view = self.session().config_view();
         let tight = viewport(window).1 <= 700.;
         let alert = (!view.alert.is_empty()).then(|| {
             div()

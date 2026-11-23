@@ -1954,6 +1954,7 @@ impl Div {
 /// bounds of the children after the layout phase is complete.
 pub struct DivFrameState {
     child_layout_ids: SmallVec<[LayoutId; 2]>,
+    fractional_scroll: bool,
 }
 
 /// Interactivity state displayed an manipulated in the inspector.
@@ -2059,7 +2060,13 @@ impl Element for Div {
             )
         });
 
-        (layout_id, DivFrameState { child_layout_ids })
+        (
+            layout_id,
+            DivFrameState {
+                child_layout_ids,
+                fractional_scroll: false,
+            },
+        )
     }
 
     #[cfg_attr(feature = "stacker", stacksafe::stacksafe)]
@@ -2132,19 +2139,23 @@ impl Element for Div {
                 }
 
                 window.with_image_cache(image_cache, |window| {
-                    window.with_element_offset(scroll_offset, |window| {
-                        if let Some(order_fn) = &self.prepaint_order_fn {
-                            let order = order_fn(window, cx);
-                            for idx in order {
-                                if let Some(child) = self.children.get_mut(idx) {
+                    request_layout.fractional_scroll =
+                        window.pixel_snap_point(scroll_offset) != scroll_offset;
+                    window.with_subpixel_positions(request_layout.fractional_scroll, |window| {
+                        window.with_element_offset(scroll_offset, |window| {
+                            if let Some(order_fn) = &self.prepaint_order_fn {
+                                let order = order_fn(window, cx);
+                                for idx in order {
+                                    if let Some(child) = self.children.get_mut(idx) {
+                                        child.prepaint(window, cx);
+                                    }
+                                }
+                            } else {
+                                for child in &mut self.children {
                                     child.prepaint(window, cx);
                                 }
                             }
-                        } else {
-                            for child in &mut self.children {
-                                child.prepaint(window, cx);
-                            }
-                        }
+                        })
                     });
 
                     if let Some(listener) = self.prepaint_listener.as_ref() {
@@ -2163,7 +2174,7 @@ impl Element for Div {
         global_id: Option<&GlobalElementId>,
         inspector_id: Option<&InspectorElementId>,
         bounds: Bounds<Pixels>,
-        _request_layout: &mut Self::RequestLayoutState,
+        request_layout: &mut Self::RequestLayoutState,
         hitbox: &mut Option<Hitbox>,
         window: &mut Window,
         cx: &mut App,
@@ -2187,9 +2198,11 @@ impl Element for Div {
                         return;
                     }
 
-                    for child in &mut self.children {
-                        child.paint(window, cx);
-                    }
+                    window.with_subpixel_positions(request_layout.fractional_scroll, |window| {
+                        for child in &mut self.children {
+                            child.paint(window, cx);
+                        }
+                    });
                 },
             )
         });

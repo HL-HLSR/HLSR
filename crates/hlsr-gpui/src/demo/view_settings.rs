@@ -173,15 +173,11 @@ impl Render for ViewSettings {
             } else {
                 above
             };
+            let scroll = crate::scroll::Scroll::retained("dpl-view-scroll".into(), window, cx);
             deferred(
                 anchored()
                     .position(point(zpx(zoom, left), zpx(zoom, y)))
-                    .child(
-                        panel_el
-                            .max_h(u(max.max(0.)))
-                            .overflow_y_scroll()
-                            .child(probe),
-                    ),
+                    .child(scroll.overflow(panel_el).max_h(u(max.max(0.))).child(probe)),
             )
             .with_priority(Z_MENU)
         });

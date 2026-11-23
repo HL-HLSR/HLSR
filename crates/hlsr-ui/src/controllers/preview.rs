@@ -20,6 +20,7 @@ use serde_json::{Value, json};
 use std::cell::RefCell;
 use std::rc::Rc;
 use std::sync::Arc;
+use std::sync::atomic::{AtomicU64, Ordering};
 use std::sync::mpsc;
 use std::time::Instant;
 /// Холст кадра (tiny-skia): вид получает его в `on_frame`, не завися от tiny-skia сам.
@@ -165,11 +166,16 @@ impl Renderers {
     }
 }
 
-/// Наибольшая частота кадров «движения» (оружие и клавиши Ghosting).
-pub const MOTION_FPS: u32 = 30;
+/// Запасная частота кадров «движения», пока частота монитора окна не передана.
+pub const MOTION_FPS: u32 = 60;
 
 /// Готовый кадр или ошибка.
 pub type Rendered = (u64, Result<Frame, String>);
+
+enum WorkerMsg {
+    Render(Job),
+    Purge,
+}
 
 /// Потоки рисования: кадр с HUD и сцена раздела — каждый в своём (как `layerRenderer` и
 /// `sceneRenderer` 0.4.9): долгий кадр HUD не держит сцену раздела, куда перешли. Поток берёт
@@ -178,39 +184,72 @@ pub type Rendered = (u64, Result<Frame, String>);
 /// начатый кадр (2133 px, первый декод) дорисуется и уйдёт в никуда, а окно не замрёт на уходе
 /// с экрана.
 pub struct RenderWorker {
-    hud: Option<mpsc::Sender<Job>>,
-    scene: Option<mpsc::Sender<Job>>,
+    hud: Option<mpsc::Sender<WorkerMsg>>,
+    scene: Option<mpsc::Sender<WorkerMsg>>,
+    /// Целевой интервал кадров «движения» в микросекундах (по герцовке монитора окна).
+    pace_us: Arc<AtomicU64>,
 }
 
 impl RenderWorker {
     pub fn spawn(done: impl Fn(Rendered) + Send + Sync + 'static) -> RenderWorker {
         let done = Arc::new(done);
+        let pace_us = Arc::new(AtomicU64::new(1_000_000 / u64::from(MOTION_FPS)));
         RenderWorker {
-            hud: Self::thread("hlsr-preview", done.clone()),
-            scene: Self::thread("hlsr-preview-scene", done),
+            hud: Self::thread("hlsr-preview", done.clone(), pace_us.clone()),
+            scene: Self::thread("hlsr-preview-scene", done, pace_us.clone()),
+            pace_us,
+        }
+    }
+
+    /// Задать частоту монитора окна для шага кадров «движения» (`None` — без искусственной паузы).
+    pub fn set_refresh_hz(&self, refresh_hz: Option<f32>) {
+        let us = match refresh_hz {
+            Some(hz) if hz.is_finite() && hz > 1.0 => (1_000_000.0 / f64::from(hz)).round() as u64,
+            _ => 0,
+        };
+        self.pace_us.store(us, Ordering::Relaxed);
+    }
+
+    /// Сбросить декодированные слои и буферы в обоих потоках рисования (при уходе со страницы).
+    pub fn purge(&self) {
+        if let Some(tx) = &self.hud {
+            let _ = tx.send(WorkerMsg::Purge);
+        }
+        if let Some(tx) = &self.scene {
+            let _ = tx.send(WorkerMsg::Purge);
         }
     }
 
     fn thread(
         name: &str,
         done: Arc<impl Fn(Rendered) + Send + Sync + 'static>,
-    ) -> Option<mpsc::Sender<Job>> {
-        let (tx, rx) = mpsc::channel::<Job>();
+        pace_us: Arc<AtomicU64>,
+    ) -> Option<mpsc::Sender<WorkerMsg>> {
+        let (tx, rx) = mpsc::channel::<WorkerMsg>();
         let spawned = std::thread::Builder::new()
             .name(name.into())
             .spawn(move || {
                 let mut renderers = Renderers::default();
-                while let Ok(mut job) = rx.recv() {
+                while let Ok(mut msg) = rx.recv() {
                     while let Ok(newer) = rx.try_recv() {
-                        job = newer;
+                        msg = newer;
                     }
+                    let job = match msg {
+                        WorkerMsg::Purge => {
+                            renderers = Renderers::default();
+                            continue;
+                        }
+                        WorkerMsg::Render(job) => job,
+                    };
                     let started = Instant::now();
                     let result = renderers.render(&job).map_err(|e| e.to_string());
-                    // «Движение» (кадр со временем) — не чаще MOTION_FPS: rAF 0.4.9 шёл бы
-                    // с частотой монитора и занял бы поток рисования целиком.
+                    // «Движение» (кадр со временем) — по частоте монитора окна.
                     if job.time > 0.0 {
-                        let frame = std::time::Duration::from_secs(1) / MOTION_FPS;
-                        std::thread::sleep(frame.saturating_sub(started.elapsed()));
+                        let us = pace_us.load(Ordering::Relaxed);
+                        if us > 0 {
+                            let frame = std::time::Duration::from_micros(us);
+                            std::thread::sleep(frame.saturating_sub(started.elapsed()));
+                        }
                     }
                     done((job.serial, result));
                 }
@@ -234,7 +273,7 @@ impl RenderWorker {
         move |job| {
             let tx = if job.scene.is_some() { &scene } else { &hud };
             if let Some(tx) = tx {
-                let _ = tx.send(job);
+                let _ = tx.send(WorkerMsg::Render(job));
             }
         }
     }

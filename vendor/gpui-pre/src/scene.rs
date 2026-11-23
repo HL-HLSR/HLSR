@@ -38,11 +38,179 @@ impl PaddedBool32 {
     }
 }
 
+enum LayerItem {
+    Range(Range<usize>),
+    /// HLSR: примитив, преобразованный активным `PaintTransform` (`paint_operations` хранит исходный).
+    Transformed(Primitive),
+}
+
 struct Layer {
-    primitives: SmallVec<[Range<usize>; 1]>,
+    primitives: SmallVec<[LayerItem; 1]>,
     bounds: Bounds<ScaledPixels>,
     max_kind: PrimitiveKind,
     max_shared_kind: PrimitiveKind,
+}
+
+/// HLSR: преобразование сцены при отрисовке поддерева (сдвиг, масштаб вокруг точки,
+/// прозрачность) без перераскладки, перерастеризации шрифтов и срыва кэша видов.
+#[derive(Clone, Copy, Debug)]
+pub(crate) struct PaintTransform {
+    pub scale: f32,
+    pub translate: Point<ScaledPixels>,
+    pub opacity: f32,
+    pub outer_mask: Bounds<ScaledPixels>,
+}
+
+impl PaintTransform {
+    fn map_bounds(&self, bounds: Bounds<ScaledPixels>) -> Bounds<ScaledPixels> {
+        Bounds::new(
+            Point::new(
+                ScaledPixels(bounds.origin.x.0 * self.scale + self.translate.x.0),
+                ScaledPixels(bounds.origin.y.0 * self.scale + self.translate.y.0),
+            ),
+            Size::new(
+                ScaledPixels(bounds.size.width.0 * self.scale),
+                ScaledPixels(bounds.size.height.0 * self.scale),
+            ),
+        )
+    }
+
+    fn map_corners(&self, corners: Corners<ScaledPixels>) -> Corners<ScaledPixels> {
+        Corners {
+            top_left: ScaledPixels(corners.top_left.0 * self.scale),
+            top_right: ScaledPixels(corners.top_right.0 * self.scale),
+            bottom_right: ScaledPixels(corners.bottom_right.0 * self.scale),
+            bottom_left: ScaledPixels(corners.bottom_left.0 * self.scale),
+        }
+    }
+
+    fn map_edges(&self, edges: Edges<ScaledPixels>) -> Edges<ScaledPixels> {
+        Edges {
+            top: ScaledPixels(edges.top.0 * self.scale),
+            right: ScaledPixels(edges.right.0 * self.scale),
+            bottom: ScaledPixels(edges.bottom.0 * self.scale),
+            left: ScaledPixels(edges.left.0 * self.scale),
+        }
+    }
+
+    fn map_mask(&self, mask: ContentMask<ScaledPixels>) -> ContentMask<ScaledPixels> {
+        let m = mask.bounds;
+        let om = self.outer_mask;
+        let eps = 0.5;
+        let left = if (m.origin.x.0 - om.origin.x.0).abs() <= eps {
+            om.origin.x.0
+        } else {
+            (m.origin.x.0 * self.scale + self.translate.x.0).max(om.origin.x.0)
+        };
+        let top = if (m.origin.y.0 - om.origin.y.0).abs() <= eps {
+            om.origin.y.0
+        } else {
+            (m.origin.y.0 * self.scale + self.translate.y.0).max(om.origin.y.0)
+        };
+        let right = if (m.right().0 - om.right().0).abs() <= eps {
+            om.right().0
+        } else {
+            (m.right().0 * self.scale + self.translate.x.0).min(om.right().0)
+        };
+        let bottom = if (m.bottom().0 - om.bottom().0).abs() <= eps {
+            om.bottom().0
+        } else {
+            (m.bottom().0 * self.scale + self.translate.y.0).min(om.bottom().0)
+        };
+        ContentMask {
+            bounds: Bounds::from_corners(
+                Point::new(ScaledPixels(left), ScaledPixels(top)),
+                Point::new(ScaledPixels(right.max(left)), ScaledPixels(bottom.max(top))),
+            ),
+        }
+    }
+
+    fn matrix(&self) -> TransformationMatrix {
+        TransformationMatrix {
+            rotation_scale: [[self.scale, 0.0], [0.0, self.scale]],
+            translation: [self.translate.x.0, self.translate.y.0],
+        }
+    }
+
+    fn apply_primitive(&self, primitive: &mut Primitive) {
+        let opacity = self.opacity;
+        match primitive {
+            Primitive::Shadow(shadow) => {
+                shadow.bounds = self.map_bounds(shadow.bounds);
+                shadow.shape_bounds = self.map_bounds(shadow.shape_bounds);
+                shadow.corner_radii = self.map_corners(shadow.corner_radii);
+                shadow.shape_corner_radii = self.map_corners(shadow.shape_corner_radii);
+                shadow.blur_radius = ScaledPixels(shadow.blur_radius.0 * self.scale);
+                shadow.content_mask = self.map_mask(shadow.content_mask);
+                if opacity != 1.0 {
+                    shadow.color.a *= opacity;
+                }
+            }
+            Primitive::Quad(quad) => {
+                quad.bounds = self.map_bounds(quad.bounds);
+                quad.corner_radii = self.map_corners(quad.corner_radii);
+                quad.border_widths = self.map_edges(quad.border_widths);
+                quad.content_mask = self.map_mask(quad.content_mask);
+                if opacity != 1.0 {
+                    quad.background = quad.background.opacity(opacity);
+                    quad.border_color.a *= opacity;
+                }
+            }
+            Primitive::Path(path) => {
+                path.bounds = self.map_bounds(path.bounds);
+                path.paint.bounds = self.map_bounds(path.paint.bounds);
+                path.paint.content_mask = self.map_mask(path.paint.content_mask);
+                if self.scale != 1.0 || self.translate.x.0 != 0.0 || self.translate.y.0 != 0.0 {
+                    Rc::make_mut(&mut path.tiles).transform(self.scale, self.translate);
+                }
+                if opacity != 1.0 {
+                    path.paint.color = path.paint.color.opacity(opacity);
+                }
+            }
+            Primitive::Underline(underline) => {
+                underline.bounds = self.map_bounds(underline.bounds);
+                underline.thickness = ScaledPixels(underline.thickness.0 * self.scale);
+                underline.content_mask = self.map_mask(underline.content_mask);
+                if opacity != 1.0 {
+                    underline.color.a *= opacity;
+                }
+            }
+            Primitive::MonochromeSprite(sprite) => {
+                if sprite.transformation == TransformationMatrix::unit() {
+                    sprite.bounds = self.map_bounds(sprite.bounds);
+                } else {
+                    sprite.transformation = self.matrix().compose(sprite.transformation);
+                }
+                sprite.content_mask = self.map_mask(sprite.content_mask);
+                if opacity != 1.0 {
+                    sprite.color.a *= opacity;
+                }
+            }
+            Primitive::SubpixelSprite(sprite) => {
+                if sprite.transformation == TransformationMatrix::unit() {
+                    sprite.bounds = self.map_bounds(sprite.bounds);
+                } else {
+                    sprite.transformation = self.matrix().compose(sprite.transformation);
+                }
+                sprite.content_mask = self.map_mask(sprite.content_mask);
+                if opacity != 1.0 {
+                    sprite.color.a *= opacity;
+                }
+            }
+            Primitive::PolychromeSprite(sprite) => {
+                sprite.bounds = self.map_bounds(sprite.bounds);
+                sprite.corner_radii = self.map_corners(sprite.corner_radii);
+                sprite.content_mask = self.map_mask(sprite.content_mask);
+                if opacity != 1.0 {
+                    sprite.opacity *= opacity;
+                }
+            }
+            Primitive::Surface(surface) => {
+                surface.bounds = self.map_bounds(surface.bounds);
+                surface.content_mask = self.map_mask(surface.content_mask);
+            }
+        }
+    }
 }
 
 #[derive(Default)]
@@ -52,6 +220,8 @@ pub struct Scene {
     primitive_bounds: BoundsTree<ScaledPixels>,
     layer_stack: Vec<usize>,
     layers: VecDeque<Layer>,
+    /// HLSR: активные преобразования отрисовки поддеревьев.
+    paint_transforms: SmallVec<[PaintTransform; 2]>,
     pub shadows: Vec<Shadow>,
     pub quads: Vec<Quad>,
     pub paths: Vec<PaintedPath>,
@@ -60,6 +230,8 @@ pub struct Scene {
     pub subpixel_sprites: Vec<SubpixelSprite>,
     pub polychrome_sprites: Vec<PolychromeSprite>,
     pub surfaces: Vec<PaintSurface>,
+    /// HLSR: радиус скругления углов окна в физических px (0 — без маски).
+    pub window_corner_radius: ScaledPixels,
     animations: Vec<SpriteAnimation>,
 }
 
@@ -70,6 +242,7 @@ impl Scene {
         self.primitive_bounds.clear();
         self.layer_stack.clear();
         self.layers.clear();
+        self.paint_transforms.clear();
         self.paths.clear();
         self.shadows.clear();
         self.quads.clear();
@@ -78,7 +251,39 @@ impl Scene {
         self.subpixel_sprites.clear();
         self.polychrome_sprites.clear();
         self.surfaces.clear();
+        self.window_corner_radius = ScaledPixels(0.0);
         self.animations.clear();
+    }
+
+    /// HLSR: положить преобразование отрисовки поддерева на стек сцены.
+    pub(crate) fn push_paint_transform(&mut self, transform: PaintTransform) {
+        self.paint_transforms.push(transform);
+    }
+
+    /// HLSR: снять преобразование отрисовки со стека сцены.
+    pub(crate) fn pop_paint_transform(&mut self) {
+        self.paint_transforms.pop();
+    }
+
+    /// HLSR: рамка `bounds` (в логических px) после активных преобразований отрисовки.
+    pub(crate) fn transform_bounds(&self, bounds: Bounds<Pixels>, scale_factor: f32) -> Bounds<Pixels> {
+        if self.paint_transforms.is_empty() {
+            return bounds;
+        }
+        let mut scaled = bounds.scale(scale_factor);
+        for transform in self.paint_transforms.iter().rev() {
+            scaled = transform.map_bounds(scaled);
+        }
+        Bounds::new(
+            Point::new(
+                Pixels(scaled.origin.x.0 / scale_factor),
+                Pixels(scaled.origin.y.0 / scale_factor),
+            ),
+            Size::new(
+                Pixels(scaled.size.width.0 / scale_factor),
+                Pixels(scaled.size.height.0 / scale_factor),
+            ),
+        )
     }
 
     /// Inserts a sprite that [`Self::advance_animations`] keeps moving. The
@@ -89,7 +294,31 @@ impl Scene {
         mut animation: SpriteAnimation,
     ) {
         sprite.animation = SpriteAnimationId(self.animations.len() as u32);
+        animation.raw_center = animation.center;
+        animation.raw_base_color = sprite.color;
         animation.base_color = sprite.color;
+        if !self.paint_transforms.is_empty() {
+            let sf = animation.scale_factor;
+            for transform in self.paint_transforms.iter().rev() {
+                animation.center = Point::new(
+                    Pixels(
+                        (animation.center.x.0 * sf * transform.scale + transform.translate.x.0)
+                            / sf,
+                    ),
+                    Pixels(
+                        (animation.center.y.0 * sf * transform.scale + transform.translate.y.0)
+                            / sf,
+                    ),
+                );
+                if transform.opacity != 1.0 {
+                    animation.base_color.a *= transform.opacity;
+                }
+            }
+            // Анимированные спрайты перезаписывают transformation в advance_animations, поэтому
+            // масштабируем их bounds напрямую (а transformation в advance_animations вращает вокруг
+            // уже сдвинутого animation.center).
+            sprite.transformation = TransformationMatrix::unit();
+        }
         if self.try_insert_primitive(sprite.into()) {
             self.animations.push(animation);
         }
@@ -155,10 +384,20 @@ impl Scene {
         let order =
             self.primitive_bounds
                 .insert(layer.bounds, layer.max_kind, layer.max_shared_kind);
-        for index in layer.primitives.into_iter().flatten() {
-            if let PaintOperation::Primitive(primitive) = &self.paint_operations[index] {
-                let primitive = primitive.clone();
-                self.push_primitive(primitive, order);
+        for item in layer.primitives {
+            match item {
+                LayerItem::Range(range) => {
+                    for index in range {
+                        if let PaintOperation::Primitive(primitive) =
+                            &mut self.paint_operations[index]
+                        {
+                            primitive.set_order(order);
+                            let primitive = primitive.clone();
+                            self.push_primitive(primitive, order);
+                        }
+                    }
+                }
+                LayerItem::Transformed(primitive) => self.push_primitive(primitive, order),
             }
         }
     }
@@ -168,32 +407,71 @@ impl Scene {
     }
 
     /// Returns whether the primitive was kept, rather than clipped away.
-    fn try_insert_primitive(&mut self, primitive: Primitive) -> bool {
+    fn try_insert_primitive(&mut self, mut primitive: Primitive) -> bool {
         let clipped_bounds = primitive.clipped_bounds();
         if clipped_bounds.is_empty() {
             return false;
         }
 
-        let kind = primitive.kind();
+        if self.paint_transforms.is_empty() {
+            let kind = primitive.kind();
+            if let Some(&layer) = self.layer_stack.last()
+                && let Some(layer) = self.layers.get_mut(layer)
+            {
+                layer.bounds = layer.bounds.join(&clipped_bounds);
+                layer.max_kind = layer.max_kind.max(kind);
+                layer.max_shared_kind = layer.max_shared_kind.min(kind.max_shared_kind());
+                let index = self.paint_operations.len();
+                match layer.primitives.last_mut() {
+                    Some(LayerItem::Range(range)) if range.end == index => range.end += 1,
+                    _ => layer.primitives.push(LayerItem::Range(index..index + 1)),
+                }
+            } else {
+                let order = self
+                    .primitive_bounds
+                    .insert(clipped_bounds, kind, kind.max_shared_kind());
+                primitive.set_order(order);
+                self.push_primitive(primitive.clone(), order);
+            }
+            self.paint_operations
+                .push(PaintOperation::Primitive(primitive));
+            return true;
+        }
+
+        // HLSR: `paint_operations` всегда хранит исходный примитив (для `Scene::replay`
+        // кэшированных видов без повторного преобразования и потери примитивов, вышедших за край).
+        primitive.set_order(0);
+        self.paint_operations
+            .push(PaintOperation::Primitive(primitive.clone()));
+        let visible_alpha = self
+            .paint_transforms
+            .iter()
+            .fold(1.0f32, |a, t| a * t.opacity);
+        if visible_alpha <= 0.0 {
+            return true;
+        }
+        let mut transformed = primitive;
+        for transform in self.paint_transforms.iter().rev() {
+            transform.apply_primitive(&mut transformed);
+        }
+        let clipped_bounds = transformed.clipped_bounds();
+        if clipped_bounds.is_empty() {
+            return true;
+        }
+        let kind = transformed.kind();
         if let Some(&layer) = self.layer_stack.last()
             && let Some(layer) = self.layers.get_mut(layer)
         {
             layer.bounds = layer.bounds.join(&clipped_bounds);
             layer.max_kind = layer.max_kind.max(kind);
             layer.max_shared_kind = layer.max_shared_kind.min(kind.max_shared_kind());
-            let index = self.paint_operations.len();
-            match layer.primitives.last_mut() {
-                Some(range) if range.end == index => range.end += 1,
-                _ => layer.primitives.push(index..index + 1),
-            }
+            layer.primitives.push(LayerItem::Transformed(transformed));
         } else {
             let order = self
                 .primitive_bounds
                 .insert(clipped_bounds, kind, kind.max_shared_kind());
-            self.push_primitive(primitive.clone(), order);
+            self.push_primitive(transformed, order);
         }
-        self.paint_operations
-            .push(PaintOperation::Primitive(primitive));
         true
     }
 
@@ -224,22 +502,320 @@ impl Scene {
         }
     }
 
-    pub fn replay(&mut self, range: Range<usize>, prev_scene: &Scene) {
-        for operation in &prev_scene.paint_operations[range] {
-            match operation {
-                PaintOperation::Primitive(primitive) => {
-                    // Animation ids index the scene they were inserted into.
-                    if let Primitive::MonochromeSprite(sprite) = primitive
-                        && let Some(animation) =
-                            prev_scene.animations.get(sprite.animation.0 as usize)
-                    {
-                        self.insert_animated_sprite(*sprite, *animation);
-                    } else {
-                        self.insert_primitive(primitive.clone());
+    /// HLSR: локальный порядок примитивов для среза `paint_operations`, если при первой отрисовке
+    /// поддерева действовал `PaintTransform` и исходные `order` ещё не посчитаны.
+    fn compute_local_orders(ops: &[PaintOperation]) -> Vec<DrawOrder> {
+        struct LocalLayer {
+            indices: Vec<usize>,
+            bounds: Bounds<ScaledPixels>,
+            max_kind: PrimitiveKind,
+            max_shared_kind: PrimitiveKind,
+        }
+        let mut tree: BoundsTree<ScaledPixels> = BoundsTree::default();
+        let mut stack: Vec<usize> = Vec::new();
+        let mut layers: VecDeque<LocalLayer> = VecDeque::new();
+        let mut orders = vec![0u32; ops.len()];
+        for (idx, op) in ops.iter().enumerate() {
+            match op {
+                PaintOperation::StartLayer => {
+                    stack.push(layers.len());
+                    layers.push_back(LocalLayer {
+                        indices: Vec::new(),
+                        bounds: Bounds::default(),
+                        max_kind: PrimitiveKind::Shadow,
+                        max_shared_kind: PrimitiveKind::Surface,
+                    });
+                }
+                PaintOperation::EndLayer => {
+                    stack.pop();
+                    if stack.is_empty() {
+                        while let Some(layer) = layers.pop_front() {
+                            if layer.indices.is_empty() {
+                                continue;
+                            }
+                            let order = tree.insert(
+                                layer.bounds,
+                                layer.max_kind,
+                                layer.max_shared_kind,
+                            );
+                            for i in layer.indices {
+                                orders[i] = order;
+                            }
+                        }
                     }
                 }
-                PaintOperation::StartLayer => self.push_layer(),
-                PaintOperation::EndLayer => self.pop_layer(),
+                PaintOperation::Primitive(primitive) => {
+                    let cb = primitive.clipped_bounds();
+                    if cb.is_empty() {
+                        orders[idx] = 1;
+                        continue;
+                    }
+                    let kind = primitive.kind();
+                    if let Some(&layer_idx) = stack.last()
+                        && let Some(layer) = layers.get_mut(layer_idx)
+                    {
+                        layer.bounds = layer.bounds.join(&cb);
+                        layer.max_kind = layer.max_kind.max(kind);
+                        layer.max_shared_kind = layer.max_shared_kind.min(kind.max_shared_kind());
+                        layer.indices.push(idx);
+                    } else {
+                        orders[idx] = tree.insert(cb, kind, kind.max_shared_kind());
+                    }
+                }
+            }
+        }
+        orders
+    }
+
+    pub fn replay(&mut self, range: Range<usize>, prev_scene: &Scene) {
+        let ops = &prev_scene.paint_operations[range];
+        if ops.is_empty() {
+            return;
+        }
+        // HLSR: внутри активного `paint_layer` используем исходный путь со слоями;
+        // в обычном случае (закэшированные виды и их свайпы/переходы) — O(1) вставка
+        // в `BoundsTree` с сохранением локальных относительных `DrawOrder`.
+        if !self.layer_stack.is_empty() {
+            for operation in ops {
+                match operation {
+                    PaintOperation::Primitive(primitive) => {
+                        if let Primitive::MonochromeSprite(sprite) = primitive
+                            && let Some(animation) =
+                                prev_scene.animations.get(sprite.animation.0 as usize)
+                        {
+                            let mut animation = *animation;
+                            animation.center = animation.raw_center;
+                            animation.base_color = animation.raw_base_color;
+                            self.insert_animated_sprite(*sprite, animation);
+                        } else {
+                            self.insert_primitive(primitive.clone());
+                        }
+                    }
+                    PaintOperation::StartLayer => self.push_layer(),
+                    PaintOperation::EndLayer => self.pop_layer(),
+                }
+            }
+            return;
+        }
+
+        let mut min_order = u32::MAX;
+        let mut max_order = 0u32;
+        let mut max_kind = PrimitiveKind::Shadow;
+        let mut needs_local = false;
+        let mut has_primitives = false;
+        for op in ops {
+            if let PaintOperation::Primitive(p) = op {
+                has_primitives = true;
+                let o = p.order();
+                if o == 0 {
+                    needs_local = true;
+                } else {
+                    min_order = min_order.min(o);
+                    max_order = max_order.max(o);
+                }
+                max_kind = max_kind.max(p.kind());
+            }
+        }
+        if !has_primitives {
+            for op in ops {
+                match op {
+                    PaintOperation::StartLayer => {
+                        self.paint_operations.push(PaintOperation::StartLayer);
+                    }
+                    PaintOperation::EndLayer => {
+                        self.paint_operations.push(PaintOperation::EndLayer);
+                    }
+                    PaintOperation::Primitive(_) => {}
+                }
+            }
+            return;
+        }
+
+        let local_orders = if needs_local {
+            let computed = Self::compute_local_orders(ops);
+            min_order = u32::MAX;
+            max_order = 0;
+            for (idx, op) in ops.iter().enumerate() {
+                if matches!(op, PaintOperation::Primitive(_)) {
+                    let o = computed[idx].max(1);
+                    min_order = min_order.min(o);
+                    max_order = max_order.max(o);
+                }
+            }
+            Some(computed)
+        } else {
+            None
+        };
+
+        let has_transform = !self.paint_transforms.is_empty();
+        let visible_alpha = if has_transform {
+            self.paint_transforms
+                .iter()
+                .fold(1.0f32, |a, t| a * t.opacity)
+        } else {
+            1.0
+        };
+
+        let op_start = self.paint_operations.len();
+        self.paint_operations.reserve(ops.len());
+        let s0 = self.shadows.len();
+        let q0 = self.quads.len();
+        let p0 = self.paths.len();
+        let u0 = self.underlines.len();
+        let m0 = self.monochrome_sprites.len();
+        let sub0 = self.subpixel_sprites.len();
+        let poly0 = self.polychrome_sprites.len();
+        let surf0 = self.surfaces.len();
+        let mut union_bounds: Option<Bounds<ScaledPixels>> = None;
+
+        for (idx, op) in ops.iter().enumerate() {
+            match op {
+                PaintOperation::StartLayer => {
+                    self.paint_operations.push(PaintOperation::StartLayer);
+                }
+                PaintOperation::EndLayer => {
+                    self.paint_operations.push(PaintOperation::EndLayer);
+                }
+                PaintOperation::Primitive(primitive) => {
+                    let local_order = local_orders
+                        .as_ref()
+                        .map_or_else(|| primitive.order(), |v| v[idx].max(1));
+                    let rel_order = local_order - min_order;
+
+                    if let Primitive::MonochromeSprite(sprite) = primitive
+                        && let Some(prev_anim) =
+                            prev_scene.animations.get(sprite.animation.0 as usize)
+                    {
+                        let mut stored_sprite = *sprite;
+                        let new_anim_id = SpriteAnimationId(self.animations.len() as u32);
+                        stored_sprite.animation = new_anim_id;
+                        stored_sprite.order = local_order;
+                        self.paint_operations
+                            .push(PaintOperation::Primitive(Primitive::MonochromeSprite(
+                                stored_sprite,
+                            )));
+
+                        let mut animation = *prev_anim;
+                        animation.center = animation.raw_center;
+                        animation.base_color = animation.raw_base_color;
+                        animation.sprite_index = usize::MAX;
+                        if has_transform {
+                            let sf = animation.scale_factor;
+                            for transform in self.paint_transforms.iter().rev() {
+                                animation.center = Point::new(
+                                    Pixels(
+                                        (animation.center.x.0 * sf * transform.scale
+                                            + transform.translate.x.0)
+                                            / sf,
+                                    ),
+                                    Pixels(
+                                        (animation.center.y.0 * sf * transform.scale
+                                            + transform.translate.y.0)
+                                            / sf,
+                                    ),
+                                );
+                                if transform.opacity != 1.0 {
+                                    animation.base_color.a *= transform.opacity;
+                                }
+                            }
+                        }
+                        self.animations.push(animation);
+
+                        if visible_alpha > 0.0 {
+                            let mut emitted = stored_sprite;
+                            if has_transform {
+                                emitted.transformation = TransformationMatrix::unit();
+                                let mut prim = Primitive::MonochromeSprite(emitted);
+                                for transform in self.paint_transforms.iter().rev() {
+                                    transform.apply_primitive(&mut prim);
+                                }
+                                let cb = prim.clipped_bounds();
+                                if !cb.is_empty() {
+                                    union_bounds = Some(match union_bounds {
+                                        Some(b) => b.union(&cb),
+                                        None => cb,
+                                    });
+                                    self.push_primitive(prim, rel_order);
+                                }
+                            } else {
+                                let cb = Primitive::MonochromeSprite(emitted).clipped_bounds();
+                                if !cb.is_empty() {
+                                    union_bounds = Some(match union_bounds {
+                                        Some(b) => b.union(&cb),
+                                        None => cb,
+                                    });
+                                    self.monochrome_sprites.push(MonochromeSprite {
+                                        order: rel_order,
+                                        ..emitted
+                                    });
+                                }
+                            }
+                        }
+                        continue;
+                    }
+
+                    let mut stored = primitive.clone();
+                    stored.set_order(local_order);
+                    self.paint_operations
+                        .push(PaintOperation::Primitive(stored.clone()));
+
+                    if visible_alpha <= 0.0 {
+                        continue;
+                    }
+                    let emitted = if has_transform {
+                        for transform in self.paint_transforms.iter().rev() {
+                            transform.apply_primitive(&mut stored);
+                        }
+                        stored
+                    } else {
+                        stored
+                    };
+                    let cb = emitted.clipped_bounds();
+                    if !cb.is_empty() {
+                        union_bounds = Some(match union_bounds {
+                            Some(b) => b.union(&cb),
+                            None => cb,
+                        });
+                        self.push_primitive(emitted, rel_order);
+                    }
+                }
+            }
+        }
+
+        if let Some(bounds) = union_bounds {
+            let span = max_order - min_order;
+            let base = self.primitive_bounds.reserve_range(bounds, span, max_kind);
+            for s in &mut self.shadows[s0..] {
+                s.order += base;
+            }
+            for q in &mut self.quads[q0..] {
+                q.order += base;
+            }
+            for p in &mut self.paths[p0..] {
+                p.order += base;
+            }
+            for u in &mut self.underlines[u0..] {
+                u.order += base;
+            }
+            for m in &mut self.monochrome_sprites[m0..] {
+                m.order += base;
+            }
+            for s in &mut self.subpixel_sprites[sub0..] {
+                s.order += base;
+            }
+            for p in &mut self.polychrome_sprites[poly0..] {
+                p.order += base;
+            }
+            for s in &mut self.surfaces[surf0..] {
+                s.order += base;
+            }
+            if !has_transform {
+                for op in &mut self.paint_operations[op_start..] {
+                    if let PaintOperation::Primitive(p) = op {
+                        let o = base + (p.order() - min_order);
+                        p.set_order(o);
+                    }
+                }
             }
         }
     }
@@ -420,6 +996,34 @@ impl Primitive {
             Primitive::SubpixelSprite(_) => PrimitiveKind::SubpixelSprite,
             Primitive::PolychromeSprite(_) => PrimitiveKind::PolychromeSprite,
             Primitive::Surface(_) => PrimitiveKind::Surface,
+        }
+    }
+
+    /// HLSR: сохранённый локальный `DrawOrder` примитива в `paint_operations` (0 — ещё не вычислен).
+    pub(crate) fn order(&self) -> DrawOrder {
+        match self {
+            Primitive::Shadow(shadow) => shadow.order,
+            Primitive::Quad(quad) => quad.order,
+            Primitive::Path(path) => path.order,
+            Primitive::Underline(underline) => underline.order,
+            Primitive::MonochromeSprite(sprite) => sprite.order,
+            Primitive::SubpixelSprite(sprite) => sprite.order,
+            Primitive::PolychromeSprite(sprite) => sprite.order,
+            Primitive::Surface(surface) => surface.order,
+        }
+    }
+
+    /// HLSR: записать `DrawOrder` в примитив внутри `paint_operations`.
+    pub(crate) fn set_order(&mut self, order: DrawOrder) {
+        match self {
+            Primitive::Shadow(shadow) => shadow.order = order,
+            Primitive::Quad(quad) => quad.order = order,
+            Primitive::Path(path) => path.order = order,
+            Primitive::Underline(underline) => underline.order = order,
+            Primitive::MonochromeSprite(sprite) => sprite.order = order,
+            Primitive::SubpixelSprite(sprite) => sprite.order = order,
+            Primitive::PolychromeSprite(sprite) => sprite.order = order,
+            Primitive::Surface(surface) => surface.order = order,
         }
     }
 
@@ -975,8 +1579,10 @@ impl Default for SpriteAnimationId {
 pub(crate) struct SpriteAnimation {
     transformation: TimedTransformation,
     center: Point<Pixels>,
+    raw_center: Point<Pixels>,
     scale_factor: f32,
     base_color: Hsla,
+    raw_base_color: Hsla,
     sprite_index: usize,
 }
 
@@ -989,8 +1595,10 @@ impl SpriteAnimation {
         Self {
             transformation,
             center,
+            raw_center: center,
             scale_factor,
             base_color: Hsla::default(),
+            raw_base_color: Hsla::default(),
             sprite_index: usize::MAX,
         }
     }

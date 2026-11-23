@@ -86,9 +86,7 @@ fn pink(alpha: f32) -> Hsla {
 }
 
 /// `radial-gradient(rx ry at cx cy, color a0, transparent p1)` во весь блок (доли — от его
-/// размера): растр SVG картинкой. У маски `svg()` (`paint::Radial`) GPUI поднимает альфу гаммой
-/// текста — отсвет выходит почти вдвое ярче, чем в 0.4.9 (0,2 → 0,37). Растр `width`×`height`
-/// CSS px растягивается на блок; `opacity` — доля от `a0` (наведение трона).
+/// размера): быстрая запечённая 64×64 текстура с масштабированием на GPU (без `resvg`).
 fn glow(
     center: (f32, f32),
     radius: (f32, f32),
@@ -96,28 +94,14 @@ fn glow(
     (width, height): (f32, f32),
     color: Hsla,
 ) -> gpui::Div {
-    let c = Rgba::from(color);
-    let byte = |x: f32| (x * 255.).round() as u8;
-    let hex = format!("#{:02x}{:02x}{:02x}", byte(c.r), byte(c.g), byte(c.b));
-    let (cx, cy) = center;
-    let (rx, ry) = radius;
-    let svg = format!(
-        "<svg xmlns='http://www.w3.org/2000/svg' width='{width}' height='{height}' \
-         viewBox='0 0 1 1' preserveAspectRatio='none'><radialGradient id='g' \
-         gradientUnits='userSpaceOnUse' cx='0' cy='0' r='1' \
-         gradientTransform='matrix({rx} 0 0 {ry} {cx} {cy})'>\
-         <stop offset='0' stop-color='{hex}' stop-opacity='{a0}'/>\
-         <stop offset='{p1}' stop-color='{hex}' stop-opacity='0'/>\
-         </radialGradient><rect width='1' height='1' fill='url(#g)'/></svg>"
-    );
-    // Прозрачность у `img` GPUI не применяет — она у обёртки.
     div().absolute().top_0().left_0().size_full().child(
-        img(std::sync::Arc::new(gpui::Image::from_bytes(
-            gpui::ImageFormat::Svg,
-            svg.into_bytes(),
-        )))
-        .size_full()
-        .object_fit(ObjectFit::Fill),
+        crate::paint::Radial {
+            center,
+            radius,
+            stops: vec![(0., a0), (p1, 0.)],
+        }
+        .paint(width, height, color)
+        .size_full(),
     )
 }
 

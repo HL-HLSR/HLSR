@@ -8,6 +8,7 @@ use crate::kit::button::white;
 use crate::layer::TipExt;
 use crate::motion::{Timing, hover, mix};
 use crate::paint::ring;
+use crate::rows::Slot;
 use crate::scale::{u, zoom};
 use crate::scroll::{Bar, ScrollArea};
 use crate::text::TextExt;
@@ -285,88 +286,143 @@ impl DemoPanel {
                 Some(self.t("#L_DEMO_EMPTY_TEXT", &[])),
             ))
         } else {
-            let mut list = div();
-            for group in s.groups() {
-                let name = match (group.id.as_str(), group.name) {
-                    ("manual", _) => self.t("#L_DEMO_GROUP_MANUAL", &[]),
-                    (_, Some(name)) => name.to_owned(),
-                    _ => self.t("#L_DEMO_GROUP_OTHER", &[]),
-                };
-                let dim = theme.color("l-text-dim");
-                let lead = match group_logo(&group.id) {
-                    Some(path) => Some(svg_icon(path, 16., dim).into_any_element()),
-                    None if group.id == "manual" => Some(
-                        fa_glyph("fas fa-folder-plus", 12.)
-                            .text_color(dim)
-                            .into_any_element(),
-                    ),
-                    None => None,
-                };
-                let title = div()
-                    .flex()
-                    .items_center()
-                    .gap(u(6.))
-                    .mb(u(4.))
-                    .px(u(8.))
-                    .text_color(dim)
-                    .children(lead)
-                    .child(crate::text::spaced(
-                        name.to_uppercase(),
-                        11.5,
-                        20.,
-                        FontWeight::SEMIBOLD,
-                        0.05,
-                        dim,
-                    ))
-                    .child(count(group.items.len(), &theme));
-                let mut section = div().flex().flex_col().gap(u(2.)).child(title);
-                for item in &group.items {
+            // Группы — плоской колонкой (заголовок, записи), чтобы окно видимости
+            // (`crate::rows`) строило только записи у видимой области. Промежутки — полями
+            // внутри строк: окно меряет их рамки (14 между группами, 2 внутри группы).
+            enum Entry {
+                Title(usize),
+                Item(usize, usize),
+            }
+            let groups = s.groups();
+            let mut entries = Vec::new();
+            let mut keys = Vec::new();
+            for (gi, group) in groups.iter().enumerate() {
+                entries.push(Entry::Title(gi));
+                keys.push(format!("g:{}", group.id));
+                for (ii, item) in group.items.iter().enumerate() {
+                    entries.push(Entry::Item(gi, ii));
                     let id = item
                         .get("id")
                         .map(hlsr_core::js::to_string)
                         .unwrap_or_default();
-                    let supported = item.get("supported").is_some_and(hlsr_core::js::truthy);
-                    let badge = (!supported).then(|| {
-                        let unavailable =
-                            item.get("reason").and_then(Value::as_str) == Some("DEMO_NOT_FOUND");
-                        (
-                            self.t(
-                                if unavailable {
-                                    "#L_DEMO_UNAVAILABLE"
-                                } else {
-                                    "#L_DEMO_UNSUPPORTED"
-                                },
-                                &[],
-                            ),
-                            State::reason_text(item, &t),
-                        )
-                    });
-                    let on_click = {
-                        let id = id.clone();
-                        self.act(cx, move |this, _, cx| this.select(&id, cx))
-                    };
-                    section = section.child(row(
-                        Row {
-                            id: SharedString::from(format!("dmp-item-{id}")),
-                            icon: kind_icon(item),
-                            name: State::item_name(item, language, &t),
-                            busy: s.exporting(&id),
-                            meta: State::item_meta(item),
-                            date: State::item_date(item, &t),
-                            wrap: true,
-                            badge,
-                            active: s.selected_id.as_deref() == Some(id.as_str()),
-                            dim_name: !supported,
-                        },
-                        &theme,
-                        window,
-                        cx,
-                        on_click,
-                    ));
+                    keys.push(format!("i:{gi}:{id}"));
                 }
-                list = list.child(section);
             }
-            list
+            let slots = self.list_rows.plan(&self.list_scroll, keys, 0., window, cx);
+            let mut list = div().flex().flex_col();
+            for slot in slots {
+                let index = match slot {
+                    Slot::Row(index) => index,
+                    Slot::Space(height) => {
+                        list = list.child(div().flex_none().h(height));
+                        continue;
+                    }
+                };
+                match entries[index] {
+                    Entry::Title(gi) => {
+                        let group = &groups[gi];
+                        let name = match (group.id.as_str(), group.name) {
+                            ("manual", _) => self.t("#L_DEMO_GROUP_MANUAL", &[]),
+                            (_, Some(name)) => name.to_owned(),
+                            _ => self.t("#L_DEMO_GROUP_OTHER", &[]),
+                        };
+                        let dim = theme.color("l-text-dim");
+                        let lead = match group_logo(&group.id) {
+                            Some(path) => Some(svg_icon(path, 16., dim).into_any_element()),
+                            None if group.id == "manual" => Some(
+                                fa_glyph("fas fa-folder-plus", 12.)
+                                    .text_color(dim)
+                                    .into_any_element(),
+                            ),
+                            None => None,
+                        };
+                        let title = div()
+                            .flex()
+                            .items_center()
+                            .gap(u(6.))
+                            .mb(u(4.))
+                            .px(u(8.))
+                            .text_color(dim)
+                            .children(lead)
+                            .child(crate::text::spaced(
+                                name.to_uppercase(),
+                                11.5,
+                                20.,
+                                FontWeight::SEMIBOLD,
+                                0.05,
+                                dim,
+                            ))
+                            .child(count(group.items.len(), &theme));
+                        list = list.child(
+                            div()
+                                .flex_none()
+                                .when(gi > 0, |el| el.pt(u(14.)))
+                                .when(!group.items.is_empty(), |el| el.pb(u(2.)))
+                                .child(title),
+                        );
+                    }
+                    Entry::Item(gi, ii) => {
+                        let group = &groups[gi];
+                        let item = &group.items[ii];
+                        let id = item
+                            .get("id")
+                            .map(hlsr_core::js::to_string)
+                            .unwrap_or_default();
+                        let row_id = SharedString::from(format!("dmp-item-{id}"));
+                        if crate::kit::button::focus_handle(
+                            &gpui::ElementId::Name(row_id.clone()),
+                            window,
+                            cx,
+                        )
+                        .is_focused(window)
+                        {
+                            self.list_rows.focus(index);
+                        }
+                        let supported = item.get("supported").is_some_and(hlsr_core::js::truthy);
+                        let badge = (!supported).then(|| {
+                            let unavailable = item.get("reason").and_then(Value::as_str)
+                                == Some("DEMO_NOT_FOUND");
+                            (
+                                self.t(
+                                    if unavailable {
+                                        "#L_DEMO_UNAVAILABLE"
+                                    } else {
+                                        "#L_DEMO_UNSUPPORTED"
+                                    },
+                                    &[],
+                                ),
+                                State::reason_text(item, &t),
+                            )
+                        });
+                        let on_click = {
+                            let id = id.clone();
+                            self.act(cx, move |this, _, cx| this.select(&id, cx))
+                        };
+                        let row = row(
+                            Row {
+                                id: row_id,
+                                icon: kind_icon(item),
+                                name: State::item_name(item, language, &t),
+                                busy: s.exporting(&id),
+                                meta: State::item_meta(item),
+                                date: State::item_date(item, &t),
+                                wrap: true,
+                                badge,
+                                active: s.selected_id.as_deref() == Some(id.as_str()),
+                                dim_name: !supported,
+                            },
+                            &theme,
+                            window,
+                            cx,
+                            on_click,
+                        );
+                        let last = ii + 1 == group.items.len();
+                        list =
+                            list.child(div().flex_none().when(!last, |el| el.pb(u(2.))).child(row));
+                    }
+                }
+            }
+            div().child(self.list_rows.measure(&self.list_scroll, list))
         };
         let list = self.list_column(&self.list_scroll, &theme, content);
         let main = self.main_column(false, low, window, cx);
@@ -420,19 +476,52 @@ impl DemoPanel {
             )
         } else {
             let open = self.s.open_name();
+            let keys = rendered
+                .items
+                .iter()
+                .enumerate()
+                .map(|(index, video)| {
+                    let name = video
+                        .get("name")
+                        .map(hlsr_core::js::to_string)
+                        .unwrap_or_default();
+                    format!("{index}:{name}")
+                })
+                .collect();
+            let slots = self
+                .rendered_rows
+                .plan(&self.rendered_scroll, keys, 2., window, cx);
             let mut section = div().flex().flex_col().gap(u(2.));
-            for (index, video) in rendered.items.iter().enumerate() {
+            for slot in slots {
+                let index = match slot {
+                    Slot::Row(index) => index,
+                    Slot::Space(height) => {
+                        section = section.child(div().flex_none().h(height));
+                        continue;
+                    }
+                };
+                let video = &rendered.items[index];
                 let name = video
                     .get("name")
                     .map(hlsr_core::js::to_string)
                     .unwrap_or_default();
+                let row_id = SharedString::from(format!("dmp-video-{index}"));
+                if crate::kit::button::focus_handle(
+                    &gpui::ElementId::Name(row_id.clone()),
+                    window,
+                    cx,
+                )
+                .is_focused(window)
+                {
+                    self.rendered_rows.focus(index);
+                }
                 let on_click = {
                     let name = name.clone();
                     self.act(cx, move |this, _, cx| this.open_rendered(name.clone(), cx))
                 };
                 section = section.child(row(
                     Row {
-                        id: SharedString::from(format!("dmp-video-{index}")),
+                        id: row_id,
                         icon: "fas fa-file-video",
                         active: open.as_deref() == Some(name.as_str()),
                         name,
@@ -449,7 +538,7 @@ impl DemoPanel {
                     on_click,
                 ));
             }
-            div().child(section)
+            div().child(self.rendered_rows.measure(&self.rendered_scroll, section))
         };
         let list = self.list_column(&self.rendered_scroll, &theme, content);
         let main = self.main_column(true, low, window, cx);

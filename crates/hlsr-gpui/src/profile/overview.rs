@@ -3,18 +3,21 @@
 //! закреплённый забег (по содержимому, место 1–3 подсвечивает карточку цветом лямбды) и ссылки
 //! одним рядом.
 
+use super::ProfileContext;
 use super::modal::ProfileModal;
 use crate::icons::fa_glyph;
 use crate::kit::button::white;
 use crate::layer::TipExt;
 use crate::motion::{Timing, hover, mix};
 use crate::paint::{Radial, ring};
-use crate::scale::u;
+use crate::scale::{u, zoom};
+use crate::scroll::{Bar, Scroll, ScrollArea};
 use crate::text::{TextExt, spaced};
 use crate::theme::Theme;
 use gpui::prelude::FluentBuilder as _;
 use gpui::{
-    AnyElement, FontWeight, Hsla, IntoElement, Role, WeakEntity, div, prelude::*, rgb, svg,
+    AnyElement, Context, FontWeight, Hsla, IntoElement, Render, Role, WeakEntity, Window, div,
+    prelude::*, rgb, svg,
 };
 use hlsr_ui::controllers::profile::{LinksView, RunView, StatView};
 
@@ -151,6 +154,7 @@ fn record(page: &Overview, theme: &Theme, zoom: f32, this: WeakEntity<ProfileMod
         theme.color("l-border"),
     );
     let radius = theme.rem("l-radius");
+    let radius_px = theme.len("l-radius");
     let Some(run) = page.run.clone() else {
         return div()
             .flex()
@@ -237,7 +241,7 @@ fn record(page: &Overview, theme: &Theme, zoom: f32, this: WeakEntity<ProfileMod
                     radius: (1.2, 1.4),
                     stops: vec![(0., 0.14), (0.6, 0.)],
                 }
-                .paint(1., 1., tint)
+                .paint_rounded(1., 1., radius_px, tint)
                 .absolute()
                 .top_0()
                 .left_0()
@@ -393,6 +397,79 @@ fn links(
         })
 }
 
+/// Вкладка «Профиль» отдельным закэшированным видом: бегущий неон и анимированный ник/рамка
+/// шапки не перестраивают сводку, карточку рекорда и ссылки 240 раз в секунду.
+pub(super) struct OverviewTab {
+    scroll: Scroll,
+}
+
+impl OverviewTab {
+    pub fn new() -> OverviewTab {
+        OverviewTab {
+            scroll: Scroll::new(),
+        }
+    }
+
+    pub fn reset_scroll(&mut self) {
+        self.scroll = Scroll::new();
+    }
+}
+
+impl Render for OverviewTab {
+    fn render(&mut self, window: &mut Window, cx: &mut Context<Self>) -> impl IntoElement {
+        crate::live::rendered(cx.entity_id());
+        let Some(context) = ProfileContext::get(cx) else {
+            return div().into_any_element();
+        };
+        let Some(modal_entity) = context.modal.upgrade() else {
+            return div().into_any_element();
+        };
+        let (view, tr) = {
+            let modal = modal_entity.read(cx);
+            let view = modal
+                .view_snapshot()
+                .unwrap_or_else(|| {
+                    std::rc::Rc::new(
+                        context
+                            .state
+                            .borrow()
+                            .view(modal.language, &modal.wall, &modal.tr),
+                    )
+                });
+            (view, modal.tr.clone())
+        };
+        let t = |key: &str| tr(key, &[]);
+        let page = Overview {
+            stats: view.stats.clone(),
+            run: view.run.clone(),
+            own: view.record_empty_own,
+            links: view.links.clone(),
+            stats_title: t("#L_PROFILE_STATS"),
+            record_title: t("#L_PROFILE_RECORD"),
+            links_title: t("#L_PROFILE_LINKS"),
+            no_record: t("#L_PROFILE_NO_RECORD"),
+            no_record_own: t("#L_PROFILE_NO_RECORD_OWN"),
+            open_run: t("#L_PROFILE_OPEN_RUN"),
+        };
+        let theme = cx.global::<Theme>().clone();
+        let zoom = zoom(window);
+        crate::snap::target(
+            "profile-body",
+            ScrollArea::new(("profile-scroll", 0usize), &self.scroll)
+                .bar(Bar::Thin)
+                .size_full()
+                .child(
+                    div()
+                        .pt(u(28.))
+                        .px(u(32.))
+                        .pb(u(32.))
+                        .child(overview(&page, &theme, zoom, modal_entity.downgrade())),
+                ),
+        )
+        .into_any_element()
+    }
+}
+
 /// Вкладка «Профиль» целиком.
 // shortcut: одна колонка при окне ≤ 860 CSS px (`@media (max-width: 860px)`) не сделана — окно лаунчера шире 1152.
 pub(super) fn overview(
@@ -401,37 +478,34 @@ pub(super) fn overview(
     zoom: f32,
     this: WeakEntity<ProfileModal>,
 ) -> AnyElement {
-    // Сетка 2 × 3 (`display: contents` колонок): строка — общая для обеих колонок, поэтому
-    // ссылки встают под самой высокой ячейкой второй строки.
-    let row = |left: AnyElement, right: AnyElement| {
-        div()
-            .flex()
-            .items_start()
-            .gap(u(32.))
-            .child(div().flex_1().min_w_0().child(left))
-            .child(div().flex_1().min_w_0().child(right))
-    };
     let links = page.links.as_ref().map(|view| {
         div()
-            .child(
-                div()
-                    .mt(u(24.))
-                    .child(section_title(&page.links_title, theme)),
-            )
+            .mt(u(24.))
+            .child(section_title(&page.links_title, theme))
             .child(links(view, theme, zoom, this.clone()))
-            .into_any_element()
     });
     div()
         .flex()
-        .flex_col()
-        .child(row(
-            section_title(&page.stats_title, theme).into_any_element(),
-            section_title(&page.record_title, theme).into_any_element(),
-        ))
-        .child(row(
-            stats(&page.stats, theme, zoom).into_any_element(),
-            record(page, theme, zoom, this.clone()),
-        ))
-        .children(links.map(|links| row(div().into_any_element(), links)))
+        .items_start()
+        .gap(u(32.))
+        .child(
+            div()
+                .flex_1()
+                .min_w_0()
+                .flex()
+                .flex_col()
+                .child(section_title(&page.stats_title, theme))
+                .child(stats(&page.stats, theme, zoom)),
+        )
+        .child(
+            div()
+                .flex_1()
+                .min_w_0()
+                .flex()
+                .flex_col()
+                .child(section_title(&page.record_title, theme))
+                .child(record(page, theme, zoom, this.clone()))
+                .children(links),
+        )
         .into_any_element()
 }

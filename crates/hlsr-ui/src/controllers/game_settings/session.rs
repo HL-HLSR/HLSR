@@ -214,12 +214,58 @@ impl State {
     }
 }
 
+/// Обёртка `RefCell<State>` с версией: любая мутация состояния автоматически сдвигает `rev`,
+/// инвалидируя кэшированные снимки `panel_view`; мутация данных (`borrow_mut`) сдвигает и
+/// `data_rev`, инвалидируя `config_view` и закэшированные разделы.
+struct TrackedState {
+    inner: RefCell<State>,
+    rev: Cell<u64>,
+    data_rev: Cell<u64>,
+}
+
+impl TrackedState {
+    fn new(state: State) -> Self {
+        Self {
+            inner: RefCell::new(state),
+            rev: Cell::new(0),
+            data_rev: Cell::new(0),
+        }
+    }
+
+    fn borrow(&self) -> std::cell::Ref<'_, State> {
+        self.inner.borrow()
+    }
+
+    fn borrow_mut(&self) -> std::cell::RefMut<'_, State> {
+        self.rev.set(self.rev.get().wrapping_add(1));
+        self.data_rev.set(self.data_rev.get().wrapping_add(1));
+        self.inner.borrow_mut()
+    }
+
+    /// Мутация только навигации/служебных полей (вкладка, направление свайпа, отметка
+    /// достижения): обновляет `panel_view`, но не перерисовывает закэшированные разделы.
+    pub(super) fn borrow_mut_nav(&self) -> std::cell::RefMut<'_, State> {
+        self.rev.set(self.rev.get().wrapping_add(1));
+        self.inner.borrow_mut()
+    }
+
+    fn rev(&self) -> u64 {
+        self.rev.get()
+    }
+
+    fn data_rev(&self) -> u64 {
+        self.data_rev.get()
+    }
+}
+
 /// Сессия окна настроек одной игры.
 pub struct Session {
     services: Services,
     env: Env,
     tasks: Tasks,
-    state: RefCell<State>,
+    state: TrackedState,
+    panel_cache: RefCell<Option<(u64, Rc<View>)>>,
+    config_cache: RefCell<Option<(u64, Rc<View>)>>,
     render: RefCell<Render>,
     sink: RefCell<Sink>,
     flush_queued: Cell<bool>,
@@ -304,6 +350,18 @@ pub struct RunRow {
     pub deleting: bool,
 }
 
+/// Раздел «Призраки» отдельно от остального окна: его рисует свой вид, и прокрутка списка не
+/// пересчитывает весь [`View`].
+#[derive(Debug, Clone, PartialEq)]
+pub struct RunsView {
+    pub summary: String,
+    pub body: RunsBody,
+    pub runs: Vec<RunRow>,
+    pub error: String,
+    pub refresh_enabled: bool,
+    pub folder_enabled: bool,
+}
+
 /// Что показано вместо списка записей.
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub enum RunsBody {
@@ -351,12 +409,6 @@ pub struct View {
     pub editor: Option<EditorView>,
     pub empty_text: String,
     pub files: Option<FilesSlot>,
-    pub runs_summary: String,
-    pub runs_body: RunsBody,
-    pub runs: Vec<RunRow>,
-    pub runs_error: String,
-    pub runs_refresh_enabled: bool,
-    pub runs_folder_enabled: bool,
     pub facts: Vec<Fact>,
     pub import_busy: bool,
     pub saving: bool,
@@ -382,7 +434,9 @@ impl Session {
     pub fn new(services: Services, env: Env, ui: Rc<dyn UiEnv>) -> Rc<Session> {
         Rc::new(Session {
             services,
-            state: RefCell::new(State::new(&env.initial_section)),
+            state: TrackedState::new(State::new(&env.initial_section)),
+            panel_cache: RefCell::new(None),
+            config_cache: RefCell::new(None),
             env,
             tasks: Tasks::new(crate::env::dispatch(&*ui)),
             render: RefCell::new(Rc::new(|| {})),
@@ -799,12 +853,18 @@ impl Session {
     pub fn select_section(self: &Rc<Self>, id: &str) {
         let was_scripts = self.scripts_active();
         // Свайп и сброс вопроса об удалении — `watch activeSection` (watch_active_section).
-        self.state.borrow_mut().section = id.to_owned();
+        self.state.borrow_mut_nav().section = id.to_owned();
         if was_scripts && !self.scripts_active() {
             self.scripts_left();
         }
         self.dirty();
         self.pump();
+    }
+
+    /// Версия данных сессии (без чистых переключений активной вкладки и направления свайпа):
+    /// закэшированные разделы перерисовываются только при её изменении.
+    pub fn data_revision(&self) -> u64 {
+        self.state.data_rev()
     }
 
     /// Открытый раздел (`activeSection`).
@@ -819,17 +879,33 @@ impl Session {
     /// узнана) — направление свайпа, сброс вопроса об удалении записи, итог импорта биндов
     /// уходит с «Клавиатурой». Тот же раздел — ничего.
     fn watch_active_section(&self) {
-        let mut state = self.state.borrow_mut();
-        let list = self.section_context(&state);
-        let active = sections::active_section(&list, &state.section);
-        let Some(previous) = state.seen_section.replace(active) else {
-            return;
+        let (active, previous, slide, clear_data) = {
+            let state = self.state.borrow();
+            let list = self.section_context(&state);
+            let active = sections::active_section(&list, &state.section);
+            let previous = state.seen_section;
+            if previous == Some(active) {
+                return;
+            }
+            let Some(prev) = previous else {
+                drop(state);
+                self.state.borrow_mut_nav().seen_section = Some(active);
+                return;
+            };
+            let ids: Vec<&str> = list.iter().map(|s| s.id).collect();
+            let slide = sections::direction(&ids, prev, active);
+            let clear_data = state.runs.pending_delete.is_some()
+                || state.runs.delete_error.is_some()
+                || (prev == "keyboard" && state.binds_import.is_some());
+            (active, prev, slide, clear_data)
         };
-        if previous == active {
-            return;
-        }
-        let ids: Vec<&str> = list.iter().map(|s| s.id).collect();
-        state.slide = sections::direction(&ids, previous, active);
+        let mut state = if clear_data {
+            self.state.borrow_mut()
+        } else {
+            self.state.borrow_mut_nav()
+        };
+        state.seen_section = Some(active);
+        state.slide = slide;
         state.runs.pending_delete = None;
         state.runs.delete_error = None;
         if previous == "keyboard" {
@@ -1591,7 +1667,83 @@ impl Session {
     // ---- показ ------------------------------------------------------------------------------
 
     /// Всё, что окно показывает сейчас.
+    /// Раздел «Призраки». Не входит в [`Self::view`]: записей бывают тысячи, и их размер и дата
+    /// форматировались на каждый кадр окна; раздел рисует свой вид и берёт их только при
+    /// переменах сессии.
+    pub fn runs_view(&self) -> RunsView {
+        self.runs_of(&self.state.borrow())
+    }
+
+    fn runs_of(&self, state: &State) -> RunsView {
+        let t = |key: &str, args: &[&str]| self.t(key, args);
+        let runs: Vec<RunRow> = state
+            .runs
+            .items
+            .iter()
+            .map(|run: &Run| RunRow {
+                id: run.id.clone(),
+                name: if run.display_name.is_empty() {
+                    run.name.clone()
+                } else {
+                    run.display_name.clone()
+                },
+                size: format_size(run.size, &t),
+                date: self.format_date(&run.modified_at),
+                confirm: state.runs.pending_delete.as_deref() == Some(run.id.as_str()),
+                deleting: state.runs.deleting.as_deref() == Some(run.id.as_str()),
+            })
+            .collect();
+        let body = if state.runs.loading {
+            RunsBody::Loading
+        } else if let Some(error) = &state.runs.error {
+            RunsBody::Error(error.clone())
+        } else if runs.is_empty() {
+            RunsBody::Empty
+        } else {
+            RunsBody::List
+        };
+        RunsView {
+            summary: state.runs.summary(false, &t),
+            body,
+            runs,
+            error: state.runs.delete_error.clone().unwrap_or_default(),
+            refresh_enabled: !state.runs.loading,
+            folder_enabled: state.runs.available(),
+        }
+    }
+
     pub fn view(&self) -> View {
+        self.build_view(true, true)
+    }
+
+    /// Кэшированный снимок оболочки окна настроек (вкладки, подвал, запуск, версия): не строит
+    /// тяжёлые разделы `editor` / `keyboard` / `scripts` на каждом кадре свайпа.
+    pub fn panel_view(&self) -> Rc<View> {
+        let rev = self.state.rev();
+        if let Some((cached_rev, view)) = self.panel_cache.borrow().as_ref()
+            && *cached_rev == rev
+        {
+            return view.clone();
+        }
+        let view = Rc::new(self.build_view(false, false));
+        *self.panel_cache.borrow_mut() = Some((rev, view.clone()));
+        view
+    }
+
+    /// Кэшированный снимок для раздела «Файлы cfg» (с `editor`, без `keyboard` / `scripts`).
+    pub fn config_view(&self) -> Rc<View> {
+        let rev = self.state.data_rev();
+        if let Some((cached_rev, view)) = self.config_cache.borrow().as_ref()
+            && *cached_rev == rev
+        {
+            return view.clone();
+        }
+        let view = Rc::new(self.build_view(true, false));
+        *self.config_cache.borrow_mut() = Some((rev, view.clone()));
+        view
+    }
+
+    fn build_view(&self, with_editor: bool, with_kb_scripts: bool) -> View {
         let state = self.state.borrow();
         let lang = self.env.language;
         let t = |key: &str, args: &[&str]| self.t(key, args);
@@ -1648,36 +1800,14 @@ impl Session {
             (None, true) => (t("#L_GS_CFG_RUNNING", &[&player_file]), false),
             (None, false) => (String::new(), false),
         };
-        let editor = state
-            .editor
-            .as_ref()
-            .map(|editor| editor.editor_view(&state.edits, lang, &t, state.rule_counts()));
-        let runs: Vec<RunRow> = state
-            .runs
-            .items
-            .iter()
-            .map(|run: &Run| RunRow {
-                id: run.id.clone(),
-                name: if run.display_name.is_empty() {
-                    run.name.clone()
-                } else {
-                    run.display_name.clone()
-                },
-                size: format_size(run.size, &t),
-                date: self.format_date(&run.modified_at),
-                confirm: state.runs.pending_delete.as_deref() == Some(run.id.as_str()),
-                deleting: state.runs.deleting.as_deref() == Some(run.id.as_str()),
+        let editor = with_editor
+            .then(|| {
+                state
+                    .editor
+                    .as_ref()
+                    .map(|editor| editor.editor_view(&state.edits, lang, &t, state.rule_counts()))
             })
-            .collect();
-        let runs_body = if state.runs.loading {
-            RunsBody::Loading
-        } else if let Some(error) = &state.runs.error {
-            RunsBody::Error(error.clone())
-        } else if runs.is_empty() {
-            RunsBody::Empty
-        } else {
-            RunsBody::List
-        };
+            .flatten();
         let facts = self.facts(&state, &t);
         let footer = self.footer(&state, active_id, &t);
         let vulkan = state
@@ -1746,23 +1876,13 @@ impl Session {
             editor,
             empty_text: config::empty_text(state.config_state.as_ref(), &t),
             files: state.files.clone(),
-            runs_summary: state.runs.summary(false, &t),
-            runs_body,
-            runs_error: state.runs.delete_error.clone().unwrap_or_default(),
-            runs,
-            runs_refresh_enabled: !state.runs.loading,
-            runs_folder_enabled: state.runs.available(),
             facts,
             import_busy: state.importing_config,
             saving: state.saving,
-            keyboard: list
-                .iter()
-                .any(|section| section.id == "keyboard")
+            keyboard: (with_kb_scripts && list.iter().any(|section| section.id == "keyboard"))
                 .then(|| self.keyboard_view(&state))
                 .flatten(),
-            scripts: list
-                .iter()
-                .any(|section| section.id == "scripts")
+            scripts: (with_kb_scripts && list.iter().any(|section| section.id == "scripts"))
                 .then(|| self.scripts_view(&state)),
             footer,
         }

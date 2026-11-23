@@ -63,6 +63,8 @@ fn app_name() -> &'static str {
 }
 
 fn main() {
+    hlsr_gpui::memory::tune_allocator();
+    hlsr_gpui::memory::prefer_hardware_vulkan();
     let started = Instant::now();
     let args = parse_args_with(std::env::args_os().skip(1), &mode_env());
     let paths = match Paths::detect(app_name()) {

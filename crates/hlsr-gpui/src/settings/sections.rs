@@ -115,7 +115,7 @@ impl SettingsModal {
                         radius: (1., 1.),
                         stops: vec![(0., 0.22), (0.7, 0.)],
                     }
-                    .paint(88., 88., theme.color("l-accent")),
+                    .paint_rounded(88., 88., 18., theme.color("l-accent")),
                 ),
             )
             .child(

@@ -30,7 +30,7 @@ use hlsr_delivery::manifests::{LaunchConfig, launch_config_of};
 use hlsr_delivery::paths::assert_inside;
 use hlsr_delivery::ports::{Logger, SystemRegistry, TracingLogger};
 use hlsr_delivery::providers::BoxFuture;
-use hlsr_delivery::{game_language, launch_args};
+use hlsr_delivery::{episode_install, episodes, game_language, launch_args};
 use serde_json::{Map, Value, json};
 use std::collections::HashSet;
 use std::path::{Path, PathBuf};
@@ -428,7 +428,7 @@ impl LaunchService {
                 format!("Игра не найдена: {}", config.executable),
             ));
         }
-        if !game_directory.join("gameinfo.txt").exists() {
+        if !episodes::has_gameinfo(&game_directory) {
             return Err(DeliveryError::new(
                 Code::GameDirectoryMissing,
                 format!("Не найден gameinfo.txt в {}", config.game_directory),
@@ -559,21 +559,28 @@ impl LaunchService {
         self.launch_episode(game_id, None).await
     }
 
-    /// `launch(gameId, {episode})`: эпизоды Ghosting на Linux пока не запускаются — без отказа
-    /// выбранный эпизод молча запускал бы саму Ghosting.
+    /// `launch(gameId, {episode})`: `episode` (`ep1` | `ep2`) — эпизод Ghosting, тот же `hl2.exe`
+    /// с `-game episodic|ep2` под Proton.
     pub async fn launch_episode(
         &self,
         game_id: &str,
         episode: Option<&str>,
     ) -> Result<LaunchResult, DeliveryError> {
-        if episode.is_some() {
+        let base = self.config_for(game_id)?;
+        if let Some(episode) = episode
+            && (game_id != episode_install::GAME_ID || !episodes::is_episode(episode))
+        {
             return Err(DeliveryError::new(
                 Code::LaunchConfigInvalid,
-                "Эпизоды Ghosting на Linux пока не запускаются",
+                format!("Эпизод {episode} не запускается для {game_id}"),
             )
-            .with_details(json!({"gameId": game_id})));
+            .with_details(json!({"gameId": game_id, "episode": episode})));
         }
-        let config = self.config_for(game_id)?;
+        // Каталог мода, gameinfo.txt и -game — эпизода; конфиг игрока и язык — Ghosting (base).
+        let config = match episode {
+            Some(episode) => episodes::launch_config(base, episode)?,
+            None => base.clone(),
+        };
         let processes = self.processes()?.clone();
         if lock(&self.inner.launching).contains(game_id) {
             return Err(DeliveryError::new(
@@ -593,9 +600,26 @@ impl LaunchService {
                 "Дождитесь завершения текущей операции",
             ));
         }
+        if let Some(episode) = episode {
+            let installed = self.delivery()?.installed_of(game_id)?;
+            let install_path = installed
+                .get("installPath")
+                .map(js::to_string)
+                .unwrap_or_default();
+            if !episodes::status(Some(Path::new(&install_path)))[episode]["installed"]
+                .as_bool()
+                .unwrap_or(false)
+            {
+                return Err(DeliveryError::new(
+                    Code::NotInstalled,
+                    format!("Эпизод {episode} не установлен"),
+                )
+                .with_details(json!({"gameId": game_id, "episode": episode})));
+            }
+        }
         lock(&self.inner.launching).insert(game_id.to_owned());
         processes.mark_starting(game_id);
-        let result = self.launch_started(game_id, config).await;
+        let result = self.launch_started(game_id, base, &config, episode).await;
         lock(&self.inner.launching).remove(game_id);
         result.map_err(|failure| {
             let error = to_delivery_error(failure, Some(Code::LaunchFailed));
@@ -610,7 +634,9 @@ impl LaunchService {
     async fn launch_started(
         &self,
         game_id: &str,
-        config: &'static LaunchConfig,
+        base: &'static LaunchConfig,
+        config: &LaunchConfig,
+        episode: Option<&str>,
     ) -> Result<LaunchResult, Failure> {
         // Все сборки идут с -steam: без клиента Steam игра падает на старте.
         let steam = self.steam()?;
@@ -621,6 +647,10 @@ impl LaunchService {
             .get("installPath")
             .map(js::to_string)
             .unwrap_or_default();
+        // config.cfg эпизода, не вернувшийся после краха игры или лаунчера, — в Ghosting до запуска.
+        if game_id == episode_install::GAME_ID {
+            episodes::return_pending(Path::new(&install_path), self.inner.logger.as_ref(), None);
+        }
         if let Some(conflict) = find_case_conflict(&install_path, &RealFs) {
             return Err(DeliveryError::new(
                 Code::LibraryPathCaseConflict,
@@ -639,12 +669,20 @@ impl LaunchService {
             .as_ref()
             .map(|store| store.get(game_id));
         self.prepare_timer_fonts(game_id, settings.as_ref()).await;
-        let started = if is_goldsrc(config) {
-            self.start_goldsrc(game_id, Path::new(&install_path), config, settings.as_ref())
+        let started = if is_goldsrc(base) {
+            self.start_goldsrc(game_id, Path::new(&install_path), base, settings.as_ref())
                 .await?
         } else {
-            self.start_source(game_id, Path::new(&install_path), config, settings)
-                .await?
+            self.start_source_episode(
+                game_id,
+                Path::new(&install_path),
+                base,
+                config,
+                episode,
+                &installed,
+                settings,
+            )
+            .await?
         };
         let child = started.launch.child.clone();
         tokio::time::sleep(self.inner.start_check).await;
@@ -672,13 +710,18 @@ impl LaunchService {
                 host_process: true,
                 started_at: Some(js::iso_string((self.inner.now)())),
                 child: child.handle(),
+                episode: episode.map(str::to_owned),
                 ..StartedProcess::default()
             },
         )?;
         self.watch_game_process(game_id, config, child);
         self.inner.logger.info(&format!(
-            "[launch] {game_id}: Proton {}, префикс {}",
-            started.launch.proton.name, started.launch.prefix
+            "[launch] {game_id}{}: Proton {}, префикс {}",
+            episode
+                .map(|episode| format!(" (эпизод {episode})"))
+                .unwrap_or_default(),
+            started.launch.proton.name,
+            started.launch.prefix
         ));
         let mut result = Map::new();
         result.insert("status".to_owned(), json!("started"));
@@ -1178,6 +1221,21 @@ impl LaunchService {
         config: &'static LaunchConfig,
         settings: Option<Value>,
     ) -> Result<Started, Failure> {
+        self.start_source_episode(game_id, install_path, config, config, None, &Value::Null, settings)
+            .await
+    }
+
+    #[allow(clippy::too_many_arguments)]
+    async fn start_source_episode(
+        &self,
+        game_id: &str,
+        install_path: &Path,
+        base: &'static LaunchConfig,
+        config: &LaunchConfig,
+        episode: Option<&str>,
+        installed: &Value,
+        settings: Option<Value>,
+    ) -> Result<Started, Failure> {
         let (executable, _) = self.files_for(install_path, config)?;
         let (proton_env, wrapper, proton_args) = Self::proton_options_of(settings.as_ref());
         let trusted: Vec<String> = config
@@ -1192,6 +1250,7 @@ impl LaunchService {
         let empty = json!({});
         let language = launch_args::language_of(settings.as_ref().unwrap_or(&empty));
         // Под Proton языка Steam в реестре нет: движок берёт язык по умолчанию.
+        // Языковая подмена — в ghostingmod/custom: эпизоды монтируют ../ghostingmod/custom/*.
         let language_options = game_language::ApplyOptions {
             engine_language: hlsr_delivery::cfg_search::LanguageOption::Detect,
             engine: game_language::EngineOptions {
@@ -1202,7 +1261,7 @@ impl LaunchService {
         };
         if let Err(error) = game_language::apply(
             install_path,
-            config.game_directory,
+            base.game_directory,
             Some(&language),
             &language_options,
         ) {
@@ -1210,7 +1269,12 @@ impl LaunchService {
                 .logger
                 .warn(&format!("[launch] язык не применён: {}", error.message));
         }
-        self.prepare_configs(game_id, install_path, config, settings.as_ref());
+        // Файл игрока один — в ghostingmod/cfg; в эпизод его копирует sync_config_in ниже.
+        self.prepare_configs(game_id, install_path, base, settings.as_ref());
+        if let Some(episode) = episode {
+            let stock = self.ghosting_stock_of(game_id, installed);
+            episodes::sync_config_in(install_path, episode, stock.as_deref())?;
+        }
         let presence = self.presence_target(config);
         let mut env = proton_env;
         if let Some(presence) = &presence {
@@ -1238,9 +1302,10 @@ impl LaunchService {
         if let Some(presence) = presence {
             let this = self.clone();
             let game = game_id.to_owned();
+            let config = config.clone();
             let child = launch.child.clone();
             let ready = tokio::spawn(async move {
-                this.start_presence_relay(&game, config, &presence, &child)
+                this.start_presence_relay(&game, &config, &presence, &child)
                     .await
             });
             *lock(&self.inner.presence_ready) = Some(ready);
@@ -1252,6 +1317,39 @@ impl LaunchService {
             dependencies: None,
             packs: None,
         })
+    }
+
+    /// `ghostingStockOf(gameId, installed)`: имена cfg сборки Ghosting (`ghostingmod/cfg` из
+    /// files.json установленной версии) — их `sync_config_in` в эпизод не берёт. `None` — манифест
+    /// недоступен, идут только autoexec и config.
+    fn ghosting_stock_of(&self, game_id: &str, installed: &Value) -> Option<Vec<String>> {
+        let version = installed.get("version").map(js::to_string);
+        let manifest = self
+            .delivery()
+            .and_then(|delivery| delivery.files_manifest_for(game_id, version.as_deref()));
+        match manifest {
+            Ok(manifest) => Some(
+                manifest
+                    .get("files")
+                    .and_then(Value::as_array)
+                    .into_iter()
+                    .flatten()
+                    .filter_map(|file| {
+                        let path = js::to_string(file.get("path").unwrap_or(&Value::Null));
+                        let name = path.to_lowercase();
+                        let name = name.strip_prefix("ghostingmod/cfg/")?;
+                        (!name.is_empty() && !name.contains('/')).then(|| name.to_owned())
+                    })
+                    .collect(),
+            ),
+            Err(error) => {
+                self.inner.logger.warn(&format!(
+                    "[launch] список cfg сборки Ghosting недоступен: {}",
+                    error.message
+                ));
+                None
+            }
+        }
     }
 
     /// `prepareConfigs(gameId, installed, config, settings)`: файл игрока на запуске не

@@ -7,7 +7,9 @@ cbuffer GlobalParams: register(b0) {
     float subpixel_enhanced_contrast;
     uint is_bgr;
     float depth_scale;
-    uint2 global_pad;
+    // HLSR: радиус скругления углов окна в физических px (0 — без маски).
+    float window_corner_radius;
+    uint global_pad;
 };
 
 cbuffer BatchParams: register(b1) {
@@ -541,7 +543,15 @@ QuadFragmentInput quad_vertex(uint vertex_id: SV_VertexID, uint instance_id: SV_
     }
 
     float2 unit_vertex = float2(float(vertex_id & 1u), 0.5 * float(vertex_id & 2u));
-    ClippedVertex vertex = clip_to_mask(unit_vertex, quad.bounds, quad.content_mask);
+    // HLSR: сглаживание `saturate(0.5 - outer_sdf)` у фигурных квадов (скругление или рамка)
+    // захватывает 0.5 px снаружи `quad.bounds`; без запаса вершин дробный скролл и правило
+    // top-left обрезают нижний/правый край рамки.
+    Bounds raster_bounds = quad.bounds;
+    if (is_shaped(quad)) {
+        raster_bounds.origin -= float2(0.5, 0.5);
+        raster_bounds.size += float2(1.0, 1.0);
+    }
+    ClippedVertex vertex = clip_to_mask(unit_vertex, raster_bounds, quad.content_mask);
     float4 device_position = to_device_position_impl(vertex.position);
 
     float4 border_color = hsla_to_rgba(quad.border_color);
@@ -583,11 +593,11 @@ float4 quad_fragment(QuadFragmentInput input): SV_Target {
         center_to_point.y < 0.0 ? quad.border_widths.top : quad.border_widths.bottom
     );
 
-    // 0-width borders are reduced so that `inner_sdf >= antialias_threshold`.
-    // The purpose of this is to not draw antialiasing pixels in this case.
+    // 0-width borders are reduced so that `inner_sdf >= antialias_threshold` even in the
+    // +0.5 px outer antialiasing fringe.
     float2 reduced_border = float2(
-        border.x == 0.0 ? -antialias_threshold : border.x,
-        border.y == 0.0 ? -antialias_threshold : border.y
+        border.x == 0.0 ? -2.0 * antialias_threshold : border.x,
+        border.y == 0.0 ? -2.0 * antialias_threshold : border.y
     );
 
     // Vector from the corner of the quad bounds to the point, after mirroring
@@ -604,19 +614,13 @@ float4 quad_fragment(QuadFragmentInput input): SV_Target {
         corner_center_to_point.y >= 0.0;
 
     // Vector from straight border inner corner to point.
-    //
-    // 0-width borders are turned into width -1 so that inner_sdf is > 1.0 near
-    // the border. Without this, antialiasing pixels would be drawn.
     float2 straight_border_inner_corner_to_point = corner_to_point + reduced_border;
 
-    // Whether the point is beyond the inner edge of the straight border
-    bool is_beyond_inner_straight_border =
-        straight_border_inner_corner_to_point.x > 0.0 ||
-        straight_border_inner_corner_to_point.y > 0.0;
-
     // Whether the point is far enough inside the quad, such that the pixels are
-    // not affected by the straight border.
+    // not affected by the outer edge or the straight border.
     bool is_within_inner_straight_border =
+        corner_to_point.x < -antialias_threshold &&
+        corner_to_point.y < -antialias_threshold &&
         straight_border_inner_corner_to_point.x < -antialias_threshold &&
         straight_border_inner_corner_to_point.y < -antialias_threshold;
 
@@ -632,24 +636,28 @@ float4 quad_fragment(QuadFragmentInput input): SV_Target {
     // border. It is negative outside this edge (within the border), and
     // positive inside.
     //
-    // This is not always an accurate signed distance:
-    // * The rounded portions with varying border width use an approximation of
-    //   nearest-point-on-ellipse.
-    // * When it is quickly known to be outside the edge, -1.0 is used.
+    // HLSR: у равной рамки `-(outer_sdf + reduced_border.x)` — точное расстояние по всему
+    // скруглённому углу (прежний скачок в -1.0 при `straight_border_inner > 0` давал яркую
+    // ступеньку на стыке прямой и дуги при дробном скролле).
     float inner_sdf = 0.0;
-    if (corner_center_to_point.x <= 0.0 || corner_center_to_point.y <= 0.0) {
+    if (border.x == 0.0 && border.y == 0.0) {
+        inner_sdf = 1.0;
+    } else if (corner_center_to_point.x <= 0.0 || corner_center_to_point.y <= 0.0) {
         // Fast paths for straight borders
         inner_sdf = -max(straight_border_inner_corner_to_point.x,
                         straight_border_inner_corner_to_point.y);
-    } else if (is_beyond_inner_straight_border) {
-        // Fast path for points that must be outside the inner edge
-        inner_sdf = -1.0;
     } else if (reduced_border.x == reduced_border.y) {
-        // Fast path for circular inner edge.
+        // Exact circular inner edge.
         inner_sdf = -(outer_sdf + reduced_border.x);
     } else {
         float2 ellipse_radii = max(float2(0.0, 0.0), float2(corner_radius, corner_radius) - reduced_border);
-        inner_sdf = quarter_ellipse_sdf(corner_center_to_point, ellipse_radii);
+        if (ellipse_radii.x <= 0.0 || ellipse_radii.y <= 0.0
+            || straight_border_inner_corner_to_point.x >= antialias_threshold
+            || straight_border_inner_corner_to_point.y >= antialias_threshold) {
+            inner_sdf = -1.0;
+        } else {
+            inner_sdf = quarter_ellipse_sdf(corner_center_to_point, ellipse_radii);
+        }
     }
 
     // Negative when inside the border
@@ -968,7 +976,16 @@ ShadowFragmentInput shadow_vertex(uint vertex_id: SV_VertexID, uint instance_id:
     uint shadow_id = batch_start_index + instance_id;
     Shadow shadow = shadows[shadow_id];
 
-    ClippedVertex vertex = clip_to_mask(unit_vertex, shadow.bounds, shadow.content_mask);
+    // HLSR: inset-тени и чёткие кольца (`blur_radius == 0`, например 1 px `ring()`) сглаживаются
+    // через `saturate(0.5 - sdf)` на полпикселя наружу от `shadow.bounds`; расширяем геометрию
+    // до `clip_to_mask`, чтобы при дробных координатах нижний и правый края кольца не срезались.
+    Bounds raster_bounds = shadow.bounds;
+    if (shadow.inset != 0u || shadow.blur_radius == 0.) {
+        raster_bounds.origin -= float2(0.5, 0.5);
+        raster_bounds.size += float2(1.0, 1.0);
+    }
+
+    ClippedVertex vertex = clip_to_mask(unit_vertex, raster_bounds, shadow.content_mask);
     float4 device_position = to_device_position_impl(vertex.position);
     float4 color = hsla_to_rgba(shadow.color);
 
@@ -1335,6 +1352,8 @@ struct PolychromeSpriteFragmentInput {
     float4 position: SV_Position;
     float2 tile_position: POSITION;
     nointerpolation float opacity: TEXCOORD1;
+    // HLSR: границы центров крайних текселей тайла в атласе (без протекания соседей при Linear).
+    nointerpolation float4 tile_uv_bounds: TEXCOORD2;
 };
 
 StructuredBuffer<PolychromeSprite> poly_sprites: register(t1);
@@ -1346,6 +1365,11 @@ PolychromeSpriteFragmentInput polychrome_sprite_vertex(uint vertex_id: SV_Vertex
     ClippedVertex vertex = clip_to_mask(unit_vertex, sprite.bounds, sprite.content_mask);
     float4 device_position = to_device_position_impl(vertex.position);
     float2 tile_position = to_tile_position(vertex.unit_vertex, sprite.tile);
+    float2 atlas_size;
+    t_sprite.GetDimensions(atlas_size.x, atlas_size.y);
+    float2 tile_origin = float2(sprite.tile.bounds.origin);
+    float2 tile_size = float2(sprite.tile.bounds.size);
+    float2 half_texel = min(float2(0.5, 0.5), tile_size * 0.5);
 
     PolychromeSpriteFragmentInput output;
     output.position = device_position;
@@ -1353,11 +1377,16 @@ PolychromeSpriteFragmentInput polychrome_sprite_vertex(uint vertex_id: SV_Vertex
     bool simple = !has_rounded_corners(sprite.corner_radii) && sprite.grayscale == 0u;
     output.sprite_id = sprite_id | (simple ? SIMPLE_PRIMITIVE_FLAG : 0u);
     output.opacity = sprite.opacity;
+    output.tile_uv_bounds = float4(
+        (tile_origin + half_texel) / atlas_size,
+        (tile_origin + tile_size - half_texel) / atlas_size
+    );
     return output;
 }
 
 float4 polychrome_sprite_fragment(PolychromeSpriteFragmentInput input): SV_Target {
-    float4 color = t_sprite.Sample(s_sprite, input.tile_position);
+    float2 uv = clamp(input.tile_position, input.tile_uv_bounds.xy, input.tile_uv_bounds.zw);
+    float4 color = t_sprite.Sample(s_sprite, uv);
     if ((input.sprite_id & SIMPLE_PRIMITIVE_FLAG) != 0u) {
         return float4(color.rgb, color.a * input.opacity);
     }
@@ -1423,4 +1452,38 @@ float4 color_fragment(float4 position: SV_Position): SV_Target {
     // Округление до 8 бит своё: преобразование видеокарты в UNORM допускает 0,6 ULP, и у
     // значений с дробью около 0,5 уходит вниз.
     return round(float4(encoded * color.a, color.a) * 255.0) / 255.0;
+}
+
+/*
+**
+**              HLSR: сглаженная маска 4 скруглённых углов окна
+**
+*/
+
+float4 window_corner_mask_vertex(uint vertex_id: SV_VertexID, uint instance_id: SV_InstanceID): SV_Position {
+    float2 unit = float2(float(vertex_id & 1u), 0.5 * float(vertex_id & 2u));
+    float r = window_corner_radius;
+    float2 extent = min(float2(r + 2.0, r + 2.0), global_viewport_size * 0.5);
+    bool right = (instance_id & 1u) != 0u;
+    bool bottom = (instance_id & 2u) != 0u;
+    float2 origin = float2(
+        right ? global_viewport_size.x - extent.x : 0.0,
+        bottom ? global_viewport_size.y - extent.y : 0.0
+    );
+    return to_device_position_impl(origin + unit * extent);
+}
+
+float4 window_corner_mask_fragment(float4 position: SV_Position): SV_Target {
+    float r = window_corner_radius;
+    Bounds bounds;
+    bounds.origin = float2(0.0, 0.0);
+    bounds.size = global_viewport_size;
+    Corners radii;
+    radii.top_left = r;
+    radii.top_right = r;
+    radii.bottom_right = r;
+    radii.bottom_left = r;
+    float distance = quad_sdf(position.xy, bounds, radii);
+    float mask = saturate(0.5 - distance);
+    return float4(0.0, 0.0, 0.0, mask);
 }

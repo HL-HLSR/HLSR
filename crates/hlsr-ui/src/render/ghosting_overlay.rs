@@ -465,11 +465,47 @@ struct Part {
     add: Vec<f32>,
 }
 
+/// Квадрат канала 0..255 для масок HUD (`hud.png`): таблица экономит 4× памяти без потери точности.
+static SQ_LUT: std::sync::LazyLock<[f32; 256]> = std::sync::LazyLock::new(|| {
+    std::array::from_fn(|v| ((v as f64 / 255.0).powi(2)) as f32)
+});
+
 /// Маски HUD (`hud.png`): квадрат канала, `Float32Array`.
-struct HudMasks {
-    glow: Vec<f32>,
-    shade: Vec<f32>,
-    plate: Vec<f32>,
+/// Для стокового `hud.png` хранятся исходные байты `[r, g, b]` (4,1 МиБ вместо 16,5 МиБ),
+/// а для `condensedMasks` — произвольные веса `f32`.
+enum HudMasks {
+    Stock(Vec<[u8; 3]>),
+    Custom {
+        glow: Vec<f32>,
+        shade: Vec<f32>,
+        plate: Vec<f32>,
+    },
+}
+
+impl HudMasks {
+    #[inline]
+    fn glow(&self, i: usize) -> f32 {
+        match self {
+            HudMasks::Stock(data) => SQ_LUT[usize::from(data[i][0])],
+            HudMasks::Custom { glow, .. } => glow[i],
+        }
+    }
+
+    #[inline]
+    fn shade(&self, i: usize) -> f32 {
+        match self {
+            HudMasks::Stock(data) => SQ_LUT[usize::from(data[i][1])],
+            HudMasks::Custom { shade, .. } => shade[i],
+        }
+    }
+
+    #[inline]
+    fn plate(&self, i: usize) -> f32 {
+        match self {
+            HudMasks::Stock(data) => SQ_LUT[usize::from(data[i][2])],
+            HudMasks::Custom { plate, .. } => plate[i],
+        }
+    }
 }
 
 /// Ракурс оружия: вершины `[x, глубина, z, u, v]` (f32), треугольники и текстура.
@@ -583,19 +619,12 @@ impl OverlayRenderer {
     fn hud(&mut self) -> Result<&HudMasks, RasterError> {
         if self.hud.is_none() {
             let sheet = decode("hud")?;
-            let size = sheet.pixels().len();
-            let mut masks = HudMasks {
-                glow: Vec::with_capacity(size),
-                shade: Vec::with_capacity(size),
-                plate: Vec::with_capacity(size),
-            };
-            let sq = |v: u8| ((f64::from(v) / 255.0).powi(2)) as f32;
-            for p in sheet.pixels() {
-                masks.glow.push(sq(p.red()));
-                masks.shade.push(sq(p.green()));
-                masks.plate.push(sq(p.blue()));
-            }
-            self.hud = Some(masks);
+            let data: Vec<[u8; 3]> = sheet
+                .pixels()
+                .iter()
+                .map(|p| [p.red(), p.green(), p.blue()])
+                .collect();
+            self.hud = Some(HudMasks::Stock(data));
         }
         Ok(self.hud.as_ref().expect("маски HUD"))
     }
@@ -774,23 +803,24 @@ impl OverlayRenderer {
                     }
                     let i = (sy * FRAME_WIDTH as i32 + sx) as usize;
                     let p = if plate {
-                        f64::from(masks.plate[i])
+                        f64::from(masks.plate(i))
                     } else {
                         0.0
                     };
-                    let keep = masks.glow[i] > 0.0 && glyph(sx, sy);
+                    let glow_v = masks.glow(i);
+                    let keep = glow_v > 0.0 && glyph(sx, sy);
                     if p == 0.0 && !keep {
                         continue;
                     }
                     let g = if keep {
-                        f64::from(masks.glow[i]) * gain
+                        f64::from(glow_v) * gain
                     } else {
                         0.0
                     };
                     part.where_.push(((y - y0) * width + (x - x0)) as usize);
                     let m = (1.0 - p)
                         * if keep {
-                            1.0 - js::math::min(1.0, f64::from(masks.shade[i]) * shade)
+                            1.0 - js::math::min(1.0, f64::from(masks.shade(i)) * shade)
                         } else {
                             1.0
                         };
@@ -967,7 +997,12 @@ impl OverlayRenderer {
         let stock = self.hud()?;
         let size = FRAME_WIDTH as usize * FRAME_HEIGHT as usize;
         let k = CONDENSED_ALPHA / STOCK_ALPHA;
-        let mut m = HudMasks {
+        struct CustomMasks {
+            glow: Vec<f32>,
+            shade: Vec<f32>,
+            plate: Vec<f32>,
+        }
+        let mut m = CustomMasks {
             glow: vec![0.0; size],
             shade: vec![0.0; size],
             plate: vec![0.0; size],
@@ -981,21 +1016,21 @@ impl OverlayRenderer {
             }
         };
         let stock_of = |id: &str| ELEMENTS.iter().find(|e| e.id == id).expect("элемент HUD");
-        let copy_glyphs = |m: &mut HudMasks, rect: [i32; 4], dx: i32, dy: i32| {
+        let copy_glyphs = |m: &mut CustomMasks, rect: [i32; 4], dx: i32, dy: i32| {
             visit(rect, &mut |x, y, i| {
                 let (tx, ty) = (x + dx, y + dy);
                 if tx < 0 || ty < 0 || tx >= fw || ty >= fh {
                     return;
                 }
                 let j = (ty * fw + tx) as usize;
-                m.glow[j] = m.glow[j].max((f64::from(stock.glow[i]) * k).min(1.0) as f32);
-                m.shade[j] = m.shade[j].max((f64::from(stock.shade[i]) * k).min(1.0) as f32);
+                m.glow[j] = m.glow[j].max((f64::from(stock.glow(i)) * k).min(1.0) as f32);
+                m.shade[j] = m.shade[j].max((f64::from(stock.shade(i)) * k).min(1.0) as f32);
             });
         };
         // Плашка здоровья стандартного HUD: углы как есть, середина тянется.
         let source = stock_of("health").plate;
         let corner = 10;
-        let slice = |m: &mut HudMasks, target: [i32; 4]| {
+        let slice = |m: &mut CustomMasks, target: [i32; 4]| {
             let map = |v: i32, t0: i32, t1: i32, p0: i32, p1: i32| {
                 if v < t0 + corner {
                     p0 + (v - t0)
@@ -1008,7 +1043,7 @@ impl OverlayRenderer {
             visit(target, &mut |x, y, i| {
                 let sx = map(x, target[0], target[2], source[0], source[2]);
                 let sy = map(y, target[1], target[3], source[1], source[3]);
-                m.plate[i] = m.plate[i].max(stock.plate[(sy * fw + sx) as usize]);
+                m.plate[i] = m.plate[i].max(stock.plate((sy * fw + sx) as usize));
             });
         };
         // Яркость цифр — самая яркая точка цифр здоровья у стандартного HUD.
@@ -1016,9 +1051,10 @@ impl OverlayRenderer {
         visit(
             [source[0] + 90, source[1], source[2], source[3]],
             &mut |_, _, i| {
-                if stock.glow[i] > peak {
-                    peak = stock.glow[i];
-                    peak_shade = stock.shade[i];
+                let g = stock.glow(i);
+                if g > peak {
+                    peak = g;
+                    peak_shade = stock.shade(i);
                 }
             },
         );
@@ -1053,7 +1089,7 @@ impl OverlayRenderer {
         };
         // Цифры в маску: scanlines 2 у HudNumbers мода — каждая вторая строка ячейки тусклее.
         let digits_mask =
-            |m: &mut HudMasks, text: &str, at: Digits, bold: bool, scanlines: bool| {
+            |m: &mut CustomMasks, text: &str, at: Digits, bold: bool, scanlines: bool| {
                 let (_, baseline, font) = metrics(at.tall, bold);
                 let pad = 4i32;
                 let width = canvas_text::layout(text, &font).width;
@@ -1121,9 +1157,9 @@ impl OverlayRenderer {
 
         let timer = stock_of("timer");
         visit(timer.bbox, &mut |_, _, i| {
-            m.glow[i] = stock.glow[i];
-            m.shade[i] = stock.shade[i];
-            m.plate[i] = stock.plate[i];
+            m.glow[i] = stock.glow(i);
+            m.shade[i] = stock.shade(i);
+            m.plate[i] = stock.plate(i);
         });
         let mut elements = vec![timer.clone()];
         for def in condensed_defs() {
@@ -1139,7 +1175,7 @@ impl OverlayRenderer {
             let mut plate = def.plate;
             if def.stock_plate {
                 plate = Some(e.plate);
-                visit(e.bbox, &mut |_, _, i| m.plate[i] = stock.plate[i]);
+                visit(e.bbox, &mut |_, _, i| m.plate[i] = stock.plate(i));
             } else if let Some(p) = plate {
                 slice(&mut m, p);
             }
@@ -1177,7 +1213,11 @@ impl OverlayRenderer {
         }
         self.condensed = Some(Condensed {
             family: family.to_owned(),
-            masks: m,
+            masks: HudMasks::Custom {
+                glow: m.glow,
+                shade: m.shade,
+                plate: m.plate,
+            },
             elements,
         });
         Ok(self.condensed.as_ref().expect("маски мода"))

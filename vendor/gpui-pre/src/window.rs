@@ -1240,6 +1240,8 @@ pub struct Window {
     text_system: Rc<WindowTextSystem>,
     text_rendering_mode: Rc<Cell<TextRenderingMode>>,
     rem_size: Pixels,
+    /// HLSR: радиус скругления углов окна для финальной сглаженной маски в рендерере.
+    window_corner_radius: Pixels,
     /// The stack of override values for the window's rem size.
     ///
     /// This is used by `with_rem_size` to allow rendering an element tree with
@@ -1252,6 +1254,7 @@ pub struct Window {
     pub(crate) text_style_stack: Vec<TextStyleRefinement>,
     pub(crate) rendered_entity_stack: Vec<EntityId>,
     pub(crate) element_offset_stack: Vec<Point<Pixels>>,
+    subpixel_positions: bool,
     pub(crate) element_opacity: f32,
     pub(crate) content_mask_stack: Vec<ContentMask<Pixels>>,
     pub(crate) requested_autoscroll: Option<Bounds<Pixels>>,
@@ -1263,6 +1266,11 @@ pub struct Window {
     pub(crate) image_cache_stack: Vec<AnyImageCache>,
     pub(crate) rendered_frame: Frame,
     pub(crate) next_frame: Frame,
+    /// HLSR: монотонный номер кадра `Window::draw`; позволяет вложенному `Entity::cached`
+    /// безопасно переиспользовать `prepaint_range`/`paint_range` при перерисовке родительского
+    /// `Entity::cached`, если вложенный вид сам рисовал или переиспользовал кадр ровно на
+    /// предыдущем кадре (`draw_generation - 1`).
+    pub(crate) draw_generation: u64,
     next_hitbox_id: HitboxId,
     pub(crate) next_tooltip_id: TooltipId,
     pub(crate) tooltip_bounds: Option<TooltipBounds>,
@@ -2296,8 +2304,10 @@ impl Window {
             Box::new(move || {
                 handle
                     .update(&mut cx, |_, window, _cx| {
+                        let point = window.platform_window.mouse_position();
+                        let hit_test = window.rendered_frame.hit_test(point);
                         for (area, hitbox) in &window.rendered_frame.window_control_hitboxes {
-                            if window.mouse_hit_test.ids.contains(&hitbox.id) {
+                            if hit_test.ids.contains(&hitbox.id) {
                                 return Some(*area);
                             }
                         }
@@ -2403,6 +2413,7 @@ impl Window {
             text_system,
             text_rendering_mode: cx.text_rendering_mode.clone(),
             rem_size: px(16.),
+            window_corner_radius: Pixels::ZERO,
             rem_size_override_stack: SmallVec::new(),
             viewport_size: content_size,
             layout_engine: Some(TaffyLayoutEngine::new()),
@@ -2411,6 +2422,7 @@ impl Window {
             text_style_stack: Vec::new(),
             rendered_entity_stack: Vec::new(),
             element_offset_stack: Vec::new(),
+            subpixel_positions: false,
             content_mask_stack: Vec::new(),
             element_opacity: 1.0,
             requested_autoscroll: None,
@@ -2418,6 +2430,7 @@ impl Window {
             focused_text_input: None,
             rendered_frame: Frame::new(DispatchTree::new(cx.keymap.clone(), cx.actions.clone())),
             next_frame: Frame::new(DispatchTree::new(cx.keymap.clone(), cx.actions.clone())),
+            draw_generation: 0,
             next_frame_callbacks,
             next_hitbox_id: HitboxId(0),
             next_tooltip_id: TooltipId::default(),
@@ -2531,6 +2544,11 @@ impl Window {
                 break;
             }
         }
+    }
+
+    /// HLSR: задать радиус скругления углов окна для однопроходной сглаженной маски альфы.
+    pub fn set_window_corner_radius(&mut self, radius: Pixels) {
+        self.window_corner_radius = radius.max(Pixels::ZERO);
     }
 
     pub(crate) fn refresh_visibility(&mut self, cx: &mut App) {
@@ -3647,6 +3665,9 @@ impl Window {
     #[inline]
     fn snap_bounds(&self, bounds: Bounds<Pixels>) -> Bounds<ScaledPixels> {
         let scale_factor = self.scale_factor();
+        if self.subpixel_positions {
+            return bounds.scale(scale_factor);
+        }
         let left = round_to_device_pixel(bounds.left().0, scale_factor);
         let top = round_to_device_pixel(bounds.top().0, scale_factor);
         let right = round_to_device_pixel(bounds.right().0, scale_factor).max(left);
@@ -3795,6 +3816,7 @@ impl Window {
         if self.platform_window.prepare_frame() {
             self.refresh();
         }
+        self.draw_generation = self.draw_generation.wrapping_add(1);
         self.invalidate_entities();
         cx.entities.clear_accessed();
         debug_assert!(self.rendered_entity_stack.is_empty());
@@ -3865,6 +3887,8 @@ impl Window {
 
         self.layout_engine.as_mut().unwrap().clear();
         self.text_system().finish_frame();
+        self.next_frame.scene.window_corner_radius =
+            self.window_corner_radius.scale(self.scale_factor());
         self.next_frame.finish(&mut self.rendered_frame);
 
         self.invalidator.set_phase(DrawPhase::Focus);
@@ -4583,6 +4607,22 @@ impl Window {
         result
     }
 
+    /// Keep the translated positions of a moving subtree between device pixels.
+    pub fn with_subpixel_positions<R>(
+        &mut self,
+        enable: bool,
+        f: impl FnOnce(&mut Self) -> R,
+    ) -> R {
+        self.invalidator.debug_assert_paint_or_prepaint();
+        if !enable || self.subpixel_positions {
+            return f(self);
+        }
+        let previous = std::mem::replace(&mut self.subpixel_positions, true);
+        let result = f(self);
+        self.subpixel_positions = previous;
+        result
+    }
+
     pub(crate) fn with_element_opacity<R>(
         &mut self,
         opacity: Option<f32>,
@@ -4915,6 +4955,48 @@ impl Window {
         let result = f(self);
         self.next_frame.scene.pop_layer();
         result
+    }
+
+    /// HLSR: отрисовать поддерево с преобразованием сцены: масштабированием `scale` вокруг
+    /// `origin` (px окна), сдвигом `offset` (px окна) и прозрачностью `opacity`. Раскладка,
+    /// кэш шрифтов и кэш видов (`Entity::cached`) при этом не срываются.
+    pub fn with_paint_transform<R>(
+        &mut self,
+        offset: Point<Pixels>,
+        origin: Point<Pixels>,
+        scale: f32,
+        opacity: f32,
+        f: impl FnOnce(&mut Self) -> R,
+    ) -> R {
+        self.invalidator.debug_assert_paint();
+        let identity = offset.is_zero() && (scale - 1.0).abs() <= f32::EPSILON && opacity >= 1.0;
+        if identity {
+            return f(self);
+        }
+        let scale_factor = self.scale_factor();
+        let origin_s = origin.scale(scale_factor);
+        let offset_s = offset.scale(scale_factor);
+        let translate = Point::new(
+            ScaledPixels(origin_s.x.0 * (1.0 - scale) + offset_s.x.0),
+            ScaledPixels(origin_s.y.0 * (1.0 - scale) + offset_s.y.0),
+        );
+        let outer_mask = self.snapped_content_mask().bounds;
+        self.next_frame.scene.push_paint_transform(crate::scene::PaintTransform {
+            scale,
+            translate,
+            opacity: opacity.clamp(0.0, 1.0),
+            outer_mask,
+        });
+        let result = f(self);
+        self.next_frame.scene.pop_paint_transform();
+        result
+    }
+
+    /// HLSR: логическая рамка `bounds` после активных преобразований `with_paint_transform`.
+    pub fn paint_transform_bounds(&self, bounds: Bounds<Pixels>) -> Bounds<Pixels> {
+        self.next_frame
+            .scene
+            .transform_bounds(bounds, self.scale_factor())
     }
 
     /// Paint the drop (non-inset) shadows from `shadows` into the scene at the current
@@ -5434,18 +5516,36 @@ impl Window {
             }),
         };
 
-        let Some(tile) =
+        let Some(mut tile) =
             self.sprite_atlas
                 .get_or_insert_with(params.clone().into(), &mut || {
                     let Some((size, bytes)) = cx.svg_renderer.render_alpha_mask(&params, data)?
                     else {
                         return Ok(None);
                     };
-                    Ok(Some((size, Cow::Owned(bytes))))
+                    // The linear sampler reaches past a tile boundary when an SVG is
+                    // rotated or scaled. Reserve transparent texels inside the allocation
+                    // so that neighboring sprites cannot bleed into the mask.
+                    let width = size.width.0 as usize;
+                    let padded_size = size.map(|value| value + DevicePixels::from(2));
+                    let stride = padded_size.width.0 as usize;
+                    let mut padded = vec![0; stride * padded_size.height.0 as usize];
+                    for (row, target) in bytes
+                        .chunks_exact(width)
+                        .zip(padded.chunks_exact_mut(stride).skip(1))
+                    {
+                        target[1..1 + width].copy_from_slice(row);
+                    }
+                    Ok(Some((padded_size, Cow::Owned(padded))))
                 })?
         else {
             return Ok(());
         };
+        tile.bounds.origin = tile
+            .bounds
+            .origin
+            .map(|value| value + DevicePixels::from(1));
+        tile.bounds.size = tile.bounds.size.map(|value| value - DevicePixels::from(2));
         let content_mask = self.snapped_content_mask();
         let svg_bounds = Bounds {
             origin: bounds.center()
@@ -5458,9 +5558,12 @@ impl Window {
                 .size
                 .map(|value| ScaledPixels(value.0 as f32 / SMOOTH_SVG_SCALE_FACTOR)),
         };
-        let final_bounds = svg_bounds
-            .map_origin(|value| ScaledPixels(round_half_toward_zero(value.0)))
-            .map_size(|size| size.ceil());
+        let aligned = if self.subpixel_positions {
+            svg_bounds
+        } else {
+            svg_bounds.map_origin(|value| ScaledPixels(round_half_toward_zero(value.0)))
+        };
+        let final_bounds = aligned.map_size(|size| size.ceil());
 
         let sprite = MonochromeSprite {
             order: 0,
@@ -5722,8 +5825,12 @@ impl Window {
             .unwrap()
             .layout_bounds(layout_id, scale_factor)
             .map(Into::into);
-        let snapped_offset = self.pixel_snap_point(self.element_offset());
-        bounds.origin += snapped_offset;
+        let offset = self.element_offset();
+        bounds.origin += if self.subpixel_positions {
+            offset
+        } else {
+            self.pixel_snap_point(offset)
+        };
         bounds
     }
 

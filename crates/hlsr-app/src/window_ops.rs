@@ -54,6 +54,21 @@ pub trait FullscreenWindow {
     fn shown(&self) -> bool;
     fn set_bounds(&mut self, bounds: Bounds<Pixels>);
     fn set_zoom(&mut self, zoom: f64);
+    /// Место и размер ставит система (Linux): окно GPUI там не переносится (Wayland место окна
+    /// клиенту не отдаёт), и `set_bounds` растил окно от его места, а не ставил в угол экрана.
+    /// Кнопка шапки — развернуть окно (`xdg_toplevel.set_maximized`,
+    /// `_NET_WM_STATE_MAXIMIZED_*`): рабочая область, панель задач видна, как на Windows; плеер
+    /// «Демо» — полный экран монитора (`set_fullscreen`, `_NET_WM_STATE_FULLSCREEN`). На
+    /// Windows — `false`: окно ставится на цель само.
+    fn native(&self) -> bool {
+        false
+    }
+    /// Попросить систему поставить окно `owner` на его место или вернуть.
+    fn set_native(&mut self, _owner: Owner, _on: bool) {}
+    /// Система держит окно на месте `owner`.
+    fn native_on(&self, _owner: Owner) -> bool {
+        false
+    }
 }
 
 #[derive(Debug, Clone, Copy)]
@@ -64,6 +79,8 @@ struct Saved {
     target: Bounds<Pixels>,
     /// Окно уже встало на цель: дальше любое расхождение — выход силами системы.
     reached: bool,
+    /// Полный экран системы ([`FullscreenWindow::native`]).
+    native: bool,
 }
 
 /// Полный экран окна (`createPlayerFullscreen` 0.4.9, один владелец на окно). Состояние своё:
@@ -107,24 +124,29 @@ impl Fullscreen {
             Some(saved) => (saved.bounds, saved.zoom),
             None => (window.bounds(), window.zoom()),
         };
+        let native = window.native();
         let target = match owner {
             Owner::Launcher => {
+                // Рабочая область; у системы (Linux) — оценка, зум уточнится по ответу
+                // композитора (`window_changed`).
                 let area = window.work_area();
-                window.set_zoom(fill_zoom(Size::new(
-                    f32::from(area.size.width) as u32,
-                    f32::from(area.size.height) as u32,
-                )));
+                window.set_zoom(fill(area.size));
                 area
             }
             Owner::Player => window.screen(),
         };
-        window.set_bounds(target);
+        if native {
+            window.set_native(owner, true);
+        } else {
+            window.set_bounds(target);
+        }
         self.active = Some(Saved {
             owner,
             bounds,
             zoom,
             target,
             reached: false,
+            native,
         });
     }
 
@@ -150,7 +172,16 @@ impl Fullscreen {
         }
         let saved = self.active.as_mut()?;
         if window.shown() {
-            if same(window.bounds(), saved.target) {
+            let placed = if saved.native {
+                window.native_on(saved.owner)
+            } else {
+                same(window.bounds(), saved.target)
+            };
+            if placed {
+                // Развёрнутое системой окно — какого размера дал композитор: раскладка по нему.
+                if saved.native && saved.owner == Owner::Launcher {
+                    window.set_zoom(fill(window.bounds().size));
+                }
                 saved.reached = true;
                 return None;
             }
@@ -166,10 +197,23 @@ impl Fullscreen {
 }
 
 fn restore(saved: &Saved, window: &mut impl FullscreenWindow) {
-    window.set_bounds(saved.bounds);
+    if saved.native {
+        // Прежние место и размер вернёт композитор.
+        window.set_native(saved.owner, false);
+    } else {
+        window.set_bounds(saved.bounds);
+    }
     if saved.owner == Owner::Launcher {
         window.set_zoom(saved.zoom);
     }
+}
+
+/// `fillZoom` для окна размера `size` (логические px).
+fn fill(size: gpui::Size<Pixels>) -> f64 {
+    fill_zoom(Size::new(
+        f32::from(size.width) as u32,
+        f32::from(size.height) as u32,
+    ))
 }
 
 fn same(a: Bounds<Pixels>, b: Bounds<Pixels>) -> bool {
@@ -255,6 +299,28 @@ impl FullscreenWindow for GpuiWindow<'_> {
         self.window.set_rem_size(scale::rem_size(zoom));
         self.window.refresh();
     }
+
+    fn native(&self) -> bool {
+        cfg!(not(windows))
+    }
+
+    fn set_native(&mut self, owner: Owner, on: bool) {
+        // У GPUI только переключатели: по состоянию из последнего ответа композитора.
+        if self.native_on(owner) == on {
+            return;
+        }
+        match owner {
+            Owner::Launcher => self.window.zoom_window(),
+            Owner::Player => self.window.toggle_fullscreen(),
+        }
+    }
+
+    fn native_on(&self, owner: Owner) -> bool {
+        match owner {
+            Owner::Launcher => self.window.is_maximized(),
+            Owner::Player => self.window.is_fullscreen(),
+        }
+    }
 }
 
 /// `isVisible() && !isMinimized()` окна.
@@ -292,10 +358,16 @@ fn fullscreen_owner(cx: &mut App) -> Option<Owner> {
 fn window_changed(window: &mut Window, cx: &mut App) {
     let mut fullscreen = std::mem::take(&mut ops(cx).fullscreen);
     let gone = fullscreen.window_changed(&mut GpuiWindow { window, cx });
+    let visible = shown(window);
     ops(cx).fullscreen = fullscreen;
     if let Some(owner) = gone {
         tracing::info!("[window] полный экран снят окном");
         emit(cx, owner.changed_event(), json!(false));
+        // Сняли у видимого окна (стащили с развёрнутого, Win+↓) — выбор пользователя; свернуть и
+        // спрятать в трей выбор не меняют.
+        if owner == Owner::Launcher && visible {
+            remember_fullscreen(cx, false);
+        }
     }
 }
 
@@ -307,6 +379,60 @@ pub fn watch(handle: WindowHandle<LauncherRoot>, cx: &mut App) {
         window
             .observe_window_visibility(|_, window, cx| window_changed(window, cx))
             .detach();
+    });
+}
+
+/// Файл в папке данных: полный экран кнопки шапки (F11) — следующий запуск откроется так же.
+/// Окно открывается всегда по центру основного монитора (`center: true` 0.4.9), место не
+/// помнится.
+const STATE_FILE: &str = "window-state.json";
+
+fn state_file(cx: &App) -> Option<std::path::PathBuf> {
+    cx.try_global::<hlsr_gpui::shell::root::AppPaths>()
+        .map(|paths| paths.0.file(STATE_FILE))
+}
+
+/// Был ли полный экран кнопки шапки включён при прошлом запуске.
+fn remembered_fullscreen(text: &str) -> bool {
+    serde_json::from_str::<Value>(text).is_ok_and(|state| state["fullscreen"] == json!(true))
+}
+
+/// Запомнить выбор пользователя: полный экран кнопки шапки включён или нет.
+fn remember_fullscreen(cx: &mut App, on: bool) {
+    let Some(path) = state_file(cx) else { return };
+    let old = std::fs::read_to_string(&path).ok();
+    if old.is_some_and(|text| remembered_fullscreen(&text) == on) {
+        return;
+    }
+    let bytes = json!({"fullscreen": on}).to_string();
+    if let Err(error) = hlsr_core::json_store::write_file_atomic(&path, bytes.as_bytes()) {
+        tracing::warn!("[window] полный экран не запомнен: {error}");
+    }
+}
+
+/// Запуск: окно было в полном экране кнопки шапки — вернуть, интерфейсу — новое состояние.
+/// Со второго кадра окна: сначала окно встаёт по центру (KWin ставит окно, когда оно показано),
+/// иначе развёрнутое до показа окно не знает своего обычного места и выход из полного экрана
+/// оставлял его в углу рабочей области.
+pub fn restore_fullscreen(cx: &mut App) {
+    let on = state_file(cx)
+        .and_then(|path| std::fs::read_to_string(path).ok())
+        .is_some_and(|text| remembered_fullscreen(&text));
+    let Some(handle) = launcher(cx).filter(|_| on) else {
+        return;
+    };
+    let _ = handle.update(cx, |_, window, _| {
+        window.on_next_frame(|window, _| {
+            window.on_next_frame(|_, cx| {
+                // Вне обновления окна: `set_fullscreen` само обновляет окно.
+                cx.defer(|cx| {
+                    if set_fullscreen(cx, Owner::Launcher, true) {
+                        tracing::info!("[window] полный экран с прошлого запуска");
+                        emit(cx, Owner::Launcher.changed_event(), json!(true));
+                    }
+                });
+            });
+        });
     });
 }
 
@@ -338,10 +464,14 @@ pub fn window_command(cx: &mut App, command: Option<&Value>) -> Value {
                 return json!({"ok": true, "fullscreen": false});
             }
             let on = fullscreen_owner(cx).is_none();
-            json!({"ok": true, "fullscreen": set_fullscreen(cx, Owner::Launcher, on)})
+            let now = set_fullscreen(cx, Owner::Launcher, on);
+            remember_fullscreen(cx, now);
+            json!({"ok": true, "fullscreen": now})
         }
         Some("fullscreen-exit") => {
-            json!({"ok": true, "fullscreen": set_fullscreen(cx, Owner::Launcher, false)})
+            let now = set_fullscreen(cx, Owner::Launcher, false);
+            remember_fullscreen(cx, now);
+            json!({"ok": true, "fullscreen": now})
         }
         Some("fullscreen-state") => {
             json!({"ok": true, "fullscreen": fullscreen_owner(cx) == Some(Owner::Launcher)})
@@ -422,7 +552,7 @@ pub fn set_bounds(window: &mut Window, cx: &App, bounds: Bounds<Pixels>) {
     #[cfg(windows)]
     win32::set_bounds(window, cx, bounds);
     // shortcut: у GPUI на Linux нет переноса окна — только размер (центр при смене масштаба не
-    // сохраняется, полный экран не встаёт в угол рабочей области); проверить на Linux (V4).
+    // сохраняется); полный экран на Linux — силами системы (`FullscreenWindow::native`).
     #[cfg(not(windows))]
     {
         let _ = cx;
@@ -580,6 +710,16 @@ mod linux {
 
 #[cfg(test)]
 mod tests {
+    #[test]
+    fn remembered_fullscreen_is_only_an_explicit_true() {
+        use super::remembered_fullscreen;
+        assert!(remembered_fullscreen(r#"{"fullscreen":true}"#));
+        assert!(!remembered_fullscreen(r#"{"fullscreen":false}"#));
+        assert!(!remembered_fullscreen(r#"{"fullscreen":"true"}"#));
+        assert!(!remembered_fullscreen("{}"));
+        assert!(!remembered_fullscreen("не json"));
+    }
+
     use super::*;
     use gpui::{point, size};
 
@@ -656,6 +796,106 @@ mod tests {
         // Выход без полного экрана — ничего.
         assert!(!fullscreen.set(Owner::Launcher, false, &mut window));
         assert_eq!(window.sets.len(), 2);
+    }
+
+    /// Окно, чей полный экран ставит система (Linux): просьба — в журнал, состояние — когда
+    /// «композитор ответил» ([`Native::configure`]).
+    struct Native {
+        inner: Fake,
+        asked: Vec<bool>,
+        on: bool,
+    }
+
+    impl Native {
+        fn configure(&mut self) {
+            if let Some(&on) = self.asked.last() {
+                self.on = on;
+                // Развёрнуто: рабочая область, которую знает композитор (панель — 40 px снизу).
+                self.inner.bounds = if on {
+                    rect(0., 0., 1920., 1040.)
+                } else {
+                    rect(360., 202., 1200., 676.)
+                };
+            }
+        }
+    }
+
+    impl FullscreenWindow for Native {
+        fn bounds(&self) -> Bounds<Pixels> {
+            self.inner.bounds
+        }
+        fn work_area(&self) -> Bounds<Pixels> {
+            self.inner.work_area()
+        }
+        fn screen(&self) -> Bounds<Pixels> {
+            self.inner.screen()
+        }
+        fn zoom(&self) -> f64 {
+            self.inner.zoom
+        }
+        fn shown(&self) -> bool {
+            self.inner.shown
+        }
+        fn set_bounds(&mut self, bounds: Bounds<Pixels>) {
+            self.inner.set_bounds(bounds);
+        }
+        fn set_zoom(&mut self, zoom: f64) {
+            self.inner.zoom = zoom;
+        }
+        fn native(&self) -> bool {
+            true
+        }
+        fn set_native(&mut self, _owner: Owner, on: bool) {
+            if self.on != on {
+                self.asked.push(on);
+            }
+        }
+        fn native_on(&self, _owner: Owner) -> bool {
+            self.on
+        }
+    }
+
+    #[test]
+    fn on_linux_the_compositor_maximizes_the_window_with_the_taskbar_visible() {
+        let mut window = Native {
+            inner: Fake::new(),
+            asked: Vec::new(),
+            on: false,
+        };
+        let mut fullscreen = Fullscreen::default();
+        assert!(fullscreen.set(Owner::Launcher, true, &mut window));
+        // Окно само не двигается и не растёт: просьба системе, раскладка — по рабочей области.
+        assert!(window.inner.sets.is_empty());
+        assert_eq!(window.asked, vec![true]);
+        assert!((window.inner.zoom - 1040. / 900.).abs() < 1e-9);
+        // Ответ композитора ещё не пришёл — это не выход.
+        assert_eq!(fullscreen.window_changed(&mut window), None);
+        // Пришёл: раскладка — по размеру, который дал композитор.
+        window.configure();
+        window.inner.bounds = rect(0., 0., 1920., 1032.);
+        assert_eq!(fullscreen.window_changed(&mut window), None);
+        assert!(fullscreen.active(Owner::Launcher));
+        assert!((window.inner.zoom - 1032. / 900.).abs() < 1e-9);
+
+        // Выход кнопкой: просьба системе, зум прежний; место вернёт композитор.
+        assert!(!fullscreen.set(Owner::Launcher, false, &mut window));
+        assert_eq!(window.asked, vec![true, false]);
+        assert_eq!(window.inner.zoom, 0.75);
+        assert!(window.inner.sets.is_empty());
+
+        // Вход и выход силами системы (клавиша композитора): интерфейсу — `changed(false)`.
+        window.configure();
+        assert!(fullscreen.set(Owner::Launcher, true, &mut window));
+        window.configure();
+        assert_eq!(fullscreen.window_changed(&mut window), None);
+        window.on = false;
+        assert_eq!(
+            fullscreen.window_changed(&mut window),
+            Some(Owner::Launcher)
+        );
+        assert_eq!(window.inner.zoom, 0.75);
+        // Система уже вышла — второй просьбы нет.
+        assert_eq!(window.asked, vec![true, false, true]);
     }
 
     #[test]

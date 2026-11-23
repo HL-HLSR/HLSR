@@ -60,6 +60,8 @@ pub struct FriendsPanel {
     generation: u64,
     search: Option<(Entity<TextInput>, Subscription)>,
     scroll: Scroll,
+    /// Окно видимости списка (`crate::rows`).
+    rows: crate::rows::Rows,
     pictures: Pictures,
     /// Центр панели в слое на всё окно — точка опоры `l-pop` (у 0.4.9 переход у самой `.friends`).
     origin: Origin,
@@ -96,6 +98,7 @@ impl FriendsPanel {
             generation: 0,
             search: None,
             scroll: Scroll::default(),
+            rows: Default::default(),
             pictures,
             origin: Origin::CENTER,
             height: Rc::default(),
@@ -297,115 +300,144 @@ impl FriendsPanel {
                 .child(fa_glyph("fas fa-search", 11.))
                 .child(div().flex_1().min_w_0().child(input))
         });
-        let mut rows: Vec<AnyElement> = Vec::new();
-        if view.loading {
-            rows.push(
-                div()
-                    .my(u(12.))
-                    .mx(u(8.))
-                    .child(spinner(12.5, faint))
-                    .into_any_element(),
-            );
-        }
+        let loading = view.loading.then(|| {
+            div()
+                .my(u(12.))
+                .mx(u(8.))
+                .child(spinner(12.5, faint))
+                .into_any_element()
+        });
         let hint_label = tr("#L_RUNNER_FRIENDS_HLSR");
-        for (index, entry) in view.entries.iter().enumerate() {
-            match entry.kind {
-                "title" => rows.push(
-                    div()
-                        .flex()
-                        .gap(u(7.))
-                        .py(u(8.))
-                        .px(u(12.))
-                        .my(u(5.))
-                        .text_px(11., 18.)
-                        .font_weight(FontWeight::BOLD)
-                        .text_color(dim)
-                        .child(entry.text.clone())
-                        .child(div().text_color(faint).child(entry.count.to_string()))
-                        .into_any_element(),
-                ),
-                "note" => rows.push(
-                    div()
-                        .my(u(12.))
-                        .mx(u(8.))
-                        .text_px(12.5, 18.75)
-                        .text_color(faint)
-                        .child(entry.text.clone())
-                        .into_any_element(),
-                ),
-                _ => {
-                    let photo = ImageSource::parse(&entry.avatar).and_then(|source| {
-                        let (w, h) = device_size(window, 32., 32.);
-                        let request =
-                            ImageRequest::new(source, SCOPE).with_target(w, h, Fit::Cover);
-                        self.pictures.get(request, window, cx).and_then(Result::ok)
-                    });
-                    let avatar = div()
-                        .flex_none()
-                        .size(u(32.))
-                        .rounded(u(8.))
-                        .overflow_hidden()
-                        .flex()
-                        .items_center()
-                        .justify_center()
-                        .bg(white(0.06))
-                        .map(|el| match photo {
-                            Some(photo) => el.child(
-                                img(photo)
-                                    .size_full()
-                                    .rounded(u(8.))
-                                    .object_fit(ObjectFit::Cover),
-                            ),
-                            None => el.child(
-                                div()
-                                    .text_px(14., 16.)
-                                    .font_weight(FontWeight::BOLD)
-                                    .text_color(faint)
-                                    .child(entry.letter.clone()),
-                            ),
+        // Окно видимости (`crate::rows`): строятся записи у видимой области; запись — в обёртке,
+        // чтобы её поля (`my`, `mt`) входили в замеренную рамку.
+        let keys = view
+            .entries
+            .iter()
+            .enumerate()
+            .map(|(index, entry)| format!("{index}:{}:{}", entry.kind, entry.id))
+            .collect();
+        let slots = self.rows.plan(&self.scroll, keys, 0., window, cx);
+        let mut rows: Vec<AnyElement> = Vec::new();
+        for slot in slots {
+            let index = match slot {
+                crate::rows::Slot::Row(index) => index,
+                crate::rows::Slot::Space(height) => {
+                    rows.push(div().flex_none().h(height).into_any_element());
+                    continue;
+                }
+            };
+            let entry = &view.entries[index];
+            let mut cell: Vec<AnyElement> = Vec::new();
+            {
+                let rows = &mut cell;
+                match entry.kind {
+                    "title" => rows.push(
+                        div()
+                            .flex()
+                            .gap(u(7.))
+                            .py(u(8.))
+                            .px(u(12.))
+                            .my(u(5.))
+                            .text_px(11., 18.)
+                            .font_weight(FontWeight::BOLD)
+                            .text_color(dim)
+                            .child(entry.text.clone())
+                            .child(div().text_color(faint).child(entry.count.to_string()))
+                            .into_any_element(),
+                    ),
+                    "note" => rows.push(
+                        div()
+                            .my(u(12.))
+                            .mx(u(8.))
+                            .text_px(12.5, 18.75)
+                            .text_color(faint)
+                            .child(entry.text.clone())
+                            .into_any_element(),
+                    ),
+                    _ => {
+                        let photo = ImageSource::parse(&entry.avatar).and_then(|source| {
+                            let (w, h) = device_size(window, 32., 32.);
+                            let request =
+                                ImageRequest::new(source, SCOPE).with_target(w, h, Fit::Cover);
+                            self.pictures.get(request, window, cx).and_then(Result::ok)
                         });
-                    let id = entry.id.clone();
-                    let in_hlsr = entry.in_hlsr.then(|| {
-                        div()
-                            .id(("friend-hlsr", index))
-                            .ml_auto()
-                            .text_color(theme.color("accent"))
-                            .tip(hint_label.clone())
-                            .child(fa_glyph("fas fa-check-circle", 12.))
-                    });
-                    rows.push(
-                        div()
-                            .id(("friend", index))
-                            .role(Role::Button)
-                            .button_text()
-                            .when(entry.gap, |el| el.mt(u(2.)))
+                        let avatar = div()
+                            .flex_none()
+                            .size(u(32.))
+                            .rounded(u(8.))
+                            .overflow_hidden()
                             .flex()
                             .items_center()
-                            .gap(u(12.))
-                            .p(u(8.))
-                            // `border: 1px solid transparent`.
-                            .border_1()
-                            .border_color(gpui::transparent_black())
-                            .rounded(u(radius_sm))
-                            .cursor_pointer()
-                            .on_click(cx.listener(move |this, _, _, cx| this.open_profile(&id, cx)))
-                            .child(avatar)
-                            .child(
-                                div()
-                                    .flex_1()
-                                    .min_w_0()
-                                    .text_px(13., 16.)
-                                    .text_color(dim)
-                                    .overflow_hidden()
-                                    .whitespace_nowrap()
-                                    .text_ellipsis()
-                                    .child(entry.text.clone()),
-                            )
-                            .children(in_hlsr)
-                            .into_any_element(),
-                    );
+                            .justify_center()
+                            .bg(white(0.06))
+                            .map(|el| match photo {
+                                Some(photo) => el.child(
+                                    img(photo)
+                                        .size_full()
+                                        .rounded(u(8.))
+                                        .object_fit(ObjectFit::Cover),
+                                ),
+                                None => el.child(
+                                    div()
+                                        .text_px(14., 16.)
+                                        .font_weight(FontWeight::BOLD)
+                                        .text_color(faint)
+                                        .child(entry.letter.clone()),
+                                ),
+                            });
+                        let id = entry.id.clone();
+                        let in_hlsr = entry.in_hlsr.then(|| {
+                            div()
+                                .id(("friend-hlsr", index))
+                                .ml_auto()
+                                .text_color(theme.color("accent"))
+                                .tip(hint_label.clone())
+                                .child(fa_glyph("fas fa-check-circle", 12.))
+                        });
+                        rows.push(
+                            div()
+                                .id(("friend", index))
+                                .role(Role::Button)
+                                .button_text()
+                                .when(entry.gap, |el| el.mt(u(2.)))
+                                .flex()
+                                .items_center()
+                                .gap(u(12.))
+                                .p(u(8.))
+                                // `border: 1px solid transparent`.
+                                .border_1()
+                                .border_color(gpui::transparent_black())
+                                .rounded(u(radius_sm))
+                                .cursor_pointer()
+                                .on_click(
+                                    cx.listener(move |this, _, _, cx| this.open_profile(&id, cx)),
+                                )
+                                .child(avatar)
+                                .child(
+                                    div()
+                                        .flex_1()
+                                        .min_w_0()
+                                        .text_px(13., 16.)
+                                        .text_color(dim)
+                                        .overflow_hidden()
+                                        .whitespace_nowrap()
+                                        .text_ellipsis()
+                                        .child(entry.text.clone()),
+                                )
+                                .children(in_hlsr)
+                                .into_any_element(),
+                        );
+                    }
                 }
             }
+            rows.push(
+                div()
+                    .flex()
+                    .flex_col()
+                    .flex_none()
+                    .children(cell)
+                    .into_any_element(),
+            );
         }
         let (edge, control, topbar) = (
             theme.len("l-edge-pad"),
@@ -467,7 +499,12 @@ impl FriendsPanel {
                 .bar(Bar::Thin)
                 .flex_1()
                 .min_h_0()
-                .child(div().p(u(8.)).flex().flex_col().children(rows)),
+                .child(
+                    div().p(u(8.)).flex().flex_col().children(loading).child(
+                        self.rows
+                            .measure(&self.scroll, div().flex().flex_col().children(rows)),
+                    ),
+                ),
         )
         .into_any_element()
     }

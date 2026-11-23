@@ -12,7 +12,7 @@
 
 use super::achievements::AchievementsTab;
 use super::neon::{COMPLETE, SUBSCRIBER, neon};
-use super::overview::{Overview, overview};
+use super::overview::OverviewTab;
 use super::runner_settings::RunnerSettingsTab;
 use crate::dialogs::welcome::consent_text;
 use crate::icons::{fa_glyph, icon, spinner};
@@ -24,7 +24,6 @@ use crate::layer::{MenuNav, Modal, listen};
 use crate::motion::{SLIDE_NEXT, SLIDE_PREV, Timing, hover, mix, swap};
 use crate::paint::{ring, shadow};
 use crate::scale::{u, viewport, zoom};
-use crate::scroll::{Bar, Scroll, ScrollArea};
 use crate::shell::root::ShellContext;
 use crate::text::{MONO, TextExt};
 use crate::theme::Theme;
@@ -95,13 +94,20 @@ pub struct ProfileModal {
     slide_next: bool,
     pub(super) more: MenuNav,
     pub(super) more_anchor: Rc<Cell<Bounds<Pixels>>>,
-    scrolls: [Scroll; 3],
+    hide_steam_id: bool,
     pub(super) pictures: Pictures,
     pub(super) language: Language,
     pub(super) wall: WallClock,
     pub(super) tr: Tr,
+    /// Кэш снимка `ProfileState::view(...)`: бегущий неон и анимированный ник/рамка перерисовывают
+    /// окно 240 раз в секунду, не трогая данные профиля — пересчитывать 40 достижений на каждый
+    /// кадр не нужно.
+    view_cache: Option<Rc<ProfileView>>,
+    view_rev: u64,
+    overview: Entity<OverviewTab>,
     achievements: Entity<AchievementsTab>,
     settings: Entity<RunnerSettingsTab>,
+    settings_attached: (Option<u64>, bool),
     vote_note: Option<Task<()>>,
     success: Option<Task<()>>,
     _events: Task<()>,
@@ -156,17 +162,43 @@ impl ProfileModal {
             slide_next: true,
             more: MenuNav::default(),
             more_anchor: Rc::default(),
-            scrolls: Default::default(),
+            hide_steam_id: false,
             pictures,
             language,
             wall: WallClock::system(),
             tr: tr_for(language),
+            view_cache: None,
+            view_rev: 0,
+            overview: cx.new(|_| OverviewTab::new()),
             achievements: cx.new(|cx| AchievementsTab::new(services, cx)),
             settings: cx.new(|cx| RunnerSettingsTab::new(services, cx)),
+            settings_attached: (None, false),
             vote_note: None,
             success: None,
             _events: events,
         }
+    }
+
+    pub(super) fn invalidate_view(&mut self) {
+        self.view_cache = None;
+        self.view_rev = self.view_rev.wrapping_add(1);
+    }
+
+    pub(super) fn view_rev(&self) -> u64 {
+        self.view_rev
+    }
+
+    pub(super) fn view_snapshot(&self) -> Option<Rc<ProfileView>> {
+        self.view_cache.clone()
+    }
+
+    fn current_view(&mut self) -> Rc<ProfileView> {
+        if let Some(cached) = &self.view_cache {
+            return cached.clone();
+        }
+        let view = Rc::new(self.state.borrow().view(self.language, &self.wall, &self.tr));
+        self.view_cache = Some(view.clone());
+        view
     }
 
     fn flows(cx: &App) -> Option<ShellFlows> {
@@ -209,10 +241,14 @@ impl ProfileModal {
                 };
                 self.slide_next = true;
                 self.more = MenuNav::default();
-                self.scrolls = Default::default();
+                self.hide_steam_id = hide;
+                self.overview.update(cx, |tab, _| tab.reset_scroll());
+                self.achievements.update(cx, |tab, _| tab.reset_scroll());
+                self.settings.update(cx, |tab, _| tab.reset_scroll());
                 self.vote_note = None;
                 self.success = None;
                 self.key = Some(key);
+                self.invalidate_view();
                 let effects = self.state.borrow_mut().load();
                 self.run(effects, cx);
                 if !self.modal.is_open() {
@@ -225,9 +261,17 @@ impl ProfileModal {
             self.more.hide();
             self.vote_note = None;
             self.success = None;
+            self.invalidate_view();
             self.modal.close(window, cx);
         }
+        self.notify_tabs(cx);
         cx.notify();
+    }
+
+    fn notify_tabs(&self, cx: &mut Context<Self>) {
+        gpui::App::notify(cx, self.overview.entity_id());
+        gpui::App::notify(cx, self.achievements.entity_id());
+        gpui::App::notify(cx, self.settings.entity_id());
     }
 
     /// `$emit("close")`.
@@ -307,6 +351,8 @@ impl ProfileModal {
                 }
             }
         }
+        self.invalidate_view();
+        self.notify_tabs(cx);
         cx.notify();
     }
 
@@ -318,6 +364,7 @@ impl ProfileModal {
                 .await;
             this.update(cx, |this, cx| {
                 done(this);
+                this.invalidate_view();
                 cx.notify();
             })
             .ok();
@@ -430,6 +477,7 @@ impl ProfileModal {
         let agreed = self.state.borrow().consent();
         let on_change = cx.listener(|this, agreed: &bool, _, cx| {
             this.state.borrow_mut().set_consent(*agreed);
+            this.invalidate_view();
             cx.notify();
         });
         crate::snap::target(
@@ -691,22 +739,10 @@ impl ProfileModal {
                         ),
                 )
         });
-        let page = Overview {
-            stats: view.stats.clone(),
-            run: view.run.clone(),
-            own: view.record_empty_own,
-            links: view.links.clone(),
-            stats_title: self.t("#L_PROFILE_STATS"),
-            record_title: self.t("#L_PROFILE_RECORD"),
-            links_title: self.t("#L_PROFILE_LINKS"),
-            no_record: self.t("#L_PROFILE_NO_RECORD"),
-            no_record_own: self.t("#L_PROFILE_NO_RECORD_OWN"),
-            open_run: self.t("#L_PROFILE_OPEN_RUN"),
-        };
+        let overview_tab: AnyView = self.overview.clone().into();
         let achievements: AnyView = self.achievements.clone().into();
         let settings: AnyView = self.settings.clone().into();
-        let scrolls = self.scrolls.clone();
-        let this = cx.weak_entity();
+        let cache = crate::cache::on(cx);
         let section = match (self.section, view.tabs.len()) {
             // У чужого профиля настроек нет.
             (Section::Settings, len) if len < 3 => Section::Profile,
@@ -720,20 +756,22 @@ impl ProfileModal {
             } else {
                 SLIDE_PREV
             },
-            move |section: &Section| {
-                let (index, content): (usize, AnyElement) = match section {
-                    Section::Profile => (0, overview(&page, &theme, zoom, this.clone())),
-                    Section::Achievements => (1, achievements.clone().into_any_element()),
-                    Section::Settings => (2, settings.clone().into_any_element()),
-                };
-                // Цель стенда `profile-body` — прокрутка раздела (колесо в сценах достижений).
-                crate::snap::target(
-                    "profile-body",
-                    ScrollArea::new(("profile-scroll", index), &scrolls[index])
-                        .bar(Bar::Thin)
-                        .size_full()
-                        .child(div().pt(u(28.)).px(u(32.)).pb(u(32.)).child(content)),
-                )
+            move |section: &Section| match section {
+                Section::Profile => crate::cache::cached(
+                    overview_tab.clone(),
+                    gpui::StyleRefinement::default().size_full(),
+                    cache,
+                ),
+                Section::Achievements => crate::cache::cached(
+                    achievements.clone(),
+                    gpui::StyleRefinement::default().size_full(),
+                    cache,
+                ),
+                Section::Settings => crate::cache::cached(
+                    settings.clone(),
+                    gpui::StyleRefinement::default().size_full(),
+                    cache,
+                ),
             },
         )
         .flex_1()
@@ -772,24 +810,30 @@ impl Render for ProfileModal {
             if language != self.language {
                 self.language = language;
                 self.tr = tr_for(language);
+                self.invalidate_view();
+                self.notify_tabs(cx);
             }
         }
-        self.state.borrow_mut().set_hide_steam_id(hide);
+        if hide != self.hide_steam_id {
+            self.hide_steam_id = hide;
+            self.state.borrow_mut().set_hide_steam_id(hide);
+            self.invalidate_view();
+            gpui::App::notify(cx, self.settings.entity_id());
+        }
         let theme = cx.global::<Theme>().clone();
         let zoom = zoom(window);
         let (vw, vh) = viewport(window);
         let compact = vh <= 700.;
-        let view = self
-            .state
-            .borrow()
-            .view(self.language, &self.wall, &self.tr);
+        let view = self.current_view();
         let guest = view.kind != Kind::Main;
         // Вкладка «Настройки» смонтирована, пока окно показывает свой профиль (`v-if`).
         let own = self.modal.is_open() && self.key.is_some() && !guest && view.tabs.len() >= 3;
-        let (generation, active) = (self.generation, self.section == Section::Settings);
-        self.settings.update(cx, |tab, cx| {
-            tab.attach(own.then_some(generation), active, cx)
-        });
+        let attach_key = (own.then_some(self.generation), self.section == Section::Settings);
+        if self.settings_attached != attach_key {
+            self.settings_attached = attach_key;
+            self.settings
+                .update(cx, |tab, cx| tab.attach(attach_key.0, attach_key.1, cx));
+        }
         let width = if view.narrow {
             (vw - 64.).min(560.)
         } else {

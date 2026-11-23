@@ -152,8 +152,11 @@ pub fn run_installer(title: &str, window: Arc<InstallerWindow>) -> Result<(), St
                     false
                 });
                 #[cfg(windows)]
-                if let Some(hwnd) = hlsr_gpui::win32::hwnd(window) {
-                    owner.store(hwnd, Ordering::Release);
+                {
+                    hlsr_gpui::win32::system_corners_off(window);
+                    if let Some(hwnd) = hlsr_gpui::win32::hwnd(window) {
+                        owner.store(hwnd, Ordering::Release);
+                    }
                 }
                 cx.new(|cx| InstallerRoot::new(page, received, cx))
             })
@@ -280,6 +283,8 @@ pub fn snap(file: &str) -> i32 {
                 .open_window(
                     installer_options("HLSR — установка", bounds),
                     move |window, cx| {
+                        #[cfg(windows)]
+                        hlsr_gpui::win32::system_corners_off(window);
                         window.set_rem_size(rem);
                         cx.new(|_| InstallerRoot::fixture(shown))
                     },

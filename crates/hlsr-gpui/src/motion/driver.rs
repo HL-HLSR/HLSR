@@ -1,6 +1,5 @@
 //! Общий элемент движения: состояние живёт между кадрами по id элемента (как у пружин GPUI),
-//! кадры просит только то, что движется, и не чаще общего предела окна — 60 кадров/с по сетке
-//! vsync его монитора ([`monitor_frame`]). Бесконечное движение (`Need::Infinite`) кадров не
+//! кадры просит только то, что движется, и не чаще кадров монитора окна ([`monitor_frame`]). Бесконечное движение (`Need::Infinite`) кадров не
 //! просит, когда [`AnimGate`] его держит или элемент вне видимой области (`content_mask`), а когда
 //! просит — с тем же шагом, что и переходы (своего предела частоты у него нет).
 
@@ -150,14 +149,22 @@ thread_local! {
 }
 
 /// Кадр движения (вместо `request_animation_frame`): текущий вид перерисуется с ближайшим кадром
-/// окна — и переходы, и бесконечное движение. Кадры окна — не чаще 60 в секунду, каждый k-й
-/// vblank его монитора (`gpui::frame_divisor`, решение владельца 19.11). На Windows окно будится
+/// окна — и переходы, и бесконечное движение. Кадры окна — с частотой его монитора
+/// (`gpui::frame_divisor`, решение владельца 22.11; прежде предел 60 к/с). На Windows окно будится
 /// только так (`vendor/gpui-pre-windows`, `HLSR-PATCH.md`); окна на разных мониторах или Linux —
 /// такт композиции, при мониторах разной частоты — самого быстрого, и сетка ниже ([`due`]) держит
-/// кадры окна на том же шаге по монитору окна. И «ещё кадр после раскладки» (рамка
+/// кадры окна на шаге монитора окна. И «ещё кадр после раскладки» (рамка
 /// прошлого кадра, замер) — отсюда же: в покое он идёт со следующим будильником, а пока что-то
 /// движется — с кадром движения. Свой `request_animation_frame` у замера, который меняется
 /// каждый кадр (страница под выдвигающейся колонкой), гнал окно с частотой композиции.
+/// Частота обновления монитора окна, Гц (`None`, если платформа её не сообщает).
+pub fn refresh_hz(window: &Window, cx: &App) -> Option<f32> {
+    window
+        .refresh_interval(cx)
+        .filter(|d| !d.is_zero())
+        .map(|d| 1.0 / d.as_secs_f32())
+}
+
 pub fn monitor_frame(window: &Window) {
     monitor_notify(window, window.current_view());
 }
@@ -180,13 +187,14 @@ pub fn monitor_notify(window: &Window, view: EntityId) {
 }
 
 /// Кадр в `now` при опоре `last` и кадре монитора окна `refresh`: `None` — рано, иначе новая
-/// опора. Шаг сетки — общий предел 60 кадров/с: `gpui::frame_divisor` кадров монитора (на 120 Гц —
-/// 2, на 280 Гц — 5). Будильник окна может идти в такт композиции, а не монитора окна, поэтому
+/// опора. Шаг сетки — `gpui::frame_divisor` кадров монитора (сейчас 1: каждый кадр монитора).
+/// Будильник окна может идти в такт композиции, а не монитора окна, поэтому
 /// допуск в обе стороны — четверть шага, но не больше полкадра монитора (иначе на 280 Гц кадр
 /// вставал бы на будильник раньше нужного): кадр встаёт на ближайший к сетке будильник, опоздание
 /// в допуске сетку не сдвигает (как `FramePacer` GPUI), большее — начинает её заново.
-fn due(now: Instant, last: Option<Instant>, refresh: Duration) -> Option<Instant> {
-    let Some(last) = last else {
+/// Сетки нет (`None`) — кадр на каждый будильник ([`grid`]).
+fn due(now: Instant, last: Option<Instant>, refresh: Option<Duration>) -> Option<Instant> {
+    let (Some(last), Some(refresh)) = (last, refresh) else {
         return Some(now);
     };
     let step = refresh * gpui::frame_divisor(refresh);
@@ -202,13 +210,20 @@ fn due(now: Instant, last: Option<Instant>, refresh: Duration) -> Option<Instant
     })
 }
 
+/// Кадр монитора для сетки [`due`] у окна с кадром монитора `refresh`. Сетка нужна только
+/// Windows: там окно будит DWM в такт самого быстрого монитора. На Linux будильник уже идёт в
+/// такт монитора окна: на Wayland это кадр композитора (`wl_surface.frame`), на X11 — таймер по
+/// режиму монитора (своей частоты у окна там и нет). Сетка там только вредила: на 240 Гц
+/// её допуск — 1 мс, будильник композитора с дрожью больше этого она отбрасывала, а повтор GPUI
+/// на Wayland идёт через 16,7 мс (`FRAME_RETRY_INTERVAL` в gpui-pre-linux) — рывок в четыре кадра.
+fn grid(refresh: Option<Duration>) -> Option<Duration> {
+    refresh.filter(|_| cfg!(windows))
+}
+
 fn chain(window: &Window, id: WindowId) {
     window.on_next_frame(move |window, cx| {
         let now = cx.background_executor().now();
-        // Монитор неизвестен — шаг 1/60 с, без сетки vsync.
-        let refresh = window
-            .refresh_interval(cx)
-            .unwrap_or(Duration::from_secs(1) / 60);
+        let refresh = grid(window.refresh_interval(cx));
         let ready = LANES.with_borrow_mut(|all| {
             let Some(lane) = all.get_mut(&id) else {
                 return Some(Vec::new());
@@ -248,7 +263,7 @@ mod pacing {
     use super::*;
 
     /// Кадры за секунду будильников `wake` у окна на мониторе с кадром `refresh`.
-    fn frames(wake: Duration, refresh: Duration) -> Vec<Instant> {
+    fn frames(wake: Duration, refresh: Option<Duration>) -> Vec<Instant> {
         let start = Instant::now();
         let mut last = None;
         let mut frames = Vec::new();
@@ -269,61 +284,64 @@ mod pacing {
     #[test]
     fn frames_follow_the_window_monitor_not_the_fastest_one() {
         // Будильник окна — 280 Гц (DWM по самому быстрому монитору), окно на мониторе 120 Гц:
-        // 60 кадров, ни один не ближе 3/4 шага к прошлому.
-        let frames = frames(hz(280), hz(120));
-        assert!((57..=61).contains(&frames.len()), "{}", frames.len());
+        // около 120 кадров, ни один не ближе 3/4 кадра монитора к прошлому.
+        let frames = frames(hz(280), Some(hz(120)));
+        assert!((112..=121).contains(&frames.len()), "{}", frames.len());
         for pair in frames.windows(2) {
-            assert!(pair[1] - pair[0] > Duration::from_micros(12_500));
+            assert!(pair[1] - pair[0] > hz(120) * 3 / 4);
         }
     }
 
-    /// `gpui::frame_divisor` (`vendor/gpui-pre`, его тесты вне workspace не собираются).
+    /// `gpui::frame_divisor` (`vendor/gpui-pre`, его тесты вне workspace не собираются): предела
+    /// нет, окно рисует каждый кадр монитора.
     #[test]
-    fn the_window_draws_every_kth_monitor_frame_up_to_60_per_second() {
-        for (refresh, divisor) in [
-            (30, 1),
-            (60, 1),
-            // Через кадр было бы реже 45 к/с — каждый кадр (кадров чуть больше 60).
-            (61, 1),
-            (75, 1),
-            (88, 1),
-            (90, 2),
-            (100, 2),
-            (120, 2),
-            (125, 2),
-            (135, 3),
-            (144, 3),
-            (165, 3),
-            (240, 4),
-            (280, 5),
-            (360, 6),
-        ] {
-            assert_eq!(gpui::frame_divisor(hz(refresh)), divisor, "{refresh} Гц");
-        }
-        // 59,94 и 60,4 Гц — каждый кадр; 119,88 Гц — каждый второй.
-        for (refresh, divisor) in [(59.94, 1), (60.4, 1), (119.88, 2)] {
-            let frame = Duration::from_secs_f64(1. / refresh);
-            assert_eq!(gpui::frame_divisor(frame), divisor, "{refresh} Гц");
+    fn the_window_draws_every_monitor_frame() {
+        for refresh in [30, 60, 75, 90, 120, 144, 165, 240, 280, 360] {
+            assert_eq!(gpui::frame_divisor(hz(refresh)), 1, "{refresh} Гц");
         }
         assert_eq!(gpui::frame_divisor(Duration::ZERO), 1);
     }
 
     #[test]
-    fn frames_stay_on_the_vsync_grid_up_to_60_per_second() {
-        // Будильник с каждым кадром монитора: кадр — на каждый k-й, ровно.
-        for (refresh, every) in [(60, 1), (120, 2), (144, 3), (165, 3), (240, 4), (280, 5)] {
-            let frames = frames(hz(refresh), hz(refresh));
+    fn frames_stay_on_the_vsync_grid_at_the_monitor_rate() {
+        // Будильник с каждым кадром монитора: кадр — на каждый, ровно.
+        for refresh in [60, 120, 144, 165, 240, 280] {
+            let frames = frames(hz(refresh), Some(hz(refresh)));
             for pair in frames.windows(2) {
-                assert_eq!(pair[1] - pair[0], hz(refresh) * every, "{refresh} Гц");
+                assert_eq!(pair[1] - pair[0], hz(refresh), "{refresh} Гц");
             }
-            assert!(frames.len() <= 61, "{refresh} Гц: {}", frames.len());
+            assert!(
+                frames.len() >= refresh as usize - 1,
+                "{refresh} Гц: {}",
+                frames.len()
+            );
         }
-        // Будильник уже по пределу (Windows: поток vsync будит каждым k-м кадром) — кадр на каждый.
-        let mut last = None;
+    }
+
+    /// Будильник композитора на 240 Гц с дрожью ±1,5 мс: на Linux кадр на каждый будильник, ни
+    /// одного пропуска (пропуск на Wayland — повтор через 16,7 мс).
+    #[cfg(not(windows))]
+    #[test]
+    fn linux_draws_every_compositor_frame_despite_jitter() {
         let start = Instant::now();
-        for tick in 0..60 {
-            let now = start + hz(280) * 5 * tick;
-            last = Some(due(now, last, hz(280)).expect("кадр на каждый будильник"));
+        let mut last = None;
+        let jitter = [0i64, 1500, -1500, 1200, -900, 0, 1500, -1500];
+        for tick in 0..240u32 {
+            let offset = jitter[tick as usize % jitter.len()];
+            let vblank = start + Duration::from_millis(2) + hz(240) * tick;
+            let shift = Duration::from_micros(offset.unsigned_abs());
+            let now = if offset < 0 {
+                vblank - shift
+            } else {
+                vblank + shift
+            };
+            last = Some(due(now, last, grid(Some(hz(240)))).expect("кадр пропущен"));
         }
+    }
+
+    #[test]
+    fn unknown_monitor_draws_on_every_wake() {
+        // X11: частоты окна нет, будильник — таймер по режиму монитора (144 Гц) — кадр на каждый.
+        assert_eq!(frames(hz(144), None).len(), 144);
     }
 }

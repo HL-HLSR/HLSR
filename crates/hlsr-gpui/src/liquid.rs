@@ -1,7 +1,8 @@
 //! Стекло темы Liquid Glass (`launcher.css` 0.4.9, `[data-theme="liquid-glass"]`): окна, всплывающие
-//! панели и «мягкие» кнопки над кадром размывают и преломляют то, что под ними
-//! (`backdrop-filter: blur() url(#lg-refract…) saturate() brightness()`), поверх — подкраска
-//! `--lg-tint`, блик `--lg-sheen`, кромка `--lg-rim` и тень `--lg-shadow`.
+//! панели и «мягкие» кнопки над кадром размывают то, что под ними, и гнут его линзой кромки
+//! (`backdrop-filter: blur() <линза> saturate() brightness()`; линза — эталон 21st.dev вместо шума
+//! `#lg-refract` 0.4.9, `hlsr_ui::render::liquid`), поверх — подкраска `--lg-tint`, блик
+//! `--lg-sheen`, блик кромки, кромка `--lg-rim` и тень `--lg-shadow`.
 //!
 //! Под стеклом на Windows — снимок окна под блоком (патч `vendor/gpui-pre-windows`):
 //! первая тень блока — метка, отрисовка копирует место блока перед ней (кадр, затемнение,
@@ -11,8 +12,8 @@
 //! подложки окон-диалогов (`--l-modal-scrim`, под панелью в окне — и заливка окна); содержимого
 //! страницы там нет (отчёты `docs/gpui/reports/liquid.md`, `polish-backdrop.md`).
 //!
-//! Кусок стекла считает `hlsr_ui::render::liquid::piece_at`: блок, подложка и фильтр → картинка в
-//! CSS px окна (шире блока на две клетки). [`Surface`] — первый ребёнок блока: первый кусок
+//! Кусок стекла считает `hlsr_ui::render::liquid::piece_at`: блок, его скругление, подложка и
+//! фильтр → картинка в CSS px окна (шире блока на две клетки). [`Surface`] — первый ребёнок блока: первый кусок
 //! считает сам в кадре, где блок появился, дальше — в фоновом потоке не чаще [`PACE`]; пока новый
 //! считается, рисует прежний (он едет вместе с блоком) с обрезкой блоком и скруглением.
 //! Одна задача на блок: параллакс не копит очередь. Куски живут в глобале [`LiquidState`] по
@@ -21,7 +22,7 @@
 use crate::layer::Layers;
 use crate::paint::{scrim_alpha, shadow};
 use crate::scale::{zoom, zpx};
-use crate::theme::Theme;
+use crate::theme::{Gradient, Theme};
 use gpui::{
     AnyElement, AnyWindowHandle, App, AppContext as _, Bounds, BoxShadow, Corners, Element,
     ElementId, Global, GlobalElementId, Hsla, InspectorElementId, IntoElement, LayoutId,
@@ -48,16 +49,27 @@ pub const DEMO_FILL: Rgba = Rgba::new(18, 22, 30, 199);
 /// текст `#e3e8ee`, значок вкладки `#c3c9d2` (контраст не ниже 4,5:1, launcher.css 0.4.9).
 pub const NAV_TEXT: u32 = 0xe3e8ee;
 pub const NAV_ICON: u32 = 0xc3c9d2;
-/// Не чаще раза в столько начинается новый кусок одного блока, пока подложка движется
-/// (параллакс, смена кадра или темы): стекло догоняет кадр 30 раз в секунду, готовый кусок ложится
-/// с ближайшим кадром движения окна. Кусок на каждый кадр, как Chromium на видеокарте, — задача на
-/// ЦП на каждый кадр на каждое стекло (замер: +115 % ядра на «Играх» при параллаксе без vsync).
-/// При движении (`piece_cost`, release): окно настроек 8,3 мс × 30/с ≈ 25 % ядра, меню ≈ 4 %; при
-/// прежних 50 мс после готовности и куске 13 мс было ≈ 21 % и 4,4 %.
+/// Запасной интервал обновления куска стекла, если частота монитора окна неизвестна (тесты).
+/// При известной частоте монитора стекло догоняет подложку в такт кадру монитора (`pace_for`),
+/// а `slot.busy` не даёт фоновым задачам копиться в очередь.
 pub const PACE: Duration = Duration::from_millis(33);
-/// Первые куски в потоке окна — не дольше этого за кадр: смена страницы или темы открывает много
-/// блоков разом, остальным первый кусок считает фон (до его готовности — заливка без подложки).
-const SYNC_BUDGET: Duration = Duration::from_millis(6);
+/// Первые куски в потоке окна — не дольше этого за кадр: на 240 Гц бюджет кадра 4,17 мс, так что
+/// смена страницы или темы укладывается в кадр, а остальные и крупные блоки считает фон.
+const SYNC_BUDGET: Duration = Duration::from_micros(1500);
+/// Крупные поверхности (модальные окна, встроенные панели настроек) считаются в фоне сразу:
+/// даже грубый синхронный расчёт такой площади превышает бюджет кадра 240 Гц.
+const SYNC_MAX_AREA: f32 = 120_000.;
+
+fn pace_for(window: &Window, cx: &App) -> Duration {
+    // Размытие и преломление на ЦП + загрузка текстур в атлас GPU: чаще ~30 Гц (`PACE`)
+    // сдвиг размытой подложки не виден, а 240 Гц забивают очередь текстур при смене игр.
+    // Все анимации интерфейса, переходы и параллакс при этом идут на полной частоте монитора.
+    window
+        .refresh_interval(cx)
+        .filter(|d| !d.is_zero())
+        .map(|d| d.max(PACE))
+        .unwrap_or(PACE)
+}
 /// Блок, которого нет в кадре дольше этого, отпускает кусок (открытое снова окно берёт его сразу).
 pub const KEEP: Duration = Duration::from_secs(10);
 /// Подложка стекла — снимок окна под блоком (Windows); со стендом (dev-hooks)
@@ -243,8 +255,22 @@ pub struct Footer {
 }
 
 impl Footer {
+    pub(crate) fn new(rect: Placement, gradient: &Gradient, lead: f32) -> Self {
+        // Угол 0deg — снизу вверх; все темы используют одинаковое направление.
+        debug_assert_eq!(gradient.angle, 0.);
+        Self {
+            rect,
+            stops: gradient
+                .stops
+                .iter()
+                .map(|stop| (stop.pos, bytes(stop.color)))
+                .collect(),
+            lead,
+        }
+    }
+
     /// Цвет слоя в точке окна (CSS px), прямая альфа.
-    fn at(&self, x: f32, y: f32) -> Rgba {
+    pub(crate) fn at(&self, x: f32, y: f32) -> Rgba {
         let r = self.rect;
         let (Some(first), Some(last)) = (self.stops.first(), self.stops.last()) else {
             return Rgba::TRANSPARENT;
@@ -270,25 +296,14 @@ impl Footer {
 }
 
 /// Нижняя панель в кадре: её `::before` (`bounds` — px окна) идёт под стекло этого кадра.
-pub fn footer(cx: &mut App, bounds: Bounds<Pixels>, zoom: f32, theme: &Theme, lead: f32) {
-    if !active(theme) {
-        return;
-    }
+pub(crate) fn footer(cx: &mut App, bounds: Bounds<Pixels>, zoom: f32, fill: &Gradient, lead: f32) {
     // Слой ставится в каждом кадре: панель без кэша видов.
     crate::cache::glass();
-    let gradient = theme.gradient("l-footer-fill");
-    // Угол 0deg — снизу вверх; другой угол в теме не встречается.
-    debug_assert_eq!(gradient.angle, 0.);
-    let stops = gradient
-        .stops
-        .iter()
-        .map(|stop| (stop.pos, bytes(stop.color)))
-        .collect();
-    cx.default_global::<LiquidState>().footers.push(Footer {
-        rect: css_rect(bounds, zoom),
-        stops,
+    cx.default_global::<LiquidState>().footers.push(Footer::new(
+        css_rect(bounds, zoom),
+        fill,
         lead,
-    });
+    ));
 }
 
 impl Under {
@@ -366,11 +381,12 @@ impl PartialEq for Source {
     }
 }
 
-/// Что считать: блок `rect` (CSS px окна) стекла `kind` над `source`.
+/// Что считать: блок `rect` (CSS px окна, скругление `radius` CSS px) стекла `kind` над `source`.
 #[derive(Clone, PartialEq)]
 struct Job {
     source: Source,
     rect: Placement,
+    radius: f32,
     kind: Kind,
     paint: Paint,
     /// Клеток сетки на σ размытия: `SIGMA`, у первого куска блока — `SIGMA_COARSE`.
@@ -389,6 +405,7 @@ impl Job {
                     &image,
                     captured.place,
                     self.rect,
+                    self.radius,
                     self.kind.filter(),
                     self.cells,
                     none,
@@ -438,6 +455,7 @@ impl Job {
             &under.frame,
             under.place,
             self.rect,
+            self.radius,
             self.kind.filter(),
             self.cells,
             top,
@@ -527,6 +545,9 @@ pub struct LiquidState {
     fallback: Option<(FallbackKey, Arc<Rgba8Image>)>,
     /// Слои нижних панелей этого кадра (ставит их `prepaint`, снимаются в начале кадра).
     footers: Vec<Footer>,
+    /// Слои нижних панелей прошлого кадра (сохраняются, пока нижняя панель закэширована под
+    /// открытым модальным окном верхнего слоя).
+    prev_footers: Vec<Footer>,
     slots: HashMap<GlobalElementId, Slot>,
     /// Картинки, ушедшие из показа: освобождаются в атласе на следующем кадре.
     retired: Vec<Arc<RenderImage>>,
@@ -697,11 +718,16 @@ fn fallback_image([scrim, fallback]: &[Vec<Rgba>; 2], view: (f32, f32)) -> Rgba8
 /// ([`Kind::Scrim`]: они есть во всех темах).
 pub fn frame(window: &mut Window, cx: &mut App) {
     let liquid = active(cx.global::<Theme>());
+    let under_modal = crate::motion::AnimGate::get(cx).top_layer > 0;
     if !cx.has_global::<LiquidState>() {
         return;
     }
     let state = cx.global_mut::<LiquidState>();
-    state.footers.clear();
+    if !state.footers.is_empty() {
+        state.prev_footers = std::mem::take(&mut state.footers);
+    } else if !under_modal {
+        state.prev_footers.clear();
+    }
     state.sync = Duration::ZERO;
     if state.retired.is_empty() && state.slots.is_empty() && (liquid || state.under.is_none()) {
         return;
@@ -709,8 +735,8 @@ pub fn frame(window: &mut Window, cx: &mut App) {
     let now = Instant::now();
     let mut gone = std::mem::take(&mut state.retired);
     state.slots.retain(|_, slot| {
-        let keep =
-            (liquid || slot.kind == Kind::Scrim) && now.saturating_duration_since(slot.seen) < KEEP;
+        let keep = (liquid || slot.kind == Kind::Scrim)
+            && (under_modal || now.saturating_duration_since(slot.seen) < KEEP);
         if !keep {
             gone.extend(slot.shown.take().map(|(_, image, _)| image));
         }
@@ -719,9 +745,14 @@ pub fn frame(window: &mut Window, cx: &mut App) {
     if !liquid {
         state.under = None;
         state.fallback = None;
+        state.prev_footers.clear();
     }
+    let dropped = !gone.is_empty();
     for image in gone {
         cx.drop_image(image, Some(window));
+    }
+    if dropped && !liquid {
+        crate::memory::trim_heap_async(cx);
     }
 }
 
@@ -957,6 +988,7 @@ impl Element for Surface {
     ) -> Self::PrepaintState {
         let id = id?.clone();
         let zoom = zoom(window);
+        let pace = pace_for(window, cx);
         let fills = self.fills(cx);
         let state = cx.default_global::<LiquidState>();
         for image in std::mem::take(&mut state.retired) {
@@ -964,11 +996,16 @@ impl Element for Surface {
         }
         // Часы исполнителя: в выпуске — `Instant::now()`, в тестах — управляемые.
         let now = cx.background_executor().now();
+        let under_modal = crate::motion::AnimGate::get(cx).top_layer > 0;
         let state = cx.global_mut::<LiquidState>();
-        let under = state.under.clone().map(|under| Under {
-            footers: state.footers.clone(),
-            ..under
-        });
+        let footers = if !state.footers.is_empty() {
+            state.footers.clone()
+        } else if under_modal {
+            state.prev_footers.clone()
+        } else {
+            Vec::new()
+        };
+        let under = state.under.clone().map(|under| Under { footers, ..under });
         let slot = state.slots.entry(id.clone()).or_insert(Slot {
             kind: self.kind,
             shown: None,
@@ -980,6 +1017,8 @@ impl Element for Surface {
         });
         slot.seen = Instant::now();
         let rect = css_rect(bounds, zoom);
+        // Скругление в CSS px до четверти пикселя: форма линзы кромки.
+        let radius = (f32::from(self.radius.to_pixels(window.rem_size())) / zoom * 4.).round() / 4.;
         // Блок ушёл с места прежнего снимка (прокрутка, другое место) — до нового известные слои.
         let corners = |p: Placement| [p.x, p.y, p.width, p.height];
         slot.captured = backdrop(window, bounds, zoom).or_else(|| {
@@ -997,6 +1036,7 @@ impl Element for Surface {
             .map(|source| Job {
                 source,
                 rect,
+                radius,
                 kind: self.kind,
                 paint: self.kind.paint(self.own),
                 cells: SIGMA,
@@ -1009,15 +1049,15 @@ impl Element for Surface {
                 .shown
                 .as_ref()
                 .is_some_and(|(shown, _, _)| *shown == job);
-            let due = slot.started.map_or(now, |started| started + PACE);
+            let due = slot.started.map_or(now, |started| started + pace);
             if slot.shown.is_none() {
-                // Первый кусок блока — в этом же кадре, в потоке окна: блок (окно, меню, тост)
-                // появляется сразу со стеклом, как `backdrop-filter` с первого кадра. Иначе
-                // первые кадры входа — заливка над резким кадром, а стекло приходит скачком.
-                // Сетка грубая (окно настроек — ~4 мс вместо ~15), точный кусок — сразу в фоне.
-                // Сверх SYNC_BUDGET за кадр — только фон. Подложка во всё окно — сразу в фоне:
-                // в потоке окна её кусок дольше бюджета, а до него видна заливка без размытия.
-                if state.sync < SYNC_BUDGET && self.kind != Kind::Scrim {
+                // Первый кусок небольшого блока — в этом же кадре, в потоке окна: меню, кнопки и
+                // тосты появляются сразу со стеклом. Крупные панели и всё сверх SYNC_BUDGET —
+                // сразу в фоне, чтобы не срывать кадр на 144–240 Гц.
+                if state.sync < SYNC_BUDGET
+                    && self.kind != Kind::Scrim
+                    && rect.width * rect.height <= SYNC_MAX_AREA
+                {
                     let start = Instant::now();
                     let coarse = Job {
                         cells: SIGMA_COARSE,
@@ -1444,6 +1484,7 @@ mod tests {
                         width: 200.,
                         height: 150.,
                     },
+                    radius: 12.,
                     kind: Kind::Soft,
                     paint: Kind::Soft.paint(Rgba::TRANSPARENT),
                     cells: SIGMA,
@@ -1480,15 +1521,11 @@ mod tests {
                 .map(|&(pos, a)| (pos, (a * 255.).round() as u8))
                 .collect();
             assert_eq!(stops, want);
-            let filter = |f: &LiquidFilter| {
+            // Размытие и цвет — из токенов 0.4.9; `url(#lg-refract…)` там — шум, вместо него линза.
+            let filter = |f: &LiquidFilter, refract: &str| {
                 let mut text = format!(
-                    "blur({}px) url(#lg-refract{}) saturate({}%)",
+                    "blur({}px) url(#{refract}) saturate({}%)",
                     f.blur,
-                    if f.refraction.scale > 70. {
-                        "-strong"
-                    } else {
-                        ""
-                    },
                     (f.saturate * 100.).round()
                 );
                 if f.brightness != 1. {
@@ -1496,12 +1533,18 @@ mod tests {
                 }
                 text
             };
-            assert_eq!(theme.css("lg-filter"), Some(filter(&LG_WINDOW).as_str()));
+            assert_eq!(
+                theme.css("lg-filter"),
+                Some(filter(&LG_WINDOW, "lg-refract").as_str())
+            );
             assert_eq!(
                 theme.css("lg-filter-panel"),
-                Some(filter(&LG_PANEL).as_str())
+                Some(filter(&LG_PANEL, "lg-refract-strong").as_str())
             );
-            assert_eq!(theme.css("lg-filter-soft"), Some(filter(&LG_SOFT).as_str()));
+            assert_eq!(
+                theme.css("lg-filter-soft"),
+                Some(filter(&LG_SOFT, "lg-refract-strong").as_str())
+            );
             assert_eq!(
                 theme.css("lg-rim"),
                 Some(

@@ -39,21 +39,33 @@
   висит, как в `compute_wrap_boundaries`. `wrap_line` (мягкий перенос редактора Zed) не менялся.
 - `src/elements/text.rs`, `src/elements/div.rs`: вызовы `to_run` с `rem_size` окна;
   `StyledText::with_default_highlights` окна не знает — разрядку в rem там считает от rem 16 px.
+- `src/scene.rs`, `src/bounds_tree.rs`, `src/path_winding.rs`, `src/window.rs`:
+  - `Window::with_paint_transform` и `Window::paint_transform_bounds` — преобразование примитивов
+    сцены при отрисовке поддерева (сдвиг, равномерный масштаб вокруг точки опоры, прозрачность) с
+    сохранением исходных примитивов в `paint_operations` (переходы `l-slide-*`, `l-pop`,
+    `notif-flow`, `press` идут на частоте монитора без перерастеризации шрифтов и срыва кэша видов
+    `Entity::cached`).
+  - `BoundsTree::reserve_range` и быстрый `Scene::replay` — при повторе закэшированного вида
+    (включая свайп с `PaintTransform`) сохраняются локальные относительные `DrawOrder` примитивов,
+    а в `BoundsTree` делается одна запись на весь вид вместо O(N) вставок по каждому примитиву.
+  - `Scene::window_corner_radius` и `Window::set_window_corner_radius` — передают рендереру радиус
+    скругления окна в физических px для однопроходной сглаженной альфа-маски углов.
+  - `src/view.rs`, `src/window.rs`: `Window::draw_generation` и `ViewElementState::last_painted_frame`
+    заменяют безусловный сброс `window.refreshing = true` при перерисовке родительского
+    `Entity::cached` — вложенный `Entity::cached` (разделы `GameSettings` внутри `GameConfigsPanel`,
+    вкладки `ProfileModal`, превью внутри `GamePersonalization`) переиспользует свой кэш, пока его
+    `prepaint_range`/`paint_range` записаны ровно в предыдущем кадре (`draw_generation - 1`).
 
-## Предел кадров окна
+## Шаг кадров окна
 
-`src/platform.rs`, `frame_divisor(refresh)`: через сколько кадров монитора рисует окно —
-наименьшее целое, при котором кадров не больше 60 в секунду (решение владельца 19.11, «как у
-Discord»; допуск 1 %: монитор 60,4 Гц рисует каждый кадр). Шаг кратен кадру монитора, поэтому
-кадры ровные: 120 и 240 Гц — 60 к/с, 144 Гц — 48, 165 — 55, 280 — 56, 90 и 100 — 45 и 50.
-Ступени, а не точный предел, — следствие кратности, а не отдельное решение владельца, поэтому
-нижний порог 45 к/с (решение агента 19.11, по ревью): если кратный шаг длиннее 1/45 с, он на кадр
-монитора короче и кадров чуть больше 60 — 61–88 Гц рисуют каждый кадр (75 Гц — 75 к/с, а не
-37,5), 122–133 Гц — каждый второй (61–67 к/с). Отступление от 0.4.9: там rAF Chromium рисует с
-частотой монитора без предела (75 Гц — 75, 280 Гц — 280 к/с). Берут его поток vsync
-`gpui-pre-windows` (`vsync.rs`: будит окна каждым k-м vblank) и сетка движения лаунчера
-(`crates/hlsr-gpui/src/motion/driver.rs`). Тест — там же, `motion::driver::pacing` (`cargo test
--p hlsr-gpui --lib pacing`): тесты самого пакета вне workspace не собираются.
+`src/platform.rs`, `frame_divisor(refresh)`: через сколько кадров монитора рисует окно. Сейчас —
+1: окно рисует каждый кадр монитора, как rAF Chromium в 0.4.9 (решение владельца 22.11; прежний
+предел 60 к/с «как у Discord» от 19.11 снят — на 120+ Гц лаунчер был заметно менее плавным).
+Функция оставлена единой точкой: её берут поток vsync `gpui-pre-windows` (`vsync.rs`: будит окна
+каждым k-м vblank) и сетка движения лаунчера (`crates/hlsr-gpui/src/motion/driver.rs`; при
+неизвестной частоте монитора — X11 — сетки нет, кадр на каждый будильник платформы). Тест — там
+же, `motion::driver::pacing` (`cargo test -p hlsr-gpui --lib pacing`): тесты самого пакета вне
+workspace не собираются.
 
 Остальные файлы — как в пакете crates.io (`Cargo.toml` нормализован пакетом, `Cargo.toml.orig`,
 `LICENSE-APACHE`).

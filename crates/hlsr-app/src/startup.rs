@@ -204,11 +204,14 @@ fn launch(
                 .set(&theme_id, accent.as_deref(), false, Instant::now());
             window_ops::set_events(cx, window_services.clone());
             cx.set_global(hlsr_gpui::shell::root::AppPaths(tray_paths.clone()));
-            // Картинки из сети (аватары, новости): загрузчик ПП4 с кешем на диске.
+            // Картинки из сети (аватары, новости) и арты игр: загрузчик ПП4 с кешем на диске.
+            // Предел 48 МиБ (вместо 64): фон + передний план Ghosting/HL2 на 1440p/4K занимают
+            // ~28–31 МиБ и не должны вытеснять друг друга при переключении сцен; ушедшие игры
+            // сразу освобождаются через `Background::release_gone` по области `games/<id>`.
             let env = hlsr_gpui::env::GpuiEnv::new(cx);
-            cx.set_global(hlsr_gpui::image::Pictures::new(
-                hlsr_ui::images::ImageLoader::new(images, &*env),
-            ));
+            let loader = hlsr_ui::images::ImageLoader::new(images, &*env);
+            loader.set_budget(48 * 1024 * 1024);
+            cx.set_global(hlsr_gpui::image::Pictures::new(loader));
             if let Err(error) = window::open_launcher(cx, ui_scale, window_services) {
                 failure.set(Some(error));
                 cx.quit();
@@ -256,6 +259,7 @@ fn after_open(
 ) {
     visibility.watch(launcher, cx);
     window_ops::watch(launcher, cx);
+    window_ops::restore_fullscreen(cx);
     #[cfg(feature = "dev-hooks")]
     {
         if dev_env("HLSR_SMOKE_FULLSCREEN").as_deref() == Some("1") {

@@ -137,6 +137,22 @@ impl CubicBezier {
         }
         self.sample_y(self.solve_t(x))
     }
+
+    /// Скорость изменения значения относительно доли времени.
+    pub fn slope(&self, x: f64) -> f64 {
+        if self.linear {
+            return 1.;
+        }
+        if x <= 0. {
+            return self.start_gradient;
+        }
+        if x >= 1. {
+            return self.end_gradient;
+        }
+        let t = self.solve_t(x);
+        let dy = (3. * self.ay * t + 2. * self.by) * t + self.cy;
+        dy / self.sample_dx(t)
+    }
 }
 
 // ---- Кадр ------------------------------------------------------------------

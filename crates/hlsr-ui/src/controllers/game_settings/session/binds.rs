@@ -319,9 +319,9 @@ impl Session {
     /// `watch everyKeyBound` (`immediate`) клавиатуры, пока она есть у игры: стало «занята вся
     /// схема» — «Пианино» (`unlockPiano`: `runner-secret-unlock`, ошибка не видна).
     pub(super) fn watch_piano(&self) {
-        let every = {
+        let (every, changed) = {
             let state = self.state.borrow();
-            state.binds_game_id.as_deref().map(|game_id| {
+            let every = state.binds_game_id.as_deref().map(|game_id| {
                 let empty = json!({});
                 let saved_read = bind_state::key_binds_from_value(state.key_binds.as_ref());
                 game_keyboard::every_key_bound(
@@ -330,10 +330,14 @@ impl Session {
                     Self::saved_binds(&state, &empty),
                     saved_read.as_ref(),
                 )
-            })
+            });
+            (every, state.piano != every)
         };
+        if !changed {
+            return;
+        }
         let unlock = {
-            let mut state = self.state.borrow_mut();
+            let mut state = self.state.borrow_mut_nav();
             let Some(every) = every else {
                 state.piano = None;
                 return;
@@ -798,12 +802,14 @@ impl Session {
 
     /// Вкладка «Скрипты» перестала быть видна (`watch active`).
     pub(super) fn scripts_left(self: &Rc<Self>) {
-        let playing = {
-            let mut state = self.state.borrow_mut();
-            let playing = state.scripts.playing;
-            let _ = state.scripts.deactivate();
-            playing
+        let (playing, capturing) = {
+            let state = self.state.borrow();
+            (state.scripts.playing, state.scripts.capturing.is_some())
         };
+        if playing || capturing {
+            let mut state = self.state.borrow_mut();
+            let _ = state.scripts.deactivate();
+        }
         if playing {
             self.emit(Event::Video(None));
         }

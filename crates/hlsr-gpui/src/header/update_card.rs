@@ -121,6 +121,7 @@ impl Render for UpdateCard {
         let accent = theme.color("accent");
         let percent = view.percent as f32;
         let visible = view.visible;
+        let notes_scroll = crate::scroll::Scroll::retained("update-card-notes".into(), window, cx);
         let card = move || {
             let later = tr("#L_U_LATER", &[]);
             let head = div()
@@ -217,11 +218,10 @@ impl Render for UpdateCard {
                     )
             });
             let notes = (!view.notes.is_empty()).then(|| {
-                div()
-                    .id("update-card-notes")
+                notes_scroll
+                    .overflow(div().id("update-card-notes"))
                     .mt(u(12.))
                     .max_h(u(96.))
-                    .overflow_y_scroll()
                     .text_px(12., 18.)
                     .text_color(dim)
                     .child(view.notes.clone())

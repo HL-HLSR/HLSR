@@ -425,6 +425,15 @@ fn long_lines_scroll_horizontally_with_the_caret_and_shift_wheel(cx: &mut TestAp
         delta: ScrollDelta::Lines(point(-3., 0.)),
         ..Default::default()
     });
+    cx.executor().advance_clock(Duration::from_micros(4_167));
+    frame(cx);
+    let intermediate = area.read_with(cx, |area, _| area.scroll_x);
+    assert!(
+        intermediate > 0. && intermediate < 3. * line_step(),
+        "{intermediate}"
+    );
+    cx.executor().advance_clock(Duration::from_millis(220));
+    frame(cx);
     let wheeled = area.read_with(cx, |area, _| area.scroll_x);
-    assert!((wheeled - 3. * wheel_step()).abs() < 0.01, "{wheeled}");
+    assert!((wheeled - 3. * line_step()).abs() < 0.01, "{wheeled}");
 }

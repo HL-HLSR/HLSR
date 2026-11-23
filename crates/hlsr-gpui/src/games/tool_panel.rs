@@ -7,22 +7,27 @@
 use super::hero::{subtitle, title};
 use crate::icons::icon;
 use crate::kit::{Look, Tone, button};
-use crate::layer::TipExt;
+use crate::layer::{Layers, TipExt};
+use crate::liquid::Footer;
 use crate::motion::{Timing, hover, mix, tween};
-use crate::paint::{shadow, strips};
+use crate::paint::shadow;
 use crate::scale::{u, viewport, zoom, zpx};
 use crate::shell::root::ShellContext;
 use crate::text::{RUBIK, TextExt, spaced};
-use crate::theme::Theme;
+use crate::theme::{Gradient, Theme};
 use gpui::{
-    App, Context, Div, Font, FontWeight, IntoElement, Render, SharedString, TextRun, Window,
-    canvas, div, font, prelude::*, px, relative, rgba, white,
+    App, Bounds, Context, Corners, Div, Edges, Font, FontWeight, Global, IntoElement, Render,
+    RenderImage, SharedString, TextRun, Window, canvas, div, font, prelude::*, relative, rgba,
+    size, white,
 };
 use hlsr_core::language::Language;
+use hlsr_ui::Rgba8Image;
 use hlsr_ui::controllers::shell_flows::ShellFlows;
 use hlsr_ui::controllers::tool_panel::{self, ToolAction, ToolView};
+use hlsr_ui::render::rail_glass::Placement;
 use hlsr_ui::services::Services;
 use hlsr_ui::tr;
+use std::sync::Arc;
 
 /// Язык и карточка `currentTool`; без оболочки — пустая карточка.
 fn current(cx: &App) -> (Language, ToolView) {
@@ -348,31 +353,100 @@ impl Render for ToolControls {
     }
 }
 
-/// `::before` панели: `--l-footer-fill` (снизу вверх) от низа до `--l-footer-feather` над ней,
-/// слева набирает силу на `--l-footer-lead-in` (`mask-image` 90deg). Маску GPUI не умеет:
-/// полоса нарастания — столбики с шагом прозрачности.
+const FOOTER_TEXTURE_WIDTH: u32 = 256;
+const FOOTER_TEXTURE_HEIGHT: u32 = 64;
+
+fn footer_raster(fill: &Gradient, view_width: f32, lead: f32) -> Rgba8Image {
+    let (width, height) = (FOOTER_TEXTURE_WIDTH, FOOTER_TEXTURE_HEIGHT);
+    let rect = Placement {
+        x: 0.,
+        y: 0.,
+        width: view_width,
+        height: height as f32,
+    };
+    let footer = Footer::new(rect, fill, lead);
+    let mut raster = Rgba8Image::new(width + 2, height + 2);
+    // По краям дублируем тексель, чтобы фильтр атласа брал цвет того же градиента.
+    for (row, pixels) in raster
+        .make_mut_slice()
+        .chunks_exact_mut((width + 2) as usize)
+        .enumerate()
+    {
+        let y = (row.saturating_sub(1) as u32).min(height - 1) as f32 + 0.5;
+        for (col, pixel) in pixels.iter_mut().enumerate() {
+            let x = (col.saturating_sub(1) as u32).min(width - 1) as f32 + 0.5;
+            *pixel = footer.at(x / width as f32 * view_width, y);
+        }
+    }
+    raster
+}
+
+#[derive(Default)]
+struct FooterTexture(Option<(Gradient, f32, Arc<RenderImage>)>);
+
+impl Global for FooterTexture {}
+
+impl FooterTexture {
+    fn image(
+        fill: &Gradient,
+        width: f32,
+        lead: f32,
+        window: &mut Window,
+        cx: &mut App,
+    ) -> Arc<RenderImage> {
+        let texture = &mut cx.default_global::<Self>().0;
+        if let Some((previous, old_width, image)) = texture
+            && previous == fill
+            && *old_width == width
+        {
+            return image.clone();
+        }
+        let image = crate::image::render_image(&footer_raster(fill, width, lead));
+        if let Some((_, _, old)) = texture.replace((fill.clone(), width, image.clone())) {
+            cx.drop_image(old, Some(window));
+        }
+        image
+    }
+}
+
+/// `::before` панели: градиент снизу вверх, умноженный на плавную маску слева.
 pub(crate) fn feather(theme: &Theme, view_width: f32) -> Div {
-    const STEPS: usize = 12;
     // --l-footer-lead-in: clamp(150px, 13vw, 260px).
+    let view_width = view_width.max(1.);
     let lead = (view_width * 0.13).clamp(150., 260.);
     let fill = theme.gradient("l-footer-fill");
-    let column = |left: f32, width: f32| {
-        div()
-            .absolute()
-            .top_0()
-            .bottom_0()
-            .left(u(left))
-            .w(u(width))
-            .children(strips(&fill, px(0.)))
-    };
-    let step = lead / STEPS as f32;
+    let liquid = crate::liquid::active(theme);
     // Liquid Glass: слой идёт под стекло кнопок панели (они рисуются позже в том же кадре).
-    let glass_theme = theme.clone();
-    let under_glass = canvas(
+    let gradient = canvas(
         move |bounds, window, cx| {
-            crate::liquid::footer(cx, bounds, zoom(window), &glass_theme, lead)
+            if liquid {
+                crate::liquid::footer(cx, bounds, zoom(window), &fill, lead);
+            }
+            FooterTexture::image(&fill, view_width, lead, window, cx)
         },
-        |_, _, _, _| {},
+        move |bounds, image, window, cx| {
+            // Размер растра зависит от окна, а видимую область задаёт панель. Её правый
+            // нижний угол совпадает с углом окна и использует тот же радиус.
+            let body = Bounds::new(
+                bounds.origin,
+                size(zpx(zoom(window), view_width), bounds.size.height),
+            );
+            let pad_x = body.size.width / FOOTER_TEXTURE_WIDTH as f32;
+            let pad_y = body.size.height / FOOTER_TEXTURE_HEIGHT as f32;
+            let padded = body.extend(Edges {
+                left: pad_x,
+                right: pad_x,
+                top: pad_y,
+                bottom: pad_y,
+            });
+            let corners = Corners {
+                bottom_right: Layers::radius(cx),
+                ..Default::default()
+            };
+            window
+                .paint_image(bounds, padded, corners, image, 0, false)
+                .ok();
+        },
     )
     .absolute()
     .inset_0();
@@ -382,18 +456,25 @@ pub(crate) fn feather(theme: &Theme, view_width: f32) -> Div {
         .right_0()
         .bottom_0()
         .top(u(-theme.len("l-footer-feather")))
-        .child(under_glass)
-        .children(
-            (0..STEPS)
-                .map(|at| column(at as f32 * step, step).opacity((at as f32 + 0.5) / STEPS as f32)),
-        )
-        .child(
-            div()
-                .absolute()
-                .top_0()
-                .bottom_0()
-                .left(u(lead))
-                .right_0()
-                .children(strips(&fill, px(0.))),
-        )
+        .child(gradient)
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn footer_feathers_without_gaps_before_the_full_fill() {
+        let fill = Theme::new(crate::theme::Table::embedded()).gradient("l-footer-fill");
+        let raster = footer_raster(&fill, 1600., 208.);
+        let stride = raster.width() as usize;
+        let top = &raster.as_slice()[stride..2 * stride];
+        let bottom = &raster.as_slice()[raster.as_slice().len() - 2 * stride..][..stride];
+
+        assert!(bottom[1].a < 5);
+        assert!(bottom[17].a > 100 && bottom[17].a < 130);
+        assert_eq!(bottom[35].a, bottom[stride - 2].a);
+        assert!(bottom[35].a > 240 && top[35].a < 15);
+        assert!(bottom.windows(2).all(|pair| pair[0].a <= pair[1].a));
+    }
 }

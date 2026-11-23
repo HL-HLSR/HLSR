@@ -25,7 +25,7 @@
 //! example, a large rectangle can become nine tiles: four corners, four edges,
 //! and an interior.
 
-use crate::{Bounds, PathCurve, PathTile, Point, ScaledPixels, point};
+use crate::{Bounds, PathCurve, PathTile, Point, ScaledPixels, Size, point};
 use std::cell::RefCell;
 
 /// A tile lists every curve within this distance of its bounds. Any other curve
@@ -59,7 +59,7 @@ impl FastFloat for f32 {
 }
 
 /// A path's curves binned into tiles for one display scale.
-#[derive(Debug, Default)]
+#[derive(Debug, Default, Clone)]
 pub(crate) struct PathTiles {
     bounds: Bounds<ScaledPixels>,
     tiles: Vec<PathTile>,
@@ -85,6 +85,40 @@ impl PathTiles {
 
     pub(crate) fn curves(&self) -> &[PathCurve] {
         &self.curves
+    }
+
+    /// HLSR: равномерное масштабирование и сдвиг запечённых кривых (`PaintTransform`).
+    pub(crate) fn transform(&mut self, scale: f32, translate: Point<ScaledPixels>) {
+        let map_pt = |p: Point<f32>| {
+            point(
+                p.x * scale + translate.x.0,
+                p.y * scale + translate.y.0,
+            )
+        };
+        let scale_vec = |p: Point<f32>| point(p.x * scale, p.y * scale);
+        self.bounds = Bounds::new(
+            point(
+                self.bounds.origin.x * scale + translate.x,
+                self.bounds.origin.y * scale + translate.y,
+            ),
+            Size {
+                width: self.bounds.size.width * scale,
+                height: self.bounds.size.height * scale,
+            },
+        );
+        for tile in &mut self.tiles {
+            tile.top_left = map_pt(tile.top_left);
+            tile.bottom_right = map_pt(tile.bottom_right);
+            tile.reference = map_pt(tile.reference);
+            tile.curves_top_left = map_pt(tile.curves_top_left);
+            tile.curves_bottom_right = map_pt(tile.curves_bottom_right);
+        }
+        for curve in &mut self.curves {
+            curve.p0 = map_pt(curve.p0);
+            curve.p1 = map_pt(curve.p1);
+            curve.a = scale_vec(curve.a);
+            curve.b = scale_vec(curve.b);
+        }
     }
 
     /// Drops the tiles that lie entirely outside `mask`.

@@ -10,7 +10,7 @@ use gpui::{Pixels, Rems, Window, px, rems};
 use hlsr_core::window_size::{self, Layout, Size};
 
 /// Радиус окна (`#app`), px вне зума.
-pub const WINDOW_RADIUS: f32 = 16.;
+pub const WINDOW_RADIUS: f32 = 20.;
 
 /// CSS px макета → rem (16 px при зуме 1).
 pub fn u(css_px: f32) -> Rems {
@@ -49,8 +49,11 @@ pub fn viewport(window: &Window) -> (f32, f32) {
 mod tests {
     use std::path::Path;
 
-    /// Файлы, где `px(` — сама точка перевода CSS px в `Pixels` или вне раскладки.
-    const PX_FILES: &[&str] = &["scale.rs", "text.rs", "paint.rs", "smoke.rs", "main.rs"];
+    /// Файлы, где `px(` — сама точка перевода CSS px в `Pixels` или вне раскладки (окно и мышь
+    /// стенда и профиля кадров).
+    const PX_FILES: &[&str] = &[
+        "scale.rs", "text.rs", "paint.rs", "smoke.rs", "perf.rs", "main.rs",
+    ];
     /// Что можно писать через `px(` везде: линия 1 px, ноль, радиус окна.
     const PX_ALLOWED: &[&str] = &["px(0.)", "px(1.)", "px(WINDOW_RADIUS)"];
 

@@ -10,7 +10,8 @@ use crate::kit::button::{focus_visible, white};
 use crate::kit::{Tab, TabStyle, outline, tabs};
 use crate::layer::{Modal, anchor_probe, listen};
 use crate::motion::{SLIDE_NEXT, SLIDE_PREV, Timing, apply, hover, keyframes, mix, swap};
-use crate::paint::{ring, shadow};
+use crate::paint::{Radial, ring, shadow};
+use crate::rows::{Rows, Slot};
 use crate::scale::{u, viewport, zoom};
 use crate::scroll::{Bar, Scroll, ScrollArea};
 use crate::shell::root::ShellContext;
@@ -19,7 +20,7 @@ use crate::theme::Theme;
 use gpui::prelude::FluentBuilder as _;
 use gpui::{
     AnyElement, App, Bounds, Context, FocusHandle, FontWeight, IntoElement, Pixels, Render, Role,
-    Task, Window, div, prelude::*, px, svg,
+    Task, Window, div, prelude::*, px,
 };
 use hlsr_ui::controllers::shell_flows::ShellFlows;
 use hlsr_ui::controllers::shell_windows::{
@@ -29,6 +30,7 @@ use hlsr_ui::controllers::shell_windows::{
 use hlsr_ui::services::Services;
 use std::cell::Cell;
 use std::rc::Rc;
+use std::time::Instant;
 
 /// Рамка элемента прошлого кадра (px окна).
 type Probe = Rc<Cell<Bounds<Pixels>>>;
@@ -41,8 +43,6 @@ struct Page {
     releases: Vec<Release>,
     notes: Vec<Notes>,
     initial: Option<String>,
-    /// Отсвет текущего и будущего выпуска: рамки карточек по индексу.
-    glow: Vec<Probe>,
     focus: Probe,
 }
 
@@ -56,7 +56,12 @@ pub struct ChangelogModal {
     initial: Option<String>,
     notes: Vec<GameNotes>,
     scrolls: [Scroll; 2],
-    glow: Vec<Probe>,
+    /// Окна видимости страниц (`crate::rows`): прокрутка перерисовывает окно каждый кадр, и без
+    /// окна каждый кадр строил все выпуски и заметки игр.
+    rows: [Rows; 2],
+    /// Когда страница показана (открытие окна, смена вкладки): с этого мгновения карточки
+    /// поднимаются по очереди, и карточка, построенная позже прокруткой, не поднимается заново.
+    shown: [Option<Instant>; 2],
     focus: Probe,
     area: Probe,
     scrolled: bool,
@@ -78,7 +83,8 @@ impl ChangelogModal {
             initial: None,
             notes: Vec::new(),
             scrolls: Default::default(),
-            glow: Vec::new(),
+            rows: Default::default(),
+            shown: [None; 2],
             focus: Rc::default(),
             area: Rc::default(),
             scrolled: false,
@@ -122,7 +128,8 @@ impl ChangelogModal {
             self.slide_next = true;
             self.notes = Vec::new();
             self.scrolls = Default::default();
-            self.glow = self.releases.iter().map(|_| Probe::default()).collect();
+            self.rows = Default::default();
+            self.shown = [Some(cx.background_executor().now()), None];
             self.focus = Probe::default();
             self.scrolled = false;
             let reply = self.services.invoke("game-release-notes-all", Vec::new());
@@ -154,6 +161,7 @@ impl ChangelogModal {
         if tab != self.tab {
             self.slide_next = crate::kit::tabs::direction(self.tab, tab);
             self.tab = tab;
+            self.shown[tab.min(1)] = Some(cx.background_executor().now());
             cx.notify();
         }
     }
@@ -248,10 +256,12 @@ fn badge(text: String, upcoming: bool, theme: &Theme, zoom: f32) -> impl IntoEle
 struct Card {
     id: String,
     index: usize,
-    /// Текущий или будущий: отсвет в углу и кольцо 26 % акцента; рамка — для отсвета.
-    lit: Option<Probe>,
+    /// Текущий или будущий: отсвет в углу и кольцо 26 % акцента.
+    lit: bool,
     /// Выпуск, к которому открыли окно; рамка — для прокрутки.
     focus: Option<Probe>,
+    /// Когда страница показана (начало `l-rise-in` по очереди).
+    since: Option<Instant>,
 }
 
 impl Card {
@@ -271,24 +281,19 @@ impl Card {
             index,
             lit,
             focus,
+            since,
         } = self;
-        // Отсвет `radial-gradient(120% 140% at 100% 0%, акцент 12% → 0 на 60%)` по рамке
-        // прошлого кадра.
-        let glow = lit.as_ref().map(|probe| probe.get()).and_then(|bounds| {
-            let (w, h) = (
-                f32::from(bounds.size.width) / zoom,
-                f32::from(bounds.size.height) / zoom,
-            );
-            (w > 0. && h > 0.).then(|| {
-                svg()
-                    .data(glow_svg(w, h, radius).as_bytes())
-                    .absolute()
-                    .top_0()
-                    .left_0()
-                    .w(u(w))
-                    .h(u(h))
-                    .text_color(accent)
-            })
+        // Отсвет `radial-gradient(120% 140% at 100% 0%, акцент 12% → 0 на 60%)` без `resvg`.
+        let glow = lit.then(|| {
+            Radial {
+                center: (1., 0.),
+                radius: (1.2, 1.4),
+                stops: vec![(0., 0.12), (0.6, 0.)],
+            }
+            .paint_rounded(1., 1., radius, accent)
+            .absolute()
+            .inset_0()
+            .size_full()
         });
         let focused = focus.is_some();
         let inner = format!("{id}-card");
@@ -296,7 +301,7 @@ impl Card {
             gpui::ElementId::Name(id.clone().into()),
             Timing::fast(),
             move |t| {
-                let (bg, shadows) = if lit.is_some() {
+                let (bg, shadows) = if lit {
                     (white(0.03), vec![ring(zoom, 1., mix(border, accent, 0.26))])
                 } else if t > 0. || !focused {
                     (
@@ -319,124 +324,135 @@ impl Card {
                     .bg(bg)
                     .shadow(shadows)
                     .children(glow)
-                    .children(lit.clone().map(anchor_probe))
                     .children(focus.clone().map(anchor_probe))
                     .child(title)
                     .children(body)
             },
         );
-        keyframes(
+        let rise = keyframes(
             gpui::ElementId::Name(id.into()),
             "changelog-release",
             move |frame| apply(div().child(card), frame),
         )
-        .index(index.min(6))
+        .index(index.min(6));
+        match since {
+            Some(at) => rise.since(at),
+            None => rise,
+        }
     }
 }
 
 impl Page {
-    /// Вкладка «Лаунчер»: выпуски лаунчера.
-    fn launcher(&self, theme: &Theme, zoom: f32, current: &str, upcoming: &str) -> Vec<AnyElement> {
-        self.releases
-            .iter()
-            .enumerate()
-            .map(|(index, release)| {
-                let focused = is_focused(self.initial.as_deref(), release);
-                let lit = (release.current || release.upcoming)
-                    .then(|| self.glow.get(index).cloned().unwrap_or_default());
-                let title = div()
-                    .flex()
-                    .flex_wrap()
-                    .items_center()
-                    .gap(u(8.))
-                    .mb(u(12.))
-                    .child(
-                        div()
-                            .min_w_0()
-                            .text_px(16., 24.)
-                            .font_weight(FontWeight::BOLD)
-                            .text_color(theme.color("l-text"))
-                            .child(release.title.clone()),
-                    )
-                    .when(release.current, |el| {
-                        el.child(badge(current.to_owned(), false, theme, zoom))
-                    })
-                    .when(release.upcoming, |el| {
-                        el.child(badge(upcoming.to_owned(), true, theme, zoom))
-                    })
-                    .into_any_element();
-                let body = release
-                    .groups
-                    .iter()
-                    .enumerate()
-                    .map(|(gi, group)| {
-                        div()
-                            .when(gi > 0, |el| el.mt(u(16.)))
-                            .children(group.title.as_deref().map(|t| group_title(t, theme)))
-                            .child(items(&group.items, theme))
-                            .into_any_element()
-                    })
-                    .collect();
-                Card {
-                    id: format!("launcher-{index}"),
-                    index,
-                    lit,
-                    focus: focused.then(|| self.focus.clone()),
-                }
-                .render(title, body, theme, zoom)
-                .into_any_element()
-            })
-            .collect()
-    }
-
-    /// Вкладка «Игры»: заметки сборок по игре и версии (версия — плашкой).
-    fn games(&self, theme: &Theme, zoom: f32) -> Vec<AnyElement> {
-        self.notes
-            .iter()
-            .enumerate()
-            .map(|(index, (title, versions))| {
-                let head = div()
-                    .mb(u(12.))
+    /// Карточка выпуска лаунчера `index` (вкладка «Лаунчер»).
+    fn launcher(
+        &self,
+        index: usize,
+        since: Option<Instant>,
+        theme: &Theme,
+        zoom: f32,
+        current: &str,
+        upcoming: &str,
+    ) -> AnyElement {
+        let release = &self.releases[index];
+        let focused = is_focused(self.initial.as_deref(), release);
+        let lit = release.current || release.upcoming;
+        let title = div()
+            .flex()
+            .flex_wrap()
+            .items_center()
+            .gap(u(8.))
+            .mb(u(12.))
+            .child(
+                div()
+                    .min_w_0()
                     .text_px(16., 24.)
                     .font_weight(FontWeight::BOLD)
                     .text_color(theme.color("l-text"))
-                    .child(title.clone())
-                    .into_any_element();
-                let body = versions
-                    .iter()
-                    .enumerate()
-                    .map(|(vi, (version, list))| {
-                        let chip = div()
-                            .px(u(8.))
-                            .py(u(2.))
-                            .rounded(u(6.))
-                            .bg(white(0.05))
-                            .shadow(vec![ring(zoom, 1., theme.color("l-border"))])
-                            .child(spaced(
-                                version.to_uppercase(),
-                                11.,
-                                16.,
-                                FontWeight::BOLD,
-                                0.04,
-                                theme.color("l-text-dim"),
-                            ));
-                        div()
-                            .when(vi > 0, |el| el.mt(u(16.)))
-                            .child(div().flex().mb(u(8.)).child(chip))
-                            .child(items(list, theme))
-                            .into_any_element()
-                    })
-                    .collect();
-                Card {
-                    id: format!("game-{index}"),
-                    index,
-                    lit: None,
-                    focus: None,
-                }
-                .render(head, body, theme, zoom)
-                .into_any_element()
+                    .child(release.title.clone()),
+            )
+            .when(release.current, |el| {
+                el.child(badge(current.to_owned(), false, theme, zoom))
             })
-            .collect()
+            .when(release.upcoming, |el| {
+                el.child(badge(upcoming.to_owned(), true, theme, zoom))
+            })
+            .into_any_element();
+        let body = release
+            .groups
+            .iter()
+            .enumerate()
+            .map(|(gi, group)| {
+                div()
+                    .when(gi > 0, |el| el.mt(u(16.)))
+                    .children(group.title.as_deref().map(|t| group_title(t, theme)))
+                    .child(items(&group.items, theme))
+                    .into_any_element()
+            })
+            .collect();
+        Card {
+            id: format!("launcher-{index}"),
+            index,
+            lit,
+            focus: focused.then(|| self.focus.clone()),
+            since,
+        }
+        .render(title, body, theme, zoom)
+        .into_any_element()
+    }
+
+    /// Карточка заметок игры `index` (вкладка «Игры»): версии плашками.
+    fn games(&self, index: usize, since: Option<Instant>, theme: &Theme, zoom: f32) -> AnyElement {
+        let (title, versions) = &self.notes[index];
+        let head = div()
+            .mb(u(12.))
+            .text_px(16., 24.)
+            .font_weight(FontWeight::BOLD)
+            .text_color(theme.color("l-text"))
+            .child(title.clone())
+            .into_any_element();
+        let body = versions
+            .iter()
+            .enumerate()
+            .map(|(vi, (version, list))| {
+                let chip = div()
+                    .px(u(8.))
+                    .py(u(2.))
+                    .rounded(u(6.))
+                    .bg(white(0.05))
+                    .shadow(vec![ring(zoom, 1., theme.color("l-border"))])
+                    .child(spaced(
+                        version.to_uppercase(),
+                        11.,
+                        16.,
+                        FontWeight::BOLD,
+                        0.04,
+                        theme.color("l-text-dim"),
+                    ));
+                div()
+                    .when(vi > 0, |el| el.mt(u(16.)))
+                    .child(div().flex().mb(u(8.)).child(chip))
+                    .child(items(list, theme))
+                    .into_any_element()
+            })
+            .collect();
+        Card {
+            id: format!("game-{index}"),
+            index,
+            lit: false,
+            focus: None,
+            since,
+        }
+        .render(head, body, theme, zoom)
+        .into_any_element()
+    }
+
+    /// Карточек на вкладке `tab`.
+    fn len(&self, tab: usize) -> usize {
+        if tab == 0 {
+            self.releases.len()
+        } else {
+            self.notes.len()
+        }
     }
 }
 
@@ -469,15 +485,6 @@ impl Render for ChangelogModal {
             (Self::tr(cx, "#L_CL_TAB_LAUNCHER"), "fas fa-rocket"),
             (Self::tr(cx, "#L_CL_TAB_GAMES"), "fas fa-gamepad"),
         ];
-        // Пока отсвет рисуется по рамке прошлого кадра — ещё кадр после раскладки.
-        let unlit = self
-            .releases
-            .iter()
-            .zip(&self.glow)
-            .any(|(r, probe)| (r.current || r.upcoming) && probe.get().size.width <= px(0.));
-        if unlit && self.tab == 0 && self.modal.is_open() {
-            crate::motion::monitor_notify(window, cx.entity_id());
-        }
         let page = Page {
             releases: self.releases.clone(),
             notes: self
@@ -486,10 +493,18 @@ impl Render for ChangelogModal {
                 .map(|game| (game_title(game), game.versions.clone()))
                 .collect(),
             initial: self.initial.clone(),
-            glow: self.glow.clone(),
             focus: self.focus.clone(),
         };
         let scrolls = self.scrolls.clone();
+        // Окно видимости на обеих вкладках: при свайпе уходящая тоже строится только в окне
+        // видимости, а не целиком на каждом кадре.
+        let active = self.tab.min(1);
+        let rows = self.rows.clone();
+        let plans: [Vec<Slot>; 2] = [0, 1].map(|tab| {
+            let keys = (0..page.len(tab)).map(|index| index.to_string()).collect();
+            rows[tab].plan(&scrolls[tab], keys, 12., window, cx)
+        });
+        let shown = self.shown;
         let area = self.area.clone();
         let page_theme = theme.clone();
         let pages = swap(
@@ -502,24 +517,37 @@ impl Render for ChangelogModal {
             },
             move |tab: &usize| {
                 let theme = &page_theme;
-                let cards = match *tab {
-                    0 => page.launcher(theme, zoom, &current, &upcoming),
-                    _ => page.games(theme, zoom),
+                let tab = (*tab).min(1);
+                let since = shown[tab];
+                let card = |index: usize| match tab {
+                    0 => page.launcher(index, since, theme, zoom, &current, &upcoming),
+                    _ => page.games(index, since, theme, zoom),
                 };
-                ScrollArea::new(("changelog-scroll", *tab), &scrolls[(*tab).min(1)])
+                let cards: Vec<AnyElement> = plans[tab]
+                    .iter()
+                    .map(|slot| match slot {
+                        Slot::Row(index) => card(*index),
+                        Slot::Space(height) => div().flex_none().h(*height).into_any_element(),
+                    })
+                    .collect();
+                let column = div()
+                    .flex()
+                    .flex_col()
+                    .gap(u(12.))
+                    .pt(u(24.))
+                    .px(u(32.))
+                    .pb(u(32.))
+                    .children(cards);
+                let column = if tab == active {
+                    rows[tab].measure(&scrolls[tab], column)
+                } else {
+                    column
+                };
+                ScrollArea::new(("changelog-scroll", tab), &scrolls[tab])
                     .bar(Bar::Thin)
                     .size_full()
-                    .child(
-                        div()
-                            .flex()
-                            .flex_col()
-                            .gap(u(12.))
-                            .pt(u(24.))
-                            .px(u(32.))
-                            .pb(u(32.))
-                            .children(cards),
-                    )
-                    .when(*tab == 0, |el| el.child(anchor_probe(area.clone())))
+                    .child(column)
+                    .when(tab == 0, |el| el.child(anchor_probe(area.clone())))
             },
         )
         .flex_1()
@@ -644,20 +672,4 @@ impl Render for ChangelogModal {
             .render(window, cx, on_close, move || body)
             .into_any_element()
     }
-}
-
-/// Отсвет текущего выпуска `radial-gradient(120% 140% at 100% 0%, акцент 12%, transparent 60%)`
-/// маской SVG в CSS px карточки, со скруглением карточки: у прямоугольной маски угол с самым ярким
-/// отсветом вылез бы за скругление.
-fn glow_svg(w: f32, h: f32, radius: f32) -> String {
-    format!(
-        "<svg xmlns='http://www.w3.org/2000/svg' width='{w}' height='{h}' viewBox='0 0 {w} {h}'>\
-         <radialGradient id='g' gradientUnits='userSpaceOnUse' cx='0' cy='0' r='1' \
-         gradientTransform='matrix({rx} 0 0 {ry} {w} 0)'>\
-         <stop offset='0' stop-color='#fff' stop-opacity='0.12'/>\
-         <stop offset='0.6' stop-color='#fff' stop-opacity='0'/></radialGradient>\
-         <rect width='{w}' height='{h}' rx='{radius}' fill='url(#g)'/></svg>",
-        rx = 1.2 * w,
-        ry = 1.4 * h,
-    )
 }

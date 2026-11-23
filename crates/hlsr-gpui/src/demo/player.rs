@@ -34,7 +34,6 @@ use gpui::{
     FocusHandle, FontWeight, Global, IntoElement, KeyDownEvent, MouseButton, MouseDownEvent,
     MouseMoveEvent, MouseUpEvent, ObjectFit, Pixels, Point, Render, Role, SharedString,
     Subscription, Task, Window, anchored, canvas, deferred, div, img, prelude::*, px, relative,
-    svg,
 };
 use hlsr_core::language::Language;
 use hlsr_ui::controllers::demo_player::{Key, Player, Props, rate_text, volume_at};
@@ -501,23 +500,6 @@ fn fire(services: &Services, on: bool, cx: &App) {
     .detach();
 }
 
-/// Подложка слота `radial-gradient(ellipse at center, rgba(panel, .55), rgba(0, 0, 0, .88))`
-/// над чёрным экраном: цвет панели с прозрачностью .55 → 0 к углам (маска SVG по размеру).
-fn overlay_svg(w: f32, h: f32) -> String {
-    format!(
-        "<svg xmlns='http://www.w3.org/2000/svg' width='{w}' height='{h}' viewBox='0 0 {w} {h}'>\
-         <radialGradient id='g' gradientUnits='userSpaceOnUse' cx='0' cy='0' r='1' \
-         gradientTransform='matrix({rx} 0 0 {ry} {cx} {cy})'>\
-         <stop offset='0' stop-color='#fff' stop-opacity='0.55'/>\
-         <stop offset='1' stop-color='#fff' stop-opacity='0'/></radialGradient>\
-         <rect width='{w}' height='{h}' fill='url(#g)'/></svg>",
-        cx = w / 2.,
-        cy = h / 2.,
-        rx = w / 2. * std::f32::consts::SQRT_2,
-        ry = h / 2. * std::f32::consts::SQRT_2,
-    )
-}
-
 /// Кнопка `.dpl__btn`: 34 px, прозрачная, при наведении — белый .08 и `--l-text`; недоступная
 /// — .4; фокус с клавиатуры — контур 2 px `--l-accent`. `text` — `--text` (скорость): шире, 12,5 px.
 #[allow(clippy::too_many_arguments)]
@@ -617,30 +599,27 @@ impl Render for DemoPlayer {
         );
 
         let overlay = self.props.overlay.clone().map(|overlay| {
-            let bounds = self.screen.get();
-            let (w, h) = (
-                f32::from(bounds.size.width) / zoom,
-                f32::from(bounds.size.height) / zoom,
-            );
-            let backdrop = (w > 0. && h > 0.).then(|| {
-                svg()
-                    .data(overlay_svg(w, h).as_bytes())
-                    .absolute()
-                    .top_0()
-                    .left_0()
-                    .w(u(w))
-                    .h(u(h))
-                    .text_color(theme.color("l-panel-rgb"))
-            });
+            let radius_css = f32::from(radius) / zoom;
+            let backdrop = crate::paint::Radial {
+                center: (0.5, 0.5),
+                radius: (
+                    0.5 * std::f32::consts::SQRT_2,
+                    0.5 * std::f32::consts::SQRT_2,
+                ),
+                stops: vec![(0., 0.55), (1., 0.)],
+            }
+            .paint_rounded_top(1., 1., radius_css, theme.color("l-panel-rgb"))
+            .absolute()
+            .inset_0()
+            .size_full();
             div()
                 .absolute()
                 .inset_0()
                 .rounded_t(radius)
                 .bg(gpui::black().opacity(0.88))
-                .children(backdrop)
+                .child(backdrop)
                 .child(
-                    div()
-                        .id("dpl-overlay")
+                    crate::scroll::overflow_y("dpl-overlay", window, cx)
                         .absolute()
                         .inset_0()
                         // `@click.stop @dblclick.stop`: экран под слотом нажатий не получает.
@@ -649,7 +628,6 @@ impl Render for DemoPlayer {
                         .items_center()
                         .justify_center()
                         .p(u(24.))
-                        .overflow_y_scroll()
                         .child(overlay),
                 )
         });

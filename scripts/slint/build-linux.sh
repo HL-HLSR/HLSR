@@ -42,12 +42,22 @@ net=(--network=host --http-proxy=false)
 # Пути сборки в бинарнике — нейтральные: /opt/cargo (CARGO_HOME контейнера) → /cargo, /src → /hlsr.
 rustflags=$("$repo/scripts/slint/remap-flags.sh" --cargo-home /opt/cargo --root /src)
 run_podman build "${net[@]}" -t "$image" -f "$repo/packaging/linux/Containerfile" "$repo/packaging/linux"
+# Запись ключа аттестации (HLSR_ATTEST_SEAL, crates/hlsr-online/build.rs) — в контейнер файлом
+# окружения: systemd-run окружение не передаёт, а в аргументах podman её видно в списке процессов.
+env_file=()
+if [ -n "${HLSR_ATTEST_SEAL:-}" ]; then
+    seal_dir=$(mktemp -d)
+    trap 'rm -rf "$seal_dir"' EXIT
+    (umask 077 && printf 'HLSR_ATTEST_SEAL=%s\n' "$HLSR_ATTEST_SEAL" > "$seal_dir/env")
+    env_file=(--env-file "$seal_dir/env")
+fi
 run_podman run --rm "${net[@]}" \
     -v "$repo:/src" \
     -v hlsr-cargo-registry:/opt/cargo/registry \
     -w /src \
     -e CARGO_TARGET_DIR=/src/target/linux-1804 \
     -e RUSTFLAGS="$rustflags" \
+    "${env_file[@]}" \
     "$image" cargo build -p hlsr-app --locked "${flags[@]}"
 
 dist=$repo/target/dist/linux

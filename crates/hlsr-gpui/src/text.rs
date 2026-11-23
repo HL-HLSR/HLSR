@@ -859,4 +859,79 @@ mod tests {
     fn indent(line: &str) -> usize {
         line.len() - line.trim_start().len()
     }
+
+    /// Вшитые иконочные шрифты без латинской `'m'` (`Font Awesome 7 Brands`, `Regular`,
+    /// `HLSR Symbols`) и цветные Unicode-эмодзи реакций должны выбираться напрямую без отката
+    /// на системные Nerd Font / ч/б символы.
+    #[cfg(target_os = "linux")]
+    #[test]
+    fn bundled_icon_fonts_and_reaction_emojis_resolve_on_linux() {
+        use super::{Cow, FA_BRANDS, FA_FILES};
+        use gpui::FontRun;
+        let Ok(platform) = crate::app::platform() else {
+            return;
+        };
+        let ts = platform.text_system();
+        let fonts: [&'static [u8]; 9] = [
+            font_file!("Rubik-Light.ttf"),
+            font_file!("Rubik-Regular.ttf"),
+            font_file!("Rubik-Medium.ttf"),
+            font_file!("Rubik-Bold.ttf"),
+            FA_FILES[0],
+            FA_FILES[1],
+            FA_FILES[2],
+            font_file!("HLSRSymbols-Regular.ttf"),
+            font_file!("CascadiaMono-Regular.ttf"),
+        ];
+        ts.add_fonts(fonts.into_iter().map(Cow::Borrowed).collect())
+            .expect("шрифты загрузились");
+
+        // 1. `fab fa-youtube` (U+F167) должен браться из вшитого `Font Awesome 7 Brands`.
+        let fa_brands = ts
+            .font_id(&font(FA_BRANDS))
+            .expect("Font Awesome 7 Brands загружен");
+        let yt = "\u{F167}";
+        let layout = ts.layout_line(
+            yt,
+            crate::scale::zpx(1., 16.),
+            &[FontRun {
+                len: yt.len(),
+                font_id: fa_brands,
+            }],
+        );
+        assert_eq!(layout.runs.len(), 1, "один run для fab fa-youtube");
+        assert_eq!(
+            layout.runs[0].font_id, fa_brands,
+            "fab fa-youtube должен рисоваться вшитым Font Awesome 7 Brands, а не системным fallback"
+        );
+
+        // 2. Все 5 реакций ленты (включая ❤️ и 😮) на системе с Noto Color Emoji должны
+        // рендериться как цветные emoji-глифы.
+        let has_color_emoji = ts
+            .all_font_names()
+            .iter()
+            .any(|name| name.contains("Color Emoji"));
+        if has_color_emoji {
+            let rubik = ts.font_id(&font(RUBIK)).expect("Rubik загружен");
+            for emoji in ["👍", "❤️", "🔥", "😮", "🎉"] {
+                let layout = ts.layout_line(
+                    emoji,
+                    crate::scale::zpx(1., 14.),
+                    &[FontRun {
+                        len: emoji.len(),
+                        font_id: rubik,
+                    }],
+                );
+                assert!(
+                    !layout.runs.is_empty()
+                        && layout
+                            .runs
+                            .iter()
+                            .flat_map(|r| r.glyphs.iter())
+                            .all(|g| g.is_emoji),
+                    "реакция {emoji:?} должна рендериться цветным emoji-шрифтом, а не ч/б fallback: {layout:?}"
+                );
+            }
+        }
+    }
 }

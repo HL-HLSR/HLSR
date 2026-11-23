@@ -23,10 +23,10 @@ use crate::scale::{u, zoom};
 use crate::theme::Theme;
 use gpui::prelude::FluentBuilder as _;
 use gpui::{
-    AnyElement, App, Bounds, CursorStyle, DispatchPhase, Div, ElementId, Entity, FocusHandle,
-    IntoElement, KeyDownEvent, MouseButton, MouseDownEvent, MouseMoveEvent, ParentElement, Pixels,
-    RenderOnce, Role, SharedString, StyleRefinement, Styled, Window, canvas, div, hsla, prelude::*,
-    relative, rgb,
+    AnyElement, App, Bounds, CursorStyle, DispatchPhase, Div, ElementId, Entity, EntityId,
+    FocusHandle, IntoElement, KeyDownEvent, MouseButton, MouseDownEvent, MouseMoveEvent,
+    ParentElement, Pixels, RenderOnce, Role, SharedString, StyleRefinement, Styled, Window, canvas,
+    div, hsla, prelude::*, relative, rgb,
 };
 use hlsr_ui::fields::{range_key, range_snap};
 use std::rc::Rc;
@@ -197,12 +197,13 @@ fn emit(handler: &Option<Handler<f64>>, value: f64, window: &mut Window, cx: &mu
 fn release(
     state: &Entity<SliderState>,
     change: &Option<Handler<f64>>,
+    owner: EntityId,
     window: &mut Window,
     cx: &mut App,
 ) {
     if let Some(last) = state.update(cx, |s, _| s.sliding.take()) {
         emit(change, last, window, cx);
-        window.refresh();
+        cx.notify(owner);
     }
 }
 
@@ -230,6 +231,7 @@ impl RenderOnce for Slider {
             default,
             native,
         };
+        let owner = window.current_view();
         let state = window.use_keyed_state(child_id(&id, "slider"), cx, |_, cx| SliderState {
             focus: cx.focus_handle().tab_stop(true),
             sliding: None,
@@ -287,14 +289,14 @@ impl RenderOnce for Slider {
                     }
                     // Кнопку отпустили там, где окно не слышало: тянуть нечего.
                     if event.pressed_button != Some(MouseButton::Left) {
-                        release(&moved, &change, window, cx);
+                        release(&moved, &change, owner, window, cx);
                         return;
                     }
                     let next = range.at(event.position.x, bounds, zoom);
                     if sliding != Some(next) {
                         moved.update(cx, |s, _| s.sliding = Some(next));
                         emit(&input, next, window, cx);
-                        window.refresh();
+                        cx.notify(owner);
                     }
                 });
             },
@@ -448,21 +450,21 @@ impl RenderOnce for Slider {
                                 pick.update(cx, |s, _| s.sliding = None);
                                 emit(&input_down, default, window, cx);
                                 emit(&change_down, default, window, cx);
-                                window.refresh();
+                                cx.notify(owner);
                                 return;
                             }
                             let bounds = pick.read(cx).bounds;
                             let next = range.at(event.position.x, bounds, zoom);
                             pick.update(cx, |s, _| s.sliding = Some(next));
                             emit(&input_down, next, window, cx);
-                            window.refresh();
+                            cx.notify(owner);
                         },
                     )
                     .on_mouse_up(MouseButton::Left, move |_, window, cx| {
-                        release(&up, &change_up, window, cx)
+                        release(&up, &change_up, owner, window, cx)
                     })
                     .on_mouse_up_out(MouseButton::Left, move |_, window, cx| {
-                        release(&out, &change_out, window, cx)
+                        release(&out, &change_out, owner, window, cx)
                     })
                     .on_key_down(move |event: &KeyDownEvent, window, cx| {
                         let key = match event.keystroke.key.as_str() {

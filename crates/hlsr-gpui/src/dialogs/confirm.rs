@@ -98,15 +98,11 @@ impl ConfirmCard {
             }
         };
         let items = (!request.items.is_empty()).then(|| {
-            div()
-                .id("confirm-items")
+            crate::scroll::overflow_y("confirm-items", window, cx)
                 .mt(u(14.))
                 .py(u(12.))
                 .px(u(14.))
                 .max_h(u(132.))
-                // shortcut: прокрутка GPUI без полосы 4 px App.vue — пунктов больше 132 px не
-                // бывает (пути удаления); полоса — ScrollArea, если появятся длинные списки.
-                .overflow_y_scroll()
                 .bg(white().opacity(0.05))
                 .border_1()
                 .border_color(theme.color("l-border"))

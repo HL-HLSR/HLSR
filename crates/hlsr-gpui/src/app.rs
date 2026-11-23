@@ -115,10 +115,12 @@ impl Render for LauncherRoot {
         #[cfg(feature = "dev-hooks")]
         crate::live::begin_frame();
         let (boot, shell) = (self.boot.clone(), self.shell.clone());
-        // #app: фон окна под экранами — во время смены видны оба. Разрядка — `body` 0.4.9.
+        let radius = Layers::radius(cx);
+        window.set_window_corner_radius(radius);
+        // #app: фон окна под экранами — во время смены видны оба. Углы скругляет GPU-маска
+        // `window_corner_mask` в один проход, без накопления альфы и без `SetWindowRgn`.
         div()
             .size_full()
-            .rounded(Layers::radius(cx))
             .bg(rgb(0x0b0e13))
             .letter_spacing(crate::scale::u(crate::text::BODY_SPACING))
             .child(

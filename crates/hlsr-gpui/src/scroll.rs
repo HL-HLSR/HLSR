@@ -18,12 +18,14 @@
 use crate::scale::{u, zoom, zpx};
 use crate::theme::bezier;
 use gpui::{
-    AnyElement, App, Bounds, DispatchPhase, ElementId, HitboxBehavior, Hsla, InteractiveElement,
-    IntoElement, MouseButton, MouseDownEvent, MouseMoveEvent, MouseUpEvent, ParentElement, Pixels,
-    Refineable, RenderOnce, ScrollDelta, ScrollEvent, ScrollHandle, StatefulInteractiveElement,
-    StyleRefinement, Styled, UniformList, UniformListScrollHandle, Window, canvas, div, fill,
-    linear_color_stop, linear_gradient, point, prelude::FluentBuilder, size, white,
+    AnyElement, App, Bounds, DispatchPhase, Div, ElementId, HitboxBehavior, Hsla,
+    InteractiveElement, IntoElement, MouseButton, MouseDownEvent, MouseMoveEvent, MouseUpEvent,
+    ParentElement, Pixels, Refineable, RenderOnce, ScrollDelta, ScrollEvent, ScrollHandle,
+    Stateful, StatefulInteractiveElement, StyleRefinement, Styled, UniformList,
+    UniformListScrollHandle, Window, canvas, div, fill, linear_color_stop, linear_gradient, point,
+    prelude::FluentBuilder, size, white,
 };
+use hlsr_ui::motion::CubicBezier;
 use std::cell::RefCell;
 use std::rc::Rc;
 use std::time::{Duration, Instant};
@@ -38,13 +40,13 @@ const FADE_CURVE: [f32; 4] = [0.22, 1., 0.36, 1.];
 const FADE_TOP: f32 = 32.;
 const FADE_BOTTOM: f32 = 48.;
 
-/// Шаг колеса на строку события GPUI, CSS px. Windows: строки = щелчки × SPI_GETWHEELSCROLLLINES,
-/// строка Chromium — 100/3 px. Linux: строка — щелчок, 53 px (X11).
+/// Шаг колеса на строку события GPUI, CSS px. Windows передаёт число строк из настроек мыши.
+/// GPUI на Wayland и X11 передаёт три строки за щелчок. Шаг Chromium на Linux — 53 px за щелчок.
 pub(crate) fn line_step() -> f32 {
     if cfg!(windows) {
         hlsr_ui::render::wheel_step_for_lines(1)
     } else {
-        hlsr_ui::render::WHEEL_STEP
+        hlsr_ui::render::WHEEL_STEP / 3.
     }
 }
 
@@ -97,12 +99,13 @@ impl Bar {
             area_hover,
         };
         match self {
-            // border-radius 8 у 4 px — 2.
-            Bar::Thin => look(4., 0., 0., 2., Some((0.05, 2.)), 0.10, 0.20, false),
-            Bar::List => look(6., 0., 0., 3., None, 0.28, 0.45, true),
-            // Радиус 4 у рамки 2: видимый фон (padding-box) — 2; дорожка App.vue: радиус 8 у 8 px — 4.
-            Bar::Dropdown => look(8., 2., 0., 2., Some((0.05, 4.)), 0.14, 0.14, false),
-            Bar::Fields => look(10., 3., 8., 2., None, 0.14, 0.24, false),
+            // 4 px видимой дорожки и ползунка с отступами 3 px сбоку и 14 px сверху/снизу,
+            // чтобы полоса не вылезала за скруглённые углы модалок и окна (включая Liquid Glass R = 18 и окно R = 20).
+            Bar::Thin => look(10., 3., 14., 2., Some((0.05, 2.)), 0.10, 0.20, false),
+            Bar::List => look(6., 0., 8., 3., None, 0.28, 0.45, true),
+            // 4 px видимой дорожки и ползунка с отступами 3 px сбоку и 12 px сверху/снизу.
+            Bar::Dropdown => look(10., 3., 12., 2., Some((0.05, 2.)), 0.14, 0.14, false),
+            Bar::Fields => look(10., 3., 12., 2., None, 0.14, 0.24, false),
             Bar::Hidden => look(0., 0., 0., 0., None, 0., 0., false),
         }
     }
@@ -153,12 +156,74 @@ fn smooth_duration(delta: f32) -> Duration {
 }
 
 /// Переход прокрутки, px окна.
-struct Motion {
+pub(crate) struct Motion {
     from: f32,
     to: f32,
     start: Instant,
     duration: Duration,
-    curve: [f32; 4],
+    curve: CubicBezier,
+}
+
+impl Motion {
+    pub(crate) fn wheel(
+        previous: Option<&Self>,
+        from: f32,
+        to: f32,
+        max: f32,
+        zoom: f32,
+        now: Instant,
+    ) -> Option<Self> {
+        let (from, velocity) = previous.map_or((from, 0.), |motion| {
+            let progress = motion.progress(now);
+            (motion.position(progress), motion.velocity(progress))
+        });
+        let from = from.clamp(0., max);
+        let distance = to - from;
+        if distance == 0. {
+            return None;
+        }
+        let duration = wheel_duration(distance / zoom);
+        let mut curve = WHEEL_CURVE.map(f64::from);
+        // Сохраняем скорость при повторном щелчке, а при развороте ограничиваем касательную.
+        curve[1] =
+            (curve[0] * f64::from(velocity * duration.as_secs_f32() / distance)).clamp(0., 1.);
+        Some(Self {
+            from,
+            to,
+            start: now,
+            duration,
+            curve: CubicBezier::new(curve),
+        })
+    }
+
+    pub(crate) fn target(&self) -> f32 {
+        self.to
+    }
+
+    pub(crate) fn sample(&self, now: Instant) -> (f32, bool) {
+        let t = self.progress(now);
+        if t == 1. {
+            (self.to, true)
+        } else {
+            (self.position(t), false)
+        }
+    }
+
+    fn progress(&self, now: Instant) -> f64 {
+        (now.saturating_duration_since(self.start).as_secs_f64() / self.duration.as_secs_f64())
+            .min(1.)
+    }
+
+    fn position(&self, progress: f64) -> f32 {
+        self.from + (self.to - self.from) * self.curve.solve(progress) as f32
+    }
+
+    fn velocity(&self, progress: f64) -> f32 {
+        if progress == 1. {
+            return 0.;
+        }
+        (self.to - self.from) * self.curve.slope(progress) as f32 / self.duration.as_secs_f32()
+    }
 }
 
 /// Ползунок тянут: где была мышь (y окна) и прокрутка (px окна) при нажатии.
@@ -212,10 +277,35 @@ enum Wheel {
     Pass,
 }
 
+#[derive(Clone, Copy, Default)]
+enum Axis {
+    #[default]
+    Vertical,
+    Horizontal,
+}
+
+impl Axis {
+    fn value(self, point: gpui::Point<Pixels>) -> Pixels {
+        match self {
+            Self::Vertical => point.y,
+            Self::Horizontal => point.x,
+        }
+    }
+
+    fn wheel_delta(self, x: f32, y: f32) -> f32 {
+        match self {
+            Self::Vertical => y,
+            Self::Horizontal if x != 0. => x,
+            Self::Horizontal => y,
+        }
+    }
+}
+
 #[derive(Default)]
 struct State {
     /// У списка свой хендл; его `base_handle` — хендл и обычной области.
     list: UniformListScrollHandle,
+    axis: Axis,
     motion: Option<Motion>,
     drag: Option<Drag>,
     thumb_hot: bool,
@@ -232,29 +322,31 @@ impl State {
 
     /// scrollTop, px окна.
     fn shown(&self) -> f32 {
-        -f32::from(self.handle().offset().y)
+        -f32::from(self.axis.value(self.handle().offset()))
     }
 
     /// Наибольший scrollTop прошлого кадра, px окна.
     fn max(&self) -> f32 {
-        f32::from(self.handle().max_offset().y).max(0.)
+        f32::from(self.axis.value(self.handle().max_offset())).max(0.)
     }
 
     fn set_top(&self, top: f32) {
         let handle = self.handle();
-        let x = handle.offset().x;
-        handle.set_offset(point(x, -Pixels::from(top)));
+        let mut offset = handle.offset();
+        match self.axis {
+            Axis::Vertical => offset.y = -Pixels::from(top),
+            Axis::Horizontal => offset.x = -Pixels::from(top),
+        }
+        handle.set_offset(offset);
     }
 
     /// Куда идёт прокрутка: конец перехода или нынешнее место.
     fn target(&self) -> f32 {
-        self.motion
-            .as_ref()
-            .map_or(self.shown(), |motion| motion.to)
+        self.motion.as_ref().map_or(self.shown(), Motion::target)
     }
 
     fn go(&mut self, to: f32, duration: Duration, curve: [f32; 4], now: Instant) {
-        if duration.is_zero() {
+        if duration.is_zero() || to == self.shown() {
             self.motion = None;
             self.set_top(to);
         } else {
@@ -263,7 +355,7 @@ impl State {
                 to,
                 start: now,
                 duration,
-                curve,
+                curve: CubicBezier::new(curve.map(f64::from)),
             });
         }
     }
@@ -271,17 +363,17 @@ impl State {
     /// Шаг перехода к `now`.
     fn step(&mut self, now: Instant) {
         let Some(motion) = &self.motion else { return };
-        let t = now.saturating_duration_since(motion.start).as_secs_f32()
-            / motion.duration.as_secs_f32();
-        let (top, done) = if t >= 1. {
-            (motion.to, true)
-        } else {
-            let eased = bezier(motion.curve)(t);
-            (motion.from + (motion.to - motion.from) * eased, false)
-        };
+        let (top, done) = motion.sample(now);
         self.set_top(top);
         if done {
             self.motion = None;
+        }
+    }
+
+    fn retarget_wheel(&mut self, to: f32, max: f32, zoom: f32, now: Instant) {
+        self.motion = Motion::wheel(self.motion.as_ref(), self.shown(), to, max, zoom, now);
+        if self.motion.is_none() {
+            self.set_top(to);
         }
     }
 
@@ -295,41 +387,63 @@ impl State {
         now: Instant,
     ) -> Wheel {
         let (delta, smooth) = match event.delta {
-            ScrollDelta::Lines(lines) => (-lines.y * line_step() * zoom, !instant),
+            ScrollDelta::Lines(lines) => (
+                -self.axis.wheel_delta(lines.x, lines.y) * line_step() * zoom,
+                !instant,
+            ),
             // Тачпад: точные px без плавности.
-            ScrollDelta::Pixels(pixels) => (-f32::from(pixels.y), false),
+            ScrollDelta::Pixels(pixels) => (
+                -self
+                    .axis
+                    .wheel_delta(f32::from(pixels.x), f32::from(pixels.y)),
+                false,
+            ),
         };
         let held = if contain { Wheel::Held } else { Wheel::Pass };
         let max = self.max();
         if delta == 0. || max <= 0. {
             return held;
         }
-        let from = self.target().clamp(0., max);
+        let from = if event.delta.precise() {
+            self.shown()
+        } else {
+            self.target()
+        }
+        .clamp(0., max);
         let to = (from + delta).clamp(0., max);
         if to == from {
             return held;
         }
-        let duration = if smooth {
-            wheel_duration((to - self.shown()) / zoom)
+        if smooth {
+            self.retarget_wheel(to, max, zoom, now);
         } else {
-            Duration::ZERO
-        };
-        self.go(to, duration, WHEEL_CURVE, now);
+            self.go(to, Duration::ZERO, WHEEL_CURVE, now);
+        }
         Wheel::Scrolled
     }
 
-    /// Полоса в CSS px: видимое, всё, прокрутка, дорожка и ползунок.
+    /// Полоса в CSS px: видимое, всё, прокрутка, отступ, дорожка и ползунок.
     fn geometry(&self, bar_height: f32, look: Look, zoom: f32) -> Geometry {
         let viewport = f32::from(self.handle().bounds().size.height) / zoom;
         let max = self.max() / zoom;
         let top = self.shown() / zoom;
-        let track = (bar_height - 2. * look.margin).max(0.);
+        let margin = look.margin.min((bar_height * 0.2).max(0.));
+        let track = (bar_height - 2. * margin).max(0.);
+        let thumb_pad = if look.track.is_some() { 0. } else { look.border };
         Geometry {
             viewport,
             max,
             top,
+            margin,
             track,
-            thumb: thumb(viewport, viewport + max, top, track, look.border),
+            thumb_pad,
+            thumb: thumb(
+                viewport,
+                viewport + max,
+                top,
+                track,
+                thumb_pad.max(look.radius),
+            ),
         }
     }
 }
@@ -338,7 +452,9 @@ struct Geometry {
     viewport: f32,
     max: f32,
     top: f32,
+    margin: f32,
     track: f32,
+    thumb_pad: f32,
     thumb: Option<(f32, f32)>,
 }
 
@@ -347,9 +463,50 @@ struct Geometry {
 #[derive(Clone, Default)]
 pub struct Scroll(Rc<RefCell<State>>);
 
+type OnWheel = Rc<dyn Fn(&ScrollEvent, &mut Window, &mut App)>;
+
 impl Scroll {
     pub fn new() -> Scroll {
         Scroll::default()
+    }
+
+    pub(crate) fn horizontal() -> Scroll {
+        Scroll(Rc::new(RefCell::new(State {
+            axis: Axis::Horizontal,
+            ..State::default()
+        })))
+    }
+
+    pub(crate) fn retained(id: ElementId, window: &mut Window, cx: &mut App) -> Scroll {
+        let key = ElementId::NamedChild(id.into(), "wheel".into());
+        window
+            .use_keyed_state(key, cx, |_, _| Scroll::new())
+            .read(cx)
+            .clone()
+    }
+
+    /// Добавляет прокрутку к коробке без собственной полосы. Дети идут после слоя колеса,
+    /// чтобы вложенная область получила событие первой.
+    pub(crate) fn overflow<E: StatefulInteractiveElement + ParentElement>(&self, el: E) -> E {
+        self.overflow_with(el, None)
+    }
+
+    pub(crate) fn overflow_with<E: StatefulInteractiveElement + ParentElement>(
+        &self,
+        el: E,
+        on_wheel: Option<OnWheel>,
+    ) -> E {
+        let el = match self.0.borrow().axis {
+            Axis::Vertical => el.overflow_y_scroll(),
+            Axis::Horizontal => el.overflow_x_scroll(),
+        };
+        el.track_scroll(&self.handle()).child(WheelLayer {
+            scroll: self.clone(),
+            contain: false,
+            has_fade: false,
+            kind: WheelKind::Native,
+            on_wheel,
+        })
     }
 
     /// Хендл GPUI области (сдвиг, `bounds`, `scroll_to_item` у детей).
@@ -375,6 +532,12 @@ impl Scroll {
         Pixels::from(state.shown())
     }
 
+    /// Идёт ли сейчас плавная прокрутка или перетаскивание ползунка.
+    pub fn moving(&self) -> bool {
+        let state = self.0.borrow();
+        state.motion.is_some() || state.drag.is_some()
+    }
+
     /// Наибольший scrollTop (по прошлому кадру), px окна.
     pub fn max_top(&self) -> Pixels {
         Pixels::from(self.0.borrow().max())
@@ -396,6 +559,16 @@ impl Scroll {
         };
         state.go(to, duration, SMOOTH_CURVE, now);
     }
+}
+
+/// Блок с плавной прокруткой и состоянием, привязанным к id.
+pub(crate) fn overflow_y(
+    id: impl Into<ElementId>,
+    window: &mut Window,
+    cx: &mut App,
+) -> Stateful<Div> {
+    let id = id.into();
+    Scroll::retained(id.clone(), window, cx).overflow(div().id(id))
 }
 
 /// Область прокрутки с полосой 0.4.9. Размер и место — стилями самой области (`Styled`);
@@ -468,20 +641,33 @@ impl RenderOnce for ScrollArea {
         let zoom = zoom(window);
         let now = cx.background_executor().now();
         let look = self.bar.look();
+        let has_fade = self.fade.is_some();
         let (gutter, fades) = {
             let mut state = self.scroll.0.borrow_mut();
             state.step(now);
-            // HomePanel.onScroll: край «чистый», пока до него не больше 1 px.
-            let (top, max) = (state.shown(), state.max());
-            state.fades[0].set(top > zoom, now);
-            state.fades[1].set(max - top > zoom, now);
-            (
-                state.gutter && look.thickness > 0.,
-                [state.fades[0].value(now), state.fades[1].value(now)],
-            )
+            let fades = if has_fade {
+                // HomePanel.onScroll: край «чистый», пока до него не больше 1 px.
+                let (top, max) = (state.shown(), state.max());
+                state.fades[0].set(top > zoom, now);
+                state.fades[1].set(max - top > zoom, now);
+                [state.fades[0].value(now), state.fades[1].value(now)]
+            } else {
+                [0., 0.]
+            };
+            (state.gutter && look.thickness > 0., fades)
         };
         let reserve = u(if gutter { look.thickness } else { 0. });
-        let wheel = wheel_layer(self.scroll.clone(), self.contain, self.list.is_some());
+        let wheel = WheelLayer {
+            scroll: self.scroll.clone(),
+            contain: self.contain,
+            has_fade,
+            kind: if self.list.is_some() {
+                WheelKind::List
+            } else {
+                WheelKind::Body
+            },
+            on_wheel: None,
+        };
         let (body, wheel_over_list) = match self.list {
             // Слушатель колеса — после списка: строки списка своих областей не держат.
             Some(list) => (
@@ -531,9 +717,44 @@ impl RenderOnce for ScrollArea {
     }
 }
 
+#[derive(Clone, Copy)]
+enum WheelKind {
+    Body,
+    List,
+    Native,
+}
+
+#[derive(IntoElement)]
+struct WheelLayer {
+    scroll: Scroll,
+    contain: bool,
+    has_fade: bool,
+    kind: WheelKind,
+    on_wheel: Option<OnWheel>,
+}
+
+impl RenderOnce for WheelLayer {
+    fn render(self, _window: &mut Window, cx: &mut App) -> impl IntoElement {
+        if matches!(self.kind, WheelKind::Native) {
+            self.scroll
+                .0
+                .borrow_mut()
+                .step(cx.background_executor().now());
+        }
+        wheel_layer(self.scroll, self.contain, self.has_fade, self.kind, self.on_wheel)
+    }
+}
+
 /// Колесо и наведение области. Хитбокс — видимое окно области: обрезка прокрутки (слой внутри
 /// неё) или своя коробка (слой поверх списка).
-fn wheel_layer(scroll: Scroll, contain: bool, over_list: bool) -> impl IntoElement {
+fn wheel_layer(
+    scroll: Scroll,
+    contain: bool,
+    has_fade: bool,
+    kind: WheelKind,
+    on_wheel: Option<OnWheel>,
+) -> impl IntoElement {
+    let over_list = matches!(kind, WheelKind::List);
     canvas(
         move |bounds, window, _| {
             let area = if over_list {
@@ -550,9 +771,9 @@ fn wheel_layer(scroll: Scroll, contain: bool, over_list: bool) -> impl IntoEleme
                 let mut state = scroll.0.borrow_mut();
                 // overflow-y: auto — место под полосу появляется со следующего кадра.
                 let overflows = state.max() > 0.;
-                let moving =
-                    state.motion.is_some() || state.fades.iter().any(|fade| fade.moving(now));
-                let gutter = overflows != state.gutter;
+                let moving = state.motion.is_some()
+                    || (has_fade && state.fades.iter().any(|fade| fade.moving(now)));
+                let gutter = !matches!(kind, WheelKind::Native) && overflows != state.gutter;
                 state.gutter = overflows;
                 if gutter || moving {
                     crate::motion::monitor_frame(window);
@@ -574,6 +795,9 @@ fn wheel_layer(scroll: Scroll, contain: bool, over_list: bool) -> impl IntoEleme
             window.on_mouse_event(move |event: &ScrollEvent, phase, window, cx| {
                 if phase != DispatchPhase::Bubble || !hitbox.should_handle_scroll(window) {
                     return;
+                }
+                if let Some(on_wheel) = &on_wheel {
+                    on_wheel(event, window, cx);
                 }
                 let now = cx.background_executor().now();
                 let instant = cx.reduce_motion();
@@ -613,8 +837,11 @@ fn bar_layer(scroll: Scroll, look: Look) -> impl IntoElement {
                 let geometry = state.geometry(height, look, scale);
                 if let Some((alpha, radius)) = look.track {
                     let track = Bounds::new(
-                        point(bounds.left(), bounds.top() + at(look.margin)),
-                        size(bounds.size.width, at(geometry.track)),
+                        point(
+                            bounds.left() + at(look.border),
+                            bounds.top() + at(geometry.margin),
+                        ),
+                        size(at(look.thickness - 2. * look.border), at(geometry.track)),
                     );
                     window.paint_quad(fill(track, white().opacity(alpha)).corner_radii(at(radius)));
                 }
@@ -628,11 +855,11 @@ fn bar_layer(scroll: Scroll, look: Look) -> impl IntoElement {
                     let thumb = Bounds::new(
                         point(
                             bounds.left() + at(look.border),
-                            bounds.top() + at(look.margin + start + look.border),
+                            bounds.top() + at(geometry.margin + start + geometry.thumb_pad),
                         ),
                         size(
                             at(look.thickness - 2. * look.border),
-                            at((length - 2. * look.border).max(0.)),
+                            at((length - 2. * geometry.thumb_pad).max(0.)),
                         ),
                     );
                     window.paint_quad(
@@ -647,7 +874,7 @@ fn bar_layer(scroll: Scroll, look: Look) -> impl IntoElement {
                     let state = scroll.0.borrow();
                     let geometry = state.geometry(height, look, zoom);
                     let (start, length) = geometry.thumb?;
-                    let local = f32::from(y - bounds.top()) / zoom - look.margin;
+                    let local = f32::from(y - bounds.top()) / zoom - geometry.margin;
                     Some(local.partial_cmp(&start).map_or(0, |order| {
                         if order.is_lt() {
                             -1
@@ -769,6 +996,24 @@ mod tests {
     use super::*;
     use gpui::{Context, Modifiers, Render, TestAppContext};
 
+    #[test]
+    fn repeated_wheel_input_keeps_the_in_flight_speed() {
+        let mut state = State::default();
+        let start = Instant::now();
+        state.retarget_wheel(53., 1000., 1., start);
+        let now = start + Duration::from_micros(41_670);
+        let previous = state.motion.as_ref().unwrap();
+        let progress = previous.progress(now);
+        let position = previous.position(progress);
+        let speed = previous.velocity(progress);
+        assert!(position > 0. && speed > 0.);
+        state.retarget_wheel(106., 1000., 1., now);
+        let next = state.motion.as_ref().unwrap();
+        assert_eq!(next.position(0.), position);
+        assert!((next.velocity(0.) - speed).abs() < 0.01);
+        assert!(next.position(next.progress(now + Duration::from_micros(4_167))) > position);
+    }
+
     fn at(x: f32, y: f32) -> gpui::Point<Pixels> {
         point(zpx(1., x), zpx(1., y))
     }
@@ -877,9 +1122,12 @@ mod tests {
         let bounds = scroll.handle().bounds();
         let viewport = f32::from(bounds.size.height);
         let max = f32::from(scroll.max_top());
-        let (start, length) = thumb(viewport, viewport + max, 0., viewport, 0.).unwrap();
-        let x = bounds.right() - zpx(1., 2.);
-        let y = bounds.top() + zpx(1., start + length / 2.);
+        let look = Bar::Thin.look();
+        let margin = look.margin.min((viewport * 0.2).max(0.));
+        let track = (viewport - 2. * margin).max(0.);
+        let (start, length) = thumb(viewport, viewport + max, 0., track, look.radius).unwrap();
+        let x = bounds.right() - zpx(1., look.thickness / 2.);
+        let y = bounds.top() + zpx(1., margin + start + length / 2.);
         cx.simulate_mouse_down(point(x, y), MouseButton::Left, Modifiers::none());
         cx.simulate_mouse_move(
             point(x, y + zpx(1., 50.)),
@@ -891,14 +1139,17 @@ mod tests {
             MouseButton::Left,
             Modifiers::none(),
         );
-        let dragged = 50. * max / (viewport - length);
+        let dragged = 50. * max / (track - length);
         assert!(
             (f32::from(scroll.top()) - dragged).abs() < 0.01,
             "{:?}",
             scroll.top()
         );
         // Щелчок по дорожке ниже ползунка — страница вниз.
-        cx.simulate_click(point(x, bounds.bottom() - zpx(1., 2.)), Modifiers::none());
+        cx.simulate_click(
+            point(x, bounds.bottom() - zpx(1., margin + 2.)),
+            Modifiers::none(),
+        );
         let paged = dragged + page_step(viewport);
         assert!(
             (f32::from(scroll.top()) - paged).abs() < 0.01,

@@ -9,7 +9,8 @@ use raw_window_handle::{
 use std::num::NonZeroIsize;
 use windows_sys::Win32::Foundation::HWND;
 use windows_sys::Win32::Graphics::Dwm::{
-    DWMWA_WINDOW_CORNER_PREFERENCE, DWMWCP_ROUND, DwmSetWindowAttribute,
+    DWMWA_BORDER_COLOR, DWMWA_COLOR_NONE, DWMWA_WINDOW_CORNER_PREFERENCE, DWMWCP_DONOTROUND,
+    DwmSetWindowAttribute,
 };
 use windows_sys::Win32::UI::WindowsAndMessaging::{
     IsIconic, IsWindowVisible, SW_RESTORE, SW_SHOW, SWP_NOACTIVATE, SWP_NOSIZE, SWP_NOZORDER,
@@ -47,11 +48,12 @@ impl HasDisplayHandle for Owner {
     }
 }
 
-/// Скругление окна DWM (Windows 11; на Windows 10 атрибута нет — без последствий). Углы рисует и
-/// сам интерфейс (`rounded` у корня прозрачного окна).
-pub fn round_corners(window: &Window) {
+/// Форма задаётся клиентской областью (DirectComposition + GPU-маска углов `window_corner_mask`).
+/// Отключаем системное скругление и контур DWM в Windows 11, чтобы они не конфликтовали с радиусом.
+pub fn system_corners_off(window: &Window) {
     let Some(hwnd) = raw(window) else { return };
-    let preference = DWMWCP_ROUND;
+    let preference = DWMWCP_DONOTROUND;
+    let border = DWMWA_COLOR_NONE;
     // SAFETY: HWND живого окна этого потока; значение — 4 байта на стеке на время вызова.
     let hr = unsafe {
         DwmSetWindowAttribute(
@@ -63,6 +65,15 @@ pub fn round_corners(window: &Window) {
     };
     if hr < 0 {
         tracing::debug!("[window] углы DWM не заданы: 0x{hr:08x}");
+    }
+    // SAFETY: HWND живого окна, значение атрибута живёт до возврата DWM.
+    unsafe {
+        DwmSetWindowAttribute(
+            hwnd,
+            DWMWA_BORDER_COLOR as u32,
+            (&raw const border).cast(),
+            size_of_val(&border) as u32,
+        );
     }
 }
 

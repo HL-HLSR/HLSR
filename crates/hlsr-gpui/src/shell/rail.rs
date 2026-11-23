@@ -27,9 +27,9 @@ use crate::text::{BODY_SPACING, RUBIK, TextExt, spaced};
 use crate::theme::Theme;
 use gpui::{
     Bounds, Canvas, ClickEvent, Context, CursorStyle, ElementId, FontWeight, Hsla, LineCap,
-    LineJoin, PathBuilder, PathStyle, Pixels, Render, Role, ScrollHandle, SharedString,
-    StrokeOptions, TextRun, Window, black, canvas, deferred, div, font, linear_color_stop,
-    linear_gradient, point, prelude::*, px, rgb, svg,
+    LineJoin, PathBuilder, PathStyle, Pixels, Render, Role, SharedString, StrokeOptions, TextRun,
+    Window, black, canvas, deferred, div, font, linear_color_stop, linear_gradient, point,
+    prelude::*, px, rgb, svg,
 };
 use hlsr_ui::controllers::nav::NavController;
 use hlsr_ui::services::Services;
@@ -145,7 +145,7 @@ struct Watch {
 }
 
 pub struct GameSidebar {
-    scroll: ScrollHandle,
+    scroll: crate::scroll::Scroll,
     /// Выдвижение: ширина, заливка, тень, линии, стрелка (0 — свёрнута, 1 — выдвинута).
     swipe: Option<Move>,
     /// Мгновение кадра, с которым оболочка взяла выдвижение ([`GameSidebar::swipe_now`]): колонка
@@ -169,7 +169,7 @@ pub struct GameSidebar {
 impl GameSidebar {
     pub fn new(_services: &Services, _cx: &mut Context<GameSidebar>) -> GameSidebar {
         GameSidebar {
-            scroll: ScrollHandle::new(),
+            scroll: crate::scroll::Scroll::new(),
             swipe: None,
             shell_now: None,
             labels: None,
@@ -482,7 +482,7 @@ impl Render for GameSidebar {
             if revealed.as_ref() != Some(&watch.game)
                 && let Some(index) = games.iter().position(|game| game.id == watch.game)
             {
-                self.scroll.scroll_to_item(index);
+                self.scroll.handle().scroll_to_item(index);
             }
             self.watch = Some(watch.clone());
         }
@@ -596,8 +596,12 @@ impl Render for GameSidebar {
         });
 
         let mut focused = None;
-        let mut list = div()
-            .id("game-rail-list")
+        let mut list = self
+            .scroll
+            .overflow_with(
+                div().id("game-rail-list"),
+                Some(Rc::new(cx.listener(|this, _, _, cx| this.hide_all(cx)))),
+            )
             .flex_1()
             .min_h_0()
             .w_full()
@@ -605,10 +609,7 @@ impl Render for GameSidebar {
             .flex_col()
             .gap(u(gap))
             .py(u(gap))
-            .px(u(side))
-            .overflow_y_scroll()
-            .track_scroll(&self.scroll)
-            .on_scroll(cx.listener(|this, _, _, cx| this.hide_all(cx)));
+            .px(u(side));
         for (index, entry) in entries.into_iter().enumerate() {
             if index == game_count {
                 // Линия перед инструментами: всегда, и без инструментов («Демо» после неё).

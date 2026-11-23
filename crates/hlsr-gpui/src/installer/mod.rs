@@ -20,7 +20,7 @@ use gpui::prelude::FluentBuilder as _;
 use gpui::{
     Animation, AnimationExt, AnyElement, App, ClickEvent, Context, ElementId, FontWeight, Hsla,
     IntoElement, ObjectFit, Render, Role, SharedString, Svg, Task, TimedTransformation,
-    Transformation, Window, WindowControlArea, div, img, prelude::*, px, relative, rgb, rgba, svg,
+    Transformation, Window, div, img, prelude::*, px, relative, rgb, rgba, svg,
 };
 use hlsr_ui::controllers::installer::{InstallerController, InstallerView, Meta, Notice, Tone};
 use std::rc::Rc;
@@ -107,6 +107,8 @@ impl Render for InstallerRoot {
         crate::theme::frame(window, cx);
         let theme = cx.global::<Theme>().clone();
         let zoom = zoom(window);
+        let radius = u(16.).to_pixels(window.rem_size());
+        window.set_window_corner_radius(radius);
         let view = &self.view;
         let (width, height) = SIZE;
         div()
@@ -116,7 +118,6 @@ impl Render for InstallerRoot {
             .flex()
             .flex_col()
             .overflow_hidden()
-            .rounded(u(16.))
             .bg(theme.color("l-modal-bg"))
             .font_family(RUBIK)
             .text_px(14., 21.)
@@ -126,15 +127,8 @@ impl Render for InstallerRoot {
             .child(hero(view, &theme, zoom))
             .child(body(self, view, &theme, zoom, window, cx))
             .child(footer(self, view, &theme, window, cx))
-            // `.window::after`: контур 1 px поверх содержимого.
-            .child(
-                div()
-                    .absolute()
-                    .inset_0()
-                    .rounded(u(16.))
-                    .border_1()
-                    .border_color(white(0.12)),
-            )
+            // `.window::after`: контур 1 px поверх содержимого, режется `window_corner_mask` один раз.
+            .child(crate::window::frame_border(radius))
     }
 }
 
@@ -177,7 +171,7 @@ fn window_glow(width: f32, height: f32) -> impl IntoElement + use<> {
         (width, height),
         (0., 0.),
         (width * 0.7, height * 0.55),
-        16.,
+        0.,
         accent(),
         0.1,
     )
@@ -253,7 +247,7 @@ fn topbar(
     let close = root.handler(|page| {
         page.close();
     });
-    div()
+    crate::window::drag_area(div())
         .relative()
         .flex_none()
         .flex()
@@ -263,7 +257,6 @@ fn topbar(
         .pt(u(4.))
         .pr(u(16.))
         .pl(u(32.))
-        .window_control_area(WindowControlArea::Drag)
         .child(brand)
         .child(
             div()
@@ -663,11 +656,9 @@ fn body(
             cx,
         )
     });
-    div()
-        .id("installer-body")
+    crate::scroll::overflow_y("installer-body", window, cx)
         .flex_1()
         .min_h_0()
-        .overflow_y_scroll()
         .pt(u(24.))
         .px(u(32.))
         .pb(u(16.))

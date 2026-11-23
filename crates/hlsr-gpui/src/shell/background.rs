@@ -41,7 +41,7 @@ use hlsr_ui::render::rail_glass::Placement;
 use hlsr_ui::services::Services;
 use serde_json::json;
 use std::cell::RefCell;
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
 use std::rc::Rc;
 use std::sync::Arc;
 
@@ -221,8 +221,10 @@ pub struct Background {
     tool_task: Option<Task<()>>,
     /// Фон LiveSplit под стеклом Liquid Glass: окно (биты CSS px), Paper и маленькая картинка.
     tool_glass: Option<((u32, u32, bool), Arc<Rgba8Image>)>,
-    /// Последняя показанная картинка слоя (передний план?, ключ).
-    held: HashMap<(bool, i32), Arc<RenderImage>>,
+    /// Последняя показанная картинка слоя (передний план?, ключ) и её запрошенный размер.
+    held: HashMap<(bool, i32), (Option<(u32, u32)>, Arc<RenderImage>)>,
+    /// Области (`games/<id>`), которые сейчас держит фон: ушедшие после затухания освобождаются.
+    active_scopes: HashSet<String>,
     /// Прозрачность слоёв кадра в прошлом кадре окна (перетекание `l-value`): стекло Liquid Glass
     /// берёт под себя и уходящий кадр, и проявляющийся.
     fades: Rc<RefCell<HashMap<i32, f32>>>,
@@ -281,6 +283,7 @@ impl Background {
             tool_task: None,
             tool_glass: None,
             held: HashMap::new(),
+            active_scopes: HashSet::new(),
             fades: Rc::default(),
             radius: px(WINDOW_RADIUS),
             activation: None,
@@ -349,7 +352,7 @@ impl Background {
         let pixels = self
             .pictures
             .loader()
-            .cached(&self.controller.frame_request(&layer))?;
+            .peek(&self.controller.frame_request(&layer))?;
         let natural = (pixels.width() as f32, pixels.height() as f32);
         let (zoom, par, _) = self.parallax();
         Some(Backdrop {
@@ -411,7 +414,7 @@ impl Background {
         let frames = self.controller.frames();
         let fades = self.fades.borrow();
         let cached = |layer: &hlsr_ui::controllers::background::BackgroundLayer| {
-            let pixels = loader.cached(&self.controller.frame_request(layer))?;
+            let pixels = loader.peek(&self.controller.frame_request(layer))?;
             let natural = (pixels.width() as f32, pixels.height() as f32);
             let opacity = fades.get(&layer.key).copied().unwrap_or(0.);
             Some((pixels, frame_place(view, natural, zoom, par), opacity))
@@ -446,7 +449,7 @@ impl Background {
             .rev()
             .find(|layer| layer.alive)
             .and_then(|layer| {
-                let pixels = loader.cached(&self.controller.front_request(&layer))?;
+                let pixels = loader.peek(&self.controller.front_request(&layer))?;
                 let aspect = f64::from(pixels.width()) / f64::from(pixels.height().max(1));
                 let place = front_place(layer.layout, view, aspect);
                 Some((
@@ -571,16 +574,25 @@ impl Background {
 
     /// Картинка слоя `slot` (передний план?, ключ) под нынешнее окно. Пока она грузится (окно
     /// сменило размер) — прежняя картинка слоя, а не пустое место; новая вытесняет её из атласа.
+    /// Уходящий слой (`!alive`), слой при ожидаемой смене выбора (`self.pending.is_some()`) и слой
+    /// с уже готовым размером не перезапрашивают загрузчик, чтобы старый фон не вытеснял новый.
     fn layer_image(
         &mut self,
         slot: (bool, i32),
+        alive: bool,
         request: ImageRequest,
         window: &mut Window,
         cx: &mut Context<Background>,
     ) -> Option<Arc<RenderImage>> {
+        let target = request.target;
+        if let Some((held_target, image)) = self.held.get(&slot)
+            && (!alive || self.pending.is_some() || *held_target == target)
+        {
+            return Some(image.clone());
+        }
         match self.pictures.get(request, window, cx) {
             Some(Ok(image)) => {
-                if let Some(old) = self.held.insert(slot, image.clone())
+                if let Some((_, old)) = self.held.insert(slot, (target, image.clone()))
                     && !Arc::ptr_eq(&old, &image)
                 {
                     cx.drop_image(old, Some(window));
@@ -588,20 +600,18 @@ impl Background {
                 Some(image)
             }
             Some(Err(_)) => None,
-            None => self.held.get(&slot).cloned(),
+            None => self.held.get(&slot).map(|(_, image)| image.clone()),
         }
     }
 
-    /// Ушедшие слои отпускают свои картинки.
+    /// Ушедшие слои отпускают свои картинки и области скрытых игр.
     fn release_gone(&mut self, window: &mut Window, cx: &mut Context<Background>) {
-        let alive: Vec<(bool, i32)> = (self.controller.frames().iter())
+        let frames = self.controller.frames();
+        let fronts = self.controller.fronts();
+        let alive: Vec<(bool, i32)> = frames
+            .iter()
             .map(|layer| (false, layer.key))
-            .chain(
-                self.controller
-                    .fronts()
-                    .iter()
-                    .map(|layer| (true, layer.key)),
-            )
+            .chain(fronts.iter().map(|layer| (true, layer.key)))
             .collect();
         let gone: Vec<(bool, i32)> = self
             .held
@@ -610,9 +620,26 @@ impl Background {
             .copied()
             .collect();
         for slot in gone {
-            if let Some(image) = self.held.remove(&slot) {
+            if let Some((_, image)) = self.held.remove(&slot) {
                 cx.drop_image(image, Some(window));
             }
+        }
+        let mut live_scopes: HashSet<String> = frames
+            .iter()
+            .map(|layer| layer.scope.clone())
+            .chain(fronts.iter().map(|layer| layer.scope.clone()))
+            .collect();
+        if let Some(Some(selection)) = &self.pending {
+            live_scopes.insert(selection.scope.clone());
+        }
+        let mut released_any = false;
+        for scope in self.active_scopes.difference(&live_scopes) {
+            self.pictures.release_scope(scope, cx);
+            released_any = true;
+        }
+        self.active_scopes = live_scopes;
+        if released_any {
+            crate::memory::trim_heap_async(cx);
         }
     }
 
@@ -631,7 +658,9 @@ impl Background {
             .retain(|key, _| layers.iter().any(|layer| layer.key == *key));
         for layer in layers {
             let request = self.controller.frame_request(&layer);
-            let Some(image) = self.layer_image((false, layer.key), request, window, cx) else {
+            let Some(image) =
+                self.layer_image((false, layer.key), layer.alive, request, window, cx)
+            else {
                 continue;
             };
             let natural = image.size(0);
@@ -670,7 +699,9 @@ impl Background {
         let mut out = Vec::new();
         for layer in self.controller.fronts() {
             let request = self.controller.front_request(&layer);
-            let Some(image) = self.layer_image((true, layer.key), request, window, cx) else {
+            let Some(image) =
+                self.layer_image((true, layer.key), layer.alive, request, window, cx)
+            else {
                 continue;
             };
             let natural = image.size(0);
@@ -1063,6 +1094,8 @@ mod tests {
 
     /// Параллакс после движения мыши перерисовывает окно с кадрами монитора окна (тестовый — 60 Гц)
     /// и при будильнике 280 Гц: шаг модели не будит вид сам (иначе кадр шёл на каждый будильник).
+    /// Будильник быстрее монитора окна — только Windows; на Linux будильник и есть кадр монитора
+    /// окна (`motion::driver::grid`), там предел — кадр на будильник.
     #[gpui::test]
     fn parallax_frames_are_capped(cx: &mut gpui::TestAppContext) {
         cx.update(crate::init);
@@ -1127,7 +1160,8 @@ mod tests {
             })
             .unwrap();
         assert!(steps > 20, "параллакс идёт: {steps} шагов");
-        assert!(drawn <= 42, "{drawn} кадров за 0,5 с");
+        let cap = if cfg!(windows) { 42 } else { 140 };
+        assert!(drawn <= cap, "{drawn} кадров за 0,5 с");
     }
 
     #[gpui::test]
@@ -1159,5 +1193,95 @@ mod tests {
         // Уход со страницы LiveSplit сбрасывает игру.
         bg.update(cx, |bg, cx| bg.set_tool(false, cx));
         bg.update(cx, |bg, _| assert!(bg.memory.game().is_none()));
+    }
+
+    /// Переключение Ghosting ↔ Episode ↔ Ghosting ↔ HL2 ↔ Ghosting не должно зависать на
+    /// прежнем фоне: ни при 1800×1013 физ. px и тесном бюджете 24 МиБ (Ghosting + Episode = 25,6
+    /// МиБ > 24 МиБ), ни при 1440p / 4K и рабочем бюджете 48 МиБ (на 4K Ghosting + Episode = 61,4
+    /// МиБ > 48 МиБ — уходящий/ожидающий замены слой не перезапрашивает загрузчик).
+    #[gpui::test]
+    fn switching_between_ghosting_episodes_and_hl2_never_stalls(cx: &mut gpui::TestAppContext) {
+        // TestWindow GPUI всегда имеет scale_factor = 2.0: делим физические px пополам.
+        // Проверяем два крайних режима: 1800×1013 при тесном бюджете 24 МиБ (Ghosting + Episode =
+        // 25,6 МиБ > 24 МиБ) и 4K при рабочем бюджете 48 МиБ (Ghosting + Episode = 61,4 МиБ > 48 МиБ).
+        for (phys_w, phys_h, budget) in [
+            (1800., 1013., 24 * 1024 * 1024),
+            (3840., 2160., 48 * 1024 * 1024),
+        ] {
+            cx.update(crate::init);
+            cx.update(|cx| AnimGate::set_no_anim(cx, false));
+            let env = hlsr_ui::env::ManualEnv::new();
+            let loader = ImageLoader::new(Rc::new(NoRemote), &*env);
+            loader.set_budget(budget);
+            cx.update(|cx| cx.set_global(Pictures::new(loader)));
+            let services: Services = Arc::new(Calls::default());
+            let window = cx.open_window(
+                size(zpx(1., phys_w / 2.), zpx(1., phys_h / 2.)),
+                move |_, cx| Background::new(&services, cx),
+            );
+            let bg = window.entity(cx).unwrap();
+            window
+                .update(cx, |_, window, _| window.activate_window())
+                .unwrap();
+
+            let switch_and_wait = |sel: Option<Selection>,
+                                   expected_hero: &str,
+                                   expected_front: bool,
+                                   cx: &mut gpui::TestAppContext| {
+                bg.update(cx, |bg, cx| bg.show(sel, cx));
+                // В debug-сборке декодирование и ресайз 6 Мп WebP на ЦП может занять несколько секунд.
+                for _ in 0..800 {
+                    env.run();
+                    window
+                        .update(cx, |_, window, cx| window.simulate_next_frame(cx))
+                        .unwrap();
+                    cx.run_until_parked();
+                    let done = bg.read_with(cx, |bg, _| {
+                        let frames = bg.controller.frames();
+                        let fronts = bg.controller.fronts();
+                        bg.pending.is_none()
+                            && frames
+                                .iter()
+                                .rev()
+                                .find(|l| l.alive)
+                                .is_some_and(|l| l.source.ends_with(expected_hero))
+                            && (fronts.iter().any(|l| l.alive) == expected_front)
+                    });
+                    if done {
+                        return;
+                    }
+                    std::thread::sleep(std::time::Duration::from_millis(25));
+                }
+                let state = bg.read_with(cx, |bg, _| {
+                    (
+                        bg.pending.clone(),
+                        bg.pictures.loader().stats(),
+                        bg.pictures.busy(),
+                        bg.controller.frames(),
+                        bg.controller.fronts(),
+                    )
+                });
+                let ds = window
+                    .update(cx, |_, window, _| {
+                        let v = viewport(window);
+                        (v, window.scale_factor(), device_size(window, v.0, v.1))
+                    })
+                    .unwrap();
+                panic!(
+                    "фон не переключился на {expected_hero} при {phys_w}×{phys_h} физ. px (бюджет {budget}), ds={ds:?}: {state:?}"
+                );
+            };
+
+            switch_and_wait(Selection::of_game("218"), "hl2-ghosting-bg.png", true, cx);
+            switch_and_wait(
+                Selection::of_episodes("218"),
+                "hl2-episodes-bg.jpg",
+                false,
+                cx,
+            );
+            switch_and_wait(Selection::of_game("218"), "hl2-ghosting-bg.png", true, cx);
+            switch_and_wait(Selection::of_game("220"), "hero-hl2.jpg", true, cx);
+            switch_and_wait(Selection::of_game("218"), "hl2-ghosting-bg.png", true, cx);
+        }
     }
 }

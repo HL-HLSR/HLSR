@@ -27,8 +27,8 @@ use crate::theme::Theme;
 use gpui::prelude::FluentBuilder as _;
 use gpui::{
     AnyElement, App, Bounds, ClickEvent, ElementId, FocusHandle, FontWeight, IntoElement,
-    ParentElement, Pixels, RenderOnce, Role, ScrollHandle, SharedString, Styled, Window, canvas,
-    div, hsla, point, prelude::*, rgb,
+    ParentElement, Pixels, RenderOnce, Role, SharedString, Styled, Window, canvas, div, hsla,
+    point, prelude::*, rgb,
 };
 use std::cell::{Cell, RefCell};
 use std::rc::Rc;
@@ -169,7 +169,7 @@ struct State {
     focus: FocusHandle,
     anchor: Rc<Cell<Bounds<Pixels>>>,
     /// Прокрутка меню: новая на каждое открытие (`scrollTop` 0, как у нового меню 0.4.9).
-    scroll: ScrollHandle,
+    scroll: crate::scroll::Scroll,
     /// Пункт, который надо показать прокруткой (с клавиатуры).
     reveal: Rc<Cell<Option<usize>>>,
     /// Рамки пунктов в прошлом кадре (px окна).
@@ -179,7 +179,7 @@ struct State {
 impl State {
     fn set_open(&mut self, open: bool) {
         if open && !self.nav.open {
-            self.scroll = ScrollHandle::new();
+            self.scroll = crate::scroll::Scroll::new();
         }
         if open {
             self.nav.show();
@@ -228,6 +228,7 @@ impl RenderOnce for Dropdown {
             on_select,
             preview_open,
         } = self;
+        let owner = window.current_view();
         let state = window.use_keyed_state(child_id(&id, "dropdown"), cx, |_, cx| State {
             nav: {
                 let mut nav = MenuNav::default();
@@ -238,7 +239,7 @@ impl RenderOnce for Dropdown {
             },
             focus: cx.focus_handle().tab_stop(true),
             anchor: Rc::default(),
-            scroll: ScrollHandle::new(),
+            scroll: crate::scroll::Scroll::new(),
             reveal: Rc::default(),
             rows: Rc::default(),
         });
@@ -262,93 +263,21 @@ impl RenderOnce for Dropdown {
             .map_or(-1, |index| index as i32);
         let items = Rc::new(items);
 
-        // ---- пункты ----
-        rows.borrow_mut().resize(items.len(), Bounds::default());
+        // ---- пункты (строятся лениво: только пока меню открыто или закрывается) ----
         let colors = Colors::new(theme);
-        let mut children: Vec<AnyElement> = Vec::new();
-        if let Some(heading) = heading {
-            children.push(
-                rise_in(
-                    child_id(&id, "heading"),
-                    0,
-                    div().flex_none().px(u(12.)).py(u(4.)).child(spaced(
-                        heading.to_uppercase(),
-                        11.,
-                        16.,
-                        FontWeight::BOLD,
-                        0.1,
-                        colors.faint,
-                    )),
-                )
-                .into_any_element(),
-            );
-        }
-        for (index, item) in items.iter().enumerate() {
-            let pick = {
-                let (state, items, on_select) = (state.clone(), items.clone(), on_select.clone());
-                move |_: &ClickEvent, window: &mut Window, cx: &mut App| {
-                    state.update(cx, |s, _| s.set_open(false));
-                    emit(&on_select, &items[index], window, cx);
-                    window.refresh();
-                }
-            };
-            let row = item_row(RowSpec {
-                id: ElementId::NamedInteger(format!("{id}/item").into(), index as u64),
-                item: item.clone(),
-                selected: index as i32 == selected,
-                active: index as i32 == active,
-                view: item_view.clone(),
-                probe: rows.clone(),
-                index,
-                colors,
-                zoom,
-                pick: Rc::new(pick),
-            });
-            children.push(
-                rise_in(
-                    ElementId::NamedInteger(format!("{id}/rise").into(), index as u64),
-                    rise_step(index),
-                    div().flex_none().child(row),
-                )
-                .into_any_element(),
-            );
-        }
-        // Последним: пункты этого кадра уже размечены — показать пункт с клавиатуры.
-        let shown = scroll.clone();
-        let wanted = reveal.clone();
-        let marks = rows.clone();
-        children.push(
-            canvas(
-                move |_, window, _| {
-                    let Some(index) = wanted.get() else { return };
-                    let view = shown.bounds();
-                    let row = marks.borrow().get(index).copied().unwrap_or_default();
-                    // Меню ещё меряется (прокрутка не подключена) — до следующего кадра.
-                    if view.size.height <= Pixels::ZERO || row.size.height <= Pixels::ZERO {
-                        return;
-                    }
-                    wanted.set(None);
-                    let offset = shown.offset();
-                    let next = reveal_offset(view, row, offset.y);
-                    if next != offset.y {
-                        shown.set_offset(point(offset.x, next));
-                        crate::motion::monitor_frame(window);
-                    }
-                },
-                |_, _, _, _| {},
-            )
-            .absolute()
-            .size_0()
-            .into_any_element(),
-        );
-
         let on_dismiss = {
             let state = state.clone();
-            move |window: &mut Window, cx: &mut App| {
+            move |_window: &mut Window, cx: &mut App| {
                 state.update(cx, |s, _| s.set_open(false));
-                window.refresh();
+                cx.notify(owner);
             }
         };
+        let menu_id = id.clone();
+        let menu_items = items.clone();
+        let menu_state = state.clone();
+        let menu_on_select = on_select.clone();
+        let menu_scroll = scroll.clone();
+        let menu_reveal = reveal.clone();
         let menu = popup_scroll(
             child_id(&id, "menu"),
             open,
@@ -364,6 +293,90 @@ impl RenderOnce for Dropdown {
             cx,
             on_dismiss,
             move || {
+                rows.borrow_mut().resize(menu_items.len(), Bounds::default());
+                let mut children: Vec<AnyElement> =
+                    Vec::with_capacity(menu_items.len() + usize::from(heading.is_some()) + 1);
+                if let Some(heading) = heading {
+                    children.push(
+                        rise_in(
+                            child_id(&menu_id, "heading"),
+                            0,
+                            div().flex_none().px(u(12.)).py(u(4.)).child(spaced(
+                                heading.to_uppercase(),
+                                11.,
+                                16.,
+                                FontWeight::BOLD,
+                                0.1,
+                                colors.faint,
+                            )),
+                        )
+                        .into_any_element(),
+                    );
+                }
+                let item_prefix: SharedString = format!("{menu_id}/item").into();
+                let rise_prefix: SharedString = format!("{menu_id}/rise").into();
+                for (index, item) in menu_items.iter().enumerate() {
+                    let pick = {
+                        let (state, items, on_select) = (
+                            menu_state.clone(),
+                            menu_items.clone(),
+                            menu_on_select.clone(),
+                        );
+                        move |_: &ClickEvent, window: &mut Window, cx: &mut App| {
+                            state.update(cx, |s, _| s.set_open(false));
+                            emit(&on_select, &items[index], window, cx);
+                            cx.notify(owner);
+                        }
+                    };
+                    let row = item_row(RowSpec {
+                        id: ElementId::NamedInteger(item_prefix.clone(), index as u64),
+                        item: item.clone(),
+                        selected: index as i32 == selected,
+                        active: index as i32 == active,
+                        view: item_view.clone(),
+                        probe: rows.clone(),
+                        index,
+                        colors,
+                        zoom,
+                        pick: Rc::new(pick),
+                    });
+                    children.push(
+                        rise_in(
+                            ElementId::NamedInteger(rise_prefix.clone(), index as u64),
+                            rise_step(index),
+                            div().flex_none().child(row),
+                        )
+                        .into_any_element(),
+                    );
+                }
+                // Последним: пункты этого кадра уже размечены — показать пункт с клавиатуры.
+                let shown = menu_scroll.handle();
+                let wanted = menu_reveal;
+                let marks = rows;
+                children.push(
+                    canvas(
+                        move |_, window, _| {
+                            let Some(index) = wanted.get() else { return };
+                            let view = shown.bounds();
+                            let row = marks.borrow().get(index).copied().unwrap_or_default();
+                            // Меню ещё меряется (прокрутка не подключена) — до следующего кадра.
+                            if view.size.height <= Pixels::ZERO || row.size.height <= Pixels::ZERO {
+                                return;
+                            }
+                            wanted.set(None);
+                            let offset = shown.offset();
+                            let next = reveal_offset(view, row, offset.y);
+                            if next != offset.y {
+                                shown.set_offset(point(offset.x, next));
+                                crate::motion::monitor_frame(window);
+                            }
+                        },
+                        |_, _, _, _| {},
+                    )
+                    .absolute()
+                    .size_0()
+                    .into_any_element(),
+                );
                 div()
                     .id("listbox")
                     .role(Role::ListBox)
@@ -397,7 +410,7 @@ impl RenderOnce for Dropdown {
                     let was_open = s.nav.open;
                     let outcome = s.nav.key(key, now, &labels, &disabled, selected);
                     if s.nav.open && !was_open {
-                        s.scroll = ScrollHandle::new();
+                        s.scroll = crate::scroll::Scroll::new();
                     }
                     if s.nav.open && s.nav.active >= 0 {
                         reveal.set(Some(s.nav.active as usize));
@@ -408,7 +421,7 @@ impl RenderOnce for Dropdown {
                     emit(&on_select, &items[index], window, cx);
                 }
                 if outcome != Outcome::Pass {
-                    window.refresh();
+                    cx.notify(owner);
                 }
             }
         };
@@ -432,7 +445,7 @@ impl RenderOnce for Dropdown {
                 .flex()
                 .items_center()
                 .cursor_pointer()
-                .on_click(move |event, window, cx| {
+                .on_click(move |event, _window, cx| {
                     // Enter и пробел у кнопки — клавиши меню (MenuPick), не щелчок.
                     if event.is_keyboard() {
                         return;
@@ -441,7 +454,7 @@ impl RenderOnce for Dropdown {
                         let open = !s.nav.open;
                         s.set_open(open);
                     });
-                    window.refresh();
+                    cx.notify(owner);
                 })
                 .children(content)
                 .child(anchor_probe(anchor))

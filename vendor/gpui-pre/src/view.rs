@@ -8,7 +8,6 @@ use crate::{Empty, Window};
 use anyhow::Result;
 use collections::FxHashSet;
 use refineable::Refineable;
-use std::mem;
 use std::{
     any::{TypeId, type_name},
     fmt,
@@ -315,6 +314,10 @@ impl<V: View> ViewElement<V> {
 struct ViewElementState {
     prepaint_range: Range<PrepaintStateIndex>,
     paint_range: Range<PaintIndex>,
+    /// HLSR: `Window::draw_generation`, на котором `prepaint_range` и `paint_range` были
+    /// записаны в `rendered_frame`; совпадает с `draw_generation - 1` тогда и только тогда,
+    /// когда диапазоны валидны в текущем `rendered_frame`.
+    last_painted_frame: u64,
     cache_key: ViewElementCacheKey,
     /// The entities the view accessed while it was last drawn, in any phase,
     /// restored when its prepaint is reused so the window stays subscribed.
@@ -541,7 +544,14 @@ fn prepaint_view(
 
                 // Opacity is compared by bits so that a NaN opacity still matches itself
                 // and the view keeps using its cache.
+                // HLSR: вместо глобального `window.refreshing = true` на время перерисовки
+                // родительского `Entity::cached` проверяем `last_painted_frame + 1 == draw_generation`:
+                // если предок был взят из кэша на прошлом кадре, диапазоны вложенного вида устарели
+                // и он безопасно перерисуется; если же предок рисовал на прошлом кадре (например,
+                // кадры свайпа или наведения внутри `GameConfigsPanel`), вложенный `Entity::cached`
+                // повторно использует свой кэш.
                 if let Some(mut element_state) = element_state
+                    && element_state.last_painted_frame.wrapping_add(1) == window.draw_generation
                     && element_state.cache_key.bounds == bounds
                     && element_state.cache_key.content_mask == content_mask
                     && element_state.cache_key.text_style == text_style
@@ -559,7 +569,6 @@ fn prepaint_view(
                     return (None, element_state);
                 }
 
-                let refreshing = mem::replace(&mut window.refreshing, true);
                 let prepaint_start = window.prepaint_index();
                 let (element, accessed_entities) = cx.detect_accessed_entities(|cx| {
                     let mut element = render(window, cx);
@@ -569,7 +578,6 @@ fn prepaint_view(
                 });
 
                 let prepaint_end = window.prepaint_index();
-                window.refreshing = refreshing;
 
                 (
                     Some(element),
@@ -577,6 +585,7 @@ fn prepaint_view(
                         accessed_entities,
                         prepaint_range: prepaint_start..prepaint_end,
                         paint_range: PaintIndex::default()..PaintIndex::default(),
+                        last_painted_frame: 0,
                         cache_key: ViewElementCacheKey {
                             bounds,
                             content_mask,
@@ -629,11 +638,9 @@ fn paint_view(
                     // actually painted, and output replayed under a different opacity is
                     // redrawn on the next frame.
                     if let Some(element) = element {
-                        let refreshing = mem::replace(&mut window.refreshing, true);
                         let ((), accessed_entities) =
                             cx.detect_accessed_entities(|cx| element.paint(window, cx));
                         element_state.accessed_entities.extend(accessed_entities);
-                        window.refreshing = refreshing;
                         element_state.cache_key.opacity = opacity;
                     } else {
                         window.reuse_paint(element_state.paint_range.clone());
@@ -644,6 +651,7 @@ fn paint_view(
 
                     let paint_end = window.paint_index();
                     element_state.paint_range = paint_start..paint_end;
+                    element_state.last_painted_frame = window.draw_generation;
 
                     ((), element_state)
                 },

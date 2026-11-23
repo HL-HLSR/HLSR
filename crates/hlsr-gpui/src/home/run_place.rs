@@ -24,7 +24,6 @@ use gpui::{
 use hlsr_ui::motion::CubicBezier;
 use std::cell::RefCell;
 use std::collections::HashMap;
-use std::fmt::Write as _;
 use std::sync::Arc;
 
 /// `@keyframes home-podium-glow` (и кадры карточки): 2,8 с, `alternate`, бесконечно.
@@ -145,38 +144,106 @@ fn art(place: u8, kind: Art) -> Option<Arc<RenderImage>> {
     ARTS.with(|arts| {
         arts.borrow_mut()
             .entry((place, kind))
-            .or_insert_with(|| {
-                let (svg, width, height) = match kind {
-                    // radial-gradient(140% 160% at 100% 50%, rgba(pod, A), transparent 55%).
-                    Art::Back => (radial_svg(pod.rgb, (1., 0.5), (1.4, 1.6), 0.55), 256, 64),
-                    // ::after: radial-gradient(60% 120% at 92% 50%, rgba(pod, .22), transparent 70%).
-                    Art::Glow => (radial_svg(pod.rgb, (0.92, 0.5), (0.6, 1.2), 0.7), 256, 64),
-                    // ::before: linear-gradient(105deg, transparent 20%, rgba(pod, .16) 50%,
-                    // transparent 80%) на 40 % карточки (около 5,3 : 1 при 1600 × 900).
-                    Art::Shine => (
-                        linear_svg(pod.rgb, 512., 96., 105., &[(0.2, 0.), (0.5, 1.), (0.8, 0.)]),
-                        512,
-                        96,
-                    ),
-                    Art::Trophy(side) => (trophy_svg(pod), side, side),
-                };
-                let image = hlsr_ui::safe_svg::render(svg.as_bytes(), width, height);
-                image.map(|image| render_image(&image))
+            .or_insert_with(|| match kind {
+                // radial-gradient(140% 160% at 100% 50%, rgba(pod, A), transparent 55%).
+                Art::Back => Some(radial_image(pod.rgb, (1., 0.5), (1.4, 1.6), 0.55, 64, 32)),
+                // ::after: radial-gradient(60% 120% at 92% 50%, rgba(pod, .22), transparent 70%).
+                Art::Glow => Some(radial_image(pod.rgb, (0.92, 0.5), (0.6, 1.2), 0.7, 64, 32)),
+                // ::before: linear-gradient(105deg, transparent 20%, rgba(pod, .16) 50%,
+                // transparent 80%) на 40 % карточки (около 5,3 : 1 при 1600 × 900).
+                Art::Shine => Some(linear_image(
+                    pod.rgb,
+                    128,
+                    32,
+                    105.,
+                    &[(0.2, 0.), (0.5, 1.), (0.8, 0.)],
+                )),
+                Art::Trophy(side) => {
+                    let svg = trophy_svg(pod);
+                    let image = hlsr_ui::safe_svg::render(svg.as_bytes(), side, side);
+                    image.map(|image| render_image(&image))
+                }
             })
             .clone()
     })
 }
 
-/// Градиент одного цвета: альфа 1 в центре и 0 на `fade` луча; эллипс в долях блока.
-fn radial_svg(color: u32, (cx, cy): (f32, f32), (rx, ry): (f32, f32), fade: f32) -> String {
-    format!(
-        "<svg xmlns='http://www.w3.org/2000/svg' width='256' height='64' viewBox='0 0 1 1' \
-         preserveAspectRatio='none'><radialGradient id='g' gradientUnits='userSpaceOnUse' \
-         cx='0' cy='0' r='1' gradientTransform='matrix({rx} 0 0 {ry} {cx} {cy})'>\
-         <stop offset='0' stop-color='#{color:06x}'/>\
-         <stop offset='{fade}' stop-color='#{color:06x}' stop-opacity='0'/></radialGradient>\
-         <rect width='1' height='1' fill='url(#g)'/></svg>"
+fn rgb_bytes(color: u32) -> (u8, u8, u8) {
+    (
+        ((color >> 16) & 0xff) as u8,
+        ((color >> 8) & 0xff) as u8,
+        (color & 0xff) as u8,
     )
+}
+
+/// Быстрый растр радиального градиента без `resvg` (прямая BGRA для `RenderImage`).
+fn radial_image(
+    color: u32,
+    (cx, cy): (f32, f32),
+    (rx, ry): (f32, f32),
+    fade: f32,
+    w: u32,
+    h: u32,
+) -> Arc<RenderImage> {
+    let (r, g, b) = rgb_bytes(color);
+    let mut bytes = Vec::with_capacity((w * h * 4) as usize);
+    let (inv_w, inv_h) = (1. / w as f32, 1. / h as f32);
+    let (inv_rx, inv_ry) = (1. / rx.max(f32::EPSILON), 1. / ry.max(f32::EPSILON));
+    let inv_fade = 1. / fade.max(f32::EPSILON);
+    for y in 0..h {
+        let ny = ((y as f32 + 0.5) * inv_h - cy) * inv_ry;
+        let ny2 = ny * ny;
+        for x in 0..w {
+            let nx = ((x as f32 + 0.5) * inv_w - cx) * inv_rx;
+            let d = (nx * nx + ny2).sqrt();
+            let a = (1. - d * inv_fade).clamp(0., 1.);
+            bytes.extend_from_slice(&[b, g, r, (a * 255.).round() as u8]);
+        }
+    }
+    let buffer = ::image::RgbaImage::from_raw(w, h, bytes).expect("размер совпадает с байтами");
+    Arc::new(RenderImage::new([::image::Frame::new(buffer)]))
+}
+
+/// Быстрый растр линейного градиента без `resvg` (прямая BGRA для `RenderImage`).
+fn linear_image(
+    color: u32,
+    w: u32,
+    h: u32,
+    angle: f32,
+    stops: &[(f32, f32)],
+) -> Arc<RenderImage> {
+    let (r, g, b) = rgb_bytes(color);
+    let (wf, hf) = (w as f32, h as f32);
+    let (sin, cos) = angle.to_radians().sin_cos();
+    let (dx, dy) = (sin, -cos);
+    let len = (wf * dx.abs() + hf * dy.abs()).max(f32::EPSILON);
+    let (cx, cy) = (wf / 2., hf / 2.);
+    let mut bytes = Vec::with_capacity((w * h * 4) as usize);
+    for y in 0..h {
+        let py = y as f32 + 0.5 - cy;
+        for x in 0..w {
+            let px = x as f32 + 0.5 - cx;
+            let t = ((px * dx + py * dy) / len + 0.5).clamp(0., 1.);
+            let a = if t <= stops[0].0 {
+                stops[0].1
+            } else if t >= stops[stops.len() - 1].0 {
+                stops[stops.len() - 1].1
+            } else {
+                let mut val = 0.;
+                for pair in stops.windows(2) {
+                    if t <= pair[1].0 {
+                        let span = (pair[1].0 - pair[0].0).max(f32::EPSILON);
+                        val = pair[0].1 + (pair[1].1 - pair[0].1) * ((t - pair[0].0) / span);
+                        break;
+                    }
+                }
+                val
+            };
+            bytes.extend_from_slice(&[b, g, r, (a.clamp(0., 1.) * 255.).round() as u8]);
+        }
+    }
+    let buffer = ::image::RgbaImage::from_raw(w, h, bytes).expect("размер совпадает с байтами");
+    Arc::new(RenderImage::new([::image::Frame::new(buffer)]))
 }
 
 /// Конец и начало линии `linear-gradient(<angle>deg, …)` в блоке `width × height` (как CSS:
@@ -192,27 +259,6 @@ fn gradient_line(width: f32, height: f32, angle: f32) -> [f32; 4] {
         cx + dx * half,
         cy + dy * half,
     ]
-}
-
-/// Линейный градиент одного цвета: стопы (позиция, альфа).
-fn linear_svg(color: u32, width: f32, height: f32, angle: f32, stops: &[(f32, f32)]) -> String {
-    let [x1, y1, x2, y2] = gradient_line(width, height, angle);
-    let mut out = format!(
-        "<svg xmlns='http://www.w3.org/2000/svg' width='{width}' height='{height}' \
-         viewBox='0 0 {width} {height}'><linearGradient id='g' gradientUnits='userSpaceOnUse' \
-         x1='{x1}' y1='{y1}' x2='{x2}' y2='{y2}'>"
-    );
-    for (at, alpha) in stops {
-        let _ = write!(
-            out,
-            "<stop offset='{at}' stop-color='#{color:06x}' stop-opacity='{alpha}'/>"
-        );
-    }
-    let _ = write!(
-        out,
-        "</linearGradient><rect width='{width}' height='{height}' fill='url(#g)'/></svg>"
-    );
-    out
 }
 
 /// `fa-trophy` (Font Awesome Free 7.3.1, CC BY 4.0), квадрат 512 = 1em.

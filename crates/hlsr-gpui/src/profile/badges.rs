@@ -178,7 +178,75 @@ fn plain_image(asset: &'static str, side: f32, scale: f32) -> Option<Arc<RenderI
     Some(image)
 }
 
-/// Картинка встроенного значка `side` CSS px; светящаяся «дышит» по кадрам реестра.
+/// Слои непрерывного свечения значка: слабое (2 px, .35), сильное (6 px, .95), иконка и поле.
+#[derive(Clone)]
+struct GlowLayers {
+    min: Arc<RenderImage>,
+    max: Arc<RenderImage>,
+    icon: Arc<RenderImage>,
+    pad: f32,
+}
+
+fn glow_halo(
+    small: &::image::RgbaImage,
+    px_side: u32,
+    pad: u32,
+    rgb: [u8; 3],
+    blur: f32,
+    alpha: f32,
+    scale: f32,
+) -> Arc<RenderImage> {
+    let total = px_side + pad * 2;
+    let mut mask = vec![0u8; (total * total) as usize];
+    for (x, y, p) in small.enumerate_pixels() {
+        mask[((y + pad) * total + x + pad) as usize] = p.0[3];
+    }
+    gaussian_blur_alpha(&mut mask, total, total, blur / 2. * scale);
+    let mut out = Rgba8Image::new(total, total).premultiplied();
+    let pixels = out.make_mut_slice();
+    for (index, m) in mask.iter().enumerate() {
+        let a = f32::from(*m) / 255. * alpha;
+        let pm = |c: u8| (f32::from(c) * a).round() as u8;
+        pixels[index] = Rgba::new(pm(rgb[0]), pm(rgb[1]), pm(rgb[2]), (a * 255.).round() as u8);
+    }
+    crate::image::render_image(&out)
+}
+
+fn glow_layers(asset: &'static str, side: f32, rgb: [u8; 3], scale: f32) -> Option<GlowLayers> {
+    thread_local! {
+        static LAYERS: RefCell<HashMap<(&'static str, u32, [u8; 3]), GlowLayers>> = RefCell::new(HashMap::new());
+    }
+    let s = scale.max(0.01);
+    let px_side = (side * s).round().max(1.) as u32;
+    let key = (asset, px_side, rgb);
+    if let Some(hit) = LAYERS.with_borrow(|c| c.get(&key).cloned()) {
+        return Some(hit);
+    }
+    let icon_src = ::image::load_from_memory(asset_bytes(asset)?).ok()?.into_rgba8();
+    let small = ::image::imageops::resize(
+        &icon_src,
+        px_side,
+        px_side,
+        ::image::imageops::FilterType::Triangle,
+    );
+    let pad = (REACH / 2. * 3. * s).ceil() as u32 + 1;
+    let (b0, a0) = glow_of(Some(0));
+    let (b1, a1) = glow_of(Some(LEVELS));
+    let min = glow_halo(&small, px_side, pad, rgb, b0, a0, s);
+    let max = glow_halo(&small, px_side, pad, rgb, b1, a1, s);
+    let icon = crate::image::render_image(&Rgba8Image::from_bytes(px_side, px_side, small.as_raw()));
+    let layers = GlowLayers {
+        min,
+        max,
+        icon,
+        pad: pad as f32 / s,
+    };
+    LAYERS.with_borrow_mut(|c| c.insert(key, layers.clone()));
+    Some(layers)
+}
+
+/// Картинка встроенного значка `side` CSS px; светящаяся «дышит» плавно на GPU в каждом кадре
+/// монитора (смешение крайних слоёв свечения без квантования на 16 ступеней).
 fn builtin(
     badge: &BadgeView,
     index: usize,
@@ -198,30 +266,52 @@ fn builtin(
             })
             .unwrap_or_else(|| div().size(u(side)).into_any_element());
     };
-    let draw = move |level: Option<u32>| {
-        let shown = glow_image(asset, side, rgb, level, scale);
-        let el = div().relative().size(u(side));
-        match shown {
-            Some((image, pad)) => el.child(
-                img(image)
-                    .absolute()
-                    .left(u(-pad))
-                    .top(u(-pad))
-                    .size(u(side + pad * 2.))
-                    .object_fit(ObjectFit::Fill),
-            ),
-            None => el,
-        }
-    };
     if AnimGate::still(cx).any() {
-        return draw(None).into_any_element();
+        let shown = glow_image(asset, side, rgb, None, scale);
+        let el = div().relative().size(u(side));
+        return match shown {
+            Some((image, pad)) => el
+                .child(
+                    img(image)
+                        .absolute()
+                        .left(u(-pad))
+                        .top(u(-pad))
+                        .size(u(side + pad * 2.))
+                        .object_fit(ObjectFit::Fill),
+                )
+                .into_any_element(),
+            None => el.into_any_element(),
+        };
     }
+    let Some(layers) = glow_layers(asset, side, rgb, scale) else {
+        return div().size(u(side)).into_any_element();
+    };
     keyframes(
         ("profile-badge-glow", index),
         "profile-badge-glow",
         move |frame| {
-            let level = (frame.mix.clamp(0., 1.) * f64::from(LEVELS)).round() as u32;
-            draw(Some(level))
+            let t = frame.mix.clamp(0., 1.) as f32;
+            let pad = layers.pad;
+            let span = side + pad * 2.;
+            let halo = |image: Arc<RenderImage>, opacity: f32| {
+                img(image)
+                    .absolute()
+                    .left(u(-pad))
+                    .top(u(-pad))
+                    .size(u(span))
+                    .object_fit(ObjectFit::Fill)
+                    .opacity(opacity)
+            };
+            div()
+                .relative()
+                .size(u(side))
+                .child(halo(layers.min.clone(), 1. - t))
+                .child(halo(layers.max.clone(), t))
+                .child(
+                    img(layers.icon.clone())
+                        .size(u(side))
+                        .object_fit(ObjectFit::Contain),
+                )
         },
     )
     .into_any_element()

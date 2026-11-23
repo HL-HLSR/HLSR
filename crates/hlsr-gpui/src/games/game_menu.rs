@@ -379,6 +379,7 @@ impl Render for GameMenu {
         let max_height = (fit.max_height > 0.).then_some(fit.max_height as f32);
         let weak = cx.weak_entity();
         let trigger_box = anchor;
+        let scroll = crate::scroll::Scroll::retained("game-menu-dropdown".into(), window, cx);
         let menu = presence(
             "game-menu-pop",
             open,
@@ -393,7 +394,7 @@ impl Render for GameMenu {
                     .gap(u(gap))
                     .p(u(8.))
                     .min_w(u(280.))
-                    .when_some(max_height, |el, max| el.max_h(u(max)).overflow_y_scroll())
+                    .when_some(max_height, |el, max| scroll.overflow(el.max_h(u(max))))
                     // `onDocumentDown`: нажатие мимо меню и кнопки закрывает.
                     .on_mouse_down_out(move |event, _, cx| {
                         if trigger_box.contains(&event.position) {

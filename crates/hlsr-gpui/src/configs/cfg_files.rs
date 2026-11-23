@@ -47,6 +47,8 @@ pub struct GameCfgFiles {
     replace: Entity<TextInput>,
     goto: Entity<TextInput>,
     list_scroll: Scroll,
+    /// Окно видимости списка файлов (`crate::rows`).
+    list_rows: crate::rows::Rows,
     keys_toggle: FocusHandle,
     keys_probe: Rc<Cell<Bounds<Pixels>>>,
     /// `@dirty`, сообщённый сессии последним.
@@ -217,6 +219,7 @@ impl GameCfgFiles {
             replace,
             goto,
             list_scroll: Scroll::new(),
+            list_rows: Default::default(),
             keys_toggle: cx.focus_handle().tab_stop(true),
             keys_probe: Rc::default(),
             reported_dirty: false,
@@ -615,7 +618,7 @@ impl GameCfgFiles {
         .into_any_element()
     }
 
-    fn list(&self, theme: &Theme, cx: &mut Context<Self>) -> AnyElement {
+    fn list(&self, theme: &Theme, window: &mut Window, cx: &mut Context<Self>) -> AnyElement {
         let state = self.cfg.list_state();
         let current = self.cfg.current.as_ref().map(|c| c.path.clone());
         let state_line = |error: bool, text: String| {
@@ -632,17 +635,24 @@ impl GameCfgFiles {
         let body = match state {
             Some((error, text)) => state_line(error, text),
             None => {
-                let rows: Vec<AnyElement> = self
-                    .cfg
-                    .shown_files()
+                // Окно видимости (`crate::rows`): в папке бывают сотни cfg.
+                let files = self.cfg.shown_files();
+                let keys = files.iter().map(|path| (*path).to_owned()).collect();
+                let slots = self.list_rows.plan(&self.list_scroll, keys, 2., window, cx);
+                let rows: Vec<AnyElement> = slots
                     .into_iter()
-                    .enumerate()
-                    .map(|(index, path)| {
-                        let active = current.as_deref() == Some(path);
-                        crate::snap::target(
-                            format!("cf-file-{index}"),
-                            self.file_row(path, active, theme, cx),
-                        )
+                    .map(|slot| match slot {
+                        crate::rows::Slot::Row(index) => {
+                            let path = files[index];
+                            let active = current.as_deref() == Some(path);
+                            crate::snap::target(
+                                format!("cf-file-{index}"),
+                                self.file_row(path, active, theme, cx),
+                            )
+                        }
+                        crate::rows::Slot::Space(height) => {
+                            div().flex_none().h(height).into_any_element()
+                        }
                     })
                     .collect();
                 ScrollArea::new("cf-files", &self.list_scroll)
@@ -650,7 +660,10 @@ impl GameCfgFiles {
                     .contain()
                     .flex_1()
                     .min_h_0()
-                    .child(div().flex().flex_col().gap(u(2.)).children(rows))
+                    .child(self.list_rows.measure(
+                        &self.list_scroll,
+                        div().flex().flex_col().gap(u(2.)).children(rows),
+                    ))
                     .into_any_element()
             }
         };
@@ -1296,7 +1309,7 @@ impl Render for GameCfgFiles {
                     }),
             )
             .note(self.t("#L_CF_NOTE", &[]));
-        let list = self.list(&theme, cx);
+        let list = self.list(&theme, window, cx);
         let editor = self.editor(&theme, window, cx);
         let keys = self.keys_popup(&theme, window, cx);
         gx::pane(&theme)

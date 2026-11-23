@@ -37,8 +37,33 @@ const CACHE_LIMIT: usize = 64;
 /// Разных незнакомых стилей в журнале.
 const LOGGED_LIMIT: usize = 256;
 
-/// Шаг кадров анимации, мс: 60 в секунду, как кадры бесконечного движения окна.
+/// Шаг кадров анимации по умолчанию, мс (60 Гц для вызовов без известной частоты монитора).
 pub const STEP_MS: f64 = 1000.0 / 60.0;
+
+/// Максимальное число шагов в одном цикле для кэширования всех кадров в ОЗУ: при высокой
+/// герцовке (240 Гц × 6 с = 1440 кадров) дешёвый пересчёт из `NickBase`/`FrameBase` (~30 мкс)
+/// лучше, чем десятки мегабайт кэша.
+const MAX_CACHED_STEPS: f64 = 400.0;
+
+/// Шаг сетки анимации по частоте монитора (`None` — 0: точное время кадра без квантования).
+pub fn step_ms_for_hz(refresh_hz: Option<f32>) -> f64 {
+    match refresh_hz {
+        Some(hz) if hz.is_finite() && hz > 1.0 => 1000.0 / f64::from(hz),
+        _ => 0.0,
+    }
+}
+
+/// Разложенный значок подписчика: сам значок и два слоя свечения (`t = 0` и `t = 1`).
+#[derive(Debug, Clone)]
+pub struct BadgePartsArt {
+    pub icon: Arc<Rgba8Image>,
+    pub glow_min: Arc<Rgba8Image>,
+    pub glow_max: Arc<Rgba8Image>,
+    pub x: f32,
+    pub y: f32,
+    pub width: f32,
+    pub height: f32,
+}
 
 /// Байт картинок кадров анимации в кэше (цикл ника 15 px — около 4 МБ, рамки 40 px — около
 /// 3 МБ); что делать при переполнении — см. [`keep`].
@@ -59,6 +84,8 @@ struct Frames {
 thread_local! {
     static STILL: RefCell<HashMap<String, ProfileArt>> = RefCell::new(HashMap::new());
     static MOVING: RefCell<HashMap<String, Frames>> = RefCell::new(HashMap::new());
+    static LAST_FRAME: RefCell<HashMap<String, (u64, ProfileArt)>> = RefCell::new(HashMap::new());
+    static BADGE_PARTS: RefCell<HashMap<(u32, u32), BadgePartsArt>> = RefCell::new(HashMap::new());
     static LOGGED: RefCell<HashSet<String>> = RefCell::new(HashSet::new());
 }
 
@@ -98,28 +125,57 @@ fn cached(key: String, make: impl FnOnce() -> ProfileArt) -> ProfileArt {
     art
 }
 
-/// Время кадра на сетке [`STEP_MS`] внутри цикла `(начало, длина)` и номер шага. `None` —
-/// цикла нет или он ещё не начался: кадр рисуется в свой момент, без кэша.
-fn phase(elapsed_ms: f64, cycle: Option<(f64, f64)>) -> Option<(f64, u64)> {
+/// Время кадра на сетке `step_ms` внутри цикла `(начало, длина)` и номер шага. `None` —
+/// цикла нет, он ещё не начался или сетка не задана (`step_ms <= 0`): кадр рисуется в свой момент.
+fn phase_at(elapsed_ms: f64, cycle: Option<(f64, f64)>, step_ms: f64) -> Option<(f64, u64)> {
+    if step_ms <= 0.0 {
+        return None;
+    }
     let (start, length) = cycle?;
     if elapsed_ms < start || length <= 0.0 {
         return None;
     }
-    let step = ((elapsed_ms - start) % length / STEP_MS).floor();
-    Some((start + step * STEP_MS, step as u64))
+    let step = ((elapsed_ms - start) % length / step_ms).floor();
+    Some((start + step * step_ms, step as u64))
 }
 
-/// Кадр анимации `draw(время)`: по шагу цикла из кэша, без цикла — заново.
+#[cfg(test)]
+fn phase(elapsed_ms: f64, cycle: Option<(f64, f64)>) -> Option<(f64, u64)> {
+    phase_at(elapsed_ms, cycle, STEP_MS)
+}
+
+/// Кадр анимации `draw(время)`: при небольшом числе шагов в цикле — кэш по шагу цикла, при
+/// высокой герцовке (240 Гц) — кэш последнего шага и быстрый пересчёт из `NickBase`/`FrameBase`.
 fn moving(
     key: impl FnOnce() -> String,
     elapsed_ms: f64,
     cycle: Option<(f64, f64)>,
+    step_ms: f64,
     draw: impl FnOnce(f64) -> ProfileArt,
 ) -> ProfileArt {
-    let Some((at, step)) = phase(elapsed_ms, cycle) else {
+    let Some((at, step)) = phase_at(elapsed_ms, cycle, step_ms) else {
         return draw(elapsed_ms);
     };
     let key = key();
+    let cache_whole_cycle = cycle.is_some_and(|(_, len)| len / step_ms <= MAX_CACHED_STEPS);
+    if !cache_whole_cycle {
+        let hit = LAST_FRAME.with_borrow(|all| {
+            all.get(&key)
+                .filter(|(cached_step, _)| *cached_step == step)
+                .map(|(_, art)| art.clone())
+        });
+        if let Some(hit) = hit {
+            return hit;
+        }
+        let art = draw(at);
+        LAST_FRAME.with_borrow_mut(|all| {
+            if all.len() >= CACHE_LIMIT {
+                all.clear();
+            }
+            all.insert(key, (step, art.clone()));
+        });
+        return art;
+    }
     let now = Instant::now();
     let hit = MOVING.with_borrow_mut(|all| {
         let frames = all.get_mut(&key)?;
@@ -190,7 +246,7 @@ fn frame_look(css: &str) -> Option<Arc<frame::FrameLook>> {
     }
 }
 
-/// Ник `text` с оформлением в момент `elapsed_ms`.
+/// Ник `text` с оформлением в момент `elapsed_ms` (шаг сетки по умолчанию [`STEP_MS`]).
 #[allow(clippy::too_many_arguments)]
 pub fn nick_art(
     style: &str,
@@ -203,6 +259,36 @@ pub fn nick_art(
     scale: f32,
     elapsed_ms: f64,
     still: Still,
+) -> ProfileArt {
+    nick_art_paced(
+        style,
+        css,
+        text,
+        size,
+        weight,
+        letter_spacing,
+        color,
+        scale,
+        elapsed_ms,
+        still,
+        STEP_MS,
+    )
+}
+
+/// Ник `text` с оформлением в момент `elapsed_ms` с шагом сетки `step_ms` (мс кадра монитора).
+#[allow(clippy::too_many_arguments)]
+pub fn nick_art_paced(
+    style: &str,
+    css: &str,
+    text: &str,
+    size: f32,
+    weight: u16,
+    letter_spacing: f32,
+    color: Color,
+    scale: f32,
+    elapsed_ms: f64,
+    still: Still,
+    step_ms: f64,
 ) -> ProfileArt {
     let Some(look) = nick_look(style, css) else {
         return plain();
@@ -234,16 +320,28 @@ pub fn nick_art(
             }
         }
     };
-    let key = || {
+    let base_key = || {
         format!(
             "n|{style}|{css}|{text}|{size}|{weight}|{letter_spacing}|{:?}|{scale}|{still:?}",
             rgba(color)
         )
     };
-    if nick::moving(&look, still) {
-        return moving(key, elapsed_ms, nick::cycle(&look, still), draw);
+    if nick::opacity_only(&look, still) {
+        let mut art = cached(base_key(), || draw(0.0));
+        art.opacity = nick::opacity_at(&look, elapsed_ms.max(0.0), still);
+        return art;
     }
-    cached(key(), || draw(elapsed_ms))
+    if nick::moving(&look, still) {
+        let paced_key = || format!("{}|{}", base_key(), (step_ms * 100.0).round() as u32);
+        return moving(
+            paced_key,
+            elapsed_ms,
+            nick::cycle(&look, still),
+            step_ms,
+            draw,
+        );
+    }
+    cached(base_key(), || draw(elapsed_ms))
 }
 
 /// Рамка аватара `size` в момент `elapsed_ms`; `radius` — `None` для круга.
@@ -257,6 +355,24 @@ pub fn frame_art(
     scale: f32,
     elapsed_ms: f64,
     still: Still,
+) -> ProfileArt {
+    frame_art_paced(
+        css, size, width, radius, hole, scale, elapsed_ms, still, STEP_MS,
+    )
+}
+
+/// Рамка аватара `size` в момент `elapsed_ms` с шагом сетки `step_ms` (мс кадра монитора).
+#[allow(clippy::too_many_arguments)]
+pub fn frame_art_paced(
+    css: &str,
+    size: f32,
+    width: f32,
+    radius: Option<f32>,
+    hole: Color,
+    scale: f32,
+    elapsed_ms: f64,
+    still: Still,
+    step_ms: f64,
 ) -> ProfileArt {
     let Some(look) = frame_look(css) else {
         return plain();
@@ -287,16 +403,53 @@ pub fn frame_art(
         },
         None => plain(),
     };
-    let key = || {
+    let base_key = || {
         format!(
             "f|{css}|{size}|{width}|{radius:?}|{:?}|{scale}|{still:?}",
             rgba(hole)
         )
     };
-    if frame::moving(&look, still) {
-        return moving(key, elapsed_ms, frame::cycle(&look, still), draw);
+    if frame::opacity_only(&look, still) {
+        let mut art = cached(base_key(), || draw(0.0));
+        art.opacity = frame::opacity_at(&look, elapsed_ms.max(0.0), still);
+        return art;
     }
-    cached(key(), || draw(elapsed_ms))
+    if frame::moving(&look, still) {
+        let paced_key = || format!("{}|{}", base_key(), (step_ms * 100.0).round() as u32);
+        return moving(
+            paced_key,
+            elapsed_ms,
+            frame::cycle(&look, still),
+            step_ms,
+            draw,
+        );
+    }
+    cached(base_key(), || draw(elapsed_ms))
+}
+
+/// Разложенный значок подписчика (иконка и крайние свечения `t = 0`/`1`), кэшируемый по размеру.
+pub fn badge_parts_art(size: f32, scale: f32) -> Option<BadgePartsArt> {
+    let key = ((size * 100.0).round() as u32, (scale * 1000.0).round() as u32);
+    if let Some(hit) = BADGE_PARTS.with_borrow(|all| all.get(&key).cloned()) {
+        return Some(hit);
+    }
+    let parts = nick::badge_parts(size, scale)?;
+    let art = BadgePartsArt {
+        icon: Arc::new(raster::to_image_premultiplied(&parts.icon)),
+        glow_min: Arc::new(raster::to_image_premultiplied(&parts.glow_min)),
+        glow_max: Arc::new(raster::to_image_premultiplied(&parts.glow_max)),
+        x: parts.x,
+        y: parts.y,
+        width: parts.width,
+        height: parts.height,
+    };
+    BADGE_PARTS.with_borrow_mut(|all| {
+        if all.len() >= CACHE_LIMIT {
+            all.clear();
+        }
+        all.insert(key, art.clone());
+    });
+    Some(art)
 }
 
 /// Значок подписчика у ника кеглем `size` (px CSS) в момент `elapsed_ms`; место — от левого
@@ -318,7 +471,7 @@ pub fn badge_art(size: f32, scale: f32, elapsed_ms: f64, still: Still) -> Profil
     };
     let key = || format!("b|{size}|{scale}|{still:?}");
     if nick::badge_moving(still) {
-        return moving(key, elapsed_ms, nick::badge_cycle(still), draw);
+        return moving(key, elapsed_ms, nick::badge_cycle(still), STEP_MS, draw);
     }
     cached(key(), || draw(elapsed_ms))
 }
@@ -395,5 +548,73 @@ mod tests {
         keep(&mut all, "b".into(), 0, &art, start + MOVING_STALE * 2);
         assert!(!all.contains_key("a"));
         assert_eq!(all["b"].bytes, art.image.byte_len());
+    }
+
+    #[test]
+    fn high_hz_pacing_and_opacity_only_paths() {
+        let white = Color::new(255, 255, 255, 255);
+        let step_240 = step_ms_for_hz(Some(240.0));
+        assert!((step_240 - 1000.0 / 240.0).abs() < 1e-6);
+        let a = nick_art_paced(
+            "developer",
+            "",
+            "prolert",
+            15.0,
+            500,
+            0.0,
+            white,
+            1.0,
+            100.0,
+            Still::MOVING,
+            step_240,
+        );
+        let b = nick_art_paced(
+            "developer",
+            "",
+            "prolert",
+            15.0,
+            500,
+            0.0,
+            white,
+            1.0,
+            105.0,
+            Still::MOVING,
+            step_240,
+        );
+        assert!(!Arc::ptr_eq(&a.image, &b.image), "240 Гц не квантуется в 60 FPS");
+
+        // nick-pulse (ghost) не перерисовывает растр — меняется только opacity.
+        let g0 = nick_art_paced(
+            "ghost",
+            "",
+            "prolert",
+            15.0,
+            500,
+            0.0,
+            white,
+            1.0,
+            0.0,
+            Still::MOVING,
+            step_240,
+        );
+        let g1 = nick_art_paced(
+            "ghost",
+            "",
+            "prolert",
+            15.0,
+            500,
+            0.0,
+            white,
+            1.0,
+            1600.0,
+            Still::MOVING,
+            step_240,
+        );
+        assert!(Arc::ptr_eq(&g0.image, &g1.image));
+        assert!(g1.opacity < g0.opacity);
+
+        let parts = badge_parts_art(15.0, 1.0).expect("badge parts");
+        assert_eq!(parts.icon.width(), parts.glow_min.width());
+        assert_eq!(parts.icon.width(), parts.glow_max.width());
     }
 }

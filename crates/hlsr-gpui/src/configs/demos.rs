@@ -9,6 +9,7 @@ use crate::kit::button::{focus_handle, focus_visible, outline, white};
 use crate::kit::{CheckLook, Checked, check};
 use crate::layer::TipExt;
 use crate::motion::{Timing, hover, mix};
+use crate::rows::{Rows, Slot};
 use crate::scale::{u, zoom};
 use crate::scroll::Scroll;
 use crate::text::{RUBIK, TextExt};
@@ -34,7 +35,12 @@ pub struct GameDemosView {
     engine: Engine,
     language: Language,
     demos: GameDemos,
+    /// Список уже хотя бы раз загружался (повторный вход в раздел обновляет его после свайпа).
+    loaded: bool,
     scroll: Scroll,
+    /// Окно видимости строк (`crate::rows`): прокрутка перерисовывает вид каждый кадр, и без
+    /// окна каждый кадр строил, раскладывал и рисовал все демо папки.
+    rows: Rows,
     _events: Task<()>,
 }
 
@@ -58,7 +64,9 @@ impl GameDemosView {
             engine,
             language,
             demos: GameDemos::default(),
+            loaded: false,
             scroll: Scroll::new(),
+            rows: Rows::default(),
             _events: events,
         }
     }
@@ -96,6 +104,11 @@ impl GameDemosView {
         .detach();
     }
 
+    /// Загружался ли уже список демо хотя бы один раз.
+    pub fn has_loaded(&self) -> bool {
+        self.loaded
+    }
+
     /// `load()`: раздел открыт (`watch active`) или «Обновить».
     pub fn load(&mut self, cx: &mut Context<Self>) {
         if !self.demos.begin_load() {
@@ -111,6 +124,7 @@ impl GameDemosView {
             let t = |key: &str, args: &[&str]| hlsr_ui::tr(language, key, args);
             this.demos
                 .list_done(result.as_ref().map_err(|_| ()), now, &t);
+            this.loaded = true;
         });
     }
 
@@ -382,9 +396,23 @@ impl Render for GameDemosView {
         } else if demos.demos.is_empty() {
             empty(t("#L_DEMOS_EMPTY"))
         } else {
+            let keys = demos.demos.iter().map(|demo| demo.key()).collect();
+            let slots = self.rows.plan(&self.scroll, keys, 6., window, cx);
             let mut list = div().flex().flex_col().gap(u(6.));
-            for (index, demo) in demos.demos.iter().enumerate() {
+            for slot in slots {
+                let index = match slot {
+                    Slot::Row(index) => index,
+                    Slot::Space(height) => {
+                        list = list.child(div().flex_none().h(height));
+                        continue;
+                    }
+                };
+                let demo = &demos.demos[index];
                 let key = demo.key();
+                let check_id = SharedString::from(format!("gd-check-{index}"));
+                if focus_handle(&ElementId::Name(check_id.clone()), window, cx).is_focused(window) {
+                    self.rows.focus(index);
+                }
                 let meta = |text: String| {
                     div()
                         .flex_none()
@@ -406,7 +434,7 @@ impl Render for GameDemosView {
                     })
                     .child(
                         check(
-                            SharedString::from(format!("gd-check-{index}")),
+                            check_id,
                             if demos.is_chosen(&key) {
                                 Checked::On
                             } else {
@@ -524,7 +552,7 @@ impl Render for GameDemosView {
                 }
                 list = list.child(row);
             }
-            list.into_any_element()
+            self.rows.measure(&self.scroll, list).into_any_element()
         };
 
         let error = |text: &str| {

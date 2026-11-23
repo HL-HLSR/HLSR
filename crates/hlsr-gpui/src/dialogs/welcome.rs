@@ -422,13 +422,11 @@ impl Render for WelcomeModal {
             })
             .child(later);
         // .welcome__window: min(760px, 100% − 64px), до 100% − 64px по высоте, поля 32 × 40.
-        let body = div()
-            .id("welcome-window")
+        let body = crate::scroll::overflow_y("welcome-window", window, cx)
             .role(Role::Dialog)
             .aria_label(title.clone())
             .w(u((vw - 64.).min(760.)))
             .max_h(u(vh - 64.))
-            .overflow_y_scroll()
             .bg(theme.color("l-modal-bg"))
             .rounded(theme.rem("l-radius"))
             .shadow(vec![

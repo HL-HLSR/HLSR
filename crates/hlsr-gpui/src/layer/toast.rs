@@ -293,7 +293,7 @@ impl Card {
                     radius: (1.2, 1.4),
                     stops: vec![(0., 0.12), (0.6, 0.)],
                 }
-                .paint(WIDTH, 56., tint)
+                .paint_rounded(WIDTH, 56., theme.len("l-radius"), tint)
                 .absolute()
                 .top_0()
                 .left_0()
