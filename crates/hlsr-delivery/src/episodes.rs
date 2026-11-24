@@ -132,9 +132,7 @@ pub fn status(install_path: Option<&Path>) -> Map<String, Value> {
                         .and_then(Value::as_str)
                         .map(str::to_owned)
                 })
-                .filter(|_| {
-                    install_path.is_some_and(|root| has_gameinfo(&root.join(episode.dir)))
-                });
+                .filter(|_| install_path.is_some_and(|root| has_gameinfo(&root.join(episode.dir))));
             (
                 episode.id.to_owned(),
                 json!({ "installed": version.is_some(), "version": version }),

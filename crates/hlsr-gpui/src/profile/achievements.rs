@@ -164,9 +164,11 @@ impl Bake {
     }
 }
 
+/// Запечённые текстуры градиентов карточек (по ключу вида и компактного размера).
+type BakedCache = RefCell<std::collections::HashMap<(Bake, (u32, u32)), Arc<RenderImage>>>;
+
 thread_local! {
-    /// Запечённые текстуры градиентов карточек (по ключу вида и компактного размера).
-    static BAKED: RefCell<std::collections::HashMap<(Bake, (u32, u32)), Arc<RenderImage>>> =
+    static BAKED: BakedCache =
         RefCell::default();
 }
 
@@ -612,8 +614,7 @@ impl Render for AchievementsTab {
                         move |bounds, window, _| {
                             let (lw, lz, lh) = probe_h.get();
                             let z = crate::scale::zoom(window);
-                            if (f32::from(bounds.size.width) - f32::from(lw)).abs() > 0.5
-                                || z != lz
+                            if (f32::from(bounds.size.width) - f32::from(lw)).abs() > 0.5 || z != lz
                             {
                                 probe_h.set((bounds.size.width, z, bounds.size.height));
                                 crate::motion::monitor_frame(window);
@@ -633,14 +634,12 @@ impl Render for AchievementsTab {
                         .gap(u(12.))
                         .when_some(min_row_h, |el, h| el.min_h(h))
                         .child(probe)
-                        .child(
-                            div()
-                                .flex_1()
-                                .min_w_0()
-                                .flex()
-                                .flex_col()
-                                .child(card(&view.achievements[left], left, &theme, zoom)),
-                        )
+                        .child(div().flex_1().min_w_0().flex().flex_col().child(card(
+                            &view.achievements[left],
+                            left,
+                            &theme,
+                            zoom,
+                        )))
                         .child(
                             div()
                                 .flex_1()

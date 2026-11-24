@@ -293,7 +293,8 @@ impl RenderOnce for Dropdown {
             cx,
             on_dismiss,
             move || {
-                rows.borrow_mut().resize(menu_items.len(), Bounds::default());
+                rows.borrow_mut()
+                    .resize(menu_items.len(), Bounds::default());
                 let mut children: Vec<AnyElement> =
                     Vec::with_capacity(menu_items.len() + usize::from(heading.is_some()) + 1);
                 if let Some(heading) = heading {

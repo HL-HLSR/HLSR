@@ -212,7 +212,10 @@ impl RenderOnce for NickName {
                 .into_any_element()
         };
 
-        let badge_mix = self.subscriber.then(|| nick::badge_mix(ms, still)).flatten();
+        let badge_mix = self
+            .subscriber
+            .then(|| nick::badge_mix(ms, still))
+            .flatten();
         if !self.subscriber || badge_mix.is_some() {
             state.update(cx, |state, cx| state.badge.image(None, window, cx));
         }

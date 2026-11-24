@@ -205,13 +205,7 @@ fn radial_image(
 }
 
 /// Быстрый растр линейного градиента без `resvg` (прямая BGRA для `RenderImage`).
-fn linear_image(
-    color: u32,
-    w: u32,
-    h: u32,
-    angle: f32,
-    stops: &[(f32, f32)],
-) -> Arc<RenderImage> {
+fn linear_image(color: u32, w: u32, h: u32, angle: f32, stops: &[(f32, f32)]) -> Arc<RenderImage> {
     let (r, g, b) = rgb_bytes(color);
     let (wf, hf) = (w as f32, h as f32);
     let (sin, cos) = angle.to_radians().sin_cos();

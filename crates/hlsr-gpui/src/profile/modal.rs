@@ -196,7 +196,11 @@ impl ProfileModal {
         if let Some(cached) = &self.view_cache {
             return cached.clone();
         }
-        let view = Rc::new(self.state.borrow().view(self.language, &self.wall, &self.tr));
+        let view = Rc::new(
+            self.state
+                .borrow()
+                .view(self.language, &self.wall, &self.tr),
+        );
         self.view_cache = Some(view.clone());
         view
     }
@@ -828,7 +832,10 @@ impl Render for ProfileModal {
         let guest = view.kind != Kind::Main;
         // Вкладка «Настройки» смонтирована, пока окно показывает свой профиль (`v-if`).
         let own = self.modal.is_open() && self.key.is_some() && !guest && view.tabs.len() >= 3;
-        let attach_key = (own.then_some(self.generation), self.section == Section::Settings);
+        let attach_key = (
+            own.then_some(self.generation),
+            self.section == Section::Settings,
+        );
         if self.settings_attached != attach_key {
             self.settings_attached = attach_key;
             self.settings

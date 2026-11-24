@@ -1095,8 +1095,16 @@ fn swap_keeps_cached_views_cached_during_slide(cx: &mut TestAppContext) {
         cx.update(|window, cx| window.simulate_next_frame(cx));
         cx.run_until_parked();
     }
-    assert_eq!(a.get(), a_start, "уходящий кэшированный вид не должен перерисовываться в свайпе");
-    assert_eq!(b.get(), b_start, "входящий кэшированный вид не должен перерисовываться в свайпе");
+    assert_eq!(
+        a.get(),
+        a_start,
+        "уходящий кэшированный вид не должен перерисовываться в свайпе"
+    );
+    assert_eq!(
+        b.get(),
+        b_start,
+        "входящий кэшированный вид не должен перерисовываться в свайпе"
+    );
 }
 
 #[test]

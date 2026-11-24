@@ -212,9 +212,11 @@ fn glow_halo(
     crate::image::render_image(&out)
 }
 
+type LayerCache = RefCell<HashMap<(&'static str, u32, [u8; 3]), GlowLayers>>;
+
 fn glow_layers(asset: &'static str, side: f32, rgb: [u8; 3], scale: f32) -> Option<GlowLayers> {
     thread_local! {
-        static LAYERS: RefCell<HashMap<(&'static str, u32, [u8; 3]), GlowLayers>> = RefCell::new(HashMap::new());
+        static LAYERS: LayerCache = RefCell::new(HashMap::new());
     }
     let s = scale.max(0.01);
     let px_side = (side * s).round().max(1.) as u32;
@@ -222,7 +224,9 @@ fn glow_layers(asset: &'static str, side: f32, rgb: [u8; 3], scale: f32) -> Opti
     if let Some(hit) = LAYERS.with_borrow(|c| c.get(&key).cloned()) {
         return Some(hit);
     }
-    let icon_src = ::image::load_from_memory(asset_bytes(asset)?).ok()?.into_rgba8();
+    let icon_src = ::image::load_from_memory(asset_bytes(asset)?)
+        .ok()?
+        .into_rgba8();
     let small = ::image::imageops::resize(
         &icon_src,
         px_side,
@@ -234,7 +238,8 @@ fn glow_layers(asset: &'static str, side: f32, rgb: [u8; 3], scale: f32) -> Opti
     let (b1, a1) = glow_of(Some(LEVELS));
     let min = glow_halo(&small, px_side, pad, rgb, b0, a0, s);
     let max = glow_halo(&small, px_side, pad, rgb, b1, a1, s);
-    let icon = crate::image::render_image(&Rgba8Image::from_bytes(px_side, px_side, small.as_raw()));
+    let icon =
+        crate::image::render_image(&Rgba8Image::from_bytes(px_side, px_side, small.as_raw()));
     let layers = GlowLayers {
         min,
         max,

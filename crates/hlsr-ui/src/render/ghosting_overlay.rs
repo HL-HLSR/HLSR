@@ -466,9 +466,8 @@ struct Part {
 }
 
 /// Квадрат канала 0..255 для масок HUD (`hud.png`): таблица экономит 4× памяти без потери точности.
-static SQ_LUT: std::sync::LazyLock<[f32; 256]> = std::sync::LazyLock::new(|| {
-    std::array::from_fn(|v| ((v as f64 / 255.0).powi(2)) as f32)
-});
+static SQ_LUT: std::sync::LazyLock<[f32; 256]> =
+    std::sync::LazyLock::new(|| std::array::from_fn(|v| ((v as f64 / 255.0).powi(2)) as f32));
 
 /// Маски HUD (`hud.png`): квадрат канала, `Float32Array`.
 /// Для стокового `hud.png` хранятся исходные байты `[r, g, b]` (4,1 МиБ вместо 16,5 МиБ),
@@ -812,11 +811,7 @@ impl OverlayRenderer {
                     if p == 0.0 && !keep {
                         continue;
                     }
-                    let g = if keep {
-                        f64::from(glow_v) * gain
-                    } else {
-                        0.0
-                    };
+                    let g = if keep { f64::from(glow_v) * gain } else { 0.0 };
                     part.where_.push(((y - y0) * width + (x - x0)) as usize);
                     let m = (1.0 - p)
                         * if keep {

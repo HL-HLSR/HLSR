@@ -804,7 +804,8 @@ impl ShellRoot {
             self.frame.home = None;
         }
         let in_configs = section == "configs";
-        if self.configs_shown && !in_configs
+        if self.configs_shown
+            && !in_configs
             && let Some(configs) = self.frame.configs.clone()
         {
             configs.update(cx, |configs, cx| configs.release_idle_caches(cx));
@@ -849,7 +850,12 @@ impl ShellRoot {
                     .get_or_insert_with(|| cx.new(|cx| GameConfigsPanel::new(&services, cx)))
                     .clone();
                 cell()
-                    .child(crate::cache::cached_under_modal(configs, full(), on, frozen))
+                    .child(crate::cache::cached_under_modal(
+                        configs,
+                        full(),
+                        on,
+                        frozen,
+                    ))
                     .into_any_element()
             }
             (_, "demo") => {

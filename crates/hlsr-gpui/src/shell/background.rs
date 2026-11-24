@@ -200,6 +200,9 @@ pub fn scrims(theme: &Theme, radius: Pixels) -> Vec<Div> {
         .collect()
 }
 
+/// Запрошенный размер и сама картинка слоя.
+type HeldImage = (Option<(u32, u32)>, Arc<RenderImage>);
+
 pub struct Background {
     controller: BackgroundController,
     /// Вид со стеклом над фоном (колонка, [`Background::glass_over`]) и кадр под стеклом, о
@@ -222,7 +225,7 @@ pub struct Background {
     /// Фон LiveSplit под стеклом Liquid Glass: окно (биты CSS px), Paper и маленькая картинка.
     tool_glass: Option<((u32, u32, bool), Arc<Rgba8Image>)>,
     /// Последняя показанная картинка слоя (передний план?, ключ) и её запрошенный размер.
-    held: HashMap<(bool, i32), (Option<(u32, u32)>, Arc<RenderImage>)>,
+    held: HashMap<(bool, i32), HeldImage>,
     /// Области (`games/<id>`), которые сейчас держит фон: ушедшие после затухания освобождаются.
     active_scopes: HashSet<String>,
     /// Прозрачность слоёв кадра в прошлом кадре окна (перетекание `l-value`): стекло Liquid Glass
@@ -699,8 +702,7 @@ impl Background {
         let mut out = Vec::new();
         for layer in self.controller.fronts() {
             let request = self.controller.front_request(&layer);
-            let Some(image) =
-                self.layer_image((true, layer.key), layer.alive, request, window, cx)
+            let Some(image) = self.layer_image((true, layer.key), layer.alive, request, window, cx)
             else {
                 continue;
             };
@@ -1224,53 +1226,54 @@ mod tests {
                 .update(cx, |_, window, _| window.activate_window())
                 .unwrap();
 
-            let switch_and_wait = |sel: Option<Selection>,
-                                   expected_hero: &str,
-                                   expected_front: bool,
-                                   cx: &mut gpui::TestAppContext| {
-                bg.update(cx, |bg, cx| bg.show(sel, cx));
-                // В debug-сборке декодирование и ресайз 6 Мп WebP на ЦП может занять несколько секунд.
-                for _ in 0..800 {
-                    env.run();
-                    window
-                        .update(cx, |_, window, cx| window.simulate_next_frame(cx))
-                        .unwrap();
-                    cx.run_until_parked();
-                    let done = bg.read_with(cx, |bg, _| {
-                        let frames = bg.controller.frames();
-                        let fronts = bg.controller.fronts();
-                        bg.pending.is_none()
-                            && frames
-                                .iter()
-                                .rev()
-                                .find(|l| l.alive)
-                                .is_some_and(|l| l.source.ends_with(expected_hero))
-                            && (fronts.iter().any(|l| l.alive) == expected_front)
-                    });
-                    if done {
-                        return;
+            let switch_and_wait =
+                |sel: Option<Selection>,
+                 expected_hero: &str,
+                 expected_front: bool,
+                 cx: &mut gpui::TestAppContext| {
+                    bg.update(cx, |bg, cx| bg.show(sel, cx));
+                    // В debug-сборке декодирование и ресайз 6 Мп WebP на ЦП может занять несколько секунд.
+                    for _ in 0..800 {
+                        env.run();
+                        window
+                            .update(cx, |_, window, cx| window.simulate_next_frame(cx))
+                            .unwrap();
+                        cx.run_until_parked();
+                        let done = bg.read_with(cx, |bg, _| {
+                            let frames = bg.controller.frames();
+                            let fronts = bg.controller.fronts();
+                            bg.pending.is_none()
+                                && frames
+                                    .iter()
+                                    .rev()
+                                    .find(|l| l.alive)
+                                    .is_some_and(|l| l.source.ends_with(expected_hero))
+                                && (fronts.iter().any(|l| l.alive) == expected_front)
+                        });
+                        if done {
+                            return;
+                        }
+                        std::thread::sleep(std::time::Duration::from_millis(25));
                     }
-                    std::thread::sleep(std::time::Duration::from_millis(25));
-                }
-                let state = bg.read_with(cx, |bg, _| {
-                    (
-                        bg.pending.clone(),
-                        bg.pictures.loader().stats(),
-                        bg.pictures.busy(),
-                        bg.controller.frames(),
-                        bg.controller.fronts(),
-                    )
-                });
-                let ds = window
-                    .update(cx, |_, window, _| {
-                        let v = viewport(window);
-                        (v, window.scale_factor(), device_size(window, v.0, v.1))
-                    })
-                    .unwrap();
-                panic!(
-                    "фон не переключился на {expected_hero} при {phys_w}×{phys_h} физ. px (бюджет {budget}), ds={ds:?}: {state:?}"
-                );
-            };
+                    let state = bg.read_with(cx, |bg, _| {
+                        (
+                            bg.pending.clone(),
+                            bg.pictures.loader().stats(),
+                            bg.pictures.busy(),
+                            bg.controller.frames(),
+                            bg.controller.fronts(),
+                        )
+                    });
+                    let ds = window
+                        .update(cx, |_, window, _| {
+                            let v = viewport(window);
+                            (v, window.scale_factor(), device_size(window, v.0, v.1))
+                        })
+                        .unwrap();
+                    panic!(
+                        "фон не переключился на {expected_hero} при {phys_w}×{phys_h} физ. px (бюджет {budget}), ds={ds:?}: {state:?}"
+                    );
+                };
 
             switch_and_wait(Selection::of_game("218"), "hl2-ghosting-bg.png", true, cx);
             switch_and_wait(

@@ -429,7 +429,11 @@ impl State {
         let top = self.shown() / zoom;
         let margin = look.margin.min((bar_height * 0.2).max(0.));
         let track = (bar_height - 2. * margin).max(0.);
-        let thumb_pad = if look.track.is_some() { 0. } else { look.border };
+        let thumb_pad = if look.track.is_some() {
+            0.
+        } else {
+            look.border
+        };
         Geometry {
             viewport,
             max,
@@ -741,7 +745,13 @@ impl RenderOnce for WheelLayer {
                 .borrow_mut()
                 .step(cx.background_executor().now());
         }
-        wheel_layer(self.scroll, self.contain, self.has_fade, self.kind, self.on_wheel)
+        wheel_layer(
+            self.scroll,
+            self.contain,
+            self.has_fade,
+            self.kind,
+            self.on_wheel,
+        )
     }
 }
 

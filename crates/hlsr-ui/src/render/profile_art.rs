@@ -429,7 +429,10 @@ pub fn frame_art_paced(
 
 /// Разложенный значок подписчика (иконка и крайние свечения `t = 0`/`1`), кэшируемый по размеру.
 pub fn badge_parts_art(size: f32, scale: f32) -> Option<BadgePartsArt> {
-    let key = ((size * 100.0).round() as u32, (scale * 1000.0).round() as u32);
+    let key = (
+        (size * 100.0).round() as u32,
+        (scale * 1000.0).round() as u32,
+    );
     if let Some(hit) = BADGE_PARTS.with_borrow(|all| all.get(&key).cloned()) {
         return Some(hit);
     }
@@ -581,7 +584,10 @@ mod tests {
             Still::MOVING,
             step_240,
         );
-        assert!(!Arc::ptr_eq(&a.image, &b.image), "240 Гц не квантуется в 60 FPS");
+        assert!(
+            !Arc::ptr_eq(&a.image, &b.image),
+            "240 Гц не квантуется в 60 FPS"
+        );
 
         // nick-pulse (ghost) не перерисовывает растр — меняется только opacity.
         let g0 = nick_art_paced(

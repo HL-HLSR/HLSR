@@ -56,7 +56,9 @@ pub fn trim_heap() {
 pub fn trim_heap_async(cx: &gpui::App) {
     #[cfg(all(target_os = "linux", target_env = "gnu"))]
     {
-        cx.background_executor().spawn(async { trim_heap() }).detach();
+        cx.background_executor()
+            .spawn(async { trim_heap() })
+            .detach();
     }
     #[cfg(not(all(target_os = "linux", target_env = "gnu")))]
     {

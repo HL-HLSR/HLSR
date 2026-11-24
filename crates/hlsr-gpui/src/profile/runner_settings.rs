@@ -50,6 +50,15 @@ struct Inputs {
     _events: Vec<Subscription>,
 }
 
+/// Снимок для отрисовки: ключ входов, настройки, выбор и два списка.
+type ViewCache = (
+    (Language, u64, u64),
+    Rc<SettingsView>,
+    Option<Rc<PickerView>>,
+    Vec<Item>,
+    Vec<Item>,
+);
+
 pub struct RunnerSettingsTab {
     services: Services,
     state: SettingsState,
@@ -67,13 +76,7 @@ pub struct RunnerSettingsTab {
     local_rev: u64,
     synced_modal_rev: Option<u64>,
     synced_inputs_key: Option<(Language, u64, u64)>,
-    view_cache: Option<(
-        (Language, u64, u64),
-        Rc<SettingsView>,
-        Option<Rc<PickerView>>,
-        Vec<Item>,
-        Vec<Item>,
-    )>,
+    view_cache: Option<ViewCache>,
     _activation: Option<Subscription>,
 }
 
@@ -646,7 +649,12 @@ impl Render for RunnerSettingsTab {
         };
         let (language, wall, tr, modal_rev) = {
             let modal = modal.read(cx);
-            (modal.language, modal.wall.clone(), modal.tr.clone(), modal.view_rev())
+            (
+                modal.language,
+                modal.wall.clone(),
+                modal.tr.clone(),
+                modal.view_rev(),
+            )
         };
         if self.synced_modal_rev != Some(modal_rev) {
             let effects = {

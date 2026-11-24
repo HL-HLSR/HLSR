@@ -173,7 +173,7 @@ pub const MOTION_FPS: u32 = 60;
 pub type Rendered = (u64, Result<Frame, String>);
 
 enum WorkerMsg {
-    Render(Job),
+    Render(Box<Job>),
     Purge,
 }
 
@@ -239,7 +239,7 @@ impl RenderWorker {
                             renderers = Renderers::default();
                             continue;
                         }
-                        WorkerMsg::Render(job) => job,
+                        WorkerMsg::Render(job) => *job,
                     };
                     let started = Instant::now();
                     let result = renderers.render(&job).map_err(|e| e.to_string());
@@ -273,7 +273,7 @@ impl RenderWorker {
         move |job| {
             let tx = if job.scene.is_some() { &scene } else { &hud };
             if let Some(tx) = tx {
-                let _ = tx.send(WorkerMsg::Render(job));
+                let _ = tx.send(WorkerMsg::Render(Box::new(job)));
             }
         }
     }

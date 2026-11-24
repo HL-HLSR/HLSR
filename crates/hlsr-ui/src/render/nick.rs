@@ -480,17 +480,14 @@ fn nick_base(look: &Look, text: &NickText) -> Option<Rc<NickBase>> {
                     if let Filter::DropShadow(sh) = filter {
                         let mut drop = Pixmap::new(under.width(), under.height())?;
                         paint_shadow(&mut drop, &alpha, sh, em, s, DROP_SIGMA);
-                        for (i, (d, u)) in drop
-                            .pixels_mut()
-                            .iter_mut()
-                            .zip(under.pixels())
-                            .enumerate()
+                        for (i, (d, u)) in
+                            drop.pixels_mut().iter_mut().zip(under.pixels()).enumerate()
                         {
                             let da = d.alpha();
                             let ca = alpha[i];
                             let inv = 255 - u32::from(ca);
-                            alpha[i] = (u32::from(ca) + (u32::from(da) * inv + 127) / 255).min(255)
-                                as u8;
+                            alpha[i] =
+                                (u32::from(ca) + (u32::from(da) * inv + 127) / 255).min(255) as u8;
                             *d = over_pm(*d, *u);
                         }
                         under = drop;
@@ -738,7 +735,8 @@ pub fn badge_parts(em: f32, scale: f32) -> Option<BadgeParts> {
     let pad = (reach * s).ceil() as u32 + 1;
     let total = side + pad * 2;
     let mut icon = Pixmap::new(total, total)?;
-    let small = image::imageops::resize(icon_img, side, side, image::imageops::FilterType::Triangle);
+    let small =
+        image::imageops::resize(icon_img, side, side, image::imageops::FilterType::Triangle);
     let px = icon.pixels_mut();
     for (y, row) in small.rows().enumerate() {
         for (x, p) in row.enumerate() {

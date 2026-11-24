@@ -171,9 +171,9 @@ impl Modal {
         let theme = cx.global::<Theme>();
         let scrim = self.scrim.unwrap_or_else(|| theme.color("l-modal-scrim"));
         // Размытая подложка на всё окно: углы окна скругляет GPU-маска `window_corner_mask`.
-        let blur = self.blur.then(|| {
-            liquid::Surface::new(liquid::Kind::Scrim, gpui::rems(0.)).own(scrim)
-        });
+        let blur = self
+            .blur
+            .then(|| liquid::Surface::new(liquid::Kind::Scrim, gpui::rems(0.)).own(scrim));
         let view = window.viewport_size();
         let scope = self.scope.clone();
         let backdrop_closes = self.backdrop_closes;

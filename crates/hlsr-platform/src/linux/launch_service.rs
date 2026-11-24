@@ -1221,8 +1221,16 @@ impl LaunchService {
         config: &'static LaunchConfig,
         settings: Option<Value>,
     ) -> Result<Started, Failure> {
-        self.start_source_episode(game_id, install_path, config, config, None, &Value::Null, settings)
-            .await
+        self.start_source_episode(
+            game_id,
+            install_path,
+            config,
+            config,
+            None,
+            &Value::Null,
+            settings,
+        )
+        .await
     }
 
     #[allow(clippy::too_many_arguments)]

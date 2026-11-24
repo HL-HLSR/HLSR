@@ -398,8 +398,7 @@ impl GameSettings {
                             .await;
                         this.update(cx, |this, cx| {
                             if this.host.session.active_section() != "personal" {
-                                this.personal
-                                    .update(cx, |p, cx| p.release_idle_caches(cx));
+                                this.personal.update(cx, |p, cx| p.release_idle_caches(cx));
                             }
                         })
                         .ok();

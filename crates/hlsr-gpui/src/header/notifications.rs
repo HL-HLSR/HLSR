@@ -957,12 +957,7 @@ impl Render for NotificationCenter {
                             radius: (1.2, 1.4),
                             stops: vec![(0., 0.12), (0.6, 0.)],
                         }
-                        .paint_rounded(
-                            344.,
-                            96.,
-                            flow_radius(frame, theme.len("l-radius")),
-                            tint,
-                        )
+                        .paint_rounded(344., 96., flow_radius(frame, theme.len("l-radius")), tint)
                         .absolute()
                         .top_0()
                         .left_0()

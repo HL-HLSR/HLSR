@@ -795,11 +795,12 @@ impl Render for CustomPacksView {
         let mut grid_rows = Vec::new();
         for (index, chunk) in packs.chunks(cols).enumerate() {
             let last_row = (index + 1) * cols >= packs.len();
-            let mut row = div()
-                .flex()
-                .gap(u(GAP))
-                .flex_none()
-                .min_h(u(if narrow { 220. } else { 380. }));
+            let mut row =
+                div()
+                    .flex()
+                    .gap(u(GAP))
+                    .flex_none()
+                    .min_h(u(if narrow { 220. } else { 380. }));
             if centered_last && last_row && chunk.len() == 1 {
                 row = row.justify_center();
             }

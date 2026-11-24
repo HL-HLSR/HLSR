@@ -426,16 +426,13 @@ impl Render for OverviewTab {
         };
         let (view, tr) = {
             let modal = modal_entity.read(cx);
-            let view = modal
-                .view_snapshot()
-                .unwrap_or_else(|| {
-                    std::rc::Rc::new(
-                        context
-                            .state
-                            .borrow()
-                            .view(modal.language, &modal.wall, &modal.tr),
-                    )
-                });
+            let view = modal.view_snapshot().unwrap_or_else(|| {
+                std::rc::Rc::new(context.state.borrow().view(
+                    modal.language,
+                    &modal.wall,
+                    &modal.tr,
+                ))
+            });
             (view, modal.tr.clone())
         };
         let t = |key: &str| tr(key, &[]);
@@ -458,13 +455,12 @@ impl Render for OverviewTab {
             ScrollArea::new(("profile-scroll", 0usize), &self.scroll)
                 .bar(Bar::Thin)
                 .size_full()
-                .child(
-                    div()
-                        .pt(u(28.))
-                        .px(u(32.))
-                        .pb(u(32.))
-                        .child(overview(&page, &theme, zoom, modal_entity.downgrade())),
-                ),
+                .child(div().pt(u(28.)).px(u(32.)).pb(u(32.)).child(overview(
+                    &page,
+                    &theme,
+                    zoom,
+                    modal_entity.downgrade(),
+                ))),
         )
         .into_any_element()
     }
