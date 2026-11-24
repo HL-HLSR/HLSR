@@ -539,14 +539,15 @@ fn changelog_form() {
     assert_eq!(changelog.version, "0.4.9");
     assert_eq!(changelog.title["ru"], "Обновление HLSR");
     assert_eq!(changelog.title["en"], "HLSR update");
-    // Первым стоит 0.5.0: в него влита запись 0.4.10 (эпизоды Ghosting).
-    assert_eq!(changelog.releases[0].version, "0.5.0");
+    // Первым стоит 0.5.3 (впереди версии лаунчера: покажется, когда она выйдет); в 0.5.0 влита
+    // запись 0.4.10 (эпизоды Ghosting).
+    assert_eq!(changelog.releases[0].version, "0.5.3");
     let current = changelog
         .releases
         .iter()
         .position(|release| release.version == changelog.version)
         .unwrap();
-    assert_eq!(current, 1);
+    assert_eq!(current, 4);
     let shown = changelog.releases.len() - current;
     assert_eq!(changelog.releases.last().unwrap().version, "0.3.0");
     for release in &changelog.releases {

@@ -13,6 +13,7 @@ use crate::tr::tr;
 use hlsr_core::js;
 use hlsr_core::language::Language;
 use hlsr_delivery::episode_button::episode_button;
+use hlsr_delivery::episodes;
 use hlsr_delivery::progress_states as progress;
 use serde_json::Value;
 use std::time::Duration;
@@ -477,7 +478,7 @@ pub struct BarView {
     pub paused_episode: Option<&'static str>,
     /// `deliveryGameId`: игра, меню которой спрашивает `game-menu-state`.
     pub game_id: Option<String>,
-    /// `buildBadges`: подпись справа у сборки — общий размер нескачанных эпизодов.
+    /// `buildBadges`: подпись справа у нескачанного эпизода — сколько скачает его «Скачать».
     pub build_badges: Vec<(&'static str, String)>,
     /// `menuEpisode`: выбран эпизод — `Some(installed)`, меню удаляет эпизод, а не игру.
     pub menu_episode: Option<bool>,
@@ -512,35 +513,38 @@ fn episode_flag(delivery: Option<&Value>, id: &str, flag: &str) -> bool {
     jsv::truthy(episode.and_then(|episode| jsv::prop(episode, flag)))
 }
 
-/// `buildBadges`: «Скачать» качает все недостающие эпизоды сразу, поэтому у каждого — их общий
-/// размер; без размера хоть одного из них (манифеста нет) — ничего.
+/// `buildBadges`: «Скачать» качает выбранный эпизод и недостающие, без которых он не запустится
+/// (Episode Two без Episode One), — у нескачанного эпизода их общий размер; без размера хоть
+/// одного из них (манифеста нет) — у этого эпизода ничего.
 fn build_badges(input: &Input<'_>) -> Vec<(&'static str, String)> {
     let episodes = jsv::field(input.delivery, "episodes");
-    let entry = |id: &str| episodes.and_then(|episodes| jsv::prop(episodes, id));
-    let mut missing: Vec<&str> = Vec::new();
-    for (_, id) in input.demo.episodes {
-        let state = entry(id).filter(|state| js::truthy(state));
-        if state.is_some_and(|state| !jsv::truthy(jsv::prop(state, "installed")))
-            && !missing.contains(id)
-        {
-            missing.push(id);
-        }
-    }
-    let sizes: Vec<f64> = missing
-        .iter()
-        .map(|id| jsv::num(entry(id).and_then(|state| jsv::prop(state, "size"))).unwrap_or(0.0))
-        .collect();
-    if missing.is_empty() || sizes.iter().any(|size| size.is_nan() || *size <= 0.0) {
-        return Vec::new();
-    }
+    let entry = |id: &str| {
+        episodes
+            .and_then(|episodes| jsv::prop(episodes, id))
+            .filter(|state| js::truthy(state))
+    };
+    let missing =
+        |id: &str| entry(id).is_some_and(|state| !jsv::truthy(jsv::prop(state, "installed")));
     let t = |key: &str, args: &[&str]| tr(input.lang, key, args);
-    let size = format_size(sizes.iter().sum(), &t);
     input
         .demo
         .episodes
         .iter()
-        .filter(|(_, id)| missing.contains(id))
-        .map(|(build, _)| (*build, size.clone()))
+        .filter(|(_, id)| missing(id))
+        .filter_map(|(build, id)| {
+            let requires = episodes::episode_of(id).map_or(&[][..], |episode| episode.requires);
+            let sizes: Vec<f64> = requires
+                .iter()
+                .copied()
+                .filter(|each| missing(each))
+                .chain([*id])
+                .map(|each| {
+                    jsv::num(entry(each).and_then(|state| jsv::prop(state, "size"))).unwrap_or(0.0)
+                })
+                .collect();
+            (!sizes.iter().any(|size| size.is_nan() || *size <= 0.0))
+                .then(|| (*build, format_size(sizes.iter().sum(), &t)))
+        })
         .collect()
 }
 

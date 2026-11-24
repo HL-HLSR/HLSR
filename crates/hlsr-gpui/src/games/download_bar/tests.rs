@@ -84,14 +84,14 @@ fn episodes_and_the_game_menu_talk_to_main_like_0_4_9(cx: &mut TestAppContext) {
     assert_eq!(calls(&fx, "game-episodes-status"), [json!([])]);
     assert_eq!(calls(&fx, "game-menu-state"), [json!(["ghosting-renewed"])]);
 
-    // «Episode One» в «Версии сборки»: кнопка — «Скачать», качаются оба эпизода.
+    // «Episode One» в «Версии сборки»: кнопка — «Скачать», качается только он.
     cx.update(|_, cx| {
         let flows = ShellContext::get(cx).unwrap().flows.clone();
         flows.on_select_build("Episode One");
     });
     cx.run_until_parked();
     click(cx, "download-play");
-    assert_eq!(calls(&fx, "game-episode-install"), [json!(["ep2"])]);
+    assert_eq!(calls(&fx, "game-episode-install"), [json!(["ep1"])]);
     assert_eq!(calls(&fx, "game-episodes-status").len(), 2);
     assert!(calls(&fx, "game-process-launch").is_empty());
 

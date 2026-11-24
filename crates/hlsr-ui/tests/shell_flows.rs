@@ -1001,25 +1001,32 @@ fn ghosting_episodes_launch_install_cancel_and_remove() {
 }
 
 #[test]
-fn installing_an_episode_takes_both_and_refreshes_sizes() {
-    let services_trace = |reply: Value| {
+fn installing_an_episode_takes_only_the_selected_one_and_refreshes_sizes() {
+    let services_trace = |build: &str, reply: Value| {
         let got = ghosting_scenario(
             "episode-install",
             json!({}),
-            json!({}),
+            json!({"ghostingBuild": build}),
             json!([{"call": "onInstallEpisode"}]),
             json!({"game-episode-install": reply}),
         );
         got.trace
     };
-    assert_eq!(
-        services_trace(json!({"status": "ok"})),
-        [
-            json!(["invoke", "game-episode-install", ["ep2"]]),
-            json!(["invoke", "game-episodes-status", []]),
-        ]
+    for (build, id) in [("Episode One", "ep1"), ("Episode Two", "ep2")] {
+        assert_eq!(
+            services_trace(build, json!({"status": "ok"})),
+            [
+                json!(["invoke", "game-episode-install", [id]]),
+                json!(["invoke", "game-episodes-status", []]),
+            ]
+        );
+    }
+    // Эпизод не выбран — main не зовётся.
+    assert!(services_trace("HL1 MOVEMENT", json!({"status": "ok"})).is_empty());
+    let failed = services_trace(
+        "Episode One",
+        json!({"status": "error", "error": {"code": "CHECKSUM_MISMATCH"}}),
     );
-    let failed = services_trace(json!({"status": "error", "error": {"code": "CHECKSUM_MISMATCH"}}));
     assert_eq!(failed[1][0], "notify");
     assert_eq!(failed[2], json!(["invoke", "game-episodes-status", []]));
 }

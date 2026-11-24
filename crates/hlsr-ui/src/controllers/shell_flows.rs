@@ -1295,10 +1295,13 @@ impl ShellFlows {
         self.fire("game-episodes-status", Vec::new());
     }
 
-    /// `onInstallEpisode()`: «Скачать» / «Продолжить» эпизода — какой бы ни был выбран, качаются
-    /// оба: Episode Two main ставит вместе с недостающим Episode One.
+    /// `onInstallEpisode()`: «Скачать» / «Продолжить» эпизода — только выбранного (решение
+    /// владельца 20.11). Episode Two монтирует episodic\, без Episode One main ставит и его.
     pub fn on_install_episode(&self) {
-        let reply = self.invoke_or_null("game-episode-install", vec![json!("ep2")]);
+        let Some(episode) = self.current_episode_id() else {
+            return;
+        };
+        let reply = self.invoke_or_null("game-episode-install", vec![json!(episode)]);
         let this = self.clone();
         self.spawn(async move {
             let result = reply.await;

@@ -831,14 +831,15 @@ fn a_selected_episode_swaps_only_the_play_button() {
         "ep2": {"installed": false, "size": 0.7 * gb, "paused": false},
     });
     let delivery = ghosting("ready", ready.clone(), none.clone());
-    // Сама Ghosting: «Играть», бейджи у обоих эпизодов — их общий размер.
+    // Сама Ghosting: «Играть»; бейдж — сколько скачает «Скачать» эпизода: Episode One — только
+    // он, Episode Two — с недостающим Episode One.
     let base = ghosting_view("HL1 MOVEMENT", &delivery, Language::Ru);
     assert_eq!(base.button.state, "ready");
     assert_eq!(base.menu_episode, None);
     assert_eq!(
         base.build_badges,
         [
-            ("Episode One", "2,7\u{a0}ГБ".to_owned()),
+            ("Episode One", "2,0\u{a0}ГБ".to_owned()),
             ("Episode Two", "2,7\u{a0}ГБ".to_owned())
         ]
     );
@@ -895,7 +896,17 @@ fn a_selected_episode_swaps_only_the_play_button() {
         Language::En,
     );
     assert_eq!(one.button.pressed(), Some("update"));
-    // Без размера хоть одного недостающего эпизода (манифеста нет) — бейджей нет.
+    // Без размера эпизода (манифеста нет) — бейджа нет у него и у тех, кому он нужен.
+    let unknown = json!({
+        "ep1": {"installed": false, "size": null},
+        "ep2": {"installed": false, "size": 0.7 * gb},
+    });
+    let base = ghosting_view(
+        "HL1 MOVEMENT",
+        &ghosting("ready", json!({"state": "ready"}), unknown),
+        Language::En,
+    );
+    assert!(base.build_badges.is_empty());
     let unknown = json!({
         "ep1": {"installed": false, "size": 2.0 * gb},
         "ep2": {"installed": false, "size": null},
@@ -905,7 +916,10 @@ fn a_selected_episode_swaps_only_the_play_button() {
         &ghosting("ready", json!({"state": "ready"}), unknown),
         Language::En,
     );
-    assert!(base.build_badges.is_empty());
+    assert_eq!(
+        base.build_badges,
+        [("Episode One", "2.0\u{a0}GB".to_owned())]
+    );
     // Без статуса эпизодов — тоже, а кнопка эпизода считает его нескачанным.
     let bare = ghosting(
         "ready",

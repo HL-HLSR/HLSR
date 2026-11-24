@@ -7,6 +7,15 @@
   },
   "releases": [
     {
+      "version": "0.5.3",
+      "ru": [
+        "HL2 Ghosting: «Скачать» ставит только эпизод, выбранный в «Версии сборки». Раньше вслед за Episode One сразу начинал качаться Episode Two. Episode Two работает только вместе с Episode One: если Episode One ещё не скачан, он скачается первым"
+      ],
+      "en": [
+        "HL2 Ghosting: Download now installs only the episode selected in Build version. Before, Episode Two started downloading right after Episode One. Episode Two needs Episode One, so if Episode One isn't installed yet, it downloads first"
+      ]
+    },
+    {
       "version": "0.5.2",
       "ru": [
         "Windows: исправлено искажение цветов (белый/бинарный экран на мониторах с ICC-профилем), вызванное ошибкой компиляции шейдера цветового профиля в сборке 0.5.1; добавлена проверка корректности ICC-кривых и матриц профиля"
