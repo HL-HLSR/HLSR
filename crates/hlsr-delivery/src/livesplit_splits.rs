@@ -43,6 +43,9 @@ pub const BUNNYSPLIT_SHA256: &str =
 pub const BUNNYSPLIT_BROKEN_SHA256: &[&str] =
     &["0c6a8d199f8ef6c5e3bc32239569f017568220b03314a5424a56acd714279794"];
 const SETTINGS_FILE: &str = "settings.cfg";
+/// Автосплиттер Ghosting (тот же файл лежит в открытом репозитории для LiveSplit.AutoSplitters).
+pub const GHOSTING_ASL: &str = "GhostingRenewed.asl";
+const GHOSTING_ASL_TEXT: &str = include_str!("../data/livesplit/GhostingRenewed.asl");
 
 const HL1_CHAPTERS: &[&str] = &[
     "Anomalous Materials",
@@ -679,6 +682,38 @@ impl LiveSplitSplits {
         Ok(true)
     }
 
+    /// Автосплиттер Ghosting в `Components` (время берётся из игры, см. сам файл): его можно
+    /// выбрать в «Scriptable Auto Splitter» с любым именем игры, в том числе «Half-Life 2:
+    /// Category Extensions». Файл наш — обновляется, если отличается.
+    pub fn install_ghosting_asl(&self, root: &Path) -> Result<bool, RawError> {
+        let target = join(&[&text_of(root), "Components", GHOSTING_ASL]);
+        if node_fs::read_bytes(&target).is_ok_and(|bytes| bytes == GHOSTING_ASL_TEXT.as_bytes()) {
+            return Ok(false);
+        }
+        if let Some(dir) = target.parent() {
+            node_fs::mkdir_recursive(dir)?;
+        }
+        write_file_atomic(&target, GHOSTING_ASL_TEXT.as_bytes())?;
+        self.logger
+            .info(&format!("[tools] livesplit: {GHOSTING_ASL} установлен"));
+        Ok(true)
+    }
+
+    /// Таймер раскладки Ghosting — с миллисекундами (просьба владельца 24.11: итог как 49:01.790).
+    /// Меняется только формат LiveSplit по умолчанию (`1.23`), свой выбор игрока остаётся.
+    pub fn timer_milliseconds(&self, layout: &Path) -> Result<bool, RawError> {
+        const HUNDREDTHS: &str = "<TimerFormat>1.23</TimerFormat>";
+        let Ok(text) = node_fs::read_text(layout, Encoding::Utf8) else {
+            return Ok(false);
+        };
+        if !text.contains(HUNDREDTHS) {
+            return Ok(false);
+        }
+        let next = text.replace(HUNDREDTHS, "<TimerFormat>1.234</TimerFormat>");
+        write_file_atomic(layout, next.as_bytes())?;
+        Ok(true)
+    }
+
     /// `installBunnySplit(root)`: BunnySplit в `Components`, если его там нет или это известная
     /// сломанная сборка: версию, которую пользователь положил сам, лаунчер не трогает.
     pub fn install_bunny_split(&self, root: &Path) -> Result<bool, RawError> {
@@ -866,6 +901,10 @@ impl LiveSplitSplits {
         let splits_file = join(&[&root_text, &files.splits]);
         let layout_file = join(&[&root_text, &files.layout]);
 
+        if preset.bundled.is_some() {
+            self.install_ghosting_asl(root)?;
+            self.timer_milliseconds(&layout_file)?;
+        }
         if preset.bundled.is_none() {
             if self.write_if_missing(&splits_file, &splits_xml(preset))? {
                 self.logger.info(&format!(

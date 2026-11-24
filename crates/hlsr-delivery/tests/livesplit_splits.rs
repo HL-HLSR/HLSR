@@ -189,6 +189,7 @@ fn run_scenario(spec: &Value, m: &mut Mismatches) {
         let service = LiveSplitSplits::new(&resources, logger);
         let actual = match str_of(&step["op"]) {
             "prepare" => {
+                let had_components = ls.join("Components").exists();
                 let result = service
                     .prepare(&ls, str_of(&step["gameId"]), opt_str(&step["presetId"]))
                     .map(|prepared| {
@@ -201,7 +202,10 @@ fn run_scenario(spec: &Value, m: &mut Mismatches) {
                             })),
                         })
                     });
-                json!({"outcome": outcome(&root, result), "timeline": take(&timeline)})
+                let mut actual =
+                    json!({"outcome": outcome(&root, result), "timeline": take(&timeline)});
+                without_ghosting_asl(&ls, had_components, &mut actual);
+                actual
             }
             "enableServer" => {
                 let result = service.enable_server(&ls, step["port"].as_i64().unwrap());
@@ -247,6 +251,19 @@ fn run_scenario(spec: &Value, m: &mut Mismatches) {
             expected,
             format!("{name}, шаг {index} ({})", step["op"]),
         );
+    }
+}
+
+/// Отступление от 0.4.7 (24.11): для Ghosting `prepare` ещё ставит свой автосплиттер — убрать
+/// его файл и строку журнала, остальное сверяется как было (проверка — в
+/// `ghosting_gets_asl_and_millisecond_timer`).
+fn without_ghosting_asl(ls: &Path, had_components: bool, actual: &mut Value) {
+    let components = ls.join("Components");
+    if std::fs::remove_file(components.join(splits::GHOSTING_ASL)).is_ok() && !had_components {
+        let _ = std::fs::remove_dir(&components);
+    }
+    if let Some(lines) = actual["timeline"].as_array_mut() {
+        lines.retain(|line| !line.to_string().contains(splits::GHOSTING_ASL));
     }
 }
 
@@ -445,4 +462,35 @@ fn records_survive_second_prepare() {
     assert_eq!(std::fs::read_to_string(&file).unwrap(), "PB");
     let settings = std::fs::read_to_string(ls.join("settings.cfg")).unwrap();
     assert_eq!(settings.matches("scriptless-chapters.lss").count(), 1);
+}
+
+/// Ghosting (24.11): готовые сплиты из архива получают автосплиттер в `Components` и таймер с
+/// миллисекундами; свой формат игрока не трогается, повторный запуск ничего не переписывает.
+#[test]
+fn ghosting_gets_asl_and_millisecond_timer() {
+    let root = tempfile::tempdir().unwrap();
+    let ls = root.path();
+    std::fs::create_dir_all(ls.join("splits/chapters")).unwrap();
+    std::fs::write(ls.join("splits/chapters/chapters.lss"), "<Run />").unwrap();
+    let layout = ls.join("splits/chapters/chapters.lsl");
+    std::fs::write(
+        &layout,
+        "<Layout><TimerFormat>1.23</TimerFormat><TimerFormat>1.2</TimerFormat></Layout>",
+    )
+    .unwrap();
+    let service = LiveSplitSplits::new(ls.join("res"), Arc::new(MemoryLogger::default()));
+    service
+        .prepare(ls, "ghosting-renewed", Some("chapters"))
+        .unwrap();
+    let asl = std::fs::read_to_string(ls.join("Components").join(splits::GHOSTING_ASL)).unwrap();
+    assert!(asl.contains("47 48 4F 53 54 49 4E 47 2D 4C 53 2D 76 31 00 00"));
+    assert_eq!(
+        std::fs::read_to_string(&layout).unwrap(),
+        "<Layout><TimerFormat>1.234</TimerFormat><TimerFormat>1.2</TimerFormat></Layout>"
+    );
+    assert!(
+        !service.install_ghosting_asl(ls).unwrap(),
+        "тот же файл не переписывается"
+    );
+    assert!(!service.timer_milliseconds(&layout).unwrap());
 }
