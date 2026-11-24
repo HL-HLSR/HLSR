@@ -902,8 +902,16 @@ impl LiveSplitSplits {
         let layout_file = join(&[&root_text, &files.layout]);
 
         if preset.bundled.is_some() {
-            self.install_ghosting_asl(root)?;
-            self.timer_milliseconds(&layout_file)?;
+            // Не критично для запуска: папку могут держать антивирус или синхронизация.
+            if let Err(error) = self
+                .install_ghosting_asl(root)
+                .and_then(|_| self.timer_milliseconds(&layout_file))
+            {
+                self.logger.warn(&format!(
+                    "[tools] livesplit: автосплиттер Ghosting не поставлен: {}",
+                    error.message
+                ));
+            }
         }
         if preset.bundled.is_none() {
             if self.write_if_missing(&splits_file, &splits_xml(preset))? {

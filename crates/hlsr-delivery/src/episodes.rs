@@ -239,6 +239,15 @@ pub fn sync_config_in(
         ghosting_stock.map(|names| names.iter().map(|name| name.to_lowercase()).collect());
     let from = install_path.join(GHOSTING_CFG[0]).join(GHOSTING_CFG[1]);
     let to = episode_dir.join("cfg");
+    // Свои cfg эпизода из его архива (маркер, `stockCfg`): их не перезаписывать.
+    let own: Vec<String> = read_json_safe(&episode_dir.join(MARKER))
+        .get("stockCfg")
+        .and_then(Value::as_array)
+        .into_iter()
+        .flatten()
+        .filter_map(|name| name.as_str().map(str::to_lowercase))
+        .collect();
+    remove_copied_chapters(&from, &to, &own)?;
     let names: Vec<String> = match hlsr_core::js::fs::read_dir(&from) {
         Ok(entries) => entries
             .into_iter()
@@ -254,7 +263,9 @@ pub fn sync_config_in(
             let lower = name.to_lowercase();
             lower.ends_with(".cfg")
                 && (PLAYER_FILES.contains(&lower.as_str())
-                    || stock.as_ref().is_some_and(|stock| !stock.contains(&lower)))
+                    || (!is_game_cfg(&lower)
+                        && !own.contains(&lower)
+                        && stock.as_ref().is_some_and(|stock| !stock.contains(&lower))))
         })
         .collect();
     node_fs::mkdir_recursive(&to)?;
@@ -278,6 +289,41 @@ pub fn sync_config_in(
         copied,
         config_sha256,
     })
+}
+
+/// Игровые cfg HL2 из ghostingmod\cfg — главы «Новой игры» и сложность: у эпизода свои. Одного
+/// `ghosting_stock` мало: в files.json сборки Ghosting папки cfg нет (это сохраняемый путь), и до
+/// 24.11 главы HL2 уходили в эпизод («Новая игра» эпизода запускала d1_trainstation_01).
+fn is_game_cfg(lower: &str) -> bool {
+    lower.starts_with("chapter") || lower.starts_with("skill")
+}
+
+/// Убрать главы HL2, которые прежний лаунчер скопировал в cfg эпизода: не свои для эпизода и
+/// байт в байт как в ghostingmod\cfg. Свои главы, затёртые так же, вернёт обновление эпизода.
+fn remove_copied_chapters(from: &Path, to: &Path, own: &[String]) -> Result<(), RawError> {
+    let Ok(entries) = hlsr_core::js::fs::read_dir(to) else {
+        return Ok(());
+    };
+    for entry in entries {
+        let lower = entry.name.to_lowercase();
+        if !entry.file_type.is_file()
+            || !lower.starts_with("chapter")
+            || !lower.ends_with(".cfg")
+            || own.contains(&lower)
+        {
+            continue;
+        }
+        let target = to.join(&entry.name);
+        if let (Ok(ours), Ok(hl2)) = (
+            node_fs::read_bytes(&target),
+            node_fs::read_bytes(&from.join(&entry.name)),
+        ) && ours == hl2
+        {
+            std::fs::remove_file(&target)
+                .map_err(|error| RawError::fs(&error, "unlink", &target))?;
+        }
+    }
+    Ok(())
 }
 
 /// Итог `syncConfigBack`.

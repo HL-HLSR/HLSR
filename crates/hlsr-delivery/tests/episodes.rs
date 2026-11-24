@@ -231,6 +231,65 @@ fn sync_config_in_brings_player_files_and_leaves_stock_cfg_alone() {
     assert!(!bare.join("ep2").exists());
 }
 
+/// 24.11: в files.json Ghosting нет ghostingmod/cfg, список сборки пуст. Главы и skill HL2 в
+/// эпизод всё равно не идут, свои cfg эпизода (`stockCfg` маркера) не затираются, а главы HL2,
+/// скопированные прежним лаунчером, убираются.
+#[test]
+fn sync_config_in_keeps_hl2_chapters_out_with_an_empty_ghosting_list() {
+    let marker = json!({"version": "1.0.0", "stockCfg": ["chapter1.cfg", "skill_episodic.cfg"]});
+    let files: Vec<(String, String)> = [
+        ("episodic/gameinfo.txt", "gameinfo".to_owned()),
+        ("episodic/.hlsr-episode.json", marker.to_string()),
+        ("ghostingmod/cfg/config.cfg", "bind 9 tc_n".to_owned()),
+        ("ghostingmod/cfg/tc_n.cfg", "мой скрипт".to_owned()),
+        (
+            "ghostingmod/cfg/chapter1.cfg",
+            "map d1_trainstation_01".to_owned(),
+        ),
+        (
+            "ghostingmod/cfg/chapter9a.cfg",
+            "map d2_prison_01".to_owned(),
+        ),
+        ("ghostingmod/cfg/skill.cfg", "skill hl2".to_owned()),
+        (
+            "ghostingmod/cfg/skill_episodic.cfg",
+            "skill ghosting".to_owned(),
+        ),
+        ("episodic/cfg/chapter1.cfg", "map ep1_citadel_00".to_owned()),
+        ("episodic/cfg/skill_episodic.cfg", "skill ep1".to_owned()),
+        ("episodic/cfg/chapter9a.cfg", "map d2_prison_01".to_owned()),
+        ("episodic/cfg/chapter10.cfg", "свой файл игрока".to_owned()),
+    ]
+    .into_iter()
+    .map(|(path, text)| (path.to_owned(), text))
+    .collect();
+    let (_temp, root) = library_owned(files);
+    let mut copied = episodes::sync_config_in(&root, "ep1", Some(&[]))
+        .unwrap()
+        .copied;
+    copied.sort();
+    assert_eq!(copied, ["config.cfg", "tc_n.cfg"]);
+    assert_eq!(
+        read(&root, "episodic/cfg/chapter1.cfg").unwrap(),
+        "map ep1_citadel_00"
+    );
+    assert_eq!(
+        read(&root, "episodic/cfg/skill_episodic.cfg").unwrap(),
+        "skill ep1"
+    );
+    assert_eq!(read(&root, "episodic/cfg/skill.cfg"), None);
+    assert_eq!(
+        read(&root, "episodic/cfg/chapter9a.cfg"),
+        None,
+        "копия HL2 убрана"
+    );
+    assert_eq!(
+        read(&root, "episodic/cfg/chapter10.cfg").unwrap(),
+        "свой файл игрока",
+        "непохожий на HL2 файл не трогается"
+    );
+}
+
 #[test]
 fn sync_config_back_returns_config_only_when_the_game_rewrote_it() {
     let mut files: Vec<(String, String)> = installed_ep("ep2", json!("1.0.0")).into();

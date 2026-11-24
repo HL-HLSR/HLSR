@@ -35,11 +35,17 @@ startup
     };
     // shortcut: chapter mode knows HL2 only; episodes split on every map until their chapter lists are added.
     vars.skipPairs = new HashSet<string> { "d1_canals_07>d1_canals_08" };
+    vars.lastScan = DateTime.MinValue;
     vars.magic = new SigScanTarget(0, "47 48 4F 53 54 49 4E 47 2D 4C 53 2D 76 31 00 00");
 }
 
 init
 {
+    // Without the block (old Ghosting, another hl2.exe game) LiveSplit retries init every tick:
+    // rescan the DLLs at most every 3 seconds.
+    if ((DateTime.Now - vars.lastScan).TotalSeconds < 3)
+        throw new Exception("GhLiveSplitBlock not found yet");
+    vars.lastScan = DateTime.Now;
     vars.block = IntPtr.Zero;
     foreach (var m in game.ModulesWow64Safe())
     {
@@ -58,6 +64,8 @@ init
         throw new Exception("GhLiveSplitBlock not found yet");
     vars.ready = false;
     vars.pendingStart = false;
+    vars.splitFrom = null;
+    vars.doSplit = false;
 }
 
 update
@@ -81,6 +89,26 @@ update
     vars.oldRunId = vars.runId; vars.oldState = vars.state; vars.oldSplit = vars.split; vars.oldMap = vars.map;
     vars.runId = runId; vars.state = state; vars.split = split; vars.map = map;
     vars.time = BitConverter.ToDouble(b, 32);
+
+    // The game counts the transition at trigger_changelevel, the map name changes after the load:
+    // decide the split once the destination is known.
+    if (vars.runId != vars.oldRunId)
+        vars.splitFrom = null;
+    else if (vars.split > vars.oldSplit && vars.splitFrom == null)
+        vars.splitFrom = vars.oldMap;
+    if (vars.splitFrom != null && vars.map != vars.splitFrom)
+    {
+        string pair = vars.splitFrom + ">" + vars.map;
+        vars.doSplit = settings["chapters"] ? vars.chapterPairs.Contains(pair) : !vars.skipPairs.Contains(pair);
+        vars.splitFrom = null;
+    }
+
+    // LiveSplit runs no reset block once the run has ended: a new in-game run resets from here.
+    if (timer.CurrentPhase == TimerPhase.Ended && vars.runId != vars.oldRunId && settings["reset"])
+    {
+        new TimerModel { CurrentState = timer }.Reset();
+        vars.pendingStart = vars.state == 1;
+    }
 }
 
 start
@@ -88,6 +116,7 @@ start
     if (vars.state == 1 && (vars.runId != vars.oldRunId || vars.pendingStart))
     {
         vars.pendingStart = false;
+        vars.doSplit = false;
         return true;
     }
     return false;
@@ -106,12 +135,10 @@ split
 {
     if (vars.state == 2 && vars.oldState != 2)
         return true;
-    if (vars.split <= vars.oldSplit)
+    if (!vars.doSplit)
         return false;
-    string pair = vars.oldMap + ">" + vars.map;
-    if (settings["chapters"])
-        return vars.chapterPairs.Contains(pair);
-    return !vars.skipPairs.Contains(pair);
+    vars.doSplit = false;
+    return true;
 }
 
 isLoading
@@ -121,5 +148,8 @@ isLoading
 
 gameTime
 {
+    // state 0: no run in the game (or it restarted) — keep LiveSplit's time as it is.
+    if (vars.state == 0)
+        return null;
     return TimeSpan.FromSeconds(vars.time);
 }
