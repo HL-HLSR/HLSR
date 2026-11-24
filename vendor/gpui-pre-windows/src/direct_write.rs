@@ -97,18 +97,33 @@ impl DirectWriteTextSystem {
             system_subpixel_rendering,
         };
 
-        let system_font_collection = unsafe {
-            let mut result = None;
-            components
-                .factory
-                .GetSystemFontCollection(false, &mut result, true)?;
-            result.context("Failed to get system font collection")?
-        };
         let custom_font_set = unsafe { components.builder.CreateFontSet()? };
         let custom_font_collection = unsafe {
             components
                 .factory
                 .CreateFontCollectionFromFontSet(&custom_font_set)?
+        };
+        // HLSR: у части игроков системная коллекция с проверкой новых шрифтов падает
+        // (0x800700EA ERROR_MORE_DATA — битая или слишком длинная запись шрифта в реестре), и
+        // лаунчер не запускался. Как Chromium: без проверки обновлений, а если и так не вышло —
+        // работаем на своих шрифтах лаунчера, без системных.
+        let system_font_collection = unsafe {
+            let mut result = None;
+            let fresh = components
+                .factory
+                .GetSystemFontCollection(false, &mut result, true);
+            if let Err(error) = fresh {
+                log::warn!("системные шрифты с проверкой обновлений: {error}; без проверки");
+                result = None;
+                if let Err(error) = components
+                    .factory
+                    .GetSystemFontCollection(false, &mut result, false)
+                {
+                    log::warn!("системные шрифты недоступны: {error}; только шрифты лаунчера");
+                    result = None;
+                }
+            }
+            result.unwrap_or_else(|| custom_font_collection.clone())
         };
         let emoji_fallback = shadowed_emoji_fallback(&components, &system_font_collection)
             .context("Failed to prefer the system Segoe UI Emoji")
