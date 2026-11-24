@@ -247,7 +247,6 @@ pub fn sync_config_in(
         .flatten()
         .filter_map(|name| name.as_str().map(str::to_lowercase))
         .collect();
-    remove_copied_chapters(&from, &to, &own)?;
     let names: Vec<String> = match hlsr_core::js::fs::read_dir(&from) {
         Ok(entries) => entries
             .into_iter()
@@ -257,6 +256,7 @@ pub fn sync_config_in(
         Err(error) if error.kind() == std::io::ErrorKind::NotFound => Vec::new(),
         Err(error) => return Err(RawError::fs(&error, "scandir", &from).into()),
     };
+    remove_copied_chapters(&from, &names, &to, &own);
     let copied: Vec<String> = names
         .into_iter()
         .filter(|name| {
@@ -295,35 +295,57 @@ pub fn sync_config_in(
 /// `ghosting_stock` мало: в files.json сборки Ghosting папки cfg нет (это сохраняемый путь), и до
 /// 24.11 главы HL2 уходили в эпизод («Новая игра» эпизода запускала d1_trainstation_01).
 fn is_game_cfg(lower: &str) -> bool {
-    lower.starts_with("chapter") || lower.starts_with("skill")
+    is_chapter_cfg(lower)
+        || matches!(
+            lower,
+            "skill.cfg"
+                | "skill1.cfg"
+                | "skill2.cfg"
+                | "skill3.cfg"
+                | "skill_episodic.cfg"
+                | "skill_manifest.cfg"
+        )
+}
+
+/// `chapter<число>[буква].cfg` — глава «Новой игры» (chapter9a.cfg у HL2).
+fn is_chapter_cfg(lower: &str) -> bool {
+    let Some(rest) = lower
+        .strip_prefix("chapter")
+        .and_then(|rest| rest.strip_suffix(".cfg"))
+    else {
+        return false;
+    };
+    let digits = rest.trim_end_matches(|c: char| c.is_ascii_lowercase());
+    !digits.is_empty()
+        && digits.bytes().all(|b| b.is_ascii_digit())
+        && rest.len() - digits.len() <= 1
 }
 
 /// Убрать главы HL2, которые прежний лаунчер скопировал в cfg эпизода: не свои для эпизода и
-/// байт в байт как в ghostingmod\cfg. Свои главы, затёртые так же, вернёт обновление эпизода.
-fn remove_copied_chapters(from: &Path, to: &Path, own: &[String]) -> Result<(), RawError> {
+/// байт в байт как в ghostingmod\cfg (имена сравниваются без регистра — на Linux он различается).
+/// Свои главы, затёртые так же, вернёт обновление эпизода. Не вышло удалить — не беда: запуск
+/// важнее, попробуем в следующий раз.
+fn remove_copied_chapters(from: &Path, from_names: &[String], to: &Path, own: &[String]) {
     let Ok(entries) = hlsr_core::js::fs::read_dir(to) else {
-        return Ok(());
+        return;
     };
     for entry in entries {
         let lower = entry.name.to_lowercase();
-        if !entry.file_type.is_file()
-            || !lower.starts_with("chapter")
-            || !lower.ends_with(".cfg")
-            || own.contains(&lower)
-        {
+        if !entry.file_type.is_file() || !is_chapter_cfg(&lower) || own.contains(&lower) {
             continue;
         }
+        let Some(source) = from_names.iter().find(|name| name.to_lowercase() == lower) else {
+            continue;
+        };
         let target = to.join(&entry.name);
         if let (Ok(ours), Ok(hl2)) = (
             node_fs::read_bytes(&target),
-            node_fs::read_bytes(&from.join(&entry.name)),
+            node_fs::read_bytes(&from.join(source)),
         ) && ours == hl2
         {
-            std::fs::remove_file(&target)
-                .map_err(|error| RawError::fs(&error, "unlink", &target))?;
+            let _ = std::fs::remove_file(&target);
         }
     }
-    Ok(())
 }
 
 /// Итог `syncConfigBack`.

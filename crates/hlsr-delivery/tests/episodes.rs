@@ -242,6 +242,7 @@ fn sync_config_in_keeps_hl2_chapters_out_with_an_empty_ghosting_list() {
         ("episodic/.hlsr-episode.json", marker.to_string()),
         ("ghostingmod/cfg/config.cfg", "bind 9 tc_n".to_owned()),
         ("ghostingmod/cfg/tc_n.cfg", "мой скрипт".to_owned()),
+        ("ghostingmod/cfg/skill_binds.cfg", "мои бинды".to_owned()),
         (
             "ghostingmod/cfg/chapter1.cfg",
             "map d1_trainstation_01".to_owned(),
@@ -268,7 +269,7 @@ fn sync_config_in_keeps_hl2_chapters_out_with_an_empty_ghosting_list() {
         .unwrap()
         .copied;
     copied.sort();
-    assert_eq!(copied, ["config.cfg", "tc_n.cfg"]);
+    assert_eq!(copied, ["config.cfg", "skill_binds.cfg", "tc_n.cfg"]);
     assert_eq!(
         read(&root, "episodic/cfg/chapter1.cfg").unwrap(),
         "map ep1_citadel_00"
