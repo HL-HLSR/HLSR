@@ -234,6 +234,15 @@ impl GameDeliveryService {
                 });
                 entry["size"] = size;
                 entry["paused"] = json!(paused.get(id.as_str()).is_some_and(|bytes| *bytes > 0));
+                // Манифест предлагает версию новее установленной — кнопка «Обновить» эпизода.
+                let offered = manifests
+                    .get(&id)
+                    .and_then(|cached| cached["manifest"]["version"].as_str());
+                let update = matches!(
+                    (entry["version"].as_str(), offered),
+                    (Some(have), Some(offered)) if semver::lt(have, offered)
+                );
+                entry["update"] = json!(update);
                 (id, entry)
             })
             .collect();

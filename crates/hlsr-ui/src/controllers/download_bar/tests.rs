@@ -78,6 +78,13 @@ fn every_main_button_state_has_its_icon_label_and_tone() {
             Tone::Progress,
         ),
         (
+            "episode-update",
+            "fas fa-sync-alt",
+            "Update",
+            "Обновить",
+            Tone::Progress,
+        ),
+        (
             "unavailable",
             "fas fa-ban",
             "Unavailable",
@@ -876,6 +883,19 @@ fn a_selected_episode_swaps_only_the_play_button() {
         two.build_badges,
         [("Episode Two", "716.8\u{a0}MB".to_owned())]
     );
+
+    // Скачан, а в канале новее: «Обновить», нажатие — тот же канал установки эпизода.
+    let outdated = json!({"ep1": {"installed": true, "size": 2.0 * gb, "update": true}});
+    let one = ghosting_view(
+        "Episode One",
+        &ghosting("ready", ready.clone(), outdated),
+        Language::Ru,
+    );
+    assert_eq!(
+        (one.button.state.as_str(), one.button.label.as_str()),
+        ("episode-update", "Обновить")
+    );
+    assert_eq!(one.button.pressed(), Some(INSTALL_EPISODE));
 
     // Скачан: «Играть» Ghosting, меню удаляет эпизод.
     let installed = json!({"ep1": {"installed": true, "size": 2.0 * gb}});

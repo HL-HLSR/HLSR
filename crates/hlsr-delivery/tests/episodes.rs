@@ -820,6 +820,19 @@ fn episode_button_replaces_only_play_of_an_installed_ghosting() {
         episode_button(&update, Some(&installed), Some("ep1")),
         update
     );
+
+    let outdated = ghosting(
+        json!({ "ep1": { "installed": true, "version": "1.0.0", "paused": false, "update": true } }),
+    );
+    assert_eq!(
+        episode_button(&ready(), Some(&outdated), Some("ep1")),
+        json!({ "state": "episode-update", "action": "install", "enabled": true, "spinner": false, "progress": false })
+    );
+    assert_eq!(
+        episode_button(&update, Some(&outdated), Some("ep1")),
+        update,
+        "обновление Ghosting важнее"
+    );
 }
 
 // ---------------------------------------------------------------- episode-install-selftest.js
@@ -1209,7 +1222,7 @@ async fn episode_one_installs_into_the_ghosting_folder() {
     assert_eq!(status["operation"], Value::Null);
     assert_eq!(
         status["episodes"]["ep1"],
-        json!({ "installed": true, "version": "1.0.0", "size": archive.len(), "paused": false })
+        json!({ "installed": true, "version": "1.0.0", "size": archive.len(), "paused": false, "update": false })
     );
     assert!(!env.service.is_busy());
 }
@@ -1296,6 +1309,27 @@ async fn an_older_episode_version_is_refused_and_the_same_one_reinstalls() {
     assert_eq!(
         env.service.install_episode("ep1").await.unwrap()["version"],
         "1.0.1"
+    );
+}
+
+#[tokio::test]
+async fn a_newer_episode_manifest_offers_an_update_until_it_is_installed() {
+    let env = Env::new(true, true).await;
+    for (relative, data) in installed_ep("episodic", json!("1.0.0")) {
+        write(&env.install_path, &relative, data);
+    }
+    env.publish("ep1", "1.0.1", &env.archive("ep1-next.7z", &EP1), None);
+    assert_eq!(env.service.episodes_status().await["ep1"]["update"], true);
+    assert_eq!(
+        env.service.status_of(GAME)["episodes"]["ep1"]["update"],
+        true,
+        "и событием статуса"
+    );
+    env.service.install_episode("ep1").await.unwrap();
+    assert_eq!(env.version_of("ep1"), "1.0.1");
+    assert_eq!(
+        env.service.status_of(GAME)["episodes"]["ep1"]["update"],
+        false
     );
 }
 
@@ -1392,7 +1426,7 @@ async fn episodes_status_reports_size_and_remembers_a_refusal() {
     let none = offline.service.episodes_status().await;
     assert_eq!(
         none["ep1"],
-        json!({ "installed": false, "version": null, "size": null, "paused": false, "available": false })
+        json!({ "installed": false, "version": null, "size": null, "paused": false, "update": false, "available": false })
     );
     assert_eq!(
         install_code(&offline, "ep1").await,
@@ -1405,7 +1439,7 @@ async fn episodes_status_reports_size_and_remembers_a_refusal() {
     let view = env.service.episodes_status().await;
     assert_eq!(
         view["ep1"],
-        json!({ "installed": false, "version": null, "size": archive.len(), "paused": false, "available": true })
+        json!({ "installed": false, "version": null, "size": archive.len(), "paused": false, "update": false, "available": true })
     );
     assert_eq!(view["ep2"]["available"], false);
     assert_eq!(

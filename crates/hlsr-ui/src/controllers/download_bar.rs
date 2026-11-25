@@ -78,7 +78,7 @@ struct ButtonStyle {
 
 const SPIN: &str = "fas fa-circle-notch fa-spin";
 
-const BUTTONS: [ButtonStyle; 22] = [
+const BUTTONS: [ButtonStyle; 23] = [
     ButtonStyle {
         state: "ready",
         icon: "fas fa-play",
@@ -101,6 +101,12 @@ const BUTTONS: [ButtonStyle; 22] = [
         state: "episode-paused",
         icon: "fas fa-play",
         key: "#L_B_RESUME",
+        tone: Tone::Progress,
+    },
+    ButtonStyle {
+        state: "episode-update",
+        icon: "fas fa-sync-alt",
+        key: "#L_B_UPDATE",
         tone: Tone::Progress,
     },
     ButtonStyle {
@@ -256,7 +262,7 @@ impl ButtonView {
         }
         if matches!(
             self.state.as_str(),
-            "episode-not-installed" | "episode-paused"
+            "episode-not-installed" | "episode-paused" | "episode-update"
         ) {
             return Some(INSTALL_EPISODE);
         }

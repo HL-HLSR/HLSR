@@ -12,12 +12,14 @@
         "HL2 Ghosting: «Скачать» ставит только эпизод, выбранный в «Версии сборки». Раньше вслед за Episode One сразу начинал качаться Episode Two. Episode Two работает только вместе с Episode One: если Episode One ещё не скачан, он скачается первым",
         "Windows: лаунчер снова запускается на ПК, где Windows не отдаёт список системных шрифтов (ошибка «Error creating DirectWriteTextSystem … 0x800700EA»). Если системные шрифты недоступны, лаунчер работает на своих",
         "HL2 Ghosting, эпизоды: лаунчер больше не копирует главы HL2 в папку эпизода. Из-за этого в «Новой игре» Episode One и Episode Two были главы HL2, и запуск главы открывал первую карту HL2",
+        "HL2 Ghosting, эпизоды: когда выходит новая версия Episode One или Episode Two, на кнопке появляется «Обновить». Сохранения, раны, демки, скриншоты и папка custom остаются на месте. В новой версии эпизоды запускаются и без Episode One и Episode Two в библиотеке Steam: ошибки «No permissions to run 'ep2'» больше нет",
         "LiveSplit для HL2 Ghosting: в папку Components ставится автосплиттер GhostingRenewed.asl. С ближайшим обновлением Ghosting он берёт время прямо из игры, так что LiveSplit и игровой таймер показывают одно и то же. Таймер в раскладках Ghosting теперь с миллисекундами"
       ],
       "en": [
         "HL2 Ghosting: Download now installs only the episode selected in Build version. Before, Episode Two started downloading right after Episode One. Episode Two needs Episode One, so if Episode One isn't installed yet, it downloads first",
         "Windows: the launcher starts again on PCs where Windows can't provide the system font list (\"Error creating DirectWriteTextSystem … 0x800700EA\"). If system fonts are unavailable, the launcher uses its own",
         "HL2 Ghosting, episodes: the launcher no longer copies the HL2 chapters into the episode folder. Because of that, New Game in Episode One and Episode Two listed HL2 chapters, and starting a chapter opened the first HL2 map",
+        "HL2 Ghosting, episodes: when a new version of Episode One or Episode Two comes out, the button shows Update. Saves, runs, demos, screenshots and the custom folder stay in place. The new version runs without Episode One and Episode Two in your Steam library, so the \"No permissions to run 'ep2'\" error is gone",
         "LiveSplit for HL2 Ghosting: the GhostingRenewed.asl autosplitter is installed into the Components folder. With the next Ghosting update it reads the time straight from the game, so LiveSplit and the in-game timer show the same time. The timer in the Ghosting layouts now shows milliseconds"
       ]
     },

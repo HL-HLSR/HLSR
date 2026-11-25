@@ -31,5 +31,8 @@ pub fn episode_button(
     if !flag("installed") {
         return view("episode-not-installed", "install");
     }
+    if flag("update") {
+        return view("episode-update", "install");
+    }
     main_button.clone()
 }
