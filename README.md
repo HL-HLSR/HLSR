@@ -49,6 +49,7 @@ old Electron launcher lives in the
 - Rendering demos to video right from the launcher
 - Exporting your profile with all your stats
 - Showing your game status in Discord
+- Your own Source mods: a mod library in the left column, a page for each mod with the engine and launch options, mods from `steamapps/sourcemods` or a zip/7z archive (Windows)
 - Russian and English
 
 And more.
